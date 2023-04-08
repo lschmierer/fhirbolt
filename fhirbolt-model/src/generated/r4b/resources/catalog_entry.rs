@@ -1,4 +1,4 @@
-// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-08 by fhirbolt-codegen v0.1.0
 #[doc = "Used for example, to point to a substance, or to a device used to administer a medication."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub struct CatalogEntryRelatedEntry {
@@ -72,6 +72,18 @@ impl<'de> serde::de::Deserialize<'de> for CatalogEntryRelatedEntry {
             #[serde(rename = "item")]
             Item,
             Unknown(std::string::String),
+        }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "relationtype",
+                    "item",
+                ],
+            ))
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -158,16 +170,7 @@ impl<'de> serde::de::Deserialize<'de> for CatalogEntryRelatedEntry {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "relationtype",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "relationtype",
-                                            "item",
-                                        ],
-                                    ));
+                                    return unknown_field_error("relationtype");
                                 }
                             }
                             Field::Item => {
@@ -505,6 +508,34 @@ impl<'de> serde::de::Deserialize<'de> for CatalogEntry {
             RelatedEntry,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "meta",
+                    "implicitRules",
+                    "language",
+                    "text",
+                    "contained",
+                    "extension",
+                    "modifierExtension",
+                    "identifier",
+                    "type",
+                    "orderable",
+                    "referencedItem",
+                    "additionalIdentifier",
+                    "classification",
+                    "status",
+                    "validityPeriod",
+                    "validTo",
+                    "lastUpdated",
+                    "additionalCharacteristic",
+                    "additionalClassification",
+                    "relatedEntry",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = CatalogEntry;
@@ -602,32 +633,7 @@ impl<'de> serde::de::Deserialize<'de> for CatalogEntry {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "implicitRules",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "type",
-                                            "orderable",
-                                            "referencedItem",
-                                            "additionalIdentifier",
-                                            "classification",
-                                            "status",
-                                            "validityPeriod",
-                                            "validTo",
-                                            "lastUpdated",
-                                            "additionalCharacteristic",
-                                            "additionalClassification",
-                                            "relatedEntry",
-                                        ],
-                                    ));
+                                    return unknown_field_error("implicitRules");
                                 }
                             }
                             Field::Language => {
@@ -658,32 +664,7 @@ impl<'de> serde::de::Deserialize<'de> for CatalogEntry {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "language",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "type",
-                                            "orderable",
-                                            "referencedItem",
-                                            "additionalIdentifier",
-                                            "classification",
-                                            "status",
-                                            "validityPeriod",
-                                            "validTo",
-                                            "lastUpdated",
-                                            "additionalCharacteristic",
-                                            "additionalClassification",
-                                            "relatedEntry",
-                                        ],
-                                    ));
+                                    return unknown_field_error("language");
                                 }
                             }
                             Field::Text => {
@@ -777,32 +758,7 @@ impl<'de> serde::de::Deserialize<'de> for CatalogEntry {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "orderable",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "type",
-                                            "orderable",
-                                            "referencedItem",
-                                            "additionalIdentifier",
-                                            "classification",
-                                            "status",
-                                            "validityPeriod",
-                                            "validTo",
-                                            "lastUpdated",
-                                            "additionalCharacteristic",
-                                            "additionalClassification",
-                                            "relatedEntry",
-                                        ],
-                                    ));
+                                    return unknown_field_error("orderable");
                                 }
                             }
                             Field::ReferencedItem => {
@@ -868,32 +824,7 @@ impl<'de> serde::de::Deserialize<'de> for CatalogEntry {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "status",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "type",
-                                            "orderable",
-                                            "referencedItem",
-                                            "additionalIdentifier",
-                                            "classification",
-                                            "status",
-                                            "validityPeriod",
-                                            "validTo",
-                                            "lastUpdated",
-                                            "additionalCharacteristic",
-                                            "additionalClassification",
-                                            "relatedEntry",
-                                        ],
-                                    ));
+                                    return unknown_field_error("status");
                                 }
                             }
                             Field::ValidityPeriod => {
@@ -932,32 +863,7 @@ impl<'de> serde::de::Deserialize<'de> for CatalogEntry {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "validTo",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "type",
-                                            "orderable",
-                                            "referencedItem",
-                                            "additionalIdentifier",
-                                            "classification",
-                                            "status",
-                                            "validityPeriod",
-                                            "validTo",
-                                            "lastUpdated",
-                                            "additionalCharacteristic",
-                                            "additionalClassification",
-                                            "relatedEntry",
-                                        ],
-                                    ));
+                                    return unknown_field_error("validTo");
                                 }
                             }
                             Field::LastUpdated => {
@@ -994,32 +900,7 @@ impl<'de> serde::de::Deserialize<'de> for CatalogEntry {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "lastUpdated",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "type",
-                                            "orderable",
-                                            "referencedItem",
-                                            "additionalIdentifier",
-                                            "classification",
-                                            "status",
-                                            "validityPeriod",
-                                            "validTo",
-                                            "lastUpdated",
-                                            "additionalCharacteristic",
-                                            "additionalClassification",
-                                            "relatedEntry",
-                                        ],
-                                    ));
+                                    return unknown_field_error("lastUpdated");
                                 }
                             }
                             Field::AdditionalCharacteristic => {

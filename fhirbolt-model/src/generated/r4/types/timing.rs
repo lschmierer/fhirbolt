@@ -1,4 +1,4 @@
-// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-08 by fhirbolt-codegen v0.1.0
 #[doc = "Either a duration for the length of the timing schedule, a range of possible length, or outer bounds for start and/or end limits of the timing schedule."]
 #[derive(Debug, Clone, PartialEq)]
 pub enum TimingRepeatBounds {
@@ -492,6 +492,32 @@ impl<'de> serde::de::Deserialize<'de> for TimingRepeat {
             OffsetPrimitiveElement,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "boundsDuration",
+                    "boundsRange",
+                    "boundsPeriod",
+                    "count",
+                    "countMax",
+                    "duration",
+                    "durationMax",
+                    "durationUnit",
+                    "frequency",
+                    "frequencyMax",
+                    "period",
+                    "periodMax",
+                    "periodUnit",
+                    "dayOfWeek",
+                    "timeOfDay",
+                    "when",
+                    "offset",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = TimingRepeat;
@@ -591,30 +617,7 @@ impl<'de> serde::de::Deserialize<'de> for TimingRepeat {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "count",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "boundsDuration",
-                                            "boundsRange",
-                                            "boundsPeriod",
-                                            "count",
-                                            "countMax",
-                                            "duration",
-                                            "durationMax",
-                                            "durationUnit",
-                                            "frequency",
-                                            "frequencyMax",
-                                            "period",
-                                            "periodMax",
-                                            "periodUnit",
-                                            "dayOfWeek",
-                                            "timeOfDay",
-                                            "when",
-                                            "offset",
-                                        ],
-                                    ));
+                                    return unknown_field_error("count");
                                 }
                             }
                             Field::CountMax => {
@@ -645,30 +648,7 @@ impl<'de> serde::de::Deserialize<'de> for TimingRepeat {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "countMax",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "boundsDuration",
-                                            "boundsRange",
-                                            "boundsPeriod",
-                                            "count",
-                                            "countMax",
-                                            "duration",
-                                            "durationMax",
-                                            "durationUnit",
-                                            "frequency",
-                                            "frequencyMax",
-                                            "period",
-                                            "periodMax",
-                                            "periodUnit",
-                                            "dayOfWeek",
-                                            "timeOfDay",
-                                            "when",
-                                            "offset",
-                                        ],
-                                    ));
+                                    return unknown_field_error("countMax");
                                 }
                             }
                             Field::Duration => {
@@ -699,30 +679,7 @@ impl<'de> serde::de::Deserialize<'de> for TimingRepeat {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "duration",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "boundsDuration",
-                                            "boundsRange",
-                                            "boundsPeriod",
-                                            "count",
-                                            "countMax",
-                                            "duration",
-                                            "durationMax",
-                                            "durationUnit",
-                                            "frequency",
-                                            "frequencyMax",
-                                            "period",
-                                            "periodMax",
-                                            "periodUnit",
-                                            "dayOfWeek",
-                                            "timeOfDay",
-                                            "when",
-                                            "offset",
-                                        ],
-                                    ));
+                                    return unknown_field_error("duration");
                                 }
                             }
                             Field::DurationMax => {
@@ -759,30 +716,7 @@ impl<'de> serde::de::Deserialize<'de> for TimingRepeat {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "durationMax",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "boundsDuration",
-                                            "boundsRange",
-                                            "boundsPeriod",
-                                            "count",
-                                            "countMax",
-                                            "duration",
-                                            "durationMax",
-                                            "durationUnit",
-                                            "frequency",
-                                            "frequencyMax",
-                                            "period",
-                                            "periodMax",
-                                            "periodUnit",
-                                            "dayOfWeek",
-                                            "timeOfDay",
-                                            "when",
-                                            "offset",
-                                        ],
-                                    ));
+                                    return unknown_field_error("durationMax");
                                 }
                             }
                             Field::DurationUnit => {
@@ -819,30 +753,7 @@ impl<'de> serde::de::Deserialize<'de> for TimingRepeat {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "durationUnit",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "boundsDuration",
-                                            "boundsRange",
-                                            "boundsPeriod",
-                                            "count",
-                                            "countMax",
-                                            "duration",
-                                            "durationMax",
-                                            "durationUnit",
-                                            "frequency",
-                                            "frequencyMax",
-                                            "period",
-                                            "periodMax",
-                                            "periodUnit",
-                                            "dayOfWeek",
-                                            "timeOfDay",
-                                            "when",
-                                            "offset",
-                                        ],
-                                    ));
+                                    return unknown_field_error("durationUnit");
                                 }
                             }
                             Field::Frequency => {
@@ -875,30 +786,7 @@ impl<'de> serde::de::Deserialize<'de> for TimingRepeat {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "frequency",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "boundsDuration",
-                                            "boundsRange",
-                                            "boundsPeriod",
-                                            "count",
-                                            "countMax",
-                                            "duration",
-                                            "durationMax",
-                                            "durationUnit",
-                                            "frequency",
-                                            "frequencyMax",
-                                            "period",
-                                            "periodMax",
-                                            "periodUnit",
-                                            "dayOfWeek",
-                                            "timeOfDay",
-                                            "when",
-                                            "offset",
-                                        ],
-                                    ));
+                                    return unknown_field_error("frequency");
                                 }
                             }
                             Field::FrequencyMax => {
@@ -935,30 +823,7 @@ impl<'de> serde::de::Deserialize<'de> for TimingRepeat {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "frequencyMax",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "boundsDuration",
-                                            "boundsRange",
-                                            "boundsPeriod",
-                                            "count",
-                                            "countMax",
-                                            "duration",
-                                            "durationMax",
-                                            "durationUnit",
-                                            "frequency",
-                                            "frequencyMax",
-                                            "period",
-                                            "periodMax",
-                                            "periodUnit",
-                                            "dayOfWeek",
-                                            "timeOfDay",
-                                            "when",
-                                            "offset",
-                                        ],
-                                    ));
+                                    return unknown_field_error("frequencyMax");
                                 }
                             }
                             Field::Period => {
@@ -989,30 +854,7 @@ impl<'de> serde::de::Deserialize<'de> for TimingRepeat {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "period",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "boundsDuration",
-                                            "boundsRange",
-                                            "boundsPeriod",
-                                            "count",
-                                            "countMax",
-                                            "duration",
-                                            "durationMax",
-                                            "durationUnit",
-                                            "frequency",
-                                            "frequencyMax",
-                                            "period",
-                                            "periodMax",
-                                            "periodUnit",
-                                            "dayOfWeek",
-                                            "timeOfDay",
-                                            "when",
-                                            "offset",
-                                        ],
-                                    ));
+                                    return unknown_field_error("period");
                                 }
                             }
                             Field::PeriodMax => {
@@ -1045,30 +887,7 @@ impl<'de> serde::de::Deserialize<'de> for TimingRepeat {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "periodMax",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "boundsDuration",
-                                            "boundsRange",
-                                            "boundsPeriod",
-                                            "count",
-                                            "countMax",
-                                            "duration",
-                                            "durationMax",
-                                            "durationUnit",
-                                            "frequency",
-                                            "frequencyMax",
-                                            "period",
-                                            "periodMax",
-                                            "periodUnit",
-                                            "dayOfWeek",
-                                            "timeOfDay",
-                                            "when",
-                                            "offset",
-                                        ],
-                                    ));
+                                    return unknown_field_error("periodMax");
                                 }
                             }
                             Field::PeriodUnit => {
@@ -1105,30 +924,7 @@ impl<'de> serde::de::Deserialize<'de> for TimingRepeat {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "periodUnit",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "boundsDuration",
-                                            "boundsRange",
-                                            "boundsPeriod",
-                                            "count",
-                                            "countMax",
-                                            "duration",
-                                            "durationMax",
-                                            "durationUnit",
-                                            "frequency",
-                                            "frequencyMax",
-                                            "period",
-                                            "periodMax",
-                                            "periodUnit",
-                                            "dayOfWeek",
-                                            "timeOfDay",
-                                            "when",
-                                            "offset",
-                                        ],
-                                    ));
+                                    return unknown_field_error("periodUnit");
                                 }
                             }
                             Field::DayOfWeek => {
@@ -1189,30 +985,7 @@ impl<'de> serde::de::Deserialize<'de> for TimingRepeat {
                                         }
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "dayOfWeek",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "boundsDuration",
-                                            "boundsRange",
-                                            "boundsPeriod",
-                                            "count",
-                                            "countMax",
-                                            "duration",
-                                            "durationMax",
-                                            "durationUnit",
-                                            "frequency",
-                                            "frequencyMax",
-                                            "period",
-                                            "periodMax",
-                                            "periodUnit",
-                                            "dayOfWeek",
-                                            "timeOfDay",
-                                            "when",
-                                            "offset",
-                                        ],
-                                    ));
+                                    return unknown_field_error("dayOfWeek");
                                 }
                             }
                             Field::TimeOfDay => {
@@ -1273,30 +1046,7 @@ impl<'de> serde::de::Deserialize<'de> for TimingRepeat {
                                         }
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "timeOfDay",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "boundsDuration",
-                                            "boundsRange",
-                                            "boundsPeriod",
-                                            "count",
-                                            "countMax",
-                                            "duration",
-                                            "durationMax",
-                                            "durationUnit",
-                                            "frequency",
-                                            "frequencyMax",
-                                            "period",
-                                            "periodMax",
-                                            "periodUnit",
-                                            "dayOfWeek",
-                                            "timeOfDay",
-                                            "when",
-                                            "offset",
-                                        ],
-                                    ));
+                                    return unknown_field_error("timeOfDay");
                                 }
                             }
                             Field::When => {
@@ -1355,30 +1105,7 @@ impl<'de> serde::de::Deserialize<'de> for TimingRepeat {
                                         }
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "when",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "boundsDuration",
-                                            "boundsRange",
-                                            "boundsPeriod",
-                                            "count",
-                                            "countMax",
-                                            "duration",
-                                            "durationMax",
-                                            "durationUnit",
-                                            "frequency",
-                                            "frequencyMax",
-                                            "period",
-                                            "periodMax",
-                                            "periodUnit",
-                                            "dayOfWeek",
-                                            "timeOfDay",
-                                            "when",
-                                            "offset",
-                                        ],
-                                    ));
+                                    return unknown_field_error("when");
                                 }
                             }
                             Field::Offset => {
@@ -1409,30 +1136,7 @@ impl<'de> serde::de::Deserialize<'de> for TimingRepeat {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "offset",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "boundsDuration",
-                                            "boundsRange",
-                                            "boundsPeriod",
-                                            "count",
-                                            "countMax",
-                                            "duration",
-                                            "durationMax",
-                                            "durationUnit",
-                                            "frequency",
-                                            "frequencyMax",
-                                            "period",
-                                            "periodMax",
-                                            "periodUnit",
-                                            "dayOfWeek",
-                                            "timeOfDay",
-                                            "when",
-                                            "offset",
-                                        ],
-                                    ));
+                                    return unknown_field_error("offset");
                                 }
                             }
                             Field::Unknown(key) => if _ctx.config.mode
@@ -1596,6 +1300,19 @@ impl<'de> serde::de::Deserialize<'de> for Timing {
             Code,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "event",
+                    "repeat",
+                    "code",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = Timing;
@@ -1704,17 +1421,7 @@ impl<'de> serde::de::Deserialize<'de> for Timing {
                                         }
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "event",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "event",
-                                            "repeat",
-                                            "code",
-                                        ],
-                                    ));
+                                    return unknown_field_error("event");
                                 }
                             }
                             Field::Repeat => {

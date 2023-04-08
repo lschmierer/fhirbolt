@@ -1,4 +1,4 @@
-// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-08 by fhirbolt-codegen v0.1.0
 #[doc = "Base StructureDefinition for Reference Type: A reference from one resource to another."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub struct Reference {
@@ -122,6 +122,19 @@ impl<'de> serde::de::Deserialize<'de> for Reference {
             DisplayPrimitiveElement,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "reference",
+                    "type",
+                    "identifier",
+                    "display",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = Reference;
@@ -189,17 +202,7 @@ impl<'de> serde::de::Deserialize<'de> for Reference {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "reference",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "reference",
-                                            "type",
-                                            "identifier",
-                                            "display",
-                                        ],
-                                    ));
+                                    return unknown_field_error("reference");
                                 }
                             }
                             Field::Type => {
@@ -230,17 +233,7 @@ impl<'de> serde::de::Deserialize<'de> for Reference {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "type",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "reference",
-                                            "type",
-                                            "identifier",
-                                            "display",
-                                        ],
-                                    ));
+                                    return unknown_field_error("type");
                                 }
                             }
                             Field::Identifier => {
@@ -277,17 +270,7 @@ impl<'de> serde::de::Deserialize<'de> for Reference {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "display",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "reference",
-                                            "type",
-                                            "identifier",
-                                            "display",
-                                        ],
-                                    ));
+                                    return unknown_field_error("display");
                                 }
                             }
                             Field::Unknown(key) => if _ctx.config.mode

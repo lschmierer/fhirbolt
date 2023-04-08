@@ -1,4 +1,4 @@
-// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-08 by fhirbolt-codegen v0.1.0
 #[doc = "The FHIR query based rules that the server should use to determine when to trigger a notification for this subscription topic."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub struct SubscriptionTopicResourceTriggerQueryCriteria {
@@ -172,6 +172,21 @@ impl<'de> serde::de::Deserialize<'de> for SubscriptionTopicResourceTriggerQueryC
             RequireBothPrimitiveElement,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "previous",
+                    "resultForCreate",
+                    "current",
+                    "resultForDelete",
+                    "requireBoth",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = SubscriptionTopicResourceTriggerQueryCriteria;
@@ -257,19 +272,7 @@ impl<'de> serde::de::Deserialize<'de> for SubscriptionTopicResourceTriggerQueryC
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "previous",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "previous",
-                                            "resultForCreate",
-                                            "current",
-                                            "resultForDelete",
-                                            "requireBoth",
-                                        ],
-                                    ));
+                                    return unknown_field_error("previous");
                                 }
                             }
                             Field::ResultForCreate => {
@@ -308,19 +311,7 @@ impl<'de> serde::de::Deserialize<'de> for SubscriptionTopicResourceTriggerQueryC
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "resultForCreate",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "previous",
-                                            "resultForCreate",
-                                            "current",
-                                            "resultForDelete",
-                                            "requireBoth",
-                                        ],
-                                    ));
+                                    return unknown_field_error("resultForCreate");
                                 }
                             }
                             Field::Current => {
@@ -351,19 +342,7 @@ impl<'de> serde::de::Deserialize<'de> for SubscriptionTopicResourceTriggerQueryC
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "current",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "previous",
-                                            "resultForCreate",
-                                            "current",
-                                            "resultForDelete",
-                                            "requireBoth",
-                                        ],
-                                    ));
+                                    return unknown_field_error("current");
                                 }
                             }
                             Field::ResultForDelete => {
@@ -402,19 +381,7 @@ impl<'de> serde::de::Deserialize<'de> for SubscriptionTopicResourceTriggerQueryC
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "resultForDelete",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "previous",
-                                            "resultForCreate",
-                                            "current",
-                                            "resultForDelete",
-                                            "requireBoth",
-                                        ],
-                                    ));
+                                    return unknown_field_error("resultForDelete");
                                 }
                             }
                             Field::RequireBoth => {
@@ -451,19 +418,7 @@ impl<'de> serde::de::Deserialize<'de> for SubscriptionTopicResourceTriggerQueryC
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "requireBoth",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "previous",
-                                            "resultForCreate",
-                                            "current",
-                                            "resultForDelete",
-                                            "requireBoth",
-                                        ],
-                                    ));
+                                    return unknown_field_error("requireBoth");
                                 }
                             }
                             Field::Unknown(key) => if _ctx.config.mode
@@ -671,6 +626,21 @@ impl<'de> serde::de::Deserialize<'de> for SubscriptionTopicResourceTrigger {
             FhirPathCriteriaPrimitiveElement,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "description",
+                    "resource",
+                    "supportedInteraction",
+                    "queryCriteria",
+                    "fhirPathCriteria",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = SubscriptionTopicResourceTrigger;
@@ -763,19 +733,7 @@ impl<'de> serde::de::Deserialize<'de> for SubscriptionTopicResourceTrigger {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "description",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "description",
-                                            "resource",
-                                            "supportedInteraction",
-                                            "queryCriteria",
-                                            "fhirPathCriteria",
-                                        ],
-                                    ));
+                                    return unknown_field_error("description");
                                 }
                             }
                             Field::Resource => {
@@ -806,19 +764,7 @@ impl<'de> serde::de::Deserialize<'de> for SubscriptionTopicResourceTrigger {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "resource",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "description",
-                                            "resource",
-                                            "supportedInteraction",
-                                            "queryCriteria",
-                                            "fhirPathCriteria",
-                                        ],
-                                    ));
+                                    return unknown_field_error("resource");
                                 }
                             }
                             Field::SupportedInteraction => {
@@ -882,19 +828,7 @@ impl<'de> serde::de::Deserialize<'de> for SubscriptionTopicResourceTrigger {
                                         }
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "supportedInteraction",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "description",
-                                            "resource",
-                                            "supportedInteraction",
-                                            "queryCriteria",
-                                            "fhirPathCriteria",
-                                        ],
-                                    ));
+                                    return unknown_field_error("supportedInteraction");
                                 }
                             }
                             Field::QueryCriteria => {
@@ -939,19 +873,7 @@ impl<'de> serde::de::Deserialize<'de> for SubscriptionTopicResourceTrigger {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "fhirPathCriteria",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "description",
-                                            "resource",
-                                            "supportedInteraction",
-                                            "queryCriteria",
-                                            "fhirPathCriteria",
-                                        ],
-                                    ));
+                                    return unknown_field_error("fhirPathCriteria");
                                 }
                             }
                             Field::Unknown(key) => if _ctx.config.mode
@@ -1094,6 +1016,19 @@ impl<'de> serde::de::Deserialize<'de> for SubscriptionTopicEventTrigger {
             ResourcePrimitiveElement,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "description",
+                    "event",
+                    "resource",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = SubscriptionTopicEventTrigger;
@@ -1183,17 +1118,7 @@ impl<'de> serde::de::Deserialize<'de> for SubscriptionTopicEventTrigger {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "description",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "description",
-                                            "event",
-                                            "resource",
-                                        ],
-                                    ));
+                                    return unknown_field_error("description");
                                 }
                             }
                             Field::Event => {
@@ -1230,17 +1155,7 @@ impl<'de> serde::de::Deserialize<'de> for SubscriptionTopicEventTrigger {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "resource",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "description",
-                                            "event",
-                                            "resource",
-                                        ],
-                                    ));
+                                    return unknown_field_error("resource");
                                 }
                             }
                             Field::Unknown(key) => if _ctx.config.mode
@@ -1476,6 +1391,21 @@ impl<'de> serde::de::Deserialize<'de> for SubscriptionTopicCanFilterBy {
             ModifierPrimitiveElement,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "description",
+                    "resource",
+                    "filterParameter",
+                    "filterDefinition",
+                    "modifier",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = SubscriptionTopicCanFilterBy;
@@ -1567,19 +1497,7 @@ impl<'de> serde::de::Deserialize<'de> for SubscriptionTopicCanFilterBy {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "description",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "description",
-                                            "resource",
-                                            "filterParameter",
-                                            "filterDefinition",
-                                            "modifier",
-                                        ],
-                                    ));
+                                    return unknown_field_error("description");
                                 }
                             }
                             Field::Resource => {
@@ -1610,19 +1528,7 @@ impl<'de> serde::de::Deserialize<'de> for SubscriptionTopicCanFilterBy {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "resource",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "description",
-                                            "resource",
-                                            "filterParameter",
-                                            "filterDefinition",
-                                            "modifier",
-                                        ],
-                                    ));
+                                    return unknown_field_error("resource");
                                 }
                             }
                             Field::FilterParameter => {
@@ -1659,19 +1565,7 @@ impl<'de> serde::de::Deserialize<'de> for SubscriptionTopicCanFilterBy {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "filterParameter",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "description",
-                                            "resource",
-                                            "filterParameter",
-                                            "filterDefinition",
-                                            "modifier",
-                                        ],
-                                    ));
+                                    return unknown_field_error("filterParameter");
                                 }
                             }
                             Field::FilterDefinition => {
@@ -1710,19 +1604,7 @@ impl<'de> serde::de::Deserialize<'de> for SubscriptionTopicCanFilterBy {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "filterDefinition",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "description",
-                                            "resource",
-                                            "filterParameter",
-                                            "filterDefinition",
-                                            "modifier",
-                                        ],
-                                    ));
+                                    return unknown_field_error("filterDefinition");
                                 }
                             }
                             Field::Modifier => {
@@ -1781,19 +1663,7 @@ impl<'de> serde::de::Deserialize<'de> for SubscriptionTopicCanFilterBy {
                                         }
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "modifier",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "description",
-                                            "resource",
-                                            "filterParameter",
-                                            "filterDefinition",
-                                            "modifier",
-                                        ],
-                                    ));
+                                    return unknown_field_error("modifier");
                                 }
                             }
                             Field::Unknown(key) => if _ctx.config.mode
@@ -1995,6 +1865,19 @@ impl<'de> serde::de::Deserialize<'de> for SubscriptionTopicNotificationShape {
             RevIncludePrimitiveElement,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "resource",
+                    "include",
+                    "revInclude",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = SubscriptionTopicNotificationShape;
@@ -2078,17 +1961,7 @@ impl<'de> serde::de::Deserialize<'de> for SubscriptionTopicNotificationShape {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "resource",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "resource",
-                                            "include",
-                                            "revInclude",
-                                        ],
-                                    ));
+                                    return unknown_field_error("resource");
                                 }
                             }
                             Field::Include => {
@@ -2147,17 +2020,7 @@ impl<'de> serde::de::Deserialize<'de> for SubscriptionTopicNotificationShape {
                                         }
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "include",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "resource",
-                                            "include",
-                                            "revInclude",
-                                        ],
-                                    ));
+                                    return unknown_field_error("include");
                                 }
                             }
                             Field::RevInclude => {
@@ -2220,17 +2083,7 @@ impl<'de> serde::de::Deserialize<'de> for SubscriptionTopicNotificationShape {
                                         }
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "revInclude",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "resource",
-                                            "include",
-                                            "revInclude",
-                                        ],
-                                    ));
+                                    return unknown_field_error("revInclude");
                                 }
                             }
                             Field::Unknown(key) => if _ctx.config.mode
@@ -2794,6 +2647,43 @@ impl<'de> serde::de::Deserialize<'de> for SubscriptionTopic {
             NotificationShape,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "meta",
+                    "implicitRules",
+                    "language",
+                    "text",
+                    "contained",
+                    "extension",
+                    "modifierExtension",
+                    "url",
+                    "identifier",
+                    "version",
+                    "title",
+                    "derivedFrom",
+                    "status",
+                    "experimental",
+                    "date",
+                    "publisher",
+                    "contact",
+                    "description",
+                    "useContext",
+                    "jurisdiction",
+                    "purpose",
+                    "copyright",
+                    "approvalDate",
+                    "lastReviewDate",
+                    "effectivePeriod",
+                    "resourceTrigger",
+                    "eventTrigger",
+                    "canFilterBy",
+                    "notificationShape",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = SubscriptionTopic;
@@ -2896,41 +2786,7 @@ impl<'de> serde::de::Deserialize<'de> for SubscriptionTopic {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "implicitRules",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "identifier",
-                                            "version",
-                                            "title",
-                                            "derivedFrom",
-                                            "status",
-                                            "experimental",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "description",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "purpose",
-                                            "copyright",
-                                            "approvalDate",
-                                            "lastReviewDate",
-                                            "effectivePeriod",
-                                            "resourceTrigger",
-                                            "eventTrigger",
-                                            "canFilterBy",
-                                            "notificationShape",
-                                        ],
-                                    ));
+                                    return unknown_field_error("implicitRules");
                                 }
                             }
                             Field::Language => {
@@ -2961,41 +2817,7 @@ impl<'de> serde::de::Deserialize<'de> for SubscriptionTopic {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "language",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "identifier",
-                                            "version",
-                                            "title",
-                                            "derivedFrom",
-                                            "status",
-                                            "experimental",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "description",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "purpose",
-                                            "copyright",
-                                            "approvalDate",
-                                            "lastReviewDate",
-                                            "effectivePeriod",
-                                            "resourceTrigger",
-                                            "eventTrigger",
-                                            "canFilterBy",
-                                            "notificationShape",
-                                        ],
-                                    ));
+                                    return unknown_field_error("language");
                                 }
                             }
                             Field::Text => {
@@ -3068,41 +2890,7 @@ impl<'de> serde::de::Deserialize<'de> for SubscriptionTopic {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "url",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "identifier",
-                                            "version",
-                                            "title",
-                                            "derivedFrom",
-                                            "status",
-                                            "experimental",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "description",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "purpose",
-                                            "copyright",
-                                            "approvalDate",
-                                            "lastReviewDate",
-                                            "effectivePeriod",
-                                            "resourceTrigger",
-                                            "eventTrigger",
-                                            "canFilterBy",
-                                            "notificationShape",
-                                        ],
-                                    ));
+                                    return unknown_field_error("url");
                                 }
                             }
                             Field::Identifier => {
@@ -3146,41 +2934,7 @@ impl<'de> serde::de::Deserialize<'de> for SubscriptionTopic {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "version",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "identifier",
-                                            "version",
-                                            "title",
-                                            "derivedFrom",
-                                            "status",
-                                            "experimental",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "description",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "purpose",
-                                            "copyright",
-                                            "approvalDate",
-                                            "lastReviewDate",
-                                            "effectivePeriod",
-                                            "resourceTrigger",
-                                            "eventTrigger",
-                                            "canFilterBy",
-                                            "notificationShape",
-                                        ],
-                                    ));
+                                    return unknown_field_error("version");
                                 }
                             }
                             Field::Title => {
@@ -3211,41 +2965,7 @@ impl<'de> serde::de::Deserialize<'de> for SubscriptionTopic {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "title",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "identifier",
-                                            "version",
-                                            "title",
-                                            "derivedFrom",
-                                            "status",
-                                            "experimental",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "description",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "purpose",
-                                            "copyright",
-                                            "approvalDate",
-                                            "lastReviewDate",
-                                            "effectivePeriod",
-                                            "resourceTrigger",
-                                            "eventTrigger",
-                                            "canFilterBy",
-                                            "notificationShape",
-                                        ],
-                                    ));
+                                    return unknown_field_error("title");
                                 }
                             }
                             Field::DerivedFrom => {
@@ -3308,41 +3028,7 @@ impl<'de> serde::de::Deserialize<'de> for SubscriptionTopic {
                                         }
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "derivedFrom",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "identifier",
-                                            "version",
-                                            "title",
-                                            "derivedFrom",
-                                            "status",
-                                            "experimental",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "description",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "purpose",
-                                            "copyright",
-                                            "approvalDate",
-                                            "lastReviewDate",
-                                            "effectivePeriod",
-                                            "resourceTrigger",
-                                            "eventTrigger",
-                                            "canFilterBy",
-                                            "notificationShape",
-                                        ],
-                                    ));
+                                    return unknown_field_error("derivedFrom");
                                 }
                             }
                             Field::Status => {
@@ -3373,41 +3059,7 @@ impl<'de> serde::de::Deserialize<'de> for SubscriptionTopic {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "status",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "identifier",
-                                            "version",
-                                            "title",
-                                            "derivedFrom",
-                                            "status",
-                                            "experimental",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "description",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "purpose",
-                                            "copyright",
-                                            "approvalDate",
-                                            "lastReviewDate",
-                                            "effectivePeriod",
-                                            "resourceTrigger",
-                                            "eventTrigger",
-                                            "canFilterBy",
-                                            "notificationShape",
-                                        ],
-                                    ));
+                                    return unknown_field_error("status");
                                 }
                             }
                             Field::Experimental => {
@@ -3444,41 +3096,7 @@ impl<'de> serde::de::Deserialize<'de> for SubscriptionTopic {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "experimental",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "identifier",
-                                            "version",
-                                            "title",
-                                            "derivedFrom",
-                                            "status",
-                                            "experimental",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "description",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "purpose",
-                                            "copyright",
-                                            "approvalDate",
-                                            "lastReviewDate",
-                                            "effectivePeriod",
-                                            "resourceTrigger",
-                                            "eventTrigger",
-                                            "canFilterBy",
-                                            "notificationShape",
-                                        ],
-                                    ));
+                                    return unknown_field_error("experimental");
                                 }
                             }
                             Field::Date => {
@@ -3509,41 +3127,7 @@ impl<'de> serde::de::Deserialize<'de> for SubscriptionTopic {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "date",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "identifier",
-                                            "version",
-                                            "title",
-                                            "derivedFrom",
-                                            "status",
-                                            "experimental",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "description",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "purpose",
-                                            "copyright",
-                                            "approvalDate",
-                                            "lastReviewDate",
-                                            "effectivePeriod",
-                                            "resourceTrigger",
-                                            "eventTrigger",
-                                            "canFilterBy",
-                                            "notificationShape",
-                                        ],
-                                    ));
+                                    return unknown_field_error("date");
                                 }
                             }
                             Field::Publisher => {
@@ -3576,41 +3160,7 @@ impl<'de> serde::de::Deserialize<'de> for SubscriptionTopic {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "publisher",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "identifier",
-                                            "version",
-                                            "title",
-                                            "derivedFrom",
-                                            "status",
-                                            "experimental",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "description",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "purpose",
-                                            "copyright",
-                                            "approvalDate",
-                                            "lastReviewDate",
-                                            "effectivePeriod",
-                                            "resourceTrigger",
-                                            "eventTrigger",
-                                            "canFilterBy",
-                                            "notificationShape",
-                                        ],
-                                    ));
+                                    return unknown_field_error("publisher");
                                 }
                             }
                             Field::Contact => {
@@ -3658,41 +3208,7 @@ impl<'de> serde::de::Deserialize<'de> for SubscriptionTopic {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "description",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "identifier",
-                                            "version",
-                                            "title",
-                                            "derivedFrom",
-                                            "status",
-                                            "experimental",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "description",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "purpose",
-                                            "copyright",
-                                            "approvalDate",
-                                            "lastReviewDate",
-                                            "effectivePeriod",
-                                            "resourceTrigger",
-                                            "eventTrigger",
-                                            "canFilterBy",
-                                            "notificationShape",
-                                        ],
-                                    ));
+                                    return unknown_field_error("description");
                                 }
                             }
                             Field::UseContext => {
@@ -3749,41 +3265,7 @@ impl<'de> serde::de::Deserialize<'de> for SubscriptionTopic {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "purpose",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "identifier",
-                                            "version",
-                                            "title",
-                                            "derivedFrom",
-                                            "status",
-                                            "experimental",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "description",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "purpose",
-                                            "copyright",
-                                            "approvalDate",
-                                            "lastReviewDate",
-                                            "effectivePeriod",
-                                            "resourceTrigger",
-                                            "eventTrigger",
-                                            "canFilterBy",
-                                            "notificationShape",
-                                        ],
-                                    ));
+                                    return unknown_field_error("purpose");
                                 }
                             }
                             Field::Copyright => {
@@ -3816,41 +3298,7 @@ impl<'de> serde::de::Deserialize<'de> for SubscriptionTopic {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "copyright",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "identifier",
-                                            "version",
-                                            "title",
-                                            "derivedFrom",
-                                            "status",
-                                            "experimental",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "description",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "purpose",
-                                            "copyright",
-                                            "approvalDate",
-                                            "lastReviewDate",
-                                            "effectivePeriod",
-                                            "resourceTrigger",
-                                            "eventTrigger",
-                                            "canFilterBy",
-                                            "notificationShape",
-                                        ],
-                                    ));
+                                    return unknown_field_error("copyright");
                                 }
                             }
                             Field::ApprovalDate => {
@@ -3887,41 +3335,7 @@ impl<'de> serde::de::Deserialize<'de> for SubscriptionTopic {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "approvalDate",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "identifier",
-                                            "version",
-                                            "title",
-                                            "derivedFrom",
-                                            "status",
-                                            "experimental",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "description",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "purpose",
-                                            "copyright",
-                                            "approvalDate",
-                                            "lastReviewDate",
-                                            "effectivePeriod",
-                                            "resourceTrigger",
-                                            "eventTrigger",
-                                            "canFilterBy",
-                                            "notificationShape",
-                                        ],
-                                    ));
+                                    return unknown_field_error("approvalDate");
                                 }
                             }
                             Field::LastReviewDate => {
@@ -3958,41 +3372,7 @@ impl<'de> serde::de::Deserialize<'de> for SubscriptionTopic {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "lastReviewDate",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "identifier",
-                                            "version",
-                                            "title",
-                                            "derivedFrom",
-                                            "status",
-                                            "experimental",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "description",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "purpose",
-                                            "copyright",
-                                            "approvalDate",
-                                            "lastReviewDate",
-                                            "effectivePeriod",
-                                            "resourceTrigger",
-                                            "eventTrigger",
-                                            "canFilterBy",
-                                            "notificationShape",
-                                        ],
-                                    ));
+                                    return unknown_field_error("lastReviewDate");
                                 }
                             }
                             Field::EffectivePeriod => {

@@ -1,4 +1,4 @@
-// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-08 by fhirbolt-codegen v0.1.0
 #[doc = "The  value of the extra detail."]
 #[derive(Debug, Clone, PartialEq)]
 pub enum AuditEventEntityDetailValue {
@@ -109,6 +109,12 @@ impl<'de> serde::de::Deserialize<'de> for AuditEventAgentNetwork {
             TypePrimitiveElement,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &["id", "extension", "modifierExtension", "address", "type"],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = AuditEventAgentNetwork;
@@ -188,16 +194,7 @@ impl<'de> serde::de::Deserialize<'de> for AuditEventAgentNetwork {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "address",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "address",
-                                            "type",
-                                        ],
-                                    ));
+                                    return unknown_field_error("address");
                                 }
                             }
                             Field::Type => {
@@ -228,16 +225,7 @@ impl<'de> serde::de::Deserialize<'de> for AuditEventAgentNetwork {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "type",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "address",
-                                            "type",
-                                        ],
-                                    ));
+                                    return unknown_field_error("type");
                                 }
                             }
                             Field::Unknown(key) => if _ctx.config.mode
@@ -475,6 +463,27 @@ impl<'de> serde::de::Deserialize<'de> for AuditEventAgent {
             PurposeOfUse,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "type",
+                    "role",
+                    "who",
+                    "altId",
+                    "name",
+                    "requestor",
+                    "location",
+                    "policy",
+                    "media",
+                    "network",
+                    "purposeOfUse",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = AuditEventAgent;
@@ -587,25 +596,7 @@ impl<'de> serde::de::Deserialize<'de> for AuditEventAgent {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "altId",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "type",
-                                            "role",
-                                            "who",
-                                            "altId",
-                                            "name",
-                                            "requestor",
-                                            "location",
-                                            "policy",
-                                            "media",
-                                            "network",
-                                            "purposeOfUse",
-                                        ],
-                                    ));
+                                    return unknown_field_error("altId");
                                 }
                             }
                             Field::Name => {
@@ -636,25 +627,7 @@ impl<'de> serde::de::Deserialize<'de> for AuditEventAgent {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "name",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "type",
-                                            "role",
-                                            "who",
-                                            "altId",
-                                            "name",
-                                            "requestor",
-                                            "location",
-                                            "policy",
-                                            "media",
-                                            "network",
-                                            "purposeOfUse",
-                                        ],
-                                    ));
+                                    return unknown_field_error("name");
                                 }
                             }
                             Field::Requestor => {
@@ -687,25 +660,7 @@ impl<'de> serde::de::Deserialize<'de> for AuditEventAgent {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "requestor",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "type",
-                                            "role",
-                                            "who",
-                                            "altId",
-                                            "name",
-                                            "requestor",
-                                            "location",
-                                            "policy",
-                                            "media",
-                                            "network",
-                                            "purposeOfUse",
-                                        ],
-                                    ));
+                                    return unknown_field_error("requestor");
                                 }
                             }
                             Field::Location => {
@@ -770,25 +725,7 @@ impl<'de> serde::de::Deserialize<'de> for AuditEventAgent {
                                         }
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "policy",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "type",
-                                            "role",
-                                            "who",
-                                            "altId",
-                                            "name",
-                                            "requestor",
-                                            "location",
-                                            "policy",
-                                            "media",
-                                            "network",
-                                            "purposeOfUse",
-                                        ],
-                                    ));
+                                    return unknown_field_error("policy");
                                 }
                             }
                             Field::Media => {
@@ -954,6 +891,19 @@ impl<'de> serde::de::Deserialize<'de> for AuditEventSource {
             Type,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "site",
+                    "observer",
+                    "type",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = AuditEventSource;
@@ -1034,17 +984,7 @@ impl<'de> serde::de::Deserialize<'de> for AuditEventSource {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "site",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "site",
-                                            "observer",
-                                            "type",
-                                        ],
-                                    ));
+                                    return unknown_field_error("site");
                                 }
                             }
                             Field::Observer => {
@@ -1219,6 +1159,19 @@ impl<'de> serde::de::Deserialize<'de> for AuditEventEntityDetail {
             ValueBase64BinaryPrimitiveElement,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "type",
+                    "valueString",
+                    "valueBase64Binary",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = AuditEventEntityDetail;
@@ -1298,17 +1251,7 @@ impl<'de> serde::de::Deserialize<'de> for AuditEventEntityDetail {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "type",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "type",
-                                            "valueString",
-                                            "valueBase64Binary",
-                                        ],
-                                    ));
+                                    return unknown_field_error("type");
                                 }
                             }
                             Field::ValueString => {
@@ -1359,17 +1302,7 @@ impl<'de> serde::de::Deserialize<'de> for AuditEventEntityDetail {
                                         return Err(serde::de::Error::duplicate_field("_value[x]"));
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "valueString",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "type",
-                                            "valueString",
-                                            "valueBase64Binary",
-                                        ],
-                                    ));
+                                    return unknown_field_error("valueString");
                                 }
                             }
                             Field::ValueBase64Binary => {
@@ -1428,17 +1361,7 @@ impl<'de> serde::de::Deserialize<'de> for AuditEventEntityDetail {
                                         return Err(serde::de::Error::duplicate_field("_value[x]"));
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "valueBase64Binary",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "type",
-                                            "valueString",
-                                            "valueBase64Binary",
-                                        ],
-                                    ));
+                                    return unknown_field_error("valueBase64Binary");
                                 }
                             }
                             Field::Unknown(key) => if _ctx.config.mode
@@ -1648,6 +1571,25 @@ impl<'de> serde::de::Deserialize<'de> for AuditEventEntity {
             Detail,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "what",
+                    "type",
+                    "role",
+                    "lifecycle",
+                    "securityLabel",
+                    "name",
+                    "description",
+                    "query",
+                    "detail",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = AuditEventEntity;
@@ -1771,23 +1713,7 @@ impl<'de> serde::de::Deserialize<'de> for AuditEventEntity {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "name",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "what",
-                                            "type",
-                                            "role",
-                                            "lifecycle",
-                                            "securityLabel",
-                                            "name",
-                                            "description",
-                                            "query",
-                                            "detail",
-                                        ],
-                                    ));
+                                    return unknown_field_error("name");
                                 }
                             }
                             Field::Description => {
@@ -1824,23 +1750,7 @@ impl<'de> serde::de::Deserialize<'de> for AuditEventEntity {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "description",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "what",
-                                            "type",
-                                            "role",
-                                            "lifecycle",
-                                            "securityLabel",
-                                            "name",
-                                            "description",
-                                            "query",
-                                            "detail",
-                                        ],
-                                    ));
+                                    return unknown_field_error("description");
                                 }
                             }
                             Field::Query => {
@@ -1871,23 +1781,7 @@ impl<'de> serde::de::Deserialize<'de> for AuditEventEntity {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "query",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "what",
-                                            "type",
-                                            "role",
-                                            "lifecycle",
-                                            "securityLabel",
-                                            "name",
-                                            "description",
-                                            "query",
-                                            "detail",
-                                        ],
-                                    ));
+                                    return unknown_field_error("query");
                                 }
                             }
                             Field::Detail => {
@@ -2210,6 +2104,32 @@ impl<'de> serde::de::Deserialize<'de> for AuditEvent {
             Entity,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "meta",
+                    "implicitRules",
+                    "language",
+                    "text",
+                    "contained",
+                    "extension",
+                    "modifierExtension",
+                    "type",
+                    "subtype",
+                    "action",
+                    "period",
+                    "recorded",
+                    "outcome",
+                    "outcomeDesc",
+                    "purposeOfEvent",
+                    "agent",
+                    "source",
+                    "entity",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = AuditEvent;
@@ -2300,30 +2220,7 @@ impl<'de> serde::de::Deserialize<'de> for AuditEvent {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "implicitRules",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "type",
-                                            "subtype",
-                                            "action",
-                                            "period",
-                                            "recorded",
-                                            "outcome",
-                                            "outcomeDesc",
-                                            "purposeOfEvent",
-                                            "agent",
-                                            "source",
-                                            "entity",
-                                        ],
-                                    ));
+                                    return unknown_field_error("implicitRules");
                                 }
                             }
                             Field::Language => {
@@ -2354,30 +2251,7 @@ impl<'de> serde::de::Deserialize<'de> for AuditEvent {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "language",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "type",
-                                            "subtype",
-                                            "action",
-                                            "period",
-                                            "recorded",
-                                            "outcome",
-                                            "outcomeDesc",
-                                            "purposeOfEvent",
-                                            "agent",
-                                            "source",
-                                            "entity",
-                                        ],
-                                    ));
+                                    return unknown_field_error("language");
                                 }
                             }
                             Field::Text => {
@@ -2467,30 +2341,7 @@ impl<'de> serde::de::Deserialize<'de> for AuditEvent {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "action",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "type",
-                                            "subtype",
-                                            "action",
-                                            "period",
-                                            "recorded",
-                                            "outcome",
-                                            "outcomeDesc",
-                                            "purposeOfEvent",
-                                            "agent",
-                                            "source",
-                                            "entity",
-                                        ],
-                                    ));
+                                    return unknown_field_error("action");
                                 }
                             }
                             Field::Period => {
@@ -2527,30 +2378,7 @@ impl<'de> serde::de::Deserialize<'de> for AuditEvent {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "recorded",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "type",
-                                            "subtype",
-                                            "action",
-                                            "period",
-                                            "recorded",
-                                            "outcome",
-                                            "outcomeDesc",
-                                            "purposeOfEvent",
-                                            "agent",
-                                            "source",
-                                            "entity",
-                                        ],
-                                    ));
+                                    return unknown_field_error("recorded");
                                 }
                             }
                             Field::Outcome => {
@@ -2581,30 +2409,7 @@ impl<'de> serde::de::Deserialize<'de> for AuditEvent {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "outcome",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "type",
-                                            "subtype",
-                                            "action",
-                                            "period",
-                                            "recorded",
-                                            "outcome",
-                                            "outcomeDesc",
-                                            "purposeOfEvent",
-                                            "agent",
-                                            "source",
-                                            "entity",
-                                        ],
-                                    ));
+                                    return unknown_field_error("outcome");
                                 }
                             }
                             Field::OutcomeDesc => {
@@ -2641,30 +2446,7 @@ impl<'de> serde::de::Deserialize<'de> for AuditEvent {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "outcomeDesc",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "type",
-                                            "subtype",
-                                            "action",
-                                            "period",
-                                            "recorded",
-                                            "outcome",
-                                            "outcomeDesc",
-                                            "purposeOfEvent",
-                                            "agent",
-                                            "source",
-                                            "entity",
-                                        ],
-                                    ));
+                                    return unknown_field_error("outcomeDesc");
                                 }
                             }
                             Field::PurposeOfEvent => {

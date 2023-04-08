@@ -1,4 +1,4 @@
-// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-08 by fhirbolt-codegen v0.1.0
 #[doc = "Base StructureDefinition for ContactDetail Type: Specifies contact information for a person or organization.\n\nNeed to track contact information in the same way across multiple resources."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub struct ContactDetail {
@@ -72,6 +72,12 @@ impl<'de> serde::de::Deserialize<'de> for ContactDetail {
             Telecom,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &["id", "extension", "name", "telecom"],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = ContactDetail;
@@ -135,10 +141,7 @@ impl<'de> serde::de::Deserialize<'de> for ContactDetail {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "name",
-                                        &["id", "extension", "name", "telecom"],
-                                    ));
+                                    return unknown_field_error("name");
                                 }
                             }
                             Field::Telecom => {

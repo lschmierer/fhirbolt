@@ -1,4 +1,4 @@
-// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-08 by fhirbolt-codegen v0.1.0
 #[doc = "Base StructureDefinition for Money Type: An amount of economic utility in some recognized currency."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub struct Money {
@@ -92,6 +92,12 @@ impl<'de> serde::de::Deserialize<'de> for Money {
             CurrencyPrimitiveElement,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &["id", "extension", "value", "currency"],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = Money;
@@ -155,10 +161,7 @@ impl<'de> serde::de::Deserialize<'de> for Money {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "value",
-                                        &["id", "extension", "value", "currency"],
-                                    ));
+                                    return unknown_field_error("value");
                                 }
                             }
                             Field::Currency => {
@@ -189,10 +192,7 @@ impl<'de> serde::de::Deserialize<'de> for Money {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "currency",
-                                        &["id", "extension", "value", "currency"],
-                                    ));
+                                    return unknown_field_error("currency");
                                 }
                             }
                             Field::Unknown(key) => if _ctx.config.mode

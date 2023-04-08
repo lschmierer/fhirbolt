@@ -1,4 +1,4 @@
-// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-08 by fhirbolt-codegen v0.1.0
 #[doc = "Indicates the reason why a dispense was not performed."]
 #[derive(Debug, Clone, PartialEq)]
 pub enum MedicationDispenseStatusReason {
@@ -82,6 +82,12 @@ impl<'de> serde::de::Deserialize<'de> for MedicationDispensePerformer {
             #[serde(rename = "actor")]
             Actor,
             Unknown(std::string::String),
+        }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &["id", "extension", "modifierExtension", "function", "actor"],
+            ))
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -270,6 +276,20 @@ impl<'de> serde::de::Deserialize<'de> for MedicationDispenseSubstitution {
             ResponsibleParty,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "wasSubstituted",
+                    "type",
+                    "reason",
+                    "responsibleParty",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = MedicationDispenseSubstitution;
@@ -361,18 +381,7 @@ impl<'de> serde::de::Deserialize<'de> for MedicationDispenseSubstitution {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "wasSubstituted",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "wasSubstituted",
-                                            "type",
-                                            "reason",
-                                            "responsibleParty",
-                                        ],
-                                    ));
+                                    return unknown_field_error("wasSubstituted");
                                 }
                             }
                             Field::Type => {
@@ -811,6 +820,47 @@ impl<'de> serde::de::Deserialize<'de> for MedicationDispense {
             EventHistory,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "meta",
+                    "implicitRules",
+                    "language",
+                    "text",
+                    "contained",
+                    "extension",
+                    "modifierExtension",
+                    "identifier",
+                    "partOf",
+                    "status",
+                    "statusReasonCodeableConcept",
+                    "statusReasonReference",
+                    "category",
+                    "medicationCodeableConcept",
+                    "medicationReference",
+                    "subject",
+                    "context",
+                    "supportingInformation",
+                    "performer",
+                    "location",
+                    "authorizingPrescription",
+                    "type",
+                    "quantity",
+                    "daysSupply",
+                    "whenPrepared",
+                    "whenHandedOver",
+                    "destination",
+                    "receiver",
+                    "note",
+                    "dosageInstruction",
+                    "substitution",
+                    "detectedIssue",
+                    "eventHistory",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = MedicationDispense;
@@ -916,45 +966,7 @@ impl<'de> serde::de::Deserialize<'de> for MedicationDispense {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "implicitRules",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "partOf",
-                                            "status",
-                                            "statusReasonCodeableConcept",
-                                            "statusReasonReference",
-                                            "category",
-                                            "medicationCodeableConcept",
-                                            "medicationReference",
-                                            "subject",
-                                            "context",
-                                            "supportingInformation",
-                                            "performer",
-                                            "location",
-                                            "authorizingPrescription",
-                                            "type",
-                                            "quantity",
-                                            "daysSupply",
-                                            "whenPrepared",
-                                            "whenHandedOver",
-                                            "destination",
-                                            "receiver",
-                                            "note",
-                                            "dosageInstruction",
-                                            "substitution",
-                                            "detectedIssue",
-                                            "eventHistory",
-                                        ],
-                                    ));
+                                    return unknown_field_error("implicitRules");
                                 }
                             }
                             Field::Language => {
@@ -985,45 +997,7 @@ impl<'de> serde::de::Deserialize<'de> for MedicationDispense {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "language",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "partOf",
-                                            "status",
-                                            "statusReasonCodeableConcept",
-                                            "statusReasonReference",
-                                            "category",
-                                            "medicationCodeableConcept",
-                                            "medicationReference",
-                                            "subject",
-                                            "context",
-                                            "supportingInformation",
-                                            "performer",
-                                            "location",
-                                            "authorizingPrescription",
-                                            "type",
-                                            "quantity",
-                                            "daysSupply",
-                                            "whenPrepared",
-                                            "whenHandedOver",
-                                            "destination",
-                                            "receiver",
-                                            "note",
-                                            "dosageInstruction",
-                                            "substitution",
-                                            "detectedIssue",
-                                            "eventHistory",
-                                        ],
-                                    ));
+                                    return unknown_field_error("language");
                                 }
                             }
                             Field::Text => {
@@ -1120,45 +1094,7 @@ impl<'de> serde::de::Deserialize<'de> for MedicationDispense {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "status",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "partOf",
-                                            "status",
-                                            "statusReasonCodeableConcept",
-                                            "statusReasonReference",
-                                            "category",
-                                            "medicationCodeableConcept",
-                                            "medicationReference",
-                                            "subject",
-                                            "context",
-                                            "supportingInformation",
-                                            "performer",
-                                            "location",
-                                            "authorizingPrescription",
-                                            "type",
-                                            "quantity",
-                                            "daysSupply",
-                                            "whenPrepared",
-                                            "whenHandedOver",
-                                            "destination",
-                                            "receiver",
-                                            "note",
-                                            "dosageInstruction",
-                                            "substitution",
-                                            "detectedIssue",
-                                            "eventHistory",
-                                        ],
-                                    ));
+                                    return unknown_field_error("status");
                                 }
                             }
                             Field::StatusReasonCodeableConcept => {
@@ -1317,45 +1253,7 @@ impl<'de> serde::de::Deserialize<'de> for MedicationDispense {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "whenPrepared",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "partOf",
-                                            "status",
-                                            "statusReasonCodeableConcept",
-                                            "statusReasonReference",
-                                            "category",
-                                            "medicationCodeableConcept",
-                                            "medicationReference",
-                                            "subject",
-                                            "context",
-                                            "supportingInformation",
-                                            "performer",
-                                            "location",
-                                            "authorizingPrescription",
-                                            "type",
-                                            "quantity",
-                                            "daysSupply",
-                                            "whenPrepared",
-                                            "whenHandedOver",
-                                            "destination",
-                                            "receiver",
-                                            "note",
-                                            "dosageInstruction",
-                                            "substitution",
-                                            "detectedIssue",
-                                            "eventHistory",
-                                        ],
-                                    ));
+                                    return unknown_field_error("whenPrepared");
                                 }
                             }
                             Field::WhenHandedOver => {
@@ -1392,45 +1290,7 @@ impl<'de> serde::de::Deserialize<'de> for MedicationDispense {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "whenHandedOver",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "partOf",
-                                            "status",
-                                            "statusReasonCodeableConcept",
-                                            "statusReasonReference",
-                                            "category",
-                                            "medicationCodeableConcept",
-                                            "medicationReference",
-                                            "subject",
-                                            "context",
-                                            "supportingInformation",
-                                            "performer",
-                                            "location",
-                                            "authorizingPrescription",
-                                            "type",
-                                            "quantity",
-                                            "daysSupply",
-                                            "whenPrepared",
-                                            "whenHandedOver",
-                                            "destination",
-                                            "receiver",
-                                            "note",
-                                            "dosageInstruction",
-                                            "substitution",
-                                            "detectedIssue",
-                                            "eventHistory",
-                                        ],
-                                    ));
+                                    return unknown_field_error("whenHandedOver");
                                 }
                             }
                             Field::Destination => {

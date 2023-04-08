@@ -1,4 +1,4 @@
-// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-08 by fhirbolt-codegen v0.1.0
 #[doc = "Batch numbering."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub struct MedicinalProductPackagedBatchIdentifier {
@@ -58,6 +58,18 @@ impl<'de> serde::de::Deserialize<'de> for MedicinalProductPackagedBatchIdentifie
             #[serde(rename = "immediatePackaging")]
             ImmediatePackaging,
             Unknown(std::string::String),
+        }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "outerPackaging",
+                    "immediatePackaging",
+                ],
+            ))
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -292,6 +304,28 @@ impl<'de> serde::de::Deserialize<'de> for MedicinalProductPackagedPackageItem {
             #[serde(rename = "manufacturer")]
             Manufacturer,
             Unknown(std::string::String),
+        }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "identifier",
+                    "type",
+                    "quantity",
+                    "material",
+                    "alternateMaterial",
+                    "device",
+                    "manufacturedItem",
+                    "packageItem",
+                    "physicalCharacteristics",
+                    "otherCharacteristics",
+                    "shelfLifeStorage",
+                    "manufacturer",
+                ],
+            ))
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -769,6 +803,30 @@ impl<'de> serde::de::Deserialize<'de> for MedicinalProductPackaged {
             PackageItem,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "meta",
+                    "implicitRules",
+                    "language",
+                    "text",
+                    "contained",
+                    "extension",
+                    "modifierExtension",
+                    "identifier",
+                    "subject",
+                    "description",
+                    "legalStatusOfSupply",
+                    "marketingStatus",
+                    "marketingAuthorization",
+                    "manufacturer",
+                    "batchIdentifier",
+                    "packageItem",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = MedicinalProductPackaged;
@@ -861,28 +919,7 @@ impl<'de> serde::de::Deserialize<'de> for MedicinalProductPackaged {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "implicitRules",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "subject",
-                                            "description",
-                                            "legalStatusOfSupply",
-                                            "marketingStatus",
-                                            "marketingAuthorization",
-                                            "manufacturer",
-                                            "batchIdentifier",
-                                            "packageItem",
-                                        ],
-                                    ));
+                                    return unknown_field_error("implicitRules");
                                 }
                             }
                             Field::Language => {
@@ -913,28 +950,7 @@ impl<'de> serde::de::Deserialize<'de> for MedicinalProductPackaged {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "language",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "subject",
-                                            "description",
-                                            "legalStatusOfSupply",
-                                            "marketingStatus",
-                                            "marketingAuthorization",
-                                            "manufacturer",
-                                            "batchIdentifier",
-                                            "packageItem",
-                                        ],
-                                    ));
+                                    return unknown_field_error("language");
                                 }
                             }
                             Field::Text => {
@@ -1037,28 +1053,7 @@ impl<'de> serde::de::Deserialize<'de> for MedicinalProductPackaged {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "description",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "subject",
-                                            "description",
-                                            "legalStatusOfSupply",
-                                            "marketingStatus",
-                                            "marketingAuthorization",
-                                            "manufacturer",
-                                            "batchIdentifier",
-                                            "packageItem",
-                                        ],
-                                    ));
+                                    return unknown_field_error("description");
                                 }
                             }
                             Field::LegalStatusOfSupply => {

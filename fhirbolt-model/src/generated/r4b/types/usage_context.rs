@@ -1,4 +1,4 @@
-// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-08 by fhirbolt-codegen v0.1.0
 #[doc = "A value that defines the context specified in this context of use. The interpretation of the value is defined by the code."]
 #[derive(Debug, Clone, PartialEq)]
 pub enum UsageContextValue {
@@ -85,6 +85,20 @@ impl<'de> serde::de::Deserialize<'de> for UsageContext {
             #[serde(rename = "valueReference")]
             ValueReference,
             Unknown(std::string::String),
+        }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "code",
+                    "valueCodeableConcept",
+                    "valueQuantity",
+                    "valueRange",
+                    "valueReference",
+                ],
+            ))
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {

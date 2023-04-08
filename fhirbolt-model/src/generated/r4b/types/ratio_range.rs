@@ -1,4 +1,4 @@
-// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-08 by fhirbolt-codegen v0.1.0
 #[doc = "Base StructureDefinition for RatioRange Type: A range of ratios expressed as a low and high numerator and a denominator.\n\nNeed to be able to specify ranges of ratios."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub struct RatioRange {
@@ -60,6 +60,18 @@ impl<'de> serde::de::Deserialize<'de> for RatioRange {
             #[serde(rename = "denominator")]
             Denominator,
             Unknown(std::string::String),
+        }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "lowNumerator",
+                    "highNumerator",
+                    "denominator",
+                ],
+            ))
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {

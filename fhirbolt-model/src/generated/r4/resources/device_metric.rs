@@ -1,4 +1,4 @@
-// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-08 by fhirbolt-codegen v0.1.0
 #[doc = "Describes the calibrations that have been performed or that are required to be performed."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub struct DeviceMetricCalibration {
@@ -122,6 +122,19 @@ impl<'de> serde::de::Deserialize<'de> for DeviceMetricCalibration {
             TimePrimitiveElement,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "type",
+                    "state",
+                    "time",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = DeviceMetricCalibration;
@@ -202,17 +215,7 @@ impl<'de> serde::de::Deserialize<'de> for DeviceMetricCalibration {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "type",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "type",
-                                            "state",
-                                            "time",
-                                        ],
-                                    ));
+                                    return unknown_field_error("type");
                                 }
                             }
                             Field::State => {
@@ -243,17 +246,7 @@ impl<'de> serde::de::Deserialize<'de> for DeviceMetricCalibration {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "state",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "type",
-                                            "state",
-                                            "time",
-                                        ],
-                                    ));
+                                    return unknown_field_error("state");
                                 }
                             }
                             Field::Time => {
@@ -284,17 +277,7 @@ impl<'de> serde::de::Deserialize<'de> for DeviceMetricCalibration {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "time",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "type",
-                                            "state",
-                                            "time",
-                                        ],
-                                    ));
+                                    return unknown_field_error("time");
                                 }
                             }
                             Field::Unknown(key) => if _ctx.config.mode
@@ -571,6 +554,31 @@ impl<'de> serde::de::Deserialize<'de> for DeviceMetric {
             Calibration,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "meta",
+                    "implicitRules",
+                    "language",
+                    "text",
+                    "contained",
+                    "extension",
+                    "modifierExtension",
+                    "identifier",
+                    "type",
+                    "unit",
+                    "source",
+                    "parent",
+                    "operationalStatus",
+                    "color",
+                    "category",
+                    "measurementPeriod",
+                    "calibration",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = DeviceMetric;
@@ -659,29 +667,7 @@ impl<'de> serde::de::Deserialize<'de> for DeviceMetric {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "implicitRules",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "type",
-                                            "unit",
-                                            "source",
-                                            "parent",
-                                            "operationalStatus",
-                                            "color",
-                                            "category",
-                                            "measurementPeriod",
-                                            "calibration",
-                                        ],
-                                    ));
+                                    return unknown_field_error("implicitRules");
                                 }
                             }
                             Field::Language => {
@@ -712,29 +698,7 @@ impl<'de> serde::de::Deserialize<'de> for DeviceMetric {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "language",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "type",
-                                            "unit",
-                                            "source",
-                                            "parent",
-                                            "operationalStatus",
-                                            "color",
-                                            "category",
-                                            "measurementPeriod",
-                                            "calibration",
-                                        ],
-                                    ));
+                                    return unknown_field_error("language");
                                 }
                             }
                             Field::Text => {
@@ -852,29 +816,7 @@ impl<'de> serde::de::Deserialize<'de> for DeviceMetric {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "operationalStatus",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "type",
-                                            "unit",
-                                            "source",
-                                            "parent",
-                                            "operationalStatus",
-                                            "color",
-                                            "category",
-                                            "measurementPeriod",
-                                            "calibration",
-                                        ],
-                                    ));
+                                    return unknown_field_error("operationalStatus");
                                 }
                             }
                             Field::Color => {
@@ -905,29 +847,7 @@ impl<'de> serde::de::Deserialize<'de> for DeviceMetric {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "color",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "type",
-                                            "unit",
-                                            "source",
-                                            "parent",
-                                            "operationalStatus",
-                                            "color",
-                                            "category",
-                                            "measurementPeriod",
-                                            "calibration",
-                                        ],
-                                    ));
+                                    return unknown_field_error("color");
                                 }
                             }
                             Field::Category => {
@@ -958,29 +878,7 @@ impl<'de> serde::de::Deserialize<'de> for DeviceMetric {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "category",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "type",
-                                            "unit",
-                                            "source",
-                                            "parent",
-                                            "operationalStatus",
-                                            "color",
-                                            "category",
-                                            "measurementPeriod",
-                                            "calibration",
-                                        ],
-                                    ));
+                                    return unknown_field_error("category");
                                 }
                             }
                             Field::MeasurementPeriod => {

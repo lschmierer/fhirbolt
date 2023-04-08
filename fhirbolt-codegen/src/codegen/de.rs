@@ -49,14 +49,10 @@ pub fn implement_deserialze(r#struct: &RustFhirStruct, enums: &[RustFhirEnum]) -
     let field_struct_assign_vars_tokens =
         r#struct.fields.iter().map(|f| field_struct_assign_var(f));
 
-    let deserialize_fields_tokens = r#struct.fields.iter().map(|f| {
-        deserialize_field(
-            f,
-            enums,
-            all_possible_fields_names.clone(),
-            r#struct.is_primitive,
-        )
-    });
+    let deserialize_fields_tokens = r#struct
+        .fields
+        .iter()
+        .map(|f| deserialize_field(f, enums, r#struct.is_primitive));
 
     quote! {
         impl<'de> serde::de::Deserialize<'de> for #stuct_name_ident {
@@ -72,6 +68,17 @@ pub fn implement_deserialze(r#struct: &RustFhirStruct, enums: &[RustFhirEnum]) -
                         #field_enum_variants_tokens
                     )*
                     Unknown(std::string::String),
+                }
+
+                fn unknown_field_error<T, E:serde::de::Error>(field: &str) -> Result<T, E> {
+                    Err(E::unknown_field(
+                        field,
+                        &[
+                            #(
+                                #all_possible_fields_names,
+                            )*
+                        ]
+                    ))
                 }
 
                 struct Visitor;
@@ -256,33 +263,28 @@ fn field_struct_assign_var(field: &RustFhirStructField) -> TokenStream {
 fn deserialize_field(
     field: &RustFhirStructField,
     enums: &[RustFhirEnum],
-    all_possible_fields_names: Vec<String>,
     in_primitive: bool,
 ) -> TokenStream {
     if field.polymorph {
-        deserialize_enum(field, enums, all_possible_fields_names)
+        deserialize_enum(field, enums)
     } else {
         if in_primitive && field.name == "value" {
             deserialize_primitive_value(field)
         } else if field.r#type.contains_primitive {
-            deserialize_primitive(field, all_possible_fields_names)
+            deserialize_primitive(field)
         } else {
             deserialize_element(field)
         }
     }
 }
 
-fn deserialize_enum(
-    field: &RustFhirStructField,
-    enums: &[RustFhirEnum],
-    all_possible_fields_names: Vec<String>,
-) -> TokenStream {
+fn deserialize_enum(field: &RustFhirStructField, enums: &[RustFhirEnum]) -> TokenStream {
     let r#enum = enums.iter().find(|e| e.name == field.r#type.name).unwrap();
 
     let deserialize_enum_variants_tokens = r#enum
         .variants
         .iter()
-        .map(|v| deserialize_enum_variant(field, r#enum, v, all_possible_fields_names.clone()));
+        .map(|v| deserialize_enum_variant(field, r#enum, v));
 
     quote! {
         #(
@@ -295,7 +297,6 @@ fn deserialize_enum_variant(
     field: &RustFhirStructField,
     r#enum: &RustFhirEnum,
     variant: &RustFhirEnumVariant,
-    all_possible_fields_names: Vec<String>,
 ) -> TokenStream {
     let field_name_ident = format_ident!("r#{}", field.name);
     let enum_ident = format_ident!("{}", r#enum.name);
@@ -361,14 +362,7 @@ fn deserialize_enum_variant(
                         return Err(serde::de::Error::duplicate_field(#fhir_primitive_element_name_poly));
                     }
                 } else {
-                    return Err(serde::de::Error::unknown_field(
-                        #fhir_name,
-                        &[
-                            #(
-                                #all_possible_fields_names,
-                            )*
-                        ]
-                    ));
+                    return unknown_field_error(#fhir_name);
                 }
             },
         }
@@ -427,10 +421,7 @@ fn deserialize_primitive_value(field: &RustFhirStructField) -> TokenStream {
     }
 }
 
-fn deserialize_primitive(
-    field: &RustFhirStructField,
-    all_possible_fields_names: Vec<String>,
-) -> TokenStream {
+fn deserialize_primitive(field: &RustFhirStructField) -> TokenStream {
     let fhir_name = &field.fhir_name;
     let field_name_ident = format_ident!("r#{}", field.name);
 
@@ -504,14 +495,7 @@ fn deserialize_primitive(
                         }
                     }
                 } else {
-                    return Err(serde::de::Error::unknown_field(
-                        #fhir_name,
-                        &[
-                            #(
-                                #all_possible_fields_names,
-                            )*
-                        ]
-                    ));
+                    return unknown_field_error(#fhir_name);
                 }
             },
         }
@@ -559,14 +543,7 @@ fn deserialize_primitive(
                     some.id = id;
                     #assign_extension_tokens
                 } else {
-                    return Err(serde::de::Error::unknown_field(
-                        #fhir_name,
-                        &[
-                            #(
-                                #all_possible_fields_names,
-                            )*
-                        ]
-                    ));
+                    return unknown_field_error(#fhir_name);
                 }
             },
         }

@@ -1,4 +1,4 @@
-// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-08 by fhirbolt-codegen v0.1.0
 #[doc = "The populations that make up the population group, one for each type of population appropriate for the measure."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub struct MeasureReportGroupPopulation {
@@ -85,6 +85,19 @@ impl<'de> serde::de::Deserialize<'de> for MeasureReportGroupPopulation {
             #[serde(rename = "subjectResults")]
             SubjectResults,
             Unknown(std::string::String),
+        }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "code",
+                    "count",
+                    "subjectResults",
+                ],
+            ))
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -175,17 +188,7 @@ impl<'de> serde::de::Deserialize<'de> for MeasureReportGroupPopulation {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "count",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "code",
-                                            "count",
-                                            "subjectResults",
-                                        ],
-                                    ));
+                                    return unknown_field_error("count");
                                 }
                             }
                             Field::SubjectResults => {
@@ -284,6 +287,12 @@ impl<'de> serde::de::Deserialize<'de> for MeasureReportGroupStratifierStratumCom
             #[serde(rename = "value")]
             Value,
             Unknown(std::string::String),
+        }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &["id", "extension", "modifierExtension", "code", "value"],
+            ))
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -473,6 +482,19 @@ impl<'de> serde::de::Deserialize<'de> for MeasureReportGroupStratifierStratumPop
             SubjectResults,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "code",
+                    "count",
+                    "subjectResults",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = MeasureReportGroupStratifierStratumPopulation;
@@ -562,17 +584,7 @@ impl<'de> serde::de::Deserialize<'de> for MeasureReportGroupStratifierStratumPop
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "count",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "code",
-                                            "count",
-                                            "subjectResults",
-                                        ],
-                                    ));
+                                    return unknown_field_error("count");
                                 }
                             }
                             Field::SubjectResults => {
@@ -689,6 +701,20 @@ impl<'de> serde::de::Deserialize<'de> for MeasureReportGroupStratifierStratum {
             #[serde(rename = "measureScore")]
             MeasureScore,
             Unknown(std::string::String),
+        }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "value",
+                    "component",
+                    "population",
+                    "measureScore",
+                ],
+            ))
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -879,6 +905,12 @@ impl<'de> serde::de::Deserialize<'de> for MeasureReportGroupStratifier {
             Stratum,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &["id", "extension", "modifierExtension", "code", "stratum"],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = MeasureReportGroupStratifier;
@@ -1053,6 +1085,20 @@ impl<'de> serde::de::Deserialize<'de> for MeasureReportGroup {
             #[serde(rename = "stratifier")]
             Stratifier,
             Unknown(std::string::String),
+        }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "code",
+                    "population",
+                    "measureScore",
+                    "stratifier",
+                ],
+            ))
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -1438,6 +1484,32 @@ impl<'de> serde::de::Deserialize<'de> for MeasureReport {
             EvaluatedResource,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "meta",
+                    "implicitRules",
+                    "language",
+                    "text",
+                    "contained",
+                    "extension",
+                    "modifierExtension",
+                    "identifier",
+                    "status",
+                    "type",
+                    "measure",
+                    "subject",
+                    "date",
+                    "reporter",
+                    "period",
+                    "improvementNotation",
+                    "group",
+                    "evaluatedResource",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = MeasureReport;
@@ -1529,30 +1601,7 @@ impl<'de> serde::de::Deserialize<'de> for MeasureReport {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "implicitRules",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "status",
-                                            "type",
-                                            "measure",
-                                            "subject",
-                                            "date",
-                                            "reporter",
-                                            "period",
-                                            "improvementNotation",
-                                            "group",
-                                            "evaluatedResource",
-                                        ],
-                                    ));
+                                    return unknown_field_error("implicitRules");
                                 }
                             }
                             Field::Language => {
@@ -1583,30 +1632,7 @@ impl<'de> serde::de::Deserialize<'de> for MeasureReport {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "language",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "status",
-                                            "type",
-                                            "measure",
-                                            "subject",
-                                            "date",
-                                            "reporter",
-                                            "period",
-                                            "improvementNotation",
-                                            "group",
-                                            "evaluatedResource",
-                                        ],
-                                    ));
+                                    return unknown_field_error("language");
                                 }
                             }
                             Field::Text => {
@@ -1692,30 +1718,7 @@ impl<'de> serde::de::Deserialize<'de> for MeasureReport {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "status",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "status",
-                                            "type",
-                                            "measure",
-                                            "subject",
-                                            "date",
-                                            "reporter",
-                                            "period",
-                                            "improvementNotation",
-                                            "group",
-                                            "evaluatedResource",
-                                        ],
-                                    ));
+                                    return unknown_field_error("status");
                                 }
                             }
                             Field::Type => {
@@ -1746,30 +1749,7 @@ impl<'de> serde::de::Deserialize<'de> for MeasureReport {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "type",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "status",
-                                            "type",
-                                            "measure",
-                                            "subject",
-                                            "date",
-                                            "reporter",
-                                            "period",
-                                            "improvementNotation",
-                                            "group",
-                                            "evaluatedResource",
-                                        ],
-                                    ));
+                                    return unknown_field_error("type");
                                 }
                             }
                             Field::Measure => {
@@ -1800,30 +1780,7 @@ impl<'de> serde::de::Deserialize<'de> for MeasureReport {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "measure",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "status",
-                                            "type",
-                                            "measure",
-                                            "subject",
-                                            "date",
-                                            "reporter",
-                                            "period",
-                                            "improvementNotation",
-                                            "group",
-                                            "evaluatedResource",
-                                        ],
-                                    ));
+                                    return unknown_field_error("measure");
                                 }
                             }
                             Field::Subject => {
@@ -1860,30 +1817,7 @@ impl<'de> serde::de::Deserialize<'de> for MeasureReport {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "date",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "status",
-                                            "type",
-                                            "measure",
-                                            "subject",
-                                            "date",
-                                            "reporter",
-                                            "period",
-                                            "improvementNotation",
-                                            "group",
-                                            "evaluatedResource",
-                                        ],
-                                    ));
+                                    return unknown_field_error("date");
                                 }
                             }
                             Field::Reporter => {

@@ -1,4 +1,4 @@
-// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-08 by fhirbolt-codegen v0.1.0
 #[doc = "Reference to a specific medication (active substance, medicinal product or class of products) as part of an indication or contraindication."]
 #[derive(Debug, Clone, PartialEq)]
 pub enum MedicinalProductIndicationOtherTherapyMedication {
@@ -80,6 +80,19 @@ impl<'de> serde::de::Deserialize<'de> for MedicinalProductIndicationOtherTherapy
             #[serde(rename = "medicationReference")]
             MedicationReference,
             Unknown(std::string::String),
+        }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "therapyRelationshipType",
+                    "medicationCodeableConcept",
+                    "medicationReference",
+                ],
+            ))
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -297,6 +310,30 @@ impl<'de> serde::de::Deserialize<'de> for MedicinalProductIndication {
             Population,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "meta",
+                    "implicitRules",
+                    "language",
+                    "text",
+                    "contained",
+                    "extension",
+                    "modifierExtension",
+                    "subject",
+                    "diseaseSymptomProcedure",
+                    "diseaseStatus",
+                    "comorbidity",
+                    "intendedEffect",
+                    "duration",
+                    "otherTherapy",
+                    "undesirableEffect",
+                    "population",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = MedicinalProductIndication;
@@ -388,28 +425,7 @@ impl<'de> serde::de::Deserialize<'de> for MedicinalProductIndication {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "implicitRules",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "subject",
-                                            "diseaseSymptomProcedure",
-                                            "diseaseStatus",
-                                            "comorbidity",
-                                            "intendedEffect",
-                                            "duration",
-                                            "otherTherapy",
-                                            "undesirableEffect",
-                                            "population",
-                                        ],
-                                    ));
+                                    return unknown_field_error("implicitRules");
                                 }
                             }
                             Field::Language => {
@@ -440,28 +456,7 @@ impl<'de> serde::de::Deserialize<'de> for MedicinalProductIndication {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "language",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "subject",
-                                            "diseaseSymptomProcedure",
-                                            "diseaseStatus",
-                                            "comorbidity",
-                                            "intendedEffect",
-                                            "duration",
-                                            "otherTherapy",
-                                            "undesirableEffect",
-                                            "population",
-                                        ],
-                                    ));
+                                    return unknown_field_error("language");
                                 }
                             }
                             Field::Text => {

@@ -1,4 +1,4 @@
-// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-08 by fhirbolt-codegen v0.1.0
 #[doc = "The absolute geographic location of the Location, expressed using the WGS84 datum (This is the same co-ordinate system used in KML)."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub struct LocationPosition {
@@ -120,6 +120,19 @@ impl<'de> serde::de::Deserialize<'de> for LocationPosition {
             AltitudePrimitiveElement,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "longitude",
+                    "latitude",
+                    "altitude",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = LocationPosition;
@@ -202,17 +215,7 @@ impl<'de> serde::de::Deserialize<'de> for LocationPosition {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "longitude",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "longitude",
-                                            "latitude",
-                                            "altitude",
-                                        ],
-                                    ));
+                                    return unknown_field_error("longitude");
                                 }
                             }
                             Field::Latitude => {
@@ -243,17 +246,7 @@ impl<'de> serde::de::Deserialize<'de> for LocationPosition {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "latitude",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "longitude",
-                                            "latitude",
-                                            "altitude",
-                                        ],
-                                    ));
+                                    return unknown_field_error("latitude");
                                 }
                             }
                             Field::Altitude => {
@@ -284,17 +277,7 @@ impl<'de> serde::de::Deserialize<'de> for LocationPosition {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "altitude",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "longitude",
-                                            "latitude",
-                                            "altitude",
-                                        ],
-                                    ));
+                                    return unknown_field_error("altitude");
                                 }
                             }
                             Field::Unknown(key) => if _ctx.config.mode
@@ -507,6 +490,20 @@ impl<'de> serde::de::Deserialize<'de> for LocationHoursOfOperation {
             ClosingTimePrimitiveElement,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "daysOfWeek",
+                    "allDay",
+                    "openingTime",
+                    "closingTime",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = LocationHoursOfOperation;
@@ -620,18 +617,7 @@ impl<'de> serde::de::Deserialize<'de> for LocationHoursOfOperation {
                                         }
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "daysOfWeek",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "daysOfWeek",
-                                            "allDay",
-                                            "openingTime",
-                                            "closingTime",
-                                        ],
-                                    ));
+                                    return unknown_field_error("daysOfWeek");
                                 }
                             }
                             Field::AllDay => {
@@ -662,18 +648,7 @@ impl<'de> serde::de::Deserialize<'de> for LocationHoursOfOperation {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "allDay",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "daysOfWeek",
-                                            "allDay",
-                                            "openingTime",
-                                            "closingTime",
-                                        ],
-                                    ));
+                                    return unknown_field_error("allDay");
                                 }
                             }
                             Field::OpeningTime => {
@@ -710,18 +685,7 @@ impl<'de> serde::de::Deserialize<'de> for LocationHoursOfOperation {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "openingTime",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "daysOfWeek",
-                                            "allDay",
-                                            "openingTime",
-                                            "closingTime",
-                                        ],
-                                    ));
+                                    return unknown_field_error("openingTime");
                                 }
                             }
                             Field::ClosingTime => {
@@ -758,18 +722,7 @@ impl<'de> serde::de::Deserialize<'de> for LocationHoursOfOperation {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "closingTime",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "daysOfWeek",
-                                            "allDay",
-                                            "openingTime",
-                                            "closingTime",
-                                        ],
-                                    ));
+                                    return unknown_field_error("closingTime");
                                 }
                             }
                             Field::Unknown(key) => if _ctx.config.mode
@@ -1176,6 +1129,38 @@ impl<'de> serde::de::Deserialize<'de> for Location {
             Endpoint,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "meta",
+                    "implicitRules",
+                    "language",
+                    "text",
+                    "contained",
+                    "extension",
+                    "modifierExtension",
+                    "identifier",
+                    "status",
+                    "operationalStatus",
+                    "name",
+                    "alias",
+                    "description",
+                    "mode",
+                    "type",
+                    "telecom",
+                    "address",
+                    "physicalType",
+                    "position",
+                    "managingOrganization",
+                    "partOf",
+                    "hoursOfOperation",
+                    "availabilityExceptions",
+                    "endpoint",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = Location;
@@ -1271,36 +1256,7 @@ impl<'de> serde::de::Deserialize<'de> for Location {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "implicitRules",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "status",
-                                            "operationalStatus",
-                                            "name",
-                                            "alias",
-                                            "description",
-                                            "mode",
-                                            "type",
-                                            "telecom",
-                                            "address",
-                                            "physicalType",
-                                            "position",
-                                            "managingOrganization",
-                                            "partOf",
-                                            "hoursOfOperation",
-                                            "availabilityExceptions",
-                                            "endpoint",
-                                        ],
-                                    ));
+                                    return unknown_field_error("implicitRules");
                                 }
                             }
                             Field::Language => {
@@ -1331,36 +1287,7 @@ impl<'de> serde::de::Deserialize<'de> for Location {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "language",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "status",
-                                            "operationalStatus",
-                                            "name",
-                                            "alias",
-                                            "description",
-                                            "mode",
-                                            "type",
-                                            "telecom",
-                                            "address",
-                                            "physicalType",
-                                            "position",
-                                            "managingOrganization",
-                                            "partOf",
-                                            "hoursOfOperation",
-                                            "availabilityExceptions",
-                                            "endpoint",
-                                        ],
-                                    ));
+                                    return unknown_field_error("language");
                                 }
                             }
                             Field::Text => {
@@ -1446,36 +1373,7 @@ impl<'de> serde::de::Deserialize<'de> for Location {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "status",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "status",
-                                            "operationalStatus",
-                                            "name",
-                                            "alias",
-                                            "description",
-                                            "mode",
-                                            "type",
-                                            "telecom",
-                                            "address",
-                                            "physicalType",
-                                            "position",
-                                            "managingOrganization",
-                                            "partOf",
-                                            "hoursOfOperation",
-                                            "availabilityExceptions",
-                                            "endpoint",
-                                        ],
-                                    ));
+                                    return unknown_field_error("status");
                                 }
                             }
                             Field::OperationalStatus => {
@@ -1514,36 +1412,7 @@ impl<'de> serde::de::Deserialize<'de> for Location {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "name",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "status",
-                                            "operationalStatus",
-                                            "name",
-                                            "alias",
-                                            "description",
-                                            "mode",
-                                            "type",
-                                            "telecom",
-                                            "address",
-                                            "physicalType",
-                                            "position",
-                                            "managingOrganization",
-                                            "partOf",
-                                            "hoursOfOperation",
-                                            "availabilityExceptions",
-                                            "endpoint",
-                                        ],
-                                    ));
+                                    return unknown_field_error("name");
                                 }
                             }
                             Field::Alias => {
@@ -1602,36 +1471,7 @@ impl<'de> serde::de::Deserialize<'de> for Location {
                                         }
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "alias",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "status",
-                                            "operationalStatus",
-                                            "name",
-                                            "alias",
-                                            "description",
-                                            "mode",
-                                            "type",
-                                            "telecom",
-                                            "address",
-                                            "physicalType",
-                                            "position",
-                                            "managingOrganization",
-                                            "partOf",
-                                            "hoursOfOperation",
-                                            "availabilityExceptions",
-                                            "endpoint",
-                                        ],
-                                    ));
+                                    return unknown_field_error("alias");
                                 }
                             }
                             Field::Description => {
@@ -1668,36 +1508,7 @@ impl<'de> serde::de::Deserialize<'de> for Location {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "description",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "status",
-                                            "operationalStatus",
-                                            "name",
-                                            "alias",
-                                            "description",
-                                            "mode",
-                                            "type",
-                                            "telecom",
-                                            "address",
-                                            "physicalType",
-                                            "position",
-                                            "managingOrganization",
-                                            "partOf",
-                                            "hoursOfOperation",
-                                            "availabilityExceptions",
-                                            "endpoint",
-                                        ],
-                                    ));
+                                    return unknown_field_error("description");
                                 }
                             }
                             Field::Mode => {
@@ -1728,36 +1539,7 @@ impl<'de> serde::de::Deserialize<'de> for Location {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "mode",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "status",
-                                            "operationalStatus",
-                                            "name",
-                                            "alias",
-                                            "description",
-                                            "mode",
-                                            "type",
-                                            "telecom",
-                                            "address",
-                                            "physicalType",
-                                            "position",
-                                            "managingOrganization",
-                                            "partOf",
-                                            "hoursOfOperation",
-                                            "availabilityExceptions",
-                                            "endpoint",
-                                        ],
-                                    ));
+                                    return unknown_field_error("mode");
                                 }
                             }
                             Field::Type => {
@@ -1864,36 +1646,7 @@ impl<'de> serde::de::Deserialize<'de> for Location {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "availabilityExceptions",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "status",
-                                            "operationalStatus",
-                                            "name",
-                                            "alias",
-                                            "description",
-                                            "mode",
-                                            "type",
-                                            "telecom",
-                                            "address",
-                                            "physicalType",
-                                            "position",
-                                            "managingOrganization",
-                                            "partOf",
-                                            "hoursOfOperation",
-                                            "availabilityExceptions",
-                                            "endpoint",
-                                        ],
-                                    ));
+                                    return unknown_field_error("availabilityExceptions");
                                 }
                             }
                             Field::Endpoint => {

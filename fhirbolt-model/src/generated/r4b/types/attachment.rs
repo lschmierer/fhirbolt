@@ -1,4 +1,4 @@
-// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-08 by fhirbolt-codegen v0.1.0
 #[doc = "Base StructureDefinition for Attachment Type: For referring to data content defined in other formats.\n\nMany models need to include data defined in other specifications that is complex and opaque to the healthcare model. This includes documents, media recordings, structured data, etc."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub struct Attachment {
@@ -240,6 +240,23 @@ impl<'de> serde::de::Deserialize<'de> for Attachment {
             CreationPrimitiveElement,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "contentType",
+                    "language",
+                    "data",
+                    "url",
+                    "size",
+                    "hash",
+                    "title",
+                    "creation",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = Attachment;
@@ -315,21 +332,7 @@ impl<'de> serde::de::Deserialize<'de> for Attachment {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "contentType",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "contentType",
-                                            "language",
-                                            "data",
-                                            "url",
-                                            "size",
-                                            "hash",
-                                            "title",
-                                            "creation",
-                                        ],
-                                    ));
+                                    return unknown_field_error("contentType");
                                 }
                             }
                             Field::Language => {
@@ -360,21 +363,7 @@ impl<'de> serde::de::Deserialize<'de> for Attachment {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "language",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "contentType",
-                                            "language",
-                                            "data",
-                                            "url",
-                                            "size",
-                                            "hash",
-                                            "title",
-                                            "creation",
-                                        ],
-                                    ));
+                                    return unknown_field_error("language");
                                 }
                             }
                             Field::Data => {
@@ -405,21 +394,7 @@ impl<'de> serde::de::Deserialize<'de> for Attachment {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "data",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "contentType",
-                                            "language",
-                                            "data",
-                                            "url",
-                                            "size",
-                                            "hash",
-                                            "title",
-                                            "creation",
-                                        ],
-                                    ));
+                                    return unknown_field_error("data");
                                 }
                             }
                             Field::Url => {
@@ -450,21 +425,7 @@ impl<'de> serde::de::Deserialize<'de> for Attachment {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "url",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "contentType",
-                                            "language",
-                                            "data",
-                                            "url",
-                                            "size",
-                                            "hash",
-                                            "title",
-                                            "creation",
-                                        ],
-                                    ));
+                                    return unknown_field_error("url");
                                 }
                             }
                             Field::Size => {
@@ -495,21 +456,7 @@ impl<'de> serde::de::Deserialize<'de> for Attachment {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "size",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "contentType",
-                                            "language",
-                                            "data",
-                                            "url",
-                                            "size",
-                                            "hash",
-                                            "title",
-                                            "creation",
-                                        ],
-                                    ));
+                                    return unknown_field_error("size");
                                 }
                             }
                             Field::Hash => {
@@ -540,21 +487,7 @@ impl<'de> serde::de::Deserialize<'de> for Attachment {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "hash",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "contentType",
-                                            "language",
-                                            "data",
-                                            "url",
-                                            "size",
-                                            "hash",
-                                            "title",
-                                            "creation",
-                                        ],
-                                    ));
+                                    return unknown_field_error("hash");
                                 }
                             }
                             Field::Title => {
@@ -585,21 +518,7 @@ impl<'de> serde::de::Deserialize<'de> for Attachment {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "title",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "contentType",
-                                            "language",
-                                            "data",
-                                            "url",
-                                            "size",
-                                            "hash",
-                                            "title",
-                                            "creation",
-                                        ],
-                                    ));
+                                    return unknown_field_error("title");
                                 }
                             }
                             Field::Creation => {
@@ -630,21 +549,7 @@ impl<'de> serde::de::Deserialize<'de> for Attachment {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "creation",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "contentType",
-                                            "language",
-                                            "data",
-                                            "url",
-                                            "size",
-                                            "hash",
-                                            "title",
-                                            "creation",
-                                        ],
-                                    ));
+                                    return unknown_field_error("creation");
                                 }
                             }
                             Field::Unknown(key) => if _ctx.config.mode

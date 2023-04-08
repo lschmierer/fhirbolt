@@ -1,4 +1,4 @@
-// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-08 by fhirbolt-codegen v0.1.0
 #[doc = "Define members of the evidence element using Codes (such as condition, medication, or observation), Expressions ( using an expression language such as FHIRPath or CQL) or DataRequirements (such as Diabetes diagnosis onset in the last year)."]
 #[derive(Debug, Clone, PartialEq)]
 pub enum EvidenceVariableCharacteristicDefinition {
@@ -270,6 +270,31 @@ impl<'de> serde::de::Deserialize<'de> for EvidenceVariableCharacteristic {
             GroupMeasurePrimitiveElement,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "description",
+                    "definitionReference",
+                    "definitionCanonical",
+                    "definitionCodeableConcept",
+                    "definitionExpression",
+                    "definitionDataRequirement",
+                    "definitionTriggerDefinition",
+                    "usageContext",
+                    "exclude",
+                    "participantEffectiveDateTime",
+                    "participantEffectivePeriod",
+                    "participantEffectiveDuration",
+                    "participantEffectiveTiming",
+                    "timeFromStart",
+                    "groupMeasure",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = EvidenceVariableCharacteristic;
@@ -296,7 +321,7 @@ impl<'de> serde::de::Deserialize<'de> for EvidenceVariableCharacteristic {
                 > = None;
                 let mut r#time_from_start: Option<Box<super::super::types::Duration>> = None;
                 let mut r#group_measure: Option<super::super::types::Code> = None;
-                fhirbolt_shared :: serde_context :: de :: DESERIALIZATION_CONTEXT . with (| _ctx | { let _ctx = _ctx . borrow () ; while let Some (map_access_key) = map_access . next_key () ? { match map_access_key { Field :: Id => { if r#id . is_some () { return Err (serde :: de :: Error :: duplicate_field ("id")) ; } r#id = Some (map_access . next_value () ?) ; } , Field :: Extension => { if _ctx . from_json { if r#extension . is_some () { return Err (serde :: de :: Error :: duplicate_field ("extension")) ; } r#extension = Some (map_access . next_value () ?) ; } else { let vec = r#extension . get_or_insert (Default :: default ()) ; vec . push (map_access . next_value () ?) ; } } , Field :: ModifierExtension => { if _ctx . from_json { if r#modifier_extension . is_some () { return Err (serde :: de :: Error :: duplicate_field ("modifierExtension")) ; } r#modifier_extension = Some (map_access . next_value () ?) ; } else { let vec = r#modifier_extension . get_or_insert (Default :: default ()) ; vec . push (map_access . next_value () ?) ; } } , Field :: Description => { if _ctx . from_json { let some = r#description . get_or_insert (Default :: default ()) ; if some . value . is_some () { return Err (serde :: de :: Error :: duplicate_field ("description")) ; } let value : _ = map_access . next_value () ? ; some . value = Some (value) ; } else { if r#description . is_some () { return Err (serde :: de :: Error :: duplicate_field ("description")) ; } r#description = Some (map_access . next_value () ?) ; } } , Field :: DescriptionPrimitiveElement => { if _ctx . from_json { let some = r#description . get_or_insert (Default :: default ()) ; if some . id . is_some () || ! some . extension . is_empty () { return Err (serde :: de :: Error :: duplicate_field ("_description")) ; } let super :: super :: serde_helpers :: PrimitiveElementOwned { id , extension } = map_access . next_value () ? ; some . id = id ; some . extension = extension ; } else { return Err (serde :: de :: Error :: unknown_field ("description" , & ["id" , "extension" , "modifierExtension" , "description" , "definitionReference" , "definitionCanonical" , "definitionCodeableConcept" , "definitionExpression" , "definitionDataRequirement" , "definitionTriggerDefinition" , "usageContext" , "exclude" , "participantEffectiveDateTime" , "participantEffectivePeriod" , "participantEffectiveDuration" , "participantEffectiveTiming" , "timeFromStart" , "groupMeasure" ,])) ; } } , Field :: DefinitionReference => { if r#definition . is_some () { return Err (serde :: de :: Error :: duplicate_field ("definitionReference")) ; } r#definition = Some (EvidenceVariableCharacteristicDefinition :: Reference (map_access . next_value () ?)) ; } , Field :: DefinitionCanonical => { if _ctx . from_json { let r#enum = r#definition . get_or_insert (EvidenceVariableCharacteristicDefinition :: Canonical (Default :: default ())) ; if let EvidenceVariableCharacteristicDefinition :: Canonical (variant) = r#enum { if variant . value . is_some () { return Err (serde :: de :: Error :: duplicate_field ("definitionCanonical")) ; } let value : _ = map_access . next_value () ? ; variant . value = Some (value) ; } else { return Err (serde :: de :: Error :: duplicate_field ("definition[x]")) ; } } else { if r#definition . is_some () { return Err (serde :: de :: Error :: duplicate_field ("definitionCanonical")) ; } r#definition = Some (EvidenceVariableCharacteristicDefinition :: Canonical (map_access . next_value () ?)) ; } } , Field :: DefinitionCanonicalPrimitiveElement => { if _ctx . from_json { let r#enum = r#definition . get_or_insert (EvidenceVariableCharacteristicDefinition :: Canonical (Default :: default ())) ; if let EvidenceVariableCharacteristicDefinition :: Canonical (variant) = r#enum { if variant . id . is_some () || ! variant . extension . is_empty () { return Err (serde :: de :: Error :: duplicate_field ("_definitionCanonical")) ; } let super :: super :: serde_helpers :: PrimitiveElementOwned { id , extension } = map_access . next_value () ? ; variant . id = id ; variant . extension = extension ; } else { return Err (serde :: de :: Error :: duplicate_field ("_definition[x]")) ; } } else { return Err (serde :: de :: Error :: unknown_field ("definitionCanonical" , & ["id" , "extension" , "modifierExtension" , "description" , "definitionReference" , "definitionCanonical" , "definitionCodeableConcept" , "definitionExpression" , "definitionDataRequirement" , "definitionTriggerDefinition" , "usageContext" , "exclude" , "participantEffectiveDateTime" , "participantEffectivePeriod" , "participantEffectiveDuration" , "participantEffectiveTiming" , "timeFromStart" , "groupMeasure" ,])) ; } } , Field :: DefinitionCodeableConcept => { if r#definition . is_some () { return Err (serde :: de :: Error :: duplicate_field ("definitionCodeableConcept")) ; } r#definition = Some (EvidenceVariableCharacteristicDefinition :: CodeableConcept (map_access . next_value () ?)) ; } , Field :: DefinitionExpression => { if r#definition . is_some () { return Err (serde :: de :: Error :: duplicate_field ("definitionExpression")) ; } r#definition = Some (EvidenceVariableCharacteristicDefinition :: Expression (map_access . next_value () ?)) ; } , Field :: DefinitionDataRequirement => { if r#definition . is_some () { return Err (serde :: de :: Error :: duplicate_field ("definitionDataRequirement")) ; } r#definition = Some (EvidenceVariableCharacteristicDefinition :: DataRequirement (map_access . next_value () ?)) ; } , Field :: DefinitionTriggerDefinition => { if r#definition . is_some () { return Err (serde :: de :: Error :: duplicate_field ("definitionTriggerDefinition")) ; } r#definition = Some (EvidenceVariableCharacteristicDefinition :: TriggerDefinition (map_access . next_value () ?)) ; } , Field :: UsageContext => { if _ctx . from_json { if r#usage_context . is_some () { return Err (serde :: de :: Error :: duplicate_field ("usageContext")) ; } r#usage_context = Some (map_access . next_value () ?) ; } else { let vec = r#usage_context . get_or_insert (Default :: default ()) ; vec . push (map_access . next_value () ?) ; } } , Field :: Exclude => { if _ctx . from_json { let some = r#exclude . get_or_insert (Default :: default ()) ; if some . value . is_some () { return Err (serde :: de :: Error :: duplicate_field ("exclude")) ; } let value : _ = map_access . next_value () ? ; some . value = Some (value) ; } else { if r#exclude . is_some () { return Err (serde :: de :: Error :: duplicate_field ("exclude")) ; } r#exclude = Some (map_access . next_value () ?) ; } } , Field :: ExcludePrimitiveElement => { if _ctx . from_json { let some = r#exclude . get_or_insert (Default :: default ()) ; if some . id . is_some () || ! some . extension . is_empty () { return Err (serde :: de :: Error :: duplicate_field ("_exclude")) ; } let super :: super :: serde_helpers :: PrimitiveElementOwned { id , extension } = map_access . next_value () ? ; some . id = id ; some . extension = extension ; } else { return Err (serde :: de :: Error :: unknown_field ("exclude" , & ["id" , "extension" , "modifierExtension" , "description" , "definitionReference" , "definitionCanonical" , "definitionCodeableConcept" , "definitionExpression" , "definitionDataRequirement" , "definitionTriggerDefinition" , "usageContext" , "exclude" , "participantEffectiveDateTime" , "participantEffectivePeriod" , "participantEffectiveDuration" , "participantEffectiveTiming" , "timeFromStart" , "groupMeasure" ,])) ; } } , Field :: ParticipantEffectiveDateTime => { if _ctx . from_json { let r#enum = r#participant_effective . get_or_insert (EvidenceVariableCharacteristicParticipantEffective :: DateTime (Default :: default ())) ; if let EvidenceVariableCharacteristicParticipantEffective :: DateTime (variant) = r#enum { if variant . value . is_some () { return Err (serde :: de :: Error :: duplicate_field ("participantEffectiveDateTime")) ; } let value : _ = map_access . next_value () ? ; variant . value = Some (value) ; } else { return Err (serde :: de :: Error :: duplicate_field ("participantEffective[x]")) ; } } else { if r#participant_effective . is_some () { return Err (serde :: de :: Error :: duplicate_field ("participantEffectiveDateTime")) ; } r#participant_effective = Some (EvidenceVariableCharacteristicParticipantEffective :: DateTime (map_access . next_value () ?)) ; } } , Field :: ParticipantEffectiveDateTimePrimitiveElement => { if _ctx . from_json { let r#enum = r#participant_effective . get_or_insert (EvidenceVariableCharacteristicParticipantEffective :: DateTime (Default :: default ())) ; if let EvidenceVariableCharacteristicParticipantEffective :: DateTime (variant) = r#enum { if variant . id . is_some () || ! variant . extension . is_empty () { return Err (serde :: de :: Error :: duplicate_field ("_participantEffectiveDateTime")) ; } let super :: super :: serde_helpers :: PrimitiveElementOwned { id , extension } = map_access . next_value () ? ; variant . id = id ; variant . extension = extension ; } else { return Err (serde :: de :: Error :: duplicate_field ("_participantEffective[x]")) ; } } else { return Err (serde :: de :: Error :: unknown_field ("participantEffectiveDateTime" , & ["id" , "extension" , "modifierExtension" , "description" , "definitionReference" , "definitionCanonical" , "definitionCodeableConcept" , "definitionExpression" , "definitionDataRequirement" , "definitionTriggerDefinition" , "usageContext" , "exclude" , "participantEffectiveDateTime" , "participantEffectivePeriod" , "participantEffectiveDuration" , "participantEffectiveTiming" , "timeFromStart" , "groupMeasure" ,])) ; } } , Field :: ParticipantEffectivePeriod => { if r#participant_effective . is_some () { return Err (serde :: de :: Error :: duplicate_field ("participantEffectivePeriod")) ; } r#participant_effective = Some (EvidenceVariableCharacteristicParticipantEffective :: Period (map_access . next_value () ?)) ; } , Field :: ParticipantEffectiveDuration => { if r#participant_effective . is_some () { return Err (serde :: de :: Error :: duplicate_field ("participantEffectiveDuration")) ; } r#participant_effective = Some (EvidenceVariableCharacteristicParticipantEffective :: Duration (map_access . next_value () ?)) ; } , Field :: ParticipantEffectiveTiming => { if r#participant_effective . is_some () { return Err (serde :: de :: Error :: duplicate_field ("participantEffectiveTiming")) ; } r#participant_effective = Some (EvidenceVariableCharacteristicParticipantEffective :: Timing (map_access . next_value () ?)) ; } , Field :: TimeFromStart => { if r#time_from_start . is_some () { return Err (serde :: de :: Error :: duplicate_field ("timeFromStart")) ; } r#time_from_start = Some (map_access . next_value () ?) ; } , Field :: GroupMeasure => { if _ctx . from_json { let some = r#group_measure . get_or_insert (Default :: default ()) ; if some . value . is_some () { return Err (serde :: de :: Error :: duplicate_field ("groupMeasure")) ; } let value : _ = map_access . next_value () ? ; some . value = Some (value) ; } else { if r#group_measure . is_some () { return Err (serde :: de :: Error :: duplicate_field ("groupMeasure")) ; } r#group_measure = Some (map_access . next_value () ?) ; } } , Field :: GroupMeasurePrimitiveElement => { if _ctx . from_json { let some = r#group_measure . get_or_insert (Default :: default ()) ; if some . id . is_some () || ! some . extension . is_empty () { return Err (serde :: de :: Error :: duplicate_field ("_groupMeasure")) ; } let super :: super :: serde_helpers :: PrimitiveElementOwned { id , extension } = map_access . next_value () ? ; some . id = id ; some . extension = extension ; } else { return Err (serde :: de :: Error :: unknown_field ("groupMeasure" , & ["id" , "extension" , "modifierExtension" , "description" , "definitionReference" , "definitionCanonical" , "definitionCodeableConcept" , "definitionExpression" , "definitionDataRequirement" , "definitionTriggerDefinition" , "usageContext" , "exclude" , "participantEffectiveDateTime" , "participantEffectivePeriod" , "participantEffectiveDuration" , "participantEffectiveTiming" , "timeFromStart" , "groupMeasure" ,])) ; } } , Field :: Unknown (key) => if _ctx . config . mode == fhirbolt_shared :: serde_context :: de :: DeserializationMode :: Strict { return Err (serde :: de :: Error :: unknown_field (& key , & ["id" , "extension" , "modifierExtension" , "description" , "definitionReference" , "definitionCanonical" , "definitionCodeableConcept" , "definitionExpression" , "definitionDataRequirement" , "definitionTriggerDefinition" , "usageContext" , "exclude" , "participantEffectiveDateTime" , "participantEffectivePeriod" , "participantEffectiveDuration" , "participantEffectiveTiming" , "timeFromStart" , "groupMeasure" ,])) ; } } } Ok (EvidenceVariableCharacteristic { r#id , r#extension : r#extension . unwrap_or (vec ! []) , r#modifier_extension : r#modifier_extension . unwrap_or (vec ! []) , r#description , r#definition : if _ctx . config . mode == fhirbolt_shared :: serde_context :: de :: DeserializationMode :: Lax { r#definition . unwrap_or (Default :: default ()) } else { r#definition . ok_or (serde :: de :: Error :: missing_field ("definition[x]")) ? } , r#usage_context : r#usage_context . unwrap_or (vec ! []) , r#exclude , r#participant_effective , r#time_from_start , r#group_measure , }) })
+                fhirbolt_shared :: serde_context :: de :: DESERIALIZATION_CONTEXT . with (| _ctx | { let _ctx = _ctx . borrow () ; while let Some (map_access_key) = map_access . next_key () ? { match map_access_key { Field :: Id => { if r#id . is_some () { return Err (serde :: de :: Error :: duplicate_field ("id")) ; } r#id = Some (map_access . next_value () ?) ; } , Field :: Extension => { if _ctx . from_json { if r#extension . is_some () { return Err (serde :: de :: Error :: duplicate_field ("extension")) ; } r#extension = Some (map_access . next_value () ?) ; } else { let vec = r#extension . get_or_insert (Default :: default ()) ; vec . push (map_access . next_value () ?) ; } } , Field :: ModifierExtension => { if _ctx . from_json { if r#modifier_extension . is_some () { return Err (serde :: de :: Error :: duplicate_field ("modifierExtension")) ; } r#modifier_extension = Some (map_access . next_value () ?) ; } else { let vec = r#modifier_extension . get_or_insert (Default :: default ()) ; vec . push (map_access . next_value () ?) ; } } , Field :: Description => { if _ctx . from_json { let some = r#description . get_or_insert (Default :: default ()) ; if some . value . is_some () { return Err (serde :: de :: Error :: duplicate_field ("description")) ; } let value : _ = map_access . next_value () ? ; some . value = Some (value) ; } else { if r#description . is_some () { return Err (serde :: de :: Error :: duplicate_field ("description")) ; } r#description = Some (map_access . next_value () ?) ; } } , Field :: DescriptionPrimitiveElement => { if _ctx . from_json { let some = r#description . get_or_insert (Default :: default ()) ; if some . id . is_some () || ! some . extension . is_empty () { return Err (serde :: de :: Error :: duplicate_field ("_description")) ; } let super :: super :: serde_helpers :: PrimitiveElementOwned { id , extension } = map_access . next_value () ? ; some . id = id ; some . extension = extension ; } else { return unknown_field_error ("description") ; } } , Field :: DefinitionReference => { if r#definition . is_some () { return Err (serde :: de :: Error :: duplicate_field ("definitionReference")) ; } r#definition = Some (EvidenceVariableCharacteristicDefinition :: Reference (map_access . next_value () ?)) ; } , Field :: DefinitionCanonical => { if _ctx . from_json { let r#enum = r#definition . get_or_insert (EvidenceVariableCharacteristicDefinition :: Canonical (Default :: default ())) ; if let EvidenceVariableCharacteristicDefinition :: Canonical (variant) = r#enum { if variant . value . is_some () { return Err (serde :: de :: Error :: duplicate_field ("definitionCanonical")) ; } let value : _ = map_access . next_value () ? ; variant . value = Some (value) ; } else { return Err (serde :: de :: Error :: duplicate_field ("definition[x]")) ; } } else { if r#definition . is_some () { return Err (serde :: de :: Error :: duplicate_field ("definitionCanonical")) ; } r#definition = Some (EvidenceVariableCharacteristicDefinition :: Canonical (map_access . next_value () ?)) ; } } , Field :: DefinitionCanonicalPrimitiveElement => { if _ctx . from_json { let r#enum = r#definition . get_or_insert (EvidenceVariableCharacteristicDefinition :: Canonical (Default :: default ())) ; if let EvidenceVariableCharacteristicDefinition :: Canonical (variant) = r#enum { if variant . id . is_some () || ! variant . extension . is_empty () { return Err (serde :: de :: Error :: duplicate_field ("_definitionCanonical")) ; } let super :: super :: serde_helpers :: PrimitiveElementOwned { id , extension } = map_access . next_value () ? ; variant . id = id ; variant . extension = extension ; } else { return Err (serde :: de :: Error :: duplicate_field ("_definition[x]")) ; } } else { return unknown_field_error ("definitionCanonical") ; } } , Field :: DefinitionCodeableConcept => { if r#definition . is_some () { return Err (serde :: de :: Error :: duplicate_field ("definitionCodeableConcept")) ; } r#definition = Some (EvidenceVariableCharacteristicDefinition :: CodeableConcept (map_access . next_value () ?)) ; } , Field :: DefinitionExpression => { if r#definition . is_some () { return Err (serde :: de :: Error :: duplicate_field ("definitionExpression")) ; } r#definition = Some (EvidenceVariableCharacteristicDefinition :: Expression (map_access . next_value () ?)) ; } , Field :: DefinitionDataRequirement => { if r#definition . is_some () { return Err (serde :: de :: Error :: duplicate_field ("definitionDataRequirement")) ; } r#definition = Some (EvidenceVariableCharacteristicDefinition :: DataRequirement (map_access . next_value () ?)) ; } , Field :: DefinitionTriggerDefinition => { if r#definition . is_some () { return Err (serde :: de :: Error :: duplicate_field ("definitionTriggerDefinition")) ; } r#definition = Some (EvidenceVariableCharacteristicDefinition :: TriggerDefinition (map_access . next_value () ?)) ; } , Field :: UsageContext => { if _ctx . from_json { if r#usage_context . is_some () { return Err (serde :: de :: Error :: duplicate_field ("usageContext")) ; } r#usage_context = Some (map_access . next_value () ?) ; } else { let vec = r#usage_context . get_or_insert (Default :: default ()) ; vec . push (map_access . next_value () ?) ; } } , Field :: Exclude => { if _ctx . from_json { let some = r#exclude . get_or_insert (Default :: default ()) ; if some . value . is_some () { return Err (serde :: de :: Error :: duplicate_field ("exclude")) ; } let value : _ = map_access . next_value () ? ; some . value = Some (value) ; } else { if r#exclude . is_some () { return Err (serde :: de :: Error :: duplicate_field ("exclude")) ; } r#exclude = Some (map_access . next_value () ?) ; } } , Field :: ExcludePrimitiveElement => { if _ctx . from_json { let some = r#exclude . get_or_insert (Default :: default ()) ; if some . id . is_some () || ! some . extension . is_empty () { return Err (serde :: de :: Error :: duplicate_field ("_exclude")) ; } let super :: super :: serde_helpers :: PrimitiveElementOwned { id , extension } = map_access . next_value () ? ; some . id = id ; some . extension = extension ; } else { return unknown_field_error ("exclude") ; } } , Field :: ParticipantEffectiveDateTime => { if _ctx . from_json { let r#enum = r#participant_effective . get_or_insert (EvidenceVariableCharacteristicParticipantEffective :: DateTime (Default :: default ())) ; if let EvidenceVariableCharacteristicParticipantEffective :: DateTime (variant) = r#enum { if variant . value . is_some () { return Err (serde :: de :: Error :: duplicate_field ("participantEffectiveDateTime")) ; } let value : _ = map_access . next_value () ? ; variant . value = Some (value) ; } else { return Err (serde :: de :: Error :: duplicate_field ("participantEffective[x]")) ; } } else { if r#participant_effective . is_some () { return Err (serde :: de :: Error :: duplicate_field ("participantEffectiveDateTime")) ; } r#participant_effective = Some (EvidenceVariableCharacteristicParticipantEffective :: DateTime (map_access . next_value () ?)) ; } } , Field :: ParticipantEffectiveDateTimePrimitiveElement => { if _ctx . from_json { let r#enum = r#participant_effective . get_or_insert (EvidenceVariableCharacteristicParticipantEffective :: DateTime (Default :: default ())) ; if let EvidenceVariableCharacteristicParticipantEffective :: DateTime (variant) = r#enum { if variant . id . is_some () || ! variant . extension . is_empty () { return Err (serde :: de :: Error :: duplicate_field ("_participantEffectiveDateTime")) ; } let super :: super :: serde_helpers :: PrimitiveElementOwned { id , extension } = map_access . next_value () ? ; variant . id = id ; variant . extension = extension ; } else { return Err (serde :: de :: Error :: duplicate_field ("_participantEffective[x]")) ; } } else { return unknown_field_error ("participantEffectiveDateTime") ; } } , Field :: ParticipantEffectivePeriod => { if r#participant_effective . is_some () { return Err (serde :: de :: Error :: duplicate_field ("participantEffectivePeriod")) ; } r#participant_effective = Some (EvidenceVariableCharacteristicParticipantEffective :: Period (map_access . next_value () ?)) ; } , Field :: ParticipantEffectiveDuration => { if r#participant_effective . is_some () { return Err (serde :: de :: Error :: duplicate_field ("participantEffectiveDuration")) ; } r#participant_effective = Some (EvidenceVariableCharacteristicParticipantEffective :: Duration (map_access . next_value () ?)) ; } , Field :: ParticipantEffectiveTiming => { if r#participant_effective . is_some () { return Err (serde :: de :: Error :: duplicate_field ("participantEffectiveTiming")) ; } r#participant_effective = Some (EvidenceVariableCharacteristicParticipantEffective :: Timing (map_access . next_value () ?)) ; } , Field :: TimeFromStart => { if r#time_from_start . is_some () { return Err (serde :: de :: Error :: duplicate_field ("timeFromStart")) ; } r#time_from_start = Some (map_access . next_value () ?) ; } , Field :: GroupMeasure => { if _ctx . from_json { let some = r#group_measure . get_or_insert (Default :: default ()) ; if some . value . is_some () { return Err (serde :: de :: Error :: duplicate_field ("groupMeasure")) ; } let value : _ = map_access . next_value () ? ; some . value = Some (value) ; } else { if r#group_measure . is_some () { return Err (serde :: de :: Error :: duplicate_field ("groupMeasure")) ; } r#group_measure = Some (map_access . next_value () ?) ; } } , Field :: GroupMeasurePrimitiveElement => { if _ctx . from_json { let some = r#group_measure . get_or_insert (Default :: default ()) ; if some . id . is_some () || ! some . extension . is_empty () { return Err (serde :: de :: Error :: duplicate_field ("_groupMeasure")) ; } let super :: super :: serde_helpers :: PrimitiveElementOwned { id , extension } = map_access . next_value () ? ; some . id = id ; some . extension = extension ; } else { return unknown_field_error ("groupMeasure") ; } } , Field :: Unknown (key) => if _ctx . config . mode == fhirbolt_shared :: serde_context :: de :: DeserializationMode :: Strict { return Err (serde :: de :: Error :: unknown_field (& key , & ["id" , "extension" , "modifierExtension" , "description" , "definitionReference" , "definitionCanonical" , "definitionCodeableConcept" , "definitionExpression" , "definitionDataRequirement" , "definitionTriggerDefinition" , "usageContext" , "exclude" , "participantEffectiveDateTime" , "participantEffectivePeriod" , "participantEffectiveDuration" , "participantEffectiveTiming" , "timeFromStart" , "groupMeasure" ,])) ; } } } Ok (EvidenceVariableCharacteristic { r#id , r#extension : r#extension . unwrap_or (vec ! []) , r#modifier_extension : r#modifier_extension . unwrap_or (vec ! []) , r#description , r#definition : if _ctx . config . mode == fhirbolt_shared :: serde_context :: de :: DeserializationMode :: Lax { r#definition . unwrap_or (Default :: default ()) } else { r#definition . ok_or (serde :: de :: Error :: missing_field ("definition[x]")) ? } , r#usage_context : r#usage_context . unwrap_or (vec ! []) , r#exclude , r#participant_effective , r#time_from_start , r#group_measure , }) })
             }
         }
         deserializer.deserialize_map(Visitor)
@@ -864,6 +889,48 @@ impl<'de> serde::de::Deserialize<'de> for EvidenceVariable {
             Characteristic,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "meta",
+                    "implicitRules",
+                    "language",
+                    "text",
+                    "contained",
+                    "extension",
+                    "modifierExtension",
+                    "url",
+                    "identifier",
+                    "version",
+                    "name",
+                    "title",
+                    "shortTitle",
+                    "subtitle",
+                    "status",
+                    "date",
+                    "publisher",
+                    "contact",
+                    "description",
+                    "note",
+                    "useContext",
+                    "jurisdiction",
+                    "copyright",
+                    "approvalDate",
+                    "lastReviewDate",
+                    "effectivePeriod",
+                    "topic",
+                    "author",
+                    "editor",
+                    "reviewer",
+                    "endorser",
+                    "relatedArtifact",
+                    "type",
+                    "characteristic",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = EvidenceVariable;
@@ -971,46 +1038,7 @@ impl<'de> serde::de::Deserialize<'de> for EvidenceVariable {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "implicitRules",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "identifier",
-                                            "version",
-                                            "name",
-                                            "title",
-                                            "shortTitle",
-                                            "subtitle",
-                                            "status",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "description",
-                                            "note",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "copyright",
-                                            "approvalDate",
-                                            "lastReviewDate",
-                                            "effectivePeriod",
-                                            "topic",
-                                            "author",
-                                            "editor",
-                                            "reviewer",
-                                            "endorser",
-                                            "relatedArtifact",
-                                            "type",
-                                            "characteristic",
-                                        ],
-                                    ));
+                                    return unknown_field_error("implicitRules");
                                 }
                             }
                             Field::Language => {
@@ -1041,46 +1069,7 @@ impl<'de> serde::de::Deserialize<'de> for EvidenceVariable {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "language",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "identifier",
-                                            "version",
-                                            "name",
-                                            "title",
-                                            "shortTitle",
-                                            "subtitle",
-                                            "status",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "description",
-                                            "note",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "copyright",
-                                            "approvalDate",
-                                            "lastReviewDate",
-                                            "effectivePeriod",
-                                            "topic",
-                                            "author",
-                                            "editor",
-                                            "reviewer",
-                                            "endorser",
-                                            "relatedArtifact",
-                                            "type",
-                                            "characteristic",
-                                        ],
-                                    ));
+                                    return unknown_field_error("language");
                                 }
                             }
                             Field::Text => {
@@ -1153,46 +1142,7 @@ impl<'de> serde::de::Deserialize<'de> for EvidenceVariable {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "url",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "identifier",
-                                            "version",
-                                            "name",
-                                            "title",
-                                            "shortTitle",
-                                            "subtitle",
-                                            "status",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "description",
-                                            "note",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "copyright",
-                                            "approvalDate",
-                                            "lastReviewDate",
-                                            "effectivePeriod",
-                                            "topic",
-                                            "author",
-                                            "editor",
-                                            "reviewer",
-                                            "endorser",
-                                            "relatedArtifact",
-                                            "type",
-                                            "characteristic",
-                                        ],
-                                    ));
+                                    return unknown_field_error("url");
                                 }
                             }
                             Field::Identifier => {
@@ -1236,46 +1186,7 @@ impl<'de> serde::de::Deserialize<'de> for EvidenceVariable {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "version",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "identifier",
-                                            "version",
-                                            "name",
-                                            "title",
-                                            "shortTitle",
-                                            "subtitle",
-                                            "status",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "description",
-                                            "note",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "copyright",
-                                            "approvalDate",
-                                            "lastReviewDate",
-                                            "effectivePeriod",
-                                            "topic",
-                                            "author",
-                                            "editor",
-                                            "reviewer",
-                                            "endorser",
-                                            "relatedArtifact",
-                                            "type",
-                                            "characteristic",
-                                        ],
-                                    ));
+                                    return unknown_field_error("version");
                                 }
                             }
                             Field::Name => {
@@ -1306,46 +1217,7 @@ impl<'de> serde::de::Deserialize<'de> for EvidenceVariable {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "name",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "identifier",
-                                            "version",
-                                            "name",
-                                            "title",
-                                            "shortTitle",
-                                            "subtitle",
-                                            "status",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "description",
-                                            "note",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "copyright",
-                                            "approvalDate",
-                                            "lastReviewDate",
-                                            "effectivePeriod",
-                                            "topic",
-                                            "author",
-                                            "editor",
-                                            "reviewer",
-                                            "endorser",
-                                            "relatedArtifact",
-                                            "type",
-                                            "characteristic",
-                                        ],
-                                    ));
+                                    return unknown_field_error("name");
                                 }
                             }
                             Field::Title => {
@@ -1376,46 +1248,7 @@ impl<'de> serde::de::Deserialize<'de> for EvidenceVariable {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "title",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "identifier",
-                                            "version",
-                                            "name",
-                                            "title",
-                                            "shortTitle",
-                                            "subtitle",
-                                            "status",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "description",
-                                            "note",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "copyright",
-                                            "approvalDate",
-                                            "lastReviewDate",
-                                            "effectivePeriod",
-                                            "topic",
-                                            "author",
-                                            "editor",
-                                            "reviewer",
-                                            "endorser",
-                                            "relatedArtifact",
-                                            "type",
-                                            "characteristic",
-                                        ],
-                                    ));
+                                    return unknown_field_error("title");
                                 }
                             }
                             Field::ShortTitle => {
@@ -1452,46 +1285,7 @@ impl<'de> serde::de::Deserialize<'de> for EvidenceVariable {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "shortTitle",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "identifier",
-                                            "version",
-                                            "name",
-                                            "title",
-                                            "shortTitle",
-                                            "subtitle",
-                                            "status",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "description",
-                                            "note",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "copyright",
-                                            "approvalDate",
-                                            "lastReviewDate",
-                                            "effectivePeriod",
-                                            "topic",
-                                            "author",
-                                            "editor",
-                                            "reviewer",
-                                            "endorser",
-                                            "relatedArtifact",
-                                            "type",
-                                            "characteristic",
-                                        ],
-                                    ));
+                                    return unknown_field_error("shortTitle");
                                 }
                             }
                             Field::Subtitle => {
@@ -1522,46 +1316,7 @@ impl<'de> serde::de::Deserialize<'de> for EvidenceVariable {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "subtitle",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "identifier",
-                                            "version",
-                                            "name",
-                                            "title",
-                                            "shortTitle",
-                                            "subtitle",
-                                            "status",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "description",
-                                            "note",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "copyright",
-                                            "approvalDate",
-                                            "lastReviewDate",
-                                            "effectivePeriod",
-                                            "topic",
-                                            "author",
-                                            "editor",
-                                            "reviewer",
-                                            "endorser",
-                                            "relatedArtifact",
-                                            "type",
-                                            "characteristic",
-                                        ],
-                                    ));
+                                    return unknown_field_error("subtitle");
                                 }
                             }
                             Field::Status => {
@@ -1592,46 +1347,7 @@ impl<'de> serde::de::Deserialize<'de> for EvidenceVariable {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "status",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "identifier",
-                                            "version",
-                                            "name",
-                                            "title",
-                                            "shortTitle",
-                                            "subtitle",
-                                            "status",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "description",
-                                            "note",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "copyright",
-                                            "approvalDate",
-                                            "lastReviewDate",
-                                            "effectivePeriod",
-                                            "topic",
-                                            "author",
-                                            "editor",
-                                            "reviewer",
-                                            "endorser",
-                                            "relatedArtifact",
-                                            "type",
-                                            "characteristic",
-                                        ],
-                                    ));
+                                    return unknown_field_error("status");
                                 }
                             }
                             Field::Date => {
@@ -1662,46 +1378,7 @@ impl<'de> serde::de::Deserialize<'de> for EvidenceVariable {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "date",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "identifier",
-                                            "version",
-                                            "name",
-                                            "title",
-                                            "shortTitle",
-                                            "subtitle",
-                                            "status",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "description",
-                                            "note",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "copyright",
-                                            "approvalDate",
-                                            "lastReviewDate",
-                                            "effectivePeriod",
-                                            "topic",
-                                            "author",
-                                            "editor",
-                                            "reviewer",
-                                            "endorser",
-                                            "relatedArtifact",
-                                            "type",
-                                            "characteristic",
-                                        ],
-                                    ));
+                                    return unknown_field_error("date");
                                 }
                             }
                             Field::Publisher => {
@@ -1734,46 +1411,7 @@ impl<'de> serde::de::Deserialize<'de> for EvidenceVariable {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "publisher",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "identifier",
-                                            "version",
-                                            "name",
-                                            "title",
-                                            "shortTitle",
-                                            "subtitle",
-                                            "status",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "description",
-                                            "note",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "copyright",
-                                            "approvalDate",
-                                            "lastReviewDate",
-                                            "effectivePeriod",
-                                            "topic",
-                                            "author",
-                                            "editor",
-                                            "reviewer",
-                                            "endorser",
-                                            "relatedArtifact",
-                                            "type",
-                                            "characteristic",
-                                        ],
-                                    ));
+                                    return unknown_field_error("publisher");
                                 }
                             }
                             Field::Contact => {
@@ -1821,46 +1459,7 @@ impl<'de> serde::de::Deserialize<'de> for EvidenceVariable {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "description",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "identifier",
-                                            "version",
-                                            "name",
-                                            "title",
-                                            "shortTitle",
-                                            "subtitle",
-                                            "status",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "description",
-                                            "note",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "copyright",
-                                            "approvalDate",
-                                            "lastReviewDate",
-                                            "effectivePeriod",
-                                            "topic",
-                                            "author",
-                                            "editor",
-                                            "reviewer",
-                                            "endorser",
-                                            "relatedArtifact",
-                                            "type",
-                                            "characteristic",
-                                        ],
-                                    ));
+                                    return unknown_field_error("description");
                                 }
                             }
                             Field::Note => {
@@ -1930,46 +1529,7 @@ impl<'de> serde::de::Deserialize<'de> for EvidenceVariable {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "copyright",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "identifier",
-                                            "version",
-                                            "name",
-                                            "title",
-                                            "shortTitle",
-                                            "subtitle",
-                                            "status",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "description",
-                                            "note",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "copyright",
-                                            "approvalDate",
-                                            "lastReviewDate",
-                                            "effectivePeriod",
-                                            "topic",
-                                            "author",
-                                            "editor",
-                                            "reviewer",
-                                            "endorser",
-                                            "relatedArtifact",
-                                            "type",
-                                            "characteristic",
-                                        ],
-                                    ));
+                                    return unknown_field_error("copyright");
                                 }
                             }
                             Field::ApprovalDate => {
@@ -2006,46 +1566,7 @@ impl<'de> serde::de::Deserialize<'de> for EvidenceVariable {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "approvalDate",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "identifier",
-                                            "version",
-                                            "name",
-                                            "title",
-                                            "shortTitle",
-                                            "subtitle",
-                                            "status",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "description",
-                                            "note",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "copyright",
-                                            "approvalDate",
-                                            "lastReviewDate",
-                                            "effectivePeriod",
-                                            "topic",
-                                            "author",
-                                            "editor",
-                                            "reviewer",
-                                            "endorser",
-                                            "relatedArtifact",
-                                            "type",
-                                            "characteristic",
-                                        ],
-                                    ));
+                                    return unknown_field_error("approvalDate");
                                 }
                             }
                             Field::LastReviewDate => {
@@ -2082,46 +1603,7 @@ impl<'de> serde::de::Deserialize<'de> for EvidenceVariable {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "lastReviewDate",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "identifier",
-                                            "version",
-                                            "name",
-                                            "title",
-                                            "shortTitle",
-                                            "subtitle",
-                                            "status",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "description",
-                                            "note",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "copyright",
-                                            "approvalDate",
-                                            "lastReviewDate",
-                                            "effectivePeriod",
-                                            "topic",
-                                            "author",
-                                            "editor",
-                                            "reviewer",
-                                            "endorser",
-                                            "relatedArtifact",
-                                            "type",
-                                            "characteristic",
-                                        ],
-                                    ));
+                                    return unknown_field_error("lastReviewDate");
                                 }
                             }
                             Field::EffectivePeriod => {
@@ -2228,46 +1710,7 @@ impl<'de> serde::de::Deserialize<'de> for EvidenceVariable {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "type",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "identifier",
-                                            "version",
-                                            "name",
-                                            "title",
-                                            "shortTitle",
-                                            "subtitle",
-                                            "status",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "description",
-                                            "note",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "copyright",
-                                            "approvalDate",
-                                            "lastReviewDate",
-                                            "effectivePeriod",
-                                            "topic",
-                                            "author",
-                                            "editor",
-                                            "reviewer",
-                                            "endorser",
-                                            "relatedArtifact",
-                                            "type",
-                                            "characteristic",
-                                        ],
-                                    ));
+                                    return unknown_field_error("type");
                                 }
                             }
                             Field::Characteristic => {

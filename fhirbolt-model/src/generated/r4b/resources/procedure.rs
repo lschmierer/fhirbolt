@@ -1,4 +1,4 @@
-// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-08 by fhirbolt-codegen v0.1.0
 #[doc = "Estimated or actual date, date-time, period, or age when the procedure was performed.  Allows a period to support complex procedures that span more than one date, and also allows for the length of the procedure to be captured."]
 #[derive(Debug, Clone, PartialEq)]
 pub enum ProcedurePerformed {
@@ -80,6 +80,19 @@ impl<'de> serde::de::Deserialize<'de> for ProcedurePerformer {
             #[serde(rename = "onBehalfOf")]
             OnBehalfOf,
             Unknown(std::string::String),
+        }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "function",
+                    "actor",
+                    "onBehalfOf",
+                ],
+            ))
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -247,6 +260,18 @@ impl<'de> serde::de::Deserialize<'de> for ProcedureFocalDevice {
             #[serde(rename = "manipulated")]
             Manipulated,
             Unknown(std::string::String),
+        }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "action",
+                    "manipulated",
+                ],
+            ))
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -815,6 +840,53 @@ impl<'de> serde::de::Deserialize<'de> for Procedure {
             UsedCode,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "meta",
+                    "implicitRules",
+                    "language",
+                    "text",
+                    "contained",
+                    "extension",
+                    "modifierExtension",
+                    "identifier",
+                    "instantiatesCanonical",
+                    "instantiatesUri",
+                    "basedOn",
+                    "partOf",
+                    "status",
+                    "statusReason",
+                    "category",
+                    "code",
+                    "subject",
+                    "encounter",
+                    "performedDateTime",
+                    "performedPeriod",
+                    "performedString",
+                    "performedAge",
+                    "performedRange",
+                    "recorder",
+                    "asserter",
+                    "performer",
+                    "location",
+                    "reasonCode",
+                    "reasonReference",
+                    "bodySite",
+                    "outcome",
+                    "report",
+                    "complication",
+                    "complicationDetail",
+                    "followUp",
+                    "note",
+                    "focalDevice",
+                    "usedReference",
+                    "usedCode",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = Procedure;
@@ -925,51 +997,7 @@ impl<'de> serde::de::Deserialize<'de> for Procedure {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "implicitRules",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "instantiatesCanonical",
-                                            "instantiatesUri",
-                                            "basedOn",
-                                            "partOf",
-                                            "status",
-                                            "statusReason",
-                                            "category",
-                                            "code",
-                                            "subject",
-                                            "encounter",
-                                            "performedDateTime",
-                                            "performedPeriod",
-                                            "performedString",
-                                            "performedAge",
-                                            "performedRange",
-                                            "recorder",
-                                            "asserter",
-                                            "performer",
-                                            "location",
-                                            "reasonCode",
-                                            "reasonReference",
-                                            "bodySite",
-                                            "outcome",
-                                            "report",
-                                            "complication",
-                                            "complicationDetail",
-                                            "followUp",
-                                            "note",
-                                            "focalDevice",
-                                            "usedReference",
-                                            "usedCode",
-                                        ],
-                                    ));
+                                    return unknown_field_error("implicitRules");
                                 }
                             }
                             Field::Language => {
@@ -1000,51 +1028,7 @@ impl<'de> serde::de::Deserialize<'de> for Procedure {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "language",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "instantiatesCanonical",
-                                            "instantiatesUri",
-                                            "basedOn",
-                                            "partOf",
-                                            "status",
-                                            "statusReason",
-                                            "category",
-                                            "code",
-                                            "subject",
-                                            "encounter",
-                                            "performedDateTime",
-                                            "performedPeriod",
-                                            "performedString",
-                                            "performedAge",
-                                            "performedRange",
-                                            "recorder",
-                                            "asserter",
-                                            "performer",
-                                            "location",
-                                            "reasonCode",
-                                            "reasonReference",
-                                            "bodySite",
-                                            "outcome",
-                                            "report",
-                                            "complication",
-                                            "complicationDetail",
-                                            "followUp",
-                                            "note",
-                                            "focalDevice",
-                                            "usedReference",
-                                            "usedCode",
-                                        ],
-                                    ));
+                                    return unknown_field_error("language");
                                 }
                             }
                             Field::Text => {
@@ -1163,51 +1147,7 @@ impl<'de> serde::de::Deserialize<'de> for Procedure {
                                         }
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "instantiatesCanonical",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "instantiatesCanonical",
-                                            "instantiatesUri",
-                                            "basedOn",
-                                            "partOf",
-                                            "status",
-                                            "statusReason",
-                                            "category",
-                                            "code",
-                                            "subject",
-                                            "encounter",
-                                            "performedDateTime",
-                                            "performedPeriod",
-                                            "performedString",
-                                            "performedAge",
-                                            "performedRange",
-                                            "recorder",
-                                            "asserter",
-                                            "performer",
-                                            "location",
-                                            "reasonCode",
-                                            "reasonReference",
-                                            "bodySite",
-                                            "outcome",
-                                            "report",
-                                            "complication",
-                                            "complicationDetail",
-                                            "followUp",
-                                            "note",
-                                            "focalDevice",
-                                            "usedReference",
-                                            "usedCode",
-                                        ],
-                                    ));
+                                    return unknown_field_error("instantiatesCanonical");
                                 }
                             }
                             Field::InstantiatesUri => {
@@ -1270,51 +1210,7 @@ impl<'de> serde::de::Deserialize<'de> for Procedure {
                                         }
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "instantiatesUri",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "instantiatesCanonical",
-                                            "instantiatesUri",
-                                            "basedOn",
-                                            "partOf",
-                                            "status",
-                                            "statusReason",
-                                            "category",
-                                            "code",
-                                            "subject",
-                                            "encounter",
-                                            "performedDateTime",
-                                            "performedPeriod",
-                                            "performedString",
-                                            "performedAge",
-                                            "performedRange",
-                                            "recorder",
-                                            "asserter",
-                                            "performer",
-                                            "location",
-                                            "reasonCode",
-                                            "reasonReference",
-                                            "bodySite",
-                                            "outcome",
-                                            "report",
-                                            "complication",
-                                            "complicationDetail",
-                                            "followUp",
-                                            "note",
-                                            "focalDevice",
-                                            "usedReference",
-                                            "usedCode",
-                                        ],
-                                    ));
+                                    return unknown_field_error("instantiatesUri");
                                 }
                             }
                             Field::BasedOn => {
@@ -1367,51 +1263,7 @@ impl<'de> serde::de::Deserialize<'de> for Procedure {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "status",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "instantiatesCanonical",
-                                            "instantiatesUri",
-                                            "basedOn",
-                                            "partOf",
-                                            "status",
-                                            "statusReason",
-                                            "category",
-                                            "code",
-                                            "subject",
-                                            "encounter",
-                                            "performedDateTime",
-                                            "performedPeriod",
-                                            "performedString",
-                                            "performedAge",
-                                            "performedRange",
-                                            "recorder",
-                                            "asserter",
-                                            "performer",
-                                            "location",
-                                            "reasonCode",
-                                            "reasonReference",
-                                            "bodySite",
-                                            "outcome",
-                                            "report",
-                                            "complication",
-                                            "complicationDetail",
-                                            "followUp",
-                                            "note",
-                                            "focalDevice",
-                                            "usedReference",
-                                            "usedCode",
-                                        ],
-                                    ));
+                                    return unknown_field_error("status");
                                 }
                             }
                             Field::StatusReason => {
@@ -1496,51 +1348,7 @@ impl<'de> serde::de::Deserialize<'de> for Procedure {
                                         ));
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "performedDateTime",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "instantiatesCanonical",
-                                            "instantiatesUri",
-                                            "basedOn",
-                                            "partOf",
-                                            "status",
-                                            "statusReason",
-                                            "category",
-                                            "code",
-                                            "subject",
-                                            "encounter",
-                                            "performedDateTime",
-                                            "performedPeriod",
-                                            "performedString",
-                                            "performedAge",
-                                            "performedRange",
-                                            "recorder",
-                                            "asserter",
-                                            "performer",
-                                            "location",
-                                            "reasonCode",
-                                            "reasonReference",
-                                            "bodySite",
-                                            "outcome",
-                                            "report",
-                                            "complication",
-                                            "complicationDetail",
-                                            "followUp",
-                                            "note",
-                                            "focalDevice",
-                                            "usedReference",
-                                            "usedCode",
-                                        ],
-                                    ));
+                                    return unknown_field_error("performedDateTime");
                                 }
                             }
                             Field::PerformedPeriod => {
@@ -1603,51 +1411,7 @@ impl<'de> serde::de::Deserialize<'de> for Procedure {
                                         ));
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "performedString",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "instantiatesCanonical",
-                                            "instantiatesUri",
-                                            "basedOn",
-                                            "partOf",
-                                            "status",
-                                            "statusReason",
-                                            "category",
-                                            "code",
-                                            "subject",
-                                            "encounter",
-                                            "performedDateTime",
-                                            "performedPeriod",
-                                            "performedString",
-                                            "performedAge",
-                                            "performedRange",
-                                            "recorder",
-                                            "asserter",
-                                            "performer",
-                                            "location",
-                                            "reasonCode",
-                                            "reasonReference",
-                                            "bodySite",
-                                            "outcome",
-                                            "report",
-                                            "complication",
-                                            "complicationDetail",
-                                            "followUp",
-                                            "note",
-                                            "focalDevice",
-                                            "usedReference",
-                                            "usedCode",
-                                        ],
-                                    ));
+                                    return unknown_field_error("performedString");
                                 }
                             }
                             Field::PerformedAge => {

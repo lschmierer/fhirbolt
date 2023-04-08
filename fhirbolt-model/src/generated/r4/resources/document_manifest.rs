@@ -1,4 +1,4 @@
-// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-08 by fhirbolt-codegen v0.1.0
 #[doc = "Related identifiers or resources associated with the DocumentManifest."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub struct DocumentManifestRelated {
@@ -60,6 +60,12 @@ impl<'de> serde::de::Deserialize<'de> for DocumentManifestRelated {
             #[serde(rename = "ref")]
             Ref,
             Unknown(std::string::String),
+        }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &["id", "extension", "modifierExtension", "identifier", "ref"],
+            ))
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -424,6 +430,33 @@ impl<'de> serde::de::Deserialize<'de> for DocumentManifest {
             Related,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "meta",
+                    "implicitRules",
+                    "language",
+                    "text",
+                    "contained",
+                    "extension",
+                    "modifierExtension",
+                    "masterIdentifier",
+                    "identifier",
+                    "status",
+                    "type",
+                    "subject",
+                    "created",
+                    "author",
+                    "recipient",
+                    "source",
+                    "description",
+                    "content",
+                    "related",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = DocumentManifest;
@@ -514,31 +547,7 @@ impl<'de> serde::de::Deserialize<'de> for DocumentManifest {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "implicitRules",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "masterIdentifier",
-                                            "identifier",
-                                            "status",
-                                            "type",
-                                            "subject",
-                                            "created",
-                                            "author",
-                                            "recipient",
-                                            "source",
-                                            "description",
-                                            "content",
-                                            "related",
-                                        ],
-                                    ));
+                                    return unknown_field_error("implicitRules");
                                 }
                             }
                             Field::Language => {
@@ -569,31 +578,7 @@ impl<'de> serde::de::Deserialize<'de> for DocumentManifest {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "language",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "masterIdentifier",
-                                            "identifier",
-                                            "status",
-                                            "type",
-                                            "subject",
-                                            "created",
-                                            "author",
-                                            "recipient",
-                                            "source",
-                                            "description",
-                                            "content",
-                                            "related",
-                                        ],
-                                    ));
+                                    return unknown_field_error("language");
                                 }
                             }
                             Field::Text => {
@@ -687,31 +672,7 @@ impl<'de> serde::de::Deserialize<'de> for DocumentManifest {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "status",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "masterIdentifier",
-                                            "identifier",
-                                            "status",
-                                            "type",
-                                            "subject",
-                                            "created",
-                                            "author",
-                                            "recipient",
-                                            "source",
-                                            "description",
-                                            "content",
-                                            "related",
-                                        ],
-                                    ));
+                                    return unknown_field_error("status");
                                 }
                             }
                             Field::Type => {
@@ -754,31 +715,7 @@ impl<'de> serde::de::Deserialize<'de> for DocumentManifest {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "created",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "masterIdentifier",
-                                            "identifier",
-                                            "status",
-                                            "type",
-                                            "subject",
-                                            "created",
-                                            "author",
-                                            "recipient",
-                                            "source",
-                                            "description",
-                                            "content",
-                                            "related",
-                                        ],
-                                    ));
+                                    return unknown_field_error("created");
                                 }
                             }
                             Field::Author => {
@@ -831,31 +768,7 @@ impl<'de> serde::de::Deserialize<'de> for DocumentManifest {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "source",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "masterIdentifier",
-                                            "identifier",
-                                            "status",
-                                            "type",
-                                            "subject",
-                                            "created",
-                                            "author",
-                                            "recipient",
-                                            "source",
-                                            "description",
-                                            "content",
-                                            "related",
-                                        ],
-                                    ));
+                                    return unknown_field_error("source");
                                 }
                             }
                             Field::Description => {
@@ -892,31 +805,7 @@ impl<'de> serde::de::Deserialize<'de> for DocumentManifest {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "description",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "masterIdentifier",
-                                            "identifier",
-                                            "status",
-                                            "type",
-                                            "subject",
-                                            "created",
-                                            "author",
-                                            "recipient",
-                                            "source",
-                                            "description",
-                                            "content",
-                                            "related",
-                                        ],
-                                    ));
+                                    return unknown_field_error("description");
                                 }
                             }
                             Field::Content => {

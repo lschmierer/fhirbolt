@@ -1,4 +1,4 @@
-// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-08 by fhirbolt-codegen v0.1.0
 #[doc = "An error, warning, or information message that results from a system action."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub struct OperationOutcomeIssue {
@@ -209,6 +209,22 @@ impl<'de> serde::de::Deserialize<'de> for OperationOutcomeIssue {
             ExpressionPrimitiveElement,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "severity",
+                    "code",
+                    "details",
+                    "diagnostics",
+                    "location",
+                    "expression",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = OperationOutcomeIssue;
@@ -292,20 +308,7 @@ impl<'de> serde::de::Deserialize<'de> for OperationOutcomeIssue {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "severity",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "severity",
-                                            "code",
-                                            "details",
-                                            "diagnostics",
-                                            "location",
-                                            "expression",
-                                        ],
-                                    ));
+                                    return unknown_field_error("severity");
                                 }
                             }
                             Field::Code => {
@@ -336,20 +339,7 @@ impl<'de> serde::de::Deserialize<'de> for OperationOutcomeIssue {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "code",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "severity",
-                                            "code",
-                                            "details",
-                                            "diagnostics",
-                                            "location",
-                                            "expression",
-                                        ],
-                                    ));
+                                    return unknown_field_error("code");
                                 }
                             }
                             Field::Details => {
@@ -392,20 +382,7 @@ impl<'de> serde::de::Deserialize<'de> for OperationOutcomeIssue {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "diagnostics",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "severity",
-                                            "code",
-                                            "details",
-                                            "diagnostics",
-                                            "location",
-                                            "expression",
-                                        ],
-                                    ));
+                                    return unknown_field_error("diagnostics");
                                 }
                             }
                             Field::Location => {
@@ -464,20 +441,7 @@ impl<'de> serde::de::Deserialize<'de> for OperationOutcomeIssue {
                                         }
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "location",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "severity",
-                                            "code",
-                                            "details",
-                                            "diagnostics",
-                                            "location",
-                                            "expression",
-                                        ],
-                                    ));
+                                    return unknown_field_error("location");
                                 }
                             }
                             Field::Expression => {
@@ -540,20 +504,7 @@ impl<'de> serde::de::Deserialize<'de> for OperationOutcomeIssue {
                                         }
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "expression",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "severity",
-                                            "code",
-                                            "details",
-                                            "diagnostics",
-                                            "location",
-                                            "expression",
-                                        ],
-                                    ));
+                                    return unknown_field_error("expression");
                                 }
                             }
                             Field::Unknown(key) => if _ctx.config.mode
@@ -737,6 +688,22 @@ impl<'de> serde::de::Deserialize<'de> for OperationOutcome {
             Issue,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "meta",
+                    "implicitRules",
+                    "language",
+                    "text",
+                    "contained",
+                    "extension",
+                    "modifierExtension",
+                    "issue",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = OperationOutcome;
@@ -816,20 +783,7 @@ impl<'de> serde::de::Deserialize<'de> for OperationOutcome {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "implicitRules",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "issue",
-                                        ],
-                                    ));
+                                    return unknown_field_error("implicitRules");
                                 }
                             }
                             Field::Language => {
@@ -860,20 +814,7 @@ impl<'de> serde::de::Deserialize<'de> for OperationOutcome {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "language",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "issue",
-                                        ],
-                                    ));
+                                    return unknown_field_error("language");
                                 }
                             }
                             Field::Text => {

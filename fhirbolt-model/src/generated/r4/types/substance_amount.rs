@@ -1,4 +1,4 @@
-// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-08 by fhirbolt-codegen v0.1.0
 #[doc = "Used to capture quantitative values for a variety of elements. If only limits are given, the arithmetic mean would be the average. If only a single definite value for a given element is given, it would be captured in this field."]
 #[derive(Debug, Clone, PartialEq)]
 pub enum SubstanceAmountAmount {
@@ -66,6 +66,12 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceAmountReferenceRange {
             #[serde(rename = "highLimit")]
             HighLimit,
             Unknown(std::string::String),
+        }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &["id", "extension", "lowLimit", "highLimit"],
+            ))
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -267,6 +273,22 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceAmount {
             ReferenceRange,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "amountQuantity",
+                    "amountRange",
+                    "amountString",
+                    "amountType",
+                    "amountText",
+                    "referenceRange",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = SubstanceAmount;
@@ -386,20 +408,7 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceAmount {
                                         ));
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "amountString",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "amountQuantity",
-                                            "amountRange",
-                                            "amountString",
-                                            "amountType",
-                                            "amountText",
-                                            "referenceRange",
-                                        ],
-                                    ));
+                                    return unknown_field_error("amountString");
                                 }
                             }
                             Field::AmountType => {
@@ -442,20 +451,7 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceAmount {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "amountText",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "amountQuantity",
-                                            "amountRange",
-                                            "amountString",
-                                            "amountType",
-                                            "amountText",
-                                            "referenceRange",
-                                        ],
-                                    ));
+                                    return unknown_field_error("amountText");
                                 }
                             }
                             Field::ReferenceRange => {

@@ -1,4 +1,4 @@
-// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-08 by fhirbolt-codegen v0.1.0
 #[doc = "Record details about an anatomical structure.  This resource may be used when a coded concept does not provide the necessary detail needed for the use case."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub struct BodyStructure {
@@ -214,6 +214,29 @@ impl<'de> serde::de::Deserialize<'de> for BodyStructure {
             Patient,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "meta",
+                    "implicitRules",
+                    "language",
+                    "text",
+                    "contained",
+                    "extension",
+                    "modifierExtension",
+                    "identifier",
+                    "active",
+                    "morphology",
+                    "location",
+                    "locationQualifier",
+                    "description",
+                    "image",
+                    "patient",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = BodyStructure;
@@ -302,27 +325,7 @@ impl<'de> serde::de::Deserialize<'de> for BodyStructure {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "implicitRules",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "active",
-                                            "morphology",
-                                            "location",
-                                            "locationQualifier",
-                                            "description",
-                                            "image",
-                                            "patient",
-                                        ],
-                                    ));
+                                    return unknown_field_error("implicitRules");
                                 }
                             }
                             Field::Language => {
@@ -353,27 +356,7 @@ impl<'de> serde::de::Deserialize<'de> for BodyStructure {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "language",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "active",
-                                            "morphology",
-                                            "location",
-                                            "locationQualifier",
-                                            "description",
-                                            "image",
-                                            "patient",
-                                        ],
-                                    ));
+                                    return unknown_field_error("language");
                                 }
                             }
                             Field::Text => {
@@ -459,27 +442,7 @@ impl<'de> serde::de::Deserialize<'de> for BodyStructure {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "active",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "active",
-                                            "morphology",
-                                            "location",
-                                            "locationQualifier",
-                                            "description",
-                                            "image",
-                                            "patient",
-                                        ],
-                                    ));
+                                    return unknown_field_error("active");
                                 }
                             }
                             Field::Morphology => {
@@ -542,27 +505,7 @@ impl<'de> serde::de::Deserialize<'de> for BodyStructure {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "description",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "active",
-                                            "morphology",
-                                            "location",
-                                            "locationQualifier",
-                                            "description",
-                                            "image",
-                                            "patient",
-                                        ],
-                                    ));
+                                    return unknown_field_error("description");
                                 }
                             }
                             Field::Image => {

@@ -1,4 +1,4 @@
-// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-08 by fhirbolt-codegen v0.1.0
 #[doc = "Indicates if this record was captured as a secondary 'reported' record rather than as an original primary source-of-truth record.  It may also indicate the source of the report."]
 #[derive(Debug, Clone, PartialEq)]
 pub enum MedicationRequestReported {
@@ -96,6 +96,18 @@ impl<'de> serde::de::Deserialize<'de> for MedicationRequestDispenseRequestInitia
             #[serde(rename = "duration")]
             Duration,
             Unknown(std::string::String),
+        }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "quantity",
+                    "duration",
+                ],
+            ))
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -307,6 +319,23 @@ impl<'de> serde::de::Deserialize<'de> for MedicationRequestDispenseRequest {
             Performer,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "initialFill",
+                    "dispenseInterval",
+                    "validityPeriod",
+                    "numberOfRepeatsAllowed",
+                    "quantity",
+                    "expectedSupplyDuration",
+                    "performer",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = MedicationRequestDispenseRequest;
@@ -426,21 +455,7 @@ impl<'de> serde::de::Deserialize<'de> for MedicationRequestDispenseRequest {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "numberOfRepeatsAllowed",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "initialFill",
-                                            "dispenseInterval",
-                                            "validityPeriod",
-                                            "numberOfRepeatsAllowed",
-                                            "quantity",
-                                            "expectedSupplyDuration",
-                                            "performer",
-                                        ],
-                                    ));
+                                    return unknown_field_error("numberOfRepeatsAllowed");
                                 }
                             }
                             Field::Quantity => {
@@ -590,6 +605,19 @@ impl<'de> serde::de::Deserialize<'de> for MedicationRequestSubstitution {
             Reason,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "allowedBoolean",
+                    "allowedCodeableConcept",
+                    "reason",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = MedicationRequestSubstitution;
@@ -705,17 +733,7 @@ impl<'de> serde::de::Deserialize<'de> for MedicationRequestSubstitution {
                                         ));
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "allowedBoolean",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "allowedBoolean",
-                                            "allowedCodeableConcept",
-                                            "reason",
-                                        ],
-                                    ));
+                                    return unknown_field_error("allowedBoolean");
                                 }
                             }
                             Field::AllowedCodeableConcept => {
@@ -1314,6 +1332,55 @@ impl<'de> serde::de::Deserialize<'de> for MedicationRequest {
             EventHistory,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "meta",
+                    "implicitRules",
+                    "language",
+                    "text",
+                    "contained",
+                    "extension",
+                    "modifierExtension",
+                    "identifier",
+                    "status",
+                    "statusReason",
+                    "intent",
+                    "category",
+                    "priority",
+                    "doNotPerform",
+                    "reportedBoolean",
+                    "reportedReference",
+                    "medicationCodeableConcept",
+                    "medicationReference",
+                    "subject",
+                    "encounter",
+                    "supportingInformation",
+                    "authoredOn",
+                    "requester",
+                    "performer",
+                    "performerType",
+                    "recorder",
+                    "reasonCode",
+                    "reasonReference",
+                    "instantiatesCanonical",
+                    "instantiatesUri",
+                    "basedOn",
+                    "groupIdentifier",
+                    "courseOfTherapyType",
+                    "insurance",
+                    "note",
+                    "dosageInstruction",
+                    "dispenseRequest",
+                    "substitution",
+                    "priorPrescription",
+                    "detectedIssue",
+                    "eventHistory",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = MedicationRequest;
@@ -1429,53 +1496,7 @@ impl<'de> serde::de::Deserialize<'de> for MedicationRequest {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "implicitRules",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "status",
-                                            "statusReason",
-                                            "intent",
-                                            "category",
-                                            "priority",
-                                            "doNotPerform",
-                                            "reportedBoolean",
-                                            "reportedReference",
-                                            "medicationCodeableConcept",
-                                            "medicationReference",
-                                            "subject",
-                                            "encounter",
-                                            "supportingInformation",
-                                            "authoredOn",
-                                            "requester",
-                                            "performer",
-                                            "performerType",
-                                            "recorder",
-                                            "reasonCode",
-                                            "reasonReference",
-                                            "instantiatesCanonical",
-                                            "instantiatesUri",
-                                            "basedOn",
-                                            "groupIdentifier",
-                                            "courseOfTherapyType",
-                                            "insurance",
-                                            "note",
-                                            "dosageInstruction",
-                                            "dispenseRequest",
-                                            "substitution",
-                                            "priorPrescription",
-                                            "detectedIssue",
-                                            "eventHistory",
-                                        ],
-                                    ));
+                                    return unknown_field_error("implicitRules");
                                 }
                             }
                             Field::Language => {
@@ -1506,53 +1527,7 @@ impl<'de> serde::de::Deserialize<'de> for MedicationRequest {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "language",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "status",
-                                            "statusReason",
-                                            "intent",
-                                            "category",
-                                            "priority",
-                                            "doNotPerform",
-                                            "reportedBoolean",
-                                            "reportedReference",
-                                            "medicationCodeableConcept",
-                                            "medicationReference",
-                                            "subject",
-                                            "encounter",
-                                            "supportingInformation",
-                                            "authoredOn",
-                                            "requester",
-                                            "performer",
-                                            "performerType",
-                                            "recorder",
-                                            "reasonCode",
-                                            "reasonReference",
-                                            "instantiatesCanonical",
-                                            "instantiatesUri",
-                                            "basedOn",
-                                            "groupIdentifier",
-                                            "courseOfTherapyType",
-                                            "insurance",
-                                            "note",
-                                            "dosageInstruction",
-                                            "dispenseRequest",
-                                            "substitution",
-                                            "priorPrescription",
-                                            "detectedIssue",
-                                            "eventHistory",
-                                        ],
-                                    ));
+                                    return unknown_field_error("language");
                                 }
                             }
                             Field::Text => {
@@ -1638,53 +1613,7 @@ impl<'de> serde::de::Deserialize<'de> for MedicationRequest {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "status",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "status",
-                                            "statusReason",
-                                            "intent",
-                                            "category",
-                                            "priority",
-                                            "doNotPerform",
-                                            "reportedBoolean",
-                                            "reportedReference",
-                                            "medicationCodeableConcept",
-                                            "medicationReference",
-                                            "subject",
-                                            "encounter",
-                                            "supportingInformation",
-                                            "authoredOn",
-                                            "requester",
-                                            "performer",
-                                            "performerType",
-                                            "recorder",
-                                            "reasonCode",
-                                            "reasonReference",
-                                            "instantiatesCanonical",
-                                            "instantiatesUri",
-                                            "basedOn",
-                                            "groupIdentifier",
-                                            "courseOfTherapyType",
-                                            "insurance",
-                                            "note",
-                                            "dosageInstruction",
-                                            "dispenseRequest",
-                                            "substitution",
-                                            "priorPrescription",
-                                            "detectedIssue",
-                                            "eventHistory",
-                                        ],
-                                    ));
+                                    return unknown_field_error("status");
                                 }
                             }
                             Field::StatusReason => {
@@ -1721,53 +1650,7 @@ impl<'de> serde::de::Deserialize<'de> for MedicationRequest {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "intent",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "status",
-                                            "statusReason",
-                                            "intent",
-                                            "category",
-                                            "priority",
-                                            "doNotPerform",
-                                            "reportedBoolean",
-                                            "reportedReference",
-                                            "medicationCodeableConcept",
-                                            "medicationReference",
-                                            "subject",
-                                            "encounter",
-                                            "supportingInformation",
-                                            "authoredOn",
-                                            "requester",
-                                            "performer",
-                                            "performerType",
-                                            "recorder",
-                                            "reasonCode",
-                                            "reasonReference",
-                                            "instantiatesCanonical",
-                                            "instantiatesUri",
-                                            "basedOn",
-                                            "groupIdentifier",
-                                            "courseOfTherapyType",
-                                            "insurance",
-                                            "note",
-                                            "dosageInstruction",
-                                            "dispenseRequest",
-                                            "substitution",
-                                            "priorPrescription",
-                                            "detectedIssue",
-                                            "eventHistory",
-                                        ],
-                                    ));
+                                    return unknown_field_error("intent");
                                 }
                             }
                             Field::Category => {
@@ -1809,53 +1692,7 @@ impl<'de> serde::de::Deserialize<'de> for MedicationRequest {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "priority",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "status",
-                                            "statusReason",
-                                            "intent",
-                                            "category",
-                                            "priority",
-                                            "doNotPerform",
-                                            "reportedBoolean",
-                                            "reportedReference",
-                                            "medicationCodeableConcept",
-                                            "medicationReference",
-                                            "subject",
-                                            "encounter",
-                                            "supportingInformation",
-                                            "authoredOn",
-                                            "requester",
-                                            "performer",
-                                            "performerType",
-                                            "recorder",
-                                            "reasonCode",
-                                            "reasonReference",
-                                            "instantiatesCanonical",
-                                            "instantiatesUri",
-                                            "basedOn",
-                                            "groupIdentifier",
-                                            "courseOfTherapyType",
-                                            "insurance",
-                                            "note",
-                                            "dosageInstruction",
-                                            "dispenseRequest",
-                                            "substitution",
-                                            "priorPrescription",
-                                            "detectedIssue",
-                                            "eventHistory",
-                                        ],
-                                    ));
+                                    return unknown_field_error("priority");
                                 }
                             }
                             Field::DoNotPerform => {
@@ -1892,53 +1729,7 @@ impl<'de> serde::de::Deserialize<'de> for MedicationRequest {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "doNotPerform",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "status",
-                                            "statusReason",
-                                            "intent",
-                                            "category",
-                                            "priority",
-                                            "doNotPerform",
-                                            "reportedBoolean",
-                                            "reportedReference",
-                                            "medicationCodeableConcept",
-                                            "medicationReference",
-                                            "subject",
-                                            "encounter",
-                                            "supportingInformation",
-                                            "authoredOn",
-                                            "requester",
-                                            "performer",
-                                            "performerType",
-                                            "recorder",
-                                            "reasonCode",
-                                            "reasonReference",
-                                            "instantiatesCanonical",
-                                            "instantiatesUri",
-                                            "basedOn",
-                                            "groupIdentifier",
-                                            "courseOfTherapyType",
-                                            "insurance",
-                                            "note",
-                                            "dosageInstruction",
-                                            "dispenseRequest",
-                                            "substitution",
-                                            "priorPrescription",
-                                            "detectedIssue",
-                                            "eventHistory",
-                                        ],
-                                    ));
+                                    return unknown_field_error("doNotPerform");
                                 }
                             }
                             Field::ReportedBoolean => {
@@ -1993,53 +1784,7 @@ impl<'de> serde::de::Deserialize<'de> for MedicationRequest {
                                         ));
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "reportedBoolean",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "status",
-                                            "statusReason",
-                                            "intent",
-                                            "category",
-                                            "priority",
-                                            "doNotPerform",
-                                            "reportedBoolean",
-                                            "reportedReference",
-                                            "medicationCodeableConcept",
-                                            "medicationReference",
-                                            "subject",
-                                            "encounter",
-                                            "supportingInformation",
-                                            "authoredOn",
-                                            "requester",
-                                            "performer",
-                                            "performerType",
-                                            "recorder",
-                                            "reasonCode",
-                                            "reasonReference",
-                                            "instantiatesCanonical",
-                                            "instantiatesUri",
-                                            "basedOn",
-                                            "groupIdentifier",
-                                            "courseOfTherapyType",
-                                            "insurance",
-                                            "note",
-                                            "dosageInstruction",
-                                            "dispenseRequest",
-                                            "substitution",
-                                            "priorPrescription",
-                                            "detectedIssue",
-                                            "eventHistory",
-                                        ],
-                                    ));
+                                    return unknown_field_error("reportedBoolean");
                                 }
                             }
                             Field::ReportedReference => {
@@ -2132,53 +1877,7 @@ impl<'de> serde::de::Deserialize<'de> for MedicationRequest {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "authoredOn",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "status",
-                                            "statusReason",
-                                            "intent",
-                                            "category",
-                                            "priority",
-                                            "doNotPerform",
-                                            "reportedBoolean",
-                                            "reportedReference",
-                                            "medicationCodeableConcept",
-                                            "medicationReference",
-                                            "subject",
-                                            "encounter",
-                                            "supportingInformation",
-                                            "authoredOn",
-                                            "requester",
-                                            "performer",
-                                            "performerType",
-                                            "recorder",
-                                            "reasonCode",
-                                            "reasonReference",
-                                            "instantiatesCanonical",
-                                            "instantiatesUri",
-                                            "basedOn",
-                                            "groupIdentifier",
-                                            "courseOfTherapyType",
-                                            "insurance",
-                                            "note",
-                                            "dosageInstruction",
-                                            "dispenseRequest",
-                                            "substitution",
-                                            "priorPrescription",
-                                            "detectedIssue",
-                                            "eventHistory",
-                                        ],
-                                    ));
+                                    return unknown_field_error("authoredOn");
                                 }
                             }
                             Field::Requester => {
@@ -2292,53 +1991,7 @@ impl<'de> serde::de::Deserialize<'de> for MedicationRequest {
                                         }
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "instantiatesCanonical",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "status",
-                                            "statusReason",
-                                            "intent",
-                                            "category",
-                                            "priority",
-                                            "doNotPerform",
-                                            "reportedBoolean",
-                                            "reportedReference",
-                                            "medicationCodeableConcept",
-                                            "medicationReference",
-                                            "subject",
-                                            "encounter",
-                                            "supportingInformation",
-                                            "authoredOn",
-                                            "requester",
-                                            "performer",
-                                            "performerType",
-                                            "recorder",
-                                            "reasonCode",
-                                            "reasonReference",
-                                            "instantiatesCanonical",
-                                            "instantiatesUri",
-                                            "basedOn",
-                                            "groupIdentifier",
-                                            "courseOfTherapyType",
-                                            "insurance",
-                                            "note",
-                                            "dosageInstruction",
-                                            "dispenseRequest",
-                                            "substitution",
-                                            "priorPrescription",
-                                            "detectedIssue",
-                                            "eventHistory",
-                                        ],
-                                    ));
+                                    return unknown_field_error("instantiatesCanonical");
                                 }
                             }
                             Field::InstantiatesUri => {
@@ -2401,53 +2054,7 @@ impl<'de> serde::de::Deserialize<'de> for MedicationRequest {
                                         }
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "instantiatesUri",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "status",
-                                            "statusReason",
-                                            "intent",
-                                            "category",
-                                            "priority",
-                                            "doNotPerform",
-                                            "reportedBoolean",
-                                            "reportedReference",
-                                            "medicationCodeableConcept",
-                                            "medicationReference",
-                                            "subject",
-                                            "encounter",
-                                            "supportingInformation",
-                                            "authoredOn",
-                                            "requester",
-                                            "performer",
-                                            "performerType",
-                                            "recorder",
-                                            "reasonCode",
-                                            "reasonReference",
-                                            "instantiatesCanonical",
-                                            "instantiatesUri",
-                                            "basedOn",
-                                            "groupIdentifier",
-                                            "courseOfTherapyType",
-                                            "insurance",
-                                            "note",
-                                            "dosageInstruction",
-                                            "dispenseRequest",
-                                            "substitution",
-                                            "priorPrescription",
-                                            "detectedIssue",
-                                            "eventHistory",
-                                        ],
-                                    ));
+                                    return unknown_field_error("instantiatesUri");
                                 }
                             }
                             Field::BasedOn => {

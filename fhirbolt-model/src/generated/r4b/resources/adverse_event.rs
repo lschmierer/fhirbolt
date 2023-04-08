@@ -1,4 +1,4 @@
-// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-08 by fhirbolt-codegen v0.1.0
 #[doc = "Information on the possible cause of the event."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub struct AdverseEventSuspectEntityCausality {
@@ -92,6 +92,20 @@ impl<'de> serde::de::Deserialize<'de> for AdverseEventSuspectEntityCausality {
             #[serde(rename = "method")]
             Method,
             Unknown(std::string::String),
+        }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "assessment",
+                    "productRelatedness",
+                    "author",
+                    "method",
+                ],
+            ))
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -191,18 +205,7 @@ impl<'de> serde::de::Deserialize<'de> for AdverseEventSuspectEntityCausality {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "productRelatedness",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "assessment",
-                                            "productRelatedness",
-                                            "author",
-                                            "method",
-                                        ],
-                                    ));
+                                    return unknown_field_error("productRelatedness");
                                 }
                             }
                             Field::Author => {
@@ -309,6 +312,18 @@ impl<'de> serde::de::Deserialize<'de> for AdverseEventSuspectEntity {
             #[serde(rename = "causality")]
             Causality,
             Unknown(std::string::String),
+        }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "instance",
+                    "causality",
+                ],
+            ))
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -744,6 +759,41 @@ impl<'de> serde::de::Deserialize<'de> for AdverseEvent {
             Study,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "meta",
+                    "implicitRules",
+                    "language",
+                    "text",
+                    "contained",
+                    "extension",
+                    "modifierExtension",
+                    "identifier",
+                    "actuality",
+                    "category",
+                    "event",
+                    "subject",
+                    "encounter",
+                    "date",
+                    "detected",
+                    "recordedDate",
+                    "resultingCondition",
+                    "location",
+                    "seriousness",
+                    "severity",
+                    "outcome",
+                    "recorder",
+                    "contributor",
+                    "suspectEntity",
+                    "subjectMedicalHistory",
+                    "referenceDocument",
+                    "study",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = AdverseEvent;
@@ -846,39 +896,7 @@ impl<'de> serde::de::Deserialize<'de> for AdverseEvent {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "implicitRules",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "actuality",
-                                            "category",
-                                            "event",
-                                            "subject",
-                                            "encounter",
-                                            "date",
-                                            "detected",
-                                            "recordedDate",
-                                            "resultingCondition",
-                                            "location",
-                                            "seriousness",
-                                            "severity",
-                                            "outcome",
-                                            "recorder",
-                                            "contributor",
-                                            "suspectEntity",
-                                            "subjectMedicalHistory",
-                                            "referenceDocument",
-                                            "study",
-                                        ],
-                                    ));
+                                    return unknown_field_error("implicitRules");
                                 }
                             }
                             Field::Language => {
@@ -909,39 +927,7 @@ impl<'de> serde::de::Deserialize<'de> for AdverseEvent {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "language",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "actuality",
-                                            "category",
-                                            "event",
-                                            "subject",
-                                            "encounter",
-                                            "date",
-                                            "detected",
-                                            "recordedDate",
-                                            "resultingCondition",
-                                            "location",
-                                            "seriousness",
-                                            "severity",
-                                            "outcome",
-                                            "recorder",
-                                            "contributor",
-                                            "suspectEntity",
-                                            "subjectMedicalHistory",
-                                            "referenceDocument",
-                                            "study",
-                                        ],
-                                    ));
+                                    return unknown_field_error("language");
                                 }
                             }
                             Field::Text => {
@@ -1022,39 +1008,7 @@ impl<'de> serde::de::Deserialize<'de> for AdverseEvent {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "actuality",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "actuality",
-                                            "category",
-                                            "event",
-                                            "subject",
-                                            "encounter",
-                                            "date",
-                                            "detected",
-                                            "recordedDate",
-                                            "resultingCondition",
-                                            "location",
-                                            "seriousness",
-                                            "severity",
-                                            "outcome",
-                                            "recorder",
-                                            "contributor",
-                                            "suspectEntity",
-                                            "subjectMedicalHistory",
-                                            "referenceDocument",
-                                            "study",
-                                        ],
-                                    ));
+                                    return unknown_field_error("actuality");
                                 }
                             }
                             Field::Category => {
@@ -1114,39 +1068,7 @@ impl<'de> serde::de::Deserialize<'de> for AdverseEvent {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "date",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "actuality",
-                                            "category",
-                                            "event",
-                                            "subject",
-                                            "encounter",
-                                            "date",
-                                            "detected",
-                                            "recordedDate",
-                                            "resultingCondition",
-                                            "location",
-                                            "seriousness",
-                                            "severity",
-                                            "outcome",
-                                            "recorder",
-                                            "contributor",
-                                            "suspectEntity",
-                                            "subjectMedicalHistory",
-                                            "referenceDocument",
-                                            "study",
-                                        ],
-                                    ));
+                                    return unknown_field_error("date");
                                 }
                             }
                             Field::Detected => {
@@ -1177,39 +1099,7 @@ impl<'de> serde::de::Deserialize<'de> for AdverseEvent {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "detected",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "actuality",
-                                            "category",
-                                            "event",
-                                            "subject",
-                                            "encounter",
-                                            "date",
-                                            "detected",
-                                            "recordedDate",
-                                            "resultingCondition",
-                                            "location",
-                                            "seriousness",
-                                            "severity",
-                                            "outcome",
-                                            "recorder",
-                                            "contributor",
-                                            "suspectEntity",
-                                            "subjectMedicalHistory",
-                                            "referenceDocument",
-                                            "study",
-                                        ],
-                                    ));
+                                    return unknown_field_error("detected");
                                 }
                             }
                             Field::RecordedDate => {
@@ -1246,39 +1136,7 @@ impl<'de> serde::de::Deserialize<'de> for AdverseEvent {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "recordedDate",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "actuality",
-                                            "category",
-                                            "event",
-                                            "subject",
-                                            "encounter",
-                                            "date",
-                                            "detected",
-                                            "recordedDate",
-                                            "resultingCondition",
-                                            "location",
-                                            "seriousness",
-                                            "severity",
-                                            "outcome",
-                                            "recorder",
-                                            "contributor",
-                                            "suspectEntity",
-                                            "subjectMedicalHistory",
-                                            "referenceDocument",
-                                            "study",
-                                        ],
-                                    ));
+                                    return unknown_field_error("recordedDate");
                                 }
                             }
                             Field::ResultingCondition => {

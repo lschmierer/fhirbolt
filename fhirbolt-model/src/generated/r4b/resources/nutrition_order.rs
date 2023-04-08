@@ -1,4 +1,4 @@
-// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-08 by fhirbolt-codegen v0.1.0
 #[doc = "The rate of administration of formula via a feeding pump, e.g. 60 mL per hour, according to the specified schedule."]
 #[derive(Debug, Clone, PartialEq)]
 pub enum NutritionOrderEnteralFormulaAdministrationRate {
@@ -72,6 +72,12 @@ impl<'de> serde::de::Deserialize<'de> for NutritionOrderOralDietNutrient {
             #[serde(rename = "amount")]
             Amount,
             Unknown(std::string::String),
+        }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &["id", "extension", "modifierExtension", "modifier", "amount"],
+            ))
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -223,6 +229,18 @@ impl<'de> serde::de::Deserialize<'de> for NutritionOrderOralDietTexture {
             #[serde(rename = "foodType")]
             FoodType,
             Unknown(std::string::String),
+        }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "modifier",
+                    "foodType",
+                ],
+            ))
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -427,6 +445,22 @@ impl<'de> serde::de::Deserialize<'de> for NutritionOrderOralDiet {
             InstructionPrimitiveElement,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "type",
+                    "schedule",
+                    "nutrient",
+                    "texture",
+                    "fluidConsistencyType",
+                    "instruction",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = NutritionOrderOralDiet;
@@ -576,20 +610,7 @@ impl<'de> serde::de::Deserialize<'de> for NutritionOrderOralDiet {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "instruction",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "type",
-                                            "schedule",
-                                            "nutrient",
-                                            "texture",
-                                            "fluidConsistencyType",
-                                            "instruction",
-                                        ],
-                                    ));
+                                    return unknown_field_error("instruction");
                                 }
                             }
                             Field::Unknown(key) => if _ctx.config.mode
@@ -748,6 +769,21 @@ impl<'de> serde::de::Deserialize<'de> for NutritionOrderSupplement {
             InstructionPrimitiveElement,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "type",
+                    "productName",
+                    "schedule",
+                    "quantity",
+                    "instruction",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = NutritionOrderSupplement;
@@ -842,19 +878,7 @@ impl<'de> serde::de::Deserialize<'de> for NutritionOrderSupplement {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "productName",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "type",
-                                            "productName",
-                                            "schedule",
-                                            "quantity",
-                                            "instruction",
-                                        ],
-                                    ));
+                                    return unknown_field_error("productName");
                                 }
                             }
                             Field::Schedule => {
@@ -908,19 +932,7 @@ impl<'de> serde::de::Deserialize<'de> for NutritionOrderSupplement {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "instruction",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "type",
-                                            "productName",
-                                            "schedule",
-                                            "quantity",
-                                            "instruction",
-                                        ],
-                                    ));
+                                    return unknown_field_error("instruction");
                                 }
                             }
                             Field::Unknown(key) => if _ctx.config.mode
@@ -1038,6 +1050,20 @@ impl<'de> serde::de::Deserialize<'de> for NutritionOrderEnteralFormulaAdministra
             #[serde(rename = "rateRatio")]
             RateRatio,
             Unknown(std::string::String),
+        }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "schedule",
+                    "quantity",
+                    "rateQuantity",
+                    "rateRatio",
+                ],
+            ))
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -1321,6 +1347,25 @@ impl<'de> serde::de::Deserialize<'de> for NutritionOrderEnteralFormula {
             AdministrationInstructionPrimitiveElement,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "baseFormulaType",
+                    "baseFormulaProductName",
+                    "additiveType",
+                    "additiveProductName",
+                    "caloricDensity",
+                    "routeofAdministration",
+                    "administration",
+                    "maxVolumeToDeliver",
+                    "administrationInstruction",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = NutritionOrderEnteralFormula;
@@ -1430,23 +1475,7 @@ impl<'de> serde::de::Deserialize<'de> for NutritionOrderEnteralFormula {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "baseFormulaProductName",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "baseFormulaType",
-                                            "baseFormulaProductName",
-                                            "additiveType",
-                                            "additiveProductName",
-                                            "caloricDensity",
-                                            "routeofAdministration",
-                                            "administration",
-                                            "maxVolumeToDeliver",
-                                            "administrationInstruction",
-                                        ],
-                                    ));
+                                    return unknown_field_error("baseFormulaProductName");
                                 }
                             }
                             Field::AdditiveType => {
@@ -1491,23 +1520,7 @@ impl<'de> serde::de::Deserialize<'de> for NutritionOrderEnteralFormula {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "additiveProductName",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "baseFormulaType",
-                                            "baseFormulaProductName",
-                                            "additiveType",
-                                            "additiveProductName",
-                                            "caloricDensity",
-                                            "routeofAdministration",
-                                            "administration",
-                                            "maxVolumeToDeliver",
-                                            "administrationInstruction",
-                                        ],
-                                    ));
+                                    return unknown_field_error("additiveProductName");
                                 }
                             }
                             Field::CaloricDensity => {
@@ -1583,23 +1596,7 @@ impl<'de> serde::de::Deserialize<'de> for NutritionOrderEnteralFormula {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "administrationInstruction",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "baseFormulaType",
-                                            "baseFormulaProductName",
-                                            "additiveType",
-                                            "additiveProductName",
-                                            "caloricDensity",
-                                            "routeofAdministration",
-                                            "administration",
-                                            "maxVolumeToDeliver",
-                                            "administrationInstruction",
-                                        ],
-                                    ));
+                                    return unknown_field_error("administrationInstruction");
                                 }
                             }
                             Field::Unknown(key) => if _ctx.config.mode
@@ -2042,6 +2039,38 @@ impl<'de> serde::de::Deserialize<'de> for NutritionOrder {
             Note,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "meta",
+                    "implicitRules",
+                    "language",
+                    "text",
+                    "contained",
+                    "extension",
+                    "modifierExtension",
+                    "identifier",
+                    "instantiatesCanonical",
+                    "instantiatesUri",
+                    "instantiates",
+                    "status",
+                    "intent",
+                    "patient",
+                    "encounter",
+                    "dateTime",
+                    "orderer",
+                    "allergyIntolerance",
+                    "foodPreferenceModifier",
+                    "excludeFoodModifier",
+                    "oralDiet",
+                    "supplement",
+                    "enteralFormula",
+                    "note",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = NutritionOrder;
@@ -2143,36 +2172,7 @@ impl<'de> serde::de::Deserialize<'de> for NutritionOrder {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "implicitRules",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "instantiatesCanonical",
-                                            "instantiatesUri",
-                                            "instantiates",
-                                            "status",
-                                            "intent",
-                                            "patient",
-                                            "encounter",
-                                            "dateTime",
-                                            "orderer",
-                                            "allergyIntolerance",
-                                            "foodPreferenceModifier",
-                                            "excludeFoodModifier",
-                                            "oralDiet",
-                                            "supplement",
-                                            "enteralFormula",
-                                            "note",
-                                        ],
-                                    ));
+                                    return unknown_field_error("implicitRules");
                                 }
                             }
                             Field::Language => {
@@ -2203,36 +2203,7 @@ impl<'de> serde::de::Deserialize<'de> for NutritionOrder {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "language",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "instantiatesCanonical",
-                                            "instantiatesUri",
-                                            "instantiates",
-                                            "status",
-                                            "intent",
-                                            "patient",
-                                            "encounter",
-                                            "dateTime",
-                                            "orderer",
-                                            "allergyIntolerance",
-                                            "foodPreferenceModifier",
-                                            "excludeFoodModifier",
-                                            "oralDiet",
-                                            "supplement",
-                                            "enteralFormula",
-                                            "note",
-                                        ],
-                                    ));
+                                    return unknown_field_error("language");
                                 }
                             }
                             Field::Text => {
@@ -2351,36 +2322,7 @@ impl<'de> serde::de::Deserialize<'de> for NutritionOrder {
                                         }
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "instantiatesCanonical",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "instantiatesCanonical",
-                                            "instantiatesUri",
-                                            "instantiates",
-                                            "status",
-                                            "intent",
-                                            "patient",
-                                            "encounter",
-                                            "dateTime",
-                                            "orderer",
-                                            "allergyIntolerance",
-                                            "foodPreferenceModifier",
-                                            "excludeFoodModifier",
-                                            "oralDiet",
-                                            "supplement",
-                                            "enteralFormula",
-                                            "note",
-                                        ],
-                                    ));
+                                    return unknown_field_error("instantiatesCanonical");
                                 }
                             }
                             Field::InstantiatesUri => {
@@ -2443,36 +2385,7 @@ impl<'de> serde::de::Deserialize<'de> for NutritionOrder {
                                         }
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "instantiatesUri",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "instantiatesCanonical",
-                                            "instantiatesUri",
-                                            "instantiates",
-                                            "status",
-                                            "intent",
-                                            "patient",
-                                            "encounter",
-                                            "dateTime",
-                                            "orderer",
-                                            "allergyIntolerance",
-                                            "foodPreferenceModifier",
-                                            "excludeFoodModifier",
-                                            "oralDiet",
-                                            "supplement",
-                                            "enteralFormula",
-                                            "note",
-                                        ],
-                                    ));
+                                    return unknown_field_error("instantiatesUri");
                                 }
                             }
                             Field::Instantiates => {
@@ -2535,36 +2448,7 @@ impl<'de> serde::de::Deserialize<'de> for NutritionOrder {
                                         }
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "instantiates",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "instantiatesCanonical",
-                                            "instantiatesUri",
-                                            "instantiates",
-                                            "status",
-                                            "intent",
-                                            "patient",
-                                            "encounter",
-                                            "dateTime",
-                                            "orderer",
-                                            "allergyIntolerance",
-                                            "foodPreferenceModifier",
-                                            "excludeFoodModifier",
-                                            "oralDiet",
-                                            "supplement",
-                                            "enteralFormula",
-                                            "note",
-                                        ],
-                                    ));
+                                    return unknown_field_error("instantiates");
                                 }
                             }
                             Field::Status => {
@@ -2595,36 +2479,7 @@ impl<'de> serde::de::Deserialize<'de> for NutritionOrder {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "status",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "instantiatesCanonical",
-                                            "instantiatesUri",
-                                            "instantiates",
-                                            "status",
-                                            "intent",
-                                            "patient",
-                                            "encounter",
-                                            "dateTime",
-                                            "orderer",
-                                            "allergyIntolerance",
-                                            "foodPreferenceModifier",
-                                            "excludeFoodModifier",
-                                            "oralDiet",
-                                            "supplement",
-                                            "enteralFormula",
-                                            "note",
-                                        ],
-                                    ));
+                                    return unknown_field_error("status");
                                 }
                             }
                             Field::Intent => {
@@ -2655,36 +2510,7 @@ impl<'de> serde::de::Deserialize<'de> for NutritionOrder {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "intent",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "instantiatesCanonical",
-                                            "instantiatesUri",
-                                            "instantiates",
-                                            "status",
-                                            "intent",
-                                            "patient",
-                                            "encounter",
-                                            "dateTime",
-                                            "orderer",
-                                            "allergyIntolerance",
-                                            "foodPreferenceModifier",
-                                            "excludeFoodModifier",
-                                            "oralDiet",
-                                            "supplement",
-                                            "enteralFormula",
-                                            "note",
-                                        ],
-                                    ));
+                                    return unknown_field_error("intent");
                                 }
                             }
                             Field::Patient => {
@@ -2727,36 +2553,7 @@ impl<'de> serde::de::Deserialize<'de> for NutritionOrder {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "dateTime",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "instantiatesCanonical",
-                                            "instantiatesUri",
-                                            "instantiates",
-                                            "status",
-                                            "intent",
-                                            "patient",
-                                            "encounter",
-                                            "dateTime",
-                                            "orderer",
-                                            "allergyIntolerance",
-                                            "foodPreferenceModifier",
-                                            "excludeFoodModifier",
-                                            "oralDiet",
-                                            "supplement",
-                                            "enteralFormula",
-                                            "note",
-                                        ],
-                                    ));
+                                    return unknown_field_error("dateTime");
                                 }
                             }
                             Field::Orderer => {

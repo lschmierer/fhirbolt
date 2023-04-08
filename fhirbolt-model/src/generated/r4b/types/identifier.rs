@@ -1,4 +1,4 @@
-// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-08 by fhirbolt-codegen v0.1.0
 #[doc = "Base StructureDefinition for Identifier Type: An identifier - identifies some entity uniquely and unambiguously. Typically this is used for business identifiers.\n\nNeed to be able to identify things with confidence and be sure that the identification is not subject to misinterpretation."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub struct Identifier {
@@ -136,6 +136,21 @@ impl<'de> serde::de::Deserialize<'de> for Identifier {
             Assigner,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "use",
+                    "type",
+                    "system",
+                    "value",
+                    "period",
+                    "assigner",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = Identifier;
@@ -203,19 +218,7 @@ impl<'de> serde::de::Deserialize<'de> for Identifier {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "use",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "use",
-                                            "type",
-                                            "system",
-                                            "value",
-                                            "period",
-                                            "assigner",
-                                        ],
-                                    ));
+                                    return unknown_field_error("use");
                                 }
                             }
                             Field::Type => {
@@ -252,19 +255,7 @@ impl<'de> serde::de::Deserialize<'de> for Identifier {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "system",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "use",
-                                            "type",
-                                            "system",
-                                            "value",
-                                            "period",
-                                            "assigner",
-                                        ],
-                                    ));
+                                    return unknown_field_error("system");
                                 }
                             }
                             Field::Value => {
@@ -295,19 +286,7 @@ impl<'de> serde::de::Deserialize<'de> for Identifier {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "value",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "use",
-                                            "type",
-                                            "system",
-                                            "value",
-                                            "period",
-                                            "assigner",
-                                        ],
-                                    ));
+                                    return unknown_field_error("value");
                                 }
                             }
                             Field::Period => {

@@ -1,4 +1,4 @@
-// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-08 by fhirbolt-codegen v0.1.0
 #[doc = "Base StructureDefinition for RelatedArtifact Type: Related artifacts such as additional documentation, justification, or bibliographic references.\n\nKnowledge resources must be able to provide enough information for consumers of the content (and/or interventions or results produced by the content) to be able to determine and understand the justification for and evidence in support of the content."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub struct RelatedArtifact {
@@ -193,6 +193,22 @@ impl<'de> serde::de::Deserialize<'de> for RelatedArtifact {
             ResourcePrimitiveElement,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "type",
+                    "label",
+                    "display",
+                    "citation",
+                    "url",
+                    "document",
+                    "resource",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = RelatedArtifact;
@@ -261,20 +277,7 @@ impl<'de> serde::de::Deserialize<'de> for RelatedArtifact {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "type",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "type",
-                                            "label",
-                                            "display",
-                                            "citation",
-                                            "url",
-                                            "document",
-                                            "resource",
-                                        ],
-                                    ));
+                                    return unknown_field_error("type");
                                 }
                             }
                             Field::Label => {
@@ -305,20 +308,7 @@ impl<'de> serde::de::Deserialize<'de> for RelatedArtifact {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "label",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "type",
-                                            "label",
-                                            "display",
-                                            "citation",
-                                            "url",
-                                            "document",
-                                            "resource",
-                                        ],
-                                    ));
+                                    return unknown_field_error("label");
                                 }
                             }
                             Field::Display => {
@@ -349,20 +339,7 @@ impl<'de> serde::de::Deserialize<'de> for RelatedArtifact {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "display",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "type",
-                                            "label",
-                                            "display",
-                                            "citation",
-                                            "url",
-                                            "document",
-                                            "resource",
-                                        ],
-                                    ));
+                                    return unknown_field_error("display");
                                 }
                             }
                             Field::Citation => {
@@ -393,20 +370,7 @@ impl<'de> serde::de::Deserialize<'de> for RelatedArtifact {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "citation",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "type",
-                                            "label",
-                                            "display",
-                                            "citation",
-                                            "url",
-                                            "document",
-                                            "resource",
-                                        ],
-                                    ));
+                                    return unknown_field_error("citation");
                                 }
                             }
                             Field::Url => {
@@ -437,20 +401,7 @@ impl<'de> serde::de::Deserialize<'de> for RelatedArtifact {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "url",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "type",
-                                            "label",
-                                            "display",
-                                            "citation",
-                                            "url",
-                                            "document",
-                                            "resource",
-                                        ],
-                                    ));
+                                    return unknown_field_error("url");
                                 }
                             }
                             Field::Document => {
@@ -487,20 +438,7 @@ impl<'de> serde::de::Deserialize<'de> for RelatedArtifact {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "resource",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "type",
-                                            "label",
-                                            "display",
-                                            "citation",
-                                            "url",
-                                            "document",
-                                            "resource",
-                                        ],
-                                    ));
+                                    return unknown_field_error("resource");
                                 }
                             }
                             Field::Unknown(key) => if _ctx.config.mode

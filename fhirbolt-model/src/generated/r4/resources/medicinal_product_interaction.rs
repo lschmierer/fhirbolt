@@ -1,4 +1,4 @@
-// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-08 by fhirbolt-codegen v0.1.0
 #[doc = "The specific medication, food or laboratory test that interacts."]
 #[derive(Debug, Clone, PartialEq)]
 pub enum MedicinalProductInteractionInteractantItem {
@@ -75,6 +75,18 @@ impl<'de> serde::de::Deserialize<'de> for MedicinalProductInteractionInteractant
             #[serde(rename = "itemCodeableConcept")]
             ItemCodeableConcept,
             Unknown(std::string::String),
+        }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "itemReference",
+                    "itemCodeableConcept",
+                ],
+            ))
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -376,6 +388,28 @@ impl<'de> serde::de::Deserialize<'de> for MedicinalProductInteraction {
             Management,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "meta",
+                    "implicitRules",
+                    "language",
+                    "text",
+                    "contained",
+                    "extension",
+                    "modifierExtension",
+                    "subject",
+                    "description",
+                    "interactant",
+                    "type",
+                    "effect",
+                    "incidence",
+                    "management",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = MedicinalProductInteraction;
@@ -464,26 +498,7 @@ impl<'de> serde::de::Deserialize<'de> for MedicinalProductInteraction {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "implicitRules",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "subject",
-                                            "description",
-                                            "interactant",
-                                            "type",
-                                            "effect",
-                                            "incidence",
-                                            "management",
-                                        ],
-                                    ));
+                                    return unknown_field_error("implicitRules");
                                 }
                             }
                             Field::Language => {
@@ -514,26 +529,7 @@ impl<'de> serde::de::Deserialize<'de> for MedicinalProductInteraction {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "language",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "subject",
-                                            "description",
-                                            "interactant",
-                                            "type",
-                                            "effect",
-                                            "incidence",
-                                            "management",
-                                        ],
-                                    ));
+                                    return unknown_field_error("language");
                                 }
                             }
                             Field::Text => {
@@ -623,26 +619,7 @@ impl<'de> serde::de::Deserialize<'de> for MedicinalProductInteraction {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "description",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "subject",
-                                            "description",
-                                            "interactant",
-                                            "type",
-                                            "effect",
-                                            "incidence",
-                                            "management",
-                                        ],
-                                    ));
+                                    return unknown_field_error("description");
                                 }
                             }
                             Field::Interactant => {

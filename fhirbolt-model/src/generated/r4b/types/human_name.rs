@@ -1,4 +1,4 @@
-// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-08 by fhirbolt-codegen v0.1.0
 #[doc = "Base StructureDefinition for HumanName Type: A human's name with the ability to identify parts and usage.\n\nNeed to be able to record names, along with notes about their use."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub struct HumanName {
@@ -254,6 +254,22 @@ impl<'de> serde::de::Deserialize<'de> for HumanName {
             Period,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "use",
+                    "text",
+                    "family",
+                    "given",
+                    "prefix",
+                    "suffix",
+                    "period",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = HumanName;
@@ -322,20 +338,7 @@ impl<'de> serde::de::Deserialize<'de> for HumanName {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "use",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "use",
-                                            "text",
-                                            "family",
-                                            "given",
-                                            "prefix",
-                                            "suffix",
-                                            "period",
-                                        ],
-                                    ));
+                                    return unknown_field_error("use");
                                 }
                             }
                             Field::Text => {
@@ -366,20 +369,7 @@ impl<'de> serde::de::Deserialize<'de> for HumanName {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "text",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "use",
-                                            "text",
-                                            "family",
-                                            "given",
-                                            "prefix",
-                                            "suffix",
-                                            "period",
-                                        ],
-                                    ));
+                                    return unknown_field_error("text");
                                 }
                             }
                             Field::Family => {
@@ -410,20 +400,7 @@ impl<'de> serde::de::Deserialize<'de> for HumanName {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "family",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "use",
-                                            "text",
-                                            "family",
-                                            "given",
-                                            "prefix",
-                                            "suffix",
-                                            "period",
-                                        ],
-                                    ));
+                                    return unknown_field_error("family");
                                 }
                             }
                             Field::Given => {
@@ -482,20 +459,7 @@ impl<'de> serde::de::Deserialize<'de> for HumanName {
                                         }
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "given",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "use",
-                                            "text",
-                                            "family",
-                                            "given",
-                                            "prefix",
-                                            "suffix",
-                                            "period",
-                                        ],
-                                    ));
+                                    return unknown_field_error("given");
                                 }
                             }
                             Field::Prefix => {
@@ -554,20 +518,7 @@ impl<'de> serde::de::Deserialize<'de> for HumanName {
                                         }
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "prefix",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "use",
-                                            "text",
-                                            "family",
-                                            "given",
-                                            "prefix",
-                                            "suffix",
-                                            "period",
-                                        ],
-                                    ));
+                                    return unknown_field_error("prefix");
                                 }
                             }
                             Field::Suffix => {
@@ -626,20 +577,7 @@ impl<'de> serde::de::Deserialize<'de> for HumanName {
                                         }
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "suffix",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "use",
-                                            "text",
-                                            "family",
-                                            "given",
-                                            "prefix",
-                                            "suffix",
-                                            "period",
-                                        ],
-                                    ));
+                                    return unknown_field_error("suffix");
                                 }
                             }
                             Field::Period => {

@@ -1,4 +1,4 @@
-// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-08 by fhirbolt-codegen v0.1.0
 #[doc = "The item that is requested to be supplied. This is either a link to a resource representing the details of the item or a code that identifies the item from a known list."]
 #[derive(Debug, Clone, PartialEq)]
 pub enum SupplyRequestItem {
@@ -139,6 +139,21 @@ impl<'de> serde::de::Deserialize<'de> for SupplyRequestParameter {
             ValueBooleanPrimitiveElement,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "code",
+                    "valueCodeableConcept",
+                    "valueQuantity",
+                    "valueRange",
+                    "valueBoolean",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = SupplyRequestParameter;
@@ -270,19 +285,7 @@ impl<'de> serde::de::Deserialize<'de> for SupplyRequestParameter {
                                         return Err(serde::de::Error::duplicate_field("_value[x]"));
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "valueBoolean",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "code",
-                                            "valueCodeableConcept",
-                                            "valueQuantity",
-                                            "valueRange",
-                                            "valueBoolean",
-                                        ],
-                                    ));
+                                    return unknown_field_error("valueBoolean");
                                 }
                             }
                             Field::Unknown(key) => if _ctx.config.mode
@@ -643,6 +646,39 @@ impl<'de> serde::de::Deserialize<'de> for SupplyRequest {
             DeliverTo,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "meta",
+                    "implicitRules",
+                    "language",
+                    "text",
+                    "contained",
+                    "extension",
+                    "modifierExtension",
+                    "identifier",
+                    "status",
+                    "category",
+                    "priority",
+                    "itemCodeableConcept",
+                    "itemReference",
+                    "quantity",
+                    "parameter",
+                    "occurrenceDateTime",
+                    "occurrencePeriod",
+                    "occurrenceTiming",
+                    "authoredOn",
+                    "requester",
+                    "supplier",
+                    "reasonCode",
+                    "reasonReference",
+                    "deliverFrom",
+                    "deliverTo",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = SupplyRequest;
@@ -737,37 +773,7 @@ impl<'de> serde::de::Deserialize<'de> for SupplyRequest {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "implicitRules",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "status",
-                                            "category",
-                                            "priority",
-                                            "itemCodeableConcept",
-                                            "itemReference",
-                                            "quantity",
-                                            "parameter",
-                                            "occurrenceDateTime",
-                                            "occurrencePeriod",
-                                            "occurrenceTiming",
-                                            "authoredOn",
-                                            "requester",
-                                            "supplier",
-                                            "reasonCode",
-                                            "reasonReference",
-                                            "deliverFrom",
-                                            "deliverTo",
-                                        ],
-                                    ));
+                                    return unknown_field_error("implicitRules");
                                 }
                             }
                             Field::Language => {
@@ -798,37 +804,7 @@ impl<'de> serde::de::Deserialize<'de> for SupplyRequest {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "language",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "status",
-                                            "category",
-                                            "priority",
-                                            "itemCodeableConcept",
-                                            "itemReference",
-                                            "quantity",
-                                            "parameter",
-                                            "occurrenceDateTime",
-                                            "occurrencePeriod",
-                                            "occurrenceTiming",
-                                            "authoredOn",
-                                            "requester",
-                                            "supplier",
-                                            "reasonCode",
-                                            "reasonReference",
-                                            "deliverFrom",
-                                            "deliverTo",
-                                        ],
-                                    ));
+                                    return unknown_field_error("language");
                                 }
                             }
                             Field::Text => {
@@ -914,37 +890,7 @@ impl<'de> serde::de::Deserialize<'de> for SupplyRequest {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "status",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "status",
-                                            "category",
-                                            "priority",
-                                            "itemCodeableConcept",
-                                            "itemReference",
-                                            "quantity",
-                                            "parameter",
-                                            "occurrenceDateTime",
-                                            "occurrencePeriod",
-                                            "occurrenceTiming",
-                                            "authoredOn",
-                                            "requester",
-                                            "supplier",
-                                            "reasonCode",
-                                            "reasonReference",
-                                            "deliverFrom",
-                                            "deliverTo",
-                                        ],
-                                    ));
+                                    return unknown_field_error("status");
                                 }
                             }
                             Field::Category => {
@@ -981,37 +927,7 @@ impl<'de> serde::de::Deserialize<'de> for SupplyRequest {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "priority",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "status",
-                                            "category",
-                                            "priority",
-                                            "itemCodeableConcept",
-                                            "itemReference",
-                                            "quantity",
-                                            "parameter",
-                                            "occurrenceDateTime",
-                                            "occurrencePeriod",
-                                            "occurrenceTiming",
-                                            "authoredOn",
-                                            "requester",
-                                            "supplier",
-                                            "reasonCode",
-                                            "reasonReference",
-                                            "deliverFrom",
-                                            "deliverTo",
-                                        ],
-                                    ));
+                                    return unknown_field_error("priority");
                                 }
                             }
                             Field::ItemCodeableConcept => {
@@ -1100,37 +1016,7 @@ impl<'de> serde::de::Deserialize<'de> for SupplyRequest {
                                         ));
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "occurrenceDateTime",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "status",
-                                            "category",
-                                            "priority",
-                                            "itemCodeableConcept",
-                                            "itemReference",
-                                            "quantity",
-                                            "parameter",
-                                            "occurrenceDateTime",
-                                            "occurrencePeriod",
-                                            "occurrenceTiming",
-                                            "authoredOn",
-                                            "requester",
-                                            "supplier",
-                                            "reasonCode",
-                                            "reasonReference",
-                                            "deliverFrom",
-                                            "deliverTo",
-                                        ],
-                                    ));
+                                    return unknown_field_error("occurrenceDateTime");
                                 }
                             }
                             Field::OccurrencePeriod => {
@@ -1185,37 +1071,7 @@ impl<'de> serde::de::Deserialize<'de> for SupplyRequest {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "authoredOn",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "status",
-                                            "category",
-                                            "priority",
-                                            "itemCodeableConcept",
-                                            "itemReference",
-                                            "quantity",
-                                            "parameter",
-                                            "occurrenceDateTime",
-                                            "occurrencePeriod",
-                                            "occurrenceTiming",
-                                            "authoredOn",
-                                            "requester",
-                                            "supplier",
-                                            "reasonCode",
-                                            "reasonReference",
-                                            "deliverFrom",
-                                            "deliverTo",
-                                        ],
-                                    ));
+                                    return unknown_field_error("authoredOn");
                                 }
                             }
                             Field::Requester => {

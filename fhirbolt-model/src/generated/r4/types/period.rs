@@ -1,4 +1,4 @@
-// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-08 by fhirbolt-codegen v0.1.0
 #[doc = "Base StructureDefinition for Period Type: A time period defined by a start and end date and optionally time."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub struct Period {
@@ -90,6 +90,12 @@ impl<'de> serde::de::Deserialize<'de> for Period {
             EndPrimitiveElement,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &["id", "extension", "start", "end"],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = Period;
@@ -153,10 +159,7 @@ impl<'de> serde::de::Deserialize<'de> for Period {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "start",
-                                        &["id", "extension", "start", "end"],
-                                    ));
+                                    return unknown_field_error("start");
                                 }
                             }
                             Field::End => {
@@ -187,10 +190,7 @@ impl<'de> serde::de::Deserialize<'de> for Period {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "end",
-                                        &["id", "extension", "start", "end"],
-                                    ));
+                                    return unknown_field_error("end");
                                 }
                             }
                             Field::Unknown(key) => if _ctx.config.mode

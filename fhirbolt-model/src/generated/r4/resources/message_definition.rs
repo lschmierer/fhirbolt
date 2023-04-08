@@ -1,4 +1,4 @@
-// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-08 by fhirbolt-codegen v0.1.0
 #[doc = "Event code or link to the EventDefinition."]
 #[derive(Debug, Clone, PartialEq)]
 pub enum MessageDefinitionEvent {
@@ -151,6 +151,20 @@ impl<'de> serde::de::Deserialize<'de> for MessageDefinitionFocus {
             MaxPrimitiveElement,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "code",
+                    "profile",
+                    "min",
+                    "max",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = MessageDefinitionFocus;
@@ -232,18 +246,7 @@ impl<'de> serde::de::Deserialize<'de> for MessageDefinitionFocus {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "code",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "code",
-                                            "profile",
-                                            "min",
-                                            "max",
-                                        ],
-                                    ));
+                                    return unknown_field_error("code");
                                 }
                             }
                             Field::Profile => {
@@ -274,18 +277,7 @@ impl<'de> serde::de::Deserialize<'de> for MessageDefinitionFocus {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "profile",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "code",
-                                            "profile",
-                                            "min",
-                                            "max",
-                                        ],
-                                    ));
+                                    return unknown_field_error("profile");
                                 }
                             }
                             Field::Min => {
@@ -316,18 +308,7 @@ impl<'de> serde::de::Deserialize<'de> for MessageDefinitionFocus {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "min",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "code",
-                                            "profile",
-                                            "min",
-                                            "max",
-                                        ],
-                                    ));
+                                    return unknown_field_error("min");
                                 }
                             }
                             Field::Max => {
@@ -358,18 +339,7 @@ impl<'de> serde::de::Deserialize<'de> for MessageDefinitionFocus {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "max",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "code",
-                                            "profile",
-                                            "min",
-                                            "max",
-                                        ],
-                                    ));
+                                    return unknown_field_error("max");
                                 }
                             }
                             Field::Unknown(key) => if _ctx.config.mode
@@ -511,6 +481,18 @@ impl<'de> serde::de::Deserialize<'de> for MessageDefinitionAllowedResponse {
             SituationPrimitiveElement,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "message",
+                    "situation",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = MessageDefinitionAllowedResponse;
@@ -593,16 +575,7 @@ impl<'de> serde::de::Deserialize<'de> for MessageDefinitionAllowedResponse {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "message",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "message",
-                                            "situation",
-                                        ],
-                                    ));
+                                    return unknown_field_error("message");
                                 }
                             }
                             Field::Situation => {
@@ -635,16 +608,7 @@ impl<'de> serde::de::Deserialize<'de> for MessageDefinitionAllowedResponse {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "situation",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "message",
-                                            "situation",
-                                        ],
-                                    ));
+                                    return unknown_field_error("situation");
                                 }
                             }
                             Field::Unknown(key) => if _ctx.config.mode
@@ -1356,6 +1320,46 @@ impl<'de> serde::de::Deserialize<'de> for MessageDefinition {
             GraphPrimitiveElement,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "meta",
+                    "implicitRules",
+                    "language",
+                    "text",
+                    "contained",
+                    "extension",
+                    "modifierExtension",
+                    "url",
+                    "identifier",
+                    "version",
+                    "name",
+                    "title",
+                    "replaces",
+                    "status",
+                    "experimental",
+                    "date",
+                    "publisher",
+                    "contact",
+                    "description",
+                    "useContext",
+                    "jurisdiction",
+                    "purpose",
+                    "copyright",
+                    "base",
+                    "parent",
+                    "eventCoding",
+                    "eventUri",
+                    "category",
+                    "focus",
+                    "responseRequired",
+                    "allowedResponse",
+                    "graph",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = MessageDefinition;
@@ -1459,44 +1463,7 @@ impl<'de> serde::de::Deserialize<'de> for MessageDefinition {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "implicitRules",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "identifier",
-                                            "version",
-                                            "name",
-                                            "title",
-                                            "replaces",
-                                            "status",
-                                            "experimental",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "description",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "purpose",
-                                            "copyright",
-                                            "base",
-                                            "parent",
-                                            "eventCoding",
-                                            "eventUri",
-                                            "category",
-                                            "focus",
-                                            "responseRequired",
-                                            "allowedResponse",
-                                            "graph",
-                                        ],
-                                    ));
+                                    return unknown_field_error("implicitRules");
                                 }
                             }
                             Field::Language => {
@@ -1527,44 +1494,7 @@ impl<'de> serde::de::Deserialize<'de> for MessageDefinition {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "language",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "identifier",
-                                            "version",
-                                            "name",
-                                            "title",
-                                            "replaces",
-                                            "status",
-                                            "experimental",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "description",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "purpose",
-                                            "copyright",
-                                            "base",
-                                            "parent",
-                                            "eventCoding",
-                                            "eventUri",
-                                            "category",
-                                            "focus",
-                                            "responseRequired",
-                                            "allowedResponse",
-                                            "graph",
-                                        ],
-                                    ));
+                                    return unknown_field_error("language");
                                 }
                             }
                             Field::Text => {
@@ -1637,44 +1567,7 @@ impl<'de> serde::de::Deserialize<'de> for MessageDefinition {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "url",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "identifier",
-                                            "version",
-                                            "name",
-                                            "title",
-                                            "replaces",
-                                            "status",
-                                            "experimental",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "description",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "purpose",
-                                            "copyright",
-                                            "base",
-                                            "parent",
-                                            "eventCoding",
-                                            "eventUri",
-                                            "category",
-                                            "focus",
-                                            "responseRequired",
-                                            "allowedResponse",
-                                            "graph",
-                                        ],
-                                    ));
+                                    return unknown_field_error("url");
                                 }
                             }
                             Field::Identifier => {
@@ -1718,44 +1611,7 @@ impl<'de> serde::de::Deserialize<'de> for MessageDefinition {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "version",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "identifier",
-                                            "version",
-                                            "name",
-                                            "title",
-                                            "replaces",
-                                            "status",
-                                            "experimental",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "description",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "purpose",
-                                            "copyright",
-                                            "base",
-                                            "parent",
-                                            "eventCoding",
-                                            "eventUri",
-                                            "category",
-                                            "focus",
-                                            "responseRequired",
-                                            "allowedResponse",
-                                            "graph",
-                                        ],
-                                    ));
+                                    return unknown_field_error("version");
                                 }
                             }
                             Field::Name => {
@@ -1786,44 +1642,7 @@ impl<'de> serde::de::Deserialize<'de> for MessageDefinition {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "name",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "identifier",
-                                            "version",
-                                            "name",
-                                            "title",
-                                            "replaces",
-                                            "status",
-                                            "experimental",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "description",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "purpose",
-                                            "copyright",
-                                            "base",
-                                            "parent",
-                                            "eventCoding",
-                                            "eventUri",
-                                            "category",
-                                            "focus",
-                                            "responseRequired",
-                                            "allowedResponse",
-                                            "graph",
-                                        ],
-                                    ));
+                                    return unknown_field_error("name");
                                 }
                             }
                             Field::Title => {
@@ -1854,44 +1673,7 @@ impl<'de> serde::de::Deserialize<'de> for MessageDefinition {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "title",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "identifier",
-                                            "version",
-                                            "name",
-                                            "title",
-                                            "replaces",
-                                            "status",
-                                            "experimental",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "description",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "purpose",
-                                            "copyright",
-                                            "base",
-                                            "parent",
-                                            "eventCoding",
-                                            "eventUri",
-                                            "category",
-                                            "focus",
-                                            "responseRequired",
-                                            "allowedResponse",
-                                            "graph",
-                                        ],
-                                    ));
+                                    return unknown_field_error("title");
                                 }
                             }
                             Field::Replaces => {
@@ -1950,44 +1732,7 @@ impl<'de> serde::de::Deserialize<'de> for MessageDefinition {
                                         }
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "replaces",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "identifier",
-                                            "version",
-                                            "name",
-                                            "title",
-                                            "replaces",
-                                            "status",
-                                            "experimental",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "description",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "purpose",
-                                            "copyright",
-                                            "base",
-                                            "parent",
-                                            "eventCoding",
-                                            "eventUri",
-                                            "category",
-                                            "focus",
-                                            "responseRequired",
-                                            "allowedResponse",
-                                            "graph",
-                                        ],
-                                    ));
+                                    return unknown_field_error("replaces");
                                 }
                             }
                             Field::Status => {
@@ -2018,44 +1763,7 @@ impl<'de> serde::de::Deserialize<'de> for MessageDefinition {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "status",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "identifier",
-                                            "version",
-                                            "name",
-                                            "title",
-                                            "replaces",
-                                            "status",
-                                            "experimental",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "description",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "purpose",
-                                            "copyright",
-                                            "base",
-                                            "parent",
-                                            "eventCoding",
-                                            "eventUri",
-                                            "category",
-                                            "focus",
-                                            "responseRequired",
-                                            "allowedResponse",
-                                            "graph",
-                                        ],
-                                    ));
+                                    return unknown_field_error("status");
                                 }
                             }
                             Field::Experimental => {
@@ -2092,44 +1800,7 @@ impl<'de> serde::de::Deserialize<'de> for MessageDefinition {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "experimental",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "identifier",
-                                            "version",
-                                            "name",
-                                            "title",
-                                            "replaces",
-                                            "status",
-                                            "experimental",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "description",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "purpose",
-                                            "copyright",
-                                            "base",
-                                            "parent",
-                                            "eventCoding",
-                                            "eventUri",
-                                            "category",
-                                            "focus",
-                                            "responseRequired",
-                                            "allowedResponse",
-                                            "graph",
-                                        ],
-                                    ));
+                                    return unknown_field_error("experimental");
                                 }
                             }
                             Field::Date => {
@@ -2160,44 +1831,7 @@ impl<'de> serde::de::Deserialize<'de> for MessageDefinition {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "date",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "identifier",
-                                            "version",
-                                            "name",
-                                            "title",
-                                            "replaces",
-                                            "status",
-                                            "experimental",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "description",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "purpose",
-                                            "copyright",
-                                            "base",
-                                            "parent",
-                                            "eventCoding",
-                                            "eventUri",
-                                            "category",
-                                            "focus",
-                                            "responseRequired",
-                                            "allowedResponse",
-                                            "graph",
-                                        ],
-                                    ));
+                                    return unknown_field_error("date");
                                 }
                             }
                             Field::Publisher => {
@@ -2230,44 +1864,7 @@ impl<'de> serde::de::Deserialize<'de> for MessageDefinition {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "publisher",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "identifier",
-                                            "version",
-                                            "name",
-                                            "title",
-                                            "replaces",
-                                            "status",
-                                            "experimental",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "description",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "purpose",
-                                            "copyright",
-                                            "base",
-                                            "parent",
-                                            "eventCoding",
-                                            "eventUri",
-                                            "category",
-                                            "focus",
-                                            "responseRequired",
-                                            "allowedResponse",
-                                            "graph",
-                                        ],
-                                    ));
+                                    return unknown_field_error("publisher");
                                 }
                             }
                             Field::Contact => {
@@ -2315,44 +1912,7 @@ impl<'de> serde::de::Deserialize<'de> for MessageDefinition {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "description",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "identifier",
-                                            "version",
-                                            "name",
-                                            "title",
-                                            "replaces",
-                                            "status",
-                                            "experimental",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "description",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "purpose",
-                                            "copyright",
-                                            "base",
-                                            "parent",
-                                            "eventCoding",
-                                            "eventUri",
-                                            "category",
-                                            "focus",
-                                            "responseRequired",
-                                            "allowedResponse",
-                                            "graph",
-                                        ],
-                                    ));
+                                    return unknown_field_error("description");
                                 }
                             }
                             Field::UseContext => {
@@ -2409,44 +1969,7 @@ impl<'de> serde::de::Deserialize<'de> for MessageDefinition {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "purpose",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "identifier",
-                                            "version",
-                                            "name",
-                                            "title",
-                                            "replaces",
-                                            "status",
-                                            "experimental",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "description",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "purpose",
-                                            "copyright",
-                                            "base",
-                                            "parent",
-                                            "eventCoding",
-                                            "eventUri",
-                                            "category",
-                                            "focus",
-                                            "responseRequired",
-                                            "allowedResponse",
-                                            "graph",
-                                        ],
-                                    ));
+                                    return unknown_field_error("purpose");
                                 }
                             }
                             Field::Copyright => {
@@ -2479,44 +2002,7 @@ impl<'de> serde::de::Deserialize<'de> for MessageDefinition {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "copyright",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "identifier",
-                                            "version",
-                                            "name",
-                                            "title",
-                                            "replaces",
-                                            "status",
-                                            "experimental",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "description",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "purpose",
-                                            "copyright",
-                                            "base",
-                                            "parent",
-                                            "eventCoding",
-                                            "eventUri",
-                                            "category",
-                                            "focus",
-                                            "responseRequired",
-                                            "allowedResponse",
-                                            "graph",
-                                        ],
-                                    ));
+                                    return unknown_field_error("copyright");
                                 }
                             }
                             Field::Base => {
@@ -2547,44 +2033,7 @@ impl<'de> serde::de::Deserialize<'de> for MessageDefinition {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "base",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "identifier",
-                                            "version",
-                                            "name",
-                                            "title",
-                                            "replaces",
-                                            "status",
-                                            "experimental",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "description",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "purpose",
-                                            "copyright",
-                                            "base",
-                                            "parent",
-                                            "eventCoding",
-                                            "eventUri",
-                                            "category",
-                                            "focus",
-                                            "responseRequired",
-                                            "allowedResponse",
-                                            "graph",
-                                        ],
-                                    ));
+                                    return unknown_field_error("base");
                                 }
                             }
                             Field::Parent => {
@@ -2643,44 +2092,7 @@ impl<'de> serde::de::Deserialize<'de> for MessageDefinition {
                                         }
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "parent",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "identifier",
-                                            "version",
-                                            "name",
-                                            "title",
-                                            "replaces",
-                                            "status",
-                                            "experimental",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "description",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "purpose",
-                                            "copyright",
-                                            "base",
-                                            "parent",
-                                            "eventCoding",
-                                            "eventUri",
-                                            "category",
-                                            "focus",
-                                            "responseRequired",
-                                            "allowedResponse",
-                                            "graph",
-                                        ],
-                                    ));
+                                    return unknown_field_error("parent");
                                 }
                             }
                             Field::EventCoding => {
@@ -2735,44 +2147,7 @@ impl<'de> serde::de::Deserialize<'de> for MessageDefinition {
                                         return Err(serde::de::Error::duplicate_field("_event[x]"));
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "eventUri",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "identifier",
-                                            "version",
-                                            "name",
-                                            "title",
-                                            "replaces",
-                                            "status",
-                                            "experimental",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "description",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "purpose",
-                                            "copyright",
-                                            "base",
-                                            "parent",
-                                            "eventCoding",
-                                            "eventUri",
-                                            "category",
-                                            "focus",
-                                            "responseRequired",
-                                            "allowedResponse",
-                                            "graph",
-                                        ],
-                                    ));
+                                    return unknown_field_error("eventUri");
                                 }
                             }
                             Field::Category => {
@@ -2803,44 +2178,7 @@ impl<'de> serde::de::Deserialize<'de> for MessageDefinition {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "category",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "identifier",
-                                            "version",
-                                            "name",
-                                            "title",
-                                            "replaces",
-                                            "status",
-                                            "experimental",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "description",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "purpose",
-                                            "copyright",
-                                            "base",
-                                            "parent",
-                                            "eventCoding",
-                                            "eventUri",
-                                            "category",
-                                            "focus",
-                                            "responseRequired",
-                                            "allowedResponse",
-                                            "graph",
-                                        ],
-                                    ));
+                                    return unknown_field_error("category");
                                 }
                             }
                             Field::Focus => {
@@ -2890,44 +2228,7 @@ impl<'de> serde::de::Deserialize<'de> for MessageDefinition {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "responseRequired",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "identifier",
-                                            "version",
-                                            "name",
-                                            "title",
-                                            "replaces",
-                                            "status",
-                                            "experimental",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "description",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "purpose",
-                                            "copyright",
-                                            "base",
-                                            "parent",
-                                            "eventCoding",
-                                            "eventUri",
-                                            "category",
-                                            "focus",
-                                            "responseRequired",
-                                            "allowedResponse",
-                                            "graph",
-                                        ],
-                                    ));
+                                    return unknown_field_error("responseRequired");
                                 }
                             }
                             Field::AllowedResponse => {
@@ -2999,44 +2300,7 @@ impl<'de> serde::de::Deserialize<'de> for MessageDefinition {
                                         }
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "graph",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "identifier",
-                                            "version",
-                                            "name",
-                                            "title",
-                                            "replaces",
-                                            "status",
-                                            "experimental",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "description",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "purpose",
-                                            "copyright",
-                                            "base",
-                                            "parent",
-                                            "eventCoding",
-                                            "eventUri",
-                                            "category",
-                                            "focus",
-                                            "responseRequired",
-                                            "allowedResponse",
-                                            "graph",
-                                        ],
-                                    ));
+                                    return unknown_field_error("graph");
                                 }
                             }
                             Field::Unknown(key) => if _ctx.config.mode

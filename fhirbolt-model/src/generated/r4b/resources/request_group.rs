@@ -1,4 +1,4 @@
-// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-08 by fhirbolt-codegen v0.1.0
 #[doc = "A duration or range of durations to apply to the relationship. For example, 30-60 minutes before."]
 #[derive(Debug, Clone, PartialEq)]
 pub enum RequestGroupActionRelatedActionOffset {
@@ -103,6 +103,12 @@ impl<'de> serde::de::Deserialize<'de> for RequestGroupActionCondition {
             Expression,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &["id", "extension", "modifierExtension", "kind", "expression"],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = RequestGroupActionCondition;
@@ -185,16 +191,7 @@ impl<'de> serde::de::Deserialize<'de> for RequestGroupActionCondition {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "kind",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "kind",
-                                            "expression",
-                                        ],
-                                    ));
+                                    return unknown_field_error("kind");
                                 }
                             }
                             Field::Expression => {
@@ -341,6 +338,20 @@ impl<'de> serde::de::Deserialize<'de> for RequestGroupActionRelatedAction {
             OffsetRange,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "actionId",
+                    "relationship",
+                    "offsetDuration",
+                    "offsetRange",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = RequestGroupActionRelatedAction;
@@ -424,18 +435,7 @@ impl<'de> serde::de::Deserialize<'de> for RequestGroupActionRelatedAction {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "actionId",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "actionId",
-                                            "relationship",
-                                            "offsetDuration",
-                                            "offsetRange",
-                                        ],
-                                    ));
+                                    return unknown_field_error("actionId");
                                 }
                             }
                             Field::Relationship => {
@@ -472,18 +472,7 @@ impl<'de> serde::de::Deserialize<'de> for RequestGroupActionRelatedAction {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "relationship",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "actionId",
-                                            "relationship",
-                                            "offsetDuration",
-                                            "offsetRange",
-                                        ],
-                                    ));
+                                    return unknown_field_error("relationship");
                                 }
                             }
                             Field::OffsetDuration => {
@@ -958,6 +947,40 @@ impl<'de> serde::de::Deserialize<'de> for RequestGroupAction {
             Action,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "prefix",
+                    "title",
+                    "description",
+                    "textEquivalent",
+                    "priority",
+                    "code",
+                    "documentation",
+                    "condition",
+                    "relatedAction",
+                    "timingDateTime",
+                    "timingAge",
+                    "timingPeriod",
+                    "timingDuration",
+                    "timingRange",
+                    "timingTiming",
+                    "participant",
+                    "type",
+                    "groupingBehavior",
+                    "selectionBehavior",
+                    "requiredBehavior",
+                    "precheckBehavior",
+                    "cardinalityBehavior",
+                    "resource",
+                    "action",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = RequestGroupAction;
@@ -1055,38 +1078,7 @@ impl<'de> serde::de::Deserialize<'de> for RequestGroupAction {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "prefix",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "prefix",
-                                            "title",
-                                            "description",
-                                            "textEquivalent",
-                                            "priority",
-                                            "code",
-                                            "documentation",
-                                            "condition",
-                                            "relatedAction",
-                                            "timingDateTime",
-                                            "timingAge",
-                                            "timingPeriod",
-                                            "timingDuration",
-                                            "timingRange",
-                                            "timingTiming",
-                                            "participant",
-                                            "type",
-                                            "groupingBehavior",
-                                            "selectionBehavior",
-                                            "requiredBehavior",
-                                            "precheckBehavior",
-                                            "cardinalityBehavior",
-                                            "resource",
-                                            "action",
-                                        ],
-                                    ));
+                                    return unknown_field_error("prefix");
                                 }
                             }
                             Field::Title => {
@@ -1117,38 +1109,7 @@ impl<'de> serde::de::Deserialize<'de> for RequestGroupAction {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "title",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "prefix",
-                                            "title",
-                                            "description",
-                                            "textEquivalent",
-                                            "priority",
-                                            "code",
-                                            "documentation",
-                                            "condition",
-                                            "relatedAction",
-                                            "timingDateTime",
-                                            "timingAge",
-                                            "timingPeriod",
-                                            "timingDuration",
-                                            "timingRange",
-                                            "timingTiming",
-                                            "participant",
-                                            "type",
-                                            "groupingBehavior",
-                                            "selectionBehavior",
-                                            "requiredBehavior",
-                                            "precheckBehavior",
-                                            "cardinalityBehavior",
-                                            "resource",
-                                            "action",
-                                        ],
-                                    ));
+                                    return unknown_field_error("title");
                                 }
                             }
                             Field::Description => {
@@ -1185,38 +1146,7 @@ impl<'de> serde::de::Deserialize<'de> for RequestGroupAction {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "description",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "prefix",
-                                            "title",
-                                            "description",
-                                            "textEquivalent",
-                                            "priority",
-                                            "code",
-                                            "documentation",
-                                            "condition",
-                                            "relatedAction",
-                                            "timingDateTime",
-                                            "timingAge",
-                                            "timingPeriod",
-                                            "timingDuration",
-                                            "timingRange",
-                                            "timingTiming",
-                                            "participant",
-                                            "type",
-                                            "groupingBehavior",
-                                            "selectionBehavior",
-                                            "requiredBehavior",
-                                            "precheckBehavior",
-                                            "cardinalityBehavior",
-                                            "resource",
-                                            "action",
-                                        ],
-                                    ));
+                                    return unknown_field_error("description");
                                 }
                             }
                             Field::TextEquivalent => {
@@ -1253,38 +1183,7 @@ impl<'de> serde::de::Deserialize<'de> for RequestGroupAction {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "textEquivalent",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "prefix",
-                                            "title",
-                                            "description",
-                                            "textEquivalent",
-                                            "priority",
-                                            "code",
-                                            "documentation",
-                                            "condition",
-                                            "relatedAction",
-                                            "timingDateTime",
-                                            "timingAge",
-                                            "timingPeriod",
-                                            "timingDuration",
-                                            "timingRange",
-                                            "timingTiming",
-                                            "participant",
-                                            "type",
-                                            "groupingBehavior",
-                                            "selectionBehavior",
-                                            "requiredBehavior",
-                                            "precheckBehavior",
-                                            "cardinalityBehavior",
-                                            "resource",
-                                            "action",
-                                        ],
-                                    ));
+                                    return unknown_field_error("textEquivalent");
                                 }
                             }
                             Field::Priority => {
@@ -1315,38 +1214,7 @@ impl<'de> serde::de::Deserialize<'de> for RequestGroupAction {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "priority",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "prefix",
-                                            "title",
-                                            "description",
-                                            "textEquivalent",
-                                            "priority",
-                                            "code",
-                                            "documentation",
-                                            "condition",
-                                            "relatedAction",
-                                            "timingDateTime",
-                                            "timingAge",
-                                            "timingPeriod",
-                                            "timingDuration",
-                                            "timingRange",
-                                            "timingTiming",
-                                            "participant",
-                                            "type",
-                                            "groupingBehavior",
-                                            "selectionBehavior",
-                                            "requiredBehavior",
-                                            "precheckBehavior",
-                                            "cardinalityBehavior",
-                                            "resource",
-                                            "action",
-                                        ],
-                                    ));
+                                    return unknown_field_error("priority");
                                 }
                             }
                             Field::Code => {
@@ -1447,38 +1315,7 @@ impl<'de> serde::de::Deserialize<'de> for RequestGroupAction {
                                         ));
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "timingDateTime",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "prefix",
-                                            "title",
-                                            "description",
-                                            "textEquivalent",
-                                            "priority",
-                                            "code",
-                                            "documentation",
-                                            "condition",
-                                            "relatedAction",
-                                            "timingDateTime",
-                                            "timingAge",
-                                            "timingPeriod",
-                                            "timingDuration",
-                                            "timingRange",
-                                            "timingTiming",
-                                            "participant",
-                                            "type",
-                                            "groupingBehavior",
-                                            "selectionBehavior",
-                                            "requiredBehavior",
-                                            "precheckBehavior",
-                                            "cardinalityBehavior",
-                                            "resource",
-                                            "action",
-                                        ],
-                                    ));
+                                    return unknown_field_error("timingDateTime");
                                 }
                             }
                             Field::TimingAge => {
@@ -1576,38 +1413,7 @@ impl<'de> serde::de::Deserialize<'de> for RequestGroupAction {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "groupingBehavior",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "prefix",
-                                            "title",
-                                            "description",
-                                            "textEquivalent",
-                                            "priority",
-                                            "code",
-                                            "documentation",
-                                            "condition",
-                                            "relatedAction",
-                                            "timingDateTime",
-                                            "timingAge",
-                                            "timingPeriod",
-                                            "timingDuration",
-                                            "timingRange",
-                                            "timingTiming",
-                                            "participant",
-                                            "type",
-                                            "groupingBehavior",
-                                            "selectionBehavior",
-                                            "requiredBehavior",
-                                            "precheckBehavior",
-                                            "cardinalityBehavior",
-                                            "resource",
-                                            "action",
-                                        ],
-                                    ));
+                                    return unknown_field_error("groupingBehavior");
                                 }
                             }
                             Field::SelectionBehavior => {
@@ -1646,38 +1452,7 @@ impl<'de> serde::de::Deserialize<'de> for RequestGroupAction {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "selectionBehavior",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "prefix",
-                                            "title",
-                                            "description",
-                                            "textEquivalent",
-                                            "priority",
-                                            "code",
-                                            "documentation",
-                                            "condition",
-                                            "relatedAction",
-                                            "timingDateTime",
-                                            "timingAge",
-                                            "timingPeriod",
-                                            "timingDuration",
-                                            "timingRange",
-                                            "timingTiming",
-                                            "participant",
-                                            "type",
-                                            "groupingBehavior",
-                                            "selectionBehavior",
-                                            "requiredBehavior",
-                                            "precheckBehavior",
-                                            "cardinalityBehavior",
-                                            "resource",
-                                            "action",
-                                        ],
-                                    ));
+                                    return unknown_field_error("selectionBehavior");
                                 }
                             }
                             Field::RequiredBehavior => {
@@ -1716,38 +1491,7 @@ impl<'de> serde::de::Deserialize<'de> for RequestGroupAction {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "requiredBehavior",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "prefix",
-                                            "title",
-                                            "description",
-                                            "textEquivalent",
-                                            "priority",
-                                            "code",
-                                            "documentation",
-                                            "condition",
-                                            "relatedAction",
-                                            "timingDateTime",
-                                            "timingAge",
-                                            "timingPeriod",
-                                            "timingDuration",
-                                            "timingRange",
-                                            "timingTiming",
-                                            "participant",
-                                            "type",
-                                            "groupingBehavior",
-                                            "selectionBehavior",
-                                            "requiredBehavior",
-                                            "precheckBehavior",
-                                            "cardinalityBehavior",
-                                            "resource",
-                                            "action",
-                                        ],
-                                    ));
+                                    return unknown_field_error("requiredBehavior");
                                 }
                             }
                             Field::PrecheckBehavior => {
@@ -1786,38 +1530,7 @@ impl<'de> serde::de::Deserialize<'de> for RequestGroupAction {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "precheckBehavior",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "prefix",
-                                            "title",
-                                            "description",
-                                            "textEquivalent",
-                                            "priority",
-                                            "code",
-                                            "documentation",
-                                            "condition",
-                                            "relatedAction",
-                                            "timingDateTime",
-                                            "timingAge",
-                                            "timingPeriod",
-                                            "timingDuration",
-                                            "timingRange",
-                                            "timingTiming",
-                                            "participant",
-                                            "type",
-                                            "groupingBehavior",
-                                            "selectionBehavior",
-                                            "requiredBehavior",
-                                            "precheckBehavior",
-                                            "cardinalityBehavior",
-                                            "resource",
-                                            "action",
-                                        ],
-                                    ));
+                                    return unknown_field_error("precheckBehavior");
                                 }
                             }
                             Field::CardinalityBehavior => {
@@ -1856,38 +1569,7 @@ impl<'de> serde::de::Deserialize<'de> for RequestGroupAction {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "cardinalityBehavior",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "prefix",
-                                            "title",
-                                            "description",
-                                            "textEquivalent",
-                                            "priority",
-                                            "code",
-                                            "documentation",
-                                            "condition",
-                                            "relatedAction",
-                                            "timingDateTime",
-                                            "timingAge",
-                                            "timingPeriod",
-                                            "timingDuration",
-                                            "timingRange",
-                                            "timingTiming",
-                                            "participant",
-                                            "type",
-                                            "groupingBehavior",
-                                            "selectionBehavior",
-                                            "requiredBehavior",
-                                            "precheckBehavior",
-                                            "cardinalityBehavior",
-                                            "resource",
-                                            "action",
-                                        ],
-                                    ));
+                                    return unknown_field_error("cardinalityBehavior");
                                 }
                             }
                             Field::Resource => {
@@ -2365,6 +2047,39 @@ impl<'de> serde::de::Deserialize<'de> for RequestGroup {
             Action,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "meta",
+                    "implicitRules",
+                    "language",
+                    "text",
+                    "contained",
+                    "extension",
+                    "modifierExtension",
+                    "identifier",
+                    "instantiatesCanonical",
+                    "instantiatesUri",
+                    "basedOn",
+                    "replaces",
+                    "groupIdentifier",
+                    "status",
+                    "intent",
+                    "priority",
+                    "code",
+                    "subject",
+                    "encounter",
+                    "authoredOn",
+                    "author",
+                    "reasonCode",
+                    "reasonReference",
+                    "note",
+                    "action",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = RequestGroup;
@@ -2463,37 +2178,7 @@ impl<'de> serde::de::Deserialize<'de> for RequestGroup {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "implicitRules",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "instantiatesCanonical",
-                                            "instantiatesUri",
-                                            "basedOn",
-                                            "replaces",
-                                            "groupIdentifier",
-                                            "status",
-                                            "intent",
-                                            "priority",
-                                            "code",
-                                            "subject",
-                                            "encounter",
-                                            "authoredOn",
-                                            "author",
-                                            "reasonCode",
-                                            "reasonReference",
-                                            "note",
-                                            "action",
-                                        ],
-                                    ));
+                                    return unknown_field_error("implicitRules");
                                 }
                             }
                             Field::Language => {
@@ -2524,37 +2209,7 @@ impl<'de> serde::de::Deserialize<'de> for RequestGroup {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "language",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "instantiatesCanonical",
-                                            "instantiatesUri",
-                                            "basedOn",
-                                            "replaces",
-                                            "groupIdentifier",
-                                            "status",
-                                            "intent",
-                                            "priority",
-                                            "code",
-                                            "subject",
-                                            "encounter",
-                                            "authoredOn",
-                                            "author",
-                                            "reasonCode",
-                                            "reasonReference",
-                                            "note",
-                                            "action",
-                                        ],
-                                    ));
+                                    return unknown_field_error("language");
                                 }
                             }
                             Field::Text => {
@@ -2673,37 +2328,7 @@ impl<'de> serde::de::Deserialize<'de> for RequestGroup {
                                         }
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "instantiatesCanonical",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "instantiatesCanonical",
-                                            "instantiatesUri",
-                                            "basedOn",
-                                            "replaces",
-                                            "groupIdentifier",
-                                            "status",
-                                            "intent",
-                                            "priority",
-                                            "code",
-                                            "subject",
-                                            "encounter",
-                                            "authoredOn",
-                                            "author",
-                                            "reasonCode",
-                                            "reasonReference",
-                                            "note",
-                                            "action",
-                                        ],
-                                    ));
+                                    return unknown_field_error("instantiatesCanonical");
                                 }
                             }
                             Field::InstantiatesUri => {
@@ -2766,37 +2391,7 @@ impl<'de> serde::de::Deserialize<'de> for RequestGroup {
                                         }
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "instantiatesUri",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "instantiatesCanonical",
-                                            "instantiatesUri",
-                                            "basedOn",
-                                            "replaces",
-                                            "groupIdentifier",
-                                            "status",
-                                            "intent",
-                                            "priority",
-                                            "code",
-                                            "subject",
-                                            "encounter",
-                                            "authoredOn",
-                                            "author",
-                                            "reasonCode",
-                                            "reasonReference",
-                                            "note",
-                                            "action",
-                                        ],
-                                    ));
+                                    return unknown_field_error("instantiatesUri");
                                 }
                             }
                             Field::BasedOn => {
@@ -2857,37 +2452,7 @@ impl<'de> serde::de::Deserialize<'de> for RequestGroup {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "status",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "instantiatesCanonical",
-                                            "instantiatesUri",
-                                            "basedOn",
-                                            "replaces",
-                                            "groupIdentifier",
-                                            "status",
-                                            "intent",
-                                            "priority",
-                                            "code",
-                                            "subject",
-                                            "encounter",
-                                            "authoredOn",
-                                            "author",
-                                            "reasonCode",
-                                            "reasonReference",
-                                            "note",
-                                            "action",
-                                        ],
-                                    ));
+                                    return unknown_field_error("status");
                                 }
                             }
                             Field::Intent => {
@@ -2918,37 +2483,7 @@ impl<'de> serde::de::Deserialize<'de> for RequestGroup {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "intent",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "instantiatesCanonical",
-                                            "instantiatesUri",
-                                            "basedOn",
-                                            "replaces",
-                                            "groupIdentifier",
-                                            "status",
-                                            "intent",
-                                            "priority",
-                                            "code",
-                                            "subject",
-                                            "encounter",
-                                            "authoredOn",
-                                            "author",
-                                            "reasonCode",
-                                            "reasonReference",
-                                            "note",
-                                            "action",
-                                        ],
-                                    ));
+                                    return unknown_field_error("intent");
                                 }
                             }
                             Field::Priority => {
@@ -2979,37 +2514,7 @@ impl<'de> serde::de::Deserialize<'de> for RequestGroup {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "priority",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "instantiatesCanonical",
-                                            "instantiatesUri",
-                                            "basedOn",
-                                            "replaces",
-                                            "groupIdentifier",
-                                            "status",
-                                            "intent",
-                                            "priority",
-                                            "code",
-                                            "subject",
-                                            "encounter",
-                                            "authoredOn",
-                                            "author",
-                                            "reasonCode",
-                                            "reasonReference",
-                                            "note",
-                                            "action",
-                                        ],
-                                    ));
+                                    return unknown_field_error("priority");
                                 }
                             }
                             Field::Code => {
@@ -3064,37 +2569,7 @@ impl<'de> serde::de::Deserialize<'de> for RequestGroup {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "authoredOn",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "instantiatesCanonical",
-                                            "instantiatesUri",
-                                            "basedOn",
-                                            "replaces",
-                                            "groupIdentifier",
-                                            "status",
-                                            "intent",
-                                            "priority",
-                                            "code",
-                                            "subject",
-                                            "encounter",
-                                            "authoredOn",
-                                            "author",
-                                            "reasonCode",
-                                            "reasonReference",
-                                            "note",
-                                            "action",
-                                        ],
-                                    ));
+                                    return unknown_field_error("authoredOn");
                                 }
                             }
                             Field::Author => {

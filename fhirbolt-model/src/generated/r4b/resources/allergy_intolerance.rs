@@ -1,4 +1,4 @@
-// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-08 by fhirbolt-codegen v0.1.0
 #[doc = "Estimated or actual date,  date-time, or age when allergy or intolerance was identified."]
 #[derive(Debug, Clone, PartialEq)]
 pub enum AllergyIntoleranceOnset {
@@ -165,6 +165,23 @@ impl<'de> serde::de::Deserialize<'de> for AllergyIntoleranceReaction {
             Note,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "substance",
+                    "manifestation",
+                    "description",
+                    "onset",
+                    "severity",
+                    "exposureRoute",
+                    "note",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = AllergyIntoleranceReaction;
@@ -275,21 +292,7 @@ impl<'de> serde::de::Deserialize<'de> for AllergyIntoleranceReaction {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "description",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "substance",
-                                            "manifestation",
-                                            "description",
-                                            "onset",
-                                            "severity",
-                                            "exposureRoute",
-                                            "note",
-                                        ],
-                                    ));
+                                    return unknown_field_error("description");
                                 }
                             }
                             Field::Onset => {
@@ -320,21 +323,7 @@ impl<'de> serde::de::Deserialize<'de> for AllergyIntoleranceReaction {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "onset",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "substance",
-                                            "manifestation",
-                                            "description",
-                                            "onset",
-                                            "severity",
-                                            "exposureRoute",
-                                            "note",
-                                        ],
-                                    ));
+                                    return unknown_field_error("onset");
                                 }
                             }
                             Field::Severity => {
@@ -365,21 +354,7 @@ impl<'de> serde::de::Deserialize<'de> for AllergyIntoleranceReaction {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "severity",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "substance",
-                                            "manifestation",
-                                            "description",
-                                            "onset",
-                                            "severity",
-                                            "exposureRoute",
-                                            "note",
-                                        ],
-                                    ));
+                                    return unknown_field_error("severity");
                                 }
                             }
                             Field::ExposureRoute => {
@@ -843,6 +818,41 @@ impl<'de> serde::de::Deserialize<'de> for AllergyIntolerance {
             Reaction,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "meta",
+                    "implicitRules",
+                    "language",
+                    "text",
+                    "contained",
+                    "extension",
+                    "modifierExtension",
+                    "identifier",
+                    "clinicalStatus",
+                    "verificationStatus",
+                    "type",
+                    "category",
+                    "criticality",
+                    "code",
+                    "patient",
+                    "encounter",
+                    "onsetDateTime",
+                    "onsetAge",
+                    "onsetPeriod",
+                    "onsetRange",
+                    "onsetString",
+                    "recordedDate",
+                    "recorder",
+                    "asserter",
+                    "lastOccurrence",
+                    "note",
+                    "reaction",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = AllergyIntolerance;
@@ -938,39 +948,7 @@ impl<'de> serde::de::Deserialize<'de> for AllergyIntolerance {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "implicitRules",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "clinicalStatus",
-                                            "verificationStatus",
-                                            "type",
-                                            "category",
-                                            "criticality",
-                                            "code",
-                                            "patient",
-                                            "encounter",
-                                            "onsetDateTime",
-                                            "onsetAge",
-                                            "onsetPeriod",
-                                            "onsetRange",
-                                            "onsetString",
-                                            "recordedDate",
-                                            "recorder",
-                                            "asserter",
-                                            "lastOccurrence",
-                                            "note",
-                                            "reaction",
-                                        ],
-                                    ));
+                                    return unknown_field_error("implicitRules");
                                 }
                             }
                             Field::Language => {
@@ -1001,39 +979,7 @@ impl<'de> serde::de::Deserialize<'de> for AllergyIntolerance {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "language",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "clinicalStatus",
-                                            "verificationStatus",
-                                            "type",
-                                            "category",
-                                            "criticality",
-                                            "code",
-                                            "patient",
-                                            "encounter",
-                                            "onsetDateTime",
-                                            "onsetAge",
-                                            "onsetPeriod",
-                                            "onsetRange",
-                                            "onsetString",
-                                            "recordedDate",
-                                            "recorder",
-                                            "asserter",
-                                            "lastOccurrence",
-                                            "note",
-                                            "reaction",
-                                        ],
-                                    ));
+                                    return unknown_field_error("language");
                                 }
                             }
                             Field::Text => {
@@ -1135,39 +1081,7 @@ impl<'de> serde::de::Deserialize<'de> for AllergyIntolerance {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "type",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "clinicalStatus",
-                                            "verificationStatus",
-                                            "type",
-                                            "category",
-                                            "criticality",
-                                            "code",
-                                            "patient",
-                                            "encounter",
-                                            "onsetDateTime",
-                                            "onsetAge",
-                                            "onsetPeriod",
-                                            "onsetRange",
-                                            "onsetString",
-                                            "recordedDate",
-                                            "recorder",
-                                            "asserter",
-                                            "lastOccurrence",
-                                            "note",
-                                            "reaction",
-                                        ],
-                                    ));
+                                    return unknown_field_error("type");
                                 }
                             }
                             Field::Category => {
@@ -1226,39 +1140,7 @@ impl<'de> serde::de::Deserialize<'de> for AllergyIntolerance {
                                         }
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "category",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "clinicalStatus",
-                                            "verificationStatus",
-                                            "type",
-                                            "category",
-                                            "criticality",
-                                            "code",
-                                            "patient",
-                                            "encounter",
-                                            "onsetDateTime",
-                                            "onsetAge",
-                                            "onsetPeriod",
-                                            "onsetRange",
-                                            "onsetString",
-                                            "recordedDate",
-                                            "recorder",
-                                            "asserter",
-                                            "lastOccurrence",
-                                            "note",
-                                            "reaction",
-                                        ],
-                                    ));
+                                    return unknown_field_error("category");
                                 }
                             }
                             Field::Criticality => {
@@ -1295,39 +1177,7 @@ impl<'de> serde::de::Deserialize<'de> for AllergyIntolerance {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "criticality",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "clinicalStatus",
-                                            "verificationStatus",
-                                            "type",
-                                            "category",
-                                            "criticality",
-                                            "code",
-                                            "patient",
-                                            "encounter",
-                                            "onsetDateTime",
-                                            "onsetAge",
-                                            "onsetPeriod",
-                                            "onsetRange",
-                                            "onsetString",
-                                            "recordedDate",
-                                            "recorder",
-                                            "asserter",
-                                            "lastOccurrence",
-                                            "note",
-                                            "reaction",
-                                        ],
-                                    ));
+                                    return unknown_field_error("criticality");
                                 }
                             }
                             Field::Code => {
@@ -1396,39 +1246,7 @@ impl<'de> serde::de::Deserialize<'de> for AllergyIntolerance {
                                         return Err(serde::de::Error::duplicate_field("_onset[x]"));
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "onsetDateTime",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "clinicalStatus",
-                                            "verificationStatus",
-                                            "type",
-                                            "category",
-                                            "criticality",
-                                            "code",
-                                            "patient",
-                                            "encounter",
-                                            "onsetDateTime",
-                                            "onsetAge",
-                                            "onsetPeriod",
-                                            "onsetRange",
-                                            "onsetString",
-                                            "recordedDate",
-                                            "recorder",
-                                            "asserter",
-                                            "lastOccurrence",
-                                            "note",
-                                            "reaction",
-                                        ],
-                                    ));
+                                    return unknown_field_error("onsetDateTime");
                                 }
                             }
                             Field::OnsetAge => {
@@ -1500,39 +1318,7 @@ impl<'de> serde::de::Deserialize<'de> for AllergyIntolerance {
                                         return Err(serde::de::Error::duplicate_field("_onset[x]"));
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "onsetString",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "clinicalStatus",
-                                            "verificationStatus",
-                                            "type",
-                                            "category",
-                                            "criticality",
-                                            "code",
-                                            "patient",
-                                            "encounter",
-                                            "onsetDateTime",
-                                            "onsetAge",
-                                            "onsetPeriod",
-                                            "onsetRange",
-                                            "onsetString",
-                                            "recordedDate",
-                                            "recorder",
-                                            "asserter",
-                                            "lastOccurrence",
-                                            "note",
-                                            "reaction",
-                                        ],
-                                    ));
+                                    return unknown_field_error("onsetString");
                                 }
                             }
                             Field::RecordedDate => {
@@ -1569,39 +1355,7 @@ impl<'de> serde::de::Deserialize<'de> for AllergyIntolerance {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "recordedDate",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "clinicalStatus",
-                                            "verificationStatus",
-                                            "type",
-                                            "category",
-                                            "criticality",
-                                            "code",
-                                            "patient",
-                                            "encounter",
-                                            "onsetDateTime",
-                                            "onsetAge",
-                                            "onsetPeriod",
-                                            "onsetRange",
-                                            "onsetString",
-                                            "recordedDate",
-                                            "recorder",
-                                            "asserter",
-                                            "lastOccurrence",
-                                            "note",
-                                            "reaction",
-                                        ],
-                                    ));
+                                    return unknown_field_error("recordedDate");
                                 }
                             }
                             Field::Recorder => {
@@ -1650,39 +1404,7 @@ impl<'de> serde::de::Deserialize<'de> for AllergyIntolerance {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "lastOccurrence",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "clinicalStatus",
-                                            "verificationStatus",
-                                            "type",
-                                            "category",
-                                            "criticality",
-                                            "code",
-                                            "patient",
-                                            "encounter",
-                                            "onsetDateTime",
-                                            "onsetAge",
-                                            "onsetPeriod",
-                                            "onsetRange",
-                                            "onsetString",
-                                            "recordedDate",
-                                            "recorder",
-                                            "asserter",
-                                            "lastOccurrence",
-                                            "note",
-                                            "reaction",
-                                        ],
-                                    ));
+                                    return unknown_field_error("lastOccurrence");
                                 }
                             }
                             Field::Note => {

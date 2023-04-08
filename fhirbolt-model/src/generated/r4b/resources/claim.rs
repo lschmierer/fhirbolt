@@ -1,4 +1,4 @@
-// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-08 by fhirbolt-codegen v0.1.0
 #[doc = "The date when or period to which this information refers."]
 #[derive(Debug, Clone, PartialEq)]
 pub enum ClaimSupportingInfoTiming {
@@ -155,6 +155,19 @@ impl<'de> serde::de::Deserialize<'de> for ClaimRelated {
             #[serde(rename = "reference")]
             Reference,
             Unknown(std::string::String),
+        }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "claim",
+                    "relationship",
+                    "reference",
+                ],
+            ))
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -316,6 +329,12 @@ impl<'de> serde::de::Deserialize<'de> for ClaimPayee {
             #[serde(rename = "party")]
             Party,
             Unknown(std::string::String),
+        }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &["id", "extension", "modifierExtension", "type", "party"],
+            ))
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -522,6 +541,21 @@ impl<'de> serde::de::Deserialize<'de> for ClaimCareTeam {
             Qualification,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "sequence",
+                    "provider",
+                    "responsible",
+                    "role",
+                    "qualification",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = ClaimCareTeam;
@@ -604,19 +638,7 @@ impl<'de> serde::de::Deserialize<'de> for ClaimCareTeam {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "sequence",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "sequence",
-                                            "provider",
-                                            "responsible",
-                                            "role",
-                                            "qualification",
-                                        ],
-                                    ));
+                                    return unknown_field_error("sequence");
                                 }
                             }
                             Field::Provider => {
@@ -659,19 +681,7 @@ impl<'de> serde::de::Deserialize<'de> for ClaimCareTeam {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "responsible",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "sequence",
-                                            "provider",
-                                            "responsible",
-                                            "role",
-                                            "qualification",
-                                        ],
-                                    ));
+                                    return unknown_field_error("responsible");
                                 }
                             }
                             Field::Role => {
@@ -925,6 +935,27 @@ impl<'de> serde::de::Deserialize<'de> for ClaimSupportingInfo {
             Reason,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "sequence",
+                    "category",
+                    "code",
+                    "timingDate",
+                    "timingPeriod",
+                    "valueBoolean",
+                    "valueString",
+                    "valueQuantity",
+                    "valueAttachment",
+                    "valueReference",
+                    "reason",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = ClaimSupportingInfo;
@@ -1008,25 +1039,7 @@ impl<'de> serde::de::Deserialize<'de> for ClaimSupportingInfo {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "sequence",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "sequence",
-                                            "category",
-                                            "code",
-                                            "timingDate",
-                                            "timingPeriod",
-                                            "valueBoolean",
-                                            "valueString",
-                                            "valueQuantity",
-                                            "valueAttachment",
-                                            "valueReference",
-                                            "reason",
-                                        ],
-                                    ));
+                                    return unknown_field_error("sequence");
                                 }
                             }
                             Field::Category => {
@@ -1091,25 +1104,7 @@ impl<'de> serde::de::Deserialize<'de> for ClaimSupportingInfo {
                                         ));
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "timingDate",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "sequence",
-                                            "category",
-                                            "code",
-                                            "timingDate",
-                                            "timingPeriod",
-                                            "valueBoolean",
-                                            "valueString",
-                                            "valueQuantity",
-                                            "valueAttachment",
-                                            "valueReference",
-                                            "reason",
-                                        ],
-                                    ));
+                                    return unknown_field_error("timingDate");
                                 }
                             }
                             Field::TimingPeriod => {
@@ -1168,25 +1163,7 @@ impl<'de> serde::de::Deserialize<'de> for ClaimSupportingInfo {
                                         return Err(serde::de::Error::duplicate_field("_value[x]"));
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "valueBoolean",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "sequence",
-                                            "category",
-                                            "code",
-                                            "timingDate",
-                                            "timingPeriod",
-                                            "valueBoolean",
-                                            "valueString",
-                                            "valueQuantity",
-                                            "valueAttachment",
-                                            "valueReference",
-                                            "reason",
-                                        ],
-                                    ));
+                                    return unknown_field_error("valueBoolean");
                                 }
                             }
                             Field::ValueString => {
@@ -1237,25 +1214,7 @@ impl<'de> serde::de::Deserialize<'de> for ClaimSupportingInfo {
                                         return Err(serde::de::Error::duplicate_field("_value[x]"));
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "valueString",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "sequence",
-                                            "category",
-                                            "code",
-                                            "timingDate",
-                                            "timingPeriod",
-                                            "valueBoolean",
-                                            "valueString",
-                                            "valueQuantity",
-                                            "valueAttachment",
-                                            "valueReference",
-                                            "reason",
-                                        ],
-                                    ));
+                                    return unknown_field_error("valueString");
                                 }
                             }
                             Field::ValueQuantity => {
@@ -1453,6 +1412,22 @@ impl<'de> serde::de::Deserialize<'de> for ClaimDiagnosis {
             PackageCode,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "sequence",
+                    "diagnosisCodeableConcept",
+                    "diagnosisReference",
+                    "type",
+                    "onAdmission",
+                    "packageCode",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = ClaimDiagnosis;
@@ -1535,20 +1510,7 @@ impl<'de> serde::de::Deserialize<'de> for ClaimDiagnosis {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "sequence",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "sequence",
-                                            "diagnosisCodeableConcept",
-                                            "diagnosisReference",
-                                            "type",
-                                            "onAdmission",
-                                            "packageCode",
-                                        ],
-                                    ));
+                                    return unknown_field_error("sequence");
                                 }
                             }
                             Field::DiagnosisCodeableConcept => {
@@ -1767,6 +1729,22 @@ impl<'de> serde::de::Deserialize<'de> for ClaimProcedure {
             Udi,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "sequence",
+                    "type",
+                    "date",
+                    "procedureCodeableConcept",
+                    "procedureReference",
+                    "udi",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = ClaimProcedure;
@@ -1849,20 +1827,7 @@ impl<'de> serde::de::Deserialize<'de> for ClaimProcedure {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "sequence",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "sequence",
-                                            "type",
-                                            "date",
-                                            "procedureCodeableConcept",
-                                            "procedureReference",
-                                            "udi",
-                                        ],
-                                    ));
+                                    return unknown_field_error("sequence");
                                 }
                             }
                             Field::Type => {
@@ -1904,20 +1869,7 @@ impl<'de> serde::de::Deserialize<'de> for ClaimProcedure {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "date",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "sequence",
-                                            "type",
-                                            "date",
-                                            "procedureCodeableConcept",
-                                            "procedureReference",
-                                            "udi",
-                                        ],
-                                    ));
+                                    return unknown_field_error("date");
                                 }
                             }
                             Field::ProcedureCodeableConcept => {
@@ -2177,6 +2129,23 @@ impl<'de> serde::de::Deserialize<'de> for ClaimInsurance {
             ClaimResponse,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "sequence",
+                    "focal",
+                    "identifier",
+                    "coverage",
+                    "businessArrangement",
+                    "preAuthRef",
+                    "claimResponse",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = ClaimInsurance;
@@ -2261,21 +2230,7 @@ impl<'de> serde::de::Deserialize<'de> for ClaimInsurance {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "sequence",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "sequence",
-                                            "focal",
-                                            "identifier",
-                                            "coverage",
-                                            "businessArrangement",
-                                            "preAuthRef",
-                                            "claimResponse",
-                                        ],
-                                    ));
+                                    return unknown_field_error("sequence");
                                 }
                             }
                             Field::Focal => {
@@ -2306,21 +2261,7 @@ impl<'de> serde::de::Deserialize<'de> for ClaimInsurance {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "focal",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "sequence",
-                                            "focal",
-                                            "identifier",
-                                            "coverage",
-                                            "businessArrangement",
-                                            "preAuthRef",
-                                            "claimResponse",
-                                        ],
-                                    ));
+                                    return unknown_field_error("focal");
                                 }
                             }
                             Field::Identifier => {
@@ -2371,21 +2312,7 @@ impl<'de> serde::de::Deserialize<'de> for ClaimInsurance {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "businessArrangement",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "sequence",
-                                            "focal",
-                                            "identifier",
-                                            "coverage",
-                                            "businessArrangement",
-                                            "preAuthRef",
-                                            "claimResponse",
-                                        ],
-                                    ));
+                                    return unknown_field_error("businessArrangement");
                                 }
                             }
                             Field::PreAuthRef => {
@@ -2448,21 +2375,7 @@ impl<'de> serde::de::Deserialize<'de> for ClaimInsurance {
                                         }
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "preAuthRef",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "sequence",
-                                            "focal",
-                                            "identifier",
-                                            "coverage",
-                                            "businessArrangement",
-                                            "preAuthRef",
-                                            "claimResponse",
-                                        ],
-                                    ));
+                                    return unknown_field_error("preAuthRef");
                                 }
                             }
                             Field::ClaimResponse => {
@@ -2623,6 +2536,20 @@ impl<'de> serde::de::Deserialize<'de> for ClaimAccident {
             LocationReference,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "date",
+                    "type",
+                    "locationAddress",
+                    "locationReference",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = ClaimAccident;
@@ -2703,18 +2630,7 @@ impl<'de> serde::de::Deserialize<'de> for ClaimAccident {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "date",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "date",
-                                            "type",
-                                            "locationAddress",
-                                            "locationReference",
-                                        ],
-                                    ));
+                                    return unknown_field_error("date");
                                 }
                             }
                             Field::Type => {
@@ -2937,6 +2853,27 @@ impl<'de> serde::de::Deserialize<'de> for ClaimItemDetailSubDetail {
             Udi,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "sequence",
+                    "revenue",
+                    "category",
+                    "productOrService",
+                    "modifier",
+                    "programCode",
+                    "quantity",
+                    "unitPrice",
+                    "factor",
+                    "net",
+                    "udi",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = ClaimItemDetailSubDetail;
@@ -3027,25 +2964,7 @@ impl<'de> serde::de::Deserialize<'de> for ClaimItemDetailSubDetail {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "sequence",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "sequence",
-                                            "revenue",
-                                            "category",
-                                            "productOrService",
-                                            "modifier",
-                                            "programCode",
-                                            "quantity",
-                                            "unitPrice",
-                                            "factor",
-                                            "net",
-                                            "udi",
-                                        ],
-                                    ));
+                                    return unknown_field_error("sequence");
                                 }
                             }
                             Field::Revenue => {
@@ -3132,25 +3051,7 @@ impl<'de> serde::de::Deserialize<'de> for ClaimItemDetailSubDetail {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "factor",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "sequence",
-                                            "revenue",
-                                            "category",
-                                            "productOrService",
-                                            "modifier",
-                                            "programCode",
-                                            "quantity",
-                                            "unitPrice",
-                                            "factor",
-                                            "net",
-                                            "udi",
-                                        ],
-                                    ));
+                                    return unknown_field_error("factor");
                                 }
                             }
                             Field::Net => {
@@ -3394,6 +3295,28 @@ impl<'de> serde::de::Deserialize<'de> for ClaimItemDetail {
             SubDetail,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "sequence",
+                    "revenue",
+                    "category",
+                    "productOrService",
+                    "modifier",
+                    "programCode",
+                    "quantity",
+                    "unitPrice",
+                    "factor",
+                    "net",
+                    "udi",
+                    "subDetail",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = ClaimItemDetail;
@@ -3485,26 +3408,7 @@ impl<'de> serde::de::Deserialize<'de> for ClaimItemDetail {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "sequence",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "sequence",
-                                            "revenue",
-                                            "category",
-                                            "productOrService",
-                                            "modifier",
-                                            "programCode",
-                                            "quantity",
-                                            "unitPrice",
-                                            "factor",
-                                            "net",
-                                            "udi",
-                                            "subDetail",
-                                        ],
-                                    ));
+                                    return unknown_field_error("sequence");
                                 }
                             }
                             Field::Revenue => {
@@ -3591,26 +3495,7 @@ impl<'de> serde::de::Deserialize<'de> for ClaimItemDetail {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "factor",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "sequence",
-                                            "revenue",
-                                            "category",
-                                            "productOrService",
-                                            "modifier",
-                                            "programCode",
-                                            "quantity",
-                                            "unitPrice",
-                                            "factor",
-                                            "net",
-                                            "udi",
-                                            "subDetail",
-                                        ],
-                                    ));
+                                    return unknown_field_error("factor");
                                 }
                             }
                             Field::Net => {
@@ -4124,6 +4009,40 @@ impl<'de> serde::de::Deserialize<'de> for ClaimItem {
             Detail,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "sequence",
+                    "careTeamSequence",
+                    "diagnosisSequence",
+                    "procedureSequence",
+                    "informationSequence",
+                    "revenue",
+                    "category",
+                    "productOrService",
+                    "modifier",
+                    "programCode",
+                    "servicedDate",
+                    "servicedPeriod",
+                    "locationCodeableConcept",
+                    "locationAddress",
+                    "locationReference",
+                    "quantity",
+                    "unitPrice",
+                    "factor",
+                    "net",
+                    "udi",
+                    "bodySite",
+                    "subSite",
+                    "encounter",
+                    "detail",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = ClaimItem;
@@ -4225,38 +4144,7 @@ impl<'de> serde::de::Deserialize<'de> for ClaimItem {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "sequence",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "sequence",
-                                            "careTeamSequence",
-                                            "diagnosisSequence",
-                                            "procedureSequence",
-                                            "informationSequence",
-                                            "revenue",
-                                            "category",
-                                            "productOrService",
-                                            "modifier",
-                                            "programCode",
-                                            "servicedDate",
-                                            "servicedPeriod",
-                                            "locationCodeableConcept",
-                                            "locationAddress",
-                                            "locationReference",
-                                            "quantity",
-                                            "unitPrice",
-                                            "factor",
-                                            "net",
-                                            "udi",
-                                            "bodySite",
-                                            "subSite",
-                                            "encounter",
-                                            "detail",
-                                        ],
-                                    ));
+                                    return unknown_field_error("sequence");
                                 }
                             }
                             Field::CareTeamSequence => {
@@ -4320,38 +4208,7 @@ impl<'de> serde::de::Deserialize<'de> for ClaimItem {
                                         }
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "careTeamSequence",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "sequence",
-                                            "careTeamSequence",
-                                            "diagnosisSequence",
-                                            "procedureSequence",
-                                            "informationSequence",
-                                            "revenue",
-                                            "category",
-                                            "productOrService",
-                                            "modifier",
-                                            "programCode",
-                                            "servicedDate",
-                                            "servicedPeriod",
-                                            "locationCodeableConcept",
-                                            "locationAddress",
-                                            "locationReference",
-                                            "quantity",
-                                            "unitPrice",
-                                            "factor",
-                                            "net",
-                                            "udi",
-                                            "bodySite",
-                                            "subSite",
-                                            "encounter",
-                                            "detail",
-                                        ],
-                                    ));
+                                    return unknown_field_error("careTeamSequence");
                                 }
                             }
                             Field::DiagnosisSequence => {
@@ -4415,38 +4272,7 @@ impl<'de> serde::de::Deserialize<'de> for ClaimItem {
                                         }
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "diagnosisSequence",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "sequence",
-                                            "careTeamSequence",
-                                            "diagnosisSequence",
-                                            "procedureSequence",
-                                            "informationSequence",
-                                            "revenue",
-                                            "category",
-                                            "productOrService",
-                                            "modifier",
-                                            "programCode",
-                                            "servicedDate",
-                                            "servicedPeriod",
-                                            "locationCodeableConcept",
-                                            "locationAddress",
-                                            "locationReference",
-                                            "quantity",
-                                            "unitPrice",
-                                            "factor",
-                                            "net",
-                                            "udi",
-                                            "bodySite",
-                                            "subSite",
-                                            "encounter",
-                                            "detail",
-                                        ],
-                                    ));
+                                    return unknown_field_error("diagnosisSequence");
                                 }
                             }
                             Field::ProcedureSequence => {
@@ -4510,38 +4336,7 @@ impl<'de> serde::de::Deserialize<'de> for ClaimItem {
                                         }
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "procedureSequence",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "sequence",
-                                            "careTeamSequence",
-                                            "diagnosisSequence",
-                                            "procedureSequence",
-                                            "informationSequence",
-                                            "revenue",
-                                            "category",
-                                            "productOrService",
-                                            "modifier",
-                                            "programCode",
-                                            "servicedDate",
-                                            "servicedPeriod",
-                                            "locationCodeableConcept",
-                                            "locationAddress",
-                                            "locationReference",
-                                            "quantity",
-                                            "unitPrice",
-                                            "factor",
-                                            "net",
-                                            "udi",
-                                            "bodySite",
-                                            "subSite",
-                                            "encounter",
-                                            "detail",
-                                        ],
-                                    ));
+                                    return unknown_field_error("procedureSequence");
                                 }
                             }
                             Field::InformationSequence => {
@@ -4605,38 +4400,7 @@ impl<'de> serde::de::Deserialize<'de> for ClaimItem {
                                         }
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "informationSequence",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "sequence",
-                                            "careTeamSequence",
-                                            "diagnosisSequence",
-                                            "procedureSequence",
-                                            "informationSequence",
-                                            "revenue",
-                                            "category",
-                                            "productOrService",
-                                            "modifier",
-                                            "programCode",
-                                            "servicedDate",
-                                            "servicedPeriod",
-                                            "locationCodeableConcept",
-                                            "locationAddress",
-                                            "locationReference",
-                                            "quantity",
-                                            "unitPrice",
-                                            "factor",
-                                            "net",
-                                            "udi",
-                                            "bodySite",
-                                            "subSite",
-                                            "encounter",
-                                            "detail",
-                                        ],
-                                    ));
+                                    return unknown_field_error("informationSequence");
                                 }
                             }
                             Field::Revenue => {
@@ -4732,38 +4496,7 @@ impl<'de> serde::de::Deserialize<'de> for ClaimItem {
                                         ));
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "servicedDate",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "sequence",
-                                            "careTeamSequence",
-                                            "diagnosisSequence",
-                                            "procedureSequence",
-                                            "informationSequence",
-                                            "revenue",
-                                            "category",
-                                            "productOrService",
-                                            "modifier",
-                                            "programCode",
-                                            "servicedDate",
-                                            "servicedPeriod",
-                                            "locationCodeableConcept",
-                                            "locationAddress",
-                                            "locationReference",
-                                            "quantity",
-                                            "unitPrice",
-                                            "factor",
-                                            "net",
-                                            "udi",
-                                            "bodySite",
-                                            "subSite",
-                                            "encounter",
-                                            "detail",
-                                        ],
-                                    ));
+                                    return unknown_field_error("servicedDate");
                                 }
                             }
                             Field::ServicedPeriod => {
@@ -4843,38 +4576,7 @@ impl<'de> serde::de::Deserialize<'de> for ClaimItem {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "factor",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "sequence",
-                                            "careTeamSequence",
-                                            "diagnosisSequence",
-                                            "procedureSequence",
-                                            "informationSequence",
-                                            "revenue",
-                                            "category",
-                                            "productOrService",
-                                            "modifier",
-                                            "programCode",
-                                            "servicedDate",
-                                            "servicedPeriod",
-                                            "locationCodeableConcept",
-                                            "locationAddress",
-                                            "locationReference",
-                                            "quantity",
-                                            "unitPrice",
-                                            "factor",
-                                            "net",
-                                            "udi",
-                                            "bodySite",
-                                            "subSite",
-                                            "encounter",
-                                            "detail",
-                                        ],
-                                    ));
+                                    return unknown_field_error("factor");
                                 }
                             }
                             Field::Net => {
@@ -5364,6 +5066,48 @@ impl<'de> serde::de::Deserialize<'de> for Claim {
             Total,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "meta",
+                    "implicitRules",
+                    "language",
+                    "text",
+                    "contained",
+                    "extension",
+                    "modifierExtension",
+                    "identifier",
+                    "status",
+                    "type",
+                    "subType",
+                    "use",
+                    "patient",
+                    "billablePeriod",
+                    "created",
+                    "enterer",
+                    "insurer",
+                    "provider",
+                    "priority",
+                    "fundsReserve",
+                    "related",
+                    "prescription",
+                    "originalPrescription",
+                    "payee",
+                    "referral",
+                    "facility",
+                    "careTeam",
+                    "supportingInfo",
+                    "diagnosis",
+                    "procedure",
+                    "insurance",
+                    "accident",
+                    "item",
+                    "total",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = Claim;
@@ -5469,46 +5213,7 @@ impl<'de> serde::de::Deserialize<'de> for Claim {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "implicitRules",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "status",
-                                            "type",
-                                            "subType",
-                                            "use",
-                                            "patient",
-                                            "billablePeriod",
-                                            "created",
-                                            "enterer",
-                                            "insurer",
-                                            "provider",
-                                            "priority",
-                                            "fundsReserve",
-                                            "related",
-                                            "prescription",
-                                            "originalPrescription",
-                                            "payee",
-                                            "referral",
-                                            "facility",
-                                            "careTeam",
-                                            "supportingInfo",
-                                            "diagnosis",
-                                            "procedure",
-                                            "insurance",
-                                            "accident",
-                                            "item",
-                                            "total",
-                                        ],
-                                    ));
+                                    return unknown_field_error("implicitRules");
                                 }
                             }
                             Field::Language => {
@@ -5539,46 +5244,7 @@ impl<'de> serde::de::Deserialize<'de> for Claim {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "language",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "status",
-                                            "type",
-                                            "subType",
-                                            "use",
-                                            "patient",
-                                            "billablePeriod",
-                                            "created",
-                                            "enterer",
-                                            "insurer",
-                                            "provider",
-                                            "priority",
-                                            "fundsReserve",
-                                            "related",
-                                            "prescription",
-                                            "originalPrescription",
-                                            "payee",
-                                            "referral",
-                                            "facility",
-                                            "careTeam",
-                                            "supportingInfo",
-                                            "diagnosis",
-                                            "procedure",
-                                            "insurance",
-                                            "accident",
-                                            "item",
-                                            "total",
-                                        ],
-                                    ));
+                                    return unknown_field_error("language");
                                 }
                             }
                             Field::Text => {
@@ -5664,46 +5330,7 @@ impl<'de> serde::de::Deserialize<'de> for Claim {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "status",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "status",
-                                            "type",
-                                            "subType",
-                                            "use",
-                                            "patient",
-                                            "billablePeriod",
-                                            "created",
-                                            "enterer",
-                                            "insurer",
-                                            "provider",
-                                            "priority",
-                                            "fundsReserve",
-                                            "related",
-                                            "prescription",
-                                            "originalPrescription",
-                                            "payee",
-                                            "referral",
-                                            "facility",
-                                            "careTeam",
-                                            "supportingInfo",
-                                            "diagnosis",
-                                            "procedure",
-                                            "insurance",
-                                            "accident",
-                                            "item",
-                                            "total",
-                                        ],
-                                    ));
+                                    return unknown_field_error("status");
                                 }
                             }
                             Field::Type => {
@@ -5746,46 +5373,7 @@ impl<'de> serde::de::Deserialize<'de> for Claim {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "use",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "status",
-                                            "type",
-                                            "subType",
-                                            "use",
-                                            "patient",
-                                            "billablePeriod",
-                                            "created",
-                                            "enterer",
-                                            "insurer",
-                                            "provider",
-                                            "priority",
-                                            "fundsReserve",
-                                            "related",
-                                            "prescription",
-                                            "originalPrescription",
-                                            "payee",
-                                            "referral",
-                                            "facility",
-                                            "careTeam",
-                                            "supportingInfo",
-                                            "diagnosis",
-                                            "procedure",
-                                            "insurance",
-                                            "accident",
-                                            "item",
-                                            "total",
-                                        ],
-                                    ));
+                                    return unknown_field_error("use");
                                 }
                             }
                             Field::Patient => {
@@ -5830,46 +5418,7 @@ impl<'de> serde::de::Deserialize<'de> for Claim {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "created",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "status",
-                                            "type",
-                                            "subType",
-                                            "use",
-                                            "patient",
-                                            "billablePeriod",
-                                            "created",
-                                            "enterer",
-                                            "insurer",
-                                            "provider",
-                                            "priority",
-                                            "fundsReserve",
-                                            "related",
-                                            "prescription",
-                                            "originalPrescription",
-                                            "payee",
-                                            "referral",
-                                            "facility",
-                                            "careTeam",
-                                            "supportingInfo",
-                                            "diagnosis",
-                                            "procedure",
-                                            "insurance",
-                                            "accident",
-                                            "item",
-                                            "total",
-                                        ],
-                                    ));
+                                    return unknown_field_error("created");
                                 }
                             }
                             Field::Enterer => {

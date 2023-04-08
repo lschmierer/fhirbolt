@@ -1,4 +1,4 @@
-// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-08 by fhirbolt-codegen v0.1.0
 #[doc = "Enum representing all possible FHIR resources."]
 #[derive(Default, Debug, Clone, PartialEq, serde :: Serialize, serde :: Deserialize)]
 #[serde(tag = "resourceType")]

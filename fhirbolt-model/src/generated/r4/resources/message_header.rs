@@ -1,4 +1,4 @@
-// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-08 by fhirbolt-codegen v0.1.0
 #[doc = "Code that identifies the event this message represents and connects it with its definition. Events defined as part of the FHIR specification have the system value \"<http://terminology.hl7.org/CodeSystem/message>-events\".  Alternatively uri to the EventDefinition."]
 #[derive(Debug, Clone, PartialEq)]
 pub enum MessageHeaderEvent {
@@ -119,6 +119,20 @@ impl<'de> serde::de::Deserialize<'de> for MessageHeaderDestination {
             Receiver,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "name",
+                    "target",
+                    "endpoint",
+                    "receiver",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = MessageHeaderDestination;
@@ -200,18 +214,7 @@ impl<'de> serde::de::Deserialize<'de> for MessageHeaderDestination {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "name",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "name",
-                                            "target",
-                                            "endpoint",
-                                            "receiver",
-                                        ],
-                                    ));
+                                    return unknown_field_error("name");
                                 }
                             }
                             Field::Target => {
@@ -248,18 +251,7 @@ impl<'de> serde::de::Deserialize<'de> for MessageHeaderDestination {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "endpoint",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "name",
-                                            "target",
-                                            "endpoint",
-                                            "receiver",
-                                        ],
-                                    ));
+                                    return unknown_field_error("endpoint");
                                 }
                             }
                             Field::Receiver => {
@@ -458,6 +450,21 @@ impl<'de> serde::de::Deserialize<'de> for MessageHeaderSource {
             EndpointPrimitiveElement,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "name",
+                    "software",
+                    "version",
+                    "contact",
+                    "endpoint",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = MessageHeaderSource;
@@ -540,19 +547,7 @@ impl<'de> serde::de::Deserialize<'de> for MessageHeaderSource {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "name",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "name",
-                                            "software",
-                                            "version",
-                                            "contact",
-                                            "endpoint",
-                                        ],
-                                    ));
+                                    return unknown_field_error("name");
                                 }
                             }
                             Field::Software => {
@@ -583,19 +578,7 @@ impl<'de> serde::de::Deserialize<'de> for MessageHeaderSource {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "software",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "name",
-                                            "software",
-                                            "version",
-                                            "contact",
-                                            "endpoint",
-                                        ],
-                                    ));
+                                    return unknown_field_error("software");
                                 }
                             }
                             Field::Version => {
@@ -626,19 +609,7 @@ impl<'de> serde::de::Deserialize<'de> for MessageHeaderSource {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "version",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "name",
-                                            "software",
-                                            "version",
-                                            "contact",
-                                            "endpoint",
-                                        ],
-                                    ));
+                                    return unknown_field_error("version");
                                 }
                             }
                             Field::Contact => {
@@ -675,19 +646,7 @@ impl<'de> serde::de::Deserialize<'de> for MessageHeaderSource {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "endpoint",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "name",
-                                            "software",
-                                            "version",
-                                            "contact",
-                                            "endpoint",
-                                        ],
-                                    ));
+                                    return unknown_field_error("endpoint");
                                 }
                             }
                             Field::Unknown(key) => if _ctx.config.mode
@@ -828,6 +787,19 @@ impl<'de> serde::de::Deserialize<'de> for MessageHeaderResponse {
             Details,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "identifier",
+                    "code",
+                    "details",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = MessageHeaderResponse;
@@ -914,17 +886,7 @@ impl<'de> serde::de::Deserialize<'de> for MessageHeaderResponse {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "identifier",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "code",
-                                            "details",
-                                        ],
-                                    ));
+                                    return unknown_field_error("identifier");
                                 }
                             }
                             Field::Code => {
@@ -955,17 +917,7 @@ impl<'de> serde::de::Deserialize<'de> for MessageHeaderResponse {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "code",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "code",
-                                            "details",
-                                        ],
-                                    ));
+                                    return unknown_field_error("code");
                                 }
                             }
                             Field::Details => {
@@ -1261,6 +1213,33 @@ impl<'de> serde::de::Deserialize<'de> for MessageHeader {
             DefinitionPrimitiveElement,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "meta",
+                    "implicitRules",
+                    "language",
+                    "text",
+                    "contained",
+                    "extension",
+                    "modifierExtension",
+                    "eventCoding",
+                    "eventUri",
+                    "destination",
+                    "sender",
+                    "enterer",
+                    "author",
+                    "source",
+                    "responsible",
+                    "reason",
+                    "response",
+                    "focus",
+                    "definition",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = MessageHeader;
@@ -1350,31 +1329,7 @@ impl<'de> serde::de::Deserialize<'de> for MessageHeader {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "implicitRules",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "eventCoding",
-                                            "eventUri",
-                                            "destination",
-                                            "sender",
-                                            "enterer",
-                                            "author",
-                                            "source",
-                                            "responsible",
-                                            "reason",
-                                            "response",
-                                            "focus",
-                                            "definition",
-                                        ],
-                                    ));
+                                    return unknown_field_error("implicitRules");
                                 }
                             }
                             Field::Language => {
@@ -1405,31 +1360,7 @@ impl<'de> serde::de::Deserialize<'de> for MessageHeader {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "language",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "eventCoding",
-                                            "eventUri",
-                                            "destination",
-                                            "sender",
-                                            "enterer",
-                                            "author",
-                                            "source",
-                                            "responsible",
-                                            "reason",
-                                            "response",
-                                            "focus",
-                                            "definition",
-                                        ],
-                                    ));
+                                    return unknown_field_error("language");
                                 }
                             }
                             Field::Text => {
@@ -1524,31 +1455,7 @@ impl<'de> serde::de::Deserialize<'de> for MessageHeader {
                                         return Err(serde::de::Error::duplicate_field("_event[x]"));
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "eventUri",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "eventCoding",
-                                            "eventUri",
-                                            "destination",
-                                            "sender",
-                                            "enterer",
-                                            "author",
-                                            "source",
-                                            "responsible",
-                                            "reason",
-                                            "response",
-                                            "focus",
-                                            "definition",
-                                        ],
-                                    ));
+                                    return unknown_field_error("eventUri");
                                 }
                             }
                             Field::Destination => {
@@ -1651,31 +1558,7 @@ impl<'de> serde::de::Deserialize<'de> for MessageHeader {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "definition",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "eventCoding",
-                                            "eventUri",
-                                            "destination",
-                                            "sender",
-                                            "enterer",
-                                            "author",
-                                            "source",
-                                            "responsible",
-                                            "reason",
-                                            "response",
-                                            "focus",
-                                            "definition",
-                                        ],
-                                    ));
+                                    return unknown_field_error("definition");
                                 }
                             }
                             Field::Unknown(key) => if _ctx.config.mode

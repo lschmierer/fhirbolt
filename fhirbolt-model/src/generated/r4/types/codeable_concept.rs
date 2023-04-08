@@ -1,4 +1,4 @@
-// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-08 by fhirbolt-codegen v0.1.0
 #[doc = "Base StructureDefinition for CodeableConcept Type: A concept that may be defined by a formal reference to a terminology or ontology or may be provided by text.\n\nThis is a common pattern in healthcare - a concept that may be defined by one or more codes from formal definitions including LOINC and SNOMED CT, and/or defined by the provision of text that captures a human sense of the concept."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub struct CodeableConcept {
@@ -71,6 +71,12 @@ impl<'de> serde::de::Deserialize<'de> for CodeableConcept {
             #[serde(rename = "_text")]
             TextPrimitiveElement,
             Unknown(std::string::String),
+        }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &["id", "extension", "coding", "text"],
+            ))
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -146,10 +152,7 @@ impl<'de> serde::de::Deserialize<'de> for CodeableConcept {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "text",
-                                        &["id", "extension", "coding", "text"],
-                                    ));
+                                    return unknown_field_error("text");
                                 }
                             }
                             Field::Unknown(key) => if _ctx.config.mode

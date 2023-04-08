@@ -1,4 +1,4 @@
-// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-08 by fhirbolt-codegen v0.1.0
 #[doc = "Base StructureDefinition for Signature Type: A signature along with supporting context. The signature may be a digital signature that is cryptographic in nature, or some other signature acceptable to the domain. This other signature may be as simple as a graphical image representing a hand-written signature, or a signature ceremony Different signature approaches have different utilities.\n\nThere are a number of places where content must be signed in healthcare."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub struct Signature {
@@ -155,6 +155,22 @@ impl<'de> serde::de::Deserialize<'de> for Signature {
             DataPrimitiveElement,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "type",
+                    "when",
+                    "who",
+                    "onBehalfOf",
+                    "targetFormat",
+                    "sigFormat",
+                    "data",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = Signature;
@@ -234,20 +250,7 @@ impl<'de> serde::de::Deserialize<'de> for Signature {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "when",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "type",
-                                            "when",
-                                            "who",
-                                            "onBehalfOf",
-                                            "targetFormat",
-                                            "sigFormat",
-                                            "data",
-                                        ],
-                                    ));
+                                    return unknown_field_error("when");
                                 }
                             }
                             Field::Who => {
@@ -296,20 +299,7 @@ impl<'de> serde::de::Deserialize<'de> for Signature {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "targetFormat",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "type",
-                                            "when",
-                                            "who",
-                                            "onBehalfOf",
-                                            "targetFormat",
-                                            "sigFormat",
-                                            "data",
-                                        ],
-                                    ));
+                                    return unknown_field_error("targetFormat");
                                 }
                             }
                             Field::SigFormat => {
@@ -342,20 +332,7 @@ impl<'de> serde::de::Deserialize<'de> for Signature {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "sigFormat",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "type",
-                                            "when",
-                                            "who",
-                                            "onBehalfOf",
-                                            "targetFormat",
-                                            "sigFormat",
-                                            "data",
-                                        ],
-                                    ));
+                                    return unknown_field_error("sigFormat");
                                 }
                             }
                             Field::Data => {
@@ -386,20 +363,7 @@ impl<'de> serde::de::Deserialize<'de> for Signature {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "data",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "type",
-                                            "when",
-                                            "who",
-                                            "onBehalfOf",
-                                            "targetFormat",
-                                            "sigFormat",
-                                            "data",
-                                        ],
-                                    ));
+                                    return unknown_field_error("data");
                                 }
                             }
                             Field::Unknown(key) => if _ctx.config.mode

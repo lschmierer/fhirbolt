@@ -1,4 +1,4 @@
-// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-08 by fhirbolt-codegen v0.1.0
 #[doc = "Base StructureDefinition for ContactPoint Type: Details for all kinds of technology mediated contact points for a person or organization, including telephone, email, etc.\n\nNeed to track phone, fax, mobile, sms numbers, email addresses, twitter tags, etc."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub struct ContactPoint {
@@ -147,6 +147,20 @@ impl<'de> serde::de::Deserialize<'de> for ContactPoint {
             Period,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "system",
+                    "value",
+                    "use",
+                    "rank",
+                    "period",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = ContactPoint;
@@ -213,18 +227,7 @@ impl<'de> serde::de::Deserialize<'de> for ContactPoint {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "system",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "system",
-                                            "value",
-                                            "use",
-                                            "rank",
-                                            "period",
-                                        ],
-                                    ));
+                                    return unknown_field_error("system");
                                 }
                             }
                             Field::Value => {
@@ -255,18 +258,7 @@ impl<'de> serde::de::Deserialize<'de> for ContactPoint {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "value",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "system",
-                                            "value",
-                                            "use",
-                                            "rank",
-                                            "period",
-                                        ],
-                                    ));
+                                    return unknown_field_error("value");
                                 }
                             }
                             Field::Use => {
@@ -297,18 +289,7 @@ impl<'de> serde::de::Deserialize<'de> for ContactPoint {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "use",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "system",
-                                            "value",
-                                            "use",
-                                            "rank",
-                                            "period",
-                                        ],
-                                    ));
+                                    return unknown_field_error("use");
                                 }
                             }
                             Field::Rank => {
@@ -339,18 +320,7 @@ impl<'de> serde::de::Deserialize<'de> for ContactPoint {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "rank",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "system",
-                                            "value",
-                                            "use",
-                                            "rank",
-                                            "period",
-                                        ],
-                                    ));
+                                    return unknown_field_error("rank");
                                 }
                             }
                             Field::Period => {

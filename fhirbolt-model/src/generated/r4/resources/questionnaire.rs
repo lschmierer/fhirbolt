@@ -1,4 +1,4 @@
-// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-08 by fhirbolt-codegen v0.1.0
 #[doc = "A value that the referenced question is tested using the specified operator in order for the item to be enabled."]
 #[derive(Debug, Clone, PartialEq)]
 pub enum QuestionnaireItemEnableWhenAnswer {
@@ -318,6 +318,28 @@ impl<'de> serde::de::Deserialize<'de> for QuestionnaireItemEnableWhen {
             AnswerReference,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "question",
+                    "operator",
+                    "answerBoolean",
+                    "answerDecimal",
+                    "answerInteger",
+                    "answerDate",
+                    "answerDateTime",
+                    "answerTime",
+                    "answerString",
+                    "answerCoding",
+                    "answerQuantity",
+                    "answerReference",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = QuestionnaireItemEnableWhen;
@@ -401,26 +423,7 @@ impl<'de> serde::de::Deserialize<'de> for QuestionnaireItemEnableWhen {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "question",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "question",
-                                            "operator",
-                                            "answerBoolean",
-                                            "answerDecimal",
-                                            "answerInteger",
-                                            "answerDate",
-                                            "answerDateTime",
-                                            "answerTime",
-                                            "answerString",
-                                            "answerCoding",
-                                            "answerQuantity",
-                                            "answerReference",
-                                        ],
-                                    ));
+                                    return unknown_field_error("question");
                                 }
                             }
                             Field::Operator => {
@@ -451,26 +454,7 @@ impl<'de> serde::de::Deserialize<'de> for QuestionnaireItemEnableWhen {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "operator",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "question",
-                                            "operator",
-                                            "answerBoolean",
-                                            "answerDecimal",
-                                            "answerInteger",
-                                            "answerDate",
-                                            "answerDateTime",
-                                            "answerTime",
-                                            "answerString",
-                                            "answerCoding",
-                                            "answerQuantity",
-                                            "answerReference",
-                                        ],
-                                    ));
+                                    return unknown_field_error("operator");
                                 }
                             }
                             Field::AnswerBoolean => {
@@ -531,26 +515,7 @@ impl<'de> serde::de::Deserialize<'de> for QuestionnaireItemEnableWhen {
                                         ));
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "answerBoolean",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "question",
-                                            "operator",
-                                            "answerBoolean",
-                                            "answerDecimal",
-                                            "answerInteger",
-                                            "answerDate",
-                                            "answerDateTime",
-                                            "answerTime",
-                                            "answerString",
-                                            "answerCoding",
-                                            "answerQuantity",
-                                            "answerReference",
-                                        ],
-                                    ));
+                                    return unknown_field_error("answerBoolean");
                                 }
                             }
                             Field::AnswerDecimal => {
@@ -611,26 +576,7 @@ impl<'de> serde::de::Deserialize<'de> for QuestionnaireItemEnableWhen {
                                         ));
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "answerDecimal",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "question",
-                                            "operator",
-                                            "answerBoolean",
-                                            "answerDecimal",
-                                            "answerInteger",
-                                            "answerDate",
-                                            "answerDateTime",
-                                            "answerTime",
-                                            "answerString",
-                                            "answerCoding",
-                                            "answerQuantity",
-                                            "answerReference",
-                                        ],
-                                    ));
+                                    return unknown_field_error("answerDecimal");
                                 }
                             }
                             Field::AnswerInteger => {
@@ -691,26 +637,7 @@ impl<'de> serde::de::Deserialize<'de> for QuestionnaireItemEnableWhen {
                                         ));
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "answerInteger",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "question",
-                                            "operator",
-                                            "answerBoolean",
-                                            "answerDecimal",
-                                            "answerInteger",
-                                            "answerDate",
-                                            "answerDateTime",
-                                            "answerTime",
-                                            "answerString",
-                                            "answerCoding",
-                                            "answerQuantity",
-                                            "answerReference",
-                                        ],
-                                    ));
+                                    return unknown_field_error("answerInteger");
                                 }
                             }
                             Field::AnswerDate => {
@@ -765,26 +692,7 @@ impl<'de> serde::de::Deserialize<'de> for QuestionnaireItemEnableWhen {
                                         ));
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "answerDate",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "question",
-                                            "operator",
-                                            "answerBoolean",
-                                            "answerDecimal",
-                                            "answerInteger",
-                                            "answerDate",
-                                            "answerDateTime",
-                                            "answerTime",
-                                            "answerString",
-                                            "answerCoding",
-                                            "answerQuantity",
-                                            "answerReference",
-                                        ],
-                                    ));
+                                    return unknown_field_error("answerDate");
                                 }
                             }
                             Field::AnswerDateTime => {
@@ -845,26 +753,7 @@ impl<'de> serde::de::Deserialize<'de> for QuestionnaireItemEnableWhen {
                                         ));
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "answerDateTime",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "question",
-                                            "operator",
-                                            "answerBoolean",
-                                            "answerDecimal",
-                                            "answerInteger",
-                                            "answerDate",
-                                            "answerDateTime",
-                                            "answerTime",
-                                            "answerString",
-                                            "answerCoding",
-                                            "answerQuantity",
-                                            "answerReference",
-                                        ],
-                                    ));
+                                    return unknown_field_error("answerDateTime");
                                 }
                             }
                             Field::AnswerTime => {
@@ -919,26 +808,7 @@ impl<'de> serde::de::Deserialize<'de> for QuestionnaireItemEnableWhen {
                                         ));
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "answerTime",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "question",
-                                            "operator",
-                                            "answerBoolean",
-                                            "answerDecimal",
-                                            "answerInteger",
-                                            "answerDate",
-                                            "answerDateTime",
-                                            "answerTime",
-                                            "answerString",
-                                            "answerCoding",
-                                            "answerQuantity",
-                                            "answerReference",
-                                        ],
-                                    ));
+                                    return unknown_field_error("answerTime");
                                 }
                             }
                             Field::AnswerString => {
@@ -999,26 +869,7 @@ impl<'de> serde::de::Deserialize<'de> for QuestionnaireItemEnableWhen {
                                         ));
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "answerString",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "question",
-                                            "operator",
-                                            "answerBoolean",
-                                            "answerDecimal",
-                                            "answerInteger",
-                                            "answerDate",
-                                            "answerDateTime",
-                                            "answerTime",
-                                            "answerString",
-                                            "answerCoding",
-                                            "answerQuantity",
-                                            "answerReference",
-                                        ],
-                                    ));
+                                    return unknown_field_error("answerString");
                                 }
                             }
                             Field::AnswerCoding => {
@@ -1281,6 +1132,23 @@ impl<'de> serde::de::Deserialize<'de> for QuestionnaireItemAnswerOption {
             InitialSelectedPrimitiveElement,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "valueInteger",
+                    "valueDate",
+                    "valueTime",
+                    "valueString",
+                    "valueCoding",
+                    "valueReference",
+                    "initialSelected",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = QuestionnaireItemAnswerOption;
@@ -1391,21 +1259,7 @@ impl<'de> serde::de::Deserialize<'de> for QuestionnaireItemAnswerOption {
                                         return Err(serde::de::Error::duplicate_field("_value[x]"));
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "valueInteger",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "valueInteger",
-                                            "valueDate",
-                                            "valueTime",
-                                            "valueString",
-                                            "valueCoding",
-                                            "valueReference",
-                                            "initialSelected",
-                                        ],
-                                    ));
+                                    return unknown_field_error("valueInteger");
                                 }
                             }
                             Field::ValueDate => {
@@ -1464,21 +1318,7 @@ impl<'de> serde::de::Deserialize<'de> for QuestionnaireItemAnswerOption {
                                         return Err(serde::de::Error::duplicate_field("_value[x]"));
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "valueDate",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "valueInteger",
-                                            "valueDate",
-                                            "valueTime",
-                                            "valueString",
-                                            "valueCoding",
-                                            "valueReference",
-                                            "initialSelected",
-                                        ],
-                                    ));
+                                    return unknown_field_error("valueDate");
                                 }
                             }
                             Field::ValueTime => {
@@ -1537,21 +1377,7 @@ impl<'de> serde::de::Deserialize<'de> for QuestionnaireItemAnswerOption {
                                         return Err(serde::de::Error::duplicate_field("_value[x]"));
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "valueTime",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "valueInteger",
-                                            "valueDate",
-                                            "valueTime",
-                                            "valueString",
-                                            "valueCoding",
-                                            "valueReference",
-                                            "initialSelected",
-                                        ],
-                                    ));
+                                    return unknown_field_error("valueTime");
                                 }
                             }
                             Field::ValueString => {
@@ -1610,21 +1436,7 @@ impl<'de> serde::de::Deserialize<'de> for QuestionnaireItemAnswerOption {
                                         return Err(serde::de::Error::duplicate_field("_value[x]"));
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "valueString",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "valueInteger",
-                                            "valueDate",
-                                            "valueTime",
-                                            "valueString",
-                                            "valueCoding",
-                                            "valueReference",
-                                            "initialSelected",
-                                        ],
-                                    ));
+                                    return unknown_field_error("valueString");
                                 }
                             }
                             Field::ValueCoding => {
@@ -1679,21 +1491,7 @@ impl<'de> serde::de::Deserialize<'de> for QuestionnaireItemAnswerOption {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "initialSelected",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "valueInteger",
-                                            "valueDate",
-                                            "valueTime",
-                                            "valueString",
-                                            "valueCoding",
-                                            "valueReference",
-                                            "initialSelected",
-                                        ],
-                                    ));
+                                    return unknown_field_error("initialSelected");
                                 }
                             }
                             Field::Unknown(key) => if _ctx.config.mode
@@ -1981,6 +1779,28 @@ impl<'de> serde::de::Deserialize<'de> for QuestionnaireItemInitial {
             ValueReference,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "valueBoolean",
+                    "valueDecimal",
+                    "valueInteger",
+                    "valueDate",
+                    "valueDateTime",
+                    "valueTime",
+                    "valueString",
+                    "valueUri",
+                    "valueAttachment",
+                    "valueCoding",
+                    "valueQuantity",
+                    "valueReference",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = QuestionnaireItemInitial;
@@ -2081,26 +1901,7 @@ impl<'de> serde::de::Deserialize<'de> for QuestionnaireItemInitial {
                                         return Err(serde::de::Error::duplicate_field("_value[x]"));
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "valueBoolean",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "valueBoolean",
-                                            "valueDecimal",
-                                            "valueInteger",
-                                            "valueDate",
-                                            "valueDateTime",
-                                            "valueTime",
-                                            "valueString",
-                                            "valueUri",
-                                            "valueAttachment",
-                                            "valueCoding",
-                                            "valueQuantity",
-                                            "valueReference",
-                                        ],
-                                    ));
+                                    return unknown_field_error("valueBoolean");
                                 }
                             }
                             Field::ValueDecimal => {
@@ -2153,26 +1954,7 @@ impl<'de> serde::de::Deserialize<'de> for QuestionnaireItemInitial {
                                         return Err(serde::de::Error::duplicate_field("_value[x]"));
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "valueDecimal",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "valueBoolean",
-                                            "valueDecimal",
-                                            "valueInteger",
-                                            "valueDate",
-                                            "valueDateTime",
-                                            "valueTime",
-                                            "valueString",
-                                            "valueUri",
-                                            "valueAttachment",
-                                            "valueCoding",
-                                            "valueQuantity",
-                                            "valueReference",
-                                        ],
-                                    ));
+                                    return unknown_field_error("valueDecimal");
                                 }
                             }
                             Field::ValueInteger => {
@@ -2225,26 +2007,7 @@ impl<'de> serde::de::Deserialize<'de> for QuestionnaireItemInitial {
                                         return Err(serde::de::Error::duplicate_field("_value[x]"));
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "valueInteger",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "valueBoolean",
-                                            "valueDecimal",
-                                            "valueInteger",
-                                            "valueDate",
-                                            "valueDateTime",
-                                            "valueTime",
-                                            "valueString",
-                                            "valueUri",
-                                            "valueAttachment",
-                                            "valueCoding",
-                                            "valueQuantity",
-                                            "valueReference",
-                                        ],
-                                    ));
+                                    return unknown_field_error("valueInteger");
                                 }
                             }
                             Field::ValueDate => {
@@ -2293,26 +2056,7 @@ impl<'de> serde::de::Deserialize<'de> for QuestionnaireItemInitial {
                                         return Err(serde::de::Error::duplicate_field("_value[x]"));
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "valueDate",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "valueBoolean",
-                                            "valueDecimal",
-                                            "valueInteger",
-                                            "valueDate",
-                                            "valueDateTime",
-                                            "valueTime",
-                                            "valueString",
-                                            "valueUri",
-                                            "valueAttachment",
-                                            "valueCoding",
-                                            "valueQuantity",
-                                            "valueReference",
-                                        ],
-                                    ));
+                                    return unknown_field_error("valueDate");
                                 }
                             }
                             Field::ValueDateTime => {
@@ -2365,26 +2109,7 @@ impl<'de> serde::de::Deserialize<'de> for QuestionnaireItemInitial {
                                         return Err(serde::de::Error::duplicate_field("_value[x]"));
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "valueDateTime",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "valueBoolean",
-                                            "valueDecimal",
-                                            "valueInteger",
-                                            "valueDate",
-                                            "valueDateTime",
-                                            "valueTime",
-                                            "valueString",
-                                            "valueUri",
-                                            "valueAttachment",
-                                            "valueCoding",
-                                            "valueQuantity",
-                                            "valueReference",
-                                        ],
-                                    ));
+                                    return unknown_field_error("valueDateTime");
                                 }
                             }
                             Field::ValueTime => {
@@ -2433,26 +2158,7 @@ impl<'de> serde::de::Deserialize<'de> for QuestionnaireItemInitial {
                                         return Err(serde::de::Error::duplicate_field("_value[x]"));
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "valueTime",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "valueBoolean",
-                                            "valueDecimal",
-                                            "valueInteger",
-                                            "valueDate",
-                                            "valueDateTime",
-                                            "valueTime",
-                                            "valueString",
-                                            "valueUri",
-                                            "valueAttachment",
-                                            "valueCoding",
-                                            "valueQuantity",
-                                            "valueReference",
-                                        ],
-                                    ));
+                                    return unknown_field_error("valueTime");
                                 }
                             }
                             Field::ValueString => {
@@ -2503,26 +2209,7 @@ impl<'de> serde::de::Deserialize<'de> for QuestionnaireItemInitial {
                                         return Err(serde::de::Error::duplicate_field("_value[x]"));
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "valueString",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "valueBoolean",
-                                            "valueDecimal",
-                                            "valueInteger",
-                                            "valueDate",
-                                            "valueDateTime",
-                                            "valueTime",
-                                            "valueString",
-                                            "valueUri",
-                                            "valueAttachment",
-                                            "valueCoding",
-                                            "valueQuantity",
-                                            "valueReference",
-                                        ],
-                                    ));
+                                    return unknown_field_error("valueString");
                                 }
                             }
                             Field::ValueUri => {
@@ -2571,26 +2258,7 @@ impl<'de> serde::de::Deserialize<'de> for QuestionnaireItemInitial {
                                         return Err(serde::de::Error::duplicate_field("_value[x]"));
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "valueUri",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "valueBoolean",
-                                            "valueDecimal",
-                                            "valueInteger",
-                                            "valueDate",
-                                            "valueDateTime",
-                                            "valueTime",
-                                            "valueString",
-                                            "valueUri",
-                                            "valueAttachment",
-                                            "valueCoding",
-                                            "valueQuantity",
-                                            "valueReference",
-                                        ],
-                                    ));
+                                    return unknown_field_error("valueUri");
                                 }
                             }
                             Field::ValueAttachment => {
@@ -3023,6 +2691,32 @@ impl<'de> serde::de::Deserialize<'de> for QuestionnaireItem {
             Item,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "linkId",
+                    "definition",
+                    "code",
+                    "prefix",
+                    "text",
+                    "type",
+                    "enableWhen",
+                    "enableBehavior",
+                    "required",
+                    "repeats",
+                    "readOnly",
+                    "maxLength",
+                    "answerValueSet",
+                    "answerOption",
+                    "initial",
+                    "item",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = QuestionnaireItem;
@@ -3116,30 +2810,7 @@ impl<'de> serde::de::Deserialize<'de> for QuestionnaireItem {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "linkId",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "linkId",
-                                            "definition",
-                                            "code",
-                                            "prefix",
-                                            "text",
-                                            "type",
-                                            "enableWhen",
-                                            "enableBehavior",
-                                            "required",
-                                            "repeats",
-                                            "readOnly",
-                                            "maxLength",
-                                            "answerValueSet",
-                                            "answerOption",
-                                            "initial",
-                                            "item",
-                                        ],
-                                    ));
+                                    return unknown_field_error("linkId");
                                 }
                             }
                             Field::Definition => {
@@ -3176,30 +2847,7 @@ impl<'de> serde::de::Deserialize<'de> for QuestionnaireItem {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "definition",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "linkId",
-                                            "definition",
-                                            "code",
-                                            "prefix",
-                                            "text",
-                                            "type",
-                                            "enableWhen",
-                                            "enableBehavior",
-                                            "required",
-                                            "repeats",
-                                            "readOnly",
-                                            "maxLength",
-                                            "answerValueSet",
-                                            "answerOption",
-                                            "initial",
-                                            "item",
-                                        ],
-                                    ));
+                                    return unknown_field_error("definition");
                                 }
                             }
                             Field::Code => {
@@ -3241,30 +2889,7 @@ impl<'de> serde::de::Deserialize<'de> for QuestionnaireItem {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "prefix",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "linkId",
-                                            "definition",
-                                            "code",
-                                            "prefix",
-                                            "text",
-                                            "type",
-                                            "enableWhen",
-                                            "enableBehavior",
-                                            "required",
-                                            "repeats",
-                                            "readOnly",
-                                            "maxLength",
-                                            "answerValueSet",
-                                            "answerOption",
-                                            "initial",
-                                            "item",
-                                        ],
-                                    ));
+                                    return unknown_field_error("prefix");
                                 }
                             }
                             Field::Text => {
@@ -3295,30 +2920,7 @@ impl<'de> serde::de::Deserialize<'de> for QuestionnaireItem {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "text",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "linkId",
-                                            "definition",
-                                            "code",
-                                            "prefix",
-                                            "text",
-                                            "type",
-                                            "enableWhen",
-                                            "enableBehavior",
-                                            "required",
-                                            "repeats",
-                                            "readOnly",
-                                            "maxLength",
-                                            "answerValueSet",
-                                            "answerOption",
-                                            "initial",
-                                            "item",
-                                        ],
-                                    ));
+                                    return unknown_field_error("text");
                                 }
                             }
                             Field::Type => {
@@ -3349,30 +2951,7 @@ impl<'de> serde::de::Deserialize<'de> for QuestionnaireItem {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "type",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "linkId",
-                                            "definition",
-                                            "code",
-                                            "prefix",
-                                            "text",
-                                            "type",
-                                            "enableWhen",
-                                            "enableBehavior",
-                                            "required",
-                                            "repeats",
-                                            "readOnly",
-                                            "maxLength",
-                                            "answerValueSet",
-                                            "answerOption",
-                                            "initial",
-                                            "item",
-                                        ],
-                                    ));
+                                    return unknown_field_error("type");
                                 }
                             }
                             Field::EnableWhen => {
@@ -3422,30 +3001,7 @@ impl<'de> serde::de::Deserialize<'de> for QuestionnaireItem {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "enableBehavior",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "linkId",
-                                            "definition",
-                                            "code",
-                                            "prefix",
-                                            "text",
-                                            "type",
-                                            "enableWhen",
-                                            "enableBehavior",
-                                            "required",
-                                            "repeats",
-                                            "readOnly",
-                                            "maxLength",
-                                            "answerValueSet",
-                                            "answerOption",
-                                            "initial",
-                                            "item",
-                                        ],
-                                    ));
+                                    return unknown_field_error("enableBehavior");
                                 }
                             }
                             Field::Required => {
@@ -3476,30 +3032,7 @@ impl<'de> serde::de::Deserialize<'de> for QuestionnaireItem {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "required",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "linkId",
-                                            "definition",
-                                            "code",
-                                            "prefix",
-                                            "text",
-                                            "type",
-                                            "enableWhen",
-                                            "enableBehavior",
-                                            "required",
-                                            "repeats",
-                                            "readOnly",
-                                            "maxLength",
-                                            "answerValueSet",
-                                            "answerOption",
-                                            "initial",
-                                            "item",
-                                        ],
-                                    ));
+                                    return unknown_field_error("required");
                                 }
                             }
                             Field::Repeats => {
@@ -3530,30 +3063,7 @@ impl<'de> serde::de::Deserialize<'de> for QuestionnaireItem {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "repeats",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "linkId",
-                                            "definition",
-                                            "code",
-                                            "prefix",
-                                            "text",
-                                            "type",
-                                            "enableWhen",
-                                            "enableBehavior",
-                                            "required",
-                                            "repeats",
-                                            "readOnly",
-                                            "maxLength",
-                                            "answerValueSet",
-                                            "answerOption",
-                                            "initial",
-                                            "item",
-                                        ],
-                                    ));
+                                    return unknown_field_error("repeats");
                                 }
                             }
                             Field::ReadOnly => {
@@ -3584,30 +3094,7 @@ impl<'de> serde::de::Deserialize<'de> for QuestionnaireItem {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "readOnly",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "linkId",
-                                            "definition",
-                                            "code",
-                                            "prefix",
-                                            "text",
-                                            "type",
-                                            "enableWhen",
-                                            "enableBehavior",
-                                            "required",
-                                            "repeats",
-                                            "readOnly",
-                                            "maxLength",
-                                            "answerValueSet",
-                                            "answerOption",
-                                            "initial",
-                                            "item",
-                                        ],
-                                    ));
+                                    return unknown_field_error("readOnly");
                                 }
                             }
                             Field::MaxLength => {
@@ -3640,30 +3127,7 @@ impl<'de> serde::de::Deserialize<'de> for QuestionnaireItem {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "maxLength",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "linkId",
-                                            "definition",
-                                            "code",
-                                            "prefix",
-                                            "text",
-                                            "type",
-                                            "enableWhen",
-                                            "enableBehavior",
-                                            "required",
-                                            "repeats",
-                                            "readOnly",
-                                            "maxLength",
-                                            "answerValueSet",
-                                            "answerOption",
-                                            "initial",
-                                            "item",
-                                        ],
-                                    ));
+                                    return unknown_field_error("maxLength");
                                 }
                             }
                             Field::AnswerValueSet => {
@@ -3700,30 +3164,7 @@ impl<'de> serde::de::Deserialize<'de> for QuestionnaireItem {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "answerValueSet",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "linkId",
-                                            "definition",
-                                            "code",
-                                            "prefix",
-                                            "text",
-                                            "type",
-                                            "enableWhen",
-                                            "enableBehavior",
-                                            "required",
-                                            "repeats",
-                                            "readOnly",
-                                            "maxLength",
-                                            "answerValueSet",
-                                            "answerOption",
-                                            "initial",
-                                            "item",
-                                        ],
-                                    ));
+                                    return unknown_field_error("answerValueSet");
                                 }
                             }
                             Field::AnswerOption => {
@@ -4413,6 +3854,43 @@ impl<'de> serde::de::Deserialize<'de> for Questionnaire {
             Item,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "meta",
+                    "implicitRules",
+                    "language",
+                    "text",
+                    "contained",
+                    "extension",
+                    "modifierExtension",
+                    "url",
+                    "identifier",
+                    "version",
+                    "name",
+                    "title",
+                    "derivedFrom",
+                    "status",
+                    "experimental",
+                    "subjectType",
+                    "date",
+                    "publisher",
+                    "contact",
+                    "description",
+                    "useContext",
+                    "jurisdiction",
+                    "purpose",
+                    "copyright",
+                    "approvalDate",
+                    "lastReviewDate",
+                    "effectivePeriod",
+                    "code",
+                    "item",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = Questionnaire;
@@ -4514,41 +3992,7 @@ impl<'de> serde::de::Deserialize<'de> for Questionnaire {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "implicitRules",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "identifier",
-                                            "version",
-                                            "name",
-                                            "title",
-                                            "derivedFrom",
-                                            "status",
-                                            "experimental",
-                                            "subjectType",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "description",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "purpose",
-                                            "copyright",
-                                            "approvalDate",
-                                            "lastReviewDate",
-                                            "effectivePeriod",
-                                            "code",
-                                            "item",
-                                        ],
-                                    ));
+                                    return unknown_field_error("implicitRules");
                                 }
                             }
                             Field::Language => {
@@ -4579,41 +4023,7 @@ impl<'de> serde::de::Deserialize<'de> for Questionnaire {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "language",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "identifier",
-                                            "version",
-                                            "name",
-                                            "title",
-                                            "derivedFrom",
-                                            "status",
-                                            "experimental",
-                                            "subjectType",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "description",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "purpose",
-                                            "copyright",
-                                            "approvalDate",
-                                            "lastReviewDate",
-                                            "effectivePeriod",
-                                            "code",
-                                            "item",
-                                        ],
-                                    ));
+                                    return unknown_field_error("language");
                                 }
                             }
                             Field::Text => {
@@ -4686,41 +4096,7 @@ impl<'de> serde::de::Deserialize<'de> for Questionnaire {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "url",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "identifier",
-                                            "version",
-                                            "name",
-                                            "title",
-                                            "derivedFrom",
-                                            "status",
-                                            "experimental",
-                                            "subjectType",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "description",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "purpose",
-                                            "copyright",
-                                            "approvalDate",
-                                            "lastReviewDate",
-                                            "effectivePeriod",
-                                            "code",
-                                            "item",
-                                        ],
-                                    ));
+                                    return unknown_field_error("url");
                                 }
                             }
                             Field::Identifier => {
@@ -4764,41 +4140,7 @@ impl<'de> serde::de::Deserialize<'de> for Questionnaire {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "version",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "identifier",
-                                            "version",
-                                            "name",
-                                            "title",
-                                            "derivedFrom",
-                                            "status",
-                                            "experimental",
-                                            "subjectType",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "description",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "purpose",
-                                            "copyright",
-                                            "approvalDate",
-                                            "lastReviewDate",
-                                            "effectivePeriod",
-                                            "code",
-                                            "item",
-                                        ],
-                                    ));
+                                    return unknown_field_error("version");
                                 }
                             }
                             Field::Name => {
@@ -4829,41 +4171,7 @@ impl<'de> serde::de::Deserialize<'de> for Questionnaire {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "name",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "identifier",
-                                            "version",
-                                            "name",
-                                            "title",
-                                            "derivedFrom",
-                                            "status",
-                                            "experimental",
-                                            "subjectType",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "description",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "purpose",
-                                            "copyright",
-                                            "approvalDate",
-                                            "lastReviewDate",
-                                            "effectivePeriod",
-                                            "code",
-                                            "item",
-                                        ],
-                                    ));
+                                    return unknown_field_error("name");
                                 }
                             }
                             Field::Title => {
@@ -4894,41 +4202,7 @@ impl<'de> serde::de::Deserialize<'de> for Questionnaire {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "title",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "identifier",
-                                            "version",
-                                            "name",
-                                            "title",
-                                            "derivedFrom",
-                                            "status",
-                                            "experimental",
-                                            "subjectType",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "description",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "purpose",
-                                            "copyright",
-                                            "approvalDate",
-                                            "lastReviewDate",
-                                            "effectivePeriod",
-                                            "code",
-                                            "item",
-                                        ],
-                                    ));
+                                    return unknown_field_error("title");
                                 }
                             }
                             Field::DerivedFrom => {
@@ -4991,41 +4265,7 @@ impl<'de> serde::de::Deserialize<'de> for Questionnaire {
                                         }
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "derivedFrom",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "identifier",
-                                            "version",
-                                            "name",
-                                            "title",
-                                            "derivedFrom",
-                                            "status",
-                                            "experimental",
-                                            "subjectType",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "description",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "purpose",
-                                            "copyright",
-                                            "approvalDate",
-                                            "lastReviewDate",
-                                            "effectivePeriod",
-                                            "code",
-                                            "item",
-                                        ],
-                                    ));
+                                    return unknown_field_error("derivedFrom");
                                 }
                             }
                             Field::Status => {
@@ -5056,41 +4296,7 @@ impl<'de> serde::de::Deserialize<'de> for Questionnaire {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "status",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "identifier",
-                                            "version",
-                                            "name",
-                                            "title",
-                                            "derivedFrom",
-                                            "status",
-                                            "experimental",
-                                            "subjectType",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "description",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "purpose",
-                                            "copyright",
-                                            "approvalDate",
-                                            "lastReviewDate",
-                                            "effectivePeriod",
-                                            "code",
-                                            "item",
-                                        ],
-                                    ));
+                                    return unknown_field_error("status");
                                 }
                             }
                             Field::Experimental => {
@@ -5127,41 +4333,7 @@ impl<'de> serde::de::Deserialize<'de> for Questionnaire {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "experimental",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "identifier",
-                                            "version",
-                                            "name",
-                                            "title",
-                                            "derivedFrom",
-                                            "status",
-                                            "experimental",
-                                            "subjectType",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "description",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "purpose",
-                                            "copyright",
-                                            "approvalDate",
-                                            "lastReviewDate",
-                                            "effectivePeriod",
-                                            "code",
-                                            "item",
-                                        ],
-                                    ));
+                                    return unknown_field_error("experimental");
                                 }
                             }
                             Field::SubjectType => {
@@ -5224,41 +4396,7 @@ impl<'de> serde::de::Deserialize<'de> for Questionnaire {
                                         }
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "subjectType",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "identifier",
-                                            "version",
-                                            "name",
-                                            "title",
-                                            "derivedFrom",
-                                            "status",
-                                            "experimental",
-                                            "subjectType",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "description",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "purpose",
-                                            "copyright",
-                                            "approvalDate",
-                                            "lastReviewDate",
-                                            "effectivePeriod",
-                                            "code",
-                                            "item",
-                                        ],
-                                    ));
+                                    return unknown_field_error("subjectType");
                                 }
                             }
                             Field::Date => {
@@ -5289,41 +4427,7 @@ impl<'de> serde::de::Deserialize<'de> for Questionnaire {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "date",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "identifier",
-                                            "version",
-                                            "name",
-                                            "title",
-                                            "derivedFrom",
-                                            "status",
-                                            "experimental",
-                                            "subjectType",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "description",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "purpose",
-                                            "copyright",
-                                            "approvalDate",
-                                            "lastReviewDate",
-                                            "effectivePeriod",
-                                            "code",
-                                            "item",
-                                        ],
-                                    ));
+                                    return unknown_field_error("date");
                                 }
                             }
                             Field::Publisher => {
@@ -5356,41 +4460,7 @@ impl<'de> serde::de::Deserialize<'de> for Questionnaire {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "publisher",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "identifier",
-                                            "version",
-                                            "name",
-                                            "title",
-                                            "derivedFrom",
-                                            "status",
-                                            "experimental",
-                                            "subjectType",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "description",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "purpose",
-                                            "copyright",
-                                            "approvalDate",
-                                            "lastReviewDate",
-                                            "effectivePeriod",
-                                            "code",
-                                            "item",
-                                        ],
-                                    ));
+                                    return unknown_field_error("publisher");
                                 }
                             }
                             Field::Contact => {
@@ -5438,41 +4508,7 @@ impl<'de> serde::de::Deserialize<'de> for Questionnaire {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "description",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "identifier",
-                                            "version",
-                                            "name",
-                                            "title",
-                                            "derivedFrom",
-                                            "status",
-                                            "experimental",
-                                            "subjectType",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "description",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "purpose",
-                                            "copyright",
-                                            "approvalDate",
-                                            "lastReviewDate",
-                                            "effectivePeriod",
-                                            "code",
-                                            "item",
-                                        ],
-                                    ));
+                                    return unknown_field_error("description");
                                 }
                             }
                             Field::UseContext => {
@@ -5529,41 +4565,7 @@ impl<'de> serde::de::Deserialize<'de> for Questionnaire {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "purpose",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "identifier",
-                                            "version",
-                                            "name",
-                                            "title",
-                                            "derivedFrom",
-                                            "status",
-                                            "experimental",
-                                            "subjectType",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "description",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "purpose",
-                                            "copyright",
-                                            "approvalDate",
-                                            "lastReviewDate",
-                                            "effectivePeriod",
-                                            "code",
-                                            "item",
-                                        ],
-                                    ));
+                                    return unknown_field_error("purpose");
                                 }
                             }
                             Field::Copyright => {
@@ -5596,41 +4598,7 @@ impl<'de> serde::de::Deserialize<'de> for Questionnaire {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "copyright",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "identifier",
-                                            "version",
-                                            "name",
-                                            "title",
-                                            "derivedFrom",
-                                            "status",
-                                            "experimental",
-                                            "subjectType",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "description",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "purpose",
-                                            "copyright",
-                                            "approvalDate",
-                                            "lastReviewDate",
-                                            "effectivePeriod",
-                                            "code",
-                                            "item",
-                                        ],
-                                    ));
+                                    return unknown_field_error("copyright");
                                 }
                             }
                             Field::ApprovalDate => {
@@ -5667,41 +4635,7 @@ impl<'de> serde::de::Deserialize<'de> for Questionnaire {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "approvalDate",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "identifier",
-                                            "version",
-                                            "name",
-                                            "title",
-                                            "derivedFrom",
-                                            "status",
-                                            "experimental",
-                                            "subjectType",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "description",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "purpose",
-                                            "copyright",
-                                            "approvalDate",
-                                            "lastReviewDate",
-                                            "effectivePeriod",
-                                            "code",
-                                            "item",
-                                        ],
-                                    ));
+                                    return unknown_field_error("approvalDate");
                                 }
                             }
                             Field::LastReviewDate => {
@@ -5738,41 +4672,7 @@ impl<'de> serde::de::Deserialize<'de> for Questionnaire {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "lastReviewDate",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "identifier",
-                                            "version",
-                                            "name",
-                                            "title",
-                                            "derivedFrom",
-                                            "status",
-                                            "experimental",
-                                            "subjectType",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "description",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "purpose",
-                                            "copyright",
-                                            "approvalDate",
-                                            "lastReviewDate",
-                                            "effectivePeriod",
-                                            "code",
-                                            "item",
-                                        ],
-                                    ));
+                                    return unknown_field_error("lastReviewDate");
                                 }
                             }
                             Field::EffectivePeriod => {

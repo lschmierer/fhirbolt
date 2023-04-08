@@ -1,4 +1,4 @@
-// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-08 by fhirbolt-codegen v0.1.0
 #[doc = "Identifies all people and organizations who are expected to be involved in the care team."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub struct CareTeamParticipant {
@@ -74,6 +74,20 @@ impl<'de> serde::de::Deserialize<'de> for CareTeamParticipant {
             #[serde(rename = "period")]
             Period,
             Unknown(std::string::String),
+        }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "role",
+                    "member",
+                    "onBehalfOf",
+                    "period",
+                ],
+            ))
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -442,6 +456,34 @@ impl<'de> serde::de::Deserialize<'de> for CareTeam {
             Note,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "meta",
+                    "implicitRules",
+                    "language",
+                    "text",
+                    "contained",
+                    "extension",
+                    "modifierExtension",
+                    "identifier",
+                    "status",
+                    "category",
+                    "name",
+                    "subject",
+                    "encounter",
+                    "period",
+                    "participant",
+                    "reasonCode",
+                    "reasonReference",
+                    "managingOrganization",
+                    "telecom",
+                    "note",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = CareTeam;
@@ -535,32 +577,7 @@ impl<'de> serde::de::Deserialize<'de> for CareTeam {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "implicitRules",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "status",
-                                            "category",
-                                            "name",
-                                            "subject",
-                                            "encounter",
-                                            "period",
-                                            "participant",
-                                            "reasonCode",
-                                            "reasonReference",
-                                            "managingOrganization",
-                                            "telecom",
-                                            "note",
-                                        ],
-                                    ));
+                                    return unknown_field_error("implicitRules");
                                 }
                             }
                             Field::Language => {
@@ -591,32 +608,7 @@ impl<'de> serde::de::Deserialize<'de> for CareTeam {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "language",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "status",
-                                            "category",
-                                            "name",
-                                            "subject",
-                                            "encounter",
-                                            "period",
-                                            "participant",
-                                            "reasonCode",
-                                            "reasonReference",
-                                            "managingOrganization",
-                                            "telecom",
-                                            "note",
-                                        ],
-                                    ));
+                                    return unknown_field_error("language");
                                 }
                             }
                             Field::Text => {
@@ -702,32 +694,7 @@ impl<'de> serde::de::Deserialize<'de> for CareTeam {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "status",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "status",
-                                            "category",
-                                            "name",
-                                            "subject",
-                                            "encounter",
-                                            "period",
-                                            "participant",
-                                            "reasonCode",
-                                            "reasonReference",
-                                            "managingOrganization",
-                                            "telecom",
-                                            "note",
-                                        ],
-                                    ));
+                                    return unknown_field_error("status");
                                 }
                             }
                             Field::Category => {
@@ -769,32 +736,7 @@ impl<'de> serde::de::Deserialize<'de> for CareTeam {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "name",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "status",
-                                            "category",
-                                            "name",
-                                            "subject",
-                                            "encounter",
-                                            "period",
-                                            "participant",
-                                            "reasonCode",
-                                            "reasonReference",
-                                            "managingOrganization",
-                                            "telecom",
-                                            "note",
-                                        ],
-                                    ));
+                                    return unknown_field_error("name");
                                 }
                             }
                             Field::Subject => {

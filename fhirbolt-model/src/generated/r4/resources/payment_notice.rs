@@ -1,4 +1,4 @@
-// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-08 by fhirbolt-codegen v0.1.0
 #[doc = "This resource provides the status of the payment for goods and services rendered, and the request and response resource references."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub struct PaymentNotice {
@@ -248,6 +248,33 @@ impl<'de> serde::de::Deserialize<'de> for PaymentNotice {
             PaymentStatus,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "meta",
+                    "implicitRules",
+                    "language",
+                    "text",
+                    "contained",
+                    "extension",
+                    "modifierExtension",
+                    "identifier",
+                    "status",
+                    "request",
+                    "response",
+                    "created",
+                    "provider",
+                    "payment",
+                    "paymentDate",
+                    "payee",
+                    "recipient",
+                    "amount",
+                    "paymentStatus",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = PaymentNotice;
@@ -338,31 +365,7 @@ impl<'de> serde::de::Deserialize<'de> for PaymentNotice {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "implicitRules",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "status",
-                                            "request",
-                                            "response",
-                                            "created",
-                                            "provider",
-                                            "payment",
-                                            "paymentDate",
-                                            "payee",
-                                            "recipient",
-                                            "amount",
-                                            "paymentStatus",
-                                        ],
-                                    ));
+                                    return unknown_field_error("implicitRules");
                                 }
                             }
                             Field::Language => {
@@ -393,31 +396,7 @@ impl<'de> serde::de::Deserialize<'de> for PaymentNotice {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "language",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "status",
-                                            "request",
-                                            "response",
-                                            "created",
-                                            "provider",
-                                            "payment",
-                                            "paymentDate",
-                                            "payee",
-                                            "recipient",
-                                            "amount",
-                                            "paymentStatus",
-                                        ],
-                                    ));
+                                    return unknown_field_error("language");
                                 }
                             }
                             Field::Text => {
@@ -503,31 +482,7 @@ impl<'de> serde::de::Deserialize<'de> for PaymentNotice {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "status",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "status",
-                                            "request",
-                                            "response",
-                                            "created",
-                                            "provider",
-                                            "payment",
-                                            "paymentDate",
-                                            "payee",
-                                            "recipient",
-                                            "amount",
-                                            "paymentStatus",
-                                        ],
-                                    ));
+                                    return unknown_field_error("status");
                                 }
                             }
                             Field::Request => {
@@ -570,31 +525,7 @@ impl<'de> serde::de::Deserialize<'de> for PaymentNotice {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "created",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "status",
-                                            "request",
-                                            "response",
-                                            "created",
-                                            "provider",
-                                            "payment",
-                                            "paymentDate",
-                                            "payee",
-                                            "recipient",
-                                            "amount",
-                                            "paymentStatus",
-                                        ],
-                                    ));
+                                    return unknown_field_error("created");
                                 }
                             }
                             Field::Provider => {
@@ -643,31 +574,7 @@ impl<'de> serde::de::Deserialize<'de> for PaymentNotice {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "paymentDate",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "status",
-                                            "request",
-                                            "response",
-                                            "created",
-                                            "provider",
-                                            "payment",
-                                            "paymentDate",
-                                            "payee",
-                                            "recipient",
-                                            "amount",
-                                            "paymentStatus",
-                                        ],
-                                    ));
+                                    return unknown_field_error("paymentDate");
                                 }
                             }
                             Field::Payee => {

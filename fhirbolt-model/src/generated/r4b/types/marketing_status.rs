@@ -1,4 +1,4 @@
-// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-08 by fhirbolt-codegen v0.1.0
 #[doc = "Base StructureDefinition for MarketingStatus Type: The marketing status describes the date when a medicinal product is actually put on the market or the date as of which it is no longer available."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub struct MarketingStatus {
@@ -97,6 +97,21 @@ impl<'de> serde::de::Deserialize<'de> for MarketingStatus {
             #[serde(rename = "_restoreDate")]
             RestoreDatePrimitiveElement,
             Unknown(std::string::String),
+        }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "country",
+                    "jurisdiction",
+                    "status",
+                    "dateRange",
+                    "restoreDate",
+                ],
+            ))
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -210,19 +225,7 @@ impl<'de> serde::de::Deserialize<'de> for MarketingStatus {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "restoreDate",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "country",
-                                            "jurisdiction",
-                                            "status",
-                                            "dateRange",
-                                            "restoreDate",
-                                        ],
-                                    ));
+                                    return unknown_field_error("restoreDate");
                                 }
                             }
                             Field::Unknown(key) => if _ctx.config.mode

@@ -1,4 +1,4 @@
-// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-08 by fhirbolt-codegen v0.1.0
 #[doc = "Distribution of the payment amount for a previously acknowledged payable."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub struct PaymentReconciliationDetail {
@@ -133,6 +133,26 @@ impl<'de> serde::de::Deserialize<'de> for PaymentReconciliationDetail {
             Amount,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "identifier",
+                    "predecessor",
+                    "type",
+                    "request",
+                    "submitter",
+                    "response",
+                    "date",
+                    "responsible",
+                    "payee",
+                    "amount",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = PaymentReconciliationDetail;
@@ -259,24 +279,7 @@ impl<'de> serde::de::Deserialize<'de> for PaymentReconciliationDetail {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "date",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "predecessor",
-                                            "type",
-                                            "request",
-                                            "submitter",
-                                            "response",
-                                            "date",
-                                            "responsible",
-                                            "payee",
-                                            "amount",
-                                        ],
-                                    ));
+                                    return unknown_field_error("date");
                                 }
                             }
                             Field::Responsible => {
@@ -446,6 +449,12 @@ impl<'de> serde::de::Deserialize<'de> for PaymentReconciliationProcessNote {
             TextPrimitiveElement,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &["id", "extension", "modifierExtension", "type", "text"],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = PaymentReconciliationProcessNote;
@@ -528,10 +537,7 @@ impl<'de> serde::de::Deserialize<'de> for PaymentReconciliationProcessNote {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "type",
-                                        &["id", "extension", "modifierExtension", "type", "text"],
-                                    ));
+                                    return unknown_field_error("type");
                                 }
                             }
                             Field::Text => {
@@ -562,10 +568,7 @@ impl<'de> serde::de::Deserialize<'de> for PaymentReconciliationProcessNote {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "text",
-                                        &["id", "extension", "modifierExtension", "type", "text"],
-                                    ));
+                                    return unknown_field_error("text");
                                 }
                             }
                             Field::Unknown(key) => if _ctx.config.mode
@@ -897,6 +900,36 @@ impl<'de> serde::de::Deserialize<'de> for PaymentReconciliation {
             ProcessNote,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "meta",
+                    "implicitRules",
+                    "language",
+                    "text",
+                    "contained",
+                    "extension",
+                    "modifierExtension",
+                    "identifier",
+                    "status",
+                    "period",
+                    "created",
+                    "paymentIssuer",
+                    "request",
+                    "requestor",
+                    "outcome",
+                    "disposition",
+                    "paymentDate",
+                    "paymentAmount",
+                    "paymentIdentifier",
+                    "detail",
+                    "formCode",
+                    "processNote",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = PaymentReconciliation;
@@ -990,34 +1023,7 @@ impl<'de> serde::de::Deserialize<'de> for PaymentReconciliation {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "implicitRules",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "status",
-                                            "period",
-                                            "created",
-                                            "paymentIssuer",
-                                            "request",
-                                            "requestor",
-                                            "outcome",
-                                            "disposition",
-                                            "paymentDate",
-                                            "paymentAmount",
-                                            "paymentIdentifier",
-                                            "detail",
-                                            "formCode",
-                                            "processNote",
-                                        ],
-                                    ));
+                                    return unknown_field_error("implicitRules");
                                 }
                             }
                             Field::Language => {
@@ -1048,34 +1054,7 @@ impl<'de> serde::de::Deserialize<'de> for PaymentReconciliation {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "language",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "status",
-                                            "period",
-                                            "created",
-                                            "paymentIssuer",
-                                            "request",
-                                            "requestor",
-                                            "outcome",
-                                            "disposition",
-                                            "paymentDate",
-                                            "paymentAmount",
-                                            "paymentIdentifier",
-                                            "detail",
-                                            "formCode",
-                                            "processNote",
-                                        ],
-                                    ));
+                                    return unknown_field_error("language");
                                 }
                             }
                             Field::Text => {
@@ -1161,34 +1140,7 @@ impl<'de> serde::de::Deserialize<'de> for PaymentReconciliation {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "status",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "status",
-                                            "period",
-                                            "created",
-                                            "paymentIssuer",
-                                            "request",
-                                            "requestor",
-                                            "outcome",
-                                            "disposition",
-                                            "paymentDate",
-                                            "paymentAmount",
-                                            "paymentIdentifier",
-                                            "detail",
-                                            "formCode",
-                                            "processNote",
-                                        ],
-                                    ));
+                                    return unknown_field_error("status");
                                 }
                             }
                             Field::Period => {
@@ -1225,34 +1177,7 @@ impl<'de> serde::de::Deserialize<'de> for PaymentReconciliation {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "created",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "status",
-                                            "period",
-                                            "created",
-                                            "paymentIssuer",
-                                            "request",
-                                            "requestor",
-                                            "outcome",
-                                            "disposition",
-                                            "paymentDate",
-                                            "paymentAmount",
-                                            "paymentIdentifier",
-                                            "detail",
-                                            "formCode",
-                                            "processNote",
-                                        ],
-                                    ));
+                                    return unknown_field_error("created");
                                 }
                             }
                             Field::PaymentIssuer => {
@@ -1301,34 +1226,7 @@ impl<'de> serde::de::Deserialize<'de> for PaymentReconciliation {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "outcome",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "status",
-                                            "period",
-                                            "created",
-                                            "paymentIssuer",
-                                            "request",
-                                            "requestor",
-                                            "outcome",
-                                            "disposition",
-                                            "paymentDate",
-                                            "paymentAmount",
-                                            "paymentIdentifier",
-                                            "detail",
-                                            "formCode",
-                                            "processNote",
-                                        ],
-                                    ));
+                                    return unknown_field_error("outcome");
                                 }
                             }
                             Field::Disposition => {
@@ -1365,34 +1263,7 @@ impl<'de> serde::de::Deserialize<'de> for PaymentReconciliation {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "disposition",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "status",
-                                            "period",
-                                            "created",
-                                            "paymentIssuer",
-                                            "request",
-                                            "requestor",
-                                            "outcome",
-                                            "disposition",
-                                            "paymentDate",
-                                            "paymentAmount",
-                                            "paymentIdentifier",
-                                            "detail",
-                                            "formCode",
-                                            "processNote",
-                                        ],
-                                    ));
+                                    return unknown_field_error("disposition");
                                 }
                             }
                             Field::PaymentDate => {
@@ -1429,34 +1300,7 @@ impl<'de> serde::de::Deserialize<'de> for PaymentReconciliation {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "paymentDate",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "status",
-                                            "period",
-                                            "created",
-                                            "paymentIssuer",
-                                            "request",
-                                            "requestor",
-                                            "outcome",
-                                            "disposition",
-                                            "paymentDate",
-                                            "paymentAmount",
-                                            "paymentIdentifier",
-                                            "detail",
-                                            "formCode",
-                                            "processNote",
-                                        ],
-                                    ));
+                                    return unknown_field_error("paymentDate");
                                 }
                             }
                             Field::PaymentAmount => {

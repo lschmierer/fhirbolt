@@ -1,4 +1,4 @@
-// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-08 by fhirbolt-codegen v0.1.0
 #[doc = "The date and time(s) at which the media was collected."]
 #[derive(Debug, Clone, PartialEq)]
 pub enum MediaCreated {
@@ -441,6 +441,44 @@ impl<'de> serde::de::Deserialize<'de> for Media {
             Note,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "meta",
+                    "implicitRules",
+                    "language",
+                    "text",
+                    "contained",
+                    "extension",
+                    "modifierExtension",
+                    "identifier",
+                    "basedOn",
+                    "partOf",
+                    "status",
+                    "type",
+                    "modality",
+                    "view",
+                    "subject",
+                    "encounter",
+                    "createdDateTime",
+                    "createdPeriod",
+                    "issued",
+                    "operator",
+                    "reasonCode",
+                    "bodySite",
+                    "deviceName",
+                    "device",
+                    "height",
+                    "width",
+                    "frames",
+                    "duration",
+                    "content",
+                    "note",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = Media;
@@ -542,42 +580,7 @@ impl<'de> serde::de::Deserialize<'de> for Media {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "implicitRules",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "basedOn",
-                                            "partOf",
-                                            "status",
-                                            "type",
-                                            "modality",
-                                            "view",
-                                            "subject",
-                                            "encounter",
-                                            "createdDateTime",
-                                            "createdPeriod",
-                                            "issued",
-                                            "operator",
-                                            "reasonCode",
-                                            "bodySite",
-                                            "deviceName",
-                                            "device",
-                                            "height",
-                                            "width",
-                                            "frames",
-                                            "duration",
-                                            "content",
-                                            "note",
-                                        ],
-                                    ));
+                                    return unknown_field_error("implicitRules");
                                 }
                             }
                             Field::Language => {
@@ -608,42 +611,7 @@ impl<'de> serde::de::Deserialize<'de> for Media {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "language",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "basedOn",
-                                            "partOf",
-                                            "status",
-                                            "type",
-                                            "modality",
-                                            "view",
-                                            "subject",
-                                            "encounter",
-                                            "createdDateTime",
-                                            "createdPeriod",
-                                            "issued",
-                                            "operator",
-                                            "reasonCode",
-                                            "bodySite",
-                                            "deviceName",
-                                            "device",
-                                            "height",
-                                            "width",
-                                            "frames",
-                                            "duration",
-                                            "content",
-                                            "note",
-                                        ],
-                                    ));
+                                    return unknown_field_error("language");
                                 }
                             }
                             Field::Text => {
@@ -751,42 +719,7 @@ impl<'de> serde::de::Deserialize<'de> for Media {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "status",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "basedOn",
-                                            "partOf",
-                                            "status",
-                                            "type",
-                                            "modality",
-                                            "view",
-                                            "subject",
-                                            "encounter",
-                                            "createdDateTime",
-                                            "createdPeriod",
-                                            "issued",
-                                            "operator",
-                                            "reasonCode",
-                                            "bodySite",
-                                            "deviceName",
-                                            "device",
-                                            "height",
-                                            "width",
-                                            "frames",
-                                            "duration",
-                                            "content",
-                                            "note",
-                                        ],
-                                    ));
+                                    return unknown_field_error("status");
                                 }
                             }
                             Field::Type => {
@@ -868,42 +801,7 @@ impl<'de> serde::de::Deserialize<'de> for Media {
                                         ));
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "createdDateTime",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "basedOn",
-                                            "partOf",
-                                            "status",
-                                            "type",
-                                            "modality",
-                                            "view",
-                                            "subject",
-                                            "encounter",
-                                            "createdDateTime",
-                                            "createdPeriod",
-                                            "issued",
-                                            "operator",
-                                            "reasonCode",
-                                            "bodySite",
-                                            "deviceName",
-                                            "device",
-                                            "height",
-                                            "width",
-                                            "frames",
-                                            "duration",
-                                            "content",
-                                            "note",
-                                        ],
-                                    ));
+                                    return unknown_field_error("createdDateTime");
                                 }
                             }
                             Field::CreatedPeriod => {
@@ -940,42 +838,7 @@ impl<'de> serde::de::Deserialize<'de> for Media {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "issued",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "basedOn",
-                                            "partOf",
-                                            "status",
-                                            "type",
-                                            "modality",
-                                            "view",
-                                            "subject",
-                                            "encounter",
-                                            "createdDateTime",
-                                            "createdPeriod",
-                                            "issued",
-                                            "operator",
-                                            "reasonCode",
-                                            "bodySite",
-                                            "deviceName",
-                                            "device",
-                                            "height",
-                                            "width",
-                                            "frames",
-                                            "duration",
-                                            "content",
-                                            "note",
-                                        ],
-                                    ));
+                                    return unknown_field_error("issued");
                                 }
                             }
                             Field::Operator => {
@@ -1037,42 +900,7 @@ impl<'de> serde::de::Deserialize<'de> for Media {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "deviceName",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "basedOn",
-                                            "partOf",
-                                            "status",
-                                            "type",
-                                            "modality",
-                                            "view",
-                                            "subject",
-                                            "encounter",
-                                            "createdDateTime",
-                                            "createdPeriod",
-                                            "issued",
-                                            "operator",
-                                            "reasonCode",
-                                            "bodySite",
-                                            "deviceName",
-                                            "device",
-                                            "height",
-                                            "width",
-                                            "frames",
-                                            "duration",
-                                            "content",
-                                            "note",
-                                        ],
-                                    ));
+                                    return unknown_field_error("deviceName");
                                 }
                             }
                             Field::Device => {
@@ -1109,42 +937,7 @@ impl<'de> serde::de::Deserialize<'de> for Media {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "height",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "basedOn",
-                                            "partOf",
-                                            "status",
-                                            "type",
-                                            "modality",
-                                            "view",
-                                            "subject",
-                                            "encounter",
-                                            "createdDateTime",
-                                            "createdPeriod",
-                                            "issued",
-                                            "operator",
-                                            "reasonCode",
-                                            "bodySite",
-                                            "deviceName",
-                                            "device",
-                                            "height",
-                                            "width",
-                                            "frames",
-                                            "duration",
-                                            "content",
-                                            "note",
-                                        ],
-                                    ));
+                                    return unknown_field_error("height");
                                 }
                             }
                             Field::Width => {
@@ -1175,42 +968,7 @@ impl<'de> serde::de::Deserialize<'de> for Media {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "width",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "basedOn",
-                                            "partOf",
-                                            "status",
-                                            "type",
-                                            "modality",
-                                            "view",
-                                            "subject",
-                                            "encounter",
-                                            "createdDateTime",
-                                            "createdPeriod",
-                                            "issued",
-                                            "operator",
-                                            "reasonCode",
-                                            "bodySite",
-                                            "deviceName",
-                                            "device",
-                                            "height",
-                                            "width",
-                                            "frames",
-                                            "duration",
-                                            "content",
-                                            "note",
-                                        ],
-                                    ));
+                                    return unknown_field_error("width");
                                 }
                             }
                             Field::Frames => {
@@ -1241,42 +999,7 @@ impl<'de> serde::de::Deserialize<'de> for Media {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "frames",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "basedOn",
-                                            "partOf",
-                                            "status",
-                                            "type",
-                                            "modality",
-                                            "view",
-                                            "subject",
-                                            "encounter",
-                                            "createdDateTime",
-                                            "createdPeriod",
-                                            "issued",
-                                            "operator",
-                                            "reasonCode",
-                                            "bodySite",
-                                            "deviceName",
-                                            "device",
-                                            "height",
-                                            "width",
-                                            "frames",
-                                            "duration",
-                                            "content",
-                                            "note",
-                                        ],
-                                    ));
+                                    return unknown_field_error("frames");
                                 }
                             }
                             Field::Duration => {
@@ -1307,42 +1030,7 @@ impl<'de> serde::de::Deserialize<'de> for Media {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "duration",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "basedOn",
-                                            "partOf",
-                                            "status",
-                                            "type",
-                                            "modality",
-                                            "view",
-                                            "subject",
-                                            "encounter",
-                                            "createdDateTime",
-                                            "createdPeriod",
-                                            "issued",
-                                            "operator",
-                                            "reasonCode",
-                                            "bodySite",
-                                            "deviceName",
-                                            "device",
-                                            "height",
-                                            "width",
-                                            "frames",
-                                            "duration",
-                                            "content",
-                                            "note",
-                                        ],
-                                    ));
+                                    return unknown_field_error("duration");
                                 }
                             }
                             Field::Content => {

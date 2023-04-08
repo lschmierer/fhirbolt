@@ -1,4 +1,4 @@
-// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-08 by fhirbolt-codegen v0.1.0
 #[doc = "The actual characteristic value corresponding to the type."]
 #[derive(Debug, Clone, PartialEq)]
 pub enum NutritionProductProductCharacteristicValue {
@@ -76,6 +76,12 @@ impl<'de> serde::de::Deserialize<'de> for NutritionProductNutrient {
             #[serde(rename = "amount")]
             Amount,
             Unknown(std::string::String),
+        }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &["id", "extension", "modifierExtension", "item", "amount"],
+            ))
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -227,6 +233,12 @@ impl<'de> serde::de::Deserialize<'de> for NutritionProductIngredient {
             #[serde(rename = "amount")]
             Amount,
             Unknown(std::string::String),
+        }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &["id", "extension", "modifierExtension", "item", "amount"],
+            ))
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -463,6 +475,23 @@ impl<'de> serde::de::Deserialize<'de> for NutritionProductProductCharacteristic 
             ValueBooleanPrimitiveElement,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "type",
+                    "valueCodeableConcept",
+                    "valueString",
+                    "valueQuantity",
+                    "valueBase64Binary",
+                    "valueAttachment",
+                    "valueBoolean",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = NutritionProductProductCharacteristic;
@@ -482,7 +511,7 @@ impl<'de> serde::de::Deserialize<'de> for NutritionProductProductCharacteristic 
                     None;
                 let mut r#type: Option<Box<super::super::types::CodeableConcept>> = None;
                 let mut r#value: Option<NutritionProductProductCharacteristicValue> = None;
-                fhirbolt_shared :: serde_context :: de :: DESERIALIZATION_CONTEXT . with (| _ctx | { let _ctx = _ctx . borrow () ; while let Some (map_access_key) = map_access . next_key () ? { match map_access_key { Field :: Id => { if r#id . is_some () { return Err (serde :: de :: Error :: duplicate_field ("id")) ; } r#id = Some (map_access . next_value () ?) ; } , Field :: Extension => { if _ctx . from_json { if r#extension . is_some () { return Err (serde :: de :: Error :: duplicate_field ("extension")) ; } r#extension = Some (map_access . next_value () ?) ; } else { let vec = r#extension . get_or_insert (Default :: default ()) ; vec . push (map_access . next_value () ?) ; } } , Field :: ModifierExtension => { if _ctx . from_json { if r#modifier_extension . is_some () { return Err (serde :: de :: Error :: duplicate_field ("modifierExtension")) ; } r#modifier_extension = Some (map_access . next_value () ?) ; } else { let vec = r#modifier_extension . get_or_insert (Default :: default ()) ; vec . push (map_access . next_value () ?) ; } } , Field :: Type => { if r#type . is_some () { return Err (serde :: de :: Error :: duplicate_field ("type")) ; } r#type = Some (map_access . next_value () ?) ; } , Field :: ValueCodeableConcept => { if r#value . is_some () { return Err (serde :: de :: Error :: duplicate_field ("valueCodeableConcept")) ; } r#value = Some (NutritionProductProductCharacteristicValue :: CodeableConcept (map_access . next_value () ?)) ; } , Field :: ValueString => { if _ctx . from_json { let r#enum = r#value . get_or_insert (NutritionProductProductCharacteristicValue :: String (Default :: default ())) ; if let NutritionProductProductCharacteristicValue :: String (variant) = r#enum { if variant . value . is_some () { return Err (serde :: de :: Error :: duplicate_field ("valueString")) ; } let value : _ = map_access . next_value () ? ; variant . value = Some (value) ; } else { return Err (serde :: de :: Error :: duplicate_field ("value[x]")) ; } } else { if r#value . is_some () { return Err (serde :: de :: Error :: duplicate_field ("valueString")) ; } r#value = Some (NutritionProductProductCharacteristicValue :: String (map_access . next_value () ?)) ; } } , Field :: ValueStringPrimitiveElement => { if _ctx . from_json { let r#enum = r#value . get_or_insert (NutritionProductProductCharacteristicValue :: String (Default :: default ())) ; if let NutritionProductProductCharacteristicValue :: String (variant) = r#enum { if variant . id . is_some () || ! variant . extension . is_empty () { return Err (serde :: de :: Error :: duplicate_field ("_valueString")) ; } let super :: super :: serde_helpers :: PrimitiveElementOwned { id , extension } = map_access . next_value () ? ; variant . id = id ; variant . extension = extension ; } else { return Err (serde :: de :: Error :: duplicate_field ("_value[x]")) ; } } else { return Err (serde :: de :: Error :: unknown_field ("valueString" , & ["id" , "extension" , "modifierExtension" , "type" , "valueCodeableConcept" , "valueString" , "valueQuantity" , "valueBase64Binary" , "valueAttachment" , "valueBoolean" ,])) ; } } , Field :: ValueQuantity => { if r#value . is_some () { return Err (serde :: de :: Error :: duplicate_field ("valueQuantity")) ; } r#value = Some (NutritionProductProductCharacteristicValue :: Quantity (map_access . next_value () ?)) ; } , Field :: ValueBase64Binary => { if _ctx . from_json { let r#enum = r#value . get_or_insert (NutritionProductProductCharacteristicValue :: Base64Binary (Default :: default ())) ; if let NutritionProductProductCharacteristicValue :: Base64Binary (variant) = r#enum { if variant . value . is_some () { return Err (serde :: de :: Error :: duplicate_field ("valueBase64Binary")) ; } let value : _ = map_access . next_value () ? ; variant . value = Some (value) ; } else { return Err (serde :: de :: Error :: duplicate_field ("value[x]")) ; } } else { if r#value . is_some () { return Err (serde :: de :: Error :: duplicate_field ("valueBase64Binary")) ; } r#value = Some (NutritionProductProductCharacteristicValue :: Base64Binary (map_access . next_value () ?)) ; } } , Field :: ValueBase64BinaryPrimitiveElement => { if _ctx . from_json { let r#enum = r#value . get_or_insert (NutritionProductProductCharacteristicValue :: Base64Binary (Default :: default ())) ; if let NutritionProductProductCharacteristicValue :: Base64Binary (variant) = r#enum { if variant . id . is_some () || ! variant . extension . is_empty () { return Err (serde :: de :: Error :: duplicate_field ("_valueBase64Binary")) ; } let super :: super :: serde_helpers :: PrimitiveElementOwned { id , extension } = map_access . next_value () ? ; variant . id = id ; variant . extension = extension ; } else { return Err (serde :: de :: Error :: duplicate_field ("_value[x]")) ; } } else { return Err (serde :: de :: Error :: unknown_field ("valueBase64Binary" , & ["id" , "extension" , "modifierExtension" , "type" , "valueCodeableConcept" , "valueString" , "valueQuantity" , "valueBase64Binary" , "valueAttachment" , "valueBoolean" ,])) ; } } , Field :: ValueAttachment => { if r#value . is_some () { return Err (serde :: de :: Error :: duplicate_field ("valueAttachment")) ; } r#value = Some (NutritionProductProductCharacteristicValue :: Attachment (map_access . next_value () ?)) ; } , Field :: ValueBoolean => { if _ctx . from_json { let r#enum = r#value . get_or_insert (NutritionProductProductCharacteristicValue :: Boolean (Default :: default ())) ; if let NutritionProductProductCharacteristicValue :: Boolean (variant) = r#enum { if variant . value . is_some () { return Err (serde :: de :: Error :: duplicate_field ("valueBoolean")) ; } let value : _ = map_access . next_value () ? ; variant . value = Some (value) ; } else { return Err (serde :: de :: Error :: duplicate_field ("value[x]")) ; } } else { if r#value . is_some () { return Err (serde :: de :: Error :: duplicate_field ("valueBoolean")) ; } r#value = Some (NutritionProductProductCharacteristicValue :: Boolean (map_access . next_value () ?)) ; } } , Field :: ValueBooleanPrimitiveElement => { if _ctx . from_json { let r#enum = r#value . get_or_insert (NutritionProductProductCharacteristicValue :: Boolean (Default :: default ())) ; if let NutritionProductProductCharacteristicValue :: Boolean (variant) = r#enum { if variant . id . is_some () || ! variant . extension . is_empty () { return Err (serde :: de :: Error :: duplicate_field ("_valueBoolean")) ; } let super :: super :: serde_helpers :: PrimitiveElementOwned { id , extension } = map_access . next_value () ? ; variant . id = id ; variant . extension = extension ; } else { return Err (serde :: de :: Error :: duplicate_field ("_value[x]")) ; } } else { return Err (serde :: de :: Error :: unknown_field ("valueBoolean" , & ["id" , "extension" , "modifierExtension" , "type" , "valueCodeableConcept" , "valueString" , "valueQuantity" , "valueBase64Binary" , "valueAttachment" , "valueBoolean" ,])) ; } } , Field :: Unknown (key) => if _ctx . config . mode == fhirbolt_shared :: serde_context :: de :: DeserializationMode :: Strict { return Err (serde :: de :: Error :: unknown_field (& key , & ["id" , "extension" , "modifierExtension" , "type" , "valueCodeableConcept" , "valueString" , "valueQuantity" , "valueBase64Binary" , "valueAttachment" , "valueBoolean" ,])) ; } } } Ok (NutritionProductProductCharacteristic { r#id , r#extension : r#extension . unwrap_or (vec ! []) , r#modifier_extension : r#modifier_extension . unwrap_or (vec ! []) , r#type : if _ctx . config . mode == fhirbolt_shared :: serde_context :: de :: DeserializationMode :: Lax { r#type . unwrap_or (Default :: default ()) } else { r#type . ok_or (serde :: de :: Error :: missing_field ("type")) ? } , r#value : if _ctx . config . mode == fhirbolt_shared :: serde_context :: de :: DeserializationMode :: Lax { r#value . unwrap_or (Default :: default ()) } else { r#value . ok_or (serde :: de :: Error :: missing_field ("value[x]")) ? } , }) })
+                fhirbolt_shared :: serde_context :: de :: DESERIALIZATION_CONTEXT . with (| _ctx | { let _ctx = _ctx . borrow () ; while let Some (map_access_key) = map_access . next_key () ? { match map_access_key { Field :: Id => { if r#id . is_some () { return Err (serde :: de :: Error :: duplicate_field ("id")) ; } r#id = Some (map_access . next_value () ?) ; } , Field :: Extension => { if _ctx . from_json { if r#extension . is_some () { return Err (serde :: de :: Error :: duplicate_field ("extension")) ; } r#extension = Some (map_access . next_value () ?) ; } else { let vec = r#extension . get_or_insert (Default :: default ()) ; vec . push (map_access . next_value () ?) ; } } , Field :: ModifierExtension => { if _ctx . from_json { if r#modifier_extension . is_some () { return Err (serde :: de :: Error :: duplicate_field ("modifierExtension")) ; } r#modifier_extension = Some (map_access . next_value () ?) ; } else { let vec = r#modifier_extension . get_or_insert (Default :: default ()) ; vec . push (map_access . next_value () ?) ; } } , Field :: Type => { if r#type . is_some () { return Err (serde :: de :: Error :: duplicate_field ("type")) ; } r#type = Some (map_access . next_value () ?) ; } , Field :: ValueCodeableConcept => { if r#value . is_some () { return Err (serde :: de :: Error :: duplicate_field ("valueCodeableConcept")) ; } r#value = Some (NutritionProductProductCharacteristicValue :: CodeableConcept (map_access . next_value () ?)) ; } , Field :: ValueString => { if _ctx . from_json { let r#enum = r#value . get_or_insert (NutritionProductProductCharacteristicValue :: String (Default :: default ())) ; if let NutritionProductProductCharacteristicValue :: String (variant) = r#enum { if variant . value . is_some () { return Err (serde :: de :: Error :: duplicate_field ("valueString")) ; } let value : _ = map_access . next_value () ? ; variant . value = Some (value) ; } else { return Err (serde :: de :: Error :: duplicate_field ("value[x]")) ; } } else { if r#value . is_some () { return Err (serde :: de :: Error :: duplicate_field ("valueString")) ; } r#value = Some (NutritionProductProductCharacteristicValue :: String (map_access . next_value () ?)) ; } } , Field :: ValueStringPrimitiveElement => { if _ctx . from_json { let r#enum = r#value . get_or_insert (NutritionProductProductCharacteristicValue :: String (Default :: default ())) ; if let NutritionProductProductCharacteristicValue :: String (variant) = r#enum { if variant . id . is_some () || ! variant . extension . is_empty () { return Err (serde :: de :: Error :: duplicate_field ("_valueString")) ; } let super :: super :: serde_helpers :: PrimitiveElementOwned { id , extension } = map_access . next_value () ? ; variant . id = id ; variant . extension = extension ; } else { return Err (serde :: de :: Error :: duplicate_field ("_value[x]")) ; } } else { return unknown_field_error ("valueString") ; } } , Field :: ValueQuantity => { if r#value . is_some () { return Err (serde :: de :: Error :: duplicate_field ("valueQuantity")) ; } r#value = Some (NutritionProductProductCharacteristicValue :: Quantity (map_access . next_value () ?)) ; } , Field :: ValueBase64Binary => { if _ctx . from_json { let r#enum = r#value . get_or_insert (NutritionProductProductCharacteristicValue :: Base64Binary (Default :: default ())) ; if let NutritionProductProductCharacteristicValue :: Base64Binary (variant) = r#enum { if variant . value . is_some () { return Err (serde :: de :: Error :: duplicate_field ("valueBase64Binary")) ; } let value : _ = map_access . next_value () ? ; variant . value = Some (value) ; } else { return Err (serde :: de :: Error :: duplicate_field ("value[x]")) ; } } else { if r#value . is_some () { return Err (serde :: de :: Error :: duplicate_field ("valueBase64Binary")) ; } r#value = Some (NutritionProductProductCharacteristicValue :: Base64Binary (map_access . next_value () ?)) ; } } , Field :: ValueBase64BinaryPrimitiveElement => { if _ctx . from_json { let r#enum = r#value . get_or_insert (NutritionProductProductCharacteristicValue :: Base64Binary (Default :: default ())) ; if let NutritionProductProductCharacteristicValue :: Base64Binary (variant) = r#enum { if variant . id . is_some () || ! variant . extension . is_empty () { return Err (serde :: de :: Error :: duplicate_field ("_valueBase64Binary")) ; } let super :: super :: serde_helpers :: PrimitiveElementOwned { id , extension } = map_access . next_value () ? ; variant . id = id ; variant . extension = extension ; } else { return Err (serde :: de :: Error :: duplicate_field ("_value[x]")) ; } } else { return unknown_field_error ("valueBase64Binary") ; } } , Field :: ValueAttachment => { if r#value . is_some () { return Err (serde :: de :: Error :: duplicate_field ("valueAttachment")) ; } r#value = Some (NutritionProductProductCharacteristicValue :: Attachment (map_access . next_value () ?)) ; } , Field :: ValueBoolean => { if _ctx . from_json { let r#enum = r#value . get_or_insert (NutritionProductProductCharacteristicValue :: Boolean (Default :: default ())) ; if let NutritionProductProductCharacteristicValue :: Boolean (variant) = r#enum { if variant . value . is_some () { return Err (serde :: de :: Error :: duplicate_field ("valueBoolean")) ; } let value : _ = map_access . next_value () ? ; variant . value = Some (value) ; } else { return Err (serde :: de :: Error :: duplicate_field ("value[x]")) ; } } else { if r#value . is_some () { return Err (serde :: de :: Error :: duplicate_field ("valueBoolean")) ; } r#value = Some (NutritionProductProductCharacteristicValue :: Boolean (map_access . next_value () ?)) ; } } , Field :: ValueBooleanPrimitiveElement => { if _ctx . from_json { let r#enum = r#value . get_or_insert (NutritionProductProductCharacteristicValue :: Boolean (Default :: default ())) ; if let NutritionProductProductCharacteristicValue :: Boolean (variant) = r#enum { if variant . id . is_some () || ! variant . extension . is_empty () { return Err (serde :: de :: Error :: duplicate_field ("_valueBoolean")) ; } let super :: super :: serde_helpers :: PrimitiveElementOwned { id , extension } = map_access . next_value () ? ; variant . id = id ; variant . extension = extension ; } else { return Err (serde :: de :: Error :: duplicate_field ("_value[x]")) ; } } else { return unknown_field_error ("valueBoolean") ; } } , Field :: Unknown (key) => if _ctx . config . mode == fhirbolt_shared :: serde_context :: de :: DeserializationMode :: Strict { return Err (serde :: de :: Error :: unknown_field (& key , & ["id" , "extension" , "modifierExtension" , "type" , "valueCodeableConcept" , "valueString" , "valueQuantity" , "valueBase64Binary" , "valueAttachment" , "valueBoolean" ,])) ; } } } Ok (NutritionProductProductCharacteristic { r#id , r#extension : r#extension . unwrap_or (vec ! []) , r#modifier_extension : r#modifier_extension . unwrap_or (vec ! []) , r#type : if _ctx . config . mode == fhirbolt_shared :: serde_context :: de :: DeserializationMode :: Lax { r#type . unwrap_or (Default :: default ()) } else { r#type . ok_or (serde :: de :: Error :: missing_field ("type")) ? } , r#value : if _ctx . config . mode == fhirbolt_shared :: serde_context :: de :: DeserializationMode :: Lax { r#value . unwrap_or (Default :: default ()) } else { r#value . ok_or (serde :: de :: Error :: missing_field ("value[x]")) ? } , }) })
             }
         }
         deserializer.deserialize_map(Visitor)
@@ -625,6 +654,21 @@ impl<'de> serde::de::Deserialize<'de> for NutritionProductInstance {
             UseByPrimitiveElement,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "quantity",
+                    "identifier",
+                    "lotNumber",
+                    "expiry",
+                    "useBy",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = NutritionProductInstance;
@@ -728,19 +772,7 @@ impl<'de> serde::de::Deserialize<'de> for NutritionProductInstance {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "lotNumber",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "quantity",
-                                            "identifier",
-                                            "lotNumber",
-                                            "expiry",
-                                            "useBy",
-                                        ],
-                                    ));
+                                    return unknown_field_error("lotNumber");
                                 }
                             }
                             Field::Expiry => {
@@ -771,19 +803,7 @@ impl<'de> serde::de::Deserialize<'de> for NutritionProductInstance {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "expiry",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "quantity",
-                                            "identifier",
-                                            "lotNumber",
-                                            "expiry",
-                                            "useBy",
-                                        ],
-                                    ));
+                                    return unknown_field_error("expiry");
                                 }
                             }
                             Field::UseBy => {
@@ -814,19 +834,7 @@ impl<'de> serde::de::Deserialize<'de> for NutritionProductInstance {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "useBy",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "quantity",
-                                            "identifier",
-                                            "lotNumber",
-                                            "expiry",
-                                            "useBy",
-                                        ],
-                                    ));
+                                    return unknown_field_error("useBy");
                                 }
                             }
                             Field::Unknown(key) => if _ctx.config.mode
@@ -1073,6 +1081,31 @@ impl<'de> serde::de::Deserialize<'de> for NutritionProduct {
             Note,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "meta",
+                    "implicitRules",
+                    "language",
+                    "text",
+                    "contained",
+                    "extension",
+                    "modifierExtension",
+                    "status",
+                    "category",
+                    "code",
+                    "manufacturer",
+                    "nutrient",
+                    "ingredient",
+                    "knownAllergen",
+                    "productCharacteristic",
+                    "instance",
+                    "note",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = NutritionProduct;
@@ -1164,29 +1197,7 @@ impl<'de> serde::de::Deserialize<'de> for NutritionProduct {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "implicitRules",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "status",
-                                            "category",
-                                            "code",
-                                            "manufacturer",
-                                            "nutrient",
-                                            "ingredient",
-                                            "knownAllergen",
-                                            "productCharacteristic",
-                                            "instance",
-                                            "note",
-                                        ],
-                                    ));
+                                    return unknown_field_error("implicitRules");
                                 }
                             }
                             Field::Language => {
@@ -1217,29 +1228,7 @@ impl<'de> serde::de::Deserialize<'de> for NutritionProduct {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "language",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "status",
-                                            "category",
-                                            "code",
-                                            "manufacturer",
-                                            "nutrient",
-                                            "ingredient",
-                                            "knownAllergen",
-                                            "productCharacteristic",
-                                            "instance",
-                                            "note",
-                                        ],
-                                    ));
+                                    return unknown_field_error("language");
                                 }
                             }
                             Field::Text => {
@@ -1312,29 +1301,7 @@ impl<'de> serde::de::Deserialize<'de> for NutritionProduct {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "status",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "status",
-                                            "category",
-                                            "code",
-                                            "manufacturer",
-                                            "nutrient",
-                                            "ingredient",
-                                            "knownAllergen",
-                                            "productCharacteristic",
-                                            "instance",
-                                            "note",
-                                        ],
-                                    ));
+                                    return unknown_field_error("status");
                                 }
                             }
                             Field::Category => {

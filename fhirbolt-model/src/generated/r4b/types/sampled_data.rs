@@ -1,4 +1,4 @@
-// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-08 by fhirbolt-codegen v0.1.0
 #[doc = "Base StructureDefinition for SampledData Type: A series of measurements taken by a device, with upper and lower limits. There may be more than one dimension in the data.\n\nThere is a need for a concise way to handle the data produced by devices that sample a physical state at a high frequency."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub struct SampledData {
@@ -195,6 +195,22 @@ impl<'de> serde::de::Deserialize<'de> for SampledData {
             DataPrimitiveElement,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "origin",
+                    "period",
+                    "factor",
+                    "lowerLimit",
+                    "upperLimit",
+                    "dimensions",
+                    "data",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = SampledData;
@@ -269,20 +285,7 @@ impl<'de> serde::de::Deserialize<'de> for SampledData {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "period",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "origin",
-                                            "period",
-                                            "factor",
-                                            "lowerLimit",
-                                            "upperLimit",
-                                            "dimensions",
-                                            "data",
-                                        ],
-                                    ));
+                                    return unknown_field_error("period");
                                 }
                             }
                             Field::Factor => {
@@ -313,20 +316,7 @@ impl<'de> serde::de::Deserialize<'de> for SampledData {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "factor",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "origin",
-                                            "period",
-                                            "factor",
-                                            "lowerLimit",
-                                            "upperLimit",
-                                            "dimensions",
-                                            "data",
-                                        ],
-                                    ));
+                                    return unknown_field_error("factor");
                                 }
                             }
                             Field::LowerLimit => {
@@ -363,20 +353,7 @@ impl<'de> serde::de::Deserialize<'de> for SampledData {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "lowerLimit",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "origin",
-                                            "period",
-                                            "factor",
-                                            "lowerLimit",
-                                            "upperLimit",
-                                            "dimensions",
-                                            "data",
-                                        ],
-                                    ));
+                                    return unknown_field_error("lowerLimit");
                                 }
                             }
                             Field::UpperLimit => {
@@ -413,20 +390,7 @@ impl<'de> serde::de::Deserialize<'de> for SampledData {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "upperLimit",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "origin",
-                                            "period",
-                                            "factor",
-                                            "lowerLimit",
-                                            "upperLimit",
-                                            "dimensions",
-                                            "data",
-                                        ],
-                                    ));
+                                    return unknown_field_error("upperLimit");
                                 }
                             }
                             Field::Dimensions => {
@@ -463,20 +427,7 @@ impl<'de> serde::de::Deserialize<'de> for SampledData {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "dimensions",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "origin",
-                                            "period",
-                                            "factor",
-                                            "lowerLimit",
-                                            "upperLimit",
-                                            "dimensions",
-                                            "data",
-                                        ],
-                                    ));
+                                    return unknown_field_error("dimensions");
                                 }
                             }
                             Field::Data => {
@@ -507,20 +458,7 @@ impl<'de> serde::de::Deserialize<'de> for SampledData {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "data",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "origin",
-                                            "period",
-                                            "factor",
-                                            "lowerLimit",
-                                            "upperLimit",
-                                            "dimensions",
-                                            "data",
-                                        ],
-                                    ));
+                                    return unknown_field_error("data");
                                 }
                             }
                             Field::Unknown(key) => if _ctx.config.mode

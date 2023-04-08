@@ -1,4 +1,4 @@
-// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-08 by fhirbolt-codegen v0.1.0
 #[doc = "Binds to a value set if this parameter is coded (code, Coding, CodeableConcept)."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub struct OperationDefinitionParameterBinding {
@@ -89,6 +89,18 @@ impl<'de> serde::de::Deserialize<'de> for OperationDefinitionParameterBinding {
             ValueSetPrimitiveElement,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "strength",
+                    "valueSet",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = OperationDefinitionParameterBinding;
@@ -171,16 +183,7 @@ impl<'de> serde::de::Deserialize<'de> for OperationDefinitionParameterBinding {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "strength",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "strength",
-                                            "valueSet",
-                                        ],
-                                    ));
+                                    return unknown_field_error("strength");
                                 }
                             }
                             Field::ValueSet => {
@@ -211,16 +214,7 @@ impl<'de> serde::de::Deserialize<'de> for OperationDefinitionParameterBinding {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "valueSet",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "strength",
-                                            "valueSet",
-                                        ],
-                                    ));
+                                    return unknown_field_error("valueSet");
                                 }
                             }
                             Field::Unknown(key) => if _ctx.config.mode
@@ -358,6 +352,12 @@ impl<'de> serde::de::Deserialize<'de> for OperationDefinitionParameterReferenced
             SourceIdPrimitiveElement,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &["id", "extension", "modifierExtension", "source", "sourceId"],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = OperationDefinitionParameterReferencedFrom;
@@ -440,16 +440,7 @@ impl<'de> serde::de::Deserialize<'de> for OperationDefinitionParameterReferenced
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "source",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "source",
-                                            "sourceId",
-                                        ],
-                                    ));
+                                    return unknown_field_error("source");
                                 }
                             }
                             Field::SourceId => {
@@ -480,16 +471,7 @@ impl<'de> serde::de::Deserialize<'de> for OperationDefinitionParameterReferenced
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "sourceId",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "source",
-                                            "sourceId",
-                                        ],
-                                    ));
+                                    return unknown_field_error("sourceId");
                                 }
                             }
                             Field::Unknown(key) => if _ctx.config.mode
@@ -793,6 +775,27 @@ impl<'de> serde::de::Deserialize<'de> for OperationDefinitionParameter {
             Part,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "name",
+                    "use",
+                    "min",
+                    "max",
+                    "documentation",
+                    "type",
+                    "targetProfile",
+                    "searchType",
+                    "binding",
+                    "referencedFrom",
+                    "part",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = OperationDefinitionParameter;
@@ -885,25 +888,7 @@ impl<'de> serde::de::Deserialize<'de> for OperationDefinitionParameter {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "name",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "name",
-                                            "use",
-                                            "min",
-                                            "max",
-                                            "documentation",
-                                            "type",
-                                            "targetProfile",
-                                            "searchType",
-                                            "binding",
-                                            "referencedFrom",
-                                            "part",
-                                        ],
-                                    ));
+                                    return unknown_field_error("name");
                                 }
                             }
                             Field::Use => {
@@ -934,25 +919,7 @@ impl<'de> serde::de::Deserialize<'de> for OperationDefinitionParameter {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "use",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "name",
-                                            "use",
-                                            "min",
-                                            "max",
-                                            "documentation",
-                                            "type",
-                                            "targetProfile",
-                                            "searchType",
-                                            "binding",
-                                            "referencedFrom",
-                                            "part",
-                                        ],
-                                    ));
+                                    return unknown_field_error("use");
                                 }
                             }
                             Field::Min => {
@@ -983,25 +950,7 @@ impl<'de> serde::de::Deserialize<'de> for OperationDefinitionParameter {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "min",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "name",
-                                            "use",
-                                            "min",
-                                            "max",
-                                            "documentation",
-                                            "type",
-                                            "targetProfile",
-                                            "searchType",
-                                            "binding",
-                                            "referencedFrom",
-                                            "part",
-                                        ],
-                                    ));
+                                    return unknown_field_error("min");
                                 }
                             }
                             Field::Max => {
@@ -1032,25 +981,7 @@ impl<'de> serde::de::Deserialize<'de> for OperationDefinitionParameter {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "max",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "name",
-                                            "use",
-                                            "min",
-                                            "max",
-                                            "documentation",
-                                            "type",
-                                            "targetProfile",
-                                            "searchType",
-                                            "binding",
-                                            "referencedFrom",
-                                            "part",
-                                        ],
-                                    ));
+                                    return unknown_field_error("max");
                                 }
                             }
                             Field::Documentation => {
@@ -1087,25 +1018,7 @@ impl<'de> serde::de::Deserialize<'de> for OperationDefinitionParameter {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "documentation",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "name",
-                                            "use",
-                                            "min",
-                                            "max",
-                                            "documentation",
-                                            "type",
-                                            "targetProfile",
-                                            "searchType",
-                                            "binding",
-                                            "referencedFrom",
-                                            "part",
-                                        ],
-                                    ));
+                                    return unknown_field_error("documentation");
                                 }
                             }
                             Field::Type => {
@@ -1136,25 +1049,7 @@ impl<'de> serde::de::Deserialize<'de> for OperationDefinitionParameter {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "type",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "name",
-                                            "use",
-                                            "min",
-                                            "max",
-                                            "documentation",
-                                            "type",
-                                            "targetProfile",
-                                            "searchType",
-                                            "binding",
-                                            "referencedFrom",
-                                            "part",
-                                        ],
-                                    ));
+                                    return unknown_field_error("type");
                                 }
                             }
                             Field::TargetProfile => {
@@ -1217,25 +1112,7 @@ impl<'de> serde::de::Deserialize<'de> for OperationDefinitionParameter {
                                         }
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "targetProfile",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "name",
-                                            "use",
-                                            "min",
-                                            "max",
-                                            "documentation",
-                                            "type",
-                                            "targetProfile",
-                                            "searchType",
-                                            "binding",
-                                            "referencedFrom",
-                                            "part",
-                                        ],
-                                    ));
+                                    return unknown_field_error("targetProfile");
                                 }
                             }
                             Field::SearchType => {
@@ -1272,25 +1149,7 @@ impl<'de> serde::de::Deserialize<'de> for OperationDefinitionParameter {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "searchType",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "name",
-                                            "use",
-                                            "min",
-                                            "max",
-                                            "documentation",
-                                            "type",
-                                            "targetProfile",
-                                            "searchType",
-                                            "binding",
-                                            "referencedFrom",
-                                            "part",
-                                        ],
-                                    ));
+                                    return unknown_field_error("searchType");
                                 }
                             }
                             Field::Binding => {
@@ -1511,6 +1370,18 @@ impl<'de> serde::de::Deserialize<'de> for OperationDefinitionOverload {
             CommentPrimitiveElement,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "parameterName",
+                    "comment",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = OperationDefinitionOverload;
@@ -1625,16 +1496,7 @@ impl<'de> serde::de::Deserialize<'de> for OperationDefinitionOverload {
                                         }
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "parameterName",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "parameterName",
-                                            "comment",
-                                        ],
-                                    ));
+                                    return unknown_field_error("parameterName");
                                 }
                             }
                             Field::Comment => {
@@ -1665,16 +1527,7 @@ impl<'de> serde::de::Deserialize<'de> for OperationDefinitionOverload {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "comment",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "parameterName",
-                                            "comment",
-                                        ],
-                                    ));
+                                    return unknown_field_error("comment");
                                 }
                             }
                             Field::Unknown(key) => if _ctx.config.mode
@@ -2382,6 +2235,47 @@ impl<'de> serde::de::Deserialize<'de> for OperationDefinition {
             Overload,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "meta",
+                    "implicitRules",
+                    "language",
+                    "text",
+                    "contained",
+                    "extension",
+                    "modifierExtension",
+                    "url",
+                    "version",
+                    "name",
+                    "title",
+                    "status",
+                    "kind",
+                    "experimental",
+                    "date",
+                    "publisher",
+                    "contact",
+                    "description",
+                    "useContext",
+                    "jurisdiction",
+                    "purpose",
+                    "affectsState",
+                    "code",
+                    "comment",
+                    "base",
+                    "resource",
+                    "system",
+                    "type",
+                    "instance",
+                    "inputProfile",
+                    "outputProfile",
+                    "parameter",
+                    "overload",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = OperationDefinition;
@@ -2487,45 +2381,7 @@ impl<'de> serde::de::Deserialize<'de> for OperationDefinition {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "implicitRules",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "version",
-                                            "name",
-                                            "title",
-                                            "status",
-                                            "kind",
-                                            "experimental",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "description",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "purpose",
-                                            "affectsState",
-                                            "code",
-                                            "comment",
-                                            "base",
-                                            "resource",
-                                            "system",
-                                            "type",
-                                            "instance",
-                                            "inputProfile",
-                                            "outputProfile",
-                                            "parameter",
-                                            "overload",
-                                        ],
-                                    ));
+                                    return unknown_field_error("implicitRules");
                                 }
                             }
                             Field::Language => {
@@ -2556,45 +2412,7 @@ impl<'de> serde::de::Deserialize<'de> for OperationDefinition {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "language",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "version",
-                                            "name",
-                                            "title",
-                                            "status",
-                                            "kind",
-                                            "experimental",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "description",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "purpose",
-                                            "affectsState",
-                                            "code",
-                                            "comment",
-                                            "base",
-                                            "resource",
-                                            "system",
-                                            "type",
-                                            "instance",
-                                            "inputProfile",
-                                            "outputProfile",
-                                            "parameter",
-                                            "overload",
-                                        ],
-                                    ));
+                                    return unknown_field_error("language");
                                 }
                             }
                             Field::Text => {
@@ -2667,45 +2485,7 @@ impl<'de> serde::de::Deserialize<'de> for OperationDefinition {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "url",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "version",
-                                            "name",
-                                            "title",
-                                            "status",
-                                            "kind",
-                                            "experimental",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "description",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "purpose",
-                                            "affectsState",
-                                            "code",
-                                            "comment",
-                                            "base",
-                                            "resource",
-                                            "system",
-                                            "type",
-                                            "instance",
-                                            "inputProfile",
-                                            "outputProfile",
-                                            "parameter",
-                                            "overload",
-                                        ],
-                                    ));
+                                    return unknown_field_error("url");
                                 }
                             }
                             Field::Version => {
@@ -2736,45 +2516,7 @@ impl<'de> serde::de::Deserialize<'de> for OperationDefinition {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "version",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "version",
-                                            "name",
-                                            "title",
-                                            "status",
-                                            "kind",
-                                            "experimental",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "description",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "purpose",
-                                            "affectsState",
-                                            "code",
-                                            "comment",
-                                            "base",
-                                            "resource",
-                                            "system",
-                                            "type",
-                                            "instance",
-                                            "inputProfile",
-                                            "outputProfile",
-                                            "parameter",
-                                            "overload",
-                                        ],
-                                    ));
+                                    return unknown_field_error("version");
                                 }
                             }
                             Field::Name => {
@@ -2805,45 +2547,7 @@ impl<'de> serde::de::Deserialize<'de> for OperationDefinition {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "name",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "version",
-                                            "name",
-                                            "title",
-                                            "status",
-                                            "kind",
-                                            "experimental",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "description",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "purpose",
-                                            "affectsState",
-                                            "code",
-                                            "comment",
-                                            "base",
-                                            "resource",
-                                            "system",
-                                            "type",
-                                            "instance",
-                                            "inputProfile",
-                                            "outputProfile",
-                                            "parameter",
-                                            "overload",
-                                        ],
-                                    ));
+                                    return unknown_field_error("name");
                                 }
                             }
                             Field::Title => {
@@ -2874,45 +2578,7 @@ impl<'de> serde::de::Deserialize<'de> for OperationDefinition {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "title",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "version",
-                                            "name",
-                                            "title",
-                                            "status",
-                                            "kind",
-                                            "experimental",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "description",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "purpose",
-                                            "affectsState",
-                                            "code",
-                                            "comment",
-                                            "base",
-                                            "resource",
-                                            "system",
-                                            "type",
-                                            "instance",
-                                            "inputProfile",
-                                            "outputProfile",
-                                            "parameter",
-                                            "overload",
-                                        ],
-                                    ));
+                                    return unknown_field_error("title");
                                 }
                             }
                             Field::Status => {
@@ -2943,45 +2609,7 @@ impl<'de> serde::de::Deserialize<'de> for OperationDefinition {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "status",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "version",
-                                            "name",
-                                            "title",
-                                            "status",
-                                            "kind",
-                                            "experimental",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "description",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "purpose",
-                                            "affectsState",
-                                            "code",
-                                            "comment",
-                                            "base",
-                                            "resource",
-                                            "system",
-                                            "type",
-                                            "instance",
-                                            "inputProfile",
-                                            "outputProfile",
-                                            "parameter",
-                                            "overload",
-                                        ],
-                                    ));
+                                    return unknown_field_error("status");
                                 }
                             }
                             Field::Kind => {
@@ -3012,45 +2640,7 @@ impl<'de> serde::de::Deserialize<'de> for OperationDefinition {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "kind",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "version",
-                                            "name",
-                                            "title",
-                                            "status",
-                                            "kind",
-                                            "experimental",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "description",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "purpose",
-                                            "affectsState",
-                                            "code",
-                                            "comment",
-                                            "base",
-                                            "resource",
-                                            "system",
-                                            "type",
-                                            "instance",
-                                            "inputProfile",
-                                            "outputProfile",
-                                            "parameter",
-                                            "overload",
-                                        ],
-                                    ));
+                                    return unknown_field_error("kind");
                                 }
                             }
                             Field::Experimental => {
@@ -3087,45 +2677,7 @@ impl<'de> serde::de::Deserialize<'de> for OperationDefinition {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "experimental",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "version",
-                                            "name",
-                                            "title",
-                                            "status",
-                                            "kind",
-                                            "experimental",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "description",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "purpose",
-                                            "affectsState",
-                                            "code",
-                                            "comment",
-                                            "base",
-                                            "resource",
-                                            "system",
-                                            "type",
-                                            "instance",
-                                            "inputProfile",
-                                            "outputProfile",
-                                            "parameter",
-                                            "overload",
-                                        ],
-                                    ));
+                                    return unknown_field_error("experimental");
                                 }
                             }
                             Field::Date => {
@@ -3156,45 +2708,7 @@ impl<'de> serde::de::Deserialize<'de> for OperationDefinition {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "date",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "version",
-                                            "name",
-                                            "title",
-                                            "status",
-                                            "kind",
-                                            "experimental",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "description",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "purpose",
-                                            "affectsState",
-                                            "code",
-                                            "comment",
-                                            "base",
-                                            "resource",
-                                            "system",
-                                            "type",
-                                            "instance",
-                                            "inputProfile",
-                                            "outputProfile",
-                                            "parameter",
-                                            "overload",
-                                        ],
-                                    ));
+                                    return unknown_field_error("date");
                                 }
                             }
                             Field::Publisher => {
@@ -3227,45 +2741,7 @@ impl<'de> serde::de::Deserialize<'de> for OperationDefinition {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "publisher",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "version",
-                                            "name",
-                                            "title",
-                                            "status",
-                                            "kind",
-                                            "experimental",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "description",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "purpose",
-                                            "affectsState",
-                                            "code",
-                                            "comment",
-                                            "base",
-                                            "resource",
-                                            "system",
-                                            "type",
-                                            "instance",
-                                            "inputProfile",
-                                            "outputProfile",
-                                            "parameter",
-                                            "overload",
-                                        ],
-                                    ));
+                                    return unknown_field_error("publisher");
                                 }
                             }
                             Field::Contact => {
@@ -3313,45 +2789,7 @@ impl<'de> serde::de::Deserialize<'de> for OperationDefinition {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "description",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "version",
-                                            "name",
-                                            "title",
-                                            "status",
-                                            "kind",
-                                            "experimental",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "description",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "purpose",
-                                            "affectsState",
-                                            "code",
-                                            "comment",
-                                            "base",
-                                            "resource",
-                                            "system",
-                                            "type",
-                                            "instance",
-                                            "inputProfile",
-                                            "outputProfile",
-                                            "parameter",
-                                            "overload",
-                                        ],
-                                    ));
+                                    return unknown_field_error("description");
                                 }
                             }
                             Field::UseContext => {
@@ -3408,45 +2846,7 @@ impl<'de> serde::de::Deserialize<'de> for OperationDefinition {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "purpose",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "version",
-                                            "name",
-                                            "title",
-                                            "status",
-                                            "kind",
-                                            "experimental",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "description",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "purpose",
-                                            "affectsState",
-                                            "code",
-                                            "comment",
-                                            "base",
-                                            "resource",
-                                            "system",
-                                            "type",
-                                            "instance",
-                                            "inputProfile",
-                                            "outputProfile",
-                                            "parameter",
-                                            "overload",
-                                        ],
-                                    ));
+                                    return unknown_field_error("purpose");
                                 }
                             }
                             Field::AffectsState => {
@@ -3483,45 +2883,7 @@ impl<'de> serde::de::Deserialize<'de> for OperationDefinition {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "affectsState",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "version",
-                                            "name",
-                                            "title",
-                                            "status",
-                                            "kind",
-                                            "experimental",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "description",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "purpose",
-                                            "affectsState",
-                                            "code",
-                                            "comment",
-                                            "base",
-                                            "resource",
-                                            "system",
-                                            "type",
-                                            "instance",
-                                            "inputProfile",
-                                            "outputProfile",
-                                            "parameter",
-                                            "overload",
-                                        ],
-                                    ));
+                                    return unknown_field_error("affectsState");
                                 }
                             }
                             Field::Code => {
@@ -3552,45 +2914,7 @@ impl<'de> serde::de::Deserialize<'de> for OperationDefinition {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "code",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "version",
-                                            "name",
-                                            "title",
-                                            "status",
-                                            "kind",
-                                            "experimental",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "description",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "purpose",
-                                            "affectsState",
-                                            "code",
-                                            "comment",
-                                            "base",
-                                            "resource",
-                                            "system",
-                                            "type",
-                                            "instance",
-                                            "inputProfile",
-                                            "outputProfile",
-                                            "parameter",
-                                            "overload",
-                                        ],
-                                    ));
+                                    return unknown_field_error("code");
                                 }
                             }
                             Field::Comment => {
@@ -3621,45 +2945,7 @@ impl<'de> serde::de::Deserialize<'de> for OperationDefinition {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "comment",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "version",
-                                            "name",
-                                            "title",
-                                            "status",
-                                            "kind",
-                                            "experimental",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "description",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "purpose",
-                                            "affectsState",
-                                            "code",
-                                            "comment",
-                                            "base",
-                                            "resource",
-                                            "system",
-                                            "type",
-                                            "instance",
-                                            "inputProfile",
-                                            "outputProfile",
-                                            "parameter",
-                                            "overload",
-                                        ],
-                                    ));
+                                    return unknown_field_error("comment");
                                 }
                             }
                             Field::Base => {
@@ -3690,45 +2976,7 @@ impl<'de> serde::de::Deserialize<'de> for OperationDefinition {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "base",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "version",
-                                            "name",
-                                            "title",
-                                            "status",
-                                            "kind",
-                                            "experimental",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "description",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "purpose",
-                                            "affectsState",
-                                            "code",
-                                            "comment",
-                                            "base",
-                                            "resource",
-                                            "system",
-                                            "type",
-                                            "instance",
-                                            "inputProfile",
-                                            "outputProfile",
-                                            "parameter",
-                                            "overload",
-                                        ],
-                                    ));
+                                    return unknown_field_error("base");
                                 }
                             }
                             Field::Resource => {
@@ -3787,45 +3035,7 @@ impl<'de> serde::de::Deserialize<'de> for OperationDefinition {
                                         }
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "resource",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "version",
-                                            "name",
-                                            "title",
-                                            "status",
-                                            "kind",
-                                            "experimental",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "description",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "purpose",
-                                            "affectsState",
-                                            "code",
-                                            "comment",
-                                            "base",
-                                            "resource",
-                                            "system",
-                                            "type",
-                                            "instance",
-                                            "inputProfile",
-                                            "outputProfile",
-                                            "parameter",
-                                            "overload",
-                                        ],
-                                    ));
+                                    return unknown_field_error("resource");
                                 }
                             }
                             Field::System => {
@@ -3856,45 +3066,7 @@ impl<'de> serde::de::Deserialize<'de> for OperationDefinition {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "system",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "version",
-                                            "name",
-                                            "title",
-                                            "status",
-                                            "kind",
-                                            "experimental",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "description",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "purpose",
-                                            "affectsState",
-                                            "code",
-                                            "comment",
-                                            "base",
-                                            "resource",
-                                            "system",
-                                            "type",
-                                            "instance",
-                                            "inputProfile",
-                                            "outputProfile",
-                                            "parameter",
-                                            "overload",
-                                        ],
-                                    ));
+                                    return unknown_field_error("system");
                                 }
                             }
                             Field::Type => {
@@ -3925,45 +3097,7 @@ impl<'de> serde::de::Deserialize<'de> for OperationDefinition {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "type",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "version",
-                                            "name",
-                                            "title",
-                                            "status",
-                                            "kind",
-                                            "experimental",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "description",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "purpose",
-                                            "affectsState",
-                                            "code",
-                                            "comment",
-                                            "base",
-                                            "resource",
-                                            "system",
-                                            "type",
-                                            "instance",
-                                            "inputProfile",
-                                            "outputProfile",
-                                            "parameter",
-                                            "overload",
-                                        ],
-                                    ));
+                                    return unknown_field_error("type");
                                 }
                             }
                             Field::Instance => {
@@ -3994,45 +3128,7 @@ impl<'de> serde::de::Deserialize<'de> for OperationDefinition {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "instance",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "version",
-                                            "name",
-                                            "title",
-                                            "status",
-                                            "kind",
-                                            "experimental",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "description",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "purpose",
-                                            "affectsState",
-                                            "code",
-                                            "comment",
-                                            "base",
-                                            "resource",
-                                            "system",
-                                            "type",
-                                            "instance",
-                                            "inputProfile",
-                                            "outputProfile",
-                                            "parameter",
-                                            "overload",
-                                        ],
-                                    ));
+                                    return unknown_field_error("instance");
                                 }
                             }
                             Field::InputProfile => {
@@ -4069,45 +3165,7 @@ impl<'de> serde::de::Deserialize<'de> for OperationDefinition {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "inputProfile",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "version",
-                                            "name",
-                                            "title",
-                                            "status",
-                                            "kind",
-                                            "experimental",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "description",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "purpose",
-                                            "affectsState",
-                                            "code",
-                                            "comment",
-                                            "base",
-                                            "resource",
-                                            "system",
-                                            "type",
-                                            "instance",
-                                            "inputProfile",
-                                            "outputProfile",
-                                            "parameter",
-                                            "overload",
-                                        ],
-                                    ));
+                                    return unknown_field_error("inputProfile");
                                 }
                             }
                             Field::OutputProfile => {
@@ -4144,45 +3202,7 @@ impl<'de> serde::de::Deserialize<'de> for OperationDefinition {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "outputProfile",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "version",
-                                            "name",
-                                            "title",
-                                            "status",
-                                            "kind",
-                                            "experimental",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "description",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "purpose",
-                                            "affectsState",
-                                            "code",
-                                            "comment",
-                                            "base",
-                                            "resource",
-                                            "system",
-                                            "type",
-                                            "instance",
-                                            "inputProfile",
-                                            "outputProfile",
-                                            "parameter",
-                                            "overload",
-                                        ],
-                                    ));
+                                    return unknown_field_error("outputProfile");
                                 }
                             }
                             Field::Parameter => {

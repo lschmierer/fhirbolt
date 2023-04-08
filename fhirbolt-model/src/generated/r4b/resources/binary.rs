@@ -1,4 +1,4 @@
-// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-08 by fhirbolt-codegen v0.1.0
 #[doc = "A resource that represents the data of a single raw artifact as digital content accessible in its native format.  A Binary resource can contain any content, whether text, image, pdf, zip archive, etc.\n\nThere are situations where it is useful or required to handle pure binary content using the same framework as other resources."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub struct Binary {
@@ -149,6 +149,20 @@ impl<'de> serde::de::Deserialize<'de> for Binary {
             DataPrimitiveElement,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "meta",
+                    "implicitRules",
+                    "language",
+                    "contentType",
+                    "securityContext",
+                    "data",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = Binary;
@@ -225,18 +239,7 @@ impl<'de> serde::de::Deserialize<'de> for Binary {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "implicitRules",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "contentType",
-                                            "securityContext",
-                                            "data",
-                                        ],
-                                    ));
+                                    return unknown_field_error("implicitRules");
                                 }
                             }
                             Field::Language => {
@@ -267,18 +270,7 @@ impl<'de> serde::de::Deserialize<'de> for Binary {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "language",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "contentType",
-                                            "securityContext",
-                                            "data",
-                                        ],
-                                    ));
+                                    return unknown_field_error("language");
                                 }
                             }
                             Field::ContentType => {
@@ -315,18 +307,7 @@ impl<'de> serde::de::Deserialize<'de> for Binary {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "contentType",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "contentType",
-                                            "securityContext",
-                                            "data",
-                                        ],
-                                    ));
+                                    return unknown_field_error("contentType");
                                 }
                             }
                             Field::SecurityContext => {
@@ -365,18 +346,7 @@ impl<'de> serde::de::Deserialize<'de> for Binary {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "data",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "contentType",
-                                            "securityContext",
-                                            "data",
-                                        ],
-                                    ));
+                                    return unknown_field_error("data");
                                 }
                             }
                             Field::Unknown(key) => if _ctx.config.mode

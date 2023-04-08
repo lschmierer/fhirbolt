@@ -1,4 +1,4 @@
-// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-08 by fhirbolt-codegen v0.1.0
 #[doc = "Indicates who or what performed the series and how they were involved."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub struct ImagingStudySeriesPerformer {
@@ -58,6 +58,12 @@ impl<'de> serde::de::Deserialize<'de> for ImagingStudySeriesPerformer {
             #[serde(rename = "actor")]
             Actor,
             Unknown(std::string::String),
+        }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &["id", "extension", "modifierExtension", "function", "actor"],
+            ))
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -278,6 +284,20 @@ impl<'de> serde::de::Deserialize<'de> for ImagingStudySeriesInstance {
             TitlePrimitiveElement,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "uid",
+                    "sopClass",
+                    "number",
+                    "title",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = ImagingStudySeriesInstance;
@@ -359,18 +379,7 @@ impl<'de> serde::de::Deserialize<'de> for ImagingStudySeriesInstance {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "uid",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "uid",
-                                            "sopClass",
-                                            "number",
-                                            "title",
-                                        ],
-                                    ));
+                                    return unknown_field_error("uid");
                                 }
                             }
                             Field::SopClass => {
@@ -407,18 +416,7 @@ impl<'de> serde::de::Deserialize<'de> for ImagingStudySeriesInstance {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "number",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "uid",
-                                            "sopClass",
-                                            "number",
-                                            "title",
-                                        ],
-                                    ));
+                                    return unknown_field_error("number");
                                 }
                             }
                             Field::Title => {
@@ -449,18 +447,7 @@ impl<'de> serde::de::Deserialize<'de> for ImagingStudySeriesInstance {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "title",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "uid",
-                                            "sopClass",
-                                            "number",
-                                            "title",
-                                        ],
-                                    ));
+                                    return unknown_field_error("title");
                                 }
                             }
                             Field::Unknown(key) => if _ctx.config.mode
@@ -724,6 +711,28 @@ impl<'de> serde::de::Deserialize<'de> for ImagingStudySeries {
             Instance,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "uid",
+                    "number",
+                    "modality",
+                    "description",
+                    "numberOfInstances",
+                    "endpoint",
+                    "bodySite",
+                    "laterality",
+                    "specimen",
+                    "started",
+                    "performer",
+                    "instance",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = ImagingStudySeries;
@@ -813,26 +822,7 @@ impl<'de> serde::de::Deserialize<'de> for ImagingStudySeries {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "uid",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "uid",
-                                            "number",
-                                            "modality",
-                                            "description",
-                                            "numberOfInstances",
-                                            "endpoint",
-                                            "bodySite",
-                                            "laterality",
-                                            "specimen",
-                                            "started",
-                                            "performer",
-                                            "instance",
-                                        ],
-                                    ));
+                                    return unknown_field_error("uid");
                                 }
                             }
                             Field::Number => {
@@ -863,26 +853,7 @@ impl<'de> serde::de::Deserialize<'de> for ImagingStudySeries {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "number",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "uid",
-                                            "number",
-                                            "modality",
-                                            "description",
-                                            "numberOfInstances",
-                                            "endpoint",
-                                            "bodySite",
-                                            "laterality",
-                                            "specimen",
-                                            "started",
-                                            "performer",
-                                            "instance",
-                                        ],
-                                    ));
+                                    return unknown_field_error("number");
                                 }
                             }
                             Field::Modality => {
@@ -925,26 +896,7 @@ impl<'de> serde::de::Deserialize<'de> for ImagingStudySeries {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "description",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "uid",
-                                            "number",
-                                            "modality",
-                                            "description",
-                                            "numberOfInstances",
-                                            "endpoint",
-                                            "bodySite",
-                                            "laterality",
-                                            "specimen",
-                                            "started",
-                                            "performer",
-                                            "instance",
-                                        ],
-                                    ));
+                                    return unknown_field_error("description");
                                 }
                             }
                             Field::NumberOfInstances => {
@@ -983,26 +935,7 @@ impl<'de> serde::de::Deserialize<'de> for ImagingStudySeries {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "numberOfInstances",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "uid",
-                                            "number",
-                                            "modality",
-                                            "description",
-                                            "numberOfInstances",
-                                            "endpoint",
-                                            "bodySite",
-                                            "laterality",
-                                            "specimen",
-                                            "started",
-                                            "performer",
-                                            "instance",
-                                        ],
-                                    ));
+                                    return unknown_field_error("numberOfInstances");
                                 }
                             }
                             Field::Endpoint => {
@@ -1067,26 +1000,7 @@ impl<'de> serde::de::Deserialize<'de> for ImagingStudySeries {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "started",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "uid",
-                                            "number",
-                                            "modality",
-                                            "description",
-                                            "numberOfInstances",
-                                            "endpoint",
-                                            "bodySite",
-                                            "laterality",
-                                            "specimen",
-                                            "started",
-                                            "performer",
-                                            "instance",
-                                        ],
-                                    ));
+                                    return unknown_field_error("started");
                                 }
                             }
                             Field::Performer => {
@@ -1521,6 +1435,41 @@ impl<'de> serde::de::Deserialize<'de> for ImagingStudy {
             Series,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "meta",
+                    "implicitRules",
+                    "language",
+                    "text",
+                    "contained",
+                    "extension",
+                    "modifierExtension",
+                    "identifier",
+                    "status",
+                    "modality",
+                    "subject",
+                    "encounter",
+                    "started",
+                    "basedOn",
+                    "referrer",
+                    "interpreter",
+                    "endpoint",
+                    "numberOfSeries",
+                    "numberOfInstances",
+                    "procedureReference",
+                    "procedureCode",
+                    "location",
+                    "reasonCode",
+                    "reasonReference",
+                    "note",
+                    "description",
+                    "series",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = ImagingStudy;
@@ -1621,39 +1570,7 @@ impl<'de> serde::de::Deserialize<'de> for ImagingStudy {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "implicitRules",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "status",
-                                            "modality",
-                                            "subject",
-                                            "encounter",
-                                            "started",
-                                            "basedOn",
-                                            "referrer",
-                                            "interpreter",
-                                            "endpoint",
-                                            "numberOfSeries",
-                                            "numberOfInstances",
-                                            "procedureReference",
-                                            "procedureCode",
-                                            "location",
-                                            "reasonCode",
-                                            "reasonReference",
-                                            "note",
-                                            "description",
-                                            "series",
-                                        ],
-                                    ));
+                                    return unknown_field_error("implicitRules");
                                 }
                             }
                             Field::Language => {
@@ -1684,39 +1601,7 @@ impl<'de> serde::de::Deserialize<'de> for ImagingStudy {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "language",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "status",
-                                            "modality",
-                                            "subject",
-                                            "encounter",
-                                            "started",
-                                            "basedOn",
-                                            "referrer",
-                                            "interpreter",
-                                            "endpoint",
-                                            "numberOfSeries",
-                                            "numberOfInstances",
-                                            "procedureReference",
-                                            "procedureCode",
-                                            "location",
-                                            "reasonCode",
-                                            "reasonReference",
-                                            "note",
-                                            "description",
-                                            "series",
-                                        ],
-                                    ));
+                                    return unknown_field_error("language");
                                 }
                             }
                             Field::Text => {
@@ -1802,39 +1687,7 @@ impl<'de> serde::de::Deserialize<'de> for ImagingStudy {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "status",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "status",
-                                            "modality",
-                                            "subject",
-                                            "encounter",
-                                            "started",
-                                            "basedOn",
-                                            "referrer",
-                                            "interpreter",
-                                            "endpoint",
-                                            "numberOfSeries",
-                                            "numberOfInstances",
-                                            "procedureReference",
-                                            "procedureCode",
-                                            "location",
-                                            "reasonCode",
-                                            "reasonReference",
-                                            "note",
-                                            "description",
-                                            "series",
-                                        ],
-                                    ));
+                                    return unknown_field_error("status");
                                 }
                             }
                             Field::Modality => {
@@ -1888,39 +1741,7 @@ impl<'de> serde::de::Deserialize<'de> for ImagingStudy {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "started",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "status",
-                                            "modality",
-                                            "subject",
-                                            "encounter",
-                                            "started",
-                                            "basedOn",
-                                            "referrer",
-                                            "interpreter",
-                                            "endpoint",
-                                            "numberOfSeries",
-                                            "numberOfInstances",
-                                            "procedureReference",
-                                            "procedureCode",
-                                            "location",
-                                            "reasonCode",
-                                            "reasonReference",
-                                            "note",
-                                            "description",
-                                            "series",
-                                        ],
-                                    ));
+                                    return unknown_field_error("started");
                                 }
                             }
                             Field::BasedOn => {
@@ -1998,39 +1819,7 @@ impl<'de> serde::de::Deserialize<'de> for ImagingStudy {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "numberOfSeries",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "status",
-                                            "modality",
-                                            "subject",
-                                            "encounter",
-                                            "started",
-                                            "basedOn",
-                                            "referrer",
-                                            "interpreter",
-                                            "endpoint",
-                                            "numberOfSeries",
-                                            "numberOfInstances",
-                                            "procedureReference",
-                                            "procedureCode",
-                                            "location",
-                                            "reasonCode",
-                                            "reasonReference",
-                                            "note",
-                                            "description",
-                                            "series",
-                                        ],
-                                    ));
+                                    return unknown_field_error("numberOfSeries");
                                 }
                             }
                             Field::NumberOfInstances => {
@@ -2069,39 +1858,7 @@ impl<'de> serde::de::Deserialize<'de> for ImagingStudy {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "numberOfInstances",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "status",
-                                            "modality",
-                                            "subject",
-                                            "encounter",
-                                            "started",
-                                            "basedOn",
-                                            "referrer",
-                                            "interpreter",
-                                            "endpoint",
-                                            "numberOfSeries",
-                                            "numberOfInstances",
-                                            "procedureReference",
-                                            "procedureCode",
-                                            "location",
-                                            "reasonCode",
-                                            "reasonReference",
-                                            "note",
-                                            "description",
-                                            "series",
-                                        ],
-                                    ));
+                                    return unknown_field_error("numberOfInstances");
                                 }
                             }
                             Field::ProcedureReference => {
@@ -2202,39 +1959,7 @@ impl<'de> serde::de::Deserialize<'de> for ImagingStudy {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "description",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "status",
-                                            "modality",
-                                            "subject",
-                                            "encounter",
-                                            "started",
-                                            "basedOn",
-                                            "referrer",
-                                            "interpreter",
-                                            "endpoint",
-                                            "numberOfSeries",
-                                            "numberOfInstances",
-                                            "procedureReference",
-                                            "procedureCode",
-                                            "location",
-                                            "reasonCode",
-                                            "reasonReference",
-                                            "note",
-                                            "description",
-                                            "series",
-                                        ],
-                                    ));
+                                    return unknown_field_error("description");
                                 }
                             }
                             Field::Series => {

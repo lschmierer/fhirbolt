@@ -1,4 +1,4 @@
-// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-08 by fhirbolt-codegen v0.1.0
 #[doc = "The details of the device to be used."]
 #[derive(Debug, Clone, PartialEq)]
 pub enum DeviceRequestCode {
@@ -139,6 +139,21 @@ impl<'de> serde::de::Deserialize<'de> for DeviceRequestParameter {
             ValueBooleanPrimitiveElement,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "code",
+                    "valueCodeableConcept",
+                    "valueQuantity",
+                    "valueRange",
+                    "valueBoolean",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = DeviceRequestParameter;
@@ -270,19 +285,7 @@ impl<'de> serde::de::Deserialize<'de> for DeviceRequestParameter {
                                         return Err(serde::de::Error::duplicate_field("_value[x]"));
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "valueBoolean",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "code",
-                                            "valueCodeableConcept",
-                                            "valueQuantity",
-                                            "valueRange",
-                                            "valueBoolean",
-                                        ],
-                                    ));
+                                    return unknown_field_error("valueBoolean");
                                 }
                             }
                             Field::Unknown(key) => if _ctx.config.mode
@@ -795,6 +798,48 @@ impl<'de> serde::de::Deserialize<'de> for DeviceRequest {
             RelevantHistory,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "meta",
+                    "implicitRules",
+                    "language",
+                    "text",
+                    "contained",
+                    "extension",
+                    "modifierExtension",
+                    "identifier",
+                    "instantiatesCanonical",
+                    "instantiatesUri",
+                    "basedOn",
+                    "priorRequest",
+                    "groupIdentifier",
+                    "status",
+                    "intent",
+                    "priority",
+                    "codeReference",
+                    "codeCodeableConcept",
+                    "parameter",
+                    "subject",
+                    "encounter",
+                    "occurrenceDateTime",
+                    "occurrencePeriod",
+                    "occurrenceTiming",
+                    "authoredOn",
+                    "requester",
+                    "performerType",
+                    "performer",
+                    "reasonCode",
+                    "reasonReference",
+                    "insurance",
+                    "supportingInfo",
+                    "note",
+                    "relevantHistory",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = DeviceRequest;
@@ -899,46 +944,7 @@ impl<'de> serde::de::Deserialize<'de> for DeviceRequest {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "implicitRules",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "instantiatesCanonical",
-                                            "instantiatesUri",
-                                            "basedOn",
-                                            "priorRequest",
-                                            "groupIdentifier",
-                                            "status",
-                                            "intent",
-                                            "priority",
-                                            "codeReference",
-                                            "codeCodeableConcept",
-                                            "parameter",
-                                            "subject",
-                                            "encounter",
-                                            "occurrenceDateTime",
-                                            "occurrencePeriod",
-                                            "occurrenceTiming",
-                                            "authoredOn",
-                                            "requester",
-                                            "performerType",
-                                            "performer",
-                                            "reasonCode",
-                                            "reasonReference",
-                                            "insurance",
-                                            "supportingInfo",
-                                            "note",
-                                            "relevantHistory",
-                                        ],
-                                    ));
+                                    return unknown_field_error("implicitRules");
                                 }
                             }
                             Field::Language => {
@@ -969,46 +975,7 @@ impl<'de> serde::de::Deserialize<'de> for DeviceRequest {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "language",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "instantiatesCanonical",
-                                            "instantiatesUri",
-                                            "basedOn",
-                                            "priorRequest",
-                                            "groupIdentifier",
-                                            "status",
-                                            "intent",
-                                            "priority",
-                                            "codeReference",
-                                            "codeCodeableConcept",
-                                            "parameter",
-                                            "subject",
-                                            "encounter",
-                                            "occurrenceDateTime",
-                                            "occurrencePeriod",
-                                            "occurrenceTiming",
-                                            "authoredOn",
-                                            "requester",
-                                            "performerType",
-                                            "performer",
-                                            "reasonCode",
-                                            "reasonReference",
-                                            "insurance",
-                                            "supportingInfo",
-                                            "note",
-                                            "relevantHistory",
-                                        ],
-                                    ));
+                                    return unknown_field_error("language");
                                 }
                             }
                             Field::Text => {
@@ -1127,46 +1094,7 @@ impl<'de> serde::de::Deserialize<'de> for DeviceRequest {
                                         }
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "instantiatesCanonical",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "instantiatesCanonical",
-                                            "instantiatesUri",
-                                            "basedOn",
-                                            "priorRequest",
-                                            "groupIdentifier",
-                                            "status",
-                                            "intent",
-                                            "priority",
-                                            "codeReference",
-                                            "codeCodeableConcept",
-                                            "parameter",
-                                            "subject",
-                                            "encounter",
-                                            "occurrenceDateTime",
-                                            "occurrencePeriod",
-                                            "occurrenceTiming",
-                                            "authoredOn",
-                                            "requester",
-                                            "performerType",
-                                            "performer",
-                                            "reasonCode",
-                                            "reasonReference",
-                                            "insurance",
-                                            "supportingInfo",
-                                            "note",
-                                            "relevantHistory",
-                                        ],
-                                    ));
+                                    return unknown_field_error("instantiatesCanonical");
                                 }
                             }
                             Field::InstantiatesUri => {
@@ -1229,46 +1157,7 @@ impl<'de> serde::de::Deserialize<'de> for DeviceRequest {
                                         }
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "instantiatesUri",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "instantiatesCanonical",
-                                            "instantiatesUri",
-                                            "basedOn",
-                                            "priorRequest",
-                                            "groupIdentifier",
-                                            "status",
-                                            "intent",
-                                            "priority",
-                                            "codeReference",
-                                            "codeCodeableConcept",
-                                            "parameter",
-                                            "subject",
-                                            "encounter",
-                                            "occurrenceDateTime",
-                                            "occurrencePeriod",
-                                            "occurrenceTiming",
-                                            "authoredOn",
-                                            "requester",
-                                            "performerType",
-                                            "performer",
-                                            "reasonCode",
-                                            "reasonReference",
-                                            "insurance",
-                                            "supportingInfo",
-                                            "note",
-                                            "relevantHistory",
-                                        ],
-                                    ));
+                                    return unknown_field_error("instantiatesUri");
                                 }
                             }
                             Field::BasedOn => {
@@ -1331,46 +1220,7 @@ impl<'de> serde::de::Deserialize<'de> for DeviceRequest {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "status",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "instantiatesCanonical",
-                                            "instantiatesUri",
-                                            "basedOn",
-                                            "priorRequest",
-                                            "groupIdentifier",
-                                            "status",
-                                            "intent",
-                                            "priority",
-                                            "codeReference",
-                                            "codeCodeableConcept",
-                                            "parameter",
-                                            "subject",
-                                            "encounter",
-                                            "occurrenceDateTime",
-                                            "occurrencePeriod",
-                                            "occurrenceTiming",
-                                            "authoredOn",
-                                            "requester",
-                                            "performerType",
-                                            "performer",
-                                            "reasonCode",
-                                            "reasonReference",
-                                            "insurance",
-                                            "supportingInfo",
-                                            "note",
-                                            "relevantHistory",
-                                        ],
-                                    ));
+                                    return unknown_field_error("status");
                                 }
                             }
                             Field::Intent => {
@@ -1401,46 +1251,7 @@ impl<'de> serde::de::Deserialize<'de> for DeviceRequest {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "intent",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "instantiatesCanonical",
-                                            "instantiatesUri",
-                                            "basedOn",
-                                            "priorRequest",
-                                            "groupIdentifier",
-                                            "status",
-                                            "intent",
-                                            "priority",
-                                            "codeReference",
-                                            "codeCodeableConcept",
-                                            "parameter",
-                                            "subject",
-                                            "encounter",
-                                            "occurrenceDateTime",
-                                            "occurrencePeriod",
-                                            "occurrenceTiming",
-                                            "authoredOn",
-                                            "requester",
-                                            "performerType",
-                                            "performer",
-                                            "reasonCode",
-                                            "reasonReference",
-                                            "insurance",
-                                            "supportingInfo",
-                                            "note",
-                                            "relevantHistory",
-                                        ],
-                                    ));
+                                    return unknown_field_error("intent");
                                 }
                             }
                             Field::Priority => {
@@ -1471,46 +1282,7 @@ impl<'de> serde::de::Deserialize<'de> for DeviceRequest {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "priority",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "instantiatesCanonical",
-                                            "instantiatesUri",
-                                            "basedOn",
-                                            "priorRequest",
-                                            "groupIdentifier",
-                                            "status",
-                                            "intent",
-                                            "priority",
-                                            "codeReference",
-                                            "codeCodeableConcept",
-                                            "parameter",
-                                            "subject",
-                                            "encounter",
-                                            "occurrenceDateTime",
-                                            "occurrencePeriod",
-                                            "occurrenceTiming",
-                                            "authoredOn",
-                                            "requester",
-                                            "performerType",
-                                            "performer",
-                                            "reasonCode",
-                                            "reasonReference",
-                                            "insurance",
-                                            "supportingInfo",
-                                            "note",
-                                            "relevantHistory",
-                                        ],
-                                    ));
+                                    return unknown_field_error("priority");
                                 }
                             }
                             Field::CodeReference => {
@@ -1605,46 +1377,7 @@ impl<'de> serde::de::Deserialize<'de> for DeviceRequest {
                                         ));
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "occurrenceDateTime",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "instantiatesCanonical",
-                                            "instantiatesUri",
-                                            "basedOn",
-                                            "priorRequest",
-                                            "groupIdentifier",
-                                            "status",
-                                            "intent",
-                                            "priority",
-                                            "codeReference",
-                                            "codeCodeableConcept",
-                                            "parameter",
-                                            "subject",
-                                            "encounter",
-                                            "occurrenceDateTime",
-                                            "occurrencePeriod",
-                                            "occurrenceTiming",
-                                            "authoredOn",
-                                            "requester",
-                                            "performerType",
-                                            "performer",
-                                            "reasonCode",
-                                            "reasonReference",
-                                            "insurance",
-                                            "supportingInfo",
-                                            "note",
-                                            "relevantHistory",
-                                        ],
-                                    ));
+                                    return unknown_field_error("occurrenceDateTime");
                                 }
                             }
                             Field::OccurrencePeriod => {
@@ -1699,46 +1432,7 @@ impl<'de> serde::de::Deserialize<'de> for DeviceRequest {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "authoredOn",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "instantiatesCanonical",
-                                            "instantiatesUri",
-                                            "basedOn",
-                                            "priorRequest",
-                                            "groupIdentifier",
-                                            "status",
-                                            "intent",
-                                            "priority",
-                                            "codeReference",
-                                            "codeCodeableConcept",
-                                            "parameter",
-                                            "subject",
-                                            "encounter",
-                                            "occurrenceDateTime",
-                                            "occurrencePeriod",
-                                            "occurrenceTiming",
-                                            "authoredOn",
-                                            "requester",
-                                            "performerType",
-                                            "performer",
-                                            "reasonCode",
-                                            "reasonReference",
-                                            "insurance",
-                                            "supportingInfo",
-                                            "note",
-                                            "relevantHistory",
-                                        ],
-                                    ));
+                                    return unknown_field_error("authoredOn");
                                 }
                             }
                             Field::Requester => {

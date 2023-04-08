@@ -1,4 +1,4 @@
-// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-08 by fhirbolt-codegen v0.1.0
 #[doc = "A fixed quantity (no comparator)"]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub struct SimpleQuantity {
@@ -142,6 +142,12 @@ impl<'de> serde::de::Deserialize<'de> for SimpleQuantity {
             CodePrimitiveElement,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &["id", "extension", "value", "unit", "system", "code"],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = SimpleQuantity;
@@ -207,10 +213,7 @@ impl<'de> serde::de::Deserialize<'de> for SimpleQuantity {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "value",
-                                        &["id", "extension", "value", "unit", "system", "code"],
-                                    ));
+                                    return unknown_field_error("value");
                                 }
                             }
                             Field::Unit => {
@@ -241,10 +244,7 @@ impl<'de> serde::de::Deserialize<'de> for SimpleQuantity {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "unit",
-                                        &["id", "extension", "value", "unit", "system", "code"],
-                                    ));
+                                    return unknown_field_error("unit");
                                 }
                             }
                             Field::System => {
@@ -275,10 +275,7 @@ impl<'de> serde::de::Deserialize<'de> for SimpleQuantity {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "system",
-                                        &["id", "extension", "value", "unit", "system", "code"],
-                                    ));
+                                    return unknown_field_error("system");
                                 }
                             }
                             Field::Code => {
@@ -309,10 +306,7 @@ impl<'de> serde::de::Deserialize<'de> for SimpleQuantity {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "code",
-                                        &["id", "extension", "value", "unit", "system", "code"],
-                                    ));
+                                    return unknown_field_error("code");
                                 }
                             }
                             Field::Unknown(key) => if _ctx.config.mode

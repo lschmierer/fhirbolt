@@ -1,4 +1,4 @@
-// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-08 by fhirbolt-codegen v0.1.0
 #[doc = "Base StructureDefinition for Meta Type: The metadata about a resource. This is content in the resource that is maintained by the infrastructure. Changes to the content might not always be associated with version changes to the resource."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub struct Meta {
@@ -173,6 +173,21 @@ impl<'de> serde::de::Deserialize<'de> for Meta {
             Tag,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "versionId",
+                    "lastUpdated",
+                    "source",
+                    "profile",
+                    "security",
+                    "tag",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = Meta;
@@ -242,19 +257,7 @@ impl<'de> serde::de::Deserialize<'de> for Meta {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "versionId",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "versionId",
-                                            "lastUpdated",
-                                            "source",
-                                            "profile",
-                                            "security",
-                                            "tag",
-                                        ],
-                                    ));
+                                    return unknown_field_error("versionId");
                                 }
                             }
                             Field::LastUpdated => {
@@ -291,19 +294,7 @@ impl<'de> serde::de::Deserialize<'de> for Meta {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "lastUpdated",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "versionId",
-                                            "lastUpdated",
-                                            "source",
-                                            "profile",
-                                            "security",
-                                            "tag",
-                                        ],
-                                    ));
+                                    return unknown_field_error("lastUpdated");
                                 }
                             }
                             Field::Source => {
@@ -334,19 +325,7 @@ impl<'de> serde::de::Deserialize<'de> for Meta {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "source",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "versionId",
-                                            "lastUpdated",
-                                            "source",
-                                            "profile",
-                                            "security",
-                                            "tag",
-                                        ],
-                                    ));
+                                    return unknown_field_error("source");
                                 }
                             }
                             Field::Profile => {
@@ -405,19 +384,7 @@ impl<'de> serde::de::Deserialize<'de> for Meta {
                                         }
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "profile",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "versionId",
-                                            "lastUpdated",
-                                            "source",
-                                            "profile",
-                                            "security",
-                                            "tag",
-                                        ],
-                                    ));
+                                    return unknown_field_error("profile");
                                 }
                             }
                             Field::Security => {

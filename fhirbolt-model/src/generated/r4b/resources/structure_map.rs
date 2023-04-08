@@ -1,4 +1,4 @@
-// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-08 by fhirbolt-codegen v0.1.0
 #[doc = "A value to use if there is no existing value in the source object."]
 #[derive(Debug, Clone, PartialEq)]
 pub enum StructureMapGroupRuleSourceDefaultValue {
@@ -214,6 +214,20 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapStructure {
             DocumentationPrimitiveElement,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "url",
+                    "mode",
+                    "alias",
+                    "documentation",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = StructureMapStructure;
@@ -295,18 +309,7 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapStructure {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "url",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "mode",
-                                            "alias",
-                                            "documentation",
-                                        ],
-                                    ));
+                                    return unknown_field_error("url");
                                 }
                             }
                             Field::Mode => {
@@ -337,18 +340,7 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapStructure {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "mode",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "mode",
-                                            "alias",
-                                            "documentation",
-                                        ],
-                                    ));
+                                    return unknown_field_error("mode");
                                 }
                             }
                             Field::Alias => {
@@ -379,18 +371,7 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapStructure {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "alias",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "mode",
-                                            "alias",
-                                            "documentation",
-                                        ],
-                                    ));
+                                    return unknown_field_error("alias");
                                 }
                             }
                             Field::Documentation => {
@@ -427,18 +408,7 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapStructure {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "documentation",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "mode",
-                                            "alias",
-                                            "documentation",
-                                        ],
-                                    ));
+                                    return unknown_field_error("documentation");
                                 }
                             }
                             Field::Unknown(key) => if _ctx.config.mode
@@ -626,6 +596,20 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupInput {
             DocumentationPrimitiveElement,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "name",
+                    "type",
+                    "mode",
+                    "documentation",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = StructureMapGroupInput;
@@ -707,18 +691,7 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupInput {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "name",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "name",
-                                            "type",
-                                            "mode",
-                                            "documentation",
-                                        ],
-                                    ));
+                                    return unknown_field_error("name");
                                 }
                             }
                             Field::Type => {
@@ -749,18 +722,7 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupInput {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "type",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "name",
-                                            "type",
-                                            "mode",
-                                            "documentation",
-                                        ],
-                                    ));
+                                    return unknown_field_error("type");
                                 }
                             }
                             Field::Mode => {
@@ -791,18 +753,7 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupInput {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "mode",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "name",
-                                            "type",
-                                            "mode",
-                                            "documentation",
-                                        ],
-                                    ));
+                                    return unknown_field_error("mode");
                                 }
                             }
                             Field::Documentation => {
@@ -839,18 +790,7 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupInput {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "documentation",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "name",
-                                            "type",
-                                            "mode",
-                                            "documentation",
-                                        ],
-                                    ));
+                                    return unknown_field_error("documentation");
                                 }
                             }
                             Field::Unknown(key) => if _ctx.config.mode
@@ -1794,6 +1734,76 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleSource {
             LogMessagePrimitiveElement,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "context",
+                    "min",
+                    "max",
+                    "type",
+                    "defaultValueBase64Binary",
+                    "defaultValueBoolean",
+                    "defaultValueCanonical",
+                    "defaultValueCode",
+                    "defaultValueDate",
+                    "defaultValueDateTime",
+                    "defaultValueDecimal",
+                    "defaultValueId",
+                    "defaultValueInstant",
+                    "defaultValueInteger",
+                    "defaultValueMarkdown",
+                    "defaultValueOid",
+                    "defaultValuePositiveInt",
+                    "defaultValueString",
+                    "defaultValueTime",
+                    "defaultValueUnsignedInt",
+                    "defaultValueUri",
+                    "defaultValueUrl",
+                    "defaultValueUuid",
+                    "defaultValueAddress",
+                    "defaultValueAge",
+                    "defaultValueAnnotation",
+                    "defaultValueAttachment",
+                    "defaultValueCodeableConcept",
+                    "defaultValueCoding",
+                    "defaultValueContactPoint",
+                    "defaultValueCount",
+                    "defaultValueDistance",
+                    "defaultValueDuration",
+                    "defaultValueHumanName",
+                    "defaultValueIdentifier",
+                    "defaultValueMoney",
+                    "defaultValuePeriod",
+                    "defaultValueQuantity",
+                    "defaultValueRange",
+                    "defaultValueRatio",
+                    "defaultValueReference",
+                    "defaultValueSampledData",
+                    "defaultValueSignature",
+                    "defaultValueTiming",
+                    "defaultValueContactDetail",
+                    "defaultValueContributor",
+                    "defaultValueDataRequirement",
+                    "defaultValueExpression",
+                    "defaultValueParameterDefinition",
+                    "defaultValueRelatedArtifact",
+                    "defaultValueTriggerDefinition",
+                    "defaultValueUsageContext",
+                    "defaultValueDosage",
+                    "defaultValueMeta",
+                    "element",
+                    "listMode",
+                    "variable",
+                    "condition",
+                    "check",
+                    "logMessage",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = StructureMapGroupRuleSource;
@@ -1885,74 +1895,7 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleSource {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "context",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "context",
-                                            "min",
-                                            "max",
-                                            "type",
-                                            "defaultValueBase64Binary",
-                                            "defaultValueBoolean",
-                                            "defaultValueCanonical",
-                                            "defaultValueCode",
-                                            "defaultValueDate",
-                                            "defaultValueDateTime",
-                                            "defaultValueDecimal",
-                                            "defaultValueId",
-                                            "defaultValueInstant",
-                                            "defaultValueInteger",
-                                            "defaultValueMarkdown",
-                                            "defaultValueOid",
-                                            "defaultValuePositiveInt",
-                                            "defaultValueString",
-                                            "defaultValueTime",
-                                            "defaultValueUnsignedInt",
-                                            "defaultValueUri",
-                                            "defaultValueUrl",
-                                            "defaultValueUuid",
-                                            "defaultValueAddress",
-                                            "defaultValueAge",
-                                            "defaultValueAnnotation",
-                                            "defaultValueAttachment",
-                                            "defaultValueCodeableConcept",
-                                            "defaultValueCoding",
-                                            "defaultValueContactPoint",
-                                            "defaultValueCount",
-                                            "defaultValueDistance",
-                                            "defaultValueDuration",
-                                            "defaultValueHumanName",
-                                            "defaultValueIdentifier",
-                                            "defaultValueMoney",
-                                            "defaultValuePeriod",
-                                            "defaultValueQuantity",
-                                            "defaultValueRange",
-                                            "defaultValueRatio",
-                                            "defaultValueReference",
-                                            "defaultValueSampledData",
-                                            "defaultValueSignature",
-                                            "defaultValueTiming",
-                                            "defaultValueContactDetail",
-                                            "defaultValueContributor",
-                                            "defaultValueDataRequirement",
-                                            "defaultValueExpression",
-                                            "defaultValueParameterDefinition",
-                                            "defaultValueRelatedArtifact",
-                                            "defaultValueTriggerDefinition",
-                                            "defaultValueUsageContext",
-                                            "defaultValueDosage",
-                                            "defaultValueMeta",
-                                            "element",
-                                            "listMode",
-                                            "variable",
-                                            "condition",
-                                            "check",
-                                            "logMessage",
-                                        ],
-                                    ));
+                                    return unknown_field_error("context");
                                 }
                             }
                             Field::Min => {
@@ -1983,74 +1926,7 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleSource {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "min",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "context",
-                                            "min",
-                                            "max",
-                                            "type",
-                                            "defaultValueBase64Binary",
-                                            "defaultValueBoolean",
-                                            "defaultValueCanonical",
-                                            "defaultValueCode",
-                                            "defaultValueDate",
-                                            "defaultValueDateTime",
-                                            "defaultValueDecimal",
-                                            "defaultValueId",
-                                            "defaultValueInstant",
-                                            "defaultValueInteger",
-                                            "defaultValueMarkdown",
-                                            "defaultValueOid",
-                                            "defaultValuePositiveInt",
-                                            "defaultValueString",
-                                            "defaultValueTime",
-                                            "defaultValueUnsignedInt",
-                                            "defaultValueUri",
-                                            "defaultValueUrl",
-                                            "defaultValueUuid",
-                                            "defaultValueAddress",
-                                            "defaultValueAge",
-                                            "defaultValueAnnotation",
-                                            "defaultValueAttachment",
-                                            "defaultValueCodeableConcept",
-                                            "defaultValueCoding",
-                                            "defaultValueContactPoint",
-                                            "defaultValueCount",
-                                            "defaultValueDistance",
-                                            "defaultValueDuration",
-                                            "defaultValueHumanName",
-                                            "defaultValueIdentifier",
-                                            "defaultValueMoney",
-                                            "defaultValuePeriod",
-                                            "defaultValueQuantity",
-                                            "defaultValueRange",
-                                            "defaultValueRatio",
-                                            "defaultValueReference",
-                                            "defaultValueSampledData",
-                                            "defaultValueSignature",
-                                            "defaultValueTiming",
-                                            "defaultValueContactDetail",
-                                            "defaultValueContributor",
-                                            "defaultValueDataRequirement",
-                                            "defaultValueExpression",
-                                            "defaultValueParameterDefinition",
-                                            "defaultValueRelatedArtifact",
-                                            "defaultValueTriggerDefinition",
-                                            "defaultValueUsageContext",
-                                            "defaultValueDosage",
-                                            "defaultValueMeta",
-                                            "element",
-                                            "listMode",
-                                            "variable",
-                                            "condition",
-                                            "check",
-                                            "logMessage",
-                                        ],
-                                    ));
+                                    return unknown_field_error("min");
                                 }
                             }
                             Field::Max => {
@@ -2081,74 +1957,7 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleSource {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "max",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "context",
-                                            "min",
-                                            "max",
-                                            "type",
-                                            "defaultValueBase64Binary",
-                                            "defaultValueBoolean",
-                                            "defaultValueCanonical",
-                                            "defaultValueCode",
-                                            "defaultValueDate",
-                                            "defaultValueDateTime",
-                                            "defaultValueDecimal",
-                                            "defaultValueId",
-                                            "defaultValueInstant",
-                                            "defaultValueInteger",
-                                            "defaultValueMarkdown",
-                                            "defaultValueOid",
-                                            "defaultValuePositiveInt",
-                                            "defaultValueString",
-                                            "defaultValueTime",
-                                            "defaultValueUnsignedInt",
-                                            "defaultValueUri",
-                                            "defaultValueUrl",
-                                            "defaultValueUuid",
-                                            "defaultValueAddress",
-                                            "defaultValueAge",
-                                            "defaultValueAnnotation",
-                                            "defaultValueAttachment",
-                                            "defaultValueCodeableConcept",
-                                            "defaultValueCoding",
-                                            "defaultValueContactPoint",
-                                            "defaultValueCount",
-                                            "defaultValueDistance",
-                                            "defaultValueDuration",
-                                            "defaultValueHumanName",
-                                            "defaultValueIdentifier",
-                                            "defaultValueMoney",
-                                            "defaultValuePeriod",
-                                            "defaultValueQuantity",
-                                            "defaultValueRange",
-                                            "defaultValueRatio",
-                                            "defaultValueReference",
-                                            "defaultValueSampledData",
-                                            "defaultValueSignature",
-                                            "defaultValueTiming",
-                                            "defaultValueContactDetail",
-                                            "defaultValueContributor",
-                                            "defaultValueDataRequirement",
-                                            "defaultValueExpression",
-                                            "defaultValueParameterDefinition",
-                                            "defaultValueRelatedArtifact",
-                                            "defaultValueTriggerDefinition",
-                                            "defaultValueUsageContext",
-                                            "defaultValueDosage",
-                                            "defaultValueMeta",
-                                            "element",
-                                            "listMode",
-                                            "variable",
-                                            "condition",
-                                            "check",
-                                            "logMessage",
-                                        ],
-                                    ));
+                                    return unknown_field_error("max");
                                 }
                             }
                             Field::Type => {
@@ -2179,74 +1988,7 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleSource {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "type",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "context",
-                                            "min",
-                                            "max",
-                                            "type",
-                                            "defaultValueBase64Binary",
-                                            "defaultValueBoolean",
-                                            "defaultValueCanonical",
-                                            "defaultValueCode",
-                                            "defaultValueDate",
-                                            "defaultValueDateTime",
-                                            "defaultValueDecimal",
-                                            "defaultValueId",
-                                            "defaultValueInstant",
-                                            "defaultValueInteger",
-                                            "defaultValueMarkdown",
-                                            "defaultValueOid",
-                                            "defaultValuePositiveInt",
-                                            "defaultValueString",
-                                            "defaultValueTime",
-                                            "defaultValueUnsignedInt",
-                                            "defaultValueUri",
-                                            "defaultValueUrl",
-                                            "defaultValueUuid",
-                                            "defaultValueAddress",
-                                            "defaultValueAge",
-                                            "defaultValueAnnotation",
-                                            "defaultValueAttachment",
-                                            "defaultValueCodeableConcept",
-                                            "defaultValueCoding",
-                                            "defaultValueContactPoint",
-                                            "defaultValueCount",
-                                            "defaultValueDistance",
-                                            "defaultValueDuration",
-                                            "defaultValueHumanName",
-                                            "defaultValueIdentifier",
-                                            "defaultValueMoney",
-                                            "defaultValuePeriod",
-                                            "defaultValueQuantity",
-                                            "defaultValueRange",
-                                            "defaultValueRatio",
-                                            "defaultValueReference",
-                                            "defaultValueSampledData",
-                                            "defaultValueSignature",
-                                            "defaultValueTiming",
-                                            "defaultValueContactDetail",
-                                            "defaultValueContributor",
-                                            "defaultValueDataRequirement",
-                                            "defaultValueExpression",
-                                            "defaultValueParameterDefinition",
-                                            "defaultValueRelatedArtifact",
-                                            "defaultValueTriggerDefinition",
-                                            "defaultValueUsageContext",
-                                            "defaultValueDosage",
-                                            "defaultValueMeta",
-                                            "element",
-                                            "listMode",
-                                            "variable",
-                                            "condition",
-                                            "check",
-                                            "logMessage",
-                                        ],
-                                    ));
+                                    return unknown_field_error("type");
                                 }
                             }
                             Field::DefaultValueBase64Binary => {
@@ -2313,74 +2055,7 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleSource {
                                         ));
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "defaultValueBase64Binary",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "context",
-                                            "min",
-                                            "max",
-                                            "type",
-                                            "defaultValueBase64Binary",
-                                            "defaultValueBoolean",
-                                            "defaultValueCanonical",
-                                            "defaultValueCode",
-                                            "defaultValueDate",
-                                            "defaultValueDateTime",
-                                            "defaultValueDecimal",
-                                            "defaultValueId",
-                                            "defaultValueInstant",
-                                            "defaultValueInteger",
-                                            "defaultValueMarkdown",
-                                            "defaultValueOid",
-                                            "defaultValuePositiveInt",
-                                            "defaultValueString",
-                                            "defaultValueTime",
-                                            "defaultValueUnsignedInt",
-                                            "defaultValueUri",
-                                            "defaultValueUrl",
-                                            "defaultValueUuid",
-                                            "defaultValueAddress",
-                                            "defaultValueAge",
-                                            "defaultValueAnnotation",
-                                            "defaultValueAttachment",
-                                            "defaultValueCodeableConcept",
-                                            "defaultValueCoding",
-                                            "defaultValueContactPoint",
-                                            "defaultValueCount",
-                                            "defaultValueDistance",
-                                            "defaultValueDuration",
-                                            "defaultValueHumanName",
-                                            "defaultValueIdentifier",
-                                            "defaultValueMoney",
-                                            "defaultValuePeriod",
-                                            "defaultValueQuantity",
-                                            "defaultValueRange",
-                                            "defaultValueRatio",
-                                            "defaultValueReference",
-                                            "defaultValueSampledData",
-                                            "defaultValueSignature",
-                                            "defaultValueTiming",
-                                            "defaultValueContactDetail",
-                                            "defaultValueContributor",
-                                            "defaultValueDataRequirement",
-                                            "defaultValueExpression",
-                                            "defaultValueParameterDefinition",
-                                            "defaultValueRelatedArtifact",
-                                            "defaultValueTriggerDefinition",
-                                            "defaultValueUsageContext",
-                                            "defaultValueDosage",
-                                            "defaultValueMeta",
-                                            "element",
-                                            "listMode",
-                                            "variable",
-                                            "condition",
-                                            "check",
-                                            "logMessage",
-                                        ],
-                                    ));
+                                    return unknown_field_error("defaultValueBase64Binary");
                                 }
                             }
                             Field::DefaultValueBoolean => {
@@ -2446,74 +2121,7 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleSource {
                                         ));
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "defaultValueBoolean",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "context",
-                                            "min",
-                                            "max",
-                                            "type",
-                                            "defaultValueBase64Binary",
-                                            "defaultValueBoolean",
-                                            "defaultValueCanonical",
-                                            "defaultValueCode",
-                                            "defaultValueDate",
-                                            "defaultValueDateTime",
-                                            "defaultValueDecimal",
-                                            "defaultValueId",
-                                            "defaultValueInstant",
-                                            "defaultValueInteger",
-                                            "defaultValueMarkdown",
-                                            "defaultValueOid",
-                                            "defaultValuePositiveInt",
-                                            "defaultValueString",
-                                            "defaultValueTime",
-                                            "defaultValueUnsignedInt",
-                                            "defaultValueUri",
-                                            "defaultValueUrl",
-                                            "defaultValueUuid",
-                                            "defaultValueAddress",
-                                            "defaultValueAge",
-                                            "defaultValueAnnotation",
-                                            "defaultValueAttachment",
-                                            "defaultValueCodeableConcept",
-                                            "defaultValueCoding",
-                                            "defaultValueContactPoint",
-                                            "defaultValueCount",
-                                            "defaultValueDistance",
-                                            "defaultValueDuration",
-                                            "defaultValueHumanName",
-                                            "defaultValueIdentifier",
-                                            "defaultValueMoney",
-                                            "defaultValuePeriod",
-                                            "defaultValueQuantity",
-                                            "defaultValueRange",
-                                            "defaultValueRatio",
-                                            "defaultValueReference",
-                                            "defaultValueSampledData",
-                                            "defaultValueSignature",
-                                            "defaultValueTiming",
-                                            "defaultValueContactDetail",
-                                            "defaultValueContributor",
-                                            "defaultValueDataRequirement",
-                                            "defaultValueExpression",
-                                            "defaultValueParameterDefinition",
-                                            "defaultValueRelatedArtifact",
-                                            "defaultValueTriggerDefinition",
-                                            "defaultValueUsageContext",
-                                            "defaultValueDosage",
-                                            "defaultValueMeta",
-                                            "element",
-                                            "listMode",
-                                            "variable",
-                                            "condition",
-                                            "check",
-                                            "logMessage",
-                                        ],
-                                    ));
+                                    return unknown_field_error("defaultValueBoolean");
                                 }
                             }
                             Field::DefaultValueCanonical => {
@@ -2579,74 +2187,7 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleSource {
                                         ));
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "defaultValueCanonical",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "context",
-                                            "min",
-                                            "max",
-                                            "type",
-                                            "defaultValueBase64Binary",
-                                            "defaultValueBoolean",
-                                            "defaultValueCanonical",
-                                            "defaultValueCode",
-                                            "defaultValueDate",
-                                            "defaultValueDateTime",
-                                            "defaultValueDecimal",
-                                            "defaultValueId",
-                                            "defaultValueInstant",
-                                            "defaultValueInteger",
-                                            "defaultValueMarkdown",
-                                            "defaultValueOid",
-                                            "defaultValuePositiveInt",
-                                            "defaultValueString",
-                                            "defaultValueTime",
-                                            "defaultValueUnsignedInt",
-                                            "defaultValueUri",
-                                            "defaultValueUrl",
-                                            "defaultValueUuid",
-                                            "defaultValueAddress",
-                                            "defaultValueAge",
-                                            "defaultValueAnnotation",
-                                            "defaultValueAttachment",
-                                            "defaultValueCodeableConcept",
-                                            "defaultValueCoding",
-                                            "defaultValueContactPoint",
-                                            "defaultValueCount",
-                                            "defaultValueDistance",
-                                            "defaultValueDuration",
-                                            "defaultValueHumanName",
-                                            "defaultValueIdentifier",
-                                            "defaultValueMoney",
-                                            "defaultValuePeriod",
-                                            "defaultValueQuantity",
-                                            "defaultValueRange",
-                                            "defaultValueRatio",
-                                            "defaultValueReference",
-                                            "defaultValueSampledData",
-                                            "defaultValueSignature",
-                                            "defaultValueTiming",
-                                            "defaultValueContactDetail",
-                                            "defaultValueContributor",
-                                            "defaultValueDataRequirement",
-                                            "defaultValueExpression",
-                                            "defaultValueParameterDefinition",
-                                            "defaultValueRelatedArtifact",
-                                            "defaultValueTriggerDefinition",
-                                            "defaultValueUsageContext",
-                                            "defaultValueDosage",
-                                            "defaultValueMeta",
-                                            "element",
-                                            "listMode",
-                                            "variable",
-                                            "condition",
-                                            "check",
-                                            "logMessage",
-                                        ],
-                                    ));
+                                    return unknown_field_error("defaultValueCanonical");
                                 }
                             }
                             Field::DefaultValueCode => {
@@ -2710,74 +2251,7 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleSource {
                                         ));
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "defaultValueCode",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "context",
-                                            "min",
-                                            "max",
-                                            "type",
-                                            "defaultValueBase64Binary",
-                                            "defaultValueBoolean",
-                                            "defaultValueCanonical",
-                                            "defaultValueCode",
-                                            "defaultValueDate",
-                                            "defaultValueDateTime",
-                                            "defaultValueDecimal",
-                                            "defaultValueId",
-                                            "defaultValueInstant",
-                                            "defaultValueInteger",
-                                            "defaultValueMarkdown",
-                                            "defaultValueOid",
-                                            "defaultValuePositiveInt",
-                                            "defaultValueString",
-                                            "defaultValueTime",
-                                            "defaultValueUnsignedInt",
-                                            "defaultValueUri",
-                                            "defaultValueUrl",
-                                            "defaultValueUuid",
-                                            "defaultValueAddress",
-                                            "defaultValueAge",
-                                            "defaultValueAnnotation",
-                                            "defaultValueAttachment",
-                                            "defaultValueCodeableConcept",
-                                            "defaultValueCoding",
-                                            "defaultValueContactPoint",
-                                            "defaultValueCount",
-                                            "defaultValueDistance",
-                                            "defaultValueDuration",
-                                            "defaultValueHumanName",
-                                            "defaultValueIdentifier",
-                                            "defaultValueMoney",
-                                            "defaultValuePeriod",
-                                            "defaultValueQuantity",
-                                            "defaultValueRange",
-                                            "defaultValueRatio",
-                                            "defaultValueReference",
-                                            "defaultValueSampledData",
-                                            "defaultValueSignature",
-                                            "defaultValueTiming",
-                                            "defaultValueContactDetail",
-                                            "defaultValueContributor",
-                                            "defaultValueDataRequirement",
-                                            "defaultValueExpression",
-                                            "defaultValueParameterDefinition",
-                                            "defaultValueRelatedArtifact",
-                                            "defaultValueTriggerDefinition",
-                                            "defaultValueUsageContext",
-                                            "defaultValueDosage",
-                                            "defaultValueMeta",
-                                            "element",
-                                            "listMode",
-                                            "variable",
-                                            "condition",
-                                            "check",
-                                            "logMessage",
-                                        ],
-                                    ));
+                                    return unknown_field_error("defaultValueCode");
                                 }
                             }
                             Field::DefaultValueDate => {
@@ -2841,74 +2315,7 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleSource {
                                         ));
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "defaultValueDate",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "context",
-                                            "min",
-                                            "max",
-                                            "type",
-                                            "defaultValueBase64Binary",
-                                            "defaultValueBoolean",
-                                            "defaultValueCanonical",
-                                            "defaultValueCode",
-                                            "defaultValueDate",
-                                            "defaultValueDateTime",
-                                            "defaultValueDecimal",
-                                            "defaultValueId",
-                                            "defaultValueInstant",
-                                            "defaultValueInteger",
-                                            "defaultValueMarkdown",
-                                            "defaultValueOid",
-                                            "defaultValuePositiveInt",
-                                            "defaultValueString",
-                                            "defaultValueTime",
-                                            "defaultValueUnsignedInt",
-                                            "defaultValueUri",
-                                            "defaultValueUrl",
-                                            "defaultValueUuid",
-                                            "defaultValueAddress",
-                                            "defaultValueAge",
-                                            "defaultValueAnnotation",
-                                            "defaultValueAttachment",
-                                            "defaultValueCodeableConcept",
-                                            "defaultValueCoding",
-                                            "defaultValueContactPoint",
-                                            "defaultValueCount",
-                                            "defaultValueDistance",
-                                            "defaultValueDuration",
-                                            "defaultValueHumanName",
-                                            "defaultValueIdentifier",
-                                            "defaultValueMoney",
-                                            "defaultValuePeriod",
-                                            "defaultValueQuantity",
-                                            "defaultValueRange",
-                                            "defaultValueRatio",
-                                            "defaultValueReference",
-                                            "defaultValueSampledData",
-                                            "defaultValueSignature",
-                                            "defaultValueTiming",
-                                            "defaultValueContactDetail",
-                                            "defaultValueContributor",
-                                            "defaultValueDataRequirement",
-                                            "defaultValueExpression",
-                                            "defaultValueParameterDefinition",
-                                            "defaultValueRelatedArtifact",
-                                            "defaultValueTriggerDefinition",
-                                            "defaultValueUsageContext",
-                                            "defaultValueDosage",
-                                            "defaultValueMeta",
-                                            "element",
-                                            "listMode",
-                                            "variable",
-                                            "condition",
-                                            "check",
-                                            "logMessage",
-                                        ],
-                                    ));
+                                    return unknown_field_error("defaultValueDate");
                                 }
                             }
                             Field::DefaultValueDateTime => {
@@ -2974,74 +2381,7 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleSource {
                                         ));
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "defaultValueDateTime",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "context",
-                                            "min",
-                                            "max",
-                                            "type",
-                                            "defaultValueBase64Binary",
-                                            "defaultValueBoolean",
-                                            "defaultValueCanonical",
-                                            "defaultValueCode",
-                                            "defaultValueDate",
-                                            "defaultValueDateTime",
-                                            "defaultValueDecimal",
-                                            "defaultValueId",
-                                            "defaultValueInstant",
-                                            "defaultValueInteger",
-                                            "defaultValueMarkdown",
-                                            "defaultValueOid",
-                                            "defaultValuePositiveInt",
-                                            "defaultValueString",
-                                            "defaultValueTime",
-                                            "defaultValueUnsignedInt",
-                                            "defaultValueUri",
-                                            "defaultValueUrl",
-                                            "defaultValueUuid",
-                                            "defaultValueAddress",
-                                            "defaultValueAge",
-                                            "defaultValueAnnotation",
-                                            "defaultValueAttachment",
-                                            "defaultValueCodeableConcept",
-                                            "defaultValueCoding",
-                                            "defaultValueContactPoint",
-                                            "defaultValueCount",
-                                            "defaultValueDistance",
-                                            "defaultValueDuration",
-                                            "defaultValueHumanName",
-                                            "defaultValueIdentifier",
-                                            "defaultValueMoney",
-                                            "defaultValuePeriod",
-                                            "defaultValueQuantity",
-                                            "defaultValueRange",
-                                            "defaultValueRatio",
-                                            "defaultValueReference",
-                                            "defaultValueSampledData",
-                                            "defaultValueSignature",
-                                            "defaultValueTiming",
-                                            "defaultValueContactDetail",
-                                            "defaultValueContributor",
-                                            "defaultValueDataRequirement",
-                                            "defaultValueExpression",
-                                            "defaultValueParameterDefinition",
-                                            "defaultValueRelatedArtifact",
-                                            "defaultValueTriggerDefinition",
-                                            "defaultValueUsageContext",
-                                            "defaultValueDosage",
-                                            "defaultValueMeta",
-                                            "element",
-                                            "listMode",
-                                            "variable",
-                                            "condition",
-                                            "check",
-                                            "logMessage",
-                                        ],
-                                    ));
+                                    return unknown_field_error("defaultValueDateTime");
                                 }
                             }
                             Field::DefaultValueDecimal => {
@@ -3107,74 +2447,7 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleSource {
                                         ));
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "defaultValueDecimal",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "context",
-                                            "min",
-                                            "max",
-                                            "type",
-                                            "defaultValueBase64Binary",
-                                            "defaultValueBoolean",
-                                            "defaultValueCanonical",
-                                            "defaultValueCode",
-                                            "defaultValueDate",
-                                            "defaultValueDateTime",
-                                            "defaultValueDecimal",
-                                            "defaultValueId",
-                                            "defaultValueInstant",
-                                            "defaultValueInteger",
-                                            "defaultValueMarkdown",
-                                            "defaultValueOid",
-                                            "defaultValuePositiveInt",
-                                            "defaultValueString",
-                                            "defaultValueTime",
-                                            "defaultValueUnsignedInt",
-                                            "defaultValueUri",
-                                            "defaultValueUrl",
-                                            "defaultValueUuid",
-                                            "defaultValueAddress",
-                                            "defaultValueAge",
-                                            "defaultValueAnnotation",
-                                            "defaultValueAttachment",
-                                            "defaultValueCodeableConcept",
-                                            "defaultValueCoding",
-                                            "defaultValueContactPoint",
-                                            "defaultValueCount",
-                                            "defaultValueDistance",
-                                            "defaultValueDuration",
-                                            "defaultValueHumanName",
-                                            "defaultValueIdentifier",
-                                            "defaultValueMoney",
-                                            "defaultValuePeriod",
-                                            "defaultValueQuantity",
-                                            "defaultValueRange",
-                                            "defaultValueRatio",
-                                            "defaultValueReference",
-                                            "defaultValueSampledData",
-                                            "defaultValueSignature",
-                                            "defaultValueTiming",
-                                            "defaultValueContactDetail",
-                                            "defaultValueContributor",
-                                            "defaultValueDataRequirement",
-                                            "defaultValueExpression",
-                                            "defaultValueParameterDefinition",
-                                            "defaultValueRelatedArtifact",
-                                            "defaultValueTriggerDefinition",
-                                            "defaultValueUsageContext",
-                                            "defaultValueDosage",
-                                            "defaultValueMeta",
-                                            "element",
-                                            "listMode",
-                                            "variable",
-                                            "condition",
-                                            "check",
-                                            "logMessage",
-                                        ],
-                                    ));
+                                    return unknown_field_error("defaultValueDecimal");
                                 }
                             }
                             Field::DefaultValueId => {
@@ -3238,74 +2511,7 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleSource {
                                         ));
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "defaultValueId",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "context",
-                                            "min",
-                                            "max",
-                                            "type",
-                                            "defaultValueBase64Binary",
-                                            "defaultValueBoolean",
-                                            "defaultValueCanonical",
-                                            "defaultValueCode",
-                                            "defaultValueDate",
-                                            "defaultValueDateTime",
-                                            "defaultValueDecimal",
-                                            "defaultValueId",
-                                            "defaultValueInstant",
-                                            "defaultValueInteger",
-                                            "defaultValueMarkdown",
-                                            "defaultValueOid",
-                                            "defaultValuePositiveInt",
-                                            "defaultValueString",
-                                            "defaultValueTime",
-                                            "defaultValueUnsignedInt",
-                                            "defaultValueUri",
-                                            "defaultValueUrl",
-                                            "defaultValueUuid",
-                                            "defaultValueAddress",
-                                            "defaultValueAge",
-                                            "defaultValueAnnotation",
-                                            "defaultValueAttachment",
-                                            "defaultValueCodeableConcept",
-                                            "defaultValueCoding",
-                                            "defaultValueContactPoint",
-                                            "defaultValueCount",
-                                            "defaultValueDistance",
-                                            "defaultValueDuration",
-                                            "defaultValueHumanName",
-                                            "defaultValueIdentifier",
-                                            "defaultValueMoney",
-                                            "defaultValuePeriod",
-                                            "defaultValueQuantity",
-                                            "defaultValueRange",
-                                            "defaultValueRatio",
-                                            "defaultValueReference",
-                                            "defaultValueSampledData",
-                                            "defaultValueSignature",
-                                            "defaultValueTiming",
-                                            "defaultValueContactDetail",
-                                            "defaultValueContributor",
-                                            "defaultValueDataRequirement",
-                                            "defaultValueExpression",
-                                            "defaultValueParameterDefinition",
-                                            "defaultValueRelatedArtifact",
-                                            "defaultValueTriggerDefinition",
-                                            "defaultValueUsageContext",
-                                            "defaultValueDosage",
-                                            "defaultValueMeta",
-                                            "element",
-                                            "listMode",
-                                            "variable",
-                                            "condition",
-                                            "check",
-                                            "logMessage",
-                                        ],
-                                    ));
+                                    return unknown_field_error("defaultValueId");
                                 }
                             }
                             Field::DefaultValueInstant => {
@@ -3371,74 +2577,7 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleSource {
                                         ));
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "defaultValueInstant",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "context",
-                                            "min",
-                                            "max",
-                                            "type",
-                                            "defaultValueBase64Binary",
-                                            "defaultValueBoolean",
-                                            "defaultValueCanonical",
-                                            "defaultValueCode",
-                                            "defaultValueDate",
-                                            "defaultValueDateTime",
-                                            "defaultValueDecimal",
-                                            "defaultValueId",
-                                            "defaultValueInstant",
-                                            "defaultValueInteger",
-                                            "defaultValueMarkdown",
-                                            "defaultValueOid",
-                                            "defaultValuePositiveInt",
-                                            "defaultValueString",
-                                            "defaultValueTime",
-                                            "defaultValueUnsignedInt",
-                                            "defaultValueUri",
-                                            "defaultValueUrl",
-                                            "defaultValueUuid",
-                                            "defaultValueAddress",
-                                            "defaultValueAge",
-                                            "defaultValueAnnotation",
-                                            "defaultValueAttachment",
-                                            "defaultValueCodeableConcept",
-                                            "defaultValueCoding",
-                                            "defaultValueContactPoint",
-                                            "defaultValueCount",
-                                            "defaultValueDistance",
-                                            "defaultValueDuration",
-                                            "defaultValueHumanName",
-                                            "defaultValueIdentifier",
-                                            "defaultValueMoney",
-                                            "defaultValuePeriod",
-                                            "defaultValueQuantity",
-                                            "defaultValueRange",
-                                            "defaultValueRatio",
-                                            "defaultValueReference",
-                                            "defaultValueSampledData",
-                                            "defaultValueSignature",
-                                            "defaultValueTiming",
-                                            "defaultValueContactDetail",
-                                            "defaultValueContributor",
-                                            "defaultValueDataRequirement",
-                                            "defaultValueExpression",
-                                            "defaultValueParameterDefinition",
-                                            "defaultValueRelatedArtifact",
-                                            "defaultValueTriggerDefinition",
-                                            "defaultValueUsageContext",
-                                            "defaultValueDosage",
-                                            "defaultValueMeta",
-                                            "element",
-                                            "listMode",
-                                            "variable",
-                                            "condition",
-                                            "check",
-                                            "logMessage",
-                                        ],
-                                    ));
+                                    return unknown_field_error("defaultValueInstant");
                                 }
                             }
                             Field::DefaultValueInteger => {
@@ -3504,74 +2643,7 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleSource {
                                         ));
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "defaultValueInteger",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "context",
-                                            "min",
-                                            "max",
-                                            "type",
-                                            "defaultValueBase64Binary",
-                                            "defaultValueBoolean",
-                                            "defaultValueCanonical",
-                                            "defaultValueCode",
-                                            "defaultValueDate",
-                                            "defaultValueDateTime",
-                                            "defaultValueDecimal",
-                                            "defaultValueId",
-                                            "defaultValueInstant",
-                                            "defaultValueInteger",
-                                            "defaultValueMarkdown",
-                                            "defaultValueOid",
-                                            "defaultValuePositiveInt",
-                                            "defaultValueString",
-                                            "defaultValueTime",
-                                            "defaultValueUnsignedInt",
-                                            "defaultValueUri",
-                                            "defaultValueUrl",
-                                            "defaultValueUuid",
-                                            "defaultValueAddress",
-                                            "defaultValueAge",
-                                            "defaultValueAnnotation",
-                                            "defaultValueAttachment",
-                                            "defaultValueCodeableConcept",
-                                            "defaultValueCoding",
-                                            "defaultValueContactPoint",
-                                            "defaultValueCount",
-                                            "defaultValueDistance",
-                                            "defaultValueDuration",
-                                            "defaultValueHumanName",
-                                            "defaultValueIdentifier",
-                                            "defaultValueMoney",
-                                            "defaultValuePeriod",
-                                            "defaultValueQuantity",
-                                            "defaultValueRange",
-                                            "defaultValueRatio",
-                                            "defaultValueReference",
-                                            "defaultValueSampledData",
-                                            "defaultValueSignature",
-                                            "defaultValueTiming",
-                                            "defaultValueContactDetail",
-                                            "defaultValueContributor",
-                                            "defaultValueDataRequirement",
-                                            "defaultValueExpression",
-                                            "defaultValueParameterDefinition",
-                                            "defaultValueRelatedArtifact",
-                                            "defaultValueTriggerDefinition",
-                                            "defaultValueUsageContext",
-                                            "defaultValueDosage",
-                                            "defaultValueMeta",
-                                            "element",
-                                            "listMode",
-                                            "variable",
-                                            "condition",
-                                            "check",
-                                            "logMessage",
-                                        ],
-                                    ));
+                                    return unknown_field_error("defaultValueInteger");
                                 }
                             }
                             Field::DefaultValueMarkdown => {
@@ -3637,74 +2709,7 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleSource {
                                         ));
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "defaultValueMarkdown",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "context",
-                                            "min",
-                                            "max",
-                                            "type",
-                                            "defaultValueBase64Binary",
-                                            "defaultValueBoolean",
-                                            "defaultValueCanonical",
-                                            "defaultValueCode",
-                                            "defaultValueDate",
-                                            "defaultValueDateTime",
-                                            "defaultValueDecimal",
-                                            "defaultValueId",
-                                            "defaultValueInstant",
-                                            "defaultValueInteger",
-                                            "defaultValueMarkdown",
-                                            "defaultValueOid",
-                                            "defaultValuePositiveInt",
-                                            "defaultValueString",
-                                            "defaultValueTime",
-                                            "defaultValueUnsignedInt",
-                                            "defaultValueUri",
-                                            "defaultValueUrl",
-                                            "defaultValueUuid",
-                                            "defaultValueAddress",
-                                            "defaultValueAge",
-                                            "defaultValueAnnotation",
-                                            "defaultValueAttachment",
-                                            "defaultValueCodeableConcept",
-                                            "defaultValueCoding",
-                                            "defaultValueContactPoint",
-                                            "defaultValueCount",
-                                            "defaultValueDistance",
-                                            "defaultValueDuration",
-                                            "defaultValueHumanName",
-                                            "defaultValueIdentifier",
-                                            "defaultValueMoney",
-                                            "defaultValuePeriod",
-                                            "defaultValueQuantity",
-                                            "defaultValueRange",
-                                            "defaultValueRatio",
-                                            "defaultValueReference",
-                                            "defaultValueSampledData",
-                                            "defaultValueSignature",
-                                            "defaultValueTiming",
-                                            "defaultValueContactDetail",
-                                            "defaultValueContributor",
-                                            "defaultValueDataRequirement",
-                                            "defaultValueExpression",
-                                            "defaultValueParameterDefinition",
-                                            "defaultValueRelatedArtifact",
-                                            "defaultValueTriggerDefinition",
-                                            "defaultValueUsageContext",
-                                            "defaultValueDosage",
-                                            "defaultValueMeta",
-                                            "element",
-                                            "listMode",
-                                            "variable",
-                                            "condition",
-                                            "check",
-                                            "logMessage",
-                                        ],
-                                    ));
+                                    return unknown_field_error("defaultValueMarkdown");
                                 }
                             }
                             Field::DefaultValueOid => {
@@ -3768,74 +2773,7 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleSource {
                                         ));
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "defaultValueOid",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "context",
-                                            "min",
-                                            "max",
-                                            "type",
-                                            "defaultValueBase64Binary",
-                                            "defaultValueBoolean",
-                                            "defaultValueCanonical",
-                                            "defaultValueCode",
-                                            "defaultValueDate",
-                                            "defaultValueDateTime",
-                                            "defaultValueDecimal",
-                                            "defaultValueId",
-                                            "defaultValueInstant",
-                                            "defaultValueInteger",
-                                            "defaultValueMarkdown",
-                                            "defaultValueOid",
-                                            "defaultValuePositiveInt",
-                                            "defaultValueString",
-                                            "defaultValueTime",
-                                            "defaultValueUnsignedInt",
-                                            "defaultValueUri",
-                                            "defaultValueUrl",
-                                            "defaultValueUuid",
-                                            "defaultValueAddress",
-                                            "defaultValueAge",
-                                            "defaultValueAnnotation",
-                                            "defaultValueAttachment",
-                                            "defaultValueCodeableConcept",
-                                            "defaultValueCoding",
-                                            "defaultValueContactPoint",
-                                            "defaultValueCount",
-                                            "defaultValueDistance",
-                                            "defaultValueDuration",
-                                            "defaultValueHumanName",
-                                            "defaultValueIdentifier",
-                                            "defaultValueMoney",
-                                            "defaultValuePeriod",
-                                            "defaultValueQuantity",
-                                            "defaultValueRange",
-                                            "defaultValueRatio",
-                                            "defaultValueReference",
-                                            "defaultValueSampledData",
-                                            "defaultValueSignature",
-                                            "defaultValueTiming",
-                                            "defaultValueContactDetail",
-                                            "defaultValueContributor",
-                                            "defaultValueDataRequirement",
-                                            "defaultValueExpression",
-                                            "defaultValueParameterDefinition",
-                                            "defaultValueRelatedArtifact",
-                                            "defaultValueTriggerDefinition",
-                                            "defaultValueUsageContext",
-                                            "defaultValueDosage",
-                                            "defaultValueMeta",
-                                            "element",
-                                            "listMode",
-                                            "variable",
-                                            "condition",
-                                            "check",
-                                            "logMessage",
-                                        ],
-                                    ));
+                                    return unknown_field_error("defaultValueOid");
                                 }
                             }
                             Field::DefaultValuePositiveInt => {
@@ -3901,74 +2839,7 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleSource {
                                         ));
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "defaultValuePositiveInt",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "context",
-                                            "min",
-                                            "max",
-                                            "type",
-                                            "defaultValueBase64Binary",
-                                            "defaultValueBoolean",
-                                            "defaultValueCanonical",
-                                            "defaultValueCode",
-                                            "defaultValueDate",
-                                            "defaultValueDateTime",
-                                            "defaultValueDecimal",
-                                            "defaultValueId",
-                                            "defaultValueInstant",
-                                            "defaultValueInteger",
-                                            "defaultValueMarkdown",
-                                            "defaultValueOid",
-                                            "defaultValuePositiveInt",
-                                            "defaultValueString",
-                                            "defaultValueTime",
-                                            "defaultValueUnsignedInt",
-                                            "defaultValueUri",
-                                            "defaultValueUrl",
-                                            "defaultValueUuid",
-                                            "defaultValueAddress",
-                                            "defaultValueAge",
-                                            "defaultValueAnnotation",
-                                            "defaultValueAttachment",
-                                            "defaultValueCodeableConcept",
-                                            "defaultValueCoding",
-                                            "defaultValueContactPoint",
-                                            "defaultValueCount",
-                                            "defaultValueDistance",
-                                            "defaultValueDuration",
-                                            "defaultValueHumanName",
-                                            "defaultValueIdentifier",
-                                            "defaultValueMoney",
-                                            "defaultValuePeriod",
-                                            "defaultValueQuantity",
-                                            "defaultValueRange",
-                                            "defaultValueRatio",
-                                            "defaultValueReference",
-                                            "defaultValueSampledData",
-                                            "defaultValueSignature",
-                                            "defaultValueTiming",
-                                            "defaultValueContactDetail",
-                                            "defaultValueContributor",
-                                            "defaultValueDataRequirement",
-                                            "defaultValueExpression",
-                                            "defaultValueParameterDefinition",
-                                            "defaultValueRelatedArtifact",
-                                            "defaultValueTriggerDefinition",
-                                            "defaultValueUsageContext",
-                                            "defaultValueDosage",
-                                            "defaultValueMeta",
-                                            "element",
-                                            "listMode",
-                                            "variable",
-                                            "condition",
-                                            "check",
-                                            "logMessage",
-                                        ],
-                                    ));
+                                    return unknown_field_error("defaultValuePositiveInt");
                                 }
                             }
                             Field::DefaultValueString => {
@@ -4034,74 +2905,7 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleSource {
                                         ));
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "defaultValueString",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "context",
-                                            "min",
-                                            "max",
-                                            "type",
-                                            "defaultValueBase64Binary",
-                                            "defaultValueBoolean",
-                                            "defaultValueCanonical",
-                                            "defaultValueCode",
-                                            "defaultValueDate",
-                                            "defaultValueDateTime",
-                                            "defaultValueDecimal",
-                                            "defaultValueId",
-                                            "defaultValueInstant",
-                                            "defaultValueInteger",
-                                            "defaultValueMarkdown",
-                                            "defaultValueOid",
-                                            "defaultValuePositiveInt",
-                                            "defaultValueString",
-                                            "defaultValueTime",
-                                            "defaultValueUnsignedInt",
-                                            "defaultValueUri",
-                                            "defaultValueUrl",
-                                            "defaultValueUuid",
-                                            "defaultValueAddress",
-                                            "defaultValueAge",
-                                            "defaultValueAnnotation",
-                                            "defaultValueAttachment",
-                                            "defaultValueCodeableConcept",
-                                            "defaultValueCoding",
-                                            "defaultValueContactPoint",
-                                            "defaultValueCount",
-                                            "defaultValueDistance",
-                                            "defaultValueDuration",
-                                            "defaultValueHumanName",
-                                            "defaultValueIdentifier",
-                                            "defaultValueMoney",
-                                            "defaultValuePeriod",
-                                            "defaultValueQuantity",
-                                            "defaultValueRange",
-                                            "defaultValueRatio",
-                                            "defaultValueReference",
-                                            "defaultValueSampledData",
-                                            "defaultValueSignature",
-                                            "defaultValueTiming",
-                                            "defaultValueContactDetail",
-                                            "defaultValueContributor",
-                                            "defaultValueDataRequirement",
-                                            "defaultValueExpression",
-                                            "defaultValueParameterDefinition",
-                                            "defaultValueRelatedArtifact",
-                                            "defaultValueTriggerDefinition",
-                                            "defaultValueUsageContext",
-                                            "defaultValueDosage",
-                                            "defaultValueMeta",
-                                            "element",
-                                            "listMode",
-                                            "variable",
-                                            "condition",
-                                            "check",
-                                            "logMessage",
-                                        ],
-                                    ));
+                                    return unknown_field_error("defaultValueString");
                                 }
                             }
                             Field::DefaultValueTime => {
@@ -4165,74 +2969,7 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleSource {
                                         ));
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "defaultValueTime",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "context",
-                                            "min",
-                                            "max",
-                                            "type",
-                                            "defaultValueBase64Binary",
-                                            "defaultValueBoolean",
-                                            "defaultValueCanonical",
-                                            "defaultValueCode",
-                                            "defaultValueDate",
-                                            "defaultValueDateTime",
-                                            "defaultValueDecimal",
-                                            "defaultValueId",
-                                            "defaultValueInstant",
-                                            "defaultValueInteger",
-                                            "defaultValueMarkdown",
-                                            "defaultValueOid",
-                                            "defaultValuePositiveInt",
-                                            "defaultValueString",
-                                            "defaultValueTime",
-                                            "defaultValueUnsignedInt",
-                                            "defaultValueUri",
-                                            "defaultValueUrl",
-                                            "defaultValueUuid",
-                                            "defaultValueAddress",
-                                            "defaultValueAge",
-                                            "defaultValueAnnotation",
-                                            "defaultValueAttachment",
-                                            "defaultValueCodeableConcept",
-                                            "defaultValueCoding",
-                                            "defaultValueContactPoint",
-                                            "defaultValueCount",
-                                            "defaultValueDistance",
-                                            "defaultValueDuration",
-                                            "defaultValueHumanName",
-                                            "defaultValueIdentifier",
-                                            "defaultValueMoney",
-                                            "defaultValuePeriod",
-                                            "defaultValueQuantity",
-                                            "defaultValueRange",
-                                            "defaultValueRatio",
-                                            "defaultValueReference",
-                                            "defaultValueSampledData",
-                                            "defaultValueSignature",
-                                            "defaultValueTiming",
-                                            "defaultValueContactDetail",
-                                            "defaultValueContributor",
-                                            "defaultValueDataRequirement",
-                                            "defaultValueExpression",
-                                            "defaultValueParameterDefinition",
-                                            "defaultValueRelatedArtifact",
-                                            "defaultValueTriggerDefinition",
-                                            "defaultValueUsageContext",
-                                            "defaultValueDosage",
-                                            "defaultValueMeta",
-                                            "element",
-                                            "listMode",
-                                            "variable",
-                                            "condition",
-                                            "check",
-                                            "logMessage",
-                                        ],
-                                    ));
+                                    return unknown_field_error("defaultValueTime");
                                 }
                             }
                             Field::DefaultValueUnsignedInt => {
@@ -4298,74 +3035,7 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleSource {
                                         ));
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "defaultValueUnsignedInt",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "context",
-                                            "min",
-                                            "max",
-                                            "type",
-                                            "defaultValueBase64Binary",
-                                            "defaultValueBoolean",
-                                            "defaultValueCanonical",
-                                            "defaultValueCode",
-                                            "defaultValueDate",
-                                            "defaultValueDateTime",
-                                            "defaultValueDecimal",
-                                            "defaultValueId",
-                                            "defaultValueInstant",
-                                            "defaultValueInteger",
-                                            "defaultValueMarkdown",
-                                            "defaultValueOid",
-                                            "defaultValuePositiveInt",
-                                            "defaultValueString",
-                                            "defaultValueTime",
-                                            "defaultValueUnsignedInt",
-                                            "defaultValueUri",
-                                            "defaultValueUrl",
-                                            "defaultValueUuid",
-                                            "defaultValueAddress",
-                                            "defaultValueAge",
-                                            "defaultValueAnnotation",
-                                            "defaultValueAttachment",
-                                            "defaultValueCodeableConcept",
-                                            "defaultValueCoding",
-                                            "defaultValueContactPoint",
-                                            "defaultValueCount",
-                                            "defaultValueDistance",
-                                            "defaultValueDuration",
-                                            "defaultValueHumanName",
-                                            "defaultValueIdentifier",
-                                            "defaultValueMoney",
-                                            "defaultValuePeriod",
-                                            "defaultValueQuantity",
-                                            "defaultValueRange",
-                                            "defaultValueRatio",
-                                            "defaultValueReference",
-                                            "defaultValueSampledData",
-                                            "defaultValueSignature",
-                                            "defaultValueTiming",
-                                            "defaultValueContactDetail",
-                                            "defaultValueContributor",
-                                            "defaultValueDataRequirement",
-                                            "defaultValueExpression",
-                                            "defaultValueParameterDefinition",
-                                            "defaultValueRelatedArtifact",
-                                            "defaultValueTriggerDefinition",
-                                            "defaultValueUsageContext",
-                                            "defaultValueDosage",
-                                            "defaultValueMeta",
-                                            "element",
-                                            "listMode",
-                                            "variable",
-                                            "condition",
-                                            "check",
-                                            "logMessage",
-                                        ],
-                                    ));
+                                    return unknown_field_error("defaultValueUnsignedInt");
                                 }
                             }
                             Field::DefaultValueUri => {
@@ -4429,74 +3099,7 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleSource {
                                         ));
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "defaultValueUri",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "context",
-                                            "min",
-                                            "max",
-                                            "type",
-                                            "defaultValueBase64Binary",
-                                            "defaultValueBoolean",
-                                            "defaultValueCanonical",
-                                            "defaultValueCode",
-                                            "defaultValueDate",
-                                            "defaultValueDateTime",
-                                            "defaultValueDecimal",
-                                            "defaultValueId",
-                                            "defaultValueInstant",
-                                            "defaultValueInteger",
-                                            "defaultValueMarkdown",
-                                            "defaultValueOid",
-                                            "defaultValuePositiveInt",
-                                            "defaultValueString",
-                                            "defaultValueTime",
-                                            "defaultValueUnsignedInt",
-                                            "defaultValueUri",
-                                            "defaultValueUrl",
-                                            "defaultValueUuid",
-                                            "defaultValueAddress",
-                                            "defaultValueAge",
-                                            "defaultValueAnnotation",
-                                            "defaultValueAttachment",
-                                            "defaultValueCodeableConcept",
-                                            "defaultValueCoding",
-                                            "defaultValueContactPoint",
-                                            "defaultValueCount",
-                                            "defaultValueDistance",
-                                            "defaultValueDuration",
-                                            "defaultValueHumanName",
-                                            "defaultValueIdentifier",
-                                            "defaultValueMoney",
-                                            "defaultValuePeriod",
-                                            "defaultValueQuantity",
-                                            "defaultValueRange",
-                                            "defaultValueRatio",
-                                            "defaultValueReference",
-                                            "defaultValueSampledData",
-                                            "defaultValueSignature",
-                                            "defaultValueTiming",
-                                            "defaultValueContactDetail",
-                                            "defaultValueContributor",
-                                            "defaultValueDataRequirement",
-                                            "defaultValueExpression",
-                                            "defaultValueParameterDefinition",
-                                            "defaultValueRelatedArtifact",
-                                            "defaultValueTriggerDefinition",
-                                            "defaultValueUsageContext",
-                                            "defaultValueDosage",
-                                            "defaultValueMeta",
-                                            "element",
-                                            "listMode",
-                                            "variable",
-                                            "condition",
-                                            "check",
-                                            "logMessage",
-                                        ],
-                                    ));
+                                    return unknown_field_error("defaultValueUri");
                                 }
                             }
                             Field::DefaultValueUrl => {
@@ -4560,74 +3163,7 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleSource {
                                         ));
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "defaultValueUrl",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "context",
-                                            "min",
-                                            "max",
-                                            "type",
-                                            "defaultValueBase64Binary",
-                                            "defaultValueBoolean",
-                                            "defaultValueCanonical",
-                                            "defaultValueCode",
-                                            "defaultValueDate",
-                                            "defaultValueDateTime",
-                                            "defaultValueDecimal",
-                                            "defaultValueId",
-                                            "defaultValueInstant",
-                                            "defaultValueInteger",
-                                            "defaultValueMarkdown",
-                                            "defaultValueOid",
-                                            "defaultValuePositiveInt",
-                                            "defaultValueString",
-                                            "defaultValueTime",
-                                            "defaultValueUnsignedInt",
-                                            "defaultValueUri",
-                                            "defaultValueUrl",
-                                            "defaultValueUuid",
-                                            "defaultValueAddress",
-                                            "defaultValueAge",
-                                            "defaultValueAnnotation",
-                                            "defaultValueAttachment",
-                                            "defaultValueCodeableConcept",
-                                            "defaultValueCoding",
-                                            "defaultValueContactPoint",
-                                            "defaultValueCount",
-                                            "defaultValueDistance",
-                                            "defaultValueDuration",
-                                            "defaultValueHumanName",
-                                            "defaultValueIdentifier",
-                                            "defaultValueMoney",
-                                            "defaultValuePeriod",
-                                            "defaultValueQuantity",
-                                            "defaultValueRange",
-                                            "defaultValueRatio",
-                                            "defaultValueReference",
-                                            "defaultValueSampledData",
-                                            "defaultValueSignature",
-                                            "defaultValueTiming",
-                                            "defaultValueContactDetail",
-                                            "defaultValueContributor",
-                                            "defaultValueDataRequirement",
-                                            "defaultValueExpression",
-                                            "defaultValueParameterDefinition",
-                                            "defaultValueRelatedArtifact",
-                                            "defaultValueTriggerDefinition",
-                                            "defaultValueUsageContext",
-                                            "defaultValueDosage",
-                                            "defaultValueMeta",
-                                            "element",
-                                            "listMode",
-                                            "variable",
-                                            "condition",
-                                            "check",
-                                            "logMessage",
-                                        ],
-                                    ));
+                                    return unknown_field_error("defaultValueUrl");
                                 }
                             }
                             Field::DefaultValueUuid => {
@@ -4691,74 +3227,7 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleSource {
                                         ));
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "defaultValueUuid",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "context",
-                                            "min",
-                                            "max",
-                                            "type",
-                                            "defaultValueBase64Binary",
-                                            "defaultValueBoolean",
-                                            "defaultValueCanonical",
-                                            "defaultValueCode",
-                                            "defaultValueDate",
-                                            "defaultValueDateTime",
-                                            "defaultValueDecimal",
-                                            "defaultValueId",
-                                            "defaultValueInstant",
-                                            "defaultValueInteger",
-                                            "defaultValueMarkdown",
-                                            "defaultValueOid",
-                                            "defaultValuePositiveInt",
-                                            "defaultValueString",
-                                            "defaultValueTime",
-                                            "defaultValueUnsignedInt",
-                                            "defaultValueUri",
-                                            "defaultValueUrl",
-                                            "defaultValueUuid",
-                                            "defaultValueAddress",
-                                            "defaultValueAge",
-                                            "defaultValueAnnotation",
-                                            "defaultValueAttachment",
-                                            "defaultValueCodeableConcept",
-                                            "defaultValueCoding",
-                                            "defaultValueContactPoint",
-                                            "defaultValueCount",
-                                            "defaultValueDistance",
-                                            "defaultValueDuration",
-                                            "defaultValueHumanName",
-                                            "defaultValueIdentifier",
-                                            "defaultValueMoney",
-                                            "defaultValuePeriod",
-                                            "defaultValueQuantity",
-                                            "defaultValueRange",
-                                            "defaultValueRatio",
-                                            "defaultValueReference",
-                                            "defaultValueSampledData",
-                                            "defaultValueSignature",
-                                            "defaultValueTiming",
-                                            "defaultValueContactDetail",
-                                            "defaultValueContributor",
-                                            "defaultValueDataRequirement",
-                                            "defaultValueExpression",
-                                            "defaultValueParameterDefinition",
-                                            "defaultValueRelatedArtifact",
-                                            "defaultValueTriggerDefinition",
-                                            "defaultValueUsageContext",
-                                            "defaultValueDosage",
-                                            "defaultValueMeta",
-                                            "element",
-                                            "listMode",
-                                            "variable",
-                                            "condition",
-                                            "check",
-                                            "logMessage",
-                                        ],
-                                    ));
+                                    return unknown_field_error("defaultValueUuid");
                                 }
                             }
                             Field::DefaultValueAddress => {
@@ -5132,74 +3601,7 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleSource {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "element",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "context",
-                                            "min",
-                                            "max",
-                                            "type",
-                                            "defaultValueBase64Binary",
-                                            "defaultValueBoolean",
-                                            "defaultValueCanonical",
-                                            "defaultValueCode",
-                                            "defaultValueDate",
-                                            "defaultValueDateTime",
-                                            "defaultValueDecimal",
-                                            "defaultValueId",
-                                            "defaultValueInstant",
-                                            "defaultValueInteger",
-                                            "defaultValueMarkdown",
-                                            "defaultValueOid",
-                                            "defaultValuePositiveInt",
-                                            "defaultValueString",
-                                            "defaultValueTime",
-                                            "defaultValueUnsignedInt",
-                                            "defaultValueUri",
-                                            "defaultValueUrl",
-                                            "defaultValueUuid",
-                                            "defaultValueAddress",
-                                            "defaultValueAge",
-                                            "defaultValueAnnotation",
-                                            "defaultValueAttachment",
-                                            "defaultValueCodeableConcept",
-                                            "defaultValueCoding",
-                                            "defaultValueContactPoint",
-                                            "defaultValueCount",
-                                            "defaultValueDistance",
-                                            "defaultValueDuration",
-                                            "defaultValueHumanName",
-                                            "defaultValueIdentifier",
-                                            "defaultValueMoney",
-                                            "defaultValuePeriod",
-                                            "defaultValueQuantity",
-                                            "defaultValueRange",
-                                            "defaultValueRatio",
-                                            "defaultValueReference",
-                                            "defaultValueSampledData",
-                                            "defaultValueSignature",
-                                            "defaultValueTiming",
-                                            "defaultValueContactDetail",
-                                            "defaultValueContributor",
-                                            "defaultValueDataRequirement",
-                                            "defaultValueExpression",
-                                            "defaultValueParameterDefinition",
-                                            "defaultValueRelatedArtifact",
-                                            "defaultValueTriggerDefinition",
-                                            "defaultValueUsageContext",
-                                            "defaultValueDosage",
-                                            "defaultValueMeta",
-                                            "element",
-                                            "listMode",
-                                            "variable",
-                                            "condition",
-                                            "check",
-                                            "logMessage",
-                                        ],
-                                    ));
+                                    return unknown_field_error("element");
                                 }
                             }
                             Field::ListMode => {
@@ -5230,74 +3632,7 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleSource {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "listMode",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "context",
-                                            "min",
-                                            "max",
-                                            "type",
-                                            "defaultValueBase64Binary",
-                                            "defaultValueBoolean",
-                                            "defaultValueCanonical",
-                                            "defaultValueCode",
-                                            "defaultValueDate",
-                                            "defaultValueDateTime",
-                                            "defaultValueDecimal",
-                                            "defaultValueId",
-                                            "defaultValueInstant",
-                                            "defaultValueInteger",
-                                            "defaultValueMarkdown",
-                                            "defaultValueOid",
-                                            "defaultValuePositiveInt",
-                                            "defaultValueString",
-                                            "defaultValueTime",
-                                            "defaultValueUnsignedInt",
-                                            "defaultValueUri",
-                                            "defaultValueUrl",
-                                            "defaultValueUuid",
-                                            "defaultValueAddress",
-                                            "defaultValueAge",
-                                            "defaultValueAnnotation",
-                                            "defaultValueAttachment",
-                                            "defaultValueCodeableConcept",
-                                            "defaultValueCoding",
-                                            "defaultValueContactPoint",
-                                            "defaultValueCount",
-                                            "defaultValueDistance",
-                                            "defaultValueDuration",
-                                            "defaultValueHumanName",
-                                            "defaultValueIdentifier",
-                                            "defaultValueMoney",
-                                            "defaultValuePeriod",
-                                            "defaultValueQuantity",
-                                            "defaultValueRange",
-                                            "defaultValueRatio",
-                                            "defaultValueReference",
-                                            "defaultValueSampledData",
-                                            "defaultValueSignature",
-                                            "defaultValueTiming",
-                                            "defaultValueContactDetail",
-                                            "defaultValueContributor",
-                                            "defaultValueDataRequirement",
-                                            "defaultValueExpression",
-                                            "defaultValueParameterDefinition",
-                                            "defaultValueRelatedArtifact",
-                                            "defaultValueTriggerDefinition",
-                                            "defaultValueUsageContext",
-                                            "defaultValueDosage",
-                                            "defaultValueMeta",
-                                            "element",
-                                            "listMode",
-                                            "variable",
-                                            "condition",
-                                            "check",
-                                            "logMessage",
-                                        ],
-                                    ));
+                                    return unknown_field_error("listMode");
                                 }
                             }
                             Field::Variable => {
@@ -5328,74 +3663,7 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleSource {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "variable",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "context",
-                                            "min",
-                                            "max",
-                                            "type",
-                                            "defaultValueBase64Binary",
-                                            "defaultValueBoolean",
-                                            "defaultValueCanonical",
-                                            "defaultValueCode",
-                                            "defaultValueDate",
-                                            "defaultValueDateTime",
-                                            "defaultValueDecimal",
-                                            "defaultValueId",
-                                            "defaultValueInstant",
-                                            "defaultValueInteger",
-                                            "defaultValueMarkdown",
-                                            "defaultValueOid",
-                                            "defaultValuePositiveInt",
-                                            "defaultValueString",
-                                            "defaultValueTime",
-                                            "defaultValueUnsignedInt",
-                                            "defaultValueUri",
-                                            "defaultValueUrl",
-                                            "defaultValueUuid",
-                                            "defaultValueAddress",
-                                            "defaultValueAge",
-                                            "defaultValueAnnotation",
-                                            "defaultValueAttachment",
-                                            "defaultValueCodeableConcept",
-                                            "defaultValueCoding",
-                                            "defaultValueContactPoint",
-                                            "defaultValueCount",
-                                            "defaultValueDistance",
-                                            "defaultValueDuration",
-                                            "defaultValueHumanName",
-                                            "defaultValueIdentifier",
-                                            "defaultValueMoney",
-                                            "defaultValuePeriod",
-                                            "defaultValueQuantity",
-                                            "defaultValueRange",
-                                            "defaultValueRatio",
-                                            "defaultValueReference",
-                                            "defaultValueSampledData",
-                                            "defaultValueSignature",
-                                            "defaultValueTiming",
-                                            "defaultValueContactDetail",
-                                            "defaultValueContributor",
-                                            "defaultValueDataRequirement",
-                                            "defaultValueExpression",
-                                            "defaultValueParameterDefinition",
-                                            "defaultValueRelatedArtifact",
-                                            "defaultValueTriggerDefinition",
-                                            "defaultValueUsageContext",
-                                            "defaultValueDosage",
-                                            "defaultValueMeta",
-                                            "element",
-                                            "listMode",
-                                            "variable",
-                                            "condition",
-                                            "check",
-                                            "logMessage",
-                                        ],
-                                    ));
+                                    return unknown_field_error("variable");
                                 }
                             }
                             Field::Condition => {
@@ -5428,74 +3696,7 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleSource {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "condition",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "context",
-                                            "min",
-                                            "max",
-                                            "type",
-                                            "defaultValueBase64Binary",
-                                            "defaultValueBoolean",
-                                            "defaultValueCanonical",
-                                            "defaultValueCode",
-                                            "defaultValueDate",
-                                            "defaultValueDateTime",
-                                            "defaultValueDecimal",
-                                            "defaultValueId",
-                                            "defaultValueInstant",
-                                            "defaultValueInteger",
-                                            "defaultValueMarkdown",
-                                            "defaultValueOid",
-                                            "defaultValuePositiveInt",
-                                            "defaultValueString",
-                                            "defaultValueTime",
-                                            "defaultValueUnsignedInt",
-                                            "defaultValueUri",
-                                            "defaultValueUrl",
-                                            "defaultValueUuid",
-                                            "defaultValueAddress",
-                                            "defaultValueAge",
-                                            "defaultValueAnnotation",
-                                            "defaultValueAttachment",
-                                            "defaultValueCodeableConcept",
-                                            "defaultValueCoding",
-                                            "defaultValueContactPoint",
-                                            "defaultValueCount",
-                                            "defaultValueDistance",
-                                            "defaultValueDuration",
-                                            "defaultValueHumanName",
-                                            "defaultValueIdentifier",
-                                            "defaultValueMoney",
-                                            "defaultValuePeriod",
-                                            "defaultValueQuantity",
-                                            "defaultValueRange",
-                                            "defaultValueRatio",
-                                            "defaultValueReference",
-                                            "defaultValueSampledData",
-                                            "defaultValueSignature",
-                                            "defaultValueTiming",
-                                            "defaultValueContactDetail",
-                                            "defaultValueContributor",
-                                            "defaultValueDataRequirement",
-                                            "defaultValueExpression",
-                                            "defaultValueParameterDefinition",
-                                            "defaultValueRelatedArtifact",
-                                            "defaultValueTriggerDefinition",
-                                            "defaultValueUsageContext",
-                                            "defaultValueDosage",
-                                            "defaultValueMeta",
-                                            "element",
-                                            "listMode",
-                                            "variable",
-                                            "condition",
-                                            "check",
-                                            "logMessage",
-                                        ],
-                                    ));
+                                    return unknown_field_error("condition");
                                 }
                             }
                             Field::Check => {
@@ -5526,74 +3727,7 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleSource {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "check",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "context",
-                                            "min",
-                                            "max",
-                                            "type",
-                                            "defaultValueBase64Binary",
-                                            "defaultValueBoolean",
-                                            "defaultValueCanonical",
-                                            "defaultValueCode",
-                                            "defaultValueDate",
-                                            "defaultValueDateTime",
-                                            "defaultValueDecimal",
-                                            "defaultValueId",
-                                            "defaultValueInstant",
-                                            "defaultValueInteger",
-                                            "defaultValueMarkdown",
-                                            "defaultValueOid",
-                                            "defaultValuePositiveInt",
-                                            "defaultValueString",
-                                            "defaultValueTime",
-                                            "defaultValueUnsignedInt",
-                                            "defaultValueUri",
-                                            "defaultValueUrl",
-                                            "defaultValueUuid",
-                                            "defaultValueAddress",
-                                            "defaultValueAge",
-                                            "defaultValueAnnotation",
-                                            "defaultValueAttachment",
-                                            "defaultValueCodeableConcept",
-                                            "defaultValueCoding",
-                                            "defaultValueContactPoint",
-                                            "defaultValueCount",
-                                            "defaultValueDistance",
-                                            "defaultValueDuration",
-                                            "defaultValueHumanName",
-                                            "defaultValueIdentifier",
-                                            "defaultValueMoney",
-                                            "defaultValuePeriod",
-                                            "defaultValueQuantity",
-                                            "defaultValueRange",
-                                            "defaultValueRatio",
-                                            "defaultValueReference",
-                                            "defaultValueSampledData",
-                                            "defaultValueSignature",
-                                            "defaultValueTiming",
-                                            "defaultValueContactDetail",
-                                            "defaultValueContributor",
-                                            "defaultValueDataRequirement",
-                                            "defaultValueExpression",
-                                            "defaultValueParameterDefinition",
-                                            "defaultValueRelatedArtifact",
-                                            "defaultValueTriggerDefinition",
-                                            "defaultValueUsageContext",
-                                            "defaultValueDosage",
-                                            "defaultValueMeta",
-                                            "element",
-                                            "listMode",
-                                            "variable",
-                                            "condition",
-                                            "check",
-                                            "logMessage",
-                                        ],
-                                    ));
+                                    return unknown_field_error("check");
                                 }
                             }
                             Field::LogMessage => {
@@ -5630,74 +3764,7 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleSource {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "logMessage",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "context",
-                                            "min",
-                                            "max",
-                                            "type",
-                                            "defaultValueBase64Binary",
-                                            "defaultValueBoolean",
-                                            "defaultValueCanonical",
-                                            "defaultValueCode",
-                                            "defaultValueDate",
-                                            "defaultValueDateTime",
-                                            "defaultValueDecimal",
-                                            "defaultValueId",
-                                            "defaultValueInstant",
-                                            "defaultValueInteger",
-                                            "defaultValueMarkdown",
-                                            "defaultValueOid",
-                                            "defaultValuePositiveInt",
-                                            "defaultValueString",
-                                            "defaultValueTime",
-                                            "defaultValueUnsignedInt",
-                                            "defaultValueUri",
-                                            "defaultValueUrl",
-                                            "defaultValueUuid",
-                                            "defaultValueAddress",
-                                            "defaultValueAge",
-                                            "defaultValueAnnotation",
-                                            "defaultValueAttachment",
-                                            "defaultValueCodeableConcept",
-                                            "defaultValueCoding",
-                                            "defaultValueContactPoint",
-                                            "defaultValueCount",
-                                            "defaultValueDistance",
-                                            "defaultValueDuration",
-                                            "defaultValueHumanName",
-                                            "defaultValueIdentifier",
-                                            "defaultValueMoney",
-                                            "defaultValuePeriod",
-                                            "defaultValueQuantity",
-                                            "defaultValueRange",
-                                            "defaultValueRatio",
-                                            "defaultValueReference",
-                                            "defaultValueSampledData",
-                                            "defaultValueSignature",
-                                            "defaultValueTiming",
-                                            "defaultValueContactDetail",
-                                            "defaultValueContributor",
-                                            "defaultValueDataRequirement",
-                                            "defaultValueExpression",
-                                            "defaultValueParameterDefinition",
-                                            "defaultValueRelatedArtifact",
-                                            "defaultValueTriggerDefinition",
-                                            "defaultValueUsageContext",
-                                            "defaultValueDosage",
-                                            "defaultValueMeta",
-                                            "element",
-                                            "listMode",
-                                            "variable",
-                                            "condition",
-                                            "check",
-                                            "logMessage",
-                                        ],
-                                    ));
+                                    return unknown_field_error("logMessage");
                                 }
                             }
                             Field::Unknown(key) => if _ctx.config.mode
@@ -5964,6 +4031,21 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleTargetParameter {
             ValueDecimalPrimitiveElement,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "valueId",
+                    "valueString",
+                    "valueBoolean",
+                    "valueInteger",
+                    "valueDecimal",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = StructureMapGroupRuleTargetParameter;
@@ -6071,19 +4153,7 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleTargetParameter {
                                         return Err(serde::de::Error::duplicate_field("_value[x]"));
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "valueId",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "valueId",
-                                            "valueString",
-                                            "valueBoolean",
-                                            "valueInteger",
-                                            "valueDecimal",
-                                        ],
-                                    ));
+                                    return unknown_field_error("valueId");
                                 }
                             }
                             Field::ValueString => {
@@ -6145,19 +4215,7 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleTargetParameter {
                                         return Err(serde::de::Error::duplicate_field("_value[x]"));
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "valueString",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "valueId",
-                                            "valueString",
-                                            "valueBoolean",
-                                            "valueInteger",
-                                            "valueDecimal",
-                                        ],
-                                    ));
+                                    return unknown_field_error("valueString");
                                 }
                             }
                             Field::ValueBoolean => {
@@ -6219,19 +4277,7 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleTargetParameter {
                                         return Err(serde::de::Error::duplicate_field("_value[x]"));
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "valueBoolean",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "valueId",
-                                            "valueString",
-                                            "valueBoolean",
-                                            "valueInteger",
-                                            "valueDecimal",
-                                        ],
-                                    ));
+                                    return unknown_field_error("valueBoolean");
                                 }
                             }
                             Field::ValueInteger => {
@@ -6293,19 +4339,7 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleTargetParameter {
                                         return Err(serde::de::Error::duplicate_field("_value[x]"));
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "valueInteger",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "valueId",
-                                            "valueString",
-                                            "valueBoolean",
-                                            "valueInteger",
-                                            "valueDecimal",
-                                        ],
-                                    ));
+                                    return unknown_field_error("valueInteger");
                                 }
                             }
                             Field::ValueDecimal => {
@@ -6367,19 +4401,7 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleTargetParameter {
                                         return Err(serde::de::Error::duplicate_field("_value[x]"));
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "valueDecimal",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "valueId",
-                                            "valueString",
-                                            "valueBoolean",
-                                            "valueInteger",
-                                            "valueDecimal",
-                                        ],
-                                    ));
+                                    return unknown_field_error("valueDecimal");
                                 }
                             }
                             Field::Unknown(key) => if _ctx.config.mode
@@ -6668,6 +4690,24 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleTarget {
             Parameter,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "context",
+                    "contextType",
+                    "element",
+                    "variable",
+                    "listMode",
+                    "listRuleId",
+                    "transform",
+                    "parameter",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = StructureMapGroupRuleTarget;
@@ -6756,22 +4796,7 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleTarget {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "context",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "context",
-                                            "contextType",
-                                            "element",
-                                            "variable",
-                                            "listMode",
-                                            "listRuleId",
-                                            "transform",
-                                            "parameter",
-                                        ],
-                                    ));
+                                    return unknown_field_error("context");
                                 }
                             }
                             Field::ContextType => {
@@ -6808,22 +4833,7 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleTarget {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "contextType",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "context",
-                                            "contextType",
-                                            "element",
-                                            "variable",
-                                            "listMode",
-                                            "listRuleId",
-                                            "transform",
-                                            "parameter",
-                                        ],
-                                    ));
+                                    return unknown_field_error("contextType");
                                 }
                             }
                             Field::Element => {
@@ -6854,22 +4864,7 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleTarget {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "element",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "context",
-                                            "contextType",
-                                            "element",
-                                            "variable",
-                                            "listMode",
-                                            "listRuleId",
-                                            "transform",
-                                            "parameter",
-                                        ],
-                                    ));
+                                    return unknown_field_error("element");
                                 }
                             }
                             Field::Variable => {
@@ -6900,22 +4895,7 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleTarget {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "variable",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "context",
-                                            "contextType",
-                                            "element",
-                                            "variable",
-                                            "listMode",
-                                            "listRuleId",
-                                            "transform",
-                                            "parameter",
-                                        ],
-                                    ));
+                                    return unknown_field_error("variable");
                                 }
                             }
                             Field::ListMode => {
@@ -6974,22 +4954,7 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleTarget {
                                         }
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "listMode",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "context",
-                                            "contextType",
-                                            "element",
-                                            "variable",
-                                            "listMode",
-                                            "listRuleId",
-                                            "transform",
-                                            "parameter",
-                                        ],
-                                    ));
+                                    return unknown_field_error("listMode");
                                 }
                             }
                             Field::ListRuleId => {
@@ -7026,22 +4991,7 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleTarget {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "listRuleId",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "context",
-                                            "contextType",
-                                            "element",
-                                            "variable",
-                                            "listMode",
-                                            "listRuleId",
-                                            "transform",
-                                            "parameter",
-                                        ],
-                                    ));
+                                    return unknown_field_error("listRuleId");
                                 }
                             }
                             Field::Transform => {
@@ -7074,22 +5024,7 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleTarget {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "transform",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "context",
-                                            "contextType",
-                                            "element",
-                                            "variable",
-                                            "listMode",
-                                            "listRuleId",
-                                            "transform",
-                                            "parameter",
-                                        ],
-                                    ));
+                                    return unknown_field_error("transform");
                                 }
                             }
                             Field::Parameter => {
@@ -7257,6 +5192,12 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleDependent {
             VariablePrimitiveElement,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &["id", "extension", "modifierExtension", "name", "variable"],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = StructureMapGroupRuleDependent;
@@ -7339,16 +5280,7 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleDependent {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "name",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "name",
-                                            "variable",
-                                        ],
-                                    ));
+                                    return unknown_field_error("name");
                                 }
                             }
                             Field::Variable => {
@@ -7407,16 +5339,7 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRuleDependent {
                                         }
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "variable",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "name",
-                                            "variable",
-                                        ],
-                                    ));
+                                    return unknown_field_error("variable");
                                 }
                             }
                             Field::Unknown(key) => if _ctx.config.mode
@@ -7570,6 +5493,22 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRule {
             DocumentationPrimitiveElement,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "name",
+                    "source",
+                    "target",
+                    "rule",
+                    "dependent",
+                    "documentation",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = StructureMapGroupRule;
@@ -7653,20 +5592,7 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRule {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "name",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "name",
-                                            "source",
-                                            "target",
-                                            "rule",
-                                            "dependent",
-                                            "documentation",
-                                        ],
-                                    ));
+                                    return unknown_field_error("name");
                                 }
                             }
                             Field::Source => {
@@ -7747,20 +5673,7 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroupRule {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "documentation",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "name",
-                                            "source",
-                                            "target",
-                                            "rule",
-                                            "dependent",
-                                            "documentation",
-                                        ],
-                                    ));
+                                    return unknown_field_error("documentation");
                                 }
                             }
                             Field::Unknown(key) => if _ctx.config.mode
@@ -7960,6 +5873,22 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroup {
             Rule,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "name",
+                    "extends",
+                    "typeMode",
+                    "documentation",
+                    "input",
+                    "rule",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = StructureMapGroup;
@@ -8043,20 +5972,7 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroup {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "name",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "name",
-                                            "extends",
-                                            "typeMode",
-                                            "documentation",
-                                            "input",
-                                            "rule",
-                                        ],
-                                    ));
+                                    return unknown_field_error("name");
                                 }
                             }
                             Field::Extends => {
@@ -8087,20 +6003,7 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroup {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "extends",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "name",
-                                            "extends",
-                                            "typeMode",
-                                            "documentation",
-                                            "input",
-                                            "rule",
-                                        ],
-                                    ));
+                                    return unknown_field_error("extends");
                                 }
                             }
                             Field::TypeMode => {
@@ -8131,20 +6034,7 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroup {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "typeMode",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "name",
-                                            "extends",
-                                            "typeMode",
-                                            "documentation",
-                                            "input",
-                                            "rule",
-                                        ],
-                                    ));
+                                    return unknown_field_error("typeMode");
                                 }
                             }
                             Field::Documentation => {
@@ -8181,20 +6071,7 @@ impl<'de> serde::de::Deserialize<'de> for StructureMapGroup {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "documentation",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "name",
-                                            "extends",
-                                            "typeMode",
-                                            "documentation",
-                                            "input",
-                                            "rule",
-                                        ],
-                                    ));
+                                    return unknown_field_error("documentation");
                                 }
                             }
                             Field::Input => {
@@ -8742,6 +6619,39 @@ impl<'de> serde::de::Deserialize<'de> for StructureMap {
             Group,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "meta",
+                    "implicitRules",
+                    "language",
+                    "text",
+                    "contained",
+                    "extension",
+                    "modifierExtension",
+                    "url",
+                    "identifier",
+                    "version",
+                    "name",
+                    "title",
+                    "status",
+                    "experimental",
+                    "date",
+                    "publisher",
+                    "contact",
+                    "description",
+                    "useContext",
+                    "jurisdiction",
+                    "purpose",
+                    "copyright",
+                    "structure",
+                    "import",
+                    "group",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = StructureMap;
@@ -8839,37 +6749,7 @@ impl<'de> serde::de::Deserialize<'de> for StructureMap {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "implicitRules",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "identifier",
-                                            "version",
-                                            "name",
-                                            "title",
-                                            "status",
-                                            "experimental",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "description",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "purpose",
-                                            "copyright",
-                                            "structure",
-                                            "import",
-                                            "group",
-                                        ],
-                                    ));
+                                    return unknown_field_error("implicitRules");
                                 }
                             }
                             Field::Language => {
@@ -8900,37 +6780,7 @@ impl<'de> serde::de::Deserialize<'de> for StructureMap {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "language",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "identifier",
-                                            "version",
-                                            "name",
-                                            "title",
-                                            "status",
-                                            "experimental",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "description",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "purpose",
-                                            "copyright",
-                                            "structure",
-                                            "import",
-                                            "group",
-                                        ],
-                                    ));
+                                    return unknown_field_error("language");
                                 }
                             }
                             Field::Text => {
@@ -9003,37 +6853,7 @@ impl<'de> serde::de::Deserialize<'de> for StructureMap {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "url",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "identifier",
-                                            "version",
-                                            "name",
-                                            "title",
-                                            "status",
-                                            "experimental",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "description",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "purpose",
-                                            "copyright",
-                                            "structure",
-                                            "import",
-                                            "group",
-                                        ],
-                                    ));
+                                    return unknown_field_error("url");
                                 }
                             }
                             Field::Identifier => {
@@ -9077,37 +6897,7 @@ impl<'de> serde::de::Deserialize<'de> for StructureMap {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "version",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "identifier",
-                                            "version",
-                                            "name",
-                                            "title",
-                                            "status",
-                                            "experimental",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "description",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "purpose",
-                                            "copyright",
-                                            "structure",
-                                            "import",
-                                            "group",
-                                        ],
-                                    ));
+                                    return unknown_field_error("version");
                                 }
                             }
                             Field::Name => {
@@ -9138,37 +6928,7 @@ impl<'de> serde::de::Deserialize<'de> for StructureMap {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "name",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "identifier",
-                                            "version",
-                                            "name",
-                                            "title",
-                                            "status",
-                                            "experimental",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "description",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "purpose",
-                                            "copyright",
-                                            "structure",
-                                            "import",
-                                            "group",
-                                        ],
-                                    ));
+                                    return unknown_field_error("name");
                                 }
                             }
                             Field::Title => {
@@ -9199,37 +6959,7 @@ impl<'de> serde::de::Deserialize<'de> for StructureMap {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "title",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "identifier",
-                                            "version",
-                                            "name",
-                                            "title",
-                                            "status",
-                                            "experimental",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "description",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "purpose",
-                                            "copyright",
-                                            "structure",
-                                            "import",
-                                            "group",
-                                        ],
-                                    ));
+                                    return unknown_field_error("title");
                                 }
                             }
                             Field::Status => {
@@ -9260,37 +6990,7 @@ impl<'de> serde::de::Deserialize<'de> for StructureMap {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "status",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "identifier",
-                                            "version",
-                                            "name",
-                                            "title",
-                                            "status",
-                                            "experimental",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "description",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "purpose",
-                                            "copyright",
-                                            "structure",
-                                            "import",
-                                            "group",
-                                        ],
-                                    ));
+                                    return unknown_field_error("status");
                                 }
                             }
                             Field::Experimental => {
@@ -9327,37 +7027,7 @@ impl<'de> serde::de::Deserialize<'de> for StructureMap {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "experimental",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "identifier",
-                                            "version",
-                                            "name",
-                                            "title",
-                                            "status",
-                                            "experimental",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "description",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "purpose",
-                                            "copyright",
-                                            "structure",
-                                            "import",
-                                            "group",
-                                        ],
-                                    ));
+                                    return unknown_field_error("experimental");
                                 }
                             }
                             Field::Date => {
@@ -9388,37 +7058,7 @@ impl<'de> serde::de::Deserialize<'de> for StructureMap {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "date",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "identifier",
-                                            "version",
-                                            "name",
-                                            "title",
-                                            "status",
-                                            "experimental",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "description",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "purpose",
-                                            "copyright",
-                                            "structure",
-                                            "import",
-                                            "group",
-                                        ],
-                                    ));
+                                    return unknown_field_error("date");
                                 }
                             }
                             Field::Publisher => {
@@ -9451,37 +7091,7 @@ impl<'de> serde::de::Deserialize<'de> for StructureMap {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "publisher",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "identifier",
-                                            "version",
-                                            "name",
-                                            "title",
-                                            "status",
-                                            "experimental",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "description",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "purpose",
-                                            "copyright",
-                                            "structure",
-                                            "import",
-                                            "group",
-                                        ],
-                                    ));
+                                    return unknown_field_error("publisher");
                                 }
                             }
                             Field::Contact => {
@@ -9529,37 +7139,7 @@ impl<'de> serde::de::Deserialize<'de> for StructureMap {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "description",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "identifier",
-                                            "version",
-                                            "name",
-                                            "title",
-                                            "status",
-                                            "experimental",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "description",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "purpose",
-                                            "copyright",
-                                            "structure",
-                                            "import",
-                                            "group",
-                                        ],
-                                    ));
+                                    return unknown_field_error("description");
                                 }
                             }
                             Field::UseContext => {
@@ -9616,37 +7196,7 @@ impl<'de> serde::de::Deserialize<'de> for StructureMap {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "purpose",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "identifier",
-                                            "version",
-                                            "name",
-                                            "title",
-                                            "status",
-                                            "experimental",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "description",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "purpose",
-                                            "copyright",
-                                            "structure",
-                                            "import",
-                                            "group",
-                                        ],
-                                    ));
+                                    return unknown_field_error("purpose");
                                 }
                             }
                             Field::Copyright => {
@@ -9679,37 +7229,7 @@ impl<'de> serde::de::Deserialize<'de> for StructureMap {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "copyright",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "identifier",
-                                            "version",
-                                            "name",
-                                            "title",
-                                            "status",
-                                            "experimental",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "description",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "purpose",
-                                            "copyright",
-                                            "structure",
-                                            "import",
-                                            "group",
-                                        ],
-                                    ));
+                                    return unknown_field_error("copyright");
                                 }
                             }
                             Field::Structure => {
@@ -9779,37 +7299,7 @@ impl<'de> serde::de::Deserialize<'de> for StructureMap {
                                         }
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "import",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "identifier",
-                                            "version",
-                                            "name",
-                                            "title",
-                                            "status",
-                                            "experimental",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "description",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "purpose",
-                                            "copyright",
-                                            "structure",
-                                            "import",
-                                            "group",
-                                        ],
-                                    ));
+                                    return unknown_field_error("import");
                                 }
                             }
                             Field::Group => {

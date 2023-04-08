@@ -1,4 +1,4 @@
-// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-08 by fhirbolt-codegen v0.1.0
 #[doc = "The minimum volume to be conditioned in the container."]
 #[derive(Debug, Clone, PartialEq)]
 pub enum SpecimenDefinitionTypeTestedContainerMinimumVolume {
@@ -89,6 +89,18 @@ impl<'de> serde::de::Deserialize<'de> for SpecimenDefinitionTypeTestedContainerA
             #[serde(rename = "additiveReference")]
             AdditiveReference,
             Unknown(std::string::String),
+        }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "additiveCodeableConcept",
+                    "additiveReference",
+                ],
+            ))
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -285,6 +297,25 @@ impl<'de> serde::de::Deserialize<'de> for SpecimenDefinitionTypeTestedContainer 
             PreparationPrimitiveElement,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "material",
+                    "type",
+                    "cap",
+                    "description",
+                    "capacity",
+                    "minimumVolumeQuantity",
+                    "minimumVolumeString",
+                    "additive",
+                    "preparation",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = SpecimenDefinitionTypeTestedContainer;
@@ -313,7 +344,7 @@ impl<'de> serde::de::Deserialize<'de> for SpecimenDefinitionTypeTestedContainer 
                 let mut r#additive: Option<Vec<SpecimenDefinitionTypeTestedContainerAdditive>> =
                     None;
                 let mut r#preparation: Option<super::super::types::String> = None;
-                fhirbolt_shared :: serde_context :: de :: DESERIALIZATION_CONTEXT . with (| _ctx | { let _ctx = _ctx . borrow () ; while let Some (map_access_key) = map_access . next_key () ? { match map_access_key { Field :: Id => { if r#id . is_some () { return Err (serde :: de :: Error :: duplicate_field ("id")) ; } r#id = Some (map_access . next_value () ?) ; } , Field :: Extension => { if _ctx . from_json { if r#extension . is_some () { return Err (serde :: de :: Error :: duplicate_field ("extension")) ; } r#extension = Some (map_access . next_value () ?) ; } else { let vec = r#extension . get_or_insert (Default :: default ()) ; vec . push (map_access . next_value () ?) ; } } , Field :: ModifierExtension => { if _ctx . from_json { if r#modifier_extension . is_some () { return Err (serde :: de :: Error :: duplicate_field ("modifierExtension")) ; } r#modifier_extension = Some (map_access . next_value () ?) ; } else { let vec = r#modifier_extension . get_or_insert (Default :: default ()) ; vec . push (map_access . next_value () ?) ; } } , Field :: Material => { if r#material . is_some () { return Err (serde :: de :: Error :: duplicate_field ("material")) ; } r#material = Some (map_access . next_value () ?) ; } , Field :: Type => { if r#type . is_some () { return Err (serde :: de :: Error :: duplicate_field ("type")) ; } r#type = Some (map_access . next_value () ?) ; } , Field :: Cap => { if r#cap . is_some () { return Err (serde :: de :: Error :: duplicate_field ("cap")) ; } r#cap = Some (map_access . next_value () ?) ; } , Field :: Description => { if _ctx . from_json { let some = r#description . get_or_insert (Default :: default ()) ; if some . value . is_some () { return Err (serde :: de :: Error :: duplicate_field ("description")) ; } let value : _ = map_access . next_value () ? ; some . value = Some (value) ; } else { if r#description . is_some () { return Err (serde :: de :: Error :: duplicate_field ("description")) ; } r#description = Some (map_access . next_value () ?) ; } } , Field :: DescriptionPrimitiveElement => { if _ctx . from_json { let some = r#description . get_or_insert (Default :: default ()) ; if some . id . is_some () || ! some . extension . is_empty () { return Err (serde :: de :: Error :: duplicate_field ("_description")) ; } let super :: super :: serde_helpers :: PrimitiveElementOwned { id , extension } = map_access . next_value () ? ; some . id = id ; some . extension = extension ; } else { return Err (serde :: de :: Error :: unknown_field ("description" , & ["id" , "extension" , "modifierExtension" , "material" , "type" , "cap" , "description" , "capacity" , "minimumVolumeQuantity" , "minimumVolumeString" , "additive" , "preparation" ,])) ; } } , Field :: Capacity => { if r#capacity . is_some () { return Err (serde :: de :: Error :: duplicate_field ("capacity")) ; } r#capacity = Some (map_access . next_value () ?) ; } , Field :: MinimumVolumeQuantity => { if r#minimum_volume . is_some () { return Err (serde :: de :: Error :: duplicate_field ("minimumVolumeQuantity")) ; } r#minimum_volume = Some (SpecimenDefinitionTypeTestedContainerMinimumVolume :: Quantity (map_access . next_value () ?)) ; } , Field :: MinimumVolumeString => { if _ctx . from_json { let r#enum = r#minimum_volume . get_or_insert (SpecimenDefinitionTypeTestedContainerMinimumVolume :: String (Default :: default ())) ; if let SpecimenDefinitionTypeTestedContainerMinimumVolume :: String (variant) = r#enum { if variant . value . is_some () { return Err (serde :: de :: Error :: duplicate_field ("minimumVolumeString")) ; } let value : _ = map_access . next_value () ? ; variant . value = Some (value) ; } else { return Err (serde :: de :: Error :: duplicate_field ("minimumVolume[x]")) ; } } else { if r#minimum_volume . is_some () { return Err (serde :: de :: Error :: duplicate_field ("minimumVolumeString")) ; } r#minimum_volume = Some (SpecimenDefinitionTypeTestedContainerMinimumVolume :: String (map_access . next_value () ?)) ; } } , Field :: MinimumVolumeStringPrimitiveElement => { if _ctx . from_json { let r#enum = r#minimum_volume . get_or_insert (SpecimenDefinitionTypeTestedContainerMinimumVolume :: String (Default :: default ())) ; if let SpecimenDefinitionTypeTestedContainerMinimumVolume :: String (variant) = r#enum { if variant . id . is_some () || ! variant . extension . is_empty () { return Err (serde :: de :: Error :: duplicate_field ("_minimumVolumeString")) ; } let super :: super :: serde_helpers :: PrimitiveElementOwned { id , extension } = map_access . next_value () ? ; variant . id = id ; variant . extension = extension ; } else { return Err (serde :: de :: Error :: duplicate_field ("_minimumVolume[x]")) ; } } else { return Err (serde :: de :: Error :: unknown_field ("minimumVolumeString" , & ["id" , "extension" , "modifierExtension" , "material" , "type" , "cap" , "description" , "capacity" , "minimumVolumeQuantity" , "minimumVolumeString" , "additive" , "preparation" ,])) ; } } , Field :: Additive => { if _ctx . from_json { if r#additive . is_some () { return Err (serde :: de :: Error :: duplicate_field ("additive")) ; } r#additive = Some (map_access . next_value () ?) ; } else { let vec = r#additive . get_or_insert (Default :: default ()) ; vec . push (map_access . next_value () ?) ; } } , Field :: Preparation => { if _ctx . from_json { let some = r#preparation . get_or_insert (Default :: default ()) ; if some . value . is_some () { return Err (serde :: de :: Error :: duplicate_field ("preparation")) ; } let value : _ = map_access . next_value () ? ; some . value = Some (value) ; } else { if r#preparation . is_some () { return Err (serde :: de :: Error :: duplicate_field ("preparation")) ; } r#preparation = Some (map_access . next_value () ?) ; } } , Field :: PreparationPrimitiveElement => { if _ctx . from_json { let some = r#preparation . get_or_insert (Default :: default ()) ; if some . id . is_some () || ! some . extension . is_empty () { return Err (serde :: de :: Error :: duplicate_field ("_preparation")) ; } let super :: super :: serde_helpers :: PrimitiveElementOwned { id , extension } = map_access . next_value () ? ; some . id = id ; some . extension = extension ; } else { return Err (serde :: de :: Error :: unknown_field ("preparation" , & ["id" , "extension" , "modifierExtension" , "material" , "type" , "cap" , "description" , "capacity" , "minimumVolumeQuantity" , "minimumVolumeString" , "additive" , "preparation" ,])) ; } } , Field :: Unknown (key) => if _ctx . config . mode == fhirbolt_shared :: serde_context :: de :: DeserializationMode :: Strict { return Err (serde :: de :: Error :: unknown_field (& key , & ["id" , "extension" , "modifierExtension" , "material" , "type" , "cap" , "description" , "capacity" , "minimumVolumeQuantity" , "minimumVolumeString" , "additive" , "preparation" ,])) ; } } } Ok (SpecimenDefinitionTypeTestedContainer { r#id , r#extension : r#extension . unwrap_or (vec ! []) , r#modifier_extension : r#modifier_extension . unwrap_or (vec ! []) , r#material , r#type , r#cap , r#description , r#capacity , r#minimum_volume , r#additive : r#additive . unwrap_or (vec ! []) , r#preparation , }) })
+                fhirbolt_shared :: serde_context :: de :: DESERIALIZATION_CONTEXT . with (| _ctx | { let _ctx = _ctx . borrow () ; while let Some (map_access_key) = map_access . next_key () ? { match map_access_key { Field :: Id => { if r#id . is_some () { return Err (serde :: de :: Error :: duplicate_field ("id")) ; } r#id = Some (map_access . next_value () ?) ; } , Field :: Extension => { if _ctx . from_json { if r#extension . is_some () { return Err (serde :: de :: Error :: duplicate_field ("extension")) ; } r#extension = Some (map_access . next_value () ?) ; } else { let vec = r#extension . get_or_insert (Default :: default ()) ; vec . push (map_access . next_value () ?) ; } } , Field :: ModifierExtension => { if _ctx . from_json { if r#modifier_extension . is_some () { return Err (serde :: de :: Error :: duplicate_field ("modifierExtension")) ; } r#modifier_extension = Some (map_access . next_value () ?) ; } else { let vec = r#modifier_extension . get_or_insert (Default :: default ()) ; vec . push (map_access . next_value () ?) ; } } , Field :: Material => { if r#material . is_some () { return Err (serde :: de :: Error :: duplicate_field ("material")) ; } r#material = Some (map_access . next_value () ?) ; } , Field :: Type => { if r#type . is_some () { return Err (serde :: de :: Error :: duplicate_field ("type")) ; } r#type = Some (map_access . next_value () ?) ; } , Field :: Cap => { if r#cap . is_some () { return Err (serde :: de :: Error :: duplicate_field ("cap")) ; } r#cap = Some (map_access . next_value () ?) ; } , Field :: Description => { if _ctx . from_json { let some = r#description . get_or_insert (Default :: default ()) ; if some . value . is_some () { return Err (serde :: de :: Error :: duplicate_field ("description")) ; } let value : _ = map_access . next_value () ? ; some . value = Some (value) ; } else { if r#description . is_some () { return Err (serde :: de :: Error :: duplicate_field ("description")) ; } r#description = Some (map_access . next_value () ?) ; } } , Field :: DescriptionPrimitiveElement => { if _ctx . from_json { let some = r#description . get_or_insert (Default :: default ()) ; if some . id . is_some () || ! some . extension . is_empty () { return Err (serde :: de :: Error :: duplicate_field ("_description")) ; } let super :: super :: serde_helpers :: PrimitiveElementOwned { id , extension } = map_access . next_value () ? ; some . id = id ; some . extension = extension ; } else { return unknown_field_error ("description") ; } } , Field :: Capacity => { if r#capacity . is_some () { return Err (serde :: de :: Error :: duplicate_field ("capacity")) ; } r#capacity = Some (map_access . next_value () ?) ; } , Field :: MinimumVolumeQuantity => { if r#minimum_volume . is_some () { return Err (serde :: de :: Error :: duplicate_field ("minimumVolumeQuantity")) ; } r#minimum_volume = Some (SpecimenDefinitionTypeTestedContainerMinimumVolume :: Quantity (map_access . next_value () ?)) ; } , Field :: MinimumVolumeString => { if _ctx . from_json { let r#enum = r#minimum_volume . get_or_insert (SpecimenDefinitionTypeTestedContainerMinimumVolume :: String (Default :: default ())) ; if let SpecimenDefinitionTypeTestedContainerMinimumVolume :: String (variant) = r#enum { if variant . value . is_some () { return Err (serde :: de :: Error :: duplicate_field ("minimumVolumeString")) ; } let value : _ = map_access . next_value () ? ; variant . value = Some (value) ; } else { return Err (serde :: de :: Error :: duplicate_field ("minimumVolume[x]")) ; } } else { if r#minimum_volume . is_some () { return Err (serde :: de :: Error :: duplicate_field ("minimumVolumeString")) ; } r#minimum_volume = Some (SpecimenDefinitionTypeTestedContainerMinimumVolume :: String (map_access . next_value () ?)) ; } } , Field :: MinimumVolumeStringPrimitiveElement => { if _ctx . from_json { let r#enum = r#minimum_volume . get_or_insert (SpecimenDefinitionTypeTestedContainerMinimumVolume :: String (Default :: default ())) ; if let SpecimenDefinitionTypeTestedContainerMinimumVolume :: String (variant) = r#enum { if variant . id . is_some () || ! variant . extension . is_empty () { return Err (serde :: de :: Error :: duplicate_field ("_minimumVolumeString")) ; } let super :: super :: serde_helpers :: PrimitiveElementOwned { id , extension } = map_access . next_value () ? ; variant . id = id ; variant . extension = extension ; } else { return Err (serde :: de :: Error :: duplicate_field ("_minimumVolume[x]")) ; } } else { return unknown_field_error ("minimumVolumeString") ; } } , Field :: Additive => { if _ctx . from_json { if r#additive . is_some () { return Err (serde :: de :: Error :: duplicate_field ("additive")) ; } r#additive = Some (map_access . next_value () ?) ; } else { let vec = r#additive . get_or_insert (Default :: default ()) ; vec . push (map_access . next_value () ?) ; } } , Field :: Preparation => { if _ctx . from_json { let some = r#preparation . get_or_insert (Default :: default ()) ; if some . value . is_some () { return Err (serde :: de :: Error :: duplicate_field ("preparation")) ; } let value : _ = map_access . next_value () ? ; some . value = Some (value) ; } else { if r#preparation . is_some () { return Err (serde :: de :: Error :: duplicate_field ("preparation")) ; } r#preparation = Some (map_access . next_value () ?) ; } } , Field :: PreparationPrimitiveElement => { if _ctx . from_json { let some = r#preparation . get_or_insert (Default :: default ()) ; if some . id . is_some () || ! some . extension . is_empty () { return Err (serde :: de :: Error :: duplicate_field ("_preparation")) ; } let super :: super :: serde_helpers :: PrimitiveElementOwned { id , extension } = map_access . next_value () ? ; some . id = id ; some . extension = extension ; } else { return unknown_field_error ("preparation") ; } } , Field :: Unknown (key) => if _ctx . config . mode == fhirbolt_shared :: serde_context :: de :: DeserializationMode :: Strict { return Err (serde :: de :: Error :: unknown_field (& key , & ["id" , "extension" , "modifierExtension" , "material" , "type" , "cap" , "description" , "capacity" , "minimumVolumeQuantity" , "minimumVolumeString" , "additive" , "preparation" ,])) ; } } } Ok (SpecimenDefinitionTypeTestedContainer { r#id , r#extension : r#extension . unwrap_or (vec ! []) , r#modifier_extension : r#modifier_extension . unwrap_or (vec ! []) , r#material , r#type , r#cap , r#description , r#capacity , r#minimum_volume , r#additive : r#additive . unwrap_or (vec ! []) , r#preparation , }) })
             }
         }
         deserializer.deserialize_map(Visitor)
@@ -412,6 +443,20 @@ impl<'de> serde::de::Deserialize<'de> for SpecimenDefinitionTypeTestedHandling {
             #[serde(rename = "_instruction")]
             InstructionPrimitiveElement,
             Unknown(std::string::String),
+        }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "temperatureQualifier",
+                    "temperatureRange",
+                    "maxDuration",
+                    "instruction",
+                ],
+            ))
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -526,18 +571,7 @@ impl<'de> serde::de::Deserialize<'de> for SpecimenDefinitionTypeTestedHandling {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "instruction",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "temperatureQualifier",
-                                            "temperatureRange",
-                                            "maxDuration",
-                                            "instruction",
-                                        ],
-                                    ));
+                                    return unknown_field_error("instruction");
                                 }
                             }
                             Field::Unknown(key) => if _ctx.config.mode
@@ -727,6 +761,24 @@ impl<'de> serde::de::Deserialize<'de> for SpecimenDefinitionTypeTested {
             Handling,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "isDerived",
+                    "type",
+                    "preference",
+                    "container",
+                    "requirement",
+                    "retentionTime",
+                    "rejectionCriterion",
+                    "handling",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = SpecimenDefinitionTypeTested;
@@ -819,22 +871,7 @@ impl<'de> serde::de::Deserialize<'de> for SpecimenDefinitionTypeTested {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "isDerived",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "isDerived",
-                                            "type",
-                                            "preference",
-                                            "container",
-                                            "requirement",
-                                            "retentionTime",
-                                            "rejectionCriterion",
-                                            "handling",
-                                        ],
-                                    ));
+                                    return unknown_field_error("isDerived");
                                 }
                             }
                             Field::Type => {
@@ -877,22 +914,7 @@ impl<'de> serde::de::Deserialize<'de> for SpecimenDefinitionTypeTested {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "preference",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "isDerived",
-                                            "type",
-                                            "preference",
-                                            "container",
-                                            "requirement",
-                                            "retentionTime",
-                                            "rejectionCriterion",
-                                            "handling",
-                                        ],
-                                    ));
+                                    return unknown_field_error("preference");
                                 }
                             }
                             Field::Container => {
@@ -935,22 +957,7 @@ impl<'de> serde::de::Deserialize<'de> for SpecimenDefinitionTypeTested {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "requirement",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "isDerived",
-                                            "type",
-                                            "preference",
-                                            "container",
-                                            "requirement",
-                                            "retentionTime",
-                                            "rejectionCriterion",
-                                            "handling",
-                                        ],
-                                    ));
+                                    return unknown_field_error("requirement");
                                 }
                             }
                             Field::RetentionTime => {
@@ -1216,6 +1223,27 @@ impl<'de> serde::de::Deserialize<'de> for SpecimenDefinition {
             TypeTested,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "meta",
+                    "implicitRules",
+                    "language",
+                    "text",
+                    "contained",
+                    "extension",
+                    "modifierExtension",
+                    "identifier",
+                    "typeCollected",
+                    "patientPreparation",
+                    "timeAspect",
+                    "collection",
+                    "typeTested",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = SpecimenDefinition;
@@ -1302,25 +1330,7 @@ impl<'de> serde::de::Deserialize<'de> for SpecimenDefinition {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "implicitRules",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "typeCollected",
-                                            "patientPreparation",
-                                            "timeAspect",
-                                            "collection",
-                                            "typeTested",
-                                        ],
-                                    ));
+                                    return unknown_field_error("implicitRules");
                                 }
                             }
                             Field::Language => {
@@ -1351,25 +1361,7 @@ impl<'de> serde::de::Deserialize<'de> for SpecimenDefinition {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "language",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "typeCollected",
-                                            "patientPreparation",
-                                            "timeAspect",
-                                            "collection",
-                                            "typeTested",
-                                        ],
-                                    ));
+                                    return unknown_field_error("language");
                                 }
                             }
                             Field::Text => {
@@ -1474,25 +1466,7 @@ impl<'de> serde::de::Deserialize<'de> for SpecimenDefinition {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "timeAspect",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "typeCollected",
-                                            "patientPreparation",
-                                            "timeAspect",
-                                            "collection",
-                                            "typeTested",
-                                        ],
-                                    ));
+                                    return unknown_field_error("timeAspect");
                                 }
                             }
                             Field::Collection => {

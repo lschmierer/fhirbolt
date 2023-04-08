@@ -1,4 +1,4 @@
-// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-08 by fhirbolt-codegen v0.1.0
 #[doc = "A slot of time on a schedule that may be available for booking appointments."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub struct Slot {
@@ -277,6 +277,32 @@ impl<'de> serde::de::Deserialize<'de> for Slot {
             CommentPrimitiveElement,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "meta",
+                    "implicitRules",
+                    "language",
+                    "text",
+                    "contained",
+                    "extension",
+                    "modifierExtension",
+                    "identifier",
+                    "serviceCategory",
+                    "serviceType",
+                    "specialty",
+                    "appointmentType",
+                    "schedule",
+                    "status",
+                    "start",
+                    "end",
+                    "overbooked",
+                    "comment",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = Slot;
@@ -369,30 +395,7 @@ impl<'de> serde::de::Deserialize<'de> for Slot {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "implicitRules",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "serviceCategory",
-                                            "serviceType",
-                                            "specialty",
-                                            "appointmentType",
-                                            "schedule",
-                                            "status",
-                                            "start",
-                                            "end",
-                                            "overbooked",
-                                            "comment",
-                                        ],
-                                    ));
+                                    return unknown_field_error("implicitRules");
                                 }
                             }
                             Field::Language => {
@@ -423,30 +426,7 @@ impl<'de> serde::de::Deserialize<'de> for Slot {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "language",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "serviceCategory",
-                                            "serviceType",
-                                            "specialty",
-                                            "appointmentType",
-                                            "schedule",
-                                            "status",
-                                            "start",
-                                            "end",
-                                            "overbooked",
-                                            "comment",
-                                        ],
-                                    ));
+                                    return unknown_field_error("language");
                                 }
                             }
                             Field::Text => {
@@ -583,30 +563,7 @@ impl<'de> serde::de::Deserialize<'de> for Slot {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "status",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "serviceCategory",
-                                            "serviceType",
-                                            "specialty",
-                                            "appointmentType",
-                                            "schedule",
-                                            "status",
-                                            "start",
-                                            "end",
-                                            "overbooked",
-                                            "comment",
-                                        ],
-                                    ));
+                                    return unknown_field_error("status");
                                 }
                             }
                             Field::Start => {
@@ -637,30 +594,7 @@ impl<'de> serde::de::Deserialize<'de> for Slot {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "start",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "serviceCategory",
-                                            "serviceType",
-                                            "specialty",
-                                            "appointmentType",
-                                            "schedule",
-                                            "status",
-                                            "start",
-                                            "end",
-                                            "overbooked",
-                                            "comment",
-                                        ],
-                                    ));
+                                    return unknown_field_error("start");
                                 }
                             }
                             Field::End => {
@@ -691,30 +625,7 @@ impl<'de> serde::de::Deserialize<'de> for Slot {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "end",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "serviceCategory",
-                                            "serviceType",
-                                            "specialty",
-                                            "appointmentType",
-                                            "schedule",
-                                            "status",
-                                            "start",
-                                            "end",
-                                            "overbooked",
-                                            "comment",
-                                        ],
-                                    ));
+                                    return unknown_field_error("end");
                                 }
                             }
                             Field::Overbooked => {
@@ -751,30 +662,7 @@ impl<'de> serde::de::Deserialize<'de> for Slot {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "overbooked",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "serviceCategory",
-                                            "serviceType",
-                                            "specialty",
-                                            "appointmentType",
-                                            "schedule",
-                                            "status",
-                                            "start",
-                                            "end",
-                                            "overbooked",
-                                            "comment",
-                                        ],
-                                    ));
+                                    return unknown_field_error("overbooked");
                                 }
                             }
                             Field::Comment => {
@@ -805,30 +693,7 @@ impl<'de> serde::de::Deserialize<'de> for Slot {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "comment",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "serviceCategory",
-                                            "serviceType",
-                                            "specialty",
-                                            "appointmentType",
-                                            "schedule",
-                                            "status",
-                                            "start",
-                                            "end",
-                                            "overbooked",
-                                            "comment",
-                                        ],
-                                    ));
+                                    return unknown_field_error("comment");
                                 }
                             }
                             Field::Unknown(key) => if _ctx.config.mode

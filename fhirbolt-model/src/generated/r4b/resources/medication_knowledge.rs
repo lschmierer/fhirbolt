@@ -1,4 +1,4 @@
-// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-08 by fhirbolt-codegen v0.1.0
 #[doc = "The actual ingredient - either a substance (simple ingredient) or another medication."]
 #[derive(Debug, Clone, PartialEq)]
 pub enum MedicationKnowledgeIngredientItem {
@@ -109,6 +109,12 @@ impl<'de> serde::de::Deserialize<'de> for MedicationKnowledgeRelatedMedicationKn
             #[serde(rename = "reference")]
             Reference,
             Unknown(std::string::String),
+        }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &["id", "extension", "modifierExtension", "type", "reference"],
+            ))
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -271,6 +277,12 @@ impl<'de> serde::de::Deserialize<'de> for MedicationKnowledgeMonograph {
             #[serde(rename = "source")]
             Source,
             Unknown(std::string::String),
+        }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &["id", "extension", "modifierExtension", "type", "source"],
+            ))
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -458,6 +470,20 @@ impl<'de> serde::de::Deserialize<'de> for MedicationKnowledgeIngredient {
             Strength,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "itemCodeableConcept",
+                    "itemReference",
+                    "isActive",
+                    "strength",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = MedicationKnowledgeIngredient;
@@ -559,18 +585,7 @@ impl<'de> serde::de::Deserialize<'de> for MedicationKnowledgeIngredient {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "isActive",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "itemCodeableConcept",
-                                            "itemReference",
-                                            "isActive",
-                                            "strength",
-                                        ],
-                                    ));
+                                    return unknown_field_error("isActive");
                                 }
                             }
                             Field::Strength => {
@@ -700,6 +715,19 @@ impl<'de> serde::de::Deserialize<'de> for MedicationKnowledgeCost {
             Cost,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "type",
+                    "source",
+                    "cost",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = MedicationKnowledgeCost;
@@ -786,17 +814,7 @@ impl<'de> serde::de::Deserialize<'de> for MedicationKnowledgeCost {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "source",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "type",
-                                            "source",
-                                            "cost",
-                                        ],
-                                    ));
+                                    return unknown_field_error("source");
                                 }
                             }
                             Field::Cost => {
@@ -928,6 +946,12 @@ impl<'de> serde::de::Deserialize<'de> for MedicationKnowledgeMonitoringProgram {
             NamePrimitiveElement,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &["id", "extension", "modifierExtension", "type", "name"],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = MedicationKnowledgeMonitoringProgram;
@@ -1016,10 +1040,7 @@ impl<'de> serde::de::Deserialize<'de> for MedicationKnowledgeMonitoringProgram {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "name",
-                                        &["id", "extension", "modifierExtension", "type", "name"],
-                                    ));
+                                    return unknown_field_error("name");
                                 }
                             }
                             Field::Unknown(key) => if _ctx.config.mode
@@ -1104,6 +1125,12 @@ impl<'de> serde::de::Deserialize<'de> for MedicationKnowledgeAdministrationGuide
             #[serde(rename = "dosage")]
             Dosage,
             Unknown(std::string::String),
+        }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &["id", "extension", "modifierExtension", "type", "dosage"],
+            ))
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -1255,6 +1282,19 @@ impl<'de> serde::de::Deserialize<'de>
             ValuePrimitiveElement,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "characteristicCodeableConcept",
+                    "characteristicQuantity",
+                    "value",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = MedicationKnowledgeAdministrationGuidelinesPatientCharacteristics;
@@ -1277,7 +1317,7 @@ impl<'de> serde::de::Deserialize<'de>
                     MedicationKnowledgeAdministrationGuidelinesPatientCharacteristicsCharacteristic,
                 > = None;
                 let mut r#value: Option<Vec<super::super::types::String>> = None;
-                fhirbolt_shared :: serde_context :: de :: DESERIALIZATION_CONTEXT . with (| _ctx | { let _ctx = _ctx . borrow () ; while let Some (map_access_key) = map_access . next_key () ? { match map_access_key { Field :: Id => { if r#id . is_some () { return Err (serde :: de :: Error :: duplicate_field ("id")) ; } r#id = Some (map_access . next_value () ?) ; } , Field :: Extension => { if _ctx . from_json { if r#extension . is_some () { return Err (serde :: de :: Error :: duplicate_field ("extension")) ; } r#extension = Some (map_access . next_value () ?) ; } else { let vec = r#extension . get_or_insert (Default :: default ()) ; vec . push (map_access . next_value () ?) ; } } , Field :: ModifierExtension => { if _ctx . from_json { if r#modifier_extension . is_some () { return Err (serde :: de :: Error :: duplicate_field ("modifierExtension")) ; } r#modifier_extension = Some (map_access . next_value () ?) ; } else { let vec = r#modifier_extension . get_or_insert (Default :: default ()) ; vec . push (map_access . next_value () ?) ; } } , Field :: CharacteristicCodeableConcept => { if r#characteristic . is_some () { return Err (serde :: de :: Error :: duplicate_field ("characteristicCodeableConcept")) ; } r#characteristic = Some (MedicationKnowledgeAdministrationGuidelinesPatientCharacteristicsCharacteristic :: CodeableConcept (map_access . next_value () ?)) ; } , Field :: CharacteristicQuantity => { if r#characteristic . is_some () { return Err (serde :: de :: Error :: duplicate_field ("characteristicQuantity")) ; } r#characteristic = Some (MedicationKnowledgeAdministrationGuidelinesPatientCharacteristicsCharacteristic :: Quantity (map_access . next_value () ?)) ; } , Field :: Value => { if _ctx . from_json { let values : Vec < Option < _ >> = map_access . next_value () ? ; let vec = r#value . get_or_insert (std :: iter :: repeat (Default :: default ()) . take (values . len ()) . collect :: < Vec < _ >> ()) ; if vec . len () != values . len () { return Err (serde :: de :: Error :: invalid_length (values . len () , & "primitive elements length")) ; } if vec . iter () . any (| v | v . value . is_some ()) { return Err (serde :: de :: Error :: duplicate_field ("value")) ; } for (i , value) in values . into_iter () . enumerate () { if let Some (value) = value { vec [i] . value = Some (value) ; } } } else { let vec = r#value . get_or_insert (Default :: default ()) ; vec . push (map_access . next_value () ?) ; } } , Field :: ValuePrimitiveElement => { if _ctx . from_json { let elements : Vec < Option < super :: super :: serde_helpers :: PrimitiveElementOwned >> = map_access . next_value () ? ; let vec = r#value . get_or_insert (std :: iter :: repeat (Default :: default ()) . take (elements . len ()) . collect :: < Vec < _ >> ()) ; if vec . len () != elements . len () { return Err (serde :: de :: Error :: invalid_length (elements . len () , & "primitive values length")) ; } if vec . iter () . any (| e | e . id . is_some () || ! e . extension . is_empty ()) { return Err (serde :: de :: Error :: duplicate_field ("_value")) ; } for (i , element) in elements . into_iter () . enumerate () { if let Some (element) = element { vec [i] . id = element . id ; vec [i] . extension = element . extension ; } } } else { return Err (serde :: de :: Error :: unknown_field ("value" , & ["id" , "extension" , "modifierExtension" , "characteristicCodeableConcept" , "characteristicQuantity" , "value" ,])) ; } } , Field :: Unknown (key) => if _ctx . config . mode == fhirbolt_shared :: serde_context :: de :: DeserializationMode :: Strict { return Err (serde :: de :: Error :: unknown_field (& key , & ["id" , "extension" , "modifierExtension" , "characteristicCodeableConcept" , "characteristicQuantity" , "value" ,])) ; } } } Ok (MedicationKnowledgeAdministrationGuidelinesPatientCharacteristics { r#id , r#extension : r#extension . unwrap_or (vec ! []) , r#modifier_extension : r#modifier_extension . unwrap_or (vec ! []) , r#characteristic : if _ctx . config . mode == fhirbolt_shared :: serde_context :: de :: DeserializationMode :: Lax { r#characteristic . unwrap_or (Default :: default ()) } else { r#characteristic . ok_or (serde :: de :: Error :: missing_field ("characteristic[x]")) ? } , r#value : r#value . unwrap_or (vec ! []) , }) })
+                fhirbolt_shared :: serde_context :: de :: DESERIALIZATION_CONTEXT . with (| _ctx | { let _ctx = _ctx . borrow () ; while let Some (map_access_key) = map_access . next_key () ? { match map_access_key { Field :: Id => { if r#id . is_some () { return Err (serde :: de :: Error :: duplicate_field ("id")) ; } r#id = Some (map_access . next_value () ?) ; } , Field :: Extension => { if _ctx . from_json { if r#extension . is_some () { return Err (serde :: de :: Error :: duplicate_field ("extension")) ; } r#extension = Some (map_access . next_value () ?) ; } else { let vec = r#extension . get_or_insert (Default :: default ()) ; vec . push (map_access . next_value () ?) ; } } , Field :: ModifierExtension => { if _ctx . from_json { if r#modifier_extension . is_some () { return Err (serde :: de :: Error :: duplicate_field ("modifierExtension")) ; } r#modifier_extension = Some (map_access . next_value () ?) ; } else { let vec = r#modifier_extension . get_or_insert (Default :: default ()) ; vec . push (map_access . next_value () ?) ; } } , Field :: CharacteristicCodeableConcept => { if r#characteristic . is_some () { return Err (serde :: de :: Error :: duplicate_field ("characteristicCodeableConcept")) ; } r#characteristic = Some (MedicationKnowledgeAdministrationGuidelinesPatientCharacteristicsCharacteristic :: CodeableConcept (map_access . next_value () ?)) ; } , Field :: CharacteristicQuantity => { if r#characteristic . is_some () { return Err (serde :: de :: Error :: duplicate_field ("characteristicQuantity")) ; } r#characteristic = Some (MedicationKnowledgeAdministrationGuidelinesPatientCharacteristicsCharacteristic :: Quantity (map_access . next_value () ?)) ; } , Field :: Value => { if _ctx . from_json { let values : Vec < Option < _ >> = map_access . next_value () ? ; let vec = r#value . get_or_insert (std :: iter :: repeat (Default :: default ()) . take (values . len ()) . collect :: < Vec < _ >> ()) ; if vec . len () != values . len () { return Err (serde :: de :: Error :: invalid_length (values . len () , & "primitive elements length")) ; } if vec . iter () . any (| v | v . value . is_some ()) { return Err (serde :: de :: Error :: duplicate_field ("value")) ; } for (i , value) in values . into_iter () . enumerate () { if let Some (value) = value { vec [i] . value = Some (value) ; } } } else { let vec = r#value . get_or_insert (Default :: default ()) ; vec . push (map_access . next_value () ?) ; } } , Field :: ValuePrimitiveElement => { if _ctx . from_json { let elements : Vec < Option < super :: super :: serde_helpers :: PrimitiveElementOwned >> = map_access . next_value () ? ; let vec = r#value . get_or_insert (std :: iter :: repeat (Default :: default ()) . take (elements . len ()) . collect :: < Vec < _ >> ()) ; if vec . len () != elements . len () { return Err (serde :: de :: Error :: invalid_length (elements . len () , & "primitive values length")) ; } if vec . iter () . any (| e | e . id . is_some () || ! e . extension . is_empty ()) { return Err (serde :: de :: Error :: duplicate_field ("_value")) ; } for (i , element) in elements . into_iter () . enumerate () { if let Some (element) = element { vec [i] . id = element . id ; vec [i] . extension = element . extension ; } } } else { return unknown_field_error ("value") ; } } , Field :: Unknown (key) => if _ctx . config . mode == fhirbolt_shared :: serde_context :: de :: DeserializationMode :: Strict { return Err (serde :: de :: Error :: unknown_field (& key , & ["id" , "extension" , "modifierExtension" , "characteristicCodeableConcept" , "characteristicQuantity" , "value" ,])) ; } } } Ok (MedicationKnowledgeAdministrationGuidelinesPatientCharacteristics { r#id , r#extension : r#extension . unwrap_or (vec ! []) , r#modifier_extension : r#modifier_extension . unwrap_or (vec ! []) , r#characteristic : if _ctx . config . mode == fhirbolt_shared :: serde_context :: de :: DeserializationMode :: Lax { r#characteristic . unwrap_or (Default :: default ()) } else { r#characteristic . ok_or (serde :: de :: Error :: missing_field ("characteristic[x]")) ? } , r#value : r#value . unwrap_or (vec ! []) , }) })
             }
         }
         deserializer.deserialize_map(Visitor)
@@ -1366,6 +1406,20 @@ impl<'de> serde::de::Deserialize<'de> for MedicationKnowledgeAdministrationGuide
             #[serde(rename = "patientCharacteristics")]
             PatientCharacteristics,
             Unknown(std::string::String),
+        }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "dosage",
+                    "indicationCodeableConcept",
+                    "indicationReference",
+                    "patientCharacteristics",
+                ],
+            ))
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -1457,6 +1511,18 @@ impl<'de> serde::de::Deserialize<'de> for MedicationKnowledgeMedicineClassificat
             #[serde(rename = "classification")]
             Classification,
             Unknown(std::string::String),
+        }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "type",
+                    "classification",
+                ],
+            ))
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -1628,6 +1694,12 @@ impl<'de> serde::de::Deserialize<'de> for MedicationKnowledgePackaging {
             #[serde(rename = "quantity")]
             Quantity,
             Unknown(std::string::String),
+        }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &["id", "extension", "modifierExtension", "type", "quantity"],
+            ))
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -1836,6 +1908,21 @@ impl<'de> serde::de::Deserialize<'de> for MedicationKnowledgeDrugCharacteristic 
             ValueBase64BinaryPrimitiveElement,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "type",
+                    "valueCodeableConcept",
+                    "valueString",
+                    "valueQuantity",
+                    "valueBase64Binary",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = MedicationKnowledgeDrugCharacteristic;
@@ -1855,7 +1942,7 @@ impl<'de> serde::de::Deserialize<'de> for MedicationKnowledgeDrugCharacteristic 
                     None;
                 let mut r#type: Option<Box<super::super::types::CodeableConcept>> = None;
                 let mut r#value: Option<MedicationKnowledgeDrugCharacteristicValue> = None;
-                fhirbolt_shared :: serde_context :: de :: DESERIALIZATION_CONTEXT . with (| _ctx | { let _ctx = _ctx . borrow () ; while let Some (map_access_key) = map_access . next_key () ? { match map_access_key { Field :: Id => { if r#id . is_some () { return Err (serde :: de :: Error :: duplicate_field ("id")) ; } r#id = Some (map_access . next_value () ?) ; } , Field :: Extension => { if _ctx . from_json { if r#extension . is_some () { return Err (serde :: de :: Error :: duplicate_field ("extension")) ; } r#extension = Some (map_access . next_value () ?) ; } else { let vec = r#extension . get_or_insert (Default :: default ()) ; vec . push (map_access . next_value () ?) ; } } , Field :: ModifierExtension => { if _ctx . from_json { if r#modifier_extension . is_some () { return Err (serde :: de :: Error :: duplicate_field ("modifierExtension")) ; } r#modifier_extension = Some (map_access . next_value () ?) ; } else { let vec = r#modifier_extension . get_or_insert (Default :: default ()) ; vec . push (map_access . next_value () ?) ; } } , Field :: Type => { if r#type . is_some () { return Err (serde :: de :: Error :: duplicate_field ("type")) ; } r#type = Some (map_access . next_value () ?) ; } , Field :: ValueCodeableConcept => { if r#value . is_some () { return Err (serde :: de :: Error :: duplicate_field ("valueCodeableConcept")) ; } r#value = Some (MedicationKnowledgeDrugCharacteristicValue :: CodeableConcept (map_access . next_value () ?)) ; } , Field :: ValueString => { if _ctx . from_json { let r#enum = r#value . get_or_insert (MedicationKnowledgeDrugCharacteristicValue :: String (Default :: default ())) ; if let MedicationKnowledgeDrugCharacteristicValue :: String (variant) = r#enum { if variant . value . is_some () { return Err (serde :: de :: Error :: duplicate_field ("valueString")) ; } let value : _ = map_access . next_value () ? ; variant . value = Some (value) ; } else { return Err (serde :: de :: Error :: duplicate_field ("value[x]")) ; } } else { if r#value . is_some () { return Err (serde :: de :: Error :: duplicate_field ("valueString")) ; } r#value = Some (MedicationKnowledgeDrugCharacteristicValue :: String (map_access . next_value () ?)) ; } } , Field :: ValueStringPrimitiveElement => { if _ctx . from_json { let r#enum = r#value . get_or_insert (MedicationKnowledgeDrugCharacteristicValue :: String (Default :: default ())) ; if let MedicationKnowledgeDrugCharacteristicValue :: String (variant) = r#enum { if variant . id . is_some () || ! variant . extension . is_empty () { return Err (serde :: de :: Error :: duplicate_field ("_valueString")) ; } let super :: super :: serde_helpers :: PrimitiveElementOwned { id , extension } = map_access . next_value () ? ; variant . id = id ; variant . extension = extension ; } else { return Err (serde :: de :: Error :: duplicate_field ("_value[x]")) ; } } else { return Err (serde :: de :: Error :: unknown_field ("valueString" , & ["id" , "extension" , "modifierExtension" , "type" , "valueCodeableConcept" , "valueString" , "valueQuantity" , "valueBase64Binary" ,])) ; } } , Field :: ValueQuantity => { if r#value . is_some () { return Err (serde :: de :: Error :: duplicate_field ("valueQuantity")) ; } r#value = Some (MedicationKnowledgeDrugCharacteristicValue :: Quantity (map_access . next_value () ?)) ; } , Field :: ValueBase64Binary => { if _ctx . from_json { let r#enum = r#value . get_or_insert (MedicationKnowledgeDrugCharacteristicValue :: Base64Binary (Default :: default ())) ; if let MedicationKnowledgeDrugCharacteristicValue :: Base64Binary (variant) = r#enum { if variant . value . is_some () { return Err (serde :: de :: Error :: duplicate_field ("valueBase64Binary")) ; } let value : _ = map_access . next_value () ? ; variant . value = Some (value) ; } else { return Err (serde :: de :: Error :: duplicate_field ("value[x]")) ; } } else { if r#value . is_some () { return Err (serde :: de :: Error :: duplicate_field ("valueBase64Binary")) ; } r#value = Some (MedicationKnowledgeDrugCharacteristicValue :: Base64Binary (map_access . next_value () ?)) ; } } , Field :: ValueBase64BinaryPrimitiveElement => { if _ctx . from_json { let r#enum = r#value . get_or_insert (MedicationKnowledgeDrugCharacteristicValue :: Base64Binary (Default :: default ())) ; if let MedicationKnowledgeDrugCharacteristicValue :: Base64Binary (variant) = r#enum { if variant . id . is_some () || ! variant . extension . is_empty () { return Err (serde :: de :: Error :: duplicate_field ("_valueBase64Binary")) ; } let super :: super :: serde_helpers :: PrimitiveElementOwned { id , extension } = map_access . next_value () ? ; variant . id = id ; variant . extension = extension ; } else { return Err (serde :: de :: Error :: duplicate_field ("_value[x]")) ; } } else { return Err (serde :: de :: Error :: unknown_field ("valueBase64Binary" , & ["id" , "extension" , "modifierExtension" , "type" , "valueCodeableConcept" , "valueString" , "valueQuantity" , "valueBase64Binary" ,])) ; } } , Field :: Unknown (key) => if _ctx . config . mode == fhirbolt_shared :: serde_context :: de :: DeserializationMode :: Strict { return Err (serde :: de :: Error :: unknown_field (& key , & ["id" , "extension" , "modifierExtension" , "type" , "valueCodeableConcept" , "valueString" , "valueQuantity" , "valueBase64Binary" ,])) ; } } } Ok (MedicationKnowledgeDrugCharacteristic { r#id , r#extension : r#extension . unwrap_or (vec ! []) , r#modifier_extension : r#modifier_extension . unwrap_or (vec ! []) , r#type , r#value , }) })
+                fhirbolt_shared :: serde_context :: de :: DESERIALIZATION_CONTEXT . with (| _ctx | { let _ctx = _ctx . borrow () ; while let Some (map_access_key) = map_access . next_key () ? { match map_access_key { Field :: Id => { if r#id . is_some () { return Err (serde :: de :: Error :: duplicate_field ("id")) ; } r#id = Some (map_access . next_value () ?) ; } , Field :: Extension => { if _ctx . from_json { if r#extension . is_some () { return Err (serde :: de :: Error :: duplicate_field ("extension")) ; } r#extension = Some (map_access . next_value () ?) ; } else { let vec = r#extension . get_or_insert (Default :: default ()) ; vec . push (map_access . next_value () ?) ; } } , Field :: ModifierExtension => { if _ctx . from_json { if r#modifier_extension . is_some () { return Err (serde :: de :: Error :: duplicate_field ("modifierExtension")) ; } r#modifier_extension = Some (map_access . next_value () ?) ; } else { let vec = r#modifier_extension . get_or_insert (Default :: default ()) ; vec . push (map_access . next_value () ?) ; } } , Field :: Type => { if r#type . is_some () { return Err (serde :: de :: Error :: duplicate_field ("type")) ; } r#type = Some (map_access . next_value () ?) ; } , Field :: ValueCodeableConcept => { if r#value . is_some () { return Err (serde :: de :: Error :: duplicate_field ("valueCodeableConcept")) ; } r#value = Some (MedicationKnowledgeDrugCharacteristicValue :: CodeableConcept (map_access . next_value () ?)) ; } , Field :: ValueString => { if _ctx . from_json { let r#enum = r#value . get_or_insert (MedicationKnowledgeDrugCharacteristicValue :: String (Default :: default ())) ; if let MedicationKnowledgeDrugCharacteristicValue :: String (variant) = r#enum { if variant . value . is_some () { return Err (serde :: de :: Error :: duplicate_field ("valueString")) ; } let value : _ = map_access . next_value () ? ; variant . value = Some (value) ; } else { return Err (serde :: de :: Error :: duplicate_field ("value[x]")) ; } } else { if r#value . is_some () { return Err (serde :: de :: Error :: duplicate_field ("valueString")) ; } r#value = Some (MedicationKnowledgeDrugCharacteristicValue :: String (map_access . next_value () ?)) ; } } , Field :: ValueStringPrimitiveElement => { if _ctx . from_json { let r#enum = r#value . get_or_insert (MedicationKnowledgeDrugCharacteristicValue :: String (Default :: default ())) ; if let MedicationKnowledgeDrugCharacteristicValue :: String (variant) = r#enum { if variant . id . is_some () || ! variant . extension . is_empty () { return Err (serde :: de :: Error :: duplicate_field ("_valueString")) ; } let super :: super :: serde_helpers :: PrimitiveElementOwned { id , extension } = map_access . next_value () ? ; variant . id = id ; variant . extension = extension ; } else { return Err (serde :: de :: Error :: duplicate_field ("_value[x]")) ; } } else { return unknown_field_error ("valueString") ; } } , Field :: ValueQuantity => { if r#value . is_some () { return Err (serde :: de :: Error :: duplicate_field ("valueQuantity")) ; } r#value = Some (MedicationKnowledgeDrugCharacteristicValue :: Quantity (map_access . next_value () ?)) ; } , Field :: ValueBase64Binary => { if _ctx . from_json { let r#enum = r#value . get_or_insert (MedicationKnowledgeDrugCharacteristicValue :: Base64Binary (Default :: default ())) ; if let MedicationKnowledgeDrugCharacteristicValue :: Base64Binary (variant) = r#enum { if variant . value . is_some () { return Err (serde :: de :: Error :: duplicate_field ("valueBase64Binary")) ; } let value : _ = map_access . next_value () ? ; variant . value = Some (value) ; } else { return Err (serde :: de :: Error :: duplicate_field ("value[x]")) ; } } else { if r#value . is_some () { return Err (serde :: de :: Error :: duplicate_field ("valueBase64Binary")) ; } r#value = Some (MedicationKnowledgeDrugCharacteristicValue :: Base64Binary (map_access . next_value () ?)) ; } } , Field :: ValueBase64BinaryPrimitiveElement => { if _ctx . from_json { let r#enum = r#value . get_or_insert (MedicationKnowledgeDrugCharacteristicValue :: Base64Binary (Default :: default ())) ; if let MedicationKnowledgeDrugCharacteristicValue :: Base64Binary (variant) = r#enum { if variant . id . is_some () || ! variant . extension . is_empty () { return Err (serde :: de :: Error :: duplicate_field ("_valueBase64Binary")) ; } let super :: super :: serde_helpers :: PrimitiveElementOwned { id , extension } = map_access . next_value () ? ; variant . id = id ; variant . extension = extension ; } else { return Err (serde :: de :: Error :: duplicate_field ("_value[x]")) ; } } else { return unknown_field_error ("valueBase64Binary") ; } } , Field :: Unknown (key) => if _ctx . config . mode == fhirbolt_shared :: serde_context :: de :: DeserializationMode :: Strict { return Err (serde :: de :: Error :: unknown_field (& key , & ["id" , "extension" , "modifierExtension" , "type" , "valueCodeableConcept" , "valueString" , "valueQuantity" , "valueBase64Binary" ,])) ; } } } Ok (MedicationKnowledgeDrugCharacteristic { r#id , r#extension : r#extension . unwrap_or (vec ! []) , r#modifier_extension : r#modifier_extension . unwrap_or (vec ! []) , r#type , r#value , }) })
             }
         }
         deserializer.deserialize_map(Visitor)
@@ -1934,6 +2021,12 @@ impl<'de> serde::de::Deserialize<'de> for MedicationKnowledgeRegulatorySubstitut
             #[serde(rename = "_allowed")]
             AllowedPrimitiveElement,
             Unknown(std::string::String),
+        }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &["id", "extension", "modifierExtension", "type", "allowed"],
+            ))
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -2023,16 +2116,7 @@ impl<'de> serde::de::Deserialize<'de> for MedicationKnowledgeRegulatorySubstitut
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "allowed",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "type",
-                                            "allowed",
-                                        ],
-                                    ));
+                                    return unknown_field_error("allowed");
                                 }
                             }
                             Field::Unknown(key) => if _ctx.config.mode
@@ -2122,6 +2206,12 @@ impl<'de> serde::de::Deserialize<'de> for MedicationKnowledgeRegulatorySchedule 
             #[serde(rename = "schedule")]
             Schedule,
             Unknown(std::string::String),
+        }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &["id", "extension", "modifierExtension", "schedule"],
+            ))
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -2269,6 +2359,12 @@ impl<'de> serde::de::Deserialize<'de> for MedicationKnowledgeRegulatoryMaxDispen
             #[serde(rename = "period")]
             Period,
             Unknown(std::string::String),
+        }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &["id", "extension", "modifierExtension", "quantity", "period"],
+            ))
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -2438,6 +2534,20 @@ impl<'de> serde::de::Deserialize<'de> for MedicationKnowledgeRegulatory {
             #[serde(rename = "maxDispense")]
             MaxDispense,
             Unknown(std::string::String),
+        }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "regulatoryAuthority",
+                    "substitution",
+                    "schedule",
+                    "maxDispense",
+                ],
+            ))
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -2642,6 +2752,19 @@ impl<'de> serde::de::Deserialize<'de> for MedicationKnowledgeKinetics {
             #[serde(rename = "halfLifePeriod")]
             HalfLifePeriod,
             Unknown(std::string::String),
+        }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "areaUnderCurve",
+                    "lethalDose50",
+                    "halfLifePeriod",
+                ],
+            ))
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -3121,6 +3244,43 @@ impl<'de> serde::de::Deserialize<'de> for MedicationKnowledge {
             Kinetics,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "meta",
+                    "implicitRules",
+                    "language",
+                    "text",
+                    "contained",
+                    "extension",
+                    "modifierExtension",
+                    "code",
+                    "status",
+                    "manufacturer",
+                    "doseForm",
+                    "amount",
+                    "synonym",
+                    "relatedMedicationKnowledge",
+                    "associatedMedication",
+                    "productType",
+                    "monograph",
+                    "ingredient",
+                    "preparationInstruction",
+                    "intendedRoute",
+                    "cost",
+                    "monitoringProgram",
+                    "administrationGuidelines",
+                    "medicineClassification",
+                    "packaging",
+                    "drugCharacteristic",
+                    "contraindication",
+                    "regulatory",
+                    "kinetics",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = MedicationKnowledge;
@@ -3232,41 +3392,7 @@ impl<'de> serde::de::Deserialize<'de> for MedicationKnowledge {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "implicitRules",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "code",
-                                            "status",
-                                            "manufacturer",
-                                            "doseForm",
-                                            "amount",
-                                            "synonym",
-                                            "relatedMedicationKnowledge",
-                                            "associatedMedication",
-                                            "productType",
-                                            "monograph",
-                                            "ingredient",
-                                            "preparationInstruction",
-                                            "intendedRoute",
-                                            "cost",
-                                            "monitoringProgram",
-                                            "administrationGuidelines",
-                                            "medicineClassification",
-                                            "packaging",
-                                            "drugCharacteristic",
-                                            "contraindication",
-                                            "regulatory",
-                                            "kinetics",
-                                        ],
-                                    ));
+                                    return unknown_field_error("implicitRules");
                                 }
                             }
                             Field::Language => {
@@ -3297,41 +3423,7 @@ impl<'de> serde::de::Deserialize<'de> for MedicationKnowledge {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "language",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "code",
-                                            "status",
-                                            "manufacturer",
-                                            "doseForm",
-                                            "amount",
-                                            "synonym",
-                                            "relatedMedicationKnowledge",
-                                            "associatedMedication",
-                                            "productType",
-                                            "monograph",
-                                            "ingredient",
-                                            "preparationInstruction",
-                                            "intendedRoute",
-                                            "cost",
-                                            "monitoringProgram",
-                                            "administrationGuidelines",
-                                            "medicineClassification",
-                                            "packaging",
-                                            "drugCharacteristic",
-                                            "contraindication",
-                                            "regulatory",
-                                            "kinetics",
-                                        ],
-                                    ));
+                                    return unknown_field_error("language");
                                 }
                             }
                             Field::Text => {
@@ -3410,41 +3502,7 @@ impl<'de> serde::de::Deserialize<'de> for MedicationKnowledge {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "status",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "code",
-                                            "status",
-                                            "manufacturer",
-                                            "doseForm",
-                                            "amount",
-                                            "synonym",
-                                            "relatedMedicationKnowledge",
-                                            "associatedMedication",
-                                            "productType",
-                                            "monograph",
-                                            "ingredient",
-                                            "preparationInstruction",
-                                            "intendedRoute",
-                                            "cost",
-                                            "monitoringProgram",
-                                            "administrationGuidelines",
-                                            "medicineClassification",
-                                            "packaging",
-                                            "drugCharacteristic",
-                                            "contraindication",
-                                            "regulatory",
-                                            "kinetics",
-                                        ],
-                                    ));
+                                    return unknown_field_error("status");
                                 }
                             }
                             Field::Manufacturer => {
@@ -3521,41 +3579,7 @@ impl<'de> serde::de::Deserialize<'de> for MedicationKnowledge {
                                         }
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "synonym",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "code",
-                                            "status",
-                                            "manufacturer",
-                                            "doseForm",
-                                            "amount",
-                                            "synonym",
-                                            "relatedMedicationKnowledge",
-                                            "associatedMedication",
-                                            "productType",
-                                            "monograph",
-                                            "ingredient",
-                                            "preparationInstruction",
-                                            "intendedRoute",
-                                            "cost",
-                                            "monitoringProgram",
-                                            "administrationGuidelines",
-                                            "medicineClassification",
-                                            "packaging",
-                                            "drugCharacteristic",
-                                            "contraindication",
-                                            "regulatory",
-                                            "kinetics",
-                                        ],
-                                    ));
+                                    return unknown_field_error("synonym");
                                 }
                             }
                             Field::RelatedMedicationKnowledge => {
@@ -3659,41 +3683,7 @@ impl<'de> serde::de::Deserialize<'de> for MedicationKnowledge {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "preparationInstruction",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "code",
-                                            "status",
-                                            "manufacturer",
-                                            "doseForm",
-                                            "amount",
-                                            "synonym",
-                                            "relatedMedicationKnowledge",
-                                            "associatedMedication",
-                                            "productType",
-                                            "monograph",
-                                            "ingredient",
-                                            "preparationInstruction",
-                                            "intendedRoute",
-                                            "cost",
-                                            "monitoringProgram",
-                                            "administrationGuidelines",
-                                            "medicineClassification",
-                                            "packaging",
-                                            "drugCharacteristic",
-                                            "contraindication",
-                                            "regulatory",
-                                            "kinetics",
-                                        ],
-                                    ));
+                                    return unknown_field_error("preparationInstruction");
                                 }
                             }
                             Field::IntendedRoute => {

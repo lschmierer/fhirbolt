@@ -1,4 +1,4 @@
-// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-08 by fhirbolt-codegen v0.1.0
 #[doc = "Quantitative value for this moiety."]
 #[derive(Debug, Clone, PartialEq)]
 pub enum SubstanceSpecificationMoietyAmount {
@@ -223,6 +223,24 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceSpecificationMoiety {
             AmountStringPrimitiveElement,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "role",
+                    "identifier",
+                    "name",
+                    "stereochemistry",
+                    "opticalActivity",
+                    "molecularFormula",
+                    "amountQuantity",
+                    "amountString",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = SubstanceSpecificationMoiety;
@@ -323,22 +341,7 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceSpecificationMoiety {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "name",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "role",
-                                            "identifier",
-                                            "name",
-                                            "stereochemistry",
-                                            "opticalActivity",
-                                            "molecularFormula",
-                                            "amountQuantity",
-                                            "amountString",
-                                        ],
-                                    ));
+                                    return unknown_field_error("name");
                                 }
                             }
                             Field::Stereochemistry => {
@@ -393,22 +396,7 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceSpecificationMoiety {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "molecularFormula",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "role",
-                                            "identifier",
-                                            "name",
-                                            "stereochemistry",
-                                            "opticalActivity",
-                                            "molecularFormula",
-                                            "amountQuantity",
-                                            "amountString",
-                                        ],
-                                    ));
+                                    return unknown_field_error("molecularFormula");
                                 }
                             }
                             Field::AmountQuantity => {
@@ -479,22 +467,7 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceSpecificationMoiety {
                                         ));
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "amountString",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "role",
-                                            "identifier",
-                                            "name",
-                                            "stereochemistry",
-                                            "opticalActivity",
-                                            "molecularFormula",
-                                            "amountQuantity",
-                                            "amountString",
-                                        ],
-                                    ));
+                                    return unknown_field_error("amountString");
                                 }
                             }
                             Field::Unknown(key) => if _ctx.config.mode
@@ -679,6 +652,23 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceSpecificationProperty {
             AmountStringPrimitiveElement,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "category",
+                    "code",
+                    "parameters",
+                    "definingSubstanceReference",
+                    "definingSubstanceCodeableConcept",
+                    "amountQuantity",
+                    "amountString",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = SubstanceSpecificationProperty;
@@ -703,7 +693,7 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceSpecificationProperty {
                     SubstanceSpecificationPropertyDefiningSubstance,
                 > = None;
                 let mut r#amount: Option<SubstanceSpecificationPropertyAmount> = None;
-                fhirbolt_shared :: serde_context :: de :: DESERIALIZATION_CONTEXT . with (| _ctx | { let _ctx = _ctx . borrow () ; while let Some (map_access_key) = map_access . next_key () ? { match map_access_key { Field :: Id => { if r#id . is_some () { return Err (serde :: de :: Error :: duplicate_field ("id")) ; } r#id = Some (map_access . next_value () ?) ; } , Field :: Extension => { if _ctx . from_json { if r#extension . is_some () { return Err (serde :: de :: Error :: duplicate_field ("extension")) ; } r#extension = Some (map_access . next_value () ?) ; } else { let vec = r#extension . get_or_insert (Default :: default ()) ; vec . push (map_access . next_value () ?) ; } } , Field :: ModifierExtension => { if _ctx . from_json { if r#modifier_extension . is_some () { return Err (serde :: de :: Error :: duplicate_field ("modifierExtension")) ; } r#modifier_extension = Some (map_access . next_value () ?) ; } else { let vec = r#modifier_extension . get_or_insert (Default :: default ()) ; vec . push (map_access . next_value () ?) ; } } , Field :: Category => { if r#category . is_some () { return Err (serde :: de :: Error :: duplicate_field ("category")) ; } r#category = Some (map_access . next_value () ?) ; } , Field :: Code => { if r#code . is_some () { return Err (serde :: de :: Error :: duplicate_field ("code")) ; } r#code = Some (map_access . next_value () ?) ; } , Field :: Parameters => { if _ctx . from_json { let some = r#parameters . get_or_insert (Default :: default ()) ; if some . value . is_some () { return Err (serde :: de :: Error :: duplicate_field ("parameters")) ; } let value : _ = map_access . next_value () ? ; some . value = Some (value) ; } else { if r#parameters . is_some () { return Err (serde :: de :: Error :: duplicate_field ("parameters")) ; } r#parameters = Some (map_access . next_value () ?) ; } } , Field :: ParametersPrimitiveElement => { if _ctx . from_json { let some = r#parameters . get_or_insert (Default :: default ()) ; if some . id . is_some () || ! some . extension . is_empty () { return Err (serde :: de :: Error :: duplicate_field ("_parameters")) ; } let super :: super :: serde_helpers :: PrimitiveElementOwned { id , extension } = map_access . next_value () ? ; some . id = id ; some . extension = extension ; } else { return Err (serde :: de :: Error :: unknown_field ("parameters" , & ["id" , "extension" , "modifierExtension" , "category" , "code" , "parameters" , "definingSubstanceReference" , "definingSubstanceCodeableConcept" , "amountQuantity" , "amountString" ,])) ; } } , Field :: DefiningSubstanceReference => { if r#defining_substance . is_some () { return Err (serde :: de :: Error :: duplicate_field ("definingSubstanceReference")) ; } r#defining_substance = Some (SubstanceSpecificationPropertyDefiningSubstance :: Reference (map_access . next_value () ?)) ; } , Field :: DefiningSubstanceCodeableConcept => { if r#defining_substance . is_some () { return Err (serde :: de :: Error :: duplicate_field ("definingSubstanceCodeableConcept")) ; } r#defining_substance = Some (SubstanceSpecificationPropertyDefiningSubstance :: CodeableConcept (map_access . next_value () ?)) ; } , Field :: AmountQuantity => { if r#amount . is_some () { return Err (serde :: de :: Error :: duplicate_field ("amountQuantity")) ; } r#amount = Some (SubstanceSpecificationPropertyAmount :: Quantity (map_access . next_value () ?)) ; } , Field :: AmountString => { if _ctx . from_json { let r#enum = r#amount . get_or_insert (SubstanceSpecificationPropertyAmount :: String (Default :: default ())) ; if let SubstanceSpecificationPropertyAmount :: String (variant) = r#enum { if variant . value . is_some () { return Err (serde :: de :: Error :: duplicate_field ("amountString")) ; } let value : _ = map_access . next_value () ? ; variant . value = Some (value) ; } else { return Err (serde :: de :: Error :: duplicate_field ("amount[x]")) ; } } else { if r#amount . is_some () { return Err (serde :: de :: Error :: duplicate_field ("amountString")) ; } r#amount = Some (SubstanceSpecificationPropertyAmount :: String (map_access . next_value () ?)) ; } } , Field :: AmountStringPrimitiveElement => { if _ctx . from_json { let r#enum = r#amount . get_or_insert (SubstanceSpecificationPropertyAmount :: String (Default :: default ())) ; if let SubstanceSpecificationPropertyAmount :: String (variant) = r#enum { if variant . id . is_some () || ! variant . extension . is_empty () { return Err (serde :: de :: Error :: duplicate_field ("_amountString")) ; } let super :: super :: serde_helpers :: PrimitiveElementOwned { id , extension } = map_access . next_value () ? ; variant . id = id ; variant . extension = extension ; } else { return Err (serde :: de :: Error :: duplicate_field ("_amount[x]")) ; } } else { return Err (serde :: de :: Error :: unknown_field ("amountString" , & ["id" , "extension" , "modifierExtension" , "category" , "code" , "parameters" , "definingSubstanceReference" , "definingSubstanceCodeableConcept" , "amountQuantity" , "amountString" ,])) ; } } , Field :: Unknown (key) => if _ctx . config . mode == fhirbolt_shared :: serde_context :: de :: DeserializationMode :: Strict { return Err (serde :: de :: Error :: unknown_field (& key , & ["id" , "extension" , "modifierExtension" , "category" , "code" , "parameters" , "definingSubstanceReference" , "definingSubstanceCodeableConcept" , "amountQuantity" , "amountString" ,])) ; } } } Ok (SubstanceSpecificationProperty { r#id , r#extension : r#extension . unwrap_or (vec ! []) , r#modifier_extension : r#modifier_extension . unwrap_or (vec ! []) , r#category , r#code , r#parameters , r#defining_substance , r#amount , }) })
+                fhirbolt_shared :: serde_context :: de :: DESERIALIZATION_CONTEXT . with (| _ctx | { let _ctx = _ctx . borrow () ; while let Some (map_access_key) = map_access . next_key () ? { match map_access_key { Field :: Id => { if r#id . is_some () { return Err (serde :: de :: Error :: duplicate_field ("id")) ; } r#id = Some (map_access . next_value () ?) ; } , Field :: Extension => { if _ctx . from_json { if r#extension . is_some () { return Err (serde :: de :: Error :: duplicate_field ("extension")) ; } r#extension = Some (map_access . next_value () ?) ; } else { let vec = r#extension . get_or_insert (Default :: default ()) ; vec . push (map_access . next_value () ?) ; } } , Field :: ModifierExtension => { if _ctx . from_json { if r#modifier_extension . is_some () { return Err (serde :: de :: Error :: duplicate_field ("modifierExtension")) ; } r#modifier_extension = Some (map_access . next_value () ?) ; } else { let vec = r#modifier_extension . get_or_insert (Default :: default ()) ; vec . push (map_access . next_value () ?) ; } } , Field :: Category => { if r#category . is_some () { return Err (serde :: de :: Error :: duplicate_field ("category")) ; } r#category = Some (map_access . next_value () ?) ; } , Field :: Code => { if r#code . is_some () { return Err (serde :: de :: Error :: duplicate_field ("code")) ; } r#code = Some (map_access . next_value () ?) ; } , Field :: Parameters => { if _ctx . from_json { let some = r#parameters . get_or_insert (Default :: default ()) ; if some . value . is_some () { return Err (serde :: de :: Error :: duplicate_field ("parameters")) ; } let value : _ = map_access . next_value () ? ; some . value = Some (value) ; } else { if r#parameters . is_some () { return Err (serde :: de :: Error :: duplicate_field ("parameters")) ; } r#parameters = Some (map_access . next_value () ?) ; } } , Field :: ParametersPrimitiveElement => { if _ctx . from_json { let some = r#parameters . get_or_insert (Default :: default ()) ; if some . id . is_some () || ! some . extension . is_empty () { return Err (serde :: de :: Error :: duplicate_field ("_parameters")) ; } let super :: super :: serde_helpers :: PrimitiveElementOwned { id , extension } = map_access . next_value () ? ; some . id = id ; some . extension = extension ; } else { return unknown_field_error ("parameters") ; } } , Field :: DefiningSubstanceReference => { if r#defining_substance . is_some () { return Err (serde :: de :: Error :: duplicate_field ("definingSubstanceReference")) ; } r#defining_substance = Some (SubstanceSpecificationPropertyDefiningSubstance :: Reference (map_access . next_value () ?)) ; } , Field :: DefiningSubstanceCodeableConcept => { if r#defining_substance . is_some () { return Err (serde :: de :: Error :: duplicate_field ("definingSubstanceCodeableConcept")) ; } r#defining_substance = Some (SubstanceSpecificationPropertyDefiningSubstance :: CodeableConcept (map_access . next_value () ?)) ; } , Field :: AmountQuantity => { if r#amount . is_some () { return Err (serde :: de :: Error :: duplicate_field ("amountQuantity")) ; } r#amount = Some (SubstanceSpecificationPropertyAmount :: Quantity (map_access . next_value () ?)) ; } , Field :: AmountString => { if _ctx . from_json { let r#enum = r#amount . get_or_insert (SubstanceSpecificationPropertyAmount :: String (Default :: default ())) ; if let SubstanceSpecificationPropertyAmount :: String (variant) = r#enum { if variant . value . is_some () { return Err (serde :: de :: Error :: duplicate_field ("amountString")) ; } let value : _ = map_access . next_value () ? ; variant . value = Some (value) ; } else { return Err (serde :: de :: Error :: duplicate_field ("amount[x]")) ; } } else { if r#amount . is_some () { return Err (serde :: de :: Error :: duplicate_field ("amountString")) ; } r#amount = Some (SubstanceSpecificationPropertyAmount :: String (map_access . next_value () ?)) ; } } , Field :: AmountStringPrimitiveElement => { if _ctx . from_json { let r#enum = r#amount . get_or_insert (SubstanceSpecificationPropertyAmount :: String (Default :: default ())) ; if let SubstanceSpecificationPropertyAmount :: String (variant) = r#enum { if variant . id . is_some () || ! variant . extension . is_empty () { return Err (serde :: de :: Error :: duplicate_field ("_amountString")) ; } let super :: super :: serde_helpers :: PrimitiveElementOwned { id , extension } = map_access . next_value () ? ; variant . id = id ; variant . extension = extension ; } else { return Err (serde :: de :: Error :: duplicate_field ("_amount[x]")) ; } } else { return unknown_field_error ("amountString") ; } } , Field :: Unknown (key) => if _ctx . config . mode == fhirbolt_shared :: serde_context :: de :: DeserializationMode :: Strict { return Err (serde :: de :: Error :: unknown_field (& key , & ["id" , "extension" , "modifierExtension" , "category" , "code" , "parameters" , "definingSubstanceReference" , "definingSubstanceCodeableConcept" , "amountQuantity" , "amountString" ,])) ; } } } Ok (SubstanceSpecificationProperty { r#id , r#extension : r#extension . unwrap_or (vec ! []) , r#modifier_extension : r#modifier_extension . unwrap_or (vec ! []) , r#category , r#code , r#parameters , r#defining_substance , r#amount , }) })
             }
         }
         deserializer.deserialize_map(Visitor)
@@ -777,6 +767,19 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceSpecificationStructureIsotope
             #[serde(rename = "amount")]
             Amount,
             Unknown(std::string::String),
+        }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "method",
+                    "type",
+                    "amount",
+                ],
+            ))
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -964,6 +967,21 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceSpecificationStructureIsotope
             #[serde(rename = "molecularWeight")]
             MolecularWeight,
             Unknown(std::string::String),
+        }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "identifier",
+                    "name",
+                    "substitution",
+                    "halfLife",
+                    "molecularWeight",
+                ],
+            ))
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -1178,6 +1196,19 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceSpecificationStructureReprese
             Attachment,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "type",
+                    "representation",
+                    "attachment",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = SubstanceSpecificationStructureRepresentation;
@@ -1273,17 +1304,7 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceSpecificationStructureReprese
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "representation",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "type",
-                                            "representation",
-                                            "attachment",
-                                        ],
-                                    ));
+                                    return unknown_field_error("representation");
                                 }
                             }
                             Field::Attachment => {
@@ -1463,6 +1484,24 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceSpecificationStructure {
             Representation,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "stereochemistry",
+                    "opticalActivity",
+                    "molecularFormula",
+                    "molecularFormulaByMoiety",
+                    "isotope",
+                    "molecularWeight",
+                    "source",
+                    "representation",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = SubstanceSpecificationStructure;
@@ -1580,22 +1619,7 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceSpecificationStructure {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "molecularFormula",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "stereochemistry",
-                                            "opticalActivity",
-                                            "molecularFormula",
-                                            "molecularFormulaByMoiety",
-                                            "isotope",
-                                            "molecularWeight",
-                                            "source",
-                                            "representation",
-                                        ],
-                                    ));
+                                    return unknown_field_error("molecularFormula");
                                 }
                             }
                             Field::MolecularFormulaByMoiety => {
@@ -1634,22 +1658,7 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceSpecificationStructure {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "molecularFormulaByMoiety",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "stereochemistry",
-                                            "opticalActivity",
-                                            "molecularFormula",
-                                            "molecularFormulaByMoiety",
-                                            "isotope",
-                                            "molecularWeight",
-                                            "source",
-                                            "representation",
-                                        ],
-                                    ));
+                                    return unknown_field_error("molecularFormulaByMoiety");
                                 }
                             }
                             Field::Isotope => {
@@ -1855,6 +1864,21 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceSpecificationCode {
             Source,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "code",
+                    "status",
+                    "statusDate",
+                    "comment",
+                    "source",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = SubstanceSpecificationCode;
@@ -1955,19 +1979,7 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceSpecificationCode {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "statusDate",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "code",
-                                            "status",
-                                            "statusDate",
-                                            "comment",
-                                            "source",
-                                        ],
-                                    ));
+                                    return unknown_field_error("statusDate");
                                 }
                             }
                             Field::Comment => {
@@ -1998,19 +2010,7 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceSpecificationCode {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "comment",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "code",
-                                            "status",
-                                            "statusDate",
-                                            "comment",
-                                            "source",
-                                        ],
-                                    ));
+                                    return unknown_field_error("comment");
                                 }
                             }
                             Field::Source => {
@@ -2146,6 +2146,19 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceSpecificationNameOfficial {
             DatePrimitiveElement,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "authority",
+                    "status",
+                    "date",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = SubstanceSpecificationNameOfficial;
@@ -2241,17 +2254,7 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceSpecificationNameOfficial {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "date",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "authority",
-                                            "status",
-                                            "date",
-                                        ],
-                                    ));
+                                    return unknown_field_error("date");
                                 }
                             }
                             Field::Unknown(key) => if _ctx.config.mode
@@ -2442,6 +2445,27 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceSpecificationName {
             Source,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "name",
+                    "type",
+                    "status",
+                    "preferred",
+                    "language",
+                    "domain",
+                    "jurisdiction",
+                    "synonym",
+                    "translation",
+                    "official",
+                    "source",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = SubstanceSpecificationName;
@@ -2531,25 +2555,7 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceSpecificationName {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "name",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "name",
-                                            "type",
-                                            "status",
-                                            "preferred",
-                                            "language",
-                                            "domain",
-                                            "jurisdiction",
-                                            "synonym",
-                                            "translation",
-                                            "official",
-                                            "source",
-                                        ],
-                                    ));
+                                    return unknown_field_error("name");
                                 }
                             }
                             Field::Type => {
@@ -2594,25 +2600,7 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceSpecificationName {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "preferred",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "name",
-                                            "type",
-                                            "status",
-                                            "preferred",
-                                            "language",
-                                            "domain",
-                                            "jurisdiction",
-                                            "synonym",
-                                            "translation",
-                                            "official",
-                                            "source",
-                                        ],
-                                    ));
+                                    return unknown_field_error("preferred");
                                 }
                             }
                             Field::Language => {
@@ -2915,6 +2903,27 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceSpecificationRelationship {
             Source,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "substanceReference",
+                    "substanceCodeableConcept",
+                    "relationship",
+                    "isDefining",
+                    "amountQuantity",
+                    "amountRange",
+                    "amountRatio",
+                    "amountString",
+                    "amountRatioLowLimit",
+                    "amountType",
+                    "source",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = SubstanceSpecificationRelationship;
@@ -3037,25 +3046,7 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceSpecificationRelationship {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "isDefining",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "substanceReference",
-                                            "substanceCodeableConcept",
-                                            "relationship",
-                                            "isDefining",
-                                            "amountQuantity",
-                                            "amountRange",
-                                            "amountRatio",
-                                            "amountString",
-                                            "amountRatioLowLimit",
-                                            "amountType",
-                                            "source",
-                                        ],
-                                    ));
+                                    return unknown_field_error("isDefining");
                                 }
                             }
                             Field::AmountQuantity => {
@@ -3146,25 +3137,7 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceSpecificationRelationship {
                                         ));
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "amountString",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "substanceReference",
-                                            "substanceCodeableConcept",
-                                            "relationship",
-                                            "isDefining",
-                                            "amountQuantity",
-                                            "amountRange",
-                                            "amountRatio",
-                                            "amountString",
-                                            "amountRatioLowLimit",
-                                            "amountType",
-                                            "source",
-                                        ],
-                                    ));
+                                    return unknown_field_error("amountString");
                                 }
                             }
                             Field::AmountRatioLowLimit => {
@@ -3529,6 +3502,40 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceSpecification {
             SourceMaterial,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "meta",
+                    "implicitRules",
+                    "language",
+                    "text",
+                    "contained",
+                    "extension",
+                    "modifierExtension",
+                    "identifier",
+                    "type",
+                    "status",
+                    "domain",
+                    "description",
+                    "source",
+                    "comment",
+                    "moiety",
+                    "property",
+                    "referenceInformation",
+                    "structure",
+                    "code",
+                    "name",
+                    "molecularWeight",
+                    "relationship",
+                    "nucleicAcid",
+                    "polymer",
+                    "protein",
+                    "sourceMaterial",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = SubstanceSpecification;
@@ -3628,38 +3635,7 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceSpecification {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "implicitRules",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "type",
-                                            "status",
-                                            "domain",
-                                            "description",
-                                            "source",
-                                            "comment",
-                                            "moiety",
-                                            "property",
-                                            "referenceInformation",
-                                            "structure",
-                                            "code",
-                                            "name",
-                                            "molecularWeight",
-                                            "relationship",
-                                            "nucleicAcid",
-                                            "polymer",
-                                            "protein",
-                                            "sourceMaterial",
-                                        ],
-                                    ));
+                                    return unknown_field_error("implicitRules");
                                 }
                             }
                             Field::Language => {
@@ -3690,38 +3666,7 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceSpecification {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "language",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "type",
-                                            "status",
-                                            "domain",
-                                            "description",
-                                            "source",
-                                            "comment",
-                                            "moiety",
-                                            "property",
-                                            "referenceInformation",
-                                            "structure",
-                                            "code",
-                                            "name",
-                                            "molecularWeight",
-                                            "relationship",
-                                            "nucleicAcid",
-                                            "polymer",
-                                            "protein",
-                                            "sourceMaterial",
-                                        ],
-                                    ));
+                                    return unknown_field_error("language");
                                 }
                             }
                             Field::Text => {
@@ -3824,38 +3769,7 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceSpecification {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "description",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "type",
-                                            "status",
-                                            "domain",
-                                            "description",
-                                            "source",
-                                            "comment",
-                                            "moiety",
-                                            "property",
-                                            "referenceInformation",
-                                            "structure",
-                                            "code",
-                                            "name",
-                                            "molecularWeight",
-                                            "relationship",
-                                            "nucleicAcid",
-                                            "polymer",
-                                            "protein",
-                                            "sourceMaterial",
-                                        ],
-                                    ));
+                                    return unknown_field_error("description");
                                 }
                             }
                             Field::Source => {
@@ -3897,38 +3811,7 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceSpecification {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "comment",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "type",
-                                            "status",
-                                            "domain",
-                                            "description",
-                                            "source",
-                                            "comment",
-                                            "moiety",
-                                            "property",
-                                            "referenceInformation",
-                                            "structure",
-                                            "code",
-                                            "name",
-                                            "molecularWeight",
-                                            "relationship",
-                                            "nucleicAcid",
-                                            "polymer",
-                                            "protein",
-                                            "sourceMaterial",
-                                        ],
-                                    ));
+                                    return unknown_field_error("comment");
                                 }
                             }
                             Field::Moiety => {

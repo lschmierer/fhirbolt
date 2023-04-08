@@ -1,4 +1,4 @@
-// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-08 by fhirbolt-codegen v0.1.0
 #[doc = "A communicated content (or for multi-part communications, one portion of the communication)."]
 #[derive(Debug, Clone, PartialEq)]
 pub enum CommunicationPayloadContent {
@@ -97,6 +97,19 @@ impl<'de> serde::de::Deserialize<'de> for CommunicationPayload {
             #[serde(rename = "contentReference")]
             ContentReference,
             Unknown(std::string::String),
+        }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "contentString",
+                    "contentAttachment",
+                    "contentReference",
+                ],
+            ))
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -200,17 +213,7 @@ impl<'de> serde::de::Deserialize<'de> for CommunicationPayload {
                                         ));
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "contentString",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "contentString",
-                                            "contentAttachment",
-                                            "contentReference",
-                                        ],
-                                    ));
+                                    return unknown_field_error("contentString");
                                 }
                             }
                             Field::ContentAttachment => {
@@ -697,6 +700,44 @@ impl<'de> serde::de::Deserialize<'de> for Communication {
             Note,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "meta",
+                    "implicitRules",
+                    "language",
+                    "text",
+                    "contained",
+                    "extension",
+                    "modifierExtension",
+                    "identifier",
+                    "instantiatesCanonical",
+                    "instantiatesUri",
+                    "basedOn",
+                    "partOf",
+                    "inResponseTo",
+                    "status",
+                    "statusReason",
+                    "category",
+                    "priority",
+                    "medium",
+                    "subject",
+                    "topic",
+                    "about",
+                    "encounter",
+                    "sent",
+                    "received",
+                    "recipient",
+                    "sender",
+                    "reasonCode",
+                    "reasonReference",
+                    "payload",
+                    "note",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = Communication;
@@ -800,42 +841,7 @@ impl<'de> serde::de::Deserialize<'de> for Communication {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "implicitRules",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "instantiatesCanonical",
-                                            "instantiatesUri",
-                                            "basedOn",
-                                            "partOf",
-                                            "inResponseTo",
-                                            "status",
-                                            "statusReason",
-                                            "category",
-                                            "priority",
-                                            "medium",
-                                            "subject",
-                                            "topic",
-                                            "about",
-                                            "encounter",
-                                            "sent",
-                                            "received",
-                                            "recipient",
-                                            "sender",
-                                            "reasonCode",
-                                            "reasonReference",
-                                            "payload",
-                                            "note",
-                                        ],
-                                    ));
+                                    return unknown_field_error("implicitRules");
                                 }
                             }
                             Field::Language => {
@@ -866,42 +872,7 @@ impl<'de> serde::de::Deserialize<'de> for Communication {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "language",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "instantiatesCanonical",
-                                            "instantiatesUri",
-                                            "basedOn",
-                                            "partOf",
-                                            "inResponseTo",
-                                            "status",
-                                            "statusReason",
-                                            "category",
-                                            "priority",
-                                            "medium",
-                                            "subject",
-                                            "topic",
-                                            "about",
-                                            "encounter",
-                                            "sent",
-                                            "received",
-                                            "recipient",
-                                            "sender",
-                                            "reasonCode",
-                                            "reasonReference",
-                                            "payload",
-                                            "note",
-                                        ],
-                                    ));
+                                    return unknown_field_error("language");
                                 }
                             }
                             Field::Text => {
@@ -1020,42 +991,7 @@ impl<'de> serde::de::Deserialize<'de> for Communication {
                                         }
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "instantiatesCanonical",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "instantiatesCanonical",
-                                            "instantiatesUri",
-                                            "basedOn",
-                                            "partOf",
-                                            "inResponseTo",
-                                            "status",
-                                            "statusReason",
-                                            "category",
-                                            "priority",
-                                            "medium",
-                                            "subject",
-                                            "topic",
-                                            "about",
-                                            "encounter",
-                                            "sent",
-                                            "received",
-                                            "recipient",
-                                            "sender",
-                                            "reasonCode",
-                                            "reasonReference",
-                                            "payload",
-                                            "note",
-                                        ],
-                                    ));
+                                    return unknown_field_error("instantiatesCanonical");
                                 }
                             }
                             Field::InstantiatesUri => {
@@ -1118,42 +1054,7 @@ impl<'de> serde::de::Deserialize<'de> for Communication {
                                         }
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "instantiatesUri",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "instantiatesCanonical",
-                                            "instantiatesUri",
-                                            "basedOn",
-                                            "partOf",
-                                            "inResponseTo",
-                                            "status",
-                                            "statusReason",
-                                            "category",
-                                            "priority",
-                                            "medium",
-                                            "subject",
-                                            "topic",
-                                            "about",
-                                            "encounter",
-                                            "sent",
-                                            "received",
-                                            "recipient",
-                                            "sender",
-                                            "reasonCode",
-                                            "reasonReference",
-                                            "payload",
-                                            "note",
-                                        ],
-                                    ));
+                                    return unknown_field_error("instantiatesUri");
                                 }
                             }
                             Field::BasedOn => {
@@ -1219,42 +1120,7 @@ impl<'de> serde::de::Deserialize<'de> for Communication {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "status",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "instantiatesCanonical",
-                                            "instantiatesUri",
-                                            "basedOn",
-                                            "partOf",
-                                            "inResponseTo",
-                                            "status",
-                                            "statusReason",
-                                            "category",
-                                            "priority",
-                                            "medium",
-                                            "subject",
-                                            "topic",
-                                            "about",
-                                            "encounter",
-                                            "sent",
-                                            "received",
-                                            "recipient",
-                                            "sender",
-                                            "reasonCode",
-                                            "reasonReference",
-                                            "payload",
-                                            "note",
-                                        ],
-                                    ));
+                                    return unknown_field_error("status");
                                 }
                             }
                             Field::StatusReason => {
@@ -1302,42 +1168,7 @@ impl<'de> serde::de::Deserialize<'de> for Communication {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "priority",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "instantiatesCanonical",
-                                            "instantiatesUri",
-                                            "basedOn",
-                                            "partOf",
-                                            "inResponseTo",
-                                            "status",
-                                            "statusReason",
-                                            "category",
-                                            "priority",
-                                            "medium",
-                                            "subject",
-                                            "topic",
-                                            "about",
-                                            "encounter",
-                                            "sent",
-                                            "received",
-                                            "recipient",
-                                            "sender",
-                                            "reasonCode",
-                                            "reasonReference",
-                                            "payload",
-                                            "note",
-                                        ],
-                                    ));
+                                    return unknown_field_error("priority");
                                 }
                             }
                             Field::Medium => {
@@ -1408,42 +1239,7 @@ impl<'de> serde::de::Deserialize<'de> for Communication {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "sent",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "instantiatesCanonical",
-                                            "instantiatesUri",
-                                            "basedOn",
-                                            "partOf",
-                                            "inResponseTo",
-                                            "status",
-                                            "statusReason",
-                                            "category",
-                                            "priority",
-                                            "medium",
-                                            "subject",
-                                            "topic",
-                                            "about",
-                                            "encounter",
-                                            "sent",
-                                            "received",
-                                            "recipient",
-                                            "sender",
-                                            "reasonCode",
-                                            "reasonReference",
-                                            "payload",
-                                            "note",
-                                        ],
-                                    ));
+                                    return unknown_field_error("sent");
                                 }
                             }
                             Field::Received => {
@@ -1474,42 +1270,7 @@ impl<'de> serde::de::Deserialize<'de> for Communication {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "received",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "instantiatesCanonical",
-                                            "instantiatesUri",
-                                            "basedOn",
-                                            "partOf",
-                                            "inResponseTo",
-                                            "status",
-                                            "statusReason",
-                                            "category",
-                                            "priority",
-                                            "medium",
-                                            "subject",
-                                            "topic",
-                                            "about",
-                                            "encounter",
-                                            "sent",
-                                            "received",
-                                            "recipient",
-                                            "sender",
-                                            "reasonCode",
-                                            "reasonReference",
-                                            "payload",
-                                            "note",
-                                        ],
-                                    ));
+                                    return unknown_field_error("received");
                                 }
                             }
                             Field::Recipient => {

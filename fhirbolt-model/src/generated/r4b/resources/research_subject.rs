@@ -1,4 +1,4 @@
-// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-08 by fhirbolt-codegen v0.1.0
 #[doc = "A physical entity which is the primary unit of operational and/or administrative interest in a study."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub struct ResearchSubject {
@@ -226,6 +226,29 @@ impl<'de> serde::de::Deserialize<'de> for ResearchSubject {
             Consent,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "meta",
+                    "implicitRules",
+                    "language",
+                    "text",
+                    "contained",
+                    "extension",
+                    "modifierExtension",
+                    "identifier",
+                    "status",
+                    "period",
+                    "study",
+                    "individual",
+                    "assignedArm",
+                    "actualArm",
+                    "consent",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = ResearchSubject;
@@ -312,27 +335,7 @@ impl<'de> serde::de::Deserialize<'de> for ResearchSubject {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "implicitRules",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "status",
-                                            "period",
-                                            "study",
-                                            "individual",
-                                            "assignedArm",
-                                            "actualArm",
-                                            "consent",
-                                        ],
-                                    ));
+                                    return unknown_field_error("implicitRules");
                                 }
                             }
                             Field::Language => {
@@ -363,27 +366,7 @@ impl<'de> serde::de::Deserialize<'de> for ResearchSubject {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "language",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "status",
-                                            "period",
-                                            "study",
-                                            "individual",
-                                            "assignedArm",
-                                            "actualArm",
-                                            "consent",
-                                        ],
-                                    ));
+                                    return unknown_field_error("language");
                                 }
                             }
                             Field::Text => {
@@ -469,27 +452,7 @@ impl<'de> serde::de::Deserialize<'de> for ResearchSubject {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "status",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "status",
-                                            "period",
-                                            "study",
-                                            "individual",
-                                            "assignedArm",
-                                            "actualArm",
-                                            "consent",
-                                        ],
-                                    ));
+                                    return unknown_field_error("status");
                                 }
                             }
                             Field::Period => {
@@ -544,27 +507,7 @@ impl<'de> serde::de::Deserialize<'de> for ResearchSubject {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "assignedArm",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "status",
-                                            "period",
-                                            "study",
-                                            "individual",
-                                            "assignedArm",
-                                            "actualArm",
-                                            "consent",
-                                        ],
-                                    ));
+                                    return unknown_field_error("assignedArm");
                                 }
                             }
                             Field::ActualArm => {
@@ -597,27 +540,7 @@ impl<'de> serde::de::Deserialize<'de> for ResearchSubject {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "actualArm",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "status",
-                                            "period",
-                                            "study",
-                                            "individual",
-                                            "assignedArm",
-                                            "actualArm",
-                                            "consent",
-                                        ],
-                                    ));
+                                    return unknown_field_error("actualArm");
                                 }
                             }
                             Field::Consent => {

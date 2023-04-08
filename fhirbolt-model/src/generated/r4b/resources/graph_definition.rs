@@ -1,4 +1,4 @@
-// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-08 by fhirbolt-codegen v0.1.0
 #[doc = "Compartment Consistency Rules."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub struct GraphDefinitionLinkTargetCompartment {
@@ -160,6 +160,21 @@ impl<'de> serde::de::Deserialize<'de> for GraphDefinitionLinkTargetCompartment {
             DescriptionPrimitiveElement,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "use",
+                    "code",
+                    "rule",
+                    "expression",
+                    "description",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = GraphDefinitionLinkTargetCompartment;
@@ -245,19 +260,7 @@ impl<'de> serde::de::Deserialize<'de> for GraphDefinitionLinkTargetCompartment {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "use",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "use",
-                                            "code",
-                                            "rule",
-                                            "expression",
-                                            "description",
-                                        ],
-                                    ));
+                                    return unknown_field_error("use");
                                 }
                             }
                             Field::Code => {
@@ -288,19 +291,7 @@ impl<'de> serde::de::Deserialize<'de> for GraphDefinitionLinkTargetCompartment {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "code",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "use",
-                                            "code",
-                                            "rule",
-                                            "expression",
-                                            "description",
-                                        ],
-                                    ));
+                                    return unknown_field_error("code");
                                 }
                             }
                             Field::Rule => {
@@ -331,19 +322,7 @@ impl<'de> serde::de::Deserialize<'de> for GraphDefinitionLinkTargetCompartment {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "rule",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "use",
-                                            "code",
-                                            "rule",
-                                            "expression",
-                                            "description",
-                                        ],
-                                    ));
+                                    return unknown_field_error("rule");
                                 }
                             }
                             Field::Expression => {
@@ -380,19 +359,7 @@ impl<'de> serde::de::Deserialize<'de> for GraphDefinitionLinkTargetCompartment {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "expression",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "use",
-                                            "code",
-                                            "rule",
-                                            "expression",
-                                            "description",
-                                        ],
-                                    ));
+                                    return unknown_field_error("expression");
                                 }
                             }
                             Field::Description => {
@@ -429,19 +396,7 @@ impl<'de> serde::de::Deserialize<'de> for GraphDefinitionLinkTargetCompartment {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "description",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "use",
-                                            "code",
-                                            "rule",
-                                            "expression",
-                                            "description",
-                                        ],
-                                    ));
+                                    return unknown_field_error("description");
                                 }
                             }
                             Field::Unknown(key) => if _ctx.config.mode
@@ -630,6 +585,21 @@ impl<'de> serde::de::Deserialize<'de> for GraphDefinitionLinkTarget {
             Link,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "type",
+                    "params",
+                    "profile",
+                    "compartment",
+                    "link",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = GraphDefinitionLinkTarget;
@@ -712,19 +682,7 @@ impl<'de> serde::de::Deserialize<'de> for GraphDefinitionLinkTarget {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "type",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "type",
-                                            "params",
-                                            "profile",
-                                            "compartment",
-                                            "link",
-                                        ],
-                                    ));
+                                    return unknown_field_error("type");
                                 }
                             }
                             Field::Params => {
@@ -755,19 +713,7 @@ impl<'de> serde::de::Deserialize<'de> for GraphDefinitionLinkTarget {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "params",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "type",
-                                            "params",
-                                            "profile",
-                                            "compartment",
-                                            "link",
-                                        ],
-                                    ));
+                                    return unknown_field_error("params");
                                 }
                             }
                             Field::Profile => {
@@ -798,19 +744,7 @@ impl<'de> serde::de::Deserialize<'de> for GraphDefinitionLinkTarget {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "profile",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "type",
-                                            "params",
-                                            "profile",
-                                            "compartment",
-                                            "link",
-                                        ],
-                                    ));
+                                    return unknown_field_error("profile");
                                 }
                             }
                             Field::Compartment => {
@@ -1058,6 +992,22 @@ impl<'de> serde::de::Deserialize<'de> for GraphDefinitionLink {
             Target,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "path",
+                    "sliceName",
+                    "min",
+                    "max",
+                    "description",
+                    "target",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = GraphDefinitionLink;
@@ -1141,20 +1091,7 @@ impl<'de> serde::de::Deserialize<'de> for GraphDefinitionLink {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "path",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "path",
-                                            "sliceName",
-                                            "min",
-                                            "max",
-                                            "description",
-                                            "target",
-                                        ],
-                                    ));
+                                    return unknown_field_error("path");
                                 }
                             }
                             Field::SliceName => {
@@ -1187,20 +1124,7 @@ impl<'de> serde::de::Deserialize<'de> for GraphDefinitionLink {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "sliceName",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "path",
-                                            "sliceName",
-                                            "min",
-                                            "max",
-                                            "description",
-                                            "target",
-                                        ],
-                                    ));
+                                    return unknown_field_error("sliceName");
                                 }
                             }
                             Field::Min => {
@@ -1231,20 +1155,7 @@ impl<'de> serde::de::Deserialize<'de> for GraphDefinitionLink {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "min",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "path",
-                                            "sliceName",
-                                            "min",
-                                            "max",
-                                            "description",
-                                            "target",
-                                        ],
-                                    ));
+                                    return unknown_field_error("min");
                                 }
                             }
                             Field::Max => {
@@ -1275,20 +1186,7 @@ impl<'de> serde::de::Deserialize<'de> for GraphDefinitionLink {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "max",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "path",
-                                            "sliceName",
-                                            "min",
-                                            "max",
-                                            "description",
-                                            "target",
-                                        ],
-                                    ));
+                                    return unknown_field_error("max");
                                 }
                             }
                             Field::Description => {
@@ -1325,20 +1223,7 @@ impl<'de> serde::de::Deserialize<'de> for GraphDefinitionLink {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "description",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "path",
-                                            "sliceName",
-                                            "min",
-                                            "max",
-                                            "description",
-                                            "target",
-                                        ],
-                                    ));
+                                    return unknown_field_error("description");
                                 }
                             }
                             Field::Target => {
@@ -1805,6 +1690,36 @@ impl<'de> serde::de::Deserialize<'de> for GraphDefinition {
             Link,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "meta",
+                    "implicitRules",
+                    "language",
+                    "text",
+                    "contained",
+                    "extension",
+                    "modifierExtension",
+                    "url",
+                    "version",
+                    "name",
+                    "status",
+                    "experimental",
+                    "date",
+                    "publisher",
+                    "contact",
+                    "description",
+                    "useContext",
+                    "jurisdiction",
+                    "purpose",
+                    "start",
+                    "profile",
+                    "link",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = GraphDefinition;
@@ -1899,34 +1814,7 @@ impl<'de> serde::de::Deserialize<'de> for GraphDefinition {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "implicitRules",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "version",
-                                            "name",
-                                            "status",
-                                            "experimental",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "description",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "purpose",
-                                            "start",
-                                            "profile",
-                                            "link",
-                                        ],
-                                    ));
+                                    return unknown_field_error("implicitRules");
                                 }
                             }
                             Field::Language => {
@@ -1957,34 +1845,7 @@ impl<'de> serde::de::Deserialize<'de> for GraphDefinition {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "language",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "version",
-                                            "name",
-                                            "status",
-                                            "experimental",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "description",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "purpose",
-                                            "start",
-                                            "profile",
-                                            "link",
-                                        ],
-                                    ));
+                                    return unknown_field_error("language");
                                 }
                             }
                             Field::Text => {
@@ -2057,34 +1918,7 @@ impl<'de> serde::de::Deserialize<'de> for GraphDefinition {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "url",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "version",
-                                            "name",
-                                            "status",
-                                            "experimental",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "description",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "purpose",
-                                            "start",
-                                            "profile",
-                                            "link",
-                                        ],
-                                    ));
+                                    return unknown_field_error("url");
                                 }
                             }
                             Field::Version => {
@@ -2115,34 +1949,7 @@ impl<'de> serde::de::Deserialize<'de> for GraphDefinition {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "version",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "version",
-                                            "name",
-                                            "status",
-                                            "experimental",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "description",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "purpose",
-                                            "start",
-                                            "profile",
-                                            "link",
-                                        ],
-                                    ));
+                                    return unknown_field_error("version");
                                 }
                             }
                             Field::Name => {
@@ -2173,34 +1980,7 @@ impl<'de> serde::de::Deserialize<'de> for GraphDefinition {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "name",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "version",
-                                            "name",
-                                            "status",
-                                            "experimental",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "description",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "purpose",
-                                            "start",
-                                            "profile",
-                                            "link",
-                                        ],
-                                    ));
+                                    return unknown_field_error("name");
                                 }
                             }
                             Field::Status => {
@@ -2231,34 +2011,7 @@ impl<'de> serde::de::Deserialize<'de> for GraphDefinition {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "status",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "version",
-                                            "name",
-                                            "status",
-                                            "experimental",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "description",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "purpose",
-                                            "start",
-                                            "profile",
-                                            "link",
-                                        ],
-                                    ));
+                                    return unknown_field_error("status");
                                 }
                             }
                             Field::Experimental => {
@@ -2295,34 +2048,7 @@ impl<'de> serde::de::Deserialize<'de> for GraphDefinition {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "experimental",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "version",
-                                            "name",
-                                            "status",
-                                            "experimental",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "description",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "purpose",
-                                            "start",
-                                            "profile",
-                                            "link",
-                                        ],
-                                    ));
+                                    return unknown_field_error("experimental");
                                 }
                             }
                             Field::Date => {
@@ -2353,34 +2079,7 @@ impl<'de> serde::de::Deserialize<'de> for GraphDefinition {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "date",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "version",
-                                            "name",
-                                            "status",
-                                            "experimental",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "description",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "purpose",
-                                            "start",
-                                            "profile",
-                                            "link",
-                                        ],
-                                    ));
+                                    return unknown_field_error("date");
                                 }
                             }
                             Field::Publisher => {
@@ -2413,34 +2112,7 @@ impl<'de> serde::de::Deserialize<'de> for GraphDefinition {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "publisher",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "version",
-                                            "name",
-                                            "status",
-                                            "experimental",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "description",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "purpose",
-                                            "start",
-                                            "profile",
-                                            "link",
-                                        ],
-                                    ));
+                                    return unknown_field_error("publisher");
                                 }
                             }
                             Field::Contact => {
@@ -2488,34 +2160,7 @@ impl<'de> serde::de::Deserialize<'de> for GraphDefinition {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "description",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "version",
-                                            "name",
-                                            "status",
-                                            "experimental",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "description",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "purpose",
-                                            "start",
-                                            "profile",
-                                            "link",
-                                        ],
-                                    ));
+                                    return unknown_field_error("description");
                                 }
                             }
                             Field::UseContext => {
@@ -2572,34 +2217,7 @@ impl<'de> serde::de::Deserialize<'de> for GraphDefinition {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "purpose",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "version",
-                                            "name",
-                                            "status",
-                                            "experimental",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "description",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "purpose",
-                                            "start",
-                                            "profile",
-                                            "link",
-                                        ],
-                                    ));
+                                    return unknown_field_error("purpose");
                                 }
                             }
                             Field::Start => {
@@ -2630,34 +2248,7 @@ impl<'de> serde::de::Deserialize<'de> for GraphDefinition {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "start",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "version",
-                                            "name",
-                                            "status",
-                                            "experimental",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "description",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "purpose",
-                                            "start",
-                                            "profile",
-                                            "link",
-                                        ],
-                                    ));
+                                    return unknown_field_error("start");
                                 }
                             }
                             Field::Profile => {
@@ -2688,34 +2279,7 @@ impl<'de> serde::de::Deserialize<'de> for GraphDefinition {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "profile",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "version",
-                                            "name",
-                                            "status",
-                                            "experimental",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "description",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "purpose",
-                                            "start",
-                                            "profile",
-                                            "link",
-                                        ],
-                                    ));
+                                    return unknown_field_error("profile");
                                 }
                             }
                             Field::Link => {

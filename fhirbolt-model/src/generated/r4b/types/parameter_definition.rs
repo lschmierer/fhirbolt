@@ -1,4 +1,4 @@
-// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-08 by fhirbolt-codegen v0.1.0
 #[doc = "Base StructureDefinition for ParameterDefinition Type: The parameters to the module. This collection specifies both the input and output parameters. Input parameters are provided by the caller as part of the $evaluate operation. Output parameters are included in the GuidanceResponse."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub struct ParameterDefinition {
@@ -207,6 +207,22 @@ impl<'de> serde::de::Deserialize<'de> for ParameterDefinition {
             ProfilePrimitiveElement,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "name",
+                    "use",
+                    "min",
+                    "max",
+                    "documentation",
+                    "type",
+                    "profile",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = ParameterDefinition;
@@ -275,20 +291,7 @@ impl<'de> serde::de::Deserialize<'de> for ParameterDefinition {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "name",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "name",
-                                            "use",
-                                            "min",
-                                            "max",
-                                            "documentation",
-                                            "type",
-                                            "profile",
-                                        ],
-                                    ));
+                                    return unknown_field_error("name");
                                 }
                             }
                             Field::Use => {
@@ -319,20 +322,7 @@ impl<'de> serde::de::Deserialize<'de> for ParameterDefinition {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "use",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "name",
-                                            "use",
-                                            "min",
-                                            "max",
-                                            "documentation",
-                                            "type",
-                                            "profile",
-                                        ],
-                                    ));
+                                    return unknown_field_error("use");
                                 }
                             }
                             Field::Min => {
@@ -363,20 +353,7 @@ impl<'de> serde::de::Deserialize<'de> for ParameterDefinition {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "min",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "name",
-                                            "use",
-                                            "min",
-                                            "max",
-                                            "documentation",
-                                            "type",
-                                            "profile",
-                                        ],
-                                    ));
+                                    return unknown_field_error("min");
                                 }
                             }
                             Field::Max => {
@@ -407,20 +384,7 @@ impl<'de> serde::de::Deserialize<'de> for ParameterDefinition {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "max",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "name",
-                                            "use",
-                                            "min",
-                                            "max",
-                                            "documentation",
-                                            "type",
-                                            "profile",
-                                        ],
-                                    ));
+                                    return unknown_field_error("max");
                                 }
                             }
                             Field::Documentation => {
@@ -457,20 +421,7 @@ impl<'de> serde::de::Deserialize<'de> for ParameterDefinition {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "documentation",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "name",
-                                            "use",
-                                            "min",
-                                            "max",
-                                            "documentation",
-                                            "type",
-                                            "profile",
-                                        ],
-                                    ));
+                                    return unknown_field_error("documentation");
                                 }
                             }
                             Field::Type => {
@@ -501,20 +452,7 @@ impl<'de> serde::de::Deserialize<'de> for ParameterDefinition {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "type",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "name",
-                                            "use",
-                                            "min",
-                                            "max",
-                                            "documentation",
-                                            "type",
-                                            "profile",
-                                        ],
-                                    ));
+                                    return unknown_field_error("type");
                                 }
                             }
                             Field::Profile => {
@@ -545,20 +483,7 @@ impl<'de> serde::de::Deserialize<'de> for ParameterDefinition {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "profile",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "name",
-                                            "use",
-                                            "min",
-                                            "max",
-                                            "documentation",
-                                            "type",
-                                            "profile",
-                                        ],
-                                    ));
+                                    return unknown_field_error("profile");
                                 }
                             }
                             Field::Unknown(key) => if _ctx.config.mode

@@ -1,4 +1,4 @@
-// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-08 by fhirbolt-codegen v0.1.0
 #[doc = "The actual or approximate date of birth of the relative."]
 #[derive(Debug, Clone, PartialEq)]
 pub enum FamilyMemberHistoryBorn {
@@ -192,6 +192,24 @@ impl<'de> serde::de::Deserialize<'de> for FamilyMemberHistoryCondition {
             Note,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "code",
+                    "outcome",
+                    "contributedToDeath",
+                    "onsetAge",
+                    "onsetRange",
+                    "onsetPeriod",
+                    "onsetString",
+                    "note",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = FamilyMemberHistoryCondition;
@@ -297,22 +315,7 @@ impl<'de> serde::de::Deserialize<'de> for FamilyMemberHistoryCondition {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "contributedToDeath",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "code",
-                                            "outcome",
-                                            "contributedToDeath",
-                                            "onsetAge",
-                                            "onsetRange",
-                                            "onsetPeriod",
-                                            "onsetString",
-                                            "note",
-                                        ],
-                                    ));
+                                    return unknown_field_error("contributedToDeath");
                                 }
                             }
                             Field::OnsetAge => {
@@ -395,22 +398,7 @@ impl<'de> serde::de::Deserialize<'de> for FamilyMemberHistoryCondition {
                                         return Err(serde::de::Error::duplicate_field("_onset[x]"));
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "onsetString",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "code",
-                                            "outcome",
-                                            "contributedToDeath",
-                                            "onsetAge",
-                                            "onsetRange",
-                                            "onsetPeriod",
-                                            "onsetString",
-                                            "note",
-                                        ],
-                                    ));
+                                    return unknown_field_error("onsetString");
                                 }
                             }
                             Field::Note => {
@@ -1021,6 +1009,47 @@ impl<'de> serde::de::Deserialize<'de> for FamilyMemberHistory {
             Condition,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "meta",
+                    "implicitRules",
+                    "language",
+                    "text",
+                    "contained",
+                    "extension",
+                    "modifierExtension",
+                    "identifier",
+                    "instantiatesCanonical",
+                    "instantiatesUri",
+                    "status",
+                    "dataAbsentReason",
+                    "patient",
+                    "date",
+                    "name",
+                    "relationship",
+                    "sex",
+                    "bornPeriod",
+                    "bornDate",
+                    "bornString",
+                    "ageAge",
+                    "ageRange",
+                    "ageString",
+                    "estimatedAge",
+                    "deceasedBoolean",
+                    "deceasedAge",
+                    "deceasedRange",
+                    "deceasedDate",
+                    "deceasedString",
+                    "reasonCode",
+                    "reasonReference",
+                    "note",
+                    "condition",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = FamilyMemberHistory;
@@ -1120,45 +1149,7 @@ impl<'de> serde::de::Deserialize<'de> for FamilyMemberHistory {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "implicitRules",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "instantiatesCanonical",
-                                            "instantiatesUri",
-                                            "status",
-                                            "dataAbsentReason",
-                                            "patient",
-                                            "date",
-                                            "name",
-                                            "relationship",
-                                            "sex",
-                                            "bornPeriod",
-                                            "bornDate",
-                                            "bornString",
-                                            "ageAge",
-                                            "ageRange",
-                                            "ageString",
-                                            "estimatedAge",
-                                            "deceasedBoolean",
-                                            "deceasedAge",
-                                            "deceasedRange",
-                                            "deceasedDate",
-                                            "deceasedString",
-                                            "reasonCode",
-                                            "reasonReference",
-                                            "note",
-                                            "condition",
-                                        ],
-                                    ));
+                                    return unknown_field_error("implicitRules");
                                 }
                             }
                             Field::Language => {
@@ -1189,45 +1180,7 @@ impl<'de> serde::de::Deserialize<'de> for FamilyMemberHistory {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "language",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "instantiatesCanonical",
-                                            "instantiatesUri",
-                                            "status",
-                                            "dataAbsentReason",
-                                            "patient",
-                                            "date",
-                                            "name",
-                                            "relationship",
-                                            "sex",
-                                            "bornPeriod",
-                                            "bornDate",
-                                            "bornString",
-                                            "ageAge",
-                                            "ageRange",
-                                            "ageString",
-                                            "estimatedAge",
-                                            "deceasedBoolean",
-                                            "deceasedAge",
-                                            "deceasedRange",
-                                            "deceasedDate",
-                                            "deceasedString",
-                                            "reasonCode",
-                                            "reasonReference",
-                                            "note",
-                                            "condition",
-                                        ],
-                                    ));
+                                    return unknown_field_error("language");
                                 }
                             }
                             Field::Text => {
@@ -1346,45 +1299,7 @@ impl<'de> serde::de::Deserialize<'de> for FamilyMemberHistory {
                                         }
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "instantiatesCanonical",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "instantiatesCanonical",
-                                            "instantiatesUri",
-                                            "status",
-                                            "dataAbsentReason",
-                                            "patient",
-                                            "date",
-                                            "name",
-                                            "relationship",
-                                            "sex",
-                                            "bornPeriod",
-                                            "bornDate",
-                                            "bornString",
-                                            "ageAge",
-                                            "ageRange",
-                                            "ageString",
-                                            "estimatedAge",
-                                            "deceasedBoolean",
-                                            "deceasedAge",
-                                            "deceasedRange",
-                                            "deceasedDate",
-                                            "deceasedString",
-                                            "reasonCode",
-                                            "reasonReference",
-                                            "note",
-                                            "condition",
-                                        ],
-                                    ));
+                                    return unknown_field_error("instantiatesCanonical");
                                 }
                             }
                             Field::InstantiatesUri => {
@@ -1447,45 +1362,7 @@ impl<'de> serde::de::Deserialize<'de> for FamilyMemberHistory {
                                         }
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "instantiatesUri",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "instantiatesCanonical",
-                                            "instantiatesUri",
-                                            "status",
-                                            "dataAbsentReason",
-                                            "patient",
-                                            "date",
-                                            "name",
-                                            "relationship",
-                                            "sex",
-                                            "bornPeriod",
-                                            "bornDate",
-                                            "bornString",
-                                            "ageAge",
-                                            "ageRange",
-                                            "ageString",
-                                            "estimatedAge",
-                                            "deceasedBoolean",
-                                            "deceasedAge",
-                                            "deceasedRange",
-                                            "deceasedDate",
-                                            "deceasedString",
-                                            "reasonCode",
-                                            "reasonReference",
-                                            "note",
-                                            "condition",
-                                        ],
-                                    ));
+                                    return unknown_field_error("instantiatesUri");
                                 }
                             }
                             Field::Status => {
@@ -1516,45 +1393,7 @@ impl<'de> serde::de::Deserialize<'de> for FamilyMemberHistory {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "status",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "instantiatesCanonical",
-                                            "instantiatesUri",
-                                            "status",
-                                            "dataAbsentReason",
-                                            "patient",
-                                            "date",
-                                            "name",
-                                            "relationship",
-                                            "sex",
-                                            "bornPeriod",
-                                            "bornDate",
-                                            "bornString",
-                                            "ageAge",
-                                            "ageRange",
-                                            "ageString",
-                                            "estimatedAge",
-                                            "deceasedBoolean",
-                                            "deceasedAge",
-                                            "deceasedRange",
-                                            "deceasedDate",
-                                            "deceasedString",
-                                            "reasonCode",
-                                            "reasonReference",
-                                            "note",
-                                            "condition",
-                                        ],
-                                    ));
+                                    return unknown_field_error("status");
                                 }
                             }
                             Field::DataAbsentReason => {
@@ -1599,45 +1438,7 @@ impl<'de> serde::de::Deserialize<'de> for FamilyMemberHistory {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "date",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "instantiatesCanonical",
-                                            "instantiatesUri",
-                                            "status",
-                                            "dataAbsentReason",
-                                            "patient",
-                                            "date",
-                                            "name",
-                                            "relationship",
-                                            "sex",
-                                            "bornPeriod",
-                                            "bornDate",
-                                            "bornString",
-                                            "ageAge",
-                                            "ageRange",
-                                            "ageString",
-                                            "estimatedAge",
-                                            "deceasedBoolean",
-                                            "deceasedAge",
-                                            "deceasedRange",
-                                            "deceasedDate",
-                                            "deceasedString",
-                                            "reasonCode",
-                                            "reasonReference",
-                                            "note",
-                                            "condition",
-                                        ],
-                                    ));
+                                    return unknown_field_error("date");
                                 }
                             }
                             Field::Name => {
@@ -1668,45 +1469,7 @@ impl<'de> serde::de::Deserialize<'de> for FamilyMemberHistory {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "name",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "instantiatesCanonical",
-                                            "instantiatesUri",
-                                            "status",
-                                            "dataAbsentReason",
-                                            "patient",
-                                            "date",
-                                            "name",
-                                            "relationship",
-                                            "sex",
-                                            "bornPeriod",
-                                            "bornDate",
-                                            "bornString",
-                                            "ageAge",
-                                            "ageRange",
-                                            "ageString",
-                                            "estimatedAge",
-                                            "deceasedBoolean",
-                                            "deceasedAge",
-                                            "deceasedRange",
-                                            "deceasedDate",
-                                            "deceasedString",
-                                            "reasonCode",
-                                            "reasonReference",
-                                            "note",
-                                            "condition",
-                                        ],
-                                    ));
+                                    return unknown_field_error("name");
                                 }
                             }
                             Field::Relationship => {
@@ -1774,45 +1537,7 @@ impl<'de> serde::de::Deserialize<'de> for FamilyMemberHistory {
                                         return Err(serde::de::Error::duplicate_field("_born[x]"));
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "bornDate",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "instantiatesCanonical",
-                                            "instantiatesUri",
-                                            "status",
-                                            "dataAbsentReason",
-                                            "patient",
-                                            "date",
-                                            "name",
-                                            "relationship",
-                                            "sex",
-                                            "bornPeriod",
-                                            "bornDate",
-                                            "bornString",
-                                            "ageAge",
-                                            "ageRange",
-                                            "ageString",
-                                            "estimatedAge",
-                                            "deceasedBoolean",
-                                            "deceasedAge",
-                                            "deceasedRange",
-                                            "deceasedDate",
-                                            "deceasedString",
-                                            "reasonCode",
-                                            "reasonReference",
-                                            "note",
-                                            "condition",
-                                        ],
-                                    ));
+                                    return unknown_field_error("bornDate");
                                 }
                             }
                             Field::BornString => {
@@ -1863,45 +1588,7 @@ impl<'de> serde::de::Deserialize<'de> for FamilyMemberHistory {
                                         return Err(serde::de::Error::duplicate_field("_born[x]"));
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "bornString",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "instantiatesCanonical",
-                                            "instantiatesUri",
-                                            "status",
-                                            "dataAbsentReason",
-                                            "patient",
-                                            "date",
-                                            "name",
-                                            "relationship",
-                                            "sex",
-                                            "bornPeriod",
-                                            "bornDate",
-                                            "bornString",
-                                            "ageAge",
-                                            "ageRange",
-                                            "ageString",
-                                            "estimatedAge",
-                                            "deceasedBoolean",
-                                            "deceasedAge",
-                                            "deceasedRange",
-                                            "deceasedDate",
-                                            "deceasedString",
-                                            "reasonCode",
-                                            "reasonReference",
-                                            "note",
-                                            "condition",
-                                        ],
-                                    ));
+                                    return unknown_field_error("bornString");
                                 }
                             }
                             Field::AgeAge => {
@@ -1963,45 +1650,7 @@ impl<'de> serde::de::Deserialize<'de> for FamilyMemberHistory {
                                         return Err(serde::de::Error::duplicate_field("_age[x]"));
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "ageString",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "instantiatesCanonical",
-                                            "instantiatesUri",
-                                            "status",
-                                            "dataAbsentReason",
-                                            "patient",
-                                            "date",
-                                            "name",
-                                            "relationship",
-                                            "sex",
-                                            "bornPeriod",
-                                            "bornDate",
-                                            "bornString",
-                                            "ageAge",
-                                            "ageRange",
-                                            "ageString",
-                                            "estimatedAge",
-                                            "deceasedBoolean",
-                                            "deceasedAge",
-                                            "deceasedRange",
-                                            "deceasedDate",
-                                            "deceasedString",
-                                            "reasonCode",
-                                            "reasonReference",
-                                            "note",
-                                            "condition",
-                                        ],
-                                    ));
+                                    return unknown_field_error("ageString");
                                 }
                             }
                             Field::EstimatedAge => {
@@ -2038,45 +1687,7 @@ impl<'de> serde::de::Deserialize<'de> for FamilyMemberHistory {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "estimatedAge",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "instantiatesCanonical",
-                                            "instantiatesUri",
-                                            "status",
-                                            "dataAbsentReason",
-                                            "patient",
-                                            "date",
-                                            "name",
-                                            "relationship",
-                                            "sex",
-                                            "bornPeriod",
-                                            "bornDate",
-                                            "bornString",
-                                            "ageAge",
-                                            "ageRange",
-                                            "ageString",
-                                            "estimatedAge",
-                                            "deceasedBoolean",
-                                            "deceasedAge",
-                                            "deceasedRange",
-                                            "deceasedDate",
-                                            "deceasedString",
-                                            "reasonCode",
-                                            "reasonReference",
-                                            "note",
-                                            "condition",
-                                        ],
-                                    ));
+                                    return unknown_field_error("estimatedAge");
                                 }
                             }
                             Field::DeceasedBoolean => {
@@ -2131,45 +1742,7 @@ impl<'de> serde::de::Deserialize<'de> for FamilyMemberHistory {
                                         ));
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "deceasedBoolean",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "instantiatesCanonical",
-                                            "instantiatesUri",
-                                            "status",
-                                            "dataAbsentReason",
-                                            "patient",
-                                            "date",
-                                            "name",
-                                            "relationship",
-                                            "sex",
-                                            "bornPeriod",
-                                            "bornDate",
-                                            "bornString",
-                                            "ageAge",
-                                            "ageRange",
-                                            "ageString",
-                                            "estimatedAge",
-                                            "deceasedBoolean",
-                                            "deceasedAge",
-                                            "deceasedRange",
-                                            "deceasedDate",
-                                            "deceasedString",
-                                            "reasonCode",
-                                            "reasonReference",
-                                            "note",
-                                            "condition",
-                                        ],
-                                    ));
+                                    return unknown_field_error("deceasedBoolean");
                                 }
                             }
                             Field::DeceasedAge => {
@@ -2240,45 +1813,7 @@ impl<'de> serde::de::Deserialize<'de> for FamilyMemberHistory {
                                         ));
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "deceasedDate",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "instantiatesCanonical",
-                                            "instantiatesUri",
-                                            "status",
-                                            "dataAbsentReason",
-                                            "patient",
-                                            "date",
-                                            "name",
-                                            "relationship",
-                                            "sex",
-                                            "bornPeriod",
-                                            "bornDate",
-                                            "bornString",
-                                            "ageAge",
-                                            "ageRange",
-                                            "ageString",
-                                            "estimatedAge",
-                                            "deceasedBoolean",
-                                            "deceasedAge",
-                                            "deceasedRange",
-                                            "deceasedDate",
-                                            "deceasedString",
-                                            "reasonCode",
-                                            "reasonReference",
-                                            "note",
-                                            "condition",
-                                        ],
-                                    ));
+                                    return unknown_field_error("deceasedDate");
                                 }
                             }
                             Field::DeceasedString => {
@@ -2333,45 +1868,7 @@ impl<'de> serde::de::Deserialize<'de> for FamilyMemberHistory {
                                         ));
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "deceasedString",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "instantiatesCanonical",
-                                            "instantiatesUri",
-                                            "status",
-                                            "dataAbsentReason",
-                                            "patient",
-                                            "date",
-                                            "name",
-                                            "relationship",
-                                            "sex",
-                                            "bornPeriod",
-                                            "bornDate",
-                                            "bornString",
-                                            "ageAge",
-                                            "ageRange",
-                                            "ageString",
-                                            "estimatedAge",
-                                            "deceasedBoolean",
-                                            "deceasedAge",
-                                            "deceasedRange",
-                                            "deceasedDate",
-                                            "deceasedString",
-                                            "reasonCode",
-                                            "reasonReference",
-                                            "note",
-                                            "condition",
-                                        ],
-                                    ));
+                                    return unknown_field_error("deceasedString");
                                 }
                             }
                             Field::ReasonCode => {

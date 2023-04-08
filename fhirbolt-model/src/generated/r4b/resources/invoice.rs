@@ -1,4 +1,4 @@
-// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-08 by fhirbolt-codegen v0.1.0
 #[doc = "The ChargeItem contains information such as the billing code, date, amount etc. If no further details are required for the lineItem, inline billing codes can be added using the CodeableConcept data type instead of the Reference."]
 #[derive(Debug, Clone, PartialEq)]
 pub enum InvoiceLineItemChargeItem {
@@ -70,6 +70,12 @@ impl<'de> serde::de::Deserialize<'de> for InvoiceParticipant {
             #[serde(rename = "actor")]
             Actor,
             Unknown(std::string::String),
+        }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &["id", "extension", "modifierExtension", "role", "actor"],
+            ))
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -273,6 +279,20 @@ impl<'de> serde::de::Deserialize<'de> for InvoiceLineItemPriceComponent {
             Amount,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "type",
+                    "code",
+                    "factor",
+                    "amount",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = InvoiceLineItemPriceComponent;
@@ -357,18 +377,7 @@ impl<'de> serde::de::Deserialize<'de> for InvoiceLineItemPriceComponent {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "type",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "type",
-                                            "code",
-                                            "factor",
-                                            "amount",
-                                        ],
-                                    ));
+                                    return unknown_field_error("type");
                                 }
                             }
                             Field::Code => {
@@ -405,18 +414,7 @@ impl<'de> serde::de::Deserialize<'de> for InvoiceLineItemPriceComponent {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "factor",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "type",
-                                            "code",
-                                            "factor",
-                                            "amount",
-                                        ],
-                                    ));
+                                    return unknown_field_error("factor");
                                 }
                             }
                             Field::Amount => {
@@ -561,6 +559,20 @@ impl<'de> serde::de::Deserialize<'de> for InvoiceLineItem {
             PriceComponent,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "sequence",
+                    "chargeItemReference",
+                    "chargeItemCodeableConcept",
+                    "priceComponent",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = InvoiceLineItem;
@@ -641,18 +653,7 @@ impl<'de> serde::de::Deserialize<'de> for InvoiceLineItem {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "sequence",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "sequence",
-                                            "chargeItemReference",
-                                            "chargeItemCodeableConcept",
-                                            "priceComponent",
-                                        ],
-                                    ));
+                                    return unknown_field_error("sequence");
                                 }
                             }
                             Field::ChargeItemReference => {
@@ -1031,6 +1032,37 @@ impl<'de> serde::de::Deserialize<'de> for Invoice {
             Note,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "meta",
+                    "implicitRules",
+                    "language",
+                    "text",
+                    "contained",
+                    "extension",
+                    "modifierExtension",
+                    "identifier",
+                    "status",
+                    "cancelledReason",
+                    "type",
+                    "subject",
+                    "recipient",
+                    "date",
+                    "participant",
+                    "issuer",
+                    "account",
+                    "lineItem",
+                    "totalPriceComponent",
+                    "totalNet",
+                    "totalGross",
+                    "paymentTerms",
+                    "note",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = Invoice;
@@ -1125,35 +1157,7 @@ impl<'de> serde::de::Deserialize<'de> for Invoice {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "implicitRules",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "status",
-                                            "cancelledReason",
-                                            "type",
-                                            "subject",
-                                            "recipient",
-                                            "date",
-                                            "participant",
-                                            "issuer",
-                                            "account",
-                                            "lineItem",
-                                            "totalPriceComponent",
-                                            "totalNet",
-                                            "totalGross",
-                                            "paymentTerms",
-                                            "note",
-                                        ],
-                                    ));
+                                    return unknown_field_error("implicitRules");
                                 }
                             }
                             Field::Language => {
@@ -1184,35 +1188,7 @@ impl<'de> serde::de::Deserialize<'de> for Invoice {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "language",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "status",
-                                            "cancelledReason",
-                                            "type",
-                                            "subject",
-                                            "recipient",
-                                            "date",
-                                            "participant",
-                                            "issuer",
-                                            "account",
-                                            "lineItem",
-                                            "totalPriceComponent",
-                                            "totalNet",
-                                            "totalGross",
-                                            "paymentTerms",
-                                            "note",
-                                        ],
-                                    ));
+                                    return unknown_field_error("language");
                                 }
                             }
                             Field::Text => {
@@ -1298,35 +1274,7 @@ impl<'de> serde::de::Deserialize<'de> for Invoice {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "status",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "status",
-                                            "cancelledReason",
-                                            "type",
-                                            "subject",
-                                            "recipient",
-                                            "date",
-                                            "participant",
-                                            "issuer",
-                                            "account",
-                                            "lineItem",
-                                            "totalPriceComponent",
-                                            "totalNet",
-                                            "totalGross",
-                                            "paymentTerms",
-                                            "note",
-                                        ],
-                                    ));
+                                    return unknown_field_error("status");
                                 }
                             }
                             Field::CancelledReason => {
@@ -1363,35 +1311,7 @@ impl<'de> serde::de::Deserialize<'de> for Invoice {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "cancelledReason",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "status",
-                                            "cancelledReason",
-                                            "type",
-                                            "subject",
-                                            "recipient",
-                                            "date",
-                                            "participant",
-                                            "issuer",
-                                            "account",
-                                            "lineItem",
-                                            "totalPriceComponent",
-                                            "totalNet",
-                                            "totalGross",
-                                            "paymentTerms",
-                                            "note",
-                                        ],
-                                    ));
+                                    return unknown_field_error("cancelledReason");
                                 }
                             }
                             Field::Type => {
@@ -1440,35 +1360,7 @@ impl<'de> serde::de::Deserialize<'de> for Invoice {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "date",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "status",
-                                            "cancelledReason",
-                                            "type",
-                                            "subject",
-                                            "recipient",
-                                            "date",
-                                            "participant",
-                                            "issuer",
-                                            "account",
-                                            "lineItem",
-                                            "totalPriceComponent",
-                                            "totalNet",
-                                            "totalGross",
-                                            "paymentTerms",
-                                            "note",
-                                        ],
-                                    ));
+                                    return unknown_field_error("date");
                                 }
                             }
                             Field::Participant => {
@@ -1567,35 +1459,7 @@ impl<'de> serde::de::Deserialize<'de> for Invoice {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "paymentTerms",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "status",
-                                            "cancelledReason",
-                                            "type",
-                                            "subject",
-                                            "recipient",
-                                            "date",
-                                            "participant",
-                                            "issuer",
-                                            "account",
-                                            "lineItem",
-                                            "totalPriceComponent",
-                                            "totalNet",
-                                            "totalGross",
-                                            "paymentTerms",
-                                            "note",
-                                        ],
-                                    ));
+                                    return unknown_field_error("paymentTerms");
                                 }
                             }
                             Field::Note => {

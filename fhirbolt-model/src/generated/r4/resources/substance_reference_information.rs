@@ -1,4 +1,4 @@
-// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-08 by fhirbolt-codegen v0.1.0
 #[doc = "Todo."]
 #[derive(Debug, Clone, PartialEq)]
 pub enum SubstanceReferenceInformationTargetAmount {
@@ -80,6 +80,19 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceReferenceInformationGene {
             #[serde(rename = "source")]
             Source,
             Unknown(std::string::String),
+        }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "geneSequenceOrigin",
+                    "gene",
+                    "source",
+                ],
+            ))
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -261,6 +274,19 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceReferenceInformationGeneEleme
             #[serde(rename = "source")]
             Source,
             Unknown(std::string::String),
+        }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "type",
+                    "element",
+                    "source",
+                ],
+            ))
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -446,6 +472,20 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceReferenceInformationClassific
             #[serde(rename = "source")]
             Source,
             Unknown(std::string::String),
+        }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "domain",
+                    "classification",
+                    "subtype",
+                    "source",
+                ],
+            ))
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -710,6 +750,26 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceReferenceInformationTarget {
             Source,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "target",
+                    "type",
+                    "interaction",
+                    "organism",
+                    "organismType",
+                    "amountQuantity",
+                    "amountRange",
+                    "amountString",
+                    "amountType",
+                    "source",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = SubstanceReferenceInformationTarget;
@@ -880,24 +940,7 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceReferenceInformationTarget {
                                         ));
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "amountString",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "target",
-                                            "type",
-                                            "interaction",
-                                            "organism",
-                                            "organismType",
-                                            "amountQuantity",
-                                            "amountRange",
-                                            "amountString",
-                                            "amountType",
-                                            "source",
-                                        ],
-                                    ));
+                                    return unknown_field_error("amountString");
                                 }
                             }
                             Field::AmountType => {
@@ -1138,6 +1181,26 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceReferenceInformation {
             Target,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "meta",
+                    "implicitRules",
+                    "language",
+                    "text",
+                    "contained",
+                    "extension",
+                    "modifierExtension",
+                    "comment",
+                    "gene",
+                    "geneElement",
+                    "classification",
+                    "target",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = SubstanceReferenceInformation;
@@ -1226,24 +1289,7 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceReferenceInformation {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "implicitRules",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "comment",
-                                            "gene",
-                                            "geneElement",
-                                            "classification",
-                                            "target",
-                                        ],
-                                    ));
+                                    return unknown_field_error("implicitRules");
                                 }
                             }
                             Field::Language => {
@@ -1274,24 +1320,7 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceReferenceInformation {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "language",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "comment",
-                                            "gene",
-                                            "geneElement",
-                                            "classification",
-                                            "target",
-                                        ],
-                                    ));
+                                    return unknown_field_error("language");
                                 }
                             }
                             Field::Text => {
@@ -1364,24 +1393,7 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceReferenceInformation {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "comment",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "comment",
-                                            "gene",
-                                            "geneElement",
-                                            "classification",
-                                            "target",
-                                        ],
-                                    ));
+                                    return unknown_field_error("comment");
                                 }
                             }
                             Field::Gene => {

@@ -1,4 +1,4 @@
-// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-08 by fhirbolt-codegen v0.1.0
 #[doc = "The target composition/document of this relationship."]
 #[derive(Debug, Clone, PartialEq)]
 pub enum CompositionRelatesToTarget {
@@ -112,6 +112,19 @@ impl<'de> serde::de::Deserialize<'de> for CompositionAttester {
             Party,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "mode",
+                    "time",
+                    "party",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = CompositionAttester;
@@ -192,17 +205,7 @@ impl<'de> serde::de::Deserialize<'de> for CompositionAttester {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "mode",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "mode",
-                                            "time",
-                                            "party",
-                                        ],
-                                    ));
+                                    return unknown_field_error("mode");
                                 }
                             }
                             Field::Time => {
@@ -233,17 +236,7 @@ impl<'de> serde::de::Deserialize<'de> for CompositionAttester {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "time",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "mode",
-                                            "time",
-                                            "party",
-                                        ],
-                                    ));
+                                    return unknown_field_error("time");
                                 }
                             }
                             Field::Party => {
@@ -375,6 +368,19 @@ impl<'de> serde::de::Deserialize<'de> for CompositionRelatesTo {
             TargetReference,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "code",
+                    "targetIdentifier",
+                    "targetReference",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = CompositionRelatesTo;
@@ -454,17 +460,7 @@ impl<'de> serde::de::Deserialize<'de> for CompositionRelatesTo {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "code",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "code",
-                                            "targetIdentifier",
-                                            "targetReference",
-                                        ],
-                                    ));
+                                    return unknown_field_error("code");
                                 }
                             }
                             Field::TargetIdentifier => {
@@ -597,6 +593,19 @@ impl<'de> serde::de::Deserialize<'de> for CompositionEvent {
             #[serde(rename = "detail")]
             Detail,
             Unknown(std::string::String),
+        }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "code",
+                    "period",
+                    "detail",
+                ],
+            ))
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -863,6 +872,26 @@ impl<'de> serde::de::Deserialize<'de> for CompositionSection {
             Section,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "title",
+                    "code",
+                    "author",
+                    "focus",
+                    "text",
+                    "mode",
+                    "orderedBy",
+                    "entry",
+                    "emptyReason",
+                    "section",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = CompositionSection;
@@ -950,24 +979,7 @@ impl<'de> serde::de::Deserialize<'de> for CompositionSection {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "title",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "title",
-                                            "code",
-                                            "author",
-                                            "focus",
-                                            "text",
-                                            "mode",
-                                            "orderedBy",
-                                            "entry",
-                                            "emptyReason",
-                                            "section",
-                                        ],
-                                    ));
+                                    return unknown_field_error("title");
                                 }
                             }
                             Field::Code => {
@@ -1027,24 +1039,7 @@ impl<'de> serde::de::Deserialize<'de> for CompositionSection {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "mode",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "title",
-                                            "code",
-                                            "author",
-                                            "focus",
-                                            "text",
-                                            "mode",
-                                            "orderedBy",
-                                            "entry",
-                                            "emptyReason",
-                                            "section",
-                                        ],
-                                    ));
+                                    return unknown_field_error("mode");
                                 }
                             }
                             Field::OrderedBy => {
@@ -1414,6 +1409,36 @@ impl<'de> serde::de::Deserialize<'de> for Composition {
             Section,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "meta",
+                    "implicitRules",
+                    "language",
+                    "text",
+                    "contained",
+                    "extension",
+                    "modifierExtension",
+                    "identifier",
+                    "status",
+                    "type",
+                    "category",
+                    "subject",
+                    "encounter",
+                    "date",
+                    "author",
+                    "title",
+                    "confidentiality",
+                    "attester",
+                    "custodian",
+                    "relatesTo",
+                    "event",
+                    "section",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = Composition;
@@ -1507,34 +1532,7 @@ impl<'de> serde::de::Deserialize<'de> for Composition {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "implicitRules",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "status",
-                                            "type",
-                                            "category",
-                                            "subject",
-                                            "encounter",
-                                            "date",
-                                            "author",
-                                            "title",
-                                            "confidentiality",
-                                            "attester",
-                                            "custodian",
-                                            "relatesTo",
-                                            "event",
-                                            "section",
-                                        ],
-                                    ));
+                                    return unknown_field_error("implicitRules");
                                 }
                             }
                             Field::Language => {
@@ -1565,34 +1563,7 @@ impl<'de> serde::de::Deserialize<'de> for Composition {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "language",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "status",
-                                            "type",
-                                            "category",
-                                            "subject",
-                                            "encounter",
-                                            "date",
-                                            "author",
-                                            "title",
-                                            "confidentiality",
-                                            "attester",
-                                            "custodian",
-                                            "relatesTo",
-                                            "event",
-                                            "section",
-                                        ],
-                                    ));
+                                    return unknown_field_error("language");
                                 }
                             }
                             Field::Text => {
@@ -1671,34 +1642,7 @@ impl<'de> serde::de::Deserialize<'de> for Composition {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "status",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "status",
-                                            "type",
-                                            "category",
-                                            "subject",
-                                            "encounter",
-                                            "date",
-                                            "author",
-                                            "title",
-                                            "confidentiality",
-                                            "attester",
-                                            "custodian",
-                                            "relatesTo",
-                                            "event",
-                                            "section",
-                                        ],
-                                    ));
+                                    return unknown_field_error("status");
                                 }
                             }
                             Field::Type => {
@@ -1758,34 +1702,7 @@ impl<'de> serde::de::Deserialize<'de> for Composition {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "date",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "status",
-                                            "type",
-                                            "category",
-                                            "subject",
-                                            "encounter",
-                                            "date",
-                                            "author",
-                                            "title",
-                                            "confidentiality",
-                                            "attester",
-                                            "custodian",
-                                            "relatesTo",
-                                            "event",
-                                            "section",
-                                        ],
-                                    ));
+                                    return unknown_field_error("date");
                                 }
                             }
                             Field::Author => {
@@ -1827,34 +1744,7 @@ impl<'de> serde::de::Deserialize<'de> for Composition {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "title",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "status",
-                                            "type",
-                                            "category",
-                                            "subject",
-                                            "encounter",
-                                            "date",
-                                            "author",
-                                            "title",
-                                            "confidentiality",
-                                            "attester",
-                                            "custodian",
-                                            "relatesTo",
-                                            "event",
-                                            "section",
-                                        ],
-                                    ));
+                                    return unknown_field_error("title");
                                 }
                             }
                             Field::Confidentiality => {
@@ -1891,34 +1781,7 @@ impl<'de> serde::de::Deserialize<'de> for Composition {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "confidentiality",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "status",
-                                            "type",
-                                            "category",
-                                            "subject",
-                                            "encounter",
-                                            "date",
-                                            "author",
-                                            "title",
-                                            "confidentiality",
-                                            "attester",
-                                            "custodian",
-                                            "relatesTo",
-                                            "event",
-                                            "section",
-                                        ],
-                                    ));
+                                    return unknown_field_error("confidentiality");
                                 }
                             }
                             Field::Attester => {

@@ -1,4 +1,4 @@
-// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-08 by fhirbolt-codegen v0.1.0
 #[doc = "Date of procedure."]
 #[derive(Debug, Clone, PartialEq)]
 pub enum MedicinalProductAuthorizationProcedureDate {
@@ -93,6 +93,21 @@ impl<'de> serde::de::Deserialize<'de> for MedicinalProductAuthorizationJurisdict
             #[serde(rename = "validityPeriod")]
             ValidityPeriod,
             Unknown(std::string::String),
+        }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "identifier",
+                    "country",
+                    "jurisdiction",
+                    "legalStatusOfSupply",
+                    "validityPeriod",
+                ],
+            ))
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -340,6 +355,21 @@ impl<'de> serde::de::Deserialize<'de> for MedicinalProductAuthorizationProcedure
             Application,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "identifier",
+                    "type",
+                    "datePeriod",
+                    "dateDateTime",
+                    "application",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = MedicinalProductAuthorizationProcedure;
@@ -475,19 +505,7 @@ impl<'de> serde::de::Deserialize<'de> for MedicinalProductAuthorizationProcedure
                                         return Err(serde::de::Error::duplicate_field("_date[x]"));
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "dateDateTime",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "type",
-                                            "datePeriod",
-                                            "dateDateTime",
-                                            "application",
-                                        ],
-                                    ));
+                                    return unknown_field_error("dateDateTime");
                                 }
                             }
                             Field::Application => {
@@ -856,6 +874,37 @@ impl<'de> serde::de::Deserialize<'de> for MedicinalProductAuthorization {
             Procedure,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "meta",
+                    "implicitRules",
+                    "language",
+                    "text",
+                    "contained",
+                    "extension",
+                    "modifierExtension",
+                    "identifier",
+                    "subject",
+                    "country",
+                    "jurisdiction",
+                    "status",
+                    "statusDate",
+                    "restoreDate",
+                    "validityPeriod",
+                    "dataExclusivityPeriod",
+                    "dateOfFirstAuthorization",
+                    "internationalBirthDate",
+                    "legalBasis",
+                    "jurisdictionalAuthorization",
+                    "holder",
+                    "regulator",
+                    "procedure",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = MedicinalProductAuthorization;
@@ -956,35 +1005,7 @@ impl<'de> serde::de::Deserialize<'de> for MedicinalProductAuthorization {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "implicitRules",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "subject",
-                                            "country",
-                                            "jurisdiction",
-                                            "status",
-                                            "statusDate",
-                                            "restoreDate",
-                                            "validityPeriod",
-                                            "dataExclusivityPeriod",
-                                            "dateOfFirstAuthorization",
-                                            "internationalBirthDate",
-                                            "legalBasis",
-                                            "jurisdictionalAuthorization",
-                                            "holder",
-                                            "regulator",
-                                            "procedure",
-                                        ],
-                                    ));
+                                    return unknown_field_error("implicitRules");
                                 }
                             }
                             Field::Language => {
@@ -1015,35 +1036,7 @@ impl<'de> serde::de::Deserialize<'de> for MedicinalProductAuthorization {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "language",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "subject",
-                                            "country",
-                                            "jurisdiction",
-                                            "status",
-                                            "statusDate",
-                                            "restoreDate",
-                                            "validityPeriod",
-                                            "dataExclusivityPeriod",
-                                            "dateOfFirstAuthorization",
-                                            "internationalBirthDate",
-                                            "legalBasis",
-                                            "jurisdictionalAuthorization",
-                                            "holder",
-                                            "regulator",
-                                            "procedure",
-                                        ],
-                                    ));
+                                    return unknown_field_error("language");
                                 }
                             }
                             Field::Text => {
@@ -1171,35 +1164,7 @@ impl<'de> serde::de::Deserialize<'de> for MedicinalProductAuthorization {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "statusDate",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "subject",
-                                            "country",
-                                            "jurisdiction",
-                                            "status",
-                                            "statusDate",
-                                            "restoreDate",
-                                            "validityPeriod",
-                                            "dataExclusivityPeriod",
-                                            "dateOfFirstAuthorization",
-                                            "internationalBirthDate",
-                                            "legalBasis",
-                                            "jurisdictionalAuthorization",
-                                            "holder",
-                                            "regulator",
-                                            "procedure",
-                                        ],
-                                    ));
+                                    return unknown_field_error("statusDate");
                                 }
                             }
                             Field::RestoreDate => {
@@ -1236,35 +1201,7 @@ impl<'de> serde::de::Deserialize<'de> for MedicinalProductAuthorization {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "restoreDate",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "subject",
-                                            "country",
-                                            "jurisdiction",
-                                            "status",
-                                            "statusDate",
-                                            "restoreDate",
-                                            "validityPeriod",
-                                            "dataExclusivityPeriod",
-                                            "dateOfFirstAuthorization",
-                                            "internationalBirthDate",
-                                            "legalBasis",
-                                            "jurisdictionalAuthorization",
-                                            "holder",
-                                            "regulator",
-                                            "procedure",
-                                        ],
-                                    ));
+                                    return unknown_field_error("restoreDate");
                                 }
                             }
                             Field::ValidityPeriod => {
@@ -1319,35 +1256,7 @@ impl<'de> serde::de::Deserialize<'de> for MedicinalProductAuthorization {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "dateOfFirstAuthorization",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "subject",
-                                            "country",
-                                            "jurisdiction",
-                                            "status",
-                                            "statusDate",
-                                            "restoreDate",
-                                            "validityPeriod",
-                                            "dataExclusivityPeriod",
-                                            "dateOfFirstAuthorization",
-                                            "internationalBirthDate",
-                                            "legalBasis",
-                                            "jurisdictionalAuthorization",
-                                            "holder",
-                                            "regulator",
-                                            "procedure",
-                                        ],
-                                    ));
+                                    return unknown_field_error("dateOfFirstAuthorization");
                                 }
                             }
                             Field::InternationalBirthDate => {
@@ -1386,35 +1295,7 @@ impl<'de> serde::de::Deserialize<'de> for MedicinalProductAuthorization {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "internationalBirthDate",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "subject",
-                                            "country",
-                                            "jurisdiction",
-                                            "status",
-                                            "statusDate",
-                                            "restoreDate",
-                                            "validityPeriod",
-                                            "dataExclusivityPeriod",
-                                            "dateOfFirstAuthorization",
-                                            "internationalBirthDate",
-                                            "legalBasis",
-                                            "jurisdictionalAuthorization",
-                                            "holder",
-                                            "regulator",
-                                            "procedure",
-                                        ],
-                                    ));
+                                    return unknown_field_error("internationalBirthDate");
                                 }
                             }
                             Field::LegalBasis => {

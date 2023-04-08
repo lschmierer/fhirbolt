@@ -1,4 +1,4 @@
-// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-08 by fhirbolt-codegen v0.1.0
 #[doc = "Does this service have specific eligibility requirements that need to be met in order to use the service?"]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub struct HealthcareServiceEligibility {
@@ -78,6 +78,12 @@ impl<'de> serde::de::Deserialize<'de> for HealthcareServiceEligibility {
             #[serde(rename = "_comment")]
             CommentPrimitiveElement,
             Unknown(std::string::String),
+        }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &["id", "extension", "modifierExtension", "code", "comment"],
+            ))
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -167,16 +173,7 @@ impl<'de> serde::de::Deserialize<'de> for HealthcareServiceEligibility {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "comment",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "code",
-                                            "comment",
-                                        ],
-                                    ));
+                                    return unknown_field_error("comment");
                                 }
                             }
                             Field::Unknown(key) => if _ctx.config.mode
@@ -369,6 +366,20 @@ impl<'de> serde::de::Deserialize<'de> for HealthcareServiceAvailableTime {
             AvailableEndTimePrimitiveElement,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "daysOfWeek",
+                    "allDay",
+                    "availableStartTime",
+                    "availableEndTime",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = HealthcareServiceAvailableTime;
@@ -485,18 +496,7 @@ impl<'de> serde::de::Deserialize<'de> for HealthcareServiceAvailableTime {
                                         }
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "daysOfWeek",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "daysOfWeek",
-                                            "allDay",
-                                            "availableStartTime",
-                                            "availableEndTime",
-                                        ],
-                                    ));
+                                    return unknown_field_error("daysOfWeek");
                                 }
                             }
                             Field::AllDay => {
@@ -527,18 +527,7 @@ impl<'de> serde::de::Deserialize<'de> for HealthcareServiceAvailableTime {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "allDay",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "daysOfWeek",
-                                            "allDay",
-                                            "availableStartTime",
-                                            "availableEndTime",
-                                        ],
-                                    ));
+                                    return unknown_field_error("allDay");
                                 }
                             }
                             Field::AvailableStartTime => {
@@ -577,18 +566,7 @@ impl<'de> serde::de::Deserialize<'de> for HealthcareServiceAvailableTime {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "availableStartTime",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "daysOfWeek",
-                                            "allDay",
-                                            "availableStartTime",
-                                            "availableEndTime",
-                                        ],
-                                    ));
+                                    return unknown_field_error("availableStartTime");
                                 }
                             }
                             Field::AvailableEndTime => {
@@ -627,18 +605,7 @@ impl<'de> serde::de::Deserialize<'de> for HealthcareServiceAvailableTime {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "availableEndTime",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "daysOfWeek",
-                                            "allDay",
-                                            "availableStartTime",
-                                            "availableEndTime",
-                                        ],
-                                    ));
+                                    return unknown_field_error("availableEndTime");
                                 }
                             }
                             Field::Unknown(key) => if _ctx.config.mode
@@ -750,6 +717,18 @@ impl<'de> serde::de::Deserialize<'de> for HealthcareServiceNotAvailable {
             During,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "description",
+                    "during",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = HealthcareServiceNotAvailable;
@@ -838,16 +817,7 @@ impl<'de> serde::de::Deserialize<'de> for HealthcareServiceNotAvailable {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "description",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "description",
-                                            "during",
-                                        ],
-                                    ));
+                                    return unknown_field_error("description");
                                 }
                             }
                             Field::During => {
@@ -1292,6 +1262,45 @@ impl<'de> serde::de::Deserialize<'de> for HealthcareService {
             Endpoint,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "meta",
+                    "implicitRules",
+                    "language",
+                    "text",
+                    "contained",
+                    "extension",
+                    "modifierExtension",
+                    "identifier",
+                    "active",
+                    "providedBy",
+                    "category",
+                    "type",
+                    "specialty",
+                    "location",
+                    "name",
+                    "comment",
+                    "extraDetails",
+                    "photo",
+                    "telecom",
+                    "coverageArea",
+                    "serviceProvisionCode",
+                    "eligibility",
+                    "program",
+                    "characteristic",
+                    "communication",
+                    "referralMethod",
+                    "appointmentRequired",
+                    "availableTime",
+                    "notAvailable",
+                    "availabilityExceptions",
+                    "endpoint",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = HealthcareService;
@@ -1399,43 +1408,7 @@ impl<'de> serde::de::Deserialize<'de> for HealthcareService {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "implicitRules",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "active",
-                                            "providedBy",
-                                            "category",
-                                            "type",
-                                            "specialty",
-                                            "location",
-                                            "name",
-                                            "comment",
-                                            "extraDetails",
-                                            "photo",
-                                            "telecom",
-                                            "coverageArea",
-                                            "serviceProvisionCode",
-                                            "eligibility",
-                                            "program",
-                                            "characteristic",
-                                            "communication",
-                                            "referralMethod",
-                                            "appointmentRequired",
-                                            "availableTime",
-                                            "notAvailable",
-                                            "availabilityExceptions",
-                                            "endpoint",
-                                        ],
-                                    ));
+                                    return unknown_field_error("implicitRules");
                                 }
                             }
                             Field::Language => {
@@ -1466,43 +1439,7 @@ impl<'de> serde::de::Deserialize<'de> for HealthcareService {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "language",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "active",
-                                            "providedBy",
-                                            "category",
-                                            "type",
-                                            "specialty",
-                                            "location",
-                                            "name",
-                                            "comment",
-                                            "extraDetails",
-                                            "photo",
-                                            "telecom",
-                                            "coverageArea",
-                                            "serviceProvisionCode",
-                                            "eligibility",
-                                            "program",
-                                            "characteristic",
-                                            "communication",
-                                            "referralMethod",
-                                            "appointmentRequired",
-                                            "availableTime",
-                                            "notAvailable",
-                                            "availabilityExceptions",
-                                            "endpoint",
-                                        ],
-                                    ));
+                                    return unknown_field_error("language");
                                 }
                             }
                             Field::Text => {
@@ -1588,43 +1525,7 @@ impl<'de> serde::de::Deserialize<'de> for HealthcareService {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "active",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "active",
-                                            "providedBy",
-                                            "category",
-                                            "type",
-                                            "specialty",
-                                            "location",
-                                            "name",
-                                            "comment",
-                                            "extraDetails",
-                                            "photo",
-                                            "telecom",
-                                            "coverageArea",
-                                            "serviceProvisionCode",
-                                            "eligibility",
-                                            "program",
-                                            "characteristic",
-                                            "communication",
-                                            "referralMethod",
-                                            "appointmentRequired",
-                                            "availableTime",
-                                            "notAvailable",
-                                            "availabilityExceptions",
-                                            "endpoint",
-                                        ],
-                                    ));
+                                    return unknown_field_error("active");
                                 }
                             }
                             Field::ProvidedBy => {
@@ -1705,43 +1606,7 @@ impl<'de> serde::de::Deserialize<'de> for HealthcareService {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "name",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "active",
-                                            "providedBy",
-                                            "category",
-                                            "type",
-                                            "specialty",
-                                            "location",
-                                            "name",
-                                            "comment",
-                                            "extraDetails",
-                                            "photo",
-                                            "telecom",
-                                            "coverageArea",
-                                            "serviceProvisionCode",
-                                            "eligibility",
-                                            "program",
-                                            "characteristic",
-                                            "communication",
-                                            "referralMethod",
-                                            "appointmentRequired",
-                                            "availableTime",
-                                            "notAvailable",
-                                            "availabilityExceptions",
-                                            "endpoint",
-                                        ],
-                                    ));
+                                    return unknown_field_error("name");
                                 }
                             }
                             Field::Comment => {
@@ -1772,43 +1637,7 @@ impl<'de> serde::de::Deserialize<'de> for HealthcareService {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "comment",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "active",
-                                            "providedBy",
-                                            "category",
-                                            "type",
-                                            "specialty",
-                                            "location",
-                                            "name",
-                                            "comment",
-                                            "extraDetails",
-                                            "photo",
-                                            "telecom",
-                                            "coverageArea",
-                                            "serviceProvisionCode",
-                                            "eligibility",
-                                            "program",
-                                            "characteristic",
-                                            "communication",
-                                            "referralMethod",
-                                            "appointmentRequired",
-                                            "availableTime",
-                                            "notAvailable",
-                                            "availabilityExceptions",
-                                            "endpoint",
-                                        ],
-                                    ));
+                                    return unknown_field_error("comment");
                                 }
                             }
                             Field::ExtraDetails => {
@@ -1845,43 +1674,7 @@ impl<'de> serde::de::Deserialize<'de> for HealthcareService {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "extraDetails",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "active",
-                                            "providedBy",
-                                            "category",
-                                            "type",
-                                            "specialty",
-                                            "location",
-                                            "name",
-                                            "comment",
-                                            "extraDetails",
-                                            "photo",
-                                            "telecom",
-                                            "coverageArea",
-                                            "serviceProvisionCode",
-                                            "eligibility",
-                                            "program",
-                                            "characteristic",
-                                            "communication",
-                                            "referralMethod",
-                                            "appointmentRequired",
-                                            "availableTime",
-                                            "notAvailable",
-                                            "availabilityExceptions",
-                                            "endpoint",
-                                        ],
-                                    ));
+                                    return unknown_field_error("extraDetails");
                                 }
                             }
                             Field::Photo => {
@@ -2027,43 +1820,7 @@ impl<'de> serde::de::Deserialize<'de> for HealthcareService {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "appointmentRequired",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "active",
-                                            "providedBy",
-                                            "category",
-                                            "type",
-                                            "specialty",
-                                            "location",
-                                            "name",
-                                            "comment",
-                                            "extraDetails",
-                                            "photo",
-                                            "telecom",
-                                            "coverageArea",
-                                            "serviceProvisionCode",
-                                            "eligibility",
-                                            "program",
-                                            "characteristic",
-                                            "communication",
-                                            "referralMethod",
-                                            "appointmentRequired",
-                                            "availableTime",
-                                            "notAvailable",
-                                            "availabilityExceptions",
-                                            "endpoint",
-                                        ],
-                                    ));
+                                    return unknown_field_error("appointmentRequired");
                                 }
                             }
                             Field::AvailableTime => {
@@ -2128,43 +1885,7 @@ impl<'de> serde::de::Deserialize<'de> for HealthcareService {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "availabilityExceptions",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "active",
-                                            "providedBy",
-                                            "category",
-                                            "type",
-                                            "specialty",
-                                            "location",
-                                            "name",
-                                            "comment",
-                                            "extraDetails",
-                                            "photo",
-                                            "telecom",
-                                            "coverageArea",
-                                            "serviceProvisionCode",
-                                            "eligibility",
-                                            "program",
-                                            "characteristic",
-                                            "communication",
-                                            "referralMethod",
-                                            "appointmentRequired",
-                                            "availableTime",
-                                            "notAvailable",
-                                            "availabilityExceptions",
-                                            "endpoint",
-                                        ],
-                                    ));
+                                    return unknown_field_error("availabilityExceptions");
                                 }
                             }
                             Field::Endpoint => {

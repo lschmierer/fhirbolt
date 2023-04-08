@@ -1,4 +1,4 @@
-// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-08 by fhirbolt-codegen v0.1.0
 #[doc = "Base StructureDefinition for Ratio Type: A relationship of two Quantity values - expressed as a numerator and a denominator.\n\nNeed to able to capture ratios for some measurements (titers) and some rates (costs)."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub struct Ratio {
@@ -53,6 +53,12 @@ impl<'de> serde::de::Deserialize<'de> for Ratio {
             #[serde(rename = "denominator")]
             Denominator,
             Unknown(std::string::String),
+        }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &["id", "extension", "numerator", "denominator"],
+            ))
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {

@@ -1,4 +1,4 @@
-// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-08 by fhirbolt-codegen v0.1.0
 #[doc = "The value of the trait that holds (or does not hold - see 'exclude') for members of the group."]
 #[derive(Debug, Clone, PartialEq)]
 pub enum GroupCharacteristicValue {
@@ -143,6 +143,24 @@ impl<'de> serde::de::Deserialize<'de> for GroupCharacteristic {
             Period,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "code",
+                    "valueCodeableConcept",
+                    "valueBoolean",
+                    "valueQuantity",
+                    "valueRange",
+                    "valueReference",
+                    "exclude",
+                    "period",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = GroupCharacteristic;
@@ -260,22 +278,7 @@ impl<'de> serde::de::Deserialize<'de> for GroupCharacteristic {
                                         return Err(serde::de::Error::duplicate_field("_value[x]"));
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "valueBoolean",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "code",
-                                            "valueCodeableConcept",
-                                            "valueBoolean",
-                                            "valueQuantity",
-                                            "valueRange",
-                                            "valueReference",
-                                            "exclude",
-                                            "period",
-                                        ],
-                                    ));
+                                    return unknown_field_error("valueBoolean");
                                 }
                             }
                             Field::ValueQuantity => {
@@ -331,22 +334,7 @@ impl<'de> serde::de::Deserialize<'de> for GroupCharacteristic {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "exclude",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "code",
-                                            "valueCodeableConcept",
-                                            "valueBoolean",
-                                            "valueQuantity",
-                                            "valueRange",
-                                            "valueReference",
-                                            "exclude",
-                                            "period",
-                                        ],
-                                    ));
+                                    return unknown_field_error("exclude");
                                 }
                             }
                             Field::Period => {
@@ -495,6 +483,19 @@ impl<'de> serde::de::Deserialize<'de> for GroupMember {
             InactivePrimitiveElement,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "entity",
+                    "period",
+                    "inactive",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = GroupMember;
@@ -587,17 +588,7 @@ impl<'de> serde::de::Deserialize<'de> for GroupMember {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "inactive",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "entity",
-                                            "period",
-                                            "inactive",
-                                        ],
-                                    ));
+                                    return unknown_field_error("inactive");
                                 }
                             }
                             Field::Unknown(key) => if _ctx.config.mode
@@ -914,6 +905,31 @@ impl<'de> serde::de::Deserialize<'de> for Group {
             Member,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "meta",
+                    "implicitRules",
+                    "language",
+                    "text",
+                    "contained",
+                    "extension",
+                    "modifierExtension",
+                    "identifier",
+                    "active",
+                    "type",
+                    "actual",
+                    "code",
+                    "name",
+                    "quantity",
+                    "managingEntity",
+                    "characteristic",
+                    "member",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = Group;
@@ -1002,29 +1018,7 @@ impl<'de> serde::de::Deserialize<'de> for Group {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "implicitRules",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "active",
-                                            "type",
-                                            "actual",
-                                            "code",
-                                            "name",
-                                            "quantity",
-                                            "managingEntity",
-                                            "characteristic",
-                                            "member",
-                                        ],
-                                    ));
+                                    return unknown_field_error("implicitRules");
                                 }
                             }
                             Field::Language => {
@@ -1055,29 +1049,7 @@ impl<'de> serde::de::Deserialize<'de> for Group {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "language",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "active",
-                                            "type",
-                                            "actual",
-                                            "code",
-                                            "name",
-                                            "quantity",
-                                            "managingEntity",
-                                            "characteristic",
-                                            "member",
-                                        ],
-                                    ));
+                                    return unknown_field_error("language");
                                 }
                             }
                             Field::Text => {
@@ -1163,29 +1135,7 @@ impl<'de> serde::de::Deserialize<'de> for Group {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "active",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "active",
-                                            "type",
-                                            "actual",
-                                            "code",
-                                            "name",
-                                            "quantity",
-                                            "managingEntity",
-                                            "characteristic",
-                                            "member",
-                                        ],
-                                    ));
+                                    return unknown_field_error("active");
                                 }
                             }
                             Field::Type => {
@@ -1216,29 +1166,7 @@ impl<'de> serde::de::Deserialize<'de> for Group {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "type",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "active",
-                                            "type",
-                                            "actual",
-                                            "code",
-                                            "name",
-                                            "quantity",
-                                            "managingEntity",
-                                            "characteristic",
-                                            "member",
-                                        ],
-                                    ));
+                                    return unknown_field_error("type");
                                 }
                             }
                             Field::Actual => {
@@ -1269,29 +1197,7 @@ impl<'de> serde::de::Deserialize<'de> for Group {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "actual",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "active",
-                                            "type",
-                                            "actual",
-                                            "code",
-                                            "name",
-                                            "quantity",
-                                            "managingEntity",
-                                            "characteristic",
-                                            "member",
-                                        ],
-                                    ));
+                                    return unknown_field_error("actual");
                                 }
                             }
                             Field::Code => {
@@ -1328,29 +1234,7 @@ impl<'de> serde::de::Deserialize<'de> for Group {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "name",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "active",
-                                            "type",
-                                            "actual",
-                                            "code",
-                                            "name",
-                                            "quantity",
-                                            "managingEntity",
-                                            "characteristic",
-                                            "member",
-                                        ],
-                                    ));
+                                    return unknown_field_error("name");
                                 }
                             }
                             Field::Quantity => {
@@ -1381,29 +1265,7 @@ impl<'de> serde::de::Deserialize<'de> for Group {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "quantity",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "active",
-                                            "type",
-                                            "actual",
-                                            "code",
-                                            "name",
-                                            "quantity",
-                                            "managingEntity",
-                                            "characteristic",
-                                            "member",
-                                        ],
-                                    ));
+                                    return unknown_field_error("quantity");
                                 }
                             }
                             Field::ManagingEntity => {

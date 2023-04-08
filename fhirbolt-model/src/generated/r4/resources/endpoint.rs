@@ -1,4 +1,4 @@
-// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-08 by fhirbolt-codegen v0.1.0
 #[doc = "The technical details of an endpoint that can be used for electronic services, such as for web services providing XDS.b or a REST endpoint for another FHIR server. This may include any security context information."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub struct Endpoint {
@@ -319,6 +319,32 @@ impl<'de> serde::de::Deserialize<'de> for Endpoint {
             HeaderPrimitiveElement,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "meta",
+                    "implicitRules",
+                    "language",
+                    "text",
+                    "contained",
+                    "extension",
+                    "modifierExtension",
+                    "identifier",
+                    "status",
+                    "connectionType",
+                    "name",
+                    "managingOrganization",
+                    "contact",
+                    "period",
+                    "payloadType",
+                    "payloadMimeType",
+                    "address",
+                    "header",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = Endpoint;
@@ -409,30 +435,7 @@ impl<'de> serde::de::Deserialize<'de> for Endpoint {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "implicitRules",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "status",
-                                            "connectionType",
-                                            "name",
-                                            "managingOrganization",
-                                            "contact",
-                                            "period",
-                                            "payloadType",
-                                            "payloadMimeType",
-                                            "address",
-                                            "header",
-                                        ],
-                                    ));
+                                    return unknown_field_error("implicitRules");
                                 }
                             }
                             Field::Language => {
@@ -463,30 +466,7 @@ impl<'de> serde::de::Deserialize<'de> for Endpoint {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "language",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "status",
-                                            "connectionType",
-                                            "name",
-                                            "managingOrganization",
-                                            "contact",
-                                            "period",
-                                            "payloadType",
-                                            "payloadMimeType",
-                                            "address",
-                                            "header",
-                                        ],
-                                    ));
+                                    return unknown_field_error("language");
                                 }
                             }
                             Field::Text => {
@@ -572,30 +552,7 @@ impl<'de> serde::de::Deserialize<'de> for Endpoint {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "status",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "status",
-                                            "connectionType",
-                                            "name",
-                                            "managingOrganization",
-                                            "contact",
-                                            "period",
-                                            "payloadType",
-                                            "payloadMimeType",
-                                            "address",
-                                            "header",
-                                        ],
-                                    ));
+                                    return unknown_field_error("status");
                                 }
                             }
                             Field::ConnectionType => {
@@ -634,30 +591,7 @@ impl<'de> serde::de::Deserialize<'de> for Endpoint {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "name",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "status",
-                                            "connectionType",
-                                            "name",
-                                            "managingOrganization",
-                                            "contact",
-                                            "period",
-                                            "payloadType",
-                                            "payloadMimeType",
-                                            "address",
-                                            "header",
-                                        ],
-                                    ));
+                                    return unknown_field_error("name");
                                 }
                             }
                             Field::ManagingOrganization => {
@@ -758,30 +692,7 @@ impl<'de> serde::de::Deserialize<'de> for Endpoint {
                                         }
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "payloadMimeType",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "status",
-                                            "connectionType",
-                                            "name",
-                                            "managingOrganization",
-                                            "contact",
-                                            "period",
-                                            "payloadType",
-                                            "payloadMimeType",
-                                            "address",
-                                            "header",
-                                        ],
-                                    ));
+                                    return unknown_field_error("payloadMimeType");
                                 }
                             }
                             Field::Address => {
@@ -812,30 +723,7 @@ impl<'de> serde::de::Deserialize<'de> for Endpoint {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "address",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "status",
-                                            "connectionType",
-                                            "name",
-                                            "managingOrganization",
-                                            "contact",
-                                            "period",
-                                            "payloadType",
-                                            "payloadMimeType",
-                                            "address",
-                                            "header",
-                                        ],
-                                    ));
+                                    return unknown_field_error("address");
                                 }
                             }
                             Field::Header => {
@@ -894,30 +782,7 @@ impl<'de> serde::de::Deserialize<'de> for Endpoint {
                                         }
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "header",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "status",
-                                            "connectionType",
-                                            "name",
-                                            "managingOrganization",
-                                            "contact",
-                                            "period",
-                                            "payloadType",
-                                            "payloadMimeType",
-                                            "address",
-                                            "header",
-                                        ],
-                                    ));
+                                    return unknown_field_error("header");
                                 }
                             }
                             Field::Unknown(key) => if _ctx.config.mode

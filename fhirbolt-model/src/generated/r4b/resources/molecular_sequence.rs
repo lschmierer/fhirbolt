@@ -1,4 +1,4 @@
-// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-08 by fhirbolt-codegen v0.1.0
 #[doc = "A sequence that is used as a reference to describe variants that are present in a sequence analyzed."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub struct MolecularSequenceReferenceSeq {
@@ -218,6 +218,25 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceReferenceSeq {
             WindowEndPrimitiveElement,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "chromosome",
+                    "genomeBuild",
+                    "orientation",
+                    "referenceSeqId",
+                    "referenceSeqPointer",
+                    "referenceSeqString",
+                    "strand",
+                    "windowStart",
+                    "windowEnd",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = MolecularSequenceReferenceSeq;
@@ -320,23 +339,7 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceReferenceSeq {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "genomeBuild",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "chromosome",
-                                            "genomeBuild",
-                                            "orientation",
-                                            "referenceSeqId",
-                                            "referenceSeqPointer",
-                                            "referenceSeqString",
-                                            "strand",
-                                            "windowStart",
-                                            "windowEnd",
-                                        ],
-                                    ));
+                                    return unknown_field_error("genomeBuild");
                                 }
                             }
                             Field::Orientation => {
@@ -373,23 +376,7 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceReferenceSeq {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "orientation",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "chromosome",
-                                            "genomeBuild",
-                                            "orientation",
-                                            "referenceSeqId",
-                                            "referenceSeqPointer",
-                                            "referenceSeqString",
-                                            "strand",
-                                            "windowStart",
-                                            "windowEnd",
-                                        ],
-                                    ));
+                                    return unknown_field_error("orientation");
                                 }
                             }
                             Field::ReferenceSeqId => {
@@ -444,23 +431,7 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceReferenceSeq {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "referenceSeqString",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "chromosome",
-                                            "genomeBuild",
-                                            "orientation",
-                                            "referenceSeqId",
-                                            "referenceSeqPointer",
-                                            "referenceSeqString",
-                                            "strand",
-                                            "windowStart",
-                                            "windowEnd",
-                                        ],
-                                    ));
+                                    return unknown_field_error("referenceSeqString");
                                 }
                             }
                             Field::Strand => {
@@ -491,23 +462,7 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceReferenceSeq {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "strand",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "chromosome",
-                                            "genomeBuild",
-                                            "orientation",
-                                            "referenceSeqId",
-                                            "referenceSeqPointer",
-                                            "referenceSeqString",
-                                            "strand",
-                                            "windowStart",
-                                            "windowEnd",
-                                        ],
-                                    ));
+                                    return unknown_field_error("strand");
                                 }
                             }
                             Field::WindowStart => {
@@ -544,23 +499,7 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceReferenceSeq {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "windowStart",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "chromosome",
-                                            "genomeBuild",
-                                            "orientation",
-                                            "referenceSeqId",
-                                            "referenceSeqPointer",
-                                            "referenceSeqString",
-                                            "strand",
-                                            "windowStart",
-                                            "windowEnd",
-                                        ],
-                                    ));
+                                    return unknown_field_error("windowStart");
                                 }
                             }
                             Field::WindowEnd => {
@@ -593,23 +532,7 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceReferenceSeq {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "windowEnd",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "chromosome",
-                                            "genomeBuild",
-                                            "orientation",
-                                            "referenceSeqId",
-                                            "referenceSeqPointer",
-                                            "referenceSeqString",
-                                            "strand",
-                                            "windowStart",
-                                            "windowEnd",
-                                        ],
-                                    ));
+                                    return unknown_field_error("windowEnd");
                                 }
                             }
                             Field::Unknown(key) => if _ctx.config.mode
@@ -835,6 +758,22 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceVariant {
             VariantPointer,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "start",
+                    "end",
+                    "observedAllele",
+                    "referenceAllele",
+                    "cigar",
+                    "variantPointer",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = MolecularSequenceVariant;
@@ -918,20 +857,7 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceVariant {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "start",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "start",
-                                            "end",
-                                            "observedAllele",
-                                            "referenceAllele",
-                                            "cigar",
-                                            "variantPointer",
-                                        ],
-                                    ));
+                                    return unknown_field_error("start");
                                 }
                             }
                             Field::End => {
@@ -962,20 +888,7 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceVariant {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "end",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "start",
-                                            "end",
-                                            "observedAllele",
-                                            "referenceAllele",
-                                            "cigar",
-                                            "variantPointer",
-                                        ],
-                                    ));
+                                    return unknown_field_error("end");
                                 }
                             }
                             Field::ObservedAllele => {
@@ -1012,20 +925,7 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceVariant {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "observedAllele",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "start",
-                                            "end",
-                                            "observedAllele",
-                                            "referenceAllele",
-                                            "cigar",
-                                            "variantPointer",
-                                        ],
-                                    ));
+                                    return unknown_field_error("observedAllele");
                                 }
                             }
                             Field::ReferenceAllele => {
@@ -1062,20 +962,7 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceVariant {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "referenceAllele",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "start",
-                                            "end",
-                                            "observedAllele",
-                                            "referenceAllele",
-                                            "cigar",
-                                            "variantPointer",
-                                        ],
-                                    ));
+                                    return unknown_field_error("referenceAllele");
                                 }
                             }
                             Field::Cigar => {
@@ -1106,20 +993,7 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceVariant {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "cigar",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "start",
-                                            "end",
-                                            "observedAllele",
-                                            "referenceAllele",
-                                            "cigar",
-                                            "variantPointer",
-                                        ],
-                                    ));
+                                    return unknown_field_error("cigar");
                                 }
                             }
                             Field::VariantPointer => {
@@ -1547,6 +1421,23 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceQualityRoc {
             FMeasurePrimitiveElement,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "score",
+                    "numTP",
+                    "numFP",
+                    "numFN",
+                    "precision",
+                    "sensitivity",
+                    "fMeasure",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = MolecularSequenceQualityRoc;
@@ -1662,21 +1553,7 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceQualityRoc {
                                         }
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "score",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "score",
-                                            "numTP",
-                                            "numFP",
-                                            "numFN",
-                                            "precision",
-                                            "sensitivity",
-                                            "fMeasure",
-                                        ],
-                                    ));
+                                    return unknown_field_error("score");
                                 }
                             }
                             Field::NumTp => {
@@ -1735,21 +1612,7 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceQualityRoc {
                                         }
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "numTP",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "score",
-                                            "numTP",
-                                            "numFP",
-                                            "numFN",
-                                            "precision",
-                                            "sensitivity",
-                                            "fMeasure",
-                                        ],
-                                    ));
+                                    return unknown_field_error("numTP");
                                 }
                             }
                             Field::NumFp => {
@@ -1808,21 +1671,7 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceQualityRoc {
                                         }
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "numFP",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "score",
-                                            "numTP",
-                                            "numFP",
-                                            "numFN",
-                                            "precision",
-                                            "sensitivity",
-                                            "fMeasure",
-                                        ],
-                                    ));
+                                    return unknown_field_error("numFP");
                                 }
                             }
                             Field::NumFn => {
@@ -1881,21 +1730,7 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceQualityRoc {
                                         }
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "numFN",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "score",
-                                            "numTP",
-                                            "numFP",
-                                            "numFN",
-                                            "precision",
-                                            "sensitivity",
-                                            "fMeasure",
-                                        ],
-                                    ));
+                                    return unknown_field_error("numFN");
                                 }
                             }
                             Field::Precision => {
@@ -1957,21 +1792,7 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceQualityRoc {
                                         }
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "precision",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "score",
-                                            "numTP",
-                                            "numFP",
-                                            "numFN",
-                                            "precision",
-                                            "sensitivity",
-                                            "fMeasure",
-                                        ],
-                                    ));
+                                    return unknown_field_error("precision");
                                 }
                             }
                             Field::Sensitivity => {
@@ -2035,21 +1856,7 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceQualityRoc {
                                         }
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "sensitivity",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "score",
-                                            "numTP",
-                                            "numFP",
-                                            "numFN",
-                                            "precision",
-                                            "sensitivity",
-                                            "fMeasure",
-                                        ],
-                                    ));
+                                    return unknown_field_error("sensitivity");
                                 }
                             }
                             Field::FMeasure => {
@@ -2109,21 +1916,7 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceQualityRoc {
                                         }
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "fMeasure",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "score",
-                                            "numTP",
-                                            "numFP",
-                                            "numFN",
-                                            "precision",
-                                            "sensitivity",
-                                            "fMeasure",
-                                        ],
-                                    ));
+                                    return unknown_field_error("fMeasure");
                                 }
                             }
                             Field::Unknown(key) => if _ctx.config.mode
@@ -2528,6 +2321,31 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceQuality {
             Roc,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "type",
+                    "standardSequence",
+                    "start",
+                    "end",
+                    "score",
+                    "method",
+                    "truthTP",
+                    "queryTP",
+                    "truthFN",
+                    "queryFP",
+                    "gtFP",
+                    "precision",
+                    "recall",
+                    "fScore",
+                    "roc",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = MolecularSequenceQuality;
@@ -2621,29 +2439,7 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceQuality {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "type",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "type",
-                                            "standardSequence",
-                                            "start",
-                                            "end",
-                                            "score",
-                                            "method",
-                                            "truthTP",
-                                            "queryTP",
-                                            "truthFN",
-                                            "queryFP",
-                                            "gtFP",
-                                            "precision",
-                                            "recall",
-                                            "fScore",
-                                            "roc",
-                                        ],
-                                    ));
+                                    return unknown_field_error("type");
                                 }
                             }
                             Field::StandardSequence => {
@@ -2682,29 +2478,7 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceQuality {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "start",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "type",
-                                            "standardSequence",
-                                            "start",
-                                            "end",
-                                            "score",
-                                            "method",
-                                            "truthTP",
-                                            "queryTP",
-                                            "truthFN",
-                                            "queryFP",
-                                            "gtFP",
-                                            "precision",
-                                            "recall",
-                                            "fScore",
-                                            "roc",
-                                        ],
-                                    ));
+                                    return unknown_field_error("start");
                                 }
                             }
                             Field::End => {
@@ -2735,29 +2509,7 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceQuality {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "end",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "type",
-                                            "standardSequence",
-                                            "start",
-                                            "end",
-                                            "score",
-                                            "method",
-                                            "truthTP",
-                                            "queryTP",
-                                            "truthFN",
-                                            "queryFP",
-                                            "gtFP",
-                                            "precision",
-                                            "recall",
-                                            "fScore",
-                                            "roc",
-                                        ],
-                                    ));
+                                    return unknown_field_error("end");
                                 }
                             }
                             Field::Score => {
@@ -2800,29 +2552,7 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceQuality {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "truthTP",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "type",
-                                            "standardSequence",
-                                            "start",
-                                            "end",
-                                            "score",
-                                            "method",
-                                            "truthTP",
-                                            "queryTP",
-                                            "truthFN",
-                                            "queryFP",
-                                            "gtFP",
-                                            "precision",
-                                            "recall",
-                                            "fScore",
-                                            "roc",
-                                        ],
-                                    ));
+                                    return unknown_field_error("truthTP");
                                 }
                             }
                             Field::QueryTp => {
@@ -2853,29 +2583,7 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceQuality {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "queryTP",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "type",
-                                            "standardSequence",
-                                            "start",
-                                            "end",
-                                            "score",
-                                            "method",
-                                            "truthTP",
-                                            "queryTP",
-                                            "truthFN",
-                                            "queryFP",
-                                            "gtFP",
-                                            "precision",
-                                            "recall",
-                                            "fScore",
-                                            "roc",
-                                        ],
-                                    ));
+                                    return unknown_field_error("queryTP");
                                 }
                             }
                             Field::TruthFn => {
@@ -2906,29 +2614,7 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceQuality {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "truthFN",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "type",
-                                            "standardSequence",
-                                            "start",
-                                            "end",
-                                            "score",
-                                            "method",
-                                            "truthTP",
-                                            "queryTP",
-                                            "truthFN",
-                                            "queryFP",
-                                            "gtFP",
-                                            "precision",
-                                            "recall",
-                                            "fScore",
-                                            "roc",
-                                        ],
-                                    ));
+                                    return unknown_field_error("truthFN");
                                 }
                             }
                             Field::QueryFp => {
@@ -2959,29 +2645,7 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceQuality {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "queryFP",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "type",
-                                            "standardSequence",
-                                            "start",
-                                            "end",
-                                            "score",
-                                            "method",
-                                            "truthTP",
-                                            "queryTP",
-                                            "truthFN",
-                                            "queryFP",
-                                            "gtFP",
-                                            "precision",
-                                            "recall",
-                                            "fScore",
-                                            "roc",
-                                        ],
-                                    ));
+                                    return unknown_field_error("queryFP");
                                 }
                             }
                             Field::GtFp => {
@@ -3012,29 +2676,7 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceQuality {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "gtFP",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "type",
-                                            "standardSequence",
-                                            "start",
-                                            "end",
-                                            "score",
-                                            "method",
-                                            "truthTP",
-                                            "queryTP",
-                                            "truthFN",
-                                            "queryFP",
-                                            "gtFP",
-                                            "precision",
-                                            "recall",
-                                            "fScore",
-                                            "roc",
-                                        ],
-                                    ));
+                                    return unknown_field_error("gtFP");
                                 }
                             }
                             Field::Precision => {
@@ -3067,29 +2709,7 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceQuality {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "precision",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "type",
-                                            "standardSequence",
-                                            "start",
-                                            "end",
-                                            "score",
-                                            "method",
-                                            "truthTP",
-                                            "queryTP",
-                                            "truthFN",
-                                            "queryFP",
-                                            "gtFP",
-                                            "precision",
-                                            "recall",
-                                            "fScore",
-                                            "roc",
-                                        ],
-                                    ));
+                                    return unknown_field_error("precision");
                                 }
                             }
                             Field::Recall => {
@@ -3120,29 +2740,7 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceQuality {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "recall",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "type",
-                                            "standardSequence",
-                                            "start",
-                                            "end",
-                                            "score",
-                                            "method",
-                                            "truthTP",
-                                            "queryTP",
-                                            "truthFN",
-                                            "queryFP",
-                                            "gtFP",
-                                            "precision",
-                                            "recall",
-                                            "fScore",
-                                            "roc",
-                                        ],
-                                    ));
+                                    return unknown_field_error("recall");
                                 }
                             }
                             Field::FScore => {
@@ -3173,29 +2771,7 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceQuality {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "fScore",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "type",
-                                            "standardSequence",
-                                            "start",
-                                            "end",
-                                            "score",
-                                            "method",
-                                            "truthTP",
-                                            "queryTP",
-                                            "truthFN",
-                                            "queryFP",
-                                            "gtFP",
-                                            "precision",
-                                            "recall",
-                                            "fScore",
-                                            "roc",
-                                        ],
-                                    ));
+                                    return unknown_field_error("fScore");
                                 }
                             }
                             Field::Roc => {
@@ -3459,6 +3035,22 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceRepository {
             ReadsetIdPrimitiveElement,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "type",
+                    "url",
+                    "name",
+                    "datasetId",
+                    "variantsetId",
+                    "readsetId",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = MolecularSequenceRepository;
@@ -3545,20 +3137,7 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceRepository {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "type",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "type",
-                                            "url",
-                                            "name",
-                                            "datasetId",
-                                            "variantsetId",
-                                            "readsetId",
-                                        ],
-                                    ));
+                                    return unknown_field_error("type");
                                 }
                             }
                             Field::Url => {
@@ -3589,20 +3168,7 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceRepository {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "url",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "type",
-                                            "url",
-                                            "name",
-                                            "datasetId",
-                                            "variantsetId",
-                                            "readsetId",
-                                        ],
-                                    ));
+                                    return unknown_field_error("url");
                                 }
                             }
                             Field::Name => {
@@ -3633,20 +3199,7 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceRepository {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "name",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "type",
-                                            "url",
-                                            "name",
-                                            "datasetId",
-                                            "variantsetId",
-                                            "readsetId",
-                                        ],
-                                    ));
+                                    return unknown_field_error("name");
                                 }
                             }
                             Field::DatasetId => {
@@ -3679,20 +3232,7 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceRepository {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "datasetId",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "type",
-                                            "url",
-                                            "name",
-                                            "datasetId",
-                                            "variantsetId",
-                                            "readsetId",
-                                        ],
-                                    ));
+                                    return unknown_field_error("datasetId");
                                 }
                             }
                             Field::VariantsetId => {
@@ -3729,20 +3269,7 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceRepository {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "variantsetId",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "type",
-                                            "url",
-                                            "name",
-                                            "datasetId",
-                                            "variantsetId",
-                                            "readsetId",
-                                        ],
-                                    ));
+                                    return unknown_field_error("variantsetId");
                                 }
                             }
                             Field::ReadsetId => {
@@ -3775,20 +3302,7 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceRepository {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "readsetId",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "type",
-                                            "url",
-                                            "name",
-                                            "datasetId",
-                                            "variantsetId",
-                                            "readsetId",
-                                        ],
-                                    ));
+                                    return unknown_field_error("readsetId");
                                 }
                             }
                             Field::Unknown(key) => if _ctx.config.mode
@@ -3932,6 +3446,12 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceStructureVariantOuter
             EndPrimitiveElement,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &["id", "extension", "modifierExtension", "start", "end"],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = MolecularSequenceStructureVariantOuter;
@@ -4014,10 +3534,7 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceStructureVariantOuter
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "start",
-                                        &["id", "extension", "modifierExtension", "start", "end"],
-                                    ));
+                                    return unknown_field_error("start");
                                 }
                             }
                             Field::End => {
@@ -4048,10 +3565,7 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceStructureVariantOuter
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "end",
-                                        &["id", "extension", "modifierExtension", "start", "end"],
-                                    ));
+                                    return unknown_field_error("end");
                                 }
                             }
                             Field::Unknown(key) => if _ctx.config.mode
@@ -4175,6 +3689,12 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceStructureVariantInner
             EndPrimitiveElement,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &["id", "extension", "modifierExtension", "start", "end"],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = MolecularSequenceStructureVariantInner;
@@ -4257,10 +3777,7 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceStructureVariantInner
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "start",
-                                        &["id", "extension", "modifierExtension", "start", "end"],
-                                    ));
+                                    return unknown_field_error("start");
                                 }
                             }
                             Field::End => {
@@ -4291,10 +3808,7 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceStructureVariantInner
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "end",
-                                        &["id", "extension", "modifierExtension", "start", "end"],
-                                    ));
+                                    return unknown_field_error("end");
                                 }
                             }
                             Field::Unknown(key) => if _ctx.config.mode
@@ -4439,6 +3953,21 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceStructureVariant {
             Inner,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "variantType",
+                    "exact",
+                    "length",
+                    "outer",
+                    "inner",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = MolecularSequenceStructureVariant;
@@ -4530,19 +4059,7 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceStructureVariant {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "exact",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "variantType",
-                                            "exact",
-                                            "length",
-                                            "outer",
-                                            "inner",
-                                        ],
-                                    ));
+                                    return unknown_field_error("exact");
                                 }
                             }
                             Field::Length => {
@@ -4573,19 +4090,7 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequenceStructureVariant {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "length",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "variantType",
-                                            "exact",
-                                            "length",
-                                            "outer",
-                                            "inner",
-                                        ],
-                                    ));
+                                    return unknown_field_error("length");
                                 }
                             }
                             Field::Outer => {
@@ -4942,6 +4447,37 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequence {
             StructureVariant,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "meta",
+                    "implicitRules",
+                    "language",
+                    "text",
+                    "contained",
+                    "extension",
+                    "modifierExtension",
+                    "identifier",
+                    "type",
+                    "coordinateSystem",
+                    "patient",
+                    "specimen",
+                    "device",
+                    "performer",
+                    "quantity",
+                    "referenceSeq",
+                    "variant",
+                    "observedSeq",
+                    "quality",
+                    "readCoverage",
+                    "repository",
+                    "pointer",
+                    "structureVariant",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = MolecularSequence;
@@ -5036,35 +4572,7 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequence {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "implicitRules",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "type",
-                                            "coordinateSystem",
-                                            "patient",
-                                            "specimen",
-                                            "device",
-                                            "performer",
-                                            "quantity",
-                                            "referenceSeq",
-                                            "variant",
-                                            "observedSeq",
-                                            "quality",
-                                            "readCoverage",
-                                            "repository",
-                                            "pointer",
-                                            "structureVariant",
-                                        ],
-                                    ));
+                                    return unknown_field_error("implicitRules");
                                 }
                             }
                             Field::Language => {
@@ -5095,35 +4603,7 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequence {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "language",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "type",
-                                            "coordinateSystem",
-                                            "patient",
-                                            "specimen",
-                                            "device",
-                                            "performer",
-                                            "quantity",
-                                            "referenceSeq",
-                                            "variant",
-                                            "observedSeq",
-                                            "quality",
-                                            "readCoverage",
-                                            "repository",
-                                            "pointer",
-                                            "structureVariant",
-                                        ],
-                                    ));
+                                    return unknown_field_error("language");
                                 }
                             }
                             Field::Text => {
@@ -5209,35 +4689,7 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequence {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "type",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "type",
-                                            "coordinateSystem",
-                                            "patient",
-                                            "specimen",
-                                            "device",
-                                            "performer",
-                                            "quantity",
-                                            "referenceSeq",
-                                            "variant",
-                                            "observedSeq",
-                                            "quality",
-                                            "readCoverage",
-                                            "repository",
-                                            "pointer",
-                                            "structureVariant",
-                                        ],
-                                    ));
+                                    return unknown_field_error("type");
                                 }
                             }
                             Field::CoordinateSystem => {
@@ -5276,35 +4728,7 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequence {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "coordinateSystem",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "type",
-                                            "coordinateSystem",
-                                            "patient",
-                                            "specimen",
-                                            "device",
-                                            "performer",
-                                            "quantity",
-                                            "referenceSeq",
-                                            "variant",
-                                            "observedSeq",
-                                            "quality",
-                                            "readCoverage",
-                                            "repository",
-                                            "pointer",
-                                            "structureVariant",
-                                        ],
-                                    ));
+                                    return unknown_field_error("coordinateSystem");
                                 }
                             }
                             Field::Patient => {
@@ -5388,35 +4812,7 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequence {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "observedSeq",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "type",
-                                            "coordinateSystem",
-                                            "patient",
-                                            "specimen",
-                                            "device",
-                                            "performer",
-                                            "quantity",
-                                            "referenceSeq",
-                                            "variant",
-                                            "observedSeq",
-                                            "quality",
-                                            "readCoverage",
-                                            "repository",
-                                            "pointer",
-                                            "structureVariant",
-                                        ],
-                                    ));
+                                    return unknown_field_error("observedSeq");
                                 }
                             }
                             Field::Quality => {
@@ -5464,35 +4860,7 @@ impl<'de> serde::de::Deserialize<'de> for MolecularSequence {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "readCoverage",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "type",
-                                            "coordinateSystem",
-                                            "patient",
-                                            "specimen",
-                                            "device",
-                                            "performer",
-                                            "quantity",
-                                            "referenceSeq",
-                                            "variant",
-                                            "observedSeq",
-                                            "quality",
-                                            "readCoverage",
-                                            "repository",
-                                            "pointer",
-                                            "structureVariant",
-                                        ],
-                                    ));
+                                    return unknown_field_error("readCoverage");
                                 }
                             }
                             Field::Repository => {

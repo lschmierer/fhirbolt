@@ -1,4 +1,4 @@
-// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-08 by fhirbolt-codegen v0.1.0
 #[doc = "Indicates if the individual is deceased or not."]
 #[derive(Debug, Clone, PartialEq)]
 pub enum PatientDeceased {
@@ -138,6 +138,23 @@ impl<'de> serde::de::Deserialize<'de> for PatientContact {
             Period,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "relationship",
+                    "name",
+                    "telecom",
+                    "address",
+                    "gender",
+                    "organization",
+                    "period",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = PatientContact;
@@ -259,21 +276,7 @@ impl<'de> serde::de::Deserialize<'de> for PatientContact {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "gender",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "relationship",
-                                            "name",
-                                            "telecom",
-                                            "address",
-                                            "gender",
-                                            "organization",
-                                            "period",
-                                        ],
-                                    ));
+                                    return unknown_field_error("gender");
                                 }
                             }
                             Field::Organization => {
@@ -405,6 +408,18 @@ impl<'de> serde::de::Deserialize<'de> for PatientCommunication {
             PreferredPrimitiveElement,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "language",
+                    "preferred",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = PatientCommunication;
@@ -492,16 +507,7 @@ impl<'de> serde::de::Deserialize<'de> for PatientCommunication {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "preferred",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "language",
-                                            "preferred",
-                                        ],
-                                    ));
+                                    return unknown_field_error("preferred");
                                 }
                             }
                             Field::Unknown(key) => if _ctx.config.mode
@@ -613,6 +619,12 @@ impl<'de> serde::de::Deserialize<'de> for PatientLink {
             TypePrimitiveElement,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &["id", "extension", "modifierExtension", "other", "type"],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = PatientLink;
@@ -698,10 +710,7 @@ impl<'de> serde::de::Deserialize<'de> for PatientLink {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "type",
-                                        &["id", "extension", "modifierExtension", "other", "type"],
-                                    ));
+                                    return unknown_field_error("type");
                                 }
                             }
                             Field::Unknown(key) => if _ctx.config.mode
@@ -1124,6 +1133,39 @@ impl<'de> serde::de::Deserialize<'de> for Patient {
             Link,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "meta",
+                    "implicitRules",
+                    "language",
+                    "text",
+                    "contained",
+                    "extension",
+                    "modifierExtension",
+                    "identifier",
+                    "active",
+                    "name",
+                    "telecom",
+                    "gender",
+                    "birthDate",
+                    "deceasedBoolean",
+                    "deceasedDateTime",
+                    "address",
+                    "maritalStatus",
+                    "multipleBirthBoolean",
+                    "multipleBirthInteger",
+                    "photo",
+                    "contact",
+                    "communication",
+                    "generalPractitioner",
+                    "managingOrganization",
+                    "link",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = Patient;
@@ -1219,37 +1261,7 @@ impl<'de> serde::de::Deserialize<'de> for Patient {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "implicitRules",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "active",
-                                            "name",
-                                            "telecom",
-                                            "gender",
-                                            "birthDate",
-                                            "deceasedBoolean",
-                                            "deceasedDateTime",
-                                            "address",
-                                            "maritalStatus",
-                                            "multipleBirthBoolean",
-                                            "multipleBirthInteger",
-                                            "photo",
-                                            "contact",
-                                            "communication",
-                                            "generalPractitioner",
-                                            "managingOrganization",
-                                            "link",
-                                        ],
-                                    ));
+                                    return unknown_field_error("implicitRules");
                                 }
                             }
                             Field::Language => {
@@ -1280,37 +1292,7 @@ impl<'de> serde::de::Deserialize<'de> for Patient {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "language",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "active",
-                                            "name",
-                                            "telecom",
-                                            "gender",
-                                            "birthDate",
-                                            "deceasedBoolean",
-                                            "deceasedDateTime",
-                                            "address",
-                                            "maritalStatus",
-                                            "multipleBirthBoolean",
-                                            "multipleBirthInteger",
-                                            "photo",
-                                            "contact",
-                                            "communication",
-                                            "generalPractitioner",
-                                            "managingOrganization",
-                                            "link",
-                                        ],
-                                    ));
+                                    return unknown_field_error("language");
                                 }
                             }
                             Field::Text => {
@@ -1396,37 +1378,7 @@ impl<'de> serde::de::Deserialize<'de> for Patient {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "active",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "active",
-                                            "name",
-                                            "telecom",
-                                            "gender",
-                                            "birthDate",
-                                            "deceasedBoolean",
-                                            "deceasedDateTime",
-                                            "address",
-                                            "maritalStatus",
-                                            "multipleBirthBoolean",
-                                            "multipleBirthInteger",
-                                            "photo",
-                                            "contact",
-                                            "communication",
-                                            "generalPractitioner",
-                                            "managingOrganization",
-                                            "link",
-                                        ],
-                                    ));
+                                    return unknown_field_error("active");
                                 }
                             }
                             Field::Name => {
@@ -1479,37 +1431,7 @@ impl<'de> serde::de::Deserialize<'de> for Patient {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "gender",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "active",
-                                            "name",
-                                            "telecom",
-                                            "gender",
-                                            "birthDate",
-                                            "deceasedBoolean",
-                                            "deceasedDateTime",
-                                            "address",
-                                            "maritalStatus",
-                                            "multipleBirthBoolean",
-                                            "multipleBirthInteger",
-                                            "photo",
-                                            "contact",
-                                            "communication",
-                                            "generalPractitioner",
-                                            "managingOrganization",
-                                            "link",
-                                        ],
-                                    ));
+                                    return unknown_field_error("gender");
                                 }
                             }
                             Field::BirthDate => {
@@ -1542,37 +1464,7 @@ impl<'de> serde::de::Deserialize<'de> for Patient {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "birthDate",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "active",
-                                            "name",
-                                            "telecom",
-                                            "gender",
-                                            "birthDate",
-                                            "deceasedBoolean",
-                                            "deceasedDateTime",
-                                            "address",
-                                            "maritalStatus",
-                                            "multipleBirthBoolean",
-                                            "multipleBirthInteger",
-                                            "photo",
-                                            "contact",
-                                            "communication",
-                                            "generalPractitioner",
-                                            "managingOrganization",
-                                            "link",
-                                        ],
-                                    ));
+                                    return unknown_field_error("birthDate");
                                 }
                             }
                             Field::DeceasedBoolean => {
@@ -1626,37 +1518,7 @@ impl<'de> serde::de::Deserialize<'de> for Patient {
                                         ));
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "deceasedBoolean",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "active",
-                                            "name",
-                                            "telecom",
-                                            "gender",
-                                            "birthDate",
-                                            "deceasedBoolean",
-                                            "deceasedDateTime",
-                                            "address",
-                                            "maritalStatus",
-                                            "multipleBirthBoolean",
-                                            "multipleBirthInteger",
-                                            "photo",
-                                            "contact",
-                                            "communication",
-                                            "generalPractitioner",
-                                            "managingOrganization",
-                                            "link",
-                                        ],
-                                    ));
+                                    return unknown_field_error("deceasedBoolean");
                                 }
                             }
                             Field::DeceasedDateTime => {
@@ -1710,37 +1572,7 @@ impl<'de> serde::de::Deserialize<'de> for Patient {
                                         ));
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "deceasedDateTime",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "active",
-                                            "name",
-                                            "telecom",
-                                            "gender",
-                                            "birthDate",
-                                            "deceasedBoolean",
-                                            "deceasedDateTime",
-                                            "address",
-                                            "maritalStatus",
-                                            "multipleBirthBoolean",
-                                            "multipleBirthInteger",
-                                            "photo",
-                                            "contact",
-                                            "communication",
-                                            "generalPractitioner",
-                                            "managingOrganization",
-                                            "link",
-                                        ],
-                                    ));
+                                    return unknown_field_error("deceasedDateTime");
                                 }
                             }
                             Field::Address => {
@@ -1812,37 +1644,7 @@ impl<'de> serde::de::Deserialize<'de> for Patient {
                                         ));
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "multipleBirthBoolean",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "active",
-                                            "name",
-                                            "telecom",
-                                            "gender",
-                                            "birthDate",
-                                            "deceasedBoolean",
-                                            "deceasedDateTime",
-                                            "address",
-                                            "maritalStatus",
-                                            "multipleBirthBoolean",
-                                            "multipleBirthInteger",
-                                            "photo",
-                                            "contact",
-                                            "communication",
-                                            "generalPractitioner",
-                                            "managingOrganization",
-                                            "link",
-                                        ],
-                                    ));
+                                    return unknown_field_error("multipleBirthBoolean");
                                 }
                             }
                             Field::MultipleBirthInteger => {
@@ -1897,37 +1699,7 @@ impl<'de> serde::de::Deserialize<'de> for Patient {
                                         ));
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "multipleBirthInteger",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "active",
-                                            "name",
-                                            "telecom",
-                                            "gender",
-                                            "birthDate",
-                                            "deceasedBoolean",
-                                            "deceasedDateTime",
-                                            "address",
-                                            "maritalStatus",
-                                            "multipleBirthBoolean",
-                                            "multipleBirthInteger",
-                                            "photo",
-                                            "contact",
-                                            "communication",
-                                            "generalPractitioner",
-                                            "managingOrganization",
-                                            "link",
-                                        ],
-                                    ));
+                                    return unknown_field_error("multipleBirthInteger");
                                 }
                             }
                             Field::Photo => {

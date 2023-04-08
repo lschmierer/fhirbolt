@@ -1,4 +1,4 @@
-// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-08 by fhirbolt-codegen v0.1.0
 #[doc = "The linkages between sugar residues will also be captured."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub struct SubstanceNucleicAcidSubunitLinkage {
@@ -129,6 +129,20 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceNucleicAcidSubunitLinkage {
             ResidueSitePrimitiveElement,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "connectivity",
+                    "identifier",
+                    "name",
+                    "residueSite",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = SubstanceNucleicAcidSubunitLinkage;
@@ -219,18 +233,7 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceNucleicAcidSubunitLinkage {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "connectivity",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "connectivity",
-                                            "identifier",
-                                            "name",
-                                            "residueSite",
-                                        ],
-                                    ));
+                                    return unknown_field_error("connectivity");
                                 }
                             }
                             Field::Identifier => {
@@ -267,18 +270,7 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceNucleicAcidSubunitLinkage {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "name",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "connectivity",
-                                            "identifier",
-                                            "name",
-                                            "residueSite",
-                                        ],
-                                    ));
+                                    return unknown_field_error("name");
                                 }
                             }
                             Field::ResidueSite => {
@@ -315,18 +307,7 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceNucleicAcidSubunitLinkage {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "residueSite",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "connectivity",
-                                            "identifier",
-                                            "name",
-                                            "residueSite",
-                                        ],
-                                    ));
+                                    return unknown_field_error("residueSite");
                                 }
                             }
                             Field::Unknown(key) => if _ctx.config.mode
@@ -467,6 +448,19 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceNucleicAcidSubunitSugar {
             ResidueSitePrimitiveElement,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "identifier",
+                    "name",
+                    "residueSite",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = SubstanceNucleicAcidSubunitSugar;
@@ -556,17 +550,7 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceNucleicAcidSubunitSugar {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "name",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "name",
-                                            "residueSite",
-                                        ],
-                                    ));
+                                    return unknown_field_error("name");
                                 }
                             }
                             Field::ResidueSite => {
@@ -603,17 +587,7 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceNucleicAcidSubunitSugar {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "residueSite",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "name",
-                                            "residueSite",
-                                        ],
-                                    ));
+                                    return unknown_field_error("residueSite");
                                 }
                             }
                             Field::Unknown(key) => if _ctx.config.mode
@@ -805,6 +779,24 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceNucleicAcidSubunit {
             Sugar,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "subunit",
+                    "sequence",
+                    "length",
+                    "sequenceAttachment",
+                    "fivePrime",
+                    "threePrime",
+                    "linkage",
+                    "sugar",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = SubstanceNucleicAcidSubunit;
@@ -893,22 +885,7 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceNucleicAcidSubunit {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "subunit",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "subunit",
-                                            "sequence",
-                                            "length",
-                                            "sequenceAttachment",
-                                            "fivePrime",
-                                            "threePrime",
-                                            "linkage",
-                                            "sugar",
-                                        ],
-                                    ));
+                                    return unknown_field_error("subunit");
                                 }
                             }
                             Field::Sequence => {
@@ -939,22 +916,7 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceNucleicAcidSubunit {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "sequence",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "subunit",
-                                            "sequence",
-                                            "length",
-                                            "sequenceAttachment",
-                                            "fivePrime",
-                                            "threePrime",
-                                            "linkage",
-                                            "sugar",
-                                        ],
-                                    ));
+                                    return unknown_field_error("sequence");
                                 }
                             }
                             Field::Length => {
@@ -985,22 +947,7 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceNucleicAcidSubunit {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "length",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "subunit",
-                                            "sequence",
-                                            "length",
-                                            "sequenceAttachment",
-                                            "fivePrime",
-                                            "threePrime",
-                                            "linkage",
-                                            "sugar",
-                                        ],
-                                    ));
+                                    return unknown_field_error("length");
                                 }
                             }
                             Field::SequenceAttachment => {
@@ -1282,6 +1229,26 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceNucleicAcid {
             Subunit,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "meta",
+                    "implicitRules",
+                    "language",
+                    "text",
+                    "contained",
+                    "extension",
+                    "modifierExtension",
+                    "sequenceType",
+                    "numberOfSubunits",
+                    "areaOfHybridisation",
+                    "oligoNucleotideType",
+                    "subunit",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = SubstanceNucleicAcid;
@@ -1366,24 +1333,7 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceNucleicAcid {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "implicitRules",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "sequenceType",
-                                            "numberOfSubunits",
-                                            "areaOfHybridisation",
-                                            "oligoNucleotideType",
-                                            "subunit",
-                                        ],
-                                    ));
+                                    return unknown_field_error("implicitRules");
                                 }
                             }
                             Field::Language => {
@@ -1414,24 +1364,7 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceNucleicAcid {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "language",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "sequenceType",
-                                            "numberOfSubunits",
-                                            "areaOfHybridisation",
-                                            "oligoNucleotideType",
-                                            "subunit",
-                                        ],
-                                    ));
+                                    return unknown_field_error("language");
                                 }
                             }
                             Field::Text => {
@@ -1518,24 +1451,7 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceNucleicAcid {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "numberOfSubunits",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "sequenceType",
-                                            "numberOfSubunits",
-                                            "areaOfHybridisation",
-                                            "oligoNucleotideType",
-                                            "subunit",
-                                        ],
-                                    ));
+                                    return unknown_field_error("numberOfSubunits");
                                 }
                             }
                             Field::AreaOfHybridisation => {
@@ -1574,24 +1490,7 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceNucleicAcid {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "areaOfHybridisation",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "sequenceType",
-                                            "numberOfSubunits",
-                                            "areaOfHybridisation",
-                                            "oligoNucleotideType",
-                                            "subunit",
-                                        ],
-                                    ));
+                                    return unknown_field_error("areaOfHybridisation");
                                 }
                             }
                             Field::OligoNucleotideType => {

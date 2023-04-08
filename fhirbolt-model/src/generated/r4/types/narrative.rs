@@ -1,4 +1,4 @@
-// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-08 by fhirbolt-codegen v0.1.0
 #[doc = "Base StructureDefinition for Narrative Type: A human-readable summary of the resource conveying the essential clinical and business information for the resource."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub struct Narrative {
@@ -79,6 +79,12 @@ impl<'de> serde::de::Deserialize<'de> for Narrative {
             DivPrimitiveElement,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &["id", "extension", "status", "div"],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = Narrative;
@@ -142,10 +148,7 @@ impl<'de> serde::de::Deserialize<'de> for Narrative {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "status",
-                                        &["id", "extension", "status", "div"],
-                                    ));
+                                    return unknown_field_error("status");
                                 }
                             }
                             Field::Div => {
@@ -174,10 +177,7 @@ impl<'de> serde::de::Deserialize<'de> for Narrative {
                                     } = map_access.next_value()?;
                                     some.id = id;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "div",
-                                        &["id", "extension", "status", "div"],
-                                    ));
+                                    return unknown_field_error("div");
                                 }
                             }
                             Field::Unknown(key) => if _ctx.config.mode

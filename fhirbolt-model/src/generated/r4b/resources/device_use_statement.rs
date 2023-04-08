@@ -1,4 +1,4 @@
-// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-08 by fhirbolt-codegen v0.1.0
 #[doc = "How often the device was used."]
 #[derive(Debug, Clone, PartialEq)]
 pub enum DeviceUseStatementTiming {
@@ -290,6 +290,36 @@ impl<'de> serde::de::Deserialize<'de> for DeviceUseStatement {
             Note,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "meta",
+                    "implicitRules",
+                    "language",
+                    "text",
+                    "contained",
+                    "extension",
+                    "modifierExtension",
+                    "identifier",
+                    "basedOn",
+                    "status",
+                    "subject",
+                    "derivedFrom",
+                    "timingTiming",
+                    "timingPeriod",
+                    "timingDateTime",
+                    "recordedOn",
+                    "source",
+                    "device",
+                    "reasonCode",
+                    "reasonReference",
+                    "bodySite",
+                    "note",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = DeviceUseStatement;
@@ -382,34 +412,7 @@ impl<'de> serde::de::Deserialize<'de> for DeviceUseStatement {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "implicitRules",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "basedOn",
-                                            "status",
-                                            "subject",
-                                            "derivedFrom",
-                                            "timingTiming",
-                                            "timingPeriod",
-                                            "timingDateTime",
-                                            "recordedOn",
-                                            "source",
-                                            "device",
-                                            "reasonCode",
-                                            "reasonReference",
-                                            "bodySite",
-                                            "note",
-                                        ],
-                                    ));
+                                    return unknown_field_error("implicitRules");
                                 }
                             }
                             Field::Language => {
@@ -440,34 +443,7 @@ impl<'de> serde::de::Deserialize<'de> for DeviceUseStatement {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "language",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "basedOn",
-                                            "status",
-                                            "subject",
-                                            "derivedFrom",
-                                            "timingTiming",
-                                            "timingPeriod",
-                                            "timingDateTime",
-                                            "recordedOn",
-                                            "source",
-                                            "device",
-                                            "reasonCode",
-                                            "reasonReference",
-                                            "bodySite",
-                                            "note",
-                                        ],
-                                    ));
+                                    return unknown_field_error("language");
                                 }
                             }
                             Field::Text => {
@@ -564,34 +540,7 @@ impl<'de> serde::de::Deserialize<'de> for DeviceUseStatement {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "status",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "basedOn",
-                                            "status",
-                                            "subject",
-                                            "derivedFrom",
-                                            "timingTiming",
-                                            "timingPeriod",
-                                            "timingDateTime",
-                                            "recordedOn",
-                                            "source",
-                                            "device",
-                                            "reasonCode",
-                                            "reasonReference",
-                                            "bodySite",
-                                            "note",
-                                        ],
-                                    ));
+                                    return unknown_field_error("status");
                                 }
                             }
                             Field::Subject => {
@@ -679,34 +628,7 @@ impl<'de> serde::de::Deserialize<'de> for DeviceUseStatement {
                                         ));
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "timingDateTime",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "basedOn",
-                                            "status",
-                                            "subject",
-                                            "derivedFrom",
-                                            "timingTiming",
-                                            "timingPeriod",
-                                            "timingDateTime",
-                                            "recordedOn",
-                                            "source",
-                                            "device",
-                                            "reasonCode",
-                                            "reasonReference",
-                                            "bodySite",
-                                            "note",
-                                        ],
-                                    ));
+                                    return unknown_field_error("timingDateTime");
                                 }
                             }
                             Field::RecordedOn => {
@@ -743,34 +665,7 @@ impl<'de> serde::de::Deserialize<'de> for DeviceUseStatement {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "recordedOn",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "basedOn",
-                                            "status",
-                                            "subject",
-                                            "derivedFrom",
-                                            "timingTiming",
-                                            "timingPeriod",
-                                            "timingDateTime",
-                                            "recordedOn",
-                                            "source",
-                                            "device",
-                                            "reasonCode",
-                                            "reasonReference",
-                                            "bodySite",
-                                            "note",
-                                        ],
-                                    ));
+                                    return unknown_field_error("recordedOn");
                                 }
                             }
                             Field::Source => {

@@ -1,4 +1,4 @@
-// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-08 by fhirbolt-codegen v0.1.0
 #[doc = "Used to define the parts of a composite search parameter."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub struct SearchParameterComponent {
@@ -89,6 +89,18 @@ impl<'de> serde::de::Deserialize<'de> for SearchParameterComponent {
             ExpressionPrimitiveElement,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "definition",
+                    "expression",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = SearchParameterComponent;
@@ -174,16 +186,7 @@ impl<'de> serde::de::Deserialize<'de> for SearchParameterComponent {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "definition",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "definition",
-                                            "expression",
-                                        ],
-                                    ));
+                                    return unknown_field_error("definition");
                                 }
                             }
                             Field::Expression => {
@@ -220,16 +223,7 @@ impl<'de> serde::de::Deserialize<'de> for SearchParameterComponent {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "expression",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "definition",
-                                            "expression",
-                                        ],
-                                    ));
+                                    return unknown_field_error("expression");
                                 }
                             }
                             Field::Unknown(key) => if _ctx.config.mode
@@ -1047,6 +1041,47 @@ impl<'de> serde::de::Deserialize<'de> for SearchParameter {
             Component,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "meta",
+                    "implicitRules",
+                    "language",
+                    "text",
+                    "contained",
+                    "extension",
+                    "modifierExtension",
+                    "url",
+                    "version",
+                    "name",
+                    "derivedFrom",
+                    "status",
+                    "experimental",
+                    "date",
+                    "publisher",
+                    "contact",
+                    "description",
+                    "useContext",
+                    "jurisdiction",
+                    "purpose",
+                    "code",
+                    "base",
+                    "type",
+                    "expression",
+                    "xpath",
+                    "xpathUsage",
+                    "target",
+                    "multipleOr",
+                    "multipleAnd",
+                    "comparator",
+                    "modifier",
+                    "chain",
+                    "component",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = SearchParameter;
@@ -1152,45 +1187,7 @@ impl<'de> serde::de::Deserialize<'de> for SearchParameter {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "implicitRules",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "version",
-                                            "name",
-                                            "derivedFrom",
-                                            "status",
-                                            "experimental",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "description",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "purpose",
-                                            "code",
-                                            "base",
-                                            "type",
-                                            "expression",
-                                            "xpath",
-                                            "xpathUsage",
-                                            "target",
-                                            "multipleOr",
-                                            "multipleAnd",
-                                            "comparator",
-                                            "modifier",
-                                            "chain",
-                                            "component",
-                                        ],
-                                    ));
+                                    return unknown_field_error("implicitRules");
                                 }
                             }
                             Field::Language => {
@@ -1221,45 +1218,7 @@ impl<'de> serde::de::Deserialize<'de> for SearchParameter {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "language",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "version",
-                                            "name",
-                                            "derivedFrom",
-                                            "status",
-                                            "experimental",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "description",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "purpose",
-                                            "code",
-                                            "base",
-                                            "type",
-                                            "expression",
-                                            "xpath",
-                                            "xpathUsage",
-                                            "target",
-                                            "multipleOr",
-                                            "multipleAnd",
-                                            "comparator",
-                                            "modifier",
-                                            "chain",
-                                            "component",
-                                        ],
-                                    ));
+                                    return unknown_field_error("language");
                                 }
                             }
                             Field::Text => {
@@ -1332,45 +1291,7 @@ impl<'de> serde::de::Deserialize<'de> for SearchParameter {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "url",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "version",
-                                            "name",
-                                            "derivedFrom",
-                                            "status",
-                                            "experimental",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "description",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "purpose",
-                                            "code",
-                                            "base",
-                                            "type",
-                                            "expression",
-                                            "xpath",
-                                            "xpathUsage",
-                                            "target",
-                                            "multipleOr",
-                                            "multipleAnd",
-                                            "comparator",
-                                            "modifier",
-                                            "chain",
-                                            "component",
-                                        ],
-                                    ));
+                                    return unknown_field_error("url");
                                 }
                             }
                             Field::Version => {
@@ -1401,45 +1322,7 @@ impl<'de> serde::de::Deserialize<'de> for SearchParameter {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "version",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "version",
-                                            "name",
-                                            "derivedFrom",
-                                            "status",
-                                            "experimental",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "description",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "purpose",
-                                            "code",
-                                            "base",
-                                            "type",
-                                            "expression",
-                                            "xpath",
-                                            "xpathUsage",
-                                            "target",
-                                            "multipleOr",
-                                            "multipleAnd",
-                                            "comparator",
-                                            "modifier",
-                                            "chain",
-                                            "component",
-                                        ],
-                                    ));
+                                    return unknown_field_error("version");
                                 }
                             }
                             Field::Name => {
@@ -1470,45 +1353,7 @@ impl<'de> serde::de::Deserialize<'de> for SearchParameter {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "name",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "version",
-                                            "name",
-                                            "derivedFrom",
-                                            "status",
-                                            "experimental",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "description",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "purpose",
-                                            "code",
-                                            "base",
-                                            "type",
-                                            "expression",
-                                            "xpath",
-                                            "xpathUsage",
-                                            "target",
-                                            "multipleOr",
-                                            "multipleAnd",
-                                            "comparator",
-                                            "modifier",
-                                            "chain",
-                                            "component",
-                                        ],
-                                    ));
+                                    return unknown_field_error("name");
                                 }
                             }
                             Field::DerivedFrom => {
@@ -1545,45 +1390,7 @@ impl<'de> serde::de::Deserialize<'de> for SearchParameter {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "derivedFrom",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "version",
-                                            "name",
-                                            "derivedFrom",
-                                            "status",
-                                            "experimental",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "description",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "purpose",
-                                            "code",
-                                            "base",
-                                            "type",
-                                            "expression",
-                                            "xpath",
-                                            "xpathUsage",
-                                            "target",
-                                            "multipleOr",
-                                            "multipleAnd",
-                                            "comparator",
-                                            "modifier",
-                                            "chain",
-                                            "component",
-                                        ],
-                                    ));
+                                    return unknown_field_error("derivedFrom");
                                 }
                             }
                             Field::Status => {
@@ -1614,45 +1421,7 @@ impl<'de> serde::de::Deserialize<'de> for SearchParameter {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "status",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "version",
-                                            "name",
-                                            "derivedFrom",
-                                            "status",
-                                            "experimental",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "description",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "purpose",
-                                            "code",
-                                            "base",
-                                            "type",
-                                            "expression",
-                                            "xpath",
-                                            "xpathUsage",
-                                            "target",
-                                            "multipleOr",
-                                            "multipleAnd",
-                                            "comparator",
-                                            "modifier",
-                                            "chain",
-                                            "component",
-                                        ],
-                                    ));
+                                    return unknown_field_error("status");
                                 }
                             }
                             Field::Experimental => {
@@ -1689,45 +1458,7 @@ impl<'de> serde::de::Deserialize<'de> for SearchParameter {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "experimental",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "version",
-                                            "name",
-                                            "derivedFrom",
-                                            "status",
-                                            "experimental",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "description",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "purpose",
-                                            "code",
-                                            "base",
-                                            "type",
-                                            "expression",
-                                            "xpath",
-                                            "xpathUsage",
-                                            "target",
-                                            "multipleOr",
-                                            "multipleAnd",
-                                            "comparator",
-                                            "modifier",
-                                            "chain",
-                                            "component",
-                                        ],
-                                    ));
+                                    return unknown_field_error("experimental");
                                 }
                             }
                             Field::Date => {
@@ -1758,45 +1489,7 @@ impl<'de> serde::de::Deserialize<'de> for SearchParameter {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "date",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "version",
-                                            "name",
-                                            "derivedFrom",
-                                            "status",
-                                            "experimental",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "description",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "purpose",
-                                            "code",
-                                            "base",
-                                            "type",
-                                            "expression",
-                                            "xpath",
-                                            "xpathUsage",
-                                            "target",
-                                            "multipleOr",
-                                            "multipleAnd",
-                                            "comparator",
-                                            "modifier",
-                                            "chain",
-                                            "component",
-                                        ],
-                                    ));
+                                    return unknown_field_error("date");
                                 }
                             }
                             Field::Publisher => {
@@ -1829,45 +1522,7 @@ impl<'de> serde::de::Deserialize<'de> for SearchParameter {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "publisher",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "version",
-                                            "name",
-                                            "derivedFrom",
-                                            "status",
-                                            "experimental",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "description",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "purpose",
-                                            "code",
-                                            "base",
-                                            "type",
-                                            "expression",
-                                            "xpath",
-                                            "xpathUsage",
-                                            "target",
-                                            "multipleOr",
-                                            "multipleAnd",
-                                            "comparator",
-                                            "modifier",
-                                            "chain",
-                                            "component",
-                                        ],
-                                    ));
+                                    return unknown_field_error("publisher");
                                 }
                             }
                             Field::Contact => {
@@ -1915,45 +1570,7 @@ impl<'de> serde::de::Deserialize<'de> for SearchParameter {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "description",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "version",
-                                            "name",
-                                            "derivedFrom",
-                                            "status",
-                                            "experimental",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "description",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "purpose",
-                                            "code",
-                                            "base",
-                                            "type",
-                                            "expression",
-                                            "xpath",
-                                            "xpathUsage",
-                                            "target",
-                                            "multipleOr",
-                                            "multipleAnd",
-                                            "comparator",
-                                            "modifier",
-                                            "chain",
-                                            "component",
-                                        ],
-                                    ));
+                                    return unknown_field_error("description");
                                 }
                             }
                             Field::UseContext => {
@@ -2010,45 +1627,7 @@ impl<'de> serde::de::Deserialize<'de> for SearchParameter {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "purpose",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "version",
-                                            "name",
-                                            "derivedFrom",
-                                            "status",
-                                            "experimental",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "description",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "purpose",
-                                            "code",
-                                            "base",
-                                            "type",
-                                            "expression",
-                                            "xpath",
-                                            "xpathUsage",
-                                            "target",
-                                            "multipleOr",
-                                            "multipleAnd",
-                                            "comparator",
-                                            "modifier",
-                                            "chain",
-                                            "component",
-                                        ],
-                                    ));
+                                    return unknown_field_error("purpose");
                                 }
                             }
                             Field::Code => {
@@ -2079,45 +1658,7 @@ impl<'de> serde::de::Deserialize<'de> for SearchParameter {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "code",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "version",
-                                            "name",
-                                            "derivedFrom",
-                                            "status",
-                                            "experimental",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "description",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "purpose",
-                                            "code",
-                                            "base",
-                                            "type",
-                                            "expression",
-                                            "xpath",
-                                            "xpathUsage",
-                                            "target",
-                                            "multipleOr",
-                                            "multipleAnd",
-                                            "comparator",
-                                            "modifier",
-                                            "chain",
-                                            "component",
-                                        ],
-                                    ));
+                                    return unknown_field_error("code");
                                 }
                             }
                             Field::Base => {
@@ -2176,45 +1717,7 @@ impl<'de> serde::de::Deserialize<'de> for SearchParameter {
                                         }
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "base",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "version",
-                                            "name",
-                                            "derivedFrom",
-                                            "status",
-                                            "experimental",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "description",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "purpose",
-                                            "code",
-                                            "base",
-                                            "type",
-                                            "expression",
-                                            "xpath",
-                                            "xpathUsage",
-                                            "target",
-                                            "multipleOr",
-                                            "multipleAnd",
-                                            "comparator",
-                                            "modifier",
-                                            "chain",
-                                            "component",
-                                        ],
-                                    ));
+                                    return unknown_field_error("base");
                                 }
                             }
                             Field::Type => {
@@ -2245,45 +1748,7 @@ impl<'de> serde::de::Deserialize<'de> for SearchParameter {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "type",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "version",
-                                            "name",
-                                            "derivedFrom",
-                                            "status",
-                                            "experimental",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "description",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "purpose",
-                                            "code",
-                                            "base",
-                                            "type",
-                                            "expression",
-                                            "xpath",
-                                            "xpathUsage",
-                                            "target",
-                                            "multipleOr",
-                                            "multipleAnd",
-                                            "comparator",
-                                            "modifier",
-                                            "chain",
-                                            "component",
-                                        ],
-                                    ));
+                                    return unknown_field_error("type");
                                 }
                             }
                             Field::Expression => {
@@ -2320,45 +1785,7 @@ impl<'de> serde::de::Deserialize<'de> for SearchParameter {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "expression",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "version",
-                                            "name",
-                                            "derivedFrom",
-                                            "status",
-                                            "experimental",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "description",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "purpose",
-                                            "code",
-                                            "base",
-                                            "type",
-                                            "expression",
-                                            "xpath",
-                                            "xpathUsage",
-                                            "target",
-                                            "multipleOr",
-                                            "multipleAnd",
-                                            "comparator",
-                                            "modifier",
-                                            "chain",
-                                            "component",
-                                        ],
-                                    ));
+                                    return unknown_field_error("expression");
                                 }
                             }
                             Field::Xpath => {
@@ -2389,45 +1816,7 @@ impl<'de> serde::de::Deserialize<'de> for SearchParameter {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "xpath",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "version",
-                                            "name",
-                                            "derivedFrom",
-                                            "status",
-                                            "experimental",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "description",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "purpose",
-                                            "code",
-                                            "base",
-                                            "type",
-                                            "expression",
-                                            "xpath",
-                                            "xpathUsage",
-                                            "target",
-                                            "multipleOr",
-                                            "multipleAnd",
-                                            "comparator",
-                                            "modifier",
-                                            "chain",
-                                            "component",
-                                        ],
-                                    ));
+                                    return unknown_field_error("xpath");
                                 }
                             }
                             Field::XpathUsage => {
@@ -2464,45 +1853,7 @@ impl<'de> serde::de::Deserialize<'de> for SearchParameter {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "xpathUsage",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "version",
-                                            "name",
-                                            "derivedFrom",
-                                            "status",
-                                            "experimental",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "description",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "purpose",
-                                            "code",
-                                            "base",
-                                            "type",
-                                            "expression",
-                                            "xpath",
-                                            "xpathUsage",
-                                            "target",
-                                            "multipleOr",
-                                            "multipleAnd",
-                                            "comparator",
-                                            "modifier",
-                                            "chain",
-                                            "component",
-                                        ],
-                                    ));
+                                    return unknown_field_error("xpathUsage");
                                 }
                             }
                             Field::Target => {
@@ -2561,45 +1912,7 @@ impl<'de> serde::de::Deserialize<'de> for SearchParameter {
                                         }
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "target",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "version",
-                                            "name",
-                                            "derivedFrom",
-                                            "status",
-                                            "experimental",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "description",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "purpose",
-                                            "code",
-                                            "base",
-                                            "type",
-                                            "expression",
-                                            "xpath",
-                                            "xpathUsage",
-                                            "target",
-                                            "multipleOr",
-                                            "multipleAnd",
-                                            "comparator",
-                                            "modifier",
-                                            "chain",
-                                            "component",
-                                        ],
-                                    ));
+                                    return unknown_field_error("target");
                                 }
                             }
                             Field::MultipleOr => {
@@ -2636,45 +1949,7 @@ impl<'de> serde::de::Deserialize<'de> for SearchParameter {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "multipleOr",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "version",
-                                            "name",
-                                            "derivedFrom",
-                                            "status",
-                                            "experimental",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "description",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "purpose",
-                                            "code",
-                                            "base",
-                                            "type",
-                                            "expression",
-                                            "xpath",
-                                            "xpathUsage",
-                                            "target",
-                                            "multipleOr",
-                                            "multipleAnd",
-                                            "comparator",
-                                            "modifier",
-                                            "chain",
-                                            "component",
-                                        ],
-                                    ));
+                                    return unknown_field_error("multipleOr");
                                 }
                             }
                             Field::MultipleAnd => {
@@ -2711,45 +1986,7 @@ impl<'de> serde::de::Deserialize<'de> for SearchParameter {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "multipleAnd",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "version",
-                                            "name",
-                                            "derivedFrom",
-                                            "status",
-                                            "experimental",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "description",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "purpose",
-                                            "code",
-                                            "base",
-                                            "type",
-                                            "expression",
-                                            "xpath",
-                                            "xpathUsage",
-                                            "target",
-                                            "multipleOr",
-                                            "multipleAnd",
-                                            "comparator",
-                                            "modifier",
-                                            "chain",
-                                            "component",
-                                        ],
-                                    ));
+                                    return unknown_field_error("multipleAnd");
                                 }
                             }
                             Field::Comparator => {
@@ -2812,45 +2049,7 @@ impl<'de> serde::de::Deserialize<'de> for SearchParameter {
                                         }
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "comparator",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "version",
-                                            "name",
-                                            "derivedFrom",
-                                            "status",
-                                            "experimental",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "description",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "purpose",
-                                            "code",
-                                            "base",
-                                            "type",
-                                            "expression",
-                                            "xpath",
-                                            "xpathUsage",
-                                            "target",
-                                            "multipleOr",
-                                            "multipleAnd",
-                                            "comparator",
-                                            "modifier",
-                                            "chain",
-                                            "component",
-                                        ],
-                                    ));
+                                    return unknown_field_error("comparator");
                                 }
                             }
                             Field::Modifier => {
@@ -2909,45 +2108,7 @@ impl<'de> serde::de::Deserialize<'de> for SearchParameter {
                                         }
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "modifier",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "version",
-                                            "name",
-                                            "derivedFrom",
-                                            "status",
-                                            "experimental",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "description",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "purpose",
-                                            "code",
-                                            "base",
-                                            "type",
-                                            "expression",
-                                            "xpath",
-                                            "xpathUsage",
-                                            "target",
-                                            "multipleOr",
-                                            "multipleAnd",
-                                            "comparator",
-                                            "modifier",
-                                            "chain",
-                                            "component",
-                                        ],
-                                    ));
+                                    return unknown_field_error("modifier");
                                 }
                             }
                             Field::Chain => {
@@ -3006,45 +2167,7 @@ impl<'de> serde::de::Deserialize<'de> for SearchParameter {
                                         }
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "chain",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "version",
-                                            "name",
-                                            "derivedFrom",
-                                            "status",
-                                            "experimental",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "description",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "purpose",
-                                            "code",
-                                            "base",
-                                            "type",
-                                            "expression",
-                                            "xpath",
-                                            "xpathUsage",
-                                            "target",
-                                            "multipleOr",
-                                            "multipleAnd",
-                                            "comparator",
-                                            "modifier",
-                                            "chain",
-                                            "component",
-                                        ],
-                                    ));
+                                    return unknown_field_error("chain");
                                 }
                             }
                             Field::Component => {

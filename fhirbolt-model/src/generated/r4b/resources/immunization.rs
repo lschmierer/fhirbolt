@@ -1,4 +1,4 @@
-// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-08 by fhirbolt-codegen v0.1.0
 #[doc = "Date vaccine administered or was to be administered."]
 #[derive(Debug, Clone, PartialEq)]
 pub enum ImmunizationOccurrence {
@@ -94,6 +94,12 @@ impl<'de> serde::de::Deserialize<'de> for ImmunizationPerformer {
             #[serde(rename = "actor")]
             Actor,
             Unknown(std::string::String),
+        }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &["id", "extension", "modifierExtension", "function", "actor"],
+            ))
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -335,6 +341,20 @@ impl<'de> serde::de::Deserialize<'de> for ImmunizationEducation {
             PresentationDatePrimitiveElement,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "documentType",
+                    "reference",
+                    "publicationDate",
+                    "presentationDate",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = ImmunizationEducation;
@@ -422,18 +442,7 @@ impl<'de> serde::de::Deserialize<'de> for ImmunizationEducation {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "documentType",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "documentType",
-                                            "reference",
-                                            "publicationDate",
-                                            "presentationDate",
-                                        ],
-                                    ));
+                                    return unknown_field_error("documentType");
                                 }
                             }
                             Field::Reference => {
@@ -466,18 +475,7 @@ impl<'de> serde::de::Deserialize<'de> for ImmunizationEducation {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "reference",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "documentType",
-                                            "reference",
-                                            "publicationDate",
-                                            "presentationDate",
-                                        ],
-                                    ));
+                                    return unknown_field_error("reference");
                                 }
                             }
                             Field::PublicationDate => {
@@ -514,18 +512,7 @@ impl<'de> serde::de::Deserialize<'de> for ImmunizationEducation {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "publicationDate",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "documentType",
-                                            "reference",
-                                            "publicationDate",
-                                            "presentationDate",
-                                        ],
-                                    ));
+                                    return unknown_field_error("publicationDate");
                                 }
                             }
                             Field::PresentationDate => {
@@ -564,18 +551,7 @@ impl<'de> serde::de::Deserialize<'de> for ImmunizationEducation {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "presentationDate",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "documentType",
-                                            "reference",
-                                            "publicationDate",
-                                            "presentationDate",
-                                        ],
-                                    ));
+                                    return unknown_field_error("presentationDate");
                                 }
                             }
                             Field::Unknown(key) => if _ctx.config.mode
@@ -716,6 +692,19 @@ impl<'de> serde::de::Deserialize<'de> for ImmunizationReaction {
             ReportedPrimitiveElement,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "date",
+                    "detail",
+                    "reported",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = ImmunizationReaction;
@@ -796,17 +785,7 @@ impl<'de> serde::de::Deserialize<'de> for ImmunizationReaction {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "date",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "date",
-                                            "detail",
-                                            "reported",
-                                        ],
-                                    ));
+                                    return unknown_field_error("date");
                                 }
                             }
                             Field::Detail => {
@@ -843,17 +822,7 @@ impl<'de> serde::de::Deserialize<'de> for ImmunizationReaction {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "reported",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "date",
-                                            "detail",
-                                            "reported",
-                                        ],
-                                    ));
+                                    return unknown_field_error("reported");
                                 }
                             }
                             Field::Unknown(key) => if _ctx.config.mode
@@ -1079,6 +1048,23 @@ impl<'de> serde::de::Deserialize<'de> for ImmunizationProtocolApplied {
             SeriesDosesStringPrimitiveElement,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "series",
+                    "authority",
+                    "targetDisease",
+                    "doseNumberPositiveInt",
+                    "doseNumberString",
+                    "seriesDosesPositiveInt",
+                    "seriesDosesString",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = ImmunizationProtocolApplied;
@@ -1165,21 +1151,7 @@ impl<'de> serde::de::Deserialize<'de> for ImmunizationProtocolApplied {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "series",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "series",
-                                            "authority",
-                                            "targetDisease",
-                                            "doseNumberPositiveInt",
-                                            "doseNumberString",
-                                            "seriesDosesPositiveInt",
-                                            "seriesDosesString",
-                                        ],
-                                    ));
+                                    return unknown_field_error("series");
                                 }
                             }
                             Field::Authority => {
@@ -1264,21 +1236,7 @@ impl<'de> serde::de::Deserialize<'de> for ImmunizationProtocolApplied {
                                         ));
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "doseNumberPositiveInt",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "series",
-                                            "authority",
-                                            "targetDisease",
-                                            "doseNumberPositiveInt",
-                                            "doseNumberString",
-                                            "seriesDosesPositiveInt",
-                                            "seriesDosesString",
-                                        ],
-                                    ));
+                                    return unknown_field_error("doseNumberPositiveInt");
                                 }
                             }
                             Field::DoseNumberString => {
@@ -1342,21 +1300,7 @@ impl<'de> serde::de::Deserialize<'de> for ImmunizationProtocolApplied {
                                         ));
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "doseNumberString",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "series",
-                                            "authority",
-                                            "targetDisease",
-                                            "doseNumberPositiveInt",
-                                            "doseNumberString",
-                                            "seriesDosesPositiveInt",
-                                            "seriesDosesString",
-                                        ],
-                                    ));
+                                    return unknown_field_error("doseNumberString");
                                 }
                             }
                             Field::SeriesDosesPositiveInt => {
@@ -1422,21 +1366,7 @@ impl<'de> serde::de::Deserialize<'de> for ImmunizationProtocolApplied {
                                         ));
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "seriesDosesPositiveInt",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "series",
-                                            "authority",
-                                            "targetDisease",
-                                            "doseNumberPositiveInt",
-                                            "doseNumberString",
-                                            "seriesDosesPositiveInt",
-                                            "seriesDosesString",
-                                        ],
-                                    ));
+                                    return unknown_field_error("seriesDosesPositiveInt");
                                 }
                             }
                             Field::SeriesDosesString => {
@@ -1500,21 +1430,7 @@ impl<'de> serde::de::Deserialize<'de> for ImmunizationProtocolApplied {
                                         ));
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "seriesDosesString",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "series",
-                                            "authority",
-                                            "targetDisease",
-                                            "doseNumberPositiveInt",
-                                            "doseNumberString",
-                                            "seriesDosesPositiveInt",
-                                            "seriesDosesString",
-                                        ],
-                                    ));
+                                    return unknown_field_error("seriesDosesString");
                                 }
                             }
                             Field::Unknown(key) => if _ctx.config.mode
@@ -2023,6 +1939,50 @@ impl<'de> serde::de::Deserialize<'de> for Immunization {
             ProtocolApplied,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "meta",
+                    "implicitRules",
+                    "language",
+                    "text",
+                    "contained",
+                    "extension",
+                    "modifierExtension",
+                    "identifier",
+                    "status",
+                    "statusReason",
+                    "vaccineCode",
+                    "patient",
+                    "encounter",
+                    "occurrenceDateTime",
+                    "occurrenceString",
+                    "recorded",
+                    "primarySource",
+                    "reportOrigin",
+                    "location",
+                    "manufacturer",
+                    "lotNumber",
+                    "expirationDate",
+                    "site",
+                    "route",
+                    "doseQuantity",
+                    "performer",
+                    "note",
+                    "reasonCode",
+                    "reasonReference",
+                    "isSubpotent",
+                    "subpotentReason",
+                    "education",
+                    "programEligibility",
+                    "fundingSource",
+                    "reaction",
+                    "protocolApplied",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = Immunization;
@@ -2133,48 +2093,7 @@ impl<'de> serde::de::Deserialize<'de> for Immunization {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "implicitRules",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "status",
-                                            "statusReason",
-                                            "vaccineCode",
-                                            "patient",
-                                            "encounter",
-                                            "occurrenceDateTime",
-                                            "occurrenceString",
-                                            "recorded",
-                                            "primarySource",
-                                            "reportOrigin",
-                                            "location",
-                                            "manufacturer",
-                                            "lotNumber",
-                                            "expirationDate",
-                                            "site",
-                                            "route",
-                                            "doseQuantity",
-                                            "performer",
-                                            "note",
-                                            "reasonCode",
-                                            "reasonReference",
-                                            "isSubpotent",
-                                            "subpotentReason",
-                                            "education",
-                                            "programEligibility",
-                                            "fundingSource",
-                                            "reaction",
-                                            "protocolApplied",
-                                        ],
-                                    ));
+                                    return unknown_field_error("implicitRules");
                                 }
                             }
                             Field::Language => {
@@ -2205,48 +2124,7 @@ impl<'de> serde::de::Deserialize<'de> for Immunization {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "language",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "status",
-                                            "statusReason",
-                                            "vaccineCode",
-                                            "patient",
-                                            "encounter",
-                                            "occurrenceDateTime",
-                                            "occurrenceString",
-                                            "recorded",
-                                            "primarySource",
-                                            "reportOrigin",
-                                            "location",
-                                            "manufacturer",
-                                            "lotNumber",
-                                            "expirationDate",
-                                            "site",
-                                            "route",
-                                            "doseQuantity",
-                                            "performer",
-                                            "note",
-                                            "reasonCode",
-                                            "reasonReference",
-                                            "isSubpotent",
-                                            "subpotentReason",
-                                            "education",
-                                            "programEligibility",
-                                            "fundingSource",
-                                            "reaction",
-                                            "protocolApplied",
-                                        ],
-                                    ));
+                                    return unknown_field_error("language");
                                 }
                             }
                             Field::Text => {
@@ -2332,48 +2210,7 @@ impl<'de> serde::de::Deserialize<'de> for Immunization {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "status",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "status",
-                                            "statusReason",
-                                            "vaccineCode",
-                                            "patient",
-                                            "encounter",
-                                            "occurrenceDateTime",
-                                            "occurrenceString",
-                                            "recorded",
-                                            "primarySource",
-                                            "reportOrigin",
-                                            "location",
-                                            "manufacturer",
-                                            "lotNumber",
-                                            "expirationDate",
-                                            "site",
-                                            "route",
-                                            "doseQuantity",
-                                            "performer",
-                                            "note",
-                                            "reasonCode",
-                                            "reasonReference",
-                                            "isSubpotent",
-                                            "subpotentReason",
-                                            "education",
-                                            "programEligibility",
-                                            "fundingSource",
-                                            "reaction",
-                                            "protocolApplied",
-                                        ],
-                                    ));
+                                    return unknown_field_error("status");
                                 }
                             }
                             Field::StatusReason => {
@@ -2452,48 +2289,7 @@ impl<'de> serde::de::Deserialize<'de> for Immunization {
                                         ));
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "occurrenceDateTime",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "status",
-                                            "statusReason",
-                                            "vaccineCode",
-                                            "patient",
-                                            "encounter",
-                                            "occurrenceDateTime",
-                                            "occurrenceString",
-                                            "recorded",
-                                            "primarySource",
-                                            "reportOrigin",
-                                            "location",
-                                            "manufacturer",
-                                            "lotNumber",
-                                            "expirationDate",
-                                            "site",
-                                            "route",
-                                            "doseQuantity",
-                                            "performer",
-                                            "note",
-                                            "reasonCode",
-                                            "reasonReference",
-                                            "isSubpotent",
-                                            "subpotentReason",
-                                            "education",
-                                            "programEligibility",
-                                            "fundingSource",
-                                            "reaction",
-                                            "protocolApplied",
-                                        ],
-                                    ));
+                                    return unknown_field_error("occurrenceDateTime");
                                 }
                             }
                             Field::OccurrenceString => {
@@ -2548,48 +2344,7 @@ impl<'de> serde::de::Deserialize<'de> for Immunization {
                                         ));
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "occurrenceString",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "status",
-                                            "statusReason",
-                                            "vaccineCode",
-                                            "patient",
-                                            "encounter",
-                                            "occurrenceDateTime",
-                                            "occurrenceString",
-                                            "recorded",
-                                            "primarySource",
-                                            "reportOrigin",
-                                            "location",
-                                            "manufacturer",
-                                            "lotNumber",
-                                            "expirationDate",
-                                            "site",
-                                            "route",
-                                            "doseQuantity",
-                                            "performer",
-                                            "note",
-                                            "reasonCode",
-                                            "reasonReference",
-                                            "isSubpotent",
-                                            "subpotentReason",
-                                            "education",
-                                            "programEligibility",
-                                            "fundingSource",
-                                            "reaction",
-                                            "protocolApplied",
-                                        ],
-                                    ));
+                                    return unknown_field_error("occurrenceString");
                                 }
                             }
                             Field::Recorded => {
@@ -2620,48 +2375,7 @@ impl<'de> serde::de::Deserialize<'de> for Immunization {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "recorded",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "status",
-                                            "statusReason",
-                                            "vaccineCode",
-                                            "patient",
-                                            "encounter",
-                                            "occurrenceDateTime",
-                                            "occurrenceString",
-                                            "recorded",
-                                            "primarySource",
-                                            "reportOrigin",
-                                            "location",
-                                            "manufacturer",
-                                            "lotNumber",
-                                            "expirationDate",
-                                            "site",
-                                            "route",
-                                            "doseQuantity",
-                                            "performer",
-                                            "note",
-                                            "reasonCode",
-                                            "reasonReference",
-                                            "isSubpotent",
-                                            "subpotentReason",
-                                            "education",
-                                            "programEligibility",
-                                            "fundingSource",
-                                            "reaction",
-                                            "protocolApplied",
-                                        ],
-                                    ));
+                                    return unknown_field_error("recorded");
                                 }
                             }
                             Field::PrimarySource => {
@@ -2698,48 +2412,7 @@ impl<'de> serde::de::Deserialize<'de> for Immunization {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "primarySource",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "status",
-                                            "statusReason",
-                                            "vaccineCode",
-                                            "patient",
-                                            "encounter",
-                                            "occurrenceDateTime",
-                                            "occurrenceString",
-                                            "recorded",
-                                            "primarySource",
-                                            "reportOrigin",
-                                            "location",
-                                            "manufacturer",
-                                            "lotNumber",
-                                            "expirationDate",
-                                            "site",
-                                            "route",
-                                            "doseQuantity",
-                                            "performer",
-                                            "note",
-                                            "reasonCode",
-                                            "reasonReference",
-                                            "isSubpotent",
-                                            "subpotentReason",
-                                            "education",
-                                            "programEligibility",
-                                            "fundingSource",
-                                            "reaction",
-                                            "protocolApplied",
-                                        ],
-                                    ));
+                                    return unknown_field_error("primarySource");
                                 }
                             }
                             Field::ReportOrigin => {
@@ -2790,48 +2463,7 @@ impl<'de> serde::de::Deserialize<'de> for Immunization {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "lotNumber",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "status",
-                                            "statusReason",
-                                            "vaccineCode",
-                                            "patient",
-                                            "encounter",
-                                            "occurrenceDateTime",
-                                            "occurrenceString",
-                                            "recorded",
-                                            "primarySource",
-                                            "reportOrigin",
-                                            "location",
-                                            "manufacturer",
-                                            "lotNumber",
-                                            "expirationDate",
-                                            "site",
-                                            "route",
-                                            "doseQuantity",
-                                            "performer",
-                                            "note",
-                                            "reasonCode",
-                                            "reasonReference",
-                                            "isSubpotent",
-                                            "subpotentReason",
-                                            "education",
-                                            "programEligibility",
-                                            "fundingSource",
-                                            "reaction",
-                                            "protocolApplied",
-                                        ],
-                                    ));
+                                    return unknown_field_error("lotNumber");
                                 }
                             }
                             Field::ExpirationDate => {
@@ -2868,48 +2500,7 @@ impl<'de> serde::de::Deserialize<'de> for Immunization {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "expirationDate",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "status",
-                                            "statusReason",
-                                            "vaccineCode",
-                                            "patient",
-                                            "encounter",
-                                            "occurrenceDateTime",
-                                            "occurrenceString",
-                                            "recorded",
-                                            "primarySource",
-                                            "reportOrigin",
-                                            "location",
-                                            "manufacturer",
-                                            "lotNumber",
-                                            "expirationDate",
-                                            "site",
-                                            "route",
-                                            "doseQuantity",
-                                            "performer",
-                                            "note",
-                                            "reasonCode",
-                                            "reasonReference",
-                                            "isSubpotent",
-                                            "subpotentReason",
-                                            "education",
-                                            "programEligibility",
-                                            "fundingSource",
-                                            "reaction",
-                                            "protocolApplied",
-                                        ],
-                                    ));
+                                    return unknown_field_error("expirationDate");
                                 }
                             }
                             Field::Site => {
@@ -3012,48 +2603,7 @@ impl<'de> serde::de::Deserialize<'de> for Immunization {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "isSubpotent",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "status",
-                                            "statusReason",
-                                            "vaccineCode",
-                                            "patient",
-                                            "encounter",
-                                            "occurrenceDateTime",
-                                            "occurrenceString",
-                                            "recorded",
-                                            "primarySource",
-                                            "reportOrigin",
-                                            "location",
-                                            "manufacturer",
-                                            "lotNumber",
-                                            "expirationDate",
-                                            "site",
-                                            "route",
-                                            "doseQuantity",
-                                            "performer",
-                                            "note",
-                                            "reasonCode",
-                                            "reasonReference",
-                                            "isSubpotent",
-                                            "subpotentReason",
-                                            "education",
-                                            "programEligibility",
-                                            "fundingSource",
-                                            "reaction",
-                                            "protocolApplied",
-                                        ],
-                                    ));
+                                    return unknown_field_error("isSubpotent");
                                 }
                             }
                             Field::SubpotentReason => {

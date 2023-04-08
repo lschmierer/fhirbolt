@@ -1,4 +1,4 @@
-// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-08 by fhirbolt-codegen v0.1.0
 #[doc = "The timing of the event (if this is a periodic trigger)."]
 #[derive(Debug, Clone, PartialEq)]
 pub enum TriggerDefinitionTiming {
@@ -177,6 +177,23 @@ impl<'de> serde::de::Deserialize<'de> for TriggerDefinition {
             Condition,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "type",
+                    "name",
+                    "timingTiming",
+                    "timingReference",
+                    "timingDate",
+                    "timingDateTime",
+                    "data",
+                    "condition",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = TriggerDefinition;
@@ -243,21 +260,7 @@ impl<'de> serde::de::Deserialize<'de> for TriggerDefinition {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "type",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "type",
-                                            "name",
-                                            "timingTiming",
-                                            "timingReference",
-                                            "timingDate",
-                                            "timingDateTime",
-                                            "data",
-                                            "condition",
-                                        ],
-                                    ));
+                                    return unknown_field_error("type");
                                 }
                             }
                             Field::Name => {
@@ -288,21 +291,7 @@ impl<'de> serde::de::Deserialize<'de> for TriggerDefinition {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "name",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "type",
-                                            "name",
-                                            "timingTiming",
-                                            "timingReference",
-                                            "timingDate",
-                                            "timingDateTime",
-                                            "data",
-                                            "condition",
-                                        ],
-                                    ));
+                                    return unknown_field_error("name");
                                 }
                             }
                             Field::TimingTiming => {
@@ -372,21 +361,7 @@ impl<'de> serde::de::Deserialize<'de> for TriggerDefinition {
                                         ));
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "timingDate",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "type",
-                                            "name",
-                                            "timingTiming",
-                                            "timingReference",
-                                            "timingDate",
-                                            "timingDateTime",
-                                            "data",
-                                            "condition",
-                                        ],
-                                    ));
+                                    return unknown_field_error("timingDate");
                                 }
                             }
                             Field::TimingDateTime => {
@@ -439,21 +414,7 @@ impl<'de> serde::de::Deserialize<'de> for TriggerDefinition {
                                         ));
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "timingDateTime",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "type",
-                                            "name",
-                                            "timingTiming",
-                                            "timingReference",
-                                            "timingDate",
-                                            "timingDateTime",
-                                            "data",
-                                            "condition",
-                                        ],
-                                    ));
+                                    return unknown_field_error("timingDateTime");
                                 }
                             }
                             Field::Data => {

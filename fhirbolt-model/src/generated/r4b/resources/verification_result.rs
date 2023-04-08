@@ -1,4 +1,4 @@
-// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-08 by fhirbolt-codegen v0.1.0
 #[doc = "Information about the primary source(s) involved in validation."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub struct VerificationResultPrimarySource {
@@ -113,6 +113,23 @@ impl<'de> serde::de::Deserialize<'de> for VerificationResultPrimarySource {
             #[serde(rename = "pushTypeAvailable")]
             PushTypeAvailable,
             Unknown(std::string::String),
+        }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "who",
+                    "type",
+                    "communicationMethod",
+                    "validationStatus",
+                    "validationDate",
+                    "canPushUpdates",
+                    "pushTypeAvailable",
+                ],
+            ))
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -252,21 +269,7 @@ impl<'de> serde::de::Deserialize<'de> for VerificationResultPrimarySource {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "validationDate",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "who",
-                                            "type",
-                                            "communicationMethod",
-                                            "validationStatus",
-                                            "validationDate",
-                                            "canPushUpdates",
-                                            "pushTypeAvailable",
-                                        ],
-                                    ));
+                                    return unknown_field_error("validationDate");
                                 }
                             }
                             Field::CanPushUpdates => {
@@ -488,6 +491,24 @@ impl<'de> serde::de::Deserialize<'de> for VerificationResultAttestation {
             SourceSignature,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "who",
+                    "onBehalfOf",
+                    "communicationMethod",
+                    "date",
+                    "sourceIdentityCertificate",
+                    "proxyIdentityCertificate",
+                    "proxySignature",
+                    "sourceSignature",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = VerificationResultAttestation;
@@ -597,22 +618,7 @@ impl<'de> serde::de::Deserialize<'de> for VerificationResultAttestation {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "date",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "who",
-                                            "onBehalfOf",
-                                            "communicationMethod",
-                                            "date",
-                                            "sourceIdentityCertificate",
-                                            "proxyIdentityCertificate",
-                                            "proxySignature",
-                                            "sourceSignature",
-                                        ],
-                                    ));
+                                    return unknown_field_error("date");
                                 }
                             }
                             Field::SourceIdentityCertificate => {
@@ -651,22 +657,7 @@ impl<'de> serde::de::Deserialize<'de> for VerificationResultAttestation {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "sourceIdentityCertificate",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "who",
-                                            "onBehalfOf",
-                                            "communicationMethod",
-                                            "date",
-                                            "sourceIdentityCertificate",
-                                            "proxyIdentityCertificate",
-                                            "proxySignature",
-                                            "sourceSignature",
-                                        ],
-                                    ));
+                                    return unknown_field_error("sourceIdentityCertificate");
                                 }
                             }
                             Field::ProxyIdentityCertificate => {
@@ -705,22 +696,7 @@ impl<'de> serde::de::Deserialize<'de> for VerificationResultAttestation {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "proxyIdentityCertificate",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "who",
-                                            "onBehalfOf",
-                                            "communicationMethod",
-                                            "date",
-                                            "sourceIdentityCertificate",
-                                            "proxyIdentityCertificate",
-                                            "proxySignature",
-                                            "sourceSignature",
-                                        ],
-                                    ));
+                                    return unknown_field_error("proxyIdentityCertificate");
                                 }
                             }
                             Field::ProxySignature => {
@@ -865,6 +841,19 @@ impl<'de> serde::de::Deserialize<'de> for VerificationResultValidator {
             AttestationSignature,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "organization",
+                    "identityCertificate",
+                    "attestationSignature",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = VerificationResultValidator;
@@ -962,17 +951,7 @@ impl<'de> serde::de::Deserialize<'de> for VerificationResultValidator {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "identityCertificate",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "organization",
-                                            "identityCertificate",
-                                            "attestationSignature",
-                                        ],
-                                    ));
+                                    return unknown_field_error("identityCertificate");
                                 }
                             }
                             Field::AttestationSignature => {
@@ -1348,6 +1327,35 @@ impl<'de> serde::de::Deserialize<'de> for VerificationResult {
             Validator,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "meta",
+                    "implicitRules",
+                    "language",
+                    "text",
+                    "contained",
+                    "extension",
+                    "modifierExtension",
+                    "target",
+                    "targetLocation",
+                    "need",
+                    "status",
+                    "statusDate",
+                    "validationType",
+                    "validationProcess",
+                    "frequency",
+                    "lastPerformed",
+                    "nextScheduled",
+                    "failureAction",
+                    "primarySource",
+                    "attestation",
+                    "validator",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = VerificationResult;
@@ -1442,33 +1450,7 @@ impl<'de> serde::de::Deserialize<'de> for VerificationResult {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "implicitRules",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "target",
-                                            "targetLocation",
-                                            "need",
-                                            "status",
-                                            "statusDate",
-                                            "validationType",
-                                            "validationProcess",
-                                            "frequency",
-                                            "lastPerformed",
-                                            "nextScheduled",
-                                            "failureAction",
-                                            "primarySource",
-                                            "attestation",
-                                            "validator",
-                                        ],
-                                    ));
+                                    return unknown_field_error("implicitRules");
                                 }
                             }
                             Field::Language => {
@@ -1499,33 +1481,7 @@ impl<'de> serde::de::Deserialize<'de> for VerificationResult {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "language",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "target",
-                                            "targetLocation",
-                                            "need",
-                                            "status",
-                                            "statusDate",
-                                            "validationType",
-                                            "validationProcess",
-                                            "frequency",
-                                            "lastPerformed",
-                                            "nextScheduled",
-                                            "failureAction",
-                                            "primarySource",
-                                            "attestation",
-                                            "validator",
-                                        ],
-                                    ));
+                                    return unknown_field_error("language");
                                 }
                             }
                             Field::Text => {
@@ -1641,33 +1597,7 @@ impl<'de> serde::de::Deserialize<'de> for VerificationResult {
                                         }
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "targetLocation",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "target",
-                                            "targetLocation",
-                                            "need",
-                                            "status",
-                                            "statusDate",
-                                            "validationType",
-                                            "validationProcess",
-                                            "frequency",
-                                            "lastPerformed",
-                                            "nextScheduled",
-                                            "failureAction",
-                                            "primarySource",
-                                            "attestation",
-                                            "validator",
-                                        ],
-                                    ));
+                                    return unknown_field_error("targetLocation");
                                 }
                             }
                             Field::Need => {
@@ -1704,33 +1634,7 @@ impl<'de> serde::de::Deserialize<'de> for VerificationResult {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "status",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "target",
-                                            "targetLocation",
-                                            "need",
-                                            "status",
-                                            "statusDate",
-                                            "validationType",
-                                            "validationProcess",
-                                            "frequency",
-                                            "lastPerformed",
-                                            "nextScheduled",
-                                            "failureAction",
-                                            "primarySource",
-                                            "attestation",
-                                            "validator",
-                                        ],
-                                    ));
+                                    return unknown_field_error("status");
                                 }
                             }
                             Field::StatusDate => {
@@ -1767,33 +1671,7 @@ impl<'de> serde::de::Deserialize<'de> for VerificationResult {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "statusDate",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "target",
-                                            "targetLocation",
-                                            "need",
-                                            "status",
-                                            "statusDate",
-                                            "validationType",
-                                            "validationProcess",
-                                            "frequency",
-                                            "lastPerformed",
-                                            "nextScheduled",
-                                            "failureAction",
-                                            "primarySource",
-                                            "attestation",
-                                            "validator",
-                                        ],
-                                    ));
+                                    return unknown_field_error("statusDate");
                                 }
                             }
                             Field::ValidationType => {
@@ -1858,33 +1736,7 @@ impl<'de> serde::de::Deserialize<'de> for VerificationResult {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "lastPerformed",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "target",
-                                            "targetLocation",
-                                            "need",
-                                            "status",
-                                            "statusDate",
-                                            "validationType",
-                                            "validationProcess",
-                                            "frequency",
-                                            "lastPerformed",
-                                            "nextScheduled",
-                                            "failureAction",
-                                            "primarySource",
-                                            "attestation",
-                                            "validator",
-                                        ],
-                                    ));
+                                    return unknown_field_error("lastPerformed");
                                 }
                             }
                             Field::NextScheduled => {
@@ -1921,33 +1773,7 @@ impl<'de> serde::de::Deserialize<'de> for VerificationResult {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "nextScheduled",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "target",
-                                            "targetLocation",
-                                            "need",
-                                            "status",
-                                            "statusDate",
-                                            "validationType",
-                                            "validationProcess",
-                                            "frequency",
-                                            "lastPerformed",
-                                            "nextScheduled",
-                                            "failureAction",
-                                            "primarySource",
-                                            "attestation",
-                                            "validator",
-                                        ],
-                                    ));
+                                    return unknown_field_error("nextScheduled");
                                 }
                             }
                             Field::FailureAction => {

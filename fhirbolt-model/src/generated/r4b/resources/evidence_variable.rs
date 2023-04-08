@@ -1,4 +1,4 @@
-// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-08 by fhirbolt-codegen v0.1.0
 #[doc = "Define members of the evidence element using Codes (such as condition, medication, or observation), Expressions ( using an expression language such as FHIRPath or CQL) or DataRequirements (such as Diabetes diagnosis onset in the last year)."]
 #[derive(Debug, Clone, PartialEq)]
 pub enum EvidenceVariableCharacteristicDefinition {
@@ -120,6 +120,20 @@ impl<'de> serde::de::Deserialize<'de> for EvidenceVariableCharacteristicTimeFrom
             Note,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "description",
+                    "quantity",
+                    "range",
+                    "note",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = EvidenceVariableCharacteristicTimeFromStart;
@@ -210,18 +224,7 @@ impl<'de> serde::de::Deserialize<'de> for EvidenceVariableCharacteristicTimeFrom
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "description",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "description",
-                                            "quantity",
-                                            "range",
-                                            "note",
-                                        ],
-                                    ));
+                                    return unknown_field_error("description");
                                 }
                             }
                             Field::Quantity => {
@@ -467,6 +470,26 @@ impl<'de> serde::de::Deserialize<'de> for EvidenceVariableCharacteristic {
             GroupMeasurePrimitiveElement,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "description",
+                    "definitionReference",
+                    "definitionCanonical",
+                    "definitionCodeableConcept",
+                    "definitionExpression",
+                    "method",
+                    "device",
+                    "exclude",
+                    "timeFromStart",
+                    "groupMeasure",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = EvidenceVariableCharacteristic;
@@ -561,24 +584,7 @@ impl<'de> serde::de::Deserialize<'de> for EvidenceVariableCharacteristic {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "description",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "description",
-                                            "definitionReference",
-                                            "definitionCanonical",
-                                            "definitionCodeableConcept",
-                                            "definitionExpression",
-                                            "method",
-                                            "device",
-                                            "exclude",
-                                            "timeFromStart",
-                                            "groupMeasure",
-                                        ],
-                                    ));
+                                    return unknown_field_error("description");
                                 }
                             }
                             Field::DefinitionReference => {
@@ -655,24 +661,7 @@ impl<'de> serde::de::Deserialize<'de> for EvidenceVariableCharacteristic {
                                         ));
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "definitionCanonical",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "description",
-                                            "definitionReference",
-                                            "definitionCanonical",
-                                            "definitionCodeableConcept",
-                                            "definitionExpression",
-                                            "method",
-                                            "device",
-                                            "exclude",
-                                            "timeFromStart",
-                                            "groupMeasure",
-                                        ],
-                                    ));
+                                    return unknown_field_error("definitionCanonical");
                                 }
                             }
                             Field::DefinitionCodeableConcept => {
@@ -738,24 +727,7 @@ impl<'de> serde::de::Deserialize<'de> for EvidenceVariableCharacteristic {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "exclude",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "description",
-                                            "definitionReference",
-                                            "definitionCanonical",
-                                            "definitionCodeableConcept",
-                                            "definitionExpression",
-                                            "method",
-                                            "device",
-                                            "exclude",
-                                            "timeFromStart",
-                                            "groupMeasure",
-                                        ],
-                                    ));
+                                    return unknown_field_error("exclude");
                                 }
                             }
                             Field::TimeFromStart => {
@@ -798,24 +770,7 @@ impl<'de> serde::de::Deserialize<'de> for EvidenceVariableCharacteristic {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "groupMeasure",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "description",
-                                            "definitionReference",
-                                            "definitionCanonical",
-                                            "definitionCodeableConcept",
-                                            "definitionExpression",
-                                            "method",
-                                            "device",
-                                            "exclude",
-                                            "timeFromStart",
-                                            "groupMeasure",
-                                        ],
-                                    ));
+                                    return unknown_field_error("groupMeasure");
                                 }
                             }
                             Field::Unknown(key) => if _ctx.config.mode
@@ -963,6 +918,20 @@ impl<'de> serde::de::Deserialize<'de> for EvidenceVariableCategory {
             ValueRange,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "name",
+                    "valueCodeableConcept",
+                    "valueQuantity",
+                    "valueRange",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = EvidenceVariableCategory;
@@ -1042,18 +1011,7 @@ impl<'de> serde::de::Deserialize<'de> for EvidenceVariableCategory {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "name",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "name",
-                                            "valueCodeableConcept",
-                                            "valueQuantity",
-                                            "valueRange",
-                                        ],
-                                    ));
+                                    return unknown_field_error("name");
                                 }
                             }
                             Field::ValueCodeableConcept => {
@@ -1636,6 +1594,45 @@ impl<'de> serde::de::Deserialize<'de> for EvidenceVariable {
             Category,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "meta",
+                    "implicitRules",
+                    "language",
+                    "text",
+                    "contained",
+                    "extension",
+                    "modifierExtension",
+                    "url",
+                    "identifier",
+                    "version",
+                    "name",
+                    "title",
+                    "shortTitle",
+                    "subtitle",
+                    "status",
+                    "date",
+                    "description",
+                    "note",
+                    "useContext",
+                    "publisher",
+                    "contact",
+                    "author",
+                    "editor",
+                    "reviewer",
+                    "endorser",
+                    "relatedArtifact",
+                    "actual",
+                    "characteristicCombination",
+                    "characteristic",
+                    "handling",
+                    "category",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = EvidenceVariable;
@@ -1739,43 +1736,7 @@ impl<'de> serde::de::Deserialize<'de> for EvidenceVariable {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "implicitRules",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "identifier",
-                                            "version",
-                                            "name",
-                                            "title",
-                                            "shortTitle",
-                                            "subtitle",
-                                            "status",
-                                            "date",
-                                            "description",
-                                            "note",
-                                            "useContext",
-                                            "publisher",
-                                            "contact",
-                                            "author",
-                                            "editor",
-                                            "reviewer",
-                                            "endorser",
-                                            "relatedArtifact",
-                                            "actual",
-                                            "characteristicCombination",
-                                            "characteristic",
-                                            "handling",
-                                            "category",
-                                        ],
-                                    ));
+                                    return unknown_field_error("implicitRules");
                                 }
                             }
                             Field::Language => {
@@ -1806,43 +1767,7 @@ impl<'de> serde::de::Deserialize<'de> for EvidenceVariable {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "language",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "identifier",
-                                            "version",
-                                            "name",
-                                            "title",
-                                            "shortTitle",
-                                            "subtitle",
-                                            "status",
-                                            "date",
-                                            "description",
-                                            "note",
-                                            "useContext",
-                                            "publisher",
-                                            "contact",
-                                            "author",
-                                            "editor",
-                                            "reviewer",
-                                            "endorser",
-                                            "relatedArtifact",
-                                            "actual",
-                                            "characteristicCombination",
-                                            "characteristic",
-                                            "handling",
-                                            "category",
-                                        ],
-                                    ));
+                                    return unknown_field_error("language");
                                 }
                             }
                             Field::Text => {
@@ -1915,43 +1840,7 @@ impl<'de> serde::de::Deserialize<'de> for EvidenceVariable {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "url",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "identifier",
-                                            "version",
-                                            "name",
-                                            "title",
-                                            "shortTitle",
-                                            "subtitle",
-                                            "status",
-                                            "date",
-                                            "description",
-                                            "note",
-                                            "useContext",
-                                            "publisher",
-                                            "contact",
-                                            "author",
-                                            "editor",
-                                            "reviewer",
-                                            "endorser",
-                                            "relatedArtifact",
-                                            "actual",
-                                            "characteristicCombination",
-                                            "characteristic",
-                                            "handling",
-                                            "category",
-                                        ],
-                                    ));
+                                    return unknown_field_error("url");
                                 }
                             }
                             Field::Identifier => {
@@ -1995,43 +1884,7 @@ impl<'de> serde::de::Deserialize<'de> for EvidenceVariable {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "version",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "identifier",
-                                            "version",
-                                            "name",
-                                            "title",
-                                            "shortTitle",
-                                            "subtitle",
-                                            "status",
-                                            "date",
-                                            "description",
-                                            "note",
-                                            "useContext",
-                                            "publisher",
-                                            "contact",
-                                            "author",
-                                            "editor",
-                                            "reviewer",
-                                            "endorser",
-                                            "relatedArtifact",
-                                            "actual",
-                                            "characteristicCombination",
-                                            "characteristic",
-                                            "handling",
-                                            "category",
-                                        ],
-                                    ));
+                                    return unknown_field_error("version");
                                 }
                             }
                             Field::Name => {
@@ -2062,43 +1915,7 @@ impl<'de> serde::de::Deserialize<'de> for EvidenceVariable {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "name",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "identifier",
-                                            "version",
-                                            "name",
-                                            "title",
-                                            "shortTitle",
-                                            "subtitle",
-                                            "status",
-                                            "date",
-                                            "description",
-                                            "note",
-                                            "useContext",
-                                            "publisher",
-                                            "contact",
-                                            "author",
-                                            "editor",
-                                            "reviewer",
-                                            "endorser",
-                                            "relatedArtifact",
-                                            "actual",
-                                            "characteristicCombination",
-                                            "characteristic",
-                                            "handling",
-                                            "category",
-                                        ],
-                                    ));
+                                    return unknown_field_error("name");
                                 }
                             }
                             Field::Title => {
@@ -2129,43 +1946,7 @@ impl<'de> serde::de::Deserialize<'de> for EvidenceVariable {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "title",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "identifier",
-                                            "version",
-                                            "name",
-                                            "title",
-                                            "shortTitle",
-                                            "subtitle",
-                                            "status",
-                                            "date",
-                                            "description",
-                                            "note",
-                                            "useContext",
-                                            "publisher",
-                                            "contact",
-                                            "author",
-                                            "editor",
-                                            "reviewer",
-                                            "endorser",
-                                            "relatedArtifact",
-                                            "actual",
-                                            "characteristicCombination",
-                                            "characteristic",
-                                            "handling",
-                                            "category",
-                                        ],
-                                    ));
+                                    return unknown_field_error("title");
                                 }
                             }
                             Field::ShortTitle => {
@@ -2202,43 +1983,7 @@ impl<'de> serde::de::Deserialize<'de> for EvidenceVariable {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "shortTitle",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "identifier",
-                                            "version",
-                                            "name",
-                                            "title",
-                                            "shortTitle",
-                                            "subtitle",
-                                            "status",
-                                            "date",
-                                            "description",
-                                            "note",
-                                            "useContext",
-                                            "publisher",
-                                            "contact",
-                                            "author",
-                                            "editor",
-                                            "reviewer",
-                                            "endorser",
-                                            "relatedArtifact",
-                                            "actual",
-                                            "characteristicCombination",
-                                            "characteristic",
-                                            "handling",
-                                            "category",
-                                        ],
-                                    ));
+                                    return unknown_field_error("shortTitle");
                                 }
                             }
                             Field::Subtitle => {
@@ -2269,43 +2014,7 @@ impl<'de> serde::de::Deserialize<'de> for EvidenceVariable {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "subtitle",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "identifier",
-                                            "version",
-                                            "name",
-                                            "title",
-                                            "shortTitle",
-                                            "subtitle",
-                                            "status",
-                                            "date",
-                                            "description",
-                                            "note",
-                                            "useContext",
-                                            "publisher",
-                                            "contact",
-                                            "author",
-                                            "editor",
-                                            "reviewer",
-                                            "endorser",
-                                            "relatedArtifact",
-                                            "actual",
-                                            "characteristicCombination",
-                                            "characteristic",
-                                            "handling",
-                                            "category",
-                                        ],
-                                    ));
+                                    return unknown_field_error("subtitle");
                                 }
                             }
                             Field::Status => {
@@ -2336,43 +2045,7 @@ impl<'de> serde::de::Deserialize<'de> for EvidenceVariable {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "status",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "identifier",
-                                            "version",
-                                            "name",
-                                            "title",
-                                            "shortTitle",
-                                            "subtitle",
-                                            "status",
-                                            "date",
-                                            "description",
-                                            "note",
-                                            "useContext",
-                                            "publisher",
-                                            "contact",
-                                            "author",
-                                            "editor",
-                                            "reviewer",
-                                            "endorser",
-                                            "relatedArtifact",
-                                            "actual",
-                                            "characteristicCombination",
-                                            "characteristic",
-                                            "handling",
-                                            "category",
-                                        ],
-                                    ));
+                                    return unknown_field_error("status");
                                 }
                             }
                             Field::Date => {
@@ -2403,43 +2076,7 @@ impl<'de> serde::de::Deserialize<'de> for EvidenceVariable {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "date",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "identifier",
-                                            "version",
-                                            "name",
-                                            "title",
-                                            "shortTitle",
-                                            "subtitle",
-                                            "status",
-                                            "date",
-                                            "description",
-                                            "note",
-                                            "useContext",
-                                            "publisher",
-                                            "contact",
-                                            "author",
-                                            "editor",
-                                            "reviewer",
-                                            "endorser",
-                                            "relatedArtifact",
-                                            "actual",
-                                            "characteristicCombination",
-                                            "characteristic",
-                                            "handling",
-                                            "category",
-                                        ],
-                                    ));
+                                    return unknown_field_error("date");
                                 }
                             }
                             Field::Description => {
@@ -2476,43 +2113,7 @@ impl<'de> serde::de::Deserialize<'de> for EvidenceVariable {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "description",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "identifier",
-                                            "version",
-                                            "name",
-                                            "title",
-                                            "shortTitle",
-                                            "subtitle",
-                                            "status",
-                                            "date",
-                                            "description",
-                                            "note",
-                                            "useContext",
-                                            "publisher",
-                                            "contact",
-                                            "author",
-                                            "editor",
-                                            "reviewer",
-                                            "endorser",
-                                            "relatedArtifact",
-                                            "actual",
-                                            "characteristicCombination",
-                                            "characteristic",
-                                            "handling",
-                                            "category",
-                                        ],
-                                    ));
+                                    return unknown_field_error("description");
                                 }
                             }
                             Field::Note => {
@@ -2569,43 +2170,7 @@ impl<'de> serde::de::Deserialize<'de> for EvidenceVariable {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "publisher",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "identifier",
-                                            "version",
-                                            "name",
-                                            "title",
-                                            "shortTitle",
-                                            "subtitle",
-                                            "status",
-                                            "date",
-                                            "description",
-                                            "note",
-                                            "useContext",
-                                            "publisher",
-                                            "contact",
-                                            "author",
-                                            "editor",
-                                            "reviewer",
-                                            "endorser",
-                                            "relatedArtifact",
-                                            "actual",
-                                            "characteristicCombination",
-                                            "characteristic",
-                                            "handling",
-                                            "category",
-                                        ],
-                                    ));
+                                    return unknown_field_error("publisher");
                                 }
                             }
                             Field::Contact => {
@@ -2704,43 +2269,7 @@ impl<'de> serde::de::Deserialize<'de> for EvidenceVariable {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "actual",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "identifier",
-                                            "version",
-                                            "name",
-                                            "title",
-                                            "shortTitle",
-                                            "subtitle",
-                                            "status",
-                                            "date",
-                                            "description",
-                                            "note",
-                                            "useContext",
-                                            "publisher",
-                                            "contact",
-                                            "author",
-                                            "editor",
-                                            "reviewer",
-                                            "endorser",
-                                            "relatedArtifact",
-                                            "actual",
-                                            "characteristicCombination",
-                                            "characteristic",
-                                            "handling",
-                                            "category",
-                                        ],
-                                    ));
+                                    return unknown_field_error("actual");
                                 }
                             }
                             Field::CharacteristicCombination => {
@@ -2779,43 +2308,7 @@ impl<'de> serde::de::Deserialize<'de> for EvidenceVariable {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "characteristicCombination",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "identifier",
-                                            "version",
-                                            "name",
-                                            "title",
-                                            "shortTitle",
-                                            "subtitle",
-                                            "status",
-                                            "date",
-                                            "description",
-                                            "note",
-                                            "useContext",
-                                            "publisher",
-                                            "contact",
-                                            "author",
-                                            "editor",
-                                            "reviewer",
-                                            "endorser",
-                                            "relatedArtifact",
-                                            "actual",
-                                            "characteristicCombination",
-                                            "characteristic",
-                                            "handling",
-                                            "category",
-                                        ],
-                                    ));
+                                    return unknown_field_error("characteristicCombination");
                                 }
                             }
                             Field::Characteristic => {
@@ -2859,43 +2352,7 @@ impl<'de> serde::de::Deserialize<'de> for EvidenceVariable {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "handling",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "identifier",
-                                            "version",
-                                            "name",
-                                            "title",
-                                            "shortTitle",
-                                            "subtitle",
-                                            "status",
-                                            "date",
-                                            "description",
-                                            "note",
-                                            "useContext",
-                                            "publisher",
-                                            "contact",
-                                            "author",
-                                            "editor",
-                                            "reviewer",
-                                            "endorser",
-                                            "relatedArtifact",
-                                            "actual",
-                                            "characteristicCombination",
-                                            "characteristic",
-                                            "handling",
-                                            "category",
-                                        ],
-                                    ));
+                                    return unknown_field_error("handling");
                                 }
                             }
                             Field::Category => {

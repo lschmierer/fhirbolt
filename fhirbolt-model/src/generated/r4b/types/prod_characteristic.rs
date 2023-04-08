@@ -1,4 +1,4 @@
-// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-08 by fhirbolt-codegen v0.1.0
 #[doc = "Base StructureDefinition for ProdCharacteristic Type: The marketing status describes the date when a medicinal product is actually put on the market or the date as of which it is no longer available."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub struct ProdCharacteristic {
@@ -216,6 +216,27 @@ impl<'de> serde::de::Deserialize<'de> for ProdCharacteristic {
             Scoring,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "height",
+                    "width",
+                    "depth",
+                    "weight",
+                    "nominalVolume",
+                    "externalDiameter",
+                    "shape",
+                    "color",
+                    "imprint",
+                    "image",
+                    "scoring",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = ProdCharacteristic;
@@ -342,25 +363,7 @@ impl<'de> serde::de::Deserialize<'de> for ProdCharacteristic {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "shape",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "height",
-                                            "width",
-                                            "depth",
-                                            "weight",
-                                            "nominalVolume",
-                                            "externalDiameter",
-                                            "shape",
-                                            "color",
-                                            "imprint",
-                                            "image",
-                                            "scoring",
-                                        ],
-                                    ));
+                                    return unknown_field_error("shape");
                                 }
                             }
                             Field::Color => {
@@ -419,25 +422,7 @@ impl<'de> serde::de::Deserialize<'de> for ProdCharacteristic {
                                         }
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "color",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "height",
-                                            "width",
-                                            "depth",
-                                            "weight",
-                                            "nominalVolume",
-                                            "externalDiameter",
-                                            "shape",
-                                            "color",
-                                            "imprint",
-                                            "image",
-                                            "scoring",
-                                        ],
-                                    ));
+                                    return unknown_field_error("color");
                                 }
                             }
                             Field::Imprint => {
@@ -496,25 +481,7 @@ impl<'de> serde::de::Deserialize<'de> for ProdCharacteristic {
                                         }
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "imprint",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "height",
-                                            "width",
-                                            "depth",
-                                            "weight",
-                                            "nominalVolume",
-                                            "externalDiameter",
-                                            "shape",
-                                            "color",
-                                            "imprint",
-                                            "image",
-                                            "scoring",
-                                        ],
-                                    ));
+                                    return unknown_field_error("imprint");
                                 }
                             }
                             Field::Image => {

@@ -1,4 +1,4 @@
-// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-08 by fhirbolt-codegen v0.1.0
 #[doc = "The source on which this consent statement is based. The source might be a scanned original paper form, or a reference to a consent that links back to such a source, a reference to a document repository (e.g. XDS) that stores the original consent document."]
 #[derive(Debug, Clone, PartialEq)]
 pub enum ConsentSource {
@@ -109,6 +109,12 @@ impl<'de> serde::de::Deserialize<'de> for ConsentPolicy {
             UriPrimitiveElement,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &["id", "extension", "modifierExtension", "authority", "uri"],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = ConsentPolicy;
@@ -190,16 +196,7 @@ impl<'de> serde::de::Deserialize<'de> for ConsentPolicy {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "authority",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "authority",
-                                            "uri",
-                                        ],
-                                    ));
+                                    return unknown_field_error("authority");
                                 }
                             }
                             Field::Uri => {
@@ -230,16 +227,7 @@ impl<'de> serde::de::Deserialize<'de> for ConsentPolicy {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "uri",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "authority",
-                                            "uri",
-                                        ],
-                                    ));
+                                    return unknown_field_error("uri");
                                 }
                             }
                             Field::Unknown(key) => if _ctx.config.mode
@@ -366,6 +354,19 @@ impl<'de> serde::de::Deserialize<'de> for ConsentVerification {
             VerificationDatePrimitiveElement,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "verified",
+                    "verifiedWith",
+                    "verificationDate",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = ConsentVerification;
@@ -446,17 +447,7 @@ impl<'de> serde::de::Deserialize<'de> for ConsentVerification {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "verified",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "verified",
-                                            "verifiedWith",
-                                            "verificationDate",
-                                        ],
-                                    ));
+                                    return unknown_field_error("verified");
                                 }
                             }
                             Field::VerifiedWith => {
@@ -501,17 +492,7 @@ impl<'de> serde::de::Deserialize<'de> for ConsentVerification {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "verificationDate",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "verified",
-                                            "verifiedWith",
-                                            "verificationDate",
-                                        ],
-                                    ));
+                                    return unknown_field_error("verificationDate");
                                 }
                             }
                             Field::Unknown(key) => if _ctx.config.mode
@@ -608,6 +589,12 @@ impl<'de> serde::de::Deserialize<'de> for ConsentProvisionActor {
             #[serde(rename = "reference")]
             Reference,
             Unknown(std::string::String),
+        }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &["id", "extension", "modifierExtension", "role", "reference"],
+            ))
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -781,6 +768,18 @@ impl<'de> serde::de::Deserialize<'de> for ConsentProvisionData {
             Reference,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "meaning",
+                    "reference",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = ConsentProvisionData;
@@ -860,16 +859,7 @@ impl<'de> serde::de::Deserialize<'de> for ConsentProvisionData {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "meaning",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "meaning",
-                                            "reference",
-                                        ],
-                                    ));
+                                    return unknown_field_error("meaning");
                                 }
                             }
                             Field::Reference => {
@@ -1062,6 +1052,27 @@ impl<'de> serde::de::Deserialize<'de> for ConsentProvision {
             Provision,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "type",
+                    "period",
+                    "actor",
+                    "action",
+                    "securityLabel",
+                    "purpose",
+                    "class",
+                    "code",
+                    "dataPeriod",
+                    "data",
+                    "provision",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = ConsentProvision;
@@ -1150,25 +1161,7 @@ impl<'de> serde::de::Deserialize<'de> for ConsentProvision {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "type",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "type",
-                                            "period",
-                                            "actor",
-                                            "action",
-                                            "securityLabel",
-                                            "purpose",
-                                            "class",
-                                            "code",
-                                            "dataPeriod",
-                                            "data",
-                                            "provision",
-                                        ],
-                                    ));
+                                    return unknown_field_error("type");
                                 }
                             }
                             Field::Period => {
@@ -1578,6 +1571,35 @@ impl<'de> serde::de::Deserialize<'de> for Consent {
             Provision,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "meta",
+                    "implicitRules",
+                    "language",
+                    "text",
+                    "contained",
+                    "extension",
+                    "modifierExtension",
+                    "identifier",
+                    "status",
+                    "scope",
+                    "category",
+                    "patient",
+                    "dateTime",
+                    "performer",
+                    "organization",
+                    "sourceAttachment",
+                    "sourceReference",
+                    "policy",
+                    "policyRule",
+                    "verification",
+                    "provision",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = Consent;
@@ -1669,33 +1691,7 @@ impl<'de> serde::de::Deserialize<'de> for Consent {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "implicitRules",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "status",
-                                            "scope",
-                                            "category",
-                                            "patient",
-                                            "dateTime",
-                                            "performer",
-                                            "organization",
-                                            "sourceAttachment",
-                                            "sourceReference",
-                                            "policy",
-                                            "policyRule",
-                                            "verification",
-                                            "provision",
-                                        ],
-                                    ));
+                                    return unknown_field_error("implicitRules");
                                 }
                             }
                             Field::Language => {
@@ -1726,33 +1722,7 @@ impl<'de> serde::de::Deserialize<'de> for Consent {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "language",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "status",
-                                            "scope",
-                                            "category",
-                                            "patient",
-                                            "dateTime",
-                                            "performer",
-                                            "organization",
-                                            "sourceAttachment",
-                                            "sourceReference",
-                                            "policy",
-                                            "policyRule",
-                                            "verification",
-                                            "provision",
-                                        ],
-                                    ));
+                                    return unknown_field_error("language");
                                 }
                             }
                             Field::Text => {
@@ -1838,33 +1808,7 @@ impl<'de> serde::de::Deserialize<'de> for Consent {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "status",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "status",
-                                            "scope",
-                                            "category",
-                                            "patient",
-                                            "dateTime",
-                                            "performer",
-                                            "organization",
-                                            "sourceAttachment",
-                                            "sourceReference",
-                                            "policy",
-                                            "policyRule",
-                                            "verification",
-                                            "provision",
-                                        ],
-                                    ));
+                                    return unknown_field_error("status");
                                 }
                             }
                             Field::Scope => {
@@ -1918,33 +1862,7 @@ impl<'de> serde::de::Deserialize<'de> for Consent {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "dateTime",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "status",
-                                            "scope",
-                                            "category",
-                                            "patient",
-                                            "dateTime",
-                                            "performer",
-                                            "organization",
-                                            "sourceAttachment",
-                                            "sourceReference",
-                                            "policy",
-                                            "policyRule",
-                                            "verification",
-                                            "provision",
-                                        ],
-                                    ));
+                                    return unknown_field_error("dateTime");
                                 }
                             }
                             Field::Performer => {

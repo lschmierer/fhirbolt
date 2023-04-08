@@ -1,4 +1,4 @@
-// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-08 by fhirbolt-codegen v0.1.0
 #[doc = "The time or time-period the observed value is asserted as being true. For biological subjects - e.g. human patients - this is usually called the \"physiologically relevant time\". This is usually either the time of the procedure or of specimen collection, but very often the source of the date/time is not known, only the date/time itself."]
 #[derive(Debug, Clone, PartialEq)]
 pub enum ObservationEffective {
@@ -163,6 +163,22 @@ impl<'de> serde::de::Deserialize<'de> for ObservationReferenceRange {
             TextPrimitiveElement,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "low",
+                    "high",
+                    "type",
+                    "appliesTo",
+                    "age",
+                    "text",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = ObservationReferenceRange;
@@ -281,20 +297,7 @@ impl<'de> serde::de::Deserialize<'de> for ObservationReferenceRange {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "text",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "low",
-                                            "high",
-                                            "type",
-                                            "appliesTo",
-                                            "age",
-                                            "text",
-                                        ],
-                                    ));
+                                    return unknown_field_error("text");
                                 }
                             }
                             Field::Unknown(key) => if _ctx.config.mode
@@ -557,6 +560,31 @@ impl<'de> serde::de::Deserialize<'de> for ObservationComponent {
             ReferenceRange,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "code",
+                    "valueQuantity",
+                    "valueCodeableConcept",
+                    "valueString",
+                    "valueBoolean",
+                    "valueInteger",
+                    "valueRange",
+                    "valueRatio",
+                    "valueSampledData",
+                    "valueTime",
+                    "valueDateTime",
+                    "valuePeriod",
+                    "dataAbsentReason",
+                    "interpretation",
+                    "referenceRange",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = ObservationComponent;
@@ -685,29 +713,7 @@ impl<'de> serde::de::Deserialize<'de> for ObservationComponent {
                                         return Err(serde::de::Error::duplicate_field("_value[x]"));
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "valueString",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "code",
-                                            "valueQuantity",
-                                            "valueCodeableConcept",
-                                            "valueString",
-                                            "valueBoolean",
-                                            "valueInteger",
-                                            "valueRange",
-                                            "valueRatio",
-                                            "valueSampledData",
-                                            "valueTime",
-                                            "valueDateTime",
-                                            "valuePeriod",
-                                            "dataAbsentReason",
-                                            "interpretation",
-                                            "referenceRange",
-                                        ],
-                                    ));
+                                    return unknown_field_error("valueString");
                                 }
                             }
                             Field::ValueBoolean => {
@@ -758,29 +764,7 @@ impl<'de> serde::de::Deserialize<'de> for ObservationComponent {
                                         return Err(serde::de::Error::duplicate_field("_value[x]"));
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "valueBoolean",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "code",
-                                            "valueQuantity",
-                                            "valueCodeableConcept",
-                                            "valueString",
-                                            "valueBoolean",
-                                            "valueInteger",
-                                            "valueRange",
-                                            "valueRatio",
-                                            "valueSampledData",
-                                            "valueTime",
-                                            "valueDateTime",
-                                            "valuePeriod",
-                                            "dataAbsentReason",
-                                            "interpretation",
-                                            "referenceRange",
-                                        ],
-                                    ));
+                                    return unknown_field_error("valueBoolean");
                                 }
                             }
                             Field::ValueInteger => {
@@ -831,29 +815,7 @@ impl<'de> serde::de::Deserialize<'de> for ObservationComponent {
                                         return Err(serde::de::Error::duplicate_field("_value[x]"));
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "valueInteger",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "code",
-                                            "valueQuantity",
-                                            "valueCodeableConcept",
-                                            "valueString",
-                                            "valueBoolean",
-                                            "valueInteger",
-                                            "valueRange",
-                                            "valueRatio",
-                                            "valueSampledData",
-                                            "valueTime",
-                                            "valueDateTime",
-                                            "valuePeriod",
-                                            "dataAbsentReason",
-                                            "interpretation",
-                                            "referenceRange",
-                                        ],
-                                    ));
+                                    return unknown_field_error("valueInteger");
                                 }
                             }
                             Field::ValueRange => {
@@ -928,29 +890,7 @@ impl<'de> serde::de::Deserialize<'de> for ObservationComponent {
                                         return Err(serde::de::Error::duplicate_field("_value[x]"));
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "valueTime",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "code",
-                                            "valueQuantity",
-                                            "valueCodeableConcept",
-                                            "valueString",
-                                            "valueBoolean",
-                                            "valueInteger",
-                                            "valueRange",
-                                            "valueRatio",
-                                            "valueSampledData",
-                                            "valueTime",
-                                            "valueDateTime",
-                                            "valuePeriod",
-                                            "dataAbsentReason",
-                                            "interpretation",
-                                            "referenceRange",
-                                        ],
-                                    ));
+                                    return unknown_field_error("valueTime");
                                 }
                             }
                             Field::ValueDateTime => {
@@ -1001,29 +941,7 @@ impl<'de> serde::de::Deserialize<'de> for ObservationComponent {
                                         return Err(serde::de::Error::duplicate_field("_value[x]"));
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "valueDateTime",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "code",
-                                            "valueQuantity",
-                                            "valueCodeableConcept",
-                                            "valueString",
-                                            "valueBoolean",
-                                            "valueInteger",
-                                            "valueRange",
-                                            "valueRatio",
-                                            "valueSampledData",
-                                            "valueTime",
-                                            "valueDateTime",
-                                            "valuePeriod",
-                                            "dataAbsentReason",
-                                            "interpretation",
-                                            "referenceRange",
-                                        ],
-                                    ));
+                                    return unknown_field_error("valueDateTime");
                                 }
                             }
                             Field::ValuePeriod => {
@@ -1640,6 +1558,58 @@ impl<'de> serde::de::Deserialize<'de> for Observation {
             Component,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "meta",
+                    "implicitRules",
+                    "language",
+                    "text",
+                    "contained",
+                    "extension",
+                    "modifierExtension",
+                    "identifier",
+                    "basedOn",
+                    "partOf",
+                    "status",
+                    "category",
+                    "code",
+                    "subject",
+                    "focus",
+                    "encounter",
+                    "effectiveDateTime",
+                    "effectivePeriod",
+                    "effectiveTiming",
+                    "effectiveInstant",
+                    "issued",
+                    "performer",
+                    "valueQuantity",
+                    "valueCodeableConcept",
+                    "valueString",
+                    "valueBoolean",
+                    "valueInteger",
+                    "valueRange",
+                    "valueRatio",
+                    "valueSampledData",
+                    "valueTime",
+                    "valueDateTime",
+                    "valuePeriod",
+                    "dataAbsentReason",
+                    "interpretation",
+                    "note",
+                    "bodySite",
+                    "method",
+                    "specimen",
+                    "device",
+                    "referenceRange",
+                    "hasMember",
+                    "derivedFrom",
+                    "component",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = Observation;
@@ -1744,56 +1714,7 @@ impl<'de> serde::de::Deserialize<'de> for Observation {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "implicitRules",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "basedOn",
-                                            "partOf",
-                                            "status",
-                                            "category",
-                                            "code",
-                                            "subject",
-                                            "focus",
-                                            "encounter",
-                                            "effectiveDateTime",
-                                            "effectivePeriod",
-                                            "effectiveTiming",
-                                            "effectiveInstant",
-                                            "issued",
-                                            "performer",
-                                            "valueQuantity",
-                                            "valueCodeableConcept",
-                                            "valueString",
-                                            "valueBoolean",
-                                            "valueInteger",
-                                            "valueRange",
-                                            "valueRatio",
-                                            "valueSampledData",
-                                            "valueTime",
-                                            "valueDateTime",
-                                            "valuePeriod",
-                                            "dataAbsentReason",
-                                            "interpretation",
-                                            "note",
-                                            "bodySite",
-                                            "method",
-                                            "specimen",
-                                            "device",
-                                            "referenceRange",
-                                            "hasMember",
-                                            "derivedFrom",
-                                            "component",
-                                        ],
-                                    ));
+                                    return unknown_field_error("implicitRules");
                                 }
                             }
                             Field::Language => {
@@ -1824,56 +1745,7 @@ impl<'de> serde::de::Deserialize<'de> for Observation {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "language",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "basedOn",
-                                            "partOf",
-                                            "status",
-                                            "category",
-                                            "code",
-                                            "subject",
-                                            "focus",
-                                            "encounter",
-                                            "effectiveDateTime",
-                                            "effectivePeriod",
-                                            "effectiveTiming",
-                                            "effectiveInstant",
-                                            "issued",
-                                            "performer",
-                                            "valueQuantity",
-                                            "valueCodeableConcept",
-                                            "valueString",
-                                            "valueBoolean",
-                                            "valueInteger",
-                                            "valueRange",
-                                            "valueRatio",
-                                            "valueSampledData",
-                                            "valueTime",
-                                            "valueDateTime",
-                                            "valuePeriod",
-                                            "dataAbsentReason",
-                                            "interpretation",
-                                            "note",
-                                            "bodySite",
-                                            "method",
-                                            "specimen",
-                                            "device",
-                                            "referenceRange",
-                                            "hasMember",
-                                            "derivedFrom",
-                                            "component",
-                                        ],
-                                    ));
+                                    return unknown_field_error("language");
                                 }
                             }
                             Field::Text => {
@@ -1981,56 +1853,7 @@ impl<'de> serde::de::Deserialize<'de> for Observation {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "status",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "basedOn",
-                                            "partOf",
-                                            "status",
-                                            "category",
-                                            "code",
-                                            "subject",
-                                            "focus",
-                                            "encounter",
-                                            "effectiveDateTime",
-                                            "effectivePeriod",
-                                            "effectiveTiming",
-                                            "effectiveInstant",
-                                            "issued",
-                                            "performer",
-                                            "valueQuantity",
-                                            "valueCodeableConcept",
-                                            "valueString",
-                                            "valueBoolean",
-                                            "valueInteger",
-                                            "valueRange",
-                                            "valueRatio",
-                                            "valueSampledData",
-                                            "valueTime",
-                                            "valueDateTime",
-                                            "valuePeriod",
-                                            "dataAbsentReason",
-                                            "interpretation",
-                                            "note",
-                                            "bodySite",
-                                            "method",
-                                            "specimen",
-                                            "device",
-                                            "referenceRange",
-                                            "hasMember",
-                                            "derivedFrom",
-                                            "component",
-                                        ],
-                                    ));
+                                    return unknown_field_error("status");
                                 }
                             }
                             Field::Category => {
@@ -2125,56 +1948,7 @@ impl<'de> serde::de::Deserialize<'de> for Observation {
                                         ));
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "effectiveDateTime",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "basedOn",
-                                            "partOf",
-                                            "status",
-                                            "category",
-                                            "code",
-                                            "subject",
-                                            "focus",
-                                            "encounter",
-                                            "effectiveDateTime",
-                                            "effectivePeriod",
-                                            "effectiveTiming",
-                                            "effectiveInstant",
-                                            "issued",
-                                            "performer",
-                                            "valueQuantity",
-                                            "valueCodeableConcept",
-                                            "valueString",
-                                            "valueBoolean",
-                                            "valueInteger",
-                                            "valueRange",
-                                            "valueRatio",
-                                            "valueSampledData",
-                                            "valueTime",
-                                            "valueDateTime",
-                                            "valuePeriod",
-                                            "dataAbsentReason",
-                                            "interpretation",
-                                            "note",
-                                            "bodySite",
-                                            "method",
-                                            "specimen",
-                                            "device",
-                                            "referenceRange",
-                                            "hasMember",
-                                            "derivedFrom",
-                                            "component",
-                                        ],
-                                    ));
+                                    return unknown_field_error("effectiveDateTime");
                                 }
                             }
                             Field::EffectivePeriod => {
@@ -2247,56 +2021,7 @@ impl<'de> serde::de::Deserialize<'de> for Observation {
                                         ));
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "effectiveInstant",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "basedOn",
-                                            "partOf",
-                                            "status",
-                                            "category",
-                                            "code",
-                                            "subject",
-                                            "focus",
-                                            "encounter",
-                                            "effectiveDateTime",
-                                            "effectivePeriod",
-                                            "effectiveTiming",
-                                            "effectiveInstant",
-                                            "issued",
-                                            "performer",
-                                            "valueQuantity",
-                                            "valueCodeableConcept",
-                                            "valueString",
-                                            "valueBoolean",
-                                            "valueInteger",
-                                            "valueRange",
-                                            "valueRatio",
-                                            "valueSampledData",
-                                            "valueTime",
-                                            "valueDateTime",
-                                            "valuePeriod",
-                                            "dataAbsentReason",
-                                            "interpretation",
-                                            "note",
-                                            "bodySite",
-                                            "method",
-                                            "specimen",
-                                            "device",
-                                            "referenceRange",
-                                            "hasMember",
-                                            "derivedFrom",
-                                            "component",
-                                        ],
-                                    ));
+                                    return unknown_field_error("effectiveInstant");
                                 }
                             }
                             Field::Issued => {
@@ -2327,56 +2052,7 @@ impl<'de> serde::de::Deserialize<'de> for Observation {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "issued",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "basedOn",
-                                            "partOf",
-                                            "status",
-                                            "category",
-                                            "code",
-                                            "subject",
-                                            "focus",
-                                            "encounter",
-                                            "effectiveDateTime",
-                                            "effectivePeriod",
-                                            "effectiveTiming",
-                                            "effectiveInstant",
-                                            "issued",
-                                            "performer",
-                                            "valueQuantity",
-                                            "valueCodeableConcept",
-                                            "valueString",
-                                            "valueBoolean",
-                                            "valueInteger",
-                                            "valueRange",
-                                            "valueRatio",
-                                            "valueSampledData",
-                                            "valueTime",
-                                            "valueDateTime",
-                                            "valuePeriod",
-                                            "dataAbsentReason",
-                                            "interpretation",
-                                            "note",
-                                            "bodySite",
-                                            "method",
-                                            "specimen",
-                                            "device",
-                                            "referenceRange",
-                                            "hasMember",
-                                            "derivedFrom",
-                                            "component",
-                                        ],
-                                    ));
+                                    return unknown_field_error("issued");
                                 }
                             }
                             Field::Performer => {
@@ -2454,56 +2130,7 @@ impl<'de> serde::de::Deserialize<'de> for Observation {
                                         return Err(serde::de::Error::duplicate_field("_value[x]"));
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "valueString",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "basedOn",
-                                            "partOf",
-                                            "status",
-                                            "category",
-                                            "code",
-                                            "subject",
-                                            "focus",
-                                            "encounter",
-                                            "effectiveDateTime",
-                                            "effectivePeriod",
-                                            "effectiveTiming",
-                                            "effectiveInstant",
-                                            "issued",
-                                            "performer",
-                                            "valueQuantity",
-                                            "valueCodeableConcept",
-                                            "valueString",
-                                            "valueBoolean",
-                                            "valueInteger",
-                                            "valueRange",
-                                            "valueRatio",
-                                            "valueSampledData",
-                                            "valueTime",
-                                            "valueDateTime",
-                                            "valuePeriod",
-                                            "dataAbsentReason",
-                                            "interpretation",
-                                            "note",
-                                            "bodySite",
-                                            "method",
-                                            "specimen",
-                                            "device",
-                                            "referenceRange",
-                                            "hasMember",
-                                            "derivedFrom",
-                                            "component",
-                                        ],
-                                    ));
+                                    return unknown_field_error("valueString");
                                 }
                             }
                             Field::ValueBoolean => {
@@ -2553,56 +2180,7 @@ impl<'de> serde::de::Deserialize<'de> for Observation {
                                         return Err(serde::de::Error::duplicate_field("_value[x]"));
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "valueBoolean",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "basedOn",
-                                            "partOf",
-                                            "status",
-                                            "category",
-                                            "code",
-                                            "subject",
-                                            "focus",
-                                            "encounter",
-                                            "effectiveDateTime",
-                                            "effectivePeriod",
-                                            "effectiveTiming",
-                                            "effectiveInstant",
-                                            "issued",
-                                            "performer",
-                                            "valueQuantity",
-                                            "valueCodeableConcept",
-                                            "valueString",
-                                            "valueBoolean",
-                                            "valueInteger",
-                                            "valueRange",
-                                            "valueRatio",
-                                            "valueSampledData",
-                                            "valueTime",
-                                            "valueDateTime",
-                                            "valuePeriod",
-                                            "dataAbsentReason",
-                                            "interpretation",
-                                            "note",
-                                            "bodySite",
-                                            "method",
-                                            "specimen",
-                                            "device",
-                                            "referenceRange",
-                                            "hasMember",
-                                            "derivedFrom",
-                                            "component",
-                                        ],
-                                    ));
+                                    return unknown_field_error("valueBoolean");
                                 }
                             }
                             Field::ValueInteger => {
@@ -2652,56 +2230,7 @@ impl<'de> serde::de::Deserialize<'de> for Observation {
                                         return Err(serde::de::Error::duplicate_field("_value[x]"));
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "valueInteger",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "basedOn",
-                                            "partOf",
-                                            "status",
-                                            "category",
-                                            "code",
-                                            "subject",
-                                            "focus",
-                                            "encounter",
-                                            "effectiveDateTime",
-                                            "effectivePeriod",
-                                            "effectiveTiming",
-                                            "effectiveInstant",
-                                            "issued",
-                                            "performer",
-                                            "valueQuantity",
-                                            "valueCodeableConcept",
-                                            "valueString",
-                                            "valueBoolean",
-                                            "valueInteger",
-                                            "valueRange",
-                                            "valueRatio",
-                                            "valueSampledData",
-                                            "valueTime",
-                                            "valueDateTime",
-                                            "valuePeriod",
-                                            "dataAbsentReason",
-                                            "interpretation",
-                                            "note",
-                                            "bodySite",
-                                            "method",
-                                            "specimen",
-                                            "device",
-                                            "referenceRange",
-                                            "hasMember",
-                                            "derivedFrom",
-                                            "component",
-                                        ],
-                                    ));
+                                    return unknown_field_error("valueInteger");
                                 }
                             }
                             Field::ValueRange => {
@@ -2768,56 +2297,7 @@ impl<'de> serde::de::Deserialize<'de> for Observation {
                                         return Err(serde::de::Error::duplicate_field("_value[x]"));
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "valueTime",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "basedOn",
-                                            "partOf",
-                                            "status",
-                                            "category",
-                                            "code",
-                                            "subject",
-                                            "focus",
-                                            "encounter",
-                                            "effectiveDateTime",
-                                            "effectivePeriod",
-                                            "effectiveTiming",
-                                            "effectiveInstant",
-                                            "issued",
-                                            "performer",
-                                            "valueQuantity",
-                                            "valueCodeableConcept",
-                                            "valueString",
-                                            "valueBoolean",
-                                            "valueInteger",
-                                            "valueRange",
-                                            "valueRatio",
-                                            "valueSampledData",
-                                            "valueTime",
-                                            "valueDateTime",
-                                            "valuePeriod",
-                                            "dataAbsentReason",
-                                            "interpretation",
-                                            "note",
-                                            "bodySite",
-                                            "method",
-                                            "specimen",
-                                            "device",
-                                            "referenceRange",
-                                            "hasMember",
-                                            "derivedFrom",
-                                            "component",
-                                        ],
-                                    ));
+                                    return unknown_field_error("valueTime");
                                 }
                             }
                             Field::ValueDateTime => {
@@ -2867,56 +2347,7 @@ impl<'de> serde::de::Deserialize<'de> for Observation {
                                         return Err(serde::de::Error::duplicate_field("_value[x]"));
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "valueDateTime",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "basedOn",
-                                            "partOf",
-                                            "status",
-                                            "category",
-                                            "code",
-                                            "subject",
-                                            "focus",
-                                            "encounter",
-                                            "effectiveDateTime",
-                                            "effectivePeriod",
-                                            "effectiveTiming",
-                                            "effectiveInstant",
-                                            "issued",
-                                            "performer",
-                                            "valueQuantity",
-                                            "valueCodeableConcept",
-                                            "valueString",
-                                            "valueBoolean",
-                                            "valueInteger",
-                                            "valueRange",
-                                            "valueRatio",
-                                            "valueSampledData",
-                                            "valueTime",
-                                            "valueDateTime",
-                                            "valuePeriod",
-                                            "dataAbsentReason",
-                                            "interpretation",
-                                            "note",
-                                            "bodySite",
-                                            "method",
-                                            "specimen",
-                                            "device",
-                                            "referenceRange",
-                                            "hasMember",
-                                            "derivedFrom",
-                                            "component",
-                                        ],
-                                    ));
+                                    return unknown_field_error("valueDateTime");
                                 }
                             }
                             Field::ValuePeriod => {

@@ -1,4 +1,4 @@
-// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-08 by fhirbolt-codegen v0.1.0
 #[doc = "The time or time-period the observed values are related to. When the subject of the report is a patient, this is usually either the time of the procedure or of specimen collection(s), but very often the source of the date/time is not known, only the date/time itself."]
 #[derive(Debug, Clone, PartialEq)]
 pub enum DiagnosticReportEffective {
@@ -89,6 +89,12 @@ impl<'de> serde::de::Deserialize<'de> for DiagnosticReportMedia {
             Link,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &["id", "extension", "modifierExtension", "comment", "link"],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = DiagnosticReportMedia;
@@ -168,16 +174,7 @@ impl<'de> serde::de::Deserialize<'de> for DiagnosticReportMedia {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "comment",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "comment",
-                                            "link",
-                                        ],
-                                    ));
+                                    return unknown_field_error("comment");
                                 }
                             }
                             Field::Link => {
@@ -543,6 +540,40 @@ impl<'de> serde::de::Deserialize<'de> for DiagnosticReport {
             PresentedForm,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "meta",
+                    "implicitRules",
+                    "language",
+                    "text",
+                    "contained",
+                    "extension",
+                    "modifierExtension",
+                    "identifier",
+                    "basedOn",
+                    "status",
+                    "category",
+                    "code",
+                    "subject",
+                    "encounter",
+                    "effectiveDateTime",
+                    "effectivePeriod",
+                    "issued",
+                    "performer",
+                    "resultsInterpreter",
+                    "specimen",
+                    "result",
+                    "imagingStudy",
+                    "media",
+                    "conclusion",
+                    "conclusionCode",
+                    "presentedForm",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = DiagnosticReport;
@@ -641,38 +672,7 @@ impl<'de> serde::de::Deserialize<'de> for DiagnosticReport {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "implicitRules",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "basedOn",
-                                            "status",
-                                            "category",
-                                            "code",
-                                            "subject",
-                                            "encounter",
-                                            "effectiveDateTime",
-                                            "effectivePeriod",
-                                            "issued",
-                                            "performer",
-                                            "resultsInterpreter",
-                                            "specimen",
-                                            "result",
-                                            "imagingStudy",
-                                            "media",
-                                            "conclusion",
-                                            "conclusionCode",
-                                            "presentedForm",
-                                        ],
-                                    ));
+                                    return unknown_field_error("implicitRules");
                                 }
                             }
                             Field::Language => {
@@ -703,38 +703,7 @@ impl<'de> serde::de::Deserialize<'de> for DiagnosticReport {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "language",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "basedOn",
-                                            "status",
-                                            "category",
-                                            "code",
-                                            "subject",
-                                            "encounter",
-                                            "effectiveDateTime",
-                                            "effectivePeriod",
-                                            "issued",
-                                            "performer",
-                                            "resultsInterpreter",
-                                            "specimen",
-                                            "result",
-                                            "imagingStudy",
-                                            "media",
-                                            "conclusion",
-                                            "conclusionCode",
-                                            "presentedForm",
-                                        ],
-                                    ));
+                                    return unknown_field_error("language");
                                 }
                             }
                             Field::Text => {
@@ -831,38 +800,7 @@ impl<'de> serde::de::Deserialize<'de> for DiagnosticReport {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "status",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "basedOn",
-                                            "status",
-                                            "category",
-                                            "code",
-                                            "subject",
-                                            "encounter",
-                                            "effectiveDateTime",
-                                            "effectivePeriod",
-                                            "issued",
-                                            "performer",
-                                            "resultsInterpreter",
-                                            "specimen",
-                                            "result",
-                                            "imagingStudy",
-                                            "media",
-                                            "conclusion",
-                                            "conclusionCode",
-                                            "presentedForm",
-                                        ],
-                                    ));
+                                    return unknown_field_error("status");
                                 }
                             }
                             Field::Category => {
@@ -946,38 +884,7 @@ impl<'de> serde::de::Deserialize<'de> for DiagnosticReport {
                                         ));
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "effectiveDateTime",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "basedOn",
-                                            "status",
-                                            "category",
-                                            "code",
-                                            "subject",
-                                            "encounter",
-                                            "effectiveDateTime",
-                                            "effectivePeriod",
-                                            "issued",
-                                            "performer",
-                                            "resultsInterpreter",
-                                            "specimen",
-                                            "result",
-                                            "imagingStudy",
-                                            "media",
-                                            "conclusion",
-                                            "conclusionCode",
-                                            "presentedForm",
-                                        ],
-                                    ));
+                                    return unknown_field_error("effectiveDateTime");
                                 }
                             }
                             Field::EffectivePeriod => {
@@ -1018,38 +925,7 @@ impl<'de> serde::de::Deserialize<'de> for DiagnosticReport {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "issued",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "basedOn",
-                                            "status",
-                                            "category",
-                                            "code",
-                                            "subject",
-                                            "encounter",
-                                            "effectiveDateTime",
-                                            "effectivePeriod",
-                                            "issued",
-                                            "performer",
-                                            "resultsInterpreter",
-                                            "specimen",
-                                            "result",
-                                            "imagingStudy",
-                                            "media",
-                                            "conclusion",
-                                            "conclusionCode",
-                                            "presentedForm",
-                                        ],
-                                    ));
+                                    return unknown_field_error("issued");
                                 }
                             }
                             Field::Performer => {
@@ -1157,38 +1033,7 @@ impl<'de> serde::de::Deserialize<'de> for DiagnosticReport {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "conclusion",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "basedOn",
-                                            "status",
-                                            "category",
-                                            "code",
-                                            "subject",
-                                            "encounter",
-                                            "effectiveDateTime",
-                                            "effectivePeriod",
-                                            "issued",
-                                            "performer",
-                                            "resultsInterpreter",
-                                            "specimen",
-                                            "result",
-                                            "imagingStudy",
-                                            "media",
-                                            "conclusion",
-                                            "conclusionCode",
-                                            "presentedForm",
-                                        ],
-                                    ));
+                                    return unknown_field_error("conclusion");
                                 }
                             }
                             Field::ConclusionCode => {

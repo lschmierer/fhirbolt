@@ -1,4 +1,4 @@
-// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-08 by fhirbolt-codegen v0.1.0
 #[doc = "Contact for the organization for a certain purpose."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub struct OrganizationContact {
@@ -74,6 +74,20 @@ impl<'de> serde::de::Deserialize<'de> for OrganizationContact {
             #[serde(rename = "address")]
             Address,
             Unknown(std::string::String),
+        }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "purpose",
+                    "name",
+                    "telecom",
+                    "address",
+                ],
+            ))
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -458,6 +472,31 @@ impl<'de> serde::de::Deserialize<'de> for Organization {
             Endpoint,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "meta",
+                    "implicitRules",
+                    "language",
+                    "text",
+                    "contained",
+                    "extension",
+                    "modifierExtension",
+                    "identifier",
+                    "active",
+                    "type",
+                    "name",
+                    "alias",
+                    "telecom",
+                    "address",
+                    "partOf",
+                    "contact",
+                    "endpoint",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = Organization;
@@ -546,29 +585,7 @@ impl<'de> serde::de::Deserialize<'de> for Organization {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "implicitRules",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "active",
-                                            "type",
-                                            "name",
-                                            "alias",
-                                            "telecom",
-                                            "address",
-                                            "partOf",
-                                            "contact",
-                                            "endpoint",
-                                        ],
-                                    ));
+                                    return unknown_field_error("implicitRules");
                                 }
                             }
                             Field::Language => {
@@ -599,29 +616,7 @@ impl<'de> serde::de::Deserialize<'de> for Organization {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "language",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "active",
-                                            "type",
-                                            "name",
-                                            "alias",
-                                            "telecom",
-                                            "address",
-                                            "partOf",
-                                            "contact",
-                                            "endpoint",
-                                        ],
-                                    ));
+                                    return unknown_field_error("language");
                                 }
                             }
                             Field::Text => {
@@ -707,29 +702,7 @@ impl<'de> serde::de::Deserialize<'de> for Organization {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "active",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "active",
-                                            "type",
-                                            "name",
-                                            "alias",
-                                            "telecom",
-                                            "address",
-                                            "partOf",
-                                            "contact",
-                                            "endpoint",
-                                        ],
-                                    ));
+                                    return unknown_field_error("active");
                                 }
                             }
                             Field::Type => {
@@ -771,29 +744,7 @@ impl<'de> serde::de::Deserialize<'de> for Organization {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "name",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "active",
-                                            "type",
-                                            "name",
-                                            "alias",
-                                            "telecom",
-                                            "address",
-                                            "partOf",
-                                            "contact",
-                                            "endpoint",
-                                        ],
-                                    ));
+                                    return unknown_field_error("name");
                                 }
                             }
                             Field::Alias => {
@@ -852,29 +803,7 @@ impl<'de> serde::de::Deserialize<'de> for Organization {
                                         }
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "alias",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "active",
-                                            "type",
-                                            "name",
-                                            "alias",
-                                            "telecom",
-                                            "address",
-                                            "partOf",
-                                            "contact",
-                                            "endpoint",
-                                        ],
-                                    ));
+                                    return unknown_field_error("alias");
                                 }
                             }
                             Field::Telecom => {

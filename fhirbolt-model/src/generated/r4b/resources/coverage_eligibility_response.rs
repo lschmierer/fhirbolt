@@ -1,4 +1,4 @@
-// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-08 by fhirbolt-codegen v0.1.0
 #[doc = "The date or dates when the enclosed suite of services were performed or completed."]
 #[derive(Debug, Clone, PartialEq)]
 pub enum CoverageEligibilityResponseServiced {
@@ -208,6 +208,23 @@ impl<'de> serde::de::Deserialize<'de> for CoverageEligibilityResponseInsuranceIt
             UsedMoney,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "type",
+                    "allowedUnsignedInt",
+                    "allowedString",
+                    "allowedMoney",
+                    "usedUnsignedInt",
+                    "usedString",
+                    "usedMoney",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = CoverageEligibilityResponseInsuranceItemBenefit;
@@ -229,7 +246,7 @@ impl<'de> serde::de::Deserialize<'de> for CoverageEligibilityResponseInsuranceIt
                 let mut r#allowed: Option<CoverageEligibilityResponseInsuranceItemBenefitAllowed> =
                     None;
                 let mut r#used: Option<CoverageEligibilityResponseInsuranceItemBenefitUsed> = None;
-                fhirbolt_shared :: serde_context :: de :: DESERIALIZATION_CONTEXT . with (| _ctx | { let _ctx = _ctx . borrow () ; while let Some (map_access_key) = map_access . next_key () ? { match map_access_key { Field :: Id => { if r#id . is_some () { return Err (serde :: de :: Error :: duplicate_field ("id")) ; } r#id = Some (map_access . next_value () ?) ; } , Field :: Extension => { if _ctx . from_json { if r#extension . is_some () { return Err (serde :: de :: Error :: duplicate_field ("extension")) ; } r#extension = Some (map_access . next_value () ?) ; } else { let vec = r#extension . get_or_insert (Default :: default ()) ; vec . push (map_access . next_value () ?) ; } } , Field :: ModifierExtension => { if _ctx . from_json { if r#modifier_extension . is_some () { return Err (serde :: de :: Error :: duplicate_field ("modifierExtension")) ; } r#modifier_extension = Some (map_access . next_value () ?) ; } else { let vec = r#modifier_extension . get_or_insert (Default :: default ()) ; vec . push (map_access . next_value () ?) ; } } , Field :: Type => { if r#type . is_some () { return Err (serde :: de :: Error :: duplicate_field ("type")) ; } r#type = Some (map_access . next_value () ?) ; } , Field :: AllowedUnsignedInt => { if _ctx . from_json { let r#enum = r#allowed . get_or_insert (CoverageEligibilityResponseInsuranceItemBenefitAllowed :: UnsignedInt (Default :: default ())) ; if let CoverageEligibilityResponseInsuranceItemBenefitAllowed :: UnsignedInt (variant) = r#enum { if variant . value . is_some () { return Err (serde :: de :: Error :: duplicate_field ("allowedUnsignedInt")) ; } let value : _ = map_access . next_value () ? ; variant . value = Some (value) ; } else { return Err (serde :: de :: Error :: duplicate_field ("allowed[x]")) ; } } else { if r#allowed . is_some () { return Err (serde :: de :: Error :: duplicate_field ("allowedUnsignedInt")) ; } r#allowed = Some (CoverageEligibilityResponseInsuranceItemBenefitAllowed :: UnsignedInt (map_access . next_value () ?)) ; } } , Field :: AllowedUnsignedIntPrimitiveElement => { if _ctx . from_json { let r#enum = r#allowed . get_or_insert (CoverageEligibilityResponseInsuranceItemBenefitAllowed :: UnsignedInt (Default :: default ())) ; if let CoverageEligibilityResponseInsuranceItemBenefitAllowed :: UnsignedInt (variant) = r#enum { if variant . id . is_some () || ! variant . extension . is_empty () { return Err (serde :: de :: Error :: duplicate_field ("_allowedUnsignedInt")) ; } let super :: super :: serde_helpers :: PrimitiveElementOwned { id , extension } = map_access . next_value () ? ; variant . id = id ; variant . extension = extension ; } else { return Err (serde :: de :: Error :: duplicate_field ("_allowed[x]")) ; } } else { return Err (serde :: de :: Error :: unknown_field ("allowedUnsignedInt" , & ["id" , "extension" , "modifierExtension" , "type" , "allowedUnsignedInt" , "allowedString" , "allowedMoney" , "usedUnsignedInt" , "usedString" , "usedMoney" ,])) ; } } , Field :: AllowedString => { if _ctx . from_json { let r#enum = r#allowed . get_or_insert (CoverageEligibilityResponseInsuranceItemBenefitAllowed :: String (Default :: default ())) ; if let CoverageEligibilityResponseInsuranceItemBenefitAllowed :: String (variant) = r#enum { if variant . value . is_some () { return Err (serde :: de :: Error :: duplicate_field ("allowedString")) ; } let value : _ = map_access . next_value () ? ; variant . value = Some (value) ; } else { return Err (serde :: de :: Error :: duplicate_field ("allowed[x]")) ; } } else { if r#allowed . is_some () { return Err (serde :: de :: Error :: duplicate_field ("allowedString")) ; } r#allowed = Some (CoverageEligibilityResponseInsuranceItemBenefitAllowed :: String (map_access . next_value () ?)) ; } } , Field :: AllowedStringPrimitiveElement => { if _ctx . from_json { let r#enum = r#allowed . get_or_insert (CoverageEligibilityResponseInsuranceItemBenefitAllowed :: String (Default :: default ())) ; if let CoverageEligibilityResponseInsuranceItemBenefitAllowed :: String (variant) = r#enum { if variant . id . is_some () || ! variant . extension . is_empty () { return Err (serde :: de :: Error :: duplicate_field ("_allowedString")) ; } let super :: super :: serde_helpers :: PrimitiveElementOwned { id , extension } = map_access . next_value () ? ; variant . id = id ; variant . extension = extension ; } else { return Err (serde :: de :: Error :: duplicate_field ("_allowed[x]")) ; } } else { return Err (serde :: de :: Error :: unknown_field ("allowedString" , & ["id" , "extension" , "modifierExtension" , "type" , "allowedUnsignedInt" , "allowedString" , "allowedMoney" , "usedUnsignedInt" , "usedString" , "usedMoney" ,])) ; } } , Field :: AllowedMoney => { if r#allowed . is_some () { return Err (serde :: de :: Error :: duplicate_field ("allowedMoney")) ; } r#allowed = Some (CoverageEligibilityResponseInsuranceItemBenefitAllowed :: Money (map_access . next_value () ?)) ; } , Field :: UsedUnsignedInt => { if _ctx . from_json { let r#enum = r#used . get_or_insert (CoverageEligibilityResponseInsuranceItemBenefitUsed :: UnsignedInt (Default :: default ())) ; if let CoverageEligibilityResponseInsuranceItemBenefitUsed :: UnsignedInt (variant) = r#enum { if variant . value . is_some () { return Err (serde :: de :: Error :: duplicate_field ("usedUnsignedInt")) ; } let value : _ = map_access . next_value () ? ; variant . value = Some (value) ; } else { return Err (serde :: de :: Error :: duplicate_field ("used[x]")) ; } } else { if r#used . is_some () { return Err (serde :: de :: Error :: duplicate_field ("usedUnsignedInt")) ; } r#used = Some (CoverageEligibilityResponseInsuranceItemBenefitUsed :: UnsignedInt (map_access . next_value () ?)) ; } } , Field :: UsedUnsignedIntPrimitiveElement => { if _ctx . from_json { let r#enum = r#used . get_or_insert (CoverageEligibilityResponseInsuranceItemBenefitUsed :: UnsignedInt (Default :: default ())) ; if let CoverageEligibilityResponseInsuranceItemBenefitUsed :: UnsignedInt (variant) = r#enum { if variant . id . is_some () || ! variant . extension . is_empty () { return Err (serde :: de :: Error :: duplicate_field ("_usedUnsignedInt")) ; } let super :: super :: serde_helpers :: PrimitiveElementOwned { id , extension } = map_access . next_value () ? ; variant . id = id ; variant . extension = extension ; } else { return Err (serde :: de :: Error :: duplicate_field ("_used[x]")) ; } } else { return Err (serde :: de :: Error :: unknown_field ("usedUnsignedInt" , & ["id" , "extension" , "modifierExtension" , "type" , "allowedUnsignedInt" , "allowedString" , "allowedMoney" , "usedUnsignedInt" , "usedString" , "usedMoney" ,])) ; } } , Field :: UsedString => { if _ctx . from_json { let r#enum = r#used . get_or_insert (CoverageEligibilityResponseInsuranceItemBenefitUsed :: String (Default :: default ())) ; if let CoverageEligibilityResponseInsuranceItemBenefitUsed :: String (variant) = r#enum { if variant . value . is_some () { return Err (serde :: de :: Error :: duplicate_field ("usedString")) ; } let value : _ = map_access . next_value () ? ; variant . value = Some (value) ; } else { return Err (serde :: de :: Error :: duplicate_field ("used[x]")) ; } } else { if r#used . is_some () { return Err (serde :: de :: Error :: duplicate_field ("usedString")) ; } r#used = Some (CoverageEligibilityResponseInsuranceItemBenefitUsed :: String (map_access . next_value () ?)) ; } } , Field :: UsedStringPrimitiveElement => { if _ctx . from_json { let r#enum = r#used . get_or_insert (CoverageEligibilityResponseInsuranceItemBenefitUsed :: String (Default :: default ())) ; if let CoverageEligibilityResponseInsuranceItemBenefitUsed :: String (variant) = r#enum { if variant . id . is_some () || ! variant . extension . is_empty () { return Err (serde :: de :: Error :: duplicate_field ("_usedString")) ; } let super :: super :: serde_helpers :: PrimitiveElementOwned { id , extension } = map_access . next_value () ? ; variant . id = id ; variant . extension = extension ; } else { return Err (serde :: de :: Error :: duplicate_field ("_used[x]")) ; } } else { return Err (serde :: de :: Error :: unknown_field ("usedString" , & ["id" , "extension" , "modifierExtension" , "type" , "allowedUnsignedInt" , "allowedString" , "allowedMoney" , "usedUnsignedInt" , "usedString" , "usedMoney" ,])) ; } } , Field :: UsedMoney => { if r#used . is_some () { return Err (serde :: de :: Error :: duplicate_field ("usedMoney")) ; } r#used = Some (CoverageEligibilityResponseInsuranceItemBenefitUsed :: Money (map_access . next_value () ?)) ; } , Field :: Unknown (key) => if _ctx . config . mode == fhirbolt_shared :: serde_context :: de :: DeserializationMode :: Strict { return Err (serde :: de :: Error :: unknown_field (& key , & ["id" , "extension" , "modifierExtension" , "type" , "allowedUnsignedInt" , "allowedString" , "allowedMoney" , "usedUnsignedInt" , "usedString" , "usedMoney" ,])) ; } } } Ok (CoverageEligibilityResponseInsuranceItemBenefit { r#id , r#extension : r#extension . unwrap_or (vec ! []) , r#modifier_extension : r#modifier_extension . unwrap_or (vec ! []) , r#type : if _ctx . config . mode == fhirbolt_shared :: serde_context :: de :: DeserializationMode :: Lax { r#type . unwrap_or (Default :: default ()) } else { r#type . ok_or (serde :: de :: Error :: missing_field ("type")) ? } , r#allowed , r#used , }) })
+                fhirbolt_shared :: serde_context :: de :: DESERIALIZATION_CONTEXT . with (| _ctx | { let _ctx = _ctx . borrow () ; while let Some (map_access_key) = map_access . next_key () ? { match map_access_key { Field :: Id => { if r#id . is_some () { return Err (serde :: de :: Error :: duplicate_field ("id")) ; } r#id = Some (map_access . next_value () ?) ; } , Field :: Extension => { if _ctx . from_json { if r#extension . is_some () { return Err (serde :: de :: Error :: duplicate_field ("extension")) ; } r#extension = Some (map_access . next_value () ?) ; } else { let vec = r#extension . get_or_insert (Default :: default ()) ; vec . push (map_access . next_value () ?) ; } } , Field :: ModifierExtension => { if _ctx . from_json { if r#modifier_extension . is_some () { return Err (serde :: de :: Error :: duplicate_field ("modifierExtension")) ; } r#modifier_extension = Some (map_access . next_value () ?) ; } else { let vec = r#modifier_extension . get_or_insert (Default :: default ()) ; vec . push (map_access . next_value () ?) ; } } , Field :: Type => { if r#type . is_some () { return Err (serde :: de :: Error :: duplicate_field ("type")) ; } r#type = Some (map_access . next_value () ?) ; } , Field :: AllowedUnsignedInt => { if _ctx . from_json { let r#enum = r#allowed . get_or_insert (CoverageEligibilityResponseInsuranceItemBenefitAllowed :: UnsignedInt (Default :: default ())) ; if let CoverageEligibilityResponseInsuranceItemBenefitAllowed :: UnsignedInt (variant) = r#enum { if variant . value . is_some () { return Err (serde :: de :: Error :: duplicate_field ("allowedUnsignedInt")) ; } let value : _ = map_access . next_value () ? ; variant . value = Some (value) ; } else { return Err (serde :: de :: Error :: duplicate_field ("allowed[x]")) ; } } else { if r#allowed . is_some () { return Err (serde :: de :: Error :: duplicate_field ("allowedUnsignedInt")) ; } r#allowed = Some (CoverageEligibilityResponseInsuranceItemBenefitAllowed :: UnsignedInt (map_access . next_value () ?)) ; } } , Field :: AllowedUnsignedIntPrimitiveElement => { if _ctx . from_json { let r#enum = r#allowed . get_or_insert (CoverageEligibilityResponseInsuranceItemBenefitAllowed :: UnsignedInt (Default :: default ())) ; if let CoverageEligibilityResponseInsuranceItemBenefitAllowed :: UnsignedInt (variant) = r#enum { if variant . id . is_some () || ! variant . extension . is_empty () { return Err (serde :: de :: Error :: duplicate_field ("_allowedUnsignedInt")) ; } let super :: super :: serde_helpers :: PrimitiveElementOwned { id , extension } = map_access . next_value () ? ; variant . id = id ; variant . extension = extension ; } else { return Err (serde :: de :: Error :: duplicate_field ("_allowed[x]")) ; } } else { return unknown_field_error ("allowedUnsignedInt") ; } } , Field :: AllowedString => { if _ctx . from_json { let r#enum = r#allowed . get_or_insert (CoverageEligibilityResponseInsuranceItemBenefitAllowed :: String (Default :: default ())) ; if let CoverageEligibilityResponseInsuranceItemBenefitAllowed :: String (variant) = r#enum { if variant . value . is_some () { return Err (serde :: de :: Error :: duplicate_field ("allowedString")) ; } let value : _ = map_access . next_value () ? ; variant . value = Some (value) ; } else { return Err (serde :: de :: Error :: duplicate_field ("allowed[x]")) ; } } else { if r#allowed . is_some () { return Err (serde :: de :: Error :: duplicate_field ("allowedString")) ; } r#allowed = Some (CoverageEligibilityResponseInsuranceItemBenefitAllowed :: String (map_access . next_value () ?)) ; } } , Field :: AllowedStringPrimitiveElement => { if _ctx . from_json { let r#enum = r#allowed . get_or_insert (CoverageEligibilityResponseInsuranceItemBenefitAllowed :: String (Default :: default ())) ; if let CoverageEligibilityResponseInsuranceItemBenefitAllowed :: String (variant) = r#enum { if variant . id . is_some () || ! variant . extension . is_empty () { return Err (serde :: de :: Error :: duplicate_field ("_allowedString")) ; } let super :: super :: serde_helpers :: PrimitiveElementOwned { id , extension } = map_access . next_value () ? ; variant . id = id ; variant . extension = extension ; } else { return Err (serde :: de :: Error :: duplicate_field ("_allowed[x]")) ; } } else { return unknown_field_error ("allowedString") ; } } , Field :: AllowedMoney => { if r#allowed . is_some () { return Err (serde :: de :: Error :: duplicate_field ("allowedMoney")) ; } r#allowed = Some (CoverageEligibilityResponseInsuranceItemBenefitAllowed :: Money (map_access . next_value () ?)) ; } , Field :: UsedUnsignedInt => { if _ctx . from_json { let r#enum = r#used . get_or_insert (CoverageEligibilityResponseInsuranceItemBenefitUsed :: UnsignedInt (Default :: default ())) ; if let CoverageEligibilityResponseInsuranceItemBenefitUsed :: UnsignedInt (variant) = r#enum { if variant . value . is_some () { return Err (serde :: de :: Error :: duplicate_field ("usedUnsignedInt")) ; } let value : _ = map_access . next_value () ? ; variant . value = Some (value) ; } else { return Err (serde :: de :: Error :: duplicate_field ("used[x]")) ; } } else { if r#used . is_some () { return Err (serde :: de :: Error :: duplicate_field ("usedUnsignedInt")) ; } r#used = Some (CoverageEligibilityResponseInsuranceItemBenefitUsed :: UnsignedInt (map_access . next_value () ?)) ; } } , Field :: UsedUnsignedIntPrimitiveElement => { if _ctx . from_json { let r#enum = r#used . get_or_insert (CoverageEligibilityResponseInsuranceItemBenefitUsed :: UnsignedInt (Default :: default ())) ; if let CoverageEligibilityResponseInsuranceItemBenefitUsed :: UnsignedInt (variant) = r#enum { if variant . id . is_some () || ! variant . extension . is_empty () { return Err (serde :: de :: Error :: duplicate_field ("_usedUnsignedInt")) ; } let super :: super :: serde_helpers :: PrimitiveElementOwned { id , extension } = map_access . next_value () ? ; variant . id = id ; variant . extension = extension ; } else { return Err (serde :: de :: Error :: duplicate_field ("_used[x]")) ; } } else { return unknown_field_error ("usedUnsignedInt") ; } } , Field :: UsedString => { if _ctx . from_json { let r#enum = r#used . get_or_insert (CoverageEligibilityResponseInsuranceItemBenefitUsed :: String (Default :: default ())) ; if let CoverageEligibilityResponseInsuranceItemBenefitUsed :: String (variant) = r#enum { if variant . value . is_some () { return Err (serde :: de :: Error :: duplicate_field ("usedString")) ; } let value : _ = map_access . next_value () ? ; variant . value = Some (value) ; } else { return Err (serde :: de :: Error :: duplicate_field ("used[x]")) ; } } else { if r#used . is_some () { return Err (serde :: de :: Error :: duplicate_field ("usedString")) ; } r#used = Some (CoverageEligibilityResponseInsuranceItemBenefitUsed :: String (map_access . next_value () ?)) ; } } , Field :: UsedStringPrimitiveElement => { if _ctx . from_json { let r#enum = r#used . get_or_insert (CoverageEligibilityResponseInsuranceItemBenefitUsed :: String (Default :: default ())) ; if let CoverageEligibilityResponseInsuranceItemBenefitUsed :: String (variant) = r#enum { if variant . id . is_some () || ! variant . extension . is_empty () { return Err (serde :: de :: Error :: duplicate_field ("_usedString")) ; } let super :: super :: serde_helpers :: PrimitiveElementOwned { id , extension } = map_access . next_value () ? ; variant . id = id ; variant . extension = extension ; } else { return Err (serde :: de :: Error :: duplicate_field ("_used[x]")) ; } } else { return unknown_field_error ("usedString") ; } } , Field :: UsedMoney => { if r#used . is_some () { return Err (serde :: de :: Error :: duplicate_field ("usedMoney")) ; } r#used = Some (CoverageEligibilityResponseInsuranceItemBenefitUsed :: Money (map_access . next_value () ?)) ; } , Field :: Unknown (key) => if _ctx . config . mode == fhirbolt_shared :: serde_context :: de :: DeserializationMode :: Strict { return Err (serde :: de :: Error :: unknown_field (& key , & ["id" , "extension" , "modifierExtension" , "type" , "allowedUnsignedInt" , "allowedString" , "allowedMoney" , "usedUnsignedInt" , "usedString" , "usedMoney" ,])) ; } } } Ok (CoverageEligibilityResponseInsuranceItemBenefit { r#id , r#extension : r#extension . unwrap_or (vec ! []) , r#modifier_extension : r#modifier_extension . unwrap_or (vec ! []) , r#type : if _ctx . config . mode == fhirbolt_shared :: serde_context :: de :: DeserializationMode :: Lax { r#type . unwrap_or (Default :: default ()) } else { r#type . ok_or (serde :: de :: Error :: missing_field ("type")) ? } , r#allowed , r#used , }) })
             }
         }
         deserializer.deserialize_map(Visitor)
@@ -472,6 +489,30 @@ impl<'de> serde::de::Deserialize<'de> for CoverageEligibilityResponseInsuranceIt
             AuthorizationUrlPrimitiveElement,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "category",
+                    "productOrService",
+                    "modifier",
+                    "provider",
+                    "excluded",
+                    "name",
+                    "description",
+                    "network",
+                    "unit",
+                    "term",
+                    "benefit",
+                    "authorizationRequired",
+                    "authorizationSupporting",
+                    "authorizationUrl",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = CoverageEligibilityResponseInsuranceItem;
@@ -601,28 +642,7 @@ impl<'de> serde::de::Deserialize<'de> for CoverageEligibilityResponseInsuranceIt
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "excluded",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "category",
-                                            "productOrService",
-                                            "modifier",
-                                            "provider",
-                                            "excluded",
-                                            "name",
-                                            "description",
-                                            "network",
-                                            "unit",
-                                            "term",
-                                            "benefit",
-                                            "authorizationRequired",
-                                            "authorizationSupporting",
-                                            "authorizationUrl",
-                                        ],
-                                    ));
+                                    return unknown_field_error("excluded");
                                 }
                             }
                             Field::Name => {
@@ -653,28 +673,7 @@ impl<'de> serde::de::Deserialize<'de> for CoverageEligibilityResponseInsuranceIt
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "name",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "category",
-                                            "productOrService",
-                                            "modifier",
-                                            "provider",
-                                            "excluded",
-                                            "name",
-                                            "description",
-                                            "network",
-                                            "unit",
-                                            "term",
-                                            "benefit",
-                                            "authorizationRequired",
-                                            "authorizationSupporting",
-                                            "authorizationUrl",
-                                        ],
-                                    ));
+                                    return unknown_field_error("name");
                                 }
                             }
                             Field::Description => {
@@ -711,28 +710,7 @@ impl<'de> serde::de::Deserialize<'de> for CoverageEligibilityResponseInsuranceIt
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "description",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "category",
-                                            "productOrService",
-                                            "modifier",
-                                            "provider",
-                                            "excluded",
-                                            "name",
-                                            "description",
-                                            "network",
-                                            "unit",
-                                            "term",
-                                            "benefit",
-                                            "authorizationRequired",
-                                            "authorizationSupporting",
-                                            "authorizationUrl",
-                                        ],
-                                    ));
+                                    return unknown_field_error("description");
                                 }
                             }
                             Field::Network => {
@@ -800,28 +778,7 @@ impl<'de> serde::de::Deserialize<'de> for CoverageEligibilityResponseInsuranceIt
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "authorizationRequired",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "category",
-                                            "productOrService",
-                                            "modifier",
-                                            "provider",
-                                            "excluded",
-                                            "name",
-                                            "description",
-                                            "network",
-                                            "unit",
-                                            "term",
-                                            "benefit",
-                                            "authorizationRequired",
-                                            "authorizationSupporting",
-                                            "authorizationUrl",
-                                        ],
-                                    ));
+                                    return unknown_field_error("authorizationRequired");
                                 }
                             }
                             Field::AuthorizationSupporting => {
@@ -874,28 +831,7 @@ impl<'de> serde::de::Deserialize<'de> for CoverageEligibilityResponseInsuranceIt
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "authorizationUrl",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "category",
-                                            "productOrService",
-                                            "modifier",
-                                            "provider",
-                                            "excluded",
-                                            "name",
-                                            "description",
-                                            "network",
-                                            "unit",
-                                            "term",
-                                            "benefit",
-                                            "authorizationRequired",
-                                            "authorizationSupporting",
-                                            "authorizationUrl",
-                                        ],
-                                    ));
+                                    return unknown_field_error("authorizationUrl");
                                 }
                             }
                             Field::Unknown(key) => if _ctx.config.mode
@@ -1043,6 +979,20 @@ impl<'de> serde::de::Deserialize<'de> for CoverageEligibilityResponseInsurance {
             Item,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "coverage",
+                    "inforce",
+                    "benefitPeriod",
+                    "item",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = CoverageEligibilityResponseInsurance;
@@ -1133,18 +1083,7 @@ impl<'de> serde::de::Deserialize<'de> for CoverageEligibilityResponseInsurance {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "inforce",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "coverage",
-                                            "inforce",
-                                            "benefitPeriod",
-                                            "item",
-                                        ],
-                                    ));
+                                    return unknown_field_error("inforce");
                                 }
                             }
                             Field::BenefitPeriod => {
@@ -1255,6 +1194,12 @@ impl<'de> serde::de::Deserialize<'de> for CoverageEligibilityResponseError {
             #[serde(rename = "code")]
             Code,
             Unknown(std::string::String),
+        }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &["id", "extension", "modifierExtension", "code"],
+            ))
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -1711,6 +1656,37 @@ impl<'de> serde::de::Deserialize<'de> for CoverageEligibilityResponse {
             Error,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "meta",
+                    "implicitRules",
+                    "language",
+                    "text",
+                    "contained",
+                    "extension",
+                    "modifierExtension",
+                    "identifier",
+                    "status",
+                    "purpose",
+                    "patient",
+                    "servicedDate",
+                    "servicedPeriod",
+                    "created",
+                    "requestor",
+                    "request",
+                    "outcome",
+                    "disposition",
+                    "insurer",
+                    "insurance",
+                    "preAuthRef",
+                    "form",
+                    "error",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = CoverageEligibilityResponse;
@@ -1807,35 +1783,7 @@ impl<'de> serde::de::Deserialize<'de> for CoverageEligibilityResponse {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "implicitRules",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "status",
-                                            "purpose",
-                                            "patient",
-                                            "servicedDate",
-                                            "servicedPeriod",
-                                            "created",
-                                            "requestor",
-                                            "request",
-                                            "outcome",
-                                            "disposition",
-                                            "insurer",
-                                            "insurance",
-                                            "preAuthRef",
-                                            "form",
-                                            "error",
-                                        ],
-                                    ));
+                                    return unknown_field_error("implicitRules");
                                 }
                             }
                             Field::Language => {
@@ -1866,35 +1814,7 @@ impl<'de> serde::de::Deserialize<'de> for CoverageEligibilityResponse {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "language",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "status",
-                                            "purpose",
-                                            "patient",
-                                            "servicedDate",
-                                            "servicedPeriod",
-                                            "created",
-                                            "requestor",
-                                            "request",
-                                            "outcome",
-                                            "disposition",
-                                            "insurer",
-                                            "insurance",
-                                            "preAuthRef",
-                                            "form",
-                                            "error",
-                                        ],
-                                    ));
+                                    return unknown_field_error("language");
                                 }
                             }
                             Field::Text => {
@@ -1980,35 +1900,7 @@ impl<'de> serde::de::Deserialize<'de> for CoverageEligibilityResponse {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "status",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "status",
-                                            "purpose",
-                                            "patient",
-                                            "servicedDate",
-                                            "servicedPeriod",
-                                            "created",
-                                            "requestor",
-                                            "request",
-                                            "outcome",
-                                            "disposition",
-                                            "insurer",
-                                            "insurance",
-                                            "preAuthRef",
-                                            "form",
-                                            "error",
-                                        ],
-                                    ));
+                                    return unknown_field_error("status");
                                 }
                             }
                             Field::Purpose => {
@@ -2067,35 +1959,7 @@ impl<'de> serde::de::Deserialize<'de> for CoverageEligibilityResponse {
                                         }
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "purpose",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "status",
-                                            "purpose",
-                                            "patient",
-                                            "servicedDate",
-                                            "servicedPeriod",
-                                            "created",
-                                            "requestor",
-                                            "request",
-                                            "outcome",
-                                            "disposition",
-                                            "insurer",
-                                            "insurance",
-                                            "preAuthRef",
-                                            "form",
-                                            "error",
-                                        ],
-                                    ));
+                                    return unknown_field_error("purpose");
                                 }
                             }
                             Field::Patient => {
@@ -2164,35 +2028,7 @@ impl<'de> serde::de::Deserialize<'de> for CoverageEligibilityResponse {
                                         ));
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "servicedDate",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "status",
-                                            "purpose",
-                                            "patient",
-                                            "servicedDate",
-                                            "servicedPeriod",
-                                            "created",
-                                            "requestor",
-                                            "request",
-                                            "outcome",
-                                            "disposition",
-                                            "insurer",
-                                            "insurance",
-                                            "preAuthRef",
-                                            "form",
-                                            "error",
-                                        ],
-                                    ));
+                                    return unknown_field_error("servicedDate");
                                 }
                             }
                             Field::ServicedPeriod => {
@@ -2233,35 +2069,7 @@ impl<'de> serde::de::Deserialize<'de> for CoverageEligibilityResponse {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "created",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "status",
-                                            "purpose",
-                                            "patient",
-                                            "servicedDate",
-                                            "servicedPeriod",
-                                            "created",
-                                            "requestor",
-                                            "request",
-                                            "outcome",
-                                            "disposition",
-                                            "insurer",
-                                            "insurance",
-                                            "preAuthRef",
-                                            "form",
-                                            "error",
-                                        ],
-                                    ));
+                                    return unknown_field_error("created");
                                 }
                             }
                             Field::Requestor => {
@@ -2304,35 +2112,7 @@ impl<'de> serde::de::Deserialize<'de> for CoverageEligibilityResponse {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "outcome",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "status",
-                                            "purpose",
-                                            "patient",
-                                            "servicedDate",
-                                            "servicedPeriod",
-                                            "created",
-                                            "requestor",
-                                            "request",
-                                            "outcome",
-                                            "disposition",
-                                            "insurer",
-                                            "insurance",
-                                            "preAuthRef",
-                                            "form",
-                                            "error",
-                                        ],
-                                    ));
+                                    return unknown_field_error("outcome");
                                 }
                             }
                             Field::Disposition => {
@@ -2369,35 +2149,7 @@ impl<'de> serde::de::Deserialize<'de> for CoverageEligibilityResponse {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "disposition",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "status",
-                                            "purpose",
-                                            "patient",
-                                            "servicedDate",
-                                            "servicedPeriod",
-                                            "created",
-                                            "requestor",
-                                            "request",
-                                            "outcome",
-                                            "disposition",
-                                            "insurer",
-                                            "insurance",
-                                            "preAuthRef",
-                                            "form",
-                                            "error",
-                                        ],
-                                    ));
+                                    return unknown_field_error("disposition");
                                 }
                             }
                             Field::Insurer => {
@@ -2451,35 +2203,7 @@ impl<'de> serde::de::Deserialize<'de> for CoverageEligibilityResponse {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "preAuthRef",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "status",
-                                            "purpose",
-                                            "patient",
-                                            "servicedDate",
-                                            "servicedPeriod",
-                                            "created",
-                                            "requestor",
-                                            "request",
-                                            "outcome",
-                                            "disposition",
-                                            "insurer",
-                                            "insurance",
-                                            "preAuthRef",
-                                            "form",
-                                            "error",
-                                        ],
-                                    ));
+                                    return unknown_field_error("preAuthRef");
                                 }
                             }
                             Field::Form => {

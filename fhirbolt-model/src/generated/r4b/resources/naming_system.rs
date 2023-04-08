@@ -1,4 +1,4 @@
-// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-08 by fhirbolt-codegen v0.1.0
 #[doc = "Indicates how the system may be identified when referenced in electronic exchange."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub struct NamingSystemUniqueId {
@@ -146,6 +146,21 @@ impl<'de> serde::de::Deserialize<'de> for NamingSystemUniqueId {
             Period,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "type",
+                    "value",
+                    "preferred",
+                    "comment",
+                    "period",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = NamingSystemUniqueId;
@@ -228,19 +243,7 @@ impl<'de> serde::de::Deserialize<'de> for NamingSystemUniqueId {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "type",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "type",
-                                            "value",
-                                            "preferred",
-                                            "comment",
-                                            "period",
-                                        ],
-                                    ));
+                                    return unknown_field_error("type");
                                 }
                             }
                             Field::Value => {
@@ -271,19 +274,7 @@ impl<'de> serde::de::Deserialize<'de> for NamingSystemUniqueId {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "value",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "type",
-                                            "value",
-                                            "preferred",
-                                            "comment",
-                                            "period",
-                                        ],
-                                    ));
+                                    return unknown_field_error("value");
                                 }
                             }
                             Field::Preferred => {
@@ -316,19 +307,7 @@ impl<'de> serde::de::Deserialize<'de> for NamingSystemUniqueId {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "preferred",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "type",
-                                            "value",
-                                            "preferred",
-                                            "comment",
-                                            "period",
-                                        ],
-                                    ));
+                                    return unknown_field_error("preferred");
                                 }
                             }
                             Field::Comment => {
@@ -359,19 +338,7 @@ impl<'de> serde::de::Deserialize<'de> for NamingSystemUniqueId {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "comment",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "type",
-                                            "value",
-                                            "preferred",
-                                            "comment",
-                                            "period",
-                                        ],
-                                    ));
+                                    return unknown_field_error("comment");
                                 }
                             }
                             Field::Period => {
@@ -771,6 +738,34 @@ impl<'de> serde::de::Deserialize<'de> for NamingSystem {
             UniqueId,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "meta",
+                    "implicitRules",
+                    "language",
+                    "text",
+                    "contained",
+                    "extension",
+                    "modifierExtension",
+                    "name",
+                    "status",
+                    "kind",
+                    "date",
+                    "publisher",
+                    "contact",
+                    "responsible",
+                    "type",
+                    "description",
+                    "useContext",
+                    "jurisdiction",
+                    "usage",
+                    "uniqueId",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = NamingSystem;
@@ -863,32 +858,7 @@ impl<'de> serde::de::Deserialize<'de> for NamingSystem {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "implicitRules",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "name",
-                                            "status",
-                                            "kind",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "responsible",
-                                            "type",
-                                            "description",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "usage",
-                                            "uniqueId",
-                                        ],
-                                    ));
+                                    return unknown_field_error("implicitRules");
                                 }
                             }
                             Field::Language => {
@@ -919,32 +889,7 @@ impl<'de> serde::de::Deserialize<'de> for NamingSystem {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "language",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "name",
-                                            "status",
-                                            "kind",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "responsible",
-                                            "type",
-                                            "description",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "usage",
-                                            "uniqueId",
-                                        ],
-                                    ));
+                                    return unknown_field_error("language");
                                 }
                             }
                             Field::Text => {
@@ -1017,32 +962,7 @@ impl<'de> serde::de::Deserialize<'de> for NamingSystem {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "name",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "name",
-                                            "status",
-                                            "kind",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "responsible",
-                                            "type",
-                                            "description",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "usage",
-                                            "uniqueId",
-                                        ],
-                                    ));
+                                    return unknown_field_error("name");
                                 }
                             }
                             Field::Status => {
@@ -1073,32 +993,7 @@ impl<'de> serde::de::Deserialize<'de> for NamingSystem {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "status",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "name",
-                                            "status",
-                                            "kind",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "responsible",
-                                            "type",
-                                            "description",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "usage",
-                                            "uniqueId",
-                                        ],
-                                    ));
+                                    return unknown_field_error("status");
                                 }
                             }
                             Field::Kind => {
@@ -1129,32 +1024,7 @@ impl<'de> serde::de::Deserialize<'de> for NamingSystem {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "kind",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "name",
-                                            "status",
-                                            "kind",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "responsible",
-                                            "type",
-                                            "description",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "usage",
-                                            "uniqueId",
-                                        ],
-                                    ));
+                                    return unknown_field_error("kind");
                                 }
                             }
                             Field::Date => {
@@ -1185,32 +1055,7 @@ impl<'de> serde::de::Deserialize<'de> for NamingSystem {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "date",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "name",
-                                            "status",
-                                            "kind",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "responsible",
-                                            "type",
-                                            "description",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "usage",
-                                            "uniqueId",
-                                        ],
-                                    ));
+                                    return unknown_field_error("date");
                                 }
                             }
                             Field::Publisher => {
@@ -1243,32 +1088,7 @@ impl<'de> serde::de::Deserialize<'de> for NamingSystem {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "publisher",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "name",
-                                            "status",
-                                            "kind",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "responsible",
-                                            "type",
-                                            "description",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "usage",
-                                            "uniqueId",
-                                        ],
-                                    ));
+                                    return unknown_field_error("publisher");
                                 }
                             }
                             Field::Contact => {
@@ -1316,32 +1136,7 @@ impl<'de> serde::de::Deserialize<'de> for NamingSystem {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "responsible",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "name",
-                                            "status",
-                                            "kind",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "responsible",
-                                            "type",
-                                            "description",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "usage",
-                                            "uniqueId",
-                                        ],
-                                    ));
+                                    return unknown_field_error("responsible");
                                 }
                             }
                             Field::Type => {
@@ -1384,32 +1179,7 @@ impl<'de> serde::de::Deserialize<'de> for NamingSystem {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "description",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "name",
-                                            "status",
-                                            "kind",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "responsible",
-                                            "type",
-                                            "description",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "usage",
-                                            "uniqueId",
-                                        ],
-                                    ));
+                                    return unknown_field_error("description");
                                 }
                             }
                             Field::UseContext => {
@@ -1466,32 +1236,7 @@ impl<'de> serde::de::Deserialize<'de> for NamingSystem {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "usage",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "name",
-                                            "status",
-                                            "kind",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "responsible",
-                                            "type",
-                                            "description",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "usage",
-                                            "uniqueId",
-                                        ],
-                                    ));
+                                    return unknown_field_error("usage");
                                 }
                             }
                             Field::UniqueId => {

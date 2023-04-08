@@ -1,4 +1,4 @@
-// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-08 by fhirbolt-codegen v0.1.0
 #[doc = "Strength expressed in terms of a reference substance."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub struct MedicinalProductIngredientSpecifiedSubstanceStrengthReferenceStrength {
@@ -101,6 +101,21 @@ impl<'de> serde::de::Deserialize<'de>
             #[serde(rename = "country")]
             Country,
             Unknown(std::string::String),
+        }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "substance",
+                    "strength",
+                    "strengthLowLimit",
+                    "measurementPoint",
+                    "country",
+                ],
+            ))
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -220,19 +235,7 @@ impl<'de> serde::de::Deserialize<'de>
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "measurementPoint",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "substance",
-                                            "strength",
-                                            "strengthLowLimit",
-                                            "measurementPoint",
-                                            "country",
-                                        ],
-                                    ));
+                                    return unknown_field_error("measurementPoint");
                                 }
                             }
                             Field::Country => {
@@ -403,6 +406,23 @@ impl<'de> serde::de::Deserialize<'de> for MedicinalProductIngredientSpecifiedSub
             ReferenceStrength,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "presentation",
+                    "presentationLowLimit",
+                    "concentration",
+                    "concentrationLowLimit",
+                    "measurementPoint",
+                    "country",
+                    "referenceStrength",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = MedicinalProductIngredientSpecifiedSubstanceStrength;
@@ -528,21 +548,7 @@ impl<'de> serde::de::Deserialize<'de> for MedicinalProductIngredientSpecifiedSub
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "measurementPoint",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "presentation",
-                                            "presentationLowLimit",
-                                            "concentration",
-                                            "concentrationLowLimit",
-                                            "measurementPoint",
-                                            "country",
-                                            "referenceStrength",
-                                        ],
-                                    ));
+                                    return unknown_field_error("measurementPoint");
                                 }
                             }
                             Field::Country => {
@@ -686,6 +692,20 @@ impl<'de> serde::de::Deserialize<'de> for MedicinalProductIngredientSpecifiedSub
             #[serde(rename = "strength")]
             Strength,
             Unknown(std::string::String),
+        }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "code",
+                    "group",
+                    "confidentiality",
+                    "strength",
+                ],
+            ))
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -880,6 +900,12 @@ impl<'de> serde::de::Deserialize<'de> for MedicinalProductIngredientSubstance {
             #[serde(rename = "strength")]
             Strength,
             Unknown(std::string::String),
+        }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &["id", "extension", "modifierExtension", "code", "strength"],
+            ))
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -1166,6 +1192,27 @@ impl<'de> serde::de::Deserialize<'de> for MedicinalProductIngredient {
             Substance,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "meta",
+                    "implicitRules",
+                    "language",
+                    "text",
+                    "contained",
+                    "extension",
+                    "modifierExtension",
+                    "identifier",
+                    "role",
+                    "allergenicIndicator",
+                    "manufacturer",
+                    "specifiedSubstance",
+                    "substance",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = MedicinalProductIngredient;
@@ -1252,25 +1299,7 @@ impl<'de> serde::de::Deserialize<'de> for MedicinalProductIngredient {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "implicitRules",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "role",
-                                            "allergenicIndicator",
-                                            "manufacturer",
-                                            "specifiedSubstance",
-                                            "substance",
-                                        ],
-                                    ));
+                                    return unknown_field_error("implicitRules");
                                 }
                             }
                             Field::Language => {
@@ -1301,25 +1330,7 @@ impl<'de> serde::de::Deserialize<'de> for MedicinalProductIngredient {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "language",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "role",
-                                            "allergenicIndicator",
-                                            "manufacturer",
-                                            "specifiedSubstance",
-                                            "substance",
-                                        ],
-                                    ));
+                                    return unknown_field_error("language");
                                 }
                             }
                             Field::Text => {
@@ -1412,25 +1423,7 @@ impl<'de> serde::de::Deserialize<'de> for MedicinalProductIngredient {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "allergenicIndicator",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "role",
-                                            "allergenicIndicator",
-                                            "manufacturer",
-                                            "specifiedSubstance",
-                                            "substance",
-                                        ],
-                                    ));
+                                    return unknown_field_error("allergenicIndicator");
                                 }
                             }
                             Field::Manufacturer => {

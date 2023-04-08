@@ -1,4 +1,4 @@
-// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-08 by fhirbolt-codegen v0.1.0
 #[doc = "A name of the manufacturer."]
 #[derive(Debug, Clone, PartialEq)]
 pub enum DeviceDefinitionManufacturer {
@@ -124,6 +124,19 @@ impl<'de> serde::de::Deserialize<'de> for DeviceDefinitionUdiDeviceIdentifier {
             JurisdictionPrimitiveElement,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "deviceIdentifier",
+                    "issuer",
+                    "jurisdiction",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = DeviceDefinitionUdiDeviceIdentifier;
@@ -215,17 +228,7 @@ impl<'de> serde::de::Deserialize<'de> for DeviceDefinitionUdiDeviceIdentifier {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "deviceIdentifier",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "deviceIdentifier",
-                                            "issuer",
-                                            "jurisdiction",
-                                        ],
-                                    ));
+                                    return unknown_field_error("deviceIdentifier");
                                 }
                             }
                             Field::Issuer => {
@@ -256,17 +259,7 @@ impl<'de> serde::de::Deserialize<'de> for DeviceDefinitionUdiDeviceIdentifier {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "issuer",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "deviceIdentifier",
-                                            "issuer",
-                                            "jurisdiction",
-                                        ],
-                                    ));
+                                    return unknown_field_error("issuer");
                                 }
                             }
                             Field::Jurisdiction => {
@@ -303,17 +296,7 @@ impl<'de> serde::de::Deserialize<'de> for DeviceDefinitionUdiDeviceIdentifier {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "jurisdiction",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "deviceIdentifier",
-                                            "issuer",
-                                            "jurisdiction",
-                                        ],
-                                    ));
+                                    return unknown_field_error("jurisdiction");
                                 }
                             }
                             Field::Unknown(key) => if _ctx.config.mode
@@ -456,6 +439,12 @@ impl<'de> serde::de::Deserialize<'de> for DeviceDefinitionDeviceName {
             TypePrimitiveElement,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &["id", "extension", "modifierExtension", "name", "type"],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = DeviceDefinitionDeviceName;
@@ -535,10 +524,7 @@ impl<'de> serde::de::Deserialize<'de> for DeviceDefinitionDeviceName {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "name",
-                                        &["id", "extension", "modifierExtension", "name", "type"],
-                                    ));
+                                    return unknown_field_error("name");
                                 }
                             }
                             Field::Type => {
@@ -569,10 +555,7 @@ impl<'de> serde::de::Deserialize<'de> for DeviceDefinitionDeviceName {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "type",
-                                        &["id", "extension", "modifierExtension", "name", "type"],
-                                    ));
+                                    return unknown_field_error("type");
                                 }
                             }
                             Field::Unknown(key) => if _ctx.config.mode
@@ -704,6 +687,18 @@ impl<'de> serde::de::Deserialize<'de> for DeviceDefinitionSpecialization {
             VersionPrimitiveElement,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "systemType",
+                    "version",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = DeviceDefinitionSpecialization;
@@ -792,16 +787,7 @@ impl<'de> serde::de::Deserialize<'de> for DeviceDefinitionSpecialization {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "systemType",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "systemType",
-                                            "version",
-                                        ],
-                                    ));
+                                    return unknown_field_error("systemType");
                                 }
                             }
                             Field::Version => {
@@ -832,16 +818,7 @@ impl<'de> serde::de::Deserialize<'de> for DeviceDefinitionSpecialization {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "version",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "systemType",
-                                            "version",
-                                        ],
-                                    ));
+                                    return unknown_field_error("version");
                                 }
                             }
                             Field::Unknown(key) => if _ctx.config.mode
@@ -938,6 +915,18 @@ impl<'de> serde::de::Deserialize<'de> for DeviceDefinitionCapability {
             #[serde(rename = "description")]
             Description,
             Unknown(std::string::String),
+        }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "type",
+                    "description",
+                ],
+            ))
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -1111,6 +1100,19 @@ impl<'de> serde::de::Deserialize<'de> for DeviceDefinitionProperty {
             #[serde(rename = "valueCode")]
             ValueCode,
             Unknown(std::string::String),
+        }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "type",
+                    "valueQuantity",
+                    "valueCode",
+                ],
+            ))
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -1334,6 +1336,19 @@ impl<'de> serde::de::Deserialize<'de> for DeviceDefinitionMaterial {
             AllergenicIndicatorPrimitiveElement,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "substance",
+                    "alternate",
+                    "allergenicIndicator",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = DeviceDefinitionMaterial;
@@ -1422,17 +1437,7 @@ impl<'de> serde::de::Deserialize<'de> for DeviceDefinitionMaterial {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "alternate",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "substance",
-                                            "alternate",
-                                            "allergenicIndicator",
-                                        ],
-                                    ));
+                                    return unknown_field_error("alternate");
                                 }
                             }
                             Field::AllergenicIndicator => {
@@ -1471,17 +1476,7 @@ impl<'de> serde::de::Deserialize<'de> for DeviceDefinitionMaterial {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "allergenicIndicator",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "substance",
-                                            "alternate",
-                                            "allergenicIndicator",
-                                        ],
-                                    ));
+                                    return unknown_field_error("allergenicIndicator");
                                 }
                             }
                             Field::Unknown(key) => if _ctx.config.mode
@@ -1920,6 +1915,44 @@ impl<'de> serde::de::Deserialize<'de> for DeviceDefinition {
             Material,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "meta",
+                    "implicitRules",
+                    "language",
+                    "text",
+                    "contained",
+                    "extension",
+                    "modifierExtension",
+                    "identifier",
+                    "udiDeviceIdentifier",
+                    "manufacturerString",
+                    "manufacturerReference",
+                    "deviceName",
+                    "modelNumber",
+                    "type",
+                    "specialization",
+                    "version",
+                    "safety",
+                    "shelfLifeStorage",
+                    "physicalCharacteristics",
+                    "languageCode",
+                    "capability",
+                    "property",
+                    "owner",
+                    "contact",
+                    "url",
+                    "onlineInformation",
+                    "note",
+                    "quantity",
+                    "parentDevice",
+                    "material",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = DeviceDefinition;
@@ -2026,42 +2059,7 @@ impl<'de> serde::de::Deserialize<'de> for DeviceDefinition {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "implicitRules",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "udiDeviceIdentifier",
-                                            "manufacturerString",
-                                            "manufacturerReference",
-                                            "deviceName",
-                                            "modelNumber",
-                                            "type",
-                                            "specialization",
-                                            "version",
-                                            "safety",
-                                            "shelfLifeStorage",
-                                            "physicalCharacteristics",
-                                            "languageCode",
-                                            "capability",
-                                            "property",
-                                            "owner",
-                                            "contact",
-                                            "url",
-                                            "onlineInformation",
-                                            "note",
-                                            "quantity",
-                                            "parentDevice",
-                                            "material",
-                                        ],
-                                    ));
+                                    return unknown_field_error("implicitRules");
                                 }
                             }
                             Field::Language => {
@@ -2092,42 +2090,7 @@ impl<'de> serde::de::Deserialize<'de> for DeviceDefinition {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "language",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "udiDeviceIdentifier",
-                                            "manufacturerString",
-                                            "manufacturerReference",
-                                            "deviceName",
-                                            "modelNumber",
-                                            "type",
-                                            "specialization",
-                                            "version",
-                                            "safety",
-                                            "shelfLifeStorage",
-                                            "physicalCharacteristics",
-                                            "languageCode",
-                                            "capability",
-                                            "property",
-                                            "owner",
-                                            "contact",
-                                            "url",
-                                            "onlineInformation",
-                                            "note",
-                                            "quantity",
-                                            "parentDevice",
-                                            "material",
-                                        ],
-                                    ));
+                                    return unknown_field_error("language");
                                 }
                             }
                             Field::Text => {
@@ -2251,42 +2214,7 @@ impl<'de> serde::de::Deserialize<'de> for DeviceDefinition {
                                         ));
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "manufacturerString",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "udiDeviceIdentifier",
-                                            "manufacturerString",
-                                            "manufacturerReference",
-                                            "deviceName",
-                                            "modelNumber",
-                                            "type",
-                                            "specialization",
-                                            "version",
-                                            "safety",
-                                            "shelfLifeStorage",
-                                            "physicalCharacteristics",
-                                            "languageCode",
-                                            "capability",
-                                            "property",
-                                            "owner",
-                                            "contact",
-                                            "url",
-                                            "onlineInformation",
-                                            "note",
-                                            "quantity",
-                                            "parentDevice",
-                                            "material",
-                                        ],
-                                    ));
+                                    return unknown_field_error("manufacturerString");
                                 }
                             }
                             Field::ManufacturerReference => {
@@ -2346,42 +2274,7 @@ impl<'de> serde::de::Deserialize<'de> for DeviceDefinition {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "modelNumber",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "udiDeviceIdentifier",
-                                            "manufacturerString",
-                                            "manufacturerReference",
-                                            "deviceName",
-                                            "modelNumber",
-                                            "type",
-                                            "specialization",
-                                            "version",
-                                            "safety",
-                                            "shelfLifeStorage",
-                                            "physicalCharacteristics",
-                                            "languageCode",
-                                            "capability",
-                                            "property",
-                                            "owner",
-                                            "contact",
-                                            "url",
-                                            "onlineInformation",
-                                            "note",
-                                            "quantity",
-                                            "parentDevice",
-                                            "material",
-                                        ],
-                                    ));
+                                    return unknown_field_error("modelNumber");
                                 }
                             }
                             Field::Type => {
@@ -2459,42 +2352,7 @@ impl<'de> serde::de::Deserialize<'de> for DeviceDefinition {
                                         }
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "version",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "udiDeviceIdentifier",
-                                            "manufacturerString",
-                                            "manufacturerReference",
-                                            "deviceName",
-                                            "modelNumber",
-                                            "type",
-                                            "specialization",
-                                            "version",
-                                            "safety",
-                                            "shelfLifeStorage",
-                                            "physicalCharacteristics",
-                                            "languageCode",
-                                            "capability",
-                                            "property",
-                                            "owner",
-                                            "contact",
-                                            "url",
-                                            "onlineInformation",
-                                            "note",
-                                            "quantity",
-                                            "parentDevice",
-                                            "material",
-                                        ],
-                                    ));
+                                    return unknown_field_error("version");
                                 }
                             }
                             Field::Safety => {
@@ -2612,42 +2470,7 @@ impl<'de> serde::de::Deserialize<'de> for DeviceDefinition {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "url",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "udiDeviceIdentifier",
-                                            "manufacturerString",
-                                            "manufacturerReference",
-                                            "deviceName",
-                                            "modelNumber",
-                                            "type",
-                                            "specialization",
-                                            "version",
-                                            "safety",
-                                            "shelfLifeStorage",
-                                            "physicalCharacteristics",
-                                            "languageCode",
-                                            "capability",
-                                            "property",
-                                            "owner",
-                                            "contact",
-                                            "url",
-                                            "onlineInformation",
-                                            "note",
-                                            "quantity",
-                                            "parentDevice",
-                                            "material",
-                                        ],
-                                    ));
+                                    return unknown_field_error("url");
                                 }
                             }
                             Field::OnlineInformation => {
@@ -2686,42 +2509,7 @@ impl<'de> serde::de::Deserialize<'de> for DeviceDefinition {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "onlineInformation",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "udiDeviceIdentifier",
-                                            "manufacturerString",
-                                            "manufacturerReference",
-                                            "deviceName",
-                                            "modelNumber",
-                                            "type",
-                                            "specialization",
-                                            "version",
-                                            "safety",
-                                            "shelfLifeStorage",
-                                            "physicalCharacteristics",
-                                            "languageCode",
-                                            "capability",
-                                            "property",
-                                            "owner",
-                                            "contact",
-                                            "url",
-                                            "onlineInformation",
-                                            "note",
-                                            "quantity",
-                                            "parentDevice",
-                                            "material",
-                                        ],
-                                    ));
+                                    return unknown_field_error("onlineInformation");
                                 }
                             }
                             Field::Note => {

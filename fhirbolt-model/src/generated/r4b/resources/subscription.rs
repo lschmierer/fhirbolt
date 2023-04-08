@@ -1,4 +1,4 @@
-// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-08 by fhirbolt-codegen v0.1.0
 #[doc = "Details where to send notifications when resources are received that meet the criteria."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub struct SubscriptionChannel {
@@ -162,6 +162,20 @@ impl<'de> serde::de::Deserialize<'de> for SubscriptionChannel {
             HeaderPrimitiveElement,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "type",
+                    "endpoint",
+                    "payload",
+                    "header",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = SubscriptionChannel;
@@ -243,18 +257,7 @@ impl<'de> serde::de::Deserialize<'de> for SubscriptionChannel {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "type",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "type",
-                                            "endpoint",
-                                            "payload",
-                                            "header",
-                                        ],
-                                    ));
+                                    return unknown_field_error("type");
                                 }
                             }
                             Field::Endpoint => {
@@ -285,18 +288,7 @@ impl<'de> serde::de::Deserialize<'de> for SubscriptionChannel {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "endpoint",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "type",
-                                            "endpoint",
-                                            "payload",
-                                            "header",
-                                        ],
-                                    ));
+                                    return unknown_field_error("endpoint");
                                 }
                             }
                             Field::Payload => {
@@ -327,18 +319,7 @@ impl<'de> serde::de::Deserialize<'de> for SubscriptionChannel {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "payload",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "type",
-                                            "endpoint",
-                                            "payload",
-                                            "header",
-                                        ],
-                                    ));
+                                    return unknown_field_error("payload");
                                 }
                             }
                             Field::Header => {
@@ -397,18 +378,7 @@ impl<'de> serde::de::Deserialize<'de> for SubscriptionChannel {
                                         }
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "header",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "type",
-                                            "endpoint",
-                                            "payload",
-                                            "header",
-                                        ],
-                                    ));
+                                    return unknown_field_error("header");
                                 }
                             }
                             Field::Unknown(key) => if _ctx.config.mode
@@ -700,6 +670,28 @@ impl<'de> serde::de::Deserialize<'de> for Subscription {
             Channel,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "meta",
+                    "implicitRules",
+                    "language",
+                    "text",
+                    "contained",
+                    "extension",
+                    "modifierExtension",
+                    "status",
+                    "contact",
+                    "end",
+                    "reason",
+                    "criteria",
+                    "error",
+                    "channel",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = Subscription;
@@ -785,26 +777,7 @@ impl<'de> serde::de::Deserialize<'de> for Subscription {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "implicitRules",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "status",
-                                            "contact",
-                                            "end",
-                                            "reason",
-                                            "criteria",
-                                            "error",
-                                            "channel",
-                                        ],
-                                    ));
+                                    return unknown_field_error("implicitRules");
                                 }
                             }
                             Field::Language => {
@@ -835,26 +808,7 @@ impl<'de> serde::de::Deserialize<'de> for Subscription {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "language",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "status",
-                                            "contact",
-                                            "end",
-                                            "reason",
-                                            "criteria",
-                                            "error",
-                                            "channel",
-                                        ],
-                                    ));
+                                    return unknown_field_error("language");
                                 }
                             }
                             Field::Text => {
@@ -927,26 +881,7 @@ impl<'de> serde::de::Deserialize<'de> for Subscription {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "status",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "status",
-                                            "contact",
-                                            "end",
-                                            "reason",
-                                            "criteria",
-                                            "error",
-                                            "channel",
-                                        ],
-                                    ));
+                                    return unknown_field_error("status");
                                 }
                             }
                             Field::Contact => {
@@ -988,26 +923,7 @@ impl<'de> serde::de::Deserialize<'de> for Subscription {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "end",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "status",
-                                            "contact",
-                                            "end",
-                                            "reason",
-                                            "criteria",
-                                            "error",
-                                            "channel",
-                                        ],
-                                    ));
+                                    return unknown_field_error("end");
                                 }
                             }
                             Field::Reason => {
@@ -1038,26 +954,7 @@ impl<'de> serde::de::Deserialize<'de> for Subscription {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "reason",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "status",
-                                            "contact",
-                                            "end",
-                                            "reason",
-                                            "criteria",
-                                            "error",
-                                            "channel",
-                                        ],
-                                    ));
+                                    return unknown_field_error("reason");
                                 }
                             }
                             Field::Criteria => {
@@ -1088,26 +985,7 @@ impl<'de> serde::de::Deserialize<'de> for Subscription {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "criteria",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "status",
-                                            "contact",
-                                            "end",
-                                            "reason",
-                                            "criteria",
-                                            "error",
-                                            "channel",
-                                        ],
-                                    ));
+                                    return unknown_field_error("criteria");
                                 }
                             }
                             Field::Error => {
@@ -1138,26 +1016,7 @@ impl<'de> serde::de::Deserialize<'de> for Subscription {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "error",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "status",
-                                            "contact",
-                                            "end",
-                                            "reason",
-                                            "criteria",
-                                            "error",
-                                            "channel",
-                                        ],
-                                    ));
+                                    return unknown_field_error("error");
                                 }
                             }
                             Field::Channel => {

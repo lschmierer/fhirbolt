@@ -1,4 +1,4 @@
-// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-08 by fhirbolt-codegen v0.1.0
 #[doc = "This resource provides enrollment and plan details from the processing of an EnrollmentRequest resource."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub struct EnrollmentResponse {
@@ -252,6 +252,29 @@ impl<'de> serde::de::Deserialize<'de> for EnrollmentResponse {
             RequestProvider,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "meta",
+                    "implicitRules",
+                    "language",
+                    "text",
+                    "contained",
+                    "extension",
+                    "modifierExtension",
+                    "identifier",
+                    "status",
+                    "request",
+                    "outcome",
+                    "disposition",
+                    "created",
+                    "organization",
+                    "requestProvider",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = EnrollmentResponse;
@@ -338,27 +361,7 @@ impl<'de> serde::de::Deserialize<'de> for EnrollmentResponse {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "implicitRules",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "status",
-                                            "request",
-                                            "outcome",
-                                            "disposition",
-                                            "created",
-                                            "organization",
-                                            "requestProvider",
-                                        ],
-                                    ));
+                                    return unknown_field_error("implicitRules");
                                 }
                             }
                             Field::Language => {
@@ -389,27 +392,7 @@ impl<'de> serde::de::Deserialize<'de> for EnrollmentResponse {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "language",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "status",
-                                            "request",
-                                            "outcome",
-                                            "disposition",
-                                            "created",
-                                            "organization",
-                                            "requestProvider",
-                                        ],
-                                    ));
+                                    return unknown_field_error("language");
                                 }
                             }
                             Field::Text => {
@@ -495,27 +478,7 @@ impl<'de> serde::de::Deserialize<'de> for EnrollmentResponse {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "status",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "status",
-                                            "request",
-                                            "outcome",
-                                            "disposition",
-                                            "created",
-                                            "organization",
-                                            "requestProvider",
-                                        ],
-                                    ));
+                                    return unknown_field_error("status");
                                 }
                             }
                             Field::Request => {
@@ -552,27 +515,7 @@ impl<'de> serde::de::Deserialize<'de> for EnrollmentResponse {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "outcome",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "status",
-                                            "request",
-                                            "outcome",
-                                            "disposition",
-                                            "created",
-                                            "organization",
-                                            "requestProvider",
-                                        ],
-                                    ));
+                                    return unknown_field_error("outcome");
                                 }
                             }
                             Field::Disposition => {
@@ -609,27 +552,7 @@ impl<'de> serde::de::Deserialize<'de> for EnrollmentResponse {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "disposition",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "status",
-                                            "request",
-                                            "outcome",
-                                            "disposition",
-                                            "created",
-                                            "organization",
-                                            "requestProvider",
-                                        ],
-                                    ));
+                                    return unknown_field_error("disposition");
                                 }
                             }
                             Field::Created => {
@@ -660,27 +583,7 @@ impl<'de> serde::de::Deserialize<'de> for EnrollmentResponse {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "created",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "status",
-                                            "request",
-                                            "outcome",
-                                            "disposition",
-                                            "created",
-                                            "organization",
-                                            "requestProvider",
-                                        ],
-                                    ));
+                                    return unknown_field_error("created");
                                 }
                             }
                             Field::Organization => {

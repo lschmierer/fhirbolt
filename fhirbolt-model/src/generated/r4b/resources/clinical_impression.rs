@@ -1,4 +1,4 @@
-// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-08 by fhirbolt-codegen v0.1.0
 #[doc = "The point in time or period over which the subject was assessed."]
 #[derive(Debug, Clone, PartialEq)]
 pub enum ClinicalImpressionEffective {
@@ -70,6 +70,12 @@ impl<'de> serde::de::Deserialize<'de> for ClinicalImpressionInvestigation {
             #[serde(rename = "item")]
             Item,
             Unknown(std::string::String),
+        }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &["id", "extension", "modifierExtension", "code", "item"],
+            ))
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -258,6 +264,19 @@ impl<'de> serde::de::Deserialize<'de> for ClinicalImpressionFinding {
             BasisPrimitiveElement,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "itemCodeableConcept",
+                    "itemReference",
+                    "basis",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = ClinicalImpressionFinding;
@@ -353,17 +372,7 @@ impl<'de> serde::de::Deserialize<'de> for ClinicalImpressionFinding {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "basis",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "itemCodeableConcept",
-                                            "itemReference",
-                                            "basis",
-                                        ],
-                                    ));
+                                    return unknown_field_error("basis");
                                 }
                             }
                             Field::Unknown(key) => if _ctx.config.mode
@@ -797,6 +806,42 @@ impl<'de> serde::de::Deserialize<'de> for ClinicalImpression {
             Note,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "meta",
+                    "implicitRules",
+                    "language",
+                    "text",
+                    "contained",
+                    "extension",
+                    "modifierExtension",
+                    "identifier",
+                    "status",
+                    "statusReason",
+                    "code",
+                    "description",
+                    "subject",
+                    "encounter",
+                    "effectiveDateTime",
+                    "effectivePeriod",
+                    "date",
+                    "assessor",
+                    "previous",
+                    "problem",
+                    "investigation",
+                    "protocol",
+                    "summary",
+                    "finding",
+                    "prognosisCodeableConcept",
+                    "prognosisReference",
+                    "supportingInfo",
+                    "note",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = ClinicalImpression;
@@ -898,40 +943,7 @@ impl<'de> serde::de::Deserialize<'de> for ClinicalImpression {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "implicitRules",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "status",
-                                            "statusReason",
-                                            "code",
-                                            "description",
-                                            "subject",
-                                            "encounter",
-                                            "effectiveDateTime",
-                                            "effectivePeriod",
-                                            "date",
-                                            "assessor",
-                                            "previous",
-                                            "problem",
-                                            "investigation",
-                                            "protocol",
-                                            "summary",
-                                            "finding",
-                                            "prognosisCodeableConcept",
-                                            "prognosisReference",
-                                            "supportingInfo",
-                                            "note",
-                                        ],
-                                    ));
+                                    return unknown_field_error("implicitRules");
                                 }
                             }
                             Field::Language => {
@@ -962,40 +974,7 @@ impl<'de> serde::de::Deserialize<'de> for ClinicalImpression {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "language",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "status",
-                                            "statusReason",
-                                            "code",
-                                            "description",
-                                            "subject",
-                                            "encounter",
-                                            "effectiveDateTime",
-                                            "effectivePeriod",
-                                            "date",
-                                            "assessor",
-                                            "previous",
-                                            "problem",
-                                            "investigation",
-                                            "protocol",
-                                            "summary",
-                                            "finding",
-                                            "prognosisCodeableConcept",
-                                            "prognosisReference",
-                                            "supportingInfo",
-                                            "note",
-                                        ],
-                                    ));
+                                    return unknown_field_error("language");
                                 }
                             }
                             Field::Text => {
@@ -1081,40 +1060,7 @@ impl<'de> serde::de::Deserialize<'de> for ClinicalImpression {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "status",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "status",
-                                            "statusReason",
-                                            "code",
-                                            "description",
-                                            "subject",
-                                            "encounter",
-                                            "effectiveDateTime",
-                                            "effectivePeriod",
-                                            "date",
-                                            "assessor",
-                                            "previous",
-                                            "problem",
-                                            "investigation",
-                                            "protocol",
-                                            "summary",
-                                            "finding",
-                                            "prognosisCodeableConcept",
-                                            "prognosisReference",
-                                            "supportingInfo",
-                                            "note",
-                                        ],
-                                    ));
+                                    return unknown_field_error("status");
                                 }
                             }
                             Field::StatusReason => {
@@ -1163,40 +1109,7 @@ impl<'de> serde::de::Deserialize<'de> for ClinicalImpression {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "description",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "status",
-                                            "statusReason",
-                                            "code",
-                                            "description",
-                                            "subject",
-                                            "encounter",
-                                            "effectiveDateTime",
-                                            "effectivePeriod",
-                                            "date",
-                                            "assessor",
-                                            "previous",
-                                            "problem",
-                                            "investigation",
-                                            "protocol",
-                                            "summary",
-                                            "finding",
-                                            "prognosisCodeableConcept",
-                                            "prognosisReference",
-                                            "supportingInfo",
-                                            "note",
-                                        ],
-                                    ));
+                                    return unknown_field_error("description");
                                 }
                             }
                             Field::Subject => {
@@ -1263,40 +1176,7 @@ impl<'de> serde::de::Deserialize<'de> for ClinicalImpression {
                                         ));
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "effectiveDateTime",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "status",
-                                            "statusReason",
-                                            "code",
-                                            "description",
-                                            "subject",
-                                            "encounter",
-                                            "effectiveDateTime",
-                                            "effectivePeriod",
-                                            "date",
-                                            "assessor",
-                                            "previous",
-                                            "problem",
-                                            "investigation",
-                                            "protocol",
-                                            "summary",
-                                            "finding",
-                                            "prognosisCodeableConcept",
-                                            "prognosisReference",
-                                            "supportingInfo",
-                                            "note",
-                                        ],
-                                    ));
+                                    return unknown_field_error("effectiveDateTime");
                                 }
                             }
                             Field::EffectivePeriod => {
@@ -1337,40 +1217,7 @@ impl<'de> serde::de::Deserialize<'de> for ClinicalImpression {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "date",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "status",
-                                            "statusReason",
-                                            "code",
-                                            "description",
-                                            "subject",
-                                            "encounter",
-                                            "effectiveDateTime",
-                                            "effectivePeriod",
-                                            "date",
-                                            "assessor",
-                                            "previous",
-                                            "problem",
-                                            "investigation",
-                                            "protocol",
-                                            "summary",
-                                            "finding",
-                                            "prognosisCodeableConcept",
-                                            "prognosisReference",
-                                            "supportingInfo",
-                                            "note",
-                                        ],
-                                    ));
+                                    return unknown_field_error("date");
                                 }
                             }
                             Field::Assessor => {
@@ -1465,40 +1312,7 @@ impl<'de> serde::de::Deserialize<'de> for ClinicalImpression {
                                         }
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "protocol",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "status",
-                                            "statusReason",
-                                            "code",
-                                            "description",
-                                            "subject",
-                                            "encounter",
-                                            "effectiveDateTime",
-                                            "effectivePeriod",
-                                            "date",
-                                            "assessor",
-                                            "previous",
-                                            "problem",
-                                            "investigation",
-                                            "protocol",
-                                            "summary",
-                                            "finding",
-                                            "prognosisCodeableConcept",
-                                            "prognosisReference",
-                                            "supportingInfo",
-                                            "note",
-                                        ],
-                                    ));
+                                    return unknown_field_error("protocol");
                                 }
                             }
                             Field::Summary => {
@@ -1529,40 +1343,7 @@ impl<'de> serde::de::Deserialize<'de> for ClinicalImpression {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "summary",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "status",
-                                            "statusReason",
-                                            "code",
-                                            "description",
-                                            "subject",
-                                            "encounter",
-                                            "effectiveDateTime",
-                                            "effectivePeriod",
-                                            "date",
-                                            "assessor",
-                                            "previous",
-                                            "problem",
-                                            "investigation",
-                                            "protocol",
-                                            "summary",
-                                            "finding",
-                                            "prognosisCodeableConcept",
-                                            "prognosisReference",
-                                            "supportingInfo",
-                                            "note",
-                                        ],
-                                    ));
+                                    return unknown_field_error("summary");
                                 }
                             }
                             Field::Finding => {

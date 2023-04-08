@@ -1,4 +1,4 @@
-// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-08 by fhirbolt-codegen v0.1.0
 #[doc = "Allows for adjustment on two axis."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub struct VisionPrescriptionLensSpecificationPrism {
@@ -91,6 +91,12 @@ impl<'de> serde::de::Deserialize<'de> for VisionPrescriptionLensSpecificationPri
             BasePrimitiveElement,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &["id", "extension", "modifierExtension", "amount", "base"],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = VisionPrescriptionLensSpecificationPrism;
@@ -173,10 +179,7 @@ impl<'de> serde::de::Deserialize<'de> for VisionPrescriptionLensSpecificationPri
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "amount",
-                                        &["id", "extension", "modifierExtension", "amount", "base"],
-                                    ));
+                                    return unknown_field_error("amount");
                                 }
                             }
                             Field::Base => {
@@ -207,10 +210,7 @@ impl<'de> serde::de::Deserialize<'de> for VisionPrescriptionLensSpecificationPri
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "base",
-                                        &["id", "extension", "modifierExtension", "amount", "base"],
-                                    ));
+                                    return unknown_field_error("base");
                                 }
                             }
                             Field::Unknown(key) => if _ctx.config.mode
@@ -580,6 +580,30 @@ impl<'de> serde::de::Deserialize<'de> for VisionPrescriptionLensSpecification {
             Note,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "product",
+                    "eye",
+                    "sphere",
+                    "cylinder",
+                    "axis",
+                    "prism",
+                    "add",
+                    "power",
+                    "backCurve",
+                    "diameter",
+                    "duration",
+                    "color",
+                    "brand",
+                    "note",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = VisionPrescriptionLensSpecification;
@@ -680,28 +704,7 @@ impl<'de> serde::de::Deserialize<'de> for VisionPrescriptionLensSpecification {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "eye",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "product",
-                                            "eye",
-                                            "sphere",
-                                            "cylinder",
-                                            "axis",
-                                            "prism",
-                                            "add",
-                                            "power",
-                                            "backCurve",
-                                            "diameter",
-                                            "duration",
-                                            "color",
-                                            "brand",
-                                            "note",
-                                        ],
-                                    ));
+                                    return unknown_field_error("eye");
                                 }
                             }
                             Field::Sphere => {
@@ -732,28 +735,7 @@ impl<'de> serde::de::Deserialize<'de> for VisionPrescriptionLensSpecification {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "sphere",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "product",
-                                            "eye",
-                                            "sphere",
-                                            "cylinder",
-                                            "axis",
-                                            "prism",
-                                            "add",
-                                            "power",
-                                            "backCurve",
-                                            "diameter",
-                                            "duration",
-                                            "color",
-                                            "brand",
-                                            "note",
-                                        ],
-                                    ));
+                                    return unknown_field_error("sphere");
                                 }
                             }
                             Field::Cylinder => {
@@ -784,28 +766,7 @@ impl<'de> serde::de::Deserialize<'de> for VisionPrescriptionLensSpecification {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "cylinder",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "product",
-                                            "eye",
-                                            "sphere",
-                                            "cylinder",
-                                            "axis",
-                                            "prism",
-                                            "add",
-                                            "power",
-                                            "backCurve",
-                                            "diameter",
-                                            "duration",
-                                            "color",
-                                            "brand",
-                                            "note",
-                                        ],
-                                    ));
+                                    return unknown_field_error("cylinder");
                                 }
                             }
                             Field::Axis => {
@@ -836,28 +797,7 @@ impl<'de> serde::de::Deserialize<'de> for VisionPrescriptionLensSpecification {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "axis",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "product",
-                                            "eye",
-                                            "sphere",
-                                            "cylinder",
-                                            "axis",
-                                            "prism",
-                                            "add",
-                                            "power",
-                                            "backCurve",
-                                            "diameter",
-                                            "duration",
-                                            "color",
-                                            "brand",
-                                            "note",
-                                        ],
-                                    ));
+                                    return unknown_field_error("axis");
                                 }
                             }
                             Field::Prism => {
@@ -899,28 +839,7 @@ impl<'de> serde::de::Deserialize<'de> for VisionPrescriptionLensSpecification {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "add",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "product",
-                                            "eye",
-                                            "sphere",
-                                            "cylinder",
-                                            "axis",
-                                            "prism",
-                                            "add",
-                                            "power",
-                                            "backCurve",
-                                            "diameter",
-                                            "duration",
-                                            "color",
-                                            "brand",
-                                            "note",
-                                        ],
-                                    ));
+                                    return unknown_field_error("add");
                                 }
                             }
                             Field::Power => {
@@ -951,28 +870,7 @@ impl<'de> serde::de::Deserialize<'de> for VisionPrescriptionLensSpecification {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "power",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "product",
-                                            "eye",
-                                            "sphere",
-                                            "cylinder",
-                                            "axis",
-                                            "prism",
-                                            "add",
-                                            "power",
-                                            "backCurve",
-                                            "diameter",
-                                            "duration",
-                                            "color",
-                                            "brand",
-                                            "note",
-                                        ],
-                                    ));
+                                    return unknown_field_error("power");
                                 }
                             }
                             Field::BackCurve => {
@@ -1005,28 +903,7 @@ impl<'de> serde::de::Deserialize<'de> for VisionPrescriptionLensSpecification {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "backCurve",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "product",
-                                            "eye",
-                                            "sphere",
-                                            "cylinder",
-                                            "axis",
-                                            "prism",
-                                            "add",
-                                            "power",
-                                            "backCurve",
-                                            "diameter",
-                                            "duration",
-                                            "color",
-                                            "brand",
-                                            "note",
-                                        ],
-                                    ));
+                                    return unknown_field_error("backCurve");
                                 }
                             }
                             Field::Diameter => {
@@ -1057,28 +934,7 @@ impl<'de> serde::de::Deserialize<'de> for VisionPrescriptionLensSpecification {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "diameter",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "product",
-                                            "eye",
-                                            "sphere",
-                                            "cylinder",
-                                            "axis",
-                                            "prism",
-                                            "add",
-                                            "power",
-                                            "backCurve",
-                                            "diameter",
-                                            "duration",
-                                            "color",
-                                            "brand",
-                                            "note",
-                                        ],
-                                    ));
+                                    return unknown_field_error("diameter");
                                 }
                             }
                             Field::Duration => {
@@ -1115,28 +971,7 @@ impl<'de> serde::de::Deserialize<'de> for VisionPrescriptionLensSpecification {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "color",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "product",
-                                            "eye",
-                                            "sphere",
-                                            "cylinder",
-                                            "axis",
-                                            "prism",
-                                            "add",
-                                            "power",
-                                            "backCurve",
-                                            "diameter",
-                                            "duration",
-                                            "color",
-                                            "brand",
-                                            "note",
-                                        ],
-                                    ));
+                                    return unknown_field_error("color");
                                 }
                             }
                             Field::Brand => {
@@ -1167,28 +1002,7 @@ impl<'de> serde::de::Deserialize<'de> for VisionPrescriptionLensSpecification {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "brand",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "product",
-                                            "eye",
-                                            "sphere",
-                                            "cylinder",
-                                            "axis",
-                                            "prism",
-                                            "add",
-                                            "power",
-                                            "backCurve",
-                                            "diameter",
-                                            "duration",
-                                            "color",
-                                            "brand",
-                                            "note",
-                                        ],
-                                    ));
+                                    return unknown_field_error("brand");
                                 }
                             }
                             Field::Note => {
@@ -1486,6 +1300,29 @@ impl<'de> serde::de::Deserialize<'de> for VisionPrescription {
             LensSpecification,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "meta",
+                    "implicitRules",
+                    "language",
+                    "text",
+                    "contained",
+                    "extension",
+                    "modifierExtension",
+                    "identifier",
+                    "status",
+                    "created",
+                    "patient",
+                    "encounter",
+                    "dateWritten",
+                    "prescriber",
+                    "lensSpecification",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = VisionPrescription;
@@ -1573,27 +1410,7 @@ impl<'de> serde::de::Deserialize<'de> for VisionPrescription {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "implicitRules",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "status",
-                                            "created",
-                                            "patient",
-                                            "encounter",
-                                            "dateWritten",
-                                            "prescriber",
-                                            "lensSpecification",
-                                        ],
-                                    ));
+                                    return unknown_field_error("implicitRules");
                                 }
                             }
                             Field::Language => {
@@ -1624,27 +1441,7 @@ impl<'de> serde::de::Deserialize<'de> for VisionPrescription {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "language",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "status",
-                                            "created",
-                                            "patient",
-                                            "encounter",
-                                            "dateWritten",
-                                            "prescriber",
-                                            "lensSpecification",
-                                        ],
-                                    ));
+                                    return unknown_field_error("language");
                                 }
                             }
                             Field::Text => {
@@ -1730,27 +1527,7 @@ impl<'de> serde::de::Deserialize<'de> for VisionPrescription {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "status",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "status",
-                                            "created",
-                                            "patient",
-                                            "encounter",
-                                            "dateWritten",
-                                            "prescriber",
-                                            "lensSpecification",
-                                        ],
-                                    ));
+                                    return unknown_field_error("status");
                                 }
                             }
                             Field::Created => {
@@ -1781,27 +1558,7 @@ impl<'de> serde::de::Deserialize<'de> for VisionPrescription {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "created",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "status",
-                                            "created",
-                                            "patient",
-                                            "encounter",
-                                            "dateWritten",
-                                            "prescriber",
-                                            "lensSpecification",
-                                        ],
-                                    ));
+                                    return unknown_field_error("created");
                                 }
                             }
                             Field::Patient => {
@@ -1850,27 +1607,7 @@ impl<'de> serde::de::Deserialize<'de> for VisionPrescription {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "dateWritten",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "status",
-                                            "created",
-                                            "patient",
-                                            "encounter",
-                                            "dateWritten",
-                                            "prescriber",
-                                            "lensSpecification",
-                                        ],
-                                    ));
+                                    return unknown_field_error("dateWritten");
                                 }
                             }
                             Field::Prescriber => {

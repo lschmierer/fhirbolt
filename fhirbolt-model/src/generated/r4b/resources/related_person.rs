@@ -1,4 +1,4 @@
-// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-08 by fhirbolt-codegen v0.1.0
 #[doc = "A language which may be used to communicate with about the patient's health."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub struct RelatedPersonCommunication {
@@ -76,6 +76,18 @@ impl<'de> serde::de::Deserialize<'de> for RelatedPersonCommunication {
             #[serde(rename = "_preferred")]
             PreferredPrimitiveElement,
             Unknown(std::string::String),
+        }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "language",
+                    "preferred",
+                ],
+            ))
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -164,16 +176,7 @@ impl<'de> serde::de::Deserialize<'de> for RelatedPersonCommunication {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "preferred",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "language",
-                                            "preferred",
-                                        ],
-                                    ));
+                                    return unknown_field_error("preferred");
                                 }
                             }
                             Field::Unknown(key) => if _ctx.config.mode
@@ -472,6 +475,33 @@ impl<'de> serde::de::Deserialize<'de> for RelatedPerson {
             Communication,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "meta",
+                    "implicitRules",
+                    "language",
+                    "text",
+                    "contained",
+                    "extension",
+                    "modifierExtension",
+                    "identifier",
+                    "active",
+                    "patient",
+                    "relationship",
+                    "name",
+                    "telecom",
+                    "gender",
+                    "birthDate",
+                    "address",
+                    "photo",
+                    "period",
+                    "communication",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = RelatedPerson;
@@ -563,31 +593,7 @@ impl<'de> serde::de::Deserialize<'de> for RelatedPerson {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "implicitRules",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "active",
-                                            "patient",
-                                            "relationship",
-                                            "name",
-                                            "telecom",
-                                            "gender",
-                                            "birthDate",
-                                            "address",
-                                            "photo",
-                                            "period",
-                                            "communication",
-                                        ],
-                                    ));
+                                    return unknown_field_error("implicitRules");
                                 }
                             }
                             Field::Language => {
@@ -618,31 +624,7 @@ impl<'de> serde::de::Deserialize<'de> for RelatedPerson {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "language",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "active",
-                                            "patient",
-                                            "relationship",
-                                            "name",
-                                            "telecom",
-                                            "gender",
-                                            "birthDate",
-                                            "address",
-                                            "photo",
-                                            "period",
-                                            "communication",
-                                        ],
-                                    ));
+                                    return unknown_field_error("language");
                                 }
                             }
                             Field::Text => {
@@ -728,31 +710,7 @@ impl<'de> serde::de::Deserialize<'de> for RelatedPerson {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "active",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "active",
-                                            "patient",
-                                            "relationship",
-                                            "name",
-                                            "telecom",
-                                            "gender",
-                                            "birthDate",
-                                            "address",
-                                            "photo",
-                                            "period",
-                                            "communication",
-                                        ],
-                                    ));
+                                    return unknown_field_error("active");
                                 }
                             }
                             Field::Patient => {
@@ -824,31 +782,7 @@ impl<'de> serde::de::Deserialize<'de> for RelatedPerson {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "gender",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "active",
-                                            "patient",
-                                            "relationship",
-                                            "name",
-                                            "telecom",
-                                            "gender",
-                                            "birthDate",
-                                            "address",
-                                            "photo",
-                                            "period",
-                                            "communication",
-                                        ],
-                                    ));
+                                    return unknown_field_error("gender");
                                 }
                             }
                             Field::BirthDate => {
@@ -881,31 +815,7 @@ impl<'de> serde::de::Deserialize<'de> for RelatedPerson {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "birthDate",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "active",
-                                            "patient",
-                                            "relationship",
-                                            "name",
-                                            "telecom",
-                                            "gender",
-                                            "birthDate",
-                                            "address",
-                                            "photo",
-                                            "period",
-                                            "communication",
-                                        ],
-                                    ));
+                                    return unknown_field_error("birthDate");
                                 }
                             }
                             Field::Address => {

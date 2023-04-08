@@ -1,4 +1,4 @@
-// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-08 by fhirbolt-codegen v0.1.0
 #[doc = "Base StructureDefinition for Expression Type: A expression that is evaluated in a specified context and returns a value. The context of use of the expression must specify the context in which the expression is evaluated, and how the result of the expression is used."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub struct Expression {
@@ -161,6 +161,20 @@ impl<'de> serde::de::Deserialize<'de> for Expression {
             ReferencePrimitiveElement,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "description",
+                    "name",
+                    "language",
+                    "expression",
+                    "reference",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = Expression;
@@ -233,18 +247,7 @@ impl<'de> serde::de::Deserialize<'de> for Expression {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "description",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "description",
-                                            "name",
-                                            "language",
-                                            "expression",
-                                            "reference",
-                                        ],
-                                    ));
+                                    return unknown_field_error("description");
                                 }
                             }
                             Field::Name => {
@@ -275,18 +278,7 @@ impl<'de> serde::de::Deserialize<'de> for Expression {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "name",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "description",
-                                            "name",
-                                            "language",
-                                            "expression",
-                                            "reference",
-                                        ],
-                                    ));
+                                    return unknown_field_error("name");
                                 }
                             }
                             Field::Language => {
@@ -317,18 +309,7 @@ impl<'de> serde::de::Deserialize<'de> for Expression {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "language",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "description",
-                                            "name",
-                                            "language",
-                                            "expression",
-                                            "reference",
-                                        ],
-                                    ));
+                                    return unknown_field_error("language");
                                 }
                             }
                             Field::Expression => {
@@ -365,18 +346,7 @@ impl<'de> serde::de::Deserialize<'de> for Expression {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "expression",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "description",
-                                            "name",
-                                            "language",
-                                            "expression",
-                                            "reference",
-                                        ],
-                                    ));
+                                    return unknown_field_error("expression");
                                 }
                             }
                             Field::Reference => {
@@ -409,18 +379,7 @@ impl<'de> serde::de::Deserialize<'de> for Expression {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "reference",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "description",
-                                            "name",
-                                            "language",
-                                            "expression",
-                                            "reference",
-                                        ],
-                                    ));
+                                    return unknown_field_error("reference");
                                 }
                             }
                             Field::Unknown(key) => if _ctx.config.mode

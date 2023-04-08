@@ -1,4 +1,4 @@
-// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-08 by fhirbolt-codegen v0.1.0
 #[doc = "Time of product collection."]
 #[derive(Debug, Clone, PartialEq)]
 pub enum BiologicallyDerivedProductCollectionCollected {
@@ -133,6 +133,20 @@ impl<'de> serde::de::Deserialize<'de> for BiologicallyDerivedProductCollection {
             CollectedPeriod,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "collector",
+                    "source",
+                    "collectedDateTime",
+                    "collectedPeriod",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = BiologicallyDerivedProductCollection;
@@ -264,18 +278,7 @@ impl<'de> serde::de::Deserialize<'de> for BiologicallyDerivedProductCollection {
                                         ));
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "collectedDateTime",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "collector",
-                                            "source",
-                                            "collectedDateTime",
-                                            "collectedPeriod",
-                                        ],
-                                    ));
+                                    return unknown_field_error("collectedDateTime");
                                 }
                             }
                             Field::CollectedPeriod => {
@@ -444,6 +447,21 @@ impl<'de> serde::de::Deserialize<'de> for BiologicallyDerivedProductProcessing {
             TimePeriod,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "description",
+                    "procedure",
+                    "additive",
+                    "timeDateTime",
+                    "timePeriod",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = BiologicallyDerivedProductProcessing;
@@ -534,19 +552,7 @@ impl<'de> serde::de::Deserialize<'de> for BiologicallyDerivedProductProcessing {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "description",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "description",
-                                            "procedure",
-                                            "additive",
-                                            "timeDateTime",
-                                            "timePeriod",
-                                        ],
-                                    ));
+                                    return unknown_field_error("description");
                                 }
                             }
                             Field::Procedure => {
@@ -620,19 +626,7 @@ impl<'de> serde::de::Deserialize<'de> for BiologicallyDerivedProductProcessing {
                                         return Err(serde::de::Error::duplicate_field("_time[x]"));
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "timeDateTime",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "description",
-                                            "procedure",
-                                            "additive",
-                                            "timeDateTime",
-                                            "timePeriod",
-                                        ],
-                                    ));
+                                    return unknown_field_error("timeDateTime");
                                 }
                             }
                             Field::TimePeriod => {
@@ -786,6 +780,19 @@ impl<'de> serde::de::Deserialize<'de> for BiologicallyDerivedProductManipulation
             TimePeriod,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "description",
+                    "timeDateTime",
+                    "timePeriod",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = BiologicallyDerivedProductManipulation;
@@ -874,17 +881,7 @@ impl<'de> serde::de::Deserialize<'de> for BiologicallyDerivedProductManipulation
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "description",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "description",
-                                            "timeDateTime",
-                                            "timePeriod",
-                                        ],
-                                    ));
+                                    return unknown_field_error("description");
                                 }
                             }
                             Field::TimeDateTime => {
@@ -946,17 +943,7 @@ impl<'de> serde::de::Deserialize<'de> for BiologicallyDerivedProductManipulation
                                         return Err(serde::de::Error::duplicate_field("_time[x]"));
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "timeDateTime",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "description",
-                                            "timeDateTime",
-                                            "timePeriod",
-                                        ],
-                                    ));
+                                    return unknown_field_error("timeDateTime");
                                 }
                             }
                             Field::TimePeriod => {
@@ -1129,6 +1116,20 @@ impl<'de> serde::de::Deserialize<'de> for BiologicallyDerivedProductStorage {
             Duration,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "description",
+                    "temperature",
+                    "scale",
+                    "duration",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = BiologicallyDerivedProductStorage;
@@ -1219,18 +1220,7 @@ impl<'de> serde::de::Deserialize<'de> for BiologicallyDerivedProductStorage {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "description",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "description",
-                                            "temperature",
-                                            "scale",
-                                            "duration",
-                                        ],
-                                    ));
+                                    return unknown_field_error("description");
                                 }
                             }
                             Field::Temperature => {
@@ -1267,18 +1257,7 @@ impl<'de> serde::de::Deserialize<'de> for BiologicallyDerivedProductStorage {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "temperature",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "description",
-                                            "temperature",
-                                            "scale",
-                                            "duration",
-                                        ],
-                                    ));
+                                    return unknown_field_error("temperature");
                                 }
                             }
                             Field::Scale => {
@@ -1309,18 +1288,7 @@ impl<'de> serde::de::Deserialize<'de> for BiologicallyDerivedProductStorage {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "scale",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "description",
-                                            "temperature",
-                                            "scale",
-                                            "duration",
-                                        ],
-                                    ));
+                                    return unknown_field_error("scale");
                                 }
                             }
                             Field::Duration => {
@@ -1618,6 +1586,32 @@ impl<'de> serde::de::Deserialize<'de> for BiologicallyDerivedProduct {
             Storage,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "meta",
+                    "implicitRules",
+                    "language",
+                    "text",
+                    "contained",
+                    "extension",
+                    "modifierExtension",
+                    "identifier",
+                    "productCategory",
+                    "productCode",
+                    "status",
+                    "request",
+                    "quantity",
+                    "parent",
+                    "collection",
+                    "processing",
+                    "manipulation",
+                    "storage",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = BiologicallyDerivedProduct;
@@ -1707,30 +1701,7 @@ impl<'de> serde::de::Deserialize<'de> for BiologicallyDerivedProduct {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "implicitRules",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "productCategory",
-                                            "productCode",
-                                            "status",
-                                            "request",
-                                            "quantity",
-                                            "parent",
-                                            "collection",
-                                            "processing",
-                                            "manipulation",
-                                            "storage",
-                                        ],
-                                    ));
+                                    return unknown_field_error("implicitRules");
                                 }
                             }
                             Field::Language => {
@@ -1761,30 +1732,7 @@ impl<'de> serde::de::Deserialize<'de> for BiologicallyDerivedProduct {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "language",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "productCategory",
-                                            "productCode",
-                                            "status",
-                                            "request",
-                                            "quantity",
-                                            "parent",
-                                            "collection",
-                                            "processing",
-                                            "manipulation",
-                                            "storage",
-                                        ],
-                                    ));
+                                    return unknown_field_error("language");
                                 }
                             }
                             Field::Text => {
@@ -1876,30 +1824,7 @@ impl<'de> serde::de::Deserialize<'de> for BiologicallyDerivedProduct {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "productCategory",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "productCategory",
-                                            "productCode",
-                                            "status",
-                                            "request",
-                                            "quantity",
-                                            "parent",
-                                            "collection",
-                                            "processing",
-                                            "manipulation",
-                                            "storage",
-                                        ],
-                                    ));
+                                    return unknown_field_error("productCategory");
                                 }
                             }
                             Field::ProductCode => {
@@ -1936,30 +1861,7 @@ impl<'de> serde::de::Deserialize<'de> for BiologicallyDerivedProduct {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "status",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "productCategory",
-                                            "productCode",
-                                            "status",
-                                            "request",
-                                            "quantity",
-                                            "parent",
-                                            "collection",
-                                            "processing",
-                                            "manipulation",
-                                            "storage",
-                                        ],
-                                    ));
+                                    return unknown_field_error("status");
                                 }
                             }
                             Field::Request => {
@@ -2001,30 +1903,7 @@ impl<'de> serde::de::Deserialize<'de> for BiologicallyDerivedProduct {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "quantity",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "productCategory",
-                                            "productCode",
-                                            "status",
-                                            "request",
-                                            "quantity",
-                                            "parent",
-                                            "collection",
-                                            "processing",
-                                            "manipulation",
-                                            "storage",
-                                        ],
-                                    ));
+                                    return unknown_field_error("quantity");
                                 }
                             }
                             Field::Parent => {

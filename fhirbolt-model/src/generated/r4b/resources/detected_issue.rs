@@ -1,4 +1,4 @@
-// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-08 by fhirbolt-codegen v0.1.0
 #[doc = "The date or period when the detected issue was initially identified."]
 #[derive(Debug, Clone, PartialEq)]
 pub enum DetectedIssueIdentified {
@@ -72,6 +72,12 @@ impl<'de> serde::de::Deserialize<'de> for DetectedIssueEvidence {
             #[serde(rename = "detail")]
             Detail,
             Unknown(std::string::String),
+        }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &["id", "extension", "modifierExtension", "code", "detail"],
+            ))
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -254,6 +260,19 @@ impl<'de> serde::de::Deserialize<'de> for DetectedIssueMitigation {
             Author,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "action",
+                    "date",
+                    "author",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = DetectedIssueMitigation;
@@ -340,17 +359,7 @@ impl<'de> serde::de::Deserialize<'de> for DetectedIssueMitigation {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "date",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "action",
-                                            "date",
-                                            "author",
-                                        ],
-                                    ));
+                                    return unknown_field_error("date");
                                 }
                             }
                             Field::Author => {
@@ -702,6 +711,34 @@ impl<'de> serde::de::Deserialize<'de> for DetectedIssue {
             Mitigation,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "meta",
+                    "implicitRules",
+                    "language",
+                    "text",
+                    "contained",
+                    "extension",
+                    "modifierExtension",
+                    "identifier",
+                    "status",
+                    "code",
+                    "severity",
+                    "patient",
+                    "identifiedDateTime",
+                    "identifiedPeriod",
+                    "author",
+                    "implicated",
+                    "evidence",
+                    "detail",
+                    "reference",
+                    "mitigation",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = DetectedIssue;
@@ -792,32 +829,7 @@ impl<'de> serde::de::Deserialize<'de> for DetectedIssue {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "implicitRules",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "status",
-                                            "code",
-                                            "severity",
-                                            "patient",
-                                            "identifiedDateTime",
-                                            "identifiedPeriod",
-                                            "author",
-                                            "implicated",
-                                            "evidence",
-                                            "detail",
-                                            "reference",
-                                            "mitigation",
-                                        ],
-                                    ));
+                                    return unknown_field_error("implicitRules");
                                 }
                             }
                             Field::Language => {
@@ -848,32 +860,7 @@ impl<'de> serde::de::Deserialize<'de> for DetectedIssue {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "language",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "status",
-                                            "code",
-                                            "severity",
-                                            "patient",
-                                            "identifiedDateTime",
-                                            "identifiedPeriod",
-                                            "author",
-                                            "implicated",
-                                            "evidence",
-                                            "detail",
-                                            "reference",
-                                            "mitigation",
-                                        ],
-                                    ));
+                                    return unknown_field_error("language");
                                 }
                             }
                             Field::Text => {
@@ -959,32 +946,7 @@ impl<'de> serde::de::Deserialize<'de> for DetectedIssue {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "status",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "status",
-                                            "code",
-                                            "severity",
-                                            "patient",
-                                            "identifiedDateTime",
-                                            "identifiedPeriod",
-                                            "author",
-                                            "implicated",
-                                            "evidence",
-                                            "detail",
-                                            "reference",
-                                            "mitigation",
-                                        ],
-                                    ));
+                                    return unknown_field_error("status");
                                 }
                             }
                             Field::Code => {
@@ -1021,32 +983,7 @@ impl<'de> serde::de::Deserialize<'de> for DetectedIssue {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "severity",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "status",
-                                            "code",
-                                            "severity",
-                                            "patient",
-                                            "identifiedDateTime",
-                                            "identifiedPeriod",
-                                            "author",
-                                            "implicated",
-                                            "evidence",
-                                            "detail",
-                                            "reference",
-                                            "mitigation",
-                                        ],
-                                    ));
+                                    return unknown_field_error("severity");
                                 }
                             }
                             Field::Patient => {
@@ -1107,32 +1044,7 @@ impl<'de> serde::de::Deserialize<'de> for DetectedIssue {
                                         ));
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "identifiedDateTime",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "status",
-                                            "code",
-                                            "severity",
-                                            "patient",
-                                            "identifiedDateTime",
-                                            "identifiedPeriod",
-                                            "author",
-                                            "implicated",
-                                            "evidence",
-                                            "detail",
-                                            "reference",
-                                            "mitigation",
-                                        ],
-                                    ));
+                                    return unknown_field_error("identifiedDateTime");
                                 }
                             }
                             Field::IdentifiedPeriod => {
@@ -1202,32 +1114,7 @@ impl<'de> serde::de::Deserialize<'de> for DetectedIssue {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "detail",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "status",
-                                            "code",
-                                            "severity",
-                                            "patient",
-                                            "identifiedDateTime",
-                                            "identifiedPeriod",
-                                            "author",
-                                            "implicated",
-                                            "evidence",
-                                            "detail",
-                                            "reference",
-                                            "mitigation",
-                                        ],
-                                    ));
+                                    return unknown_field_error("detail");
                                 }
                             }
                             Field::Reference => {
@@ -1260,32 +1147,7 @@ impl<'de> serde::de::Deserialize<'de> for DetectedIssue {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "reference",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "status",
-                                            "code",
-                                            "severity",
-                                            "patient",
-                                            "identifiedDateTime",
-                                            "identifiedPeriod",
-                                            "author",
-                                            "implicated",
-                                            "evidence",
-                                            "detail",
-                                            "reference",
-                                            "mitigation",
-                                        ],
-                                    ));
+                                    return unknown_field_error("reference");
                                 }
                             }
                             Field::Mitigation => {

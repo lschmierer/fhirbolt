@@ -1,4 +1,4 @@
-// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-08 by fhirbolt-codegen v0.1.0
 #[doc = "An abstract server used in operations within this test script in the origin element."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub struct TestScriptOrigin {
@@ -72,6 +72,12 @@ impl<'de> serde::de::Deserialize<'de> for TestScriptOrigin {
             #[serde(rename = "profile")]
             Profile,
             Unknown(std::string::String),
+        }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &["id", "extension", "modifierExtension", "index", "profile"],
+            ))
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -152,16 +158,7 @@ impl<'de> serde::de::Deserialize<'de> for TestScriptOrigin {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "index",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "index",
-                                            "profile",
-                                        ],
-                                    ));
+                                    return unknown_field_error("index");
                                 }
                             }
                             Field::Profile => {
@@ -279,6 +276,12 @@ impl<'de> serde::de::Deserialize<'de> for TestScriptDestination {
             Profile,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &["id", "extension", "modifierExtension", "index", "profile"],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = TestScriptDestination;
@@ -358,16 +361,7 @@ impl<'de> serde::de::Deserialize<'de> for TestScriptDestination {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "index",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "index",
-                                            "profile",
-                                        ],
-                                    ));
+                                    return unknown_field_error("index");
                                 }
                             }
                             Field::Profile => {
@@ -505,6 +499,12 @@ impl<'de> serde::de::Deserialize<'de> for TestScriptMetadataLink {
             DescriptionPrimitiveElement,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &["id", "extension", "modifierExtension", "url", "description"],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = TestScriptMetadataLink;
@@ -584,16 +584,7 @@ impl<'de> serde::de::Deserialize<'de> for TestScriptMetadataLink {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "url",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "description",
-                                        ],
-                                    ));
+                                    return unknown_field_error("url");
                                 }
                             }
                             Field::Description => {
@@ -630,16 +621,7 @@ impl<'de> serde::de::Deserialize<'de> for TestScriptMetadataLink {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "description",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "description",
-                                        ],
-                                    ));
+                                    return unknown_field_error("description");
                                 }
                             }
                             Field::Unknown(key) => if _ctx.config.mode
@@ -920,6 +902,23 @@ impl<'de> serde::de::Deserialize<'de> for TestScriptMetadataCapability {
             CapabilitiesPrimitiveElement,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "required",
+                    "validated",
+                    "description",
+                    "origin",
+                    "destination",
+                    "link",
+                    "capabilities",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = TestScriptMetadataCapability;
@@ -1007,21 +1006,7 @@ impl<'de> serde::de::Deserialize<'de> for TestScriptMetadataCapability {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "required",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "required",
-                                            "validated",
-                                            "description",
-                                            "origin",
-                                            "destination",
-                                            "link",
-                                            "capabilities",
-                                        ],
-                                    ));
+                                    return unknown_field_error("required");
                                 }
                             }
                             Field::Validated => {
@@ -1054,21 +1039,7 @@ impl<'de> serde::de::Deserialize<'de> for TestScriptMetadataCapability {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "validated",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "required",
-                                            "validated",
-                                            "description",
-                                            "origin",
-                                            "destination",
-                                            "link",
-                                            "capabilities",
-                                        ],
-                                    ));
+                                    return unknown_field_error("validated");
                                 }
                             }
                             Field::Description => {
@@ -1105,21 +1076,7 @@ impl<'de> serde::de::Deserialize<'de> for TestScriptMetadataCapability {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "description",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "required",
-                                            "validated",
-                                            "description",
-                                            "origin",
-                                            "destination",
-                                            "link",
-                                            "capabilities",
-                                        ],
-                                    ));
+                                    return unknown_field_error("description");
                                 }
                             }
                             Field::Origin => {
@@ -1178,21 +1135,7 @@ impl<'de> serde::de::Deserialize<'de> for TestScriptMetadataCapability {
                                         }
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "origin",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "required",
-                                            "validated",
-                                            "description",
-                                            "origin",
-                                            "destination",
-                                            "link",
-                                            "capabilities",
-                                        ],
-                                    ));
+                                    return unknown_field_error("origin");
                                 }
                             }
                             Field::Destination => {
@@ -1229,21 +1172,7 @@ impl<'de> serde::de::Deserialize<'de> for TestScriptMetadataCapability {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "destination",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "required",
-                                            "validated",
-                                            "description",
-                                            "origin",
-                                            "destination",
-                                            "link",
-                                            "capabilities",
-                                        ],
-                                    ));
+                                    return unknown_field_error("destination");
                                 }
                             }
                             Field::Link => {
@@ -1302,21 +1231,7 @@ impl<'de> serde::de::Deserialize<'de> for TestScriptMetadataCapability {
                                         }
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "link",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "required",
-                                            "validated",
-                                            "description",
-                                            "origin",
-                                            "destination",
-                                            "link",
-                                            "capabilities",
-                                        ],
-                                    ));
+                                    return unknown_field_error("link");
                                 }
                             }
                             Field::Capabilities => {
@@ -1353,21 +1268,7 @@ impl<'de> serde::de::Deserialize<'de> for TestScriptMetadataCapability {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "capabilities",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "required",
-                                            "validated",
-                                            "description",
-                                            "origin",
-                                            "destination",
-                                            "link",
-                                            "capabilities",
-                                        ],
-                                    ));
+                                    return unknown_field_error("capabilities");
                                 }
                             }
                             Field::Unknown(key) => if _ctx.config.mode
@@ -1488,6 +1389,12 @@ impl<'de> serde::de::Deserialize<'de> for TestScriptMetadata {
             #[serde(rename = "capability")]
             Capability,
             Unknown(std::string::String),
+        }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &["id", "extension", "modifierExtension", "link", "capability"],
+            ))
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -1684,6 +1591,19 @@ impl<'de> serde::de::Deserialize<'de> for TestScriptFixture {
             Resource,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "autocreate",
+                    "autodelete",
+                    "resource",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = TestScriptFixture;
@@ -1770,17 +1690,7 @@ impl<'de> serde::de::Deserialize<'de> for TestScriptFixture {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "autocreate",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "autocreate",
-                                            "autodelete",
-                                            "resource",
-                                        ],
-                                    ));
+                                    return unknown_field_error("autocreate");
                                 }
                             }
                             Field::Autodelete => {
@@ -1817,17 +1727,7 @@ impl<'de> serde::de::Deserialize<'de> for TestScriptFixture {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "autodelete",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "autocreate",
-                                            "autodelete",
-                                            "resource",
-                                        ],
-                                    ));
+                                    return unknown_field_error("autodelete");
                                 }
                             }
                             Field::Resource => {
@@ -2123,6 +2023,24 @@ impl<'de> serde::de::Deserialize<'de> for TestScriptVariable {
             SourceIdPrimitiveElement,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "name",
+                    "defaultValue",
+                    "description",
+                    "expression",
+                    "headerField",
+                    "hint",
+                    "path",
+                    "sourceId",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = TestScriptVariable;
@@ -2208,22 +2126,7 @@ impl<'de> serde::de::Deserialize<'de> for TestScriptVariable {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "name",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "name",
-                                            "defaultValue",
-                                            "description",
-                                            "expression",
-                                            "headerField",
-                                            "hint",
-                                            "path",
-                                            "sourceId",
-                                        ],
-                                    ));
+                                    return unknown_field_error("name");
                                 }
                             }
                             Field::DefaultValue => {
@@ -2260,22 +2163,7 @@ impl<'de> serde::de::Deserialize<'de> for TestScriptVariable {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "defaultValue",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "name",
-                                            "defaultValue",
-                                            "description",
-                                            "expression",
-                                            "headerField",
-                                            "hint",
-                                            "path",
-                                            "sourceId",
-                                        ],
-                                    ));
+                                    return unknown_field_error("defaultValue");
                                 }
                             }
                             Field::Description => {
@@ -2312,22 +2200,7 @@ impl<'de> serde::de::Deserialize<'de> for TestScriptVariable {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "description",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "name",
-                                            "defaultValue",
-                                            "description",
-                                            "expression",
-                                            "headerField",
-                                            "hint",
-                                            "path",
-                                            "sourceId",
-                                        ],
-                                    ));
+                                    return unknown_field_error("description");
                                 }
                             }
                             Field::Expression => {
@@ -2364,22 +2237,7 @@ impl<'de> serde::de::Deserialize<'de> for TestScriptVariable {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "expression",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "name",
-                                            "defaultValue",
-                                            "description",
-                                            "expression",
-                                            "headerField",
-                                            "hint",
-                                            "path",
-                                            "sourceId",
-                                        ],
-                                    ));
+                                    return unknown_field_error("expression");
                                 }
                             }
                             Field::HeaderField => {
@@ -2416,22 +2274,7 @@ impl<'de> serde::de::Deserialize<'de> for TestScriptVariable {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "headerField",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "name",
-                                            "defaultValue",
-                                            "description",
-                                            "expression",
-                                            "headerField",
-                                            "hint",
-                                            "path",
-                                            "sourceId",
-                                        ],
-                                    ));
+                                    return unknown_field_error("headerField");
                                 }
                             }
                             Field::Hint => {
@@ -2462,22 +2305,7 @@ impl<'de> serde::de::Deserialize<'de> for TestScriptVariable {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "hint",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "name",
-                                            "defaultValue",
-                                            "description",
-                                            "expression",
-                                            "headerField",
-                                            "hint",
-                                            "path",
-                                            "sourceId",
-                                        ],
-                                    ));
+                                    return unknown_field_error("hint");
                                 }
                             }
                             Field::Path => {
@@ -2508,22 +2336,7 @@ impl<'de> serde::de::Deserialize<'de> for TestScriptVariable {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "path",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "name",
-                                            "defaultValue",
-                                            "description",
-                                            "expression",
-                                            "headerField",
-                                            "hint",
-                                            "path",
-                                            "sourceId",
-                                        ],
-                                    ));
+                                    return unknown_field_error("path");
                                 }
                             }
                             Field::SourceId => {
@@ -2554,22 +2367,7 @@ impl<'de> serde::de::Deserialize<'de> for TestScriptVariable {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "sourceId",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "name",
-                                            "defaultValue",
-                                            "description",
-                                            "expression",
-                                            "headerField",
-                                            "hint",
-                                            "path",
-                                            "sourceId",
-                                        ],
-                                    ));
+                                    return unknown_field_error("sourceId");
                                 }
                             }
                             Field::Unknown(key) => if _ctx.config.mode
@@ -2709,6 +2507,12 @@ impl<'de> serde::de::Deserialize<'de> for TestScriptSetupActionOperationRequestH
             ValuePrimitiveElement,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &["id", "extension", "modifierExtension", "field", "value"],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = TestScriptSetupActionOperationRequestHeader;
@@ -2791,10 +2595,7 @@ impl<'de> serde::de::Deserialize<'de> for TestScriptSetupActionOperationRequestH
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "field",
-                                        &["id", "extension", "modifierExtension", "field", "value"],
-                                    ));
+                                    return unknown_field_error("field");
                                 }
                             }
                             Field::Value => {
@@ -2825,10 +2626,7 @@ impl<'de> serde::de::Deserialize<'de> for TestScriptSetupActionOperationRequestH
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "value",
-                                        &["id", "extension", "modifierExtension", "field", "value"],
-                                    ));
+                                    return unknown_field_error("value");
                                 }
                             }
                             Field::Unknown(key) => if _ctx.config.mode
@@ -3301,6 +3099,33 @@ impl<'de> serde::de::Deserialize<'de> for TestScriptSetupActionOperation {
             UrlPrimitiveElement,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "type",
+                    "resource",
+                    "label",
+                    "description",
+                    "accept",
+                    "contentType",
+                    "destination",
+                    "encodeRequestUrl",
+                    "method",
+                    "origin",
+                    "params",
+                    "requestHeader",
+                    "requestId",
+                    "responseId",
+                    "sourceId",
+                    "targetId",
+                    "url",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = TestScriptSetupActionOperation;
@@ -3405,31 +3230,7 @@ impl<'de> serde::de::Deserialize<'de> for TestScriptSetupActionOperation {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "resource",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "type",
-                                            "resource",
-                                            "label",
-                                            "description",
-                                            "accept",
-                                            "contentType",
-                                            "destination",
-                                            "encodeRequestUrl",
-                                            "method",
-                                            "origin",
-                                            "params",
-                                            "requestHeader",
-                                            "requestId",
-                                            "responseId",
-                                            "sourceId",
-                                            "targetId",
-                                            "url",
-                                        ],
-                                    ));
+                                    return unknown_field_error("resource");
                                 }
                             }
                             Field::Label => {
@@ -3460,31 +3261,7 @@ impl<'de> serde::de::Deserialize<'de> for TestScriptSetupActionOperation {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "label",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "type",
-                                            "resource",
-                                            "label",
-                                            "description",
-                                            "accept",
-                                            "contentType",
-                                            "destination",
-                                            "encodeRequestUrl",
-                                            "method",
-                                            "origin",
-                                            "params",
-                                            "requestHeader",
-                                            "requestId",
-                                            "responseId",
-                                            "sourceId",
-                                            "targetId",
-                                            "url",
-                                        ],
-                                    ));
+                                    return unknown_field_error("label");
                                 }
                             }
                             Field::Description => {
@@ -3521,31 +3298,7 @@ impl<'de> serde::de::Deserialize<'de> for TestScriptSetupActionOperation {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "description",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "type",
-                                            "resource",
-                                            "label",
-                                            "description",
-                                            "accept",
-                                            "contentType",
-                                            "destination",
-                                            "encodeRequestUrl",
-                                            "method",
-                                            "origin",
-                                            "params",
-                                            "requestHeader",
-                                            "requestId",
-                                            "responseId",
-                                            "sourceId",
-                                            "targetId",
-                                            "url",
-                                        ],
-                                    ));
+                                    return unknown_field_error("description");
                                 }
                             }
                             Field::Accept => {
@@ -3576,31 +3329,7 @@ impl<'de> serde::de::Deserialize<'de> for TestScriptSetupActionOperation {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "accept",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "type",
-                                            "resource",
-                                            "label",
-                                            "description",
-                                            "accept",
-                                            "contentType",
-                                            "destination",
-                                            "encodeRequestUrl",
-                                            "method",
-                                            "origin",
-                                            "params",
-                                            "requestHeader",
-                                            "requestId",
-                                            "responseId",
-                                            "sourceId",
-                                            "targetId",
-                                            "url",
-                                        ],
-                                    ));
+                                    return unknown_field_error("accept");
                                 }
                             }
                             Field::ContentType => {
@@ -3637,31 +3366,7 @@ impl<'de> serde::de::Deserialize<'de> for TestScriptSetupActionOperation {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "contentType",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "type",
-                                            "resource",
-                                            "label",
-                                            "description",
-                                            "accept",
-                                            "contentType",
-                                            "destination",
-                                            "encodeRequestUrl",
-                                            "method",
-                                            "origin",
-                                            "params",
-                                            "requestHeader",
-                                            "requestId",
-                                            "responseId",
-                                            "sourceId",
-                                            "targetId",
-                                            "url",
-                                        ],
-                                    ));
+                                    return unknown_field_error("contentType");
                                 }
                             }
                             Field::Destination => {
@@ -3698,31 +3403,7 @@ impl<'de> serde::de::Deserialize<'de> for TestScriptSetupActionOperation {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "destination",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "type",
-                                            "resource",
-                                            "label",
-                                            "description",
-                                            "accept",
-                                            "contentType",
-                                            "destination",
-                                            "encodeRequestUrl",
-                                            "method",
-                                            "origin",
-                                            "params",
-                                            "requestHeader",
-                                            "requestId",
-                                            "responseId",
-                                            "sourceId",
-                                            "targetId",
-                                            "url",
-                                        ],
-                                    ));
+                                    return unknown_field_error("destination");
                                 }
                             }
                             Field::EncodeRequestUrl => {
@@ -3761,31 +3442,7 @@ impl<'de> serde::de::Deserialize<'de> for TestScriptSetupActionOperation {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "encodeRequestUrl",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "type",
-                                            "resource",
-                                            "label",
-                                            "description",
-                                            "accept",
-                                            "contentType",
-                                            "destination",
-                                            "encodeRequestUrl",
-                                            "method",
-                                            "origin",
-                                            "params",
-                                            "requestHeader",
-                                            "requestId",
-                                            "responseId",
-                                            "sourceId",
-                                            "targetId",
-                                            "url",
-                                        ],
-                                    ));
+                                    return unknown_field_error("encodeRequestUrl");
                                 }
                             }
                             Field::Method => {
@@ -3816,31 +3473,7 @@ impl<'de> serde::de::Deserialize<'de> for TestScriptSetupActionOperation {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "method",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "type",
-                                            "resource",
-                                            "label",
-                                            "description",
-                                            "accept",
-                                            "contentType",
-                                            "destination",
-                                            "encodeRequestUrl",
-                                            "method",
-                                            "origin",
-                                            "params",
-                                            "requestHeader",
-                                            "requestId",
-                                            "responseId",
-                                            "sourceId",
-                                            "targetId",
-                                            "url",
-                                        ],
-                                    ));
+                                    return unknown_field_error("method");
                                 }
                             }
                             Field::Origin => {
@@ -3871,31 +3504,7 @@ impl<'de> serde::de::Deserialize<'de> for TestScriptSetupActionOperation {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "origin",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "type",
-                                            "resource",
-                                            "label",
-                                            "description",
-                                            "accept",
-                                            "contentType",
-                                            "destination",
-                                            "encodeRequestUrl",
-                                            "method",
-                                            "origin",
-                                            "params",
-                                            "requestHeader",
-                                            "requestId",
-                                            "responseId",
-                                            "sourceId",
-                                            "targetId",
-                                            "url",
-                                        ],
-                                    ));
+                                    return unknown_field_error("origin");
                                 }
                             }
                             Field::Params => {
@@ -3926,31 +3535,7 @@ impl<'de> serde::de::Deserialize<'de> for TestScriptSetupActionOperation {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "params",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "type",
-                                            "resource",
-                                            "label",
-                                            "description",
-                                            "accept",
-                                            "contentType",
-                                            "destination",
-                                            "encodeRequestUrl",
-                                            "method",
-                                            "origin",
-                                            "params",
-                                            "requestHeader",
-                                            "requestId",
-                                            "responseId",
-                                            "sourceId",
-                                            "targetId",
-                                            "url",
-                                        ],
-                                    ));
+                                    return unknown_field_error("params");
                                 }
                             }
                             Field::RequestHeader => {
@@ -3996,31 +3581,7 @@ impl<'de> serde::de::Deserialize<'de> for TestScriptSetupActionOperation {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "requestId",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "type",
-                                            "resource",
-                                            "label",
-                                            "description",
-                                            "accept",
-                                            "contentType",
-                                            "destination",
-                                            "encodeRequestUrl",
-                                            "method",
-                                            "origin",
-                                            "params",
-                                            "requestHeader",
-                                            "requestId",
-                                            "responseId",
-                                            "sourceId",
-                                            "targetId",
-                                            "url",
-                                        ],
-                                    ));
+                                    return unknown_field_error("requestId");
                                 }
                             }
                             Field::ResponseId => {
@@ -4057,31 +3618,7 @@ impl<'de> serde::de::Deserialize<'de> for TestScriptSetupActionOperation {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "responseId",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "type",
-                                            "resource",
-                                            "label",
-                                            "description",
-                                            "accept",
-                                            "contentType",
-                                            "destination",
-                                            "encodeRequestUrl",
-                                            "method",
-                                            "origin",
-                                            "params",
-                                            "requestHeader",
-                                            "requestId",
-                                            "responseId",
-                                            "sourceId",
-                                            "targetId",
-                                            "url",
-                                        ],
-                                    ));
+                                    return unknown_field_error("responseId");
                                 }
                             }
                             Field::SourceId => {
@@ -4112,31 +3649,7 @@ impl<'de> serde::de::Deserialize<'de> for TestScriptSetupActionOperation {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "sourceId",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "type",
-                                            "resource",
-                                            "label",
-                                            "description",
-                                            "accept",
-                                            "contentType",
-                                            "destination",
-                                            "encodeRequestUrl",
-                                            "method",
-                                            "origin",
-                                            "params",
-                                            "requestHeader",
-                                            "requestId",
-                                            "responseId",
-                                            "sourceId",
-                                            "targetId",
-                                            "url",
-                                        ],
-                                    ));
+                                    return unknown_field_error("sourceId");
                                 }
                             }
                             Field::TargetId => {
@@ -4167,31 +3680,7 @@ impl<'de> serde::de::Deserialize<'de> for TestScriptSetupActionOperation {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "targetId",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "type",
-                                            "resource",
-                                            "label",
-                                            "description",
-                                            "accept",
-                                            "contentType",
-                                            "destination",
-                                            "encodeRequestUrl",
-                                            "method",
-                                            "origin",
-                                            "params",
-                                            "requestHeader",
-                                            "requestId",
-                                            "responseId",
-                                            "sourceId",
-                                            "targetId",
-                                            "url",
-                                        ],
-                                    ));
+                                    return unknown_field_error("targetId");
                                 }
                             }
                             Field::Url => {
@@ -4222,31 +3711,7 @@ impl<'de> serde::de::Deserialize<'de> for TestScriptSetupActionOperation {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "url",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "type",
-                                            "resource",
-                                            "label",
-                                            "description",
-                                            "accept",
-                                            "contentType",
-                                            "destination",
-                                            "encodeRequestUrl",
-                                            "method",
-                                            "origin",
-                                            "params",
-                                            "requestHeader",
-                                            "requestId",
-                                            "responseId",
-                                            "sourceId",
-                                            "targetId",
-                                            "url",
-                                        ],
-                                    ));
+                                    return unknown_field_error("url");
                                 }
                             }
                             Field::Unknown(key) => if _ctx.config.mode
@@ -4909,6 +4374,38 @@ impl<'de> serde::de::Deserialize<'de> for TestScriptSetupActionAssert {
             WarningOnlyPrimitiveElement,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "label",
+                    "description",
+                    "direction",
+                    "compareToSourceId",
+                    "compareToSourceExpression",
+                    "compareToSourcePath",
+                    "contentType",
+                    "expression",
+                    "headerField",
+                    "minimumId",
+                    "navigationLinks",
+                    "operator",
+                    "path",
+                    "requestMethod",
+                    "requestURL",
+                    "resource",
+                    "response",
+                    "responseCode",
+                    "sourceId",
+                    "validateProfileId",
+                    "value",
+                    "warningOnly",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = TestScriptSetupActionAssert;
@@ -5011,36 +4508,7 @@ impl<'de> serde::de::Deserialize<'de> for TestScriptSetupActionAssert {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "label",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "label",
-                                            "description",
-                                            "direction",
-                                            "compareToSourceId",
-                                            "compareToSourceExpression",
-                                            "compareToSourcePath",
-                                            "contentType",
-                                            "expression",
-                                            "headerField",
-                                            "minimumId",
-                                            "navigationLinks",
-                                            "operator",
-                                            "path",
-                                            "requestMethod",
-                                            "requestURL",
-                                            "resource",
-                                            "response",
-                                            "responseCode",
-                                            "sourceId",
-                                            "validateProfileId",
-                                            "value",
-                                            "warningOnly",
-                                        ],
-                                    ));
+                                    return unknown_field_error("label");
                                 }
                             }
                             Field::Description => {
@@ -5077,36 +4545,7 @@ impl<'de> serde::de::Deserialize<'de> for TestScriptSetupActionAssert {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "description",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "label",
-                                            "description",
-                                            "direction",
-                                            "compareToSourceId",
-                                            "compareToSourceExpression",
-                                            "compareToSourcePath",
-                                            "contentType",
-                                            "expression",
-                                            "headerField",
-                                            "minimumId",
-                                            "navigationLinks",
-                                            "operator",
-                                            "path",
-                                            "requestMethod",
-                                            "requestURL",
-                                            "resource",
-                                            "response",
-                                            "responseCode",
-                                            "sourceId",
-                                            "validateProfileId",
-                                            "value",
-                                            "warningOnly",
-                                        ],
-                                    ));
+                                    return unknown_field_error("description");
                                 }
                             }
                             Field::Direction => {
@@ -5139,36 +4578,7 @@ impl<'de> serde::de::Deserialize<'de> for TestScriptSetupActionAssert {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "direction",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "label",
-                                            "description",
-                                            "direction",
-                                            "compareToSourceId",
-                                            "compareToSourceExpression",
-                                            "compareToSourcePath",
-                                            "contentType",
-                                            "expression",
-                                            "headerField",
-                                            "minimumId",
-                                            "navigationLinks",
-                                            "operator",
-                                            "path",
-                                            "requestMethod",
-                                            "requestURL",
-                                            "resource",
-                                            "response",
-                                            "responseCode",
-                                            "sourceId",
-                                            "validateProfileId",
-                                            "value",
-                                            "warningOnly",
-                                        ],
-                                    ));
+                                    return unknown_field_error("direction");
                                 }
                             }
                             Field::CompareToSourceId => {
@@ -5207,36 +4617,7 @@ impl<'de> serde::de::Deserialize<'de> for TestScriptSetupActionAssert {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "compareToSourceId",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "label",
-                                            "description",
-                                            "direction",
-                                            "compareToSourceId",
-                                            "compareToSourceExpression",
-                                            "compareToSourcePath",
-                                            "contentType",
-                                            "expression",
-                                            "headerField",
-                                            "minimumId",
-                                            "navigationLinks",
-                                            "operator",
-                                            "path",
-                                            "requestMethod",
-                                            "requestURL",
-                                            "resource",
-                                            "response",
-                                            "responseCode",
-                                            "sourceId",
-                                            "validateProfileId",
-                                            "value",
-                                            "warningOnly",
-                                        ],
-                                    ));
+                                    return unknown_field_error("compareToSourceId");
                                 }
                             }
                             Field::CompareToSourceExpression => {
@@ -5275,36 +4656,7 @@ impl<'de> serde::de::Deserialize<'de> for TestScriptSetupActionAssert {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "compareToSourceExpression",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "label",
-                                            "description",
-                                            "direction",
-                                            "compareToSourceId",
-                                            "compareToSourceExpression",
-                                            "compareToSourcePath",
-                                            "contentType",
-                                            "expression",
-                                            "headerField",
-                                            "minimumId",
-                                            "navigationLinks",
-                                            "operator",
-                                            "path",
-                                            "requestMethod",
-                                            "requestURL",
-                                            "resource",
-                                            "response",
-                                            "responseCode",
-                                            "sourceId",
-                                            "validateProfileId",
-                                            "value",
-                                            "warningOnly",
-                                        ],
-                                    ));
+                                    return unknown_field_error("compareToSourceExpression");
                                 }
                             }
                             Field::CompareToSourcePath => {
@@ -5343,36 +4695,7 @@ impl<'de> serde::de::Deserialize<'de> for TestScriptSetupActionAssert {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "compareToSourcePath",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "label",
-                                            "description",
-                                            "direction",
-                                            "compareToSourceId",
-                                            "compareToSourceExpression",
-                                            "compareToSourcePath",
-                                            "contentType",
-                                            "expression",
-                                            "headerField",
-                                            "minimumId",
-                                            "navigationLinks",
-                                            "operator",
-                                            "path",
-                                            "requestMethod",
-                                            "requestURL",
-                                            "resource",
-                                            "response",
-                                            "responseCode",
-                                            "sourceId",
-                                            "validateProfileId",
-                                            "value",
-                                            "warningOnly",
-                                        ],
-                                    ));
+                                    return unknown_field_error("compareToSourcePath");
                                 }
                             }
                             Field::ContentType => {
@@ -5409,36 +4732,7 @@ impl<'de> serde::de::Deserialize<'de> for TestScriptSetupActionAssert {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "contentType",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "label",
-                                            "description",
-                                            "direction",
-                                            "compareToSourceId",
-                                            "compareToSourceExpression",
-                                            "compareToSourcePath",
-                                            "contentType",
-                                            "expression",
-                                            "headerField",
-                                            "minimumId",
-                                            "navigationLinks",
-                                            "operator",
-                                            "path",
-                                            "requestMethod",
-                                            "requestURL",
-                                            "resource",
-                                            "response",
-                                            "responseCode",
-                                            "sourceId",
-                                            "validateProfileId",
-                                            "value",
-                                            "warningOnly",
-                                        ],
-                                    ));
+                                    return unknown_field_error("contentType");
                                 }
                             }
                             Field::Expression => {
@@ -5475,36 +4769,7 @@ impl<'de> serde::de::Deserialize<'de> for TestScriptSetupActionAssert {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "expression",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "label",
-                                            "description",
-                                            "direction",
-                                            "compareToSourceId",
-                                            "compareToSourceExpression",
-                                            "compareToSourcePath",
-                                            "contentType",
-                                            "expression",
-                                            "headerField",
-                                            "minimumId",
-                                            "navigationLinks",
-                                            "operator",
-                                            "path",
-                                            "requestMethod",
-                                            "requestURL",
-                                            "resource",
-                                            "response",
-                                            "responseCode",
-                                            "sourceId",
-                                            "validateProfileId",
-                                            "value",
-                                            "warningOnly",
-                                        ],
-                                    ));
+                                    return unknown_field_error("expression");
                                 }
                             }
                             Field::HeaderField => {
@@ -5541,36 +4806,7 @@ impl<'de> serde::de::Deserialize<'de> for TestScriptSetupActionAssert {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "headerField",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "label",
-                                            "description",
-                                            "direction",
-                                            "compareToSourceId",
-                                            "compareToSourceExpression",
-                                            "compareToSourcePath",
-                                            "contentType",
-                                            "expression",
-                                            "headerField",
-                                            "minimumId",
-                                            "navigationLinks",
-                                            "operator",
-                                            "path",
-                                            "requestMethod",
-                                            "requestURL",
-                                            "resource",
-                                            "response",
-                                            "responseCode",
-                                            "sourceId",
-                                            "validateProfileId",
-                                            "value",
-                                            "warningOnly",
-                                        ],
-                                    ));
+                                    return unknown_field_error("headerField");
                                 }
                             }
                             Field::MinimumId => {
@@ -5603,36 +4839,7 @@ impl<'de> serde::de::Deserialize<'de> for TestScriptSetupActionAssert {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "minimumId",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "label",
-                                            "description",
-                                            "direction",
-                                            "compareToSourceId",
-                                            "compareToSourceExpression",
-                                            "compareToSourcePath",
-                                            "contentType",
-                                            "expression",
-                                            "headerField",
-                                            "minimumId",
-                                            "navigationLinks",
-                                            "operator",
-                                            "path",
-                                            "requestMethod",
-                                            "requestURL",
-                                            "resource",
-                                            "response",
-                                            "responseCode",
-                                            "sourceId",
-                                            "validateProfileId",
-                                            "value",
-                                            "warningOnly",
-                                        ],
-                                    ));
+                                    return unknown_field_error("minimumId");
                                 }
                             }
                             Field::NavigationLinks => {
@@ -5669,36 +4876,7 @@ impl<'de> serde::de::Deserialize<'de> for TestScriptSetupActionAssert {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "navigationLinks",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "label",
-                                            "description",
-                                            "direction",
-                                            "compareToSourceId",
-                                            "compareToSourceExpression",
-                                            "compareToSourcePath",
-                                            "contentType",
-                                            "expression",
-                                            "headerField",
-                                            "minimumId",
-                                            "navigationLinks",
-                                            "operator",
-                                            "path",
-                                            "requestMethod",
-                                            "requestURL",
-                                            "resource",
-                                            "response",
-                                            "responseCode",
-                                            "sourceId",
-                                            "validateProfileId",
-                                            "value",
-                                            "warningOnly",
-                                        ],
-                                    ));
+                                    return unknown_field_error("navigationLinks");
                                 }
                             }
                             Field::Operator => {
@@ -5729,36 +4907,7 @@ impl<'de> serde::de::Deserialize<'de> for TestScriptSetupActionAssert {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "operator",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "label",
-                                            "description",
-                                            "direction",
-                                            "compareToSourceId",
-                                            "compareToSourceExpression",
-                                            "compareToSourcePath",
-                                            "contentType",
-                                            "expression",
-                                            "headerField",
-                                            "minimumId",
-                                            "navigationLinks",
-                                            "operator",
-                                            "path",
-                                            "requestMethod",
-                                            "requestURL",
-                                            "resource",
-                                            "response",
-                                            "responseCode",
-                                            "sourceId",
-                                            "validateProfileId",
-                                            "value",
-                                            "warningOnly",
-                                        ],
-                                    ));
+                                    return unknown_field_error("operator");
                                 }
                             }
                             Field::Path => {
@@ -5789,36 +4938,7 @@ impl<'de> serde::de::Deserialize<'de> for TestScriptSetupActionAssert {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "path",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "label",
-                                            "description",
-                                            "direction",
-                                            "compareToSourceId",
-                                            "compareToSourceExpression",
-                                            "compareToSourcePath",
-                                            "contentType",
-                                            "expression",
-                                            "headerField",
-                                            "minimumId",
-                                            "navigationLinks",
-                                            "operator",
-                                            "path",
-                                            "requestMethod",
-                                            "requestURL",
-                                            "resource",
-                                            "response",
-                                            "responseCode",
-                                            "sourceId",
-                                            "validateProfileId",
-                                            "value",
-                                            "warningOnly",
-                                        ],
-                                    ));
+                                    return unknown_field_error("path");
                                 }
                             }
                             Field::RequestMethod => {
@@ -5855,36 +4975,7 @@ impl<'de> serde::de::Deserialize<'de> for TestScriptSetupActionAssert {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "requestMethod",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "label",
-                                            "description",
-                                            "direction",
-                                            "compareToSourceId",
-                                            "compareToSourceExpression",
-                                            "compareToSourcePath",
-                                            "contentType",
-                                            "expression",
-                                            "headerField",
-                                            "minimumId",
-                                            "navigationLinks",
-                                            "operator",
-                                            "path",
-                                            "requestMethod",
-                                            "requestURL",
-                                            "resource",
-                                            "response",
-                                            "responseCode",
-                                            "sourceId",
-                                            "validateProfileId",
-                                            "value",
-                                            "warningOnly",
-                                        ],
-                                    ));
+                                    return unknown_field_error("requestMethod");
                                 }
                             }
                             Field::RequestUrl => {
@@ -5921,36 +5012,7 @@ impl<'de> serde::de::Deserialize<'de> for TestScriptSetupActionAssert {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "requestURL",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "label",
-                                            "description",
-                                            "direction",
-                                            "compareToSourceId",
-                                            "compareToSourceExpression",
-                                            "compareToSourcePath",
-                                            "contentType",
-                                            "expression",
-                                            "headerField",
-                                            "minimumId",
-                                            "navigationLinks",
-                                            "operator",
-                                            "path",
-                                            "requestMethod",
-                                            "requestURL",
-                                            "resource",
-                                            "response",
-                                            "responseCode",
-                                            "sourceId",
-                                            "validateProfileId",
-                                            "value",
-                                            "warningOnly",
-                                        ],
-                                    ));
+                                    return unknown_field_error("requestURL");
                                 }
                             }
                             Field::Resource => {
@@ -5981,36 +5043,7 @@ impl<'de> serde::de::Deserialize<'de> for TestScriptSetupActionAssert {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "resource",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "label",
-                                            "description",
-                                            "direction",
-                                            "compareToSourceId",
-                                            "compareToSourceExpression",
-                                            "compareToSourcePath",
-                                            "contentType",
-                                            "expression",
-                                            "headerField",
-                                            "minimumId",
-                                            "navigationLinks",
-                                            "operator",
-                                            "path",
-                                            "requestMethod",
-                                            "requestURL",
-                                            "resource",
-                                            "response",
-                                            "responseCode",
-                                            "sourceId",
-                                            "validateProfileId",
-                                            "value",
-                                            "warningOnly",
-                                        ],
-                                    ));
+                                    return unknown_field_error("resource");
                                 }
                             }
                             Field::Response => {
@@ -6041,36 +5074,7 @@ impl<'de> serde::de::Deserialize<'de> for TestScriptSetupActionAssert {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "response",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "label",
-                                            "description",
-                                            "direction",
-                                            "compareToSourceId",
-                                            "compareToSourceExpression",
-                                            "compareToSourcePath",
-                                            "contentType",
-                                            "expression",
-                                            "headerField",
-                                            "minimumId",
-                                            "navigationLinks",
-                                            "operator",
-                                            "path",
-                                            "requestMethod",
-                                            "requestURL",
-                                            "resource",
-                                            "response",
-                                            "responseCode",
-                                            "sourceId",
-                                            "validateProfileId",
-                                            "value",
-                                            "warningOnly",
-                                        ],
-                                    ));
+                                    return unknown_field_error("response");
                                 }
                             }
                             Field::ResponseCode => {
@@ -6107,36 +5111,7 @@ impl<'de> serde::de::Deserialize<'de> for TestScriptSetupActionAssert {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "responseCode",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "label",
-                                            "description",
-                                            "direction",
-                                            "compareToSourceId",
-                                            "compareToSourceExpression",
-                                            "compareToSourcePath",
-                                            "contentType",
-                                            "expression",
-                                            "headerField",
-                                            "minimumId",
-                                            "navigationLinks",
-                                            "operator",
-                                            "path",
-                                            "requestMethod",
-                                            "requestURL",
-                                            "resource",
-                                            "response",
-                                            "responseCode",
-                                            "sourceId",
-                                            "validateProfileId",
-                                            "value",
-                                            "warningOnly",
-                                        ],
-                                    ));
+                                    return unknown_field_error("responseCode");
                                 }
                             }
                             Field::SourceId => {
@@ -6167,36 +5142,7 @@ impl<'de> serde::de::Deserialize<'de> for TestScriptSetupActionAssert {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "sourceId",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "label",
-                                            "description",
-                                            "direction",
-                                            "compareToSourceId",
-                                            "compareToSourceExpression",
-                                            "compareToSourcePath",
-                                            "contentType",
-                                            "expression",
-                                            "headerField",
-                                            "minimumId",
-                                            "navigationLinks",
-                                            "operator",
-                                            "path",
-                                            "requestMethod",
-                                            "requestURL",
-                                            "resource",
-                                            "response",
-                                            "responseCode",
-                                            "sourceId",
-                                            "validateProfileId",
-                                            "value",
-                                            "warningOnly",
-                                        ],
-                                    ));
+                                    return unknown_field_error("sourceId");
                                 }
                             }
                             Field::ValidateProfileId => {
@@ -6235,36 +5181,7 @@ impl<'de> serde::de::Deserialize<'de> for TestScriptSetupActionAssert {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "validateProfileId",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "label",
-                                            "description",
-                                            "direction",
-                                            "compareToSourceId",
-                                            "compareToSourceExpression",
-                                            "compareToSourcePath",
-                                            "contentType",
-                                            "expression",
-                                            "headerField",
-                                            "minimumId",
-                                            "navigationLinks",
-                                            "operator",
-                                            "path",
-                                            "requestMethod",
-                                            "requestURL",
-                                            "resource",
-                                            "response",
-                                            "responseCode",
-                                            "sourceId",
-                                            "validateProfileId",
-                                            "value",
-                                            "warningOnly",
-                                        ],
-                                    ));
+                                    return unknown_field_error("validateProfileId");
                                 }
                             }
                             Field::Value => {
@@ -6295,36 +5212,7 @@ impl<'de> serde::de::Deserialize<'de> for TestScriptSetupActionAssert {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "value",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "label",
-                                            "description",
-                                            "direction",
-                                            "compareToSourceId",
-                                            "compareToSourceExpression",
-                                            "compareToSourcePath",
-                                            "contentType",
-                                            "expression",
-                                            "headerField",
-                                            "minimumId",
-                                            "navigationLinks",
-                                            "operator",
-                                            "path",
-                                            "requestMethod",
-                                            "requestURL",
-                                            "resource",
-                                            "response",
-                                            "responseCode",
-                                            "sourceId",
-                                            "validateProfileId",
-                                            "value",
-                                            "warningOnly",
-                                        ],
-                                    ));
+                                    return unknown_field_error("value");
                                 }
                             }
                             Field::WarningOnly => {
@@ -6361,36 +5249,7 @@ impl<'de> serde::de::Deserialize<'de> for TestScriptSetupActionAssert {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "warningOnly",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "label",
-                                            "description",
-                                            "direction",
-                                            "compareToSourceId",
-                                            "compareToSourceExpression",
-                                            "compareToSourcePath",
-                                            "contentType",
-                                            "expression",
-                                            "headerField",
-                                            "minimumId",
-                                            "navigationLinks",
-                                            "operator",
-                                            "path",
-                                            "requestMethod",
-                                            "requestURL",
-                                            "resource",
-                                            "response",
-                                            "responseCode",
-                                            "sourceId",
-                                            "validateProfileId",
-                                            "value",
-                                            "warningOnly",
-                                        ],
-                                    ));
+                                    return unknown_field_error("warningOnly");
                                 }
                             }
                             Field::Unknown(key) => if _ctx.config.mode
@@ -6529,6 +5388,18 @@ impl<'de> serde::de::Deserialize<'de> for TestScriptSetupAction {
             #[serde(rename = "assert")]
             Assert,
             Unknown(std::string::String),
+        }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "operation",
+                    "assert",
+                ],
+            ))
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -6677,6 +5548,12 @@ impl<'de> serde::de::Deserialize<'de> for TestScriptSetup {
             Action,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &["id", "extension", "modifierExtension", "action"],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = TestScriptSetup;
@@ -6821,6 +5698,18 @@ impl<'de> serde::de::Deserialize<'de> for TestScriptTestAction {
             #[serde(rename = "assert")]
             Assert,
             Unknown(std::string::String),
+        }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "operation",
+                    "assert",
+                ],
+            ))
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -7019,6 +5908,19 @@ impl<'de> serde::de::Deserialize<'de> for TestScriptTest {
             Action,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "name",
+                    "description",
+                    "action",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = TestScriptTest;
@@ -7099,17 +6001,7 @@ impl<'de> serde::de::Deserialize<'de> for TestScriptTest {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "name",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "name",
-                                            "description",
-                                            "action",
-                                        ],
-                                    ));
+                                    return unknown_field_error("name");
                                 }
                             }
                             Field::Description => {
@@ -7146,17 +6038,7 @@ impl<'de> serde::de::Deserialize<'de> for TestScriptTest {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "description",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "name",
-                                            "description",
-                                            "action",
-                                        ],
-                                    ));
+                                    return unknown_field_error("description");
                                 }
                             }
                             Field::Action => {
@@ -7253,6 +6135,12 @@ impl<'de> serde::de::Deserialize<'de> for TestScriptTeardownAction {
             #[serde(rename = "operation")]
             Operation,
             Unknown(std::string::String),
+        }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &["id", "extension", "modifierExtension", "operation"],
+            ))
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -7392,6 +6280,12 @@ impl<'de> serde::de::Deserialize<'de> for TestScriptTeardown {
             #[serde(rename = "action")]
             Action,
             Unknown(std::string::String),
+        }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &["id", "extension", "modifierExtension", "action"],
+            ))
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -7955,6 +6849,45 @@ impl<'de> serde::de::Deserialize<'de> for TestScript {
             Teardown,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "meta",
+                    "implicitRules",
+                    "language",
+                    "text",
+                    "contained",
+                    "extension",
+                    "modifierExtension",
+                    "url",
+                    "identifier",
+                    "version",
+                    "name",
+                    "title",
+                    "status",
+                    "experimental",
+                    "date",
+                    "publisher",
+                    "contact",
+                    "description",
+                    "useContext",
+                    "jurisdiction",
+                    "purpose",
+                    "copyright",
+                    "origin",
+                    "destination",
+                    "metadata",
+                    "fixture",
+                    "profile",
+                    "variable",
+                    "setup",
+                    "test",
+                    "teardown",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = TestScript;
@@ -8058,43 +6991,7 @@ impl<'de> serde::de::Deserialize<'de> for TestScript {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "implicitRules",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "identifier",
-                                            "version",
-                                            "name",
-                                            "title",
-                                            "status",
-                                            "experimental",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "description",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "purpose",
-                                            "copyright",
-                                            "origin",
-                                            "destination",
-                                            "metadata",
-                                            "fixture",
-                                            "profile",
-                                            "variable",
-                                            "setup",
-                                            "test",
-                                            "teardown",
-                                        ],
-                                    ));
+                                    return unknown_field_error("implicitRules");
                                 }
                             }
                             Field::Language => {
@@ -8125,43 +7022,7 @@ impl<'de> serde::de::Deserialize<'de> for TestScript {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "language",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "identifier",
-                                            "version",
-                                            "name",
-                                            "title",
-                                            "status",
-                                            "experimental",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "description",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "purpose",
-                                            "copyright",
-                                            "origin",
-                                            "destination",
-                                            "metadata",
-                                            "fixture",
-                                            "profile",
-                                            "variable",
-                                            "setup",
-                                            "test",
-                                            "teardown",
-                                        ],
-                                    ));
+                                    return unknown_field_error("language");
                                 }
                             }
                             Field::Text => {
@@ -8234,43 +7095,7 @@ impl<'de> serde::de::Deserialize<'de> for TestScript {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "url",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "identifier",
-                                            "version",
-                                            "name",
-                                            "title",
-                                            "status",
-                                            "experimental",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "description",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "purpose",
-                                            "copyright",
-                                            "origin",
-                                            "destination",
-                                            "metadata",
-                                            "fixture",
-                                            "profile",
-                                            "variable",
-                                            "setup",
-                                            "test",
-                                            "teardown",
-                                        ],
-                                    ));
+                                    return unknown_field_error("url");
                                 }
                             }
                             Field::Identifier => {
@@ -8307,43 +7132,7 @@ impl<'de> serde::de::Deserialize<'de> for TestScript {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "version",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "identifier",
-                                            "version",
-                                            "name",
-                                            "title",
-                                            "status",
-                                            "experimental",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "description",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "purpose",
-                                            "copyright",
-                                            "origin",
-                                            "destination",
-                                            "metadata",
-                                            "fixture",
-                                            "profile",
-                                            "variable",
-                                            "setup",
-                                            "test",
-                                            "teardown",
-                                        ],
-                                    ));
+                                    return unknown_field_error("version");
                                 }
                             }
                             Field::Name => {
@@ -8374,43 +7163,7 @@ impl<'de> serde::de::Deserialize<'de> for TestScript {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "name",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "identifier",
-                                            "version",
-                                            "name",
-                                            "title",
-                                            "status",
-                                            "experimental",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "description",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "purpose",
-                                            "copyright",
-                                            "origin",
-                                            "destination",
-                                            "metadata",
-                                            "fixture",
-                                            "profile",
-                                            "variable",
-                                            "setup",
-                                            "test",
-                                            "teardown",
-                                        ],
-                                    ));
+                                    return unknown_field_error("name");
                                 }
                             }
                             Field::Title => {
@@ -8441,43 +7194,7 @@ impl<'de> serde::de::Deserialize<'de> for TestScript {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "title",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "identifier",
-                                            "version",
-                                            "name",
-                                            "title",
-                                            "status",
-                                            "experimental",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "description",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "purpose",
-                                            "copyright",
-                                            "origin",
-                                            "destination",
-                                            "metadata",
-                                            "fixture",
-                                            "profile",
-                                            "variable",
-                                            "setup",
-                                            "test",
-                                            "teardown",
-                                        ],
-                                    ));
+                                    return unknown_field_error("title");
                                 }
                             }
                             Field::Status => {
@@ -8508,43 +7225,7 @@ impl<'de> serde::de::Deserialize<'de> for TestScript {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "status",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "identifier",
-                                            "version",
-                                            "name",
-                                            "title",
-                                            "status",
-                                            "experimental",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "description",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "purpose",
-                                            "copyright",
-                                            "origin",
-                                            "destination",
-                                            "metadata",
-                                            "fixture",
-                                            "profile",
-                                            "variable",
-                                            "setup",
-                                            "test",
-                                            "teardown",
-                                        ],
-                                    ));
+                                    return unknown_field_error("status");
                                 }
                             }
                             Field::Experimental => {
@@ -8581,43 +7262,7 @@ impl<'de> serde::de::Deserialize<'de> for TestScript {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "experimental",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "identifier",
-                                            "version",
-                                            "name",
-                                            "title",
-                                            "status",
-                                            "experimental",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "description",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "purpose",
-                                            "copyright",
-                                            "origin",
-                                            "destination",
-                                            "metadata",
-                                            "fixture",
-                                            "profile",
-                                            "variable",
-                                            "setup",
-                                            "test",
-                                            "teardown",
-                                        ],
-                                    ));
+                                    return unknown_field_error("experimental");
                                 }
                             }
                             Field::Date => {
@@ -8648,43 +7293,7 @@ impl<'de> serde::de::Deserialize<'de> for TestScript {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "date",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "identifier",
-                                            "version",
-                                            "name",
-                                            "title",
-                                            "status",
-                                            "experimental",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "description",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "purpose",
-                                            "copyright",
-                                            "origin",
-                                            "destination",
-                                            "metadata",
-                                            "fixture",
-                                            "profile",
-                                            "variable",
-                                            "setup",
-                                            "test",
-                                            "teardown",
-                                        ],
-                                    ));
+                                    return unknown_field_error("date");
                                 }
                             }
                             Field::Publisher => {
@@ -8717,43 +7326,7 @@ impl<'de> serde::de::Deserialize<'de> for TestScript {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "publisher",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "identifier",
-                                            "version",
-                                            "name",
-                                            "title",
-                                            "status",
-                                            "experimental",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "description",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "purpose",
-                                            "copyright",
-                                            "origin",
-                                            "destination",
-                                            "metadata",
-                                            "fixture",
-                                            "profile",
-                                            "variable",
-                                            "setup",
-                                            "test",
-                                            "teardown",
-                                        ],
-                                    ));
+                                    return unknown_field_error("publisher");
                                 }
                             }
                             Field::Contact => {
@@ -8801,43 +7374,7 @@ impl<'de> serde::de::Deserialize<'de> for TestScript {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "description",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "identifier",
-                                            "version",
-                                            "name",
-                                            "title",
-                                            "status",
-                                            "experimental",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "description",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "purpose",
-                                            "copyright",
-                                            "origin",
-                                            "destination",
-                                            "metadata",
-                                            "fixture",
-                                            "profile",
-                                            "variable",
-                                            "setup",
-                                            "test",
-                                            "teardown",
-                                        ],
-                                    ));
+                                    return unknown_field_error("description");
                                 }
                             }
                             Field::UseContext => {
@@ -8894,43 +7431,7 @@ impl<'de> serde::de::Deserialize<'de> for TestScript {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "purpose",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "identifier",
-                                            "version",
-                                            "name",
-                                            "title",
-                                            "status",
-                                            "experimental",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "description",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "purpose",
-                                            "copyright",
-                                            "origin",
-                                            "destination",
-                                            "metadata",
-                                            "fixture",
-                                            "profile",
-                                            "variable",
-                                            "setup",
-                                            "test",
-                                            "teardown",
-                                        ],
-                                    ));
+                                    return unknown_field_error("purpose");
                                 }
                             }
                             Field::Copyright => {
@@ -8963,43 +7464,7 @@ impl<'de> serde::de::Deserialize<'de> for TestScript {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "copyright",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "identifier",
-                                            "version",
-                                            "name",
-                                            "title",
-                                            "status",
-                                            "experimental",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "description",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "purpose",
-                                            "copyright",
-                                            "origin",
-                                            "destination",
-                                            "metadata",
-                                            "fixture",
-                                            "profile",
-                                            "variable",
-                                            "setup",
-                                            "test",
-                                            "teardown",
-                                        ],
-                                    ));
+                                    return unknown_field_error("copyright");
                                 }
                             }
                             Field::Origin => {

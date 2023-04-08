@@ -1,4 +1,4 @@
-// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-08 by fhirbolt-codegen v0.1.0
 #[doc = "The amount due from the patient for the cost category."]
 #[derive(Debug, Clone, PartialEq)]
 pub enum CoverageCostToBeneficiaryValue {
@@ -110,6 +110,19 @@ impl<'de> serde::de::Deserialize<'de> for CoverageClass {
             NamePrimitiveElement,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "type",
+                    "value",
+                    "name",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = CoverageClass;
@@ -196,17 +209,7 @@ impl<'de> serde::de::Deserialize<'de> for CoverageClass {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "value",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "type",
-                                            "value",
-                                            "name",
-                                        ],
-                                    ));
+                                    return unknown_field_error("value");
                                 }
                             }
                             Field::Name => {
@@ -237,17 +240,7 @@ impl<'de> serde::de::Deserialize<'de> for CoverageClass {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "name",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "type",
-                                            "value",
-                                            "name",
-                                        ],
-                                    ));
+                                    return unknown_field_error("name");
                                 }
                             }
                             Field::Unknown(key) => if _ctx.config.mode
@@ -352,6 +345,12 @@ impl<'de> serde::de::Deserialize<'de> for CoverageCostToBeneficiaryException {
             #[serde(rename = "period")]
             Period,
             Unknown(std::string::String),
+        }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &["id", "extension", "modifierExtension", "type", "period"],
+            ))
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -526,6 +525,20 @@ impl<'de> serde::de::Deserialize<'de> for CoverageCostToBeneficiary {
             #[serde(rename = "exception")]
             Exception,
             Unknown(std::string::String),
+        }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "type",
+                    "valueQuantity",
+                    "valueMoney",
+                    "exception",
+                ],
+            ))
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -996,6 +1009,38 @@ impl<'de> serde::de::Deserialize<'de> for Coverage {
             Contract,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "meta",
+                    "implicitRules",
+                    "language",
+                    "text",
+                    "contained",
+                    "extension",
+                    "modifierExtension",
+                    "identifier",
+                    "status",
+                    "type",
+                    "policyHolder",
+                    "subscriber",
+                    "subscriberId",
+                    "beneficiary",
+                    "dependent",
+                    "relationship",
+                    "period",
+                    "payor",
+                    "class",
+                    "order",
+                    "network",
+                    "costToBeneficiary",
+                    "subrogation",
+                    "contract",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = Coverage;
@@ -1091,36 +1136,7 @@ impl<'de> serde::de::Deserialize<'de> for Coverage {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "implicitRules",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "status",
-                                            "type",
-                                            "policyHolder",
-                                            "subscriber",
-                                            "subscriberId",
-                                            "beneficiary",
-                                            "dependent",
-                                            "relationship",
-                                            "period",
-                                            "payor",
-                                            "class",
-                                            "order",
-                                            "network",
-                                            "costToBeneficiary",
-                                            "subrogation",
-                                            "contract",
-                                        ],
-                                    ));
+                                    return unknown_field_error("implicitRules");
                                 }
                             }
                             Field::Language => {
@@ -1151,36 +1167,7 @@ impl<'de> serde::de::Deserialize<'de> for Coverage {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "language",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "status",
-                                            "type",
-                                            "policyHolder",
-                                            "subscriber",
-                                            "subscriberId",
-                                            "beneficiary",
-                                            "dependent",
-                                            "relationship",
-                                            "period",
-                                            "payor",
-                                            "class",
-                                            "order",
-                                            "network",
-                                            "costToBeneficiary",
-                                            "subrogation",
-                                            "contract",
-                                        ],
-                                    ));
+                                    return unknown_field_error("language");
                                 }
                             }
                             Field::Text => {
@@ -1266,36 +1253,7 @@ impl<'de> serde::de::Deserialize<'de> for Coverage {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "status",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "status",
-                                            "type",
-                                            "policyHolder",
-                                            "subscriber",
-                                            "subscriberId",
-                                            "beneficiary",
-                                            "dependent",
-                                            "relationship",
-                                            "period",
-                                            "payor",
-                                            "class",
-                                            "order",
-                                            "network",
-                                            "costToBeneficiary",
-                                            "subrogation",
-                                            "contract",
-                                        ],
-                                    ));
+                                    return unknown_field_error("status");
                                 }
                             }
                             Field::Type => {
@@ -1350,36 +1308,7 @@ impl<'de> serde::de::Deserialize<'de> for Coverage {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "subscriberId",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "status",
-                                            "type",
-                                            "policyHolder",
-                                            "subscriber",
-                                            "subscriberId",
-                                            "beneficiary",
-                                            "dependent",
-                                            "relationship",
-                                            "period",
-                                            "payor",
-                                            "class",
-                                            "order",
-                                            "network",
-                                            "costToBeneficiary",
-                                            "subrogation",
-                                            "contract",
-                                        ],
-                                    ));
+                                    return unknown_field_error("subscriberId");
                                 }
                             }
                             Field::Beneficiary => {
@@ -1418,36 +1347,7 @@ impl<'de> serde::de::Deserialize<'de> for Coverage {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "dependent",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "status",
-                                            "type",
-                                            "policyHolder",
-                                            "subscriber",
-                                            "subscriberId",
-                                            "beneficiary",
-                                            "dependent",
-                                            "relationship",
-                                            "period",
-                                            "payor",
-                                            "class",
-                                            "order",
-                                            "network",
-                                            "costToBeneficiary",
-                                            "subrogation",
-                                            "contract",
-                                        ],
-                                    ));
+                                    return unknown_field_error("dependent");
                                 }
                             }
                             Field::Relationship => {
@@ -1512,36 +1412,7 @@ impl<'de> serde::de::Deserialize<'de> for Coverage {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "order",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "status",
-                                            "type",
-                                            "policyHolder",
-                                            "subscriber",
-                                            "subscriberId",
-                                            "beneficiary",
-                                            "dependent",
-                                            "relationship",
-                                            "period",
-                                            "payor",
-                                            "class",
-                                            "order",
-                                            "network",
-                                            "costToBeneficiary",
-                                            "subrogation",
-                                            "contract",
-                                        ],
-                                    ));
+                                    return unknown_field_error("order");
                                 }
                             }
                             Field::Network => {
@@ -1572,36 +1443,7 @@ impl<'de> serde::de::Deserialize<'de> for Coverage {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "network",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "status",
-                                            "type",
-                                            "policyHolder",
-                                            "subscriber",
-                                            "subscriberId",
-                                            "beneficiary",
-                                            "dependent",
-                                            "relationship",
-                                            "period",
-                                            "payor",
-                                            "class",
-                                            "order",
-                                            "network",
-                                            "costToBeneficiary",
-                                            "subrogation",
-                                            "contract",
-                                        ],
-                                    ));
+                                    return unknown_field_error("network");
                                 }
                             }
                             Field::CostToBeneficiary => {
@@ -1652,36 +1494,7 @@ impl<'de> serde::de::Deserialize<'de> for Coverage {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "subrogation",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "status",
-                                            "type",
-                                            "policyHolder",
-                                            "subscriber",
-                                            "subscriberId",
-                                            "beneficiary",
-                                            "dependent",
-                                            "relationship",
-                                            "period",
-                                            "payor",
-                                            "class",
-                                            "order",
-                                            "network",
-                                            "costToBeneficiary",
-                                            "subrogation",
-                                            "contract",
-                                        ],
-                                    ));
+                                    return unknown_field_error("subrogation");
                                 }
                             }
                             Field::Contract => {

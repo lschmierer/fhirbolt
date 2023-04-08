@@ -1,4 +1,4 @@
-// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-08 by fhirbolt-codegen v0.1.0
 #[doc = "The date or event after which the goal should begin being pursued."]
 #[derive(Debug, Clone, PartialEq)]
 pub enum GoalStart {
@@ -226,6 +226,26 @@ impl<'de> serde::de::Deserialize<'de> for GoalTarget {
             DueDuration,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "measure",
+                    "detailQuantity",
+                    "detailRange",
+                    "detailCodeableConcept",
+                    "detailString",
+                    "detailBoolean",
+                    "detailInteger",
+                    "detailRatio",
+                    "dueDate",
+                    "dueDuration",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = GoalTarget;
@@ -358,24 +378,7 @@ impl<'de> serde::de::Deserialize<'de> for GoalTarget {
                                         ));
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "detailString",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "measure",
-                                            "detailQuantity",
-                                            "detailRange",
-                                            "detailCodeableConcept",
-                                            "detailString",
-                                            "detailBoolean",
-                                            "detailInteger",
-                                            "detailRatio",
-                                            "dueDate",
-                                            "dueDuration",
-                                        ],
-                                    ));
+                                    return unknown_field_error("detailString");
                                 }
                             }
                             Field::DetailBoolean => {
@@ -427,24 +430,7 @@ impl<'de> serde::de::Deserialize<'de> for GoalTarget {
                                         ));
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "detailBoolean",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "measure",
-                                            "detailQuantity",
-                                            "detailRange",
-                                            "detailCodeableConcept",
-                                            "detailString",
-                                            "detailBoolean",
-                                            "detailInteger",
-                                            "detailRatio",
-                                            "dueDate",
-                                            "dueDuration",
-                                        ],
-                                    ));
+                                    return unknown_field_error("detailBoolean");
                                 }
                             }
                             Field::DetailInteger => {
@@ -496,24 +482,7 @@ impl<'de> serde::de::Deserialize<'de> for GoalTarget {
                                         ));
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "detailInteger",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "measure",
-                                            "detailQuantity",
-                                            "detailRange",
-                                            "detailCodeableConcept",
-                                            "detailString",
-                                            "detailBoolean",
-                                            "detailInteger",
-                                            "detailRatio",
-                                            "dueDate",
-                                            "dueDuration",
-                                        ],
-                                    ));
+                                    return unknown_field_error("detailInteger");
                                 }
                             }
                             Field::DetailRatio => {
@@ -564,24 +533,7 @@ impl<'de> serde::de::Deserialize<'de> for GoalTarget {
                                         return Err(serde::de::Error::duplicate_field("_due[x]"));
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "dueDate",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "measure",
-                                            "detailQuantity",
-                                            "detailRange",
-                                            "detailCodeableConcept",
-                                            "detailString",
-                                            "detailBoolean",
-                                            "detailInteger",
-                                            "detailRatio",
-                                            "dueDate",
-                                            "dueDuration",
-                                        ],
-                                    ));
+                                    return unknown_field_error("dueDate");
                                 }
                             }
                             Field::DueDuration => {
@@ -942,6 +894,38 @@ impl<'de> serde::de::Deserialize<'de> for Goal {
             OutcomeReference,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "meta",
+                    "implicitRules",
+                    "language",
+                    "text",
+                    "contained",
+                    "extension",
+                    "modifierExtension",
+                    "identifier",
+                    "lifecycleStatus",
+                    "achievementStatus",
+                    "category",
+                    "priority",
+                    "description",
+                    "subject",
+                    "startDate",
+                    "startCodeableConcept",
+                    "target",
+                    "statusDate",
+                    "statusReason",
+                    "expressedBy",
+                    "addresses",
+                    "note",
+                    "outcomeCode",
+                    "outcomeReference",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = Goal;
@@ -1039,36 +1023,7 @@ impl<'de> serde::de::Deserialize<'de> for Goal {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "implicitRules",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "lifecycleStatus",
-                                            "achievementStatus",
-                                            "category",
-                                            "priority",
-                                            "description",
-                                            "subject",
-                                            "startDate",
-                                            "startCodeableConcept",
-                                            "target",
-                                            "statusDate",
-                                            "statusReason",
-                                            "expressedBy",
-                                            "addresses",
-                                            "note",
-                                            "outcomeCode",
-                                            "outcomeReference",
-                                        ],
-                                    ));
+                                    return unknown_field_error("implicitRules");
                                 }
                             }
                             Field::Language => {
@@ -1099,36 +1054,7 @@ impl<'de> serde::de::Deserialize<'de> for Goal {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "language",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "lifecycleStatus",
-                                            "achievementStatus",
-                                            "category",
-                                            "priority",
-                                            "description",
-                                            "subject",
-                                            "startDate",
-                                            "startCodeableConcept",
-                                            "target",
-                                            "statusDate",
-                                            "statusReason",
-                                            "expressedBy",
-                                            "addresses",
-                                            "note",
-                                            "outcomeCode",
-                                            "outcomeReference",
-                                        ],
-                                    ));
+                                    return unknown_field_error("language");
                                 }
                             }
                             Field::Text => {
@@ -1220,36 +1146,7 @@ impl<'de> serde::de::Deserialize<'de> for Goal {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "lifecycleStatus",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "lifecycleStatus",
-                                            "achievementStatus",
-                                            "category",
-                                            "priority",
-                                            "description",
-                                            "subject",
-                                            "startDate",
-                                            "startCodeableConcept",
-                                            "target",
-                                            "statusDate",
-                                            "statusReason",
-                                            "expressedBy",
-                                            "addresses",
-                                            "note",
-                                            "outcomeCode",
-                                            "outcomeReference",
-                                        ],
-                                    ));
+                                    return unknown_field_error("lifecycleStatus");
                                 }
                             }
                             Field::AchievementStatus => {
@@ -1331,36 +1228,7 @@ impl<'de> serde::de::Deserialize<'de> for Goal {
                                         return Err(serde::de::Error::duplicate_field("_start[x]"));
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "startDate",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "lifecycleStatus",
-                                            "achievementStatus",
-                                            "category",
-                                            "priority",
-                                            "description",
-                                            "subject",
-                                            "startDate",
-                                            "startCodeableConcept",
-                                            "target",
-                                            "statusDate",
-                                            "statusReason",
-                                            "expressedBy",
-                                            "addresses",
-                                            "note",
-                                            "outcomeCode",
-                                            "outcomeReference",
-                                        ],
-                                    ));
+                                    return unknown_field_error("startDate");
                                 }
                             }
                             Field::StartCodeableConcept => {
@@ -1417,36 +1285,7 @@ impl<'de> serde::de::Deserialize<'de> for Goal {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "statusDate",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "lifecycleStatus",
-                                            "achievementStatus",
-                                            "category",
-                                            "priority",
-                                            "description",
-                                            "subject",
-                                            "startDate",
-                                            "startCodeableConcept",
-                                            "target",
-                                            "statusDate",
-                                            "statusReason",
-                                            "expressedBy",
-                                            "addresses",
-                                            "note",
-                                            "outcomeCode",
-                                            "outcomeReference",
-                                        ],
-                                    ));
+                                    return unknown_field_error("statusDate");
                                 }
                             }
                             Field::StatusReason => {
@@ -1483,36 +1322,7 @@ impl<'de> serde::de::Deserialize<'de> for Goal {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "statusReason",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "lifecycleStatus",
-                                            "achievementStatus",
-                                            "category",
-                                            "priority",
-                                            "description",
-                                            "subject",
-                                            "startDate",
-                                            "startCodeableConcept",
-                                            "target",
-                                            "statusDate",
-                                            "statusReason",
-                                            "expressedBy",
-                                            "addresses",
-                                            "note",
-                                            "outcomeCode",
-                                            "outcomeReference",
-                                        ],
-                                    ));
+                                    return unknown_field_error("statusReason");
                                 }
                             }
                             Field::ExpressedBy => {

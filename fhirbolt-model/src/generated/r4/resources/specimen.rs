@@ -1,4 +1,4 @@
-// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-08 by fhirbolt-codegen v0.1.0
 #[doc = "Time when specimen was collected from subject - the physiologically relevant time."]
 #[derive(Debug, Clone, PartialEq)]
 pub enum SpecimenCollectionCollected {
@@ -185,6 +185,25 @@ impl<'de> serde::de::Deserialize<'de> for SpecimenCollection {
             FastingStatusDuration,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "collector",
+                    "collectedDateTime",
+                    "collectedPeriod",
+                    "duration",
+                    "quantity",
+                    "method",
+                    "bodySite",
+                    "fastingStatusCodeableConcept",
+                    "fastingStatusDuration",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = SpecimenCollection;
@@ -299,23 +318,7 @@ impl<'de> serde::de::Deserialize<'de> for SpecimenCollection {
                                         ));
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "collectedDateTime",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "collector",
-                                            "collectedDateTime",
-                                            "collectedPeriod",
-                                            "duration",
-                                            "quantity",
-                                            "method",
-                                            "bodySite",
-                                            "fastingStatusCodeableConcept",
-                                            "fastingStatusDuration",
-                                        ],
-                                    ));
+                                    return unknown_field_error("collectedDateTime");
                                 }
                             }
                             Field::CollectedPeriod => {
@@ -537,6 +540,21 @@ impl<'de> serde::de::Deserialize<'de> for SpecimenProcessing {
             TimePeriod,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "description",
+                    "procedure",
+                    "additive",
+                    "timeDateTime",
+                    "timePeriod",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = SpecimenProcessing;
@@ -624,19 +642,7 @@ impl<'de> serde::de::Deserialize<'de> for SpecimenProcessing {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "description",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "description",
-                                            "procedure",
-                                            "additive",
-                                            "timeDateTime",
-                                            "timePeriod",
-                                        ],
-                                    ));
+                                    return unknown_field_error("description");
                                 }
                             }
                             Field::Procedure => {
@@ -704,19 +710,7 @@ impl<'de> serde::de::Deserialize<'de> for SpecimenProcessing {
                                         return Err(serde::de::Error::duplicate_field("_time[x]"));
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "timeDateTime",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "description",
-                                            "procedure",
-                                            "additive",
-                                            "timeDateTime",
-                                            "timePeriod",
-                                        ],
-                                    ));
+                                    return unknown_field_error("timeDateTime");
                                 }
                             }
                             Field::TimePeriod => {
@@ -880,6 +874,23 @@ impl<'de> serde::de::Deserialize<'de> for SpecimenContainer {
             AdditiveReference,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "identifier",
+                    "description",
+                    "type",
+                    "capacity",
+                    "specimenQuantity",
+                    "additiveCodeableConcept",
+                    "additiveReference",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = SpecimenContainer;
@@ -982,21 +993,7 @@ impl<'de> serde::de::Deserialize<'de> for SpecimenContainer {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "description",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "description",
-                                            "type",
-                                            "capacity",
-                                            "specimenQuantity",
-                                            "additiveCodeableConcept",
-                                            "additiveReference",
-                                        ],
-                                    ));
+                                    return unknown_field_error("description");
                                 }
                             }
                             Field::Type => {
@@ -1329,6 +1326,34 @@ impl<'de> serde::de::Deserialize<'de> for Specimen {
             Note,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "meta",
+                    "implicitRules",
+                    "language",
+                    "text",
+                    "contained",
+                    "extension",
+                    "modifierExtension",
+                    "identifier",
+                    "accessionIdentifier",
+                    "status",
+                    "type",
+                    "subject",
+                    "receivedTime",
+                    "parent",
+                    "request",
+                    "collection",
+                    "processing",
+                    "container",
+                    "condition",
+                    "note",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = Specimen;
@@ -1420,32 +1445,7 @@ impl<'de> serde::de::Deserialize<'de> for Specimen {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "implicitRules",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "accessionIdentifier",
-                                            "status",
-                                            "type",
-                                            "subject",
-                                            "receivedTime",
-                                            "parent",
-                                            "request",
-                                            "collection",
-                                            "processing",
-                                            "container",
-                                            "condition",
-                                            "note",
-                                        ],
-                                    ));
+                                    return unknown_field_error("implicitRules");
                                 }
                             }
                             Field::Language => {
@@ -1476,32 +1476,7 @@ impl<'de> serde::de::Deserialize<'de> for Specimen {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "language",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "accessionIdentifier",
-                                            "status",
-                                            "type",
-                                            "subject",
-                                            "receivedTime",
-                                            "parent",
-                                            "request",
-                                            "collection",
-                                            "processing",
-                                            "container",
-                                            "condition",
-                                            "note",
-                                        ],
-                                    ));
+                                    return unknown_field_error("language");
                                 }
                             }
                             Field::Text => {
@@ -1595,32 +1570,7 @@ impl<'de> serde::de::Deserialize<'de> for Specimen {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "status",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "accessionIdentifier",
-                                            "status",
-                                            "type",
-                                            "subject",
-                                            "receivedTime",
-                                            "parent",
-                                            "request",
-                                            "collection",
-                                            "processing",
-                                            "container",
-                                            "condition",
-                                            "note",
-                                        ],
-                                    ));
+                                    return unknown_field_error("status");
                                 }
                             }
                             Field::Type => {
@@ -1669,32 +1619,7 @@ impl<'de> serde::de::Deserialize<'de> for Specimen {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "receivedTime",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "accessionIdentifier",
-                                            "status",
-                                            "type",
-                                            "subject",
-                                            "receivedTime",
-                                            "parent",
-                                            "request",
-                                            "collection",
-                                            "processing",
-                                            "container",
-                                            "condition",
-                                            "note",
-                                        ],
-                                    ));
+                                    return unknown_field_error("receivedTime");
                                 }
                             }
                             Field::Parent => {

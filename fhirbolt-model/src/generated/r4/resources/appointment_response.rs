@@ -1,4 +1,4 @@
-// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-08 by fhirbolt-codegen v0.1.0
 #[doc = "A reply to an appointment request for a patient and/or practitioner(s), such as a confirmation or rejection."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub struct AppointmentResponse {
@@ -248,6 +248,29 @@ impl<'de> serde::de::Deserialize<'de> for AppointmentResponse {
             CommentPrimitiveElement,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "meta",
+                    "implicitRules",
+                    "language",
+                    "text",
+                    "contained",
+                    "extension",
+                    "modifierExtension",
+                    "identifier",
+                    "appointment",
+                    "start",
+                    "end",
+                    "participantType",
+                    "actor",
+                    "participantStatus",
+                    "comment",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = AppointmentResponse;
@@ -335,27 +358,7 @@ impl<'de> serde::de::Deserialize<'de> for AppointmentResponse {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "implicitRules",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "appointment",
-                                            "start",
-                                            "end",
-                                            "participantType",
-                                            "actor",
-                                            "participantStatus",
-                                            "comment",
-                                        ],
-                                    ));
+                                    return unknown_field_error("implicitRules");
                                 }
                             }
                             Field::Language => {
@@ -386,27 +389,7 @@ impl<'de> serde::de::Deserialize<'de> for AppointmentResponse {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "language",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "appointment",
-                                            "start",
-                                            "end",
-                                            "participantType",
-                                            "actor",
-                                            "participantStatus",
-                                            "comment",
-                                        ],
-                                    ));
+                                    return unknown_field_error("language");
                                 }
                             }
                             Field::Text => {
@@ -498,27 +481,7 @@ impl<'de> serde::de::Deserialize<'de> for AppointmentResponse {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "start",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "appointment",
-                                            "start",
-                                            "end",
-                                            "participantType",
-                                            "actor",
-                                            "participantStatus",
-                                            "comment",
-                                        ],
-                                    ));
+                                    return unknown_field_error("start");
                                 }
                             }
                             Field::End => {
@@ -549,27 +512,7 @@ impl<'de> serde::de::Deserialize<'de> for AppointmentResponse {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "end",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "appointment",
-                                            "start",
-                                            "end",
-                                            "participantType",
-                                            "actor",
-                                            "participantStatus",
-                                            "comment",
-                                        ],
-                                    ));
+                                    return unknown_field_error("end");
                                 }
                             }
                             Field::ParticipantType => {
@@ -627,27 +570,7 @@ impl<'de> serde::de::Deserialize<'de> for AppointmentResponse {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "participantStatus",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "appointment",
-                                            "start",
-                                            "end",
-                                            "participantType",
-                                            "actor",
-                                            "participantStatus",
-                                            "comment",
-                                        ],
-                                    ));
+                                    return unknown_field_error("participantStatus");
                                 }
                             }
                             Field::Comment => {
@@ -678,27 +601,7 @@ impl<'de> serde::de::Deserialize<'de> for AppointmentResponse {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "comment",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "appointment",
-                                            "start",
-                                            "end",
-                                            "participantType",
-                                            "actor",
-                                            "participantStatus",
-                                            "comment",
-                                        ],
-                                    ));
+                                    return unknown_field_error("comment");
                                 }
                             }
                             Field::Unknown(key) => if _ctx.config.mode

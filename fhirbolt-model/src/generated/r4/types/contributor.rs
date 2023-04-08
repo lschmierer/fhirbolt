@@ -1,4 +1,4 @@
-// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-08 by fhirbolt-codegen v0.1.0
 #[doc = "Base StructureDefinition for Contributor Type: A contributor to the content of a knowledge asset, including authors, editors, reviewers, and endorsers.\n\nNeed to track contributor information in the same way across multiple resources."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub struct Contributor {
@@ -89,6 +89,12 @@ impl<'de> serde::de::Deserialize<'de> for Contributor {
             Contact,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &["id", "extension", "type", "name", "contact"],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = Contributor;
@@ -153,10 +159,7 @@ impl<'de> serde::de::Deserialize<'de> for Contributor {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "type",
-                                        &["id", "extension", "type", "name", "contact"],
-                                    ));
+                                    return unknown_field_error("type");
                                 }
                             }
                             Field::Name => {
@@ -187,10 +190,7 @@ impl<'de> serde::de::Deserialize<'de> for Contributor {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "name",
-                                        &["id", "extension", "type", "name", "contact"],
-                                    ));
+                                    return unknown_field_error("name");
                                 }
                             }
                             Field::Contact => {

@@ -1,4 +1,4 @@
-// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-08 by fhirbolt-codegen v0.1.0
 #[doc = "The intended subjects for the measure. If this element is not provided, a Patient subject is assumed, but the subject of the measure can be anything."]
 #[derive(Debug, Clone, PartialEq)]
 pub enum MeasureSubject {
@@ -96,6 +96,19 @@ impl<'de> serde::de::Deserialize<'de> for MeasureGroupPopulation {
             Criteria,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "code",
+                    "description",
+                    "criteria",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = MeasureGroupPopulation;
@@ -188,17 +201,7 @@ impl<'de> serde::de::Deserialize<'de> for MeasureGroupPopulation {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "description",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "code",
-                                            "description",
-                                            "criteria",
-                                        ],
-                                    ));
+                                    return unknown_field_error("description");
                                 }
                             }
                             Field::Criteria => {
@@ -329,6 +332,19 @@ impl<'de> serde::de::Deserialize<'de> for MeasureGroupStratifierComponent {
             Criteria,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "code",
+                    "description",
+                    "criteria",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = MeasureGroupStratifierComponent;
@@ -424,17 +440,7 @@ impl<'de> serde::de::Deserialize<'de> for MeasureGroupStratifierComponent {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "description",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "code",
-                                            "description",
-                                            "criteria",
-                                        ],
-                                    ));
+                                    return unknown_field_error("description");
                                 }
                             }
                             Field::Criteria => {
@@ -574,6 +580,20 @@ impl<'de> serde::de::Deserialize<'de> for MeasureGroupStratifier {
             Component,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "code",
+                    "description",
+                    "criteria",
+                    "component",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = MeasureGroupStratifier;
@@ -667,18 +687,7 @@ impl<'de> serde::de::Deserialize<'de> for MeasureGroupStratifier {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "description",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "code",
-                                            "description",
-                                            "criteria",
-                                            "component",
-                                        ],
-                                    ));
+                                    return unknown_field_error("description");
                                 }
                             }
                             Field::Criteria => {
@@ -825,6 +834,20 @@ impl<'de> serde::de::Deserialize<'de> for MeasureGroup {
             Stratifier,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "code",
+                    "description",
+                    "population",
+                    "stratifier",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = MeasureGroup;
@@ -918,18 +941,7 @@ impl<'de> serde::de::Deserialize<'de> for MeasureGroup {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "description",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "code",
-                                            "description",
-                                            "population",
-                                            "stratifier",
-                                        ],
-                                    ));
+                                    return unknown_field_error("description");
                                 }
                             }
                             Field::Population => {
@@ -1083,6 +1095,20 @@ impl<'de> serde::de::Deserialize<'de> for MeasureSupplementalData {
             Criteria,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "code",
+                    "usage",
+                    "description",
+                    "criteria",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = MeasureSupplementalData;
@@ -1187,18 +1213,7 @@ impl<'de> serde::de::Deserialize<'de> for MeasureSupplementalData {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "description",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "code",
-                                            "usage",
-                                            "description",
-                                            "criteria",
-                                        ],
-                                    ));
+                                    return unknown_field_error("description");
                                 }
                             }
                             Field::Criteria => {
@@ -2121,6 +2136,63 @@ impl<'de> serde::de::Deserialize<'de> for Measure {
             SupplementalData,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "meta",
+                    "implicitRules",
+                    "language",
+                    "text",
+                    "contained",
+                    "extension",
+                    "modifierExtension",
+                    "url",
+                    "identifier",
+                    "version",
+                    "name",
+                    "title",
+                    "subtitle",
+                    "status",
+                    "experimental",
+                    "subjectCodeableConcept",
+                    "subjectReference",
+                    "date",
+                    "publisher",
+                    "contact",
+                    "description",
+                    "useContext",
+                    "jurisdiction",
+                    "purpose",
+                    "usage",
+                    "copyright",
+                    "approvalDate",
+                    "lastReviewDate",
+                    "effectivePeriod",
+                    "topic",
+                    "author",
+                    "editor",
+                    "reviewer",
+                    "endorser",
+                    "relatedArtifact",
+                    "library",
+                    "disclaimer",
+                    "scoring",
+                    "compositeScoring",
+                    "type",
+                    "riskAdjustment",
+                    "rateAggregation",
+                    "rationale",
+                    "clinicalRecommendationStatement",
+                    "improvementNotation",
+                    "definition",
+                    "guidance",
+                    "group",
+                    "supplementalData",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = Measure;
@@ -2245,61 +2317,7 @@ impl<'de> serde::de::Deserialize<'de> for Measure {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "implicitRules",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "identifier",
-                                            "version",
-                                            "name",
-                                            "title",
-                                            "subtitle",
-                                            "status",
-                                            "experimental",
-                                            "subjectCodeableConcept",
-                                            "subjectReference",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "description",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "purpose",
-                                            "usage",
-                                            "copyright",
-                                            "approvalDate",
-                                            "lastReviewDate",
-                                            "effectivePeriod",
-                                            "topic",
-                                            "author",
-                                            "editor",
-                                            "reviewer",
-                                            "endorser",
-                                            "relatedArtifact",
-                                            "library",
-                                            "disclaimer",
-                                            "scoring",
-                                            "compositeScoring",
-                                            "type",
-                                            "riskAdjustment",
-                                            "rateAggregation",
-                                            "rationale",
-                                            "clinicalRecommendationStatement",
-                                            "improvementNotation",
-                                            "definition",
-                                            "guidance",
-                                            "group",
-                                            "supplementalData",
-                                        ],
-                                    ));
+                                    return unknown_field_error("implicitRules");
                                 }
                             }
                             Field::Language => {
@@ -2330,61 +2348,7 @@ impl<'de> serde::de::Deserialize<'de> for Measure {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "language",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "identifier",
-                                            "version",
-                                            "name",
-                                            "title",
-                                            "subtitle",
-                                            "status",
-                                            "experimental",
-                                            "subjectCodeableConcept",
-                                            "subjectReference",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "description",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "purpose",
-                                            "usage",
-                                            "copyright",
-                                            "approvalDate",
-                                            "lastReviewDate",
-                                            "effectivePeriod",
-                                            "topic",
-                                            "author",
-                                            "editor",
-                                            "reviewer",
-                                            "endorser",
-                                            "relatedArtifact",
-                                            "library",
-                                            "disclaimer",
-                                            "scoring",
-                                            "compositeScoring",
-                                            "type",
-                                            "riskAdjustment",
-                                            "rateAggregation",
-                                            "rationale",
-                                            "clinicalRecommendationStatement",
-                                            "improvementNotation",
-                                            "definition",
-                                            "guidance",
-                                            "group",
-                                            "supplementalData",
-                                        ],
-                                    ));
+                                    return unknown_field_error("language");
                                 }
                             }
                             Field::Text => {
@@ -2457,61 +2421,7 @@ impl<'de> serde::de::Deserialize<'de> for Measure {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "url",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "identifier",
-                                            "version",
-                                            "name",
-                                            "title",
-                                            "subtitle",
-                                            "status",
-                                            "experimental",
-                                            "subjectCodeableConcept",
-                                            "subjectReference",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "description",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "purpose",
-                                            "usage",
-                                            "copyright",
-                                            "approvalDate",
-                                            "lastReviewDate",
-                                            "effectivePeriod",
-                                            "topic",
-                                            "author",
-                                            "editor",
-                                            "reviewer",
-                                            "endorser",
-                                            "relatedArtifact",
-                                            "library",
-                                            "disclaimer",
-                                            "scoring",
-                                            "compositeScoring",
-                                            "type",
-                                            "riskAdjustment",
-                                            "rateAggregation",
-                                            "rationale",
-                                            "clinicalRecommendationStatement",
-                                            "improvementNotation",
-                                            "definition",
-                                            "guidance",
-                                            "group",
-                                            "supplementalData",
-                                        ],
-                                    ));
+                                    return unknown_field_error("url");
                                 }
                             }
                             Field::Identifier => {
@@ -2555,61 +2465,7 @@ impl<'de> serde::de::Deserialize<'de> for Measure {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "version",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "identifier",
-                                            "version",
-                                            "name",
-                                            "title",
-                                            "subtitle",
-                                            "status",
-                                            "experimental",
-                                            "subjectCodeableConcept",
-                                            "subjectReference",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "description",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "purpose",
-                                            "usage",
-                                            "copyright",
-                                            "approvalDate",
-                                            "lastReviewDate",
-                                            "effectivePeriod",
-                                            "topic",
-                                            "author",
-                                            "editor",
-                                            "reviewer",
-                                            "endorser",
-                                            "relatedArtifact",
-                                            "library",
-                                            "disclaimer",
-                                            "scoring",
-                                            "compositeScoring",
-                                            "type",
-                                            "riskAdjustment",
-                                            "rateAggregation",
-                                            "rationale",
-                                            "clinicalRecommendationStatement",
-                                            "improvementNotation",
-                                            "definition",
-                                            "guidance",
-                                            "group",
-                                            "supplementalData",
-                                        ],
-                                    ));
+                                    return unknown_field_error("version");
                                 }
                             }
                             Field::Name => {
@@ -2640,61 +2496,7 @@ impl<'de> serde::de::Deserialize<'de> for Measure {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "name",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "identifier",
-                                            "version",
-                                            "name",
-                                            "title",
-                                            "subtitle",
-                                            "status",
-                                            "experimental",
-                                            "subjectCodeableConcept",
-                                            "subjectReference",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "description",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "purpose",
-                                            "usage",
-                                            "copyright",
-                                            "approvalDate",
-                                            "lastReviewDate",
-                                            "effectivePeriod",
-                                            "topic",
-                                            "author",
-                                            "editor",
-                                            "reviewer",
-                                            "endorser",
-                                            "relatedArtifact",
-                                            "library",
-                                            "disclaimer",
-                                            "scoring",
-                                            "compositeScoring",
-                                            "type",
-                                            "riskAdjustment",
-                                            "rateAggregation",
-                                            "rationale",
-                                            "clinicalRecommendationStatement",
-                                            "improvementNotation",
-                                            "definition",
-                                            "guidance",
-                                            "group",
-                                            "supplementalData",
-                                        ],
-                                    ));
+                                    return unknown_field_error("name");
                                 }
                             }
                             Field::Title => {
@@ -2725,61 +2527,7 @@ impl<'de> serde::de::Deserialize<'de> for Measure {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "title",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "identifier",
-                                            "version",
-                                            "name",
-                                            "title",
-                                            "subtitle",
-                                            "status",
-                                            "experimental",
-                                            "subjectCodeableConcept",
-                                            "subjectReference",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "description",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "purpose",
-                                            "usage",
-                                            "copyright",
-                                            "approvalDate",
-                                            "lastReviewDate",
-                                            "effectivePeriod",
-                                            "topic",
-                                            "author",
-                                            "editor",
-                                            "reviewer",
-                                            "endorser",
-                                            "relatedArtifact",
-                                            "library",
-                                            "disclaimer",
-                                            "scoring",
-                                            "compositeScoring",
-                                            "type",
-                                            "riskAdjustment",
-                                            "rateAggregation",
-                                            "rationale",
-                                            "clinicalRecommendationStatement",
-                                            "improvementNotation",
-                                            "definition",
-                                            "guidance",
-                                            "group",
-                                            "supplementalData",
-                                        ],
-                                    ));
+                                    return unknown_field_error("title");
                                 }
                             }
                             Field::Subtitle => {
@@ -2810,61 +2558,7 @@ impl<'de> serde::de::Deserialize<'de> for Measure {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "subtitle",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "identifier",
-                                            "version",
-                                            "name",
-                                            "title",
-                                            "subtitle",
-                                            "status",
-                                            "experimental",
-                                            "subjectCodeableConcept",
-                                            "subjectReference",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "description",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "purpose",
-                                            "usage",
-                                            "copyright",
-                                            "approvalDate",
-                                            "lastReviewDate",
-                                            "effectivePeriod",
-                                            "topic",
-                                            "author",
-                                            "editor",
-                                            "reviewer",
-                                            "endorser",
-                                            "relatedArtifact",
-                                            "library",
-                                            "disclaimer",
-                                            "scoring",
-                                            "compositeScoring",
-                                            "type",
-                                            "riskAdjustment",
-                                            "rateAggregation",
-                                            "rationale",
-                                            "clinicalRecommendationStatement",
-                                            "improvementNotation",
-                                            "definition",
-                                            "guidance",
-                                            "group",
-                                            "supplementalData",
-                                        ],
-                                    ));
+                                    return unknown_field_error("subtitle");
                                 }
                             }
                             Field::Status => {
@@ -2895,61 +2589,7 @@ impl<'de> serde::de::Deserialize<'de> for Measure {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "status",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "identifier",
-                                            "version",
-                                            "name",
-                                            "title",
-                                            "subtitle",
-                                            "status",
-                                            "experimental",
-                                            "subjectCodeableConcept",
-                                            "subjectReference",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "description",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "purpose",
-                                            "usage",
-                                            "copyright",
-                                            "approvalDate",
-                                            "lastReviewDate",
-                                            "effectivePeriod",
-                                            "topic",
-                                            "author",
-                                            "editor",
-                                            "reviewer",
-                                            "endorser",
-                                            "relatedArtifact",
-                                            "library",
-                                            "disclaimer",
-                                            "scoring",
-                                            "compositeScoring",
-                                            "type",
-                                            "riskAdjustment",
-                                            "rateAggregation",
-                                            "rationale",
-                                            "clinicalRecommendationStatement",
-                                            "improvementNotation",
-                                            "definition",
-                                            "guidance",
-                                            "group",
-                                            "supplementalData",
-                                        ],
-                                    ));
+                                    return unknown_field_error("status");
                                 }
                             }
                             Field::Experimental => {
@@ -2986,61 +2626,7 @@ impl<'de> serde::de::Deserialize<'de> for Measure {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "experimental",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "identifier",
-                                            "version",
-                                            "name",
-                                            "title",
-                                            "subtitle",
-                                            "status",
-                                            "experimental",
-                                            "subjectCodeableConcept",
-                                            "subjectReference",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "description",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "purpose",
-                                            "usage",
-                                            "copyright",
-                                            "approvalDate",
-                                            "lastReviewDate",
-                                            "effectivePeriod",
-                                            "topic",
-                                            "author",
-                                            "editor",
-                                            "reviewer",
-                                            "endorser",
-                                            "relatedArtifact",
-                                            "library",
-                                            "disclaimer",
-                                            "scoring",
-                                            "compositeScoring",
-                                            "type",
-                                            "riskAdjustment",
-                                            "rateAggregation",
-                                            "rationale",
-                                            "clinicalRecommendationStatement",
-                                            "improvementNotation",
-                                            "definition",
-                                            "guidance",
-                                            "group",
-                                            "supplementalData",
-                                        ],
-                                    ));
+                                    return unknown_field_error("experimental");
                                 }
                             }
                             Field::SubjectCodeableConcept => {
@@ -3089,61 +2675,7 @@ impl<'de> serde::de::Deserialize<'de> for Measure {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "date",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "identifier",
-                                            "version",
-                                            "name",
-                                            "title",
-                                            "subtitle",
-                                            "status",
-                                            "experimental",
-                                            "subjectCodeableConcept",
-                                            "subjectReference",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "description",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "purpose",
-                                            "usage",
-                                            "copyright",
-                                            "approvalDate",
-                                            "lastReviewDate",
-                                            "effectivePeriod",
-                                            "topic",
-                                            "author",
-                                            "editor",
-                                            "reviewer",
-                                            "endorser",
-                                            "relatedArtifact",
-                                            "library",
-                                            "disclaimer",
-                                            "scoring",
-                                            "compositeScoring",
-                                            "type",
-                                            "riskAdjustment",
-                                            "rateAggregation",
-                                            "rationale",
-                                            "clinicalRecommendationStatement",
-                                            "improvementNotation",
-                                            "definition",
-                                            "guidance",
-                                            "group",
-                                            "supplementalData",
-                                        ],
-                                    ));
+                                    return unknown_field_error("date");
                                 }
                             }
                             Field::Publisher => {
@@ -3176,61 +2708,7 @@ impl<'de> serde::de::Deserialize<'de> for Measure {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "publisher",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "identifier",
-                                            "version",
-                                            "name",
-                                            "title",
-                                            "subtitle",
-                                            "status",
-                                            "experimental",
-                                            "subjectCodeableConcept",
-                                            "subjectReference",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "description",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "purpose",
-                                            "usage",
-                                            "copyright",
-                                            "approvalDate",
-                                            "lastReviewDate",
-                                            "effectivePeriod",
-                                            "topic",
-                                            "author",
-                                            "editor",
-                                            "reviewer",
-                                            "endorser",
-                                            "relatedArtifact",
-                                            "library",
-                                            "disclaimer",
-                                            "scoring",
-                                            "compositeScoring",
-                                            "type",
-                                            "riskAdjustment",
-                                            "rateAggregation",
-                                            "rationale",
-                                            "clinicalRecommendationStatement",
-                                            "improvementNotation",
-                                            "definition",
-                                            "guidance",
-                                            "group",
-                                            "supplementalData",
-                                        ],
-                                    ));
+                                    return unknown_field_error("publisher");
                                 }
                             }
                             Field::Contact => {
@@ -3278,61 +2756,7 @@ impl<'de> serde::de::Deserialize<'de> for Measure {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "description",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "identifier",
-                                            "version",
-                                            "name",
-                                            "title",
-                                            "subtitle",
-                                            "status",
-                                            "experimental",
-                                            "subjectCodeableConcept",
-                                            "subjectReference",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "description",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "purpose",
-                                            "usage",
-                                            "copyright",
-                                            "approvalDate",
-                                            "lastReviewDate",
-                                            "effectivePeriod",
-                                            "topic",
-                                            "author",
-                                            "editor",
-                                            "reviewer",
-                                            "endorser",
-                                            "relatedArtifact",
-                                            "library",
-                                            "disclaimer",
-                                            "scoring",
-                                            "compositeScoring",
-                                            "type",
-                                            "riskAdjustment",
-                                            "rateAggregation",
-                                            "rationale",
-                                            "clinicalRecommendationStatement",
-                                            "improvementNotation",
-                                            "definition",
-                                            "guidance",
-                                            "group",
-                                            "supplementalData",
-                                        ],
-                                    ));
+                                    return unknown_field_error("description");
                                 }
                             }
                             Field::UseContext => {
@@ -3389,61 +2813,7 @@ impl<'de> serde::de::Deserialize<'de> for Measure {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "purpose",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "identifier",
-                                            "version",
-                                            "name",
-                                            "title",
-                                            "subtitle",
-                                            "status",
-                                            "experimental",
-                                            "subjectCodeableConcept",
-                                            "subjectReference",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "description",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "purpose",
-                                            "usage",
-                                            "copyright",
-                                            "approvalDate",
-                                            "lastReviewDate",
-                                            "effectivePeriod",
-                                            "topic",
-                                            "author",
-                                            "editor",
-                                            "reviewer",
-                                            "endorser",
-                                            "relatedArtifact",
-                                            "library",
-                                            "disclaimer",
-                                            "scoring",
-                                            "compositeScoring",
-                                            "type",
-                                            "riskAdjustment",
-                                            "rateAggregation",
-                                            "rationale",
-                                            "clinicalRecommendationStatement",
-                                            "improvementNotation",
-                                            "definition",
-                                            "guidance",
-                                            "group",
-                                            "supplementalData",
-                                        ],
-                                    ));
+                                    return unknown_field_error("purpose");
                                 }
                             }
                             Field::Usage => {
@@ -3474,61 +2844,7 @@ impl<'de> serde::de::Deserialize<'de> for Measure {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "usage",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "identifier",
-                                            "version",
-                                            "name",
-                                            "title",
-                                            "subtitle",
-                                            "status",
-                                            "experimental",
-                                            "subjectCodeableConcept",
-                                            "subjectReference",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "description",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "purpose",
-                                            "usage",
-                                            "copyright",
-                                            "approvalDate",
-                                            "lastReviewDate",
-                                            "effectivePeriod",
-                                            "topic",
-                                            "author",
-                                            "editor",
-                                            "reviewer",
-                                            "endorser",
-                                            "relatedArtifact",
-                                            "library",
-                                            "disclaimer",
-                                            "scoring",
-                                            "compositeScoring",
-                                            "type",
-                                            "riskAdjustment",
-                                            "rateAggregation",
-                                            "rationale",
-                                            "clinicalRecommendationStatement",
-                                            "improvementNotation",
-                                            "definition",
-                                            "guidance",
-                                            "group",
-                                            "supplementalData",
-                                        ],
-                                    ));
+                                    return unknown_field_error("usage");
                                 }
                             }
                             Field::Copyright => {
@@ -3561,61 +2877,7 @@ impl<'de> serde::de::Deserialize<'de> for Measure {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "copyright",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "identifier",
-                                            "version",
-                                            "name",
-                                            "title",
-                                            "subtitle",
-                                            "status",
-                                            "experimental",
-                                            "subjectCodeableConcept",
-                                            "subjectReference",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "description",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "purpose",
-                                            "usage",
-                                            "copyright",
-                                            "approvalDate",
-                                            "lastReviewDate",
-                                            "effectivePeriod",
-                                            "topic",
-                                            "author",
-                                            "editor",
-                                            "reviewer",
-                                            "endorser",
-                                            "relatedArtifact",
-                                            "library",
-                                            "disclaimer",
-                                            "scoring",
-                                            "compositeScoring",
-                                            "type",
-                                            "riskAdjustment",
-                                            "rateAggregation",
-                                            "rationale",
-                                            "clinicalRecommendationStatement",
-                                            "improvementNotation",
-                                            "definition",
-                                            "guidance",
-                                            "group",
-                                            "supplementalData",
-                                        ],
-                                    ));
+                                    return unknown_field_error("copyright");
                                 }
                             }
                             Field::ApprovalDate => {
@@ -3652,61 +2914,7 @@ impl<'de> serde::de::Deserialize<'de> for Measure {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "approvalDate",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "identifier",
-                                            "version",
-                                            "name",
-                                            "title",
-                                            "subtitle",
-                                            "status",
-                                            "experimental",
-                                            "subjectCodeableConcept",
-                                            "subjectReference",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "description",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "purpose",
-                                            "usage",
-                                            "copyright",
-                                            "approvalDate",
-                                            "lastReviewDate",
-                                            "effectivePeriod",
-                                            "topic",
-                                            "author",
-                                            "editor",
-                                            "reviewer",
-                                            "endorser",
-                                            "relatedArtifact",
-                                            "library",
-                                            "disclaimer",
-                                            "scoring",
-                                            "compositeScoring",
-                                            "type",
-                                            "riskAdjustment",
-                                            "rateAggregation",
-                                            "rationale",
-                                            "clinicalRecommendationStatement",
-                                            "improvementNotation",
-                                            "definition",
-                                            "guidance",
-                                            "group",
-                                            "supplementalData",
-                                        ],
-                                    ));
+                                    return unknown_field_error("approvalDate");
                                 }
                             }
                             Field::LastReviewDate => {
@@ -3743,61 +2951,7 @@ impl<'de> serde::de::Deserialize<'de> for Measure {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "lastReviewDate",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "identifier",
-                                            "version",
-                                            "name",
-                                            "title",
-                                            "subtitle",
-                                            "status",
-                                            "experimental",
-                                            "subjectCodeableConcept",
-                                            "subjectReference",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "description",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "purpose",
-                                            "usage",
-                                            "copyright",
-                                            "approvalDate",
-                                            "lastReviewDate",
-                                            "effectivePeriod",
-                                            "topic",
-                                            "author",
-                                            "editor",
-                                            "reviewer",
-                                            "endorser",
-                                            "relatedArtifact",
-                                            "library",
-                                            "disclaimer",
-                                            "scoring",
-                                            "compositeScoring",
-                                            "type",
-                                            "riskAdjustment",
-                                            "rateAggregation",
-                                            "rationale",
-                                            "clinicalRecommendationStatement",
-                                            "improvementNotation",
-                                            "definition",
-                                            "guidance",
-                                            "group",
-                                            "supplementalData",
-                                        ],
-                                    ));
+                                    return unknown_field_error("lastReviewDate");
                                 }
                             }
                             Field::EffectivePeriod => {
@@ -3932,61 +3086,7 @@ impl<'de> serde::de::Deserialize<'de> for Measure {
                                         }
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "library",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "identifier",
-                                            "version",
-                                            "name",
-                                            "title",
-                                            "subtitle",
-                                            "status",
-                                            "experimental",
-                                            "subjectCodeableConcept",
-                                            "subjectReference",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "description",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "purpose",
-                                            "usage",
-                                            "copyright",
-                                            "approvalDate",
-                                            "lastReviewDate",
-                                            "effectivePeriod",
-                                            "topic",
-                                            "author",
-                                            "editor",
-                                            "reviewer",
-                                            "endorser",
-                                            "relatedArtifact",
-                                            "library",
-                                            "disclaimer",
-                                            "scoring",
-                                            "compositeScoring",
-                                            "type",
-                                            "riskAdjustment",
-                                            "rateAggregation",
-                                            "rationale",
-                                            "clinicalRecommendationStatement",
-                                            "improvementNotation",
-                                            "definition",
-                                            "guidance",
-                                            "group",
-                                            "supplementalData",
-                                        ],
-                                    ));
+                                    return unknown_field_error("library");
                                 }
                             }
                             Field::Disclaimer => {
@@ -4023,61 +3123,7 @@ impl<'de> serde::de::Deserialize<'de> for Measure {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "disclaimer",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "identifier",
-                                            "version",
-                                            "name",
-                                            "title",
-                                            "subtitle",
-                                            "status",
-                                            "experimental",
-                                            "subjectCodeableConcept",
-                                            "subjectReference",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "description",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "purpose",
-                                            "usage",
-                                            "copyright",
-                                            "approvalDate",
-                                            "lastReviewDate",
-                                            "effectivePeriod",
-                                            "topic",
-                                            "author",
-                                            "editor",
-                                            "reviewer",
-                                            "endorser",
-                                            "relatedArtifact",
-                                            "library",
-                                            "disclaimer",
-                                            "scoring",
-                                            "compositeScoring",
-                                            "type",
-                                            "riskAdjustment",
-                                            "rateAggregation",
-                                            "rationale",
-                                            "clinicalRecommendationStatement",
-                                            "improvementNotation",
-                                            "definition",
-                                            "guidance",
-                                            "group",
-                                            "supplementalData",
-                                        ],
-                                    ));
+                                    return unknown_field_error("disclaimer");
                                 }
                             }
                             Field::Scoring => {
@@ -4139,61 +3185,7 @@ impl<'de> serde::de::Deserialize<'de> for Measure {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "riskAdjustment",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "identifier",
-                                            "version",
-                                            "name",
-                                            "title",
-                                            "subtitle",
-                                            "status",
-                                            "experimental",
-                                            "subjectCodeableConcept",
-                                            "subjectReference",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "description",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "purpose",
-                                            "usage",
-                                            "copyright",
-                                            "approvalDate",
-                                            "lastReviewDate",
-                                            "effectivePeriod",
-                                            "topic",
-                                            "author",
-                                            "editor",
-                                            "reviewer",
-                                            "endorser",
-                                            "relatedArtifact",
-                                            "library",
-                                            "disclaimer",
-                                            "scoring",
-                                            "compositeScoring",
-                                            "type",
-                                            "riskAdjustment",
-                                            "rateAggregation",
-                                            "rationale",
-                                            "clinicalRecommendationStatement",
-                                            "improvementNotation",
-                                            "definition",
-                                            "guidance",
-                                            "group",
-                                            "supplementalData",
-                                        ],
-                                    ));
+                                    return unknown_field_error("riskAdjustment");
                                 }
                             }
                             Field::RateAggregation => {
@@ -4230,61 +3222,7 @@ impl<'de> serde::de::Deserialize<'de> for Measure {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "rateAggregation",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "identifier",
-                                            "version",
-                                            "name",
-                                            "title",
-                                            "subtitle",
-                                            "status",
-                                            "experimental",
-                                            "subjectCodeableConcept",
-                                            "subjectReference",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "description",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "purpose",
-                                            "usage",
-                                            "copyright",
-                                            "approvalDate",
-                                            "lastReviewDate",
-                                            "effectivePeriod",
-                                            "topic",
-                                            "author",
-                                            "editor",
-                                            "reviewer",
-                                            "endorser",
-                                            "relatedArtifact",
-                                            "library",
-                                            "disclaimer",
-                                            "scoring",
-                                            "compositeScoring",
-                                            "type",
-                                            "riskAdjustment",
-                                            "rateAggregation",
-                                            "rationale",
-                                            "clinicalRecommendationStatement",
-                                            "improvementNotation",
-                                            "definition",
-                                            "guidance",
-                                            "group",
-                                            "supplementalData",
-                                        ],
-                                    ));
+                                    return unknown_field_error("rateAggregation");
                                 }
                             }
                             Field::Rationale => {
@@ -4317,61 +3255,7 @@ impl<'de> serde::de::Deserialize<'de> for Measure {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "rationale",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "identifier",
-                                            "version",
-                                            "name",
-                                            "title",
-                                            "subtitle",
-                                            "status",
-                                            "experimental",
-                                            "subjectCodeableConcept",
-                                            "subjectReference",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "description",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "purpose",
-                                            "usage",
-                                            "copyright",
-                                            "approvalDate",
-                                            "lastReviewDate",
-                                            "effectivePeriod",
-                                            "topic",
-                                            "author",
-                                            "editor",
-                                            "reviewer",
-                                            "endorser",
-                                            "relatedArtifact",
-                                            "library",
-                                            "disclaimer",
-                                            "scoring",
-                                            "compositeScoring",
-                                            "type",
-                                            "riskAdjustment",
-                                            "rateAggregation",
-                                            "rationale",
-                                            "clinicalRecommendationStatement",
-                                            "improvementNotation",
-                                            "definition",
-                                            "guidance",
-                                            "group",
-                                            "supplementalData",
-                                        ],
-                                    ));
+                                    return unknown_field_error("rationale");
                                 }
                             }
                             Field::ClinicalRecommendationStatement => {
@@ -4411,61 +3295,7 @@ impl<'de> serde::de::Deserialize<'de> for Measure {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "clinicalRecommendationStatement",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "identifier",
-                                            "version",
-                                            "name",
-                                            "title",
-                                            "subtitle",
-                                            "status",
-                                            "experimental",
-                                            "subjectCodeableConcept",
-                                            "subjectReference",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "description",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "purpose",
-                                            "usage",
-                                            "copyright",
-                                            "approvalDate",
-                                            "lastReviewDate",
-                                            "effectivePeriod",
-                                            "topic",
-                                            "author",
-                                            "editor",
-                                            "reviewer",
-                                            "endorser",
-                                            "relatedArtifact",
-                                            "library",
-                                            "disclaimer",
-                                            "scoring",
-                                            "compositeScoring",
-                                            "type",
-                                            "riskAdjustment",
-                                            "rateAggregation",
-                                            "rationale",
-                                            "clinicalRecommendationStatement",
-                                            "improvementNotation",
-                                            "definition",
-                                            "guidance",
-                                            "group",
-                                            "supplementalData",
-                                        ],
-                                    ));
+                                    return unknown_field_error("clinicalRecommendationStatement");
                                 }
                             }
                             Field::ImprovementNotation => {
@@ -4536,61 +3366,7 @@ impl<'de> serde::de::Deserialize<'de> for Measure {
                                         }
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "definition",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "identifier",
-                                            "version",
-                                            "name",
-                                            "title",
-                                            "subtitle",
-                                            "status",
-                                            "experimental",
-                                            "subjectCodeableConcept",
-                                            "subjectReference",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "description",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "purpose",
-                                            "usage",
-                                            "copyright",
-                                            "approvalDate",
-                                            "lastReviewDate",
-                                            "effectivePeriod",
-                                            "topic",
-                                            "author",
-                                            "editor",
-                                            "reviewer",
-                                            "endorser",
-                                            "relatedArtifact",
-                                            "library",
-                                            "disclaimer",
-                                            "scoring",
-                                            "compositeScoring",
-                                            "type",
-                                            "riskAdjustment",
-                                            "rateAggregation",
-                                            "rationale",
-                                            "clinicalRecommendationStatement",
-                                            "improvementNotation",
-                                            "definition",
-                                            "guidance",
-                                            "group",
-                                            "supplementalData",
-                                        ],
-                                    ));
+                                    return unknown_field_error("definition");
                                 }
                             }
                             Field::Guidance => {
@@ -4621,61 +3397,7 @@ impl<'de> serde::de::Deserialize<'de> for Measure {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "guidance",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "identifier",
-                                            "version",
-                                            "name",
-                                            "title",
-                                            "subtitle",
-                                            "status",
-                                            "experimental",
-                                            "subjectCodeableConcept",
-                                            "subjectReference",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "description",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "purpose",
-                                            "usage",
-                                            "copyright",
-                                            "approvalDate",
-                                            "lastReviewDate",
-                                            "effectivePeriod",
-                                            "topic",
-                                            "author",
-                                            "editor",
-                                            "reviewer",
-                                            "endorser",
-                                            "relatedArtifact",
-                                            "library",
-                                            "disclaimer",
-                                            "scoring",
-                                            "compositeScoring",
-                                            "type",
-                                            "riskAdjustment",
-                                            "rateAggregation",
-                                            "rationale",
-                                            "clinicalRecommendationStatement",
-                                            "improvementNotation",
-                                            "definition",
-                                            "guidance",
-                                            "group",
-                                            "supplementalData",
-                                        ],
-                                    ));
+                                    return unknown_field_error("guidance");
                                 }
                             }
                             Field::Group => {

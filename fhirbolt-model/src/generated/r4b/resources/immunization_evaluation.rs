@@ -1,4 +1,4 @@
-// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-08 by fhirbolt-codegen v0.1.0
 #[doc = "Nominal position in a series."]
 #[derive(Debug, Clone, PartialEq)]
 pub enum ImmunizationEvaluationDoseNumber {
@@ -397,6 +397,36 @@ impl<'de> serde::de::Deserialize<'de> for ImmunizationEvaluation {
             SeriesDosesStringPrimitiveElement,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "meta",
+                    "implicitRules",
+                    "language",
+                    "text",
+                    "contained",
+                    "extension",
+                    "modifierExtension",
+                    "identifier",
+                    "status",
+                    "patient",
+                    "date",
+                    "authority",
+                    "targetDisease",
+                    "immunizationEvent",
+                    "doseStatus",
+                    "doseStatusReason",
+                    "description",
+                    "series",
+                    "doseNumberPositiveInt",
+                    "doseNumberString",
+                    "seriesDosesPositiveInt",
+                    "seriesDosesString",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = ImmunizationEvaluation;
@@ -490,34 +520,7 @@ impl<'de> serde::de::Deserialize<'de> for ImmunizationEvaluation {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "implicitRules",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "status",
-                                            "patient",
-                                            "date",
-                                            "authority",
-                                            "targetDisease",
-                                            "immunizationEvent",
-                                            "doseStatus",
-                                            "doseStatusReason",
-                                            "description",
-                                            "series",
-                                            "doseNumberPositiveInt",
-                                            "doseNumberString",
-                                            "seriesDosesPositiveInt",
-                                            "seriesDosesString",
-                                        ],
-                                    ));
+                                    return unknown_field_error("implicitRules");
                                 }
                             }
                             Field::Language => {
@@ -548,34 +551,7 @@ impl<'de> serde::de::Deserialize<'de> for ImmunizationEvaluation {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "language",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "status",
-                                            "patient",
-                                            "date",
-                                            "authority",
-                                            "targetDisease",
-                                            "immunizationEvent",
-                                            "doseStatus",
-                                            "doseStatusReason",
-                                            "description",
-                                            "series",
-                                            "doseNumberPositiveInt",
-                                            "doseNumberString",
-                                            "seriesDosesPositiveInt",
-                                            "seriesDosesString",
-                                        ],
-                                    ));
+                                    return unknown_field_error("language");
                                 }
                             }
                             Field::Text => {
@@ -661,34 +637,7 @@ impl<'de> serde::de::Deserialize<'de> for ImmunizationEvaluation {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "status",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "status",
-                                            "patient",
-                                            "date",
-                                            "authority",
-                                            "targetDisease",
-                                            "immunizationEvent",
-                                            "doseStatus",
-                                            "doseStatusReason",
-                                            "description",
-                                            "series",
-                                            "doseNumberPositiveInt",
-                                            "doseNumberString",
-                                            "seriesDosesPositiveInt",
-                                            "seriesDosesString",
-                                        ],
-                                    ));
+                                    return unknown_field_error("status");
                                 }
                             }
                             Field::Patient => {
@@ -725,34 +674,7 @@ impl<'de> serde::de::Deserialize<'de> for ImmunizationEvaluation {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "date",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "status",
-                                            "patient",
-                                            "date",
-                                            "authority",
-                                            "targetDisease",
-                                            "immunizationEvent",
-                                            "doseStatus",
-                                            "doseStatusReason",
-                                            "description",
-                                            "series",
-                                            "doseNumberPositiveInt",
-                                            "doseNumberString",
-                                            "seriesDosesPositiveInt",
-                                            "seriesDosesString",
-                                        ],
-                                    ));
+                                    return unknown_field_error("date");
                                 }
                             }
                             Field::Authority => {
@@ -829,34 +751,7 @@ impl<'de> serde::de::Deserialize<'de> for ImmunizationEvaluation {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "description",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "status",
-                                            "patient",
-                                            "date",
-                                            "authority",
-                                            "targetDisease",
-                                            "immunizationEvent",
-                                            "doseStatus",
-                                            "doseStatusReason",
-                                            "description",
-                                            "series",
-                                            "doseNumberPositiveInt",
-                                            "doseNumberString",
-                                            "seriesDosesPositiveInt",
-                                            "seriesDosesString",
-                                        ],
-                                    ));
+                                    return unknown_field_error("description");
                                 }
                             }
                             Field::Series => {
@@ -887,34 +782,7 @@ impl<'de> serde::de::Deserialize<'de> for ImmunizationEvaluation {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "series",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "status",
-                                            "patient",
-                                            "date",
-                                            "authority",
-                                            "targetDisease",
-                                            "immunizationEvent",
-                                            "doseStatus",
-                                            "doseStatusReason",
-                                            "description",
-                                            "series",
-                                            "doseNumberPositiveInt",
-                                            "doseNumberString",
-                                            "seriesDosesPositiveInt",
-                                            "seriesDosesString",
-                                        ],
-                                    ));
+                                    return unknown_field_error("series");
                                 }
                             }
                             Field::DoseNumberPositiveInt => {
@@ -978,34 +846,7 @@ impl<'de> serde::de::Deserialize<'de> for ImmunizationEvaluation {
                                         ));
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "doseNumberPositiveInt",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "status",
-                                            "patient",
-                                            "date",
-                                            "authority",
-                                            "targetDisease",
-                                            "immunizationEvent",
-                                            "doseStatus",
-                                            "doseStatusReason",
-                                            "description",
-                                            "series",
-                                            "doseNumberPositiveInt",
-                                            "doseNumberString",
-                                            "seriesDosesPositiveInt",
-                                            "seriesDosesString",
-                                        ],
-                                    ));
+                                    return unknown_field_error("doseNumberPositiveInt");
                                 }
                             }
                             Field::DoseNumberString => {
@@ -1070,34 +911,7 @@ impl<'de> serde::de::Deserialize<'de> for ImmunizationEvaluation {
                                         ));
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "doseNumberString",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "status",
-                                            "patient",
-                                            "date",
-                                            "authority",
-                                            "targetDisease",
-                                            "immunizationEvent",
-                                            "doseStatus",
-                                            "doseStatusReason",
-                                            "description",
-                                            "series",
-                                            "doseNumberPositiveInt",
-                                            "doseNumberString",
-                                            "seriesDosesPositiveInt",
-                                            "seriesDosesString",
-                                        ],
-                                    ));
+                                    return unknown_field_error("doseNumberString");
                                 }
                             }
                             Field::SeriesDosesPositiveInt => {
@@ -1161,34 +975,7 @@ impl<'de> serde::de::Deserialize<'de> for ImmunizationEvaluation {
                                         ));
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "seriesDosesPositiveInt",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "status",
-                                            "patient",
-                                            "date",
-                                            "authority",
-                                            "targetDisease",
-                                            "immunizationEvent",
-                                            "doseStatus",
-                                            "doseStatusReason",
-                                            "description",
-                                            "series",
-                                            "doseNumberPositiveInt",
-                                            "doseNumberString",
-                                            "seriesDosesPositiveInt",
-                                            "seriesDosesString",
-                                        ],
-                                    ));
+                                    return unknown_field_error("seriesDosesPositiveInt");
                                 }
                             }
                             Field::SeriesDosesString => {
@@ -1252,34 +1039,7 @@ impl<'de> serde::de::Deserialize<'de> for ImmunizationEvaluation {
                                         ));
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "seriesDosesString",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "status",
-                                            "patient",
-                                            "date",
-                                            "authority",
-                                            "targetDisease",
-                                            "immunizationEvent",
-                                            "doseStatus",
-                                            "doseStatusReason",
-                                            "description",
-                                            "series",
-                                            "doseNumberPositiveInt",
-                                            "doseNumberString",
-                                            "seriesDosesPositiveInt",
-                                            "seriesDosesString",
-                                        ],
-                                    ));
+                                    return unknown_field_error("seriesDosesString");
                                 }
                             }
                             Field::Unknown(key) => if _ctx.config.mode

@@ -1,4 +1,4 @@
-// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-08 by fhirbolt-codegen v0.1.0
 #[doc = "Many complex materials are fractions of parts of plants, animals, or minerals. Fraction elements are often necessary to define both Substances and Specified Group 1 Substances. For substances derived from Plants, fraction information will be captured at the Substance information level ( . Oils, Juices and Exudates). Additional information for Extracts, such as extraction solvent composition, will be captured at the Specified Substance Group 1 information level. For plasma-derived products fraction information will be captured at the Substance and the Specified Substance Group 1 levels."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub struct SubstanceSourceMaterialFractionDescription {
@@ -78,6 +78,18 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceSourceMaterialFractionDescrip
             #[serde(rename = "materialType")]
             MaterialType,
             Unknown(std::string::String),
+        }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "fraction",
+                    "materialType",
+                ],
+            ))
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -161,16 +173,7 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceSourceMaterialFractionDescrip
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "fraction",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "fraction",
-                                            "materialType",
-                                        ],
-                                    ));
+                                    return unknown_field_error("fraction");
                                 }
                             }
                             Field::MaterialType => {
@@ -288,6 +291,18 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceSourceMaterialOrganismAuthor 
             AuthorDescriptionPrimitiveElement,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "authorType",
+                    "authorDescription",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = SubstanceSourceMaterialOrganismAuthor;
@@ -384,16 +399,7 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceSourceMaterialOrganismAuthor 
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "authorDescription",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "authorType",
-                                            "authorDescription",
-                                        ],
-                                    ));
+                                    return unknown_field_error("authorDescription");
                                 }
                             }
                             Field::Unknown(key) => if _ctx.config.mode
@@ -580,6 +586,21 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceSourceMaterialOrganismHybrid 
             HybridType,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "maternalOrganismId",
+                    "maternalOrganismName",
+                    "paternalOrganismId",
+                    "paternalOrganismName",
+                    "hybridType",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = SubstanceSourceMaterialOrganismHybrid;
@@ -673,19 +694,7 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceSourceMaterialOrganismHybrid 
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "maternalOrganismId",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "maternalOrganismId",
-                                            "maternalOrganismName",
-                                            "paternalOrganismId",
-                                            "paternalOrganismName",
-                                            "hybridType",
-                                        ],
-                                    ));
+                                    return unknown_field_error("maternalOrganismId");
                                 }
                             }
                             Field::MaternalOrganismName => {
@@ -724,19 +733,7 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceSourceMaterialOrganismHybrid 
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "maternalOrganismName",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "maternalOrganismId",
-                                            "maternalOrganismName",
-                                            "paternalOrganismId",
-                                            "paternalOrganismName",
-                                            "hybridType",
-                                        ],
-                                    ));
+                                    return unknown_field_error("maternalOrganismName");
                                 }
                             }
                             Field::PaternalOrganismId => {
@@ -775,19 +772,7 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceSourceMaterialOrganismHybrid 
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "paternalOrganismId",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "maternalOrganismId",
-                                            "maternalOrganismName",
-                                            "paternalOrganismId",
-                                            "paternalOrganismName",
-                                            "hybridType",
-                                        ],
-                                    ));
+                                    return unknown_field_error("paternalOrganismId");
                                 }
                             }
                             Field::PaternalOrganismName => {
@@ -826,19 +811,7 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceSourceMaterialOrganismHybrid 
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "paternalOrganismName",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "maternalOrganismId",
-                                            "maternalOrganismName",
-                                            "paternalOrganismId",
-                                            "paternalOrganismName",
-                                            "hybridType",
-                                        ],
-                                    ));
+                                    return unknown_field_error("paternalOrganismName");
                                 }
                             }
                             Field::HybridType => {
@@ -957,6 +930,20 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceSourceMaterialOrganismOrganis
             #[serde(rename = "order")]
             Order,
             Unknown(std::string::String),
+        }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "kingdom",
+                    "phylum",
+                    "class",
+                    "order",
+                ],
+            ))
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -1193,6 +1180,24 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceSourceMaterialOrganism {
             OrganismGeneral,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "family",
+                    "genus",
+                    "species",
+                    "intraspecificType",
+                    "intraspecificDescription",
+                    "author",
+                    "hybrid",
+                    "organismGeneral",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = SubstanceSourceMaterialOrganism;
@@ -1317,22 +1322,7 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceSourceMaterialOrganism {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "intraspecificDescription",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "family",
-                                            "genus",
-                                            "species",
-                                            "intraspecificType",
-                                            "intraspecificDescription",
-                                            "author",
-                                            "hybrid",
-                                            "organismGeneral",
-                                        ],
-                                    ));
+                                    return unknown_field_error("intraspecificDescription");
                                 }
                             }
                             Field::Author => {
@@ -1462,6 +1452,18 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceSourceMaterialPartDescription
             #[serde(rename = "partLocation")]
             PartLocation,
             Unknown(std::string::String),
+        }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "part",
+                    "partLocation",
+                ],
+            ))
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -1866,6 +1868,34 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceSourceMaterial {
             PartDescription,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "meta",
+                    "implicitRules",
+                    "language",
+                    "text",
+                    "contained",
+                    "extension",
+                    "modifierExtension",
+                    "sourceMaterialClass",
+                    "sourceMaterialType",
+                    "sourceMaterialState",
+                    "organismId",
+                    "organismName",
+                    "parentSubstanceId",
+                    "parentSubstanceName",
+                    "countryOfOrigin",
+                    "geographicalLocation",
+                    "developmentStage",
+                    "fractionDescription",
+                    "organism",
+                    "partDescription",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = SubstanceSourceMaterial;
@@ -1967,32 +1997,7 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceSourceMaterial {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "implicitRules",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "sourceMaterialClass",
-                                            "sourceMaterialType",
-                                            "sourceMaterialState",
-                                            "organismId",
-                                            "organismName",
-                                            "parentSubstanceId",
-                                            "parentSubstanceName",
-                                            "countryOfOrigin",
-                                            "geographicalLocation",
-                                            "developmentStage",
-                                            "fractionDescription",
-                                            "organism",
-                                            "partDescription",
-                                        ],
-                                    ));
+                                    return unknown_field_error("implicitRules");
                                 }
                             }
                             Field::Language => {
@@ -2023,32 +2028,7 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceSourceMaterial {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "language",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "sourceMaterialClass",
-                                            "sourceMaterialType",
-                                            "sourceMaterialState",
-                                            "organismId",
-                                            "organismName",
-                                            "parentSubstanceId",
-                                            "parentSubstanceName",
-                                            "countryOfOrigin",
-                                            "geographicalLocation",
-                                            "developmentStage",
-                                            "fractionDescription",
-                                            "organism",
-                                            "partDescription",
-                                        ],
-                                    ));
+                                    return unknown_field_error("language");
                                 }
                             }
                             Field::Text => {
@@ -2157,32 +2137,7 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceSourceMaterial {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "organismName",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "sourceMaterialClass",
-                                            "sourceMaterialType",
-                                            "sourceMaterialState",
-                                            "organismId",
-                                            "organismName",
-                                            "parentSubstanceId",
-                                            "parentSubstanceName",
-                                            "countryOfOrigin",
-                                            "geographicalLocation",
-                                            "developmentStage",
-                                            "fractionDescription",
-                                            "organism",
-                                            "partDescription",
-                                        ],
-                                    ));
+                                    return unknown_field_error("organismName");
                                 }
                             }
                             Field::ParentSubstanceId => {
@@ -2260,32 +2215,7 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceSourceMaterial {
                                         }
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "parentSubstanceName",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "sourceMaterialClass",
-                                            "sourceMaterialType",
-                                            "sourceMaterialState",
-                                            "organismId",
-                                            "organismName",
-                                            "parentSubstanceId",
-                                            "parentSubstanceName",
-                                            "countryOfOrigin",
-                                            "geographicalLocation",
-                                            "developmentStage",
-                                            "fractionDescription",
-                                            "organism",
-                                            "partDescription",
-                                        ],
-                                    ));
+                                    return unknown_field_error("parentSubstanceName");
                                 }
                             }
                             Field::CountryOfOrigin => {
@@ -2362,32 +2292,7 @@ impl<'de> serde::de::Deserialize<'de> for SubstanceSourceMaterial {
                                         }
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "geographicalLocation",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "sourceMaterialClass",
-                                            "sourceMaterialType",
-                                            "sourceMaterialState",
-                                            "organismId",
-                                            "organismName",
-                                            "parentSubstanceId",
-                                            "parentSubstanceName",
-                                            "countryOfOrigin",
-                                            "geographicalLocation",
-                                            "developmentStage",
-                                            "fractionDescription",
-                                            "organism",
-                                            "partDescription",
-                                        ],
-                                    ));
+                                    return unknown_field_error("geographicalLocation");
                                 }
                             }
                             Field::DevelopmentStage => {

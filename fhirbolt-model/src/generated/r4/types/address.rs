@@ -1,4 +1,4 @@
-// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-08 by fhirbolt-codegen v0.1.0
 #[doc = "Base StructureDefinition for Address Type: An address expressed using postal conventions (as opposed to GPS or other location definition formats).  This data type may be used to convey addresses for use in delivering mail as well as for visiting locations which might not be valid for mail delivery.  There are a variety of postal address formats defined around the world.\n\nNeed to be able to record postal addresses, along with notes about their use."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub struct Address {
@@ -291,6 +291,25 @@ impl<'de> serde::de::Deserialize<'de> for Address {
             Period,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "use",
+                    "type",
+                    "text",
+                    "line",
+                    "city",
+                    "district",
+                    "state",
+                    "postalCode",
+                    "country",
+                    "period",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = Address;
@@ -362,23 +381,7 @@ impl<'de> serde::de::Deserialize<'de> for Address {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "use",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "use",
-                                            "type",
-                                            "text",
-                                            "line",
-                                            "city",
-                                            "district",
-                                            "state",
-                                            "postalCode",
-                                            "country",
-                                            "period",
-                                        ],
-                                    ));
+                                    return unknown_field_error("use");
                                 }
                             }
                             Field::Type => {
@@ -409,23 +412,7 @@ impl<'de> serde::de::Deserialize<'de> for Address {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "type",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "use",
-                                            "type",
-                                            "text",
-                                            "line",
-                                            "city",
-                                            "district",
-                                            "state",
-                                            "postalCode",
-                                            "country",
-                                            "period",
-                                        ],
-                                    ));
+                                    return unknown_field_error("type");
                                 }
                             }
                             Field::Text => {
@@ -456,23 +443,7 @@ impl<'de> serde::de::Deserialize<'de> for Address {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "text",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "use",
-                                            "type",
-                                            "text",
-                                            "line",
-                                            "city",
-                                            "district",
-                                            "state",
-                                            "postalCode",
-                                            "country",
-                                            "period",
-                                        ],
-                                    ));
+                                    return unknown_field_error("text");
                                 }
                             }
                             Field::Line => {
@@ -531,23 +502,7 @@ impl<'de> serde::de::Deserialize<'de> for Address {
                                         }
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "line",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "use",
-                                            "type",
-                                            "text",
-                                            "line",
-                                            "city",
-                                            "district",
-                                            "state",
-                                            "postalCode",
-                                            "country",
-                                            "period",
-                                        ],
-                                    ));
+                                    return unknown_field_error("line");
                                 }
                             }
                             Field::City => {
@@ -578,23 +533,7 @@ impl<'de> serde::de::Deserialize<'de> for Address {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "city",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "use",
-                                            "type",
-                                            "text",
-                                            "line",
-                                            "city",
-                                            "district",
-                                            "state",
-                                            "postalCode",
-                                            "country",
-                                            "period",
-                                        ],
-                                    ));
+                                    return unknown_field_error("city");
                                 }
                             }
                             Field::District => {
@@ -625,23 +564,7 @@ impl<'de> serde::de::Deserialize<'de> for Address {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "district",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "use",
-                                            "type",
-                                            "text",
-                                            "line",
-                                            "city",
-                                            "district",
-                                            "state",
-                                            "postalCode",
-                                            "country",
-                                            "period",
-                                        ],
-                                    ));
+                                    return unknown_field_error("district");
                                 }
                             }
                             Field::State => {
@@ -672,23 +595,7 @@ impl<'de> serde::de::Deserialize<'de> for Address {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "state",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "use",
-                                            "type",
-                                            "text",
-                                            "line",
-                                            "city",
-                                            "district",
-                                            "state",
-                                            "postalCode",
-                                            "country",
-                                            "period",
-                                        ],
-                                    ));
+                                    return unknown_field_error("state");
                                 }
                             }
                             Field::PostalCode => {
@@ -725,23 +632,7 @@ impl<'de> serde::de::Deserialize<'de> for Address {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "postalCode",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "use",
-                                            "type",
-                                            "text",
-                                            "line",
-                                            "city",
-                                            "district",
-                                            "state",
-                                            "postalCode",
-                                            "country",
-                                            "period",
-                                        ],
-                                    ));
+                                    return unknown_field_error("postalCode");
                                 }
                             }
                             Field::Country => {
@@ -772,23 +663,7 @@ impl<'de> serde::de::Deserialize<'de> for Address {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "country",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "use",
-                                            "type",
-                                            "text",
-                                            "line",
-                                            "city",
-                                            "district",
-                                            "state",
-                                            "postalCode",
-                                            "country",
-                                            "period",
-                                        ],
-                                    ));
+                                    return unknown_field_error("country");
                                 }
                             }
                             Field::Period => {

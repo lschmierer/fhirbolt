@@ -1,4 +1,4 @@
-// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-08 by fhirbolt-codegen v0.1.0
 #[doc = "Base StructureDefinition for uri Type: String of characters used to identify a name or a resource"]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub struct Uri {
@@ -46,6 +46,9 @@ impl<'de> serde::de::Deserialize<'de> for Uri {
             #[serde(rename = "value")]
             Value,
             Unknown(std::string::String),
+        }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(field, &["id", "extension", "value"]))
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {

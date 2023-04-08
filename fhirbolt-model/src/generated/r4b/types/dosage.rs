@@ -1,4 +1,4 @@
-// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-08 by fhirbolt-codegen v0.1.0
 #[doc = "Indicates whether the Medication is only taken when needed within a specific dosing schedule (Boolean option), or it indicates the precondition for taking the Medication (CodeableConcept)."]
 #[derive(Debug, Clone, PartialEq)]
 pub enum DosageAsNeeded {
@@ -126,6 +126,21 @@ impl<'de> serde::de::Deserialize<'de> for DosageDoseAndRate {
             #[serde(rename = "rateQuantity")]
             RateQuantity,
             Unknown(std::string::String),
+        }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "type",
+                    "doseRange",
+                    "doseQuantity",
+                    "rateRatio",
+                    "rateRange",
+                    "rateQuantity",
+                ],
+            ))
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -458,6 +473,30 @@ impl<'de> serde::de::Deserialize<'de> for Dosage {
             MaxDosePerLifetime,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "sequence",
+                    "text",
+                    "additionalInstruction",
+                    "patientInstruction",
+                    "timing",
+                    "asNeededBoolean",
+                    "asNeededCodeableConcept",
+                    "site",
+                    "route",
+                    "method",
+                    "doseAndRate",
+                    "maxDosePerPeriod",
+                    "maxDosePerAdministration",
+                    "maxDosePerLifetime",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = Dosage;
@@ -551,28 +590,7 @@ impl<'de> serde::de::Deserialize<'de> for Dosage {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "sequence",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "sequence",
-                                            "text",
-                                            "additionalInstruction",
-                                            "patientInstruction",
-                                            "timing",
-                                            "asNeededBoolean",
-                                            "asNeededCodeableConcept",
-                                            "site",
-                                            "route",
-                                            "method",
-                                            "doseAndRate",
-                                            "maxDosePerPeriod",
-                                            "maxDosePerAdministration",
-                                            "maxDosePerLifetime",
-                                        ],
-                                    ));
+                                    return unknown_field_error("sequence");
                                 }
                             }
                             Field::Text => {
@@ -603,28 +621,7 @@ impl<'de> serde::de::Deserialize<'de> for Dosage {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "text",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "sequence",
-                                            "text",
-                                            "additionalInstruction",
-                                            "patientInstruction",
-                                            "timing",
-                                            "asNeededBoolean",
-                                            "asNeededCodeableConcept",
-                                            "site",
-                                            "route",
-                                            "method",
-                                            "doseAndRate",
-                                            "maxDosePerPeriod",
-                                            "maxDosePerAdministration",
-                                            "maxDosePerLifetime",
-                                        ],
-                                    ));
+                                    return unknown_field_error("text");
                                 }
                             }
                             Field::AdditionalInstruction => {
@@ -677,28 +674,7 @@ impl<'de> serde::de::Deserialize<'de> for Dosage {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "patientInstruction",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "sequence",
-                                            "text",
-                                            "additionalInstruction",
-                                            "patientInstruction",
-                                            "timing",
-                                            "asNeededBoolean",
-                                            "asNeededCodeableConcept",
-                                            "site",
-                                            "route",
-                                            "method",
-                                            "doseAndRate",
-                                            "maxDosePerPeriod",
-                                            "maxDosePerAdministration",
-                                            "maxDosePerLifetime",
-                                        ],
-                                    ));
+                                    return unknown_field_error("patientInstruction");
                                 }
                             }
                             Field::Timing => {
@@ -756,28 +732,7 @@ impl<'de> serde::de::Deserialize<'de> for Dosage {
                                         ));
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "asNeededBoolean",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "sequence",
-                                            "text",
-                                            "additionalInstruction",
-                                            "patientInstruction",
-                                            "timing",
-                                            "asNeededBoolean",
-                                            "asNeededCodeableConcept",
-                                            "site",
-                                            "route",
-                                            "method",
-                                            "doseAndRate",
-                                            "maxDosePerPeriod",
-                                            "maxDosePerAdministration",
-                                            "maxDosePerLifetime",
-                                        ],
-                                    ));
+                                    return unknown_field_error("asNeededBoolean");
                                 }
                             }
                             Field::AsNeededCodeableConcept => {

@@ -1,4 +1,4 @@
-// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-08 by fhirbolt-codegen v0.1.0
 #[doc = "A code or group definition that describes the intended subject of the plan definition."]
 #[derive(Debug, Clone, PartialEq)]
 pub enum PlanDefinitionSubject {
@@ -161,6 +161,21 @@ impl<'de> serde::de::Deserialize<'de> for PlanDefinitionGoalTarget {
             #[serde(rename = "due")]
             Due,
             Unknown(std::string::String),
+        }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "measure",
+                    "detailQuantity",
+                    "detailRange",
+                    "detailCodeableConcept",
+                    "due",
+                ],
+            ))
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -381,6 +396,23 @@ impl<'de> serde::de::Deserialize<'de> for PlanDefinitionGoal {
             #[serde(rename = "target")]
             Target,
             Unknown(std::string::String),
+        }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "category",
+                    "description",
+                    "priority",
+                    "start",
+                    "addresses",
+                    "documentation",
+                    "target",
+                ],
+            ))
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -619,6 +651,12 @@ impl<'de> serde::de::Deserialize<'de> for PlanDefinitionActionCondition {
             Expression,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &["id", "extension", "modifierExtension", "kind", "expression"],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = PlanDefinitionActionCondition;
@@ -701,16 +739,7 @@ impl<'de> serde::de::Deserialize<'de> for PlanDefinitionActionCondition {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "kind",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "kind",
-                                            "expression",
-                                        ],
-                                    ));
+                                    return unknown_field_error("kind");
                                 }
                             }
                             Field::Expression => {
@@ -857,6 +886,20 @@ impl<'de> serde::de::Deserialize<'de> for PlanDefinitionActionRelatedAction {
             OffsetRange,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "actionId",
+                    "relationship",
+                    "offsetDuration",
+                    "offsetRange",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = PlanDefinitionActionRelatedAction;
@@ -940,18 +983,7 @@ impl<'de> serde::de::Deserialize<'de> for PlanDefinitionActionRelatedAction {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "actionId",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "actionId",
-                                            "relationship",
-                                            "offsetDuration",
-                                            "offsetRange",
-                                        ],
-                                    ));
+                                    return unknown_field_error("actionId");
                                 }
                             }
                             Field::Relationship => {
@@ -988,18 +1020,7 @@ impl<'de> serde::de::Deserialize<'de> for PlanDefinitionActionRelatedAction {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "relationship",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "actionId",
-                                            "relationship",
-                                            "offsetDuration",
-                                            "offsetRange",
-                                        ],
-                                    ));
+                                    return unknown_field_error("relationship");
                                 }
                             }
                             Field::OffsetDuration => {
@@ -1140,6 +1161,12 @@ impl<'de> serde::de::Deserialize<'de> for PlanDefinitionActionParticipant {
             Role,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &["id", "extension", "modifierExtension", "type", "role"],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = PlanDefinitionActionParticipant;
@@ -1222,10 +1249,7 @@ impl<'de> serde::de::Deserialize<'de> for PlanDefinitionActionParticipant {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "type",
-                                        &["id", "extension", "modifierExtension", "type", "role"],
-                                    ));
+                                    return unknown_field_error("type");
                                 }
                             }
                             Field::Role => {
@@ -1343,6 +1367,12 @@ impl<'de> serde::de::Deserialize<'de> for PlanDefinitionActionDynamicValue {
             Expression,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &["id", "extension", "modifierExtension", "path", "expression"],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = PlanDefinitionActionDynamicValue;
@@ -1425,16 +1455,7 @@ impl<'de> serde::de::Deserialize<'de> for PlanDefinitionActionDynamicValue {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "path",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "path",
-                                            "expression",
-                                        ],
-                                    ));
+                                    return unknown_field_error("path");
                                 }
                             }
                             Field::Expression => {
@@ -2046,6 +2067,50 @@ impl<'de> serde::de::Deserialize<'de> for PlanDefinitionAction {
             Action,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "prefix",
+                    "title",
+                    "description",
+                    "textEquivalent",
+                    "priority",
+                    "code",
+                    "reason",
+                    "documentation",
+                    "goalId",
+                    "subjectCodeableConcept",
+                    "subjectReference",
+                    "trigger",
+                    "condition",
+                    "input",
+                    "output",
+                    "relatedAction",
+                    "timingDateTime",
+                    "timingAge",
+                    "timingPeriod",
+                    "timingDuration",
+                    "timingRange",
+                    "timingTiming",
+                    "participant",
+                    "type",
+                    "groupingBehavior",
+                    "selectionBehavior",
+                    "requiredBehavior",
+                    "precheckBehavior",
+                    "cardinalityBehavior",
+                    "definitionCanonical",
+                    "definitionUri",
+                    "transform",
+                    "dynamicValue",
+                    "action",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = PlanDefinitionAction;
@@ -2151,48 +2216,7 @@ impl<'de> serde::de::Deserialize<'de> for PlanDefinitionAction {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "prefix",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "prefix",
-                                            "title",
-                                            "description",
-                                            "textEquivalent",
-                                            "priority",
-                                            "code",
-                                            "reason",
-                                            "documentation",
-                                            "goalId",
-                                            "subjectCodeableConcept",
-                                            "subjectReference",
-                                            "trigger",
-                                            "condition",
-                                            "input",
-                                            "output",
-                                            "relatedAction",
-                                            "timingDateTime",
-                                            "timingAge",
-                                            "timingPeriod",
-                                            "timingDuration",
-                                            "timingRange",
-                                            "timingTiming",
-                                            "participant",
-                                            "type",
-                                            "groupingBehavior",
-                                            "selectionBehavior",
-                                            "requiredBehavior",
-                                            "precheckBehavior",
-                                            "cardinalityBehavior",
-                                            "definitionCanonical",
-                                            "definitionUri",
-                                            "transform",
-                                            "dynamicValue",
-                                            "action",
-                                        ],
-                                    ));
+                                    return unknown_field_error("prefix");
                                 }
                             }
                             Field::Title => {
@@ -2223,48 +2247,7 @@ impl<'de> serde::de::Deserialize<'de> for PlanDefinitionAction {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "title",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "prefix",
-                                            "title",
-                                            "description",
-                                            "textEquivalent",
-                                            "priority",
-                                            "code",
-                                            "reason",
-                                            "documentation",
-                                            "goalId",
-                                            "subjectCodeableConcept",
-                                            "subjectReference",
-                                            "trigger",
-                                            "condition",
-                                            "input",
-                                            "output",
-                                            "relatedAction",
-                                            "timingDateTime",
-                                            "timingAge",
-                                            "timingPeriod",
-                                            "timingDuration",
-                                            "timingRange",
-                                            "timingTiming",
-                                            "participant",
-                                            "type",
-                                            "groupingBehavior",
-                                            "selectionBehavior",
-                                            "requiredBehavior",
-                                            "precheckBehavior",
-                                            "cardinalityBehavior",
-                                            "definitionCanonical",
-                                            "definitionUri",
-                                            "transform",
-                                            "dynamicValue",
-                                            "action",
-                                        ],
-                                    ));
+                                    return unknown_field_error("title");
                                 }
                             }
                             Field::Description => {
@@ -2301,48 +2284,7 @@ impl<'de> serde::de::Deserialize<'de> for PlanDefinitionAction {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "description",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "prefix",
-                                            "title",
-                                            "description",
-                                            "textEquivalent",
-                                            "priority",
-                                            "code",
-                                            "reason",
-                                            "documentation",
-                                            "goalId",
-                                            "subjectCodeableConcept",
-                                            "subjectReference",
-                                            "trigger",
-                                            "condition",
-                                            "input",
-                                            "output",
-                                            "relatedAction",
-                                            "timingDateTime",
-                                            "timingAge",
-                                            "timingPeriod",
-                                            "timingDuration",
-                                            "timingRange",
-                                            "timingTiming",
-                                            "participant",
-                                            "type",
-                                            "groupingBehavior",
-                                            "selectionBehavior",
-                                            "requiredBehavior",
-                                            "precheckBehavior",
-                                            "cardinalityBehavior",
-                                            "definitionCanonical",
-                                            "definitionUri",
-                                            "transform",
-                                            "dynamicValue",
-                                            "action",
-                                        ],
-                                    ));
+                                    return unknown_field_error("description");
                                 }
                             }
                             Field::TextEquivalent => {
@@ -2379,48 +2321,7 @@ impl<'de> serde::de::Deserialize<'de> for PlanDefinitionAction {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "textEquivalent",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "prefix",
-                                            "title",
-                                            "description",
-                                            "textEquivalent",
-                                            "priority",
-                                            "code",
-                                            "reason",
-                                            "documentation",
-                                            "goalId",
-                                            "subjectCodeableConcept",
-                                            "subjectReference",
-                                            "trigger",
-                                            "condition",
-                                            "input",
-                                            "output",
-                                            "relatedAction",
-                                            "timingDateTime",
-                                            "timingAge",
-                                            "timingPeriod",
-                                            "timingDuration",
-                                            "timingRange",
-                                            "timingTiming",
-                                            "participant",
-                                            "type",
-                                            "groupingBehavior",
-                                            "selectionBehavior",
-                                            "requiredBehavior",
-                                            "precheckBehavior",
-                                            "cardinalityBehavior",
-                                            "definitionCanonical",
-                                            "definitionUri",
-                                            "transform",
-                                            "dynamicValue",
-                                            "action",
-                                        ],
-                                    ));
+                                    return unknown_field_error("textEquivalent");
                                 }
                             }
                             Field::Priority => {
@@ -2451,48 +2352,7 @@ impl<'de> serde::de::Deserialize<'de> for PlanDefinitionAction {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "priority",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "prefix",
-                                            "title",
-                                            "description",
-                                            "textEquivalent",
-                                            "priority",
-                                            "code",
-                                            "reason",
-                                            "documentation",
-                                            "goalId",
-                                            "subjectCodeableConcept",
-                                            "subjectReference",
-                                            "trigger",
-                                            "condition",
-                                            "input",
-                                            "output",
-                                            "relatedAction",
-                                            "timingDateTime",
-                                            "timingAge",
-                                            "timingPeriod",
-                                            "timingDuration",
-                                            "timingRange",
-                                            "timingTiming",
-                                            "participant",
-                                            "type",
-                                            "groupingBehavior",
-                                            "selectionBehavior",
-                                            "requiredBehavior",
-                                            "precheckBehavior",
-                                            "cardinalityBehavior",
-                                            "definitionCanonical",
-                                            "definitionUri",
-                                            "transform",
-                                            "dynamicValue",
-                                            "action",
-                                        ],
-                                    ));
+                                    return unknown_field_error("priority");
                                 }
                             }
                             Field::Code => {
@@ -2586,48 +2446,7 @@ impl<'de> serde::de::Deserialize<'de> for PlanDefinitionAction {
                                         }
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "goalId",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "prefix",
-                                            "title",
-                                            "description",
-                                            "textEquivalent",
-                                            "priority",
-                                            "code",
-                                            "reason",
-                                            "documentation",
-                                            "goalId",
-                                            "subjectCodeableConcept",
-                                            "subjectReference",
-                                            "trigger",
-                                            "condition",
-                                            "input",
-                                            "output",
-                                            "relatedAction",
-                                            "timingDateTime",
-                                            "timingAge",
-                                            "timingPeriod",
-                                            "timingDuration",
-                                            "timingRange",
-                                            "timingTiming",
-                                            "participant",
-                                            "type",
-                                            "groupingBehavior",
-                                            "selectionBehavior",
-                                            "requiredBehavior",
-                                            "precheckBehavior",
-                                            "cardinalityBehavior",
-                                            "definitionCanonical",
-                                            "definitionUri",
-                                            "transform",
-                                            "dynamicValue",
-                                            "action",
-                                        ],
-                                    ));
+                                    return unknown_field_error("goalId");
                                 }
                             }
                             Field::SubjectCodeableConcept => {
@@ -2757,48 +2576,7 @@ impl<'de> serde::de::Deserialize<'de> for PlanDefinitionAction {
                                         ));
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "timingDateTime",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "prefix",
-                                            "title",
-                                            "description",
-                                            "textEquivalent",
-                                            "priority",
-                                            "code",
-                                            "reason",
-                                            "documentation",
-                                            "goalId",
-                                            "subjectCodeableConcept",
-                                            "subjectReference",
-                                            "trigger",
-                                            "condition",
-                                            "input",
-                                            "output",
-                                            "relatedAction",
-                                            "timingDateTime",
-                                            "timingAge",
-                                            "timingPeriod",
-                                            "timingDuration",
-                                            "timingRange",
-                                            "timingTiming",
-                                            "participant",
-                                            "type",
-                                            "groupingBehavior",
-                                            "selectionBehavior",
-                                            "requiredBehavior",
-                                            "precheckBehavior",
-                                            "cardinalityBehavior",
-                                            "definitionCanonical",
-                                            "definitionUri",
-                                            "transform",
-                                            "dynamicValue",
-                                            "action",
-                                        ],
-                                    ));
+                                    return unknown_field_error("timingDateTime");
                                 }
                             }
                             Field::TimingAge => {
@@ -2897,48 +2675,7 @@ impl<'de> serde::de::Deserialize<'de> for PlanDefinitionAction {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "groupingBehavior",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "prefix",
-                                            "title",
-                                            "description",
-                                            "textEquivalent",
-                                            "priority",
-                                            "code",
-                                            "reason",
-                                            "documentation",
-                                            "goalId",
-                                            "subjectCodeableConcept",
-                                            "subjectReference",
-                                            "trigger",
-                                            "condition",
-                                            "input",
-                                            "output",
-                                            "relatedAction",
-                                            "timingDateTime",
-                                            "timingAge",
-                                            "timingPeriod",
-                                            "timingDuration",
-                                            "timingRange",
-                                            "timingTiming",
-                                            "participant",
-                                            "type",
-                                            "groupingBehavior",
-                                            "selectionBehavior",
-                                            "requiredBehavior",
-                                            "precheckBehavior",
-                                            "cardinalityBehavior",
-                                            "definitionCanonical",
-                                            "definitionUri",
-                                            "transform",
-                                            "dynamicValue",
-                                            "action",
-                                        ],
-                                    ));
+                                    return unknown_field_error("groupingBehavior");
                                 }
                             }
                             Field::SelectionBehavior => {
@@ -2977,48 +2714,7 @@ impl<'de> serde::de::Deserialize<'de> for PlanDefinitionAction {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "selectionBehavior",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "prefix",
-                                            "title",
-                                            "description",
-                                            "textEquivalent",
-                                            "priority",
-                                            "code",
-                                            "reason",
-                                            "documentation",
-                                            "goalId",
-                                            "subjectCodeableConcept",
-                                            "subjectReference",
-                                            "trigger",
-                                            "condition",
-                                            "input",
-                                            "output",
-                                            "relatedAction",
-                                            "timingDateTime",
-                                            "timingAge",
-                                            "timingPeriod",
-                                            "timingDuration",
-                                            "timingRange",
-                                            "timingTiming",
-                                            "participant",
-                                            "type",
-                                            "groupingBehavior",
-                                            "selectionBehavior",
-                                            "requiredBehavior",
-                                            "precheckBehavior",
-                                            "cardinalityBehavior",
-                                            "definitionCanonical",
-                                            "definitionUri",
-                                            "transform",
-                                            "dynamicValue",
-                                            "action",
-                                        ],
-                                    ));
+                                    return unknown_field_error("selectionBehavior");
                                 }
                             }
                             Field::RequiredBehavior => {
@@ -3057,48 +2753,7 @@ impl<'de> serde::de::Deserialize<'de> for PlanDefinitionAction {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "requiredBehavior",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "prefix",
-                                            "title",
-                                            "description",
-                                            "textEquivalent",
-                                            "priority",
-                                            "code",
-                                            "reason",
-                                            "documentation",
-                                            "goalId",
-                                            "subjectCodeableConcept",
-                                            "subjectReference",
-                                            "trigger",
-                                            "condition",
-                                            "input",
-                                            "output",
-                                            "relatedAction",
-                                            "timingDateTime",
-                                            "timingAge",
-                                            "timingPeriod",
-                                            "timingDuration",
-                                            "timingRange",
-                                            "timingTiming",
-                                            "participant",
-                                            "type",
-                                            "groupingBehavior",
-                                            "selectionBehavior",
-                                            "requiredBehavior",
-                                            "precheckBehavior",
-                                            "cardinalityBehavior",
-                                            "definitionCanonical",
-                                            "definitionUri",
-                                            "transform",
-                                            "dynamicValue",
-                                            "action",
-                                        ],
-                                    ));
+                                    return unknown_field_error("requiredBehavior");
                                 }
                             }
                             Field::PrecheckBehavior => {
@@ -3137,48 +2792,7 @@ impl<'de> serde::de::Deserialize<'de> for PlanDefinitionAction {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "precheckBehavior",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "prefix",
-                                            "title",
-                                            "description",
-                                            "textEquivalent",
-                                            "priority",
-                                            "code",
-                                            "reason",
-                                            "documentation",
-                                            "goalId",
-                                            "subjectCodeableConcept",
-                                            "subjectReference",
-                                            "trigger",
-                                            "condition",
-                                            "input",
-                                            "output",
-                                            "relatedAction",
-                                            "timingDateTime",
-                                            "timingAge",
-                                            "timingPeriod",
-                                            "timingDuration",
-                                            "timingRange",
-                                            "timingTiming",
-                                            "participant",
-                                            "type",
-                                            "groupingBehavior",
-                                            "selectionBehavior",
-                                            "requiredBehavior",
-                                            "precheckBehavior",
-                                            "cardinalityBehavior",
-                                            "definitionCanonical",
-                                            "definitionUri",
-                                            "transform",
-                                            "dynamicValue",
-                                            "action",
-                                        ],
-                                    ));
+                                    return unknown_field_error("precheckBehavior");
                                 }
                             }
                             Field::CardinalityBehavior => {
@@ -3217,48 +2831,7 @@ impl<'de> serde::de::Deserialize<'de> for PlanDefinitionAction {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "cardinalityBehavior",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "prefix",
-                                            "title",
-                                            "description",
-                                            "textEquivalent",
-                                            "priority",
-                                            "code",
-                                            "reason",
-                                            "documentation",
-                                            "goalId",
-                                            "subjectCodeableConcept",
-                                            "subjectReference",
-                                            "trigger",
-                                            "condition",
-                                            "input",
-                                            "output",
-                                            "relatedAction",
-                                            "timingDateTime",
-                                            "timingAge",
-                                            "timingPeriod",
-                                            "timingDuration",
-                                            "timingRange",
-                                            "timingTiming",
-                                            "participant",
-                                            "type",
-                                            "groupingBehavior",
-                                            "selectionBehavior",
-                                            "requiredBehavior",
-                                            "precheckBehavior",
-                                            "cardinalityBehavior",
-                                            "definitionCanonical",
-                                            "definitionUri",
-                                            "transform",
-                                            "dynamicValue",
-                                            "action",
-                                        ],
-                                    ));
+                                    return unknown_field_error("cardinalityBehavior");
                                 }
                             }
                             Field::DefinitionCanonical => {
@@ -3321,48 +2894,7 @@ impl<'de> serde::de::Deserialize<'de> for PlanDefinitionAction {
                                         ));
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "definitionCanonical",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "prefix",
-                                            "title",
-                                            "description",
-                                            "textEquivalent",
-                                            "priority",
-                                            "code",
-                                            "reason",
-                                            "documentation",
-                                            "goalId",
-                                            "subjectCodeableConcept",
-                                            "subjectReference",
-                                            "trigger",
-                                            "condition",
-                                            "input",
-                                            "output",
-                                            "relatedAction",
-                                            "timingDateTime",
-                                            "timingAge",
-                                            "timingPeriod",
-                                            "timingDuration",
-                                            "timingRange",
-                                            "timingTiming",
-                                            "participant",
-                                            "type",
-                                            "groupingBehavior",
-                                            "selectionBehavior",
-                                            "requiredBehavior",
-                                            "precheckBehavior",
-                                            "cardinalityBehavior",
-                                            "definitionCanonical",
-                                            "definitionUri",
-                                            "transform",
-                                            "dynamicValue",
-                                            "action",
-                                        ],
-                                    ));
+                                    return unknown_field_error("definitionCanonical");
                                 }
                             }
                             Field::DefinitionUri => {
@@ -3417,48 +2949,7 @@ impl<'de> serde::de::Deserialize<'de> for PlanDefinitionAction {
                                         ));
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "definitionUri",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "prefix",
-                                            "title",
-                                            "description",
-                                            "textEquivalent",
-                                            "priority",
-                                            "code",
-                                            "reason",
-                                            "documentation",
-                                            "goalId",
-                                            "subjectCodeableConcept",
-                                            "subjectReference",
-                                            "trigger",
-                                            "condition",
-                                            "input",
-                                            "output",
-                                            "relatedAction",
-                                            "timingDateTime",
-                                            "timingAge",
-                                            "timingPeriod",
-                                            "timingDuration",
-                                            "timingRange",
-                                            "timingTiming",
-                                            "participant",
-                                            "type",
-                                            "groupingBehavior",
-                                            "selectionBehavior",
-                                            "requiredBehavior",
-                                            "precheckBehavior",
-                                            "cardinalityBehavior",
-                                            "definitionCanonical",
-                                            "definitionUri",
-                                            "transform",
-                                            "dynamicValue",
-                                            "action",
-                                        ],
-                                    ));
+                                    return unknown_field_error("definitionUri");
                                 }
                             }
                             Field::Transform => {
@@ -3491,48 +2982,7 @@ impl<'de> serde::de::Deserialize<'de> for PlanDefinitionAction {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "transform",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "prefix",
-                                            "title",
-                                            "description",
-                                            "textEquivalent",
-                                            "priority",
-                                            "code",
-                                            "reason",
-                                            "documentation",
-                                            "goalId",
-                                            "subjectCodeableConcept",
-                                            "subjectReference",
-                                            "trigger",
-                                            "condition",
-                                            "input",
-                                            "output",
-                                            "relatedAction",
-                                            "timingDateTime",
-                                            "timingAge",
-                                            "timingPeriod",
-                                            "timingDuration",
-                                            "timingRange",
-                                            "timingTiming",
-                                            "participant",
-                                            "type",
-                                            "groupingBehavior",
-                                            "selectionBehavior",
-                                            "requiredBehavior",
-                                            "precheckBehavior",
-                                            "cardinalityBehavior",
-                                            "definitionCanonical",
-                                            "definitionUri",
-                                            "transform",
-                                            "dynamicValue",
-                                            "action",
-                                        ],
-                                    ));
+                                    return unknown_field_error("transform");
                                 }
                             }
                             Field::DynamicValue => {
@@ -4302,6 +3752,53 @@ impl<'de> serde::de::Deserialize<'de> for PlanDefinition {
             Action,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "meta",
+                    "implicitRules",
+                    "language",
+                    "text",
+                    "contained",
+                    "extension",
+                    "modifierExtension",
+                    "url",
+                    "identifier",
+                    "version",
+                    "name",
+                    "title",
+                    "subtitle",
+                    "type",
+                    "status",
+                    "experimental",
+                    "subjectCodeableConcept",
+                    "subjectReference",
+                    "date",
+                    "publisher",
+                    "contact",
+                    "description",
+                    "useContext",
+                    "jurisdiction",
+                    "purpose",
+                    "usage",
+                    "copyright",
+                    "approvalDate",
+                    "lastReviewDate",
+                    "effectivePeriod",
+                    "topic",
+                    "author",
+                    "editor",
+                    "reviewer",
+                    "endorser",
+                    "relatedArtifact",
+                    "library",
+                    "goal",
+                    "action",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = PlanDefinition;
@@ -4413,51 +3910,7 @@ impl<'de> serde::de::Deserialize<'de> for PlanDefinition {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "implicitRules",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "identifier",
-                                            "version",
-                                            "name",
-                                            "title",
-                                            "subtitle",
-                                            "type",
-                                            "status",
-                                            "experimental",
-                                            "subjectCodeableConcept",
-                                            "subjectReference",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "description",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "purpose",
-                                            "usage",
-                                            "copyright",
-                                            "approvalDate",
-                                            "lastReviewDate",
-                                            "effectivePeriod",
-                                            "topic",
-                                            "author",
-                                            "editor",
-                                            "reviewer",
-                                            "endorser",
-                                            "relatedArtifact",
-                                            "library",
-                                            "goal",
-                                            "action",
-                                        ],
-                                    ));
+                                    return unknown_field_error("implicitRules");
                                 }
                             }
                             Field::Language => {
@@ -4488,51 +3941,7 @@ impl<'de> serde::de::Deserialize<'de> for PlanDefinition {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "language",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "identifier",
-                                            "version",
-                                            "name",
-                                            "title",
-                                            "subtitle",
-                                            "type",
-                                            "status",
-                                            "experimental",
-                                            "subjectCodeableConcept",
-                                            "subjectReference",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "description",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "purpose",
-                                            "usage",
-                                            "copyright",
-                                            "approvalDate",
-                                            "lastReviewDate",
-                                            "effectivePeriod",
-                                            "topic",
-                                            "author",
-                                            "editor",
-                                            "reviewer",
-                                            "endorser",
-                                            "relatedArtifact",
-                                            "library",
-                                            "goal",
-                                            "action",
-                                        ],
-                                    ));
+                                    return unknown_field_error("language");
                                 }
                             }
                             Field::Text => {
@@ -4605,51 +4014,7 @@ impl<'de> serde::de::Deserialize<'de> for PlanDefinition {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "url",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "identifier",
-                                            "version",
-                                            "name",
-                                            "title",
-                                            "subtitle",
-                                            "type",
-                                            "status",
-                                            "experimental",
-                                            "subjectCodeableConcept",
-                                            "subjectReference",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "description",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "purpose",
-                                            "usage",
-                                            "copyright",
-                                            "approvalDate",
-                                            "lastReviewDate",
-                                            "effectivePeriod",
-                                            "topic",
-                                            "author",
-                                            "editor",
-                                            "reviewer",
-                                            "endorser",
-                                            "relatedArtifact",
-                                            "library",
-                                            "goal",
-                                            "action",
-                                        ],
-                                    ));
+                                    return unknown_field_error("url");
                                 }
                             }
                             Field::Identifier => {
@@ -4693,51 +4058,7 @@ impl<'de> serde::de::Deserialize<'de> for PlanDefinition {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "version",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "identifier",
-                                            "version",
-                                            "name",
-                                            "title",
-                                            "subtitle",
-                                            "type",
-                                            "status",
-                                            "experimental",
-                                            "subjectCodeableConcept",
-                                            "subjectReference",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "description",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "purpose",
-                                            "usage",
-                                            "copyright",
-                                            "approvalDate",
-                                            "lastReviewDate",
-                                            "effectivePeriod",
-                                            "topic",
-                                            "author",
-                                            "editor",
-                                            "reviewer",
-                                            "endorser",
-                                            "relatedArtifact",
-                                            "library",
-                                            "goal",
-                                            "action",
-                                        ],
-                                    ));
+                                    return unknown_field_error("version");
                                 }
                             }
                             Field::Name => {
@@ -4768,51 +4089,7 @@ impl<'de> serde::de::Deserialize<'de> for PlanDefinition {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "name",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "identifier",
-                                            "version",
-                                            "name",
-                                            "title",
-                                            "subtitle",
-                                            "type",
-                                            "status",
-                                            "experimental",
-                                            "subjectCodeableConcept",
-                                            "subjectReference",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "description",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "purpose",
-                                            "usage",
-                                            "copyright",
-                                            "approvalDate",
-                                            "lastReviewDate",
-                                            "effectivePeriod",
-                                            "topic",
-                                            "author",
-                                            "editor",
-                                            "reviewer",
-                                            "endorser",
-                                            "relatedArtifact",
-                                            "library",
-                                            "goal",
-                                            "action",
-                                        ],
-                                    ));
+                                    return unknown_field_error("name");
                                 }
                             }
                             Field::Title => {
@@ -4843,51 +4120,7 @@ impl<'de> serde::de::Deserialize<'de> for PlanDefinition {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "title",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "identifier",
-                                            "version",
-                                            "name",
-                                            "title",
-                                            "subtitle",
-                                            "type",
-                                            "status",
-                                            "experimental",
-                                            "subjectCodeableConcept",
-                                            "subjectReference",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "description",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "purpose",
-                                            "usage",
-                                            "copyright",
-                                            "approvalDate",
-                                            "lastReviewDate",
-                                            "effectivePeriod",
-                                            "topic",
-                                            "author",
-                                            "editor",
-                                            "reviewer",
-                                            "endorser",
-                                            "relatedArtifact",
-                                            "library",
-                                            "goal",
-                                            "action",
-                                        ],
-                                    ));
+                                    return unknown_field_error("title");
                                 }
                             }
                             Field::Subtitle => {
@@ -4918,51 +4151,7 @@ impl<'de> serde::de::Deserialize<'de> for PlanDefinition {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "subtitle",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "identifier",
-                                            "version",
-                                            "name",
-                                            "title",
-                                            "subtitle",
-                                            "type",
-                                            "status",
-                                            "experimental",
-                                            "subjectCodeableConcept",
-                                            "subjectReference",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "description",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "purpose",
-                                            "usage",
-                                            "copyright",
-                                            "approvalDate",
-                                            "lastReviewDate",
-                                            "effectivePeriod",
-                                            "topic",
-                                            "author",
-                                            "editor",
-                                            "reviewer",
-                                            "endorser",
-                                            "relatedArtifact",
-                                            "library",
-                                            "goal",
-                                            "action",
-                                        ],
-                                    ));
+                                    return unknown_field_error("subtitle");
                                 }
                             }
                             Field::Type => {
@@ -4999,51 +4188,7 @@ impl<'de> serde::de::Deserialize<'de> for PlanDefinition {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "status",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "identifier",
-                                            "version",
-                                            "name",
-                                            "title",
-                                            "subtitle",
-                                            "type",
-                                            "status",
-                                            "experimental",
-                                            "subjectCodeableConcept",
-                                            "subjectReference",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "description",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "purpose",
-                                            "usage",
-                                            "copyright",
-                                            "approvalDate",
-                                            "lastReviewDate",
-                                            "effectivePeriod",
-                                            "topic",
-                                            "author",
-                                            "editor",
-                                            "reviewer",
-                                            "endorser",
-                                            "relatedArtifact",
-                                            "library",
-                                            "goal",
-                                            "action",
-                                        ],
-                                    ));
+                                    return unknown_field_error("status");
                                 }
                             }
                             Field::Experimental => {
@@ -5080,51 +4225,7 @@ impl<'de> serde::de::Deserialize<'de> for PlanDefinition {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "experimental",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "identifier",
-                                            "version",
-                                            "name",
-                                            "title",
-                                            "subtitle",
-                                            "type",
-                                            "status",
-                                            "experimental",
-                                            "subjectCodeableConcept",
-                                            "subjectReference",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "description",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "purpose",
-                                            "usage",
-                                            "copyright",
-                                            "approvalDate",
-                                            "lastReviewDate",
-                                            "effectivePeriod",
-                                            "topic",
-                                            "author",
-                                            "editor",
-                                            "reviewer",
-                                            "endorser",
-                                            "relatedArtifact",
-                                            "library",
-                                            "goal",
-                                            "action",
-                                        ],
-                                    ));
+                                    return unknown_field_error("experimental");
                                 }
                             }
                             Field::SubjectCodeableConcept => {
@@ -5175,51 +4276,7 @@ impl<'de> serde::de::Deserialize<'de> for PlanDefinition {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "date",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "identifier",
-                                            "version",
-                                            "name",
-                                            "title",
-                                            "subtitle",
-                                            "type",
-                                            "status",
-                                            "experimental",
-                                            "subjectCodeableConcept",
-                                            "subjectReference",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "description",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "purpose",
-                                            "usage",
-                                            "copyright",
-                                            "approvalDate",
-                                            "lastReviewDate",
-                                            "effectivePeriod",
-                                            "topic",
-                                            "author",
-                                            "editor",
-                                            "reviewer",
-                                            "endorser",
-                                            "relatedArtifact",
-                                            "library",
-                                            "goal",
-                                            "action",
-                                        ],
-                                    ));
+                                    return unknown_field_error("date");
                                 }
                             }
                             Field::Publisher => {
@@ -5252,51 +4309,7 @@ impl<'de> serde::de::Deserialize<'de> for PlanDefinition {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "publisher",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "identifier",
-                                            "version",
-                                            "name",
-                                            "title",
-                                            "subtitle",
-                                            "type",
-                                            "status",
-                                            "experimental",
-                                            "subjectCodeableConcept",
-                                            "subjectReference",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "description",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "purpose",
-                                            "usage",
-                                            "copyright",
-                                            "approvalDate",
-                                            "lastReviewDate",
-                                            "effectivePeriod",
-                                            "topic",
-                                            "author",
-                                            "editor",
-                                            "reviewer",
-                                            "endorser",
-                                            "relatedArtifact",
-                                            "library",
-                                            "goal",
-                                            "action",
-                                        ],
-                                    ));
+                                    return unknown_field_error("publisher");
                                 }
                             }
                             Field::Contact => {
@@ -5344,51 +4357,7 @@ impl<'de> serde::de::Deserialize<'de> for PlanDefinition {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "description",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "identifier",
-                                            "version",
-                                            "name",
-                                            "title",
-                                            "subtitle",
-                                            "type",
-                                            "status",
-                                            "experimental",
-                                            "subjectCodeableConcept",
-                                            "subjectReference",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "description",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "purpose",
-                                            "usage",
-                                            "copyright",
-                                            "approvalDate",
-                                            "lastReviewDate",
-                                            "effectivePeriod",
-                                            "topic",
-                                            "author",
-                                            "editor",
-                                            "reviewer",
-                                            "endorser",
-                                            "relatedArtifact",
-                                            "library",
-                                            "goal",
-                                            "action",
-                                        ],
-                                    ));
+                                    return unknown_field_error("description");
                                 }
                             }
                             Field::UseContext => {
@@ -5445,51 +4414,7 @@ impl<'de> serde::de::Deserialize<'de> for PlanDefinition {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "purpose",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "identifier",
-                                            "version",
-                                            "name",
-                                            "title",
-                                            "subtitle",
-                                            "type",
-                                            "status",
-                                            "experimental",
-                                            "subjectCodeableConcept",
-                                            "subjectReference",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "description",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "purpose",
-                                            "usage",
-                                            "copyright",
-                                            "approvalDate",
-                                            "lastReviewDate",
-                                            "effectivePeriod",
-                                            "topic",
-                                            "author",
-                                            "editor",
-                                            "reviewer",
-                                            "endorser",
-                                            "relatedArtifact",
-                                            "library",
-                                            "goal",
-                                            "action",
-                                        ],
-                                    ));
+                                    return unknown_field_error("purpose");
                                 }
                             }
                             Field::Usage => {
@@ -5520,51 +4445,7 @@ impl<'de> serde::de::Deserialize<'de> for PlanDefinition {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "usage",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "identifier",
-                                            "version",
-                                            "name",
-                                            "title",
-                                            "subtitle",
-                                            "type",
-                                            "status",
-                                            "experimental",
-                                            "subjectCodeableConcept",
-                                            "subjectReference",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "description",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "purpose",
-                                            "usage",
-                                            "copyright",
-                                            "approvalDate",
-                                            "lastReviewDate",
-                                            "effectivePeriod",
-                                            "topic",
-                                            "author",
-                                            "editor",
-                                            "reviewer",
-                                            "endorser",
-                                            "relatedArtifact",
-                                            "library",
-                                            "goal",
-                                            "action",
-                                        ],
-                                    ));
+                                    return unknown_field_error("usage");
                                 }
                             }
                             Field::Copyright => {
@@ -5597,51 +4478,7 @@ impl<'de> serde::de::Deserialize<'de> for PlanDefinition {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "copyright",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "identifier",
-                                            "version",
-                                            "name",
-                                            "title",
-                                            "subtitle",
-                                            "type",
-                                            "status",
-                                            "experimental",
-                                            "subjectCodeableConcept",
-                                            "subjectReference",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "description",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "purpose",
-                                            "usage",
-                                            "copyright",
-                                            "approvalDate",
-                                            "lastReviewDate",
-                                            "effectivePeriod",
-                                            "topic",
-                                            "author",
-                                            "editor",
-                                            "reviewer",
-                                            "endorser",
-                                            "relatedArtifact",
-                                            "library",
-                                            "goal",
-                                            "action",
-                                        ],
-                                    ));
+                                    return unknown_field_error("copyright");
                                 }
                             }
                             Field::ApprovalDate => {
@@ -5678,51 +4515,7 @@ impl<'de> serde::de::Deserialize<'de> for PlanDefinition {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "approvalDate",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "identifier",
-                                            "version",
-                                            "name",
-                                            "title",
-                                            "subtitle",
-                                            "type",
-                                            "status",
-                                            "experimental",
-                                            "subjectCodeableConcept",
-                                            "subjectReference",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "description",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "purpose",
-                                            "usage",
-                                            "copyright",
-                                            "approvalDate",
-                                            "lastReviewDate",
-                                            "effectivePeriod",
-                                            "topic",
-                                            "author",
-                                            "editor",
-                                            "reviewer",
-                                            "endorser",
-                                            "relatedArtifact",
-                                            "library",
-                                            "goal",
-                                            "action",
-                                        ],
-                                    ));
+                                    return unknown_field_error("approvalDate");
                                 }
                             }
                             Field::LastReviewDate => {
@@ -5759,51 +4552,7 @@ impl<'de> serde::de::Deserialize<'de> for PlanDefinition {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "lastReviewDate",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "identifier",
-                                            "version",
-                                            "name",
-                                            "title",
-                                            "subtitle",
-                                            "type",
-                                            "status",
-                                            "experimental",
-                                            "subjectCodeableConcept",
-                                            "subjectReference",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "description",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "purpose",
-                                            "usage",
-                                            "copyright",
-                                            "approvalDate",
-                                            "lastReviewDate",
-                                            "effectivePeriod",
-                                            "topic",
-                                            "author",
-                                            "editor",
-                                            "reviewer",
-                                            "endorser",
-                                            "relatedArtifact",
-                                            "library",
-                                            "goal",
-                                            "action",
-                                        ],
-                                    ));
+                                    return unknown_field_error("lastReviewDate");
                                 }
                             }
                             Field::EffectivePeriod => {
@@ -5938,51 +4687,7 @@ impl<'de> serde::de::Deserialize<'de> for PlanDefinition {
                                         }
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "library",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "identifier",
-                                            "version",
-                                            "name",
-                                            "title",
-                                            "subtitle",
-                                            "type",
-                                            "status",
-                                            "experimental",
-                                            "subjectCodeableConcept",
-                                            "subjectReference",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "description",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "purpose",
-                                            "usage",
-                                            "copyright",
-                                            "approvalDate",
-                                            "lastReviewDate",
-                                            "effectivePeriod",
-                                            "topic",
-                                            "author",
-                                            "editor",
-                                            "reviewer",
-                                            "endorser",
-                                            "relatedArtifact",
-                                            "library",
-                                            "goal",
-                                            "action",
-                                        ],
-                                    ));
+                                    return unknown_field_error("library");
                                 }
                             }
                             Field::Goal => {

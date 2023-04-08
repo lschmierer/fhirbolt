@@ -1,4 +1,4 @@
-// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-08 by fhirbolt-codegen v0.1.0
 #[doc = "List of participants involved in the appointment."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub struct AppointmentParticipant {
@@ -114,6 +114,21 @@ impl<'de> serde::de::Deserialize<'de> for AppointmentParticipant {
             Period,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "type",
+                    "actor",
+                    "required",
+                    "status",
+                    "period",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = AppointmentParticipant;
@@ -213,19 +228,7 @@ impl<'de> serde::de::Deserialize<'de> for AppointmentParticipant {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "required",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "type",
-                                            "actor",
-                                            "required",
-                                            "status",
-                                            "period",
-                                        ],
-                                    ));
+                                    return unknown_field_error("required");
                                 }
                             }
                             Field::Status => {
@@ -256,19 +259,7 @@ impl<'de> serde::de::Deserialize<'de> for AppointmentParticipant {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "status",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "type",
-                                            "actor",
-                                            "required",
-                                            "status",
-                                            "period",
-                                        ],
-                                    ));
+                                    return unknown_field_error("status");
                                 }
                             }
                             Field::Period => {
@@ -755,6 +746,43 @@ impl<'de> serde::de::Deserialize<'de> for Appointment {
             RequestedPeriod,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "meta",
+                    "implicitRules",
+                    "language",
+                    "text",
+                    "contained",
+                    "extension",
+                    "modifierExtension",
+                    "identifier",
+                    "status",
+                    "cancelationReason",
+                    "serviceCategory",
+                    "serviceType",
+                    "specialty",
+                    "appointmentType",
+                    "reasonCode",
+                    "reasonReference",
+                    "priority",
+                    "description",
+                    "supportingInformation",
+                    "start",
+                    "end",
+                    "minutesDuration",
+                    "slot",
+                    "created",
+                    "comment",
+                    "patientInstruction",
+                    "basedOn",
+                    "participant",
+                    "requestedPeriod",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = Appointment;
@@ -861,41 +889,7 @@ impl<'de> serde::de::Deserialize<'de> for Appointment {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "implicitRules",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "status",
-                                            "cancelationReason",
-                                            "serviceCategory",
-                                            "serviceType",
-                                            "specialty",
-                                            "appointmentType",
-                                            "reasonCode",
-                                            "reasonReference",
-                                            "priority",
-                                            "description",
-                                            "supportingInformation",
-                                            "start",
-                                            "end",
-                                            "minutesDuration",
-                                            "slot",
-                                            "created",
-                                            "comment",
-                                            "patientInstruction",
-                                            "basedOn",
-                                            "participant",
-                                            "requestedPeriod",
-                                        ],
-                                    ));
+                                    return unknown_field_error("implicitRules");
                                 }
                             }
                             Field::Language => {
@@ -926,41 +920,7 @@ impl<'de> serde::de::Deserialize<'de> for Appointment {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "language",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "status",
-                                            "cancelationReason",
-                                            "serviceCategory",
-                                            "serviceType",
-                                            "specialty",
-                                            "appointmentType",
-                                            "reasonCode",
-                                            "reasonReference",
-                                            "priority",
-                                            "description",
-                                            "supportingInformation",
-                                            "start",
-                                            "end",
-                                            "minutesDuration",
-                                            "slot",
-                                            "created",
-                                            "comment",
-                                            "patientInstruction",
-                                            "basedOn",
-                                            "participant",
-                                            "requestedPeriod",
-                                        ],
-                                    ));
+                                    return unknown_field_error("language");
                                 }
                             }
                             Field::Text => {
@@ -1046,41 +1006,7 @@ impl<'de> serde::de::Deserialize<'de> for Appointment {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "status",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "status",
-                                            "cancelationReason",
-                                            "serviceCategory",
-                                            "serviceType",
-                                            "specialty",
-                                            "appointmentType",
-                                            "reasonCode",
-                                            "reasonReference",
-                                            "priority",
-                                            "description",
-                                            "supportingInformation",
-                                            "start",
-                                            "end",
-                                            "minutesDuration",
-                                            "slot",
-                                            "created",
-                                            "comment",
-                                            "patientInstruction",
-                                            "basedOn",
-                                            "participant",
-                                            "requestedPeriod",
-                                        ],
-                                    ));
+                                    return unknown_field_error("status");
                                 }
                             }
                             Field::CancelationReason => {
@@ -1190,41 +1116,7 @@ impl<'de> serde::de::Deserialize<'de> for Appointment {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "priority",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "status",
-                                            "cancelationReason",
-                                            "serviceCategory",
-                                            "serviceType",
-                                            "specialty",
-                                            "appointmentType",
-                                            "reasonCode",
-                                            "reasonReference",
-                                            "priority",
-                                            "description",
-                                            "supportingInformation",
-                                            "start",
-                                            "end",
-                                            "minutesDuration",
-                                            "slot",
-                                            "created",
-                                            "comment",
-                                            "patientInstruction",
-                                            "basedOn",
-                                            "participant",
-                                            "requestedPeriod",
-                                        ],
-                                    ));
+                                    return unknown_field_error("priority");
                                 }
                             }
                             Field::Description => {
@@ -1261,41 +1153,7 @@ impl<'de> serde::de::Deserialize<'de> for Appointment {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "description",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "status",
-                                            "cancelationReason",
-                                            "serviceCategory",
-                                            "serviceType",
-                                            "specialty",
-                                            "appointmentType",
-                                            "reasonCode",
-                                            "reasonReference",
-                                            "priority",
-                                            "description",
-                                            "supportingInformation",
-                                            "start",
-                                            "end",
-                                            "minutesDuration",
-                                            "slot",
-                                            "created",
-                                            "comment",
-                                            "patientInstruction",
-                                            "basedOn",
-                                            "participant",
-                                            "requestedPeriod",
-                                        ],
-                                    ));
+                                    return unknown_field_error("description");
                                 }
                             }
                             Field::SupportingInformation => {
@@ -1340,41 +1198,7 @@ impl<'de> serde::de::Deserialize<'de> for Appointment {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "start",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "status",
-                                            "cancelationReason",
-                                            "serviceCategory",
-                                            "serviceType",
-                                            "specialty",
-                                            "appointmentType",
-                                            "reasonCode",
-                                            "reasonReference",
-                                            "priority",
-                                            "description",
-                                            "supportingInformation",
-                                            "start",
-                                            "end",
-                                            "minutesDuration",
-                                            "slot",
-                                            "created",
-                                            "comment",
-                                            "patientInstruction",
-                                            "basedOn",
-                                            "participant",
-                                            "requestedPeriod",
-                                        ],
-                                    ));
+                                    return unknown_field_error("start");
                                 }
                             }
                             Field::End => {
@@ -1405,41 +1229,7 @@ impl<'de> serde::de::Deserialize<'de> for Appointment {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "end",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "status",
-                                            "cancelationReason",
-                                            "serviceCategory",
-                                            "serviceType",
-                                            "specialty",
-                                            "appointmentType",
-                                            "reasonCode",
-                                            "reasonReference",
-                                            "priority",
-                                            "description",
-                                            "supportingInformation",
-                                            "start",
-                                            "end",
-                                            "minutesDuration",
-                                            "slot",
-                                            "created",
-                                            "comment",
-                                            "patientInstruction",
-                                            "basedOn",
-                                            "participant",
-                                            "requestedPeriod",
-                                        ],
-                                    ));
+                                    return unknown_field_error("end");
                                 }
                             }
                             Field::MinutesDuration => {
@@ -1476,41 +1266,7 @@ impl<'de> serde::de::Deserialize<'de> for Appointment {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "minutesDuration",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "status",
-                                            "cancelationReason",
-                                            "serviceCategory",
-                                            "serviceType",
-                                            "specialty",
-                                            "appointmentType",
-                                            "reasonCode",
-                                            "reasonReference",
-                                            "priority",
-                                            "description",
-                                            "supportingInformation",
-                                            "start",
-                                            "end",
-                                            "minutesDuration",
-                                            "slot",
-                                            "created",
-                                            "comment",
-                                            "patientInstruction",
-                                            "basedOn",
-                                            "participant",
-                                            "requestedPeriod",
-                                        ],
-                                    ));
+                                    return unknown_field_error("minutesDuration");
                                 }
                             }
                             Field::Slot => {
@@ -1552,41 +1308,7 @@ impl<'de> serde::de::Deserialize<'de> for Appointment {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "created",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "status",
-                                            "cancelationReason",
-                                            "serviceCategory",
-                                            "serviceType",
-                                            "specialty",
-                                            "appointmentType",
-                                            "reasonCode",
-                                            "reasonReference",
-                                            "priority",
-                                            "description",
-                                            "supportingInformation",
-                                            "start",
-                                            "end",
-                                            "minutesDuration",
-                                            "slot",
-                                            "created",
-                                            "comment",
-                                            "patientInstruction",
-                                            "basedOn",
-                                            "participant",
-                                            "requestedPeriod",
-                                        ],
-                                    ));
+                                    return unknown_field_error("created");
                                 }
                             }
                             Field::Comment => {
@@ -1617,41 +1339,7 @@ impl<'de> serde::de::Deserialize<'de> for Appointment {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "comment",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "status",
-                                            "cancelationReason",
-                                            "serviceCategory",
-                                            "serviceType",
-                                            "specialty",
-                                            "appointmentType",
-                                            "reasonCode",
-                                            "reasonReference",
-                                            "priority",
-                                            "description",
-                                            "supportingInformation",
-                                            "start",
-                                            "end",
-                                            "minutesDuration",
-                                            "slot",
-                                            "created",
-                                            "comment",
-                                            "patientInstruction",
-                                            "basedOn",
-                                            "participant",
-                                            "requestedPeriod",
-                                        ],
-                                    ));
+                                    return unknown_field_error("comment");
                                 }
                             }
                             Field::PatientInstruction => {
@@ -1690,41 +1378,7 @@ impl<'de> serde::de::Deserialize<'de> for Appointment {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "patientInstruction",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "status",
-                                            "cancelationReason",
-                                            "serviceCategory",
-                                            "serviceType",
-                                            "specialty",
-                                            "appointmentType",
-                                            "reasonCode",
-                                            "reasonReference",
-                                            "priority",
-                                            "description",
-                                            "supportingInformation",
-                                            "start",
-                                            "end",
-                                            "minutesDuration",
-                                            "slot",
-                                            "created",
-                                            "comment",
-                                            "patientInstruction",
-                                            "basedOn",
-                                            "participant",
-                                            "requestedPeriod",
-                                        ],
-                                    ));
+                                    return unknown_field_error("patientInstruction");
                                 }
                             }
                             Field::BasedOn => {

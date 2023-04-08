@@ -1,4 +1,4 @@
-// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-08 by fhirbolt-codegen v0.1.0
 #[doc = "The period during which the activity occurred."]
 #[derive(Debug, Clone, PartialEq)]
 pub enum ProvenanceOccurred {
@@ -84,6 +84,20 @@ impl<'de> serde::de::Deserialize<'de> for ProvenanceAgent {
             #[serde(rename = "onBehalfOf")]
             OnBehalfOf,
             Unknown(std::string::String),
+        }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "type",
+                    "role",
+                    "who",
+                    "onBehalfOf",
+                ],
+            ))
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -287,6 +301,19 @@ impl<'de> serde::de::Deserialize<'de> for ProvenanceEntity {
             Agent,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "role",
+                    "what",
+                    "agent",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = ProvenanceEntity;
@@ -367,17 +394,7 @@ impl<'de> serde::de::Deserialize<'de> for ProvenanceEntity {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "role",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "role",
-                                            "what",
-                                            "agent",
-                                        ],
-                                    ));
+                                    return unknown_field_error("role");
                                 }
                             }
                             Field::What => {
@@ -715,6 +732,32 @@ impl<'de> serde::de::Deserialize<'de> for Provenance {
             Signature,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "meta",
+                    "implicitRules",
+                    "language",
+                    "text",
+                    "contained",
+                    "extension",
+                    "modifierExtension",
+                    "target",
+                    "occurredPeriod",
+                    "occurredDateTime",
+                    "recorded",
+                    "policy",
+                    "location",
+                    "reason",
+                    "activity",
+                    "agent",
+                    "entity",
+                    "signature",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = Provenance;
@@ -803,30 +846,7 @@ impl<'de> serde::de::Deserialize<'de> for Provenance {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "implicitRules",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "target",
-                                            "occurredPeriod",
-                                            "occurredDateTime",
-                                            "recorded",
-                                            "policy",
-                                            "location",
-                                            "reason",
-                                            "activity",
-                                            "agent",
-                                            "entity",
-                                            "signature",
-                                        ],
-                                    ));
+                                    return unknown_field_error("implicitRules");
                                 }
                             }
                             Field::Language => {
@@ -857,30 +877,7 @@ impl<'de> serde::de::Deserialize<'de> for Provenance {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "language",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "target",
-                                            "occurredPeriod",
-                                            "occurredDateTime",
-                                            "recorded",
-                                            "policy",
-                                            "location",
-                                            "reason",
-                                            "activity",
-                                            "agent",
-                                            "entity",
-                                            "signature",
-                                        ],
-                                    ));
+                                    return unknown_field_error("language");
                                 }
                             }
                             Field::Text => {
@@ -997,30 +994,7 @@ impl<'de> serde::de::Deserialize<'de> for Provenance {
                                         ));
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "occurredDateTime",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "target",
-                                            "occurredPeriod",
-                                            "occurredDateTime",
-                                            "recorded",
-                                            "policy",
-                                            "location",
-                                            "reason",
-                                            "activity",
-                                            "agent",
-                                            "entity",
-                                            "signature",
-                                        ],
-                                    ));
+                                    return unknown_field_error("occurredDateTime");
                                 }
                             }
                             Field::Recorded => {
@@ -1051,30 +1025,7 @@ impl<'de> serde::de::Deserialize<'de> for Provenance {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "recorded",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "target",
-                                            "occurredPeriod",
-                                            "occurredDateTime",
-                                            "recorded",
-                                            "policy",
-                                            "location",
-                                            "reason",
-                                            "activity",
-                                            "agent",
-                                            "entity",
-                                            "signature",
-                                        ],
-                                    ));
+                                    return unknown_field_error("recorded");
                                 }
                             }
                             Field::Policy => {
@@ -1133,30 +1084,7 @@ impl<'de> serde::de::Deserialize<'de> for Provenance {
                                         }
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "policy",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "target",
-                                            "occurredPeriod",
-                                            "occurredDateTime",
-                                            "recorded",
-                                            "policy",
-                                            "location",
-                                            "reason",
-                                            "activity",
-                                            "agent",
-                                            "entity",
-                                            "signature",
-                                        ],
-                                    ));
+                                    return unknown_field_error("policy");
                                 }
                             }
                             Field::Location => {

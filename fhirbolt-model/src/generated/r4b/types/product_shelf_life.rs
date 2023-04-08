@@ -1,4 +1,4 @@
-// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-08 by fhirbolt-codegen v0.1.0
 #[doc = "Base StructureDefinition for ProductShelfLife Type: The shelf-life and storage information for a medicinal product item or container can be described using this class."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub struct ProductShelfLife {
@@ -73,6 +73,20 @@ impl<'de> serde::de::Deserialize<'de> for ProductShelfLife {
             #[serde(rename = "specialPrecautionsForStorage")]
             SpecialPrecautionsForStorage,
             Unknown(std::string::String),
+        }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "identifier",
+                    "type",
+                    "period",
+                    "specialPrecautionsForStorage",
+                ],
+            ))
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {

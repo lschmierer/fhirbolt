@@ -1,4 +1,4 @@
-// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-08 by fhirbolt-codegen v0.1.0
 #[doc = "Characteristics for quantitative results of this observation."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub struct ObservationDefinitionQuantitativeDetails {
@@ -113,6 +113,20 @@ impl<'de> serde::de::Deserialize<'de> for ObservationDefinitionQuantitativeDetai
             DecimalPrecisionPrimitiveElement,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "customaryUnit",
+                    "unit",
+                    "conversionFactor",
+                    "decimalPrecision",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = ObservationDefinitionQuantitativeDetails;
@@ -217,18 +231,7 @@ impl<'de> serde::de::Deserialize<'de> for ObservationDefinitionQuantitativeDetai
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "conversionFactor",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "customaryUnit",
-                                            "unit",
-                                            "conversionFactor",
-                                            "decimalPrecision",
-                                        ],
-                                    ));
+                                    return unknown_field_error("conversionFactor");
                                 }
                             }
                             Field::DecimalPrecision => {
@@ -267,18 +270,7 @@ impl<'de> serde::de::Deserialize<'de> for ObservationDefinitionQuantitativeDetai
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "decimalPrecision",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "customaryUnit",
-                                            "unit",
-                                            "conversionFactor",
-                                            "decimalPrecision",
-                                        ],
-                                    ));
+                                    return unknown_field_error("decimalPrecision");
                                 }
                             }
                             Field::Unknown(key) => if _ctx.config.mode
@@ -472,6 +464,24 @@ impl<'de> serde::de::Deserialize<'de> for ObservationDefinitionQualifiedInterval
             ConditionPrimitiveElement,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "category",
+                    "range",
+                    "context",
+                    "appliesTo",
+                    "gender",
+                    "age",
+                    "gestationalAge",
+                    "condition",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = ObservationDefinitionQualifiedInterval;
@@ -560,22 +570,7 @@ impl<'de> serde::de::Deserialize<'de> for ObservationDefinitionQualifiedInterval
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "category",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "category",
-                                            "range",
-                                            "context",
-                                            "appliesTo",
-                                            "gender",
-                                            "age",
-                                            "gestationalAge",
-                                            "condition",
-                                        ],
-                                    ));
+                                    return unknown_field_error("category");
                                 }
                             }
                             Field::Range => {
@@ -629,22 +624,7 @@ impl<'de> serde::de::Deserialize<'de> for ObservationDefinitionQualifiedInterval
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "gender",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "category",
-                                            "range",
-                                            "context",
-                                            "appliesTo",
-                                            "gender",
-                                            "age",
-                                            "gestationalAge",
-                                            "condition",
-                                        ],
-                                    ));
+                                    return unknown_field_error("gender");
                                 }
                             }
                             Field::Age => {
@@ -691,22 +671,7 @@ impl<'de> serde::de::Deserialize<'de> for ObservationDefinitionQualifiedInterval
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "condition",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "category",
-                                            "range",
-                                            "context",
-                                            "appliesTo",
-                                            "gender",
-                                            "age",
-                                            "gestationalAge",
-                                            "condition",
-                                        ],
-                                    ));
+                                    return unknown_field_error("condition");
                                 }
                             }
                             Field::Unknown(key) => if _ctx.config.mode
@@ -1037,6 +1002,34 @@ impl<'de> serde::de::Deserialize<'de> for ObservationDefinition {
             CriticalCodedValueSet,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "meta",
+                    "implicitRules",
+                    "language",
+                    "text",
+                    "contained",
+                    "extension",
+                    "modifierExtension",
+                    "category",
+                    "code",
+                    "identifier",
+                    "permittedDataType",
+                    "multipleResultsAllowed",
+                    "method",
+                    "preferredReportName",
+                    "quantitativeDetails",
+                    "qualifiedInterval",
+                    "validCodedValueSet",
+                    "normalCodedValueSet",
+                    "abnormalCodedValueSet",
+                    "criticalCodedValueSet",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = ObservationDefinition;
@@ -1133,32 +1126,7 @@ impl<'de> serde::de::Deserialize<'de> for ObservationDefinition {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "implicitRules",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "category",
-                                            "code",
-                                            "identifier",
-                                            "permittedDataType",
-                                            "multipleResultsAllowed",
-                                            "method",
-                                            "preferredReportName",
-                                            "quantitativeDetails",
-                                            "qualifiedInterval",
-                                            "validCodedValueSet",
-                                            "normalCodedValueSet",
-                                            "abnormalCodedValueSet",
-                                            "criticalCodedValueSet",
-                                        ],
-                                    ));
+                                    return unknown_field_error("implicitRules");
                                 }
                             }
                             Field::Language => {
@@ -1189,32 +1157,7 @@ impl<'de> serde::de::Deserialize<'de> for ObservationDefinition {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "language",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "category",
-                                            "code",
-                                            "identifier",
-                                            "permittedDataType",
-                                            "multipleResultsAllowed",
-                                            "method",
-                                            "preferredReportName",
-                                            "quantitativeDetails",
-                                            "qualifiedInterval",
-                                            "validCodedValueSet",
-                                            "normalCodedValueSet",
-                                            "abnormalCodedValueSet",
-                                            "criticalCodedValueSet",
-                                        ],
-                                    ));
+                                    return unknown_field_error("language");
                                 }
                             }
                             Field::Text => {
@@ -1350,32 +1293,7 @@ impl<'de> serde::de::Deserialize<'de> for ObservationDefinition {
                                         }
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "permittedDataType",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "category",
-                                            "code",
-                                            "identifier",
-                                            "permittedDataType",
-                                            "multipleResultsAllowed",
-                                            "method",
-                                            "preferredReportName",
-                                            "quantitativeDetails",
-                                            "qualifiedInterval",
-                                            "validCodedValueSet",
-                                            "normalCodedValueSet",
-                                            "abnormalCodedValueSet",
-                                            "criticalCodedValueSet",
-                                        ],
-                                    ));
+                                    return unknown_field_error("permittedDataType");
                                 }
                             }
                             Field::MultipleResultsAllowed => {
@@ -1414,32 +1332,7 @@ impl<'de> serde::de::Deserialize<'de> for ObservationDefinition {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "multipleResultsAllowed",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "category",
-                                            "code",
-                                            "identifier",
-                                            "permittedDataType",
-                                            "multipleResultsAllowed",
-                                            "method",
-                                            "preferredReportName",
-                                            "quantitativeDetails",
-                                            "qualifiedInterval",
-                                            "validCodedValueSet",
-                                            "normalCodedValueSet",
-                                            "abnormalCodedValueSet",
-                                            "criticalCodedValueSet",
-                                        ],
-                                    ));
+                                    return unknown_field_error("multipleResultsAllowed");
                                 }
                             }
                             Field::Method => {
@@ -1484,32 +1377,7 @@ impl<'de> serde::de::Deserialize<'de> for ObservationDefinition {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "preferredReportName",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "category",
-                                            "code",
-                                            "identifier",
-                                            "permittedDataType",
-                                            "multipleResultsAllowed",
-                                            "method",
-                                            "preferredReportName",
-                                            "quantitativeDetails",
-                                            "qualifiedInterval",
-                                            "validCodedValueSet",
-                                            "normalCodedValueSet",
-                                            "abnormalCodedValueSet",
-                                            "criticalCodedValueSet",
-                                        ],
-                                    ));
+                                    return unknown_field_error("preferredReportName");
                                 }
                             }
                             Field::QuantitativeDetails => {

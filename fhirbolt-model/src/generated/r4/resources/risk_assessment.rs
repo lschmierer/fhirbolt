@@ -1,4 +1,4 @@
-// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-08 by fhirbolt-codegen v0.1.0
 #[doc = "The date (and possibly time) the risk assessment was performed."]
 #[derive(Debug, Clone, PartialEq)]
 pub enum RiskAssessmentOccurrence {
@@ -206,6 +206,24 @@ impl<'de> serde::de::Deserialize<'de> for RiskAssessmentPrediction {
             RationalePrimitiveElement,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "outcome",
+                    "probabilityDecimal",
+                    "probabilityRange",
+                    "qualitativeRisk",
+                    "relativeRisk",
+                    "whenPeriod",
+                    "whenRange",
+                    "rationale",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = RiskAssessmentPrediction;
@@ -329,22 +347,7 @@ impl<'de> serde::de::Deserialize<'de> for RiskAssessmentPrediction {
                                         ));
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "probabilityDecimal",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "outcome",
-                                            "probabilityDecimal",
-                                            "probabilityRange",
-                                            "qualitativeRisk",
-                                            "relativeRisk",
-                                            "whenPeriod",
-                                            "whenRange",
-                                            "rationale",
-                                        ],
-                                    ));
+                                    return unknown_field_error("probabilityDecimal");
                                 }
                             }
                             Field::ProbabilityRange => {
@@ -399,22 +402,7 @@ impl<'de> serde::de::Deserialize<'de> for RiskAssessmentPrediction {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "relativeRisk",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "outcome",
-                                            "probabilityDecimal",
-                                            "probabilityRange",
-                                            "qualitativeRisk",
-                                            "relativeRisk",
-                                            "whenPeriod",
-                                            "whenRange",
-                                            "rationale",
-                                        ],
-                                    ));
+                                    return unknown_field_error("relativeRisk");
                                 }
                             }
                             Field::WhenPeriod => {
@@ -463,22 +451,7 @@ impl<'de> serde::de::Deserialize<'de> for RiskAssessmentPrediction {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "rationale",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "outcome",
-                                            "probabilityDecimal",
-                                            "probabilityRange",
-                                            "qualitativeRisk",
-                                            "relativeRisk",
-                                            "whenPeriod",
-                                            "whenRange",
-                                            "rationale",
-                                        ],
-                                    ));
+                                    return unknown_field_error("rationale");
                                 }
                             }
                             Field::Unknown(key) => if _ctx.config.mode
@@ -823,6 +796,39 @@ impl<'de> serde::de::Deserialize<'de> for RiskAssessment {
             Note,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "meta",
+                    "implicitRules",
+                    "language",
+                    "text",
+                    "contained",
+                    "extension",
+                    "modifierExtension",
+                    "identifier",
+                    "basedOn",
+                    "parent",
+                    "status",
+                    "method",
+                    "code",
+                    "subject",
+                    "encounter",
+                    "occurrenceDateTime",
+                    "occurrencePeriod",
+                    "condition",
+                    "performer",
+                    "reasonCode",
+                    "reasonReference",
+                    "basis",
+                    "prediction",
+                    "mitigation",
+                    "note",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = RiskAssessment;
@@ -919,37 +925,7 @@ impl<'de> serde::de::Deserialize<'de> for RiskAssessment {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "implicitRules",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "basedOn",
-                                            "parent",
-                                            "status",
-                                            "method",
-                                            "code",
-                                            "subject",
-                                            "encounter",
-                                            "occurrenceDateTime",
-                                            "occurrencePeriod",
-                                            "condition",
-                                            "performer",
-                                            "reasonCode",
-                                            "reasonReference",
-                                            "basis",
-                                            "prediction",
-                                            "mitigation",
-                                            "note",
-                                        ],
-                                    ));
+                                    return unknown_field_error("implicitRules");
                                 }
                             }
                             Field::Language => {
@@ -980,37 +956,7 @@ impl<'de> serde::de::Deserialize<'de> for RiskAssessment {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "language",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "basedOn",
-                                            "parent",
-                                            "status",
-                                            "method",
-                                            "code",
-                                            "subject",
-                                            "encounter",
-                                            "occurrenceDateTime",
-                                            "occurrencePeriod",
-                                            "condition",
-                                            "performer",
-                                            "reasonCode",
-                                            "reasonReference",
-                                            "basis",
-                                            "prediction",
-                                            "mitigation",
-                                            "note",
-                                        ],
-                                    ));
+                                    return unknown_field_error("language");
                                 }
                             }
                             Field::Text => {
@@ -1108,37 +1054,7 @@ impl<'de> serde::de::Deserialize<'de> for RiskAssessment {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "status",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "basedOn",
-                                            "parent",
-                                            "status",
-                                            "method",
-                                            "code",
-                                            "subject",
-                                            "encounter",
-                                            "occurrenceDateTime",
-                                            "occurrencePeriod",
-                                            "condition",
-                                            "performer",
-                                            "reasonCode",
-                                            "reasonReference",
-                                            "basis",
-                                            "prediction",
-                                            "mitigation",
-                                            "note",
-                                        ],
-                                    ));
+                                    return unknown_field_error("status");
                                 }
                             }
                             Field::Method => {
@@ -1217,37 +1133,7 @@ impl<'de> serde::de::Deserialize<'de> for RiskAssessment {
                                         ));
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "occurrenceDateTime",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "basedOn",
-                                            "parent",
-                                            "status",
-                                            "method",
-                                            "code",
-                                            "subject",
-                                            "encounter",
-                                            "occurrenceDateTime",
-                                            "occurrencePeriod",
-                                            "condition",
-                                            "performer",
-                                            "reasonCode",
-                                            "reasonReference",
-                                            "basis",
-                                            "prediction",
-                                            "mitigation",
-                                            "note",
-                                        ],
-                                    ));
+                                    return unknown_field_error("occurrenceDateTime");
                                 }
                             }
                             Field::OccurrencePeriod => {
@@ -1356,37 +1242,7 @@ impl<'de> serde::de::Deserialize<'de> for RiskAssessment {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "mitigation",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "basedOn",
-                                            "parent",
-                                            "status",
-                                            "method",
-                                            "code",
-                                            "subject",
-                                            "encounter",
-                                            "occurrenceDateTime",
-                                            "occurrencePeriod",
-                                            "condition",
-                                            "performer",
-                                            "reasonCode",
-                                            "reasonReference",
-                                            "basis",
-                                            "prediction",
-                                            "mitigation",
-                                            "note",
-                                        ],
-                                    ));
+                                    return unknown_field_error("mitigation");
                                 }
                             }
                             Field::Note => {

@@ -1,4 +1,4 @@
-// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-08 by fhirbolt-codegen v0.1.0
 #[doc = "Base StructureDefinition for code type: A string which has at least one character and no leading or trailing whitespace and where there is no whitespace other than single spaces in the contents"]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub struct Code {
@@ -46,6 +46,9 @@ impl<'de> serde::de::Deserialize<'de> for Code {
             #[serde(rename = "value")]
             Value,
             Unknown(std::string::String),
+        }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(field, &["id", "extension", "value"]))
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {

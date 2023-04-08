@@ -1,4 +1,4 @@
-// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-08 by fhirbolt-codegen v0.1.0
 #[doc = "Narrows the range of legal concerns to focus on the achievement of specific contractual objectives."]
 #[derive(Debug, Clone, PartialEq)]
 pub enum ContractTopic {
@@ -258,6 +258,22 @@ impl<'de> serde::de::Deserialize<'de> for ContractContentDefinition {
             CopyrightPrimitiveElement,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "type",
+                    "subType",
+                    "publisher",
+                    "publicationDate",
+                    "publicationStatus",
+                    "copyright",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = ContractContentDefinition;
@@ -365,20 +381,7 @@ impl<'de> serde::de::Deserialize<'de> for ContractContentDefinition {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "publicationDate",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "type",
-                                            "subType",
-                                            "publisher",
-                                            "publicationDate",
-                                            "publicationStatus",
-                                            "copyright",
-                                        ],
-                                    ));
+                                    return unknown_field_error("publicationDate");
                                 }
                             }
                             Field::PublicationStatus => {
@@ -417,20 +420,7 @@ impl<'de> serde::de::Deserialize<'de> for ContractContentDefinition {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "publicationStatus",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "type",
-                                            "subType",
-                                            "publisher",
-                                            "publicationDate",
-                                            "publicationStatus",
-                                            "copyright",
-                                        ],
-                                    ));
+                                    return unknown_field_error("publicationStatus");
                                 }
                             }
                             Field::Copyright => {
@@ -463,20 +453,7 @@ impl<'de> serde::de::Deserialize<'de> for ContractContentDefinition {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "copyright",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "type",
-                                            "subType",
-                                            "publisher",
-                                            "publicationDate",
-                                            "publicationStatus",
-                                            "copyright",
-                                        ],
-                                    ));
+                                    return unknown_field_error("copyright");
                                 }
                             }
                             Field::Unknown(key) => if _ctx.config.mode
@@ -640,6 +617,20 @@ impl<'de> serde::de::Deserialize<'de> for ContractTermSecurityLabel {
             Control,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "number",
+                    "classification",
+                    "category",
+                    "control",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = ContractTermSecurityLabel;
@@ -749,18 +740,7 @@ impl<'de> serde::de::Deserialize<'de> for ContractTermSecurityLabel {
                                         }
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "number",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "number",
-                                            "classification",
-                                            "category",
-                                            "control",
-                                        ],
-                                    ));
+                                    return unknown_field_error("number");
                                 }
                             }
                             Field::Classification => {
@@ -892,6 +872,12 @@ impl<'de> serde::de::Deserialize<'de> for ContractTermOfferParty {
             #[serde(rename = "role")]
             Role,
             Unknown(std::string::String),
+        }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &["id", "extension", "modifierExtension", "reference", "role"],
+            ))
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -1235,6 +1221,28 @@ impl<'de> serde::de::Deserialize<'de> for ContractTermOfferAnswer {
             ValueReference,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "valueBoolean",
+                    "valueDecimal",
+                    "valueInteger",
+                    "valueDate",
+                    "valueDateTime",
+                    "valueTime",
+                    "valueString",
+                    "valueUri",
+                    "valueAttachment",
+                    "valueCoding",
+                    "valueQuantity",
+                    "valueReference",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = ContractTermOfferAnswer;
@@ -1333,26 +1341,7 @@ impl<'de> serde::de::Deserialize<'de> for ContractTermOfferAnswer {
                                         return Err(serde::de::Error::duplicate_field("_value[x]"));
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "valueBoolean",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "valueBoolean",
-                                            "valueDecimal",
-                                            "valueInteger",
-                                            "valueDate",
-                                            "valueDateTime",
-                                            "valueTime",
-                                            "valueString",
-                                            "valueUri",
-                                            "valueAttachment",
-                                            "valueCoding",
-                                            "valueQuantity",
-                                            "valueReference",
-                                        ],
-                                    ));
+                                    return unknown_field_error("valueBoolean");
                                 }
                             }
                             Field::ValueDecimal => {
@@ -1403,26 +1392,7 @@ impl<'de> serde::de::Deserialize<'de> for ContractTermOfferAnswer {
                                         return Err(serde::de::Error::duplicate_field("_value[x]"));
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "valueDecimal",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "valueBoolean",
-                                            "valueDecimal",
-                                            "valueInteger",
-                                            "valueDate",
-                                            "valueDateTime",
-                                            "valueTime",
-                                            "valueString",
-                                            "valueUri",
-                                            "valueAttachment",
-                                            "valueCoding",
-                                            "valueQuantity",
-                                            "valueReference",
-                                        ],
-                                    ));
+                                    return unknown_field_error("valueDecimal");
                                 }
                             }
                             Field::ValueInteger => {
@@ -1473,26 +1443,7 @@ impl<'de> serde::de::Deserialize<'de> for ContractTermOfferAnswer {
                                         return Err(serde::de::Error::duplicate_field("_value[x]"));
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "valueInteger",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "valueBoolean",
-                                            "valueDecimal",
-                                            "valueInteger",
-                                            "valueDate",
-                                            "valueDateTime",
-                                            "valueTime",
-                                            "valueString",
-                                            "valueUri",
-                                            "valueAttachment",
-                                            "valueCoding",
-                                            "valueQuantity",
-                                            "valueReference",
-                                        ],
-                                    ));
+                                    return unknown_field_error("valueInteger");
                                 }
                             }
                             Field::ValueDate => {
@@ -1541,26 +1492,7 @@ impl<'de> serde::de::Deserialize<'de> for ContractTermOfferAnswer {
                                         return Err(serde::de::Error::duplicate_field("_value[x]"));
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "valueDate",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "valueBoolean",
-                                            "valueDecimal",
-                                            "valueInteger",
-                                            "valueDate",
-                                            "valueDateTime",
-                                            "valueTime",
-                                            "valueString",
-                                            "valueUri",
-                                            "valueAttachment",
-                                            "valueCoding",
-                                            "valueQuantity",
-                                            "valueReference",
-                                        ],
-                                    ));
+                                    return unknown_field_error("valueDate");
                                 }
                             }
                             Field::ValueDateTime => {
@@ -1613,26 +1545,7 @@ impl<'de> serde::de::Deserialize<'de> for ContractTermOfferAnswer {
                                         return Err(serde::de::Error::duplicate_field("_value[x]"));
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "valueDateTime",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "valueBoolean",
-                                            "valueDecimal",
-                                            "valueInteger",
-                                            "valueDate",
-                                            "valueDateTime",
-                                            "valueTime",
-                                            "valueString",
-                                            "valueUri",
-                                            "valueAttachment",
-                                            "valueCoding",
-                                            "valueQuantity",
-                                            "valueReference",
-                                        ],
-                                    ));
+                                    return unknown_field_error("valueDateTime");
                                 }
                             }
                             Field::ValueTime => {
@@ -1681,26 +1594,7 @@ impl<'de> serde::de::Deserialize<'de> for ContractTermOfferAnswer {
                                         return Err(serde::de::Error::duplicate_field("_value[x]"));
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "valueTime",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "valueBoolean",
-                                            "valueDecimal",
-                                            "valueInteger",
-                                            "valueDate",
-                                            "valueDateTime",
-                                            "valueTime",
-                                            "valueString",
-                                            "valueUri",
-                                            "valueAttachment",
-                                            "valueCoding",
-                                            "valueQuantity",
-                                            "valueReference",
-                                        ],
-                                    ));
+                                    return unknown_field_error("valueTime");
                                 }
                             }
                             Field::ValueString => {
@@ -1751,26 +1645,7 @@ impl<'de> serde::de::Deserialize<'de> for ContractTermOfferAnswer {
                                         return Err(serde::de::Error::duplicate_field("_value[x]"));
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "valueString",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "valueBoolean",
-                                            "valueDecimal",
-                                            "valueInteger",
-                                            "valueDate",
-                                            "valueDateTime",
-                                            "valueTime",
-                                            "valueString",
-                                            "valueUri",
-                                            "valueAttachment",
-                                            "valueCoding",
-                                            "valueQuantity",
-                                            "valueReference",
-                                        ],
-                                    ));
+                                    return unknown_field_error("valueString");
                                 }
                             }
                             Field::ValueUri => {
@@ -1819,26 +1694,7 @@ impl<'de> serde::de::Deserialize<'de> for ContractTermOfferAnswer {
                                         return Err(serde::de::Error::duplicate_field("_value[x]"));
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "valueUri",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "valueBoolean",
-                                            "valueDecimal",
-                                            "valueInteger",
-                                            "valueDate",
-                                            "valueDateTime",
-                                            "valueTime",
-                                            "valueString",
-                                            "valueUri",
-                                            "valueAttachment",
-                                            "valueCoding",
-                                            "valueQuantity",
-                                            "valueReference",
-                                        ],
-                                    ));
+                                    return unknown_field_error("valueUri");
                                 }
                             }
                             Field::ValueAttachment => {
@@ -2131,6 +1987,26 @@ impl<'de> serde::de::Deserialize<'de> for ContractTermOffer {
             SecurityLabelNumberPrimitiveElement,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "identifier",
+                    "party",
+                    "topic",
+                    "type",
+                    "decision",
+                    "decisionMode",
+                    "answer",
+                    "text",
+                    "linkId",
+                    "securityLabelNumber",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = ContractTermOffer;
@@ -2286,24 +2162,7 @@ impl<'de> serde::de::Deserialize<'de> for ContractTermOffer {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "text",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "party",
-                                            "topic",
-                                            "type",
-                                            "decision",
-                                            "decisionMode",
-                                            "answer",
-                                            "text",
-                                            "linkId",
-                                            "securityLabelNumber",
-                                        ],
-                                    ));
+                                    return unknown_field_error("text");
                                 }
                             }
                             Field::LinkId => {
@@ -2362,24 +2221,7 @@ impl<'de> serde::de::Deserialize<'de> for ContractTermOffer {
                                         }
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "linkId",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "party",
-                                            "topic",
-                                            "type",
-                                            "decision",
-                                            "decisionMode",
-                                            "answer",
-                                            "text",
-                                            "linkId",
-                                            "securityLabelNumber",
-                                        ],
-                                    ));
+                                    return unknown_field_error("linkId");
                                 }
                             }
                             Field::SecurityLabelNumber => {
@@ -2443,24 +2285,7 @@ impl<'de> serde::de::Deserialize<'de> for ContractTermOffer {
                                         }
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "securityLabelNumber",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "party",
-                                            "topic",
-                                            "type",
-                                            "decision",
-                                            "decisionMode",
-                                            "answer",
-                                            "text",
-                                            "linkId",
-                                            "securityLabelNumber",
-                                        ],
-                                    ));
+                                    return unknown_field_error("securityLabelNumber");
                                 }
                             }
                             Field::Unknown(key) => if _ctx.config.mode
@@ -2595,6 +2420,19 @@ impl<'de> serde::de::Deserialize<'de> for ContractTermAssetContext {
             TextPrimitiveElement,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "reference",
+                    "code",
+                    "text",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = ContractTermAssetContext;
@@ -2692,17 +2530,7 @@ impl<'de> serde::de::Deserialize<'de> for ContractTermAssetContext {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "text",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "reference",
-                                            "code",
-                                            "text",
-                                        ],
-                                    ));
+                                    return unknown_field_error("text");
                                 }
                             }
                             Field::Unknown(key) => if _ctx.config.mode
@@ -3062,6 +2890,31 @@ impl<'de> serde::de::Deserialize<'de> for ContractTermAssetValuedItem {
             SecurityLabelNumberPrimitiveElement,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "entityCodeableConcept",
+                    "entityReference",
+                    "identifier",
+                    "effectiveTime",
+                    "quantity",
+                    "unitPrice",
+                    "factor",
+                    "points",
+                    "net",
+                    "payment",
+                    "paymentDate",
+                    "responsible",
+                    "recipient",
+                    "linkId",
+                    "securityLabelNumber",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = ContractTermAssetValuedItem;
@@ -3190,29 +3043,7 @@ impl<'de> serde::de::Deserialize<'de> for ContractTermAssetValuedItem {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "effectiveTime",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "entityCodeableConcept",
-                                            "entityReference",
-                                            "identifier",
-                                            "effectiveTime",
-                                            "quantity",
-                                            "unitPrice",
-                                            "factor",
-                                            "points",
-                                            "net",
-                                            "payment",
-                                            "paymentDate",
-                                            "responsible",
-                                            "recipient",
-                                            "linkId",
-                                            "securityLabelNumber",
-                                        ],
-                                    ));
+                                    return unknown_field_error("effectiveTime");
                                 }
                             }
                             Field::Quantity => {
@@ -3255,29 +3086,7 @@ impl<'de> serde::de::Deserialize<'de> for ContractTermAssetValuedItem {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "factor",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "entityCodeableConcept",
-                                            "entityReference",
-                                            "identifier",
-                                            "effectiveTime",
-                                            "quantity",
-                                            "unitPrice",
-                                            "factor",
-                                            "points",
-                                            "net",
-                                            "payment",
-                                            "paymentDate",
-                                            "responsible",
-                                            "recipient",
-                                            "linkId",
-                                            "securityLabelNumber",
-                                        ],
-                                    ));
+                                    return unknown_field_error("factor");
                                 }
                             }
                             Field::Points => {
@@ -3308,29 +3117,7 @@ impl<'de> serde::de::Deserialize<'de> for ContractTermAssetValuedItem {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "points",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "entityCodeableConcept",
-                                            "entityReference",
-                                            "identifier",
-                                            "effectiveTime",
-                                            "quantity",
-                                            "unitPrice",
-                                            "factor",
-                                            "points",
-                                            "net",
-                                            "payment",
-                                            "paymentDate",
-                                            "responsible",
-                                            "recipient",
-                                            "linkId",
-                                            "securityLabelNumber",
-                                        ],
-                                    ));
+                                    return unknown_field_error("points");
                                 }
                             }
                             Field::Net => {
@@ -3367,29 +3154,7 @@ impl<'de> serde::de::Deserialize<'de> for ContractTermAssetValuedItem {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "payment",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "entityCodeableConcept",
-                                            "entityReference",
-                                            "identifier",
-                                            "effectiveTime",
-                                            "quantity",
-                                            "unitPrice",
-                                            "factor",
-                                            "points",
-                                            "net",
-                                            "payment",
-                                            "paymentDate",
-                                            "responsible",
-                                            "recipient",
-                                            "linkId",
-                                            "securityLabelNumber",
-                                        ],
-                                    ));
+                                    return unknown_field_error("payment");
                                 }
                             }
                             Field::PaymentDate => {
@@ -3426,29 +3191,7 @@ impl<'de> serde::de::Deserialize<'de> for ContractTermAssetValuedItem {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "paymentDate",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "entityCodeableConcept",
-                                            "entityReference",
-                                            "identifier",
-                                            "effectiveTime",
-                                            "quantity",
-                                            "unitPrice",
-                                            "factor",
-                                            "points",
-                                            "net",
-                                            "payment",
-                                            "paymentDate",
-                                            "responsible",
-                                            "recipient",
-                                            "linkId",
-                                            "securityLabelNumber",
-                                        ],
-                                    ));
+                                    return unknown_field_error("paymentDate");
                                 }
                             }
                             Field::Responsible => {
@@ -3519,29 +3262,7 @@ impl<'de> serde::de::Deserialize<'de> for ContractTermAssetValuedItem {
                                         }
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "linkId",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "entityCodeableConcept",
-                                            "entityReference",
-                                            "identifier",
-                                            "effectiveTime",
-                                            "quantity",
-                                            "unitPrice",
-                                            "factor",
-                                            "points",
-                                            "net",
-                                            "payment",
-                                            "paymentDate",
-                                            "responsible",
-                                            "recipient",
-                                            "linkId",
-                                            "securityLabelNumber",
-                                        ],
-                                    ));
+                                    return unknown_field_error("linkId");
                                 }
                             }
                             Field::SecurityLabelNumber => {
@@ -3605,29 +3326,7 @@ impl<'de> serde::de::Deserialize<'de> for ContractTermAssetValuedItem {
                                         }
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "securityLabelNumber",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "entityCodeableConcept",
-                                            "entityReference",
-                                            "identifier",
-                                            "effectiveTime",
-                                            "quantity",
-                                            "unitPrice",
-                                            "factor",
-                                            "points",
-                                            "net",
-                                            "payment",
-                                            "paymentDate",
-                                            "responsible",
-                                            "recipient",
-                                            "linkId",
-                                            "securityLabelNumber",
-                                        ],
-                                    ));
+                                    return unknown_field_error("securityLabelNumber");
                                 }
                             }
                             Field::Unknown(key) => if _ctx.config.mode
@@ -3947,6 +3646,31 @@ impl<'de> serde::de::Deserialize<'de> for ContractTermAsset {
             ValuedItem,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "scope",
+                    "type",
+                    "typeReference",
+                    "subtype",
+                    "relationship",
+                    "context",
+                    "condition",
+                    "periodType",
+                    "period",
+                    "usePeriod",
+                    "text",
+                    "linkId",
+                    "answer",
+                    "securityLabelNumber",
+                    "valuedItem",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = ContractTermAsset;
@@ -4101,29 +3825,7 @@ impl<'de> serde::de::Deserialize<'de> for ContractTermAsset {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "condition",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "scope",
-                                            "type",
-                                            "typeReference",
-                                            "subtype",
-                                            "relationship",
-                                            "context",
-                                            "condition",
-                                            "periodType",
-                                            "period",
-                                            "usePeriod",
-                                            "text",
-                                            "linkId",
-                                            "answer",
-                                            "securityLabelNumber",
-                                            "valuedItem",
-                                        ],
-                                    ));
+                                    return unknown_field_error("condition");
                                 }
                             }
                             Field::PeriodType => {
@@ -4189,29 +3891,7 @@ impl<'de> serde::de::Deserialize<'de> for ContractTermAsset {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "text",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "scope",
-                                            "type",
-                                            "typeReference",
-                                            "subtype",
-                                            "relationship",
-                                            "context",
-                                            "condition",
-                                            "periodType",
-                                            "period",
-                                            "usePeriod",
-                                            "text",
-                                            "linkId",
-                                            "answer",
-                                            "securityLabelNumber",
-                                            "valuedItem",
-                                        ],
-                                    ));
+                                    return unknown_field_error("text");
                                 }
                             }
                             Field::LinkId => {
@@ -4270,29 +3950,7 @@ impl<'de> serde::de::Deserialize<'de> for ContractTermAsset {
                                         }
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "linkId",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "scope",
-                                            "type",
-                                            "typeReference",
-                                            "subtype",
-                                            "relationship",
-                                            "context",
-                                            "condition",
-                                            "periodType",
-                                            "period",
-                                            "usePeriod",
-                                            "text",
-                                            "linkId",
-                                            "answer",
-                                            "securityLabelNumber",
-                                            "valuedItem",
-                                        ],
-                                    ));
+                                    return unknown_field_error("linkId");
                                 }
                             }
                             Field::Answer => {
@@ -4367,29 +4025,7 @@ impl<'de> serde::de::Deserialize<'de> for ContractTermAsset {
                                         }
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "securityLabelNumber",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "scope",
-                                            "type",
-                                            "typeReference",
-                                            "subtype",
-                                            "relationship",
-                                            "context",
-                                            "condition",
-                                            "periodType",
-                                            "period",
-                                            "usePeriod",
-                                            "text",
-                                            "linkId",
-                                            "answer",
-                                            "securityLabelNumber",
-                                            "valuedItem",
-                                        ],
-                                    ));
+                                    return unknown_field_error("securityLabelNumber");
                                 }
                             }
                             Field::ValuedItem => {
@@ -4521,6 +4157,12 @@ impl<'de> serde::de::Deserialize<'de> for ContractTermActionSubject {
             #[serde(rename = "role")]
             Role,
             Unknown(std::string::String),
+        }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &["id", "extension", "modifierExtension", "reference", "role"],
+            ))
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -5113,6 +4755,39 @@ impl<'de> serde::de::Deserialize<'de> for ContractTermAction {
             SecurityLabelNumberPrimitiveElement,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "doNotPerform",
+                    "type",
+                    "subject",
+                    "intent",
+                    "linkId",
+                    "status",
+                    "context",
+                    "contextLinkId",
+                    "occurrenceDateTime",
+                    "occurrencePeriod",
+                    "occurrenceTiming",
+                    "requester",
+                    "requesterLinkId",
+                    "performerType",
+                    "performerRole",
+                    "performer",
+                    "performerLinkId",
+                    "reasonCode",
+                    "reasonReference",
+                    "reason",
+                    "reasonLinkId",
+                    "note",
+                    "securityLabelNumber",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = ContractTermAction;
@@ -5220,37 +4895,7 @@ impl<'de> serde::de::Deserialize<'de> for ContractTermAction {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "doNotPerform",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "doNotPerform",
-                                            "type",
-                                            "subject",
-                                            "intent",
-                                            "linkId",
-                                            "status",
-                                            "context",
-                                            "contextLinkId",
-                                            "occurrenceDateTime",
-                                            "occurrencePeriod",
-                                            "occurrenceTiming",
-                                            "requester",
-                                            "requesterLinkId",
-                                            "performerType",
-                                            "performerRole",
-                                            "performer",
-                                            "performerLinkId",
-                                            "reasonCode",
-                                            "reasonReference",
-                                            "reason",
-                                            "reasonLinkId",
-                                            "note",
-                                            "securityLabelNumber",
-                                        ],
-                                    ));
+                                    return unknown_field_error("doNotPerform");
                                 }
                             }
                             Field::Type => {
@@ -5332,37 +4977,7 @@ impl<'de> serde::de::Deserialize<'de> for ContractTermAction {
                                         }
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "linkId",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "doNotPerform",
-                                            "type",
-                                            "subject",
-                                            "intent",
-                                            "linkId",
-                                            "status",
-                                            "context",
-                                            "contextLinkId",
-                                            "occurrenceDateTime",
-                                            "occurrencePeriod",
-                                            "occurrenceTiming",
-                                            "requester",
-                                            "requesterLinkId",
-                                            "performerType",
-                                            "performerRole",
-                                            "performer",
-                                            "performerLinkId",
-                                            "reasonCode",
-                                            "reasonReference",
-                                            "reason",
-                                            "reasonLinkId",
-                                            "note",
-                                            "securityLabelNumber",
-                                        ],
-                                    ));
+                                    return unknown_field_error("linkId");
                                 }
                             }
                             Field::Status => {
@@ -5437,37 +5052,7 @@ impl<'de> serde::de::Deserialize<'de> for ContractTermAction {
                                         }
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "contextLinkId",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "doNotPerform",
-                                            "type",
-                                            "subject",
-                                            "intent",
-                                            "linkId",
-                                            "status",
-                                            "context",
-                                            "contextLinkId",
-                                            "occurrenceDateTime",
-                                            "occurrencePeriod",
-                                            "occurrenceTiming",
-                                            "requester",
-                                            "requesterLinkId",
-                                            "performerType",
-                                            "performerRole",
-                                            "performer",
-                                            "performerLinkId",
-                                            "reasonCode",
-                                            "reasonReference",
-                                            "reason",
-                                            "reasonLinkId",
-                                            "note",
-                                            "securityLabelNumber",
-                                        ],
-                                    ));
+                                    return unknown_field_error("contextLinkId");
                                 }
                             }
                             Field::OccurrenceDateTime => {
@@ -5524,37 +5109,7 @@ impl<'de> serde::de::Deserialize<'de> for ContractTermAction {
                                         ));
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "occurrenceDateTime",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "doNotPerform",
-                                            "type",
-                                            "subject",
-                                            "intent",
-                                            "linkId",
-                                            "status",
-                                            "context",
-                                            "contextLinkId",
-                                            "occurrenceDateTime",
-                                            "occurrencePeriod",
-                                            "occurrenceTiming",
-                                            "requester",
-                                            "requesterLinkId",
-                                            "performerType",
-                                            "performerRole",
-                                            "performer",
-                                            "performerLinkId",
-                                            "reasonCode",
-                                            "reasonReference",
-                                            "reason",
-                                            "reasonLinkId",
-                                            "note",
-                                            "securityLabelNumber",
-                                        ],
-                                    ));
+                                    return unknown_field_error("occurrenceDateTime");
                                 }
                             }
                             Field::OccurrencePeriod => {
@@ -5648,37 +5203,7 @@ impl<'de> serde::de::Deserialize<'de> for ContractTermAction {
                                         }
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "requesterLinkId",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "doNotPerform",
-                                            "type",
-                                            "subject",
-                                            "intent",
-                                            "linkId",
-                                            "status",
-                                            "context",
-                                            "contextLinkId",
-                                            "occurrenceDateTime",
-                                            "occurrencePeriod",
-                                            "occurrenceTiming",
-                                            "requester",
-                                            "requesterLinkId",
-                                            "performerType",
-                                            "performerRole",
-                                            "performer",
-                                            "performerLinkId",
-                                            "reasonCode",
-                                            "reasonReference",
-                                            "reason",
-                                            "reasonLinkId",
-                                            "note",
-                                            "securityLabelNumber",
-                                        ],
-                                    ));
+                                    return unknown_field_error("requesterLinkId");
                                 }
                             }
                             Field::PerformerType => {
@@ -5766,37 +5291,7 @@ impl<'de> serde::de::Deserialize<'de> for ContractTermAction {
                                         }
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "performerLinkId",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "doNotPerform",
-                                            "type",
-                                            "subject",
-                                            "intent",
-                                            "linkId",
-                                            "status",
-                                            "context",
-                                            "contextLinkId",
-                                            "occurrenceDateTime",
-                                            "occurrencePeriod",
-                                            "occurrenceTiming",
-                                            "requester",
-                                            "requesterLinkId",
-                                            "performerType",
-                                            "performerRole",
-                                            "performer",
-                                            "performerLinkId",
-                                            "reasonCode",
-                                            "reasonReference",
-                                            "reason",
-                                            "reasonLinkId",
-                                            "note",
-                                            "securityLabelNumber",
-                                        ],
-                                    ));
+                                    return unknown_field_error("performerLinkId");
                                 }
                             }
                             Field::ReasonCode => {
@@ -5881,37 +5376,7 @@ impl<'de> serde::de::Deserialize<'de> for ContractTermAction {
                                         }
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "reason",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "doNotPerform",
-                                            "type",
-                                            "subject",
-                                            "intent",
-                                            "linkId",
-                                            "status",
-                                            "context",
-                                            "contextLinkId",
-                                            "occurrenceDateTime",
-                                            "occurrencePeriod",
-                                            "occurrenceTiming",
-                                            "requester",
-                                            "requesterLinkId",
-                                            "performerType",
-                                            "performerRole",
-                                            "performer",
-                                            "performerLinkId",
-                                            "reasonCode",
-                                            "reasonReference",
-                                            "reason",
-                                            "reasonLinkId",
-                                            "note",
-                                            "securityLabelNumber",
-                                        ],
-                                    ));
+                                    return unknown_field_error("reason");
                                 }
                             }
                             Field::ReasonLinkId => {
@@ -5974,37 +5439,7 @@ impl<'de> serde::de::Deserialize<'de> for ContractTermAction {
                                         }
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "reasonLinkId",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "doNotPerform",
-                                            "type",
-                                            "subject",
-                                            "intent",
-                                            "linkId",
-                                            "status",
-                                            "context",
-                                            "contextLinkId",
-                                            "occurrenceDateTime",
-                                            "occurrencePeriod",
-                                            "occurrenceTiming",
-                                            "requester",
-                                            "requesterLinkId",
-                                            "performerType",
-                                            "performerRole",
-                                            "performer",
-                                            "performerLinkId",
-                                            "reasonCode",
-                                            "reasonReference",
-                                            "reason",
-                                            "reasonLinkId",
-                                            "note",
-                                            "securityLabelNumber",
-                                        ],
-                                    ));
+                                    return unknown_field_error("reasonLinkId");
                                 }
                             }
                             Field::Note => {
@@ -6079,37 +5514,7 @@ impl<'de> serde::de::Deserialize<'de> for ContractTermAction {
                                         }
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "securityLabelNumber",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "doNotPerform",
-                                            "type",
-                                            "subject",
-                                            "intent",
-                                            "linkId",
-                                            "status",
-                                            "context",
-                                            "contextLinkId",
-                                            "occurrenceDateTime",
-                                            "occurrencePeriod",
-                                            "occurrenceTiming",
-                                            "requester",
-                                            "requesterLinkId",
-                                            "performerType",
-                                            "performerRole",
-                                            "performer",
-                                            "performerLinkId",
-                                            "reasonCode",
-                                            "reasonReference",
-                                            "reason",
-                                            "reasonLinkId",
-                                            "note",
-                                            "securityLabelNumber",
-                                        ],
-                                    ));
+                                    return unknown_field_error("securityLabelNumber");
                                 }
                             }
                             Field::Unknown(key) => if _ctx.config.mode
@@ -6377,6 +5782,29 @@ impl<'de> serde::de::Deserialize<'de> for ContractTerm {
             Group,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "identifier",
+                    "issued",
+                    "applies",
+                    "topicCodeableConcept",
+                    "topicReference",
+                    "type",
+                    "subType",
+                    "text",
+                    "securityLabel",
+                    "offer",
+                    "asset",
+                    "action",
+                    "group",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = ContractTerm;
@@ -6472,27 +5900,7 @@ impl<'de> serde::de::Deserialize<'de> for ContractTerm {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "issued",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "issued",
-                                            "applies",
-                                            "topicCodeableConcept",
-                                            "topicReference",
-                                            "type",
-                                            "subType",
-                                            "text",
-                                            "securityLabel",
-                                            "offer",
-                                            "asset",
-                                            "action",
-                                            "group",
-                                        ],
-                                    ));
+                                    return unknown_field_error("issued");
                                 }
                             }
                             Field::Applies => {
@@ -6560,27 +5968,7 @@ impl<'de> serde::de::Deserialize<'de> for ContractTerm {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "text",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "issued",
-                                            "applies",
-                                            "topicCodeableConcept",
-                                            "topicReference",
-                                            "type",
-                                            "subType",
-                                            "text",
-                                            "securityLabel",
-                                            "offer",
-                                            "asset",
-                                            "action",
-                                            "group",
-                                        ],
-                                    ));
+                                    return unknown_field_error("text");
                                 }
                             }
                             Field::SecurityLabel => {
@@ -6755,6 +6143,19 @@ impl<'de> serde::de::Deserialize<'de> for ContractSigner {
             #[serde(rename = "signature")]
             Signature,
             Unknown(std::string::String),
+        }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "type",
+                    "party",
+                    "signature",
+                ],
+            ))
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -6939,6 +6340,18 @@ impl<'de> serde::de::Deserialize<'de> for ContractFriendly {
             ContentReference,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "contentAttachment",
+                    "contentReference",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = ContractFriendly;
@@ -7108,6 +6521,18 @@ impl<'de> serde::de::Deserialize<'de> for ContractLegal {
             ContentReference,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "contentAttachment",
+                    "contentReference",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = ContractLegal;
@@ -7275,6 +6700,18 @@ impl<'de> serde::de::Deserialize<'de> for ContractRule {
             #[serde(rename = "contentReference")]
             ContentReference,
             Unknown(std::string::String),
+        }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "contentAttachment",
+                    "contentReference",
+                ],
+            ))
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -7939,6 +7376,56 @@ impl<'de> serde::de::Deserialize<'de> for Contract {
             LegallyBindingReference,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "meta",
+                    "implicitRules",
+                    "language",
+                    "text",
+                    "contained",
+                    "extension",
+                    "modifierExtension",
+                    "identifier",
+                    "url",
+                    "version",
+                    "status",
+                    "legalState",
+                    "instantiatesCanonical",
+                    "instantiatesUri",
+                    "contentDerivative",
+                    "issued",
+                    "applies",
+                    "expirationType",
+                    "subject",
+                    "authority",
+                    "domain",
+                    "site",
+                    "name",
+                    "title",
+                    "subtitle",
+                    "alias",
+                    "author",
+                    "scope",
+                    "topicCodeableConcept",
+                    "topicReference",
+                    "type",
+                    "subType",
+                    "contentDefinition",
+                    "term",
+                    "supportingInfo",
+                    "relevantHistory",
+                    "signer",
+                    "friendly",
+                    "legal",
+                    "rule",
+                    "legallyBindingAttachment",
+                    "legallyBindingReference",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = Contract;
@@ -8052,54 +7539,7 @@ impl<'de> serde::de::Deserialize<'de> for Contract {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "implicitRules",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "url",
-                                            "version",
-                                            "status",
-                                            "legalState",
-                                            "instantiatesCanonical",
-                                            "instantiatesUri",
-                                            "contentDerivative",
-                                            "issued",
-                                            "applies",
-                                            "expirationType",
-                                            "subject",
-                                            "authority",
-                                            "domain",
-                                            "site",
-                                            "name",
-                                            "title",
-                                            "subtitle",
-                                            "alias",
-                                            "author",
-                                            "scope",
-                                            "topicCodeableConcept",
-                                            "topicReference",
-                                            "type",
-                                            "subType",
-                                            "contentDefinition",
-                                            "term",
-                                            "supportingInfo",
-                                            "relevantHistory",
-                                            "signer",
-                                            "friendly",
-                                            "legal",
-                                            "rule",
-                                            "legallyBindingAttachment",
-                                            "legallyBindingReference",
-                                        ],
-                                    ));
+                                    return unknown_field_error("implicitRules");
                                 }
                             }
                             Field::Language => {
@@ -8130,54 +7570,7 @@ impl<'de> serde::de::Deserialize<'de> for Contract {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "language",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "url",
-                                            "version",
-                                            "status",
-                                            "legalState",
-                                            "instantiatesCanonical",
-                                            "instantiatesUri",
-                                            "contentDerivative",
-                                            "issued",
-                                            "applies",
-                                            "expirationType",
-                                            "subject",
-                                            "authority",
-                                            "domain",
-                                            "site",
-                                            "name",
-                                            "title",
-                                            "subtitle",
-                                            "alias",
-                                            "author",
-                                            "scope",
-                                            "topicCodeableConcept",
-                                            "topicReference",
-                                            "type",
-                                            "subType",
-                                            "contentDefinition",
-                                            "term",
-                                            "supportingInfo",
-                                            "relevantHistory",
-                                            "signer",
-                                            "friendly",
-                                            "legal",
-                                            "rule",
-                                            "legallyBindingAttachment",
-                                            "legallyBindingReference",
-                                        ],
-                                    ));
+                                    return unknown_field_error("language");
                                 }
                             }
                             Field::Text => {
@@ -8263,54 +7656,7 @@ impl<'de> serde::de::Deserialize<'de> for Contract {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "url",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "url",
-                                            "version",
-                                            "status",
-                                            "legalState",
-                                            "instantiatesCanonical",
-                                            "instantiatesUri",
-                                            "contentDerivative",
-                                            "issued",
-                                            "applies",
-                                            "expirationType",
-                                            "subject",
-                                            "authority",
-                                            "domain",
-                                            "site",
-                                            "name",
-                                            "title",
-                                            "subtitle",
-                                            "alias",
-                                            "author",
-                                            "scope",
-                                            "topicCodeableConcept",
-                                            "topicReference",
-                                            "type",
-                                            "subType",
-                                            "contentDefinition",
-                                            "term",
-                                            "supportingInfo",
-                                            "relevantHistory",
-                                            "signer",
-                                            "friendly",
-                                            "legal",
-                                            "rule",
-                                            "legallyBindingAttachment",
-                                            "legallyBindingReference",
-                                        ],
-                                    ));
+                                    return unknown_field_error("url");
                                 }
                             }
                             Field::Version => {
@@ -8341,54 +7687,7 @@ impl<'de> serde::de::Deserialize<'de> for Contract {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "version",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "url",
-                                            "version",
-                                            "status",
-                                            "legalState",
-                                            "instantiatesCanonical",
-                                            "instantiatesUri",
-                                            "contentDerivative",
-                                            "issued",
-                                            "applies",
-                                            "expirationType",
-                                            "subject",
-                                            "authority",
-                                            "domain",
-                                            "site",
-                                            "name",
-                                            "title",
-                                            "subtitle",
-                                            "alias",
-                                            "author",
-                                            "scope",
-                                            "topicCodeableConcept",
-                                            "topicReference",
-                                            "type",
-                                            "subType",
-                                            "contentDefinition",
-                                            "term",
-                                            "supportingInfo",
-                                            "relevantHistory",
-                                            "signer",
-                                            "friendly",
-                                            "legal",
-                                            "rule",
-                                            "legallyBindingAttachment",
-                                            "legallyBindingReference",
-                                        ],
-                                    ));
+                                    return unknown_field_error("version");
                                 }
                             }
                             Field::Status => {
@@ -8419,54 +7718,7 @@ impl<'de> serde::de::Deserialize<'de> for Contract {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "status",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "url",
-                                            "version",
-                                            "status",
-                                            "legalState",
-                                            "instantiatesCanonical",
-                                            "instantiatesUri",
-                                            "contentDerivative",
-                                            "issued",
-                                            "applies",
-                                            "expirationType",
-                                            "subject",
-                                            "authority",
-                                            "domain",
-                                            "site",
-                                            "name",
-                                            "title",
-                                            "subtitle",
-                                            "alias",
-                                            "author",
-                                            "scope",
-                                            "topicCodeableConcept",
-                                            "topicReference",
-                                            "type",
-                                            "subType",
-                                            "contentDefinition",
-                                            "term",
-                                            "supportingInfo",
-                                            "relevantHistory",
-                                            "signer",
-                                            "friendly",
-                                            "legal",
-                                            "rule",
-                                            "legallyBindingAttachment",
-                                            "legallyBindingReference",
-                                        ],
-                                    ));
+                                    return unknown_field_error("status");
                                 }
                             }
                             Field::LegalState => {
@@ -8517,54 +7769,7 @@ impl<'de> serde::de::Deserialize<'de> for Contract {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "instantiatesUri",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "url",
-                                            "version",
-                                            "status",
-                                            "legalState",
-                                            "instantiatesCanonical",
-                                            "instantiatesUri",
-                                            "contentDerivative",
-                                            "issued",
-                                            "applies",
-                                            "expirationType",
-                                            "subject",
-                                            "authority",
-                                            "domain",
-                                            "site",
-                                            "name",
-                                            "title",
-                                            "subtitle",
-                                            "alias",
-                                            "author",
-                                            "scope",
-                                            "topicCodeableConcept",
-                                            "topicReference",
-                                            "type",
-                                            "subType",
-                                            "contentDefinition",
-                                            "term",
-                                            "supportingInfo",
-                                            "relevantHistory",
-                                            "signer",
-                                            "friendly",
-                                            "legal",
-                                            "rule",
-                                            "legallyBindingAttachment",
-                                            "legallyBindingReference",
-                                        ],
-                                    ));
+                                    return unknown_field_error("instantiatesUri");
                                 }
                             }
                             Field::ContentDerivative => {
@@ -8603,54 +7808,7 @@ impl<'de> serde::de::Deserialize<'de> for Contract {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "issued",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "url",
-                                            "version",
-                                            "status",
-                                            "legalState",
-                                            "instantiatesCanonical",
-                                            "instantiatesUri",
-                                            "contentDerivative",
-                                            "issued",
-                                            "applies",
-                                            "expirationType",
-                                            "subject",
-                                            "authority",
-                                            "domain",
-                                            "site",
-                                            "name",
-                                            "title",
-                                            "subtitle",
-                                            "alias",
-                                            "author",
-                                            "scope",
-                                            "topicCodeableConcept",
-                                            "topicReference",
-                                            "type",
-                                            "subType",
-                                            "contentDefinition",
-                                            "term",
-                                            "supportingInfo",
-                                            "relevantHistory",
-                                            "signer",
-                                            "friendly",
-                                            "legal",
-                                            "rule",
-                                            "legallyBindingAttachment",
-                                            "legallyBindingReference",
-                                        ],
-                                    ));
+                                    return unknown_field_error("issued");
                                 }
                             }
                             Field::Applies => {
@@ -8739,54 +7897,7 @@ impl<'de> serde::de::Deserialize<'de> for Contract {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "name",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "url",
-                                            "version",
-                                            "status",
-                                            "legalState",
-                                            "instantiatesCanonical",
-                                            "instantiatesUri",
-                                            "contentDerivative",
-                                            "issued",
-                                            "applies",
-                                            "expirationType",
-                                            "subject",
-                                            "authority",
-                                            "domain",
-                                            "site",
-                                            "name",
-                                            "title",
-                                            "subtitle",
-                                            "alias",
-                                            "author",
-                                            "scope",
-                                            "topicCodeableConcept",
-                                            "topicReference",
-                                            "type",
-                                            "subType",
-                                            "contentDefinition",
-                                            "term",
-                                            "supportingInfo",
-                                            "relevantHistory",
-                                            "signer",
-                                            "friendly",
-                                            "legal",
-                                            "rule",
-                                            "legallyBindingAttachment",
-                                            "legallyBindingReference",
-                                        ],
-                                    ));
+                                    return unknown_field_error("name");
                                 }
                             }
                             Field::Title => {
@@ -8817,54 +7928,7 @@ impl<'de> serde::de::Deserialize<'de> for Contract {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "title",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "url",
-                                            "version",
-                                            "status",
-                                            "legalState",
-                                            "instantiatesCanonical",
-                                            "instantiatesUri",
-                                            "contentDerivative",
-                                            "issued",
-                                            "applies",
-                                            "expirationType",
-                                            "subject",
-                                            "authority",
-                                            "domain",
-                                            "site",
-                                            "name",
-                                            "title",
-                                            "subtitle",
-                                            "alias",
-                                            "author",
-                                            "scope",
-                                            "topicCodeableConcept",
-                                            "topicReference",
-                                            "type",
-                                            "subType",
-                                            "contentDefinition",
-                                            "term",
-                                            "supportingInfo",
-                                            "relevantHistory",
-                                            "signer",
-                                            "friendly",
-                                            "legal",
-                                            "rule",
-                                            "legallyBindingAttachment",
-                                            "legallyBindingReference",
-                                        ],
-                                    ));
+                                    return unknown_field_error("title");
                                 }
                             }
                             Field::Subtitle => {
@@ -8895,54 +7959,7 @@ impl<'de> serde::de::Deserialize<'de> for Contract {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "subtitle",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "url",
-                                            "version",
-                                            "status",
-                                            "legalState",
-                                            "instantiatesCanonical",
-                                            "instantiatesUri",
-                                            "contentDerivative",
-                                            "issued",
-                                            "applies",
-                                            "expirationType",
-                                            "subject",
-                                            "authority",
-                                            "domain",
-                                            "site",
-                                            "name",
-                                            "title",
-                                            "subtitle",
-                                            "alias",
-                                            "author",
-                                            "scope",
-                                            "topicCodeableConcept",
-                                            "topicReference",
-                                            "type",
-                                            "subType",
-                                            "contentDefinition",
-                                            "term",
-                                            "supportingInfo",
-                                            "relevantHistory",
-                                            "signer",
-                                            "friendly",
-                                            "legal",
-                                            "rule",
-                                            "legallyBindingAttachment",
-                                            "legallyBindingReference",
-                                        ],
-                                    ));
+                                    return unknown_field_error("subtitle");
                                 }
                             }
                             Field::Alias => {
@@ -9001,54 +8018,7 @@ impl<'de> serde::de::Deserialize<'de> for Contract {
                                         }
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "alias",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "url",
-                                            "version",
-                                            "status",
-                                            "legalState",
-                                            "instantiatesCanonical",
-                                            "instantiatesUri",
-                                            "contentDerivative",
-                                            "issued",
-                                            "applies",
-                                            "expirationType",
-                                            "subject",
-                                            "authority",
-                                            "domain",
-                                            "site",
-                                            "name",
-                                            "title",
-                                            "subtitle",
-                                            "alias",
-                                            "author",
-                                            "scope",
-                                            "topicCodeableConcept",
-                                            "topicReference",
-                                            "type",
-                                            "subType",
-                                            "contentDefinition",
-                                            "term",
-                                            "supportingInfo",
-                                            "relevantHistory",
-                                            "signer",
-                                            "friendly",
-                                            "legal",
-                                            "rule",
-                                            "legallyBindingAttachment",
-                                            "legallyBindingReference",
-                                        ],
-                                    ));
+                                    return unknown_field_error("alias");
                                 }
                             }
                             Field::Author => {

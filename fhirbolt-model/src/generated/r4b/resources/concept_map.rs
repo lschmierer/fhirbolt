@@ -1,4 +1,4 @@
-// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-08 by fhirbolt-codegen v0.1.0
 #[doc = "Identifier for the source value set that contains the concepts that are being mapped and provides context for the mappings."]
 #[derive(Debug, Clone, PartialEq)]
 pub enum ConceptMapSource {
@@ -163,6 +163,20 @@ impl<'de> serde::de::Deserialize<'de> for ConceptMapGroupElementTargetDependsOn 
             DisplayPrimitiveElement,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "property",
+                    "system",
+                    "value",
+                    "display",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = ConceptMapGroupElementTargetDependsOn;
@@ -247,18 +261,7 @@ impl<'de> serde::de::Deserialize<'de> for ConceptMapGroupElementTargetDependsOn 
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "property",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "property",
-                                            "system",
-                                            "value",
-                                            "display",
-                                        ],
-                                    ));
+                                    return unknown_field_error("property");
                                 }
                             }
                             Field::System => {
@@ -289,18 +292,7 @@ impl<'de> serde::de::Deserialize<'de> for ConceptMapGroupElementTargetDependsOn 
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "system",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "property",
-                                            "system",
-                                            "value",
-                                            "display",
-                                        ],
-                                    ));
+                                    return unknown_field_error("system");
                                 }
                             }
                             Field::Value => {
@@ -331,18 +323,7 @@ impl<'de> serde::de::Deserialize<'de> for ConceptMapGroupElementTargetDependsOn 
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "value",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "property",
-                                            "system",
-                                            "value",
-                                            "display",
-                                        ],
-                                    ));
+                                    return unknown_field_error("value");
                                 }
                             }
                             Field::Display => {
@@ -373,18 +354,7 @@ impl<'de> serde::de::Deserialize<'de> for ConceptMapGroupElementTargetDependsOn 
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "display",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "property",
-                                            "system",
-                                            "value",
-                                            "display",
-                                        ],
-                                    ));
+                                    return unknown_field_error("display");
                                 }
                             }
                             Field::Unknown(key) => if _ctx.config.mode
@@ -590,6 +560,22 @@ impl<'de> serde::de::Deserialize<'de> for ConceptMapGroupElementTarget {
             Product,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "code",
+                    "display",
+                    "equivalence",
+                    "comment",
+                    "dependsOn",
+                    "product",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = ConceptMapGroupElementTarget;
@@ -676,20 +662,7 @@ impl<'de> serde::de::Deserialize<'de> for ConceptMapGroupElementTarget {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "code",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "code",
-                                            "display",
-                                            "equivalence",
-                                            "comment",
-                                            "dependsOn",
-                                            "product",
-                                        ],
-                                    ));
+                                    return unknown_field_error("code");
                                 }
                             }
                             Field::Display => {
@@ -720,20 +693,7 @@ impl<'de> serde::de::Deserialize<'de> for ConceptMapGroupElementTarget {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "display",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "code",
-                                            "display",
-                                            "equivalence",
-                                            "comment",
-                                            "dependsOn",
-                                            "product",
-                                        ],
-                                    ));
+                                    return unknown_field_error("display");
                                 }
                             }
                             Field::Equivalence => {
@@ -770,20 +730,7 @@ impl<'de> serde::de::Deserialize<'de> for ConceptMapGroupElementTarget {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "equivalence",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "code",
-                                            "display",
-                                            "equivalence",
-                                            "comment",
-                                            "dependsOn",
-                                            "product",
-                                        ],
-                                    ));
+                                    return unknown_field_error("equivalence");
                                 }
                             }
                             Field::Comment => {
@@ -814,20 +761,7 @@ impl<'de> serde::de::Deserialize<'de> for ConceptMapGroupElementTarget {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "comment",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "code",
-                                            "display",
-                                            "equivalence",
-                                            "comment",
-                                            "dependsOn",
-                                            "product",
-                                        ],
-                                    ));
+                                    return unknown_field_error("comment");
                                 }
                             }
                             Field::DependsOn => {
@@ -1000,6 +934,19 @@ impl<'de> serde::de::Deserialize<'de> for ConceptMapGroupElement {
             Target,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "code",
+                    "display",
+                    "target",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = ConceptMapGroupElement;
@@ -1080,17 +1027,7 @@ impl<'de> serde::de::Deserialize<'de> for ConceptMapGroupElement {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "code",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "code",
-                                            "display",
-                                            "target",
-                                        ],
-                                    ));
+                                    return unknown_field_error("code");
                                 }
                             }
                             Field::Display => {
@@ -1121,17 +1058,7 @@ impl<'de> serde::de::Deserialize<'de> for ConceptMapGroupElement {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "display",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "code",
-                                            "display",
-                                            "target",
-                                        ],
-                                    ));
+                                    return unknown_field_error("display");
                                 }
                             }
                             Field::Target => {
@@ -1320,6 +1247,20 @@ impl<'de> serde::de::Deserialize<'de> for ConceptMapGroupUnmapped {
             UrlPrimitiveElement,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "mode",
+                    "code",
+                    "display",
+                    "url",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = ConceptMapGroupUnmapped;
@@ -1401,18 +1342,7 @@ impl<'de> serde::de::Deserialize<'de> for ConceptMapGroupUnmapped {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "mode",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "mode",
-                                            "code",
-                                            "display",
-                                            "url",
-                                        ],
-                                    ));
+                                    return unknown_field_error("mode");
                                 }
                             }
                             Field::Code => {
@@ -1443,18 +1373,7 @@ impl<'de> serde::de::Deserialize<'de> for ConceptMapGroupUnmapped {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "code",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "mode",
-                                            "code",
-                                            "display",
-                                            "url",
-                                        ],
-                                    ));
+                                    return unknown_field_error("code");
                                 }
                             }
                             Field::Display => {
@@ -1485,18 +1404,7 @@ impl<'de> serde::de::Deserialize<'de> for ConceptMapGroupUnmapped {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "display",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "mode",
-                                            "code",
-                                            "display",
-                                            "url",
-                                        ],
-                                    ));
+                                    return unknown_field_error("display");
                                 }
                             }
                             Field::Url => {
@@ -1527,18 +1435,7 @@ impl<'de> serde::de::Deserialize<'de> for ConceptMapGroupUnmapped {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "url",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "mode",
-                                            "code",
-                                            "display",
-                                            "url",
-                                        ],
-                                    ));
+                                    return unknown_field_error("url");
                                 }
                             }
                             Field::Unknown(key) => if _ctx.config.mode
@@ -1742,6 +1639,22 @@ impl<'de> serde::de::Deserialize<'de> for ConceptMapGroup {
             Unmapped,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "source",
+                    "sourceVersion",
+                    "target",
+                    "targetVersion",
+                    "element",
+                    "unmapped",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = ConceptMapGroup;
@@ -1825,20 +1738,7 @@ impl<'de> serde::de::Deserialize<'de> for ConceptMapGroup {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "source",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "source",
-                                            "sourceVersion",
-                                            "target",
-                                            "targetVersion",
-                                            "element",
-                                            "unmapped",
-                                        ],
-                                    ));
+                                    return unknown_field_error("source");
                                 }
                             }
                             Field::SourceVersion => {
@@ -1875,20 +1775,7 @@ impl<'de> serde::de::Deserialize<'de> for ConceptMapGroup {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "sourceVersion",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "source",
-                                            "sourceVersion",
-                                            "target",
-                                            "targetVersion",
-                                            "element",
-                                            "unmapped",
-                                        ],
-                                    ));
+                                    return unknown_field_error("sourceVersion");
                                 }
                             }
                             Field::Target => {
@@ -1919,20 +1806,7 @@ impl<'de> serde::de::Deserialize<'de> for ConceptMapGroup {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "target",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "source",
-                                            "sourceVersion",
-                                            "target",
-                                            "targetVersion",
-                                            "element",
-                                            "unmapped",
-                                        ],
-                                    ));
+                                    return unknown_field_error("target");
                                 }
                             }
                             Field::TargetVersion => {
@@ -1969,20 +1843,7 @@ impl<'de> serde::de::Deserialize<'de> for ConceptMapGroup {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "targetVersion",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "source",
-                                            "sourceVersion",
-                                            "target",
-                                            "targetVersion",
-                                            "element",
-                                            "unmapped",
-                                        ],
-                                    ));
+                                    return unknown_field_error("targetVersion");
                                 }
                             }
                             Field::Element => {
@@ -2576,6 +2437,41 @@ impl<'de> serde::de::Deserialize<'de> for ConceptMap {
             Group,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "meta",
+                    "implicitRules",
+                    "language",
+                    "text",
+                    "contained",
+                    "extension",
+                    "modifierExtension",
+                    "url",
+                    "identifier",
+                    "version",
+                    "name",
+                    "title",
+                    "status",
+                    "experimental",
+                    "date",
+                    "publisher",
+                    "contact",
+                    "description",
+                    "useContext",
+                    "jurisdiction",
+                    "purpose",
+                    "copyright",
+                    "sourceUri",
+                    "sourceCanonical",
+                    "targetUri",
+                    "targetCanonical",
+                    "group",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = ConceptMap;
@@ -2673,39 +2569,7 @@ impl<'de> serde::de::Deserialize<'de> for ConceptMap {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "implicitRules",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "identifier",
-                                            "version",
-                                            "name",
-                                            "title",
-                                            "status",
-                                            "experimental",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "description",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "purpose",
-                                            "copyright",
-                                            "sourceUri",
-                                            "sourceCanonical",
-                                            "targetUri",
-                                            "targetCanonical",
-                                            "group",
-                                        ],
-                                    ));
+                                    return unknown_field_error("implicitRules");
                                 }
                             }
                             Field::Language => {
@@ -2736,39 +2600,7 @@ impl<'de> serde::de::Deserialize<'de> for ConceptMap {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "language",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "identifier",
-                                            "version",
-                                            "name",
-                                            "title",
-                                            "status",
-                                            "experimental",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "description",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "purpose",
-                                            "copyright",
-                                            "sourceUri",
-                                            "sourceCanonical",
-                                            "targetUri",
-                                            "targetCanonical",
-                                            "group",
-                                        ],
-                                    ));
+                                    return unknown_field_error("language");
                                 }
                             }
                             Field::Text => {
@@ -2841,39 +2673,7 @@ impl<'de> serde::de::Deserialize<'de> for ConceptMap {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "url",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "identifier",
-                                            "version",
-                                            "name",
-                                            "title",
-                                            "status",
-                                            "experimental",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "description",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "purpose",
-                                            "copyright",
-                                            "sourceUri",
-                                            "sourceCanonical",
-                                            "targetUri",
-                                            "targetCanonical",
-                                            "group",
-                                        ],
-                                    ));
+                                    return unknown_field_error("url");
                                 }
                             }
                             Field::Identifier => {
@@ -2910,39 +2710,7 @@ impl<'de> serde::de::Deserialize<'de> for ConceptMap {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "version",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "identifier",
-                                            "version",
-                                            "name",
-                                            "title",
-                                            "status",
-                                            "experimental",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "description",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "purpose",
-                                            "copyright",
-                                            "sourceUri",
-                                            "sourceCanonical",
-                                            "targetUri",
-                                            "targetCanonical",
-                                            "group",
-                                        ],
-                                    ));
+                                    return unknown_field_error("version");
                                 }
                             }
                             Field::Name => {
@@ -2973,39 +2741,7 @@ impl<'de> serde::de::Deserialize<'de> for ConceptMap {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "name",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "identifier",
-                                            "version",
-                                            "name",
-                                            "title",
-                                            "status",
-                                            "experimental",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "description",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "purpose",
-                                            "copyright",
-                                            "sourceUri",
-                                            "sourceCanonical",
-                                            "targetUri",
-                                            "targetCanonical",
-                                            "group",
-                                        ],
-                                    ));
+                                    return unknown_field_error("name");
                                 }
                             }
                             Field::Title => {
@@ -3036,39 +2772,7 @@ impl<'de> serde::de::Deserialize<'de> for ConceptMap {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "title",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "identifier",
-                                            "version",
-                                            "name",
-                                            "title",
-                                            "status",
-                                            "experimental",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "description",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "purpose",
-                                            "copyright",
-                                            "sourceUri",
-                                            "sourceCanonical",
-                                            "targetUri",
-                                            "targetCanonical",
-                                            "group",
-                                        ],
-                                    ));
+                                    return unknown_field_error("title");
                                 }
                             }
                             Field::Status => {
@@ -3099,39 +2803,7 @@ impl<'de> serde::de::Deserialize<'de> for ConceptMap {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "status",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "identifier",
-                                            "version",
-                                            "name",
-                                            "title",
-                                            "status",
-                                            "experimental",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "description",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "purpose",
-                                            "copyright",
-                                            "sourceUri",
-                                            "sourceCanonical",
-                                            "targetUri",
-                                            "targetCanonical",
-                                            "group",
-                                        ],
-                                    ));
+                                    return unknown_field_error("status");
                                 }
                             }
                             Field::Experimental => {
@@ -3168,39 +2840,7 @@ impl<'de> serde::de::Deserialize<'de> for ConceptMap {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "experimental",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "identifier",
-                                            "version",
-                                            "name",
-                                            "title",
-                                            "status",
-                                            "experimental",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "description",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "purpose",
-                                            "copyright",
-                                            "sourceUri",
-                                            "sourceCanonical",
-                                            "targetUri",
-                                            "targetCanonical",
-                                            "group",
-                                        ],
-                                    ));
+                                    return unknown_field_error("experimental");
                                 }
                             }
                             Field::Date => {
@@ -3231,39 +2871,7 @@ impl<'de> serde::de::Deserialize<'de> for ConceptMap {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "date",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "identifier",
-                                            "version",
-                                            "name",
-                                            "title",
-                                            "status",
-                                            "experimental",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "description",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "purpose",
-                                            "copyright",
-                                            "sourceUri",
-                                            "sourceCanonical",
-                                            "targetUri",
-                                            "targetCanonical",
-                                            "group",
-                                        ],
-                                    ));
+                                    return unknown_field_error("date");
                                 }
                             }
                             Field::Publisher => {
@@ -3296,39 +2904,7 @@ impl<'de> serde::de::Deserialize<'de> for ConceptMap {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "publisher",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "identifier",
-                                            "version",
-                                            "name",
-                                            "title",
-                                            "status",
-                                            "experimental",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "description",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "purpose",
-                                            "copyright",
-                                            "sourceUri",
-                                            "sourceCanonical",
-                                            "targetUri",
-                                            "targetCanonical",
-                                            "group",
-                                        ],
-                                    ));
+                                    return unknown_field_error("publisher");
                                 }
                             }
                             Field::Contact => {
@@ -3376,39 +2952,7 @@ impl<'de> serde::de::Deserialize<'de> for ConceptMap {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "description",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "identifier",
-                                            "version",
-                                            "name",
-                                            "title",
-                                            "status",
-                                            "experimental",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "description",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "purpose",
-                                            "copyright",
-                                            "sourceUri",
-                                            "sourceCanonical",
-                                            "targetUri",
-                                            "targetCanonical",
-                                            "group",
-                                        ],
-                                    ));
+                                    return unknown_field_error("description");
                                 }
                             }
                             Field::UseContext => {
@@ -3465,39 +3009,7 @@ impl<'de> serde::de::Deserialize<'de> for ConceptMap {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "purpose",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "identifier",
-                                            "version",
-                                            "name",
-                                            "title",
-                                            "status",
-                                            "experimental",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "description",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "purpose",
-                                            "copyright",
-                                            "sourceUri",
-                                            "sourceCanonical",
-                                            "targetUri",
-                                            "targetCanonical",
-                                            "group",
-                                        ],
-                                    ));
+                                    return unknown_field_error("purpose");
                                 }
                             }
                             Field::Copyright => {
@@ -3530,39 +3042,7 @@ impl<'de> serde::de::Deserialize<'de> for ConceptMap {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "copyright",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "identifier",
-                                            "version",
-                                            "name",
-                                            "title",
-                                            "status",
-                                            "experimental",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "description",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "purpose",
-                                            "copyright",
-                                            "sourceUri",
-                                            "sourceCanonical",
-                                            "targetUri",
-                                            "targetCanonical",
-                                            "group",
-                                        ],
-                                    ));
+                                    return unknown_field_error("copyright");
                                 }
                             }
                             Field::SourceUri => {
@@ -3610,39 +3090,7 @@ impl<'de> serde::de::Deserialize<'de> for ConceptMap {
                                         ));
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "sourceUri",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "identifier",
-                                            "version",
-                                            "name",
-                                            "title",
-                                            "status",
-                                            "experimental",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "description",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "purpose",
-                                            "copyright",
-                                            "sourceUri",
-                                            "sourceCanonical",
-                                            "targetUri",
-                                            "targetCanonical",
-                                            "group",
-                                        ],
-                                    ));
+                                    return unknown_field_error("sourceUri");
                                 }
                             }
                             Field::SourceCanonical => {
@@ -3694,39 +3142,7 @@ impl<'de> serde::de::Deserialize<'de> for ConceptMap {
                                         ));
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "sourceCanonical",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "identifier",
-                                            "version",
-                                            "name",
-                                            "title",
-                                            "status",
-                                            "experimental",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "description",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "purpose",
-                                            "copyright",
-                                            "sourceUri",
-                                            "sourceCanonical",
-                                            "targetUri",
-                                            "targetCanonical",
-                                            "group",
-                                        ],
-                                    ));
+                                    return unknown_field_error("sourceCanonical");
                                 }
                             }
                             Field::TargetUri => {
@@ -3774,39 +3190,7 @@ impl<'de> serde::de::Deserialize<'de> for ConceptMap {
                                         ));
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "targetUri",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "identifier",
-                                            "version",
-                                            "name",
-                                            "title",
-                                            "status",
-                                            "experimental",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "description",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "purpose",
-                                            "copyright",
-                                            "sourceUri",
-                                            "sourceCanonical",
-                                            "targetUri",
-                                            "targetCanonical",
-                                            "group",
-                                        ],
-                                    ));
+                                    return unknown_field_error("targetUri");
                                 }
                             }
                             Field::TargetCanonical => {
@@ -3858,39 +3242,7 @@ impl<'de> serde::de::Deserialize<'de> for ConceptMap {
                                         ));
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "targetCanonical",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "url",
-                                            "identifier",
-                                            "version",
-                                            "name",
-                                            "title",
-                                            "status",
-                                            "experimental",
-                                            "date",
-                                            "publisher",
-                                            "contact",
-                                            "description",
-                                            "useContext",
-                                            "jurisdiction",
-                                            "purpose",
-                                            "copyright",
-                                            "sourceUri",
-                                            "sourceCanonical",
-                                            "targetUri",
-                                            "targetCanonical",
-                                            "group",
-                                        ],
-                                    ));
+                                    return unknown_field_error("targetCanonical");
                                 }
                             }
                             Field::Group => {

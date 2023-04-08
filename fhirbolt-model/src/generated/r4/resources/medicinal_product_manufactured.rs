@@ -1,4 +1,4 @@
-// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-08 by fhirbolt-codegen v0.1.0
 #[doc = "The manufactured item as contained in the packaged medicinal product."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub struct MedicinalProductManufactured {
@@ -169,6 +169,28 @@ impl<'de> serde::de::Deserialize<'de> for MedicinalProductManufactured {
             OtherCharacteristics,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "meta",
+                    "implicitRules",
+                    "language",
+                    "text",
+                    "contained",
+                    "extension",
+                    "modifierExtension",
+                    "manufacturedDoseForm",
+                    "unitOfPresentation",
+                    "quantity",
+                    "manufacturer",
+                    "ingredient",
+                    "physicalCharacteristics",
+                    "otherCharacteristics",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = MedicinalProductManufactured;
@@ -264,26 +286,7 @@ impl<'de> serde::de::Deserialize<'de> for MedicinalProductManufactured {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "implicitRules",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "manufacturedDoseForm",
-                                            "unitOfPresentation",
-                                            "quantity",
-                                            "manufacturer",
-                                            "ingredient",
-                                            "physicalCharacteristics",
-                                            "otherCharacteristics",
-                                        ],
-                                    ));
+                                    return unknown_field_error("implicitRules");
                                 }
                             }
                             Field::Language => {
@@ -314,26 +317,7 @@ impl<'de> serde::de::Deserialize<'de> for MedicinalProductManufactured {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "language",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "manufacturedDoseForm",
-                                            "unitOfPresentation",
-                                            "quantity",
-                                            "manufacturer",
-                                            "ingredient",
-                                            "physicalCharacteristics",
-                                            "otherCharacteristics",
-                                        ],
-                                    ));
+                                    return unknown_field_error("language");
                                 }
                             }
                             Field::Text => {

@@ -1,4 +1,4 @@
-// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-08 by fhirbolt-codegen v0.1.0
 #[doc = "Date/time(s) or duration when the charged service was applied."]
 #[derive(Debug, Clone, PartialEq)]
 pub enum ChargeItemOccurrence {
@@ -83,6 +83,12 @@ impl<'de> serde::de::Deserialize<'de> for ChargeItemPerformer {
             #[serde(rename = "actor")]
             Actor,
             Unknown(std::string::String),
+        }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &["id", "extension", "modifierExtension", "function", "actor"],
+            ))
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -669,6 +675,50 @@ impl<'de> serde::de::Deserialize<'de> for ChargeItem {
             SupportingInformation,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "meta",
+                    "implicitRules",
+                    "language",
+                    "text",
+                    "contained",
+                    "extension",
+                    "modifierExtension",
+                    "identifier",
+                    "definitionUri",
+                    "definitionCanonical",
+                    "status",
+                    "partOf",
+                    "code",
+                    "subject",
+                    "context",
+                    "occurrenceDateTime",
+                    "occurrencePeriod",
+                    "occurrenceTiming",
+                    "performer",
+                    "performingOrganization",
+                    "requestingOrganization",
+                    "costCenter",
+                    "quantity",
+                    "bodysite",
+                    "factorOverride",
+                    "priceOverride",
+                    "overrideReason",
+                    "enterer",
+                    "enteredDate",
+                    "reason",
+                    "service",
+                    "productReference",
+                    "productCodeableConcept",
+                    "account",
+                    "note",
+                    "supportingInformation",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = ChargeItem;
@@ -776,48 +826,7 @@ impl<'de> serde::de::Deserialize<'de> for ChargeItem {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "implicitRules",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "definitionUri",
-                                            "definitionCanonical",
-                                            "status",
-                                            "partOf",
-                                            "code",
-                                            "subject",
-                                            "context",
-                                            "occurrenceDateTime",
-                                            "occurrencePeriod",
-                                            "occurrenceTiming",
-                                            "performer",
-                                            "performingOrganization",
-                                            "requestingOrganization",
-                                            "costCenter",
-                                            "quantity",
-                                            "bodysite",
-                                            "factorOverride",
-                                            "priceOverride",
-                                            "overrideReason",
-                                            "enterer",
-                                            "enteredDate",
-                                            "reason",
-                                            "service",
-                                            "productReference",
-                                            "productCodeableConcept",
-                                            "account",
-                                            "note",
-                                            "supportingInformation",
-                                        ],
-                                    ));
+                                    return unknown_field_error("implicitRules");
                                 }
                             }
                             Field::Language => {
@@ -848,48 +857,7 @@ impl<'de> serde::de::Deserialize<'de> for ChargeItem {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "language",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "definitionUri",
-                                            "definitionCanonical",
-                                            "status",
-                                            "partOf",
-                                            "code",
-                                            "subject",
-                                            "context",
-                                            "occurrenceDateTime",
-                                            "occurrencePeriod",
-                                            "occurrenceTiming",
-                                            "performer",
-                                            "performingOrganization",
-                                            "requestingOrganization",
-                                            "costCenter",
-                                            "quantity",
-                                            "bodysite",
-                                            "factorOverride",
-                                            "priceOverride",
-                                            "overrideReason",
-                                            "enterer",
-                                            "enteredDate",
-                                            "reason",
-                                            "service",
-                                            "productReference",
-                                            "productCodeableConcept",
-                                            "account",
-                                            "note",
-                                            "supportingInformation",
-                                        ],
-                                    ));
+                                    return unknown_field_error("language");
                                 }
                             }
                             Field::Text => {
@@ -1007,48 +975,7 @@ impl<'de> serde::de::Deserialize<'de> for ChargeItem {
                                         }
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "definitionUri",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "definitionUri",
-                                            "definitionCanonical",
-                                            "status",
-                                            "partOf",
-                                            "code",
-                                            "subject",
-                                            "context",
-                                            "occurrenceDateTime",
-                                            "occurrencePeriod",
-                                            "occurrenceTiming",
-                                            "performer",
-                                            "performingOrganization",
-                                            "requestingOrganization",
-                                            "costCenter",
-                                            "quantity",
-                                            "bodysite",
-                                            "factorOverride",
-                                            "priceOverride",
-                                            "overrideReason",
-                                            "enterer",
-                                            "enteredDate",
-                                            "reason",
-                                            "service",
-                                            "productReference",
-                                            "productCodeableConcept",
-                                            "account",
-                                            "note",
-                                            "supportingInformation",
-                                        ],
-                                    ));
+                                    return unknown_field_error("definitionUri");
                                 }
                             }
                             Field::DefinitionCanonical => {
@@ -1112,48 +1039,7 @@ impl<'de> serde::de::Deserialize<'de> for ChargeItem {
                                         }
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "definitionCanonical",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "definitionUri",
-                                            "definitionCanonical",
-                                            "status",
-                                            "partOf",
-                                            "code",
-                                            "subject",
-                                            "context",
-                                            "occurrenceDateTime",
-                                            "occurrencePeriod",
-                                            "occurrenceTiming",
-                                            "performer",
-                                            "performingOrganization",
-                                            "requestingOrganization",
-                                            "costCenter",
-                                            "quantity",
-                                            "bodysite",
-                                            "factorOverride",
-                                            "priceOverride",
-                                            "overrideReason",
-                                            "enterer",
-                                            "enteredDate",
-                                            "reason",
-                                            "service",
-                                            "productReference",
-                                            "productCodeableConcept",
-                                            "account",
-                                            "note",
-                                            "supportingInformation",
-                                        ],
-                                    ));
+                                    return unknown_field_error("definitionCanonical");
                                 }
                             }
                             Field::Status => {
@@ -1184,48 +1070,7 @@ impl<'de> serde::de::Deserialize<'de> for ChargeItem {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "status",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "definitionUri",
-                                            "definitionCanonical",
-                                            "status",
-                                            "partOf",
-                                            "code",
-                                            "subject",
-                                            "context",
-                                            "occurrenceDateTime",
-                                            "occurrencePeriod",
-                                            "occurrenceTiming",
-                                            "performer",
-                                            "performingOrganization",
-                                            "requestingOrganization",
-                                            "costCenter",
-                                            "quantity",
-                                            "bodysite",
-                                            "factorOverride",
-                                            "priceOverride",
-                                            "overrideReason",
-                                            "enterer",
-                                            "enteredDate",
-                                            "reason",
-                                            "service",
-                                            "productReference",
-                                            "productCodeableConcept",
-                                            "account",
-                                            "note",
-                                            "supportingInformation",
-                                        ],
-                                    ));
+                                    return unknown_field_error("status");
                                 }
                             }
                             Field::PartOf => {
@@ -1309,48 +1154,7 @@ impl<'de> serde::de::Deserialize<'de> for ChargeItem {
                                         ));
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "occurrenceDateTime",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "definitionUri",
-                                            "definitionCanonical",
-                                            "status",
-                                            "partOf",
-                                            "code",
-                                            "subject",
-                                            "context",
-                                            "occurrenceDateTime",
-                                            "occurrencePeriod",
-                                            "occurrenceTiming",
-                                            "performer",
-                                            "performingOrganization",
-                                            "requestingOrganization",
-                                            "costCenter",
-                                            "quantity",
-                                            "bodysite",
-                                            "factorOverride",
-                                            "priceOverride",
-                                            "overrideReason",
-                                            "enterer",
-                                            "enteredDate",
-                                            "reason",
-                                            "service",
-                                            "productReference",
-                                            "productCodeableConcept",
-                                            "account",
-                                            "note",
-                                            "supportingInformation",
-                                        ],
-                                    ));
+                                    return unknown_field_error("occurrenceDateTime");
                                 }
                             }
                             Field::OccurrencePeriod => {
@@ -1455,48 +1259,7 @@ impl<'de> serde::de::Deserialize<'de> for ChargeItem {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "factorOverride",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "definitionUri",
-                                            "definitionCanonical",
-                                            "status",
-                                            "partOf",
-                                            "code",
-                                            "subject",
-                                            "context",
-                                            "occurrenceDateTime",
-                                            "occurrencePeriod",
-                                            "occurrenceTiming",
-                                            "performer",
-                                            "performingOrganization",
-                                            "requestingOrganization",
-                                            "costCenter",
-                                            "quantity",
-                                            "bodysite",
-                                            "factorOverride",
-                                            "priceOverride",
-                                            "overrideReason",
-                                            "enterer",
-                                            "enteredDate",
-                                            "reason",
-                                            "service",
-                                            "productReference",
-                                            "productCodeableConcept",
-                                            "account",
-                                            "note",
-                                            "supportingInformation",
-                                        ],
-                                    ));
+                                    return unknown_field_error("factorOverride");
                                 }
                             }
                             Field::PriceOverride => {
@@ -1539,48 +1302,7 @@ impl<'de> serde::de::Deserialize<'de> for ChargeItem {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "overrideReason",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "definitionUri",
-                                            "definitionCanonical",
-                                            "status",
-                                            "partOf",
-                                            "code",
-                                            "subject",
-                                            "context",
-                                            "occurrenceDateTime",
-                                            "occurrencePeriod",
-                                            "occurrenceTiming",
-                                            "performer",
-                                            "performingOrganization",
-                                            "requestingOrganization",
-                                            "costCenter",
-                                            "quantity",
-                                            "bodysite",
-                                            "factorOverride",
-                                            "priceOverride",
-                                            "overrideReason",
-                                            "enterer",
-                                            "enteredDate",
-                                            "reason",
-                                            "service",
-                                            "productReference",
-                                            "productCodeableConcept",
-                                            "account",
-                                            "note",
-                                            "supportingInformation",
-                                        ],
-                                    ));
+                                    return unknown_field_error("overrideReason");
                                 }
                             }
                             Field::Enterer => {
@@ -1623,48 +1345,7 @@ impl<'de> serde::de::Deserialize<'de> for ChargeItem {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "enteredDate",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "definitionUri",
-                                            "definitionCanonical",
-                                            "status",
-                                            "partOf",
-                                            "code",
-                                            "subject",
-                                            "context",
-                                            "occurrenceDateTime",
-                                            "occurrencePeriod",
-                                            "occurrenceTiming",
-                                            "performer",
-                                            "performingOrganization",
-                                            "requestingOrganization",
-                                            "costCenter",
-                                            "quantity",
-                                            "bodysite",
-                                            "factorOverride",
-                                            "priceOverride",
-                                            "overrideReason",
-                                            "enterer",
-                                            "enteredDate",
-                                            "reason",
-                                            "service",
-                                            "productReference",
-                                            "productCodeableConcept",
-                                            "account",
-                                            "note",
-                                            "supportingInformation",
-                                        ],
-                                    ));
+                                    return unknown_field_error("enteredDate");
                                 }
                             }
                             Field::Reason => {

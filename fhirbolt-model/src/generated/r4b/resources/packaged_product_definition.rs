@@ -1,4 +1,4 @@
-// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-08 by fhirbolt-codegen v0.1.0
 #[doc = "The shelf life time period can be specified using a numerical value for the period of time and its unit of time measurement The unit of measurement shall be specified in accordance with ISO 11240 and the resulting terminology The symbol and the symbol identifier shall be used."]
 #[derive(Debug, Clone, PartialEq)]
 pub enum PackagedProductDefinitionPackageShelfLifeStoragePeriod {
@@ -87,6 +87,18 @@ impl<'de> serde::de::Deserialize<'de> for PackagedProductDefinitionLegalStatusOf
             #[serde(rename = "jurisdiction")]
             Jurisdiction,
             Unknown(std::string::String),
+        }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "code",
+                    "jurisdiction",
+                ],
+            ))
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -284,6 +296,20 @@ impl<'de> serde::de::Deserialize<'de> for PackagedProductDefinitionPackageShelfL
             SpecialPrecautionsForStorage,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "type",
+                    "periodDuration",
+                    "periodString",
+                    "specialPrecautionsForStorage",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = PackagedProductDefinitionPackageShelfLifeStorage;
@@ -307,7 +333,7 @@ impl<'de> serde::de::Deserialize<'de> for PackagedProductDefinitionPackageShelfL
                 let mut r#special_precautions_for_storage: Option<
                     Vec<Box<super::super::types::CodeableConcept>>,
                 > = None;
-                fhirbolt_shared :: serde_context :: de :: DESERIALIZATION_CONTEXT . with (| _ctx | { let _ctx = _ctx . borrow () ; while let Some (map_access_key) = map_access . next_key () ? { match map_access_key { Field :: Id => { if r#id . is_some () { return Err (serde :: de :: Error :: duplicate_field ("id")) ; } r#id = Some (map_access . next_value () ?) ; } , Field :: Extension => { if _ctx . from_json { if r#extension . is_some () { return Err (serde :: de :: Error :: duplicate_field ("extension")) ; } r#extension = Some (map_access . next_value () ?) ; } else { let vec = r#extension . get_or_insert (Default :: default ()) ; vec . push (map_access . next_value () ?) ; } } , Field :: ModifierExtension => { if _ctx . from_json { if r#modifier_extension . is_some () { return Err (serde :: de :: Error :: duplicate_field ("modifierExtension")) ; } r#modifier_extension = Some (map_access . next_value () ?) ; } else { let vec = r#modifier_extension . get_or_insert (Default :: default ()) ; vec . push (map_access . next_value () ?) ; } } , Field :: Type => { if r#type . is_some () { return Err (serde :: de :: Error :: duplicate_field ("type")) ; } r#type = Some (map_access . next_value () ?) ; } , Field :: PeriodDuration => { if r#period . is_some () { return Err (serde :: de :: Error :: duplicate_field ("periodDuration")) ; } r#period = Some (PackagedProductDefinitionPackageShelfLifeStoragePeriod :: Duration (map_access . next_value () ?)) ; } , Field :: PeriodString => { if _ctx . from_json { let r#enum = r#period . get_or_insert (PackagedProductDefinitionPackageShelfLifeStoragePeriod :: String (Default :: default ())) ; if let PackagedProductDefinitionPackageShelfLifeStoragePeriod :: String (variant) = r#enum { if variant . value . is_some () { return Err (serde :: de :: Error :: duplicate_field ("periodString")) ; } let value : _ = map_access . next_value () ? ; variant . value = Some (value) ; } else { return Err (serde :: de :: Error :: duplicate_field ("period[x]")) ; } } else { if r#period . is_some () { return Err (serde :: de :: Error :: duplicate_field ("periodString")) ; } r#period = Some (PackagedProductDefinitionPackageShelfLifeStoragePeriod :: String (map_access . next_value () ?)) ; } } , Field :: PeriodStringPrimitiveElement => { if _ctx . from_json { let r#enum = r#period . get_or_insert (PackagedProductDefinitionPackageShelfLifeStoragePeriod :: String (Default :: default ())) ; if let PackagedProductDefinitionPackageShelfLifeStoragePeriod :: String (variant) = r#enum { if variant . id . is_some () || ! variant . extension . is_empty () { return Err (serde :: de :: Error :: duplicate_field ("_periodString")) ; } let super :: super :: serde_helpers :: PrimitiveElementOwned { id , extension } = map_access . next_value () ? ; variant . id = id ; variant . extension = extension ; } else { return Err (serde :: de :: Error :: duplicate_field ("_period[x]")) ; } } else { return Err (serde :: de :: Error :: unknown_field ("periodString" , & ["id" , "extension" , "modifierExtension" , "type" , "periodDuration" , "periodString" , "specialPrecautionsForStorage" ,])) ; } } , Field :: SpecialPrecautionsForStorage => { if _ctx . from_json { if r#special_precautions_for_storage . is_some () { return Err (serde :: de :: Error :: duplicate_field ("specialPrecautionsForStorage")) ; } r#special_precautions_for_storage = Some (map_access . next_value () ?) ; } else { let vec = r#special_precautions_for_storage . get_or_insert (Default :: default ()) ; vec . push (map_access . next_value () ?) ; } } , Field :: Unknown (key) => if _ctx . config . mode == fhirbolt_shared :: serde_context :: de :: DeserializationMode :: Strict { return Err (serde :: de :: Error :: unknown_field (& key , & ["id" , "extension" , "modifierExtension" , "type" , "periodDuration" , "periodString" , "specialPrecautionsForStorage" ,])) ; } } } Ok (PackagedProductDefinitionPackageShelfLifeStorage { r#id , r#extension : r#extension . unwrap_or (vec ! []) , r#modifier_extension : r#modifier_extension . unwrap_or (vec ! []) , r#type , r#period , r#special_precautions_for_storage : r#special_precautions_for_storage . unwrap_or (vec ! []) , }) })
+                fhirbolt_shared :: serde_context :: de :: DESERIALIZATION_CONTEXT . with (| _ctx | { let _ctx = _ctx . borrow () ; while let Some (map_access_key) = map_access . next_key () ? { match map_access_key { Field :: Id => { if r#id . is_some () { return Err (serde :: de :: Error :: duplicate_field ("id")) ; } r#id = Some (map_access . next_value () ?) ; } , Field :: Extension => { if _ctx . from_json { if r#extension . is_some () { return Err (serde :: de :: Error :: duplicate_field ("extension")) ; } r#extension = Some (map_access . next_value () ?) ; } else { let vec = r#extension . get_or_insert (Default :: default ()) ; vec . push (map_access . next_value () ?) ; } } , Field :: ModifierExtension => { if _ctx . from_json { if r#modifier_extension . is_some () { return Err (serde :: de :: Error :: duplicate_field ("modifierExtension")) ; } r#modifier_extension = Some (map_access . next_value () ?) ; } else { let vec = r#modifier_extension . get_or_insert (Default :: default ()) ; vec . push (map_access . next_value () ?) ; } } , Field :: Type => { if r#type . is_some () { return Err (serde :: de :: Error :: duplicate_field ("type")) ; } r#type = Some (map_access . next_value () ?) ; } , Field :: PeriodDuration => { if r#period . is_some () { return Err (serde :: de :: Error :: duplicate_field ("periodDuration")) ; } r#period = Some (PackagedProductDefinitionPackageShelfLifeStoragePeriod :: Duration (map_access . next_value () ?)) ; } , Field :: PeriodString => { if _ctx . from_json { let r#enum = r#period . get_or_insert (PackagedProductDefinitionPackageShelfLifeStoragePeriod :: String (Default :: default ())) ; if let PackagedProductDefinitionPackageShelfLifeStoragePeriod :: String (variant) = r#enum { if variant . value . is_some () { return Err (serde :: de :: Error :: duplicate_field ("periodString")) ; } let value : _ = map_access . next_value () ? ; variant . value = Some (value) ; } else { return Err (serde :: de :: Error :: duplicate_field ("period[x]")) ; } } else { if r#period . is_some () { return Err (serde :: de :: Error :: duplicate_field ("periodString")) ; } r#period = Some (PackagedProductDefinitionPackageShelfLifeStoragePeriod :: String (map_access . next_value () ?)) ; } } , Field :: PeriodStringPrimitiveElement => { if _ctx . from_json { let r#enum = r#period . get_or_insert (PackagedProductDefinitionPackageShelfLifeStoragePeriod :: String (Default :: default ())) ; if let PackagedProductDefinitionPackageShelfLifeStoragePeriod :: String (variant) = r#enum { if variant . id . is_some () || ! variant . extension . is_empty () { return Err (serde :: de :: Error :: duplicate_field ("_periodString")) ; } let super :: super :: serde_helpers :: PrimitiveElementOwned { id , extension } = map_access . next_value () ? ; variant . id = id ; variant . extension = extension ; } else { return Err (serde :: de :: Error :: duplicate_field ("_period[x]")) ; } } else { return unknown_field_error ("periodString") ; } } , Field :: SpecialPrecautionsForStorage => { if _ctx . from_json { if r#special_precautions_for_storage . is_some () { return Err (serde :: de :: Error :: duplicate_field ("specialPrecautionsForStorage")) ; } r#special_precautions_for_storage = Some (map_access . next_value () ?) ; } else { let vec = r#special_precautions_for_storage . get_or_insert (Default :: default ()) ; vec . push (map_access . next_value () ?) ; } } , Field :: Unknown (key) => if _ctx . config . mode == fhirbolt_shared :: serde_context :: de :: DeserializationMode :: Strict { return Err (serde :: de :: Error :: unknown_field (& key , & ["id" , "extension" , "modifierExtension" , "type" , "periodDuration" , "periodString" , "specialPrecautionsForStorage" ,])) ; } } } Ok (PackagedProductDefinitionPackageShelfLifeStorage { r#id , r#extension : r#extension . unwrap_or (vec ! []) , r#modifier_extension : r#modifier_extension . unwrap_or (vec ! []) , r#type , r#period , r#special_precautions_for_storage : r#special_precautions_for_storage . unwrap_or (vec ! []) , }) })
             }
         }
         deserializer.deserialize_map(Visitor)
@@ -433,6 +459,22 @@ impl<'de> serde::de::Deserialize<'de> for PackagedProductDefinitionPackageProper
             #[serde(rename = "valueAttachment")]
             ValueAttachment,
             Unknown(std::string::String),
+        }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "type",
+                    "valueCodeableConcept",
+                    "valueQuantity",
+                    "valueDate",
+                    "valueBoolean",
+                    "valueAttachment",
+                ],
+            ))
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -572,20 +614,7 @@ impl<'de> serde::de::Deserialize<'de> for PackagedProductDefinitionPackageProper
                                         return Err(serde::de::Error::duplicate_field("_value[x]"));
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "valueDate",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "type",
-                                            "valueCodeableConcept",
-                                            "valueQuantity",
-                                            "valueDate",
-                                            "valueBoolean",
-                                            "valueAttachment",
-                                        ],
-                                    ));
+                                    return unknown_field_error("valueDate");
                                 }
                             }
                             Field::ValueBoolean => {
@@ -648,20 +677,7 @@ impl<'de> serde::de::Deserialize<'de> for PackagedProductDefinitionPackageProper
                                         return Err(serde::de::Error::duplicate_field("_value[x]"));
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "valueBoolean",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "type",
-                                            "valueCodeableConcept",
-                                            "valueQuantity",
-                                            "valueDate",
-                                            "valueBoolean",
-                                            "valueAttachment",
-                                        ],
-                                    ));
+                                    return unknown_field_error("valueBoolean");
                                 }
                             }
                             Field::ValueAttachment => {
@@ -774,6 +790,12 @@ impl<'de> serde::de::Deserialize<'de> for PackagedProductDefinitionPackageContai
             #[serde(rename = "amount")]
             Amount,
             Unknown(std::string::String),
+        }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &["id", "extension", "modifierExtension", "item", "amount"],
+            ))
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -1006,6 +1028,26 @@ impl<'de> serde::de::Deserialize<'de> for PackagedProductDefinitionPackage {
             Package,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "identifier",
+                    "type",
+                    "quantity",
+                    "material",
+                    "alternateMaterial",
+                    "shelfLifeStorage",
+                    "manufacturer",
+                    "property",
+                    "containedItem",
+                    "package",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = PackagedProductDefinitionPackage;
@@ -1121,24 +1163,7 @@ impl<'de> serde::de::Deserialize<'de> for PackagedProductDefinitionPackage {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "quantity",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "type",
-                                            "quantity",
-                                            "material",
-                                            "alternateMaterial",
-                                            "shelfLifeStorage",
-                                            "manufacturer",
-                                            "property",
-                                            "containedItem",
-                                            "package",
-                                        ],
-                                    ));
+                                    return unknown_field_error("quantity");
                                 }
                             }
                             Field::Material => {
@@ -1568,6 +1593,35 @@ impl<'de> serde::de::Deserialize<'de> for PackagedProductDefinition {
             Package,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "meta",
+                    "implicitRules",
+                    "language",
+                    "text",
+                    "contained",
+                    "extension",
+                    "modifierExtension",
+                    "identifier",
+                    "name",
+                    "type",
+                    "packageFor",
+                    "status",
+                    "statusDate",
+                    "containedItemQuantity",
+                    "description",
+                    "legalStatusOfSupply",
+                    "marketingStatus",
+                    "characteristic",
+                    "copackagedIndicator",
+                    "manufacturer",
+                    "package",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = PackagedProductDefinition;
@@ -1665,33 +1719,7 @@ impl<'de> serde::de::Deserialize<'de> for PackagedProductDefinition {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "implicitRules",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "name",
-                                            "type",
-                                            "packageFor",
-                                            "status",
-                                            "statusDate",
-                                            "containedItemQuantity",
-                                            "description",
-                                            "legalStatusOfSupply",
-                                            "marketingStatus",
-                                            "characteristic",
-                                            "copackagedIndicator",
-                                            "manufacturer",
-                                            "package",
-                                        ],
-                                    ));
+                                    return unknown_field_error("implicitRules");
                                 }
                             }
                             Field::Language => {
@@ -1722,33 +1750,7 @@ impl<'de> serde::de::Deserialize<'de> for PackagedProductDefinition {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "language",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "name",
-                                            "type",
-                                            "packageFor",
-                                            "status",
-                                            "statusDate",
-                                            "containedItemQuantity",
-                                            "description",
-                                            "legalStatusOfSupply",
-                                            "marketingStatus",
-                                            "characteristic",
-                                            "copackagedIndicator",
-                                            "manufacturer",
-                                            "package",
-                                        ],
-                                    ));
+                                    return unknown_field_error("language");
                                 }
                             }
                             Field::Text => {
@@ -1834,33 +1836,7 @@ impl<'de> serde::de::Deserialize<'de> for PackagedProductDefinition {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "name",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "name",
-                                            "type",
-                                            "packageFor",
-                                            "status",
-                                            "statusDate",
-                                            "containedItemQuantity",
-                                            "description",
-                                            "legalStatusOfSupply",
-                                            "marketingStatus",
-                                            "characteristic",
-                                            "copackagedIndicator",
-                                            "manufacturer",
-                                            "package",
-                                        ],
-                                    ));
+                                    return unknown_field_error("name");
                                 }
                             }
                             Field::Type => {
@@ -1922,33 +1898,7 @@ impl<'de> serde::de::Deserialize<'de> for PackagedProductDefinition {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "statusDate",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "name",
-                                            "type",
-                                            "packageFor",
-                                            "status",
-                                            "statusDate",
-                                            "containedItemQuantity",
-                                            "description",
-                                            "legalStatusOfSupply",
-                                            "marketingStatus",
-                                            "characteristic",
-                                            "copackagedIndicator",
-                                            "manufacturer",
-                                            "package",
-                                        ],
-                                    ));
+                                    return unknown_field_error("statusDate");
                                 }
                             }
                             Field::ContainedItemQuantity => {
@@ -1999,33 +1949,7 @@ impl<'de> serde::de::Deserialize<'de> for PackagedProductDefinition {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "description",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "name",
-                                            "type",
-                                            "packageFor",
-                                            "status",
-                                            "statusDate",
-                                            "containedItemQuantity",
-                                            "description",
-                                            "legalStatusOfSupply",
-                                            "marketingStatus",
-                                            "characteristic",
-                                            "copackagedIndicator",
-                                            "manufacturer",
-                                            "package",
-                                        ],
-                                    ));
+                                    return unknown_field_error("description");
                                 }
                             }
                             Field::LegalStatusOfSupply => {
@@ -2104,33 +2028,7 @@ impl<'de> serde::de::Deserialize<'de> for PackagedProductDefinition {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "copackagedIndicator",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "name",
-                                            "type",
-                                            "packageFor",
-                                            "status",
-                                            "statusDate",
-                                            "containedItemQuantity",
-                                            "description",
-                                            "legalStatusOfSupply",
-                                            "marketingStatus",
-                                            "characteristic",
-                                            "copackagedIndicator",
-                                            "manufacturer",
-                                            "package",
-                                        ],
-                                    ));
+                                    return unknown_field_error("copackagedIndicator");
                                 }
                             }
                             Field::Manufacturer => {

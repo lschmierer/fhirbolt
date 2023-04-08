@@ -1,4 +1,4 @@
-// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-08 by fhirbolt-codegen v0.1.0
 #[doc = "Unique device identifier (UDI) assigned to device label or package.  Note that the Device may include multiple udiCarriers as it either may include just the udiCarrier for the jurisdiction it is sold, or for multiple jurisdictions it could have been sold."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub struct DeviceUdiCarrier {
@@ -197,6 +197,22 @@ impl<'de> serde::de::Deserialize<'de> for DeviceUdiCarrier {
             EntryTypePrimitiveElement,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "deviceIdentifier",
+                    "issuer",
+                    "jurisdiction",
+                    "carrierAIDC",
+                    "carrierHRF",
+                    "entryType",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = DeviceUdiCarrier;
@@ -288,20 +304,7 @@ impl<'de> serde::de::Deserialize<'de> for DeviceUdiCarrier {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "deviceIdentifier",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "deviceIdentifier",
-                                            "issuer",
-                                            "jurisdiction",
-                                            "carrierAIDC",
-                                            "carrierHRF",
-                                            "entryType",
-                                        ],
-                                    ));
+                                    return unknown_field_error("deviceIdentifier");
                                 }
                             }
                             Field::Issuer => {
@@ -332,20 +335,7 @@ impl<'de> serde::de::Deserialize<'de> for DeviceUdiCarrier {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "issuer",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "deviceIdentifier",
-                                            "issuer",
-                                            "jurisdiction",
-                                            "carrierAIDC",
-                                            "carrierHRF",
-                                            "entryType",
-                                        ],
-                                    ));
+                                    return unknown_field_error("issuer");
                                 }
                             }
                             Field::Jurisdiction => {
@@ -382,20 +372,7 @@ impl<'de> serde::de::Deserialize<'de> for DeviceUdiCarrier {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "jurisdiction",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "deviceIdentifier",
-                                            "issuer",
-                                            "jurisdiction",
-                                            "carrierAIDC",
-                                            "carrierHRF",
-                                            "entryType",
-                                        ],
-                                    ));
+                                    return unknown_field_error("jurisdiction");
                                 }
                             }
                             Field::CarrierAidc => {
@@ -432,20 +409,7 @@ impl<'de> serde::de::Deserialize<'de> for DeviceUdiCarrier {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "carrierAIDC",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "deviceIdentifier",
-                                            "issuer",
-                                            "jurisdiction",
-                                            "carrierAIDC",
-                                            "carrierHRF",
-                                            "entryType",
-                                        ],
-                                    ));
+                                    return unknown_field_error("carrierAIDC");
                                 }
                             }
                             Field::CarrierHrf => {
@@ -482,20 +446,7 @@ impl<'de> serde::de::Deserialize<'de> for DeviceUdiCarrier {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "carrierHRF",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "deviceIdentifier",
-                                            "issuer",
-                                            "jurisdiction",
-                                            "carrierAIDC",
-                                            "carrierHRF",
-                                            "entryType",
-                                        ],
-                                    ));
+                                    return unknown_field_error("carrierHRF");
                                 }
                             }
                             Field::EntryType => {
@@ -528,20 +479,7 @@ impl<'de> serde::de::Deserialize<'de> for DeviceUdiCarrier {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "entryType",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "deviceIdentifier",
-                                            "issuer",
-                                            "jurisdiction",
-                                            "carrierAIDC",
-                                            "carrierHRF",
-                                            "entryType",
-                                        ],
-                                    ));
+                                    return unknown_field_error("entryType");
                                 }
                             }
                             Field::Unknown(key) => if _ctx.config.mode
@@ -671,6 +609,12 @@ impl<'de> serde::de::Deserialize<'de> for DeviceDeviceName {
             TypePrimitiveElement,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &["id", "extension", "modifierExtension", "name", "type"],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = DeviceDeviceName;
@@ -750,10 +694,7 @@ impl<'de> serde::de::Deserialize<'de> for DeviceDeviceName {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "name",
-                                        &["id", "extension", "modifierExtension", "name", "type"],
-                                    ));
+                                    return unknown_field_error("name");
                                 }
                             }
                             Field::Type => {
@@ -784,10 +725,7 @@ impl<'de> serde::de::Deserialize<'de> for DeviceDeviceName {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "type",
-                                        &["id", "extension", "modifierExtension", "name", "type"],
-                                    ));
+                                    return unknown_field_error("type");
                                 }
                             }
                             Field::Unknown(key) => if _ctx.config.mode
@@ -903,6 +841,18 @@ impl<'de> serde::de::Deserialize<'de> for DeviceSpecialization {
             VersionPrimitiveElement,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "systemType",
+                    "version",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = DeviceSpecialization;
@@ -988,16 +938,7 @@ impl<'de> serde::de::Deserialize<'de> for DeviceSpecialization {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "version",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "systemType",
-                                            "version",
-                                        ],
-                                    ));
+                                    return unknown_field_error("version");
                                 }
                             }
                             Field::Unknown(key) => if _ctx.config.mode
@@ -1118,6 +1059,19 @@ impl<'de> serde::de::Deserialize<'de> for DeviceVersion {
             ValuePrimitiveElement,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "type",
+                    "component",
+                    "value",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = DeviceVersion;
@@ -1210,17 +1164,7 @@ impl<'de> serde::de::Deserialize<'de> for DeviceVersion {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "value",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "type",
-                                            "component",
-                                            "value",
-                                        ],
-                                    ));
+                                    return unknown_field_error("value");
                                 }
                             }
                             Field::Unknown(key) => if _ctx.config.mode
@@ -1326,6 +1270,19 @@ impl<'de> serde::de::Deserialize<'de> for DeviceProperty {
             #[serde(rename = "valueCode")]
             ValueCode,
             Unknown(std::string::String),
+        }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "type",
+                    "valueQuantity",
+                    "valueCode",
+                ],
+            ))
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -1933,6 +1890,47 @@ impl<'de> serde::de::Deserialize<'de> for Device {
             Parent,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "meta",
+                    "implicitRules",
+                    "language",
+                    "text",
+                    "contained",
+                    "extension",
+                    "modifierExtension",
+                    "identifier",
+                    "definition",
+                    "udiCarrier",
+                    "status",
+                    "statusReason",
+                    "distinctIdentifier",
+                    "manufacturer",
+                    "manufactureDate",
+                    "expirationDate",
+                    "lotNumber",
+                    "serialNumber",
+                    "deviceName",
+                    "modelNumber",
+                    "partNumber",
+                    "type",
+                    "specialization",
+                    "version",
+                    "property",
+                    "patient",
+                    "owner",
+                    "contact",
+                    "location",
+                    "url",
+                    "note",
+                    "safety",
+                    "parent",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = Device;
@@ -2038,45 +2036,7 @@ impl<'de> serde::de::Deserialize<'de> for Device {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "implicitRules",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "definition",
-                                            "udiCarrier",
-                                            "status",
-                                            "statusReason",
-                                            "distinctIdentifier",
-                                            "manufacturer",
-                                            "manufactureDate",
-                                            "expirationDate",
-                                            "lotNumber",
-                                            "serialNumber",
-                                            "deviceName",
-                                            "modelNumber",
-                                            "partNumber",
-                                            "type",
-                                            "specialization",
-                                            "version",
-                                            "property",
-                                            "patient",
-                                            "owner",
-                                            "contact",
-                                            "location",
-                                            "url",
-                                            "note",
-                                            "safety",
-                                            "parent",
-                                        ],
-                                    ));
+                                    return unknown_field_error("implicitRules");
                                 }
                             }
                             Field::Language => {
@@ -2107,45 +2067,7 @@ impl<'de> serde::de::Deserialize<'de> for Device {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "language",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "definition",
-                                            "udiCarrier",
-                                            "status",
-                                            "statusReason",
-                                            "distinctIdentifier",
-                                            "manufacturer",
-                                            "manufactureDate",
-                                            "expirationDate",
-                                            "lotNumber",
-                                            "serialNumber",
-                                            "deviceName",
-                                            "modelNumber",
-                                            "partNumber",
-                                            "type",
-                                            "specialization",
-                                            "version",
-                                            "property",
-                                            "patient",
-                                            "owner",
-                                            "contact",
-                                            "location",
-                                            "url",
-                                            "note",
-                                            "safety",
-                                            "parent",
-                                        ],
-                                    ));
+                                    return unknown_field_error("language");
                                 }
                             }
                             Field::Text => {
@@ -2250,45 +2172,7 @@ impl<'de> serde::de::Deserialize<'de> for Device {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "status",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "definition",
-                                            "udiCarrier",
-                                            "status",
-                                            "statusReason",
-                                            "distinctIdentifier",
-                                            "manufacturer",
-                                            "manufactureDate",
-                                            "expirationDate",
-                                            "lotNumber",
-                                            "serialNumber",
-                                            "deviceName",
-                                            "modelNumber",
-                                            "partNumber",
-                                            "type",
-                                            "specialization",
-                                            "version",
-                                            "property",
-                                            "patient",
-                                            "owner",
-                                            "contact",
-                                            "location",
-                                            "url",
-                                            "note",
-                                            "safety",
-                                            "parent",
-                                        ],
-                                    ));
+                                    return unknown_field_error("status");
                                 }
                             }
                             Field::StatusReason => {
@@ -2340,45 +2224,7 @@ impl<'de> serde::de::Deserialize<'de> for Device {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "distinctIdentifier",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "definition",
-                                            "udiCarrier",
-                                            "status",
-                                            "statusReason",
-                                            "distinctIdentifier",
-                                            "manufacturer",
-                                            "manufactureDate",
-                                            "expirationDate",
-                                            "lotNumber",
-                                            "serialNumber",
-                                            "deviceName",
-                                            "modelNumber",
-                                            "partNumber",
-                                            "type",
-                                            "specialization",
-                                            "version",
-                                            "property",
-                                            "patient",
-                                            "owner",
-                                            "contact",
-                                            "location",
-                                            "url",
-                                            "note",
-                                            "safety",
-                                            "parent",
-                                        ],
-                                    ));
+                                    return unknown_field_error("distinctIdentifier");
                                 }
                             }
                             Field::Manufacturer => {
@@ -2415,45 +2261,7 @@ impl<'de> serde::de::Deserialize<'de> for Device {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "manufacturer",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "definition",
-                                            "udiCarrier",
-                                            "status",
-                                            "statusReason",
-                                            "distinctIdentifier",
-                                            "manufacturer",
-                                            "manufactureDate",
-                                            "expirationDate",
-                                            "lotNumber",
-                                            "serialNumber",
-                                            "deviceName",
-                                            "modelNumber",
-                                            "partNumber",
-                                            "type",
-                                            "specialization",
-                                            "version",
-                                            "property",
-                                            "patient",
-                                            "owner",
-                                            "contact",
-                                            "location",
-                                            "url",
-                                            "note",
-                                            "safety",
-                                            "parent",
-                                        ],
-                                    ));
+                                    return unknown_field_error("manufacturer");
                                 }
                             }
                             Field::ManufactureDate => {
@@ -2490,45 +2298,7 @@ impl<'de> serde::de::Deserialize<'de> for Device {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "manufactureDate",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "definition",
-                                            "udiCarrier",
-                                            "status",
-                                            "statusReason",
-                                            "distinctIdentifier",
-                                            "manufacturer",
-                                            "manufactureDate",
-                                            "expirationDate",
-                                            "lotNumber",
-                                            "serialNumber",
-                                            "deviceName",
-                                            "modelNumber",
-                                            "partNumber",
-                                            "type",
-                                            "specialization",
-                                            "version",
-                                            "property",
-                                            "patient",
-                                            "owner",
-                                            "contact",
-                                            "location",
-                                            "url",
-                                            "note",
-                                            "safety",
-                                            "parent",
-                                        ],
-                                    ));
+                                    return unknown_field_error("manufactureDate");
                                 }
                             }
                             Field::ExpirationDate => {
@@ -2565,45 +2335,7 @@ impl<'de> serde::de::Deserialize<'de> for Device {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "expirationDate",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "definition",
-                                            "udiCarrier",
-                                            "status",
-                                            "statusReason",
-                                            "distinctIdentifier",
-                                            "manufacturer",
-                                            "manufactureDate",
-                                            "expirationDate",
-                                            "lotNumber",
-                                            "serialNumber",
-                                            "deviceName",
-                                            "modelNumber",
-                                            "partNumber",
-                                            "type",
-                                            "specialization",
-                                            "version",
-                                            "property",
-                                            "patient",
-                                            "owner",
-                                            "contact",
-                                            "location",
-                                            "url",
-                                            "note",
-                                            "safety",
-                                            "parent",
-                                        ],
-                                    ));
+                                    return unknown_field_error("expirationDate");
                                 }
                             }
                             Field::LotNumber => {
@@ -2636,45 +2368,7 @@ impl<'de> serde::de::Deserialize<'de> for Device {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "lotNumber",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "definition",
-                                            "udiCarrier",
-                                            "status",
-                                            "statusReason",
-                                            "distinctIdentifier",
-                                            "manufacturer",
-                                            "manufactureDate",
-                                            "expirationDate",
-                                            "lotNumber",
-                                            "serialNumber",
-                                            "deviceName",
-                                            "modelNumber",
-                                            "partNumber",
-                                            "type",
-                                            "specialization",
-                                            "version",
-                                            "property",
-                                            "patient",
-                                            "owner",
-                                            "contact",
-                                            "location",
-                                            "url",
-                                            "note",
-                                            "safety",
-                                            "parent",
-                                        ],
-                                    ));
+                                    return unknown_field_error("lotNumber");
                                 }
                             }
                             Field::SerialNumber => {
@@ -2711,45 +2405,7 @@ impl<'de> serde::de::Deserialize<'de> for Device {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "serialNumber",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "definition",
-                                            "udiCarrier",
-                                            "status",
-                                            "statusReason",
-                                            "distinctIdentifier",
-                                            "manufacturer",
-                                            "manufactureDate",
-                                            "expirationDate",
-                                            "lotNumber",
-                                            "serialNumber",
-                                            "deviceName",
-                                            "modelNumber",
-                                            "partNumber",
-                                            "type",
-                                            "specialization",
-                                            "version",
-                                            "property",
-                                            "patient",
-                                            "owner",
-                                            "contact",
-                                            "location",
-                                            "url",
-                                            "note",
-                                            "safety",
-                                            "parent",
-                                        ],
-                                    ));
+                                    return unknown_field_error("serialNumber");
                                 }
                             }
                             Field::DeviceName => {
@@ -2799,45 +2455,7 @@ impl<'de> serde::de::Deserialize<'de> for Device {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "modelNumber",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "definition",
-                                            "udiCarrier",
-                                            "status",
-                                            "statusReason",
-                                            "distinctIdentifier",
-                                            "manufacturer",
-                                            "manufactureDate",
-                                            "expirationDate",
-                                            "lotNumber",
-                                            "serialNumber",
-                                            "deviceName",
-                                            "modelNumber",
-                                            "partNumber",
-                                            "type",
-                                            "specialization",
-                                            "version",
-                                            "property",
-                                            "patient",
-                                            "owner",
-                                            "contact",
-                                            "location",
-                                            "url",
-                                            "note",
-                                            "safety",
-                                            "parent",
-                                        ],
-                                    ));
+                                    return unknown_field_error("modelNumber");
                                 }
                             }
                             Field::PartNumber => {
@@ -2874,45 +2492,7 @@ impl<'de> serde::de::Deserialize<'de> for Device {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "partNumber",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "definition",
-                                            "udiCarrier",
-                                            "status",
-                                            "statusReason",
-                                            "distinctIdentifier",
-                                            "manufacturer",
-                                            "manufactureDate",
-                                            "expirationDate",
-                                            "lotNumber",
-                                            "serialNumber",
-                                            "deviceName",
-                                            "modelNumber",
-                                            "partNumber",
-                                            "type",
-                                            "specialization",
-                                            "version",
-                                            "property",
-                                            "patient",
-                                            "owner",
-                                            "contact",
-                                            "location",
-                                            "url",
-                                            "note",
-                                            "safety",
-                                            "parent",
-                                        ],
-                                    ));
+                                    return unknown_field_error("partNumber");
                                 }
                             }
                             Field::Type => {
@@ -3013,45 +2593,7 @@ impl<'de> serde::de::Deserialize<'de> for Device {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "url",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "definition",
-                                            "udiCarrier",
-                                            "status",
-                                            "statusReason",
-                                            "distinctIdentifier",
-                                            "manufacturer",
-                                            "manufactureDate",
-                                            "expirationDate",
-                                            "lotNumber",
-                                            "serialNumber",
-                                            "deviceName",
-                                            "modelNumber",
-                                            "partNumber",
-                                            "type",
-                                            "specialization",
-                                            "version",
-                                            "property",
-                                            "patient",
-                                            "owner",
-                                            "contact",
-                                            "location",
-                                            "url",
-                                            "note",
-                                            "safety",
-                                            "parent",
-                                        ],
-                                    ));
+                                    return unknown_field_error("url");
                                 }
                             }
                             Field::Note => {

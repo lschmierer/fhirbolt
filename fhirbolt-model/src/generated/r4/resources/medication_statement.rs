@@ -1,4 +1,4 @@
-// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-08 by fhirbolt-codegen v0.1.0
 #[doc = "Identifies the medication being administered. This is either a link to a resource representing the details of the medication or a simple attribute carrying a code that identifies the medication from a known list of medications."]
 #[derive(Debug, Clone, PartialEq)]
 pub enum MedicationStatementMedication {
@@ -336,6 +336,40 @@ impl<'de> serde::de::Deserialize<'de> for MedicationStatement {
             Dosage,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "meta",
+                    "implicitRules",
+                    "language",
+                    "text",
+                    "contained",
+                    "extension",
+                    "modifierExtension",
+                    "identifier",
+                    "basedOn",
+                    "partOf",
+                    "status",
+                    "statusReason",
+                    "category",
+                    "medicationCodeableConcept",
+                    "medicationReference",
+                    "subject",
+                    "context",
+                    "effectiveDateTime",
+                    "effectivePeriod",
+                    "dateAsserted",
+                    "informationSource",
+                    "derivedFrom",
+                    "reasonCode",
+                    "reasonReference",
+                    "note",
+                    "dosage",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = MedicationStatement;
@@ -433,38 +467,7 @@ impl<'de> serde::de::Deserialize<'de> for MedicationStatement {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "implicitRules",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "basedOn",
-                                            "partOf",
-                                            "status",
-                                            "statusReason",
-                                            "category",
-                                            "medicationCodeableConcept",
-                                            "medicationReference",
-                                            "subject",
-                                            "context",
-                                            "effectiveDateTime",
-                                            "effectivePeriod",
-                                            "dateAsserted",
-                                            "informationSource",
-                                            "derivedFrom",
-                                            "reasonCode",
-                                            "reasonReference",
-                                            "note",
-                                            "dosage",
-                                        ],
-                                    ));
+                                    return unknown_field_error("implicitRules");
                                 }
                             }
                             Field::Language => {
@@ -495,38 +498,7 @@ impl<'de> serde::de::Deserialize<'de> for MedicationStatement {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "language",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "basedOn",
-                                            "partOf",
-                                            "status",
-                                            "statusReason",
-                                            "category",
-                                            "medicationCodeableConcept",
-                                            "medicationReference",
-                                            "subject",
-                                            "context",
-                                            "effectiveDateTime",
-                                            "effectivePeriod",
-                                            "dateAsserted",
-                                            "informationSource",
-                                            "derivedFrom",
-                                            "reasonCode",
-                                            "reasonReference",
-                                            "note",
-                                            "dosage",
-                                        ],
-                                    ));
+                                    return unknown_field_error("language");
                                 }
                             }
                             Field::Text => {
@@ -634,38 +606,7 @@ impl<'de> serde::de::Deserialize<'de> for MedicationStatement {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "status",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "basedOn",
-                                            "partOf",
-                                            "status",
-                                            "statusReason",
-                                            "category",
-                                            "medicationCodeableConcept",
-                                            "medicationReference",
-                                            "subject",
-                                            "context",
-                                            "effectiveDateTime",
-                                            "effectivePeriod",
-                                            "dateAsserted",
-                                            "informationSource",
-                                            "derivedFrom",
-                                            "reasonCode",
-                                            "reasonReference",
-                                            "note",
-                                            "dosage",
-                                        ],
-                                    ));
+                                    return unknown_field_error("status");
                                 }
                             }
                             Field::StatusReason => {
@@ -774,38 +715,7 @@ impl<'de> serde::de::Deserialize<'de> for MedicationStatement {
                                         ));
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "effectiveDateTime",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "basedOn",
-                                            "partOf",
-                                            "status",
-                                            "statusReason",
-                                            "category",
-                                            "medicationCodeableConcept",
-                                            "medicationReference",
-                                            "subject",
-                                            "context",
-                                            "effectiveDateTime",
-                                            "effectivePeriod",
-                                            "dateAsserted",
-                                            "informationSource",
-                                            "derivedFrom",
-                                            "reasonCode",
-                                            "reasonReference",
-                                            "note",
-                                            "dosage",
-                                        ],
-                                    ));
+                                    return unknown_field_error("effectiveDateTime");
                                 }
                             }
                             Field::EffectivePeriod => {
@@ -852,38 +762,7 @@ impl<'de> serde::de::Deserialize<'de> for MedicationStatement {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "dateAsserted",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "basedOn",
-                                            "partOf",
-                                            "status",
-                                            "statusReason",
-                                            "category",
-                                            "medicationCodeableConcept",
-                                            "medicationReference",
-                                            "subject",
-                                            "context",
-                                            "effectiveDateTime",
-                                            "effectivePeriod",
-                                            "dateAsserted",
-                                            "informationSource",
-                                            "derivedFrom",
-                                            "reasonCode",
-                                            "reasonReference",
-                                            "note",
-                                            "dosage",
-                                        ],
-                                    ));
+                                    return unknown_field_error("dateAsserted");
                                 }
                             }
                             Field::InformationSource => {

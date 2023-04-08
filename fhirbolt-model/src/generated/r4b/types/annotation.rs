@@ -1,4 +1,4 @@
-// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-08 by fhirbolt-codegen v0.1.0
 #[doc = "The individual responsible for making the annotation."]
 #[derive(Debug, Clone, PartialEq)]
 pub enum AnnotationAuthor {
@@ -134,6 +134,19 @@ impl<'de> serde::de::Deserialize<'de> for Annotation {
             TextPrimitiveElement,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "authorReference",
+                    "authorString",
+                    "time",
+                    "text",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = Annotation;
@@ -228,17 +241,7 @@ impl<'de> serde::de::Deserialize<'de> for Annotation {
                                         ));
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "authorString",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "authorReference",
-                                            "authorString",
-                                            "time",
-                                            "text",
-                                        ],
-                                    ));
+                                    return unknown_field_error("authorString");
                                 }
                             }
                             Field::Time => {
@@ -269,17 +272,7 @@ impl<'de> serde::de::Deserialize<'de> for Annotation {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "time",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "authorReference",
-                                            "authorString",
-                                            "time",
-                                            "text",
-                                        ],
-                                    ));
+                                    return unknown_field_error("time");
                                 }
                             }
                             Field::Text => {
@@ -310,17 +303,7 @@ impl<'de> serde::de::Deserialize<'de> for Annotation {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "text",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "authorReference",
-                                            "authorString",
-                                            "time",
-                                            "text",
-                                        ],
-                                    ));
+                                    return unknown_field_error("text");
                                 }
                             }
                             Field::Unknown(key) => if _ctx.config.mode

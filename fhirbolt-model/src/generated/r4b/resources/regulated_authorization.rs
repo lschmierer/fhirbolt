@@ -1,4 +1,4 @@
-// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-08 by fhirbolt-codegen v0.1.0
 #[doc = "Relevant date for this case."]
 #[derive(Debug, Clone, PartialEq)]
 pub enum RegulatedAuthorizationCaseDate {
@@ -122,6 +122,22 @@ impl<'de> serde::de::Deserialize<'de> for RegulatedAuthorizationCase {
             #[serde(rename = "application")]
             Application,
             Unknown(std::string::String),
+        }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "identifier",
+                    "type",
+                    "status",
+                    "datePeriod",
+                    "dateDateTime",
+                    "application",
+                ],
+            ))
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -261,20 +277,7 @@ impl<'de> serde::de::Deserialize<'de> for RegulatedAuthorizationCase {
                                         return Err(serde::de::Error::duplicate_field("_date[x]"));
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "dateDateTime",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "type",
-                                            "status",
-                                            "datePeriod",
-                                            "dateDateTime",
-                                            "application",
-                                        ],
-                                    ));
+                                    return unknown_field_error("dateDateTime");
                                 }
                             }
                             Field::Application => {
@@ -585,6 +588,35 @@ impl<'de> serde::de::Deserialize<'de> for RegulatedAuthorization {
             Case,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "meta",
+                    "implicitRules",
+                    "language",
+                    "text",
+                    "contained",
+                    "extension",
+                    "modifierExtension",
+                    "identifier",
+                    "subject",
+                    "type",
+                    "description",
+                    "region",
+                    "status",
+                    "statusDate",
+                    "validityPeriod",
+                    "indication",
+                    "intendedUse",
+                    "basis",
+                    "holder",
+                    "regulator",
+                    "case",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = RegulatedAuthorization;
@@ -677,33 +709,7 @@ impl<'de> serde::de::Deserialize<'de> for RegulatedAuthorization {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "implicitRules",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "subject",
-                                            "type",
-                                            "description",
-                                            "region",
-                                            "status",
-                                            "statusDate",
-                                            "validityPeriod",
-                                            "indication",
-                                            "intendedUse",
-                                            "basis",
-                                            "holder",
-                                            "regulator",
-                                            "case",
-                                        ],
-                                    ));
+                                    return unknown_field_error("implicitRules");
                                 }
                             }
                             Field::Language => {
@@ -734,33 +740,7 @@ impl<'de> serde::de::Deserialize<'de> for RegulatedAuthorization {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "language",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "subject",
-                                            "type",
-                                            "description",
-                                            "region",
-                                            "status",
-                                            "statusDate",
-                                            "validityPeriod",
-                                            "indication",
-                                            "intendedUse",
-                                            "basis",
-                                            "holder",
-                                            "regulator",
-                                            "case",
-                                        ],
-                                    ));
+                                    return unknown_field_error("language");
                                 }
                             }
                             Field::Text => {
@@ -869,33 +849,7 @@ impl<'de> serde::de::Deserialize<'de> for RegulatedAuthorization {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "description",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "subject",
-                                            "type",
-                                            "description",
-                                            "region",
-                                            "status",
-                                            "statusDate",
-                                            "validityPeriod",
-                                            "indication",
-                                            "intendedUse",
-                                            "basis",
-                                            "holder",
-                                            "regulator",
-                                            "case",
-                                        ],
-                                    ));
+                                    return unknown_field_error("description");
                                 }
                             }
                             Field::Region => {
@@ -949,33 +903,7 @@ impl<'de> serde::de::Deserialize<'de> for RegulatedAuthorization {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "statusDate",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "subject",
-                                            "type",
-                                            "description",
-                                            "region",
-                                            "status",
-                                            "statusDate",
-                                            "validityPeriod",
-                                            "indication",
-                                            "intendedUse",
-                                            "basis",
-                                            "holder",
-                                            "regulator",
-                                            "case",
-                                        ],
-                                    ));
+                                    return unknown_field_error("statusDate");
                                 }
                             }
                             Field::ValidityPeriod => {

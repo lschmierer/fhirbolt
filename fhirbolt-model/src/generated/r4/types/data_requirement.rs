@@ -1,4 +1,4 @@
-// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-08 by fhirbolt-codegen v0.1.0
 #[doc = "The intended subjects of the data requirement. If this element is not provided, a Patient subject is assumed."]
 #[derive(Debug, Clone, PartialEq)]
 pub enum DataRequirementSubject {
@@ -147,6 +147,12 @@ impl<'de> serde::de::Deserialize<'de> for DataRequirementCodeFilter {
             Code,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &["id", "extension", "path", "searchParam", "valueSet", "code"],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = DataRequirementCodeFilter;
@@ -212,17 +218,7 @@ impl<'de> serde::de::Deserialize<'de> for DataRequirementCodeFilter {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "path",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "path",
-                                            "searchParam",
-                                            "valueSet",
-                                            "code",
-                                        ],
-                                    ));
+                                    return unknown_field_error("path");
                                 }
                             }
                             Field::SearchParam => {
@@ -259,17 +255,7 @@ impl<'de> serde::de::Deserialize<'de> for DataRequirementCodeFilter {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "searchParam",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "path",
-                                            "searchParam",
-                                            "valueSet",
-                                            "code",
-                                        ],
-                                    ));
+                                    return unknown_field_error("searchParam");
                                 }
                             }
                             Field::ValueSet => {
@@ -300,17 +286,7 @@ impl<'de> serde::de::Deserialize<'de> for DataRequirementCodeFilter {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "valueSet",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "path",
-                                            "searchParam",
-                                            "valueSet",
-                                            "code",
-                                        ],
-                                    ));
+                                    return unknown_field_error("valueSet");
                                 }
                             }
                             Field::Code => {
@@ -480,6 +456,20 @@ impl<'de> serde::de::Deserialize<'de> for DataRequirementDateFilter {
             ValueDuration,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "path",
+                    "searchParam",
+                    "valueDateTime",
+                    "valuePeriod",
+                    "valueDuration",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = DataRequirementDateFilter;
@@ -544,18 +534,7 @@ impl<'de> serde::de::Deserialize<'de> for DataRequirementDateFilter {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "path",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "path",
-                                            "searchParam",
-                                            "valueDateTime",
-                                            "valuePeriod",
-                                            "valueDuration",
-                                        ],
-                                    ));
+                                    return unknown_field_error("path");
                                 }
                             }
                             Field::SearchParam => {
@@ -592,18 +571,7 @@ impl<'de> serde::de::Deserialize<'de> for DataRequirementDateFilter {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "searchParam",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "path",
-                                            "searchParam",
-                                            "valueDateTime",
-                                            "valuePeriod",
-                                            "valueDuration",
-                                        ],
-                                    ));
+                                    return unknown_field_error("searchParam");
                                 }
                             }
                             Field::ValueDateTime => {
@@ -664,18 +632,7 @@ impl<'de> serde::de::Deserialize<'de> for DataRequirementDateFilter {
                                         return Err(serde::de::Error::duplicate_field("_value[x]"));
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "valueDateTime",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "path",
-                                            "searchParam",
-                                            "valueDateTime",
-                                            "valuePeriod",
-                                            "valueDuration",
-                                        ],
-                                    ));
+                                    return unknown_field_error("valueDateTime");
                                 }
                             }
                             Field::ValuePeriod => {
@@ -808,6 +765,12 @@ impl<'de> serde::de::Deserialize<'de> for DataRequirementSort {
             DirectionPrimitiveElement,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &["id", "extension", "path", "direction"],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = DataRequirementSort;
@@ -871,10 +834,7 @@ impl<'de> serde::de::Deserialize<'de> for DataRequirementSort {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "path",
-                                        &["id", "extension", "path", "direction"],
-                                    ));
+                                    return unknown_field_error("path");
                                 }
                             }
                             Field::Direction => {
@@ -907,10 +867,7 @@ impl<'de> serde::de::Deserialize<'de> for DataRequirementSort {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "direction",
-                                        &["id", "extension", "path", "direction"],
-                                    ));
+                                    return unknown_field_error("direction");
                                 }
                             }
                             Field::Unknown(key) => if _ctx.config.mode
@@ -1162,6 +1119,24 @@ impl<'de> serde::de::Deserialize<'de> for DataRequirement {
             Sort,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "type",
+                    "profile",
+                    "subjectCodeableConcept",
+                    "subjectReference",
+                    "mustSupport",
+                    "codeFilter",
+                    "dateFilter",
+                    "limit",
+                    "sort",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = DataRequirement;
@@ -1231,22 +1206,7 @@ impl<'de> serde::de::Deserialize<'de> for DataRequirement {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "type",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "type",
-                                            "profile",
-                                            "subjectCodeableConcept",
-                                            "subjectReference",
-                                            "mustSupport",
-                                            "codeFilter",
-                                            "dateFilter",
-                                            "limit",
-                                            "sort",
-                                        ],
-                                    ));
+                                    return unknown_field_error("type");
                                 }
                             }
                             Field::Profile => {
@@ -1305,22 +1265,7 @@ impl<'de> serde::de::Deserialize<'de> for DataRequirement {
                                         }
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "profile",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "type",
-                                            "profile",
-                                            "subjectCodeableConcept",
-                                            "subjectReference",
-                                            "mustSupport",
-                                            "codeFilter",
-                                            "dateFilter",
-                                            "limit",
-                                            "sort",
-                                        ],
-                                    ));
+                                    return unknown_field_error("profile");
                                 }
                             }
                             Field::SubjectCodeableConcept => {
@@ -1403,22 +1348,7 @@ impl<'de> serde::de::Deserialize<'de> for DataRequirement {
                                         }
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "mustSupport",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "type",
-                                            "profile",
-                                            "subjectCodeableConcept",
-                                            "subjectReference",
-                                            "mustSupport",
-                                            "codeFilter",
-                                            "dateFilter",
-                                            "limit",
-                                            "sort",
-                                        ],
-                                    ));
+                                    return unknown_field_error("mustSupport");
                                 }
                             }
                             Field::CodeFilter => {
@@ -1475,22 +1405,7 @@ impl<'de> serde::de::Deserialize<'de> for DataRequirement {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "limit",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "type",
-                                            "profile",
-                                            "subjectCodeableConcept",
-                                            "subjectReference",
-                                            "mustSupport",
-                                            "codeFilter",
-                                            "dateFilter",
-                                            "limit",
-                                            "sort",
-                                        ],
-                                    ));
+                                    return unknown_field_error("limit");
                                 }
                             }
                             Field::Sort => {

@@ -1,4 +1,4 @@
-// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-08 by fhirbolt-codegen v0.1.0
 #[doc = "The status history permits the encounter resource to contain the status history without needing to read through the historical versions of the resource, or even have the server store them."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub struct EncounterStatusHistory {
@@ -72,6 +72,12 @@ impl<'de> serde::de::Deserialize<'de> for EncounterStatusHistory {
             #[serde(rename = "period")]
             Period,
             Unknown(std::string::String),
+        }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &["id", "extension", "modifierExtension", "status", "period"],
+            ))
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -152,16 +158,7 @@ impl<'de> serde::de::Deserialize<'de> for EncounterStatusHistory {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "status",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "status",
-                                            "period",
-                                        ],
-                                    ));
+                                    return unknown_field_error("status");
                                 }
                             }
                             Field::Period => {
@@ -262,6 +259,12 @@ impl<'de> serde::de::Deserialize<'de> for EncounterClassHistory {
             #[serde(rename = "period")]
             Period,
             Unknown(std::string::String),
+        }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &["id", "extension", "modifierExtension", "class", "period"],
+            ))
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -429,6 +432,19 @@ impl<'de> serde::de::Deserialize<'de> for EncounterParticipant {
             #[serde(rename = "individual")]
             Individual,
             Unknown(std::string::String),
+        }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "type",
+                    "period",
+                    "individual",
+                ],
+            ))
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -621,6 +637,19 @@ impl<'de> serde::de::Deserialize<'de> for EncounterDiagnosis {
             RankPrimitiveElement,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "condition",
+                    "use",
+                    "rank",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = EncounterDiagnosis;
@@ -713,17 +742,7 @@ impl<'de> serde::de::Deserialize<'de> for EncounterDiagnosis {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "rank",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "condition",
-                                            "use",
-                                            "rank",
-                                        ],
-                                    ));
+                                    return unknown_field_error("rank");
                                 }
                             }
                             Field::Unknown(key) => if _ctx.config.mode
@@ -873,6 +892,25 @@ impl<'de> serde::de::Deserialize<'de> for EncounterHospitalization {
             #[serde(rename = "dischargeDisposition")]
             DischargeDisposition,
             Unknown(std::string::String),
+        }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "preAdmissionIdentifier",
+                    "origin",
+                    "admitSource",
+                    "reAdmission",
+                    "dietPreference",
+                    "specialCourtesy",
+                    "specialArrangement",
+                    "destination",
+                    "dischargeDisposition",
+                ],
+            ))
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -1153,6 +1191,20 @@ impl<'de> serde::de::Deserialize<'de> for EncounterLocation {
             Period,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "location",
+                    "status",
+                    "physicalType",
+                    "period",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = EncounterLocation;
@@ -1240,18 +1292,7 @@ impl<'de> serde::de::Deserialize<'de> for EncounterLocation {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "status",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "location",
-                                            "status",
-                                            "physicalType",
-                                            "period",
-                                        ],
-                                    ));
+                                    return unknown_field_error("status");
                                 }
                             }
                             Field::PhysicalType => {
@@ -1603,6 +1644,44 @@ impl<'de> serde::de::Deserialize<'de> for Encounter {
             PartOf,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "meta",
+                    "implicitRules",
+                    "language",
+                    "text",
+                    "contained",
+                    "extension",
+                    "modifierExtension",
+                    "identifier",
+                    "status",
+                    "statusHistory",
+                    "class",
+                    "classHistory",
+                    "type",
+                    "serviceType",
+                    "priority",
+                    "subject",
+                    "episodeOfCare",
+                    "basedOn",
+                    "participant",
+                    "appointment",
+                    "period",
+                    "length",
+                    "reasonCode",
+                    "reasonReference",
+                    "diagnosis",
+                    "account",
+                    "hospitalization",
+                    "location",
+                    "serviceProvider",
+                    "partOf",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = Encounter;
@@ -1705,42 +1784,7 @@ impl<'de> serde::de::Deserialize<'de> for Encounter {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "implicitRules",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "status",
-                                            "statusHistory",
-                                            "class",
-                                            "classHistory",
-                                            "type",
-                                            "serviceType",
-                                            "priority",
-                                            "subject",
-                                            "episodeOfCare",
-                                            "basedOn",
-                                            "participant",
-                                            "appointment",
-                                            "period",
-                                            "length",
-                                            "reasonCode",
-                                            "reasonReference",
-                                            "diagnosis",
-                                            "account",
-                                            "hospitalization",
-                                            "location",
-                                            "serviceProvider",
-                                            "partOf",
-                                        ],
-                                    ));
+                                    return unknown_field_error("implicitRules");
                                 }
                             }
                             Field::Language => {
@@ -1771,42 +1815,7 @@ impl<'de> serde::de::Deserialize<'de> for Encounter {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "language",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "status",
-                                            "statusHistory",
-                                            "class",
-                                            "classHistory",
-                                            "type",
-                                            "serviceType",
-                                            "priority",
-                                            "subject",
-                                            "episodeOfCare",
-                                            "basedOn",
-                                            "participant",
-                                            "appointment",
-                                            "period",
-                                            "length",
-                                            "reasonCode",
-                                            "reasonReference",
-                                            "diagnosis",
-                                            "account",
-                                            "hospitalization",
-                                            "location",
-                                            "serviceProvider",
-                                            "partOf",
-                                        ],
-                                    ));
+                                    return unknown_field_error("language");
                                 }
                             }
                             Field::Text => {
@@ -1892,42 +1901,7 @@ impl<'de> serde::de::Deserialize<'de> for Encounter {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "status",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "status",
-                                            "statusHistory",
-                                            "class",
-                                            "classHistory",
-                                            "type",
-                                            "serviceType",
-                                            "priority",
-                                            "subject",
-                                            "episodeOfCare",
-                                            "basedOn",
-                                            "participant",
-                                            "appointment",
-                                            "period",
-                                            "length",
-                                            "reasonCode",
-                                            "reasonReference",
-                                            "diagnosis",
-                                            "account",
-                                            "hospitalization",
-                                            "location",
-                                            "serviceProvider",
-                                            "partOf",
-                                        ],
-                                    ));
+                                    return unknown_field_error("status");
                                 }
                             }
                             Field::StatusHistory => {

@@ -1,4 +1,4 @@
-// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-08 by fhirbolt-codegen v0.1.0
 #[doc = "Base StructureDefinition for Coding Type: A reference to a code defined by a terminology system.\n\nReferences to codes are very common in healthcare models."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub struct Coding {
@@ -165,6 +165,20 @@ impl<'de> serde::de::Deserialize<'de> for Coding {
             UserSelectedPrimitiveElement,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "system",
+                    "version",
+                    "code",
+                    "display",
+                    "userSelected",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = Coding;
@@ -231,18 +245,7 @@ impl<'de> serde::de::Deserialize<'de> for Coding {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "system",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "system",
-                                            "version",
-                                            "code",
-                                            "display",
-                                            "userSelected",
-                                        ],
-                                    ));
+                                    return unknown_field_error("system");
                                 }
                             }
                             Field::Version => {
@@ -273,18 +276,7 @@ impl<'de> serde::de::Deserialize<'de> for Coding {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "version",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "system",
-                                            "version",
-                                            "code",
-                                            "display",
-                                            "userSelected",
-                                        ],
-                                    ));
+                                    return unknown_field_error("version");
                                 }
                             }
                             Field::Code => {
@@ -315,18 +307,7 @@ impl<'de> serde::de::Deserialize<'de> for Coding {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "code",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "system",
-                                            "version",
-                                            "code",
-                                            "display",
-                                            "userSelected",
-                                        ],
-                                    ));
+                                    return unknown_field_error("code");
                                 }
                             }
                             Field::Display => {
@@ -357,18 +338,7 @@ impl<'de> serde::de::Deserialize<'de> for Coding {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "display",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "system",
-                                            "version",
-                                            "code",
-                                            "display",
-                                            "userSelected",
-                                        ],
-                                    ));
+                                    return unknown_field_error("display");
                                 }
                             }
                             Field::UserSelected => {
@@ -405,18 +375,7 @@ impl<'de> serde::de::Deserialize<'de> for Coding {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "userSelected",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "system",
-                                            "version",
-                                            "code",
-                                            "display",
-                                            "userSelected",
-                                        ],
-                                    ));
+                                    return unknown_field_error("userSelected");
                                 }
                             }
                             Field::Unknown(key) => if _ctx.config.mode

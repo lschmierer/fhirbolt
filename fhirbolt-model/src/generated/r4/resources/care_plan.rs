@@ -1,4 +1,4 @@
-// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-08 by fhirbolt-codegen v0.1.0
 #[doc = "The period, timing or frequency upon which the described activity is to occur."]
 #[derive(Debug, Clone, PartialEq)]
 pub enum CarePlanActivityDetailScheduled {
@@ -380,6 +380,36 @@ impl<'de> serde::de::Deserialize<'de> for CarePlanActivityDetail {
             DescriptionPrimitiveElement,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "kind",
+                    "instantiatesCanonical",
+                    "instantiatesUri",
+                    "code",
+                    "reasonCode",
+                    "reasonReference",
+                    "goal",
+                    "status",
+                    "statusReason",
+                    "doNotPerform",
+                    "scheduledTiming",
+                    "scheduledPeriod",
+                    "scheduledString",
+                    "location",
+                    "performer",
+                    "productCodeableConcept",
+                    "productReference",
+                    "dailyAmount",
+                    "quantity",
+                    "description",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = CarePlanActivityDetail;
@@ -476,34 +506,7 @@ impl<'de> serde::de::Deserialize<'de> for CarePlanActivityDetail {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "kind",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "kind",
-                                            "instantiatesCanonical",
-                                            "instantiatesUri",
-                                            "code",
-                                            "reasonCode",
-                                            "reasonReference",
-                                            "goal",
-                                            "status",
-                                            "statusReason",
-                                            "doNotPerform",
-                                            "scheduledTiming",
-                                            "scheduledPeriod",
-                                            "scheduledString",
-                                            "location",
-                                            "performer",
-                                            "productCodeableConcept",
-                                            "productReference",
-                                            "dailyAmount",
-                                            "quantity",
-                                            "description",
-                                        ],
-                                    ));
+                                    return unknown_field_error("kind");
                                 }
                             }
                             Field::InstantiatesCanonical => {
@@ -567,34 +570,7 @@ impl<'de> serde::de::Deserialize<'de> for CarePlanActivityDetail {
                                         }
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "instantiatesCanonical",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "kind",
-                                            "instantiatesCanonical",
-                                            "instantiatesUri",
-                                            "code",
-                                            "reasonCode",
-                                            "reasonReference",
-                                            "goal",
-                                            "status",
-                                            "statusReason",
-                                            "doNotPerform",
-                                            "scheduledTiming",
-                                            "scheduledPeriod",
-                                            "scheduledString",
-                                            "location",
-                                            "performer",
-                                            "productCodeableConcept",
-                                            "productReference",
-                                            "dailyAmount",
-                                            "quantity",
-                                            "description",
-                                        ],
-                                    ));
+                                    return unknown_field_error("instantiatesCanonical");
                                 }
                             }
                             Field::InstantiatesUri => {
@@ -657,34 +633,7 @@ impl<'de> serde::de::Deserialize<'de> for CarePlanActivityDetail {
                                         }
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "instantiatesUri",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "kind",
-                                            "instantiatesCanonical",
-                                            "instantiatesUri",
-                                            "code",
-                                            "reasonCode",
-                                            "reasonReference",
-                                            "goal",
-                                            "status",
-                                            "statusReason",
-                                            "doNotPerform",
-                                            "scheduledTiming",
-                                            "scheduledPeriod",
-                                            "scheduledString",
-                                            "location",
-                                            "performer",
-                                            "productCodeableConcept",
-                                            "productReference",
-                                            "dailyAmount",
-                                            "quantity",
-                                            "description",
-                                        ],
-                                    ));
+                                    return unknown_field_error("instantiatesUri");
                                 }
                             }
                             Field::Code => {
@@ -758,34 +707,7 @@ impl<'de> serde::de::Deserialize<'de> for CarePlanActivityDetail {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "status",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "kind",
-                                            "instantiatesCanonical",
-                                            "instantiatesUri",
-                                            "code",
-                                            "reasonCode",
-                                            "reasonReference",
-                                            "goal",
-                                            "status",
-                                            "statusReason",
-                                            "doNotPerform",
-                                            "scheduledTiming",
-                                            "scheduledPeriod",
-                                            "scheduledString",
-                                            "location",
-                                            "performer",
-                                            "productCodeableConcept",
-                                            "productReference",
-                                            "dailyAmount",
-                                            "quantity",
-                                            "description",
-                                        ],
-                                    ));
+                                    return unknown_field_error("status");
                                 }
                             }
                             Field::StatusReason => {
@@ -828,34 +750,7 @@ impl<'de> serde::de::Deserialize<'de> for CarePlanActivityDetail {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "doNotPerform",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "kind",
-                                            "instantiatesCanonical",
-                                            "instantiatesUri",
-                                            "code",
-                                            "reasonCode",
-                                            "reasonReference",
-                                            "goal",
-                                            "status",
-                                            "statusReason",
-                                            "doNotPerform",
-                                            "scheduledTiming",
-                                            "scheduledPeriod",
-                                            "scheduledString",
-                                            "location",
-                                            "performer",
-                                            "productCodeableConcept",
-                                            "productReference",
-                                            "dailyAmount",
-                                            "quantity",
-                                            "description",
-                                        ],
-                                    ));
+                                    return unknown_field_error("doNotPerform");
                                 }
                             }
                             Field::ScheduledTiming => {
@@ -932,34 +827,7 @@ impl<'de> serde::de::Deserialize<'de> for CarePlanActivityDetail {
                                         ));
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "scheduledString",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "kind",
-                                            "instantiatesCanonical",
-                                            "instantiatesUri",
-                                            "code",
-                                            "reasonCode",
-                                            "reasonReference",
-                                            "goal",
-                                            "status",
-                                            "statusReason",
-                                            "doNotPerform",
-                                            "scheduledTiming",
-                                            "scheduledPeriod",
-                                            "scheduledString",
-                                            "location",
-                                            "performer",
-                                            "productCodeableConcept",
-                                            "productReference",
-                                            "dailyAmount",
-                                            "quantity",
-                                            "description",
-                                        ],
-                                    ));
+                                    return unknown_field_error("scheduledString");
                                 }
                             }
                             Field::Location => {
@@ -1045,34 +913,7 @@ impl<'de> serde::de::Deserialize<'de> for CarePlanActivityDetail {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "description",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "kind",
-                                            "instantiatesCanonical",
-                                            "instantiatesUri",
-                                            "code",
-                                            "reasonCode",
-                                            "reasonReference",
-                                            "goal",
-                                            "status",
-                                            "statusReason",
-                                            "doNotPerform",
-                                            "scheduledTiming",
-                                            "scheduledPeriod",
-                                            "scheduledString",
-                                            "location",
-                                            "performer",
-                                            "productCodeableConcept",
-                                            "productReference",
-                                            "dailyAmount",
-                                            "quantity",
-                                            "description",
-                                        ],
-                                    ));
+                                    return unknown_field_error("description");
                                 }
                             }
                             Field::Unknown(key) => if _ctx.config.mode
@@ -1226,6 +1067,21 @@ impl<'de> serde::de::Deserialize<'de> for CarePlanActivity {
             #[serde(rename = "detail")]
             Detail,
             Unknown(std::string::String),
+        }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "outcomeCodeableConcept",
+                    "outcomeReference",
+                    "progress",
+                    "reference",
+                    "detail",
+                ],
+            ))
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -1810,6 +1666,44 @@ impl<'de> serde::de::Deserialize<'de> for CarePlan {
             Note,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "meta",
+                    "implicitRules",
+                    "language",
+                    "text",
+                    "contained",
+                    "extension",
+                    "modifierExtension",
+                    "identifier",
+                    "instantiatesCanonical",
+                    "instantiatesUri",
+                    "basedOn",
+                    "replaces",
+                    "partOf",
+                    "status",
+                    "intent",
+                    "category",
+                    "title",
+                    "description",
+                    "subject",
+                    "encounter",
+                    "period",
+                    "created",
+                    "author",
+                    "contributor",
+                    "careTeam",
+                    "addresses",
+                    "supportingInfo",
+                    "goal",
+                    "activity",
+                    "note",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = CarePlan;
@@ -1912,42 +1806,7 @@ impl<'de> serde::de::Deserialize<'de> for CarePlan {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "implicitRules",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "instantiatesCanonical",
-                                            "instantiatesUri",
-                                            "basedOn",
-                                            "replaces",
-                                            "partOf",
-                                            "status",
-                                            "intent",
-                                            "category",
-                                            "title",
-                                            "description",
-                                            "subject",
-                                            "encounter",
-                                            "period",
-                                            "created",
-                                            "author",
-                                            "contributor",
-                                            "careTeam",
-                                            "addresses",
-                                            "supportingInfo",
-                                            "goal",
-                                            "activity",
-                                            "note",
-                                        ],
-                                    ));
+                                    return unknown_field_error("implicitRules");
                                 }
                             }
                             Field::Language => {
@@ -1978,42 +1837,7 @@ impl<'de> serde::de::Deserialize<'de> for CarePlan {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "language",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "instantiatesCanonical",
-                                            "instantiatesUri",
-                                            "basedOn",
-                                            "replaces",
-                                            "partOf",
-                                            "status",
-                                            "intent",
-                                            "category",
-                                            "title",
-                                            "description",
-                                            "subject",
-                                            "encounter",
-                                            "period",
-                                            "created",
-                                            "author",
-                                            "contributor",
-                                            "careTeam",
-                                            "addresses",
-                                            "supportingInfo",
-                                            "goal",
-                                            "activity",
-                                            "note",
-                                        ],
-                                    ));
+                                    return unknown_field_error("language");
                                 }
                             }
                             Field::Text => {
@@ -2132,42 +1956,7 @@ impl<'de> serde::de::Deserialize<'de> for CarePlan {
                                         }
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "instantiatesCanonical",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "instantiatesCanonical",
-                                            "instantiatesUri",
-                                            "basedOn",
-                                            "replaces",
-                                            "partOf",
-                                            "status",
-                                            "intent",
-                                            "category",
-                                            "title",
-                                            "description",
-                                            "subject",
-                                            "encounter",
-                                            "period",
-                                            "created",
-                                            "author",
-                                            "contributor",
-                                            "careTeam",
-                                            "addresses",
-                                            "supportingInfo",
-                                            "goal",
-                                            "activity",
-                                            "note",
-                                        ],
-                                    ));
+                                    return unknown_field_error("instantiatesCanonical");
                                 }
                             }
                             Field::InstantiatesUri => {
@@ -2230,42 +2019,7 @@ impl<'de> serde::de::Deserialize<'de> for CarePlan {
                                         }
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "instantiatesUri",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "instantiatesCanonical",
-                                            "instantiatesUri",
-                                            "basedOn",
-                                            "replaces",
-                                            "partOf",
-                                            "status",
-                                            "intent",
-                                            "category",
-                                            "title",
-                                            "description",
-                                            "subject",
-                                            "encounter",
-                                            "period",
-                                            "created",
-                                            "author",
-                                            "contributor",
-                                            "careTeam",
-                                            "addresses",
-                                            "supportingInfo",
-                                            "goal",
-                                            "activity",
-                                            "note",
-                                        ],
-                                    ));
+                                    return unknown_field_error("instantiatesUri");
                                 }
                             }
                             Field::BasedOn => {
@@ -2329,42 +2083,7 @@ impl<'de> serde::de::Deserialize<'de> for CarePlan {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "status",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "instantiatesCanonical",
-                                            "instantiatesUri",
-                                            "basedOn",
-                                            "replaces",
-                                            "partOf",
-                                            "status",
-                                            "intent",
-                                            "category",
-                                            "title",
-                                            "description",
-                                            "subject",
-                                            "encounter",
-                                            "period",
-                                            "created",
-                                            "author",
-                                            "contributor",
-                                            "careTeam",
-                                            "addresses",
-                                            "supportingInfo",
-                                            "goal",
-                                            "activity",
-                                            "note",
-                                        ],
-                                    ));
+                                    return unknown_field_error("status");
                                 }
                             }
                             Field::Intent => {
@@ -2395,42 +2114,7 @@ impl<'de> serde::de::Deserialize<'de> for CarePlan {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "intent",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "instantiatesCanonical",
-                                            "instantiatesUri",
-                                            "basedOn",
-                                            "replaces",
-                                            "partOf",
-                                            "status",
-                                            "intent",
-                                            "category",
-                                            "title",
-                                            "description",
-                                            "subject",
-                                            "encounter",
-                                            "period",
-                                            "created",
-                                            "author",
-                                            "contributor",
-                                            "careTeam",
-                                            "addresses",
-                                            "supportingInfo",
-                                            "goal",
-                                            "activity",
-                                            "note",
-                                        ],
-                                    ));
+                                    return unknown_field_error("intent");
                                 }
                             }
                             Field::Category => {
@@ -2472,42 +2156,7 @@ impl<'de> serde::de::Deserialize<'de> for CarePlan {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "title",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "instantiatesCanonical",
-                                            "instantiatesUri",
-                                            "basedOn",
-                                            "replaces",
-                                            "partOf",
-                                            "status",
-                                            "intent",
-                                            "category",
-                                            "title",
-                                            "description",
-                                            "subject",
-                                            "encounter",
-                                            "period",
-                                            "created",
-                                            "author",
-                                            "contributor",
-                                            "careTeam",
-                                            "addresses",
-                                            "supportingInfo",
-                                            "goal",
-                                            "activity",
-                                            "note",
-                                        ],
-                                    ));
+                                    return unknown_field_error("title");
                                 }
                             }
                             Field::Description => {
@@ -2544,42 +2193,7 @@ impl<'de> serde::de::Deserialize<'de> for CarePlan {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "description",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "instantiatesCanonical",
-                                            "instantiatesUri",
-                                            "basedOn",
-                                            "replaces",
-                                            "partOf",
-                                            "status",
-                                            "intent",
-                                            "category",
-                                            "title",
-                                            "description",
-                                            "subject",
-                                            "encounter",
-                                            "period",
-                                            "created",
-                                            "author",
-                                            "contributor",
-                                            "careTeam",
-                                            "addresses",
-                                            "supportingInfo",
-                                            "goal",
-                                            "activity",
-                                            "note",
-                                        ],
-                                    ));
+                                    return unknown_field_error("description");
                                 }
                             }
                             Field::Subject => {
@@ -2628,42 +2242,7 @@ impl<'de> serde::de::Deserialize<'de> for CarePlan {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "created",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "instantiatesCanonical",
-                                            "instantiatesUri",
-                                            "basedOn",
-                                            "replaces",
-                                            "partOf",
-                                            "status",
-                                            "intent",
-                                            "category",
-                                            "title",
-                                            "description",
-                                            "subject",
-                                            "encounter",
-                                            "period",
-                                            "created",
-                                            "author",
-                                            "contributor",
-                                            "careTeam",
-                                            "addresses",
-                                            "supportingInfo",
-                                            "goal",
-                                            "activity",
-                                            "note",
-                                        ],
-                                    ));
+                                    return unknown_field_error("created");
                                 }
                             }
                             Field::Author => {

@@ -1,4 +1,4 @@
-// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-08 by fhirbolt-codegen v0.1.0
 #[doc = "Entries in this list."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub struct ListEntry {
@@ -109,6 +109,20 @@ impl<'de> serde::de::Deserialize<'de> for ListEntry {
             Item,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "flag",
+                    "deleted",
+                    "date",
+                    "item",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = ListEntry;
@@ -196,18 +210,7 @@ impl<'de> serde::de::Deserialize<'de> for ListEntry {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "deleted",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "flag",
-                                            "deleted",
-                                            "date",
-                                            "item",
-                                        ],
-                                    ));
+                                    return unknown_field_error("deleted");
                                 }
                             }
                             Field::Date => {
@@ -238,18 +241,7 @@ impl<'de> serde::de::Deserialize<'de> for ListEntry {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "date",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "flag",
-                                            "deleted",
-                                            "date",
-                                            "item",
-                                        ],
-                                    ));
+                                    return unknown_field_error("date");
                                 }
                             }
                             Field::Item => {
@@ -577,6 +569,34 @@ impl<'de> serde::de::Deserialize<'de> for List {
             EmptyReason,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "meta",
+                    "implicitRules",
+                    "language",
+                    "text",
+                    "contained",
+                    "extension",
+                    "modifierExtension",
+                    "identifier",
+                    "status",
+                    "mode",
+                    "title",
+                    "code",
+                    "subject",
+                    "encounter",
+                    "date",
+                    "source",
+                    "orderedBy",
+                    "note",
+                    "entry",
+                    "emptyReason",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = List;
@@ -668,32 +688,7 @@ impl<'de> serde::de::Deserialize<'de> for List {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "implicitRules",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "status",
-                                            "mode",
-                                            "title",
-                                            "code",
-                                            "subject",
-                                            "encounter",
-                                            "date",
-                                            "source",
-                                            "orderedBy",
-                                            "note",
-                                            "entry",
-                                            "emptyReason",
-                                        ],
-                                    ));
+                                    return unknown_field_error("implicitRules");
                                 }
                             }
                             Field::Language => {
@@ -724,32 +719,7 @@ impl<'de> serde::de::Deserialize<'de> for List {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "language",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "status",
-                                            "mode",
-                                            "title",
-                                            "code",
-                                            "subject",
-                                            "encounter",
-                                            "date",
-                                            "source",
-                                            "orderedBy",
-                                            "note",
-                                            "entry",
-                                            "emptyReason",
-                                        ],
-                                    ));
+                                    return unknown_field_error("language");
                                 }
                             }
                             Field::Text => {
@@ -835,32 +805,7 @@ impl<'de> serde::de::Deserialize<'de> for List {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "status",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "status",
-                                            "mode",
-                                            "title",
-                                            "code",
-                                            "subject",
-                                            "encounter",
-                                            "date",
-                                            "source",
-                                            "orderedBy",
-                                            "note",
-                                            "entry",
-                                            "emptyReason",
-                                        ],
-                                    ));
+                                    return unknown_field_error("status");
                                 }
                             }
                             Field::Mode => {
@@ -891,32 +836,7 @@ impl<'de> serde::de::Deserialize<'de> for List {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "mode",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "status",
-                                            "mode",
-                                            "title",
-                                            "code",
-                                            "subject",
-                                            "encounter",
-                                            "date",
-                                            "source",
-                                            "orderedBy",
-                                            "note",
-                                            "entry",
-                                            "emptyReason",
-                                        ],
-                                    ));
+                                    return unknown_field_error("mode");
                                 }
                             }
                             Field::Title => {
@@ -947,32 +867,7 @@ impl<'de> serde::de::Deserialize<'de> for List {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "title",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "status",
-                                            "mode",
-                                            "title",
-                                            "code",
-                                            "subject",
-                                            "encounter",
-                                            "date",
-                                            "source",
-                                            "orderedBy",
-                                            "note",
-                                            "entry",
-                                            "emptyReason",
-                                        ],
-                                    ));
+                                    return unknown_field_error("title");
                                 }
                             }
                             Field::Code => {
@@ -1021,32 +916,7 @@ impl<'de> serde::de::Deserialize<'de> for List {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "date",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "status",
-                                            "mode",
-                                            "title",
-                                            "code",
-                                            "subject",
-                                            "encounter",
-                                            "date",
-                                            "source",
-                                            "orderedBy",
-                                            "note",
-                                            "entry",
-                                            "emptyReason",
-                                        ],
-                                    ));
+                                    return unknown_field_error("date");
                                 }
                             }
                             Field::Source => {

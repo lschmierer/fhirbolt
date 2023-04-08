@@ -1,4 +1,4 @@
-// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-08 by fhirbolt-codegen v0.1.0
 #[doc = "Estimated or actual date or date-time  the condition began, in the opinion of the clinician."]
 #[derive(Debug, Clone, PartialEq)]
 pub enum ConditionOnset {
@@ -97,6 +97,19 @@ impl<'de> serde::de::Deserialize<'de> for ConditionStage {
             #[serde(rename = "type")]
             Type,
             Unknown(std::string::String),
+        }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "summary",
+                    "assessment",
+                    "type",
+                ],
+            ))
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -267,6 +280,12 @@ impl<'de> serde::de::Deserialize<'de> for ConditionEvidence {
             #[serde(rename = "detail")]
             Detail,
             Unknown(std::string::String),
+        }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &["id", "extension", "modifierExtension", "code", "detail"],
+            ))
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -746,6 +765,46 @@ impl<'de> serde::de::Deserialize<'de> for Condition {
             Note,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "meta",
+                    "implicitRules",
+                    "language",
+                    "text",
+                    "contained",
+                    "extension",
+                    "modifierExtension",
+                    "identifier",
+                    "clinicalStatus",
+                    "verificationStatus",
+                    "category",
+                    "severity",
+                    "code",
+                    "bodySite",
+                    "subject",
+                    "encounter",
+                    "onsetDateTime",
+                    "onsetAge",
+                    "onsetPeriod",
+                    "onsetRange",
+                    "onsetString",
+                    "abatementDateTime",
+                    "abatementAge",
+                    "abatementPeriod",
+                    "abatementRange",
+                    "abatementString",
+                    "recordedDate",
+                    "recorder",
+                    "asserter",
+                    "stage",
+                    "evidence",
+                    "note",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = Condition;
@@ -842,44 +901,7 @@ impl<'de> serde::de::Deserialize<'de> for Condition {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "implicitRules",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "clinicalStatus",
-                                            "verificationStatus",
-                                            "category",
-                                            "severity",
-                                            "code",
-                                            "bodySite",
-                                            "subject",
-                                            "encounter",
-                                            "onsetDateTime",
-                                            "onsetAge",
-                                            "onsetPeriod",
-                                            "onsetRange",
-                                            "onsetString",
-                                            "abatementDateTime",
-                                            "abatementAge",
-                                            "abatementPeriod",
-                                            "abatementRange",
-                                            "abatementString",
-                                            "recordedDate",
-                                            "recorder",
-                                            "asserter",
-                                            "stage",
-                                            "evidence",
-                                            "note",
-                                        ],
-                                    ));
+                                    return unknown_field_error("implicitRules");
                                 }
                             }
                             Field::Language => {
@@ -910,44 +932,7 @@ impl<'de> serde::de::Deserialize<'de> for Condition {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "language",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "clinicalStatus",
-                                            "verificationStatus",
-                                            "category",
-                                            "severity",
-                                            "code",
-                                            "bodySite",
-                                            "subject",
-                                            "encounter",
-                                            "onsetDateTime",
-                                            "onsetAge",
-                                            "onsetPeriod",
-                                            "onsetRange",
-                                            "onsetString",
-                                            "abatementDateTime",
-                                            "abatementAge",
-                                            "abatementPeriod",
-                                            "abatementRange",
-                                            "abatementString",
-                                            "recordedDate",
-                                            "recorder",
-                                            "asserter",
-                                            "stage",
-                                            "evidence",
-                                            "note",
-                                        ],
-                                    ));
+                                    return unknown_field_error("language");
                                 }
                             }
                             Field::Text => {
@@ -1114,44 +1099,7 @@ impl<'de> serde::de::Deserialize<'de> for Condition {
                                         return Err(serde::de::Error::duplicate_field("_onset[x]"));
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "onsetDateTime",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "clinicalStatus",
-                                            "verificationStatus",
-                                            "category",
-                                            "severity",
-                                            "code",
-                                            "bodySite",
-                                            "subject",
-                                            "encounter",
-                                            "onsetDateTime",
-                                            "onsetAge",
-                                            "onsetPeriod",
-                                            "onsetRange",
-                                            "onsetString",
-                                            "abatementDateTime",
-                                            "abatementAge",
-                                            "abatementPeriod",
-                                            "abatementRange",
-                                            "abatementString",
-                                            "recordedDate",
-                                            "recorder",
-                                            "asserter",
-                                            "stage",
-                                            "evidence",
-                                            "note",
-                                        ],
-                                    ));
+                                    return unknown_field_error("onsetDateTime");
                                 }
                             }
                             Field::OnsetAge => {
@@ -1217,44 +1165,7 @@ impl<'de> serde::de::Deserialize<'de> for Condition {
                                         return Err(serde::de::Error::duplicate_field("_onset[x]"));
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "onsetString",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "clinicalStatus",
-                                            "verificationStatus",
-                                            "category",
-                                            "severity",
-                                            "code",
-                                            "bodySite",
-                                            "subject",
-                                            "encounter",
-                                            "onsetDateTime",
-                                            "onsetAge",
-                                            "onsetPeriod",
-                                            "onsetRange",
-                                            "onsetString",
-                                            "abatementDateTime",
-                                            "abatementAge",
-                                            "abatementPeriod",
-                                            "abatementRange",
-                                            "abatementString",
-                                            "recordedDate",
-                                            "recorder",
-                                            "asserter",
-                                            "stage",
-                                            "evidence",
-                                            "note",
-                                        ],
-                                    ));
+                                    return unknown_field_error("onsetString");
                                 }
                             }
                             Field::AbatementDateTime => {
@@ -1309,44 +1220,7 @@ impl<'de> serde::de::Deserialize<'de> for Condition {
                                         ));
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "abatementDateTime",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "clinicalStatus",
-                                            "verificationStatus",
-                                            "category",
-                                            "severity",
-                                            "code",
-                                            "bodySite",
-                                            "subject",
-                                            "encounter",
-                                            "onsetDateTime",
-                                            "onsetAge",
-                                            "onsetPeriod",
-                                            "onsetRange",
-                                            "onsetString",
-                                            "abatementDateTime",
-                                            "abatementAge",
-                                            "abatementPeriod",
-                                            "abatementRange",
-                                            "abatementString",
-                                            "recordedDate",
-                                            "recorder",
-                                            "asserter",
-                                            "stage",
-                                            "evidence",
-                                            "note",
-                                        ],
-                                    ));
+                                    return unknown_field_error("abatementDateTime");
                                 }
                             }
                             Field::AbatementAge => {
@@ -1425,44 +1299,7 @@ impl<'de> serde::de::Deserialize<'de> for Condition {
                                         ));
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "abatementString",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "clinicalStatus",
-                                            "verificationStatus",
-                                            "category",
-                                            "severity",
-                                            "code",
-                                            "bodySite",
-                                            "subject",
-                                            "encounter",
-                                            "onsetDateTime",
-                                            "onsetAge",
-                                            "onsetPeriod",
-                                            "onsetRange",
-                                            "onsetString",
-                                            "abatementDateTime",
-                                            "abatementAge",
-                                            "abatementPeriod",
-                                            "abatementRange",
-                                            "abatementString",
-                                            "recordedDate",
-                                            "recorder",
-                                            "asserter",
-                                            "stage",
-                                            "evidence",
-                                            "note",
-                                        ],
-                                    ));
+                                    return unknown_field_error("abatementString");
                                 }
                             }
                             Field::RecordedDate => {
@@ -1499,44 +1336,7 @@ impl<'de> serde::de::Deserialize<'de> for Condition {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "recordedDate",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "clinicalStatus",
-                                            "verificationStatus",
-                                            "category",
-                                            "severity",
-                                            "code",
-                                            "bodySite",
-                                            "subject",
-                                            "encounter",
-                                            "onsetDateTime",
-                                            "onsetAge",
-                                            "onsetPeriod",
-                                            "onsetRange",
-                                            "onsetString",
-                                            "abatementDateTime",
-                                            "abatementAge",
-                                            "abatementPeriod",
-                                            "abatementRange",
-                                            "abatementString",
-                                            "recordedDate",
-                                            "recorder",
-                                            "asserter",
-                                            "stage",
-                                            "evidence",
-                                            "note",
-                                        ],
-                                    ));
+                                    return unknown_field_error("recordedDate");
                                 }
                             }
                             Field::Recorder => {

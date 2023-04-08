@@ -1,4 +1,4 @@
-// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-08 by fhirbolt-codegen v0.1.0
 #[doc = "Timing or duration information, that may be associated with use with the indicated condition e.g. Adult patients suffering from myocardial infarction (from a few days until less than 35 days), ischaemic stroke (from 7 days until less than 6 months)."]
 #[derive(Debug, Clone, PartialEq)]
 pub enum ClinicalUseDefinitionIndicationDuration {
@@ -80,6 +80,18 @@ impl<'de> serde::de::Deserialize<'de> for ClinicalUseDefinitionContraindicationO
             #[serde(rename = "therapy")]
             Therapy,
             Unknown(std::string::String),
+        }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "relationshipType",
+                    "therapy",
+                ],
+            ))
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -274,6 +286,21 @@ impl<'de> serde::de::Deserialize<'de> for ClinicalUseDefinitionContraindication 
             #[serde(rename = "otherTherapy")]
             OtherTherapy,
             Unknown(std::string::String),
+        }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "diseaseSymptomProcedure",
+                    "diseaseStatus",
+                    "comorbidity",
+                    "indication",
+                    "otherTherapy",
+                ],
+            ))
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -552,6 +579,24 @@ impl<'de> serde::de::Deserialize<'de> for ClinicalUseDefinitionIndication {
             OtherTherapy,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "diseaseSymptomProcedure",
+                    "diseaseStatus",
+                    "comorbidity",
+                    "intendedEffect",
+                    "durationRange",
+                    "durationString",
+                    "undesirableEffect",
+                    "otherTherapy",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = ClinicalUseDefinitionIndication;
@@ -725,22 +770,7 @@ impl<'de> serde::de::Deserialize<'de> for ClinicalUseDefinitionIndication {
                                         ));
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "durationString",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "diseaseSymptomProcedure",
-                                            "diseaseStatus",
-                                            "comorbidity",
-                                            "intendedEffect",
-                                            "durationRange",
-                                            "durationString",
-                                            "undesirableEffect",
-                                            "otherTherapy",
-                                        ],
-                                    ));
+                                    return unknown_field_error("durationString");
                                 }
                             }
                             Field::UndesirableEffect => {
@@ -875,6 +905,18 @@ impl<'de> serde::de::Deserialize<'de> for ClinicalUseDefinitionInteractionIntera
             ItemCodeableConcept,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "itemReference",
+                    "itemCodeableConcept",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = ClinicalUseDefinitionInteractionInteractant;
@@ -981,6 +1023,21 @@ impl<'de> serde::de::Deserialize<'de> for ClinicalUseDefinitionInteraction {
             #[serde(rename = "management")]
             Management,
             Unknown(std::string::String),
+        }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "interactant",
+                    "type",
+                    "effect",
+                    "incidence",
+                    "management",
+                ],
+            ))
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -1188,6 +1245,19 @@ impl<'de> serde::de::Deserialize<'de> for ClinicalUseDefinitionUndesirableEffect
             FrequencyOfOccurrence,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "symptomConditionEffect",
+                    "classification",
+                    "frequencyOfOccurrence",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = ClinicalUseDefinitionUndesirableEffect;
@@ -1382,6 +1452,18 @@ impl<'de> serde::de::Deserialize<'de> for ClinicalUseDefinitionWarning {
             Code,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "description",
+                    "code",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = ClinicalUseDefinitionWarning;
@@ -1470,16 +1552,7 @@ impl<'de> serde::de::Deserialize<'de> for ClinicalUseDefinitionWarning {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "description",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "description",
-                                            "code",
-                                        ],
-                                    ));
+                                    return unknown_field_error("description");
                                 }
                             }
                             Field::Code => {
@@ -1733,6 +1806,32 @@ impl<'de> serde::de::Deserialize<'de> for ClinicalUseDefinition {
             Warning,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "meta",
+                    "implicitRules",
+                    "language",
+                    "text",
+                    "contained",
+                    "extension",
+                    "modifierExtension",
+                    "identifier",
+                    "type",
+                    "category",
+                    "subject",
+                    "status",
+                    "contraindication",
+                    "indication",
+                    "interaction",
+                    "population",
+                    "undesirableEffect",
+                    "warning",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = ClinicalUseDefinition;
@@ -1822,30 +1921,7 @@ impl<'de> serde::de::Deserialize<'de> for ClinicalUseDefinition {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "implicitRules",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "type",
-                                            "category",
-                                            "subject",
-                                            "status",
-                                            "contraindication",
-                                            "indication",
-                                            "interaction",
-                                            "population",
-                                            "undesirableEffect",
-                                            "warning",
-                                        ],
-                                    ));
+                                    return unknown_field_error("implicitRules");
                                 }
                             }
                             Field::Language => {
@@ -1876,30 +1952,7 @@ impl<'de> serde::de::Deserialize<'de> for ClinicalUseDefinition {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "language",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "type",
-                                            "category",
-                                            "subject",
-                                            "status",
-                                            "contraindication",
-                                            "indication",
-                                            "interaction",
-                                            "population",
-                                            "undesirableEffect",
-                                            "warning",
-                                        ],
-                                    ));
+                                    return unknown_field_error("language");
                                 }
                             }
                             Field::Text => {
@@ -1985,30 +2038,7 @@ impl<'de> serde::de::Deserialize<'de> for ClinicalUseDefinition {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "type",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "type",
-                                            "category",
-                                            "subject",
-                                            "status",
-                                            "contraindication",
-                                            "indication",
-                                            "interaction",
-                                            "population",
-                                            "undesirableEffect",
-                                            "warning",
-                                        ],
-                                    ));
+                                    return unknown_field_error("type");
                                 }
                             }
                             Field::Category => {

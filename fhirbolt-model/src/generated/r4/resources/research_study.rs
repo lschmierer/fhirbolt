@@ -1,4 +1,4 @@
-// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-08 by fhirbolt-codegen v0.1.0
 #[doc = "Describes an expected sequence of events for one of the participants of a study.  E.g. Exposure to drug A, wash-out, exposure to drug B, wash-out, follow-up."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub struct ResearchStudyArm {
@@ -100,6 +100,19 @@ impl<'de> serde::de::Deserialize<'de> for ResearchStudyArm {
             DescriptionPrimitiveElement,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "name",
+                    "type",
+                    "description",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = ResearchStudyArm;
@@ -180,17 +193,7 @@ impl<'de> serde::de::Deserialize<'de> for ResearchStudyArm {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "name",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "name",
-                                            "type",
-                                            "description",
-                                        ],
-                                    ));
+                                    return unknown_field_error("name");
                                 }
                             }
                             Field::Type => {
@@ -233,17 +236,7 @@ impl<'de> serde::de::Deserialize<'de> for ResearchStudyArm {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "description",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "name",
-                                            "type",
-                                            "description",
-                                        ],
-                                    ));
+                                    return unknown_field_error("description");
                                 }
                             }
                             Field::Unknown(key) => if _ctx.config.mode
@@ -363,6 +356,12 @@ impl<'de> serde::de::Deserialize<'de> for ResearchStudyObjective {
             Type,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &["id", "extension", "modifierExtension", "name", "type"],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = ResearchStudyObjective;
@@ -442,10 +441,7 @@ impl<'de> serde::de::Deserialize<'de> for ResearchStudyObjective {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "name",
-                                        &["id", "extension", "modifierExtension", "name", "type"],
-                                    ));
+                                    return unknown_field_error("name");
                                 }
                             }
                             Field::Type => {
@@ -820,6 +816,45 @@ impl<'de> serde::de::Deserialize<'de> for ResearchStudy {
             Objective,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "meta",
+                    "implicitRules",
+                    "language",
+                    "text",
+                    "contained",
+                    "extension",
+                    "modifierExtension",
+                    "identifier",
+                    "title",
+                    "protocol",
+                    "partOf",
+                    "status",
+                    "primaryPurposeType",
+                    "phase",
+                    "category",
+                    "focus",
+                    "condition",
+                    "contact",
+                    "relatedArtifact",
+                    "keyword",
+                    "location",
+                    "description",
+                    "enrollment",
+                    "period",
+                    "sponsor",
+                    "principalInvestigator",
+                    "site",
+                    "reasonStopped",
+                    "note",
+                    "arm",
+                    "objective",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = ResearchStudy;
@@ -925,43 +960,7 @@ impl<'de> serde::de::Deserialize<'de> for ResearchStudy {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "implicitRules",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "title",
-                                            "protocol",
-                                            "partOf",
-                                            "status",
-                                            "primaryPurposeType",
-                                            "phase",
-                                            "category",
-                                            "focus",
-                                            "condition",
-                                            "contact",
-                                            "relatedArtifact",
-                                            "keyword",
-                                            "location",
-                                            "description",
-                                            "enrollment",
-                                            "period",
-                                            "sponsor",
-                                            "principalInvestigator",
-                                            "site",
-                                            "reasonStopped",
-                                            "note",
-                                            "arm",
-                                            "objective",
-                                        ],
-                                    ));
+                                    return unknown_field_error("implicitRules");
                                 }
                             }
                             Field::Language => {
@@ -992,43 +991,7 @@ impl<'de> serde::de::Deserialize<'de> for ResearchStudy {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "language",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "title",
-                                            "protocol",
-                                            "partOf",
-                                            "status",
-                                            "primaryPurposeType",
-                                            "phase",
-                                            "category",
-                                            "focus",
-                                            "condition",
-                                            "contact",
-                                            "relatedArtifact",
-                                            "keyword",
-                                            "location",
-                                            "description",
-                                            "enrollment",
-                                            "period",
-                                            "sponsor",
-                                            "principalInvestigator",
-                                            "site",
-                                            "reasonStopped",
-                                            "note",
-                                            "arm",
-                                            "objective",
-                                        ],
-                                    ));
+                                    return unknown_field_error("language");
                                 }
                             }
                             Field::Text => {
@@ -1114,43 +1077,7 @@ impl<'de> serde::de::Deserialize<'de> for ResearchStudy {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "title",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "title",
-                                            "protocol",
-                                            "partOf",
-                                            "status",
-                                            "primaryPurposeType",
-                                            "phase",
-                                            "category",
-                                            "focus",
-                                            "condition",
-                                            "contact",
-                                            "relatedArtifact",
-                                            "keyword",
-                                            "location",
-                                            "description",
-                                            "enrollment",
-                                            "period",
-                                            "sponsor",
-                                            "principalInvestigator",
-                                            "site",
-                                            "reasonStopped",
-                                            "note",
-                                            "arm",
-                                            "objective",
-                                        ],
-                                    ));
+                                    return unknown_field_error("title");
                                 }
                             }
                             Field::Protocol => {
@@ -1203,43 +1130,7 @@ impl<'de> serde::de::Deserialize<'de> for ResearchStudy {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "status",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "title",
-                                            "protocol",
-                                            "partOf",
-                                            "status",
-                                            "primaryPurposeType",
-                                            "phase",
-                                            "category",
-                                            "focus",
-                                            "condition",
-                                            "contact",
-                                            "relatedArtifact",
-                                            "keyword",
-                                            "location",
-                                            "description",
-                                            "enrollment",
-                                            "period",
-                                            "sponsor",
-                                            "principalInvestigator",
-                                            "site",
-                                            "reasonStopped",
-                                            "note",
-                                            "arm",
-                                            "objective",
-                                        ],
-                                    ));
+                                    return unknown_field_error("status");
                                 }
                             }
                             Field::PrimaryPurposeType => {
@@ -1369,43 +1260,7 @@ impl<'de> serde::de::Deserialize<'de> for ResearchStudy {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "description",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "identifier",
-                                            "title",
-                                            "protocol",
-                                            "partOf",
-                                            "status",
-                                            "primaryPurposeType",
-                                            "phase",
-                                            "category",
-                                            "focus",
-                                            "condition",
-                                            "contact",
-                                            "relatedArtifact",
-                                            "keyword",
-                                            "location",
-                                            "description",
-                                            "enrollment",
-                                            "period",
-                                            "sponsor",
-                                            "principalInvestigator",
-                                            "site",
-                                            "reasonStopped",
-                                            "note",
-                                            "arm",
-                                            "objective",
-                                        ],
-                                    ));
+                                    return unknown_field_error("description");
                                 }
                             }
                             Field::Enrollment => {

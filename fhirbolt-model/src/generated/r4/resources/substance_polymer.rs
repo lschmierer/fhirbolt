@@ -1,4 +1,4 @@
-// Generated on 2023-04-05 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-08 by fhirbolt-codegen v0.1.0
 #[doc = "Todo."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub struct SubstancePolymerMonomerSetStartingMaterial {
@@ -92,6 +92,20 @@ impl<'de> serde::de::Deserialize<'de> for SubstancePolymerMonomerSetStartingMate
             #[serde(rename = "amount")]
             Amount,
             Unknown(std::string::String),
+        }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "material",
+                    "type",
+                    "isDefining",
+                    "amount",
+                ],
+            ))
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -195,18 +209,7 @@ impl<'de> serde::de::Deserialize<'de> for SubstancePolymerMonomerSetStartingMate
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "isDefining",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "material",
-                                            "type",
-                                            "isDefining",
-                                            "amount",
-                                        ],
-                                    ));
+                                    return unknown_field_error("isDefining");
                                 }
                             }
                             Field::Amount => {
@@ -309,6 +312,18 @@ impl<'de> serde::de::Deserialize<'de> for SubstancePolymerMonomerSet {
             #[serde(rename = "startingMaterial")]
             StartingMaterial,
             Unknown(std::string::String),
+        }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "ratioType",
+                    "startingMaterial",
+                ],
+            ))
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -472,6 +487,12 @@ impl<'de> serde::de::Deserialize<'de> for SubstancePolymerRepeatRepeatUnitDegree
             #[serde(rename = "amount")]
             Amount,
             Unknown(std::string::String),
+        }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &["id", "extension", "modifierExtension", "degree", "amount"],
+            ))
         }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
@@ -649,6 +670,19 @@ impl<'de> serde::de::Deserialize<'de> for SubstancePolymerRepeatRepeatUnitStruct
             Attachment,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "type",
+                    "representation",
+                    "attachment",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = SubstancePolymerRepeatRepeatUnitStructuralRepresentation;
@@ -744,17 +778,7 @@ impl<'de> serde::de::Deserialize<'de> for SubstancePolymerRepeatRepeatUnitStruct
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "representation",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "type",
-                                            "representation",
-                                            "attachment",
-                                        ],
-                                    ));
+                                    return unknown_field_error("representation");
                                 }
                             }
                             Field::Attachment => {
@@ -899,6 +923,21 @@ impl<'de> serde::de::Deserialize<'de> for SubstancePolymerRepeatRepeatUnit {
             StructuralRepresentation,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "orientationOfPolymerisation",
+                    "repeatUnit",
+                    "amount",
+                    "degreeOfPolymerisation",
+                    "structuralRepresentation",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = SubstancePolymerRepeatRepeatUnit;
@@ -1004,19 +1043,7 @@ impl<'de> serde::de::Deserialize<'de> for SubstancePolymerRepeatRepeatUnit {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "repeatUnit",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "orientationOfPolymerisation",
-                                            "repeatUnit",
-                                            "amount",
-                                            "degreeOfPolymerisation",
-                                            "structuralRepresentation",
-                                        ],
-                                    ));
+                                    return unknown_field_error("repeatUnit");
                                 }
                             }
                             Field::Amount => {
@@ -1200,6 +1227,20 @@ impl<'de> serde::de::Deserialize<'de> for SubstancePolymerRepeat {
             RepeatUnit,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "extension",
+                    "modifierExtension",
+                    "numberOfUnits",
+                    "averageMolecularFormula",
+                    "repeatUnitAmountType",
+                    "repeatUnit",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = SubstancePolymerRepeat;
@@ -1289,18 +1330,7 @@ impl<'de> serde::de::Deserialize<'de> for SubstancePolymerRepeat {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "numberOfUnits",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "numberOfUnits",
-                                            "averageMolecularFormula",
-                                            "repeatUnitAmountType",
-                                            "repeatUnit",
-                                        ],
-                                    ));
+                                    return unknown_field_error("numberOfUnits");
                                 }
                             }
                             Field::AverageMolecularFormula => {
@@ -1339,18 +1369,7 @@ impl<'de> serde::de::Deserialize<'de> for SubstancePolymerRepeat {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "averageMolecularFormula",
-                                        &[
-                                            "id",
-                                            "extension",
-                                            "modifierExtension",
-                                            "numberOfUnits",
-                                            "averageMolecularFormula",
-                                            "repeatUnitAmountType",
-                                            "repeatUnit",
-                                        ],
-                                    ));
+                                    return unknown_field_error("averageMolecularFormula");
                                 }
                             }
                             Field::RepeatUnitAmountType => {
@@ -1611,6 +1630,27 @@ impl<'de> serde::de::Deserialize<'de> for SubstancePolymer {
             Repeat,
             Unknown(std::string::String),
         }
+        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+            Err(E::unknown_field(
+                field,
+                &[
+                    "id",
+                    "meta",
+                    "implicitRules",
+                    "language",
+                    "text",
+                    "contained",
+                    "extension",
+                    "modifierExtension",
+                    "class",
+                    "geometry",
+                    "copolymerConnectivity",
+                    "modification",
+                    "monomerSet",
+                    "repeat",
+                ],
+            ))
+        }
         struct Visitor;
         impl<'de> serde::de::Visitor<'de> for Visitor {
             type Value = SubstancePolymer;
@@ -1697,25 +1737,7 @@ impl<'de> serde::de::Deserialize<'de> for SubstancePolymer {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "implicitRules",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "class",
-                                            "geometry",
-                                            "copolymerConnectivity",
-                                            "modification",
-                                            "monomerSet",
-                                            "repeat",
-                                        ],
-                                    ));
+                                    return unknown_field_error("implicitRules");
                                 }
                             }
                             Field::Language => {
@@ -1746,25 +1768,7 @@ impl<'de> serde::de::Deserialize<'de> for SubstancePolymer {
                                     some.id = id;
                                     some.extension = extension;
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "language",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "class",
-                                            "geometry",
-                                            "copolymerConnectivity",
-                                            "modification",
-                                            "monomerSet",
-                                            "repeat",
-                                        ],
-                                    ));
+                                    return unknown_field_error("language");
                                 }
                             }
                             Field::Text => {
@@ -1895,25 +1899,7 @@ impl<'de> serde::de::Deserialize<'de> for SubstancePolymer {
                                         }
                                     }
                                 } else {
-                                    return Err(serde::de::Error::unknown_field(
-                                        "modification",
-                                        &[
-                                            "id",
-                                            "meta",
-                                            "implicitRules",
-                                            "language",
-                                            "text",
-                                            "contained",
-                                            "extension",
-                                            "modifierExtension",
-                                            "class",
-                                            "geometry",
-                                            "copolymerConnectivity",
-                                            "modification",
-                                            "monomerSet",
-                                            "repeat",
-                                        ],
-                                    ));
+                                    return unknown_field_error("modification");
                                 }
                             }
                             Field::MonomerSet => {
