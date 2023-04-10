@@ -10,13 +10,141 @@ use serde::{
     forward_to_deserialize_any,
 };
 
-use fhirbolt_shared::{path::ElementPath, FhirRelease};
+use fhirbolt_shared::{path::ElementPath, AnyResource, FhirRelease};
 
-use crate::xml::{
-    error::{Error, Result},
-    event::{Element, Event},
-    read::{self, Read},
+use crate::{
+    context::de::{DeserializationConfig, DeserializationContext},
+    xml::{
+        error::{Error, Result},
+        event::{Element, Event},
+        read::{self, Read},
+    },
 };
+
+fn from_deserializer<R, T>(
+    de: &mut Deserializer<R>,
+    config: Option<DeserializationConfig>,
+) -> Result<T>
+where
+    R: Read,
+    T: AnyResource,
+    for<'c, 'de> &'c mut DeserializationContext<T>: DeserializeSeed<'de, Value = T>,
+{
+    DeserializationContext::<T>::new(config.unwrap_or(Default::default()), false, T::FHIR_RELEASE)
+        .deserialize(de)
+}
+
+/// Deserialize an instance of resource type `T` directly from an IO stream of XML (e.g. coming from network).
+///
+/// # Example
+/// ```
+/// # fn main() {
+/// // The `Resource` type is an enum that contains all possible FHIR resources.
+/// // If the resource type is known in advance, you could also use a concrete resource type
+/// // (like e.g. `fhirbolt::model::r4b::resources::Observation`).
+/// use fhirbolt::model::r4b::Resource as R4BResource;
+///
+/// // The type of `s` is `&str`
+/// let s = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>
+///     <Observation xmlns=\"http://hl7.org/fhir\">
+///         <status value=\"final\"/>
+///         <code>
+///             <text value=\"some code\"/>
+///         </code>
+///         <valueString value=\"some value\"/>
+///     </Observation>";
+///
+/// // `s.as_bytes()` returns `&[u8]` which implements `std::io::Read`
+/// let r: R4BResource = fhirbolt::xml::from_reader(s.as_bytes(), None).unwrap();
+/// println!("{:?}", r);
+/// # }
+/// ```
+///
+/// # Errors
+/// The conversion can fail if the structure of the input does not match the FHIR resource `T`.
+/// This behavior can be modified by passing a [`DeserializationConfig`](crate::DeserializationConfig).
+pub fn from_reader<R: io::Read, T>(rdr: R, config: Option<DeserializationConfig>) -> Result<T>
+where
+    T: AnyResource,
+    for<'c, 'de> &'c mut DeserializationContext<T>: DeserializeSeed<'de, Value = T>,
+{
+    from_deserializer(
+        &mut Deserializer::from_reader(rdr, T::FHIR_RELEASE)?,
+        config,
+    )
+}
+
+/// Deserialize an instance of resource type `T` from a bytes of XML.
+///
+/// # Example
+/// ```
+/// # fn main() {
+/// // The `Resource` type is an enum that contains all possible FHIR resources.
+/// // If the resource type is known in advance, you could also use a concrete resource type
+/// // (like e.g. `fhirbolt::model::r4b::resources::Observation`).
+/// use fhirbolt::model::r4b::Resource as R4BResource;
+///
+/// // The type of `s` is `&[u8]`
+/// let b = b"<?xml version=\"1.0\" encoding=\"UTF-8\"?>
+///     <Observation xmlns=\"http://hl7.org/fhir\">
+///         <status value=\"final\"/>
+///         <code>
+///             <text value=\"some code\"/>
+///         </code>
+///         <valueString value=\"some value\"/>
+///     </Observation>";
+///
+/// let r: R4BResource = fhirbolt::xml::from_slice(b, None).unwrap();
+/// println!("{:?}", r);
+/// # }
+/// ```
+///
+/// # Errors
+/// The conversion can fail if the structure of the input does not match the FHIR resource `T`.
+/// This behavior can be modified by passing a [`DeserializationConfig`](crate::DeserializationConfig).
+pub fn from_slice<T>(v: &[u8], config: Option<DeserializationConfig>) -> Result<T>
+where
+    T: AnyResource,
+    for<'c, 'de> &'c mut DeserializationContext<T>: DeserializeSeed<'de, Value = T>,
+{
+    from_deserializer(&mut Deserializer::from_slice(v, T::FHIR_RELEASE)?, config)
+}
+
+/// Deserialize an instance of resource type `T` from a string of XML.
+///
+/// # Example
+/// ```
+/// # fn main() {
+/// // The `Resource` type is an enum that contains all possible FHIR resources.
+/// // If the resource type is known in advance, you could also use a concrete resource type
+/// // (like e.g. `fhirbolt::model::r4b::resources::Observation`).
+/// use fhirbolt::model::r4b::Resource as R4BResource;
+///
+/// // The type of `s` is `&str`
+/// let s = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>
+///     <Observation xmlns=\"http://hl7.org/fhir\">
+///         <status value=\"final\"/>
+///         <code>
+///             <text value=\"some code\"/>
+///         </code>
+///         <valueString value=\"some value\"/>
+///     </Observation>";
+///
+/// let r: R4BResource = fhirbolt::xml::from_str(s, None).unwrap();
+/// println!("{:?}", r);
+/// # }
+/// ```
+///
+/// # Errors
+/// The conversion can fail if the structure of the input does not match the FHIR resource `T`.
+/// This behavior can be modified by passing a [`DeserializationConfig`](crate::DeserializationConfig).
+pub fn from_str<T>(s: &str, config: Option<DeserializationConfig>) -> Result<T>
+where
+    T: AnyResource,
+    for<'c, 'de> &'c mut DeserializationContext<T>: DeserializeSeed<'de, Value = T>,
+{
+    from_deserializer(&mut Deserializer::from_str(s, T::FHIR_RELEASE)?, config)
+}
 
 pub struct Deserializer<R: Read> {
     reader: R,

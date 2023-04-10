@@ -3,8 +3,8 @@ use quote::{format_ident, quote};
 
 use crate::ir::{RustFhirEnum, RustFhirEnumVariant, RustFhirStruct, RustFhirStructField};
 
-const XHTML_TYPE: &str = "super::super::types::Xhtml";
-const DECIMAL_TYPE: &str = "super::super::types::Decimal";
+const XHTML_TYPE: &str = "types::Xhtml";
+const DECIMAL_TYPE: &str = "types::Decimal";
 
 pub fn implement_serialize(r#struct: &RustFhirStruct, enums: &[RustFhirEnum]) -> TokenStream {
     let struct_name_ident = format_ident!("{}", r#struct.struct_name);

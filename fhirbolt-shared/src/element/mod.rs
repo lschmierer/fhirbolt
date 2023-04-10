@@ -3,16 +3,17 @@ use std::{
     ops::{Deref, DerefMut},
 };
 
-use crate::FhirRelease;
+use crate::{AnyResource, FhirRelease};
 
 pub mod error;
-
-pub mod de;
-pub mod ser;
 
 #[derive(Clone, PartialEq)]
 pub struct Element<const R: FhirRelease> {
     map: indexmap::IndexMap<String, Value<R>>,
+}
+
+impl<const R: FhirRelease> AnyResource for Element<R> {
+    const FHIR_RELEASE: FhirRelease = R;
 }
 
 impl<const R: FhirRelease> Deref for Element<R> {

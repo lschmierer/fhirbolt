@@ -1,27 +1,30 @@
 use serde::de::DeserializeSeed;
 use std::io;
 
-use fhirbolt_shared::{element::Element, serde_context::de::DeserializationContext, FhirRelease};
+use fhirbolt_shared::{element::Element, FhirRelease};
 
-use crate::xml::{de::Deserializer, error::Result, read::Read};
+use crate::{
+    serde_context::de::DeserializationContext,
+    xml::{de::Deserializer, error::Result, read::Read},
+};
 
-fn from_deserializer<R, const FR: FhirRelease>(de: &mut Deserializer<R>) -> Result<Element<FR>>
+fn from_deserializer<R, const F: FhirRelease>(de: &mut Deserializer<R>) -> Result<Element<F>>
 where
     R: Read,
 {
-    DeserializationContext::<Element<FR>>::with_path_tracking(false).deserialize(de)
+    DeserializationContext::<Element<F>>::new(Default::default(), true, F).deserialize(de)
 }
 
-pub fn from_reader<R: io::Read, const FR: FhirRelease>(rdr: R) -> Result<Element<FR>> {
-    from_deserializer(&mut Deserializer::from_reader(rdr, FR)?)
+pub fn from_reader<R: io::Read, const F: FhirRelease>(rdr: R) -> Result<Element<F>> {
+    from_deserializer(&mut Deserializer::from_reader(rdr, F)?)
 }
 
-pub fn from_slice<const FR: FhirRelease>(v: &[u8]) -> Result<Element<FR>>
+pub fn from_slice<const F: FhirRelease>(v: &[u8]) -> Result<Element<F>>
 where
 {
-    from_deserializer(&mut Deserializer::from_slice(v, FR)?)
+    from_deserializer(&mut Deserializer::from_slice(v, F)?)
 }
 
-pub fn from_str<'a, const FR: FhirRelease>(s: &'a str) -> Result<Element<FR>> {
-    from_deserializer(&mut Deserializer::from_str(s, FR)?)
+pub fn from_str<'a, const F: FhirRelease>(s: &'a str) -> Result<Element<F>> {
+    from_deserializer(&mut Deserializer::from_str(s, F)?)
 }

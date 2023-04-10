@@ -28,7 +28,7 @@ impl FirstLetterUppercase for &str {
     }
 }
 
-#[derive(Debug)]
+#[derive(Debug, Clone)]
 pub struct ElementPath {
     fhir_release: FhirRelease,
     type_stack: Vec<TypePath>,
@@ -229,14 +229,14 @@ impl ElementPath {
     }
 }
 
-#[derive(Debug)]
+#[derive(Debug, Clone)]
 struct TypePath {
     fhir_release: FhirRelease,
     path: String,
     content_reference_replacement_stack: Vec<ContentReferenceReplacement>,
 }
 
-#[derive(Debug)]
+#[derive(Debug, Clone)]
 struct ContentReferenceReplacement {
     content_reference: &'static str,
     replaced: String,

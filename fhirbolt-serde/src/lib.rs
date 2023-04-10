@@ -18,7 +18,7 @@
 //!         \"valueString\": \"some value\"
 //!     }";
 //!
-//! let r: R4BResource = fhirbolt::model::json::from_str(s, None).unwrap();
+//! let r: R4BResource = fhirbolt::json::from_str(s, None).unwrap();
 //! println!("{:?}", r);
 //! # }
 //! ```
@@ -26,9 +26,16 @@
 
 #![feature(adt_const_params)]
 
-pub mod xml;
-
 pub mod element;
+// TODO: remove after migrating model to SerializationContext
 pub mod model;
 
-pub use fhirbolt_shared::serde_context::de::{DeserializationConfig, DeserializationMode};
+pub mod json;
+pub mod xml;
+
+mod context;
+mod generated;
+mod number;
+
+pub use context::{de::*, ser::*};
+pub use generated::*;

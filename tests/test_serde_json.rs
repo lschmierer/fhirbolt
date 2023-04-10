@@ -3,14 +3,13 @@
 use std::{fmt, io::Read};
 
 use assert_json_diff::assert_json_eq;
-use serde::de::DeserializeOwned;
-use serde::Serialize;
+use serde::{de::DeserializeSeed, Serialize};
 use serde_json::Value;
 
 use fhirbolt::{
     element::Element,
     model::AnyResource,
-    serde::{DeserializationConfig, DeserializationMode},
+    serde::{DeserializationConfig, DeserializationContext, DeserializationMode},
     FhirRelease,
 };
 
@@ -22,12 +21,11 @@ const MISSING_STATUS_FILES: &[&str] = &[
     &"examples-json/valuesets.json",
 ];
 
-fn test_serde_json<
-    E: AnyResource + Serialize + DeserializeOwned + PartialEq + fmt::Debug + Clone,
-    const R: FhirRelease,
->(
-    mode: DeserializationMode,
-) {
+fn test_serde_json<'a, T, const R: FhirRelease>(mode: DeserializationMode)
+where
+    T: AnyResource + Serialize + PartialEq + fmt::Debug + Clone,
+    for<'c, 'de> &'c mut DeserializationContext<T>: DeserializeSeed<'de, Value = T>,
+{
     let mut examples_iter = examples(R, JsonOrXml::Json);
 
     let mut buffer = Vec::new();
@@ -107,31 +105,32 @@ fn test_serde_json<
             }
         }
 
-        let element_from_slice: Element<R> = fhirbolt::element::json::from_slice(&buffer).unwrap();
+        let element_from_slice =
+            fhirbolt::serde::json::from_slice::<Element<R>>(&buffer, None).unwrap();
 
         assert_json_eq!(
-            fhirbolt::element::json::to_json_value(element_from_slice.clone()).unwrap(),
+            fhirbolt::serde::element::json::to_json_value(element_from_slice.clone()).unwrap(),
             json_value
         );
 
-        let element_from_value: Element<R> =
-            fhirbolt::element::json::from_json_value(json_value.clone()).unwrap();
+        let element_from_value =
+            fhirbolt::serde::json::from_json_value::<Element<R>>(json_value.clone(), None).unwrap();
 
         assert_json_eq!(
             fhirbolt::element::json::to_json_value(element_from_value).unwrap(),
             json_value
         );
 
-        let resource: E =
-            fhirbolt::model::json::from_slice(&buffer, Some(DeserializationConfig { mode }))
+        let resource =
+            fhirbolt::serde::json::from_slice::<T>(&buffer, Some(DeserializationConfig { mode }))
                 .unwrap();
         assert_json_eq!(
-            fhirbolt::model::json::to_json_value(resource.clone()).unwrap(),
+            fhirbolt::serde::model::json::to_json_value(resource.clone()).unwrap(),
             json_value
         );
 
         assert_eq!(
-            fhirbolt::model::from_element::<R, E>(
+            fhirbolt::serde::element::from_element::<R, T>(
                 element_from_slice.clone(),
                 Some(DeserializationConfig { mode })
             )
@@ -147,15 +146,16 @@ fn test_serde_json<
             R == FhirRelease::R4B && MISSING_STATUS_FILES.contains(&file.name())
         ) {
             assert_eq!(
-                fhirbolt::model::to_element::<R, E>(resource).unwrap(),
+                fhirbolt::serde::element::to_element::<R, T>(resource).unwrap(),
                 element_from_slice
             );
         }
     }
 }
 
-#[cfg(r4)]
+#[cfg(feature = "r4")]
 #[test]
+#[cfg_attr(not(feature = "r4"), ignore)]
 fn test_serde_json_r4() {
     test_serde_json::<fhirbolt::model::r4::Resource, { FhirRelease::R4 }>(
         DeserializationMode::Strict,
@@ -166,7 +166,7 @@ fn test_serde_json_r4() {
     test_serde_json::<fhirbolt::model::r4::Resource, { FhirRelease::R4 }>(DeserializationMode::Lax);
 }
 
-#[cfg(r4b)]
+#[cfg(feature = "r4b")]
 #[test]
 fn test_serde_json_r4b() {
     test_serde_json::<fhirbolt::model::r4b::Resource, { FhirRelease::R4B }>(

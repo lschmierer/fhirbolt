@@ -1,0 +1,303 @@
+// Generated on 2023-04-10 by fhirbolt-codegen v0.1.0
+impl<'de> serde::de::DeserializeSeed<'de>
+    for &mut crate::context::de::DeserializationContext<fhirbolt_model::r4::types::MarketingStatus>
+{
+    type Value = fhirbolt_model::r4::types::MarketingStatus;
+    fn deserialize<D>(self, deserializer: D) -> Result<Self::Value, D::Error>
+    where
+        D: serde::de::Deserializer<'de>,
+    {
+        struct Visitor<'a>(
+            &'a mut crate::context::de::DeserializationContext<
+                fhirbolt_model::r4::types::MarketingStatus,
+            >,
+        );
+        impl<'de> serde::de::Visitor<'de> for Visitor<'_> {
+            type Value = fhirbolt_model::r4::types::MarketingStatus;
+            fn expecting(&self, formatter: &mut std::fmt::Formatter) -> std::fmt::Result {
+                formatter.write_str("MarketingStatus")
+            }
+            fn visit_map<V>(
+                self,
+                mut map_access: V,
+            ) -> Result<fhirbolt_model::r4::types::MarketingStatus, V::Error>
+            where
+                V: serde::de::MapAccess<'de>,
+            {
+                #[derive(serde :: Deserialize)]
+                #[serde(field_identifier)]
+                enum Field {
+                    #[serde(rename = "id")]
+                    Id,
+                    #[serde(rename = "extension")]
+                    Extension,
+                    #[serde(rename = "modifierExtension")]
+                    ModifierExtension,
+                    #[serde(rename = "country")]
+                    Country,
+                    #[serde(rename = "jurisdiction")]
+                    Jurisdiction,
+                    #[serde(rename = "status")]
+                    Status,
+                    #[serde(rename = "dateRange")]
+                    DateRange,
+                    #[serde(rename = "restoreDate")]
+                    RestoreDate,
+                    #[serde(rename = "_restoreDate")]
+                    RestoreDatePrimitiveElement,
+                    Unknown(std::string::String),
+                }
+                fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+                    Err(E::unknown_field(
+                        field,
+                        &[
+                            "id",
+                            "extension",
+                            "modifierExtension",
+                            "country",
+                            "jurisdiction",
+                            "status",
+                            "dateRange",
+                            "restoreDate",
+                        ],
+                    ))
+                }
+                let mut r#id: Option<std::string::String> = None;
+                let mut r#extension: Option<Vec<Box<fhirbolt_model::r4::types::Extension>>> = None;
+                let mut r#modifier_extension: Option<
+                    Vec<Box<fhirbolt_model::r4::types::Extension>>,
+                > = None;
+                let mut r#country: Option<Box<fhirbolt_model::r4::types::CodeableConcept>> = None;
+                let mut r#jurisdiction: Option<Box<fhirbolt_model::r4::types::CodeableConcept>> =
+                    None;
+                let mut r#status: Option<Box<fhirbolt_model::r4::types::CodeableConcept>> = None;
+                let mut r#date_range: Option<Box<fhirbolt_model::r4::types::Period>> = None;
+                let mut r#restore_date: Option<fhirbolt_model::r4::types::DateTime> = None;
+                while let Some(map_access_key) = map_access.next_key()? {
+                    match map_access_key {
+                        Field::Id => {
+                            if r#id.is_some() {
+                                return Err(serde::de::Error::duplicate_field("id"));
+                            }
+                            r#id = Some(map_access.next_value()?);
+                        }
+                        Field::Extension => {
+                            if self.0.from_json {
+                                if r#extension.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("extension"));
+                                }
+                                r#extension = Some (map_access . next_value_seed (self . 0 . transmute :: < Vec < Box < fhirbolt_model :: r4 :: types :: Extension > >> ()) ?) ;
+                            } else {
+                                let vec = r#extension.get_or_insert(Default::default());
+                                vec.push(
+                                    map_access.next_value_seed(
+                                        self.0
+                                            .transmute::<Box<fhirbolt_model::r4::types::Extension>>(
+                                            ),
+                                    )?,
+                                );
+                            }
+                        }
+                        Field::ModifierExtension => {
+                            if self.0.from_json {
+                                if r#modifier_extension.is_some() {
+                                    return Err(serde::de::Error::duplicate_field(
+                                        "modifierExtension",
+                                    ));
+                                }
+                                r#modifier_extension = Some (map_access . next_value_seed (self . 0 . transmute :: < Vec < Box < fhirbolt_model :: r4 :: types :: Extension > >> ()) ?) ;
+                            } else {
+                                let vec = r#modifier_extension.get_or_insert(Default::default());
+                                vec.push(
+                                    map_access.next_value_seed(
+                                        self.0
+                                            .transmute::<Box<fhirbolt_model::r4::types::Extension>>(
+                                            ),
+                                    )?,
+                                );
+                            }
+                        }
+                        Field::Country => {
+                            if r#country.is_some() {
+                                return Err(serde::de::Error::duplicate_field("country"));
+                            }
+                            r#country = Some (map_access . next_value_seed (self . 0 . transmute :: < Box < fhirbolt_model :: r4 :: types :: CodeableConcept > > ()) ?) ;
+                        }
+                        Field::Jurisdiction => {
+                            if r#jurisdiction.is_some() {
+                                return Err(serde::de::Error::duplicate_field("jurisdiction"));
+                            }
+                            r#jurisdiction = Some (map_access . next_value_seed (self . 0 . transmute :: < Box < fhirbolt_model :: r4 :: types :: CodeableConcept > > ()) ?) ;
+                        }
+                        Field::Status => {
+                            if r#status.is_some() {
+                                return Err(serde::de::Error::duplicate_field("status"));
+                            }
+                            r#status = Some (map_access . next_value_seed (self . 0 . transmute :: < Box < fhirbolt_model :: r4 :: types :: CodeableConcept > > ()) ?) ;
+                        }
+                        Field::DateRange => {
+                            if r#date_range.is_some() {
+                                return Err(serde::de::Error::duplicate_field("dateRange"));
+                            }
+                            r#date_range = Some(map_access.next_value_seed(
+                                self.0.transmute::<Box<fhirbolt_model::r4::types::Period>>(),
+                            )?);
+                        }
+                        Field::RestoreDate => {
+                            if self.0.from_json {
+                                let some = r#restore_date.get_or_insert(Default::default());
+                                if some.value.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("restoreDate"));
+                                }
+                                let value: _ = map_access.next_value()?;
+                                some.value = Some(value);
+                            } else {
+                                if r#restore_date.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("restoreDate"));
+                                }
+                                r#restore_date = Some(map_access.next_value_seed(
+                                    self.0.transmute::<fhirbolt_model::r4::types::DateTime>(),
+                                )?);
+                            }
+                        }
+                        Field::RestoreDatePrimitiveElement => {
+                            if self.0.from_json {
+                                let some = r#restore_date.get_or_insert(Default::default());
+                                if some.id.is_some() || !some.extension.is_empty() {
+                                    return Err(serde::de::Error::duplicate_field("_restoreDate"));
+                                }
+                                let super :: super :: serde_helpers :: PrimitiveElementOwned { id , extension } = map_access . next_value_seed (self . 0 . transmute :: < super :: super :: serde_helpers :: PrimitiveElementOwned > ()) ? ;
+                                some.id = id;
+                                some.extension = extension;
+                            } else {
+                                return unknown_field_error("restoreDate");
+                            }
+                        }
+                        Field::Unknown(key) => {
+                            if self.0.config.mode == crate::context::de::DeserializationMode::Strict
+                            {
+                                return unknown_field_error(&key);
+                            }
+                        }
+                    }
+                }
+                Ok(fhirbolt_model::r4::types::MarketingStatus {
+                    r#id,
+                    r#extension: r#extension.unwrap_or(vec![]),
+                    r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
+                    r#country: if self.0.config.mode == crate::context::de::DeserializationMode::Lax
+                    {
+                        r#country.unwrap_or(Default::default())
+                    } else {
+                        r#country.ok_or(serde::de::Error::missing_field("country"))?
+                    },
+                    r#jurisdiction,
+                    r#status: if self.0.config.mode == crate::context::de::DeserializationMode::Lax
+                    {
+                        r#status.unwrap_or(Default::default())
+                    } else {
+                        r#status.ok_or(serde::de::Error::missing_field("status"))?
+                    },
+                    r#date_range: if self.0.config.mode
+                        == crate::context::de::DeserializationMode::Lax
+                    {
+                        r#date_range.unwrap_or(Default::default())
+                    } else {
+                        r#date_range.ok_or(serde::de::Error::missing_field("dateRange"))?
+                    },
+                    r#restore_date,
+                })
+            }
+        }
+        deserializer.deserialize_map(Visitor(self))
+    }
+}
+impl<'de> serde::de::DeserializeSeed<'de>
+    for &mut crate::context::de::DeserializationContext<
+        Box<fhirbolt_model::r4::types::MarketingStatus>,
+    >
+{
+    type Value = Box<fhirbolt_model::r4::types::MarketingStatus>;
+    fn deserialize<D>(self, deserializer: D) -> Result<Self::Value, D::Error>
+    where
+        D: serde::de::Deserializer<'de>,
+    {
+        self.transmute::<fhirbolt_model::r4::types::MarketingStatus>()
+            .deserialize(deserializer)
+            .map(Box::new)
+    }
+}
+impl<'de> serde::de::DeserializeSeed<'de>
+    for &mut crate::context::de::DeserializationContext<
+        Vec<fhirbolt_model::r4::types::MarketingStatus>,
+    >
+{
+    type Value = Vec<fhirbolt_model::r4::types::MarketingStatus>;
+    fn deserialize<D>(self, deserializer: D) -> Result<Self::Value, D::Error>
+    where
+        D: serde::de::Deserializer<'de>,
+    {
+        struct Visitor<'a>(
+            &'a mut crate::context::de::DeserializationContext<
+                Vec<fhirbolt_model::r4::types::MarketingStatus>,
+            >,
+        );
+        impl<'de> serde::de::Visitor<'de> for Visitor<'_> {
+            type Value = Vec<fhirbolt_model::r4::types::MarketingStatus>;
+            fn expecting(&self, formatter: &mut std::fmt::Formatter) -> std::fmt::Result {
+                formatter.write_str("a sequence")
+            }
+            fn visit_seq<A>(self, mut seq: A) -> Result<Self::Value, A::Error>
+            where
+                A: serde::de::SeqAccess<'de>,
+            {
+                let mut values = Vec::new();
+                while let Some(value) = seq.next_element_seed(
+                    self.0
+                        .transmute::<fhirbolt_model::r4::types::MarketingStatus>(),
+                )? {
+                    values.push(value);
+                }
+                Ok(values)
+            }
+        }
+        deserializer.deserialize_seq(Visitor(self))
+    }
+}
+impl<'de> serde::de::DeserializeSeed<'de>
+    for &mut crate::context::de::DeserializationContext<
+        Vec<Box<fhirbolt_model::r4::types::MarketingStatus>>,
+    >
+{
+    type Value = Vec<Box<fhirbolt_model::r4::types::MarketingStatus>>;
+    fn deserialize<D>(self, deserializer: D) -> Result<Self::Value, D::Error>
+    where
+        D: serde::de::Deserializer<'de>,
+    {
+        struct Visitor<'a>(
+            &'a mut crate::context::de::DeserializationContext<
+                Vec<Box<fhirbolt_model::r4::types::MarketingStatus>>,
+            >,
+        );
+        impl<'de> serde::de::Visitor<'de> for Visitor<'_> {
+            type Value = Vec<Box<fhirbolt_model::r4::types::MarketingStatus>>;
+            fn expecting(&self, formatter: &mut std::fmt::Formatter) -> std::fmt::Result {
+                formatter.write_str("a sequence")
+            }
+            fn visit_seq<A>(self, mut seq: A) -> Result<Self::Value, A::Error>
+            where
+                A: serde::de::SeqAccess<'de>,
+            {
+                let mut values = Vec::new();
+                while let Some(value) = seq.next_element_seed(
+                    self.0
+                        .transmute::<Box<fhirbolt_model::r4::types::MarketingStatus>>(),
+                )? {
+                    values.push(value);
+                }
+                Ok(values)
+            }
+        }
+        deserializer.deserialize_seq(Visitor(self))
+    }
+}

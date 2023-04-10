@@ -356,7 +356,7 @@ fn match_field_type(path: &str, code: &str, force_box: bool) -> RustFhirFieldTyp
             contains_primitive: false,
         },
         "Resource" => RustFhirFieldType {
-            name: "super::super::Resource".into(),
+            name: "Resource".into(),
             r#box: true,
             contains_primitive: false,
         },
@@ -364,7 +364,7 @@ fn match_field_type(path: &str, code: &str, force_box: bool) -> RustFhirFieldTyp
             let is_primitive = PRIMITIVES.contains(&r#type);
 
             RustFhirFieldType {
-                name: format!("super::super::types::{}", r#type.to_rust_type_casing()),
+                name: format!("types::{}", r#type.to_rust_type_casing()),
                 r#box: !is_primitive || force_box,
                 contains_primitive: is_primitive,
             }

@@ -17,5 +17,3 @@ quote = "1.0"
 proc-macro2 = "1.0"
 convert_case = "0.4"
 chrono = "0.4"
-
-fhirbolt-shared = { path = "../fhirbolt-shared" }

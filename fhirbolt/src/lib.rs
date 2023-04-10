@@ -37,7 +37,7 @@
 //!         \"valueString\": \"some value\"
 //!     }";
 //!
-//! let r: R4BResource = fhirbolt::model::json::from_str(s, None).unwrap();
+//! let r: R4BResource = fhirbolt::json::from_str(s, None).unwrap();
 //! println!("{:?}", r);
 //! # }
 //! ```
@@ -66,5 +66,7 @@ pub mod element {
 }
 
 pub mod serde {
-    pub use fhirbolt_serde::{DeserializationConfig, DeserializationMode};
+    pub use fhirbolt_serde::*;
 }
+
+pub use serde::{json, xml};

@@ -3,15 +3,23 @@ use quote::{format_ident, quote};
 
 use crate::{
     casing::RustCasing,
-    ir::{RustFhirEnum, RustFhirEnumVariant, RustFhirStruct, RustFhirStructField},
+    ir::{
+        RustFhirEnum, RustFhirEnumVariant, RustFhirFieldType, RustFhirModule, RustFhirStruct,
+        RustFhirStructField,
+    },
 };
 
-const XHTML_TYPE: &str = "super::super::types::Xhtml";
-const DECIMAL_TYPE: &str = "super::super::types::Decimal";
+const XHTML_TYPE: &str = "types::Xhtml";
+const DECIMAL_TYPE: &str = "types::Decimal";
 
-pub fn implement_deserialze(r#struct: &RustFhirStruct, enums: &[RustFhirEnum]) -> TokenStream {
+pub fn implement_deserialze(
+    r#struct: &RustFhirStruct,
+    enums: &[RustFhirEnum],
+    namespace: &TokenStream,
+    base_namespace: &TokenStream,
+) -> TokenStream {
     let struct_name = &r#struct.struct_name;
-    let stuct_name_ident = format_ident!("{}", struct_name);
+    let struct_name_ident = format_ident!("{}", struct_name);
 
     let (resource_type_field_enum_variant_tokens, deserialize_resource_type_field_tokens) =
         if let Some(resource_name) = r#struct.resource_name.as_ref() {
@@ -45,91 +53,264 @@ pub fn implement_deserialze(r#struct: &RustFhirStruct, enums: &[RustFhirEnum]) -
         .map(|f| field_enum_variant(f, enums))
         .flatten();
 
-    let field_mut_vars_tokens = r#struct.fields.iter().map(|f| field_mut_var(f));
+    let field_mut_vars_tokens = r#struct
+        .fields
+        .iter()
+        .map(|f| field_mut_var(f, namespace, base_namespace));
     let field_struct_assign_vars_tokens =
         r#struct.fields.iter().map(|f| field_struct_assign_var(f));
 
-    let deserialize_fields_tokens = r#struct
-        .fields
-        .iter()
-        .map(|f| deserialize_field(f, enums, r#struct.is_primitive));
+    let deserialize_fields_tokens = r#struct.fields.iter().map(|f| {
+        deserialize_field(
+            f,
+            enums,
+            r#struct.is_primitive,
+            r#struct.struct_name == "Extension",
+            namespace,
+            base_namespace,
+        )
+    });
 
     quote! {
-        impl<'de> serde::de::Deserialize<'de> for #stuct_name_ident {
-            fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+        impl<'de> serde::de::DeserializeSeed<'de> for &mut crate::context::de::DeserializationContext<#namespace::#struct_name_ident> {
+            type Value = #namespace::#struct_name_ident;
+
+            fn deserialize<D>(self, deserializer: D) -> Result<Self::Value, D::Error>
             where
                 D: serde::de::Deserializer<'de>,
             {
-                #[derive(serde::Deserialize)]
-                #[serde(field_identifier)]
-                enum Field {
-                    #resource_type_field_enum_variant_tokens
-                    #(
-                        #field_enum_variants_tokens
-                    )*
-                    Unknown(std::string::String),
-                }
+                struct Visitor<'a>(&'a mut crate::context::de::DeserializationContext<#namespace::#struct_name_ident>);
 
-                fn unknown_field_error<T, E:serde::de::Error>(field: &str) -> Result<T, E> {
-                    Err(E::unknown_field(
-                        field,
-                        &[
-                            #(
-                                #all_possible_fields_names,
-                            )*
-                        ]
-                    ))
-                }
-
-                struct Visitor;
-
-                impl<'de> serde::de::Visitor<'de> for Visitor {
-                    type Value = #stuct_name_ident;
+                impl<'de> serde::de::Visitor<'de> for Visitor<'_> {
+                    type Value = #namespace::#struct_name_ident;
 
                     fn expecting(&self, formatter: &mut std::fmt::Formatter) -> std::fmt::Result {
                         formatter.write_str(#struct_name)
                     }
 
-                    fn visit_map<V>(self, mut map_access: V) -> Result<#stuct_name_ident, V::Error>
+                    fn visit_map<V>(self, mut map_access: V) -> Result<#namespace::#struct_name_ident, V::Error>
                     where
                         V: serde::de::MapAccess<'de>,
                     {
+                        #[derive(serde::Deserialize)]
+                        #[serde(field_identifier)]
+                        enum Field {
+                            #resource_type_field_enum_variant_tokens
+                            #(
+                                #field_enum_variants_tokens
+                            )*
+                            Unknown(std::string::String),
+                        }
+
+                        fn unknown_field_error<T, E:serde::de::Error>(field: &str) -> Result<T, E> {
+                            Err(E::unknown_field(
+                                field,
+                                &[
+                                    #(
+                                        #all_possible_fields_names,
+                                    )*
+                                ]
+                            ))
+                        }
+
                         #(
                             #field_mut_vars_tokens
                         )*
 
-                        fhirbolt_shared::serde_context::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
-                            let _ctx = _ctx.borrow();
-
-                            while let Some(map_access_key) = map_access.next_key()? {
-                                match map_access_key {
-                                    #deserialize_resource_type_field_tokens
-                                    #(
-                                        #deserialize_fields_tokens
-                                    )*
-                                    Field::Unknown(key) => if _ctx.config.mode == fhirbolt_shared::serde_context::de::DeserializationMode::Strict {
-                                        return Err(serde::de::Error::unknown_field(
-                                            &key,
-                                            &[
-                                                #(
-                                                    #all_possible_fields_names,
-                                                )*
-                                            ]
-                                        ));
-                                    }
+                        while let Some(map_access_key) = map_access.next_key()? {
+                            match map_access_key {
+                                #deserialize_resource_type_field_tokens
+                                #(
+                                    #deserialize_fields_tokens
+                                )*
+                                Field::Unknown(key) => if self.0.config.mode == crate::context::de::DeserializationMode::Strict {
+                                    return unknown_field_error(&key);
                                 }
                             }
+                        }
 
-                            Ok(#stuct_name_ident {
-                                #(
-                                    #field_struct_assign_vars_tokens
-                                )*
-                            })
+                        Ok(#namespace::#struct_name_ident {
+                            #(
+                                #field_struct_assign_vars_tokens
+                            )*
                         })
                     }
                 }
 
-                deserializer.deserialize_map(Visitor)
+                deserializer.deserialize_map(Visitor(self))
+            }
+        }
+
+        impl<'de> serde::de::DeserializeSeed<'de> for &mut crate::context::de::DeserializationContext<Box<#namespace::#struct_name_ident>> {
+            type Value = Box<#namespace::#struct_name_ident>;
+
+            fn deserialize<D>(self, deserializer: D) -> Result<Self::Value, D::Error>
+            where
+                D: serde::de::Deserializer<'de>,
+            {
+                self.transmute::<#namespace::#struct_name_ident>().deserialize(deserializer).map(Box::new)
+            }
+        }
+
+        impl<'de> serde::de::DeserializeSeed<'de> for &mut crate::context::de::DeserializationContext<Vec<#namespace::#struct_name_ident>> {
+            type Value = Vec<#namespace::#struct_name_ident>;
+
+            fn deserialize<D>(self, deserializer: D) -> Result<Self::Value, D::Error>
+            where
+                D: serde::de::Deserializer<'de>,
+            {
+                struct Visitor<'a>(&'a mut crate::context::de::DeserializationContext<Vec<#namespace::#struct_name_ident>>);
+
+                impl<'de> serde::de::Visitor<'de> for Visitor<'_> {
+                    type Value = Vec<#namespace::#struct_name_ident>;
+
+                    fn expecting(&self, formatter: &mut std::fmt::Formatter) -> std::fmt::Result {
+                        formatter.write_str("a sequence")
+                    }
+
+                    fn visit_seq<A>(self, mut seq: A) -> Result<Self::Value, A::Error>
+                    where
+                        A: serde::de::SeqAccess<'de>,
+                    {
+                        let mut values = Vec::new();
+
+                        while let Some(value) = seq.next_element_seed(self.0.transmute::<#namespace::#struct_name_ident>())? {
+                            values.push(value);
+                        }
+
+                        Ok(values)
+                    }
+                }
+
+                deserializer.deserialize_seq(Visitor(self))
+            }
+        }
+
+        impl<'de> serde::de::DeserializeSeed<'de> for &mut crate::context::de::DeserializationContext<Vec<Box<#namespace::#struct_name_ident>>> {
+            type Value = Vec<Box<#namespace::#struct_name_ident>>;
+
+            fn deserialize<D>(self, deserializer: D) -> Result<Self::Value, D::Error>
+            where
+                D: serde::de::Deserializer<'de>,
+            {
+                struct Visitor<'a>(&'a mut crate::context::de::DeserializationContext<Vec<Box<#namespace::#struct_name_ident>>>);
+
+                impl<'de> serde::de::Visitor<'de> for Visitor<'_> {
+                    type Value = Vec<Box<#namespace::#struct_name_ident>>;
+
+                    fn expecting(&self, formatter: &mut std::fmt::Formatter) -> std::fmt::Result {
+                        formatter.write_str("a sequence")
+                    }
+
+                    fn visit_seq<A>(self, mut seq: A) -> Result<Self::Value, A::Error>
+                    where
+                        A: serde::de::SeqAccess<'de>,
+                    {
+                        let mut values = Vec::new();
+
+                        while let Some(value) = seq.next_element_seed(self.0.transmute::<Box<#namespace::#struct_name_ident>>())? {
+                            values.push(value);
+                        }
+
+                        Ok(values)
+                    }
+                }
+
+                deserializer.deserialize_seq(Visitor(self))
+            }
+        }
+    }
+}
+pub fn implement_deserialze_resource_enum(
+    resource_modules: &[RustFhirModule],
+    namespace: &TokenStream,
+) -> TokenStream {
+    let match_resource_type = resource_modules.iter().map(|r| {
+        let ident = format_ident!("{}", r.resource_name.as_ref().unwrap());
+        let name = r.resource_name.as_ref().unwrap();
+
+        quote! {
+            #name => {
+                let deserializer = crate::element::de::Deserializer(element);
+                let context = self.transmute::<Box<#namespace::resources::#ident>>();
+                context
+                    .deserialize(deserializer)
+                    .map(#namespace::Resource::#ident)
+                    .map_err(serde::de::Error::custom)
+            },
+        }
+    });
+
+    quote! {
+        impl<'de> serde::de::DeserializeSeed<'de> for &mut crate::context::de::DeserializationContext<#namespace::Resource> {
+            type Value = #namespace::Resource;
+
+            fn deserialize<D>(self, deserializer: D) -> Result<Self::Value, D::Error>
+            where
+                D: serde::de::Deserializer<'de>,
+            {
+                use fhirbolt_shared::AnyResource;
+
+                let mut element_context = self.clone::<fhirbolt_shared::element::Element<{ #namespace::Resource::FHIR_RELEASE }>>();
+                let element = element_context.deserialize(deserializer)?;
+
+                self.from_json = false;
+
+                if let Some(fhirbolt_shared::element::Value::Primitive(fhirbolt_shared::element::Primitive::String(resource_type))) = element.get("resourceType") {
+                    match resource_type.as_str() {
+                        #(
+                            #match_resource_type
+                        )*
+                        _ => Err(serde::de::Error::invalid_type(serde::de::Unexpected::Other("resourceType"), &"valid resourceType")),
+                    }
+                } else {
+                    Err(serde::de::Error::invalid_type(serde::de::Unexpected::Other("an element"), &"a resource"))
+                }
+            }
+        }
+
+        impl<'de> serde::de::DeserializeSeed<'de> for &mut crate::context::de::DeserializationContext<Box<#namespace::Resource>> {
+            type Value = Box<#namespace::Resource>;
+
+            fn deserialize<D>(self, deserializer: D) -> Result<Self::Value, D::Error>
+            where
+                D: serde::de::Deserializer<'de>,
+            {
+                self.transmute::<#namespace::Resource>().deserialize(deserializer).map(Box::new)
+            }
+        }
+
+        impl<'de> serde::de::DeserializeSeed<'de> for &mut crate::context::de::DeserializationContext<Vec<Box<#namespace::Resource>>> {
+            type Value = Vec<Box<#namespace::Resource>>;
+
+            fn deserialize<D>(self, deserializer: D) -> Result<Self::Value, D::Error>
+            where
+                D: serde::de::Deserializer<'de>,
+            {
+                struct Visitor<'a>(&'a mut crate::context::de::DeserializationContext<Vec<Box<#namespace::Resource>>>);
+
+                impl<'de> serde::de::Visitor<'de> for Visitor<'_> {
+                    type Value = Vec<Box<#namespace::Resource>>;
+
+                    fn expecting(&self, formatter: &mut std::fmt::Formatter) -> std::fmt::Result {
+                        formatter.write_str("a sequence of resources")
+                    }
+
+                    fn visit_seq<A>(self, mut seq: A) -> Result<Self::Value, A::Error>
+                    where
+                        A: serde::de::SeqAccess<'de>,
+                    {
+                        let mut values = Vec::new();
+
+                        while let Some(value) = seq.next_element_seed(self.0.transmute::<Box<#namespace::Resource>>())? {
+                            values.push(value);
+                        }
+
+                        Ok(values)
+                    }
+                }
+
+                deserializer.deserialize_seq(Visitor(self))
             }
         }
     }
@@ -202,16 +383,14 @@ fn field_enum_variant(field: &RustFhirStructField, enums: &[RustFhirEnum]) -> Ve
     }
 }
 
-fn field_mut_var(field: &RustFhirStructField) -> TokenStream {
+fn field_mut_var(
+    field: &RustFhirStructField,
+    namespace: &TokenStream,
+    base_namespace: &TokenStream,
+) -> TokenStream {
     let field_name_ident = format_ident!("r#{}", field.name);
 
-    let type_tokens = field.r#type.name.parse().unwrap();
-
-    let type_tokens = if field.r#type.r#box {
-        quote! { Box<#type_tokens> }
-    } else {
-        type_tokens
-    };
+    let type_tokens = type_tokens(&field.r#type, namespace, base_namespace);
 
     let type_tokens = if field.multiple {
         quote! { Vec<#type_tokens> }
@@ -221,6 +400,31 @@ fn field_mut_var(field: &RustFhirStructField) -> TokenStream {
 
     quote! {
         let mut #field_name_ident: Option<#type_tokens> = None;
+    }
+}
+
+fn type_tokens(
+    field_type: &RustFhirFieldType,
+    namespace: &TokenStream,
+    base_namespace: &TokenStream,
+) -> TokenStream {
+    let type_tokens: TokenStream = field_type.name.parse().unwrap();
+
+    if field_type.name == "bool"
+        || field_type.name == "u32"
+        || field_type.name == "i32"
+        || field_type.name == "std::string::String"
+    {
+        type_tokens
+    } else if !(field_type.name.starts_with("types")
+        || field_type.name.starts_with("resources")
+        || field_type.name == "Resource")
+    {
+        quote! {#namespace::#type_tokens}
+    } else if field_type.r#box {
+        quote! { Box<#base_namespace::#type_tokens> }
+    } else {
+        quote! {#base_namespace::#type_tokens}
     }
 }
 
@@ -242,7 +446,7 @@ fn field_struct_assign_var(field: &RustFhirStructField) -> TokenStream {
     } else {
         if field.polymorph {
             quote! {
-                #field_name_ident: if _ctx.config.mode == fhirbolt_shared::serde_context::de::DeserializationMode::Lax {
+                #field_name_ident: if self.0.config.mode == crate::context::de::DeserializationMode::Lax {
                     #field_name_ident.unwrap_or(Default::default())
                 } else {
                     #field_name_ident.ok_or(serde::de::Error::missing_field(#fhir_name_poly))?
@@ -250,7 +454,7 @@ fn field_struct_assign_var(field: &RustFhirStructField) -> TokenStream {
             }
         } else {
             quote! {
-                #field_name_ident: if _ctx.config.mode == fhirbolt_shared::serde_context::de::DeserializationMode::Lax {
+                #field_name_ident: if self.0.config.mode == crate::context::de::DeserializationMode::Lax {
                     #field_name_ident.unwrap_or(Default::default())
                 } else {
                     #field_name_ident.ok_or(serde::de::Error::missing_field(#fhir_name))?
@@ -264,27 +468,38 @@ fn deserialize_field(
     field: &RustFhirStructField,
     enums: &[RustFhirEnum],
     in_primitive: bool,
+    in_extension: bool,
+    namespace: &TokenStream,
+    base_namespace: &TokenStream,
 ) -> TokenStream {
     if field.polymorph {
-        deserialize_enum(field, enums)
+        deserialize_enum(field, enums, namespace, base_namespace)
     } else {
-        if in_primitive && field.name == "value" {
+        if in_primitive && field.name == "value"
+            || in_extension && field.name == "url"
+            || field.name == "id"
+        {
             deserialize_primitive_value(field)
         } else if field.r#type.contains_primitive {
-            deserialize_primitive(field)
+            deserialize_primitive(field, namespace, base_namespace)
         } else {
-            deserialize_element(field)
+            deserialize_element(field, namespace, base_namespace)
         }
     }
 }
 
-fn deserialize_enum(field: &RustFhirStructField, enums: &[RustFhirEnum]) -> TokenStream {
+fn deserialize_enum(
+    field: &RustFhirStructField,
+    enums: &[RustFhirEnum],
+    namespace: &TokenStream,
+    base_namespace: &TokenStream,
+) -> TokenStream {
     let r#enum = enums.iter().find(|e| e.name == field.r#type.name).unwrap();
 
     let deserialize_enum_variants_tokens = r#enum
         .variants
         .iter()
-        .map(|v| deserialize_enum_variant(field, r#enum, v));
+        .map(|v| deserialize_enum_variant(field, r#enum, v, namespace, base_namespace));
 
     quote! {
         #(
@@ -297,8 +512,11 @@ fn deserialize_enum_variant(
     field: &RustFhirStructField,
     r#enum: &RustFhirEnum,
     variant: &RustFhirEnumVariant,
+    namespace: &TokenStream,
+    base_namespace: &TokenStream,
 ) -> TokenStream {
     let field_name_ident = format_ident!("r#{}", field.name);
+
     let enum_ident = format_ident!("{}", r#enum.name);
     let variant_ident = format_ident!("{}", variant.name);
 
@@ -306,6 +524,8 @@ fn deserialize_enum_variant(
     let fhir_name_poly = format!("{}[x]", field.fhir_name);
     let fhir_primitive_element_name = format!("_{}", fhir_name);
     let fhir_primitive_element_name_poly = format!("_{}", fhir_name_poly);
+
+    let type_tokens = type_tokens(&variant.r#type, namespace, base_namespace);
 
     let field_enum_type_name =
         format_ident!("{}{}", field.fhir_name.to_rust_type_casing(), variant.name);
@@ -325,10 +545,10 @@ fn deserialize_enum_variant(
     if variant.r#type.contains_primitive {
         quote! {
             Field::#field_enum_type_name => {
-                if _ctx.from_json {
-                    let r#enum = #field_name_ident.get_or_insert(#enum_ident::#variant_ident(Default::default()));
+                if self.0.from_json {
+                    let r#enum = #field_name_ident.get_or_insert(#namespace::#enum_ident::#variant_ident(Default::default()));
 
-                    if let #enum_ident::#variant_ident(variant) = r#enum {
+                    if let #namespace::#enum_ident::#variant_ident(variant) = r#enum {
                         if variant.value.is_some() {
                             return Err(serde::de::Error::duplicate_field(#fhir_name));
                         }
@@ -343,19 +563,20 @@ fn deserialize_enum_variant(
                     if #field_name_ident.is_some() {
                         return Err(serde::de::Error::duplicate_field(#fhir_name));
                     }
-                    #field_name_ident = Some(#enum_ident::#variant_ident(map_access.next_value()?));
+                    #field_name_ident = Some(#namespace::#enum_ident::#variant_ident(map_access.next_value_seed(self.0.transmute::<#type_tokens>())?));
                 }
             },
             Field::#field_enum_type_primitive_element_name => {
-                if _ctx.from_json {
-                    let r#enum = #field_name_ident.get_or_insert(#enum_ident::#variant_ident(Default::default()));
+                if self.0.from_json {
+                    let r#enum = #field_name_ident.get_or_insert(#namespace::#enum_ident::#variant_ident(Default::default()));
 
-                    if let #enum_ident::#variant_ident(variant) = r#enum {
+                    if let #namespace::#enum_ident::#variant_ident(variant) = r#enum {
                         if variant.id.is_some() || !variant.extension.is_empty() {
                             return Err(serde::de::Error::duplicate_field(#fhir_primitive_element_name));
                         }
 
-                        let super::super::serde_helpers::PrimitiveElementOwned { id, extension } = map_access.next_value()?;
+                        let super::super::serde_helpers::PrimitiveElementOwned { id, extension } =
+                            map_access.next_value_seed(self.0.transmute::<super::super::serde_helpers::PrimitiveElementOwned>())?;
                         variant.id = id;
                         variant.extension = extension;
                     } else {
@@ -372,7 +593,7 @@ fn deserialize_enum_variant(
                 if #field_name_ident.is_some() {
                     return Err(serde::de::Error::duplicate_field(#fhir_name));
                 }
-                #field_name_ident = Some(#enum_ident::#variant_ident(map_access.next_value()?));
+                #field_name_ident = Some(#namespace::#enum_ident::#variant_ident(map_access.next_value_seed(self.0.transmute::<#type_tokens>())?));
             },
         }
     }
@@ -421,7 +642,11 @@ fn deserialize_primitive_value(field: &RustFhirStructField) -> TokenStream {
     }
 }
 
-fn deserialize_primitive(field: &RustFhirStructField) -> TokenStream {
+fn deserialize_primitive(
+    field: &RustFhirStructField,
+    namespace: &TokenStream,
+    base_namespace: &TokenStream,
+) -> TokenStream {
     let fhir_name = &field.fhir_name;
     let field_name_ident = format_ident!("r#{}", field.name);
 
@@ -430,6 +655,8 @@ fn deserialize_primitive(field: &RustFhirStructField) -> TokenStream {
     let field_enum_type_name = format_ident!("{}", field.fhir_name.to_rust_type_casing());
     let field_enum_type_primitive_element_name =
         format_ident!("{}PrimitiveElement", field_enum_type_name);
+
+    let type_tokens = type_tokens(&field.r#type, namespace, base_namespace);
 
     let (intermediate_type_tokens, convert_intermediate_type_tokens): (TokenStream, TokenStream) =
         if field.r#type.name == DECIMAL_TYPE {
@@ -455,7 +682,7 @@ fn deserialize_primitive(field: &RustFhirStructField) -> TokenStream {
     if field.multiple {
         quote! {
             Field::#field_enum_type_name => {
-                if _ctx.from_json {
+                if self.0.from_json {
                     let values: Vec<Option<#intermediate_type_tokens>> = map_access.next_value()?;
 
                     let vec = #field_name_ident.get_or_insert(std::iter::repeat(Default::default()).take(values.len()).collect::<Vec<_>>());
@@ -473,12 +700,13 @@ fn deserialize_primitive(field: &RustFhirStructField) -> TokenStream {
                     }
                 } else {
                     let vec = #field_name_ident.get_or_insert(Default::default());
-                    vec.push(map_access.next_value()?);
+                    vec.push(map_access.next_value_seed(self.0.transmute::<#type_tokens>())?);
                 }
             },
             Field::#field_enum_type_primitive_element_name => {
-                if _ctx.from_json {
-                    let elements: Vec<Option<super::super::serde_helpers::PrimitiveElementOwned>> = map_access.next_value()?;
+                if self.0.from_json {
+                    let elements: Vec<Option<super::super::serde_helpers::PrimitiveElementOwned>> =
+                        map_access.next_value_seed(self.0.transmute::<Vec<Option<super::super::serde_helpers::PrimitiveElementOwned>>>())?;
 
                     let vec = #field_name_ident.get_or_insert(std::iter::repeat(Default::default()).take(elements.len()).collect::<Vec<_>>());
                     if vec.len() != elements.len() {
@@ -519,7 +747,7 @@ fn deserialize_primitive(field: &RustFhirStructField) -> TokenStream {
 
         quote! {
             Field::#field_enum_type_name => {
-                if _ctx.from_json {
+                if self.0.from_json {
                     let some = #field_name_ident.get_or_insert(Default::default());
 
                     #deserialize_value_tokens
@@ -528,18 +756,19 @@ fn deserialize_primitive(field: &RustFhirStructField) -> TokenStream {
                         return Err(serde::de::Error::duplicate_field(#fhir_name));
                     }
 
-                    #field_name_ident = Some(map_access.next_value()?);
+                    #field_name_ident = Some(map_access.next_value_seed(self.0.transmute::<#type_tokens>())?);
                 }
             },
             Field::#field_enum_type_primitive_element_name => {
-                if _ctx.from_json {
+                if self.0.from_json {
                     let some = #field_name_ident.get_or_insert(Default::default());
 
                     if some.id.is_some() #check_extension_is_empty_tokens {
                         return Err(serde::de::Error::duplicate_field(#primitive_element_name));
                     }
 
-                    let super::super::serde_helpers::PrimitiveElementOwned { id, #extension_tokens } = map_access.next_value()?;
+                    let super::super::serde_helpers::PrimitiveElementOwned { id, #extension_tokens } =
+                        map_access.next_value_seed(self.0.transmute::<super::super::serde_helpers::PrimitiveElementOwned>())?;
                     some.id = id;
                     #assign_extension_tokens
                 } else {
@@ -550,23 +779,29 @@ fn deserialize_primitive(field: &RustFhirStructField) -> TokenStream {
     }
 }
 
-fn deserialize_element(field: &RustFhirStructField) -> TokenStream {
+fn deserialize_element(
+    field: &RustFhirStructField,
+    namespace: &TokenStream,
+    base_namespace: &TokenStream,
+) -> TokenStream {
     let fhir_name = &field.fhir_name;
     let field_name_ident = format_ident!("r#{}", field.name);
+
+    let type_tokens = type_tokens(&field.r#type, namespace, base_namespace);
 
     let field_enum_type_name = format_ident!("{}", field.fhir_name.to_rust_type_casing());
 
     if field.multiple {
         quote! {
             Field::#field_enum_type_name => {
-                if _ctx.from_json {
+                if self.0.from_json {
                     if #field_name_ident.is_some() {
                         return Err(serde::de::Error::duplicate_field(#fhir_name));
                     }
-                    #field_name_ident = Some(map_access.next_value()?);
+                    #field_name_ident = Some(map_access.next_value_seed(self.0.transmute::<Vec<#type_tokens>>())?);
                 } else {
                     let vec = #field_name_ident.get_or_insert(Default::default());
-                    vec.push(map_access.next_value()?);
+                    vec.push(map_access.next_value_seed(self.0.transmute::<#type_tokens>())?);
                 }
             },
         }
@@ -576,7 +811,7 @@ fn deserialize_element(field: &RustFhirStructField) -> TokenStream {
                 if #field_name_ident.is_some() {
                     return Err(serde::de::Error::duplicate_field(#fhir_name));
                 }
-                #field_name_ident = Some(map_access.next_value()?);
+                #field_name_ident = Some(map_access.next_value_seed(self.0.transmute::<#type_tokens>())?);
             },
         }
     }

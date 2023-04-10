@@ -1,4 +1,4 @@
-// Generated on 2023-04-08 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-10 by fhirbolt-codegen v0.1.0
 #[doc = "Base StructureDefinition for BackboneElement Type: Base definition for all elements that are defined inside a resource - but not those in a data type."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub struct BackboneElement {
@@ -29,97 +29,5 @@ impl serde::ser::Serialize for BackboneElement {
             }
             state.end()
         })
-    }
-}
-impl<'de> serde::de::Deserialize<'de> for BackboneElement {
-    fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
-    where
-        D: serde::de::Deserializer<'de>,
-    {
-        #[derive(serde :: Deserialize)]
-        #[serde(field_identifier)]
-        enum Field {
-            #[serde(rename = "id")]
-            Id,
-            #[serde(rename = "extension")]
-            Extension,
-            #[serde(rename = "modifierExtension")]
-            ModifierExtension,
-            Unknown(std::string::String),
-        }
-        fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
-            Err(E::unknown_field(
-                field,
-                &["id", "extension", "modifierExtension"],
-            ))
-        }
-        struct Visitor;
-        impl<'de> serde::de::Visitor<'de> for Visitor {
-            type Value = BackboneElement;
-            fn expecting(&self, formatter: &mut std::fmt::Formatter) -> std::fmt::Result {
-                formatter.write_str("BackboneElement")
-            }
-            fn visit_map<V>(self, mut map_access: V) -> Result<BackboneElement, V::Error>
-            where
-                V: serde::de::MapAccess<'de>,
-            {
-                let mut r#id: Option<std::string::String> = None;
-                let mut r#extension: Option<Vec<Box<super::super::types::Extension>>> = None;
-                let mut r#modifier_extension: Option<Vec<Box<super::super::types::Extension>>> =
-                    None;
-                fhirbolt_shared::serde_context::de::DESERIALIZATION_CONTEXT.with(|_ctx| {
-                    let _ctx = _ctx.borrow();
-                    while let Some(map_access_key) = map_access.next_key()? {
-                        match map_access_key {
-                            Field::Id => {
-                                if r#id.is_some() {
-                                    return Err(serde::de::Error::duplicate_field("id"));
-                                }
-                                r#id = Some(map_access.next_value()?);
-                            }
-                            Field::Extension => {
-                                if _ctx.from_json {
-                                    if r#extension.is_some() {
-                                        return Err(serde::de::Error::duplicate_field("extension"));
-                                    }
-                                    r#extension = Some(map_access.next_value()?);
-                                } else {
-                                    let vec = r#extension.get_or_insert(Default::default());
-                                    vec.push(map_access.next_value()?);
-                                }
-                            }
-                            Field::ModifierExtension => {
-                                if _ctx.from_json {
-                                    if r#modifier_extension.is_some() {
-                                        return Err(serde::de::Error::duplicate_field(
-                                            "modifierExtension",
-                                        ));
-                                    }
-                                    r#modifier_extension = Some(map_access.next_value()?);
-                                } else {
-                                    let vec =
-                                        r#modifier_extension.get_or_insert(Default::default());
-                                    vec.push(map_access.next_value()?);
-                                }
-                            }
-                            Field::Unknown(key) => if _ctx.config.mode
-                                == fhirbolt_shared::serde_context::de::DeserializationMode::Strict
-                            {
-                                return Err(serde::de::Error::unknown_field(
-                                    &key,
-                                    &["id", "extension", "modifierExtension"],
-                                ));
-                            },
-                        }
-                    }
-                    Ok(BackboneElement {
-                        r#id,
-                        r#extension: r#extension.unwrap_or(vec![]),
-                        r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
-                    })
-                })
-            }
-        }
-        deserializer.deserialize_map(Visitor)
     }
 }
