@@ -1,4 +1,4 @@
-// Generated on 2023-04-12 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-13 by fhirbolt-codegen v0.1.0
 #[doc = "A value that defines the context specified in this context of use. The interpretation of the value is defined by the code."]
 #[derive(Debug, Clone, PartialEq)]
 pub enum UsageContextValue {
@@ -24,41 +24,4 @@ pub struct UsageContext {
     pub r#code: Box<super::super::types::Coding>,
     #[doc = "A value that defines the context specified in this context of use. The interpretation of the value is defined by the code."]
     pub r#value: UsageContextValue,
-}
-impl serde::ser::Serialize for UsageContext {
-    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
-    where
-        S: serde::ser::Serializer,
-    {
-        use serde::ser::SerializeMap;
-        fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
-            let _ctx = _ctx.borrow();
-            let mut state = serializer.serialize_map(None)?;
-            if let Some(some) = self.r#id.as_ref() {
-                state.serialize_entry("id", some)?;
-            }
-            if !self.r#extension.is_empty() {
-                state.serialize_entry("extension", &self.r#extension)?;
-            }
-            state.serialize_entry("code", &self.r#code)?;
-            match self.r#value {
-                UsageContextValue::CodeableConcept(ref value) => {
-                    state.serialize_entry("valueCodeableConcept", value)?;
-                }
-                UsageContextValue::Quantity(ref value) => {
-                    state.serialize_entry("valueQuantity", value)?;
-                }
-                UsageContextValue::Range(ref value) => {
-                    state.serialize_entry("valueRange", value)?;
-                }
-                UsageContextValue::Reference(ref value) => {
-                    state.serialize_entry("valueReference", value)?;
-                }
-                UsageContextValue::Invalid => {
-                    return Err(serde::ser::Error::custom("value is a required field"))
-                }
-            }
-            state.end()
-        })
-    }
 }

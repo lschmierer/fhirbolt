@@ -1,4 +1,143 @@
-// Generated on 2023-04-12 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-13 by fhirbolt-codegen v0.1.0
+impl serde::ser::Serialize
+    for crate::SerializationContext<
+        &fhirbolt_model::r4::resources::SubstanceNucleicAcidSubunitLinkage,
+    >
+{
+    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+    where
+        S: serde::ser::Serializer,
+    {
+        use serde::ser::SerializeMap;
+        let mut state = serializer.serialize_map(None)?;
+        if let Some(value) = self.value.r#id.as_ref() {
+            state.serialize_entry("id", value)?;
+        }
+        if !self.value.r#extension.is_empty() {
+            self.with_context(&self.value.r#extension, |ctx| {
+                state.serialize_entry("extension", ctx)
+            })?;
+        }
+        if !self.value.r#modifier_extension.is_empty() {
+            self.with_context(&self.value.r#modifier_extension, |ctx| {
+                state.serialize_entry("modifierExtension", ctx)
+            })?;
+        }
+        if self.output_json {
+            if let Some(some) = self.value.r#connectivity.as_ref() {
+                if let Some(some) = some.value.as_ref() {
+                    let some = Ok(some)?;
+                    state.serialize_entry("connectivity", &some)?;
+                }
+                if some.id.is_some() || !some.extension.is_empty() {
+                    let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                        id: some.id.as_ref(),
+                        extension: &some.extension,
+                    };
+                    self.with_context(&primitive_element, |ctx| {
+                        state.serialize_entry("_connectivity", ctx)
+                    })?;
+                }
+            }
+        } else {
+            if let Some(some) = self.value.r#connectivity.as_ref() {
+                self.with_context(some, |ctx| state.serialize_entry("connectivity", ctx))?;
+            }
+        }
+        if let Some(some) = self.value.r#identifier.as_ref() {
+            self.with_context(some, |ctx| state.serialize_entry("identifier", ctx))?;
+        }
+        if self.output_json {
+            if let Some(some) = self.value.r#name.as_ref() {
+                if let Some(some) = some.value.as_ref() {
+                    let some = Ok(some)?;
+                    state.serialize_entry("name", &some)?;
+                }
+                if some.id.is_some() || !some.extension.is_empty() {
+                    let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                        id: some.id.as_ref(),
+                        extension: &some.extension,
+                    };
+                    self.with_context(&primitive_element, |ctx| {
+                        state.serialize_entry("_name", ctx)
+                    })?;
+                }
+            }
+        } else {
+            if let Some(some) = self.value.r#name.as_ref() {
+                self.with_context(some, |ctx| state.serialize_entry("name", ctx))?;
+            }
+        }
+        if self.output_json {
+            if let Some(some) = self.value.r#residue_site.as_ref() {
+                if let Some(some) = some.value.as_ref() {
+                    let some = Ok(some)?;
+                    state.serialize_entry("residueSite", &some)?;
+                }
+                if some.id.is_some() || !some.extension.is_empty() {
+                    let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                        id: some.id.as_ref(),
+                        extension: &some.extension,
+                    };
+                    self.with_context(&primitive_element, |ctx| {
+                        state.serialize_entry("_residueSite", ctx)
+                    })?;
+                }
+            }
+        } else {
+            if let Some(some) = self.value.r#residue_site.as_ref() {
+                self.with_context(some, |ctx| state.serialize_entry("residueSite", ctx))?;
+            }
+        }
+        state.end()
+    }
+}
+impl serde::ser::Serialize
+    for crate::SerializationContext<
+        &Box<fhirbolt_model::r4::resources::SubstanceNucleicAcidSubunitLinkage>,
+    >
+{
+    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+    where
+        S: serde::ser::Serializer,
+    {
+        self.with_context(self.value.as_ref(), |ctx| ctx.serialize(serializer))
+    }
+}
+impl serde::ser::Serialize
+    for crate::SerializationContext<
+        &Vec<fhirbolt_model::r4::resources::SubstanceNucleicAcidSubunitLinkage>,
+    >
+{
+    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+    where
+        S: serde::ser::Serializer,
+    {
+        use serde::ser::SerializeSeq;
+        let mut seq_serializer = serializer.serialize_seq(Some(self.value.len()))?;
+        for value in self.value {
+            self.with_context(value, |ctx| seq_serializer.serialize_element(ctx))?
+        }
+        seq_serializer.end()
+    }
+}
+impl serde::ser::Serialize
+    for crate::SerializationContext<
+        &Vec<Box<fhirbolt_model::r4::resources::SubstanceNucleicAcidSubunitLinkage>>,
+    >
+{
+    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+    where
+        S: serde::ser::Serializer,
+    {
+        use serde::ser::SerializeSeq;
+        let mut seq_serializer = serializer.serialize_seq(Some(self.value.len()))?;
+        for value in self.value {
+            self.with_context(value, |ctx| seq_serializer.serialize_element(ctx))?
+        }
+        seq_serializer.end()
+    }
+}
 impl<'de> serde::de::DeserializeSeed<'de>
     for &mut crate::context::de::DeserializationContext<
         fhirbolt_model::r4::resources::SubstanceNucleicAcidSubunitLinkage,
@@ -323,6 +462,124 @@ impl<'de> serde::de::DeserializeSeed<'de>
         deserializer.deserialize_seq(Visitor(self))
     }
 }
+impl serde::ser::Serialize
+    for crate::SerializationContext<
+        &fhirbolt_model::r4::resources::SubstanceNucleicAcidSubunitSugar,
+    >
+{
+    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+    where
+        S: serde::ser::Serializer,
+    {
+        use serde::ser::SerializeMap;
+        let mut state = serializer.serialize_map(None)?;
+        if let Some(value) = self.value.r#id.as_ref() {
+            state.serialize_entry("id", value)?;
+        }
+        if !self.value.r#extension.is_empty() {
+            self.with_context(&self.value.r#extension, |ctx| {
+                state.serialize_entry("extension", ctx)
+            })?;
+        }
+        if !self.value.r#modifier_extension.is_empty() {
+            self.with_context(&self.value.r#modifier_extension, |ctx| {
+                state.serialize_entry("modifierExtension", ctx)
+            })?;
+        }
+        if let Some(some) = self.value.r#identifier.as_ref() {
+            self.with_context(some, |ctx| state.serialize_entry("identifier", ctx))?;
+        }
+        if self.output_json {
+            if let Some(some) = self.value.r#name.as_ref() {
+                if let Some(some) = some.value.as_ref() {
+                    let some = Ok(some)?;
+                    state.serialize_entry("name", &some)?;
+                }
+                if some.id.is_some() || !some.extension.is_empty() {
+                    let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                        id: some.id.as_ref(),
+                        extension: &some.extension,
+                    };
+                    self.with_context(&primitive_element, |ctx| {
+                        state.serialize_entry("_name", ctx)
+                    })?;
+                }
+            }
+        } else {
+            if let Some(some) = self.value.r#name.as_ref() {
+                self.with_context(some, |ctx| state.serialize_entry("name", ctx))?;
+            }
+        }
+        if self.output_json {
+            if let Some(some) = self.value.r#residue_site.as_ref() {
+                if let Some(some) = some.value.as_ref() {
+                    let some = Ok(some)?;
+                    state.serialize_entry("residueSite", &some)?;
+                }
+                if some.id.is_some() || !some.extension.is_empty() {
+                    let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                        id: some.id.as_ref(),
+                        extension: &some.extension,
+                    };
+                    self.with_context(&primitive_element, |ctx| {
+                        state.serialize_entry("_residueSite", ctx)
+                    })?;
+                }
+            }
+        } else {
+            if let Some(some) = self.value.r#residue_site.as_ref() {
+                self.with_context(some, |ctx| state.serialize_entry("residueSite", ctx))?;
+            }
+        }
+        state.end()
+    }
+}
+impl serde::ser::Serialize
+    for crate::SerializationContext<
+        &Box<fhirbolt_model::r4::resources::SubstanceNucleicAcidSubunitSugar>,
+    >
+{
+    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+    where
+        S: serde::ser::Serializer,
+    {
+        self.with_context(self.value.as_ref(), |ctx| ctx.serialize(serializer))
+    }
+}
+impl serde::ser::Serialize
+    for crate::SerializationContext<
+        &Vec<fhirbolt_model::r4::resources::SubstanceNucleicAcidSubunitSugar>,
+    >
+{
+    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+    where
+        S: serde::ser::Serializer,
+    {
+        use serde::ser::SerializeSeq;
+        let mut seq_serializer = serializer.serialize_seq(Some(self.value.len()))?;
+        for value in self.value {
+            self.with_context(value, |ctx| seq_serializer.serialize_element(ctx))?
+        }
+        seq_serializer.end()
+    }
+}
+impl serde::ser::Serialize
+    for crate::SerializationContext<
+        &Vec<Box<fhirbolt_model::r4::resources::SubstanceNucleicAcidSubunitSugar>>,
+    >
+{
+    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+    where
+        S: serde::ser::Serializer,
+    {
+        use serde::ser::SerializeSeq;
+        let mut seq_serializer = serializer.serialize_seq(Some(self.value.len()))?;
+        for value in self.value {
+            self.with_context(value, |ctx| seq_serializer.serialize_element(ctx))?
+        }
+        seq_serializer.end()
+    }
+}
 impl<'de> serde::de::DeserializeSeed<'de>
     for &mut crate::context::de::DeserializationContext<
         fhirbolt_model::r4::resources::SubstanceNucleicAcidSubunitSugar,
@@ -607,6 +864,159 @@ impl<'de> serde::de::DeserializeSeed<'de>
             }
         }
         deserializer.deserialize_seq(Visitor(self))
+    }
+}
+impl serde::ser::Serialize
+    for crate::SerializationContext<&fhirbolt_model::r4::resources::SubstanceNucleicAcidSubunit>
+{
+    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+    where
+        S: serde::ser::Serializer,
+    {
+        use serde::ser::SerializeMap;
+        let mut state = serializer.serialize_map(None)?;
+        if let Some(value) = self.value.r#id.as_ref() {
+            state.serialize_entry("id", value)?;
+        }
+        if !self.value.r#extension.is_empty() {
+            self.with_context(&self.value.r#extension, |ctx| {
+                state.serialize_entry("extension", ctx)
+            })?;
+        }
+        if !self.value.r#modifier_extension.is_empty() {
+            self.with_context(&self.value.r#modifier_extension, |ctx| {
+                state.serialize_entry("modifierExtension", ctx)
+            })?;
+        }
+        if self.output_json {
+            if let Some(some) = self.value.r#subunit.as_ref() {
+                if let Some(some) = some.value.as_ref() {
+                    let some = Ok(some)?;
+                    state.serialize_entry("subunit", &some)?;
+                }
+                if some.id.is_some() || !some.extension.is_empty() {
+                    let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                        id: some.id.as_ref(),
+                        extension: &some.extension,
+                    };
+                    self.with_context(&primitive_element, |ctx| {
+                        state.serialize_entry("_subunit", ctx)
+                    })?;
+                }
+            }
+        } else {
+            if let Some(some) = self.value.r#subunit.as_ref() {
+                self.with_context(some, |ctx| state.serialize_entry("subunit", ctx))?;
+            }
+        }
+        if self.output_json {
+            if let Some(some) = self.value.r#sequence.as_ref() {
+                if let Some(some) = some.value.as_ref() {
+                    let some = Ok(some)?;
+                    state.serialize_entry("sequence", &some)?;
+                }
+                if some.id.is_some() || !some.extension.is_empty() {
+                    let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                        id: some.id.as_ref(),
+                        extension: &some.extension,
+                    };
+                    self.with_context(&primitive_element, |ctx| {
+                        state.serialize_entry("_sequence", ctx)
+                    })?;
+                }
+            }
+        } else {
+            if let Some(some) = self.value.r#sequence.as_ref() {
+                self.with_context(some, |ctx| state.serialize_entry("sequence", ctx))?;
+            }
+        }
+        if self.output_json {
+            if let Some(some) = self.value.r#length.as_ref() {
+                if let Some(some) = some.value.as_ref() {
+                    let some = Ok(some)?;
+                    state.serialize_entry("length", &some)?;
+                }
+                if some.id.is_some() || !some.extension.is_empty() {
+                    let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                        id: some.id.as_ref(),
+                        extension: &some.extension,
+                    };
+                    self.with_context(&primitive_element, |ctx| {
+                        state.serialize_entry("_length", ctx)
+                    })?;
+                }
+            }
+        } else {
+            if let Some(some) = self.value.r#length.as_ref() {
+                self.with_context(some, |ctx| state.serialize_entry("length", ctx))?;
+            }
+        }
+        if let Some(some) = self.value.r#sequence_attachment.as_ref() {
+            self.with_context(some, |ctx| state.serialize_entry("sequenceAttachment", ctx))?;
+        }
+        if let Some(some) = self.value.r#five_prime.as_ref() {
+            self.with_context(some, |ctx| state.serialize_entry("fivePrime", ctx))?;
+        }
+        if let Some(some) = self.value.r#three_prime.as_ref() {
+            self.with_context(some, |ctx| state.serialize_entry("threePrime", ctx))?;
+        }
+        if !self.value.r#linkage.is_empty() {
+            self.with_context(&self.value.r#linkage, |ctx| {
+                state.serialize_entry("linkage", ctx)
+            })?;
+        }
+        if !self.value.r#sugar.is_empty() {
+            self.with_context(&self.value.r#sugar, |ctx| {
+                state.serialize_entry("sugar", ctx)
+            })?;
+        }
+        state.end()
+    }
+}
+impl serde::ser::Serialize
+    for crate::SerializationContext<
+        &Box<fhirbolt_model::r4::resources::SubstanceNucleicAcidSubunit>,
+    >
+{
+    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+    where
+        S: serde::ser::Serializer,
+    {
+        self.with_context(self.value.as_ref(), |ctx| ctx.serialize(serializer))
+    }
+}
+impl serde::ser::Serialize
+    for crate::SerializationContext<
+        &Vec<fhirbolt_model::r4::resources::SubstanceNucleicAcidSubunit>,
+    >
+{
+    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+    where
+        S: serde::ser::Serializer,
+    {
+        use serde::ser::SerializeSeq;
+        let mut seq_serializer = serializer.serialize_seq(Some(self.value.len()))?;
+        for value in self.value {
+            self.with_context(value, |ctx| seq_serializer.serialize_element(ctx))?
+        }
+        seq_serializer.end()
+    }
+}
+impl serde::ser::Serialize
+    for crate::SerializationContext<
+        &Vec<Box<fhirbolt_model::r4::resources::SubstanceNucleicAcidSubunit>>,
+    >
+{
+    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+    where
+        S: serde::ser::Serializer,
+    {
+        use serde::ser::SerializeSeq;
+        let mut seq_serializer = serializer.serialize_seq(Some(self.value.len()))?;
+        for value in self.value {
+            self.with_context(value, |ctx| seq_serializer.serialize_element(ctx))?
+        }
+        seq_serializer.end()
     }
 }
 impl<'de> serde::de::DeserializeSeed<'de>
@@ -1000,6 +1410,182 @@ impl<'de> serde::de::DeserializeSeed<'de>
 }
 impl crate::Resource for fhirbolt_model::r4::resources::SubstanceNucleicAcid {
     const FHIR_RELEASE: crate::FhirRelease = crate::FhirRelease::R4;
+}
+impl serde::ser::Serialize
+    for crate::SerializationContext<&fhirbolt_model::r4::resources::SubstanceNucleicAcid>
+{
+    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+    where
+        S: serde::ser::Serializer,
+    {
+        use serde::ser::SerializeMap;
+        let mut state = serializer.serialize_map(None)?;
+        state.serialize_entry("resourceType", "SubstanceNucleicAcid")?;
+        if let Some(value) = self.value.r#id.as_ref() {
+            state.serialize_entry("id", value)?;
+        }
+        if let Some(some) = self.value.r#meta.as_ref() {
+            self.with_context(some, |ctx| state.serialize_entry("meta", ctx))?;
+        }
+        if self.output_json {
+            if let Some(some) = self.value.r#implicit_rules.as_ref() {
+                if let Some(some) = some.value.as_ref() {
+                    let some = Ok(some)?;
+                    state.serialize_entry("implicitRules", &some)?;
+                }
+                if some.id.is_some() || !some.extension.is_empty() {
+                    let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                        id: some.id.as_ref(),
+                        extension: &some.extension,
+                    };
+                    self.with_context(&primitive_element, |ctx| {
+                        state.serialize_entry("_implicitRules", ctx)
+                    })?;
+                }
+            }
+        } else {
+            if let Some(some) = self.value.r#implicit_rules.as_ref() {
+                self.with_context(some, |ctx| state.serialize_entry("implicitRules", ctx))?;
+            }
+        }
+        if self.output_json {
+            if let Some(some) = self.value.r#language.as_ref() {
+                if let Some(some) = some.value.as_ref() {
+                    let some = Ok(some)?;
+                    state.serialize_entry("language", &some)?;
+                }
+                if some.id.is_some() || !some.extension.is_empty() {
+                    let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                        id: some.id.as_ref(),
+                        extension: &some.extension,
+                    };
+                    self.with_context(&primitive_element, |ctx| {
+                        state.serialize_entry("_language", ctx)
+                    })?;
+                }
+            }
+        } else {
+            if let Some(some) = self.value.r#language.as_ref() {
+                self.with_context(some, |ctx| state.serialize_entry("language", ctx))?;
+            }
+        }
+        if let Some(some) = self.value.r#text.as_ref() {
+            self.with_context(some, |ctx| state.serialize_entry("text", ctx))?;
+        }
+        if !self.value.r#contained.is_empty() {
+            self.with_context(&self.value.r#contained, |ctx| {
+                state.serialize_entry("contained", ctx)
+            })?;
+        }
+        if !self.value.r#extension.is_empty() {
+            self.with_context(&self.value.r#extension, |ctx| {
+                state.serialize_entry("extension", ctx)
+            })?;
+        }
+        if !self.value.r#modifier_extension.is_empty() {
+            self.with_context(&self.value.r#modifier_extension, |ctx| {
+                state.serialize_entry("modifierExtension", ctx)
+            })?;
+        }
+        if let Some(some) = self.value.r#sequence_type.as_ref() {
+            self.with_context(some, |ctx| state.serialize_entry("sequenceType", ctx))?;
+        }
+        if self.output_json {
+            if let Some(some) = self.value.r#number_of_subunits.as_ref() {
+                if let Some(some) = some.value.as_ref() {
+                    let some = Ok(some)?;
+                    state.serialize_entry("numberOfSubunits", &some)?;
+                }
+                if some.id.is_some() || !some.extension.is_empty() {
+                    let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                        id: some.id.as_ref(),
+                        extension: &some.extension,
+                    };
+                    self.with_context(&primitive_element, |ctx| {
+                        state.serialize_entry("_numberOfSubunits", ctx)
+                    })?;
+                }
+            }
+        } else {
+            if let Some(some) = self.value.r#number_of_subunits.as_ref() {
+                self.with_context(some, |ctx| state.serialize_entry("numberOfSubunits", ctx))?;
+            }
+        }
+        if self.output_json {
+            if let Some(some) = self.value.r#area_of_hybridisation.as_ref() {
+                if let Some(some) = some.value.as_ref() {
+                    let some = Ok(some)?;
+                    state.serialize_entry("areaOfHybridisation", &some)?;
+                }
+                if some.id.is_some() || !some.extension.is_empty() {
+                    let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                        id: some.id.as_ref(),
+                        extension: &some.extension,
+                    };
+                    self.with_context(&primitive_element, |ctx| {
+                        state.serialize_entry("_areaOfHybridisation", ctx)
+                    })?;
+                }
+            }
+        } else {
+            if let Some(some) = self.value.r#area_of_hybridisation.as_ref() {
+                self.with_context(some, |ctx| {
+                    state.serialize_entry("areaOfHybridisation", ctx)
+                })?;
+            }
+        }
+        if let Some(some) = self.value.r#oligo_nucleotide_type.as_ref() {
+            self.with_context(some, |ctx| {
+                state.serialize_entry("oligoNucleotideType", ctx)
+            })?;
+        }
+        if !self.value.r#subunit.is_empty() {
+            self.with_context(&self.value.r#subunit, |ctx| {
+                state.serialize_entry("subunit", ctx)
+            })?;
+        }
+        state.end()
+    }
+}
+impl serde::ser::Serialize
+    for crate::SerializationContext<&Box<fhirbolt_model::r4::resources::SubstanceNucleicAcid>>
+{
+    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+    where
+        S: serde::ser::Serializer,
+    {
+        self.with_context(self.value.as_ref(), |ctx| ctx.serialize(serializer))
+    }
+}
+impl serde::ser::Serialize
+    for crate::SerializationContext<&Vec<fhirbolt_model::r4::resources::SubstanceNucleicAcid>>
+{
+    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+    where
+        S: serde::ser::Serializer,
+    {
+        use serde::ser::SerializeSeq;
+        let mut seq_serializer = serializer.serialize_seq(Some(self.value.len()))?;
+        for value in self.value {
+            self.with_context(value, |ctx| seq_serializer.serialize_element(ctx))?
+        }
+        seq_serializer.end()
+    }
+}
+impl serde::ser::Serialize
+    for crate::SerializationContext<&Vec<Box<fhirbolt_model::r4::resources::SubstanceNucleicAcid>>>
+{
+    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+    where
+        S: serde::ser::Serializer,
+    {
+        use serde::ser::SerializeSeq;
+        let mut seq_serializer = serializer.serialize_seq(Some(self.value.len()))?;
+        for value in self.value {
+            self.with_context(value, |ctx| seq_serializer.serialize_element(ctx))?
+        }
+        seq_serializer.end()
+    }
 }
 impl<'de> serde::de::DeserializeSeed<'de>
     for crate::context::de::DeserializationContext<

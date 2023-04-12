@@ -1,4 +1,131 @@
-// Generated on 2023-04-12 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-13 by fhirbolt-codegen v0.1.0
+impl serde::ser::Serialize
+    for crate::SerializationContext<&fhirbolt_model::r4b::types::Annotation>
+{
+    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+    where
+        S: serde::ser::Serializer,
+    {
+        use serde::ser::SerializeMap;
+        let mut state = serializer.serialize_map(None)?;
+        if let Some(value) = self.value.r#id.as_ref() {
+            state.serialize_entry("id", value)?;
+        }
+        if !self.value.r#extension.is_empty() {
+            self.with_context(&self.value.r#extension, |ctx| {
+                state.serialize_entry("extension", ctx)
+            })?;
+        }
+        if let Some(some) = self.value.r#author.as_ref() {
+            match some {
+                fhirbolt_model::r4b::types::AnnotationAuthor::Reference(ref value) => {
+                    self.with_context(value, |ctx| state.serialize_entry("authorReference", ctx))?;
+                }
+                fhirbolt_model::r4b::types::AnnotationAuthor::String(ref value) => {
+                    if self.output_json {
+                        if let Some(some) = value.value.as_ref() {
+                            let some = Ok(some)?;
+                            state.serialize_entry("authorString", &some)?;
+                        }
+                        if value.id.is_some() || !value.extension.is_empty() {
+                            let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                                id: value.id.as_ref(),
+                                extension: &value.extension,
+                            };
+                            self.with_context(&primitive_element, |ctx| {
+                                state.serialize_entry("_authorString", ctx)
+                            })?;
+                        }
+                    } else {
+                        self.with_context(value, |ctx| state.serialize_entry("authorString", ctx))?;
+                    }
+                }
+                fhirbolt_model::r4b::types::AnnotationAuthor::Invalid => {
+                    return Err(serde::ser::Error::custom("author is invalid"))
+                }
+            }
+        }
+        if self.output_json {
+            if let Some(some) = self.value.r#time.as_ref() {
+                if let Some(some) = some.value.as_ref() {
+                    let some = Ok(some)?;
+                    state.serialize_entry("time", &some)?;
+                }
+                if some.id.is_some() || !some.extension.is_empty() {
+                    let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                        id: some.id.as_ref(),
+                        extension: &some.extension,
+                    };
+                    self.with_context(&primitive_element, |ctx| {
+                        state.serialize_entry("_time", ctx)
+                    })?;
+                }
+            }
+        } else {
+            if let Some(some) = self.value.r#time.as_ref() {
+                self.with_context(some, |ctx| state.serialize_entry("time", ctx))?;
+            }
+        }
+        if self.output_json {
+            if let Some(some) = self.value.r#text.value.as_ref() {
+                let some = Ok(some)?;
+                state.serialize_entry("text", &some)?;
+            }
+            if self.value.r#text.id.is_some() || !self.value.r#text.extension.is_empty() {
+                let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                    id: self.value.r#text.id.as_ref(),
+                    extension: &self.value.r#text.extension,
+                };
+                self.with_context(&primitive_element, |ctx| {
+                    state.serialize_entry("_text", ctx)
+                })?;
+            }
+        } else {
+            self.with_context(&self.value.r#text, |ctx| state.serialize_entry("text", ctx))?;
+        }
+        state.end()
+    }
+}
+impl serde::ser::Serialize
+    for crate::SerializationContext<&Box<fhirbolt_model::r4b::types::Annotation>>
+{
+    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+    where
+        S: serde::ser::Serializer,
+    {
+        self.with_context(self.value.as_ref(), |ctx| ctx.serialize(serializer))
+    }
+}
+impl serde::ser::Serialize
+    for crate::SerializationContext<&Vec<fhirbolt_model::r4b::types::Annotation>>
+{
+    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+    where
+        S: serde::ser::Serializer,
+    {
+        use serde::ser::SerializeSeq;
+        let mut seq_serializer = serializer.serialize_seq(Some(self.value.len()))?;
+        for value in self.value {
+            self.with_context(value, |ctx| seq_serializer.serialize_element(ctx))?
+        }
+        seq_serializer.end()
+    }
+}
+impl serde::ser::Serialize
+    for crate::SerializationContext<&Vec<Box<fhirbolt_model::r4b::types::Annotation>>>
+{
+    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+    where
+        S: serde::ser::Serializer,
+    {
+        use serde::ser::SerializeSeq;
+        let mut seq_serializer = serializer.serialize_seq(Some(self.value.len()))?;
+        for value in self.value {
+            self.with_context(value, |ctx| seq_serializer.serialize_element(ctx))?
+        }
+        seq_serializer.end()
+    }
+}
 impl<'de> serde::de::DeserializeSeed<'de>
     for &mut crate::context::de::DeserializationContext<fhirbolt_model::r4b::types::Annotation>
 {

@@ -1,4 +1,4 @@
-// Generated on 2023-04-12 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-13 by fhirbolt-codegen v0.1.0
 #[doc = "Base StructureDefinition for positiveInt type: An integer with a value that is positive (e.g. >0)"]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub struct PositiveInt {
@@ -8,26 +8,4 @@ pub struct PositiveInt {
     pub r#extension: Vec<Box<super::super::types::Extension>>,
     #[doc = "Primitive value for positiveInt"]
     pub r#value: Option<u32>,
-}
-impl serde::ser::Serialize for PositiveInt {
-    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
-    where
-        S: serde::ser::Serializer,
-    {
-        use serde::ser::SerializeMap;
-        fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
-            let _ctx = _ctx.borrow();
-            let mut state = serializer.serialize_map(None)?;
-            if let Some(some) = self.r#id.as_ref() {
-                state.serialize_entry("id", some)?;
-            }
-            if !self.r#extension.is_empty() {
-                state.serialize_entry("extension", &self.r#extension)?;
-            }
-            if let Some(some) = self.r#value.as_ref() {
-                state.serialize_entry("value", some)?;
-            }
-            state.end()
-        })
-    }
 }

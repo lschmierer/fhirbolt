@@ -1,6 +1,32 @@
 use std::cell::{Ref, RefCell, RefMut};
 
+use serde::Serialize;
+
 use fhirbolt_shared::{path::ElementPath, FhirRelease};
+
+use crate::Resource;
+
+pub trait SerializeResource: Resource {
+    type Context<'a>: Serialize
+    where
+        Self: 'a;
+
+    fn context<'a>(&'a self, output_json: bool, r: FhirRelease) -> Self::Context<'a>;
+}
+
+impl<T> SerializeResource for T
+where
+    T: Resource,
+    for<'a> SerializationContext<&'a Self>: Serialize,
+{
+    type Context<'a> = SerializationContext<&'a Self>
+    where
+        Self: 'a;
+
+    fn context<'a>(&'a self, output_json: bool, r: FhirRelease) -> Self::Context<'a> {
+        SerializationContext::new(self, output_json, r)
+    }
+}
 
 /// Context for serialization.
 #[derive(Default)]
@@ -9,7 +35,7 @@ pub struct SerializationContext<V> {
     // The JSON data model differs from the FHIR data model
     pub output_json: bool,
     // Used by the element model to keep track of its state in the element tree
-    pub current_path: RefCell<Option<ElementPath>>,
+    current_path: RefCell<Option<ElementPath>>,
 }
 
 impl<V> SerializationContext<V> {

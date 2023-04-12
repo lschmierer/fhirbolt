@@ -17,6 +17,8 @@ pub fn bench(c: &mut Criterion) {
 
     let account_struct: fhirbolt::model::r4::resources::Account =
         fhirbolt::json::from_slice(&account_bytes_json, None).unwrap();
+    let account_enum: fhirbolt::model::r4::Resource =
+        fhirbolt::json::from_slice(&account_bytes_json, None).unwrap();
     let account_element: Element<{ FhirRelease::R4 }> =
         fhirbolt::json::from_slice(&account_bytes_json, None).unwrap();
 
@@ -26,6 +28,17 @@ pub fn bench(c: &mut Criterion) {
         b.iter(|| {
             black_box(
                 fhirbolt::json::from_slice::<fhirbolt::model::r4::resources::Account>(
+                    &account_bytes_json,
+                    None,
+                )
+                .unwrap(),
+            )
+        })
+    });
+    group.bench_function("read account enum", |b| {
+        b.iter(|| {
+            black_box(
+                fhirbolt::json::from_slice::<fhirbolt::model::r4::Resource>(
                     &account_bytes_json,
                     None,
                 )
@@ -45,12 +58,15 @@ pub fn bench(c: &mut Criterion) {
         })
     });
     group.bench_function("write account struct", |b| {
-        b.iter(|| black_box(fhirbolt::model::json::to_vec(&account_struct)))
+        b.iter(|| black_box(fhirbolt::json::to_vec(&account_struct)))
+    });
+    group.bench_function("write account enum", |b| {
+        b.iter(|| black_box(fhirbolt::json::to_vec(&account_enum)))
     });
     group.bench_function("write account element", |b| {
         b.iter(|| {
             black_box(
-                fhirbolt::element::json::to_vec::<{ FhirRelease::R4 }>(&account_element).unwrap(),
+                fhirbolt::json::to_vec::<Element<{ FhirRelease::R4 }>>(&account_element).unwrap(),
             )
         })
     });
@@ -69,6 +85,17 @@ pub fn bench(c: &mut Criterion) {
             )
         })
     });
+    group.bench_function("read account enum", |b| {
+        b.iter(|| {
+            black_box(
+                fhirbolt::xml::from_slice::<fhirbolt::model::r4::Resource>(
+                    &account_bytes_xml,
+                    None,
+                )
+                .unwrap(),
+            )
+        })
+    });
     group.bench_function("read account element", |b| {
         b.iter(|| {
             black_box(
@@ -78,12 +105,15 @@ pub fn bench(c: &mut Criterion) {
         })
     });
     group.bench_function("write account struct", |b| {
-        b.iter(|| black_box(fhirbolt::model::xml::to_vec(&account_struct)))
+        b.iter(|| black_box(fhirbolt::xml::to_vec(&account_struct)))
+    });
+    group.bench_function("write account enum", |b| {
+        b.iter(|| black_box(fhirbolt::xml::to_vec(&account_enum)))
     });
     group.bench_function("write account element", |b| {
         b.iter(|| {
             black_box(
-                fhirbolt::element::xml::to_vec::<{ FhirRelease::R4 }>(&account_element).unwrap(),
+                fhirbolt::xml::to_vec::<Element<{ FhirRelease::R4 }>>(&account_element).unwrap(),
             )
         })
     });

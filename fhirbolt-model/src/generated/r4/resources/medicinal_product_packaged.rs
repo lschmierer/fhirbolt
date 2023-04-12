@@ -1,4 +1,4 @@
-// Generated on 2023-04-12 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-13 by fhirbolt-codegen v0.1.0
 #[doc = "Batch numbering."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub struct MedicinalProductPackagedBatchIdentifier {
@@ -12,32 +12,6 @@ pub struct MedicinalProductPackagedBatchIdentifier {
     pub r#outer_packaging: Box<super::super::types::Identifier>,
     #[doc = "A number appearing on the immediate packaging (and not the outer packaging)."]
     pub r#immediate_packaging: Option<Box<super::super::types::Identifier>>,
-}
-impl serde::ser::Serialize for MedicinalProductPackagedBatchIdentifier {
-    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
-    where
-        S: serde::ser::Serializer,
-    {
-        use serde::ser::SerializeMap;
-        fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
-            let _ctx = _ctx.borrow();
-            let mut state = serializer.serialize_map(None)?;
-            if let Some(some) = self.r#id.as_ref() {
-                state.serialize_entry("id", some)?;
-            }
-            if !self.r#extension.is_empty() {
-                state.serialize_entry("extension", &self.r#extension)?;
-            }
-            if !self.r#modifier_extension.is_empty() {
-                state.serialize_entry("modifierExtension", &self.r#modifier_extension)?;
-            }
-            state.serialize_entry("outerPackaging", &self.r#outer_packaging)?;
-            if let Some(some) = self.r#immediate_packaging.as_ref() {
-                state.serialize_entry("immediatePackaging", some)?;
-            }
-            state.end()
-        })
-    }
 }
 #[doc = "A packaging item, as a contained for medicine, possibly with other packaging items within."]
 #[derive(Default, Debug, Clone, PartialEq)]
@@ -72,60 +46,6 @@ pub struct MedicinalProductPackagedPackageItem {
     pub r#shelf_life_storage: Vec<Box<super::super::types::ProductShelfLife>>,
     #[doc = "Manufacturer of this Package Item."]
     pub r#manufacturer: Vec<Box<super::super::types::Reference>>,
-}
-impl serde::ser::Serialize for MedicinalProductPackagedPackageItem {
-    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
-    where
-        S: serde::ser::Serializer,
-    {
-        use serde::ser::SerializeMap;
-        fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
-            let _ctx = _ctx.borrow();
-            let mut state = serializer.serialize_map(None)?;
-            if let Some(some) = self.r#id.as_ref() {
-                state.serialize_entry("id", some)?;
-            }
-            if !self.r#extension.is_empty() {
-                state.serialize_entry("extension", &self.r#extension)?;
-            }
-            if !self.r#modifier_extension.is_empty() {
-                state.serialize_entry("modifierExtension", &self.r#modifier_extension)?;
-            }
-            if !self.r#identifier.is_empty() {
-                state.serialize_entry("identifier", &self.r#identifier)?;
-            }
-            state.serialize_entry("type", &self.r#type)?;
-            state.serialize_entry("quantity", &self.r#quantity)?;
-            if !self.r#material.is_empty() {
-                state.serialize_entry("material", &self.r#material)?;
-            }
-            if !self.r#alternate_material.is_empty() {
-                state.serialize_entry("alternateMaterial", &self.r#alternate_material)?;
-            }
-            if !self.r#device.is_empty() {
-                state.serialize_entry("device", &self.r#device)?;
-            }
-            if !self.r#manufactured_item.is_empty() {
-                state.serialize_entry("manufacturedItem", &self.r#manufactured_item)?;
-            }
-            if !self.r#package_item.is_empty() {
-                state.serialize_entry("packageItem", &self.r#package_item)?;
-            }
-            if let Some(some) = self.r#physical_characteristics.as_ref() {
-                state.serialize_entry("physicalCharacteristics", some)?;
-            }
-            if !self.r#other_characteristics.is_empty() {
-                state.serialize_entry("otherCharacteristics", &self.r#other_characteristics)?;
-            }
-            if !self.r#shelf_life_storage.is_empty() {
-                state.serialize_entry("shelfLifeStorage", &self.r#shelf_life_storage)?;
-            }
-            if !self.r#manufacturer.is_empty() {
-                state.serialize_entry("manufacturer", &self.r#manufacturer)?;
-            }
-            state.end()
-        })
-    }
 }
 #[doc = "A medicinal product in a container or package."]
 #[derive(Default, Debug, Clone, PartialEq)]
@@ -164,117 +84,4 @@ pub struct MedicinalProductPackaged {
     pub r#batch_identifier: Vec<MedicinalProductPackagedBatchIdentifier>,
     #[doc = "A packaging item, as a contained for medicine, possibly with other packaging items within."]
     pub r#package_item: Vec<MedicinalProductPackagedPackageItem>,
-}
-impl serde::ser::Serialize for MedicinalProductPackaged {
-    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
-    where
-        S: serde::ser::Serializer,
-    {
-        use serde::ser::SerializeMap;
-        fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
-            let _ctx = _ctx.borrow();
-            let mut state = serializer.serialize_map(None)?;
-            state.serialize_entry("resourceType", "MedicinalProductPackaged")?;
-            if let Some(some) = self.r#id.as_ref() {
-                state.serialize_entry("id", some)?;
-            }
-            if let Some(some) = self.r#meta.as_ref() {
-                state.serialize_entry("meta", some)?;
-            }
-            if _ctx.output_json {
-                if let Some(some) = self.r#implicit_rules.as_ref() {
-                    if let Some(some) = some.value.as_ref() {
-                        let some = Ok(some)?;
-                        state.serialize_entry("implicitRules", &some)?;
-                    }
-                    if some.id.is_some() || !some.extension.is_empty() {
-                        let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                            id: some.id.as_ref(),
-                            extension: &some.extension,
-                        };
-                        state.serialize_entry("_implicitRules", &primitive_element)?;
-                    }
-                }
-            } else {
-                if let Some(some) = self.r#implicit_rules.as_ref() {
-                    state.serialize_entry("implicitRules", some)?;
-                }
-            }
-            if _ctx.output_json {
-                if let Some(some) = self.r#language.as_ref() {
-                    if let Some(some) = some.value.as_ref() {
-                        let some = Ok(some)?;
-                        state.serialize_entry("language", &some)?;
-                    }
-                    if some.id.is_some() || !some.extension.is_empty() {
-                        let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                            id: some.id.as_ref(),
-                            extension: &some.extension,
-                        };
-                        state.serialize_entry("_language", &primitive_element)?;
-                    }
-                }
-            } else {
-                if let Some(some) = self.r#language.as_ref() {
-                    state.serialize_entry("language", some)?;
-                }
-            }
-            if let Some(some) = self.r#text.as_ref() {
-                state.serialize_entry("text", some)?;
-            }
-            if !self.r#contained.is_empty() {
-                state.serialize_entry("contained", &self.r#contained)?;
-            }
-            if !self.r#extension.is_empty() {
-                state.serialize_entry("extension", &self.r#extension)?;
-            }
-            if !self.r#modifier_extension.is_empty() {
-                state.serialize_entry("modifierExtension", &self.r#modifier_extension)?;
-            }
-            if !self.r#identifier.is_empty() {
-                state.serialize_entry("identifier", &self.r#identifier)?;
-            }
-            if !self.r#subject.is_empty() {
-                state.serialize_entry("subject", &self.r#subject)?;
-            }
-            if _ctx.output_json {
-                if let Some(some) = self.r#description.as_ref() {
-                    if let Some(some) = some.value.as_ref() {
-                        let some = Ok(some)?;
-                        state.serialize_entry("description", &some)?;
-                    }
-                    if some.id.is_some() || !some.extension.is_empty() {
-                        let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                            id: some.id.as_ref(),
-                            extension: &some.extension,
-                        };
-                        state.serialize_entry("_description", &primitive_element)?;
-                    }
-                }
-            } else {
-                if let Some(some) = self.r#description.as_ref() {
-                    state.serialize_entry("description", some)?;
-                }
-            }
-            if let Some(some) = self.r#legal_status_of_supply.as_ref() {
-                state.serialize_entry("legalStatusOfSupply", some)?;
-            }
-            if !self.r#marketing_status.is_empty() {
-                state.serialize_entry("marketingStatus", &self.r#marketing_status)?;
-            }
-            if let Some(some) = self.r#marketing_authorization.as_ref() {
-                state.serialize_entry("marketingAuthorization", some)?;
-            }
-            if !self.r#manufacturer.is_empty() {
-                state.serialize_entry("manufacturer", &self.r#manufacturer)?;
-            }
-            if !self.r#batch_identifier.is_empty() {
-                state.serialize_entry("batchIdentifier", &self.r#batch_identifier)?;
-            }
-            if !self.r#package_item.is_empty() {
-                state.serialize_entry("packageItem", &self.r#package_item)?;
-            }
-            state.end()
-        })
-    }
 }

@@ -24,13 +24,16 @@
 //! ```
 
 pub mod de;
+pub mod ser;
+
 pub mod error;
 pub mod read;
-pub mod ser;
 
 mod consts;
 mod event;
 mod write;
 
 pub use de::{from_reader, from_slice, from_str};
+pub use ser::{to_string, to_vec, to_writer};
+
 pub use error::{Error, Result};

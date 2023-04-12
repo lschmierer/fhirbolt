@@ -1,4 +1,4 @@
-// Generated on 2023-04-12 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-13 by fhirbolt-codegen v0.1.0
 #[doc = "The age of the specific population."]
 #[derive(Debug, Clone, PartialEq)]
 pub enum PopulationAge {
@@ -28,48 +28,4 @@ pub struct Population {
     pub r#race: Option<Box<super::super::types::CodeableConcept>>,
     #[doc = "The existing physiological conditions of the specific population to which this applies."]
     pub r#physiological_condition: Option<Box<super::super::types::CodeableConcept>>,
-}
-impl serde::ser::Serialize for Population {
-    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
-    where
-        S: serde::ser::Serializer,
-    {
-        use serde::ser::SerializeMap;
-        fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
-            let _ctx = _ctx.borrow();
-            let mut state = serializer.serialize_map(None)?;
-            if let Some(some) = self.r#id.as_ref() {
-                state.serialize_entry("id", some)?;
-            }
-            if !self.r#extension.is_empty() {
-                state.serialize_entry("extension", &self.r#extension)?;
-            }
-            if !self.r#modifier_extension.is_empty() {
-                state.serialize_entry("modifierExtension", &self.r#modifier_extension)?;
-            }
-            if let Some(some) = self.r#age.as_ref() {
-                match some {
-                    PopulationAge::Range(ref value) => {
-                        state.serialize_entry("ageRange", value)?;
-                    }
-                    PopulationAge::CodeableConcept(ref value) => {
-                        state.serialize_entry("ageCodeableConcept", value)?;
-                    }
-                    PopulationAge::Invalid => {
-                        return Err(serde::ser::Error::custom("age is invalid"))
-                    }
-                }
-            }
-            if let Some(some) = self.r#gender.as_ref() {
-                state.serialize_entry("gender", some)?;
-            }
-            if let Some(some) = self.r#race.as_ref() {
-                state.serialize_entry("race", some)?;
-            }
-            if let Some(some) = self.r#physiological_condition.as_ref() {
-                state.serialize_entry("physiologicalCondition", some)?;
-            }
-            state.end()
-        })
-    }
 }

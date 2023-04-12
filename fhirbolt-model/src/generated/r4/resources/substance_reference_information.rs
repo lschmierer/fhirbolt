@@ -1,4 +1,4 @@
-// Generated on 2023-04-12 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-13 by fhirbolt-codegen v0.1.0
 #[doc = "Todo."]
 #[derive(Debug, Clone, PartialEq)]
 pub enum SubstanceReferenceInformationTargetAmount {
@@ -28,37 +28,6 @@ pub struct SubstanceReferenceInformationGene {
     #[doc = "Todo."]
     pub r#source: Vec<Box<super::super::types::Reference>>,
 }
-impl serde::ser::Serialize for SubstanceReferenceInformationGene {
-    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
-    where
-        S: serde::ser::Serializer,
-    {
-        use serde::ser::SerializeMap;
-        fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
-            let _ctx = _ctx.borrow();
-            let mut state = serializer.serialize_map(None)?;
-            if let Some(some) = self.r#id.as_ref() {
-                state.serialize_entry("id", some)?;
-            }
-            if !self.r#extension.is_empty() {
-                state.serialize_entry("extension", &self.r#extension)?;
-            }
-            if !self.r#modifier_extension.is_empty() {
-                state.serialize_entry("modifierExtension", &self.r#modifier_extension)?;
-            }
-            if let Some(some) = self.r#gene_sequence_origin.as_ref() {
-                state.serialize_entry("geneSequenceOrigin", some)?;
-            }
-            if let Some(some) = self.r#gene.as_ref() {
-                state.serialize_entry("gene", some)?;
-            }
-            if !self.r#source.is_empty() {
-                state.serialize_entry("source", &self.r#source)?;
-            }
-            state.end()
-        })
-    }
-}
 #[doc = "Todo."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub struct SubstanceReferenceInformationGeneElement {
@@ -74,37 +43,6 @@ pub struct SubstanceReferenceInformationGeneElement {
     pub r#element: Option<Box<super::super::types::Identifier>>,
     #[doc = "Todo."]
     pub r#source: Vec<Box<super::super::types::Reference>>,
-}
-impl serde::ser::Serialize for SubstanceReferenceInformationGeneElement {
-    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
-    where
-        S: serde::ser::Serializer,
-    {
-        use serde::ser::SerializeMap;
-        fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
-            let _ctx = _ctx.borrow();
-            let mut state = serializer.serialize_map(None)?;
-            if let Some(some) = self.r#id.as_ref() {
-                state.serialize_entry("id", some)?;
-            }
-            if !self.r#extension.is_empty() {
-                state.serialize_entry("extension", &self.r#extension)?;
-            }
-            if !self.r#modifier_extension.is_empty() {
-                state.serialize_entry("modifierExtension", &self.r#modifier_extension)?;
-            }
-            if let Some(some) = self.r#type.as_ref() {
-                state.serialize_entry("type", some)?;
-            }
-            if let Some(some) = self.r#element.as_ref() {
-                state.serialize_entry("element", some)?;
-            }
-            if !self.r#source.is_empty() {
-                state.serialize_entry("source", &self.r#source)?;
-            }
-            state.end()
-        })
-    }
 }
 #[doc = "Todo."]
 #[derive(Default, Debug, Clone, PartialEq)]
@@ -123,40 +61,6 @@ pub struct SubstanceReferenceInformationClassification {
     pub r#subtype: Vec<Box<super::super::types::CodeableConcept>>,
     #[doc = "Todo."]
     pub r#source: Vec<Box<super::super::types::Reference>>,
-}
-impl serde::ser::Serialize for SubstanceReferenceInformationClassification {
-    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
-    where
-        S: serde::ser::Serializer,
-    {
-        use serde::ser::SerializeMap;
-        fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
-            let _ctx = _ctx.borrow();
-            let mut state = serializer.serialize_map(None)?;
-            if let Some(some) = self.r#id.as_ref() {
-                state.serialize_entry("id", some)?;
-            }
-            if !self.r#extension.is_empty() {
-                state.serialize_entry("extension", &self.r#extension)?;
-            }
-            if !self.r#modifier_extension.is_empty() {
-                state.serialize_entry("modifierExtension", &self.r#modifier_extension)?;
-            }
-            if let Some(some) = self.r#domain.as_ref() {
-                state.serialize_entry("domain", some)?;
-            }
-            if let Some(some) = self.r#classification.as_ref() {
-                state.serialize_entry("classification", some)?;
-            }
-            if !self.r#subtype.is_empty() {
-                state.serialize_entry("subtype", &self.r#subtype)?;
-            }
-            if !self.r#source.is_empty() {
-                state.serialize_entry("source", &self.r#source)?;
-            }
-            state.end()
-        })
-    }
 }
 #[doc = "Todo."]
 #[derive(Default, Debug, Clone, PartialEq)]
@@ -183,80 +87,6 @@ pub struct SubstanceReferenceInformationTarget {
     pub r#amount_type: Option<Box<super::super::types::CodeableConcept>>,
     #[doc = "Todo."]
     pub r#source: Vec<Box<super::super::types::Reference>>,
-}
-impl serde::ser::Serialize for SubstanceReferenceInformationTarget {
-    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
-    where
-        S: serde::ser::Serializer,
-    {
-        use serde::ser::SerializeMap;
-        fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
-            let _ctx = _ctx.borrow();
-            let mut state = serializer.serialize_map(None)?;
-            if let Some(some) = self.r#id.as_ref() {
-                state.serialize_entry("id", some)?;
-            }
-            if !self.r#extension.is_empty() {
-                state.serialize_entry("extension", &self.r#extension)?;
-            }
-            if !self.r#modifier_extension.is_empty() {
-                state.serialize_entry("modifierExtension", &self.r#modifier_extension)?;
-            }
-            if let Some(some) = self.r#target.as_ref() {
-                state.serialize_entry("target", some)?;
-            }
-            if let Some(some) = self.r#type.as_ref() {
-                state.serialize_entry("type", some)?;
-            }
-            if let Some(some) = self.r#interaction.as_ref() {
-                state.serialize_entry("interaction", some)?;
-            }
-            if let Some(some) = self.r#organism.as_ref() {
-                state.serialize_entry("organism", some)?;
-            }
-            if let Some(some) = self.r#organism_type.as_ref() {
-                state.serialize_entry("organismType", some)?;
-            }
-            if let Some(some) = self.r#amount.as_ref() {
-                match some {
-                    SubstanceReferenceInformationTargetAmount::Quantity(ref value) => {
-                        state.serialize_entry("amountQuantity", value)?;
-                    }
-                    SubstanceReferenceInformationTargetAmount::Range(ref value) => {
-                        state.serialize_entry("amountRange", value)?;
-                    }
-                    SubstanceReferenceInformationTargetAmount::String(ref value) => {
-                        if _ctx.output_json {
-                            if let Some(some) = value.value.as_ref() {
-                                let some = Ok(some)?;
-                                state.serialize_entry("amountString", &some)?;
-                            }
-                            if value.id.is_some() || !value.extension.is_empty() {
-                                let primitive_element =
-                                    super::super::serde_helpers::PrimitiveElement {
-                                        id: value.id.as_ref(),
-                                        extension: &value.extension,
-                                    };
-                                state.serialize_entry("_amountString", &primitive_element)?;
-                            }
-                        } else {
-                            state.serialize_entry("amountString", value)?;
-                        }
-                    }
-                    SubstanceReferenceInformationTargetAmount::Invalid => {
-                        return Err(serde::ser::Error::custom("amount is invalid"))
-                    }
-                }
-            }
-            if let Some(some) = self.r#amount_type.as_ref() {
-                state.serialize_entry("amountType", some)?;
-            }
-            if !self.r#source.is_empty() {
-                state.serialize_entry("source", &self.r#source)?;
-            }
-            state.end()
-        })
-    }
 }
 #[doc = "Todo."]
 #[derive(Default, Debug, Clone, PartialEq)]
@@ -287,105 +117,4 @@ pub struct SubstanceReferenceInformation {
     pub r#classification: Vec<SubstanceReferenceInformationClassification>,
     #[doc = "Todo."]
     pub r#target: Vec<SubstanceReferenceInformationTarget>,
-}
-impl serde::ser::Serialize for SubstanceReferenceInformation {
-    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
-    where
-        S: serde::ser::Serializer,
-    {
-        use serde::ser::SerializeMap;
-        fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
-            let _ctx = _ctx.borrow();
-            let mut state = serializer.serialize_map(None)?;
-            state.serialize_entry("resourceType", "SubstanceReferenceInformation")?;
-            if let Some(some) = self.r#id.as_ref() {
-                state.serialize_entry("id", some)?;
-            }
-            if let Some(some) = self.r#meta.as_ref() {
-                state.serialize_entry("meta", some)?;
-            }
-            if _ctx.output_json {
-                if let Some(some) = self.r#implicit_rules.as_ref() {
-                    if let Some(some) = some.value.as_ref() {
-                        let some = Ok(some)?;
-                        state.serialize_entry("implicitRules", &some)?;
-                    }
-                    if some.id.is_some() || !some.extension.is_empty() {
-                        let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                            id: some.id.as_ref(),
-                            extension: &some.extension,
-                        };
-                        state.serialize_entry("_implicitRules", &primitive_element)?;
-                    }
-                }
-            } else {
-                if let Some(some) = self.r#implicit_rules.as_ref() {
-                    state.serialize_entry("implicitRules", some)?;
-                }
-            }
-            if _ctx.output_json {
-                if let Some(some) = self.r#language.as_ref() {
-                    if let Some(some) = some.value.as_ref() {
-                        let some = Ok(some)?;
-                        state.serialize_entry("language", &some)?;
-                    }
-                    if some.id.is_some() || !some.extension.is_empty() {
-                        let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                            id: some.id.as_ref(),
-                            extension: &some.extension,
-                        };
-                        state.serialize_entry("_language", &primitive_element)?;
-                    }
-                }
-            } else {
-                if let Some(some) = self.r#language.as_ref() {
-                    state.serialize_entry("language", some)?;
-                }
-            }
-            if let Some(some) = self.r#text.as_ref() {
-                state.serialize_entry("text", some)?;
-            }
-            if !self.r#contained.is_empty() {
-                state.serialize_entry("contained", &self.r#contained)?;
-            }
-            if !self.r#extension.is_empty() {
-                state.serialize_entry("extension", &self.r#extension)?;
-            }
-            if !self.r#modifier_extension.is_empty() {
-                state.serialize_entry("modifierExtension", &self.r#modifier_extension)?;
-            }
-            if _ctx.output_json {
-                if let Some(some) = self.r#comment.as_ref() {
-                    if let Some(some) = some.value.as_ref() {
-                        let some = Ok(some)?;
-                        state.serialize_entry("comment", &some)?;
-                    }
-                    if some.id.is_some() || !some.extension.is_empty() {
-                        let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                            id: some.id.as_ref(),
-                            extension: &some.extension,
-                        };
-                        state.serialize_entry("_comment", &primitive_element)?;
-                    }
-                }
-            } else {
-                if let Some(some) = self.r#comment.as_ref() {
-                    state.serialize_entry("comment", some)?;
-                }
-            }
-            if !self.r#gene.is_empty() {
-                state.serialize_entry("gene", &self.r#gene)?;
-            }
-            if !self.r#gene_element.is_empty() {
-                state.serialize_entry("geneElement", &self.r#gene_element)?;
-            }
-            if !self.r#classification.is_empty() {
-                state.serialize_entry("classification", &self.r#classification)?;
-            }
-            if !self.r#target.is_empty() {
-                state.serialize_entry("target", &self.r#target)?;
-            }
-            state.end()
-        })
-    }
 }

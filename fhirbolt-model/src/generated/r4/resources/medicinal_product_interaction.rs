@@ -1,4 +1,4 @@
-// Generated on 2023-04-12 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-13 by fhirbolt-codegen v0.1.0
 #[doc = "The specific medication, food or laboratory test that interacts."]
 #[derive(Debug, Clone, PartialEq)]
 pub enum MedicinalProductInteractionInteractantItem {
@@ -22,39 +22,6 @@ pub struct MedicinalProductInteractionInteractant {
     pub r#modifier_extension: Vec<Box<super::super::types::Extension>>,
     #[doc = "The specific medication, food or laboratory test that interacts."]
     pub r#item: MedicinalProductInteractionInteractantItem,
-}
-impl serde::ser::Serialize for MedicinalProductInteractionInteractant {
-    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
-    where
-        S: serde::ser::Serializer,
-    {
-        use serde::ser::SerializeMap;
-        fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
-            let _ctx = _ctx.borrow();
-            let mut state = serializer.serialize_map(None)?;
-            if let Some(some) = self.r#id.as_ref() {
-                state.serialize_entry("id", some)?;
-            }
-            if !self.r#extension.is_empty() {
-                state.serialize_entry("extension", &self.r#extension)?;
-            }
-            if !self.r#modifier_extension.is_empty() {
-                state.serialize_entry("modifierExtension", &self.r#modifier_extension)?;
-            }
-            match self.r#item {
-                MedicinalProductInteractionInteractantItem::Reference(ref value) => {
-                    state.serialize_entry("itemReference", value)?;
-                }
-                MedicinalProductInteractionInteractantItem::CodeableConcept(ref value) => {
-                    state.serialize_entry("itemCodeableConcept", value)?;
-                }
-                MedicinalProductInteractionInteractantItem::Invalid => {
-                    return Err(serde::ser::Error::custom("item is a required field"))
-                }
-            }
-            state.end()
-        })
-    }
 }
 #[doc = "The interactions of the medicinal product with other medicinal products, or other forms of interactions."]
 #[derive(Default, Debug, Clone, PartialEq)]
@@ -89,111 +56,4 @@ pub struct MedicinalProductInteraction {
     pub r#incidence: Option<Box<super::super::types::CodeableConcept>>,
     #[doc = "Actions for managing the interaction."]
     pub r#management: Option<Box<super::super::types::CodeableConcept>>,
-}
-impl serde::ser::Serialize for MedicinalProductInteraction {
-    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
-    where
-        S: serde::ser::Serializer,
-    {
-        use serde::ser::SerializeMap;
-        fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
-            let _ctx = _ctx.borrow();
-            let mut state = serializer.serialize_map(None)?;
-            state.serialize_entry("resourceType", "MedicinalProductInteraction")?;
-            if let Some(some) = self.r#id.as_ref() {
-                state.serialize_entry("id", some)?;
-            }
-            if let Some(some) = self.r#meta.as_ref() {
-                state.serialize_entry("meta", some)?;
-            }
-            if _ctx.output_json {
-                if let Some(some) = self.r#implicit_rules.as_ref() {
-                    if let Some(some) = some.value.as_ref() {
-                        let some = Ok(some)?;
-                        state.serialize_entry("implicitRules", &some)?;
-                    }
-                    if some.id.is_some() || !some.extension.is_empty() {
-                        let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                            id: some.id.as_ref(),
-                            extension: &some.extension,
-                        };
-                        state.serialize_entry("_implicitRules", &primitive_element)?;
-                    }
-                }
-            } else {
-                if let Some(some) = self.r#implicit_rules.as_ref() {
-                    state.serialize_entry("implicitRules", some)?;
-                }
-            }
-            if _ctx.output_json {
-                if let Some(some) = self.r#language.as_ref() {
-                    if let Some(some) = some.value.as_ref() {
-                        let some = Ok(some)?;
-                        state.serialize_entry("language", &some)?;
-                    }
-                    if some.id.is_some() || !some.extension.is_empty() {
-                        let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                            id: some.id.as_ref(),
-                            extension: &some.extension,
-                        };
-                        state.serialize_entry("_language", &primitive_element)?;
-                    }
-                }
-            } else {
-                if let Some(some) = self.r#language.as_ref() {
-                    state.serialize_entry("language", some)?;
-                }
-            }
-            if let Some(some) = self.r#text.as_ref() {
-                state.serialize_entry("text", some)?;
-            }
-            if !self.r#contained.is_empty() {
-                state.serialize_entry("contained", &self.r#contained)?;
-            }
-            if !self.r#extension.is_empty() {
-                state.serialize_entry("extension", &self.r#extension)?;
-            }
-            if !self.r#modifier_extension.is_empty() {
-                state.serialize_entry("modifierExtension", &self.r#modifier_extension)?;
-            }
-            if !self.r#subject.is_empty() {
-                state.serialize_entry("subject", &self.r#subject)?;
-            }
-            if _ctx.output_json {
-                if let Some(some) = self.r#description.as_ref() {
-                    if let Some(some) = some.value.as_ref() {
-                        let some = Ok(some)?;
-                        state.serialize_entry("description", &some)?;
-                    }
-                    if some.id.is_some() || !some.extension.is_empty() {
-                        let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                            id: some.id.as_ref(),
-                            extension: &some.extension,
-                        };
-                        state.serialize_entry("_description", &primitive_element)?;
-                    }
-                }
-            } else {
-                if let Some(some) = self.r#description.as_ref() {
-                    state.serialize_entry("description", some)?;
-                }
-            }
-            if !self.r#interactant.is_empty() {
-                state.serialize_entry("interactant", &self.r#interactant)?;
-            }
-            if let Some(some) = self.r#type.as_ref() {
-                state.serialize_entry("type", some)?;
-            }
-            if let Some(some) = self.r#effect.as_ref() {
-                state.serialize_entry("effect", some)?;
-            }
-            if let Some(some) = self.r#incidence.as_ref() {
-                state.serialize_entry("incidence", some)?;
-            }
-            if let Some(some) = self.r#management.as_ref() {
-                state.serialize_entry("management", some)?;
-            }
-            state.end()
-        })
-    }
 }

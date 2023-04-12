@@ -1,4 +1,4 @@
-// Generated on 2023-04-12 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-13 by fhirbolt-codegen v0.1.0
 #[doc = "Todo."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub struct SubstancePolymerMonomerSetStartingMaterial {
@@ -17,56 +17,6 @@ pub struct SubstancePolymerMonomerSetStartingMaterial {
     #[doc = "Todo."]
     pub r#amount: Option<Box<super::super::types::SubstanceAmount>>,
 }
-impl serde::ser::Serialize for SubstancePolymerMonomerSetStartingMaterial {
-    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
-    where
-        S: serde::ser::Serializer,
-    {
-        use serde::ser::SerializeMap;
-        fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
-            let _ctx = _ctx.borrow();
-            let mut state = serializer.serialize_map(None)?;
-            if let Some(some) = self.r#id.as_ref() {
-                state.serialize_entry("id", some)?;
-            }
-            if !self.r#extension.is_empty() {
-                state.serialize_entry("extension", &self.r#extension)?;
-            }
-            if !self.r#modifier_extension.is_empty() {
-                state.serialize_entry("modifierExtension", &self.r#modifier_extension)?;
-            }
-            if let Some(some) = self.r#material.as_ref() {
-                state.serialize_entry("material", some)?;
-            }
-            if let Some(some) = self.r#type.as_ref() {
-                state.serialize_entry("type", some)?;
-            }
-            if _ctx.output_json {
-                if let Some(some) = self.r#is_defining.as_ref() {
-                    if let Some(some) = some.value.as_ref() {
-                        let some = Ok(some)?;
-                        state.serialize_entry("isDefining", &some)?;
-                    }
-                    if some.id.is_some() || !some.extension.is_empty() {
-                        let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                            id: some.id.as_ref(),
-                            extension: &some.extension,
-                        };
-                        state.serialize_entry("_isDefining", &primitive_element)?;
-                    }
-                }
-            } else {
-                if let Some(some) = self.r#is_defining.as_ref() {
-                    state.serialize_entry("isDefining", some)?;
-                }
-            }
-            if let Some(some) = self.r#amount.as_ref() {
-                state.serialize_entry("amount", some)?;
-            }
-            state.end()
-        })
-    }
-}
 #[doc = "Todo."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub struct SubstancePolymerMonomerSet {
@@ -81,34 +31,6 @@ pub struct SubstancePolymerMonomerSet {
     #[doc = "Todo."]
     pub r#starting_material: Vec<SubstancePolymerMonomerSetStartingMaterial>,
 }
-impl serde::ser::Serialize for SubstancePolymerMonomerSet {
-    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
-    where
-        S: serde::ser::Serializer,
-    {
-        use serde::ser::SerializeMap;
-        fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
-            let _ctx = _ctx.borrow();
-            let mut state = serializer.serialize_map(None)?;
-            if let Some(some) = self.r#id.as_ref() {
-                state.serialize_entry("id", some)?;
-            }
-            if !self.r#extension.is_empty() {
-                state.serialize_entry("extension", &self.r#extension)?;
-            }
-            if !self.r#modifier_extension.is_empty() {
-                state.serialize_entry("modifierExtension", &self.r#modifier_extension)?;
-            }
-            if let Some(some) = self.r#ratio_type.as_ref() {
-                state.serialize_entry("ratioType", some)?;
-            }
-            if !self.r#starting_material.is_empty() {
-                state.serialize_entry("startingMaterial", &self.r#starting_material)?;
-            }
-            state.end()
-        })
-    }
-}
 #[doc = "Todo."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub struct SubstancePolymerRepeatRepeatUnitDegreeOfPolymerisation {
@@ -122,34 +44,6 @@ pub struct SubstancePolymerRepeatRepeatUnitDegreeOfPolymerisation {
     pub r#degree: Option<Box<super::super::types::CodeableConcept>>,
     #[doc = "Todo."]
     pub r#amount: Option<Box<super::super::types::SubstanceAmount>>,
-}
-impl serde::ser::Serialize for SubstancePolymerRepeatRepeatUnitDegreeOfPolymerisation {
-    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
-    where
-        S: serde::ser::Serializer,
-    {
-        use serde::ser::SerializeMap;
-        fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
-            let _ctx = _ctx.borrow();
-            let mut state = serializer.serialize_map(None)?;
-            if let Some(some) = self.r#id.as_ref() {
-                state.serialize_entry("id", some)?;
-            }
-            if !self.r#extension.is_empty() {
-                state.serialize_entry("extension", &self.r#extension)?;
-            }
-            if !self.r#modifier_extension.is_empty() {
-                state.serialize_entry("modifierExtension", &self.r#modifier_extension)?;
-            }
-            if let Some(some) = self.r#degree.as_ref() {
-                state.serialize_entry("degree", some)?;
-            }
-            if let Some(some) = self.r#amount.as_ref() {
-                state.serialize_entry("amount", some)?;
-            }
-            state.end()
-        })
-    }
 }
 #[doc = "Todo."]
 #[derive(Default, Debug, Clone, PartialEq)]
@@ -166,53 +60,6 @@ pub struct SubstancePolymerRepeatRepeatUnitStructuralRepresentation {
     pub r#representation: Option<super::super::types::String>,
     #[doc = "Todo."]
     pub r#attachment: Option<Box<super::super::types::Attachment>>,
-}
-impl serde::ser::Serialize for SubstancePolymerRepeatRepeatUnitStructuralRepresentation {
-    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
-    where
-        S: serde::ser::Serializer,
-    {
-        use serde::ser::SerializeMap;
-        fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
-            let _ctx = _ctx.borrow();
-            let mut state = serializer.serialize_map(None)?;
-            if let Some(some) = self.r#id.as_ref() {
-                state.serialize_entry("id", some)?;
-            }
-            if !self.r#extension.is_empty() {
-                state.serialize_entry("extension", &self.r#extension)?;
-            }
-            if !self.r#modifier_extension.is_empty() {
-                state.serialize_entry("modifierExtension", &self.r#modifier_extension)?;
-            }
-            if let Some(some) = self.r#type.as_ref() {
-                state.serialize_entry("type", some)?;
-            }
-            if _ctx.output_json {
-                if let Some(some) = self.r#representation.as_ref() {
-                    if let Some(some) = some.value.as_ref() {
-                        let some = Ok(some)?;
-                        state.serialize_entry("representation", &some)?;
-                    }
-                    if some.id.is_some() || !some.extension.is_empty() {
-                        let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                            id: some.id.as_ref(),
-                            extension: &some.extension,
-                        };
-                        state.serialize_entry("_representation", &primitive_element)?;
-                    }
-                }
-            } else {
-                if let Some(some) = self.r#representation.as_ref() {
-                    state.serialize_entry("representation", some)?;
-                }
-            }
-            if let Some(some) = self.r#attachment.as_ref() {
-                state.serialize_entry("attachment", some)?;
-            }
-            state.end()
-        })
-    }
 }
 #[doc = "Todo."]
 #[derive(Default, Debug, Clone, PartialEq)]
@@ -234,63 +81,6 @@ pub struct SubstancePolymerRepeatRepeatUnit {
     #[doc = "Todo."]
     pub r#structural_representation: Vec<SubstancePolymerRepeatRepeatUnitStructuralRepresentation>,
 }
-impl serde::ser::Serialize for SubstancePolymerRepeatRepeatUnit {
-    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
-    where
-        S: serde::ser::Serializer,
-    {
-        use serde::ser::SerializeMap;
-        fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
-            let _ctx = _ctx.borrow();
-            let mut state = serializer.serialize_map(None)?;
-            if let Some(some) = self.r#id.as_ref() {
-                state.serialize_entry("id", some)?;
-            }
-            if !self.r#extension.is_empty() {
-                state.serialize_entry("extension", &self.r#extension)?;
-            }
-            if !self.r#modifier_extension.is_empty() {
-                state.serialize_entry("modifierExtension", &self.r#modifier_extension)?;
-            }
-            if let Some(some) = self.r#orientation_of_polymerisation.as_ref() {
-                state.serialize_entry("orientationOfPolymerisation", some)?;
-            }
-            if _ctx.output_json {
-                if let Some(some) = self.r#repeat_unit.as_ref() {
-                    if let Some(some) = some.value.as_ref() {
-                        let some = Ok(some)?;
-                        state.serialize_entry("repeatUnit", &some)?;
-                    }
-                    if some.id.is_some() || !some.extension.is_empty() {
-                        let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                            id: some.id.as_ref(),
-                            extension: &some.extension,
-                        };
-                        state.serialize_entry("_repeatUnit", &primitive_element)?;
-                    }
-                }
-            } else {
-                if let Some(some) = self.r#repeat_unit.as_ref() {
-                    state.serialize_entry("repeatUnit", some)?;
-                }
-            }
-            if let Some(some) = self.r#amount.as_ref() {
-                state.serialize_entry("amount", some)?;
-            }
-            if !self.r#degree_of_polymerisation.is_empty() {
-                state
-                    .serialize_entry("degreeOfPolymerisation", &self.r#degree_of_polymerisation)?;
-            }
-            if !self.r#structural_representation.is_empty() {
-                state.serialize_entry(
-                    "structuralRepresentation",
-                    &self.r#structural_representation,
-                )?;
-            }
-            state.end()
-        })
-    }
-}
 #[doc = "Todo."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub struct SubstancePolymerRepeat {
@@ -308,72 +98,6 @@ pub struct SubstancePolymerRepeat {
     pub r#repeat_unit_amount_type: Option<Box<super::super::types::CodeableConcept>>,
     #[doc = "Todo."]
     pub r#repeat_unit: Vec<SubstancePolymerRepeatRepeatUnit>,
-}
-impl serde::ser::Serialize for SubstancePolymerRepeat {
-    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
-    where
-        S: serde::ser::Serializer,
-    {
-        use serde::ser::SerializeMap;
-        fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
-            let _ctx = _ctx.borrow();
-            let mut state = serializer.serialize_map(None)?;
-            if let Some(some) = self.r#id.as_ref() {
-                state.serialize_entry("id", some)?;
-            }
-            if !self.r#extension.is_empty() {
-                state.serialize_entry("extension", &self.r#extension)?;
-            }
-            if !self.r#modifier_extension.is_empty() {
-                state.serialize_entry("modifierExtension", &self.r#modifier_extension)?;
-            }
-            if _ctx.output_json {
-                if let Some(some) = self.r#number_of_units.as_ref() {
-                    if let Some(some) = some.value.as_ref() {
-                        let some = Ok(some)?;
-                        state.serialize_entry("numberOfUnits", &some)?;
-                    }
-                    if some.id.is_some() || !some.extension.is_empty() {
-                        let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                            id: some.id.as_ref(),
-                            extension: &some.extension,
-                        };
-                        state.serialize_entry("_numberOfUnits", &primitive_element)?;
-                    }
-                }
-            } else {
-                if let Some(some) = self.r#number_of_units.as_ref() {
-                    state.serialize_entry("numberOfUnits", some)?;
-                }
-            }
-            if _ctx.output_json {
-                if let Some(some) = self.r#average_molecular_formula.as_ref() {
-                    if let Some(some) = some.value.as_ref() {
-                        let some = Ok(some)?;
-                        state.serialize_entry("averageMolecularFormula", &some)?;
-                    }
-                    if some.id.is_some() || !some.extension.is_empty() {
-                        let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                            id: some.id.as_ref(),
-                            extension: &some.extension,
-                        };
-                        state.serialize_entry("_averageMolecularFormula", &primitive_element)?;
-                    }
-                }
-            } else {
-                if let Some(some) = self.r#average_molecular_formula.as_ref() {
-                    state.serialize_entry("averageMolecularFormula", some)?;
-                }
-            }
-            if let Some(some) = self.r#repeat_unit_amount_type.as_ref() {
-                state.serialize_entry("repeatUnitAmountType", some)?;
-            }
-            if !self.r#repeat_unit.is_empty() {
-                state.serialize_entry("repeatUnit", &self.r#repeat_unit)?;
-            }
-            state.end()
-        })
-    }
 }
 #[doc = "Todo."]
 #[derive(Default, Debug, Clone, PartialEq)]
@@ -406,127 +130,4 @@ pub struct SubstancePolymer {
     pub r#monomer_set: Vec<SubstancePolymerMonomerSet>,
     #[doc = "Todo."]
     pub r#repeat: Vec<SubstancePolymerRepeat>,
-}
-impl serde::ser::Serialize for SubstancePolymer {
-    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
-    where
-        S: serde::ser::Serializer,
-    {
-        use serde::ser::SerializeMap;
-        fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
-            let _ctx = _ctx.borrow();
-            let mut state = serializer.serialize_map(None)?;
-            state.serialize_entry("resourceType", "SubstancePolymer")?;
-            if let Some(some) = self.r#id.as_ref() {
-                state.serialize_entry("id", some)?;
-            }
-            if let Some(some) = self.r#meta.as_ref() {
-                state.serialize_entry("meta", some)?;
-            }
-            if _ctx.output_json {
-                if let Some(some) = self.r#implicit_rules.as_ref() {
-                    if let Some(some) = some.value.as_ref() {
-                        let some = Ok(some)?;
-                        state.serialize_entry("implicitRules", &some)?;
-                    }
-                    if some.id.is_some() || !some.extension.is_empty() {
-                        let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                            id: some.id.as_ref(),
-                            extension: &some.extension,
-                        };
-                        state.serialize_entry("_implicitRules", &primitive_element)?;
-                    }
-                }
-            } else {
-                if let Some(some) = self.r#implicit_rules.as_ref() {
-                    state.serialize_entry("implicitRules", some)?;
-                }
-            }
-            if _ctx.output_json {
-                if let Some(some) = self.r#language.as_ref() {
-                    if let Some(some) = some.value.as_ref() {
-                        let some = Ok(some)?;
-                        state.serialize_entry("language", &some)?;
-                    }
-                    if some.id.is_some() || !some.extension.is_empty() {
-                        let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                            id: some.id.as_ref(),
-                            extension: &some.extension,
-                        };
-                        state.serialize_entry("_language", &primitive_element)?;
-                    }
-                }
-            } else {
-                if let Some(some) = self.r#language.as_ref() {
-                    state.serialize_entry("language", some)?;
-                }
-            }
-            if let Some(some) = self.r#text.as_ref() {
-                state.serialize_entry("text", some)?;
-            }
-            if !self.r#contained.is_empty() {
-                state.serialize_entry("contained", &self.r#contained)?;
-            }
-            if !self.r#extension.is_empty() {
-                state.serialize_entry("extension", &self.r#extension)?;
-            }
-            if !self.r#modifier_extension.is_empty() {
-                state.serialize_entry("modifierExtension", &self.r#modifier_extension)?;
-            }
-            if let Some(some) = self.r#class.as_ref() {
-                state.serialize_entry("class", some)?;
-            }
-            if let Some(some) = self.r#geometry.as_ref() {
-                state.serialize_entry("geometry", some)?;
-            }
-            if !self.r#copolymer_connectivity.is_empty() {
-                state.serialize_entry("copolymerConnectivity", &self.r#copolymer_connectivity)?;
-            }
-            if _ctx.output_json {
-                if !self.r#modification.is_empty() {
-                    let values = self
-                        .r#modification
-                        .iter()
-                        .map(|v| &v.value)
-                        .map(|v| v.as_ref().map(|some| Ok(some)).transpose())
-                        .collect::<Result<Vec<_>, _>>()?;
-                    if values.iter().any(|v| v.is_some()) {
-                        state.serialize_entry("modification", &values)?;
-                    }
-                    let requires_elements = self
-                        .r#modification
-                        .iter()
-                        .any(|e| e.id.is_some() || !e.extension.is_empty());
-                    if requires_elements {
-                        let primitive_elements: Vec<_> = self
-                            .r#modification
-                            .iter()
-                            .map(|e| {
-                                if e.id.is_some() || !e.extension.is_empty() {
-                                    Some(super::super::serde_helpers::PrimitiveElement {
-                                        id: e.id.as_ref(),
-                                        extension: &e.extension,
-                                    })
-                                } else {
-                                    None
-                                }
-                            })
-                            .collect();
-                        state.serialize_entry("_modification", &primitive_elements)?;
-                    }
-                }
-            } else {
-                if !self.r#modification.is_empty() {
-                    state.serialize_entry("modification", &self.r#modification)?;
-                }
-            }
-            if !self.r#monomer_set.is_empty() {
-                state.serialize_entry("monomerSet", &self.r#monomer_set)?;
-            }
-            if !self.r#repeat.is_empty() {
-                state.serialize_entry("repeat", &self.r#repeat)?;
-            }
-            state.end()
-        })
-    }
 }

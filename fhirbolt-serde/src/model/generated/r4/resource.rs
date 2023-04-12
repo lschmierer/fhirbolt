@@ -1,6 +1,477 @@
-// Generated on 2023-04-12 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-13 by fhirbolt-codegen v0.1.0
 impl crate::Resource for fhirbolt_model::r4::Resource {
     const FHIR_RELEASE: crate::FhirRelease = crate::FhirRelease::R4;
+}
+impl serde::ser::Serialize for crate::SerializationContext<&fhirbolt_model::r4::Resource> {
+    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+    where
+        S: serde::ser::Serializer,
+    {
+        match self.value {
+            fhirbolt_model::r4::Resource::Account(r) => {
+                self.with_context(r, |ctx| ctx.serialize(serializer))
+            }
+            fhirbolt_model::r4::Resource::ActivityDefinition(r) => {
+                self.with_context(r, |ctx| ctx.serialize(serializer))
+            }
+            fhirbolt_model::r4::Resource::AdverseEvent(r) => {
+                self.with_context(r, |ctx| ctx.serialize(serializer))
+            }
+            fhirbolt_model::r4::Resource::AllergyIntolerance(r) => {
+                self.with_context(r, |ctx| ctx.serialize(serializer))
+            }
+            fhirbolt_model::r4::Resource::Appointment(r) => {
+                self.with_context(r, |ctx| ctx.serialize(serializer))
+            }
+            fhirbolt_model::r4::Resource::AppointmentResponse(r) => {
+                self.with_context(r, |ctx| ctx.serialize(serializer))
+            }
+            fhirbolt_model::r4::Resource::AuditEvent(r) => {
+                self.with_context(r, |ctx| ctx.serialize(serializer))
+            }
+            fhirbolt_model::r4::Resource::Basic(r) => {
+                self.with_context(r, |ctx| ctx.serialize(serializer))
+            }
+            fhirbolt_model::r4::Resource::Binary(r) => {
+                self.with_context(r, |ctx| ctx.serialize(serializer))
+            }
+            fhirbolt_model::r4::Resource::BiologicallyDerivedProduct(r) => {
+                self.with_context(r, |ctx| ctx.serialize(serializer))
+            }
+            fhirbolt_model::r4::Resource::BodyStructure(r) => {
+                self.with_context(r, |ctx| ctx.serialize(serializer))
+            }
+            fhirbolt_model::r4::Resource::Bundle(r) => {
+                self.with_context(r, |ctx| ctx.serialize(serializer))
+            }
+            fhirbolt_model::r4::Resource::CapabilityStatement(r) => {
+                self.with_context(r, |ctx| ctx.serialize(serializer))
+            }
+            fhirbolt_model::r4::Resource::CarePlan(r) => {
+                self.with_context(r, |ctx| ctx.serialize(serializer))
+            }
+            fhirbolt_model::r4::Resource::CareTeam(r) => {
+                self.with_context(r, |ctx| ctx.serialize(serializer))
+            }
+            fhirbolt_model::r4::Resource::CatalogEntry(r) => {
+                self.with_context(r, |ctx| ctx.serialize(serializer))
+            }
+            fhirbolt_model::r4::Resource::ChargeItem(r) => {
+                self.with_context(r, |ctx| ctx.serialize(serializer))
+            }
+            fhirbolt_model::r4::Resource::ChargeItemDefinition(r) => {
+                self.with_context(r, |ctx| ctx.serialize(serializer))
+            }
+            fhirbolt_model::r4::Resource::Claim(r) => {
+                self.with_context(r, |ctx| ctx.serialize(serializer))
+            }
+            fhirbolt_model::r4::Resource::ClaimResponse(r) => {
+                self.with_context(r, |ctx| ctx.serialize(serializer))
+            }
+            fhirbolt_model::r4::Resource::ClinicalImpression(r) => {
+                self.with_context(r, |ctx| ctx.serialize(serializer))
+            }
+            fhirbolt_model::r4::Resource::CodeSystem(r) => {
+                self.with_context(r, |ctx| ctx.serialize(serializer))
+            }
+            fhirbolt_model::r4::Resource::Communication(r) => {
+                self.with_context(r, |ctx| ctx.serialize(serializer))
+            }
+            fhirbolt_model::r4::Resource::CommunicationRequest(r) => {
+                self.with_context(r, |ctx| ctx.serialize(serializer))
+            }
+            fhirbolt_model::r4::Resource::CompartmentDefinition(r) => {
+                self.with_context(r, |ctx| ctx.serialize(serializer))
+            }
+            fhirbolt_model::r4::Resource::Composition(r) => {
+                self.with_context(r, |ctx| ctx.serialize(serializer))
+            }
+            fhirbolt_model::r4::Resource::ConceptMap(r) => {
+                self.with_context(r, |ctx| ctx.serialize(serializer))
+            }
+            fhirbolt_model::r4::Resource::Condition(r) => {
+                self.with_context(r, |ctx| ctx.serialize(serializer))
+            }
+            fhirbolt_model::r4::Resource::Consent(r) => {
+                self.with_context(r, |ctx| ctx.serialize(serializer))
+            }
+            fhirbolt_model::r4::Resource::Contract(r) => {
+                self.with_context(r, |ctx| ctx.serialize(serializer))
+            }
+            fhirbolt_model::r4::Resource::Coverage(r) => {
+                self.with_context(r, |ctx| ctx.serialize(serializer))
+            }
+            fhirbolt_model::r4::Resource::CoverageEligibilityRequest(r) => {
+                self.with_context(r, |ctx| ctx.serialize(serializer))
+            }
+            fhirbolt_model::r4::Resource::CoverageEligibilityResponse(r) => {
+                self.with_context(r, |ctx| ctx.serialize(serializer))
+            }
+            fhirbolt_model::r4::Resource::DetectedIssue(r) => {
+                self.with_context(r, |ctx| ctx.serialize(serializer))
+            }
+            fhirbolt_model::r4::Resource::Device(r) => {
+                self.with_context(r, |ctx| ctx.serialize(serializer))
+            }
+            fhirbolt_model::r4::Resource::DeviceDefinition(r) => {
+                self.with_context(r, |ctx| ctx.serialize(serializer))
+            }
+            fhirbolt_model::r4::Resource::DeviceMetric(r) => {
+                self.with_context(r, |ctx| ctx.serialize(serializer))
+            }
+            fhirbolt_model::r4::Resource::DeviceRequest(r) => {
+                self.with_context(r, |ctx| ctx.serialize(serializer))
+            }
+            fhirbolt_model::r4::Resource::DeviceUseStatement(r) => {
+                self.with_context(r, |ctx| ctx.serialize(serializer))
+            }
+            fhirbolt_model::r4::Resource::DiagnosticReport(r) => {
+                self.with_context(r, |ctx| ctx.serialize(serializer))
+            }
+            fhirbolt_model::r4::Resource::DocumentManifest(r) => {
+                self.with_context(r, |ctx| ctx.serialize(serializer))
+            }
+            fhirbolt_model::r4::Resource::DocumentReference(r) => {
+                self.with_context(r, |ctx| ctx.serialize(serializer))
+            }
+            fhirbolt_model::r4::Resource::EffectEvidenceSynthesis(r) => {
+                self.with_context(r, |ctx| ctx.serialize(serializer))
+            }
+            fhirbolt_model::r4::Resource::Encounter(r) => {
+                self.with_context(r, |ctx| ctx.serialize(serializer))
+            }
+            fhirbolt_model::r4::Resource::Endpoint(r) => {
+                self.with_context(r, |ctx| ctx.serialize(serializer))
+            }
+            fhirbolt_model::r4::Resource::EnrollmentRequest(r) => {
+                self.with_context(r, |ctx| ctx.serialize(serializer))
+            }
+            fhirbolt_model::r4::Resource::EnrollmentResponse(r) => {
+                self.with_context(r, |ctx| ctx.serialize(serializer))
+            }
+            fhirbolt_model::r4::Resource::EpisodeOfCare(r) => {
+                self.with_context(r, |ctx| ctx.serialize(serializer))
+            }
+            fhirbolt_model::r4::Resource::EventDefinition(r) => {
+                self.with_context(r, |ctx| ctx.serialize(serializer))
+            }
+            fhirbolt_model::r4::Resource::Evidence(r) => {
+                self.with_context(r, |ctx| ctx.serialize(serializer))
+            }
+            fhirbolt_model::r4::Resource::EvidenceVariable(r) => {
+                self.with_context(r, |ctx| ctx.serialize(serializer))
+            }
+            fhirbolt_model::r4::Resource::ExampleScenario(r) => {
+                self.with_context(r, |ctx| ctx.serialize(serializer))
+            }
+            fhirbolt_model::r4::Resource::ExplanationOfBenefit(r) => {
+                self.with_context(r, |ctx| ctx.serialize(serializer))
+            }
+            fhirbolt_model::r4::Resource::FamilyMemberHistory(r) => {
+                self.with_context(r, |ctx| ctx.serialize(serializer))
+            }
+            fhirbolt_model::r4::Resource::Flag(r) => {
+                self.with_context(r, |ctx| ctx.serialize(serializer))
+            }
+            fhirbolt_model::r4::Resource::Goal(r) => {
+                self.with_context(r, |ctx| ctx.serialize(serializer))
+            }
+            fhirbolt_model::r4::Resource::GraphDefinition(r) => {
+                self.with_context(r, |ctx| ctx.serialize(serializer))
+            }
+            fhirbolt_model::r4::Resource::Group(r) => {
+                self.with_context(r, |ctx| ctx.serialize(serializer))
+            }
+            fhirbolt_model::r4::Resource::GuidanceResponse(r) => {
+                self.with_context(r, |ctx| ctx.serialize(serializer))
+            }
+            fhirbolt_model::r4::Resource::HealthcareService(r) => {
+                self.with_context(r, |ctx| ctx.serialize(serializer))
+            }
+            fhirbolt_model::r4::Resource::ImagingStudy(r) => {
+                self.with_context(r, |ctx| ctx.serialize(serializer))
+            }
+            fhirbolt_model::r4::Resource::Immunization(r) => {
+                self.with_context(r, |ctx| ctx.serialize(serializer))
+            }
+            fhirbolt_model::r4::Resource::ImmunizationEvaluation(r) => {
+                self.with_context(r, |ctx| ctx.serialize(serializer))
+            }
+            fhirbolt_model::r4::Resource::ImmunizationRecommendation(r) => {
+                self.with_context(r, |ctx| ctx.serialize(serializer))
+            }
+            fhirbolt_model::r4::Resource::ImplementationGuide(r) => {
+                self.with_context(r, |ctx| ctx.serialize(serializer))
+            }
+            fhirbolt_model::r4::Resource::InsurancePlan(r) => {
+                self.with_context(r, |ctx| ctx.serialize(serializer))
+            }
+            fhirbolt_model::r4::Resource::Invoice(r) => {
+                self.with_context(r, |ctx| ctx.serialize(serializer))
+            }
+            fhirbolt_model::r4::Resource::Library(r) => {
+                self.with_context(r, |ctx| ctx.serialize(serializer))
+            }
+            fhirbolt_model::r4::Resource::Linkage(r) => {
+                self.with_context(r, |ctx| ctx.serialize(serializer))
+            }
+            fhirbolt_model::r4::Resource::List(r) => {
+                self.with_context(r, |ctx| ctx.serialize(serializer))
+            }
+            fhirbolt_model::r4::Resource::Location(r) => {
+                self.with_context(r, |ctx| ctx.serialize(serializer))
+            }
+            fhirbolt_model::r4::Resource::Measure(r) => {
+                self.with_context(r, |ctx| ctx.serialize(serializer))
+            }
+            fhirbolt_model::r4::Resource::MeasureReport(r) => {
+                self.with_context(r, |ctx| ctx.serialize(serializer))
+            }
+            fhirbolt_model::r4::Resource::Media(r) => {
+                self.with_context(r, |ctx| ctx.serialize(serializer))
+            }
+            fhirbolt_model::r4::Resource::Medication(r) => {
+                self.with_context(r, |ctx| ctx.serialize(serializer))
+            }
+            fhirbolt_model::r4::Resource::MedicationAdministration(r) => {
+                self.with_context(r, |ctx| ctx.serialize(serializer))
+            }
+            fhirbolt_model::r4::Resource::MedicationDispense(r) => {
+                self.with_context(r, |ctx| ctx.serialize(serializer))
+            }
+            fhirbolt_model::r4::Resource::MedicationKnowledge(r) => {
+                self.with_context(r, |ctx| ctx.serialize(serializer))
+            }
+            fhirbolt_model::r4::Resource::MedicationRequest(r) => {
+                self.with_context(r, |ctx| ctx.serialize(serializer))
+            }
+            fhirbolt_model::r4::Resource::MedicationStatement(r) => {
+                self.with_context(r, |ctx| ctx.serialize(serializer))
+            }
+            fhirbolt_model::r4::Resource::MedicinalProduct(r) => {
+                self.with_context(r, |ctx| ctx.serialize(serializer))
+            }
+            fhirbolt_model::r4::Resource::MedicinalProductAuthorization(r) => {
+                self.with_context(r, |ctx| ctx.serialize(serializer))
+            }
+            fhirbolt_model::r4::Resource::MedicinalProductContraindication(r) => {
+                self.with_context(r, |ctx| ctx.serialize(serializer))
+            }
+            fhirbolt_model::r4::Resource::MedicinalProductIndication(r) => {
+                self.with_context(r, |ctx| ctx.serialize(serializer))
+            }
+            fhirbolt_model::r4::Resource::MedicinalProductIngredient(r) => {
+                self.with_context(r, |ctx| ctx.serialize(serializer))
+            }
+            fhirbolt_model::r4::Resource::MedicinalProductInteraction(r) => {
+                self.with_context(r, |ctx| ctx.serialize(serializer))
+            }
+            fhirbolt_model::r4::Resource::MedicinalProductManufactured(r) => {
+                self.with_context(r, |ctx| ctx.serialize(serializer))
+            }
+            fhirbolt_model::r4::Resource::MedicinalProductPackaged(r) => {
+                self.with_context(r, |ctx| ctx.serialize(serializer))
+            }
+            fhirbolt_model::r4::Resource::MedicinalProductPharmaceutical(r) => {
+                self.with_context(r, |ctx| ctx.serialize(serializer))
+            }
+            fhirbolt_model::r4::Resource::MedicinalProductUndesirableEffect(r) => {
+                self.with_context(r, |ctx| ctx.serialize(serializer))
+            }
+            fhirbolt_model::r4::Resource::MessageDefinition(r) => {
+                self.with_context(r, |ctx| ctx.serialize(serializer))
+            }
+            fhirbolt_model::r4::Resource::MessageHeader(r) => {
+                self.with_context(r, |ctx| ctx.serialize(serializer))
+            }
+            fhirbolt_model::r4::Resource::MolecularSequence(r) => {
+                self.with_context(r, |ctx| ctx.serialize(serializer))
+            }
+            fhirbolt_model::r4::Resource::NamingSystem(r) => {
+                self.with_context(r, |ctx| ctx.serialize(serializer))
+            }
+            fhirbolt_model::r4::Resource::NutritionOrder(r) => {
+                self.with_context(r, |ctx| ctx.serialize(serializer))
+            }
+            fhirbolt_model::r4::Resource::Observation(r) => {
+                self.with_context(r, |ctx| ctx.serialize(serializer))
+            }
+            fhirbolt_model::r4::Resource::ObservationDefinition(r) => {
+                self.with_context(r, |ctx| ctx.serialize(serializer))
+            }
+            fhirbolt_model::r4::Resource::OperationDefinition(r) => {
+                self.with_context(r, |ctx| ctx.serialize(serializer))
+            }
+            fhirbolt_model::r4::Resource::OperationOutcome(r) => {
+                self.with_context(r, |ctx| ctx.serialize(serializer))
+            }
+            fhirbolt_model::r4::Resource::Organization(r) => {
+                self.with_context(r, |ctx| ctx.serialize(serializer))
+            }
+            fhirbolt_model::r4::Resource::OrganizationAffiliation(r) => {
+                self.with_context(r, |ctx| ctx.serialize(serializer))
+            }
+            fhirbolt_model::r4::Resource::Parameters(r) => {
+                self.with_context(r, |ctx| ctx.serialize(serializer))
+            }
+            fhirbolt_model::r4::Resource::Patient(r) => {
+                self.with_context(r, |ctx| ctx.serialize(serializer))
+            }
+            fhirbolt_model::r4::Resource::PaymentNotice(r) => {
+                self.with_context(r, |ctx| ctx.serialize(serializer))
+            }
+            fhirbolt_model::r4::Resource::PaymentReconciliation(r) => {
+                self.with_context(r, |ctx| ctx.serialize(serializer))
+            }
+            fhirbolt_model::r4::Resource::Person(r) => {
+                self.with_context(r, |ctx| ctx.serialize(serializer))
+            }
+            fhirbolt_model::r4::Resource::PlanDefinition(r) => {
+                self.with_context(r, |ctx| ctx.serialize(serializer))
+            }
+            fhirbolt_model::r4::Resource::Practitioner(r) => {
+                self.with_context(r, |ctx| ctx.serialize(serializer))
+            }
+            fhirbolt_model::r4::Resource::PractitionerRole(r) => {
+                self.with_context(r, |ctx| ctx.serialize(serializer))
+            }
+            fhirbolt_model::r4::Resource::Procedure(r) => {
+                self.with_context(r, |ctx| ctx.serialize(serializer))
+            }
+            fhirbolt_model::r4::Resource::Provenance(r) => {
+                self.with_context(r, |ctx| ctx.serialize(serializer))
+            }
+            fhirbolt_model::r4::Resource::Questionnaire(r) => {
+                self.with_context(r, |ctx| ctx.serialize(serializer))
+            }
+            fhirbolt_model::r4::Resource::QuestionnaireResponse(r) => {
+                self.with_context(r, |ctx| ctx.serialize(serializer))
+            }
+            fhirbolt_model::r4::Resource::RelatedPerson(r) => {
+                self.with_context(r, |ctx| ctx.serialize(serializer))
+            }
+            fhirbolt_model::r4::Resource::RequestGroup(r) => {
+                self.with_context(r, |ctx| ctx.serialize(serializer))
+            }
+            fhirbolt_model::r4::Resource::ResearchDefinition(r) => {
+                self.with_context(r, |ctx| ctx.serialize(serializer))
+            }
+            fhirbolt_model::r4::Resource::ResearchElementDefinition(r) => {
+                self.with_context(r, |ctx| ctx.serialize(serializer))
+            }
+            fhirbolt_model::r4::Resource::ResearchStudy(r) => {
+                self.with_context(r, |ctx| ctx.serialize(serializer))
+            }
+            fhirbolt_model::r4::Resource::ResearchSubject(r) => {
+                self.with_context(r, |ctx| ctx.serialize(serializer))
+            }
+            fhirbolt_model::r4::Resource::RiskAssessment(r) => {
+                self.with_context(r, |ctx| ctx.serialize(serializer))
+            }
+            fhirbolt_model::r4::Resource::RiskEvidenceSynthesis(r) => {
+                self.with_context(r, |ctx| ctx.serialize(serializer))
+            }
+            fhirbolt_model::r4::Resource::Schedule(r) => {
+                self.with_context(r, |ctx| ctx.serialize(serializer))
+            }
+            fhirbolt_model::r4::Resource::SearchParameter(r) => {
+                self.with_context(r, |ctx| ctx.serialize(serializer))
+            }
+            fhirbolt_model::r4::Resource::ServiceRequest(r) => {
+                self.with_context(r, |ctx| ctx.serialize(serializer))
+            }
+            fhirbolt_model::r4::Resource::Slot(r) => {
+                self.with_context(r, |ctx| ctx.serialize(serializer))
+            }
+            fhirbolt_model::r4::Resource::Specimen(r) => {
+                self.with_context(r, |ctx| ctx.serialize(serializer))
+            }
+            fhirbolt_model::r4::Resource::SpecimenDefinition(r) => {
+                self.with_context(r, |ctx| ctx.serialize(serializer))
+            }
+            fhirbolt_model::r4::Resource::StructureDefinition(r) => {
+                self.with_context(r, |ctx| ctx.serialize(serializer))
+            }
+            fhirbolt_model::r4::Resource::StructureMap(r) => {
+                self.with_context(r, |ctx| ctx.serialize(serializer))
+            }
+            fhirbolt_model::r4::Resource::Subscription(r) => {
+                self.with_context(r, |ctx| ctx.serialize(serializer))
+            }
+            fhirbolt_model::r4::Resource::Substance(r) => {
+                self.with_context(r, |ctx| ctx.serialize(serializer))
+            }
+            fhirbolt_model::r4::Resource::SubstanceNucleicAcid(r) => {
+                self.with_context(r, |ctx| ctx.serialize(serializer))
+            }
+            fhirbolt_model::r4::Resource::SubstancePolymer(r) => {
+                self.with_context(r, |ctx| ctx.serialize(serializer))
+            }
+            fhirbolt_model::r4::Resource::SubstanceProtein(r) => {
+                self.with_context(r, |ctx| ctx.serialize(serializer))
+            }
+            fhirbolt_model::r4::Resource::SubstanceReferenceInformation(r) => {
+                self.with_context(r, |ctx| ctx.serialize(serializer))
+            }
+            fhirbolt_model::r4::Resource::SubstanceSourceMaterial(r) => {
+                self.with_context(r, |ctx| ctx.serialize(serializer))
+            }
+            fhirbolt_model::r4::Resource::SubstanceSpecification(r) => {
+                self.with_context(r, |ctx| ctx.serialize(serializer))
+            }
+            fhirbolt_model::r4::Resource::SupplyDelivery(r) => {
+                self.with_context(r, |ctx| ctx.serialize(serializer))
+            }
+            fhirbolt_model::r4::Resource::SupplyRequest(r) => {
+                self.with_context(r, |ctx| ctx.serialize(serializer))
+            }
+            fhirbolt_model::r4::Resource::Task(r) => {
+                self.with_context(r, |ctx| ctx.serialize(serializer))
+            }
+            fhirbolt_model::r4::Resource::TerminologyCapabilities(r) => {
+                self.with_context(r, |ctx| ctx.serialize(serializer))
+            }
+            fhirbolt_model::r4::Resource::TestReport(r) => {
+                self.with_context(r, |ctx| ctx.serialize(serializer))
+            }
+            fhirbolt_model::r4::Resource::TestScript(r) => {
+                self.with_context(r, |ctx| ctx.serialize(serializer))
+            }
+            fhirbolt_model::r4::Resource::ValueSet(r) => {
+                self.with_context(r, |ctx| ctx.serialize(serializer))
+            }
+            fhirbolt_model::r4::Resource::VerificationResult(r) => {
+                self.with_context(r, |ctx| ctx.serialize(serializer))
+            }
+            fhirbolt_model::r4::Resource::VisionPrescription(r) => {
+                self.with_context(r, |ctx| ctx.serialize(serializer))
+            }
+            _ => Err(serde::ser::Error::custom("invalid resource")),
+        }
+    }
+}
+impl serde::ser::Serialize for crate::SerializationContext<&Box<fhirbolt_model::r4::Resource>> {
+    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+    where
+        S: serde::ser::Serializer,
+    {
+        self.with_context(self.value.as_ref(), |ctx| ctx.serialize(serializer))
+    }
+}
+impl serde::ser::Serialize
+    for crate::SerializationContext<&Vec<Box<fhirbolt_model::r4::Resource>>>
+{
+    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+    where
+        S: serde::ser::Serializer,
+    {
+        use serde::ser::SerializeSeq;
+        let mut seq_serializer = serializer.serialize_seq(Some(self.value.len()))?;
+        for value in self.value {
+            self.with_context(value, |ctx| seq_serializer.serialize_element(ctx))?
+        }
+        seq_serializer.end()
+    }
 }
 impl<'de> serde::de::DeserializeSeed<'de>
     for crate::context::de::DeserializationContext<fhirbolt_model::r4::Resource>

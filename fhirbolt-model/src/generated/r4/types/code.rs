@@ -1,4 +1,4 @@
-// Generated on 2023-04-12 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-13 by fhirbolt-codegen v0.1.0
 #[doc = "Base StructureDefinition for code type: A string which has at least one character and no leading or trailing whitespace and where there is no whitespace other than single spaces in the contents"]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub struct Code {
@@ -8,26 +8,4 @@ pub struct Code {
     pub r#extension: Vec<Box<super::super::types::Extension>>,
     #[doc = "Primitive value for code"]
     pub r#value: Option<std::string::String>,
-}
-impl serde::ser::Serialize for Code {
-    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
-    where
-        S: serde::ser::Serializer,
-    {
-        use serde::ser::SerializeMap;
-        fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
-            let _ctx = _ctx.borrow();
-            let mut state = serializer.serialize_map(None)?;
-            if let Some(some) = self.r#id.as_ref() {
-                state.serialize_entry("id", some)?;
-            }
-            if !self.r#extension.is_empty() {
-                state.serialize_entry("extension", &self.r#extension)?;
-            }
-            if let Some(some) = self.r#value.as_ref() {
-                state.serialize_entry("value", some)?;
-            }
-            state.end()
-        })
-    }
 }

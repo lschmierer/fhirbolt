@@ -1,4 +1,609 @@
-// Generated on 2023-04-12 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-13 by fhirbolt-codegen v0.1.0
+impl serde::ser::Serialize
+    for crate::SerializationContext<&fhirbolt_model::r4b::resources::ParametersParameter>
+{
+    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+    where
+        S: serde::ser::Serializer,
+    {
+        use serde::ser::SerializeMap;
+        let mut state = serializer.serialize_map(None)?;
+        if let Some(value) = self.value.r#id.as_ref() {
+            state.serialize_entry("id", value)?;
+        }
+        if !self.value.r#extension.is_empty() {
+            self.with_context(&self.value.r#extension, |ctx| {
+                state.serialize_entry("extension", ctx)
+            })?;
+        }
+        if !self.value.r#modifier_extension.is_empty() {
+            self.with_context(&self.value.r#modifier_extension, |ctx| {
+                state.serialize_entry("modifierExtension", ctx)
+            })?;
+        }
+        if self.output_json {
+            if let Some(some) = self.value.r#name.value.as_ref() {
+                let some = Ok(some)?;
+                state.serialize_entry("name", &some)?;
+            }
+            if self.value.r#name.id.is_some() || !self.value.r#name.extension.is_empty() {
+                let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                    id: self.value.r#name.id.as_ref(),
+                    extension: &self.value.r#name.extension,
+                };
+                self.with_context(&primitive_element, |ctx| {
+                    state.serialize_entry("_name", ctx)
+                })?;
+            }
+        } else {
+            self.with_context(&self.value.r#name, |ctx| state.serialize_entry("name", ctx))?;
+        }
+        if let Some(some) = self.value.r#value.as_ref() {
+            match some {
+                fhirbolt_model::r4b::resources::ParametersParameterValue::Base64Binary(
+                    ref value,
+                ) => {
+                    if self.output_json {
+                        if let Some(some) = value.value.as_ref() {
+                            let some = Ok(some)?;
+                            state.serialize_entry("valueBase64Binary", &some)?;
+                        }
+                        if value.id.is_some() || !value.extension.is_empty() {
+                            let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                                id: value.id.as_ref(),
+                                extension: &value.extension,
+                            };
+                            self.with_context(&primitive_element, |ctx| {
+                                state.serialize_entry("_valueBase64Binary", ctx)
+                            })?;
+                        }
+                    } else {
+                        self.with_context(value, |ctx| {
+                            state.serialize_entry("valueBase64Binary", ctx)
+                        })?;
+                    }
+                }
+                fhirbolt_model::r4b::resources::ParametersParameterValue::Boolean(ref value) => {
+                    if self.output_json {
+                        if let Some(some) = value.value.as_ref() {
+                            let some = Ok(some)?;
+                            state.serialize_entry("valueBoolean", &some)?;
+                        }
+                        if value.id.is_some() || !value.extension.is_empty() {
+                            let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                                id: value.id.as_ref(),
+                                extension: &value.extension,
+                            };
+                            self.with_context(&primitive_element, |ctx| {
+                                state.serialize_entry("_valueBoolean", ctx)
+                            })?;
+                        }
+                    } else {
+                        self.with_context(value, |ctx| state.serialize_entry("valueBoolean", ctx))?;
+                    }
+                }
+                fhirbolt_model::r4b::resources::ParametersParameterValue::Canonical(ref value) => {
+                    if self.output_json {
+                        if let Some(some) = value.value.as_ref() {
+                            let some = Ok(some)?;
+                            state.serialize_entry("valueCanonical", &some)?;
+                        }
+                        if value.id.is_some() || !value.extension.is_empty() {
+                            let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                                id: value.id.as_ref(),
+                                extension: &value.extension,
+                            };
+                            self.with_context(&primitive_element, |ctx| {
+                                state.serialize_entry("_valueCanonical", ctx)
+                            })?;
+                        }
+                    } else {
+                        self.with_context(value, |ctx| {
+                            state.serialize_entry("valueCanonical", ctx)
+                        })?;
+                    }
+                }
+                fhirbolt_model::r4b::resources::ParametersParameterValue::Code(ref value) => {
+                    if self.output_json {
+                        if let Some(some) = value.value.as_ref() {
+                            let some = Ok(some)?;
+                            state.serialize_entry("valueCode", &some)?;
+                        }
+                        if value.id.is_some() || !value.extension.is_empty() {
+                            let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                                id: value.id.as_ref(),
+                                extension: &value.extension,
+                            };
+                            self.with_context(&primitive_element, |ctx| {
+                                state.serialize_entry("_valueCode", ctx)
+                            })?;
+                        }
+                    } else {
+                        self.with_context(value, |ctx| state.serialize_entry("valueCode", ctx))?;
+                    }
+                }
+                fhirbolt_model::r4b::resources::ParametersParameterValue::Date(ref value) => {
+                    if self.output_json {
+                        if let Some(some) = value.value.as_ref() {
+                            let some = Ok(some)?;
+                            state.serialize_entry("valueDate", &some)?;
+                        }
+                        if value.id.is_some() || !value.extension.is_empty() {
+                            let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                                id: value.id.as_ref(),
+                                extension: &value.extension,
+                            };
+                            self.with_context(&primitive_element, |ctx| {
+                                state.serialize_entry("_valueDate", ctx)
+                            })?;
+                        }
+                    } else {
+                        self.with_context(value, |ctx| state.serialize_entry("valueDate", ctx))?;
+                    }
+                }
+                fhirbolt_model::r4b::resources::ParametersParameterValue::DateTime(ref value) => {
+                    if self.output_json {
+                        if let Some(some) = value.value.as_ref() {
+                            let some = Ok(some)?;
+                            state.serialize_entry("valueDateTime", &some)?;
+                        }
+                        if value.id.is_some() || !value.extension.is_empty() {
+                            let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                                id: value.id.as_ref(),
+                                extension: &value.extension,
+                            };
+                            self.with_context(&primitive_element, |ctx| {
+                                state.serialize_entry("_valueDateTime", ctx)
+                            })?;
+                        }
+                    } else {
+                        self.with_context(value, |ctx| {
+                            state.serialize_entry("valueDateTime", ctx)
+                        })?;
+                    }
+                }
+                fhirbolt_model::r4b::resources::ParametersParameterValue::Decimal(ref value) => {
+                    if self.output_json {
+                        if let Some(some) = value.value.as_ref() {
+                            let some = some.parse::<serde_json::Number>().map_err(|_| {
+                                serde::ser::Error::custom("error serializing decimal")
+                            })?;
+                            state.serialize_entry("valueDecimal", &some)?;
+                        }
+                        if value.id.is_some() || !value.extension.is_empty() {
+                            let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                                id: value.id.as_ref(),
+                                extension: &value.extension,
+                            };
+                            self.with_context(&primitive_element, |ctx| {
+                                state.serialize_entry("_valueDecimal", ctx)
+                            })?;
+                        }
+                    } else {
+                        self.with_context(value, |ctx| state.serialize_entry("valueDecimal", ctx))?;
+                    }
+                }
+                fhirbolt_model::r4b::resources::ParametersParameterValue::Id(ref value) => {
+                    if self.output_json {
+                        if let Some(some) = value.value.as_ref() {
+                            let some = Ok(some)?;
+                            state.serialize_entry("valueId", &some)?;
+                        }
+                        if value.id.is_some() || !value.extension.is_empty() {
+                            let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                                id: value.id.as_ref(),
+                                extension: &value.extension,
+                            };
+                            self.with_context(&primitive_element, |ctx| {
+                                state.serialize_entry("_valueId", ctx)
+                            })?;
+                        }
+                    } else {
+                        self.with_context(value, |ctx| state.serialize_entry("valueId", ctx))?;
+                    }
+                }
+                fhirbolt_model::r4b::resources::ParametersParameterValue::Instant(ref value) => {
+                    if self.output_json {
+                        if let Some(some) = value.value.as_ref() {
+                            let some = Ok(some)?;
+                            state.serialize_entry("valueInstant", &some)?;
+                        }
+                        if value.id.is_some() || !value.extension.is_empty() {
+                            let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                                id: value.id.as_ref(),
+                                extension: &value.extension,
+                            };
+                            self.with_context(&primitive_element, |ctx| {
+                                state.serialize_entry("_valueInstant", ctx)
+                            })?;
+                        }
+                    } else {
+                        self.with_context(value, |ctx| state.serialize_entry("valueInstant", ctx))?;
+                    }
+                }
+                fhirbolt_model::r4b::resources::ParametersParameterValue::Integer(ref value) => {
+                    if self.output_json {
+                        if let Some(some) = value.value.as_ref() {
+                            let some = Ok(some)?;
+                            state.serialize_entry("valueInteger", &some)?;
+                        }
+                        if value.id.is_some() || !value.extension.is_empty() {
+                            let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                                id: value.id.as_ref(),
+                                extension: &value.extension,
+                            };
+                            self.with_context(&primitive_element, |ctx| {
+                                state.serialize_entry("_valueInteger", ctx)
+                            })?;
+                        }
+                    } else {
+                        self.with_context(value, |ctx| state.serialize_entry("valueInteger", ctx))?;
+                    }
+                }
+                fhirbolt_model::r4b::resources::ParametersParameterValue::Markdown(ref value) => {
+                    if self.output_json {
+                        if let Some(some) = value.value.as_ref() {
+                            let some = Ok(some)?;
+                            state.serialize_entry("valueMarkdown", &some)?;
+                        }
+                        if value.id.is_some() || !value.extension.is_empty() {
+                            let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                                id: value.id.as_ref(),
+                                extension: &value.extension,
+                            };
+                            self.with_context(&primitive_element, |ctx| {
+                                state.serialize_entry("_valueMarkdown", ctx)
+                            })?;
+                        }
+                    } else {
+                        self.with_context(value, |ctx| {
+                            state.serialize_entry("valueMarkdown", ctx)
+                        })?;
+                    }
+                }
+                fhirbolt_model::r4b::resources::ParametersParameterValue::Oid(ref value) => {
+                    if self.output_json {
+                        if let Some(some) = value.value.as_ref() {
+                            let some = Ok(some)?;
+                            state.serialize_entry("valueOid", &some)?;
+                        }
+                        if value.id.is_some() || !value.extension.is_empty() {
+                            let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                                id: value.id.as_ref(),
+                                extension: &value.extension,
+                            };
+                            self.with_context(&primitive_element, |ctx| {
+                                state.serialize_entry("_valueOid", ctx)
+                            })?;
+                        }
+                    } else {
+                        self.with_context(value, |ctx| state.serialize_entry("valueOid", ctx))?;
+                    }
+                }
+                fhirbolt_model::r4b::resources::ParametersParameterValue::PositiveInt(
+                    ref value,
+                ) => {
+                    if self.output_json {
+                        if let Some(some) = value.value.as_ref() {
+                            let some = Ok(some)?;
+                            state.serialize_entry("valuePositiveInt", &some)?;
+                        }
+                        if value.id.is_some() || !value.extension.is_empty() {
+                            let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                                id: value.id.as_ref(),
+                                extension: &value.extension,
+                            };
+                            self.with_context(&primitive_element, |ctx| {
+                                state.serialize_entry("_valuePositiveInt", ctx)
+                            })?;
+                        }
+                    } else {
+                        self.with_context(value, |ctx| {
+                            state.serialize_entry("valuePositiveInt", ctx)
+                        })?;
+                    }
+                }
+                fhirbolt_model::r4b::resources::ParametersParameterValue::String(ref value) => {
+                    if self.output_json {
+                        if let Some(some) = value.value.as_ref() {
+                            let some = Ok(some)?;
+                            state.serialize_entry("valueString", &some)?;
+                        }
+                        if value.id.is_some() || !value.extension.is_empty() {
+                            let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                                id: value.id.as_ref(),
+                                extension: &value.extension,
+                            };
+                            self.with_context(&primitive_element, |ctx| {
+                                state.serialize_entry("_valueString", ctx)
+                            })?;
+                        }
+                    } else {
+                        self.with_context(value, |ctx| state.serialize_entry("valueString", ctx))?;
+                    }
+                }
+                fhirbolt_model::r4b::resources::ParametersParameterValue::Time(ref value) => {
+                    if self.output_json {
+                        if let Some(some) = value.value.as_ref() {
+                            let some = Ok(some)?;
+                            state.serialize_entry("valueTime", &some)?;
+                        }
+                        if value.id.is_some() || !value.extension.is_empty() {
+                            let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                                id: value.id.as_ref(),
+                                extension: &value.extension,
+                            };
+                            self.with_context(&primitive_element, |ctx| {
+                                state.serialize_entry("_valueTime", ctx)
+                            })?;
+                        }
+                    } else {
+                        self.with_context(value, |ctx| state.serialize_entry("valueTime", ctx))?;
+                    }
+                }
+                fhirbolt_model::r4b::resources::ParametersParameterValue::UnsignedInt(
+                    ref value,
+                ) => {
+                    if self.output_json {
+                        if let Some(some) = value.value.as_ref() {
+                            let some = Ok(some)?;
+                            state.serialize_entry("valueUnsignedInt", &some)?;
+                        }
+                        if value.id.is_some() || !value.extension.is_empty() {
+                            let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                                id: value.id.as_ref(),
+                                extension: &value.extension,
+                            };
+                            self.with_context(&primitive_element, |ctx| {
+                                state.serialize_entry("_valueUnsignedInt", ctx)
+                            })?;
+                        }
+                    } else {
+                        self.with_context(value, |ctx| {
+                            state.serialize_entry("valueUnsignedInt", ctx)
+                        })?;
+                    }
+                }
+                fhirbolt_model::r4b::resources::ParametersParameterValue::Uri(ref value) => {
+                    if self.output_json {
+                        if let Some(some) = value.value.as_ref() {
+                            let some = Ok(some)?;
+                            state.serialize_entry("valueUri", &some)?;
+                        }
+                        if value.id.is_some() || !value.extension.is_empty() {
+                            let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                                id: value.id.as_ref(),
+                                extension: &value.extension,
+                            };
+                            self.with_context(&primitive_element, |ctx| {
+                                state.serialize_entry("_valueUri", ctx)
+                            })?;
+                        }
+                    } else {
+                        self.with_context(value, |ctx| state.serialize_entry("valueUri", ctx))?;
+                    }
+                }
+                fhirbolt_model::r4b::resources::ParametersParameterValue::Url(ref value) => {
+                    if self.output_json {
+                        if let Some(some) = value.value.as_ref() {
+                            let some = Ok(some)?;
+                            state.serialize_entry("valueUrl", &some)?;
+                        }
+                        if value.id.is_some() || !value.extension.is_empty() {
+                            let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                                id: value.id.as_ref(),
+                                extension: &value.extension,
+                            };
+                            self.with_context(&primitive_element, |ctx| {
+                                state.serialize_entry("_valueUrl", ctx)
+                            })?;
+                        }
+                    } else {
+                        self.with_context(value, |ctx| state.serialize_entry("valueUrl", ctx))?;
+                    }
+                }
+                fhirbolt_model::r4b::resources::ParametersParameterValue::Uuid(ref value) => {
+                    if self.output_json {
+                        if let Some(some) = value.value.as_ref() {
+                            let some = Ok(some)?;
+                            state.serialize_entry("valueUuid", &some)?;
+                        }
+                        if value.id.is_some() || !value.extension.is_empty() {
+                            let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                                id: value.id.as_ref(),
+                                extension: &value.extension,
+                            };
+                            self.with_context(&primitive_element, |ctx| {
+                                state.serialize_entry("_valueUuid", ctx)
+                            })?;
+                        }
+                    } else {
+                        self.with_context(value, |ctx| state.serialize_entry("valueUuid", ctx))?;
+                    }
+                }
+                fhirbolt_model::r4b::resources::ParametersParameterValue::Address(ref value) => {
+                    self.with_context(value, |ctx| state.serialize_entry("valueAddress", ctx))?;
+                }
+                fhirbolt_model::r4b::resources::ParametersParameterValue::Age(ref value) => {
+                    self.with_context(value, |ctx| state.serialize_entry("valueAge", ctx))?;
+                }
+                fhirbolt_model::r4b::resources::ParametersParameterValue::Annotation(ref value) => {
+                    self.with_context(value, |ctx| state.serialize_entry("valueAnnotation", ctx))?;
+                }
+                fhirbolt_model::r4b::resources::ParametersParameterValue::Attachment(ref value) => {
+                    self.with_context(value, |ctx| state.serialize_entry("valueAttachment", ctx))?;
+                }
+                fhirbolt_model::r4b::resources::ParametersParameterValue::CodeableConcept(
+                    ref value,
+                ) => {
+                    self.with_context(value, |ctx| {
+                        state.serialize_entry("valueCodeableConcept", ctx)
+                    })?;
+                }
+                fhirbolt_model::r4b::resources::ParametersParameterValue::Coding(ref value) => {
+                    self.with_context(value, |ctx| state.serialize_entry("valueCoding", ctx))?;
+                }
+                fhirbolt_model::r4b::resources::ParametersParameterValue::ContactPoint(
+                    ref value,
+                ) => {
+                    self.with_context(value, |ctx| {
+                        state.serialize_entry("valueContactPoint", ctx)
+                    })?;
+                }
+                fhirbolt_model::r4b::resources::ParametersParameterValue::Count(ref value) => {
+                    self.with_context(value, |ctx| state.serialize_entry("valueCount", ctx))?;
+                }
+                fhirbolt_model::r4b::resources::ParametersParameterValue::Distance(ref value) => {
+                    self.with_context(value, |ctx| state.serialize_entry("valueDistance", ctx))?;
+                }
+                fhirbolt_model::r4b::resources::ParametersParameterValue::Duration(ref value) => {
+                    self.with_context(value, |ctx| state.serialize_entry("valueDuration", ctx))?;
+                }
+                fhirbolt_model::r4b::resources::ParametersParameterValue::HumanName(ref value) => {
+                    self.with_context(value, |ctx| state.serialize_entry("valueHumanName", ctx))?;
+                }
+                fhirbolt_model::r4b::resources::ParametersParameterValue::Identifier(ref value) => {
+                    self.with_context(value, |ctx| state.serialize_entry("valueIdentifier", ctx))?;
+                }
+                fhirbolt_model::r4b::resources::ParametersParameterValue::Money(ref value) => {
+                    self.with_context(value, |ctx| state.serialize_entry("valueMoney", ctx))?;
+                }
+                fhirbolt_model::r4b::resources::ParametersParameterValue::Period(ref value) => {
+                    self.with_context(value, |ctx| state.serialize_entry("valuePeriod", ctx))?;
+                }
+                fhirbolt_model::r4b::resources::ParametersParameterValue::Quantity(ref value) => {
+                    self.with_context(value, |ctx| state.serialize_entry("valueQuantity", ctx))?;
+                }
+                fhirbolt_model::r4b::resources::ParametersParameterValue::Range(ref value) => {
+                    self.with_context(value, |ctx| state.serialize_entry("valueRange", ctx))?;
+                }
+                fhirbolt_model::r4b::resources::ParametersParameterValue::Ratio(ref value) => {
+                    self.with_context(value, |ctx| state.serialize_entry("valueRatio", ctx))?;
+                }
+                fhirbolt_model::r4b::resources::ParametersParameterValue::Reference(ref value) => {
+                    self.with_context(value, |ctx| state.serialize_entry("valueReference", ctx))?;
+                }
+                fhirbolt_model::r4b::resources::ParametersParameterValue::SampledData(
+                    ref value,
+                ) => {
+                    self.with_context(value, |ctx| state.serialize_entry("valueSampledData", ctx))?;
+                }
+                fhirbolt_model::r4b::resources::ParametersParameterValue::Signature(ref value) => {
+                    self.with_context(value, |ctx| state.serialize_entry("valueSignature", ctx))?;
+                }
+                fhirbolt_model::r4b::resources::ParametersParameterValue::Timing(ref value) => {
+                    self.with_context(value, |ctx| state.serialize_entry("valueTiming", ctx))?;
+                }
+                fhirbolt_model::r4b::resources::ParametersParameterValue::ContactDetail(
+                    ref value,
+                ) => {
+                    self.with_context(value, |ctx| {
+                        state.serialize_entry("valueContactDetail", ctx)
+                    })?;
+                }
+                fhirbolt_model::r4b::resources::ParametersParameterValue::Contributor(
+                    ref value,
+                ) => {
+                    self.with_context(value, |ctx| state.serialize_entry("valueContributor", ctx))?;
+                }
+                fhirbolt_model::r4b::resources::ParametersParameterValue::DataRequirement(
+                    ref value,
+                ) => {
+                    self.with_context(value, |ctx| {
+                        state.serialize_entry("valueDataRequirement", ctx)
+                    })?;
+                }
+                fhirbolt_model::r4b::resources::ParametersParameterValue::Expression(ref value) => {
+                    self.with_context(value, |ctx| state.serialize_entry("valueExpression", ctx))?;
+                }
+                fhirbolt_model::r4b::resources::ParametersParameterValue::ParameterDefinition(
+                    ref value,
+                ) => {
+                    self.with_context(value, |ctx| {
+                        state.serialize_entry("valueParameterDefinition", ctx)
+                    })?;
+                }
+                fhirbolt_model::r4b::resources::ParametersParameterValue::RelatedArtifact(
+                    ref value,
+                ) => {
+                    self.with_context(value, |ctx| {
+                        state.serialize_entry("valueRelatedArtifact", ctx)
+                    })?;
+                }
+                fhirbolt_model::r4b::resources::ParametersParameterValue::TriggerDefinition(
+                    ref value,
+                ) => {
+                    self.with_context(value, |ctx| {
+                        state.serialize_entry("valueTriggerDefinition", ctx)
+                    })?;
+                }
+                fhirbolt_model::r4b::resources::ParametersParameterValue::UsageContext(
+                    ref value,
+                ) => {
+                    self.with_context(value, |ctx| {
+                        state.serialize_entry("valueUsageContext", ctx)
+                    })?;
+                }
+                fhirbolt_model::r4b::resources::ParametersParameterValue::Dosage(ref value) => {
+                    self.with_context(value, |ctx| state.serialize_entry("valueDosage", ctx))?;
+                }
+                fhirbolt_model::r4b::resources::ParametersParameterValue::Meta(ref value) => {
+                    self.with_context(value, |ctx| state.serialize_entry("valueMeta", ctx))?;
+                }
+                fhirbolt_model::r4b::resources::ParametersParameterValue::Invalid => {
+                    return Err(serde::ser::Error::custom("value is invalid"))
+                }
+            }
+        }
+        if let Some(some) = self.value.r#resource.as_ref() {
+            self.with_context(some, |ctx| state.serialize_entry("resource", ctx))?;
+        }
+        if !self.value.r#part.is_empty() {
+            self.with_context(&self.value.r#part, |ctx| state.serialize_entry("part", ctx))?;
+        }
+        state.end()
+    }
+}
+impl serde::ser::Serialize
+    for crate::SerializationContext<&Box<fhirbolt_model::r4b::resources::ParametersParameter>>
+{
+    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+    where
+        S: serde::ser::Serializer,
+    {
+        self.with_context(self.value.as_ref(), |ctx| ctx.serialize(serializer))
+    }
+}
+impl serde::ser::Serialize
+    for crate::SerializationContext<&Vec<fhirbolt_model::r4b::resources::ParametersParameter>>
+{
+    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+    where
+        S: serde::ser::Serializer,
+    {
+        use serde::ser::SerializeSeq;
+        let mut seq_serializer = serializer.serialize_seq(Some(self.value.len()))?;
+        for value in self.value {
+            self.with_context(value, |ctx| seq_serializer.serialize_element(ctx))?
+        }
+        seq_serializer.end()
+    }
+}
+impl serde::ser::Serialize
+    for crate::SerializationContext<&Vec<Box<fhirbolt_model::r4b::resources::ParametersParameter>>>
+{
+    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+    where
+        S: serde::ser::Serializer,
+    {
+        use serde::ser::SerializeSeq;
+        let mut seq_serializer = serializer.serialize_seq(Some(self.value.len()))?;
+        for value in self.value {
+            self.with_context(value, |ctx| seq_serializer.serialize_element(ctx))?
+        }
+        seq_serializer.end()
+    }
+}
 impl<'de> serde::de::DeserializeSeed<'de>
     for &mut crate::context::de::DeserializationContext<
         fhirbolt_model::r4b::resources::ParametersParameter,
@@ -1254,6 +1859,112 @@ impl<'de> serde::de::DeserializeSeed<'de>
 }
 impl crate::Resource for fhirbolt_model::r4b::resources::Parameters {
     const FHIR_RELEASE: crate::FhirRelease = crate::FhirRelease::R4B;
+}
+impl serde::ser::Serialize
+    for crate::SerializationContext<&fhirbolt_model::r4b::resources::Parameters>
+{
+    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+    where
+        S: serde::ser::Serializer,
+    {
+        use serde::ser::SerializeMap;
+        let mut state = serializer.serialize_map(None)?;
+        state.serialize_entry("resourceType", "Parameters")?;
+        if let Some(value) = self.value.r#id.as_ref() {
+            state.serialize_entry("id", value)?;
+        }
+        if let Some(some) = self.value.r#meta.as_ref() {
+            self.with_context(some, |ctx| state.serialize_entry("meta", ctx))?;
+        }
+        if self.output_json {
+            if let Some(some) = self.value.r#implicit_rules.as_ref() {
+                if let Some(some) = some.value.as_ref() {
+                    let some = Ok(some)?;
+                    state.serialize_entry("implicitRules", &some)?;
+                }
+                if some.id.is_some() || !some.extension.is_empty() {
+                    let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                        id: some.id.as_ref(),
+                        extension: &some.extension,
+                    };
+                    self.with_context(&primitive_element, |ctx| {
+                        state.serialize_entry("_implicitRules", ctx)
+                    })?;
+                }
+            }
+        } else {
+            if let Some(some) = self.value.r#implicit_rules.as_ref() {
+                self.with_context(some, |ctx| state.serialize_entry("implicitRules", ctx))?;
+            }
+        }
+        if self.output_json {
+            if let Some(some) = self.value.r#language.as_ref() {
+                if let Some(some) = some.value.as_ref() {
+                    let some = Ok(some)?;
+                    state.serialize_entry("language", &some)?;
+                }
+                if some.id.is_some() || !some.extension.is_empty() {
+                    let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                        id: some.id.as_ref(),
+                        extension: &some.extension,
+                    };
+                    self.with_context(&primitive_element, |ctx| {
+                        state.serialize_entry("_language", ctx)
+                    })?;
+                }
+            }
+        } else {
+            if let Some(some) = self.value.r#language.as_ref() {
+                self.with_context(some, |ctx| state.serialize_entry("language", ctx))?;
+            }
+        }
+        if !self.value.r#parameter.is_empty() {
+            self.with_context(&self.value.r#parameter, |ctx| {
+                state.serialize_entry("parameter", ctx)
+            })?;
+        }
+        state.end()
+    }
+}
+impl serde::ser::Serialize
+    for crate::SerializationContext<&Box<fhirbolt_model::r4b::resources::Parameters>>
+{
+    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+    where
+        S: serde::ser::Serializer,
+    {
+        self.with_context(self.value.as_ref(), |ctx| ctx.serialize(serializer))
+    }
+}
+impl serde::ser::Serialize
+    for crate::SerializationContext<&Vec<fhirbolt_model::r4b::resources::Parameters>>
+{
+    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+    where
+        S: serde::ser::Serializer,
+    {
+        use serde::ser::SerializeSeq;
+        let mut seq_serializer = serializer.serialize_seq(Some(self.value.len()))?;
+        for value in self.value {
+            self.with_context(value, |ctx| seq_serializer.serialize_element(ctx))?
+        }
+        seq_serializer.end()
+    }
+}
+impl serde::ser::Serialize
+    for crate::SerializationContext<&Vec<Box<fhirbolt_model::r4b::resources::Parameters>>>
+{
+    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+    where
+        S: serde::ser::Serializer,
+    {
+        use serde::ser::SerializeSeq;
+        let mut seq_serializer = serializer.serialize_seq(Some(self.value.len()))?;
+        for value in self.value {
+            self.with_context(value, |ctx| seq_serializer.serialize_element(ctx))?
+        }
+        seq_serializer.end()
+    }
 }
 impl<'de> serde::de::DeserializeSeed<'de>
     for crate::context::de::DeserializationContext<fhirbolt_model::r4b::resources::Parameters>

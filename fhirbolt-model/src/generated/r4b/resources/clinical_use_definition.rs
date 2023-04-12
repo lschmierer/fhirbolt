@@ -1,4 +1,4 @@
-// Generated on 2023-04-12 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-13 by fhirbolt-codegen v0.1.0
 #[doc = "Timing or duration information, that may be associated with use with the indicated condition e.g. Adult patients suffering from myocardial infarction (from a few days until less than 35 days), ischaemic stroke (from 7 days until less than 6 months)."]
 #[derive(Debug, Clone, PartialEq)]
 pub enum ClinicalUseDefinitionIndicationDuration {
@@ -37,30 +37,6 @@ pub struct ClinicalUseDefinitionContraindicationOtherTherapy {
     #[doc = "Reference to a specific medication (active substance, medicinal product or class of products) as part of an indication or contraindication."]
     pub r#therapy: Box<super::super::types::CodeableReference>,
 }
-impl serde::ser::Serialize for ClinicalUseDefinitionContraindicationOtherTherapy {
-    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
-    where
-        S: serde::ser::Serializer,
-    {
-        use serde::ser::SerializeMap;
-        fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
-            let _ctx = _ctx.borrow();
-            let mut state = serializer.serialize_map(None)?;
-            if let Some(some) = self.r#id.as_ref() {
-                state.serialize_entry("id", some)?;
-            }
-            if !self.r#extension.is_empty() {
-                state.serialize_entry("extension", &self.r#extension)?;
-            }
-            if !self.r#modifier_extension.is_empty() {
-                state.serialize_entry("modifierExtension", &self.r#modifier_extension)?;
-            }
-            state.serialize_entry("relationshipType", &self.r#relationship_type)?;
-            state.serialize_entry("therapy", &self.r#therapy)?;
-            state.end()
-        })
-    }
-}
 #[doc = "Specifics for when this is a contraindication."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub struct ClinicalUseDefinitionContraindication {
@@ -80,43 +56,6 @@ pub struct ClinicalUseDefinitionContraindication {
     pub r#indication: Vec<Box<super::super::types::Reference>>,
     #[doc = "Information about the use of the medicinal product in relation to other therapies described as part of the contraindication."]
     pub r#other_therapy: Vec<ClinicalUseDefinitionContraindicationOtherTherapy>,
-}
-impl serde::ser::Serialize for ClinicalUseDefinitionContraindication {
-    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
-    where
-        S: serde::ser::Serializer,
-    {
-        use serde::ser::SerializeMap;
-        fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
-            let _ctx = _ctx.borrow();
-            let mut state = serializer.serialize_map(None)?;
-            if let Some(some) = self.r#id.as_ref() {
-                state.serialize_entry("id", some)?;
-            }
-            if !self.r#extension.is_empty() {
-                state.serialize_entry("extension", &self.r#extension)?;
-            }
-            if !self.r#modifier_extension.is_empty() {
-                state.serialize_entry("modifierExtension", &self.r#modifier_extension)?;
-            }
-            if let Some(some) = self.r#disease_symptom_procedure.as_ref() {
-                state.serialize_entry("diseaseSymptomProcedure", some)?;
-            }
-            if let Some(some) = self.r#disease_status.as_ref() {
-                state.serialize_entry("diseaseStatus", some)?;
-            }
-            if !self.r#comorbidity.is_empty() {
-                state.serialize_entry("comorbidity", &self.r#comorbidity)?;
-            }
-            if !self.r#indication.is_empty() {
-                state.serialize_entry("indication", &self.r#indication)?;
-            }
-            if !self.r#other_therapy.is_empty() {
-                state.serialize_entry("otherTherapy", &self.r#other_therapy)?;
-            }
-            state.end()
-        })
-    }
 }
 #[doc = "Specifics for when this is an indication."]
 #[derive(Default, Debug, Clone, PartialEq)]
@@ -142,74 +81,6 @@ pub struct ClinicalUseDefinitionIndication {
     #[doc = "Information about the use of the medicinal product in relation to other therapies described as part of the indication."]
     pub r#other_therapy: Vec<ClinicalUseDefinitionContraindicationOtherTherapy>,
 }
-impl serde::ser::Serialize for ClinicalUseDefinitionIndication {
-    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
-    where
-        S: serde::ser::Serializer,
-    {
-        use serde::ser::SerializeMap;
-        fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
-            let _ctx = _ctx.borrow();
-            let mut state = serializer.serialize_map(None)?;
-            if let Some(some) = self.r#id.as_ref() {
-                state.serialize_entry("id", some)?;
-            }
-            if !self.r#extension.is_empty() {
-                state.serialize_entry("extension", &self.r#extension)?;
-            }
-            if !self.r#modifier_extension.is_empty() {
-                state.serialize_entry("modifierExtension", &self.r#modifier_extension)?;
-            }
-            if let Some(some) = self.r#disease_symptom_procedure.as_ref() {
-                state.serialize_entry("diseaseSymptomProcedure", some)?;
-            }
-            if let Some(some) = self.r#disease_status.as_ref() {
-                state.serialize_entry("diseaseStatus", some)?;
-            }
-            if !self.r#comorbidity.is_empty() {
-                state.serialize_entry("comorbidity", &self.r#comorbidity)?;
-            }
-            if let Some(some) = self.r#intended_effect.as_ref() {
-                state.serialize_entry("intendedEffect", some)?;
-            }
-            if let Some(some) = self.r#duration.as_ref() {
-                match some {
-                    ClinicalUseDefinitionIndicationDuration::Range(ref value) => {
-                        state.serialize_entry("durationRange", value)?;
-                    }
-                    ClinicalUseDefinitionIndicationDuration::String(ref value) => {
-                        if _ctx.output_json {
-                            if let Some(some) = value.value.as_ref() {
-                                let some = Ok(some)?;
-                                state.serialize_entry("durationString", &some)?;
-                            }
-                            if value.id.is_some() || !value.extension.is_empty() {
-                                let primitive_element =
-                                    super::super::serde_helpers::PrimitiveElement {
-                                        id: value.id.as_ref(),
-                                        extension: &value.extension,
-                                    };
-                                state.serialize_entry("_durationString", &primitive_element)?;
-                            }
-                        } else {
-                            state.serialize_entry("durationString", value)?;
-                        }
-                    }
-                    ClinicalUseDefinitionIndicationDuration::Invalid => {
-                        return Err(serde::ser::Error::custom("duration is invalid"))
-                    }
-                }
-            }
-            if !self.r#undesirable_effect.is_empty() {
-                state.serialize_entry("undesirableEffect", &self.r#undesirable_effect)?;
-            }
-            if !self.r#other_therapy.is_empty() {
-                state.serialize_entry("otherTherapy", &self.r#other_therapy)?;
-            }
-            state.end()
-        })
-    }
-}
 #[doc = "The specific medication, food, substance or laboratory test that interacts."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub struct ClinicalUseDefinitionInteractionInteractant {
@@ -221,39 +92,6 @@ pub struct ClinicalUseDefinitionInteractionInteractant {
     pub r#modifier_extension: Vec<Box<super::super::types::Extension>>,
     #[doc = "The specific medication, food or laboratory test that interacts."]
     pub r#item: ClinicalUseDefinitionInteractionInteractantItem,
-}
-impl serde::ser::Serialize for ClinicalUseDefinitionInteractionInteractant {
-    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
-    where
-        S: serde::ser::Serializer,
-    {
-        use serde::ser::SerializeMap;
-        fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
-            let _ctx = _ctx.borrow();
-            let mut state = serializer.serialize_map(None)?;
-            if let Some(some) = self.r#id.as_ref() {
-                state.serialize_entry("id", some)?;
-            }
-            if !self.r#extension.is_empty() {
-                state.serialize_entry("extension", &self.r#extension)?;
-            }
-            if !self.r#modifier_extension.is_empty() {
-                state.serialize_entry("modifierExtension", &self.r#modifier_extension)?;
-            }
-            match self.r#item {
-                ClinicalUseDefinitionInteractionInteractantItem::Reference(ref value) => {
-                    state.serialize_entry("itemReference", value)?;
-                }
-                ClinicalUseDefinitionInteractionInteractantItem::CodeableConcept(ref value) => {
-                    state.serialize_entry("itemCodeableConcept", value)?;
-                }
-                ClinicalUseDefinitionInteractionInteractantItem::Invalid => {
-                    return Err(serde::ser::Error::custom("item is a required field"))
-                }
-            }
-            state.end()
-        })
-    }
 }
 #[doc = "Specifics for when this is an interaction."]
 #[derive(Default, Debug, Clone, PartialEq)]
@@ -275,43 +113,6 @@ pub struct ClinicalUseDefinitionInteraction {
     #[doc = "Actions for managing the interaction."]
     pub r#management: Vec<Box<super::super::types::CodeableConcept>>,
 }
-impl serde::ser::Serialize for ClinicalUseDefinitionInteraction {
-    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
-    where
-        S: serde::ser::Serializer,
-    {
-        use serde::ser::SerializeMap;
-        fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
-            let _ctx = _ctx.borrow();
-            let mut state = serializer.serialize_map(None)?;
-            if let Some(some) = self.r#id.as_ref() {
-                state.serialize_entry("id", some)?;
-            }
-            if !self.r#extension.is_empty() {
-                state.serialize_entry("extension", &self.r#extension)?;
-            }
-            if !self.r#modifier_extension.is_empty() {
-                state.serialize_entry("modifierExtension", &self.r#modifier_extension)?;
-            }
-            if !self.r#interactant.is_empty() {
-                state.serialize_entry("interactant", &self.r#interactant)?;
-            }
-            if let Some(some) = self.r#type.as_ref() {
-                state.serialize_entry("type", some)?;
-            }
-            if let Some(some) = self.r#effect.as_ref() {
-                state.serialize_entry("effect", some)?;
-            }
-            if let Some(some) = self.r#incidence.as_ref() {
-                state.serialize_entry("incidence", some)?;
-            }
-            if !self.r#management.is_empty() {
-                state.serialize_entry("management", &self.r#management)?;
-            }
-            state.end()
-        })
-    }
-}
 #[doc = "Describe the possible undesirable effects (negative outcomes) from the use of the medicinal product as treatment."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub struct ClinicalUseDefinitionUndesirableEffect {
@@ -328,37 +129,6 @@ pub struct ClinicalUseDefinitionUndesirableEffect {
     #[doc = "How often the effect is seen."]
     pub r#frequency_of_occurrence: Option<Box<super::super::types::CodeableConcept>>,
 }
-impl serde::ser::Serialize for ClinicalUseDefinitionUndesirableEffect {
-    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
-    where
-        S: serde::ser::Serializer,
-    {
-        use serde::ser::SerializeMap;
-        fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
-            let _ctx = _ctx.borrow();
-            let mut state = serializer.serialize_map(None)?;
-            if let Some(some) = self.r#id.as_ref() {
-                state.serialize_entry("id", some)?;
-            }
-            if !self.r#extension.is_empty() {
-                state.serialize_entry("extension", &self.r#extension)?;
-            }
-            if !self.r#modifier_extension.is_empty() {
-                state.serialize_entry("modifierExtension", &self.r#modifier_extension)?;
-            }
-            if let Some(some) = self.r#symptom_condition_effect.as_ref() {
-                state.serialize_entry("symptomConditionEffect", some)?;
-            }
-            if let Some(some) = self.r#classification.as_ref() {
-                state.serialize_entry("classification", some)?;
-            }
-            if let Some(some) = self.r#frequency_of_occurrence.as_ref() {
-                state.serialize_entry("frequencyOfOccurrence", some)?;
-            }
-            state.end()
-        })
-    }
-}
 #[doc = "A critical piece of information about environmental, health or physical risks or hazards that serve as caution to the user. For example 'Do not operate heavy machinery', 'May cause drowsiness', or 'Get medical advice/attention if you feel unwell'."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub struct ClinicalUseDefinitionWarning {
@@ -372,50 +142,6 @@ pub struct ClinicalUseDefinitionWarning {
     pub r#description: Option<super::super::types::Markdown>,
     #[doc = "A coded or unformatted textual definition of this warning."]
     pub r#code: Option<Box<super::super::types::CodeableConcept>>,
-}
-impl serde::ser::Serialize for ClinicalUseDefinitionWarning {
-    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
-    where
-        S: serde::ser::Serializer,
-    {
-        use serde::ser::SerializeMap;
-        fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
-            let _ctx = _ctx.borrow();
-            let mut state = serializer.serialize_map(None)?;
-            if let Some(some) = self.r#id.as_ref() {
-                state.serialize_entry("id", some)?;
-            }
-            if !self.r#extension.is_empty() {
-                state.serialize_entry("extension", &self.r#extension)?;
-            }
-            if !self.r#modifier_extension.is_empty() {
-                state.serialize_entry("modifierExtension", &self.r#modifier_extension)?;
-            }
-            if _ctx.output_json {
-                if let Some(some) = self.r#description.as_ref() {
-                    if let Some(some) = some.value.as_ref() {
-                        let some = Ok(some)?;
-                        state.serialize_entry("description", &some)?;
-                    }
-                    if some.id.is_some() || !some.extension.is_empty() {
-                        let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                            id: some.id.as_ref(),
-                            extension: &some.extension,
-                        };
-                        state.serialize_entry("_description", &primitive_element)?;
-                    }
-                }
-            } else {
-                if let Some(some) = self.r#description.as_ref() {
-                    state.serialize_entry("description", some)?;
-                }
-            }
-            if let Some(some) = self.r#code.as_ref() {
-                state.serialize_entry("code", some)?;
-            }
-            state.end()
-        })
-    }
 }
 #[doc = "A single issue - either an indication, contraindication, interaction or an undesirable effect for a medicinal product, medication, device or procedure."]
 #[derive(Default, Debug, Clone, PartialEq)]
@@ -458,119 +184,4 @@ pub struct ClinicalUseDefinition {
     pub r#undesirable_effect: Option<ClinicalUseDefinitionUndesirableEffect>,
     #[doc = "A critical piece of information about environmental, health or physical risks or hazards that serve as caution to the user. For example 'Do not operate heavy machinery', 'May cause drowsiness', or 'Get medical advice/attention if you feel unwell'."]
     pub r#warning: Option<ClinicalUseDefinitionWarning>,
-}
-impl serde::ser::Serialize for ClinicalUseDefinition {
-    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
-    where
-        S: serde::ser::Serializer,
-    {
-        use serde::ser::SerializeMap;
-        fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
-            let _ctx = _ctx.borrow();
-            let mut state = serializer.serialize_map(None)?;
-            state.serialize_entry("resourceType", "ClinicalUseDefinition")?;
-            if let Some(some) = self.r#id.as_ref() {
-                state.serialize_entry("id", some)?;
-            }
-            if let Some(some) = self.r#meta.as_ref() {
-                state.serialize_entry("meta", some)?;
-            }
-            if _ctx.output_json {
-                if let Some(some) = self.r#implicit_rules.as_ref() {
-                    if let Some(some) = some.value.as_ref() {
-                        let some = Ok(some)?;
-                        state.serialize_entry("implicitRules", &some)?;
-                    }
-                    if some.id.is_some() || !some.extension.is_empty() {
-                        let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                            id: some.id.as_ref(),
-                            extension: &some.extension,
-                        };
-                        state.serialize_entry("_implicitRules", &primitive_element)?;
-                    }
-                }
-            } else {
-                if let Some(some) = self.r#implicit_rules.as_ref() {
-                    state.serialize_entry("implicitRules", some)?;
-                }
-            }
-            if _ctx.output_json {
-                if let Some(some) = self.r#language.as_ref() {
-                    if let Some(some) = some.value.as_ref() {
-                        let some = Ok(some)?;
-                        state.serialize_entry("language", &some)?;
-                    }
-                    if some.id.is_some() || !some.extension.is_empty() {
-                        let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                            id: some.id.as_ref(),
-                            extension: &some.extension,
-                        };
-                        state.serialize_entry("_language", &primitive_element)?;
-                    }
-                }
-            } else {
-                if let Some(some) = self.r#language.as_ref() {
-                    state.serialize_entry("language", some)?;
-                }
-            }
-            if let Some(some) = self.r#text.as_ref() {
-                state.serialize_entry("text", some)?;
-            }
-            if !self.r#contained.is_empty() {
-                state.serialize_entry("contained", &self.r#contained)?;
-            }
-            if !self.r#extension.is_empty() {
-                state.serialize_entry("extension", &self.r#extension)?;
-            }
-            if !self.r#modifier_extension.is_empty() {
-                state.serialize_entry("modifierExtension", &self.r#modifier_extension)?;
-            }
-            if !self.r#identifier.is_empty() {
-                state.serialize_entry("identifier", &self.r#identifier)?;
-            }
-            if _ctx.output_json {
-                if let Some(some) = self.r#type.value.as_ref() {
-                    let some = Ok(some)?;
-                    state.serialize_entry("type", &some)?;
-                }
-                if self.r#type.id.is_some() || !self.r#type.extension.is_empty() {
-                    let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                        id: self.r#type.id.as_ref(),
-                        extension: &self.r#type.extension,
-                    };
-                    state.serialize_entry("_type", &primitive_element)?;
-                }
-            } else {
-                state.serialize_entry("type", &self.r#type)?;
-            }
-            if !self.r#category.is_empty() {
-                state.serialize_entry("category", &self.r#category)?;
-            }
-            if !self.r#subject.is_empty() {
-                state.serialize_entry("subject", &self.r#subject)?;
-            }
-            if let Some(some) = self.r#status.as_ref() {
-                state.serialize_entry("status", some)?;
-            }
-            if let Some(some) = self.r#contraindication.as_ref() {
-                state.serialize_entry("contraindication", some)?;
-            }
-            if let Some(some) = self.r#indication.as_ref() {
-                state.serialize_entry("indication", some)?;
-            }
-            if let Some(some) = self.r#interaction.as_ref() {
-                state.serialize_entry("interaction", some)?;
-            }
-            if !self.r#population.is_empty() {
-                state.serialize_entry("population", &self.r#population)?;
-            }
-            if let Some(some) = self.r#undesirable_effect.as_ref() {
-                state.serialize_entry("undesirableEffect", some)?;
-            }
-            if let Some(some) = self.r#warning.as_ref() {
-                state.serialize_entry("warning", some)?;
-            }
-            state.end()
-        })
-    }
 }

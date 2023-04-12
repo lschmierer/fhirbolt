@@ -1,4 +1,4 @@
-// Generated on 2023-04-12 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-13 by fhirbolt-codegen v0.1.0
 #[doc = "Used to capture quantitative values for a variety of elements. If only limits are given, the arithmetic mean would be the average. If only a single definite value for a given element is given, it would be captured in this field."]
 #[derive(Debug, Clone, PartialEq)]
 pub enum SubstanceAmountAmount {
@@ -24,31 +24,6 @@ pub struct SubstanceAmountReferenceRange {
     #[doc = "Upper limit possible or expected."]
     pub r#high_limit: Option<Box<super::super::types::Quantity>>,
 }
-impl serde::ser::Serialize for SubstanceAmountReferenceRange {
-    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
-    where
-        S: serde::ser::Serializer,
-    {
-        use serde::ser::SerializeMap;
-        fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
-            let _ctx = _ctx.borrow();
-            let mut state = serializer.serialize_map(None)?;
-            if let Some(some) = self.r#id.as_ref() {
-                state.serialize_entry("id", some)?;
-            }
-            if !self.r#extension.is_empty() {
-                state.serialize_entry("extension", &self.r#extension)?;
-            }
-            if let Some(some) = self.r#low_limit.as_ref() {
-                state.serialize_entry("lowLimit", some)?;
-            }
-            if let Some(some) = self.r#high_limit.as_ref() {
-                state.serialize_entry("highLimit", some)?;
-            }
-            state.end()
-        })
-    }
-}
 #[doc = "Base StructureDefinition for SubstanceAmount Type: Chemical substances are a single substance type whose primary defining element is the molecular structure. Chemical substances shall be defined on the basis of their complete covalent molecular structure; the presence of a salt (counter-ion) and/or solvates (water, alcohols) is also captured. Purity, grade, physical form or particle size are not taken into account in the definition of a chemical substance or in the assignment of a Substance ID."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub struct SubstanceAmount {
@@ -66,82 +41,4 @@ pub struct SubstanceAmount {
     pub r#amount_text: Option<super::super::types::String>,
     #[doc = "Reference range of possible or expected values."]
     pub r#reference_range: Option<SubstanceAmountReferenceRange>,
-}
-impl serde::ser::Serialize for SubstanceAmount {
-    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
-    where
-        S: serde::ser::Serializer,
-    {
-        use serde::ser::SerializeMap;
-        fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
-            let _ctx = _ctx.borrow();
-            let mut state = serializer.serialize_map(None)?;
-            if let Some(some) = self.r#id.as_ref() {
-                state.serialize_entry("id", some)?;
-            }
-            if !self.r#extension.is_empty() {
-                state.serialize_entry("extension", &self.r#extension)?;
-            }
-            if !self.r#modifier_extension.is_empty() {
-                state.serialize_entry("modifierExtension", &self.r#modifier_extension)?;
-            }
-            if let Some(some) = self.r#amount.as_ref() {
-                match some {
-                    SubstanceAmountAmount::Quantity(ref value) => {
-                        state.serialize_entry("amountQuantity", value)?;
-                    }
-                    SubstanceAmountAmount::Range(ref value) => {
-                        state.serialize_entry("amountRange", value)?;
-                    }
-                    SubstanceAmountAmount::String(ref value) => {
-                        if _ctx.output_json {
-                            if let Some(some) = value.value.as_ref() {
-                                let some = Ok(some)?;
-                                state.serialize_entry("amountString", &some)?;
-                            }
-                            if value.id.is_some() || !value.extension.is_empty() {
-                                let primitive_element =
-                                    super::super::serde_helpers::PrimitiveElement {
-                                        id: value.id.as_ref(),
-                                        extension: &value.extension,
-                                    };
-                                state.serialize_entry("_amountString", &primitive_element)?;
-                            }
-                        } else {
-                            state.serialize_entry("amountString", value)?;
-                        }
-                    }
-                    SubstanceAmountAmount::Invalid => {
-                        return Err(serde::ser::Error::custom("amount is invalid"))
-                    }
-                }
-            }
-            if let Some(some) = self.r#amount_type.as_ref() {
-                state.serialize_entry("amountType", some)?;
-            }
-            if _ctx.output_json {
-                if let Some(some) = self.r#amount_text.as_ref() {
-                    if let Some(some) = some.value.as_ref() {
-                        let some = Ok(some)?;
-                        state.serialize_entry("amountText", &some)?;
-                    }
-                    if some.id.is_some() || !some.extension.is_empty() {
-                        let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                            id: some.id.as_ref(),
-                            extension: &some.extension,
-                        };
-                        state.serialize_entry("_amountText", &primitive_element)?;
-                    }
-                }
-            } else {
-                if let Some(some) = self.r#amount_text.as_ref() {
-                    state.serialize_entry("amountText", some)?;
-                }
-            }
-            if let Some(some) = self.r#reference_range.as_ref() {
-                state.serialize_entry("referenceRange", some)?;
-            }
-            state.end()
-        })
-    }
 }

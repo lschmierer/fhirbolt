@@ -12,12 +12,62 @@ pub fn generate_serde_helpers(release: &str) -> SourceFile {
     SourceFile {
         name: "serde_helpers".into(),
         source: quote! {
-            #[derive(serde::Serialize)]
             pub struct PrimitiveElement<'a> {
-                #[serde(skip_serializing_if = "Option::is_none")]
                 pub id: Option<&'a std::string::String>,
-                #[serde(skip_serializing_if = "<[_]>::is_empty")]
-                pub extension: &'a [Box<super::types::Extension>],
+                pub extension: &'a Vec<Box<#namespace::types::Extension>>,
+            }
+
+            impl<'a> serde::ser::Serialize for crate::SerializationContext<&PrimitiveElement<'a>> {
+                fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+                where
+                    S: serde::ser::Serializer,
+                {
+                    use serde::ser::SerializeMap;
+
+                    let mut state = serializer.serialize_map(None)?;
+
+                    if let Some(id) = self.value.id {
+                        state.serialize_entry("id", id)?;
+                    }
+
+                    if !self.value.extension.is_empty() {
+                        self.with_context(self.value.extension, |ctx| state.serialize_entry("extension", ctx))?;
+                    }
+
+                    state.end()
+                }
+            }
+
+            impl<'a> serde::ser::Serialize for crate::SerializationContext<Option<&PrimitiveElement<'a>>> {
+                fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+                where
+                    S: serde::ser::Serializer,
+                {
+                    if let Some(value) = self.value {
+                        self.with_context(value, |ctx| serializer.serialize_some(ctx))
+                    } else {
+                        serializer.serialize_none()
+                    }
+                }
+            }
+
+            impl<'a> serde::ser::Serialize for crate::SerializationContext<&Vec<Option<PrimitiveElement<'a>>>> {
+                fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+                where
+                    S: serde::ser::Serializer,
+                {
+                    use serde::ser::SerializeSeq;
+
+                    let mut seq_serializer = serializer.serialize_seq(Some(self.value.len()))?;
+
+                    for value in self.value {
+                        self.with_context(value.as_ref(), |ctx| {
+                            seq_serializer.serialize_element(ctx)
+                        })?
+                    }
+
+                    seq_serializer.end()
+                }
             }
 
             pub struct PrimitiveElementOwned {

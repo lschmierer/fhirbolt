@@ -1,4 +1,4 @@
-// Generated on 2023-04-12 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-13 by fhirbolt-codegen v0.1.0
 #[doc = "The history of statuses that the EpisodeOfCare has been through (without requiring processing the history of the resource)."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub struct EpisodeOfCareStatusHistory {
@@ -12,44 +12,6 @@ pub struct EpisodeOfCareStatusHistory {
     pub r#status: super::super::types::Code,
     #[doc = "The period during this EpisodeOfCare that the specific status applied."]
     pub r#period: Box<super::super::types::Period>,
-}
-impl serde::ser::Serialize for EpisodeOfCareStatusHistory {
-    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
-    where
-        S: serde::ser::Serializer,
-    {
-        use serde::ser::SerializeMap;
-        fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
-            let _ctx = _ctx.borrow();
-            let mut state = serializer.serialize_map(None)?;
-            if let Some(some) = self.r#id.as_ref() {
-                state.serialize_entry("id", some)?;
-            }
-            if !self.r#extension.is_empty() {
-                state.serialize_entry("extension", &self.r#extension)?;
-            }
-            if !self.r#modifier_extension.is_empty() {
-                state.serialize_entry("modifierExtension", &self.r#modifier_extension)?;
-            }
-            if _ctx.output_json {
-                if let Some(some) = self.r#status.value.as_ref() {
-                    let some = Ok(some)?;
-                    state.serialize_entry("status", &some)?;
-                }
-                if self.r#status.id.is_some() || !self.r#status.extension.is_empty() {
-                    let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                        id: self.r#status.id.as_ref(),
-                        extension: &self.r#status.extension,
-                    };
-                    state.serialize_entry("_status", &primitive_element)?;
-                }
-            } else {
-                state.serialize_entry("status", &self.r#status)?;
-            }
-            state.serialize_entry("period", &self.r#period)?;
-            state.end()
-        })
-    }
 }
 #[doc = "The list of diagnosis relevant to this episode of care."]
 #[derive(Default, Debug, Clone, PartialEq)]
@@ -66,51 +28,6 @@ pub struct EpisodeOfCareDiagnosis {
     pub r#role: Option<Box<super::super::types::CodeableConcept>>,
     #[doc = "Ranking of the diagnosis (for each role type)."]
     pub r#rank: Option<super::super::types::PositiveInt>,
-}
-impl serde::ser::Serialize for EpisodeOfCareDiagnosis {
-    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
-    where
-        S: serde::ser::Serializer,
-    {
-        use serde::ser::SerializeMap;
-        fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
-            let _ctx = _ctx.borrow();
-            let mut state = serializer.serialize_map(None)?;
-            if let Some(some) = self.r#id.as_ref() {
-                state.serialize_entry("id", some)?;
-            }
-            if !self.r#extension.is_empty() {
-                state.serialize_entry("extension", &self.r#extension)?;
-            }
-            if !self.r#modifier_extension.is_empty() {
-                state.serialize_entry("modifierExtension", &self.r#modifier_extension)?;
-            }
-            state.serialize_entry("condition", &self.r#condition)?;
-            if let Some(some) = self.r#role.as_ref() {
-                state.serialize_entry("role", some)?;
-            }
-            if _ctx.output_json {
-                if let Some(some) = self.r#rank.as_ref() {
-                    if let Some(some) = some.value.as_ref() {
-                        let some = Ok(some)?;
-                        state.serialize_entry("rank", &some)?;
-                    }
-                    if some.id.is_some() || !some.extension.is_empty() {
-                        let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                            id: some.id.as_ref(),
-                            extension: &some.extension,
-                        };
-                        state.serialize_entry("_rank", &primitive_element)?;
-                    }
-                }
-            } else {
-                if let Some(some) = self.r#rank.as_ref() {
-                    state.serialize_entry("rank", some)?;
-                }
-            }
-            state.end()
-        })
-    }
 }
 #[doc = "An association between a patient and an organization / healthcare provider(s) during which time encounters may occur. The managing organization assumes a level of responsibility for the patient during this time."]
 #[derive(Default, Debug, Clone, PartialEq)]
@@ -155,120 +72,4 @@ pub struct EpisodeOfCare {
     pub r#team: Vec<Box<super::super::types::Reference>>,
     #[doc = "The set of accounts that may be used for billing for this EpisodeOfCare."]
     pub r#account: Vec<Box<super::super::types::Reference>>,
-}
-impl serde::ser::Serialize for EpisodeOfCare {
-    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
-    where
-        S: serde::ser::Serializer,
-    {
-        use serde::ser::SerializeMap;
-        fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
-            let _ctx = _ctx.borrow();
-            let mut state = serializer.serialize_map(None)?;
-            state.serialize_entry("resourceType", "EpisodeOfCare")?;
-            if let Some(some) = self.r#id.as_ref() {
-                state.serialize_entry("id", some)?;
-            }
-            if let Some(some) = self.r#meta.as_ref() {
-                state.serialize_entry("meta", some)?;
-            }
-            if _ctx.output_json {
-                if let Some(some) = self.r#implicit_rules.as_ref() {
-                    if let Some(some) = some.value.as_ref() {
-                        let some = Ok(some)?;
-                        state.serialize_entry("implicitRules", &some)?;
-                    }
-                    if some.id.is_some() || !some.extension.is_empty() {
-                        let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                            id: some.id.as_ref(),
-                            extension: &some.extension,
-                        };
-                        state.serialize_entry("_implicitRules", &primitive_element)?;
-                    }
-                }
-            } else {
-                if let Some(some) = self.r#implicit_rules.as_ref() {
-                    state.serialize_entry("implicitRules", some)?;
-                }
-            }
-            if _ctx.output_json {
-                if let Some(some) = self.r#language.as_ref() {
-                    if let Some(some) = some.value.as_ref() {
-                        let some = Ok(some)?;
-                        state.serialize_entry("language", &some)?;
-                    }
-                    if some.id.is_some() || !some.extension.is_empty() {
-                        let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                            id: some.id.as_ref(),
-                            extension: &some.extension,
-                        };
-                        state.serialize_entry("_language", &primitive_element)?;
-                    }
-                }
-            } else {
-                if let Some(some) = self.r#language.as_ref() {
-                    state.serialize_entry("language", some)?;
-                }
-            }
-            if let Some(some) = self.r#text.as_ref() {
-                state.serialize_entry("text", some)?;
-            }
-            if !self.r#contained.is_empty() {
-                state.serialize_entry("contained", &self.r#contained)?;
-            }
-            if !self.r#extension.is_empty() {
-                state.serialize_entry("extension", &self.r#extension)?;
-            }
-            if !self.r#modifier_extension.is_empty() {
-                state.serialize_entry("modifierExtension", &self.r#modifier_extension)?;
-            }
-            if !self.r#identifier.is_empty() {
-                state.serialize_entry("identifier", &self.r#identifier)?;
-            }
-            if _ctx.output_json {
-                if let Some(some) = self.r#status.value.as_ref() {
-                    let some = Ok(some)?;
-                    state.serialize_entry("status", &some)?;
-                }
-                if self.r#status.id.is_some() || !self.r#status.extension.is_empty() {
-                    let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                        id: self.r#status.id.as_ref(),
-                        extension: &self.r#status.extension,
-                    };
-                    state.serialize_entry("_status", &primitive_element)?;
-                }
-            } else {
-                state.serialize_entry("status", &self.r#status)?;
-            }
-            if !self.r#status_history.is_empty() {
-                state.serialize_entry("statusHistory", &self.r#status_history)?;
-            }
-            if !self.r#type.is_empty() {
-                state.serialize_entry("type", &self.r#type)?;
-            }
-            if !self.r#diagnosis.is_empty() {
-                state.serialize_entry("diagnosis", &self.r#diagnosis)?;
-            }
-            state.serialize_entry("patient", &self.r#patient)?;
-            if let Some(some) = self.r#managing_organization.as_ref() {
-                state.serialize_entry("managingOrganization", some)?;
-            }
-            if let Some(some) = self.r#period.as_ref() {
-                state.serialize_entry("period", some)?;
-            }
-            if !self.r#referral_request.is_empty() {
-                state.serialize_entry("referralRequest", &self.r#referral_request)?;
-            }
-            if let Some(some) = self.r#care_manager.as_ref() {
-                state.serialize_entry("careManager", some)?;
-            }
-            if !self.r#team.is_empty() {
-                state.serialize_entry("team", &self.r#team)?;
-            }
-            if !self.r#account.is_empty() {
-                state.serialize_entry("account", &self.r#account)?;
-            }
-            state.end()
-        })
-    }
 }

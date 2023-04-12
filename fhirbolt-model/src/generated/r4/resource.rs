@@ -1,7 +1,6 @@
-// Generated on 2023-04-12 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-13 by fhirbolt-codegen v0.1.0
 #[doc = "Enum representing all possible FHIR resources."]
-#[derive(Default, Debug, Clone, PartialEq, serde :: Serialize)]
-#[serde(tag = "resourceType")]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub enum Resource {
     #[doc = "A financial tool for tracking value accrued for a particular purpose.  In the healthcare field, used to track charges for a patient, cost centers, etc."]
     Account(Box<super::resources::Account>),

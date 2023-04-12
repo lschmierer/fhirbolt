@@ -1,4 +1,4 @@
-// Generated on 2023-04-12 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-13 by fhirbolt-codegen v0.1.0
 #[doc = "The source on which this consent statement is based. The source might be a scanned original paper form, or a reference to a consent that links back to such a source, a reference to a document repository (e.g. XDS) that stores the original consent document."]
 #[derive(Debug, Clone, PartialEq)]
 pub enum ConsentSource {
@@ -25,66 +25,6 @@ pub struct ConsentPolicy {
     #[doc = "The references to the policies that are included in this consent scope. Policies may be organizational, but are often defined jurisdictionally, or in law."]
     pub r#uri: Option<super::super::types::Uri>,
 }
-impl serde::ser::Serialize for ConsentPolicy {
-    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
-    where
-        S: serde::ser::Serializer,
-    {
-        use serde::ser::SerializeMap;
-        fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
-            let _ctx = _ctx.borrow();
-            let mut state = serializer.serialize_map(None)?;
-            if let Some(some) = self.r#id.as_ref() {
-                state.serialize_entry("id", some)?;
-            }
-            if !self.r#extension.is_empty() {
-                state.serialize_entry("extension", &self.r#extension)?;
-            }
-            if !self.r#modifier_extension.is_empty() {
-                state.serialize_entry("modifierExtension", &self.r#modifier_extension)?;
-            }
-            if _ctx.output_json {
-                if let Some(some) = self.r#authority.as_ref() {
-                    if let Some(some) = some.value.as_ref() {
-                        let some = Ok(some)?;
-                        state.serialize_entry("authority", &some)?;
-                    }
-                    if some.id.is_some() || !some.extension.is_empty() {
-                        let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                            id: some.id.as_ref(),
-                            extension: &some.extension,
-                        };
-                        state.serialize_entry("_authority", &primitive_element)?;
-                    }
-                }
-            } else {
-                if let Some(some) = self.r#authority.as_ref() {
-                    state.serialize_entry("authority", some)?;
-                }
-            }
-            if _ctx.output_json {
-                if let Some(some) = self.r#uri.as_ref() {
-                    if let Some(some) = some.value.as_ref() {
-                        let some = Ok(some)?;
-                        state.serialize_entry("uri", &some)?;
-                    }
-                    if some.id.is_some() || !some.extension.is_empty() {
-                        let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                            id: some.id.as_ref(),
-                            extension: &some.extension,
-                        };
-                        state.serialize_entry("_uri", &primitive_element)?;
-                    }
-                }
-            } else {
-                if let Some(some) = self.r#uri.as_ref() {
-                    state.serialize_entry("uri", some)?;
-                }
-            }
-            state.end()
-        })
-    }
-}
 #[doc = "Whether a treatment instruction (e.g. artificial respiration yes or no) was verified with the patient, his/her family or another authorized person."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub struct ConsentVerification {
@@ -101,65 +41,6 @@ pub struct ConsentVerification {
     #[doc = "Date verification was collected."]
     pub r#verification_date: Option<super::super::types::DateTime>,
 }
-impl serde::ser::Serialize for ConsentVerification {
-    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
-    where
-        S: serde::ser::Serializer,
-    {
-        use serde::ser::SerializeMap;
-        fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
-            let _ctx = _ctx.borrow();
-            let mut state = serializer.serialize_map(None)?;
-            if let Some(some) = self.r#id.as_ref() {
-                state.serialize_entry("id", some)?;
-            }
-            if !self.r#extension.is_empty() {
-                state.serialize_entry("extension", &self.r#extension)?;
-            }
-            if !self.r#modifier_extension.is_empty() {
-                state.serialize_entry("modifierExtension", &self.r#modifier_extension)?;
-            }
-            if _ctx.output_json {
-                if let Some(some) = self.r#verified.value.as_ref() {
-                    let some = Ok(some)?;
-                    state.serialize_entry("verified", &some)?;
-                }
-                if self.r#verified.id.is_some() || !self.r#verified.extension.is_empty() {
-                    let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                        id: self.r#verified.id.as_ref(),
-                        extension: &self.r#verified.extension,
-                    };
-                    state.serialize_entry("_verified", &primitive_element)?;
-                }
-            } else {
-                state.serialize_entry("verified", &self.r#verified)?;
-            }
-            if let Some(some) = self.r#verified_with.as_ref() {
-                state.serialize_entry("verifiedWith", some)?;
-            }
-            if _ctx.output_json {
-                if let Some(some) = self.r#verification_date.as_ref() {
-                    if let Some(some) = some.value.as_ref() {
-                        let some = Ok(some)?;
-                        state.serialize_entry("verificationDate", &some)?;
-                    }
-                    if some.id.is_some() || !some.extension.is_empty() {
-                        let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                            id: some.id.as_ref(),
-                            extension: &some.extension,
-                        };
-                        state.serialize_entry("_verificationDate", &primitive_element)?;
-                    }
-                }
-            } else {
-                if let Some(some) = self.r#verification_date.as_ref() {
-                    state.serialize_entry("verificationDate", some)?;
-                }
-            }
-            state.end()
-        })
-    }
-}
 #[doc = "Who or what is controlled by this rule. Use group to identify a set of actors by some property they share (e.g. 'admitting officers')."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub struct ConsentProvisionActor {
@@ -174,30 +55,6 @@ pub struct ConsentProvisionActor {
     #[doc = "The resource that identifies the actor. To identify actors by type, use group to identify a set of actors by some property they share (e.g. 'admitting officers')."]
     pub r#reference: Box<super::super::types::Reference>,
 }
-impl serde::ser::Serialize for ConsentProvisionActor {
-    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
-    where
-        S: serde::ser::Serializer,
-    {
-        use serde::ser::SerializeMap;
-        fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
-            let _ctx = _ctx.borrow();
-            let mut state = serializer.serialize_map(None)?;
-            if let Some(some) = self.r#id.as_ref() {
-                state.serialize_entry("id", some)?;
-            }
-            if !self.r#extension.is_empty() {
-                state.serialize_entry("extension", &self.r#extension)?;
-            }
-            if !self.r#modifier_extension.is_empty() {
-                state.serialize_entry("modifierExtension", &self.r#modifier_extension)?;
-            }
-            state.serialize_entry("role", &self.r#role)?;
-            state.serialize_entry("reference", &self.r#reference)?;
-            state.end()
-        })
-    }
-}
 #[doc = "The resources controlled by this rule if specific resources are referenced."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub struct ConsentProvisionData {
@@ -211,44 +68,6 @@ pub struct ConsentProvisionData {
     pub r#meaning: super::super::types::Code,
     #[doc = "A reference to a specific resource that defines which resources are covered by this consent."]
     pub r#reference: Box<super::super::types::Reference>,
-}
-impl serde::ser::Serialize for ConsentProvisionData {
-    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
-    where
-        S: serde::ser::Serializer,
-    {
-        use serde::ser::SerializeMap;
-        fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
-            let _ctx = _ctx.borrow();
-            let mut state = serializer.serialize_map(None)?;
-            if let Some(some) = self.r#id.as_ref() {
-                state.serialize_entry("id", some)?;
-            }
-            if !self.r#extension.is_empty() {
-                state.serialize_entry("extension", &self.r#extension)?;
-            }
-            if !self.r#modifier_extension.is_empty() {
-                state.serialize_entry("modifierExtension", &self.r#modifier_extension)?;
-            }
-            if _ctx.output_json {
-                if let Some(some) = self.r#meaning.value.as_ref() {
-                    let some = Ok(some)?;
-                    state.serialize_entry("meaning", &some)?;
-                }
-                if self.r#meaning.id.is_some() || !self.r#meaning.extension.is_empty() {
-                    let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                        id: self.r#meaning.id.as_ref(),
-                        extension: &self.r#meaning.extension,
-                    };
-                    state.serialize_entry("_meaning", &primitive_element)?;
-                }
-            } else {
-                state.serialize_entry("meaning", &self.r#meaning)?;
-            }
-            state.serialize_entry("reference", &self.r#reference)?;
-            state.end()
-        })
-    }
 }
 #[doc = "An exception to the base policy of this consent. An exception can be an addition or removal of access permissions."]
 #[derive(Default, Debug, Clone, PartialEq)]
@@ -281,77 +100,6 @@ pub struct ConsentProvision {
     pub r#data: Vec<ConsentProvisionData>,
     #[doc = "Rules which provide exceptions to the base rule or subrules."]
     pub r#provision: Vec<ConsentProvision>,
-}
-impl serde::ser::Serialize for ConsentProvision {
-    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
-    where
-        S: serde::ser::Serializer,
-    {
-        use serde::ser::SerializeMap;
-        fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
-            let _ctx = _ctx.borrow();
-            let mut state = serializer.serialize_map(None)?;
-            if let Some(some) = self.r#id.as_ref() {
-                state.serialize_entry("id", some)?;
-            }
-            if !self.r#extension.is_empty() {
-                state.serialize_entry("extension", &self.r#extension)?;
-            }
-            if !self.r#modifier_extension.is_empty() {
-                state.serialize_entry("modifierExtension", &self.r#modifier_extension)?;
-            }
-            if _ctx.output_json {
-                if let Some(some) = self.r#type.as_ref() {
-                    if let Some(some) = some.value.as_ref() {
-                        let some = Ok(some)?;
-                        state.serialize_entry("type", &some)?;
-                    }
-                    if some.id.is_some() || !some.extension.is_empty() {
-                        let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                            id: some.id.as_ref(),
-                            extension: &some.extension,
-                        };
-                        state.serialize_entry("_type", &primitive_element)?;
-                    }
-                }
-            } else {
-                if let Some(some) = self.r#type.as_ref() {
-                    state.serialize_entry("type", some)?;
-                }
-            }
-            if let Some(some) = self.r#period.as_ref() {
-                state.serialize_entry("period", some)?;
-            }
-            if !self.r#actor.is_empty() {
-                state.serialize_entry("actor", &self.r#actor)?;
-            }
-            if !self.r#action.is_empty() {
-                state.serialize_entry("action", &self.r#action)?;
-            }
-            if !self.r#security_label.is_empty() {
-                state.serialize_entry("securityLabel", &self.r#security_label)?;
-            }
-            if !self.r#purpose.is_empty() {
-                state.serialize_entry("purpose", &self.r#purpose)?;
-            }
-            if !self.r#class.is_empty() {
-                state.serialize_entry("class", &self.r#class)?;
-            }
-            if !self.r#code.is_empty() {
-                state.serialize_entry("code", &self.r#code)?;
-            }
-            if let Some(some) = self.r#data_period.as_ref() {
-                state.serialize_entry("dataPeriod", some)?;
-            }
-            if !self.r#data.is_empty() {
-                state.serialize_entry("data", &self.r#data)?;
-            }
-            if !self.r#provision.is_empty() {
-                state.serialize_entry("provision", &self.r#provision)?;
-            }
-            state.end()
-        })
-    }
 }
 #[doc = "A record of a healthcare consumer’s  choices, which permits or denies identified recipient(s) or recipient role(s) to perform one or more actions within a given policy context, for specific purposes and periods of time."]
 #[derive(Default, Debug, Clone, PartialEq)]
@@ -398,149 +146,4 @@ pub struct Consent {
     pub r#verification: Vec<ConsentVerification>,
     #[doc = "An exception to the base policy of this consent. An exception can be an addition or removal of access permissions."]
     pub r#provision: Option<ConsentProvision>,
-}
-impl serde::ser::Serialize for Consent {
-    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
-    where
-        S: serde::ser::Serializer,
-    {
-        use serde::ser::SerializeMap;
-        fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
-            let _ctx = _ctx.borrow();
-            let mut state = serializer.serialize_map(None)?;
-            state.serialize_entry("resourceType", "Consent")?;
-            if let Some(some) = self.r#id.as_ref() {
-                state.serialize_entry("id", some)?;
-            }
-            if let Some(some) = self.r#meta.as_ref() {
-                state.serialize_entry("meta", some)?;
-            }
-            if _ctx.output_json {
-                if let Some(some) = self.r#implicit_rules.as_ref() {
-                    if let Some(some) = some.value.as_ref() {
-                        let some = Ok(some)?;
-                        state.serialize_entry("implicitRules", &some)?;
-                    }
-                    if some.id.is_some() || !some.extension.is_empty() {
-                        let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                            id: some.id.as_ref(),
-                            extension: &some.extension,
-                        };
-                        state.serialize_entry("_implicitRules", &primitive_element)?;
-                    }
-                }
-            } else {
-                if let Some(some) = self.r#implicit_rules.as_ref() {
-                    state.serialize_entry("implicitRules", some)?;
-                }
-            }
-            if _ctx.output_json {
-                if let Some(some) = self.r#language.as_ref() {
-                    if let Some(some) = some.value.as_ref() {
-                        let some = Ok(some)?;
-                        state.serialize_entry("language", &some)?;
-                    }
-                    if some.id.is_some() || !some.extension.is_empty() {
-                        let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                            id: some.id.as_ref(),
-                            extension: &some.extension,
-                        };
-                        state.serialize_entry("_language", &primitive_element)?;
-                    }
-                }
-            } else {
-                if let Some(some) = self.r#language.as_ref() {
-                    state.serialize_entry("language", some)?;
-                }
-            }
-            if let Some(some) = self.r#text.as_ref() {
-                state.serialize_entry("text", some)?;
-            }
-            if !self.r#contained.is_empty() {
-                state.serialize_entry("contained", &self.r#contained)?;
-            }
-            if !self.r#extension.is_empty() {
-                state.serialize_entry("extension", &self.r#extension)?;
-            }
-            if !self.r#modifier_extension.is_empty() {
-                state.serialize_entry("modifierExtension", &self.r#modifier_extension)?;
-            }
-            if !self.r#identifier.is_empty() {
-                state.serialize_entry("identifier", &self.r#identifier)?;
-            }
-            if _ctx.output_json {
-                if let Some(some) = self.r#status.value.as_ref() {
-                    let some = Ok(some)?;
-                    state.serialize_entry("status", &some)?;
-                }
-                if self.r#status.id.is_some() || !self.r#status.extension.is_empty() {
-                    let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                        id: self.r#status.id.as_ref(),
-                        extension: &self.r#status.extension,
-                    };
-                    state.serialize_entry("_status", &primitive_element)?;
-                }
-            } else {
-                state.serialize_entry("status", &self.r#status)?;
-            }
-            state.serialize_entry("scope", &self.r#scope)?;
-            if !self.r#category.is_empty() {
-                state.serialize_entry("category", &self.r#category)?;
-            }
-            if let Some(some) = self.r#patient.as_ref() {
-                state.serialize_entry("patient", some)?;
-            }
-            if _ctx.output_json {
-                if let Some(some) = self.r#date_time.as_ref() {
-                    if let Some(some) = some.value.as_ref() {
-                        let some = Ok(some)?;
-                        state.serialize_entry("dateTime", &some)?;
-                    }
-                    if some.id.is_some() || !some.extension.is_empty() {
-                        let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                            id: some.id.as_ref(),
-                            extension: &some.extension,
-                        };
-                        state.serialize_entry("_dateTime", &primitive_element)?;
-                    }
-                }
-            } else {
-                if let Some(some) = self.r#date_time.as_ref() {
-                    state.serialize_entry("dateTime", some)?;
-                }
-            }
-            if !self.r#performer.is_empty() {
-                state.serialize_entry("performer", &self.r#performer)?;
-            }
-            if !self.r#organization.is_empty() {
-                state.serialize_entry("organization", &self.r#organization)?;
-            }
-            if let Some(some) = self.r#source.as_ref() {
-                match some {
-                    ConsentSource::Attachment(ref value) => {
-                        state.serialize_entry("sourceAttachment", value)?;
-                    }
-                    ConsentSource::Reference(ref value) => {
-                        state.serialize_entry("sourceReference", value)?;
-                    }
-                    ConsentSource::Invalid => {
-                        return Err(serde::ser::Error::custom("source is invalid"))
-                    }
-                }
-            }
-            if !self.r#policy.is_empty() {
-                state.serialize_entry("policy", &self.r#policy)?;
-            }
-            if let Some(some) = self.r#policy_rule.as_ref() {
-                state.serialize_entry("policyRule", some)?;
-            }
-            if !self.r#verification.is_empty() {
-                state.serialize_entry("verification", &self.r#verification)?;
-            }
-            if let Some(some) = self.r#provision.as_ref() {
-                state.serialize_entry("provision", some)?;
-            }
-            state.end()
-        })
-    }
 }

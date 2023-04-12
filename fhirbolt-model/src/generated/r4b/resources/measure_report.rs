@@ -1,4 +1,4 @@
-// Generated on 2023-04-12 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-13 by fhirbolt-codegen v0.1.0
 #[doc = "The populations that make up the population group, one for each type of population appropriate for the measure."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub struct MeasureReportGroupPopulation {
@@ -15,53 +15,6 @@ pub struct MeasureReportGroupPopulation {
     #[doc = "This element refers to a List of subject level MeasureReport resources, one for each subject in this population."]
     pub r#subject_results: Option<Box<super::super::types::Reference>>,
 }
-impl serde::ser::Serialize for MeasureReportGroupPopulation {
-    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
-    where
-        S: serde::ser::Serializer,
-    {
-        use serde::ser::SerializeMap;
-        fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
-            let _ctx = _ctx.borrow();
-            let mut state = serializer.serialize_map(None)?;
-            if let Some(some) = self.r#id.as_ref() {
-                state.serialize_entry("id", some)?;
-            }
-            if !self.r#extension.is_empty() {
-                state.serialize_entry("extension", &self.r#extension)?;
-            }
-            if !self.r#modifier_extension.is_empty() {
-                state.serialize_entry("modifierExtension", &self.r#modifier_extension)?;
-            }
-            if let Some(some) = self.r#code.as_ref() {
-                state.serialize_entry("code", some)?;
-            }
-            if _ctx.output_json {
-                if let Some(some) = self.r#count.as_ref() {
-                    if let Some(some) = some.value.as_ref() {
-                        let some = Ok(some)?;
-                        state.serialize_entry("count", &some)?;
-                    }
-                    if some.id.is_some() || !some.extension.is_empty() {
-                        let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                            id: some.id.as_ref(),
-                            extension: &some.extension,
-                        };
-                        state.serialize_entry("_count", &primitive_element)?;
-                    }
-                }
-            } else {
-                if let Some(some) = self.r#count.as_ref() {
-                    state.serialize_entry("count", some)?;
-                }
-            }
-            if let Some(some) = self.r#subject_results.as_ref() {
-                state.serialize_entry("subjectResults", some)?;
-            }
-            state.end()
-        })
-    }
-}
 #[doc = "A stratifier component value."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub struct MeasureReportGroupStratifierStratumComponent {
@@ -75,30 +28,6 @@ pub struct MeasureReportGroupStratifierStratumComponent {
     pub r#code: Box<super::super::types::CodeableConcept>,
     #[doc = "The stratum component value."]
     pub r#value: Box<super::super::types::CodeableConcept>,
-}
-impl serde::ser::Serialize for MeasureReportGroupStratifierStratumComponent {
-    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
-    where
-        S: serde::ser::Serializer,
-    {
-        use serde::ser::SerializeMap;
-        fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
-            let _ctx = _ctx.borrow();
-            let mut state = serializer.serialize_map(None)?;
-            if let Some(some) = self.r#id.as_ref() {
-                state.serialize_entry("id", some)?;
-            }
-            if !self.r#extension.is_empty() {
-                state.serialize_entry("extension", &self.r#extension)?;
-            }
-            if !self.r#modifier_extension.is_empty() {
-                state.serialize_entry("modifierExtension", &self.r#modifier_extension)?;
-            }
-            state.serialize_entry("code", &self.r#code)?;
-            state.serialize_entry("value", &self.r#value)?;
-            state.end()
-        })
-    }
 }
 #[doc = "The populations that make up the stratum, one for each type of population appropriate to the measure."]
 #[derive(Default, Debug, Clone, PartialEq)]
@@ -115,53 +44,6 @@ pub struct MeasureReportGroupStratifierStratumPopulation {
     pub r#count: Option<super::super::types::Integer>,
     #[doc = "This element refers to a List of subject level MeasureReport resources, one for each subject in this population in this stratum."]
     pub r#subject_results: Option<Box<super::super::types::Reference>>,
-}
-impl serde::ser::Serialize for MeasureReportGroupStratifierStratumPopulation {
-    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
-    where
-        S: serde::ser::Serializer,
-    {
-        use serde::ser::SerializeMap;
-        fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
-            let _ctx = _ctx.borrow();
-            let mut state = serializer.serialize_map(None)?;
-            if let Some(some) = self.r#id.as_ref() {
-                state.serialize_entry("id", some)?;
-            }
-            if !self.r#extension.is_empty() {
-                state.serialize_entry("extension", &self.r#extension)?;
-            }
-            if !self.r#modifier_extension.is_empty() {
-                state.serialize_entry("modifierExtension", &self.r#modifier_extension)?;
-            }
-            if let Some(some) = self.r#code.as_ref() {
-                state.serialize_entry("code", some)?;
-            }
-            if _ctx.output_json {
-                if let Some(some) = self.r#count.as_ref() {
-                    if let Some(some) = some.value.as_ref() {
-                        let some = Ok(some)?;
-                        state.serialize_entry("count", &some)?;
-                    }
-                    if some.id.is_some() || !some.extension.is_empty() {
-                        let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                            id: some.id.as_ref(),
-                            extension: &some.extension,
-                        };
-                        state.serialize_entry("_count", &primitive_element)?;
-                    }
-                }
-            } else {
-                if let Some(some) = self.r#count.as_ref() {
-                    state.serialize_entry("count", some)?;
-                }
-            }
-            if let Some(some) = self.r#subject_results.as_ref() {
-                state.serialize_entry("subjectResults", some)?;
-            }
-            state.end()
-        })
-    }
 }
 #[doc = "This element contains the results for a single stratum within the stratifier. For example, when stratifying on administrative gender, there will be four strata, one for each possible gender value."]
 #[derive(Default, Debug, Clone, PartialEq)]
@@ -181,40 +63,6 @@ pub struct MeasureReportGroupStratifierStratum {
     #[doc = "The measure score for this stratum, calculated as appropriate for the measure type and scoring method, and based on only the members of this stratum."]
     pub r#measure_score: Option<Box<super::super::types::Quantity>>,
 }
-impl serde::ser::Serialize for MeasureReportGroupStratifierStratum {
-    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
-    where
-        S: serde::ser::Serializer,
-    {
-        use serde::ser::SerializeMap;
-        fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
-            let _ctx = _ctx.borrow();
-            let mut state = serializer.serialize_map(None)?;
-            if let Some(some) = self.r#id.as_ref() {
-                state.serialize_entry("id", some)?;
-            }
-            if !self.r#extension.is_empty() {
-                state.serialize_entry("extension", &self.r#extension)?;
-            }
-            if !self.r#modifier_extension.is_empty() {
-                state.serialize_entry("modifierExtension", &self.r#modifier_extension)?;
-            }
-            if let Some(some) = self.r#value.as_ref() {
-                state.serialize_entry("value", some)?;
-            }
-            if !self.r#component.is_empty() {
-                state.serialize_entry("component", &self.r#component)?;
-            }
-            if !self.r#population.is_empty() {
-                state.serialize_entry("population", &self.r#population)?;
-            }
-            if let Some(some) = self.r#measure_score.as_ref() {
-                state.serialize_entry("measureScore", some)?;
-            }
-            state.end()
-        })
-    }
-}
 #[doc = "When a measure includes multiple stratifiers, there will be a stratifier group for each stratifier defined by the measure."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub struct MeasureReportGroupStratifier {
@@ -228,34 +76,6 @@ pub struct MeasureReportGroupStratifier {
     pub r#code: Vec<Box<super::super::types::CodeableConcept>>,
     #[doc = "This element contains the results for a single stratum within the stratifier. For example, when stratifying on administrative gender, there will be four strata, one for each possible gender value."]
     pub r#stratum: Vec<MeasureReportGroupStratifierStratum>,
-}
-impl serde::ser::Serialize for MeasureReportGroupStratifier {
-    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
-    where
-        S: serde::ser::Serializer,
-    {
-        use serde::ser::SerializeMap;
-        fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
-            let _ctx = _ctx.borrow();
-            let mut state = serializer.serialize_map(None)?;
-            if let Some(some) = self.r#id.as_ref() {
-                state.serialize_entry("id", some)?;
-            }
-            if !self.r#extension.is_empty() {
-                state.serialize_entry("extension", &self.r#extension)?;
-            }
-            if !self.r#modifier_extension.is_empty() {
-                state.serialize_entry("modifierExtension", &self.r#modifier_extension)?;
-            }
-            if !self.r#code.is_empty() {
-                state.serialize_entry("code", &self.r#code)?;
-            }
-            if !self.r#stratum.is_empty() {
-                state.serialize_entry("stratum", &self.r#stratum)?;
-            }
-            state.end()
-        })
-    }
 }
 #[doc = "The results of the calculation, one for each population group in the measure."]
 #[derive(Default, Debug, Clone, PartialEq)]
@@ -274,40 +94,6 @@ pub struct MeasureReportGroup {
     pub r#measure_score: Option<Box<super::super::types::Quantity>>,
     #[doc = "When a measure includes multiple stratifiers, there will be a stratifier group for each stratifier defined by the measure."]
     pub r#stratifier: Vec<MeasureReportGroupStratifier>,
-}
-impl serde::ser::Serialize for MeasureReportGroup {
-    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
-    where
-        S: serde::ser::Serializer,
-    {
-        use serde::ser::SerializeMap;
-        fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
-            let _ctx = _ctx.borrow();
-            let mut state = serializer.serialize_map(None)?;
-            if let Some(some) = self.r#id.as_ref() {
-                state.serialize_entry("id", some)?;
-            }
-            if !self.r#extension.is_empty() {
-                state.serialize_entry("extension", &self.r#extension)?;
-            }
-            if !self.r#modifier_extension.is_empty() {
-                state.serialize_entry("modifierExtension", &self.r#modifier_extension)?;
-            }
-            if let Some(some) = self.r#code.as_ref() {
-                state.serialize_entry("code", some)?;
-            }
-            if !self.r#population.is_empty() {
-                state.serialize_entry("population", &self.r#population)?;
-            }
-            if let Some(some) = self.r#measure_score.as_ref() {
-                state.serialize_entry("measureScore", some)?;
-            }
-            if !self.r#stratifier.is_empty() {
-                state.serialize_entry("stratifier", &self.r#stratifier)?;
-            }
-            state.end()
-        })
-    }
 }
 #[doc = "The MeasureReport resource contains the results of the calculation of a measure; and optionally a reference to the resources involved in that calculation."]
 #[derive(Default, Debug, Clone, PartialEq)]
@@ -350,157 +136,4 @@ pub struct MeasureReport {
     pub r#group: Vec<MeasureReportGroup>,
     #[doc = "A reference to a Bundle containing the Resources that were used in the calculation of this measure."]
     pub r#evaluated_resource: Vec<Box<super::super::types::Reference>>,
-}
-impl serde::ser::Serialize for MeasureReport {
-    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
-    where
-        S: serde::ser::Serializer,
-    {
-        use serde::ser::SerializeMap;
-        fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
-            let _ctx = _ctx.borrow();
-            let mut state = serializer.serialize_map(None)?;
-            state.serialize_entry("resourceType", "MeasureReport")?;
-            if let Some(some) = self.r#id.as_ref() {
-                state.serialize_entry("id", some)?;
-            }
-            if let Some(some) = self.r#meta.as_ref() {
-                state.serialize_entry("meta", some)?;
-            }
-            if _ctx.output_json {
-                if let Some(some) = self.r#implicit_rules.as_ref() {
-                    if let Some(some) = some.value.as_ref() {
-                        let some = Ok(some)?;
-                        state.serialize_entry("implicitRules", &some)?;
-                    }
-                    if some.id.is_some() || !some.extension.is_empty() {
-                        let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                            id: some.id.as_ref(),
-                            extension: &some.extension,
-                        };
-                        state.serialize_entry("_implicitRules", &primitive_element)?;
-                    }
-                }
-            } else {
-                if let Some(some) = self.r#implicit_rules.as_ref() {
-                    state.serialize_entry("implicitRules", some)?;
-                }
-            }
-            if _ctx.output_json {
-                if let Some(some) = self.r#language.as_ref() {
-                    if let Some(some) = some.value.as_ref() {
-                        let some = Ok(some)?;
-                        state.serialize_entry("language", &some)?;
-                    }
-                    if some.id.is_some() || !some.extension.is_empty() {
-                        let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                            id: some.id.as_ref(),
-                            extension: &some.extension,
-                        };
-                        state.serialize_entry("_language", &primitive_element)?;
-                    }
-                }
-            } else {
-                if let Some(some) = self.r#language.as_ref() {
-                    state.serialize_entry("language", some)?;
-                }
-            }
-            if let Some(some) = self.r#text.as_ref() {
-                state.serialize_entry("text", some)?;
-            }
-            if !self.r#contained.is_empty() {
-                state.serialize_entry("contained", &self.r#contained)?;
-            }
-            if !self.r#extension.is_empty() {
-                state.serialize_entry("extension", &self.r#extension)?;
-            }
-            if !self.r#modifier_extension.is_empty() {
-                state.serialize_entry("modifierExtension", &self.r#modifier_extension)?;
-            }
-            if !self.r#identifier.is_empty() {
-                state.serialize_entry("identifier", &self.r#identifier)?;
-            }
-            if _ctx.output_json {
-                if let Some(some) = self.r#status.value.as_ref() {
-                    let some = Ok(some)?;
-                    state.serialize_entry("status", &some)?;
-                }
-                if self.r#status.id.is_some() || !self.r#status.extension.is_empty() {
-                    let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                        id: self.r#status.id.as_ref(),
-                        extension: &self.r#status.extension,
-                    };
-                    state.serialize_entry("_status", &primitive_element)?;
-                }
-            } else {
-                state.serialize_entry("status", &self.r#status)?;
-            }
-            if _ctx.output_json {
-                if let Some(some) = self.r#type.value.as_ref() {
-                    let some = Ok(some)?;
-                    state.serialize_entry("type", &some)?;
-                }
-                if self.r#type.id.is_some() || !self.r#type.extension.is_empty() {
-                    let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                        id: self.r#type.id.as_ref(),
-                        extension: &self.r#type.extension,
-                    };
-                    state.serialize_entry("_type", &primitive_element)?;
-                }
-            } else {
-                state.serialize_entry("type", &self.r#type)?;
-            }
-            if _ctx.output_json {
-                if let Some(some) = self.r#measure.value.as_ref() {
-                    let some = Ok(some)?;
-                    state.serialize_entry("measure", &some)?;
-                }
-                if self.r#measure.id.is_some() || !self.r#measure.extension.is_empty() {
-                    let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                        id: self.r#measure.id.as_ref(),
-                        extension: &self.r#measure.extension,
-                    };
-                    state.serialize_entry("_measure", &primitive_element)?;
-                }
-            } else {
-                state.serialize_entry("measure", &self.r#measure)?;
-            }
-            if let Some(some) = self.r#subject.as_ref() {
-                state.serialize_entry("subject", some)?;
-            }
-            if _ctx.output_json {
-                if let Some(some) = self.r#date.as_ref() {
-                    if let Some(some) = some.value.as_ref() {
-                        let some = Ok(some)?;
-                        state.serialize_entry("date", &some)?;
-                    }
-                    if some.id.is_some() || !some.extension.is_empty() {
-                        let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                            id: some.id.as_ref(),
-                            extension: &some.extension,
-                        };
-                        state.serialize_entry("_date", &primitive_element)?;
-                    }
-                }
-            } else {
-                if let Some(some) = self.r#date.as_ref() {
-                    state.serialize_entry("date", some)?;
-                }
-            }
-            if let Some(some) = self.r#reporter.as_ref() {
-                state.serialize_entry("reporter", some)?;
-            }
-            state.serialize_entry("period", &self.r#period)?;
-            if let Some(some) = self.r#improvement_notation.as_ref() {
-                state.serialize_entry("improvementNotation", some)?;
-            }
-            if !self.r#group.is_empty() {
-                state.serialize_entry("group", &self.r#group)?;
-            }
-            if !self.r#evaluated_resource.is_empty() {
-                state.serialize_entry("evaluatedResource", &self.r#evaluated_resource)?;
-            }
-            state.end()
-        })
-    }
 }

@@ -1,4 +1,4 @@
-// Generated on 2023-04-12 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-13 by fhirbolt-codegen v0.1.0
 #[doc = "Base StructureDefinition for RatioRange Type: A range of ratios expressed as a low and high numerator and a denominator.\n\nNeed to be able to specify ranges of ratios."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub struct RatioRange {
@@ -12,32 +12,4 @@ pub struct RatioRange {
     pub r#high_numerator: Option<Box<super::super::types::Quantity>>,
     #[doc = "The value of the denominator."]
     pub r#denominator: Option<Box<super::super::types::Quantity>>,
-}
-impl serde::ser::Serialize for RatioRange {
-    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
-    where
-        S: serde::ser::Serializer,
-    {
-        use serde::ser::SerializeMap;
-        fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
-            let _ctx = _ctx.borrow();
-            let mut state = serializer.serialize_map(None)?;
-            if let Some(some) = self.r#id.as_ref() {
-                state.serialize_entry("id", some)?;
-            }
-            if !self.r#extension.is_empty() {
-                state.serialize_entry("extension", &self.r#extension)?;
-            }
-            if let Some(some) = self.r#low_numerator.as_ref() {
-                state.serialize_entry("lowNumerator", some)?;
-            }
-            if let Some(some) = self.r#high_numerator.as_ref() {
-                state.serialize_entry("highNumerator", some)?;
-            }
-            if let Some(some) = self.r#denominator.as_ref() {
-                state.serialize_entry("denominator", some)?;
-            }
-            state.end()
-        })
-    }
 }

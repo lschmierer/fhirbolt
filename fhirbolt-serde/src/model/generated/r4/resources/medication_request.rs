@@ -1,4 +1,83 @@
-// Generated on 2023-04-12 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-13 by fhirbolt-codegen v0.1.0
+impl serde::ser::Serialize
+    for crate::SerializationContext<
+        &fhirbolt_model::r4::resources::MedicationRequestDispenseRequestInitialFill,
+    >
+{
+    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+    where
+        S: serde::ser::Serializer,
+    {
+        use serde::ser::SerializeMap;
+        let mut state = serializer.serialize_map(None)?;
+        if let Some(value) = self.value.r#id.as_ref() {
+            state.serialize_entry("id", value)?;
+        }
+        if !self.value.r#extension.is_empty() {
+            self.with_context(&self.value.r#extension, |ctx| {
+                state.serialize_entry("extension", ctx)
+            })?;
+        }
+        if !self.value.r#modifier_extension.is_empty() {
+            self.with_context(&self.value.r#modifier_extension, |ctx| {
+                state.serialize_entry("modifierExtension", ctx)
+            })?;
+        }
+        if let Some(some) = self.value.r#quantity.as_ref() {
+            self.with_context(some, |ctx| state.serialize_entry("quantity", ctx))?;
+        }
+        if let Some(some) = self.value.r#duration.as_ref() {
+            self.with_context(some, |ctx| state.serialize_entry("duration", ctx))?;
+        }
+        state.end()
+    }
+}
+impl serde::ser::Serialize
+    for crate::SerializationContext<
+        &Box<fhirbolt_model::r4::resources::MedicationRequestDispenseRequestInitialFill>,
+    >
+{
+    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+    where
+        S: serde::ser::Serializer,
+    {
+        self.with_context(self.value.as_ref(), |ctx| ctx.serialize(serializer))
+    }
+}
+impl serde::ser::Serialize
+    for crate::SerializationContext<
+        &Vec<fhirbolt_model::r4::resources::MedicationRequestDispenseRequestInitialFill>,
+    >
+{
+    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+    where
+        S: serde::ser::Serializer,
+    {
+        use serde::ser::SerializeSeq;
+        let mut seq_serializer = serializer.serialize_seq(Some(self.value.len()))?;
+        for value in self.value {
+            self.with_context(value, |ctx| seq_serializer.serialize_element(ctx))?
+        }
+        seq_serializer.end()
+    }
+}
+impl serde::ser::Serialize
+    for crate::SerializationContext<
+        &Vec<Box<fhirbolt_model::r4::resources::MedicationRequestDispenseRequestInitialFill>>,
+    >
+{
+    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+    where
+        S: serde::ser::Serializer,
+    {
+        use serde::ser::SerializeSeq;
+        let mut seq_serializer = serializer.serialize_seq(Some(self.value.len()))?;
+        for value in self.value {
+            self.with_context(value, |ctx| seq_serializer.serialize_element(ctx))?
+        }
+        seq_serializer.end()
+    }
+}
 impl<'de> serde::de::DeserializeSeed<'de>
     for &mut crate::context::de::DeserializationContext<
         fhirbolt_model::r4::resources::MedicationRequestDispenseRequestInitialFill,
@@ -236,6 +315,122 @@ impl<'de> serde::de::DeserializeSeed<'de>
             }
         }
         deserializer.deserialize_seq(Visitor(self))
+    }
+}
+impl serde::ser::Serialize
+    for crate::SerializationContext<
+        &fhirbolt_model::r4::resources::MedicationRequestDispenseRequest,
+    >
+{
+    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+    where
+        S: serde::ser::Serializer,
+    {
+        use serde::ser::SerializeMap;
+        let mut state = serializer.serialize_map(None)?;
+        if let Some(value) = self.value.r#id.as_ref() {
+            state.serialize_entry("id", value)?;
+        }
+        if !self.value.r#extension.is_empty() {
+            self.with_context(&self.value.r#extension, |ctx| {
+                state.serialize_entry("extension", ctx)
+            })?;
+        }
+        if !self.value.r#modifier_extension.is_empty() {
+            self.with_context(&self.value.r#modifier_extension, |ctx| {
+                state.serialize_entry("modifierExtension", ctx)
+            })?;
+        }
+        if let Some(some) = self.value.r#initial_fill.as_ref() {
+            self.with_context(some, |ctx| state.serialize_entry("initialFill", ctx))?;
+        }
+        if let Some(some) = self.value.r#dispense_interval.as_ref() {
+            self.with_context(some, |ctx| state.serialize_entry("dispenseInterval", ctx))?;
+        }
+        if let Some(some) = self.value.r#validity_period.as_ref() {
+            self.with_context(some, |ctx| state.serialize_entry("validityPeriod", ctx))?;
+        }
+        if self.output_json {
+            if let Some(some) = self.value.r#number_of_repeats_allowed.as_ref() {
+                if let Some(some) = some.value.as_ref() {
+                    let some = Ok(some)?;
+                    state.serialize_entry("numberOfRepeatsAllowed", &some)?;
+                }
+                if some.id.is_some() || !some.extension.is_empty() {
+                    let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                        id: some.id.as_ref(),
+                        extension: &some.extension,
+                    };
+                    self.with_context(&primitive_element, |ctx| {
+                        state.serialize_entry("_numberOfRepeatsAllowed", ctx)
+                    })?;
+                }
+            }
+        } else {
+            if let Some(some) = self.value.r#number_of_repeats_allowed.as_ref() {
+                self.with_context(some, |ctx| {
+                    state.serialize_entry("numberOfRepeatsAllowed", ctx)
+                })?;
+            }
+        }
+        if let Some(some) = self.value.r#quantity.as_ref() {
+            self.with_context(some, |ctx| state.serialize_entry("quantity", ctx))?;
+        }
+        if let Some(some) = self.value.r#expected_supply_duration.as_ref() {
+            self.with_context(some, |ctx| {
+                state.serialize_entry("expectedSupplyDuration", ctx)
+            })?;
+        }
+        if let Some(some) = self.value.r#performer.as_ref() {
+            self.with_context(some, |ctx| state.serialize_entry("performer", ctx))?;
+        }
+        state.end()
+    }
+}
+impl serde::ser::Serialize
+    for crate::SerializationContext<
+        &Box<fhirbolt_model::r4::resources::MedicationRequestDispenseRequest>,
+    >
+{
+    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+    where
+        S: serde::ser::Serializer,
+    {
+        self.with_context(self.value.as_ref(), |ctx| ctx.serialize(serializer))
+    }
+}
+impl serde::ser::Serialize
+    for crate::SerializationContext<
+        &Vec<fhirbolt_model::r4::resources::MedicationRequestDispenseRequest>,
+    >
+{
+    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+    where
+        S: serde::ser::Serializer,
+    {
+        use serde::ser::SerializeSeq;
+        let mut seq_serializer = serializer.serialize_seq(Some(self.value.len()))?;
+        for value in self.value {
+            self.with_context(value, |ctx| seq_serializer.serialize_element(ctx))?
+        }
+        seq_serializer.end()
+    }
+}
+impl serde::ser::Serialize
+    for crate::SerializationContext<
+        &Vec<Box<fhirbolt_model::r4::resources::MedicationRequestDispenseRequest>>,
+    >
+{
+    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+    where
+        S: serde::ser::Serializer,
+    {
+        use serde::ser::SerializeSeq;
+        let mut seq_serializer = serializer.serialize_seq(Some(self.value.len()))?;
+        for value in self.value {
+            self.with_context(value, |ctx| seq_serializer.serialize_element(ctx))?
+        }
+        seq_serializer.end()
     }
 }
 impl<'de> serde::de::DeserializeSeed<'de>
@@ -576,6 +771,81 @@ impl<'de> serde::de::DeserializeSeed<'de>
         deserializer.deserialize_seq(Visitor(self))
     }
 }
+impl serde::ser::Serialize
+    for crate::SerializationContext<&fhirbolt_model::r4::resources::MedicationRequestSubstitution>
+{
+    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+    where
+        S: serde::ser::Serializer,
+    {
+        use serde::ser::SerializeMap;
+        let mut state = serializer.serialize_map(None)?;
+        if let Some(value) = self.value.r#id.as_ref() {
+            state.serialize_entry("id", value)?;
+        }
+        if !self.value.r#extension.is_empty() {
+            self.with_context(&self.value.r#extension, |ctx| {
+                state.serialize_entry("extension", ctx)
+            })?;
+        }
+        if !self.value.r#modifier_extension.is_empty() {
+            self.with_context(&self.value.r#modifier_extension, |ctx| {
+                state.serialize_entry("modifierExtension", ctx)
+            })?;
+        }
+        match self . value . r#allowed { fhirbolt_model :: r4 :: resources :: MedicationRequestSubstitutionAllowed :: Boolean (ref value) => { if self . output_json { if let Some (some) = value . value . as_ref () { let some = Ok (some) ? ; state . serialize_entry ("allowedBoolean" , & some) ? ; } if value . id . is_some () || ! value . extension . is_empty () { let primitive_element = super :: super :: serde_helpers :: PrimitiveElement { id : value . id . as_ref () , extension : & value . extension , } ; self . with_context (& primitive_element , | ctx | state . serialize_entry ("_allowedBoolean" , ctx)) ? ; } } else { self . with_context (value , | ctx | state . serialize_entry ("allowedBoolean" , ctx)) ? ; } } , fhirbolt_model :: r4 :: resources :: MedicationRequestSubstitutionAllowed :: CodeableConcept (ref value) => { self . with_context (value , | ctx | state . serialize_entry ("allowedCodeableConcept" , ctx)) ? ; } , fhirbolt_model :: r4 :: resources :: MedicationRequestSubstitutionAllowed :: Invalid => { return Err (serde :: ser :: Error :: custom ("allowed is a required field")) } }
+        if let Some(some) = self.value.r#reason.as_ref() {
+            self.with_context(some, |ctx| state.serialize_entry("reason", ctx))?;
+        }
+        state.end()
+    }
+}
+impl serde::ser::Serialize
+    for crate::SerializationContext<
+        &Box<fhirbolt_model::r4::resources::MedicationRequestSubstitution>,
+    >
+{
+    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+    where
+        S: serde::ser::Serializer,
+    {
+        self.with_context(self.value.as_ref(), |ctx| ctx.serialize(serializer))
+    }
+}
+impl serde::ser::Serialize
+    for crate::SerializationContext<
+        &Vec<fhirbolt_model::r4::resources::MedicationRequestSubstitution>,
+    >
+{
+    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+    where
+        S: serde::ser::Serializer,
+    {
+        use serde::ser::SerializeSeq;
+        let mut seq_serializer = serializer.serialize_seq(Some(self.value.len()))?;
+        for value in self.value {
+            self.with_context(value, |ctx| seq_serializer.serialize_element(ctx))?
+        }
+        seq_serializer.end()
+    }
+}
+impl serde::ser::Serialize
+    for crate::SerializationContext<
+        &Vec<Box<fhirbolt_model::r4::resources::MedicationRequestSubstitution>>,
+    >
+{
+    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+    where
+        S: serde::ser::Serializer,
+    {
+        use serde::ser::SerializeSeq;
+        let mut seq_serializer = serializer.serialize_seq(Some(self.value.len()))?;
+        for value in self.value {
+            self.with_context(value, |ctx| seq_serializer.serialize_element(ctx))?
+        }
+        seq_serializer.end()
+    }
+}
 impl<'de> serde::de::DeserializeSeed<'de>
     for &mut crate::context::de::DeserializationContext<
         fhirbolt_model::r4::resources::MedicationRequestSubstitution,
@@ -838,6 +1108,457 @@ impl<'de> serde::de::DeserializeSeed<'de>
 }
 impl crate::Resource for fhirbolt_model::r4::resources::MedicationRequest {
     const FHIR_RELEASE: crate::FhirRelease = crate::FhirRelease::R4;
+}
+impl serde::ser::Serialize
+    for crate::SerializationContext<&fhirbolt_model::r4::resources::MedicationRequest>
+{
+    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+    where
+        S: serde::ser::Serializer,
+    {
+        use serde::ser::SerializeMap;
+        let mut state = serializer.serialize_map(None)?;
+        state.serialize_entry("resourceType", "MedicationRequest")?;
+        if let Some(value) = self.value.r#id.as_ref() {
+            state.serialize_entry("id", value)?;
+        }
+        if let Some(some) = self.value.r#meta.as_ref() {
+            self.with_context(some, |ctx| state.serialize_entry("meta", ctx))?;
+        }
+        if self.output_json {
+            if let Some(some) = self.value.r#implicit_rules.as_ref() {
+                if let Some(some) = some.value.as_ref() {
+                    let some = Ok(some)?;
+                    state.serialize_entry("implicitRules", &some)?;
+                }
+                if some.id.is_some() || !some.extension.is_empty() {
+                    let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                        id: some.id.as_ref(),
+                        extension: &some.extension,
+                    };
+                    self.with_context(&primitive_element, |ctx| {
+                        state.serialize_entry("_implicitRules", ctx)
+                    })?;
+                }
+            }
+        } else {
+            if let Some(some) = self.value.r#implicit_rules.as_ref() {
+                self.with_context(some, |ctx| state.serialize_entry("implicitRules", ctx))?;
+            }
+        }
+        if self.output_json {
+            if let Some(some) = self.value.r#language.as_ref() {
+                if let Some(some) = some.value.as_ref() {
+                    let some = Ok(some)?;
+                    state.serialize_entry("language", &some)?;
+                }
+                if some.id.is_some() || !some.extension.is_empty() {
+                    let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                        id: some.id.as_ref(),
+                        extension: &some.extension,
+                    };
+                    self.with_context(&primitive_element, |ctx| {
+                        state.serialize_entry("_language", ctx)
+                    })?;
+                }
+            }
+        } else {
+            if let Some(some) = self.value.r#language.as_ref() {
+                self.with_context(some, |ctx| state.serialize_entry("language", ctx))?;
+            }
+        }
+        if let Some(some) = self.value.r#text.as_ref() {
+            self.with_context(some, |ctx| state.serialize_entry("text", ctx))?;
+        }
+        if !self.value.r#contained.is_empty() {
+            self.with_context(&self.value.r#contained, |ctx| {
+                state.serialize_entry("contained", ctx)
+            })?;
+        }
+        if !self.value.r#extension.is_empty() {
+            self.with_context(&self.value.r#extension, |ctx| {
+                state.serialize_entry("extension", ctx)
+            })?;
+        }
+        if !self.value.r#modifier_extension.is_empty() {
+            self.with_context(&self.value.r#modifier_extension, |ctx| {
+                state.serialize_entry("modifierExtension", ctx)
+            })?;
+        }
+        if !self.value.r#identifier.is_empty() {
+            self.with_context(&self.value.r#identifier, |ctx| {
+                state.serialize_entry("identifier", ctx)
+            })?;
+        }
+        if self.output_json {
+            if let Some(some) = self.value.r#status.value.as_ref() {
+                let some = Ok(some)?;
+                state.serialize_entry("status", &some)?;
+            }
+            if self.value.r#status.id.is_some() || !self.value.r#status.extension.is_empty() {
+                let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                    id: self.value.r#status.id.as_ref(),
+                    extension: &self.value.r#status.extension,
+                };
+                self.with_context(&primitive_element, |ctx| {
+                    state.serialize_entry("_status", ctx)
+                })?;
+            }
+        } else {
+            self.with_context(&self.value.r#status, |ctx| {
+                state.serialize_entry("status", ctx)
+            })?;
+        }
+        if let Some(some) = self.value.r#status_reason.as_ref() {
+            self.with_context(some, |ctx| state.serialize_entry("statusReason", ctx))?;
+        }
+        if self.output_json {
+            if let Some(some) = self.value.r#intent.value.as_ref() {
+                let some = Ok(some)?;
+                state.serialize_entry("intent", &some)?;
+            }
+            if self.value.r#intent.id.is_some() || !self.value.r#intent.extension.is_empty() {
+                let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                    id: self.value.r#intent.id.as_ref(),
+                    extension: &self.value.r#intent.extension,
+                };
+                self.with_context(&primitive_element, |ctx| {
+                    state.serialize_entry("_intent", ctx)
+                })?;
+            }
+        } else {
+            self.with_context(&self.value.r#intent, |ctx| {
+                state.serialize_entry("intent", ctx)
+            })?;
+        }
+        if !self.value.r#category.is_empty() {
+            self.with_context(&self.value.r#category, |ctx| {
+                state.serialize_entry("category", ctx)
+            })?;
+        }
+        if self.output_json {
+            if let Some(some) = self.value.r#priority.as_ref() {
+                if let Some(some) = some.value.as_ref() {
+                    let some = Ok(some)?;
+                    state.serialize_entry("priority", &some)?;
+                }
+                if some.id.is_some() || !some.extension.is_empty() {
+                    let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                        id: some.id.as_ref(),
+                        extension: &some.extension,
+                    };
+                    self.with_context(&primitive_element, |ctx| {
+                        state.serialize_entry("_priority", ctx)
+                    })?;
+                }
+            }
+        } else {
+            if let Some(some) = self.value.r#priority.as_ref() {
+                self.with_context(some, |ctx| state.serialize_entry("priority", ctx))?;
+            }
+        }
+        if self.output_json {
+            if let Some(some) = self.value.r#do_not_perform.as_ref() {
+                if let Some(some) = some.value.as_ref() {
+                    let some = Ok(some)?;
+                    state.serialize_entry("doNotPerform", &some)?;
+                }
+                if some.id.is_some() || !some.extension.is_empty() {
+                    let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                        id: some.id.as_ref(),
+                        extension: &some.extension,
+                    };
+                    self.with_context(&primitive_element, |ctx| {
+                        state.serialize_entry("_doNotPerform", ctx)
+                    })?;
+                }
+            }
+        } else {
+            if let Some(some) = self.value.r#do_not_perform.as_ref() {
+                self.with_context(some, |ctx| state.serialize_entry("doNotPerform", ctx))?;
+            }
+        }
+        if let Some(some) = self.value.r#reported.as_ref() {
+            match some {
+                fhirbolt_model::r4::resources::MedicationRequestReported::Boolean(ref value) => {
+                    if self.output_json {
+                        if let Some(some) = value.value.as_ref() {
+                            let some = Ok(some)?;
+                            state.serialize_entry("reportedBoolean", &some)?;
+                        }
+                        if value.id.is_some() || !value.extension.is_empty() {
+                            let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                                id: value.id.as_ref(),
+                                extension: &value.extension,
+                            };
+                            self.with_context(&primitive_element, |ctx| {
+                                state.serialize_entry("_reportedBoolean", ctx)
+                            })?;
+                        }
+                    } else {
+                        self.with_context(value, |ctx| {
+                            state.serialize_entry("reportedBoolean", ctx)
+                        })?;
+                    }
+                }
+                fhirbolt_model::r4::resources::MedicationRequestReported::Reference(ref value) => {
+                    self.with_context(value, |ctx| {
+                        state.serialize_entry("reportedReference", ctx)
+                    })?;
+                }
+                fhirbolt_model::r4::resources::MedicationRequestReported::Invalid => {
+                    return Err(serde::ser::Error::custom("reported is invalid"))
+                }
+            }
+        }
+        match self.value.r#medication {
+            fhirbolt_model::r4::resources::MedicationRequestMedication::CodeableConcept(
+                ref value,
+            ) => {
+                self.with_context(value, |ctx| {
+                    state.serialize_entry("medicationCodeableConcept", ctx)
+                })?;
+            }
+            fhirbolt_model::r4::resources::MedicationRequestMedication::Reference(ref value) => {
+                self.with_context(value, |ctx| {
+                    state.serialize_entry("medicationReference", ctx)
+                })?;
+            }
+            fhirbolt_model::r4::resources::MedicationRequestMedication::Invalid => {
+                return Err(serde::ser::Error::custom("medication is a required field"))
+            }
+        }
+        self.with_context(&self.value.r#subject, |ctx| {
+            state.serialize_entry("subject", ctx)
+        })?;
+        if let Some(some) = self.value.r#encounter.as_ref() {
+            self.with_context(some, |ctx| state.serialize_entry("encounter", ctx))?;
+        }
+        if !self.value.r#supporting_information.is_empty() {
+            self.with_context(&self.value.r#supporting_information, |ctx| {
+                state.serialize_entry("supportingInformation", ctx)
+            })?;
+        }
+        if self.output_json {
+            if let Some(some) = self.value.r#authored_on.as_ref() {
+                if let Some(some) = some.value.as_ref() {
+                    let some = Ok(some)?;
+                    state.serialize_entry("authoredOn", &some)?;
+                }
+                if some.id.is_some() || !some.extension.is_empty() {
+                    let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                        id: some.id.as_ref(),
+                        extension: &some.extension,
+                    };
+                    self.with_context(&primitive_element, |ctx| {
+                        state.serialize_entry("_authoredOn", ctx)
+                    })?;
+                }
+            }
+        } else {
+            if let Some(some) = self.value.r#authored_on.as_ref() {
+                self.with_context(some, |ctx| state.serialize_entry("authoredOn", ctx))?;
+            }
+        }
+        if let Some(some) = self.value.r#requester.as_ref() {
+            self.with_context(some, |ctx| state.serialize_entry("requester", ctx))?;
+        }
+        if let Some(some) = self.value.r#performer.as_ref() {
+            self.with_context(some, |ctx| state.serialize_entry("performer", ctx))?;
+        }
+        if let Some(some) = self.value.r#performer_type.as_ref() {
+            self.with_context(some, |ctx| state.serialize_entry("performerType", ctx))?;
+        }
+        if let Some(some) = self.value.r#recorder.as_ref() {
+            self.with_context(some, |ctx| state.serialize_entry("recorder", ctx))?;
+        }
+        if !self.value.r#reason_code.is_empty() {
+            self.with_context(&self.value.r#reason_code, |ctx| {
+                state.serialize_entry("reasonCode", ctx)
+            })?;
+        }
+        if !self.value.r#reason_reference.is_empty() {
+            self.with_context(&self.value.r#reason_reference, |ctx| {
+                state.serialize_entry("reasonReference", ctx)
+            })?;
+        }
+        if self.output_json {
+            if !self.value.r#instantiates_canonical.is_empty() {
+                let values = self
+                    .value
+                    .r#instantiates_canonical
+                    .iter()
+                    .map(|v| &v.value)
+                    .map(|v| v.as_ref().map(|some| Ok(some)).transpose())
+                    .collect::<Result<Vec<_>, _>>()?;
+                if values.iter().any(|v| v.is_some()) {
+                    state.serialize_entry("instantiatesCanonical", &values)?;
+                }
+                let requires_elements = self
+                    .value
+                    .r#instantiates_canonical
+                    .iter()
+                    .any(|e| e.id.is_some() || !e.extension.is_empty());
+                if requires_elements {
+                    let primitive_elements: Vec<_> = self
+                        .value
+                        .r#instantiates_canonical
+                        .iter()
+                        .map(|e| {
+                            if e.id.is_some() || !e.extension.is_empty() {
+                                Some(super::super::serde_helpers::PrimitiveElement {
+                                    id: e.id.as_ref(),
+                                    extension: &e.extension,
+                                })
+                            } else {
+                                None
+                            }
+                        })
+                        .collect();
+                    self.with_context(&primitive_elements, |ctx| {
+                        state.serialize_entry("_instantiatesCanonical", ctx)
+                    })?;
+                }
+            }
+        } else {
+            if !self.value.r#instantiates_canonical.is_empty() {
+                self.with_context(&self.value.r#instantiates_canonical, |ctx| {
+                    state.serialize_entry("instantiatesCanonical", ctx)
+                })?;
+            }
+        }
+        if self.output_json {
+            if !self.value.r#instantiates_uri.is_empty() {
+                let values = self
+                    .value
+                    .r#instantiates_uri
+                    .iter()
+                    .map(|v| &v.value)
+                    .map(|v| v.as_ref().map(|some| Ok(some)).transpose())
+                    .collect::<Result<Vec<_>, _>>()?;
+                if values.iter().any(|v| v.is_some()) {
+                    state.serialize_entry("instantiatesUri", &values)?;
+                }
+                let requires_elements = self
+                    .value
+                    .r#instantiates_uri
+                    .iter()
+                    .any(|e| e.id.is_some() || !e.extension.is_empty());
+                if requires_elements {
+                    let primitive_elements: Vec<_> = self
+                        .value
+                        .r#instantiates_uri
+                        .iter()
+                        .map(|e| {
+                            if e.id.is_some() || !e.extension.is_empty() {
+                                Some(super::super::serde_helpers::PrimitiveElement {
+                                    id: e.id.as_ref(),
+                                    extension: &e.extension,
+                                })
+                            } else {
+                                None
+                            }
+                        })
+                        .collect();
+                    self.with_context(&primitive_elements, |ctx| {
+                        state.serialize_entry("_instantiatesUri", ctx)
+                    })?;
+                }
+            }
+        } else {
+            if !self.value.r#instantiates_uri.is_empty() {
+                self.with_context(&self.value.r#instantiates_uri, |ctx| {
+                    state.serialize_entry("instantiatesUri", ctx)
+                })?;
+            }
+        }
+        if !self.value.r#based_on.is_empty() {
+            self.with_context(&self.value.r#based_on, |ctx| {
+                state.serialize_entry("basedOn", ctx)
+            })?;
+        }
+        if let Some(some) = self.value.r#group_identifier.as_ref() {
+            self.with_context(some, |ctx| state.serialize_entry("groupIdentifier", ctx))?;
+        }
+        if let Some(some) = self.value.r#course_of_therapy_type.as_ref() {
+            self.with_context(some, |ctx| {
+                state.serialize_entry("courseOfTherapyType", ctx)
+            })?;
+        }
+        if !self.value.r#insurance.is_empty() {
+            self.with_context(&self.value.r#insurance, |ctx| {
+                state.serialize_entry("insurance", ctx)
+            })?;
+        }
+        if !self.value.r#note.is_empty() {
+            self.with_context(&self.value.r#note, |ctx| state.serialize_entry("note", ctx))?;
+        }
+        if !self.value.r#dosage_instruction.is_empty() {
+            self.with_context(&self.value.r#dosage_instruction, |ctx| {
+                state.serialize_entry("dosageInstruction", ctx)
+            })?;
+        }
+        if let Some(some) = self.value.r#dispense_request.as_ref() {
+            self.with_context(some, |ctx| state.serialize_entry("dispenseRequest", ctx))?;
+        }
+        if let Some(some) = self.value.r#substitution.as_ref() {
+            self.with_context(some, |ctx| state.serialize_entry("substitution", ctx))?;
+        }
+        if let Some(some) = self.value.r#prior_prescription.as_ref() {
+            self.with_context(some, |ctx| state.serialize_entry("priorPrescription", ctx))?;
+        }
+        if !self.value.r#detected_issue.is_empty() {
+            self.with_context(&self.value.r#detected_issue, |ctx| {
+                state.serialize_entry("detectedIssue", ctx)
+            })?;
+        }
+        if !self.value.r#event_history.is_empty() {
+            self.with_context(&self.value.r#event_history, |ctx| {
+                state.serialize_entry("eventHistory", ctx)
+            })?;
+        }
+        state.end()
+    }
+}
+impl serde::ser::Serialize
+    for crate::SerializationContext<&Box<fhirbolt_model::r4::resources::MedicationRequest>>
+{
+    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+    where
+        S: serde::ser::Serializer,
+    {
+        self.with_context(self.value.as_ref(), |ctx| ctx.serialize(serializer))
+    }
+}
+impl serde::ser::Serialize
+    for crate::SerializationContext<&Vec<fhirbolt_model::r4::resources::MedicationRequest>>
+{
+    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+    where
+        S: serde::ser::Serializer,
+    {
+        use serde::ser::SerializeSeq;
+        let mut seq_serializer = serializer.serialize_seq(Some(self.value.len()))?;
+        for value in self.value {
+            self.with_context(value, |ctx| seq_serializer.serialize_element(ctx))?
+        }
+        seq_serializer.end()
+    }
+}
+impl serde::ser::Serialize
+    for crate::SerializationContext<&Vec<Box<fhirbolt_model::r4::resources::MedicationRequest>>>
+{
+    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+    where
+        S: serde::ser::Serializer,
+    {
+        use serde::ser::SerializeSeq;
+        let mut seq_serializer = serializer.serialize_seq(Some(self.value.len()))?;
+        for value in self.value {
+            self.with_context(value, |ctx| seq_serializer.serialize_element(ctx))?
+        }
+        seq_serializer.end()
+    }
 }
 impl<'de> serde::de::DeserializeSeed<'de>
     for crate::context::de::DeserializationContext<fhirbolt_model::r4::resources::MedicationRequest>

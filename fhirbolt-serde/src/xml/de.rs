@@ -29,7 +29,7 @@ where
     R: Read,
     T: DeserializeResource,
 {
-    T::new_context(config.unwrap_or(Default::default()), false, T::FHIR_RELEASE).deserialize(de)
+    T::context(config.unwrap_or(Default::default()), false, T::FHIR_RELEASE).deserialize(de)
 }
 
 /// Deserialize an instance of resource type `T` directly from an IO stream of XML (e.g. coming from network).

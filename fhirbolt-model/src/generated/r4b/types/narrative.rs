@@ -1,4 +1,4 @@
-// Generated on 2023-04-12 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-13 by fhirbolt-codegen v0.1.0
 #[doc = "Base StructureDefinition for Narrative Type: A human-readable summary of the resource conveying the essential clinical and business information for the resource."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub struct Narrative {
@@ -10,50 +10,4 @@ pub struct Narrative {
     pub r#status: super::super::types::Code,
     #[doc = "The actual narrative content, a stripped down version of XHTML."]
     pub r#div: super::super::types::Xhtml,
-}
-impl serde::ser::Serialize for Narrative {
-    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
-    where
-        S: serde::ser::Serializer,
-    {
-        use serde::ser::SerializeMap;
-        fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
-            let _ctx = _ctx.borrow();
-            let mut state = serializer.serialize_map(None)?;
-            if let Some(some) = self.r#id.as_ref() {
-                state.serialize_entry("id", some)?;
-            }
-            if !self.r#extension.is_empty() {
-                state.serialize_entry("extension", &self.r#extension)?;
-            }
-            if _ctx.output_json {
-                if let Some(some) = self.r#status.value.as_ref() {
-                    let some = Ok(some)?;
-                    state.serialize_entry("status", &some)?;
-                }
-                if self.r#status.id.is_some() || !self.r#status.extension.is_empty() {
-                    let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                        id: self.r#status.id.as_ref(),
-                        extension: &self.r#status.extension,
-                    };
-                    state.serialize_entry("_status", &primitive_element)?;
-                }
-            } else {
-                state.serialize_entry("status", &self.r#status)?;
-            }
-            if _ctx.output_json {
-                state.serialize_entry("div", &self.r#div.value)?;
-                if self.r#div.id.is_some() {
-                    let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                        id: self.r#div.id.as_ref(),
-                        extension: &[],
-                    };
-                    state.serialize_entry("_div", &primitive_element)?;
-                }
-            } else {
-                state.serialize_entry("div", &self.r#div)?;
-            }
-            state.end()
-        })
-    }
 }

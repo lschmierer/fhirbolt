@@ -1,4 +1,4 @@
-// Generated on 2023-04-12 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-13 by fhirbolt-codegen v0.1.0
 #[doc = "Characteristics e.g. a products onset of action."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub struct MedicinalProductPharmaceuticalCharacteristics {
@@ -12,32 +12,6 @@ pub struct MedicinalProductPharmaceuticalCharacteristics {
     pub r#code: Box<super::super::types::CodeableConcept>,
     #[doc = "The status of characteristic e.g. assigned or pending."]
     pub r#status: Option<Box<super::super::types::CodeableConcept>>,
-}
-impl serde::ser::Serialize for MedicinalProductPharmaceuticalCharacteristics {
-    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
-    where
-        S: serde::ser::Serializer,
-    {
-        use serde::ser::SerializeMap;
-        fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
-            let _ctx = _ctx.borrow();
-            let mut state = serializer.serialize_map(None)?;
-            if let Some(some) = self.r#id.as_ref() {
-                state.serialize_entry("id", some)?;
-            }
-            if !self.r#extension.is_empty() {
-                state.serialize_entry("extension", &self.r#extension)?;
-            }
-            if !self.r#modifier_extension.is_empty() {
-                state.serialize_entry("modifierExtension", &self.r#modifier_extension)?;
-            }
-            state.serialize_entry("code", &self.r#code)?;
-            if let Some(some) = self.r#status.as_ref() {
-                state.serialize_entry("status", some)?;
-            }
-            state.end()
-        })
-    }
 }
 #[doc = "A species specific time during which consumption of animal product is not appropriate."]
 #[derive(Default, Debug, Clone, PartialEq)]
@@ -55,51 +29,6 @@ pub struct MedicinalProductPharmaceuticalRouteOfAdministrationTargetSpeciesWithd
     #[doc = "Extra information about the withdrawal period."]
     pub r#supporting_information: Option<super::super::types::String>,
 }
-impl serde::ser::Serialize
-    for MedicinalProductPharmaceuticalRouteOfAdministrationTargetSpeciesWithdrawalPeriod
-{
-    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
-    where
-        S: serde::ser::Serializer,
-    {
-        use serde::ser::SerializeMap;
-        fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
-            let _ctx = _ctx.borrow();
-            let mut state = serializer.serialize_map(None)?;
-            if let Some(some) = self.r#id.as_ref() {
-                state.serialize_entry("id", some)?;
-            }
-            if !self.r#extension.is_empty() {
-                state.serialize_entry("extension", &self.r#extension)?;
-            }
-            if !self.r#modifier_extension.is_empty() {
-                state.serialize_entry("modifierExtension", &self.r#modifier_extension)?;
-            }
-            state.serialize_entry("tissue", &self.r#tissue)?;
-            state.serialize_entry("value", &self.r#value)?;
-            if _ctx.output_json {
-                if let Some(some) = self.r#supporting_information.as_ref() {
-                    if let Some(some) = some.value.as_ref() {
-                        let some = Ok(some)?;
-                        state.serialize_entry("supportingInformation", &some)?;
-                    }
-                    if some.id.is_some() || !some.extension.is_empty() {
-                        let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                            id: some.id.as_ref(),
-                            extension: &some.extension,
-                        };
-                        state.serialize_entry("_supportingInformation", &primitive_element)?;
-                    }
-                }
-            } else {
-                if let Some(some) = self.r#supporting_information.as_ref() {
-                    state.serialize_entry("supportingInformation", some)?;
-                }
-            }
-            state.end()
-        })
-    }
-}
 #[doc = "A species for which this route applies."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub struct MedicinalProductPharmaceuticalRouteOfAdministrationTargetSpecies {
@@ -114,32 +43,6 @@ pub struct MedicinalProductPharmaceuticalRouteOfAdministrationTargetSpecies {
     #[doc = "A species specific time during which consumption of animal product is not appropriate."]
     pub r#withdrawal_period:
         Vec<MedicinalProductPharmaceuticalRouteOfAdministrationTargetSpeciesWithdrawalPeriod>,
-}
-impl serde::ser::Serialize for MedicinalProductPharmaceuticalRouteOfAdministrationTargetSpecies {
-    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
-    where
-        S: serde::ser::Serializer,
-    {
-        use serde::ser::SerializeMap;
-        fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
-            let _ctx = _ctx.borrow();
-            let mut state = serializer.serialize_map(None)?;
-            if let Some(some) = self.r#id.as_ref() {
-                state.serialize_entry("id", some)?;
-            }
-            if !self.r#extension.is_empty() {
-                state.serialize_entry("extension", &self.r#extension)?;
-            }
-            if !self.r#modifier_extension.is_empty() {
-                state.serialize_entry("modifierExtension", &self.r#modifier_extension)?;
-            }
-            state.serialize_entry("code", &self.r#code)?;
-            if !self.r#withdrawal_period.is_empty() {
-                state.serialize_entry("withdrawalPeriod", &self.r#withdrawal_period)?;
-            }
-            state.end()
-        })
-    }
 }
 #[doc = "The path by which the pharmaceutical product is taken into or makes contact with the body."]
 #[derive(Default, Debug, Clone, PartialEq)]
@@ -164,47 +67,6 @@ pub struct MedicinalProductPharmaceuticalRouteOfAdministration {
     pub r#max_treatment_period: Option<Box<super::super::types::Duration>>,
     #[doc = "A species for which this route applies."]
     pub r#target_species: Vec<MedicinalProductPharmaceuticalRouteOfAdministrationTargetSpecies>,
-}
-impl serde::ser::Serialize for MedicinalProductPharmaceuticalRouteOfAdministration {
-    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
-    where
-        S: serde::ser::Serializer,
-    {
-        use serde::ser::SerializeMap;
-        fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
-            let _ctx = _ctx.borrow();
-            let mut state = serializer.serialize_map(None)?;
-            if let Some(some) = self.r#id.as_ref() {
-                state.serialize_entry("id", some)?;
-            }
-            if !self.r#extension.is_empty() {
-                state.serialize_entry("extension", &self.r#extension)?;
-            }
-            if !self.r#modifier_extension.is_empty() {
-                state.serialize_entry("modifierExtension", &self.r#modifier_extension)?;
-            }
-            state.serialize_entry("code", &self.r#code)?;
-            if let Some(some) = self.r#first_dose.as_ref() {
-                state.serialize_entry("firstDose", some)?;
-            }
-            if let Some(some) = self.r#max_single_dose.as_ref() {
-                state.serialize_entry("maxSingleDose", some)?;
-            }
-            if let Some(some) = self.r#max_dose_per_day.as_ref() {
-                state.serialize_entry("maxDosePerDay", some)?;
-            }
-            if let Some(some) = self.r#max_dose_per_treatment_period.as_ref() {
-                state.serialize_entry("maxDosePerTreatmentPeriod", some)?;
-            }
-            if let Some(some) = self.r#max_treatment_period.as_ref() {
-                state.serialize_entry("maxTreatmentPeriod", some)?;
-            }
-            if !self.r#target_species.is_empty() {
-                state.serialize_entry("targetSpecies", &self.r#target_species)?;
-            }
-            state.end()
-        })
-    }
 }
 #[doc = "A pharmaceutical product described in terms of its composition and dose form."]
 #[derive(Default, Debug, Clone, PartialEq)]
@@ -239,93 +101,4 @@ pub struct MedicinalProductPharmaceutical {
     pub r#characteristics: Vec<MedicinalProductPharmaceuticalCharacteristics>,
     #[doc = "The path by which the pharmaceutical product is taken into or makes contact with the body."]
     pub r#route_of_administration: Vec<MedicinalProductPharmaceuticalRouteOfAdministration>,
-}
-impl serde::ser::Serialize for MedicinalProductPharmaceutical {
-    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
-    where
-        S: serde::ser::Serializer,
-    {
-        use serde::ser::SerializeMap;
-        fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
-            let _ctx = _ctx.borrow();
-            let mut state = serializer.serialize_map(None)?;
-            state.serialize_entry("resourceType", "MedicinalProductPharmaceutical")?;
-            if let Some(some) = self.r#id.as_ref() {
-                state.serialize_entry("id", some)?;
-            }
-            if let Some(some) = self.r#meta.as_ref() {
-                state.serialize_entry("meta", some)?;
-            }
-            if _ctx.output_json {
-                if let Some(some) = self.r#implicit_rules.as_ref() {
-                    if let Some(some) = some.value.as_ref() {
-                        let some = Ok(some)?;
-                        state.serialize_entry("implicitRules", &some)?;
-                    }
-                    if some.id.is_some() || !some.extension.is_empty() {
-                        let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                            id: some.id.as_ref(),
-                            extension: &some.extension,
-                        };
-                        state.serialize_entry("_implicitRules", &primitive_element)?;
-                    }
-                }
-            } else {
-                if let Some(some) = self.r#implicit_rules.as_ref() {
-                    state.serialize_entry("implicitRules", some)?;
-                }
-            }
-            if _ctx.output_json {
-                if let Some(some) = self.r#language.as_ref() {
-                    if let Some(some) = some.value.as_ref() {
-                        let some = Ok(some)?;
-                        state.serialize_entry("language", &some)?;
-                    }
-                    if some.id.is_some() || !some.extension.is_empty() {
-                        let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                            id: some.id.as_ref(),
-                            extension: &some.extension,
-                        };
-                        state.serialize_entry("_language", &primitive_element)?;
-                    }
-                }
-            } else {
-                if let Some(some) = self.r#language.as_ref() {
-                    state.serialize_entry("language", some)?;
-                }
-            }
-            if let Some(some) = self.r#text.as_ref() {
-                state.serialize_entry("text", some)?;
-            }
-            if !self.r#contained.is_empty() {
-                state.serialize_entry("contained", &self.r#contained)?;
-            }
-            if !self.r#extension.is_empty() {
-                state.serialize_entry("extension", &self.r#extension)?;
-            }
-            if !self.r#modifier_extension.is_empty() {
-                state.serialize_entry("modifierExtension", &self.r#modifier_extension)?;
-            }
-            if !self.r#identifier.is_empty() {
-                state.serialize_entry("identifier", &self.r#identifier)?;
-            }
-            state.serialize_entry("administrableDoseForm", &self.r#administrable_dose_form)?;
-            if let Some(some) = self.r#unit_of_presentation.as_ref() {
-                state.serialize_entry("unitOfPresentation", some)?;
-            }
-            if !self.r#ingredient.is_empty() {
-                state.serialize_entry("ingredient", &self.r#ingredient)?;
-            }
-            if !self.r#device.is_empty() {
-                state.serialize_entry("device", &self.r#device)?;
-            }
-            if !self.r#characteristics.is_empty() {
-                state.serialize_entry("characteristics", &self.r#characteristics)?;
-            }
-            if !self.r#route_of_administration.is_empty() {
-                state.serialize_entry("routeOfAdministration", &self.r#route_of_administration)?;
-            }
-            state.end()
-        })
-    }
 }

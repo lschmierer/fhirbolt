@@ -1,4 +1,96 @@
-// Generated on 2023-04-12 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-13 by fhirbolt-codegen v0.1.0
+impl serde::ser::Serialize
+    for crate::SerializationContext<&fhirbolt_model::r4b::types::DosageDoseAndRate>
+{
+    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+    where
+        S: serde::ser::Serializer,
+    {
+        use serde::ser::SerializeMap;
+        let mut state = serializer.serialize_map(None)?;
+        if let Some(value) = self.value.r#id.as_ref() {
+            state.serialize_entry("id", value)?;
+        }
+        if !self.value.r#extension.is_empty() {
+            self.with_context(&self.value.r#extension, |ctx| {
+                state.serialize_entry("extension", ctx)
+            })?;
+        }
+        if let Some(some) = self.value.r#type.as_ref() {
+            self.with_context(some, |ctx| state.serialize_entry("type", ctx))?;
+        }
+        if let Some(some) = self.value.r#dose.as_ref() {
+            match some {
+                fhirbolt_model::r4b::types::DosageDoseAndRateDose::Range(ref value) => {
+                    self.with_context(value, |ctx| state.serialize_entry("doseRange", ctx))?;
+                }
+                fhirbolt_model::r4b::types::DosageDoseAndRateDose::Quantity(ref value) => {
+                    self.with_context(value, |ctx| state.serialize_entry("doseQuantity", ctx))?;
+                }
+                fhirbolt_model::r4b::types::DosageDoseAndRateDose::Invalid => {
+                    return Err(serde::ser::Error::custom("dose is invalid"))
+                }
+            }
+        }
+        if let Some(some) = self.value.r#rate.as_ref() {
+            match some {
+                fhirbolt_model::r4b::types::DosageDoseAndRateRate::Ratio(ref value) => {
+                    self.with_context(value, |ctx| state.serialize_entry("rateRatio", ctx))?;
+                }
+                fhirbolt_model::r4b::types::DosageDoseAndRateRate::Range(ref value) => {
+                    self.with_context(value, |ctx| state.serialize_entry("rateRange", ctx))?;
+                }
+                fhirbolt_model::r4b::types::DosageDoseAndRateRate::Quantity(ref value) => {
+                    self.with_context(value, |ctx| state.serialize_entry("rateQuantity", ctx))?;
+                }
+                fhirbolt_model::r4b::types::DosageDoseAndRateRate::Invalid => {
+                    return Err(serde::ser::Error::custom("rate is invalid"))
+                }
+            }
+        }
+        state.end()
+    }
+}
+impl serde::ser::Serialize
+    for crate::SerializationContext<&Box<fhirbolt_model::r4b::types::DosageDoseAndRate>>
+{
+    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+    where
+        S: serde::ser::Serializer,
+    {
+        self.with_context(self.value.as_ref(), |ctx| ctx.serialize(serializer))
+    }
+}
+impl serde::ser::Serialize
+    for crate::SerializationContext<&Vec<fhirbolt_model::r4b::types::DosageDoseAndRate>>
+{
+    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+    where
+        S: serde::ser::Serializer,
+    {
+        use serde::ser::SerializeSeq;
+        let mut seq_serializer = serializer.serialize_seq(Some(self.value.len()))?;
+        for value in self.value {
+            self.with_context(value, |ctx| seq_serializer.serialize_element(ctx))?
+        }
+        seq_serializer.end()
+    }
+}
+impl serde::ser::Serialize
+    for crate::SerializationContext<&Vec<Box<fhirbolt_model::r4b::types::DosageDoseAndRate>>>
+{
+    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+    where
+        S: serde::ser::Serializer,
+    {
+        use serde::ser::SerializeSeq;
+        let mut seq_serializer = serializer.serialize_seq(Some(self.value.len()))?;
+        for value in self.value {
+            self.with_context(value, |ctx| seq_serializer.serialize_element(ctx))?
+        }
+        seq_serializer.end()
+    }
+}
 impl<'de> serde::de::DeserializeSeed<'de>
     for &mut crate::context::de::DeserializationContext<
         fhirbolt_model::r4b::types::DosageDoseAndRate,
@@ -261,6 +353,198 @@ impl<'de> serde::de::DeserializeSeed<'de>
             }
         }
         deserializer.deserialize_seq(Visitor(self))
+    }
+}
+impl serde::ser::Serialize for crate::SerializationContext<&fhirbolt_model::r4b::types::Dosage> {
+    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+    where
+        S: serde::ser::Serializer,
+    {
+        use serde::ser::SerializeMap;
+        let mut state = serializer.serialize_map(None)?;
+        if let Some(value) = self.value.r#id.as_ref() {
+            state.serialize_entry("id", value)?;
+        }
+        if !self.value.r#extension.is_empty() {
+            self.with_context(&self.value.r#extension, |ctx| {
+                state.serialize_entry("extension", ctx)
+            })?;
+        }
+        if !self.value.r#modifier_extension.is_empty() {
+            self.with_context(&self.value.r#modifier_extension, |ctx| {
+                state.serialize_entry("modifierExtension", ctx)
+            })?;
+        }
+        if self.output_json {
+            if let Some(some) = self.value.r#sequence.as_ref() {
+                if let Some(some) = some.value.as_ref() {
+                    let some = Ok(some)?;
+                    state.serialize_entry("sequence", &some)?;
+                }
+                if some.id.is_some() || !some.extension.is_empty() {
+                    let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                        id: some.id.as_ref(),
+                        extension: &some.extension,
+                    };
+                    self.with_context(&primitive_element, |ctx| {
+                        state.serialize_entry("_sequence", ctx)
+                    })?;
+                }
+            }
+        } else {
+            if let Some(some) = self.value.r#sequence.as_ref() {
+                self.with_context(some, |ctx| state.serialize_entry("sequence", ctx))?;
+            }
+        }
+        if self.output_json {
+            if let Some(some) = self.value.r#text.as_ref() {
+                if let Some(some) = some.value.as_ref() {
+                    let some = Ok(some)?;
+                    state.serialize_entry("text", &some)?;
+                }
+                if some.id.is_some() || !some.extension.is_empty() {
+                    let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                        id: some.id.as_ref(),
+                        extension: &some.extension,
+                    };
+                    self.with_context(&primitive_element, |ctx| {
+                        state.serialize_entry("_text", ctx)
+                    })?;
+                }
+            }
+        } else {
+            if let Some(some) = self.value.r#text.as_ref() {
+                self.with_context(some, |ctx| state.serialize_entry("text", ctx))?;
+            }
+        }
+        if !self.value.r#additional_instruction.is_empty() {
+            self.with_context(&self.value.r#additional_instruction, |ctx| {
+                state.serialize_entry("additionalInstruction", ctx)
+            })?;
+        }
+        if self.output_json {
+            if let Some(some) = self.value.r#patient_instruction.as_ref() {
+                if let Some(some) = some.value.as_ref() {
+                    let some = Ok(some)?;
+                    state.serialize_entry("patientInstruction", &some)?;
+                }
+                if some.id.is_some() || !some.extension.is_empty() {
+                    let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                        id: some.id.as_ref(),
+                        extension: &some.extension,
+                    };
+                    self.with_context(&primitive_element, |ctx| {
+                        state.serialize_entry("_patientInstruction", ctx)
+                    })?;
+                }
+            }
+        } else {
+            if let Some(some) = self.value.r#patient_instruction.as_ref() {
+                self.with_context(some, |ctx| state.serialize_entry("patientInstruction", ctx))?;
+            }
+        }
+        if let Some(some) = self.value.r#timing.as_ref() {
+            self.with_context(some, |ctx| state.serialize_entry("timing", ctx))?;
+        }
+        if let Some(some) = self.value.r#as_needed.as_ref() {
+            match some {
+                fhirbolt_model::r4b::types::DosageAsNeeded::Boolean(ref value) => {
+                    if self.output_json {
+                        if let Some(some) = value.value.as_ref() {
+                            let some = Ok(some)?;
+                            state.serialize_entry("asNeededBoolean", &some)?;
+                        }
+                        if value.id.is_some() || !value.extension.is_empty() {
+                            let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                                id: value.id.as_ref(),
+                                extension: &value.extension,
+                            };
+                            self.with_context(&primitive_element, |ctx| {
+                                state.serialize_entry("_asNeededBoolean", ctx)
+                            })?;
+                        }
+                    } else {
+                        self.with_context(value, |ctx| {
+                            state.serialize_entry("asNeededBoolean", ctx)
+                        })?;
+                    }
+                }
+                fhirbolt_model::r4b::types::DosageAsNeeded::CodeableConcept(ref value) => {
+                    self.with_context(value, |ctx| {
+                        state.serialize_entry("asNeededCodeableConcept", ctx)
+                    })?;
+                }
+                fhirbolt_model::r4b::types::DosageAsNeeded::Invalid => {
+                    return Err(serde::ser::Error::custom("as_needed is invalid"))
+                }
+            }
+        }
+        if let Some(some) = self.value.r#site.as_ref() {
+            self.with_context(some, |ctx| state.serialize_entry("site", ctx))?;
+        }
+        if let Some(some) = self.value.r#route.as_ref() {
+            self.with_context(some, |ctx| state.serialize_entry("route", ctx))?;
+        }
+        if let Some(some) = self.value.r#method.as_ref() {
+            self.with_context(some, |ctx| state.serialize_entry("method", ctx))?;
+        }
+        if !self.value.r#dose_and_rate.is_empty() {
+            self.with_context(&self.value.r#dose_and_rate, |ctx| {
+                state.serialize_entry("doseAndRate", ctx)
+            })?;
+        }
+        if let Some(some) = self.value.r#max_dose_per_period.as_ref() {
+            self.with_context(some, |ctx| state.serialize_entry("maxDosePerPeriod", ctx))?;
+        }
+        if let Some(some) = self.value.r#max_dose_per_administration.as_ref() {
+            self.with_context(some, |ctx| {
+                state.serialize_entry("maxDosePerAdministration", ctx)
+            })?;
+        }
+        if let Some(some) = self.value.r#max_dose_per_lifetime.as_ref() {
+            self.with_context(some, |ctx| state.serialize_entry("maxDosePerLifetime", ctx))?;
+        }
+        state.end()
+    }
+}
+impl serde::ser::Serialize
+    for crate::SerializationContext<&Box<fhirbolt_model::r4b::types::Dosage>>
+{
+    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+    where
+        S: serde::ser::Serializer,
+    {
+        self.with_context(self.value.as_ref(), |ctx| ctx.serialize(serializer))
+    }
+}
+impl serde::ser::Serialize
+    for crate::SerializationContext<&Vec<fhirbolt_model::r4b::types::Dosage>>
+{
+    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+    where
+        S: serde::ser::Serializer,
+    {
+        use serde::ser::SerializeSeq;
+        let mut seq_serializer = serializer.serialize_seq(Some(self.value.len()))?;
+        for value in self.value {
+            self.with_context(value, |ctx| seq_serializer.serialize_element(ctx))?
+        }
+        seq_serializer.end()
+    }
+}
+impl serde::ser::Serialize
+    for crate::SerializationContext<&Vec<Box<fhirbolt_model::r4b::types::Dosage>>>
+{
+    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+    where
+        S: serde::ser::Serializer,
+    {
+        use serde::ser::SerializeSeq;
+        let mut seq_serializer = serializer.serialize_seq(Some(self.value.len()))?;
+        for value in self.value {
+            self.with_context(value, |ctx| seq_serializer.serialize_element(ctx))?
+        }
+        seq_serializer.end()
     }
 }
 impl<'de> serde::de::DeserializeSeed<'de>

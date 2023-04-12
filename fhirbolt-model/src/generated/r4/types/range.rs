@@ -1,4 +1,4 @@
-// Generated on 2023-04-12 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-13 by fhirbolt-codegen v0.1.0
 #[doc = "Base StructureDefinition for Range Type: A set of ordered Quantities defined by a low and high limit.\n\nNeed to be able to specify ranges of values."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub struct Range {
@@ -10,29 +10,4 @@ pub struct Range {
     pub r#low: Option<Box<super::super::types::Quantity>>,
     #[doc = "The high limit. The boundary is inclusive."]
     pub r#high: Option<Box<super::super::types::Quantity>>,
-}
-impl serde::ser::Serialize for Range {
-    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
-    where
-        S: serde::ser::Serializer,
-    {
-        use serde::ser::SerializeMap;
-        fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
-            let _ctx = _ctx.borrow();
-            let mut state = serializer.serialize_map(None)?;
-            if let Some(some) = self.r#id.as_ref() {
-                state.serialize_entry("id", some)?;
-            }
-            if !self.r#extension.is_empty() {
-                state.serialize_entry("extension", &self.r#extension)?;
-            }
-            if let Some(some) = self.r#low.as_ref() {
-                state.serialize_entry("low", some)?;
-            }
-            if let Some(some) = self.r#high.as_ref() {
-                state.serialize_entry("high", some)?;
-            }
-            state.end()
-        })
-    }
 }

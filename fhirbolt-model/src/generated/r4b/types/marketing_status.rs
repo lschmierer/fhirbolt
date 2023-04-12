@@ -1,4 +1,4 @@
-// Generated on 2023-04-12 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-13 by fhirbolt-codegen v0.1.0
 #[doc = "Base StructureDefinition for MarketingStatus Type: The marketing status describes the date when a medicinal product is actually put on the market or the date as of which it is no longer available."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub struct MarketingStatus {
@@ -18,55 +18,4 @@ pub struct MarketingStatus {
     pub r#date_range: Option<Box<super::super::types::Period>>,
     #[doc = "The date when the Medicinal Product is placed on the market by the Marketing Authorisation Holder (or where applicable, the manufacturer/distributor) in a country and/or jurisdiction shall be provided A complete date consisting of day, month and year shall be specified using the ISO 8601 date format NOTE “Placed on the market” refers to the release of the Medicinal Product into the distribution chain."]
     pub r#restore_date: Option<super::super::types::DateTime>,
-}
-impl serde::ser::Serialize for MarketingStatus {
-    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
-    where
-        S: serde::ser::Serializer,
-    {
-        use serde::ser::SerializeMap;
-        fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
-            let _ctx = _ctx.borrow();
-            let mut state = serializer.serialize_map(None)?;
-            if let Some(some) = self.r#id.as_ref() {
-                state.serialize_entry("id", some)?;
-            }
-            if !self.r#extension.is_empty() {
-                state.serialize_entry("extension", &self.r#extension)?;
-            }
-            if !self.r#modifier_extension.is_empty() {
-                state.serialize_entry("modifierExtension", &self.r#modifier_extension)?;
-            }
-            if let Some(some) = self.r#country.as_ref() {
-                state.serialize_entry("country", some)?;
-            }
-            if let Some(some) = self.r#jurisdiction.as_ref() {
-                state.serialize_entry("jurisdiction", some)?;
-            }
-            state.serialize_entry("status", &self.r#status)?;
-            if let Some(some) = self.r#date_range.as_ref() {
-                state.serialize_entry("dateRange", some)?;
-            }
-            if _ctx.output_json {
-                if let Some(some) = self.r#restore_date.as_ref() {
-                    if let Some(some) = some.value.as_ref() {
-                        let some = Ok(some)?;
-                        state.serialize_entry("restoreDate", &some)?;
-                    }
-                    if some.id.is_some() || !some.extension.is_empty() {
-                        let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                            id: some.id.as_ref(),
-                            extension: &some.extension,
-                        };
-                        state.serialize_entry("_restoreDate", &primitive_element)?;
-                    }
-                }
-            } else {
-                if let Some(some) = self.r#restore_date.as_ref() {
-                    state.serialize_entry("restoreDate", some)?;
-                }
-            }
-            state.end()
-        })
-    }
 }

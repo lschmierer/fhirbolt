@@ -15,7 +15,10 @@ use crate::{
     SourceFile,
 };
 
-use self::{de::implement_deserialze, ser::implement_serialize};
+use self::{
+    de::implement_deserialze,
+    ser::{implement_serialize, implement_serialize_resource_enum},
+};
 pub use self::{serde_helpers::generate_serde_helpers, type_hints::generate_type_hints};
 
 lazy_static! {
@@ -73,8 +76,7 @@ pub fn generate_resource_enum(resource_modules: &[RustFhirModule]) -> SourceFile
         name: "resource".into(),
         source: quote! {
             #[doc="Enum representing all possible FHIR resources."]
-            #[derive(Default, Debug, Clone, PartialEq, serde::Serialize)]
-            #[serde(tag = "resourceType")]
+            #[derive(Default, Debug, Clone, PartialEq)]
             pub enum Resource {
                 #(
                     #variants_tokens
@@ -98,7 +100,7 @@ pub fn generate_resource_enum_serde(
 
     };
 
-    //let serialize_impl_tokens = implement_serialize_resource_enum(&r#struct, enums);
+    let serialize_impl_tokens = implement_serialize_resource_enum(&resource_modules, &namespace);
     let deserialize_impl_tokens = implement_deserialze_resource_enum(&resource_modules, &namespace);
 
     SourceFile {
@@ -108,17 +110,14 @@ pub fn generate_resource_enum_serde(
                 const FHIR_RELEASE: crate::FhirRelease = crate::FhirRelease::#release_ident;
             }
 
-            //#serialize_impl_tokens
+            #serialize_impl_tokens
             #deserialize_impl_tokens
         },
     }
 }
 
 fn generate_struct_module(module: &RustFhirModule) -> SourceFile {
-    let structs_tokens = module
-        .structs
-        .iter()
-        .map(|s| generate_struct(s, &module.enums));
+    let structs_tokens = module.structs.iter().map(|s| generate_struct(s));
     let enums_tokens = module.enums.iter().map(|e| generate_enum(e));
 
     SourceFile {
@@ -134,16 +133,9 @@ fn generate_struct_module(module: &RustFhirModule) -> SourceFile {
     }
 }
 
-fn generate_struct(r#struct: &RustFhirStruct, enums: &[RustFhirEnum]) -> TokenStream {
+fn generate_struct(r#struct: &RustFhirStruct) -> TokenStream {
     let name_ident = format_ident!("{}", r#struct.struct_name);
     let fields_tokens = r#struct.fields.iter().map(|f| generate_field(f));
-
-    let serde_impl_tokens = {
-        let serialize_impl_tokens = implement_serialize(&r#struct, enums);
-        quote! {
-            #serialize_impl_tokens
-        }
-    };
 
     let doc_comment = format_doc_comment(&r#struct.doc_comment);
 
@@ -155,8 +147,6 @@ fn generate_struct(r#struct: &RustFhirStruct, enums: &[RustFhirEnum]) -> TokenSt
                 #fields_tokens
             )*
         }
-
-        #serde_impl_tokens
     }
 }
 
@@ -277,14 +267,14 @@ fn generate_serde_module(module: &RustFhirModule, release: &str) -> SourceFile {
             quote! {}
         };
 
-        //let serialize_impl_tokens = implement_serialize(&s, &module.enums);
+        let serialize_impl_tokens = implement_serialize(&s, &module.enums, &namespace);
         let deserialize_impl_tokens =
             implement_deserialze(&s, &module.enums, &namespace, &base_namespace);
 
         quote! {
             #impl_any_resource_tokens
 
-            //#serialize_impl_tokens
+            #serialize_impl_tokens
             #deserialize_impl_tokens
         }
     });

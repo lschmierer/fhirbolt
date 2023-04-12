@@ -1,3 +1,51 @@
+// Generated on 2023-04-13 by fhirbolt-codegen v0.1.0
+pub struct PrimitiveElement<'a> {
+    pub id: Option<&'a std::string::String>,
+    pub extension: &'a Vec<Box<fhirbolt_model::r4b::types::Extension>>,
+}
+impl<'a> serde::ser::Serialize for crate::SerializationContext<&PrimitiveElement<'a>> {
+    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+    where
+        S: serde::ser::Serializer,
+    {
+        use serde::ser::SerializeMap;
+        let mut state = serializer.serialize_map(None)?;
+        if let Some(id) = self.value.id {
+            state.serialize_entry("id", id)?;
+        }
+        if !self.value.extension.is_empty() {
+            self.with_context(self.value.extension, |ctx| {
+                state.serialize_entry("extension", ctx)
+            })?;
+        }
+        state.end()
+    }
+}
+impl<'a> serde::ser::Serialize for crate::SerializationContext<Option<&PrimitiveElement<'a>>> {
+    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+    where
+        S: serde::ser::Serializer,
+    {
+        if let Some(value) = self.value {
+            self.with_context(value, |ctx| serializer.serialize_some(ctx))
+        } else {
+            serializer.serialize_none()
+        }
+    }
+}
+impl<'a> serde::ser::Serialize for crate::SerializationContext<&Vec<Option<PrimitiveElement<'a>>>> {
+    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+    where
+        S: serde::ser::Serializer,
+    {
+        use serde::ser::SerializeSeq;
+        let mut seq_serializer = serializer.serialize_seq(Some(self.value.len()))?;
+        for value in self.value {
+            self.with_context(value.as_ref(), |ctx| seq_serializer.serialize_element(ctx))?
+        }
+        seq_serializer.end()
+    }
+}
 pub struct PrimitiveElementOwned {
     pub id: Option<std::string::String>,
     pub extension: Vec<Box<fhirbolt_model::r4b::types::Extension>>,

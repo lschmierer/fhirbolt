@@ -9,8 +9,7 @@ use crate::Resource;
 pub trait DeserializeResource: Resource {
     type Context: for<'de> DeserializeSeed<'de, Value = Self>;
 
-    fn new_context(config: DeserializationConfig, from_json: bool, r: FhirRelease)
-        -> Self::Context;
+    fn context(config: DeserializationConfig, from_json: bool, r: FhirRelease) -> Self::Context;
 }
 
 impl<T> DeserializeResource for T
@@ -20,11 +19,7 @@ where
 {
     type Context = DeserializationContext<Self>;
 
-    fn new_context(
-        config: DeserializationConfig,
-        from_json: bool,
-        r: FhirRelease,
-    ) -> Self::Context {
+    fn context(config: DeserializationConfig, from_json: bool, r: FhirRelease) -> Self::Context {
         DeserializationContext::new(config, from_json, r)
     }
 }

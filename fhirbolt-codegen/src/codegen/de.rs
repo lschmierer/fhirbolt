@@ -240,6 +240,7 @@ pub fn implement_deserialze(
         }
     }
 }
+
 pub fn implement_deserialze_resource_enum(
     resource_modules: &[RustFhirModule],
     namespace: &TokenStream,

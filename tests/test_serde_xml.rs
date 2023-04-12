@@ -2,11 +2,9 @@
 
 use std::io::Read;
 
-use serde::Serialize;
-
 use fhirbolt::{
     element::Element,
-    serde::{DeserializationConfig, DeserializationMode, DeserializeResource},
+    serde::{DeserializationConfig, DeserializationMode, DeserializeResource, SerializeResource},
     FhirRelease,
 };
 
@@ -17,7 +15,7 @@ use test_utils::{
 
 fn test_serde_xml<'a, T, const R: FhirRelease>(mode: DeserializationMode)
 where
-    T: DeserializeResource + Serialize,
+    T: DeserializeResource + SerializeResource,
 {
     let mut examples_iter = examples(R, JsonOrXml::Xml);
 
@@ -41,10 +39,10 @@ where
         buffer.clear();
         file.read_to_end(&mut buffer).unwrap();
 
-        let element: Element<R> = fhirbolt::serde::xml::from_slice(&buffer, None).unwrap();
+        let element: Element<R> = fhirbolt::xml::from_slice(&buffer, None).unwrap();
 
         let mut element_buffer = Vec::new();
-        _ = fhirbolt::serde::element::xml::to_writer(&mut element_buffer, &element).unwrap();
+        _ = fhirbolt::xml::to_writer(&mut element_buffer, &element).unwrap();
 
         assert_xml_eq(
             &element_buffer,
@@ -53,17 +51,16 @@ where
         );
 
         let resource: T =
-            fhirbolt::serde::xml::from_slice(&buffer[..], Some(DeserializationConfig { mode }))
-                .unwrap();
+            fhirbolt::xml::from_slice(&buffer[..], Some(DeserializationConfig { mode })).unwrap();
 
         assert_xml_eq(
-            &fhirbolt::serde::model::xml::to_vec(&resource).unwrap(),
+            &fhirbolt::xml::to_vec(&resource).unwrap(),
             &buffer,
             R == FhirRelease::R4B && file.name() == "valuesets.xml",
         );
 
         assert_eq!(
-            fhirbolt::serde::element::from_element::<R, T>(
+            fhirbolt::element::from_element::<R, T>(
                 element.clone(),
                 Some(DeserializationConfig { mode })
             )
@@ -76,7 +73,7 @@ where
             R == FhirRelease::R4B && file.name() == "valuesets.xml"
         ) {
             assert_eq!(
-                fhirbolt::serde::element::to_element::<R, T>(resource).unwrap(),
+                fhirbolt::element::to_element::<R, T>(resource).unwrap(),
                 element
             );
         }

@@ -1,4 +1,4 @@
-// Generated on 2023-04-12 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-13 by fhirbolt-codegen v0.1.0
 #[doc = "Base StructureDefinition for Reference Type: A reference from one resource to another."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub struct Reference {
@@ -14,83 +14,4 @@ pub struct Reference {
     pub r#identifier: Option<Box<super::super::types::Identifier>>,
     #[doc = "Plain text narrative that identifies the resource in addition to the resource reference."]
     pub r#display: Option<super::super::types::String>,
-}
-impl serde::ser::Serialize for Reference {
-    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
-    where
-        S: serde::ser::Serializer,
-    {
-        use serde::ser::SerializeMap;
-        fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
-            let _ctx = _ctx.borrow();
-            let mut state = serializer.serialize_map(None)?;
-            if let Some(some) = self.r#id.as_ref() {
-                state.serialize_entry("id", some)?;
-            }
-            if !self.r#extension.is_empty() {
-                state.serialize_entry("extension", &self.r#extension)?;
-            }
-            if _ctx.output_json {
-                if let Some(some) = self.r#reference.as_ref() {
-                    if let Some(some) = some.value.as_ref() {
-                        let some = Ok(some)?;
-                        state.serialize_entry("reference", &some)?;
-                    }
-                    if some.id.is_some() || !some.extension.is_empty() {
-                        let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                            id: some.id.as_ref(),
-                            extension: &some.extension,
-                        };
-                        state.serialize_entry("_reference", &primitive_element)?;
-                    }
-                }
-            } else {
-                if let Some(some) = self.r#reference.as_ref() {
-                    state.serialize_entry("reference", some)?;
-                }
-            }
-            if _ctx.output_json {
-                if let Some(some) = self.r#type.as_ref() {
-                    if let Some(some) = some.value.as_ref() {
-                        let some = Ok(some)?;
-                        state.serialize_entry("type", &some)?;
-                    }
-                    if some.id.is_some() || !some.extension.is_empty() {
-                        let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                            id: some.id.as_ref(),
-                            extension: &some.extension,
-                        };
-                        state.serialize_entry("_type", &primitive_element)?;
-                    }
-                }
-            } else {
-                if let Some(some) = self.r#type.as_ref() {
-                    state.serialize_entry("type", some)?;
-                }
-            }
-            if let Some(some) = self.r#identifier.as_ref() {
-                state.serialize_entry("identifier", some)?;
-            }
-            if _ctx.output_json {
-                if let Some(some) = self.r#display.as_ref() {
-                    if let Some(some) = some.value.as_ref() {
-                        let some = Ok(some)?;
-                        state.serialize_entry("display", &some)?;
-                    }
-                    if some.id.is_some() || !some.extension.is_empty() {
-                        let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                            id: some.id.as_ref(),
-                            extension: &some.extension,
-                        };
-                        state.serialize_entry("_display", &primitive_element)?;
-                    }
-                }
-            } else {
-                if let Some(some) = self.r#display.as_ref() {
-                    state.serialize_entry("display", some)?;
-                }
-            }
-            state.end()
-        })
-    }
 }

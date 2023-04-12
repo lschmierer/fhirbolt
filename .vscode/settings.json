@@ -1,0 +1,10 @@
+{
+    "rust-analyzer.files.excludeDirs": [
+        "fhirbolt-model/src/generated/**",
+        "fhirbolt-serde/src/model/generated/**"
+    ],
+    "files.watcherExclude": {
+        "**/generated/**": true
+    },
+    "debug.allowBreakpointsEverywhere": true
+}

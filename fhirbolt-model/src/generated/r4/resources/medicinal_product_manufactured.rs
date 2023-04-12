@@ -1,4 +1,4 @@
-// Generated on 2023-04-12 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-13 by fhirbolt-codegen v0.1.0
 #[doc = "The manufactured item as contained in the packaged medicinal product."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub struct MedicinalProductManufactured {
@@ -32,91 +32,4 @@ pub struct MedicinalProductManufactured {
     pub r#physical_characteristics: Option<Box<super::super::types::ProdCharacteristic>>,
     #[doc = "Other codeable characteristics."]
     pub r#other_characteristics: Vec<Box<super::super::types::CodeableConcept>>,
-}
-impl serde::ser::Serialize for MedicinalProductManufactured {
-    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
-    where
-        S: serde::ser::Serializer,
-    {
-        use serde::ser::SerializeMap;
-        fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
-            let _ctx = _ctx.borrow();
-            let mut state = serializer.serialize_map(None)?;
-            state.serialize_entry("resourceType", "MedicinalProductManufactured")?;
-            if let Some(some) = self.r#id.as_ref() {
-                state.serialize_entry("id", some)?;
-            }
-            if let Some(some) = self.r#meta.as_ref() {
-                state.serialize_entry("meta", some)?;
-            }
-            if _ctx.output_json {
-                if let Some(some) = self.r#implicit_rules.as_ref() {
-                    if let Some(some) = some.value.as_ref() {
-                        let some = Ok(some)?;
-                        state.serialize_entry("implicitRules", &some)?;
-                    }
-                    if some.id.is_some() || !some.extension.is_empty() {
-                        let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                            id: some.id.as_ref(),
-                            extension: &some.extension,
-                        };
-                        state.serialize_entry("_implicitRules", &primitive_element)?;
-                    }
-                }
-            } else {
-                if let Some(some) = self.r#implicit_rules.as_ref() {
-                    state.serialize_entry("implicitRules", some)?;
-                }
-            }
-            if _ctx.output_json {
-                if let Some(some) = self.r#language.as_ref() {
-                    if let Some(some) = some.value.as_ref() {
-                        let some = Ok(some)?;
-                        state.serialize_entry("language", &some)?;
-                    }
-                    if some.id.is_some() || !some.extension.is_empty() {
-                        let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                            id: some.id.as_ref(),
-                            extension: &some.extension,
-                        };
-                        state.serialize_entry("_language", &primitive_element)?;
-                    }
-                }
-            } else {
-                if let Some(some) = self.r#language.as_ref() {
-                    state.serialize_entry("language", some)?;
-                }
-            }
-            if let Some(some) = self.r#text.as_ref() {
-                state.serialize_entry("text", some)?;
-            }
-            if !self.r#contained.is_empty() {
-                state.serialize_entry("contained", &self.r#contained)?;
-            }
-            if !self.r#extension.is_empty() {
-                state.serialize_entry("extension", &self.r#extension)?;
-            }
-            if !self.r#modifier_extension.is_empty() {
-                state.serialize_entry("modifierExtension", &self.r#modifier_extension)?;
-            }
-            state.serialize_entry("manufacturedDoseForm", &self.r#manufactured_dose_form)?;
-            if let Some(some) = self.r#unit_of_presentation.as_ref() {
-                state.serialize_entry("unitOfPresentation", some)?;
-            }
-            state.serialize_entry("quantity", &self.r#quantity)?;
-            if !self.r#manufacturer.is_empty() {
-                state.serialize_entry("manufacturer", &self.r#manufacturer)?;
-            }
-            if !self.r#ingredient.is_empty() {
-                state.serialize_entry("ingredient", &self.r#ingredient)?;
-            }
-            if let Some(some) = self.r#physical_characteristics.as_ref() {
-                state.serialize_entry("physicalCharacteristics", some)?;
-            }
-            if !self.r#other_characteristics.is_empty() {
-                state.serialize_entry("otherCharacteristics", &self.r#other_characteristics)?;
-            }
-            state.end()
-        })
-    }
 }

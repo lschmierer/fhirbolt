@@ -1,4 +1,4 @@
-// Generated on 2023-04-12 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-13 by fhirbolt-codegen v0.1.0
 #[doc = "Base StructureDefinition for ProductShelfLife Type: The shelf-life and storage information for a medicinal product item or container can be described using this class."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub struct ProductShelfLife {
@@ -16,37 +16,4 @@ pub struct ProductShelfLife {
     pub r#period: Box<super::super::types::Quantity>,
     #[doc = "Special precautions for storage, if any, can be specified using an appropriate controlled vocabulary The controlled term and the controlled term identifier shall be specified."]
     pub r#special_precautions_for_storage: Vec<Box<super::super::types::CodeableConcept>>,
-}
-impl serde::ser::Serialize for ProductShelfLife {
-    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
-    where
-        S: serde::ser::Serializer,
-    {
-        use serde::ser::SerializeMap;
-        fhirbolt_shared::serde_context::ser::SERIALIZATION_CONTEXT.with(|_ctx| {
-            let _ctx = _ctx.borrow();
-            let mut state = serializer.serialize_map(None)?;
-            if let Some(some) = self.r#id.as_ref() {
-                state.serialize_entry("id", some)?;
-            }
-            if !self.r#extension.is_empty() {
-                state.serialize_entry("extension", &self.r#extension)?;
-            }
-            if !self.r#modifier_extension.is_empty() {
-                state.serialize_entry("modifierExtension", &self.r#modifier_extension)?;
-            }
-            if let Some(some) = self.r#identifier.as_ref() {
-                state.serialize_entry("identifier", some)?;
-            }
-            state.serialize_entry("type", &self.r#type)?;
-            state.serialize_entry("period", &self.r#period)?;
-            if !self.r#special_precautions_for_storage.is_empty() {
-                state.serialize_entry(
-                    "specialPrecautionsForStorage",
-                    &self.r#special_precautions_for_storage,
-                )?;
-            }
-            state.end()
-        })
-    }
 }
