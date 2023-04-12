@@ -5,8 +5,8 @@ use std::path::{Path, PathBuf};
 use std::process;
 use std::str;
 
-use chrono::Utc;
 use proc_macro2::TokenStream;
+use time::OffsetDateTime;
 use zip::read::{ZipArchive, ZipFile};
 
 use fhirbolt_codegen::{generate_all, model::Bundle, SourceFile};
@@ -141,7 +141,7 @@ fn output_source_file(target: &str, fhir_release: &str, kind: &str, name: &str) 
 }
 
 fn write_source_files(target: &str, fhir_release: &str, kind: &str, source_files: &[SourceFile]) {
-    println!("Writing {}...", kind);
+    println!("Writing {}... ({})", kind, target);
 
     let mut mod_names = vec![];
     for SourceFile { name, source } in source_files {
@@ -165,7 +165,7 @@ fn write_source_file(
     write!(
         file,
         "// Generated on {} by fhirbolt-codegen v{}\n",
-        Utc::today().naive_utc(),
+        OffsetDateTime::now_utc().date(),
         env!("CARGO_PKG_VERSION")
     )
     .unwrap();
@@ -205,8 +205,6 @@ fn write_model_release_mod_file(fhir_release: &str) {
     writeln!(file, "mod resource;").unwrap();
     writeln!(file, "").unwrap();
     writeln!(file, "pub use resource::*;").unwrap();
-    // TODO: remove after migrating serialization to fhirbolt-serde
-    writeln!(file, "mod serde_helpers;").unwrap();
 }
 
 fn write_serde_release_mod_file(fhir_release: &str) {
@@ -247,7 +245,7 @@ fn write_type_hints_source_file(fhir_release: &str, tokens: &TokenStream) {
     write!(
         file,
         "// Generated on {} by fhirbolt-codegen v{}\n",
-        Utc::today().naive_utc(),
+        OffsetDateTime::now_utc().date(),
         env!("CARGO_PKG_VERSION")
     )
     .unwrap();
@@ -307,15 +305,6 @@ fn generate_and_write(fhir_release: &str, types_bundle: &Bundle, resources_bundl
     );
 
     write_type_hints_source_file(fhir_release, &generated.type_hints);
-
-    // TODO: remove after migrating serialization to fhirbolt-serde
-    write_source_file(
-        MODEL_OUTPUT_DIRECTORY,
-        fhir_release,
-        ".",
-        &generated.serde_helpers.name,
-        &generated.serde_helpers.source,
-    );
 }
 
 fn rustfmt() {
@@ -353,49 +342,4 @@ fn main() {
     }
 
     rustfmt();
-
-    // TODO: remove after migrating Serialize impls to fhirbolt-serde
-    {
-        for fhir_release in BUILD_FHIR_RELEASES {
-            use std::io::{BufRead, BufReader};
-
-            // model
-            let path = PathBuf::from(MODEL_OUTPUT_DIRECTORY)
-                .join(fhir_release)
-                .join("serde_helpers.rs");
-
-            let lines = {
-                let file = File::open(&path).unwrap();
-                BufReader::new(file)
-                    .lines()
-                    .take(8)
-                    .map(Result::unwrap)
-                    .collect::<Vec<_>>()
-                    .join("\n")
-            };
-            fs::remove_file(&path).unwrap();
-
-            let mut file = File::create(path).unwrap();
-            file.write_all(lines.as_bytes()).unwrap();
-
-            // serde
-            let path = PathBuf::from(SERDE_OUTPUT_DIRECTORY)
-                .join(fhir_release)
-                .join("serde_helpers.rs");
-
-            let lines = {
-                let file = File::open(&path).unwrap();
-                BufReader::new(file)
-                    .lines()
-                    .skip(8)
-                    .map(Result::unwrap)
-                    .collect::<Vec<_>>()
-                    .join("\n")
-            };
-            fs::remove_file(&path).unwrap();
-
-            let mut file = File::create(path).unwrap();
-            file.write_all(lines.as_bytes()).unwrap();
-        }
-    }
 }
