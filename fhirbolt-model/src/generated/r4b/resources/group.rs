@@ -1,4 +1,4 @@
-// Generated on 2023-04-10 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-12 by fhirbolt-codegen v0.1.0
 #[doc = "The value of the trait that holds (or does not hold - see 'exclude') for members of the group."]
 #[derive(Debug, Clone, PartialEq)]
 pub enum GroupCharacteristicValue {
@@ -207,9 +207,6 @@ pub struct Group {
     pub r#characteristic: Vec<GroupCharacteristic>,
     #[doc = "Identifies the resource instances that are members of the group."]
     pub r#member: Vec<GroupMember>,
-}
-impl crate::AnyResource for Group {
-    const FHIR_RELEASE: fhirbolt_shared::FhirRelease = fhirbolt_shared::FhirRelease::R4B;
 }
 impl serde::ser::Serialize for Group {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

@@ -1,4 +1,4 @@
-// Generated on 2023-04-10 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-12 by fhirbolt-codegen v0.1.0
 #[doc = "How often the device was used."]
 #[derive(Debug, Clone, PartialEq)]
 pub enum DeviceUseStatementTiming {
@@ -57,9 +57,6 @@ pub struct DeviceUseStatement {
     pub r#body_site: Option<Box<super::super::types::CodeableConcept>>,
     #[doc = "Details about the device statement that were not represented at all or sufficiently in one of the attributes provided in a class. These may include for example a comment, an instruction, or a note associated with the statement."]
     pub r#note: Vec<Box<super::super::types::Annotation>>,
-}
-impl crate::AnyResource for DeviceUseStatement {
-    const FHIR_RELEASE: fhirbolt_shared::FhirRelease = fhirbolt_shared::FhirRelease::R4B;
 }
 impl serde::ser::Serialize for DeviceUseStatement {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

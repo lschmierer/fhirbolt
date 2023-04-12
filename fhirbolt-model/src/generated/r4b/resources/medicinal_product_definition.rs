@@ -1,4 +1,4 @@
-// Generated on 2023-04-10 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-12 by fhirbolt-codegen v0.1.0
 #[doc = "A value for the characteristic."]
 #[derive(Debug, Clone, PartialEq)]
 pub enum MedicinalProductDefinitionCharacteristicValue {
@@ -469,9 +469,6 @@ pub struct MedicinalProductDefinition {
     pub r#operation: Vec<MedicinalProductDefinitionOperation>,
     #[doc = "Allows the key product features to be recorded, such as \"sugar free\", \"modified release\", \"parallel import\"."]
     pub r#characteristic: Vec<MedicinalProductDefinitionCharacteristic>,
-}
-impl crate::AnyResource for MedicinalProductDefinition {
-    const FHIR_RELEASE: fhirbolt_shared::FhirRelease = fhirbolt_shared::FhirRelease::R4B;
 }
 impl serde::ser::Serialize for MedicinalProductDefinition {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

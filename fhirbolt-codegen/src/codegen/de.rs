@@ -71,7 +71,26 @@ pub fn implement_deserialze(
         )
     });
 
+    let deserialize_owned_context = if r#struct.resource_name.is_some() {
+        quote! {
+            impl<'de> serde::de::DeserializeSeed<'de> for crate::context::de::DeserializationContext<#namespace::#struct_name_ident> {
+                type Value = #namespace::#struct_name_ident;
+
+                fn deserialize<D>(mut self, deserializer: D) -> Result<Self::Value, D::Error>
+                where
+                    D: serde::de::Deserializer<'de>,
+                {
+                    (&mut self).deserialize(deserializer)
+                }
+            }
+        }
+    } else {
+        quote! {}
+    };
+
     quote! {
+        #deserialize_owned_context
+
         impl<'de> serde::de::DeserializeSeed<'de> for &mut crate::context::de::DeserializationContext<#namespace::#struct_name_ident> {
             type Value = #namespace::#struct_name_ident;
 
@@ -242,6 +261,17 @@ pub fn implement_deserialze_resource_enum(
     });
 
     quote! {
+        impl<'de> serde::de::DeserializeSeed<'de> for crate::context::de::DeserializationContext<#namespace::Resource> {
+            type Value = #namespace::Resource;
+
+            fn deserialize<D>(mut self, deserializer: D) -> Result<Self::Value, D::Error>
+            where
+                D: serde::de::Deserializer<'de>,
+            {
+                (&mut self).deserialize(deserializer)
+            }
+        }
+
         impl<'de> serde::de::DeserializeSeed<'de> for &mut crate::context::de::DeserializationContext<#namespace::Resource> {
             type Value = #namespace::Resource;
 
@@ -249,9 +279,9 @@ pub fn implement_deserialze_resource_enum(
             where
                 D: serde::de::Deserializer<'de>,
             {
-                use fhirbolt_shared::AnyResource;
+                use crate::Resource;
 
-                let mut element_context = self.clone::<fhirbolt_shared::element::Element<{ #namespace::Resource::FHIR_RELEASE }>>();
+                let element_context = self.clone::<fhirbolt_shared::element::Element<{ #namespace::Resource::FHIR_RELEASE }>>();
                 let element = element_context.deserialize(deserializer)?;
 
                 self.from_json = false;

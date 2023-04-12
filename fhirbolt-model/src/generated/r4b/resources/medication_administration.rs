@@ -1,4 +1,4 @@
-// Generated on 2023-04-10 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-12 by fhirbolt-codegen v0.1.0
 #[doc = "Identifies the medication that was administered. This is either a link to a resource representing the details of the medication or a simple attribute carrying a code that identifies the medication from a known list of medications."]
 #[derive(Debug, Clone, PartialEq)]
 pub enum MedicationAdministrationMedication {
@@ -220,9 +220,6 @@ pub struct MedicationAdministration {
     pub r#dosage: Option<MedicationAdministrationDosage>,
     #[doc = "A summary of the events of interest that have occurred, such as when the administration was verified."]
     pub r#event_history: Vec<Box<super::super::types::Reference>>,
-}
-impl crate::AnyResource for MedicationAdministration {
-    const FHIR_RELEASE: fhirbolt_shared::FhirRelease = fhirbolt_shared::FhirRelease::R4B;
 }
 impl serde::ser::Serialize for MedicationAdministration {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

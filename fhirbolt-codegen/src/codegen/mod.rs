@@ -54,14 +54,11 @@ fn format_doc_comment(text: &str) -> String {
     text.to_string()
 }
 
-pub fn generate_struct_modules(modules: &[RustFhirModule], release: &str) -> Vec<SourceFile> {
-    modules
-        .iter()
-        .map(|m| generate_struct_module(m, release))
-        .collect()
+pub fn generate_struct_modules(modules: &[RustFhirModule]) -> Vec<SourceFile> {
+    modules.iter().map(|m| generate_struct_module(m)).collect()
 }
 
-pub fn generate_resource_enum(resource_modules: &[RustFhirModule], release: &str) -> SourceFile {
+pub fn generate_resource_enum(resource_modules: &[RustFhirModule]) -> SourceFile {
     let variants_tokens = resource_modules.iter().map(|r| {
         let ident = format_ident!("{}", r.resource_name.as_ref().unwrap());
         let doc_comment = format_doc_comment(&r.doc_comment);
@@ -71,8 +68,6 @@ pub fn generate_resource_enum(resource_modules: &[RustFhirModule], release: &str
             #ident(Box<super::resources::#ident>),
         }
     });
-
-    let release_ident = format_ident!("{}", release.to_string());
 
     SourceFile {
         name: "resource".into(),
@@ -87,10 +82,6 @@ pub fn generate_resource_enum(resource_modules: &[RustFhirModule], release: &str
                 #[default]
                 Invalid,
             }
-
-            impl crate::AnyResource for Resource {
-                const FHIR_RELEASE: fhirbolt_shared::FhirRelease = fhirbolt_shared::FhirRelease::#release_ident;
-            }
         },
     }
 }
@@ -99,9 +90,11 @@ pub fn generate_resource_enum_serde(
     resource_modules: &[RustFhirModule],
     release: &str,
 ) -> SourceFile {
-    let release_ident = format_ident!("{}", release.to_string().to_lowercase());
+    let release_ident = format_ident!("{}", release.to_string());
+    let release_ident_module = format_ident!("{}", release.to_string().to_lowercase());
+
     let namespace = quote! {
-            fhirbolt_model::#release_ident
+            fhirbolt_model::#release_ident_module
 
     };
 
@@ -111,17 +104,21 @@ pub fn generate_resource_enum_serde(
     SourceFile {
         name: "resource".into(),
         source: quote! {
+            impl crate::Resource for #namespace::Resource {
+                const FHIR_RELEASE: crate::FhirRelease = crate::FhirRelease::#release_ident;
+            }
+
             //#serialize_impl_tokens
             #deserialize_impl_tokens
         },
     }
 }
 
-fn generate_struct_module(module: &RustFhirModule, release: &str) -> SourceFile {
+fn generate_struct_module(module: &RustFhirModule) -> SourceFile {
     let structs_tokens = module
         .structs
         .iter()
-        .map(|s| generate_struct(s, &module.enums, release));
+        .map(|s| generate_struct(s, &module.enums));
     let enums_tokens = module.enums.iter().map(|e| generate_enum(e));
 
     SourceFile {
@@ -137,25 +134,9 @@ fn generate_struct_module(module: &RustFhirModule, release: &str) -> SourceFile 
     }
 }
 
-fn generate_struct(
-    r#struct: &RustFhirStruct,
-    enums: &[RustFhirEnum],
-    release: &str,
-) -> TokenStream {
+fn generate_struct(r#struct: &RustFhirStruct, enums: &[RustFhirEnum]) -> TokenStream {
     let name_ident = format_ident!("{}", r#struct.struct_name);
     let fields_tokens = r#struct.fields.iter().map(|f| generate_field(f));
-
-    let impl_any_resource_tokens = if r#struct.resource_name.is_some() {
-        let release_ident = format_ident!("{}", release.to_string());
-
-        quote! {
-            impl crate::AnyResource for #name_ident {
-                const FHIR_RELEASE: fhirbolt_shared::FhirRelease = fhirbolt_shared::FhirRelease::#release_ident;
-            }
-        }
-    } else {
-        quote! {}
-    };
 
     let serde_impl_tokens = {
         let serialize_impl_tokens = implement_serialize(&r#struct, enums);
@@ -174,8 +155,6 @@ fn generate_struct(
                 #fields_tokens
             )*
         }
-
-        #impl_any_resource_tokens
 
         #serde_impl_tokens
     }
@@ -285,11 +264,26 @@ fn generate_serde_module(module: &RustFhirModule, release: &str) -> SourceFile {
     };
 
     let serde_tokens = module.structs.iter().map(|s| {
+        let name_ident = format_ident!("{}", s.struct_name);
+        let impl_any_resource_tokens = if s.resource_name.is_some() {
+            let release_ident = format_ident!("{}", release.to_string());
+
+            quote! {
+                impl crate::Resource for #namespace::#name_ident {
+                    const FHIR_RELEASE: crate::FhirRelease = crate::FhirRelease::#release_ident;
+                }
+            }
+        } else {
+            quote! {}
+        };
+
         //let serialize_impl_tokens = implement_serialize(&s, &module.enums);
         let deserialize_impl_tokens =
             implement_deserialze(&s, &module.enums, &namespace, &base_namespace);
 
         quote! {
+            #impl_any_resource_tokens
+
             //#serialize_impl_tokens
             #deserialize_impl_tokens
         }

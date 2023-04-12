@@ -1,4 +1,4 @@
-// Generated on 2023-04-10 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-12 by fhirbolt-codegen v0.1.0
 #[doc = "The actual or approximate date of birth of the relative."]
 #[derive(Debug, Clone, PartialEq)]
 pub enum FamilyMemberHistoryBorn {
@@ -211,9 +211,6 @@ pub struct FamilyMemberHistory {
     pub r#note: Vec<Box<super::super::types::Annotation>>,
     #[doc = "The significant Conditions (or condition) that the family member had. This is a repeating section to allow a system to represent more than one condition per resource, though there is nothing stopping multiple resources - one per condition."]
     pub r#condition: Vec<FamilyMemberHistoryCondition>,
-}
-impl crate::AnyResource for FamilyMemberHistory {
-    const FHIR_RELEASE: fhirbolt_shared::FhirRelease = fhirbolt_shared::FhirRelease::R4B;
 }
 impl serde::ser::Serialize for FamilyMemberHistory {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

@@ -1,4 +1,4 @@
-// Generated on 2023-04-10 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-12 by fhirbolt-codegen v0.1.0
 #[doc = "Define members of the evidence element using Codes (such as condition, medication, or observation), Expressions ( using an expression language such as FHIRPath or CQL) or DataRequirements (such as Diabetes diagnosis onset in the last year)."]
 #[derive(Debug, Clone, PartialEq)]
 pub enum EvidenceVariableCharacteristicDefinition {
@@ -375,9 +375,6 @@ pub struct EvidenceVariable {
     pub r#handling: Option<super::super::types::Code>,
     #[doc = "A grouping (or set of values) described along with other groupings to specify the set of groupings allowed for the variable."]
     pub r#category: Vec<EvidenceVariableCategory>,
-}
-impl crate::AnyResource for EvidenceVariable {
-    const FHIR_RELEASE: fhirbolt_shared::FhirRelease = fhirbolt_shared::FhirRelease::R4B;
 }
 impl serde::ser::Serialize for EvidenceVariable {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

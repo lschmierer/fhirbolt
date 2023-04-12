@@ -1,4 +1,4 @@
-// Generated on 2023-04-10 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-12 by fhirbolt-codegen v0.1.0
 #[doc = "A collection of times the practitioner is available or performing this role at the location and/or healthcareservice."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub struct PractitionerRoleAvailableTime {
@@ -235,9 +235,6 @@ pub struct PractitionerRole {
     pub r#availability_exceptions: Option<super::super::types::String>,
     #[doc = "Technical endpoints providing access to services operated for the practitioner with this role."]
     pub r#endpoint: Vec<Box<super::super::types::Reference>>,
-}
-impl crate::AnyResource for PractitionerRole {
-    const FHIR_RELEASE: fhirbolt_shared::FhirRelease = fhirbolt_shared::FhirRelease::R4;
 }
 impl serde::ser::Serialize for PractitionerRole {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

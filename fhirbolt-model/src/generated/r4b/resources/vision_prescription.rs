@@ -1,4 +1,4 @@
-// Generated on 2023-04-10 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-12 by fhirbolt-codegen v0.1.0
 #[doc = "Allows for adjustment on two axis."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub struct VisionPrescriptionLensSpecificationPrism {
@@ -370,9 +370,6 @@ pub struct VisionPrescription {
     pub r#prescriber: Box<super::super::types::Reference>,
     #[doc = "Contain the details of  the individual lens specifications and serves as the authorization for the fullfillment by certified professionals."]
     pub r#lens_specification: Vec<VisionPrescriptionLensSpecification>,
-}
-impl crate::AnyResource for VisionPrescription {
-    const FHIR_RELEASE: fhirbolt_shared::FhirRelease = fhirbolt_shared::FhirRelease::R4B;
 }
 impl serde::ser::Serialize for VisionPrescription {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

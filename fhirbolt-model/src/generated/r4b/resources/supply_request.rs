@@ -1,4 +1,4 @@
-// Generated on 2023-04-10 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-12 by fhirbolt-codegen v0.1.0
 #[doc = "The item that is requested to be supplied. This is either a link to a resource representing the details of the item or a code that identifies the item from a known list."]
 #[derive(Debug, Clone, PartialEq)]
 pub enum SupplyRequestItem {
@@ -160,9 +160,6 @@ pub struct SupplyRequest {
     pub r#deliver_from: Option<Box<super::super::types::Reference>>,
     #[doc = "Where the supply is destined to go."]
     pub r#deliver_to: Option<Box<super::super::types::Reference>>,
-}
-impl crate::AnyResource for SupplyRequest {
-    const FHIR_RELEASE: fhirbolt_shared::FhirRelease = fhirbolt_shared::FhirRelease::R4B;
 }
 impl serde::ser::Serialize for SupplyRequest {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

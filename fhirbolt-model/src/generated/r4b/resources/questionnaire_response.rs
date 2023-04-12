@@ -1,4 +1,4 @@
-// Generated on 2023-04-10 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-12 by fhirbolt-codegen v0.1.0
 #[doc = "The answer (or one of the answers) provided by the respondent to the question."]
 #[derive(Debug, Clone, PartialEq)]
 pub enum QuestionnaireResponseItemAnswerValue {
@@ -367,9 +367,6 @@ pub struct QuestionnaireResponse {
     pub r#source: Option<Box<super::super::types::Reference>>,
     #[doc = "A group or question item from the original questionnaire for which answers are provided."]
     pub r#item: Vec<QuestionnaireResponseItem>,
-}
-impl crate::AnyResource for QuestionnaireResponse {
-    const FHIR_RELEASE: fhirbolt_shared::FhirRelease = fhirbolt_shared::FhirRelease::R4B;
 }
 impl serde::ser::Serialize for QuestionnaireResponse {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

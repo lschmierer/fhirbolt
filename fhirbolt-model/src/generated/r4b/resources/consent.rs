@@ -1,4 +1,4 @@
-// Generated on 2023-04-10 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-12 by fhirbolt-codegen v0.1.0
 #[doc = "The source on which this consent statement is based. The source might be a scanned original paper form, or a reference to a consent that links back to such a source, a reference to a document repository (e.g. XDS) that stores the original consent document."]
 #[derive(Debug, Clone, PartialEq)]
 pub enum ConsentSource {
@@ -398,9 +398,6 @@ pub struct Consent {
     pub r#verification: Vec<ConsentVerification>,
     #[doc = "An exception to the base policy of this consent. An exception can be an addition or removal of access permissions."]
     pub r#provision: Option<ConsentProvision>,
-}
-impl crate::AnyResource for Consent {
-    const FHIR_RELEASE: fhirbolt_shared::FhirRelease = fhirbolt_shared::FhirRelease::R4B;
 }
 impl serde::ser::Serialize for Consent {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

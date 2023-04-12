@@ -1,4 +1,4 @@
-// Generated on 2023-04-10 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-12 by fhirbolt-codegen v0.1.0
 #[doc = "The shelf life time period can be specified using a numerical value for the period of time and its unit of time measurement The unit of measurement shall be specified in accordance with ISO 11240 and the resulting terminology The symbol and the symbol identifier shall be used."]
 #[derive(Debug, Clone, PartialEq)]
 pub enum PackagedProductDefinitionPackageShelfLifeStoragePeriod {
@@ -417,9 +417,6 @@ pub struct PackagedProductDefinition {
     pub r#manufacturer: Vec<Box<super::super::types::Reference>>,
     #[doc = "A packaging item, as a container for medically related items, possibly with other packaging items within, or a packaging component, such as bottle cap (which is not a device or a medication manufactured item)."]
     pub r#package: Option<PackagedProductDefinitionPackage>,
-}
-impl crate::AnyResource for PackagedProductDefinition {
-    const FHIR_RELEASE: fhirbolt_shared::FhirRelease = fhirbolt_shared::FhirRelease::R4B;
 }
 impl serde::ser::Serialize for PackagedProductDefinition {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

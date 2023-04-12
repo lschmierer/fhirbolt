@@ -1,4 +1,4 @@
-// Generated on 2023-04-10 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-12 by fhirbolt-codegen v0.1.0
 #[doc = "A slot of time on a schedule that may be available for booking appointments."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub struct Slot {
@@ -40,9 +40,6 @@ pub struct Slot {
     pub r#overbooked: Option<super::super::types::Boolean>,
     #[doc = "Comments on the slot to describe any extended information. Such as custom constraints on the slot."]
     pub r#comment: Option<super::super::types::String>,
-}
-impl crate::AnyResource for Slot {
-    const FHIR_RELEASE: fhirbolt_shared::FhirRelease = fhirbolt_shared::FhirRelease::R4;
 }
 impl serde::ser::Serialize for Slot {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

@@ -1,4 +1,4 @@
-// Generated on 2023-04-10 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-12 by fhirbolt-codegen v0.1.0
 #[doc = "Time of product collection."]
 #[derive(Debug, Clone, PartialEq)]
 pub enum BiologicallyDerivedProductCollectionCollected {
@@ -426,9 +426,6 @@ pub struct BiologicallyDerivedProduct {
     pub r#manipulation: Option<BiologicallyDerivedProductManipulation>,
     #[doc = "Product storage."]
     pub r#storage: Vec<BiologicallyDerivedProductStorage>,
-}
-impl crate::AnyResource for BiologicallyDerivedProduct {
-    const FHIR_RELEASE: fhirbolt_shared::FhirRelease = fhirbolt_shared::FhirRelease::R4;
 }
 impl serde::ser::Serialize for BiologicallyDerivedProduct {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

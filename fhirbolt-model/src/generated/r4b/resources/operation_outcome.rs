@@ -1,4 +1,4 @@
-// Generated on 2023-04-10 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-12 by fhirbolt-codegen v0.1.0
 #[doc = "An error, warning, or information message that results from a system action."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub struct OperationOutcomeIssue {
@@ -192,9 +192,6 @@ pub struct OperationOutcome {
     pub r#modifier_extension: Vec<Box<super::super::types::Extension>>,
     #[doc = "An error, warning, or information message that results from a system action."]
     pub r#issue: Vec<OperationOutcomeIssue>,
-}
-impl crate::AnyResource for OperationOutcome {
-    const FHIR_RELEASE: fhirbolt_shared::FhirRelease = fhirbolt_shared::FhirRelease::R4B;
 }
 impl serde::ser::Serialize for OperationOutcome {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

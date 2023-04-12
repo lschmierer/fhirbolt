@@ -1,4 +1,4 @@
-// Generated on 2023-04-10 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-12 by fhirbolt-codegen v0.1.0
 #[doc = "Does this service have specific eligibility requirements that need to be met in order to use the service?"]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub struct HealthcareServiceEligibility {
@@ -313,9 +313,6 @@ pub struct HealthcareService {
     pub r#availability_exceptions: Option<super::super::types::String>,
     #[doc = "Technical endpoints providing access to services operated for the specific healthcare services defined at this resource."]
     pub r#endpoint: Vec<Box<super::super::types::Reference>>,
-}
-impl crate::AnyResource for HealthcareService {
-    const FHIR_RELEASE: fhirbolt_shared::FhirRelease = fhirbolt_shared::FhirRelease::R4;
 }
 impl serde::ser::Serialize for HealthcareService {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

@@ -1,4 +1,4 @@
-// Generated on 2023-04-10 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-12 by fhirbolt-codegen v0.1.0
 #[doc = "Indicates if the individual is deceased or not."]
 #[derive(Debug, Clone, PartialEq)]
 pub enum PatientDeceased {
@@ -265,9 +265,6 @@ pub struct Patient {
     pub r#managing_organization: Option<Box<super::super::types::Reference>>,
     #[doc = "Link to another patient resource that concerns the same actual patient."]
     pub r#link: Vec<PatientLink>,
-}
-impl crate::AnyResource for Patient {
-    const FHIR_RELEASE: fhirbolt_shared::FhirRelease = fhirbolt_shared::FhirRelease::R4B;
 }
 impl serde::ser::Serialize for Patient {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

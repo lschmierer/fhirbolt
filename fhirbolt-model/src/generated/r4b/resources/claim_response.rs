@@ -1,4 +1,4 @@
-// Generated on 2023-04-10 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-12 by fhirbolt-codegen v0.1.0
 #[doc = "The date or dates when the service or product was supplied, performed or completed."]
 #[derive(Debug, Clone, PartialEq)]
 pub enum ClaimResponseAddItemServiced {
@@ -1429,9 +1429,6 @@ pub struct ClaimResponse {
     pub r#insurance: Vec<ClaimResponseInsurance>,
     #[doc = "Errors encountered during the processing of the adjudication."]
     pub r#error: Vec<ClaimResponseError>,
-}
-impl crate::AnyResource for ClaimResponse {
-    const FHIR_RELEASE: fhirbolt_shared::FhirRelease = fhirbolt_shared::FhirRelease::R4B;
 }
 impl serde::ser::Serialize for ClaimResponse {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

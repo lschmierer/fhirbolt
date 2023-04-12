@@ -1,4 +1,4 @@
-// Generated on 2023-04-10 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-12 by fhirbolt-codegen v0.1.0
 #[doc = "Todo."]
 #[derive(Debug, Clone, PartialEq)]
 pub enum SubstanceReferenceInformationTargetAmount {
@@ -287,9 +287,6 @@ pub struct SubstanceReferenceInformation {
     pub r#classification: Vec<SubstanceReferenceInformationClassification>,
     #[doc = "Todo."]
     pub r#target: Vec<SubstanceReferenceInformationTarget>,
-}
-impl crate::AnyResource for SubstanceReferenceInformation {
-    const FHIR_RELEASE: fhirbolt_shared::FhirRelease = fhirbolt_shared::FhirRelease::R4;
 }
 impl serde::ser::Serialize for SubstanceReferenceInformation {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

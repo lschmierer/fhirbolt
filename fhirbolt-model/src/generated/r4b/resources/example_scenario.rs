@@ -1,4 +1,4 @@
-// Generated on 2023-04-10 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-12 by fhirbolt-codegen v0.1.0
 #[doc = "Actor participating in the resource."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub struct ExampleScenarioActor {
@@ -880,9 +880,6 @@ pub struct ExampleScenario {
     pub r#process: Vec<ExampleScenarioProcess>,
     #[doc = "Another nested workflow."]
     pub r#workflow: Vec<super::super::types::Canonical>,
-}
-impl crate::AnyResource for ExampleScenario {
-    const FHIR_RELEASE: fhirbolt_shared::FhirRelease = fhirbolt_shared::FhirRelease::R4B;
 }
 impl serde::ser::Serialize for ExampleScenario {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

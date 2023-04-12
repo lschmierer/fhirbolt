@@ -1,4 +1,4 @@
-// Generated on 2023-04-10 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-12 by fhirbolt-codegen v0.1.0
 #[doc = "A sequence that is used as a reference to describe variants that are present in a sequence analyzed."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub struct MolecularSequenceReferenceSeq {
@@ -1387,9 +1387,6 @@ pub struct MolecularSequence {
     pub r#pointer: Vec<Box<super::super::types::Reference>>,
     #[doc = "Information about chromosome structure variation."]
     pub r#structure_variant: Vec<MolecularSequenceStructureVariant>,
-}
-impl crate::AnyResource for MolecularSequence {
-    const FHIR_RELEASE: fhirbolt_shared::FhirRelease = fhirbolt_shared::FhirRelease::R4B;
 }
 impl serde::ser::Serialize for MolecularSequence {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

@@ -1,4 +1,4 @@
-// Generated on 2023-04-10 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-12 by fhirbolt-codegen v0.1.0
 #[doc = "The communicated content (or for multi-part communications, one portion of the communication)."]
 #[derive(Debug, Clone, PartialEq)]
 pub enum CommunicationRequestPayloadContent {
@@ -149,9 +149,6 @@ pub struct CommunicationRequest {
     pub r#reason_reference: Vec<Box<super::super::types::Reference>>,
     #[doc = "Comments made about the request by the requester, sender, recipient, subject or other participants."]
     pub r#note: Vec<Box<super::super::types::Annotation>>,
-}
-impl crate::AnyResource for CommunicationRequest {
-    const FHIR_RELEASE: fhirbolt_shared::FhirRelease = fhirbolt_shared::FhirRelease::R4;
 }
 impl serde::ser::Serialize for CommunicationRequest {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

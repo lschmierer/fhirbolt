@@ -16,16 +16,16 @@ pub fn bench(c: &mut Criterion) {
         .read_to_vec();
 
     let account_struct: fhirbolt::model::r4::resources::Account =
-        fhirbolt::model::json::from_slice(&account_bytes_json, None).unwrap();
+        fhirbolt::json::from_slice(&account_bytes_json, None).unwrap();
     let account_element: Element<{ FhirRelease::R4 }> =
-        fhirbolt::element::json::from_slice(&account_bytes_json).unwrap();
+        fhirbolt::json::from_slice(&account_bytes_json, None).unwrap();
 
     let mut group = c.benchmark_group("json");
     group.throughput(Throughput::Bytes(account_bytes_json.len() as u64));
     group.bench_function("read account struct", |b| {
         b.iter(|| {
             black_box(
-                fhirbolt::model::json::from_slice::<fhirbolt::model::r4::resources::Account>(
+                fhirbolt::json::from_slice::<fhirbolt::model::r4::resources::Account>(
                     &account_bytes_json,
                     None,
                 )
@@ -36,8 +36,11 @@ pub fn bench(c: &mut Criterion) {
     group.bench_function("read account element", |b| {
         b.iter(|| {
             black_box(
-                fhirbolt::element::json::from_slice::<{ FhirRelease::R4 }>(&account_bytes_json)
-                    .unwrap(),
+                fhirbolt::json::from_slice::<Element<{ FhirRelease::R4 }>>(
+                    &account_bytes_json,
+                    None,
+                )
+                .unwrap(),
             )
         })
     });
@@ -58,7 +61,7 @@ pub fn bench(c: &mut Criterion) {
     group.bench_function("read account struct", |b| {
         b.iter(|| {
             black_box(
-                fhirbolt::model::xml::from_slice::<fhirbolt::model::r4::resources::Account>(
+                fhirbolt::xml::from_slice::<fhirbolt::model::r4::resources::Account>(
                     &account_bytes_xml,
                     None,
                 )
@@ -69,7 +72,7 @@ pub fn bench(c: &mut Criterion) {
     group.bench_function("read account element", |b| {
         b.iter(|| {
             black_box(
-                fhirbolt::element::xml::from_slice::<{ FhirRelease::R4 }>(&account_bytes_xml)
+                fhirbolt::xml::from_slice::<Element<{ FhirRelease::R4 }>>(&account_bytes_xml, None)
                     .unwrap(),
             )
         })

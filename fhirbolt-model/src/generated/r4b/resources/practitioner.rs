@@ -1,4 +1,4 @@
-// Generated on 2023-04-10 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-12 by fhirbolt-codegen v0.1.0
 #[doc = "The official certifications, training, and licenses that authorize or otherwise pertain to the provision of care by the practitioner.  For example, a medical license issued by a medical board authorizing the practitioner to practice medicine within a certian locality."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub struct PractitionerQualification {
@@ -88,9 +88,6 @@ pub struct Practitioner {
     pub r#qualification: Vec<PractitionerQualification>,
     #[doc = "A language the practitioner can use in patient communication."]
     pub r#communication: Vec<Box<super::super::types::CodeableConcept>>,
-}
-impl crate::AnyResource for Practitioner {
-    const FHIR_RELEASE: fhirbolt_shared::FhirRelease = fhirbolt_shared::FhirRelease::R4B;
 }
 impl serde::ser::Serialize for Practitioner {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

@@ -9,7 +9,10 @@ use serde::{
     Serialize,
 };
 
-use crate::{context::ser::SerializationContext, number::NumberValueEmitter};
+use crate::{
+    context::ser::SerializationContext,
+    number::{NumberValueEmitter, NUMBER_TOKEN},
+};
 
 use super::error;
 
@@ -677,7 +680,7 @@ impl<const R: FhirRelease> ser::SerializeStruct for SerializeNumber<R> {
     where
         T: ?Sized + Serialize,
     {
-        if key == "$serde_json::private::Number" {
+        if key == NUMBER_TOKEN {
             self.0 = Some(Value::Primitive(Primitive::Decimal(
                 value
                     .serialize(NumberValueEmitter)

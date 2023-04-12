@@ -1,4 +1,4 @@
-// Generated on 2023-04-10 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-12 by fhirbolt-codegen v0.1.0
 #[doc = "Compartment Consistency Rules."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub struct GraphDefinitionLinkTargetCompartment {
@@ -416,9 +416,6 @@ pub struct GraphDefinition {
     pub r#profile: Option<super::super::types::Canonical>,
     #[doc = "Links this graph makes rules about."]
     pub r#link: Vec<GraphDefinitionLink>,
-}
-impl crate::AnyResource for GraphDefinition {
-    const FHIR_RELEASE: fhirbolt_shared::FhirRelease = fhirbolt_shared::FhirRelease::R4B;
 }
 impl serde::ser::Serialize for GraphDefinition {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

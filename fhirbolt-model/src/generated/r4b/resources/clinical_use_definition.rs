@@ -1,4 +1,4 @@
-// Generated on 2023-04-10 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-12 by fhirbolt-codegen v0.1.0
 #[doc = "Timing or duration information, that may be associated with use with the indicated condition e.g. Adult patients suffering from myocardial infarction (from a few days until less than 35 days), ischaemic stroke (from 7 days until less than 6 months)."]
 #[derive(Debug, Clone, PartialEq)]
 pub enum ClinicalUseDefinitionIndicationDuration {
@@ -458,9 +458,6 @@ pub struct ClinicalUseDefinition {
     pub r#undesirable_effect: Option<ClinicalUseDefinitionUndesirableEffect>,
     #[doc = "A critical piece of information about environmental, health or physical risks or hazards that serve as caution to the user. For example 'Do not operate heavy machinery', 'May cause drowsiness', or 'Get medical advice/attention if you feel unwell'."]
     pub r#warning: Option<ClinicalUseDefinitionWarning>,
-}
-impl crate::AnyResource for ClinicalUseDefinition {
-    const FHIR_RELEASE: fhirbolt_shared::FhirRelease = fhirbolt_shared::FhirRelease::R4B;
 }
 impl serde::ser::Serialize for ClinicalUseDefinition {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

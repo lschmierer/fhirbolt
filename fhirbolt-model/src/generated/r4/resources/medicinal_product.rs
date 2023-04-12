@@ -1,4 +1,4 @@
-// Generated on 2023-04-10 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-12 by fhirbolt-codegen v0.1.0
 #[doc = "Condition for which the medicinal use applies."]
 #[derive(Debug, Clone, PartialEq)]
 pub enum MedicinalProductSpecialDesignationIndication {
@@ -395,9 +395,6 @@ pub struct MedicinalProduct {
     pub r#manufacturing_business_operation: Vec<MedicinalProductManufacturingBusinessOperation>,
     #[doc = "Indicates if the medicinal product has an orphan designation for the treatment of a rare disease."]
     pub r#special_designation: Vec<MedicinalProductSpecialDesignation>,
-}
-impl crate::AnyResource for MedicinalProduct {
-    const FHIR_RELEASE: fhirbolt_shared::FhirRelease = fhirbolt_shared::FhirRelease::R4;
 }
 impl serde::ser::Serialize for MedicinalProduct {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

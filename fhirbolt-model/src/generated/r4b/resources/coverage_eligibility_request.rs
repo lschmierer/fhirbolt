@@ -1,4 +1,4 @@
-// Generated on 2023-04-10 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-12 by fhirbolt-codegen v0.1.0
 #[doc = "The date or dates when the enclosed suite of services were performed or completed."]
 #[derive(Debug, Clone, PartialEq)]
 pub enum CoverageEligibilityRequestServiced {
@@ -389,9 +389,6 @@ pub struct CoverageEligibilityRequest {
     pub r#insurance: Vec<CoverageEligibilityRequestInsurance>,
     #[doc = "Service categories or billable services for which benefit details and/or an authorization prior to service delivery may be required by the payor."]
     pub r#item: Vec<CoverageEligibilityRequestItem>,
-}
-impl crate::AnyResource for CoverageEligibilityRequest {
-    const FHIR_RELEASE: fhirbolt_shared::FhirRelease = fhirbolt_shared::FhirRelease::R4B;
 }
 impl serde::ser::Serialize for CoverageEligibilityRequest {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

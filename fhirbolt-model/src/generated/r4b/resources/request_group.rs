@@ -1,4 +1,4 @@
-// Generated on 2023-04-10 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-12 by fhirbolt-codegen v0.1.0
 #[doc = "A duration or range of durations to apply to the relationship. For example, 30-60 minutes before."]
 #[derive(Debug, Clone, PartialEq)]
 pub enum RequestGroupActionRelatedActionOffset {
@@ -541,9 +541,6 @@ pub struct RequestGroup {
     pub r#note: Vec<Box<super::super::types::Annotation>>,
     #[doc = "The actions, if any, produced by the evaluation of the artifact."]
     pub r#action: Vec<RequestGroupAction>,
-}
-impl crate::AnyResource for RequestGroup {
-    const FHIR_RELEASE: fhirbolt_shared::FhirRelease = fhirbolt_shared::FhirRelease::R4B;
 }
 impl serde::ser::Serialize for RequestGroup {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

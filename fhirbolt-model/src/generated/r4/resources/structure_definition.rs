@@ -1,4 +1,4 @@
-// Generated on 2023-04-10 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-12 by fhirbolt-codegen v0.1.0
 #[doc = "An external specification that the content is mapped to."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub struct StructureDefinitionMapping {
@@ -324,9 +324,6 @@ pub struct StructureDefinition {
     pub r#snapshot: Option<StructureDefinitionSnapshot>,
     #[doc = "A differential view is expressed relative to the base StructureDefinition - a statement of differences that it applies."]
     pub r#differential: Option<StructureDefinitionDifferential>,
-}
-impl crate::AnyResource for StructureDefinition {
-    const FHIR_RELEASE: fhirbolt_shared::FhirRelease = fhirbolt_shared::FhirRelease::R4;
 }
 impl serde::ser::Serialize for StructureDefinition {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

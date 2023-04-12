@@ -1,0 +1,1944 @@
+// Generated on 2023-04-12 by fhirbolt-codegen v0.1.0
+impl<'de> serde::de::DeserializeSeed<'de>
+    for &mut crate::context::de::DeserializationContext<
+        fhirbolt_model::r4::resources::MessageDefinitionFocus,
+    >
+{
+    type Value = fhirbolt_model::r4::resources::MessageDefinitionFocus;
+    fn deserialize<D>(self, deserializer: D) -> Result<Self::Value, D::Error>
+    where
+        D: serde::de::Deserializer<'de>,
+    {
+        struct Visitor<'a>(
+            &'a mut crate::context::de::DeserializationContext<
+                fhirbolt_model::r4::resources::MessageDefinitionFocus,
+            >,
+        );
+        impl<'de> serde::de::Visitor<'de> for Visitor<'_> {
+            type Value = fhirbolt_model::r4::resources::MessageDefinitionFocus;
+            fn expecting(&self, formatter: &mut std::fmt::Formatter) -> std::fmt::Result {
+                formatter.write_str("MessageDefinitionFocus")
+            }
+            fn visit_map<V>(
+                self,
+                mut map_access: V,
+            ) -> Result<fhirbolt_model::r4::resources::MessageDefinitionFocus, V::Error>
+            where
+                V: serde::de::MapAccess<'de>,
+            {
+                #[derive(serde :: Deserialize)]
+                #[serde(field_identifier)]
+                enum Field {
+                    #[serde(rename = "id")]
+                    Id,
+                    #[serde(rename = "extension")]
+                    Extension,
+                    #[serde(rename = "modifierExtension")]
+                    ModifierExtension,
+                    #[serde(rename = "code")]
+                    Code,
+                    #[serde(rename = "_code")]
+                    CodePrimitiveElement,
+                    #[serde(rename = "profile")]
+                    Profile,
+                    #[serde(rename = "_profile")]
+                    ProfilePrimitiveElement,
+                    #[serde(rename = "min")]
+                    Min,
+                    #[serde(rename = "_min")]
+                    MinPrimitiveElement,
+                    #[serde(rename = "max")]
+                    Max,
+                    #[serde(rename = "_max")]
+                    MaxPrimitiveElement,
+                    Unknown(std::string::String),
+                }
+                fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+                    Err(E::unknown_field(
+                        field,
+                        &[
+                            "id",
+                            "extension",
+                            "modifierExtension",
+                            "code",
+                            "profile",
+                            "min",
+                            "max",
+                        ],
+                    ))
+                }
+                let mut r#id: Option<std::string::String> = None;
+                let mut r#extension: Option<Vec<Box<fhirbolt_model::r4::types::Extension>>> = None;
+                let mut r#modifier_extension: Option<
+                    Vec<Box<fhirbolt_model::r4::types::Extension>>,
+                > = None;
+                let mut r#code: Option<fhirbolt_model::r4::types::Code> = None;
+                let mut r#profile: Option<fhirbolt_model::r4::types::Canonical> = None;
+                let mut r#min: Option<fhirbolt_model::r4::types::UnsignedInt> = None;
+                let mut r#max: Option<fhirbolt_model::r4::types::String> = None;
+                while let Some(map_access_key) = map_access.next_key()? {
+                    match map_access_key {
+                        Field::Id => {
+                            if r#id.is_some() {
+                                return Err(serde::de::Error::duplicate_field("id"));
+                            }
+                            r#id = Some(map_access.next_value()?);
+                        }
+                        Field::Extension => {
+                            if self.0.from_json {
+                                if r#extension.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("extension"));
+                                }
+                                r#extension = Some (map_access . next_value_seed (self . 0 . transmute :: < Vec < Box < fhirbolt_model :: r4 :: types :: Extension > >> ()) ?) ;
+                            } else {
+                                let vec = r#extension.get_or_insert(Default::default());
+                                vec.push(
+                                    map_access.next_value_seed(
+                                        self.0
+                                            .transmute::<Box<fhirbolt_model::r4::types::Extension>>(
+                                            ),
+                                    )?,
+                                );
+                            }
+                        }
+                        Field::ModifierExtension => {
+                            if self.0.from_json {
+                                if r#modifier_extension.is_some() {
+                                    return Err(serde::de::Error::duplicate_field(
+                                        "modifierExtension",
+                                    ));
+                                }
+                                r#modifier_extension = Some (map_access . next_value_seed (self . 0 . transmute :: < Vec < Box < fhirbolt_model :: r4 :: types :: Extension > >> ()) ?) ;
+                            } else {
+                                let vec = r#modifier_extension.get_or_insert(Default::default());
+                                vec.push(
+                                    map_access.next_value_seed(
+                                        self.0
+                                            .transmute::<Box<fhirbolt_model::r4::types::Extension>>(
+                                            ),
+                                    )?,
+                                );
+                            }
+                        }
+                        Field::Code => {
+                            if self.0.from_json {
+                                let some = r#code.get_or_insert(Default::default());
+                                if some.value.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("code"));
+                                }
+                                let value: _ = map_access.next_value()?;
+                                some.value = Some(value);
+                            } else {
+                                if r#code.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("code"));
+                                }
+                                r#code = Some(map_access.next_value_seed(
+                                    self.0.transmute::<fhirbolt_model::r4::types::Code>(),
+                                )?);
+                            }
+                        }
+                        Field::CodePrimitiveElement => {
+                            if self.0.from_json {
+                                let some = r#code.get_or_insert(Default::default());
+                                if some.id.is_some() || !some.extension.is_empty() {
+                                    return Err(serde::de::Error::duplicate_field("_code"));
+                                }
+                                let super :: super :: serde_helpers :: PrimitiveElementOwned { id , extension } = map_access . next_value_seed (self . 0 . transmute :: < super :: super :: serde_helpers :: PrimitiveElementOwned > ()) ? ;
+                                some.id = id;
+                                some.extension = extension;
+                            } else {
+                                return unknown_field_error("code");
+                            }
+                        }
+                        Field::Profile => {
+                            if self.0.from_json {
+                                let some = r#profile.get_or_insert(Default::default());
+                                if some.value.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("profile"));
+                                }
+                                let value: _ = map_access.next_value()?;
+                                some.value = Some(value);
+                            } else {
+                                if r#profile.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("profile"));
+                                }
+                                r#profile = Some(map_access.next_value_seed(
+                                    self.0.transmute::<fhirbolt_model::r4::types::Canonical>(),
+                                )?);
+                            }
+                        }
+                        Field::ProfilePrimitiveElement => {
+                            if self.0.from_json {
+                                let some = r#profile.get_or_insert(Default::default());
+                                if some.id.is_some() || !some.extension.is_empty() {
+                                    return Err(serde::de::Error::duplicate_field("_profile"));
+                                }
+                                let super :: super :: serde_helpers :: PrimitiveElementOwned { id , extension } = map_access . next_value_seed (self . 0 . transmute :: < super :: super :: serde_helpers :: PrimitiveElementOwned > ()) ? ;
+                                some.id = id;
+                                some.extension = extension;
+                            } else {
+                                return unknown_field_error("profile");
+                            }
+                        }
+                        Field::Min => {
+                            if self.0.from_json {
+                                let some = r#min.get_or_insert(Default::default());
+                                if some.value.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("min"));
+                                }
+                                let value: _ = map_access.next_value()?;
+                                some.value = Some(value);
+                            } else {
+                                if r#min.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("min"));
+                                }
+                                r#min = Some(map_access.next_value_seed(
+                                    self.0.transmute::<fhirbolt_model::r4::types::UnsignedInt>(),
+                                )?);
+                            }
+                        }
+                        Field::MinPrimitiveElement => {
+                            if self.0.from_json {
+                                let some = r#min.get_or_insert(Default::default());
+                                if some.id.is_some() || !some.extension.is_empty() {
+                                    return Err(serde::de::Error::duplicate_field("_min"));
+                                }
+                                let super :: super :: serde_helpers :: PrimitiveElementOwned { id , extension } = map_access . next_value_seed (self . 0 . transmute :: < super :: super :: serde_helpers :: PrimitiveElementOwned > ()) ? ;
+                                some.id = id;
+                                some.extension = extension;
+                            } else {
+                                return unknown_field_error("min");
+                            }
+                        }
+                        Field::Max => {
+                            if self.0.from_json {
+                                let some = r#max.get_or_insert(Default::default());
+                                if some.value.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("max"));
+                                }
+                                let value: _ = map_access.next_value()?;
+                                some.value = Some(value);
+                            } else {
+                                if r#max.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("max"));
+                                }
+                                r#max = Some(map_access.next_value_seed(
+                                    self.0.transmute::<fhirbolt_model::r4::types::String>(),
+                                )?);
+                            }
+                        }
+                        Field::MaxPrimitiveElement => {
+                            if self.0.from_json {
+                                let some = r#max.get_or_insert(Default::default());
+                                if some.id.is_some() || !some.extension.is_empty() {
+                                    return Err(serde::de::Error::duplicate_field("_max"));
+                                }
+                                let super :: super :: serde_helpers :: PrimitiveElementOwned { id , extension } = map_access . next_value_seed (self . 0 . transmute :: < super :: super :: serde_helpers :: PrimitiveElementOwned > ()) ? ;
+                                some.id = id;
+                                some.extension = extension;
+                            } else {
+                                return unknown_field_error("max");
+                            }
+                        }
+                        Field::Unknown(key) => {
+                            if self.0.config.mode == crate::context::de::DeserializationMode::Strict
+                            {
+                                return unknown_field_error(&key);
+                            }
+                        }
+                    }
+                }
+                Ok(fhirbolt_model::r4::resources::MessageDefinitionFocus {
+                    r#id,
+                    r#extension: r#extension.unwrap_or(vec![]),
+                    r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
+                    r#code: if self.0.config.mode == crate::context::de::DeserializationMode::Lax {
+                        r#code.unwrap_or(Default::default())
+                    } else {
+                        r#code.ok_or(serde::de::Error::missing_field("code"))?
+                    },
+                    r#profile,
+                    r#min: if self.0.config.mode == crate::context::de::DeserializationMode::Lax {
+                        r#min.unwrap_or(Default::default())
+                    } else {
+                        r#min.ok_or(serde::de::Error::missing_field("min"))?
+                    },
+                    r#max,
+                })
+            }
+        }
+        deserializer.deserialize_map(Visitor(self))
+    }
+}
+impl<'de> serde::de::DeserializeSeed<'de>
+    for &mut crate::context::de::DeserializationContext<
+        Box<fhirbolt_model::r4::resources::MessageDefinitionFocus>,
+    >
+{
+    type Value = Box<fhirbolt_model::r4::resources::MessageDefinitionFocus>;
+    fn deserialize<D>(self, deserializer: D) -> Result<Self::Value, D::Error>
+    where
+        D: serde::de::Deserializer<'de>,
+    {
+        self.transmute::<fhirbolt_model::r4::resources::MessageDefinitionFocus>()
+            .deserialize(deserializer)
+            .map(Box::new)
+    }
+}
+impl<'de> serde::de::DeserializeSeed<'de>
+    for &mut crate::context::de::DeserializationContext<
+        Vec<fhirbolt_model::r4::resources::MessageDefinitionFocus>,
+    >
+{
+    type Value = Vec<fhirbolt_model::r4::resources::MessageDefinitionFocus>;
+    fn deserialize<D>(self, deserializer: D) -> Result<Self::Value, D::Error>
+    where
+        D: serde::de::Deserializer<'de>,
+    {
+        struct Visitor<'a>(
+            &'a mut crate::context::de::DeserializationContext<
+                Vec<fhirbolt_model::r4::resources::MessageDefinitionFocus>,
+            >,
+        );
+        impl<'de> serde::de::Visitor<'de> for Visitor<'_> {
+            type Value = Vec<fhirbolt_model::r4::resources::MessageDefinitionFocus>;
+            fn expecting(&self, formatter: &mut std::fmt::Formatter) -> std::fmt::Result {
+                formatter.write_str("a sequence")
+            }
+            fn visit_seq<A>(self, mut seq: A) -> Result<Self::Value, A::Error>
+            where
+                A: serde::de::SeqAccess<'de>,
+            {
+                let mut values = Vec::new();
+                while let Some(value) = seq.next_element_seed(
+                    self.0
+                        .transmute::<fhirbolt_model::r4::resources::MessageDefinitionFocus>(),
+                )? {
+                    values.push(value);
+                }
+                Ok(values)
+            }
+        }
+        deserializer.deserialize_seq(Visitor(self))
+    }
+}
+impl<'de> serde::de::DeserializeSeed<'de>
+    for &mut crate::context::de::DeserializationContext<
+        Vec<Box<fhirbolt_model::r4::resources::MessageDefinitionFocus>>,
+    >
+{
+    type Value = Vec<Box<fhirbolt_model::r4::resources::MessageDefinitionFocus>>;
+    fn deserialize<D>(self, deserializer: D) -> Result<Self::Value, D::Error>
+    where
+        D: serde::de::Deserializer<'de>,
+    {
+        struct Visitor<'a>(
+            &'a mut crate::context::de::DeserializationContext<
+                Vec<Box<fhirbolt_model::r4::resources::MessageDefinitionFocus>>,
+            >,
+        );
+        impl<'de> serde::de::Visitor<'de> for Visitor<'_> {
+            type Value = Vec<Box<fhirbolt_model::r4::resources::MessageDefinitionFocus>>;
+            fn expecting(&self, formatter: &mut std::fmt::Formatter) -> std::fmt::Result {
+                formatter.write_str("a sequence")
+            }
+            fn visit_seq<A>(self, mut seq: A) -> Result<Self::Value, A::Error>
+            where
+                A: serde::de::SeqAccess<'de>,
+            {
+                let mut values = Vec::new();
+                while let Some(value) = seq.next_element_seed(
+                    self.0
+                        .transmute::<Box<fhirbolt_model::r4::resources::MessageDefinitionFocus>>(),
+                )? {
+                    values.push(value);
+                }
+                Ok(values)
+            }
+        }
+        deserializer.deserialize_seq(Visitor(self))
+    }
+}
+impl<'de> serde::de::DeserializeSeed<'de>
+    for &mut crate::context::de::DeserializationContext<
+        fhirbolt_model::r4::resources::MessageDefinitionAllowedResponse,
+    >
+{
+    type Value = fhirbolt_model::r4::resources::MessageDefinitionAllowedResponse;
+    fn deserialize<D>(self, deserializer: D) -> Result<Self::Value, D::Error>
+    where
+        D: serde::de::Deserializer<'de>,
+    {
+        struct Visitor<'a>(
+            &'a mut crate::context::de::DeserializationContext<
+                fhirbolt_model::r4::resources::MessageDefinitionAllowedResponse,
+            >,
+        );
+        impl<'de> serde::de::Visitor<'de> for Visitor<'_> {
+            type Value = fhirbolt_model::r4::resources::MessageDefinitionAllowedResponse;
+            fn expecting(&self, formatter: &mut std::fmt::Formatter) -> std::fmt::Result {
+                formatter.write_str("MessageDefinitionAllowedResponse")
+            }
+            fn visit_map<V>(
+                self,
+                mut map_access: V,
+            ) -> Result<fhirbolt_model::r4::resources::MessageDefinitionAllowedResponse, V::Error>
+            where
+                V: serde::de::MapAccess<'de>,
+            {
+                #[derive(serde :: Deserialize)]
+                #[serde(field_identifier)]
+                enum Field {
+                    #[serde(rename = "id")]
+                    Id,
+                    #[serde(rename = "extension")]
+                    Extension,
+                    #[serde(rename = "modifierExtension")]
+                    ModifierExtension,
+                    #[serde(rename = "message")]
+                    Message,
+                    #[serde(rename = "_message")]
+                    MessagePrimitiveElement,
+                    #[serde(rename = "situation")]
+                    Situation,
+                    #[serde(rename = "_situation")]
+                    SituationPrimitiveElement,
+                    Unknown(std::string::String),
+                }
+                fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+                    Err(E::unknown_field(
+                        field,
+                        &[
+                            "id",
+                            "extension",
+                            "modifierExtension",
+                            "message",
+                            "situation",
+                        ],
+                    ))
+                }
+                let mut r#id: Option<std::string::String> = None;
+                let mut r#extension: Option<Vec<Box<fhirbolt_model::r4::types::Extension>>> = None;
+                let mut r#modifier_extension: Option<
+                    Vec<Box<fhirbolt_model::r4::types::Extension>>,
+                > = None;
+                let mut r#message: Option<fhirbolt_model::r4::types::Canonical> = None;
+                let mut r#situation: Option<fhirbolt_model::r4::types::Markdown> = None;
+                while let Some(map_access_key) = map_access.next_key()? {
+                    match map_access_key {
+                        Field::Id => {
+                            if r#id.is_some() {
+                                return Err(serde::de::Error::duplicate_field("id"));
+                            }
+                            r#id = Some(map_access.next_value()?);
+                        }
+                        Field::Extension => {
+                            if self.0.from_json {
+                                if r#extension.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("extension"));
+                                }
+                                r#extension = Some (map_access . next_value_seed (self . 0 . transmute :: < Vec < Box < fhirbolt_model :: r4 :: types :: Extension > >> ()) ?) ;
+                            } else {
+                                let vec = r#extension.get_or_insert(Default::default());
+                                vec.push(
+                                    map_access.next_value_seed(
+                                        self.0
+                                            .transmute::<Box<fhirbolt_model::r4::types::Extension>>(
+                                            ),
+                                    )?,
+                                );
+                            }
+                        }
+                        Field::ModifierExtension => {
+                            if self.0.from_json {
+                                if r#modifier_extension.is_some() {
+                                    return Err(serde::de::Error::duplicate_field(
+                                        "modifierExtension",
+                                    ));
+                                }
+                                r#modifier_extension = Some (map_access . next_value_seed (self . 0 . transmute :: < Vec < Box < fhirbolt_model :: r4 :: types :: Extension > >> ()) ?) ;
+                            } else {
+                                let vec = r#modifier_extension.get_or_insert(Default::default());
+                                vec.push(
+                                    map_access.next_value_seed(
+                                        self.0
+                                            .transmute::<Box<fhirbolt_model::r4::types::Extension>>(
+                                            ),
+                                    )?,
+                                );
+                            }
+                        }
+                        Field::Message => {
+                            if self.0.from_json {
+                                let some = r#message.get_or_insert(Default::default());
+                                if some.value.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("message"));
+                                }
+                                let value: _ = map_access.next_value()?;
+                                some.value = Some(value);
+                            } else {
+                                if r#message.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("message"));
+                                }
+                                r#message = Some(map_access.next_value_seed(
+                                    self.0.transmute::<fhirbolt_model::r4::types::Canonical>(),
+                                )?);
+                            }
+                        }
+                        Field::MessagePrimitiveElement => {
+                            if self.0.from_json {
+                                let some = r#message.get_or_insert(Default::default());
+                                if some.id.is_some() || !some.extension.is_empty() {
+                                    return Err(serde::de::Error::duplicate_field("_message"));
+                                }
+                                let super :: super :: serde_helpers :: PrimitiveElementOwned { id , extension } = map_access . next_value_seed (self . 0 . transmute :: < super :: super :: serde_helpers :: PrimitiveElementOwned > ()) ? ;
+                                some.id = id;
+                                some.extension = extension;
+                            } else {
+                                return unknown_field_error("message");
+                            }
+                        }
+                        Field::Situation => {
+                            if self.0.from_json {
+                                let some = r#situation.get_or_insert(Default::default());
+                                if some.value.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("situation"));
+                                }
+                                let value: _ = map_access.next_value()?;
+                                some.value = Some(value);
+                            } else {
+                                if r#situation.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("situation"));
+                                }
+                                r#situation = Some(map_access.next_value_seed(
+                                    self.0.transmute::<fhirbolt_model::r4::types::Markdown>(),
+                                )?);
+                            }
+                        }
+                        Field::SituationPrimitiveElement => {
+                            if self.0.from_json {
+                                let some = r#situation.get_or_insert(Default::default());
+                                if some.id.is_some() || !some.extension.is_empty() {
+                                    return Err(serde::de::Error::duplicate_field("_situation"));
+                                }
+                                let super :: super :: serde_helpers :: PrimitiveElementOwned { id , extension } = map_access . next_value_seed (self . 0 . transmute :: < super :: super :: serde_helpers :: PrimitiveElementOwned > ()) ? ;
+                                some.id = id;
+                                some.extension = extension;
+                            } else {
+                                return unknown_field_error("situation");
+                            }
+                        }
+                        Field::Unknown(key) => {
+                            if self.0.config.mode == crate::context::de::DeserializationMode::Strict
+                            {
+                                return unknown_field_error(&key);
+                            }
+                        }
+                    }
+                }
+                Ok(
+                    fhirbolt_model::r4::resources::MessageDefinitionAllowedResponse {
+                        r#id,
+                        r#extension: r#extension.unwrap_or(vec![]),
+                        r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
+                        r#message: if self.0.config.mode
+                            == crate::context::de::DeserializationMode::Lax
+                        {
+                            r#message.unwrap_or(Default::default())
+                        } else {
+                            r#message.ok_or(serde::de::Error::missing_field("message"))?
+                        },
+                        r#situation,
+                    },
+                )
+            }
+        }
+        deserializer.deserialize_map(Visitor(self))
+    }
+}
+impl<'de> serde::de::DeserializeSeed<'de>
+    for &mut crate::context::de::DeserializationContext<
+        Box<fhirbolt_model::r4::resources::MessageDefinitionAllowedResponse>,
+    >
+{
+    type Value = Box<fhirbolt_model::r4::resources::MessageDefinitionAllowedResponse>;
+    fn deserialize<D>(self, deserializer: D) -> Result<Self::Value, D::Error>
+    where
+        D: serde::de::Deserializer<'de>,
+    {
+        self.transmute::<fhirbolt_model::r4::resources::MessageDefinitionAllowedResponse>()
+            .deserialize(deserializer)
+            .map(Box::new)
+    }
+}
+impl<'de> serde::de::DeserializeSeed<'de>
+    for &mut crate::context::de::DeserializationContext<
+        Vec<fhirbolt_model::r4::resources::MessageDefinitionAllowedResponse>,
+    >
+{
+    type Value = Vec<fhirbolt_model::r4::resources::MessageDefinitionAllowedResponse>;
+    fn deserialize<D>(self, deserializer: D) -> Result<Self::Value, D::Error>
+    where
+        D: serde::de::Deserializer<'de>,
+    {
+        struct Visitor<'a>(
+            &'a mut crate::context::de::DeserializationContext<
+                Vec<fhirbolt_model::r4::resources::MessageDefinitionAllowedResponse>,
+            >,
+        );
+        impl<'de> serde::de::Visitor<'de> for Visitor<'_> {
+            type Value = Vec<fhirbolt_model::r4::resources::MessageDefinitionAllowedResponse>;
+            fn expecting(&self, formatter: &mut std::fmt::Formatter) -> std::fmt::Result {
+                formatter.write_str("a sequence")
+            }
+            fn visit_seq<A>(self, mut seq: A) -> Result<Self::Value, A::Error>
+            where
+                A: serde::de::SeqAccess<'de>,
+            {
+                let mut values = Vec::new();
+                while let Some (value) = seq . next_element_seed (self . 0 . transmute :: < fhirbolt_model :: r4 :: resources :: MessageDefinitionAllowedResponse > ()) ? { values . push (value) ; }
+                Ok(values)
+            }
+        }
+        deserializer.deserialize_seq(Visitor(self))
+    }
+}
+impl<'de> serde::de::DeserializeSeed<'de>
+    for &mut crate::context::de::DeserializationContext<
+        Vec<Box<fhirbolt_model::r4::resources::MessageDefinitionAllowedResponse>>,
+    >
+{
+    type Value = Vec<Box<fhirbolt_model::r4::resources::MessageDefinitionAllowedResponse>>;
+    fn deserialize<D>(self, deserializer: D) -> Result<Self::Value, D::Error>
+    where
+        D: serde::de::Deserializer<'de>,
+    {
+        struct Visitor<'a>(
+            &'a mut crate::context::de::DeserializationContext<
+                Vec<Box<fhirbolt_model::r4::resources::MessageDefinitionAllowedResponse>>,
+            >,
+        );
+        impl<'de> serde::de::Visitor<'de> for Visitor<'_> {
+            type Value = Vec<Box<fhirbolt_model::r4::resources::MessageDefinitionAllowedResponse>>;
+            fn expecting(&self, formatter: &mut std::fmt::Formatter) -> std::fmt::Result {
+                formatter.write_str("a sequence")
+            }
+            fn visit_seq<A>(self, mut seq: A) -> Result<Self::Value, A::Error>
+            where
+                A: serde::de::SeqAccess<'de>,
+            {
+                let mut values = Vec::new();
+                while let Some (value) = seq . next_element_seed (self . 0 . transmute :: < Box < fhirbolt_model :: r4 :: resources :: MessageDefinitionAllowedResponse >> ()) ? { values . push (value) ; }
+                Ok(values)
+            }
+        }
+        deserializer.deserialize_seq(Visitor(self))
+    }
+}
+impl crate::Resource for fhirbolt_model::r4::resources::MessageDefinition {
+    const FHIR_RELEASE: crate::FhirRelease = crate::FhirRelease::R4;
+}
+impl<'de> serde::de::DeserializeSeed<'de>
+    for crate::context::de::DeserializationContext<fhirbolt_model::r4::resources::MessageDefinition>
+{
+    type Value = fhirbolt_model::r4::resources::MessageDefinition;
+    fn deserialize<D>(mut self, deserializer: D) -> Result<Self::Value, D::Error>
+    where
+        D: serde::de::Deserializer<'de>,
+    {
+        (&mut self).deserialize(deserializer)
+    }
+}
+impl<'de> serde::de::DeserializeSeed<'de>
+    for &mut crate::context::de::DeserializationContext<
+        fhirbolt_model::r4::resources::MessageDefinition,
+    >
+{
+    type Value = fhirbolt_model::r4::resources::MessageDefinition;
+    fn deserialize<D>(self, deserializer: D) -> Result<Self::Value, D::Error>
+    where
+        D: serde::de::Deserializer<'de>,
+    {
+        struct Visitor<'a>(
+            &'a mut crate::context::de::DeserializationContext<
+                fhirbolt_model::r4::resources::MessageDefinition,
+            >,
+        );
+        impl<'de> serde::de::Visitor<'de> for Visitor<'_> {
+            type Value = fhirbolt_model::r4::resources::MessageDefinition;
+            fn expecting(&self, formatter: &mut std::fmt::Formatter) -> std::fmt::Result {
+                formatter.write_str("MessageDefinition")
+            }
+            fn visit_map<V>(
+                self,
+                mut map_access: V,
+            ) -> Result<fhirbolt_model::r4::resources::MessageDefinition, V::Error>
+            where
+                V: serde::de::MapAccess<'de>,
+            {
+                #[derive(serde :: Deserialize)]
+                #[serde(field_identifier)]
+                enum Field {
+                    #[serde(rename = "resourceType")]
+                    ResourceType,
+                    #[serde(rename = "id")]
+                    Id,
+                    #[serde(rename = "meta")]
+                    Meta,
+                    #[serde(rename = "implicitRules")]
+                    ImplicitRules,
+                    #[serde(rename = "_implicitRules")]
+                    ImplicitRulesPrimitiveElement,
+                    #[serde(rename = "language")]
+                    Language,
+                    #[serde(rename = "_language")]
+                    LanguagePrimitiveElement,
+                    #[serde(rename = "text")]
+                    Text,
+                    #[serde(rename = "contained")]
+                    Contained,
+                    #[serde(rename = "extension")]
+                    Extension,
+                    #[serde(rename = "modifierExtension")]
+                    ModifierExtension,
+                    #[serde(rename = "url")]
+                    Url,
+                    #[serde(rename = "_url")]
+                    UrlPrimitiveElement,
+                    #[serde(rename = "identifier")]
+                    Identifier,
+                    #[serde(rename = "version")]
+                    Version,
+                    #[serde(rename = "_version")]
+                    VersionPrimitiveElement,
+                    #[serde(rename = "name")]
+                    Name,
+                    #[serde(rename = "_name")]
+                    NamePrimitiveElement,
+                    #[serde(rename = "title")]
+                    Title,
+                    #[serde(rename = "_title")]
+                    TitlePrimitiveElement,
+                    #[serde(rename = "replaces")]
+                    Replaces,
+                    #[serde(rename = "_replaces")]
+                    ReplacesPrimitiveElement,
+                    #[serde(rename = "status")]
+                    Status,
+                    #[serde(rename = "_status")]
+                    StatusPrimitiveElement,
+                    #[serde(rename = "experimental")]
+                    Experimental,
+                    #[serde(rename = "_experimental")]
+                    ExperimentalPrimitiveElement,
+                    #[serde(rename = "date")]
+                    Date,
+                    #[serde(rename = "_date")]
+                    DatePrimitiveElement,
+                    #[serde(rename = "publisher")]
+                    Publisher,
+                    #[serde(rename = "_publisher")]
+                    PublisherPrimitiveElement,
+                    #[serde(rename = "contact")]
+                    Contact,
+                    #[serde(rename = "description")]
+                    Description,
+                    #[serde(rename = "_description")]
+                    DescriptionPrimitiveElement,
+                    #[serde(rename = "useContext")]
+                    UseContext,
+                    #[serde(rename = "jurisdiction")]
+                    Jurisdiction,
+                    #[serde(rename = "purpose")]
+                    Purpose,
+                    #[serde(rename = "_purpose")]
+                    PurposePrimitiveElement,
+                    #[serde(rename = "copyright")]
+                    Copyright,
+                    #[serde(rename = "_copyright")]
+                    CopyrightPrimitiveElement,
+                    #[serde(rename = "base")]
+                    Base,
+                    #[serde(rename = "_base")]
+                    BasePrimitiveElement,
+                    #[serde(rename = "parent")]
+                    Parent,
+                    #[serde(rename = "_parent")]
+                    ParentPrimitiveElement,
+                    #[serde(rename = "eventCoding")]
+                    EventCoding,
+                    #[serde(rename = "eventUri")]
+                    EventUri,
+                    #[serde(rename = "_eventUri")]
+                    EventUriPrimitiveElement,
+                    #[serde(rename = "category")]
+                    Category,
+                    #[serde(rename = "_category")]
+                    CategoryPrimitiveElement,
+                    #[serde(rename = "focus")]
+                    Focus,
+                    #[serde(rename = "responseRequired")]
+                    ResponseRequired,
+                    #[serde(rename = "_responseRequired")]
+                    ResponseRequiredPrimitiveElement,
+                    #[serde(rename = "allowedResponse")]
+                    AllowedResponse,
+                    #[serde(rename = "graph")]
+                    Graph,
+                    #[serde(rename = "_graph")]
+                    GraphPrimitiveElement,
+                    Unknown(std::string::String),
+                }
+                fn unknown_field_error<T, E: serde::de::Error>(field: &str) -> Result<T, E> {
+                    Err(E::unknown_field(
+                        field,
+                        &[
+                            "id",
+                            "meta",
+                            "implicitRules",
+                            "language",
+                            "text",
+                            "contained",
+                            "extension",
+                            "modifierExtension",
+                            "url",
+                            "identifier",
+                            "version",
+                            "name",
+                            "title",
+                            "replaces",
+                            "status",
+                            "experimental",
+                            "date",
+                            "publisher",
+                            "contact",
+                            "description",
+                            "useContext",
+                            "jurisdiction",
+                            "purpose",
+                            "copyright",
+                            "base",
+                            "parent",
+                            "eventCoding",
+                            "eventUri",
+                            "category",
+                            "focus",
+                            "responseRequired",
+                            "allowedResponse",
+                            "graph",
+                        ],
+                    ))
+                }
+                let mut r#id: Option<std::string::String> = None;
+                let mut r#meta: Option<Box<fhirbolt_model::r4::types::Meta>> = None;
+                let mut r#implicit_rules: Option<fhirbolt_model::r4::types::Uri> = None;
+                let mut r#language: Option<fhirbolt_model::r4::types::Code> = None;
+                let mut r#text: Option<Box<fhirbolt_model::r4::types::Narrative>> = None;
+                let mut r#contained: Option<Vec<Box<fhirbolt_model::r4::Resource>>> = None;
+                let mut r#extension: Option<Vec<Box<fhirbolt_model::r4::types::Extension>>> = None;
+                let mut r#modifier_extension: Option<
+                    Vec<Box<fhirbolt_model::r4::types::Extension>>,
+                > = None;
+                let mut r#url: Option<fhirbolt_model::r4::types::Uri> = None;
+                let mut r#identifier: Option<Vec<Box<fhirbolt_model::r4::types::Identifier>>> =
+                    None;
+                let mut r#version: Option<fhirbolt_model::r4::types::String> = None;
+                let mut r#name: Option<fhirbolt_model::r4::types::String> = None;
+                let mut r#title: Option<fhirbolt_model::r4::types::String> = None;
+                let mut r#replaces: Option<Vec<fhirbolt_model::r4::types::Canonical>> = None;
+                let mut r#status: Option<fhirbolt_model::r4::types::Code> = None;
+                let mut r#experimental: Option<fhirbolt_model::r4::types::Boolean> = None;
+                let mut r#date: Option<fhirbolt_model::r4::types::DateTime> = None;
+                let mut r#publisher: Option<fhirbolt_model::r4::types::String> = None;
+                let mut r#contact: Option<Vec<Box<fhirbolt_model::r4::types::ContactDetail>>> =
+                    None;
+                let mut r#description: Option<fhirbolt_model::r4::types::Markdown> = None;
+                let mut r#use_context: Option<Vec<Box<fhirbolt_model::r4::types::UsageContext>>> =
+                    None;
+                let mut r#jurisdiction: Option<
+                    Vec<Box<fhirbolt_model::r4::types::CodeableConcept>>,
+                > = None;
+                let mut r#purpose: Option<fhirbolt_model::r4::types::Markdown> = None;
+                let mut r#copyright: Option<fhirbolt_model::r4::types::Markdown> = None;
+                let mut r#base: Option<fhirbolt_model::r4::types::Canonical> = None;
+                let mut r#parent: Option<Vec<fhirbolt_model::r4::types::Canonical>> = None;
+                let mut r#event: Option<fhirbolt_model::r4::resources::MessageDefinitionEvent> =
+                    None;
+                let mut r#category: Option<fhirbolt_model::r4::types::Code> = None;
+                let mut r#focus: Option<
+                    Vec<fhirbolt_model::r4::resources::MessageDefinitionFocus>,
+                > = None;
+                let mut r#response_required: Option<fhirbolt_model::r4::types::Code> = None;
+                let mut r#allowed_response: Option<
+                    Vec<fhirbolt_model::r4::resources::MessageDefinitionAllowedResponse>,
+                > = None;
+                let mut r#graph: Option<Vec<fhirbolt_model::r4::types::Canonical>> = None;
+                while let Some(map_access_key) = map_access.next_key()? {
+                    match map_access_key {
+                        Field::ResourceType => {
+                            let value: std::borrow::Cow<str> = map_access.next_value()?;
+                            if value != "MessageDefinition" {
+                                return Err(serde::de::Error::invalid_value(
+                                    serde::de::Unexpected::Str(&value),
+                                    &"MessageDefinition",
+                                ));
+                            }
+                        }
+                        Field::Id => {
+                            if r#id.is_some() {
+                                return Err(serde::de::Error::duplicate_field("id"));
+                            }
+                            r#id = Some(map_access.next_value()?);
+                        }
+                        Field::Meta => {
+                            if r#meta.is_some() {
+                                return Err(serde::de::Error::duplicate_field("meta"));
+                            }
+                            r#meta = Some(map_access.next_value_seed(
+                                self.0.transmute::<Box<fhirbolt_model::r4::types::Meta>>(),
+                            )?);
+                        }
+                        Field::ImplicitRules => {
+                            if self.0.from_json {
+                                let some = r#implicit_rules.get_or_insert(Default::default());
+                                if some.value.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("implicitRules"));
+                                }
+                                let value: _ = map_access.next_value()?;
+                                some.value = Some(value);
+                            } else {
+                                if r#implicit_rules.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("implicitRules"));
+                                }
+                                r#implicit_rules = Some(map_access.next_value_seed(
+                                    self.0.transmute::<fhirbolt_model::r4::types::Uri>(),
+                                )?);
+                            }
+                        }
+                        Field::ImplicitRulesPrimitiveElement => {
+                            if self.0.from_json {
+                                let some = r#implicit_rules.get_or_insert(Default::default());
+                                if some.id.is_some() || !some.extension.is_empty() {
+                                    return Err(serde::de::Error::duplicate_field(
+                                        "_implicitRules",
+                                    ));
+                                }
+                                let super :: super :: serde_helpers :: PrimitiveElementOwned { id , extension } = map_access . next_value_seed (self . 0 . transmute :: < super :: super :: serde_helpers :: PrimitiveElementOwned > ()) ? ;
+                                some.id = id;
+                                some.extension = extension;
+                            } else {
+                                return unknown_field_error("implicitRules");
+                            }
+                        }
+                        Field::Language => {
+                            if self.0.from_json {
+                                let some = r#language.get_or_insert(Default::default());
+                                if some.value.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("language"));
+                                }
+                                let value: _ = map_access.next_value()?;
+                                some.value = Some(value);
+                            } else {
+                                if r#language.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("language"));
+                                }
+                                r#language = Some(map_access.next_value_seed(
+                                    self.0.transmute::<fhirbolt_model::r4::types::Code>(),
+                                )?);
+                            }
+                        }
+                        Field::LanguagePrimitiveElement => {
+                            if self.0.from_json {
+                                let some = r#language.get_or_insert(Default::default());
+                                if some.id.is_some() || !some.extension.is_empty() {
+                                    return Err(serde::de::Error::duplicate_field("_language"));
+                                }
+                                let super :: super :: serde_helpers :: PrimitiveElementOwned { id , extension } = map_access . next_value_seed (self . 0 . transmute :: < super :: super :: serde_helpers :: PrimitiveElementOwned > ()) ? ;
+                                some.id = id;
+                                some.extension = extension;
+                            } else {
+                                return unknown_field_error("language");
+                            }
+                        }
+                        Field::Text => {
+                            if r#text.is_some() {
+                                return Err(serde::de::Error::duplicate_field("text"));
+                            }
+                            r#text = Some(
+                                map_access.next_value_seed(
+                                    self.0
+                                        .transmute::<Box<fhirbolt_model::r4::types::Narrative>>(),
+                                )?,
+                            );
+                        }
+                        Field::Contained => {
+                            if self.0.from_json {
+                                if r#contained.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("contained"));
+                                }
+                                r#contained = Some(map_access.next_value_seed(
+                                    self.0.transmute::<Vec<Box<fhirbolt_model::r4::Resource>>>(),
+                                )?);
+                            } else {
+                                let vec = r#contained.get_or_insert(Default::default());
+                                vec.push(map_access.next_value_seed(
+                                    self.0.transmute::<Box<fhirbolt_model::r4::Resource>>(),
+                                )?);
+                            }
+                        }
+                        Field::Extension => {
+                            if self.0.from_json {
+                                if r#extension.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("extension"));
+                                }
+                                r#extension = Some (map_access . next_value_seed (self . 0 . transmute :: < Vec < Box < fhirbolt_model :: r4 :: types :: Extension > >> ()) ?) ;
+                            } else {
+                                let vec = r#extension.get_or_insert(Default::default());
+                                vec.push(
+                                    map_access.next_value_seed(
+                                        self.0
+                                            .transmute::<Box<fhirbolt_model::r4::types::Extension>>(
+                                            ),
+                                    )?,
+                                );
+                            }
+                        }
+                        Field::ModifierExtension => {
+                            if self.0.from_json {
+                                if r#modifier_extension.is_some() {
+                                    return Err(serde::de::Error::duplicate_field(
+                                        "modifierExtension",
+                                    ));
+                                }
+                                r#modifier_extension = Some (map_access . next_value_seed (self . 0 . transmute :: < Vec < Box < fhirbolt_model :: r4 :: types :: Extension > >> ()) ?) ;
+                            } else {
+                                let vec = r#modifier_extension.get_or_insert(Default::default());
+                                vec.push(
+                                    map_access.next_value_seed(
+                                        self.0
+                                            .transmute::<Box<fhirbolt_model::r4::types::Extension>>(
+                                            ),
+                                    )?,
+                                );
+                            }
+                        }
+                        Field::Url => {
+                            if self.0.from_json {
+                                let some = r#url.get_or_insert(Default::default());
+                                if some.value.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("url"));
+                                }
+                                let value: _ = map_access.next_value()?;
+                                some.value = Some(value);
+                            } else {
+                                if r#url.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("url"));
+                                }
+                                r#url = Some(map_access.next_value_seed(
+                                    self.0.transmute::<fhirbolt_model::r4::types::Uri>(),
+                                )?);
+                            }
+                        }
+                        Field::UrlPrimitiveElement => {
+                            if self.0.from_json {
+                                let some = r#url.get_or_insert(Default::default());
+                                if some.id.is_some() || !some.extension.is_empty() {
+                                    return Err(serde::de::Error::duplicate_field("_url"));
+                                }
+                                let super :: super :: serde_helpers :: PrimitiveElementOwned { id , extension } = map_access . next_value_seed (self . 0 . transmute :: < super :: super :: serde_helpers :: PrimitiveElementOwned > ()) ? ;
+                                some.id = id;
+                                some.extension = extension;
+                            } else {
+                                return unknown_field_error("url");
+                            }
+                        }
+                        Field::Identifier => {
+                            if self.0.from_json {
+                                if r#identifier.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("identifier"));
+                                }
+                                r#identifier = Some (map_access . next_value_seed (self . 0 . transmute :: < Vec < Box < fhirbolt_model :: r4 :: types :: Identifier > >> ()) ?) ;
+                            } else {
+                                let vec = r#identifier.get_or_insert(Default::default());
+                                vec . push (map_access . next_value_seed (self . 0 . transmute :: < Box < fhirbolt_model :: r4 :: types :: Identifier > > ()) ?) ;
+                            }
+                        }
+                        Field::Version => {
+                            if self.0.from_json {
+                                let some = r#version.get_or_insert(Default::default());
+                                if some.value.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("version"));
+                                }
+                                let value: _ = map_access.next_value()?;
+                                some.value = Some(value);
+                            } else {
+                                if r#version.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("version"));
+                                }
+                                r#version = Some(map_access.next_value_seed(
+                                    self.0.transmute::<fhirbolt_model::r4::types::String>(),
+                                )?);
+                            }
+                        }
+                        Field::VersionPrimitiveElement => {
+                            if self.0.from_json {
+                                let some = r#version.get_or_insert(Default::default());
+                                if some.id.is_some() || !some.extension.is_empty() {
+                                    return Err(serde::de::Error::duplicate_field("_version"));
+                                }
+                                let super :: super :: serde_helpers :: PrimitiveElementOwned { id , extension } = map_access . next_value_seed (self . 0 . transmute :: < super :: super :: serde_helpers :: PrimitiveElementOwned > ()) ? ;
+                                some.id = id;
+                                some.extension = extension;
+                            } else {
+                                return unknown_field_error("version");
+                            }
+                        }
+                        Field::Name => {
+                            if self.0.from_json {
+                                let some = r#name.get_or_insert(Default::default());
+                                if some.value.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("name"));
+                                }
+                                let value: _ = map_access.next_value()?;
+                                some.value = Some(value);
+                            } else {
+                                if r#name.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("name"));
+                                }
+                                r#name = Some(map_access.next_value_seed(
+                                    self.0.transmute::<fhirbolt_model::r4::types::String>(),
+                                )?);
+                            }
+                        }
+                        Field::NamePrimitiveElement => {
+                            if self.0.from_json {
+                                let some = r#name.get_or_insert(Default::default());
+                                if some.id.is_some() || !some.extension.is_empty() {
+                                    return Err(serde::de::Error::duplicate_field("_name"));
+                                }
+                                let super :: super :: serde_helpers :: PrimitiveElementOwned { id , extension } = map_access . next_value_seed (self . 0 . transmute :: < super :: super :: serde_helpers :: PrimitiveElementOwned > ()) ? ;
+                                some.id = id;
+                                some.extension = extension;
+                            } else {
+                                return unknown_field_error("name");
+                            }
+                        }
+                        Field::Title => {
+                            if self.0.from_json {
+                                let some = r#title.get_or_insert(Default::default());
+                                if some.value.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("title"));
+                                }
+                                let value: _ = map_access.next_value()?;
+                                some.value = Some(value);
+                            } else {
+                                if r#title.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("title"));
+                                }
+                                r#title = Some(map_access.next_value_seed(
+                                    self.0.transmute::<fhirbolt_model::r4::types::String>(),
+                                )?);
+                            }
+                        }
+                        Field::TitlePrimitiveElement => {
+                            if self.0.from_json {
+                                let some = r#title.get_or_insert(Default::default());
+                                if some.id.is_some() || !some.extension.is_empty() {
+                                    return Err(serde::de::Error::duplicate_field("_title"));
+                                }
+                                let super :: super :: serde_helpers :: PrimitiveElementOwned { id , extension } = map_access . next_value_seed (self . 0 . transmute :: < super :: super :: serde_helpers :: PrimitiveElementOwned > ()) ? ;
+                                some.id = id;
+                                some.extension = extension;
+                            } else {
+                                return unknown_field_error("title");
+                            }
+                        }
+                        Field::Replaces => {
+                            if self.0.from_json {
+                                let values: Vec<Option<_>> = map_access.next_value()?;
+                                let vec = r#replaces.get_or_insert(
+                                    std::iter::repeat(Default::default())
+                                        .take(values.len())
+                                        .collect::<Vec<_>>(),
+                                );
+                                if vec.len() != values.len() {
+                                    return Err(serde::de::Error::invalid_length(
+                                        values.len(),
+                                        &"primitive elements length",
+                                    ));
+                                }
+                                if vec.iter().any(|v| v.value.is_some()) {
+                                    return Err(serde::de::Error::duplicate_field("replaces"));
+                                }
+                                for (i, value) in values.into_iter().enumerate() {
+                                    if let Some(value) = value {
+                                        vec[i].value = Some(value);
+                                    }
+                                }
+                            } else {
+                                let vec = r#replaces.get_or_insert(Default::default());
+                                vec.push(map_access.next_value_seed(
+                                    self.0.transmute::<fhirbolt_model::r4::types::Canonical>(),
+                                )?);
+                            }
+                        }
+                        Field::ReplacesPrimitiveElement => {
+                            if self.0.from_json {
+                                let elements: Vec<
+                                    Option<super::super::serde_helpers::PrimitiveElementOwned>,
+                                > =
+                                    map_access.next_value_seed(self.0.transmute::<Vec<
+                                        Option<super::super::serde_helpers::PrimitiveElementOwned>,
+                                    >>(
+                                    ))?;
+                                let vec = r#replaces.get_or_insert(
+                                    std::iter::repeat(Default::default())
+                                        .take(elements.len())
+                                        .collect::<Vec<_>>(),
+                                );
+                                if vec.len() != elements.len() {
+                                    return Err(serde::de::Error::invalid_length(
+                                        elements.len(),
+                                        &"primitive values length",
+                                    ));
+                                }
+                                if vec
+                                    .iter()
+                                    .any(|e| e.id.is_some() || !e.extension.is_empty())
+                                {
+                                    return Err(serde::de::Error::duplicate_field("_replaces"));
+                                }
+                                for (i, element) in elements.into_iter().enumerate() {
+                                    if let Some(element) = element {
+                                        vec[i].id = element.id;
+                                        vec[i].extension = element.extension;
+                                    }
+                                }
+                            } else {
+                                return unknown_field_error("replaces");
+                            }
+                        }
+                        Field::Status => {
+                            if self.0.from_json {
+                                let some = r#status.get_or_insert(Default::default());
+                                if some.value.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("status"));
+                                }
+                                let value: _ = map_access.next_value()?;
+                                some.value = Some(value);
+                            } else {
+                                if r#status.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("status"));
+                                }
+                                r#status = Some(map_access.next_value_seed(
+                                    self.0.transmute::<fhirbolt_model::r4::types::Code>(),
+                                )?);
+                            }
+                        }
+                        Field::StatusPrimitiveElement => {
+                            if self.0.from_json {
+                                let some = r#status.get_or_insert(Default::default());
+                                if some.id.is_some() || !some.extension.is_empty() {
+                                    return Err(serde::de::Error::duplicate_field("_status"));
+                                }
+                                let super :: super :: serde_helpers :: PrimitiveElementOwned { id , extension } = map_access . next_value_seed (self . 0 . transmute :: < super :: super :: serde_helpers :: PrimitiveElementOwned > ()) ? ;
+                                some.id = id;
+                                some.extension = extension;
+                            } else {
+                                return unknown_field_error("status");
+                            }
+                        }
+                        Field::Experimental => {
+                            if self.0.from_json {
+                                let some = r#experimental.get_or_insert(Default::default());
+                                if some.value.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("experimental"));
+                                }
+                                let value: _ = map_access.next_value()?;
+                                some.value = Some(value);
+                            } else {
+                                if r#experimental.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("experimental"));
+                                }
+                                r#experimental = Some(map_access.next_value_seed(
+                                    self.0.transmute::<fhirbolt_model::r4::types::Boolean>(),
+                                )?);
+                            }
+                        }
+                        Field::ExperimentalPrimitiveElement => {
+                            if self.0.from_json {
+                                let some = r#experimental.get_or_insert(Default::default());
+                                if some.id.is_some() || !some.extension.is_empty() {
+                                    return Err(serde::de::Error::duplicate_field("_experimental"));
+                                }
+                                let super :: super :: serde_helpers :: PrimitiveElementOwned { id , extension } = map_access . next_value_seed (self . 0 . transmute :: < super :: super :: serde_helpers :: PrimitiveElementOwned > ()) ? ;
+                                some.id = id;
+                                some.extension = extension;
+                            } else {
+                                return unknown_field_error("experimental");
+                            }
+                        }
+                        Field::Date => {
+                            if self.0.from_json {
+                                let some = r#date.get_or_insert(Default::default());
+                                if some.value.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("date"));
+                                }
+                                let value: _ = map_access.next_value()?;
+                                some.value = Some(value);
+                            } else {
+                                if r#date.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("date"));
+                                }
+                                r#date = Some(map_access.next_value_seed(
+                                    self.0.transmute::<fhirbolt_model::r4::types::DateTime>(),
+                                )?);
+                            }
+                        }
+                        Field::DatePrimitiveElement => {
+                            if self.0.from_json {
+                                let some = r#date.get_or_insert(Default::default());
+                                if some.id.is_some() || !some.extension.is_empty() {
+                                    return Err(serde::de::Error::duplicate_field("_date"));
+                                }
+                                let super :: super :: serde_helpers :: PrimitiveElementOwned { id , extension } = map_access . next_value_seed (self . 0 . transmute :: < super :: super :: serde_helpers :: PrimitiveElementOwned > ()) ? ;
+                                some.id = id;
+                                some.extension = extension;
+                            } else {
+                                return unknown_field_error("date");
+                            }
+                        }
+                        Field::Publisher => {
+                            if self.0.from_json {
+                                let some = r#publisher.get_or_insert(Default::default());
+                                if some.value.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("publisher"));
+                                }
+                                let value: _ = map_access.next_value()?;
+                                some.value = Some(value);
+                            } else {
+                                if r#publisher.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("publisher"));
+                                }
+                                r#publisher = Some(map_access.next_value_seed(
+                                    self.0.transmute::<fhirbolt_model::r4::types::String>(),
+                                )?);
+                            }
+                        }
+                        Field::PublisherPrimitiveElement => {
+                            if self.0.from_json {
+                                let some = r#publisher.get_or_insert(Default::default());
+                                if some.id.is_some() || !some.extension.is_empty() {
+                                    return Err(serde::de::Error::duplicate_field("_publisher"));
+                                }
+                                let super :: super :: serde_helpers :: PrimitiveElementOwned { id , extension } = map_access . next_value_seed (self . 0 . transmute :: < super :: super :: serde_helpers :: PrimitiveElementOwned > ()) ? ;
+                                some.id = id;
+                                some.extension = extension;
+                            } else {
+                                return unknown_field_error("publisher");
+                            }
+                        }
+                        Field::Contact => {
+                            if self.0.from_json {
+                                if r#contact.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("contact"));
+                                }
+                                r#contact = Some (map_access . next_value_seed (self . 0 . transmute :: < Vec < Box < fhirbolt_model :: r4 :: types :: ContactDetail > >> ()) ?) ;
+                            } else {
+                                let vec = r#contact.get_or_insert(Default::default());
+                                vec . push (map_access . next_value_seed (self . 0 . transmute :: < Box < fhirbolt_model :: r4 :: types :: ContactDetail > > ()) ?) ;
+                            }
+                        }
+                        Field::Description => {
+                            if self.0.from_json {
+                                let some = r#description.get_or_insert(Default::default());
+                                if some.value.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("description"));
+                                }
+                                let value: _ = map_access.next_value()?;
+                                some.value = Some(value);
+                            } else {
+                                if r#description.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("description"));
+                                }
+                                r#description = Some(map_access.next_value_seed(
+                                    self.0.transmute::<fhirbolt_model::r4::types::Markdown>(),
+                                )?);
+                            }
+                        }
+                        Field::DescriptionPrimitiveElement => {
+                            if self.0.from_json {
+                                let some = r#description.get_or_insert(Default::default());
+                                if some.id.is_some() || !some.extension.is_empty() {
+                                    return Err(serde::de::Error::duplicate_field("_description"));
+                                }
+                                let super :: super :: serde_helpers :: PrimitiveElementOwned { id , extension } = map_access . next_value_seed (self . 0 . transmute :: < super :: super :: serde_helpers :: PrimitiveElementOwned > ()) ? ;
+                                some.id = id;
+                                some.extension = extension;
+                            } else {
+                                return unknown_field_error("description");
+                            }
+                        }
+                        Field::UseContext => {
+                            if self.0.from_json {
+                                if r#use_context.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("useContext"));
+                                }
+                                r#use_context = Some (map_access . next_value_seed (self . 0 . transmute :: < Vec < Box < fhirbolt_model :: r4 :: types :: UsageContext > >> ()) ?) ;
+                            } else {
+                                let vec = r#use_context.get_or_insert(Default::default());
+                                vec . push (map_access . next_value_seed (self . 0 . transmute :: < Box < fhirbolt_model :: r4 :: types :: UsageContext > > ()) ?) ;
+                            }
+                        }
+                        Field::Jurisdiction => {
+                            if self.0.from_json {
+                                if r#jurisdiction.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("jurisdiction"));
+                                }
+                                r#jurisdiction =
+                                    Some(
+                                        map_access.next_value_seed(
+                                            self.0.transmute::<Vec<
+                                                Box<fhirbolt_model::r4::types::CodeableConcept>,
+                                            >>(),
+                                        )?,
+                                    );
+                            } else {
+                                let vec = r#jurisdiction.get_or_insert(Default::default());
+                                vec . push (map_access . next_value_seed (self . 0 . transmute :: < Box < fhirbolt_model :: r4 :: types :: CodeableConcept > > ()) ?) ;
+                            }
+                        }
+                        Field::Purpose => {
+                            if self.0.from_json {
+                                let some = r#purpose.get_or_insert(Default::default());
+                                if some.value.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("purpose"));
+                                }
+                                let value: _ = map_access.next_value()?;
+                                some.value = Some(value);
+                            } else {
+                                if r#purpose.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("purpose"));
+                                }
+                                r#purpose = Some(map_access.next_value_seed(
+                                    self.0.transmute::<fhirbolt_model::r4::types::Markdown>(),
+                                )?);
+                            }
+                        }
+                        Field::PurposePrimitiveElement => {
+                            if self.0.from_json {
+                                let some = r#purpose.get_or_insert(Default::default());
+                                if some.id.is_some() || !some.extension.is_empty() {
+                                    return Err(serde::de::Error::duplicate_field("_purpose"));
+                                }
+                                let super :: super :: serde_helpers :: PrimitiveElementOwned { id , extension } = map_access . next_value_seed (self . 0 . transmute :: < super :: super :: serde_helpers :: PrimitiveElementOwned > ()) ? ;
+                                some.id = id;
+                                some.extension = extension;
+                            } else {
+                                return unknown_field_error("purpose");
+                            }
+                        }
+                        Field::Copyright => {
+                            if self.0.from_json {
+                                let some = r#copyright.get_or_insert(Default::default());
+                                if some.value.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("copyright"));
+                                }
+                                let value: _ = map_access.next_value()?;
+                                some.value = Some(value);
+                            } else {
+                                if r#copyright.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("copyright"));
+                                }
+                                r#copyright = Some(map_access.next_value_seed(
+                                    self.0.transmute::<fhirbolt_model::r4::types::Markdown>(),
+                                )?);
+                            }
+                        }
+                        Field::CopyrightPrimitiveElement => {
+                            if self.0.from_json {
+                                let some = r#copyright.get_or_insert(Default::default());
+                                if some.id.is_some() || !some.extension.is_empty() {
+                                    return Err(serde::de::Error::duplicate_field("_copyright"));
+                                }
+                                let super :: super :: serde_helpers :: PrimitiveElementOwned { id , extension } = map_access . next_value_seed (self . 0 . transmute :: < super :: super :: serde_helpers :: PrimitiveElementOwned > ()) ? ;
+                                some.id = id;
+                                some.extension = extension;
+                            } else {
+                                return unknown_field_error("copyright");
+                            }
+                        }
+                        Field::Base => {
+                            if self.0.from_json {
+                                let some = r#base.get_or_insert(Default::default());
+                                if some.value.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("base"));
+                                }
+                                let value: _ = map_access.next_value()?;
+                                some.value = Some(value);
+                            } else {
+                                if r#base.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("base"));
+                                }
+                                r#base = Some(map_access.next_value_seed(
+                                    self.0.transmute::<fhirbolt_model::r4::types::Canonical>(),
+                                )?);
+                            }
+                        }
+                        Field::BasePrimitiveElement => {
+                            if self.0.from_json {
+                                let some = r#base.get_or_insert(Default::default());
+                                if some.id.is_some() || !some.extension.is_empty() {
+                                    return Err(serde::de::Error::duplicate_field("_base"));
+                                }
+                                let super :: super :: serde_helpers :: PrimitiveElementOwned { id , extension } = map_access . next_value_seed (self . 0 . transmute :: < super :: super :: serde_helpers :: PrimitiveElementOwned > ()) ? ;
+                                some.id = id;
+                                some.extension = extension;
+                            } else {
+                                return unknown_field_error("base");
+                            }
+                        }
+                        Field::Parent => {
+                            if self.0.from_json {
+                                let values: Vec<Option<_>> = map_access.next_value()?;
+                                let vec = r#parent.get_or_insert(
+                                    std::iter::repeat(Default::default())
+                                        .take(values.len())
+                                        .collect::<Vec<_>>(),
+                                );
+                                if vec.len() != values.len() {
+                                    return Err(serde::de::Error::invalid_length(
+                                        values.len(),
+                                        &"primitive elements length",
+                                    ));
+                                }
+                                if vec.iter().any(|v| v.value.is_some()) {
+                                    return Err(serde::de::Error::duplicate_field("parent"));
+                                }
+                                for (i, value) in values.into_iter().enumerate() {
+                                    if let Some(value) = value {
+                                        vec[i].value = Some(value);
+                                    }
+                                }
+                            } else {
+                                let vec = r#parent.get_or_insert(Default::default());
+                                vec.push(map_access.next_value_seed(
+                                    self.0.transmute::<fhirbolt_model::r4::types::Canonical>(),
+                                )?);
+                            }
+                        }
+                        Field::ParentPrimitiveElement => {
+                            if self.0.from_json {
+                                let elements: Vec<
+                                    Option<super::super::serde_helpers::PrimitiveElementOwned>,
+                                > =
+                                    map_access.next_value_seed(self.0.transmute::<Vec<
+                                        Option<super::super::serde_helpers::PrimitiveElementOwned>,
+                                    >>(
+                                    ))?;
+                                let vec = r#parent.get_or_insert(
+                                    std::iter::repeat(Default::default())
+                                        .take(elements.len())
+                                        .collect::<Vec<_>>(),
+                                );
+                                if vec.len() != elements.len() {
+                                    return Err(serde::de::Error::invalid_length(
+                                        elements.len(),
+                                        &"primitive values length",
+                                    ));
+                                }
+                                if vec
+                                    .iter()
+                                    .any(|e| e.id.is_some() || !e.extension.is_empty())
+                                {
+                                    return Err(serde::de::Error::duplicate_field("_parent"));
+                                }
+                                for (i, element) in elements.into_iter().enumerate() {
+                                    if let Some(element) = element {
+                                        vec[i].id = element.id;
+                                        vec[i].extension = element.extension;
+                                    }
+                                }
+                            } else {
+                                return unknown_field_error("parent");
+                            }
+                        }
+                        Field::EventCoding => {
+                            if r#event.is_some() {
+                                return Err(serde::de::Error::duplicate_field("eventCoding"));
+                            }
+                            r#event = Some(
+                                fhirbolt_model::r4::resources::MessageDefinitionEvent::Coding(
+                                    map_access.next_value_seed(
+                                        self.0
+                                            .transmute::<Box<fhirbolt_model::r4::types::Coding>>(),
+                                    )?,
+                                ),
+                            );
+                        }
+                        Field::EventUri => {
+                            if self.0.from_json {
+                                let r#enum = r#event.get_or_insert(
+                                    fhirbolt_model::r4::resources::MessageDefinitionEvent::Uri(
+                                        Default::default(),
+                                    ),
+                                );
+                                if let fhirbolt_model::r4::resources::MessageDefinitionEvent::Uri(
+                                    variant,
+                                ) = r#enum
+                                {
+                                    if variant.value.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("eventUri"));
+                                    }
+                                    let value: _ = map_access.next_value()?;
+                                    variant.value = Some(value);
+                                } else {
+                                    return Err(serde::de::Error::duplicate_field("event[x]"));
+                                }
+                            } else {
+                                if r#event.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("eventUri"));
+                                }
+                                r#event = Some(
+                                    fhirbolt_model::r4::resources::MessageDefinitionEvent::Uri(
+                                        map_access.next_value_seed(
+                                            self.0
+                                                .transmute::<Box<fhirbolt_model::r4::types::Uri>>(),
+                                        )?,
+                                    ),
+                                );
+                            }
+                        }
+                        Field::EventUriPrimitiveElement => {
+                            if self.0.from_json {
+                                let r#enum = r#event.get_or_insert(
+                                    fhirbolt_model::r4::resources::MessageDefinitionEvent::Uri(
+                                        Default::default(),
+                                    ),
+                                );
+                                if let fhirbolt_model::r4::resources::MessageDefinitionEvent::Uri(
+                                    variant,
+                                ) = r#enum
+                                {
+                                    if variant.id.is_some() || !variant.extension.is_empty() {
+                                        return Err(serde::de::Error::duplicate_field("_eventUri"));
+                                    }
+                                    let super :: super :: serde_helpers :: PrimitiveElementOwned { id , extension } = map_access . next_value_seed (self . 0 . transmute :: < super :: super :: serde_helpers :: PrimitiveElementOwned > ()) ? ;
+                                    variant.id = id;
+                                    variant.extension = extension;
+                                } else {
+                                    return Err(serde::de::Error::duplicate_field("_event[x]"));
+                                }
+                            } else {
+                                return unknown_field_error("eventUri");
+                            }
+                        }
+                        Field::Category => {
+                            if self.0.from_json {
+                                let some = r#category.get_or_insert(Default::default());
+                                if some.value.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("category"));
+                                }
+                                let value: _ = map_access.next_value()?;
+                                some.value = Some(value);
+                            } else {
+                                if r#category.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("category"));
+                                }
+                                r#category = Some(map_access.next_value_seed(
+                                    self.0.transmute::<fhirbolt_model::r4::types::Code>(),
+                                )?);
+                            }
+                        }
+                        Field::CategoryPrimitiveElement => {
+                            if self.0.from_json {
+                                let some = r#category.get_or_insert(Default::default());
+                                if some.id.is_some() || !some.extension.is_empty() {
+                                    return Err(serde::de::Error::duplicate_field("_category"));
+                                }
+                                let super :: super :: serde_helpers :: PrimitiveElementOwned { id , extension } = map_access . next_value_seed (self . 0 . transmute :: < super :: super :: serde_helpers :: PrimitiveElementOwned > ()) ? ;
+                                some.id = id;
+                                some.extension = extension;
+                            } else {
+                                return unknown_field_error("category");
+                            }
+                        }
+                        Field::Focus => {
+                            if self.0.from_json {
+                                if r#focus.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("focus"));
+                                }
+                                r#focus =
+                                    Some(map_access.next_value_seed(
+                                        self.0.transmute::<Vec<
+                                            fhirbolt_model::r4::resources::MessageDefinitionFocus,
+                                        >>(),
+                                    )?);
+                            } else {
+                                let vec = r#focus.get_or_insert(Default::default());
+                                vec . push (map_access . next_value_seed (self . 0 . transmute :: < fhirbolt_model :: r4 :: resources :: MessageDefinitionFocus > ()) ?) ;
+                            }
+                        }
+                        Field::ResponseRequired => {
+                            if self.0.from_json {
+                                let some = r#response_required.get_or_insert(Default::default());
+                                if some.value.is_some() {
+                                    return Err(serde::de::Error::duplicate_field(
+                                        "responseRequired",
+                                    ));
+                                }
+                                let value: _ = map_access.next_value()?;
+                                some.value = Some(value);
+                            } else {
+                                if r#response_required.is_some() {
+                                    return Err(serde::de::Error::duplicate_field(
+                                        "responseRequired",
+                                    ));
+                                }
+                                r#response_required = Some(map_access.next_value_seed(
+                                    self.0.transmute::<fhirbolt_model::r4::types::Code>(),
+                                )?);
+                            }
+                        }
+                        Field::ResponseRequiredPrimitiveElement => {
+                            if self.0.from_json {
+                                let some = r#response_required.get_or_insert(Default::default());
+                                if some.id.is_some() || !some.extension.is_empty() {
+                                    return Err(serde::de::Error::duplicate_field(
+                                        "_responseRequired",
+                                    ));
+                                }
+                                let super :: super :: serde_helpers :: PrimitiveElementOwned { id , extension } = map_access . next_value_seed (self . 0 . transmute :: < super :: super :: serde_helpers :: PrimitiveElementOwned > ()) ? ;
+                                some.id = id;
+                                some.extension = extension;
+                            } else {
+                                return unknown_field_error("responseRequired");
+                            }
+                        }
+                        Field::AllowedResponse => {
+                            if self.0.from_json {
+                                if r#allowed_response.is_some() {
+                                    return Err(serde::de::Error::duplicate_field(
+                                        "allowedResponse",
+                                    ));
+                                }
+                                r#allowed_response = Some (map_access . next_value_seed (self . 0 . transmute :: < Vec < fhirbolt_model :: r4 :: resources :: MessageDefinitionAllowedResponse >> ()) ?) ;
+                            } else {
+                                let vec = r#allowed_response.get_or_insert(Default::default());
+                                vec . push (map_access . next_value_seed (self . 0 . transmute :: < fhirbolt_model :: r4 :: resources :: MessageDefinitionAllowedResponse > ()) ?) ;
+                            }
+                        }
+                        Field::Graph => {
+                            if self.0.from_json {
+                                let values: Vec<Option<_>> = map_access.next_value()?;
+                                let vec = r#graph.get_or_insert(
+                                    std::iter::repeat(Default::default())
+                                        .take(values.len())
+                                        .collect::<Vec<_>>(),
+                                );
+                                if vec.len() != values.len() {
+                                    return Err(serde::de::Error::invalid_length(
+                                        values.len(),
+                                        &"primitive elements length",
+                                    ));
+                                }
+                                if vec.iter().any(|v| v.value.is_some()) {
+                                    return Err(serde::de::Error::duplicate_field("graph"));
+                                }
+                                for (i, value) in values.into_iter().enumerate() {
+                                    if let Some(value) = value {
+                                        vec[i].value = Some(value);
+                                    }
+                                }
+                            } else {
+                                let vec = r#graph.get_or_insert(Default::default());
+                                vec.push(map_access.next_value_seed(
+                                    self.0.transmute::<fhirbolt_model::r4::types::Canonical>(),
+                                )?);
+                            }
+                        }
+                        Field::GraphPrimitiveElement => {
+                            if self.0.from_json {
+                                let elements: Vec<
+                                    Option<super::super::serde_helpers::PrimitiveElementOwned>,
+                                > =
+                                    map_access.next_value_seed(self.0.transmute::<Vec<
+                                        Option<super::super::serde_helpers::PrimitiveElementOwned>,
+                                    >>(
+                                    ))?;
+                                let vec = r#graph.get_or_insert(
+                                    std::iter::repeat(Default::default())
+                                        .take(elements.len())
+                                        .collect::<Vec<_>>(),
+                                );
+                                if vec.len() != elements.len() {
+                                    return Err(serde::de::Error::invalid_length(
+                                        elements.len(),
+                                        &"primitive values length",
+                                    ));
+                                }
+                                if vec
+                                    .iter()
+                                    .any(|e| e.id.is_some() || !e.extension.is_empty())
+                                {
+                                    return Err(serde::de::Error::duplicate_field("_graph"));
+                                }
+                                for (i, element) in elements.into_iter().enumerate() {
+                                    if let Some(element) = element {
+                                        vec[i].id = element.id;
+                                        vec[i].extension = element.extension;
+                                    }
+                                }
+                            } else {
+                                return unknown_field_error("graph");
+                            }
+                        }
+                        Field::Unknown(key) => {
+                            if self.0.config.mode == crate::context::de::DeserializationMode::Strict
+                            {
+                                return unknown_field_error(&key);
+                            }
+                        }
+                    }
+                }
+                Ok(fhirbolt_model::r4::resources::MessageDefinition {
+                    r#id,
+                    r#meta,
+                    r#implicit_rules,
+                    r#language,
+                    r#text,
+                    r#contained: r#contained.unwrap_or(vec![]),
+                    r#extension: r#extension.unwrap_or(vec![]),
+                    r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
+                    r#url,
+                    r#identifier: r#identifier.unwrap_or(vec![]),
+                    r#version,
+                    r#name,
+                    r#title,
+                    r#replaces: r#replaces.unwrap_or(vec![]),
+                    r#status: if self.0.config.mode == crate::context::de::DeserializationMode::Lax
+                    {
+                        r#status.unwrap_or(Default::default())
+                    } else {
+                        r#status.ok_or(serde::de::Error::missing_field("status"))?
+                    },
+                    r#experimental,
+                    r#date: if self.0.config.mode == crate::context::de::DeserializationMode::Lax {
+                        r#date.unwrap_or(Default::default())
+                    } else {
+                        r#date.ok_or(serde::de::Error::missing_field("date"))?
+                    },
+                    r#publisher,
+                    r#contact: r#contact.unwrap_or(vec![]),
+                    r#description,
+                    r#use_context: r#use_context.unwrap_or(vec![]),
+                    r#jurisdiction: r#jurisdiction.unwrap_or(vec![]),
+                    r#purpose,
+                    r#copyright,
+                    r#base,
+                    r#parent: r#parent.unwrap_or(vec![]),
+                    r#event: if self.0.config.mode == crate::context::de::DeserializationMode::Lax {
+                        r#event.unwrap_or(Default::default())
+                    } else {
+                        r#event.ok_or(serde::de::Error::missing_field("event[x]"))?
+                    },
+                    r#category,
+                    r#focus: r#focus.unwrap_or(vec![]),
+                    r#response_required,
+                    r#allowed_response: r#allowed_response.unwrap_or(vec![]),
+                    r#graph: r#graph.unwrap_or(vec![]),
+                })
+            }
+        }
+        deserializer.deserialize_map(Visitor(self))
+    }
+}
+impl<'de> serde::de::DeserializeSeed<'de>
+    for &mut crate::context::de::DeserializationContext<
+        Box<fhirbolt_model::r4::resources::MessageDefinition>,
+    >
+{
+    type Value = Box<fhirbolt_model::r4::resources::MessageDefinition>;
+    fn deserialize<D>(self, deserializer: D) -> Result<Self::Value, D::Error>
+    where
+        D: serde::de::Deserializer<'de>,
+    {
+        self.transmute::<fhirbolt_model::r4::resources::MessageDefinition>()
+            .deserialize(deserializer)
+            .map(Box::new)
+    }
+}
+impl<'de> serde::de::DeserializeSeed<'de>
+    for &mut crate::context::de::DeserializationContext<
+        Vec<fhirbolt_model::r4::resources::MessageDefinition>,
+    >
+{
+    type Value = Vec<fhirbolt_model::r4::resources::MessageDefinition>;
+    fn deserialize<D>(self, deserializer: D) -> Result<Self::Value, D::Error>
+    where
+        D: serde::de::Deserializer<'de>,
+    {
+        struct Visitor<'a>(
+            &'a mut crate::context::de::DeserializationContext<
+                Vec<fhirbolt_model::r4::resources::MessageDefinition>,
+            >,
+        );
+        impl<'de> serde::de::Visitor<'de> for Visitor<'_> {
+            type Value = Vec<fhirbolt_model::r4::resources::MessageDefinition>;
+            fn expecting(&self, formatter: &mut std::fmt::Formatter) -> std::fmt::Result {
+                formatter.write_str("a sequence")
+            }
+            fn visit_seq<A>(self, mut seq: A) -> Result<Self::Value, A::Error>
+            where
+                A: serde::de::SeqAccess<'de>,
+            {
+                let mut values = Vec::new();
+                while let Some(value) = seq.next_element_seed(
+                    self.0
+                        .transmute::<fhirbolt_model::r4::resources::MessageDefinition>(),
+                )? {
+                    values.push(value);
+                }
+                Ok(values)
+            }
+        }
+        deserializer.deserialize_seq(Visitor(self))
+    }
+}
+impl<'de> serde::de::DeserializeSeed<'de>
+    for &mut crate::context::de::DeserializationContext<
+        Vec<Box<fhirbolt_model::r4::resources::MessageDefinition>>,
+    >
+{
+    type Value = Vec<Box<fhirbolt_model::r4::resources::MessageDefinition>>;
+    fn deserialize<D>(self, deserializer: D) -> Result<Self::Value, D::Error>
+    where
+        D: serde::de::Deserializer<'de>,
+    {
+        struct Visitor<'a>(
+            &'a mut crate::context::de::DeserializationContext<
+                Vec<Box<fhirbolt_model::r4::resources::MessageDefinition>>,
+            >,
+        );
+        impl<'de> serde::de::Visitor<'de> for Visitor<'_> {
+            type Value = Vec<Box<fhirbolt_model::r4::resources::MessageDefinition>>;
+            fn expecting(&self, formatter: &mut std::fmt::Formatter) -> std::fmt::Result {
+                formatter.write_str("a sequence")
+            }
+            fn visit_seq<A>(self, mut seq: A) -> Result<Self::Value, A::Error>
+            where
+                A: serde::de::SeqAccess<'de>,
+            {
+                let mut values = Vec::new();
+                while let Some(value) = seq.next_element_seed(
+                    self.0
+                        .transmute::<Box<fhirbolt_model::r4::resources::MessageDefinition>>(),
+                )? {
+                    values.push(value);
+                }
+                Ok(values)
+            }
+        }
+        deserializer.deserialize_seq(Visitor(self))
+    }
+}

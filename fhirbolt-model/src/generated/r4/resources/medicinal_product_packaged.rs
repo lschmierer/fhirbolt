@@ -1,4 +1,4 @@
-// Generated on 2023-04-10 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-12 by fhirbolt-codegen v0.1.0
 #[doc = "Batch numbering."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub struct MedicinalProductPackagedBatchIdentifier {
@@ -164,9 +164,6 @@ pub struct MedicinalProductPackaged {
     pub r#batch_identifier: Vec<MedicinalProductPackagedBatchIdentifier>,
     #[doc = "A packaging item, as a contained for medicine, possibly with other packaging items within."]
     pub r#package_item: Vec<MedicinalProductPackagedPackageItem>,
-}
-impl crate::AnyResource for MedicinalProductPackaged {
-    const FHIR_RELEASE: fhirbolt_shared::FhirRelease = fhirbolt_shared::FhirRelease::R4;
 }
 impl serde::ser::Serialize for MedicinalProductPackaged {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

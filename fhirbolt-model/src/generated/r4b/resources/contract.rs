@@ -1,4 +1,4 @@
-// Generated on 2023-04-10 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-12 by fhirbolt-codegen v0.1.0
 #[doc = "Narrows the range of legal concerns to focus on the achievement of specific contractual objectives."]
 #[derive(Debug, Clone, PartialEq)]
 pub enum ContractTopic {
@@ -2101,9 +2101,6 @@ pub struct Contract {
     pub r#rule: Vec<ContractRule>,
     #[doc = "Legally binding Contract: This is the signed and legally recognized representation of the Contract, which is considered the \"source of truth\" and which would be the basis for legal action related to enforcement of this Contract."]
     pub r#legally_binding: Option<ContractLegallyBinding>,
-}
-impl crate::AnyResource for Contract {
-    const FHIR_RELEASE: fhirbolt_shared::FhirRelease = fhirbolt_shared::FhirRelease::R4B;
 }
 impl serde::ser::Serialize for Contract {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

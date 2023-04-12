@@ -1,4 +1,4 @@
-// Generated on 2023-04-10 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-12 by fhirbolt-codegen v0.1.0
 #[doc = "Date vaccine administered or was to be administered."]
 #[derive(Debug, Clone, PartialEq)]
 pub enum ImmunizationOccurrence {
@@ -497,9 +497,6 @@ pub struct Immunization {
     pub r#reaction: Vec<ImmunizationReaction>,
     #[doc = "The protocol (set of recommendations) being followed by the provider who administered the dose."]
     pub r#protocol_applied: Vec<ImmunizationProtocolApplied>,
-}
-impl crate::AnyResource for Immunization {
-    const FHIR_RELEASE: fhirbolt_shared::FhirRelease = fhirbolt_shared::FhirRelease::R4;
 }
 impl serde::ser::Serialize for Immunization {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

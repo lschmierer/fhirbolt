@@ -1,4 +1,4 @@
-// Generated on 2023-04-10 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-12 by fhirbolt-codegen v0.1.0
 #[doc = "Identifies the medication, substance or device being dispensed. This is either a link to a resource representing the details of the item or a code that identifies the item from a known list."]
 #[derive(Debug, Clone, PartialEq)]
 pub enum SupplyDeliverySuppliedItemItem {
@@ -117,9 +117,6 @@ pub struct SupplyDelivery {
     pub r#destination: Option<Box<super::super::types::Reference>>,
     #[doc = "Identifies the person who picked up the Supply."]
     pub r#receiver: Vec<Box<super::super::types::Reference>>,
-}
-impl crate::AnyResource for SupplyDelivery {
-    const FHIR_RELEASE: fhirbolt_shared::FhirRelease = fhirbolt_shared::FhirRelease::R4;
 }
 impl serde::ser::Serialize for SupplyDelivery {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

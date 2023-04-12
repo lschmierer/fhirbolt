@@ -1,4 +1,4 @@
-// Generated on 2023-04-10 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-12 by fhirbolt-codegen v0.1.0
 #[doc = "The period, timing or frequency upon which the described activity is to occur."]
 #[derive(Debug, Clone, PartialEq)]
 pub enum CarePlanActivityDetailScheduled {
@@ -433,9 +433,6 @@ pub struct CarePlan {
     pub r#activity: Vec<CarePlanActivity>,
     #[doc = "General notes about the care plan not covered elsewhere."]
     pub r#note: Vec<Box<super::super::types::Annotation>>,
-}
-impl crate::AnyResource for CarePlan {
-    const FHIR_RELEASE: fhirbolt_shared::FhirRelease = fhirbolt_shared::FhirRelease::R4B;
 }
 impl serde::ser::Serialize for CarePlan {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

@@ -1,4 +1,4 @@
-// Generated on 2023-04-10 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-12 by fhirbolt-codegen v0.1.0
 #[doc = "Citation Resource or display of suggested citation for this report."]
 #[derive(Debug, Clone, PartialEq)]
 pub enum EvidenceReportCiteAs {
@@ -418,9 +418,6 @@ pub struct EvidenceReport {
     pub r#relates_to: Vec<EvidenceReportRelatesTo>,
     #[doc = "The root of the sections that make up the composition."]
     pub r#section: Vec<EvidenceReportSection>,
-}
-impl crate::AnyResource for EvidenceReport {
-    const FHIR_RELEASE: fhirbolt_shared::FhirRelease = fhirbolt_shared::FhirRelease::R4B;
 }
 impl serde::ser::Serialize for EvidenceReport {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

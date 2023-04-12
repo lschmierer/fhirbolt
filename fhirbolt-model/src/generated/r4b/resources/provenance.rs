@@ -1,4 +1,4 @@
-// Generated on 2023-04-10 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-12 by fhirbolt-codegen v0.1.0
 #[doc = "The period during which the activity occurred."]
 #[derive(Debug, Clone, PartialEq)]
 pub enum ProvenanceOccurred {
@@ -157,9 +157,6 @@ pub struct Provenance {
     pub r#entity: Vec<ProvenanceEntity>,
     #[doc = "A digital signature on the target Reference(s). The signer should match a Provenance.agent. The purpose of the signature is indicated."]
     pub r#signature: Vec<Box<super::super::types::Signature>>,
-}
-impl crate::AnyResource for Provenance {
-    const FHIR_RELEASE: fhirbolt_shared::FhirRelease = fhirbolt_shared::FhirRelease::R4B;
 }
 impl serde::ser::Serialize for Provenance {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

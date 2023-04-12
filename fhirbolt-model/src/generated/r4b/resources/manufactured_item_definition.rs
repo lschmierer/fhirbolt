@@ -1,4 +1,4 @@
-// Generated on 2023-04-10 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-12 by fhirbolt-codegen v0.1.0
 #[doc = "A value for the characteristic."]
 #[derive(Debug, Clone, PartialEq)]
 pub enum ManufacturedItemDefinitionPropertyValue {
@@ -136,9 +136,6 @@ pub struct ManufacturedItemDefinition {
     pub r#ingredient: Vec<Box<super::super::types::CodeableConcept>>,
     #[doc = "General characteristics of this item."]
     pub r#property: Vec<ManufacturedItemDefinitionProperty>,
-}
-impl crate::AnyResource for ManufacturedItemDefinition {
-    const FHIR_RELEASE: fhirbolt_shared::FhirRelease = fhirbolt_shared::FhirRelease::R4B;
 }
 impl serde::ser::Serialize for ManufacturedItemDefinition {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

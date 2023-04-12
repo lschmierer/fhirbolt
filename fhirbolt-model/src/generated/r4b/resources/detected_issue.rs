@@ -1,4 +1,4 @@
-// Generated on 2023-04-10 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-12 by fhirbolt-codegen v0.1.0
 #[doc = "The date or period when the detected issue was initially identified."]
 #[derive(Debug, Clone, PartialEq)]
 pub enum DetectedIssueIdentified {
@@ -157,9 +157,6 @@ pub struct DetectedIssue {
     pub r#reference: Option<super::super::types::Uri>,
     #[doc = "Indicates an action that has been taken or is committed to reduce or eliminate the likelihood of the risk identified by the detected issue from manifesting.  Can also reflect an observation of known mitigating factors that may reduce/eliminate the need for any action."]
     pub r#mitigation: Vec<DetectedIssueMitigation>,
-}
-impl crate::AnyResource for DetectedIssue {
-    const FHIR_RELEASE: fhirbolt_shared::FhirRelease = fhirbolt_shared::FhirRelease::R4B;
 }
 impl serde::ser::Serialize for DetectedIssue {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

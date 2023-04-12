@@ -1,4 +1,4 @@
-// Generated on 2023-04-10 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-12 by fhirbolt-codegen v0.1.0
 #[doc = "Code that identifies the event this message represents and connects it with its definition. Events defined as part of the FHIR specification have the system value \"<http://terminology.hl7.org/CodeSystem/message>-events\".  Alternatively uri to the EventDefinition."]
 #[derive(Debug, Clone, PartialEq)]
 pub enum MessageHeaderEvent {
@@ -320,9 +320,6 @@ pub struct MessageHeader {
     pub r#focus: Vec<Box<super::super::types::Reference>>,
     #[doc = "Permanent link to the MessageDefinition for this message."]
     pub r#definition: Option<super::super::types::Canonical>,
-}
-impl crate::AnyResource for MessageHeader {
-    const FHIR_RELEASE: fhirbolt_shared::FhirRelease = fhirbolt_shared::FhirRelease::R4B;
 }
 impl serde::ser::Serialize for MessageHeader {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

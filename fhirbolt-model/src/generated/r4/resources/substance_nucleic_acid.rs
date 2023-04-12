@@ -1,4 +1,4 @@
-// Generated on 2023-04-10 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-12 by fhirbolt-codegen v0.1.0
 #[doc = "The linkages between sugar residues will also be captured."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub struct SubstanceNucleicAcidSubunitLinkage {
@@ -327,9 +327,6 @@ pub struct SubstanceNucleicAcid {
     pub r#oligo_nucleotide_type: Option<Box<super::super::types::CodeableConcept>>,
     #[doc = "Subunits are listed in order of decreasing length; sequences of the same length will be ordered by molecular weight; subunits that have identical sequences will be repeated multiple times."]
     pub r#subunit: Vec<SubstanceNucleicAcidSubunit>,
-}
-impl crate::AnyResource for SubstanceNucleicAcid {
-    const FHIR_RELEASE: fhirbolt_shared::FhirRelease = fhirbolt_shared::FhirRelease::R4;
 }
 impl serde::ser::Serialize for SubstanceNucleicAcid {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

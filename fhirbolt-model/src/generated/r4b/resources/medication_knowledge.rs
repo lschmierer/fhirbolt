@@ -1,4 +1,4 @@
-// Generated on 2023-04-10 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-12 by fhirbolt-codegen v0.1.0
 #[doc = "The actual ingredient - either a substance (simple ingredient) or another medication."]
 #[derive(Debug, Clone, PartialEq)]
 pub enum MedicationKnowledgeIngredientItem {
@@ -901,9 +901,6 @@ pub struct MedicationKnowledge {
     pub r#regulatory: Vec<MedicationKnowledgeRegulatory>,
     #[doc = "The time course of drug absorption, distribution, metabolism and excretion of a medication from the body."]
     pub r#kinetics: Vec<MedicationKnowledgeKinetics>,
-}
-impl crate::AnyResource for MedicationKnowledge {
-    const FHIR_RELEASE: fhirbolt_shared::FhirRelease = fhirbolt_shared::FhirRelease::R4B;
 }
 impl serde::ser::Serialize for MedicationKnowledge {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

@@ -10,15 +10,15 @@ use serde::{
     forward_to_deserialize_any,
 };
 
-use fhirbolt_shared::{path::ElementPath, AnyResource, FhirRelease};
+use fhirbolt_shared::{path::ElementPath, FhirRelease};
 
 use crate::{
-    context::de::{DeserializationConfig, DeserializationContext},
     xml::{
         error::{Error, Result},
         event::{Element, Event},
         read::{self, Read},
     },
+    DeserializationConfig, DeserializeResource,
 };
 
 fn from_deserializer<R, T>(
@@ -27,11 +27,9 @@ fn from_deserializer<R, T>(
 ) -> Result<T>
 where
     R: Read,
-    T: AnyResource,
-    for<'c, 'de> &'c mut DeserializationContext<T>: DeserializeSeed<'de, Value = T>,
+    T: DeserializeResource,
 {
-    DeserializationContext::<T>::new(config.unwrap_or(Default::default()), false, T::FHIR_RELEASE)
-        .deserialize(de)
+    T::new_context(config.unwrap_or(Default::default()), false, T::FHIR_RELEASE).deserialize(de)
 }
 
 /// Deserialize an instance of resource type `T` directly from an IO stream of XML (e.g. coming from network).
@@ -65,8 +63,7 @@ where
 /// This behavior can be modified by passing a [`DeserializationConfig`](crate::DeserializationConfig).
 pub fn from_reader<R: io::Read, T>(rdr: R, config: Option<DeserializationConfig>) -> Result<T>
 where
-    T: AnyResource,
-    for<'c, 'de> &'c mut DeserializationContext<T>: DeserializeSeed<'de, Value = T>,
+    T: DeserializeResource,
 {
     from_deserializer(
         &mut Deserializer::from_reader(rdr, T::FHIR_RELEASE)?,
@@ -104,8 +101,7 @@ where
 /// This behavior can be modified by passing a [`DeserializationConfig`](crate::DeserializationConfig).
 pub fn from_slice<T>(v: &[u8], config: Option<DeserializationConfig>) -> Result<T>
 where
-    T: AnyResource,
-    for<'c, 'de> &'c mut DeserializationContext<T>: DeserializeSeed<'de, Value = T>,
+    T: DeserializeResource,
 {
     from_deserializer(&mut Deserializer::from_slice(v, T::FHIR_RELEASE)?, config)
 }
@@ -140,8 +136,7 @@ where
 /// This behavior can be modified by passing a [`DeserializationConfig`](crate::DeserializationConfig).
 pub fn from_str<T>(s: &str, config: Option<DeserializationConfig>) -> Result<T>
 where
-    T: AnyResource,
-    for<'c, 'de> &'c mut DeserializationContext<T>: DeserializeSeed<'de, Value = T>,
+    T: DeserializeResource,
 {
     from_deserializer(&mut Deserializer::from_str(s, T::FHIR_RELEASE)?, config)
 }

@@ -1,4 +1,4 @@
-// Generated on 2023-04-10 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-12 by fhirbolt-codegen v0.1.0
 #[doc = "Identifies all people and organizations who are expected to be involved in the care team."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub struct CareTeamParticipant {
@@ -96,9 +96,6 @@ pub struct CareTeam {
     pub r#telecom: Vec<Box<super::super::types::ContactPoint>>,
     #[doc = "Comments made about the CareTeam."]
     pub r#note: Vec<Box<super::super::types::Annotation>>,
-}
-impl crate::AnyResource for CareTeam {
-    const FHIR_RELEASE: fhirbolt_shared::FhirRelease = fhirbolt_shared::FhirRelease::R4;
 }
 impl serde::ser::Serialize for CareTeam {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

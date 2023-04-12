@@ -1,4 +1,4 @@
-// Generated on 2023-04-10 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-12 by fhirbolt-codegen v0.1.0
 #[doc = "Characteristics for quantitative results of this observation."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub struct ObservationDefinitionQuantitativeDetails {
@@ -250,9 +250,6 @@ pub struct ObservationDefinition {
     pub r#abnormal_coded_value_set: Option<Box<super::super::types::Reference>>,
     #[doc = "The set of critical coded results for the observation conforming to this ObservationDefinition."]
     pub r#critical_coded_value_set: Option<Box<super::super::types::Reference>>,
-}
-impl crate::AnyResource for ObservationDefinition {
-    const FHIR_RELEASE: fhirbolt_shared::FhirRelease = fhirbolt_shared::FhirRelease::R4;
 }
 impl serde::ser::Serialize for ObservationDefinition {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

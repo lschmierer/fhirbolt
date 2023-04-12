@@ -1,4 +1,4 @@
-// Generated on 2023-04-10 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-12 by fhirbolt-codegen v0.1.0
 #[doc = "The minimum volume to be conditioned in the container."]
 #[derive(Debug, Clone, PartialEq)]
 pub enum SpecimenDefinitionTypeTestedContainerMinimumVolume {
@@ -415,9 +415,6 @@ pub struct SpecimenDefinition {
     pub r#collection: Vec<Box<super::super::types::CodeableConcept>>,
     #[doc = "Specimen conditioned in a container as expected by the testing laboratory."]
     pub r#type_tested: Vec<SpecimenDefinitionTypeTested>,
-}
-impl crate::AnyResource for SpecimenDefinition {
-    const FHIR_RELEASE: fhirbolt_shared::FhirRelease = fhirbolt_shared::FhirRelease::R4;
 }
 impl serde::ser::Serialize for SpecimenDefinition {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

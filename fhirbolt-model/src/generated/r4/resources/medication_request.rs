@@ -1,4 +1,4 @@
-// Generated on 2023-04-10 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-12 by fhirbolt-codegen v0.1.0
 #[doc = "Indicates if this record was captured as a secondary 'reported' record rather than as an original primary source-of-truth record.  It may also indicate the source of the report."]
 #[derive(Debug, Clone, PartialEq)]
 pub enum MedicationRequestReported {
@@ -307,9 +307,6 @@ pub struct MedicationRequest {
     pub r#detected_issue: Vec<Box<super::super::types::Reference>>,
     #[doc = "Links to Provenance records for past versions of this resource or fulfilling request or event resources that identify key state transitions or updates that are likely to be relevant to a user looking at the current version of the resource."]
     pub r#event_history: Vec<Box<super::super::types::Reference>>,
-}
-impl crate::AnyResource for MedicationRequest {
-    const FHIR_RELEASE: fhirbolt_shared::FhirRelease = fhirbolt_shared::FhirRelease::R4;
 }
 impl serde::ser::Serialize for MedicationRequest {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

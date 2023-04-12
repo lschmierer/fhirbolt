@@ -1,4 +1,4 @@
-// Generated on 2023-04-10 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-12 by fhirbolt-codegen v0.1.0
 #[doc = "This resource provides enrollment and plan details from the processing of an EnrollmentRequest resource."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub struct EnrollmentResponse {
@@ -34,9 +34,6 @@ pub struct EnrollmentResponse {
     pub r#organization: Option<Box<super::super::types::Reference>>,
     #[doc = "The practitioner who is responsible for the services rendered to the patient."]
     pub r#request_provider: Option<Box<super::super::types::Reference>>,
-}
-impl crate::AnyResource for EnrollmentResponse {
-    const FHIR_RELEASE: fhirbolt_shared::FhirRelease = fhirbolt_shared::FhirRelease::R4;
 }
 impl serde::ser::Serialize for EnrollmentResponse {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

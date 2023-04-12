@@ -3,12 +3,9 @@
 use std::io;
 
 use serde::de::DeserializeSeed;
-
-use fhirbolt_shared::AnyResource;
-
 use serde_json::{error::Result, Deserializer};
 
-use crate::context::de::{DeserializationConfig, DeserializationContext};
+use crate::{DeserializationConfig, DeserializeResource};
 
 fn from_deserializer<'a, R, T>(
     de: &mut Deserializer<R>,
@@ -16,16 +13,9 @@ fn from_deserializer<'a, R, T>(
 ) -> Result<T>
 where
     R: serde_json::de::Read<'a>,
-    T: AnyResource,
-    for<'c, 'de> &'c mut DeserializationContext<T>: DeserializeSeed<'de, Value = T>,
+    T: DeserializeResource,
 {
-    let mut context = DeserializationContext::<T>::new(
-        config.unwrap_or(Default::default()),
-        true,
-        T::FHIR_RELEASE,
-    );
-
-    context.deserialize(de)
+    T::new_context(config.unwrap_or(Default::default()), true, T::FHIR_RELEASE).deserialize(de)
 }
 
 /// Deserialize an instance of resource type `T` directly from an IO stream of JSON (e.g. coming from network).
@@ -60,8 +50,7 @@ where
 pub fn from_reader<R, T>(rdr: R, config: Option<DeserializationConfig>) -> Result<T>
 where
     R: io::Read,
-    T: AnyResource,
-    for<'c, 'de> &'c mut DeserializationContext<T>: DeserializeSeed<'de, Value = T>,
+    T: DeserializeResource,
 {
     from_deserializer(&mut Deserializer::from_reader(rdr), config)
 }
@@ -96,8 +85,7 @@ where
 /// This behavior can be modified by passing a [`DeserializationConfig`](crate::DeserializationConfig).
 pub fn from_slice<T>(v: &[u8], config: Option<DeserializationConfig>) -> Result<T>
 where
-    T: AnyResource,
-    for<'c, 'de> &'c mut DeserializationContext<T>: DeserializeSeed<'de, Value = T>,
+    T: DeserializeResource,
 {
     from_deserializer(&mut Deserializer::from_slice(v), config)
 }
@@ -132,8 +120,7 @@ where
 /// This behavior can be modified by passing a [`DeserializationConfig`](crate::DeserializationConfig).
 pub fn from_str<T>(s: &str, config: Option<DeserializationConfig>) -> Result<T>
 where
-    T: AnyResource,
-    for<'c, 'de> &'c mut DeserializationContext<T>: DeserializeSeed<'de, Value = T>,
+    T: DeserializeResource,
 {
     from_deserializer(&mut Deserializer::from_str(s), config)
 }
@@ -173,9 +160,7 @@ pub fn from_json_value<T>(
     config: Option<DeserializationConfig>,
 ) -> Result<T>
 where
-    T: AnyResource,
-    for<'c, 'de> &'c mut DeserializationContext<T>: DeserializeSeed<'de, Value = T>,
+    T: DeserializeResource,
 {
-    DeserializationContext::<T>::new(config.unwrap_or(Default::default()), true, T::FHIR_RELEASE)
-        .deserialize(value)
+    T::new_context(config.unwrap_or(Default::default()), true, T::FHIR_RELEASE).deserialize(value)
 }

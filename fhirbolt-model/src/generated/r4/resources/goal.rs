@@ -1,4 +1,4 @@
-// Generated on 2023-04-10 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-12 by fhirbolt-codegen v0.1.0
 #[doc = "The date or event after which the goal should begin being pursued."]
 #[derive(Debug, Clone, PartialEq)]
 pub enum GoalStart {
@@ -233,9 +233,6 @@ pub struct Goal {
     pub r#outcome_code: Vec<Box<super::super::types::CodeableConcept>>,
     #[doc = "Details of what's changed (or not changed)."]
     pub r#outcome_reference: Vec<Box<super::super::types::Reference>>,
-}
-impl crate::AnyResource for Goal {
-    const FHIR_RELEASE: fhirbolt_shared::FhirRelease = fhirbolt_shared::FhirRelease::R4;
 }
 impl serde::ser::Serialize for Goal {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

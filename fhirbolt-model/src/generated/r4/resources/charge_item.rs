@@ -1,4 +1,4 @@
-// Generated on 2023-04-10 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-12 by fhirbolt-codegen v0.1.0
 #[doc = "Date/time(s) or duration when the charged service was applied."]
 #[derive(Debug, Clone, PartialEq)]
 pub enum ChargeItemOccurrence {
@@ -135,9 +135,6 @@ pub struct ChargeItem {
     pub r#note: Vec<Box<super::super::types::Annotation>>,
     #[doc = "Further information supporting this charge."]
     pub r#supporting_information: Vec<Box<super::super::types::Reference>>,
-}
-impl crate::AnyResource for ChargeItem {
-    const FHIR_RELEASE: fhirbolt_shared::FhirRelease = fhirbolt_shared::FhirRelease::R4;
 }
 impl serde::ser::Serialize for ChargeItem {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

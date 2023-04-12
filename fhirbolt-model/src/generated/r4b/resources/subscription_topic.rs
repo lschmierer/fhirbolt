@@ -1,4 +1,4 @@
-// Generated on 2023-04-10 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-12 by fhirbolt-codegen v0.1.0
 #[doc = "The FHIR query based rules that the server should use to determine when to trigger a notification for this subscription topic."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub struct SubscriptionTopicResourceTriggerQueryCriteria {
@@ -691,9 +691,6 @@ pub struct SubscriptionTopic {
     pub r#can_filter_by: Vec<SubscriptionTopicCanFilterBy>,
     #[doc = "List of properties to describe the shape (e.g., resources) included in notifications from this Subscription Topic."]
     pub r#notification_shape: Vec<SubscriptionTopicNotificationShape>,
-}
-impl crate::AnyResource for SubscriptionTopic {
-    const FHIR_RELEASE: fhirbolt_shared::FhirRelease = fhirbolt_shared::FhirRelease::R4B;
 }
 impl serde::ser::Serialize for SubscriptionTopic {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

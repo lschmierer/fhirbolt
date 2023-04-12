@@ -1,4 +1,4 @@
-// Generated on 2023-04-10 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-12 by fhirbolt-codegen v0.1.0
 #[doc = "The details of the device to be used."]
 #[derive(Debug, Clone, PartialEq)]
 pub enum DeviceRequestCode {
@@ -178,9 +178,6 @@ pub struct DeviceRequest {
     pub r#note: Vec<Box<super::super::types::Annotation>>,
     #[doc = "Key events in the history of the request."]
     pub r#relevant_history: Vec<Box<super::super::types::Reference>>,
-}
-impl crate::AnyResource for DeviceRequest {
-    const FHIR_RELEASE: fhirbolt_shared::FhirRelease = fhirbolt_shared::FhirRelease::R4;
 }
 impl serde::ser::Serialize for DeviceRequest {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

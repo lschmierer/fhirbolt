@@ -1,4 +1,4 @@
-// Generated on 2023-04-10 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-12 by fhirbolt-codegen v0.1.0
 #[doc = "Event code or link to the EventDefinition."]
 #[derive(Debug, Clone, PartialEq)]
 pub enum MessageDefinitionEvent {
@@ -256,9 +256,6 @@ pub struct MessageDefinition {
     pub r#allowed_response: Vec<MessageDefinitionAllowedResponse>,
     #[doc = "Canonical reference to a GraphDefinition. If a URL is provided, it is the canonical reference to a [GraphDefinition](https://hl7.org/FHIR/graphdefinition.html)) that it controls what resources are to be added to the bundle when building the document. The GraphDefinition can also specify profiles that apply to the various resources."]
     pub r#graph: Vec<super::super::types::Canonical>,
-}
-impl crate::AnyResource for MessageDefinition {
-    const FHIR_RELEASE: fhirbolt_shared::FhirRelease = fhirbolt_shared::FhirRelease::R4B;
 }
 impl serde::ser::Serialize for MessageDefinition {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

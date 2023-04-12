@@ -1,4 +1,4 @@
-// Generated on 2023-04-10 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-12 by fhirbolt-codegen v0.1.0
 #[doc = "The date (and possibly time) the risk assessment was performed."]
 #[derive(Debug, Clone, PartialEq)]
 pub enum RiskAssessmentOccurrence {
@@ -221,9 +221,6 @@ pub struct RiskAssessment {
     pub r#mitigation: Option<super::super::types::String>,
     #[doc = "Additional comments about the risk assessment."]
     pub r#note: Vec<Box<super::super::types::Annotation>>,
-}
-impl crate::AnyResource for RiskAssessment {
-    const FHIR_RELEASE: fhirbolt_shared::FhirRelease = fhirbolt_shared::FhirRelease::R4;
 }
 impl serde::ser::Serialize for RiskAssessment {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

@@ -1,4 +1,4 @@
-// Generated on 2023-04-10 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-12 by fhirbolt-codegen v0.1.0
 #[doc = "The value of the input parameter as a basic type."]
 #[derive(Debug, Clone, PartialEq)]
 pub enum TaskInputValue {
@@ -1183,9 +1183,6 @@ pub struct Task {
     pub r#input: Vec<TaskInput>,
     #[doc = "Outputs produced by the Task."]
     pub r#output: Vec<TaskOutput>,
-}
-impl crate::AnyResource for Task {
-    const FHIR_RELEASE: fhirbolt_shared::FhirRelease = fhirbolt_shared::FhirRelease::R4B;
 }
 impl serde::ser::Serialize for Task {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

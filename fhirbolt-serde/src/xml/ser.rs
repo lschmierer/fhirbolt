@@ -9,10 +9,13 @@ use std::{
 use fhirbolt_shared::serde_helpers::number::NumberValueEmitter;
 use serde::ser::{self, Impossible, Serialize};
 
-use crate::xml::{
-    error::{Error, Result},
-    event::{Element, Event},
-    write::{self, Write},
+use crate::{
+    number::NUMBER_TOKEN,
+    xml::{
+        error::{Error, Result},
+        event::{Element, Event},
+        write::{self, Write},
+    },
 };
 
 #[derive(Debug)]
@@ -483,7 +486,7 @@ impl<'a, W: Write> ser::SerializeStruct for &'a mut Serializer<W> {
     where
         T: ?Sized + Serialize,
     {
-        if key == "$serde_json::private::Number" {
+        if key == NUMBER_TOKEN {
             self.put(
                 value
                     .serialize(NumberValueEmitter)

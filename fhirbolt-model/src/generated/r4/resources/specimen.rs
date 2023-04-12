@@ -1,4 +1,4 @@
-// Generated on 2023-04-10 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-12 by fhirbolt-codegen v0.1.0
 #[doc = "Time when specimen was collected from subject - the physiologically relevant time."]
 #[derive(Debug, Clone, PartialEq)]
 pub enum SpecimenCollectionCollected {
@@ -375,9 +375,6 @@ pub struct Specimen {
     pub r#condition: Vec<Box<super::super::types::CodeableConcept>>,
     #[doc = "To communicate any details or issues about the specimen or during the specimen collection. (for example: broken vial, sent with patient, frozen)."]
     pub r#note: Vec<Box<super::super::types::Annotation>>,
-}
-impl crate::AnyResource for Specimen {
-    const FHIR_RELEASE: fhirbolt_shared::FhirRelease = fhirbolt_shared::FhirRelease::R4;
 }
 impl serde::ser::Serialize for Specimen {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

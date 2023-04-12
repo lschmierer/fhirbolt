@@ -1,4 +1,4 @@
-// Generated on 2023-04-10 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-12 by fhirbolt-codegen v0.1.0
 #[doc = "List of participants involved in the appointment."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub struct AppointmentParticipant {
@@ -147,9 +147,6 @@ pub struct Appointment {
     pub r#participant: Vec<AppointmentParticipant>,
     #[doc = "A set of date ranges (potentially including times) that the appointment is preferred to be scheduled within.\n\nThe duration (usually in minutes) could also be provided to indicate the length of the appointment to fill and populate the start/end times for the actual allocated time. However, in other situations the duration may be calculated by the scheduling system."]
     pub r#requested_period: Vec<Box<super::super::types::Period>>,
-}
-impl crate::AnyResource for Appointment {
-    const FHIR_RELEASE: fhirbolt_shared::FhirRelease = fhirbolt_shared::FhirRelease::R4B;
 }
 impl serde::ser::Serialize for Appointment {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

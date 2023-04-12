@@ -1,15 +1,14 @@
 #![feature(adt_const_params)]
 
-use std::{fmt, io::Read};
+use std::io::Read;
 
 use assert_json_diff::assert_json_eq;
-use serde::{de::DeserializeSeed, Serialize};
+use serde::Serialize;
 use serde_json::Value;
 
 use fhirbolt::{
     element::Element,
-    model::AnyResource,
-    serde::{DeserializationConfig, DeserializationContext, DeserializationMode},
+    serde::{DeserializationConfig, DeserializationMode, DeserializeResource},
     FhirRelease,
 };
 
@@ -23,8 +22,7 @@ const MISSING_STATUS_FILES: &[&str] = &[
 
 fn test_serde_json<'a, T, const R: FhirRelease>(mode: DeserializationMode)
 where
-    T: AnyResource + Serialize + PartialEq + fmt::Debug + Clone,
-    for<'c, 'de> &'c mut DeserializationContext<T>: DeserializeSeed<'de, Value = T>,
+    T: DeserializeResource + Serialize,
 {
     let mut examples_iter = examples(R, JsonOrXml::Json);
 
@@ -105,24 +103,24 @@ where
             }
         }
 
-        let element_from_slice =
-            fhirbolt::serde::json::from_slice::<Element<R>>(&buffer, None).unwrap();
+        let element_from_slice: Element<R> =
+            fhirbolt::serde::json::from_slice(&buffer, None).unwrap();
 
         assert_json_eq!(
             fhirbolt::serde::element::json::to_json_value(element_from_slice.clone()).unwrap(),
             json_value
         );
 
-        let element_from_value =
-            fhirbolt::serde::json::from_json_value::<Element<R>>(json_value.clone(), None).unwrap();
+        let element_from_value: Element<R> =
+            fhirbolt::serde::json::from_json_value(json_value.clone(), None).unwrap();
 
         assert_json_eq!(
             fhirbolt::element::json::to_json_value(element_from_value).unwrap(),
             json_value
         );
 
-        let resource =
-            fhirbolt::serde::json::from_slice::<T>(&buffer, Some(DeserializationConfig { mode }))
+        let resource: T =
+            fhirbolt::serde::json::from_slice(&buffer, Some(DeserializationConfig { mode }))
                 .unwrap();
         assert_json_eq!(
             fhirbolt::serde::model::json::to_json_value(resource.clone()).unwrap(),

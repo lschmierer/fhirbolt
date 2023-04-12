@@ -1,4 +1,4 @@
-// Generated on 2023-04-10 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-12 by fhirbolt-codegen v0.1.0
 #[doc = "Software that is covered by this terminology capability statement.  It is used when the statement describes the capabilities of a particular software version, independent of an installation."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub struct TerminologyCapabilitiesSoftware {
@@ -896,9 +896,6 @@ pub struct TerminologyCapabilities {
     pub r#translation: Option<TerminologyCapabilitiesTranslation>,
     #[doc = "Whether the $closure operation is supported."]
     pub r#closure: Option<TerminologyCapabilitiesClosure>,
-}
-impl crate::AnyResource for TerminologyCapabilities {
-    const FHIR_RELEASE: fhirbolt_shared::FhirRelease = fhirbolt_shared::FhirRelease::R4;
 }
 impl serde::ser::Serialize for TerminologyCapabilities {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

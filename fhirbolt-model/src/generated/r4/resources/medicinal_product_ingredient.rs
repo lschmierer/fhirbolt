@@ -1,4 +1,4 @@
-// Generated on 2023-04-10 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-12 by fhirbolt-codegen v0.1.0
 #[doc = "Strength expressed in terms of a reference substance."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub struct MedicinalProductIngredientSpecifiedSubstanceStrengthReferenceStrength {
@@ -273,9 +273,6 @@ pub struct MedicinalProductIngredient {
     pub r#specified_substance: Vec<MedicinalProductIngredientSpecifiedSubstance>,
     #[doc = "The ingredient substance."]
     pub r#substance: Option<MedicinalProductIngredientSubstance>,
-}
-impl crate::AnyResource for MedicinalProductIngredient {
-    const FHIR_RELEASE: fhirbolt_shared::FhirRelease = fhirbolt_shared::FhirRelease::R4;
 }
 impl serde::ser::Serialize for MedicinalProductIngredient {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

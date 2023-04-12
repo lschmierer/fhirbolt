@@ -16,7 +16,7 @@ const BUILD_FHIR_RELEASES: &[&str] = &["R4", "R4B"];
 const FHIR_DEFINITIONS_JSON_DOWNLOAD_URL: &str = "http://hl7.org/fhir/{}/definitions.json.zip";
 
 const MODEL_OUTPUT_DIRECTORY: &str = "fhirbolt-model/src/generated";
-const SERDE_OUTPUT_DIRECTORY: &str = "fhirbolt-serde/src/generated";
+const SERDE_OUTPUT_DIRECTORY: &str = "fhirbolt-serde/src/model/generated";
 const TYPE_HINTS_OUTPUT_DIRECTORY: &str = "fhirbolt-shared/src/serde_helpers/type_hints/generated";
 
 fn tmp_dir(fhir_release: &str) -> PathBuf {
@@ -393,8 +393,6 @@ fn main() {
                     .join("\n")
             };
             fs::remove_file(&path).unwrap();
-
-            println!("{}", lines);
 
             let mut file = File::create(path).unwrap();
             file.write_all(lines.as_bytes()).unwrap();

@@ -1,4 +1,4 @@
-// Generated on 2023-04-10 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-12 by fhirbolt-codegen v0.1.0
 #[doc = "Identifies the medication being administered. This is either a link to a resource representing the details of the medication or a simple attribute carrying a code that identifies the medication from a known list of medications."]
 #[derive(Debug, Clone, PartialEq)]
 pub enum MedicationStatementMedication {
@@ -76,9 +76,6 @@ pub struct MedicationStatement {
     pub r#note: Vec<Box<super::super::types::Annotation>>,
     #[doc = "Indicates how the medication is/was or should be taken by the patient."]
     pub r#dosage: Vec<Box<super::super::types::Dosage>>,
-}
-impl crate::AnyResource for MedicationStatement {
-    const FHIR_RELEASE: fhirbolt_shared::FhirRelease = fhirbolt_shared::FhirRelease::R4;
 }
 impl serde::ser::Serialize for MedicationStatement {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

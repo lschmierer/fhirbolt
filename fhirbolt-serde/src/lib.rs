@@ -34,8 +34,14 @@ pub mod json;
 pub mod xml;
 
 mod context;
-mod generated;
 mod number;
 
 pub use context::{de::*, ser::*};
-pub use generated::*;
+
+use fhirbolt_shared::FhirRelease;
+use std::fmt::Debug;
+
+/// Marker trait for all types representing FHIR resources.
+pub trait Resource: Sized + Clone + PartialEq + Debug {
+    const FHIR_RELEASE: FhirRelease;
+}

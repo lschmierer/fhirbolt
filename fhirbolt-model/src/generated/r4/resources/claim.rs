@@ -1,4 +1,4 @@
-// Generated on 2023-04-10 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-12 by fhirbolt-codegen v0.1.0
 #[doc = "The date when or period to which this information refers."]
 #[derive(Debug, Clone, PartialEq)]
 pub enum ClaimSupportingInfoTiming {
@@ -1433,9 +1433,6 @@ pub struct Claim {
     pub r#item: Vec<ClaimItem>,
     #[doc = "The total value of the all the items in the claim."]
     pub r#total: Option<Box<super::super::types::Money>>,
-}
-impl crate::AnyResource for Claim {
-    const FHIR_RELEASE: fhirbolt_shared::FhirRelease = fhirbolt_shared::FhirRelease::R4;
 }
 impl serde::ser::Serialize for Claim {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

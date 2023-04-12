@@ -1,4 +1,4 @@
-// Generated on 2023-04-10 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-12 by fhirbolt-codegen v0.1.0
 #[doc = "An amount of service being requested which can be a quantity ( for example $1,500 home modification), a ratio ( for example, 20 half day visits per month), or a range (2.0 to 1.8 Gy per fraction)."]
 #[derive(Debug, Clone, PartialEq)]
 pub enum ServiceRequestQuantity {
@@ -122,9 +122,6 @@ pub struct ServiceRequest {
     pub r#patient_instruction: Option<super::super::types::String>,
     #[doc = "Key events in the history of the request."]
     pub r#relevant_history: Vec<Box<super::super::types::Reference>>,
-}
-impl crate::AnyResource for ServiceRequest {
-    const FHIR_RELEASE: fhirbolt_shared::FhirRelease = fhirbolt_shared::FhirRelease::R4;
 }
 impl serde::ser::Serialize for ServiceRequest {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

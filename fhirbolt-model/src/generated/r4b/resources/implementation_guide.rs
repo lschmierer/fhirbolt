@@ -1,4 +1,4 @@
-// Generated on 2023-04-10 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-12 by fhirbolt-codegen v0.1.0
 #[doc = "If true or a reference, indicates the resource is an example instance.  If a reference is present, indicates that the example is an example of the specified profile."]
 #[derive(Debug, Clone, PartialEq)]
 pub enum ImplementationGuideDefinitionResourceExample {
@@ -1166,9 +1166,6 @@ pub struct ImplementationGuide {
     pub r#definition: Option<ImplementationGuideDefinition>,
     #[doc = "Information about an assembled implementation guide, created by the publication tooling."]
     pub r#manifest: Option<ImplementationGuideManifest>,
-}
-impl crate::AnyResource for ImplementationGuide {
-    const FHIR_RELEASE: fhirbolt_shared::FhirRelease = fhirbolt_shared::FhirRelease::R4B;
 }
 impl serde::ser::Serialize for ImplementationGuide {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

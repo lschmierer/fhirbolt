@@ -1,4 +1,4 @@
-// Generated on 2023-04-10 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-12 by fhirbolt-codegen v0.1.0
 #[doc = "The ChargeItem contains information such as the billing code, date, amount etc. If no further details are required for the lineItem, inline billing codes can be added using the CodeableConcept data type instead of the Reference."]
 #[derive(Debug, Clone, PartialEq)]
 pub enum InvoiceLineItemChargeItem {
@@ -255,9 +255,6 @@ pub struct Invoice {
     pub r#payment_terms: Option<super::super::types::Markdown>,
     #[doc = "Comments made about the invoice by the issuer, subject, or other participants."]
     pub r#note: Vec<Box<super::super::types::Annotation>>,
-}
-impl crate::AnyResource for Invoice {
-    const FHIR_RELEASE: fhirbolt_shared::FhirRelease = fhirbolt_shared::FhirRelease::R4B;
 }
 impl serde::ser::Serialize for Invoice {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

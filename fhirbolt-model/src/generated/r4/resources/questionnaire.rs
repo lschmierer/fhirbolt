@@ -1,4 +1,4 @@
-// Generated on 2023-04-10 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-12 by fhirbolt-codegen v0.1.0
 #[doc = "A value that the referenced question is tested using the specified operator in order for the item to be enabled."]
 #[derive(Debug, Clone, PartialEq)]
 pub enum QuestionnaireItemEnableWhenAnswer {
@@ -926,9 +926,6 @@ pub struct Questionnaire {
     pub r#code: Vec<Box<super::super::types::Coding>>,
     #[doc = "A particular question, question grouping or display text that is part of the questionnaire."]
     pub r#item: Vec<QuestionnaireItem>,
-}
-impl crate::AnyResource for Questionnaire {
-    const FHIR_RELEASE: fhirbolt_shared::FhirRelease = fhirbolt_shared::FhirRelease::R4;
 }
 impl serde::ser::Serialize for Questionnaire {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

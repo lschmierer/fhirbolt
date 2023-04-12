@@ -1,4 +1,4 @@
-// Generated on 2023-04-10 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-12 by fhirbolt-codegen v0.1.0
 #[doc = "A container for slots of time that may be available for booking appointments."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub struct Schedule {
@@ -34,9 +34,6 @@ pub struct Schedule {
     pub r#planning_horizon: Option<Box<super::super::types::Period>>,
     #[doc = "Comments on the availability to describe any extended information. Such as custom constraints on the slots that may be associated."]
     pub r#comment: Option<super::super::types::String>,
-}
-impl crate::AnyResource for Schedule {
-    const FHIR_RELEASE: fhirbolt_shared::FhirRelease = fhirbolt_shared::FhirRelease::R4;
 }
 impl serde::ser::Serialize for Schedule {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

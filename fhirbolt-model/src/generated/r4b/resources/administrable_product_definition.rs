@@ -1,4 +1,4 @@
-// Generated on 2023-04-10 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-12 by fhirbolt-codegen v0.1.0
 #[doc = "A value for the characteristic."]
 #[derive(Debug, Clone, PartialEq)]
 pub enum AdministrableProductDefinitionPropertyValue {
@@ -314,9 +314,6 @@ pub struct AdministrableProductDefinition {
     pub r#property: Vec<AdministrableProductDefinitionProperty>,
     #[doc = "The path by which the product is taken into or makes contact with the body. In some regions this is referred to as the licenced or approved route. RouteOfAdministration cannot be used when the 'formOf' product already uses MedicinalProductDefinition.route (and vice versa)."]
     pub r#route_of_administration: Vec<AdministrableProductDefinitionRouteOfAdministration>,
-}
-impl crate::AnyResource for AdministrableProductDefinition {
-    const FHIR_RELEASE: fhirbolt_shared::FhirRelease = fhirbolt_shared::FhirRelease::R4B;
 }
 impl serde::ser::Serialize for AdministrableProductDefinition {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

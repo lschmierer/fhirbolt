@@ -1,4 +1,4 @@
-// Generated on 2023-04-10 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-12 by fhirbolt-codegen v0.1.0
 #[doc = "The article or artifact that the Citation Resource is related to."]
 #[derive(Debug, Clone, PartialEq)]
 pub enum CitationRelatesToTarget {
@@ -2004,9 +2004,6 @@ pub struct Citation {
     pub r#relates_to: Vec<CitationRelatesTo>,
     #[doc = "The article or artifact being described."]
     pub r#cited_artifact: Option<CitationCitedArtifact>,
-}
-impl crate::AnyResource for Citation {
-    const FHIR_RELEASE: fhirbolt_shared::FhirRelease = fhirbolt_shared::FhirRelease::R4B;
 }
 impl serde::ser::Serialize for Citation {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

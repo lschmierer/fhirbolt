@@ -1,4 +1,4 @@
-// Generated on 2023-04-10 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-12 by fhirbolt-codegen v0.1.0
 #[doc = "The actual ingredient - either a substance (simple ingredient) or another medication of a medication."]
 #[derive(Debug, Clone, PartialEq)]
 pub enum MedicationIngredientItem {
@@ -191,9 +191,6 @@ pub struct Medication {
     pub r#ingredient: Vec<MedicationIngredient>,
     #[doc = "Information that only applies to packages (not products)."]
     pub r#batch: Option<MedicationBatch>,
-}
-impl crate::AnyResource for Medication {
-    const FHIR_RELEASE: fhirbolt_shared::FhirRelease = fhirbolt_shared::FhirRelease::R4;
 }
 impl serde::ser::Serialize for Medication {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

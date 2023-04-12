@@ -1,4 +1,4 @@
-// Generated on 2023-04-10 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-12 by fhirbolt-codegen v0.1.0
 #[doc = "A series of links that provide context to this bundle."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub struct BundleLink {
@@ -511,9 +511,6 @@ pub struct Bundle {
     pub r#entry: Vec<BundleEntry>,
     #[doc = "Digital Signature - base64 encoded. XML-DSig or a JWT."]
     pub r#signature: Option<Box<super::super::types::Signature>>,
-}
-impl crate::AnyResource for Bundle {
-    const FHIR_RELEASE: fhirbolt_shared::FhirRelease = fhirbolt_shared::FhirRelease::R4B;
 }
 impl serde::ser::Serialize for Bundle {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

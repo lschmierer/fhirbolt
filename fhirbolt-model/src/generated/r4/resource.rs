@@ -1,4 +1,4 @@
-// Generated on 2023-04-10 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-12 by fhirbolt-codegen v0.1.0
 #[doc = "Enum representing all possible FHIR resources."]
 #[derive(Default, Debug, Clone, PartialEq, serde :: Serialize)]
 #[serde(tag = "resourceType")]
@@ -297,7 +297,4 @@ pub enum Resource {
     VisionPrescription(Box<super::resources::VisionPrescription>),
     #[default]
     Invalid,
-}
-impl crate::AnyResource for Resource {
-    const FHIR_RELEASE: fhirbolt_shared::FhirRelease = fhirbolt_shared::FhirRelease::R4;
 }

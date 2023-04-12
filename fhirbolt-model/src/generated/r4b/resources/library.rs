@@ -1,4 +1,4 @@
-// Generated on 2023-04-10 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-12 by fhirbolt-codegen v0.1.0
 #[doc = "A code or group definition that describes the intended subject of the contents of the library."]
 #[derive(Debug, Clone, PartialEq)]
 pub enum LibrarySubject {
@@ -92,9 +92,6 @@ pub struct Library {
     pub r#data_requirement: Vec<Box<super::super::types::DataRequirement>>,
     #[doc = "The content of the library as an Attachment. The content may be a reference to a url, or may be directly embedded as a base-64 string. Either way, the contentType of the attachment determines how to interpret the content."]
     pub r#content: Vec<Box<super::super::types::Attachment>>,
-}
-impl crate::AnyResource for Library {
-    const FHIR_RELEASE: fhirbolt_shared::FhirRelease = fhirbolt_shared::FhirRelease::R4B;
 }
 impl serde::ser::Serialize for Library {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

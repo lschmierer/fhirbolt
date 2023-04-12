@@ -1,4 +1,4 @@
-// Generated on 2023-04-10 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-12 by fhirbolt-codegen v0.1.0
 #[doc = "The value of the parameter."]
 #[derive(Debug, Clone, PartialEq)]
 pub enum ValueSetExpansionParameterValue {
@@ -988,9 +988,6 @@ pub struct ValueSet {
     pub r#compose: Option<ValueSetCompose>,
     #[doc = "A value set can also be \"expanded\", where the value set is turned into a simple collection of enumerated codes. This element holds the expansion, if it has been performed."]
     pub r#expansion: Option<ValueSetExpansion>,
-}
-impl crate::AnyResource for ValueSet {
-    const FHIR_RELEASE: fhirbolt_shared::FhirRelease = fhirbolt_shared::FhirRelease::R4;
 }
 impl serde::ser::Serialize for ValueSet {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

@@ -1,4 +1,4 @@
-// Generated on 2023-04-10 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-12 by fhirbolt-codegen v0.1.0
 #[doc = "Detailed information about events relevant to this subscription notification."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub struct SubscriptionStatusNotificationEvent {
@@ -112,9 +112,6 @@ pub struct SubscriptionStatus {
     pub r#topic: Option<super::super::types::Canonical>,
     #[doc = "A record of errors that occurred when the server processed a notification."]
     pub r#error: Vec<Box<super::super::types::CodeableConcept>>,
-}
-impl crate::AnyResource for SubscriptionStatus {
-    const FHIR_RELEASE: fhirbolt_shared::FhirRelease = fhirbolt_shared::FhirRelease::R4B;
 }
 impl serde::ser::Serialize for SubscriptionStatus {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

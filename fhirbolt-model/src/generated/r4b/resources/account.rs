@@ -1,4 +1,4 @@
-// Generated on 2023-04-10 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-12 by fhirbolt-codegen v0.1.0
 #[doc = "The party(s) that are responsible for covering the payment of this account, and what order should they be applied to the account."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub struct AccountCoverage {
@@ -157,9 +157,6 @@ pub struct Account {
     pub r#guarantor: Vec<AccountGuarantor>,
     #[doc = "Reference to a parent Account."]
     pub r#part_of: Option<Box<super::super::types::Reference>>,
-}
-impl crate::AnyResource for Account {
-    const FHIR_RELEASE: fhirbolt_shared::FhirRelease = fhirbolt_shared::FhirRelease::R4B;
 }
 impl serde::ser::Serialize for Account {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

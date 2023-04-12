@@ -1,4 +1,4 @@
-// Generated on 2023-04-10 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-12 by fhirbolt-codegen v0.1.0
 #[doc = "The populations that make up the population group, one for each type of population appropriate for the measure."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub struct MeasureReportGroupPopulation {
@@ -350,9 +350,6 @@ pub struct MeasureReport {
     pub r#group: Vec<MeasureReportGroup>,
     #[doc = "A reference to a Bundle containing the Resources that were used in the calculation of this measure."]
     pub r#evaluated_resource: Vec<Box<super::super::types::Reference>>,
-}
-impl crate::AnyResource for MeasureReport {
-    const FHIR_RELEASE: fhirbolt_shared::FhirRelease = fhirbolt_shared::FhirRelease::R4;
 }
 impl serde::ser::Serialize for MeasureReport {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

@@ -1,4 +1,4 @@
-// Generated on 2023-04-10 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-12 by fhirbolt-codegen v0.1.0
 #[doc = "Nominal position in a series."]
 #[derive(Debug, Clone, PartialEq)]
 pub enum ImmunizationEvaluationDoseNumber {
@@ -68,9 +68,6 @@ pub struct ImmunizationEvaluation {
     pub r#dose_number: Option<ImmunizationEvaluationDoseNumber>,
     #[doc = "The recommended number of doses to achieve immunity."]
     pub r#series_doses: Option<ImmunizationEvaluationSeriesDoses>,
-}
-impl crate::AnyResource for ImmunizationEvaluation {
-    const FHIR_RELEASE: fhirbolt_shared::FhirRelease = fhirbolt_shared::FhirRelease::R4B;
 }
 impl serde::ser::Serialize for ImmunizationEvaluation {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

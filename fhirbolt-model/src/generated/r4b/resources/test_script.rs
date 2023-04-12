@@ -1,4 +1,4 @@
-// Generated on 2023-04-10 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-12 by fhirbolt-codegen v0.1.0
 #[doc = "An abstract server used in operations within this test script in the origin element."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub struct TestScriptOrigin {
@@ -1937,9 +1937,6 @@ pub struct TestScript {
     pub r#test: Vec<TestScriptTest>,
     #[doc = "A series of operations required to clean up after all the tests are executed (successfully or otherwise)."]
     pub r#teardown: Option<TestScriptTeardown>,
-}
-impl crate::AnyResource for TestScript {
-    const FHIR_RELEASE: fhirbolt_shared::FhirRelease = fhirbolt_shared::FhirRelease::R4B;
 }
 impl serde::ser::Serialize for TestScript {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

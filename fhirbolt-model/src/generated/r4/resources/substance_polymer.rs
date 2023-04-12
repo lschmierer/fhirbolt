@@ -1,4 +1,4 @@
-// Generated on 2023-04-10 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-12 by fhirbolt-codegen v0.1.0
 #[doc = "Todo."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub struct SubstancePolymerMonomerSetStartingMaterial {
@@ -406,9 +406,6 @@ pub struct SubstancePolymer {
     pub r#monomer_set: Vec<SubstancePolymerMonomerSet>,
     #[doc = "Todo."]
     pub r#repeat: Vec<SubstancePolymerRepeat>,
-}
-impl crate::AnyResource for SubstancePolymer {
-    const FHIR_RELEASE: fhirbolt_shared::FhirRelease = fhirbolt_shared::FhirRelease::R4;
 }
 impl serde::ser::Serialize for SubstancePolymer {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

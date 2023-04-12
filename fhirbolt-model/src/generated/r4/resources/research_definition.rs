@@ -1,4 +1,4 @@
-// Generated on 2023-04-10 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-12 by fhirbolt-codegen v0.1.0
 #[doc = "The intended subjects for the ResearchDefinition. If this element is not provided, a Patient subject is assumed, but the subject of the ResearchDefinition can be anything."]
 #[derive(Debug, Clone, PartialEq)]
 pub enum ResearchDefinitionSubject {
@@ -98,9 +98,6 @@ pub struct ResearchDefinition {
     pub r#exposure_alternative: Option<Box<super::super::types::Reference>>,
     #[doc = "A reference to a ResearchElementDefinition resomece that defines the outcome for the research."]
     pub r#outcome: Option<Box<super::super::types::Reference>>,
-}
-impl crate::AnyResource for ResearchDefinition {
-    const FHIR_RELEASE: fhirbolt_shared::FhirRelease = fhirbolt_shared::FhirRelease::R4;
 }
 impl serde::ser::Serialize for ResearchDefinition {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

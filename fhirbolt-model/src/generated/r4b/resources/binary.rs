@@ -1,4 +1,4 @@
-// Generated on 2023-04-10 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-12 by fhirbolt-codegen v0.1.0
 #[doc = "A resource that represents the data of a single raw artifact as digital content accessible in its native format.  A Binary resource can contain any content, whether text, image, pdf, zip archive, etc.\n\nThere are situations where it is useful or required to handle pure binary content using the same framework as other resources."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub struct Binary {
@@ -16,9 +16,6 @@ pub struct Binary {
     pub r#security_context: Option<Box<super::super::types::Reference>>,
     #[doc = "The actual content, base64 encoded."]
     pub r#data: Option<super::super::types::Base64Binary>,
-}
-impl crate::AnyResource for Binary {
-    const FHIR_RELEASE: fhirbolt_shared::FhirRelease = fhirbolt_shared::FhirRelease::R4B;
 }
 impl serde::ser::Serialize for Binary {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

@@ -1,4 +1,4 @@
-// Generated on 2023-04-10 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-12 by fhirbolt-codegen v0.1.0
 #[doc = "Indicates how the system may be identified when referenced in electronic exchange."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub struct NamingSystemUniqueId {
@@ -157,9 +157,6 @@ pub struct NamingSystem {
     pub r#usage: Option<super::super::types::String>,
     #[doc = "Indicates how the system may be identified when referenced in electronic exchange."]
     pub r#unique_id: Vec<NamingSystemUniqueId>,
-}
-impl crate::AnyResource for NamingSystem {
-    const FHIR_RELEASE: fhirbolt_shared::FhirRelease = fhirbolt_shared::FhirRelease::R4;
 }
 impl serde::ser::Serialize for NamingSystem {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

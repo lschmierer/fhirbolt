@@ -1,4 +1,4 @@
-// Generated on 2023-04-10 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-12 by fhirbolt-codegen v0.1.0
 #[doc = "The intended subjects for the measure. If this element is not provided, a Patient subject is assumed, but the subject of the measure can be anything."]
 #[derive(Debug, Clone, PartialEq)]
 pub enum MeasureSubject {
@@ -436,9 +436,6 @@ pub struct Measure {
     pub r#group: Vec<MeasureGroup>,
     #[doc = "The supplemental data criteria for the measure report, specified as either the name of a valid CQL expression within a referenced library, or a valid FHIR Resource Path."]
     pub r#supplemental_data: Vec<MeasureSupplementalData>,
-}
-impl crate::AnyResource for Measure {
-    const FHIR_RELEASE: fhirbolt_shared::FhirRelease = fhirbolt_shared::FhirRelease::R4;
 }
 impl serde::ser::Serialize for Measure {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

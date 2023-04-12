@@ -1,4 +1,4 @@
-// Generated on 2023-04-10 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-12 by fhirbolt-codegen v0.1.0
 #[doc = "Details where to send notifications when resources are received that meet the criteria."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub struct SubscriptionChannel {
@@ -163,9 +163,6 @@ pub struct Subscription {
     pub r#error: Option<super::super::types::String>,
     #[doc = "Details where to send notifications when resources are received that meet the criteria."]
     pub r#channel: SubscriptionChannel,
-}
-impl crate::AnyResource for Subscription {
-    const FHIR_RELEASE: fhirbolt_shared::FhirRelease = fhirbolt_shared::FhirRelease::R4;
 }
 impl serde::ser::Serialize for Subscription {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

@@ -1,4 +1,4 @@
-// Generated on 2023-04-10 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-12 by fhirbolt-codegen v0.1.0
 #[doc = "The point in time or period over which the subject was assessed."]
 #[derive(Debug, Clone, PartialEq)]
 pub enum ClinicalImpressionEffective {
@@ -173,9 +173,6 @@ pub struct ClinicalImpression {
     pub r#supporting_info: Vec<Box<super::super::types::Reference>>,
     #[doc = "Commentary about the impression, typically recorded after the impression itself was made, though supplemental notes by the original author could also appear."]
     pub r#note: Vec<Box<super::super::types::Annotation>>,
-}
-impl crate::AnyResource for ClinicalImpression {
-    const FHIR_RELEASE: fhirbolt_shared::FhirRelease = fhirbolt_shared::FhirRelease::R4;
 }
 impl serde::ser::Serialize for ClinicalImpression {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

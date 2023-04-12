@@ -1,4 +1,4 @@
-// Generated on 2023-04-10 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-12 by fhirbolt-codegen v0.1.0
 #[doc = "The  value of the extra detail."]
 #[derive(Debug, Clone, PartialEq)]
 pub enum AuditEventEntityDetailValue {
@@ -568,9 +568,6 @@ pub struct AuditEvent {
     pub r#source: AuditEventSource,
     #[doc = "Specific instances of data or objects that have been accessed."]
     pub r#entity: Vec<AuditEventEntity>,
-}
-impl crate::AnyResource for AuditEvent {
-    const FHIR_RELEASE: fhirbolt_shared::FhirRelease = fhirbolt_shared::FhirRelease::R4;
 }
 impl serde::ser::Serialize for AuditEvent {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

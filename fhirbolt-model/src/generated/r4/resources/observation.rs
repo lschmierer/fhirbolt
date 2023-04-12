@@ -1,4 +1,4 @@
-// Generated on 2023-04-10 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-12 by fhirbolt-codegen v0.1.0
 #[doc = "The time or time-period the observed value is asserted as being true. For biological subjects - e.g. human patients - this is usually called the \"physiologically relevant time\". This is usually either the time of the procedure or of specimen collection, but very often the source of the date/time is not known, only the date/time itself."]
 #[derive(Debug, Clone, PartialEq)]
 pub enum ObservationEffective {
@@ -367,9 +367,6 @@ pub struct Observation {
     pub r#derived_from: Vec<Box<super::super::types::Reference>>,
     #[doc = "Some observations have multiple component observations.  These component observations are expressed as separate code value pairs that share the same attributes.  Examples include systolic and diastolic component observations for blood pressure measurement and multiple component observations for genetics observations."]
     pub r#component: Vec<ObservationComponent>,
-}
-impl crate::AnyResource for Observation {
-    const FHIR_RELEASE: fhirbolt_shared::FhirRelease = fhirbolt_shared::FhirRelease::R4;
 }
 impl serde::ser::Serialize for Observation {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

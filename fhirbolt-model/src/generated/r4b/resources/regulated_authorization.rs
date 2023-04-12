@@ -1,4 +1,4 @@
-// Generated on 2023-04-10 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-12 by fhirbolt-codegen v0.1.0
 #[doc = "Relevant date for this case."]
 #[derive(Debug, Clone, PartialEq)]
 pub enum RegulatedAuthorizationCaseDate {
@@ -140,9 +140,6 @@ pub struct RegulatedAuthorization {
     pub r#regulator: Option<Box<super::super::types::Reference>>,
     #[doc = "The case or regulatory procedure for granting or amending a regulated authorization. An authorization is granted in response to submissions/applications by those seeking authorization. A case is the administrative process that deals with the application(s) that relate to this and assesses them. Note: This area is subject to ongoing review and the workgroup is seeking implementer feedback on its use (see link at bottom of page)."]
     pub r#case: Option<RegulatedAuthorizationCase>,
-}
-impl crate::AnyResource for RegulatedAuthorization {
-    const FHIR_RELEASE: fhirbolt_shared::FhirRelease = fhirbolt_shared::FhirRelease::R4B;
 }
 impl serde::ser::Serialize for RegulatedAuthorization {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

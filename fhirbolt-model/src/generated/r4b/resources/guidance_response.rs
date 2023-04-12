@@ -1,4 +1,4 @@
-// Generated on 2023-04-10 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-12 by fhirbolt-codegen v0.1.0
 #[doc = "An identifier, CodeableConcept or canonical reference to the guidance that was requested."]
 #[derive(Debug, Clone, PartialEq)]
 pub enum GuidanceResponseModule {
@@ -61,9 +61,6 @@ pub struct GuidanceResponse {
     pub r#result: Option<Box<super::super::types::Reference>>,
     #[doc = "If the evaluation could not be completed due to lack of information, or additional information would potentially result in a more accurate response, this element will a description of the data required in order to proceed with the evaluation. A subsequent request to the service should include this data."]
     pub r#data_requirement: Vec<Box<super::super::types::DataRequirement>>,
-}
-impl crate::AnyResource for GuidanceResponse {
-    const FHIR_RELEASE: fhirbolt_shared::FhirRelease = fhirbolt_shared::FhirRelease::R4B;
 }
 impl serde::ser::Serialize for GuidanceResponse {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

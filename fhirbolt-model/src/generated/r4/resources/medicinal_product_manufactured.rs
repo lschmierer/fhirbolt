@@ -1,4 +1,4 @@
-// Generated on 2023-04-10 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-12 by fhirbolt-codegen v0.1.0
 #[doc = "The manufactured item as contained in the packaged medicinal product."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub struct MedicinalProductManufactured {
@@ -32,9 +32,6 @@ pub struct MedicinalProductManufactured {
     pub r#physical_characteristics: Option<Box<super::super::types::ProdCharacteristic>>,
     #[doc = "Other codeable characteristics."]
     pub r#other_characteristics: Vec<Box<super::super::types::CodeableConcept>>,
-}
-impl crate::AnyResource for MedicinalProductManufactured {
-    const FHIR_RELEASE: fhirbolt_shared::FhirRelease = fhirbolt_shared::FhirRelease::R4;
 }
 impl serde::ser::Serialize for MedicinalProductManufactured {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

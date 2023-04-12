@@ -1,4 +1,4 @@
-// Generated on 2023-04-10 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-12 by fhirbolt-codegen v0.1.0
 #[doc = "Describe the undesirable effects of the medicinal product."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub struct MedicinalProductUndesirableEffect {
@@ -28,9 +28,6 @@ pub struct MedicinalProductUndesirableEffect {
     pub r#frequency_of_occurrence: Option<Box<super::super::types::CodeableConcept>>,
     #[doc = "The population group to which this applies."]
     pub r#population: Vec<Box<super::super::types::Population>>,
-}
-impl crate::AnyResource for MedicinalProductUndesirableEffect {
-    const FHIR_RELEASE: fhirbolt_shared::FhirRelease = fhirbolt_shared::FhirRelease::R4;
 }
 impl serde::ser::Serialize for MedicinalProductUndesirableEffect {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

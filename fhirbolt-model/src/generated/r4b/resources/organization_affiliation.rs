@@ -1,4 +1,4 @@
-// Generated on 2023-04-10 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-12 by fhirbolt-codegen v0.1.0
 #[doc = "Defines an affiliation/assotiation/relationship between 2 distinct oganizations, that is not a part-of relationship/sub-division relationship.\n\nNeed to define relationships between organizations that are not sub-divisions of the same organization (part-of relationships)."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub struct OrganizationAffiliation {
@@ -42,9 +42,6 @@ pub struct OrganizationAffiliation {
     pub r#telecom: Vec<Box<super::super::types::ContactPoint>>,
     #[doc = "Technical endpoints providing access to services operated for this role."]
     pub r#endpoint: Vec<Box<super::super::types::Reference>>,
-}
-impl crate::AnyResource for OrganizationAffiliation {
-    const FHIR_RELEASE: fhirbolt_shared::FhirRelease = fhirbolt_shared::FhirRelease::R4B;
 }
 impl serde::ser::Serialize for OrganizationAffiliation {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

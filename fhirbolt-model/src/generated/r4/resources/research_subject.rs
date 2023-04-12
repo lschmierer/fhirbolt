@@ -1,4 +1,4 @@
-// Generated on 2023-04-10 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-12 by fhirbolt-codegen v0.1.0
 #[doc = "A physical entity which is the primary unit of operational and/or administrative interest in a study."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub struct ResearchSubject {
@@ -34,9 +34,6 @@ pub struct ResearchSubject {
     pub r#actual_arm: Option<super::super::types::String>,
     #[doc = "A record of the patient's informed agreement to participate in the study."]
     pub r#consent: Option<Box<super::super::types::Reference>>,
-}
-impl crate::AnyResource for ResearchSubject {
-    const FHIR_RELEASE: fhirbolt_shared::FhirRelease = fhirbolt_shared::FhirRelease::R4;
 }
 impl serde::ser::Serialize for ResearchSubject {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

@@ -1,4 +1,4 @@
-// Generated on 2023-04-10 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-12 by fhirbolt-codegen v0.1.0
 #[doc = "Identifies which record considered as the reference to the same real-world occurrence as well as how the items should be evaluated within the collection of linked items."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub struct LinkageItem {
@@ -76,9 +76,6 @@ pub struct Linkage {
     pub r#author: Option<Box<super::super::types::Reference>>,
     #[doc = "Identifies which record considered as the reference to the same real-world occurrence as well as how the items should be evaluated within the collection of linked items."]
     pub r#item: Vec<LinkageItem>,
-}
-impl crate::AnyResource for Linkage {
-    const FHIR_RELEASE: fhirbolt_shared::FhirRelease = fhirbolt_shared::FhirRelease::R4B;
 }
 impl serde::ser::Serialize for Linkage {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

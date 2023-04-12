@@ -1,4 +1,4 @@
-// Generated on 2023-04-10 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-12 by fhirbolt-codegen v0.1.0
 #[doc = "Record details about an anatomical structure.  This resource may be used when a coded concept does not provide the necessary detail needed for the use case."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub struct BodyStructure {
@@ -34,9 +34,6 @@ pub struct BodyStructure {
     pub r#image: Vec<Box<super::super::types::Attachment>>,
     #[doc = "The person to which the body site belongs."]
     pub r#patient: Box<super::super::types::Reference>,
-}
-impl crate::AnyResource for BodyStructure {
-    const FHIR_RELEASE: fhirbolt_shared::FhirRelease = fhirbolt_shared::FhirRelease::R4;
 }
 impl serde::ser::Serialize for BodyStructure {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

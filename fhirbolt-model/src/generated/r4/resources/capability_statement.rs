@@ -1,4 +1,4 @@
-// Generated on 2023-04-10 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-12 by fhirbolt-codegen v0.1.0
 #[doc = "Software that is covered by this capability statement.  It is used when the capability statement describes the capabilities of a particular software version, independent of an installation."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub struct CapabilityStatementSoftware {
@@ -1487,9 +1487,6 @@ pub struct CapabilityStatement {
     pub r#messaging: Vec<CapabilityStatementMessaging>,
     #[doc = "A document definition."]
     pub r#document: Vec<CapabilityStatementDocument>,
-}
-impl crate::AnyResource for CapabilityStatement {
-    const FHIR_RELEASE: fhirbolt_shared::FhirRelease = fhirbolt_shared::FhirRelease::R4;
 }
 impl serde::ser::Serialize for CapabilityStatement {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

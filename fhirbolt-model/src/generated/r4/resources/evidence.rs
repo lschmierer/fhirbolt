@@ -1,4 +1,4 @@
-// Generated on 2023-04-10 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-12 by fhirbolt-codegen v0.1.0
 #[doc = "The Evidence resource describes the conditional state (population and any exposures being compared within the population) and outcome (if specified) that the knowledge (evidence, assertion, recommendation) is about."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub struct Evidence {
@@ -74,9 +74,6 @@ pub struct Evidence {
     pub r#exposure_variant: Vec<Box<super::super::types::Reference>>,
     #[doc = "A reference to a EvidenceVariable resomece that defines the outcome for the research."]
     pub r#outcome: Vec<Box<super::super::types::Reference>>,
-}
-impl crate::AnyResource for Evidence {
-    const FHIR_RELEASE: fhirbolt_shared::FhirRelease = fhirbolt_shared::FhirRelease::R4;
 }
 impl serde::ser::Serialize for Evidence {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

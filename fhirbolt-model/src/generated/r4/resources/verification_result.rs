@@ -1,4 +1,4 @@
-// Generated on 2023-04-10 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-12 by fhirbolt-codegen v0.1.0
 #[doc = "Information about the primary source(s) involved in validation."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub struct VerificationResultPrimarySource {
@@ -310,9 +310,6 @@ pub struct VerificationResult {
     pub r#attestation: Option<VerificationResultAttestation>,
     #[doc = "Information about the entity validating information."]
     pub r#validator: Vec<VerificationResultValidator>,
-}
-impl crate::AnyResource for VerificationResult {
-    const FHIR_RELEASE: fhirbolt_shared::FhirRelease = fhirbolt_shared::FhirRelease::R4;
 }
 impl serde::ser::Serialize for VerificationResult {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

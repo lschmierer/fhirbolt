@@ -1,4 +1,4 @@
-// Generated on 2023-04-10 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-12 by fhirbolt-codegen v0.1.0
 #[doc = "Characteristics e.g. a products onset of action."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub struct MedicinalProductPharmaceuticalCharacteristics {
@@ -239,9 +239,6 @@ pub struct MedicinalProductPharmaceutical {
     pub r#characteristics: Vec<MedicinalProductPharmaceuticalCharacteristics>,
     #[doc = "The path by which the pharmaceutical product is taken into or makes contact with the body."]
     pub r#route_of_administration: Vec<MedicinalProductPharmaceuticalRouteOfAdministration>,
-}
-impl crate::AnyResource for MedicinalProductPharmaceutical {
-    const FHIR_RELEASE: fhirbolt_shared::FhirRelease = fhirbolt_shared::FhirRelease::R4;
 }
 impl serde::ser::Serialize for MedicinalProductPharmaceutical {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

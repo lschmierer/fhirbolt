@@ -1,4 +1,4 @@
-// Generated on 2023-04-10 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-12 by fhirbolt-codegen v0.1.0
 #[doc = "Basic is used for handling concepts not yet defined in FHIR, narrative-only resources that don't map to an existing resource, and custom resources not appropriate for inclusion in the FHIR specification.\n\nNeed some way to safely (without breaking interoperability) allow implementers to exchange content not supported by the initial set of declared resources."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub struct Basic {
@@ -28,9 +28,6 @@ pub struct Basic {
     pub r#created: Option<super::super::types::Date>,
     #[doc = "Indicates who was responsible for creating the resource instance."]
     pub r#author: Option<Box<super::super::types::Reference>>,
-}
-impl crate::AnyResource for Basic {
-    const FHIR_RELEASE: fhirbolt_shared::FhirRelease = fhirbolt_shared::FhirRelease::R4;
 }
 impl serde::ser::Serialize for Basic {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

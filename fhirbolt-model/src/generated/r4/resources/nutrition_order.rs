@@ -1,4 +1,4 @@
-// Generated on 2023-04-10 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-12 by fhirbolt-codegen v0.1.0
 #[doc = "The rate of administration of formula via a feeding pump, e.g. 60 mL per hour, according to the specified schedule."]
 #[derive(Debug, Clone, PartialEq)]
 pub enum NutritionOrderEnteralFormulaAdministrationRate {
@@ -497,9 +497,6 @@ pub struct NutritionOrder {
     pub r#enteral_formula: Option<NutritionOrderEnteralFormula>,
     #[doc = "Comments made about the {{title}} by the requester, performer, subject or other participants."]
     pub r#note: Vec<Box<super::super::types::Annotation>>,
-}
-impl crate::AnyResource for NutritionOrder {
-    const FHIR_RELEASE: fhirbolt_shared::FhirRelease = fhirbolt_shared::FhirRelease::R4;
 }
 impl serde::ser::Serialize for NutritionOrder {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

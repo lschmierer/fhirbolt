@@ -1,4 +1,4 @@
-// Generated on 2023-04-10 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-12 by fhirbolt-codegen v0.1.0
 #[doc = "A language which may be used to communicate with about the patient's health."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub struct RelatedPersonCommunication {
@@ -98,9 +98,6 @@ pub struct RelatedPerson {
     pub r#period: Option<Box<super::super::types::Period>>,
     #[doc = "A language which may be used to communicate with about the patient's health."]
     pub r#communication: Vec<RelatedPersonCommunication>,
-}
-impl crate::AnyResource for RelatedPerson {
-    const FHIR_RELEASE: fhirbolt_shared::FhirRelease = fhirbolt_shared::FhirRelease::R4B;
 }
 impl serde::ser::Serialize for RelatedPerson {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

@@ -1,4 +1,4 @@
-// Generated on 2023-04-10 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-12 by fhirbolt-codegen v0.1.0
 #[doc = "The status history permits the encounter resource to contain the status history without needing to read through the historical versions of the resource, or even have the server store them."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub struct EncounterStatusHistory {
@@ -405,9 +405,6 @@ pub struct Encounter {
     pub r#service_provider: Option<Box<super::super::types::Reference>>,
     #[doc = "Another Encounter of which this encounter is a part of (administratively or in time)."]
     pub r#part_of: Option<Box<super::super::types::Reference>>,
-}
-impl crate::AnyResource for Encounter {
-    const FHIR_RELEASE: fhirbolt_shared::FhirRelease = fhirbolt_shared::FhirRelease::R4B;
 }
 impl serde::ser::Serialize for Encounter {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

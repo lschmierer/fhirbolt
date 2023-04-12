@@ -1,4 +1,4 @@
-// Generated on 2023-04-10 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-12 by fhirbolt-codegen v0.1.0
 #[doc = "Indicates the reason why a dispense was not performed."]
 #[derive(Debug, Clone, PartialEq)]
 pub enum MedicationDispenseStatusReason {
@@ -196,9 +196,6 @@ pub struct MedicationDispense {
     pub r#detected_issue: Vec<Box<super::super::types::Reference>>,
     #[doc = "A summary of the events of interest that have occurred, such as when the dispense was verified."]
     pub r#event_history: Vec<Box<super::super::types::Reference>>,
-}
-impl crate::AnyResource for MedicationDispense {
-    const FHIR_RELEASE: fhirbolt_shared::FhirRelease = fhirbolt_shared::FhirRelease::R4;
 }
 impl serde::ser::Serialize for MedicationDispense {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

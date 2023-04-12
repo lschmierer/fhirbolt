@@ -1,6 +1,33 @@
 use std::{marker::PhantomData, mem};
 
+use serde::de::DeserializeSeed;
+
 use fhirbolt_shared::{path::ElementPath, FhirRelease};
+
+use crate::Resource;
+
+pub trait DeserializeResource: Resource {
+    type Context: for<'de> DeserializeSeed<'de, Value = Self>;
+
+    fn new_context(config: DeserializationConfig, from_json: bool, r: FhirRelease)
+        -> Self::Context;
+}
+
+impl<T> DeserializeResource for T
+where
+    T: Resource,
+    DeserializationContext<T>: for<'de> DeserializeSeed<'de, Value = T>,
+{
+    type Context = DeserializationContext<Self>;
+
+    fn new_context(
+        config: DeserializationConfig,
+        from_json: bool,
+        r: FhirRelease,
+    ) -> Self::Context {
+        DeserializationContext::new(config, from_json, r)
+    }
+}
 
 /// Context for deserialization.
 #[derive(Default)]
@@ -16,7 +43,7 @@ pub struct DeserializationContext<V> {
 }
 
 impl<V> DeserializationContext<V> {
-    pub fn new(config: DeserializationConfig, from_json: bool, r: FhirRelease) -> Self {
+    fn new(config: DeserializationConfig, from_json: bool, r: FhirRelease) -> Self {
         DeserializationContext {
             _phantom: PhantomData,
             config,

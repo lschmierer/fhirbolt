@@ -1,4 +1,4 @@
-// Generated on 2023-04-10 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-12 by fhirbolt-codegen v0.1.0
 #[doc = "Estimated or actual date,  date-time, or age when allergy or intolerance was identified."]
 #[derive(Debug, Clone, PartialEq)]
 pub enum AllergyIntoleranceOnset {
@@ -180,9 +180,6 @@ pub struct AllergyIntolerance {
     pub r#note: Vec<Box<super::super::types::Annotation>>,
     #[doc = "Details about each adverse reaction event linked to exposure to the identified substance."]
     pub r#reaction: Vec<AllergyIntoleranceReaction>,
-}
-impl crate::AnyResource for AllergyIntolerance {
-    const FHIR_RELEASE: fhirbolt_shared::FhirRelease = fhirbolt_shared::FhirRelease::R4;
 }
 impl serde::ser::Serialize for AllergyIntolerance {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

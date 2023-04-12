@@ -1,4 +1,4 @@
-// Generated on 2023-04-10 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-12 by fhirbolt-codegen v0.1.0
 #[doc = "Expressions that describe applicability criteria for the billing code."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub struct ChargeItemDefinitionApplicability {
@@ -283,9 +283,6 @@ pub struct ChargeItemDefinition {
     pub r#applicability: Vec<ChargeItemDefinitionApplicability>,
     #[doc = "Group of properties which are applicable under the same conditions. If no applicability rules are established for the group, then all properties always apply."]
     pub r#property_group: Vec<ChargeItemDefinitionPropertyGroup>,
-}
-impl crate::AnyResource for ChargeItemDefinition {
-    const FHIR_RELEASE: fhirbolt_shared::FhirRelease = fhirbolt_shared::FhirRelease::R4B;
 }
 impl serde::ser::Serialize for ChargeItemDefinition {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

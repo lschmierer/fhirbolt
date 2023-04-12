@@ -1,4 +1,4 @@
-// Generated on 2023-04-10 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-12 by fhirbolt-codegen v0.1.0
 #[doc = "Prospective warnings of potential issues when providing care to the patient."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub struct Flag {
@@ -34,9 +34,6 @@ pub struct Flag {
     pub r#encounter: Option<Box<super::super::types::Reference>>,
     #[doc = "The person, organization or device that created the flag."]
     pub r#author: Option<Box<super::super::types::Reference>>,
-}
-impl crate::AnyResource for Flag {
-    const FHIR_RELEASE: fhirbolt_shared::FhirRelease = fhirbolt_shared::FhirRelease::R4B;
 }
 impl serde::ser::Serialize for Flag {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

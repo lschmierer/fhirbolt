@@ -1,4 +1,4 @@
-// Generated on 2023-04-10 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-12 by fhirbolt-codegen v0.1.0
 #[doc = "Identifier for the source value set that contains the concepts that are being mapped and provides context for the mappings."]
 #[derive(Debug, Clone, PartialEq)]
 pub enum ConceptMapSource {
@@ -625,9 +625,6 @@ pub struct ConceptMap {
     pub r#target: Option<ConceptMapTarget>,
     #[doc = "A group of mappings that all have the same source and target system."]
     pub r#group: Vec<ConceptMapGroup>,
-}
-impl crate::AnyResource for ConceptMap {
-    const FHIR_RELEASE: fhirbolt_shared::FhirRelease = fhirbolt_shared::FhirRelease::R4B;
 }
 impl serde::ser::Serialize for ConceptMap {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

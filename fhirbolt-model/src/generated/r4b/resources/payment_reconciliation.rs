@@ -1,4 +1,4 @@
-// Generated on 2023-04-10 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-12 by fhirbolt-codegen v0.1.0
 #[doc = "Distribution of the payment amount for a previously acknowledged payable."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub struct PaymentReconciliationDetail {
@@ -218,9 +218,6 @@ pub struct PaymentReconciliation {
     pub r#form_code: Option<Box<super::super::types::CodeableConcept>>,
     #[doc = "A note that describes or explains the processing in a human readable form."]
     pub r#process_note: Vec<PaymentReconciliationProcessNote>,
-}
-impl crate::AnyResource for PaymentReconciliation {
-    const FHIR_RELEASE: fhirbolt_shared::FhirRelease = fhirbolt_shared::FhirRelease::R4B;
 }
 impl serde::ser::Serialize for PaymentReconciliation {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

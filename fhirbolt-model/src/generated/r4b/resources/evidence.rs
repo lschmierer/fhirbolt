@@ -1,4 +1,4 @@
-// Generated on 2023-04-10 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-12 by fhirbolt-codegen v0.1.0
 #[doc = "Citation Resource or display of suggested citation for this evidence."]
 #[derive(Debug, Clone, PartialEq)]
 pub enum EvidenceCiteAs {
@@ -723,9 +723,6 @@ pub struct Evidence {
     pub r#statistic: Vec<EvidenceStatistic>,
     #[doc = "Assessment of certainty, confidence in the estimates, or quality of the evidence."]
     pub r#certainty: Vec<EvidenceCertainty>,
-}
-impl crate::AnyResource for Evidence {
-    const FHIR_RELEASE: fhirbolt_shared::FhirRelease = fhirbolt_shared::FhirRelease::R4B;
 }
 impl serde::ser::Serialize for Evidence {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

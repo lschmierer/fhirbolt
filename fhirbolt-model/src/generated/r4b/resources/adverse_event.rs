@@ -1,4 +1,4 @@
-// Generated on 2023-04-10 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-12 by fhirbolt-codegen v0.1.0
 #[doc = "Information on the possible cause of the event."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub struct AdverseEventSuspectEntityCausality {
@@ -166,9 +166,6 @@ pub struct AdverseEvent {
     pub r#reference_document: Vec<Box<super::super::types::Reference>>,
     #[doc = "AdverseEvent.study."]
     pub r#study: Vec<Box<super::super::types::Reference>>,
-}
-impl crate::AnyResource for AdverseEvent {
-    const FHIR_RELEASE: fhirbolt_shared::FhirRelease = fhirbolt_shared::FhirRelease::R4B;
 }
 impl serde::ser::Serialize for AdverseEvent {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

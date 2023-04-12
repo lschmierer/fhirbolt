@@ -1,4 +1,4 @@
-// Generated on 2023-04-10 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-12 by fhirbolt-codegen v0.1.0
 #[doc = "This resource provides the status of the payment for goods and services rendered, and the request and response resource references."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub struct PaymentNotice {
@@ -42,9 +42,6 @@ pub struct PaymentNotice {
     pub r#amount: Box<super::super::types::Money>,
     #[doc = "A code indicating whether payment has been sent or cleared."]
     pub r#payment_status: Option<Box<super::super::types::CodeableConcept>>,
-}
-impl crate::AnyResource for PaymentNotice {
-    const FHIR_RELEASE: fhirbolt_shared::FhirRelease = fhirbolt_shared::FhirRelease::R4B;
 }
 impl serde::ser::Serialize for PaymentNotice {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

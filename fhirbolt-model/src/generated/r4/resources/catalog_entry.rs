@@ -1,4 +1,4 @@
-// Generated on 2023-04-10 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-12 by fhirbolt-codegen v0.1.0
 #[doc = "Used for example, to point to a substance, or to a device used to administer a medication."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub struct CatalogEntryRelatedEntry {
@@ -96,9 +96,6 @@ pub struct CatalogEntry {
     pub r#additional_classification: Vec<Box<super::super::types::CodeableConcept>>,
     #[doc = "Used for example, to point to a substance, or to a device used to administer a medication."]
     pub r#related_entry: Vec<CatalogEntryRelatedEntry>,
-}
-impl crate::AnyResource for CatalogEntry {
-    const FHIR_RELEASE: fhirbolt_shared::FhirRelease = fhirbolt_shared::FhirRelease::R4;
 }
 impl serde::ser::Serialize for CatalogEntry {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

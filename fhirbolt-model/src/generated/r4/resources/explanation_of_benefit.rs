@@ -1,4 +1,4 @@
-// Generated on 2023-04-10 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-12 by fhirbolt-codegen v0.1.0
 #[doc = "The date when or period to which this information refers."]
 #[derive(Debug, Clone, PartialEq)]
 pub enum ExplanationOfBenefitSupportingInfoTiming {
@@ -2690,9 +2690,6 @@ pub struct ExplanationOfBenefit {
     pub r#benefit_period: Option<Box<super::super::types::Period>>,
     #[doc = "Balance by Benefit Category."]
     pub r#benefit_balance: Vec<ExplanationOfBenefitBenefitBalance>,
-}
-impl crate::AnyResource for ExplanationOfBenefit {
-    const FHIR_RELEASE: fhirbolt_shared::FhirRelease = fhirbolt_shared::FhirRelease::R4;
 }
 impl serde::ser::Serialize for ExplanationOfBenefit {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

@@ -18,12 +18,10 @@ use crate::context::de::DeserializationContext;
 
 use super::error;
 
-impl<'a, 'de, const R: FhirRelease> DeserializeSeed<'de>
-    for &mut DeserializationContext<Element<R>>
-{
+impl<'a, 'de, const R: FhirRelease> DeserializeSeed<'de> for DeserializationContext<Element<R>> {
     type Value = Element<R>;
 
-    fn deserialize<D>(self, deserializer: D) -> Result<Self::Value, D::Error>
+    fn deserialize<D>(mut self, deserializer: D) -> Result<Self::Value, D::Error>
     where
         D: de::Deserializer<'de>,
     {

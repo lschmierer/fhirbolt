@@ -1,4 +1,4 @@
-// Generated on 2023-04-10 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-12 by fhirbolt-codegen v0.1.0
 #[doc = "A code or group definition that describes the intended subject of the event definition."]
 #[derive(Debug, Clone, PartialEq)]
 pub enum EventDefinitionSubject {
@@ -86,9 +86,6 @@ pub struct EventDefinition {
     pub r#related_artifact: Vec<Box<super::super::types::RelatedArtifact>>,
     #[doc = "The trigger element defines when the event occurs. If more than one trigger condition is specified, the event fires whenever any one of the trigger conditions is met."]
     pub r#trigger: Vec<Box<super::super::types::TriggerDefinition>>,
-}
-impl crate::AnyResource for EventDefinition {
-    const FHIR_RELEASE: fhirbolt_shared::FhirRelease = fhirbolt_shared::FhirRelease::R4;
 }
 impl serde::ser::Serialize for EventDefinition {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

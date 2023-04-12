@@ -1,4 +1,4 @@
-// Generated on 2023-04-10 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-12 by fhirbolt-codegen v0.1.0
 #[doc = "Describes an expected sequence of events for one of the participants of a study.  E.g. Exposure to drug A, wash-out, exposure to drug B, wash-out, follow-up."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub struct ResearchStudyArm {
@@ -199,9 +199,6 @@ pub struct ResearchStudy {
     pub r#arm: Vec<ResearchStudyArm>,
     #[doc = "A goal that the study is aiming to achieve in terms of a scientific question to be answered by the analysis of data collected during the study."]
     pub r#objective: Vec<ResearchStudyObjective>,
-}
-impl crate::AnyResource for ResearchStudy {
-    const FHIR_RELEASE: fhirbolt_shared::FhirRelease = fhirbolt_shared::FhirRelease::R4B;
 }
 impl serde::ser::Serialize for ResearchStudy {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

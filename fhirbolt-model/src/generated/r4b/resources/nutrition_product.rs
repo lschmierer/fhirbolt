@@ -1,4 +1,4 @@
-// Generated on 2023-04-10 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-12 by fhirbolt-codegen v0.1.0
 #[doc = "The actual characteristic value corresponding to the type."]
 #[derive(Debug, Clone, PartialEq)]
 pub enum NutritionProductProductCharacteristicValue {
@@ -343,9 +343,6 @@ pub struct NutritionProduct {
     pub r#instance: Option<NutritionProductInstance>,
     #[doc = "Comments made about the product."]
     pub r#note: Vec<Box<super::super::types::Annotation>>,
-}
-impl crate::AnyResource for NutritionProduct {
-    const FHIR_RELEASE: fhirbolt_shared::FhirRelease = fhirbolt_shared::FhirRelease::R4B;
 }
 impl serde::ser::Serialize for NutritionProduct {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

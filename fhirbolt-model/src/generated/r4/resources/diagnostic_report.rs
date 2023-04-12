@@ -1,4 +1,4 @@
-// Generated on 2023-04-10 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-12 by fhirbolt-codegen v0.1.0
 #[doc = "The time or time-period the observed values are related to. When the subject of the report is a patient, this is usually either the time of the procedure or of specimen collection(s), but very often the source of the date/time is not known, only the date/time itself."]
 #[derive(Debug, Clone, PartialEq)]
 pub enum DiagnosticReportEffective {
@@ -122,9 +122,6 @@ pub struct DiagnosticReport {
     pub r#conclusion_code: Vec<Box<super::super::types::CodeableConcept>>,
     #[doc = "Rich text representation of the entire result as issued by the diagnostic service. Multiple formats are allowed but they SHALL be semantically equivalent."]
     pub r#presented_form: Vec<Box<super::super::types::Attachment>>,
-}
-impl crate::AnyResource for DiagnosticReport {
-    const FHIR_RELEASE: fhirbolt_shared::FhirRelease = fhirbolt_shared::FhirRelease::R4;
 }
 impl serde::ser::Serialize for DiagnosticReport {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

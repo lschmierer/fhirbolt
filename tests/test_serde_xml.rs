@@ -1,13 +1,12 @@
 #![feature(adt_const_params)]
 
-use std::{fmt, io::Read};
+use std::io::Read;
 
-use serde::{de::DeserializeSeed, Serialize};
+use serde::Serialize;
 
 use fhirbolt::{
     element::Element,
-    model::AnyResource,
-    serde::{DeserializationConfig, DeserializationContext, DeserializationMode},
+    serde::{DeserializationConfig, DeserializationMode, DeserializeResource},
     FhirRelease,
 };
 
@@ -18,8 +17,7 @@ use test_utils::{
 
 fn test_serde_xml<'a, T, const R: FhirRelease>(mode: DeserializationMode)
 where
-    T: AnyResource + Serialize + PartialEq + fmt::Debug + Clone,
-    for<'c, 'de> &'c mut DeserializationContext<T>: DeserializeSeed<'de, Value = T>,
+    T: DeserializeResource + Serialize,
 {
     let mut examples_iter = examples(R, JsonOrXml::Xml);
 
@@ -43,7 +41,7 @@ where
         buffer.clear();
         file.read_to_end(&mut buffer).unwrap();
 
-        let element = fhirbolt::serde::xml::from_slice::<Element<R>>(&buffer, None).unwrap();
+        let element: Element<R> = fhirbolt::serde::xml::from_slice(&buffer, None).unwrap();
 
         let mut element_buffer = Vec::new();
         _ = fhirbolt::serde::element::xml::to_writer(&mut element_buffer, &element).unwrap();
@@ -54,11 +52,9 @@ where
             R == FhirRelease::R4B && file.name() == "valuesets.xml",
         );
 
-        let resource = fhirbolt::serde::xml::from_slice::<T>(
-            &buffer[..],
-            Some(DeserializationConfig { mode }),
-        )
-        .unwrap();
+        let resource: T =
+            fhirbolt::serde::xml::from_slice(&buffer[..], Some(DeserializationConfig { mode }))
+                .unwrap();
 
         assert_xml_eq(
             &fhirbolt::serde::model::xml::to_vec(&resource).unwrap(),

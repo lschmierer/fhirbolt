@@ -1,4 +1,4 @@
-// Generated on 2023-04-10 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-12 by fhirbolt-codegen v0.1.0
 #[doc = "Link to a resource that concerns the same actual person."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub struct PersonLink {
@@ -94,9 +94,6 @@ pub struct Person {
     pub r#active: Option<super::super::types::Boolean>,
     #[doc = "Link to a resource that concerns the same actual person."]
     pub r#link: Vec<PersonLink>,
-}
-impl crate::AnyResource for Person {
-    const FHIR_RELEASE: fhirbolt_shared::FhirRelease = fhirbolt_shared::FhirRelease::R4;
 }
 impl serde::ser::Serialize for Person {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

@@ -1,4 +1,4 @@
-// Generated on 2023-04-10 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-12 by fhirbolt-codegen v0.1.0
 #[doc = "Reference to a specific medication (active substance, medicinal product or class of products) as part of an indication or contraindication."]
 #[derive(Debug, Clone, PartialEq)]
 pub enum MedicinalProductIndicationOtherTherapyMedication {
@@ -96,9 +96,6 @@ pub struct MedicinalProductIndication {
     pub r#undesirable_effect: Vec<Box<super::super::types::Reference>>,
     #[doc = "The population group to which this applies."]
     pub r#population: Vec<Box<super::super::types::Population>>,
-}
-impl crate::AnyResource for MedicinalProductIndication {
-    const FHIR_RELEASE: fhirbolt_shared::FhirRelease = fhirbolt_shared::FhirRelease::R4;
 }
 impl serde::ser::Serialize for MedicinalProductIndication {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

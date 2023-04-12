@@ -1,4 +1,4 @@
-// Generated on 2023-04-10 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-12 by fhirbolt-codegen v0.1.0
 #[doc = "The value of this property."]
 #[derive(Debug, Clone, PartialEq)]
 pub enum CodeSystemConceptPropertyValue {
@@ -666,9 +666,6 @@ pub struct CodeSystem {
     pub r#property: Vec<CodeSystemProperty>,
     #[doc = "Concepts that are in the code system. The concept definitions are inherently hierarchical, but the definitions must be consulted to determine what the meanings of the hierarchical relationships are."]
     pub r#concept: Vec<CodeSystemConcept>,
-}
-impl crate::AnyResource for CodeSystem {
-    const FHIR_RELEASE: fhirbolt_shared::FhirRelease = fhirbolt_shared::FhirRelease::R4;
 }
 impl serde::ser::Serialize for CodeSystem {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

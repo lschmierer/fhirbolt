@@ -1,4 +1,4 @@
-// Generated on 2023-04-10 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-12 by fhirbolt-codegen v0.1.0
 #[doc = "Binds to a value set if this parameter is coded (code, Coding, CodeableConcept)."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub struct OperationDefinitionParameterBinding {
@@ -517,9 +517,6 @@ pub struct OperationDefinition {
     pub r#parameter: Vec<OperationDefinitionParameter>,
     #[doc = "Defines an appropriate combination of parameters to use when invoking this operation, to help code generators when generating overloaded parameter sets for this operation."]
     pub r#overload: Vec<OperationDefinitionOverload>,
-}
-impl crate::AnyResource for OperationDefinition {
-    const FHIR_RELEASE: fhirbolt_shared::FhirRelease = fhirbolt_shared::FhirRelease::R4;
 }
 impl serde::ser::Serialize for OperationDefinition {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

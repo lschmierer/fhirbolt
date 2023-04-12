@@ -1,4 +1,4 @@
-// Generated on 2023-04-10 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-12 by fhirbolt-codegen v0.1.0
 #[doc = "The date and time(s) at which the media was collected."]
 #[derive(Debug, Clone, PartialEq)]
 pub enum MediaCreated {
@@ -74,9 +74,6 @@ pub struct Media {
     pub r#content: Box<super::super::types::Attachment>,
     #[doc = "Comments made about the media by the performer, subject or other participants."]
     pub r#note: Vec<Box<super::super::types::Annotation>>,
-}
-impl crate::AnyResource for Media {
-    const FHIR_RELEASE: fhirbolt_shared::FhirRelease = fhirbolt_shared::FhirRelease::R4B;
 }
 impl serde::ser::Serialize for Media {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

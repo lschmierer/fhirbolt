@@ -1,4 +1,4 @@
-// Generated on 2023-04-10 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-12 by fhirbolt-codegen v0.1.0
 #[doc = "A code or group definition that describes the intended subject of the activity being defined."]
 #[derive(Debug, Clone, PartialEq)]
 pub enum ActivityDefinitionSubject {
@@ -256,9 +256,6 @@ pub struct ActivityDefinition {
     pub r#transform: Option<super::super::types::Canonical>,
     #[doc = "Dynamic values that will be evaluated to produce values for elements of the resulting resource. For example, if the dosage of a medication must be computed based on the patient's weight, a dynamic value would be used to specify an expression that calculated the weight, and the path on the request resource that would contain the result."]
     pub r#dynamic_value: Vec<ActivityDefinitionDynamicValue>,
-}
-impl crate::AnyResource for ActivityDefinition {
-    const FHIR_RELEASE: fhirbolt_shared::FhirRelease = fhirbolt_shared::FhirRelease::R4;
 }
 impl serde::ser::Serialize for ActivityDefinition {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

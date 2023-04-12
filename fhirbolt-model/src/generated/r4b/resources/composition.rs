@@ -1,4 +1,4 @@
-// Generated on 2023-04-10 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-12 by fhirbolt-codegen v0.1.0
 #[doc = "The target composition/document of this relationship."]
 #[derive(Debug, Clone, PartialEq)]
 pub enum CompositionRelatesToTarget {
@@ -358,9 +358,6 @@ pub struct Composition {
     pub r#event: Vec<CompositionEvent>,
     #[doc = "The root of the sections that make up the composition."]
     pub r#section: Vec<CompositionSection>,
-}
-impl crate::AnyResource for Composition {
-    const FHIR_RELEASE: fhirbolt_shared::FhirRelease = fhirbolt_shared::FhirRelease::R4B;
 }
 impl serde::ser::Serialize for Composition {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
