@@ -1,6 +1,6 @@
-// Generated on 2023-04-13 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-14 by fhirbolt-codegen v0.1.0
 impl serde::ser::Serialize
-    for crate::SerializationContext<&fhirbolt_model::r4b::resources::TestScriptOrigin>
+    for crate::context::ser::SerializationContext<&fhirbolt_model::r4b::resources::TestScriptOrigin>
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -47,7 +47,9 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&Box<fhirbolt_model::r4b::resources::TestScriptOrigin>>
+    for crate::context::ser::SerializationContext<
+        &Box<fhirbolt_model::r4b::resources::TestScriptOrigin>,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -57,7 +59,9 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&Vec<fhirbolt_model::r4b::resources::TestScriptOrigin>>
+    for crate::context::ser::SerializationContext<
+        &Vec<fhirbolt_model::r4b::resources::TestScriptOrigin>,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -72,7 +76,9 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&Vec<Box<fhirbolt_model::r4b::resources::TestScriptOrigin>>>
+    for crate::context::ser::SerializationContext<
+        &Vec<Box<fhirbolt_model::r4b::resources::TestScriptOrigin>>,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -335,7 +341,9 @@ impl<'de> serde::de::DeserializeSeed<'de>
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&fhirbolt_model::r4b::resources::TestScriptDestination>
+    for crate::context::ser::SerializationContext<
+        &fhirbolt_model::r4b::resources::TestScriptDestination,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -382,7 +390,9 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&Box<fhirbolt_model::r4b::resources::TestScriptDestination>>
+    for crate::context::ser::SerializationContext<
+        &Box<fhirbolt_model::r4b::resources::TestScriptDestination>,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -392,7 +402,9 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&Vec<fhirbolt_model::r4b::resources::TestScriptDestination>>
+    for crate::context::ser::SerializationContext<
+        &Vec<fhirbolt_model::r4b::resources::TestScriptDestination>,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -407,7 +419,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Vec<Box<fhirbolt_model::r4b::resources::TestScriptDestination>>,
     >
 {
@@ -672,7 +684,9 @@ impl<'de> serde::de::DeserializeSeed<'de>
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&fhirbolt_model::r4b::resources::TestScriptMetadataLink>
+    for crate::context::ser::SerializationContext<
+        &fhirbolt_model::r4b::resources::TestScriptMetadataLink,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -733,7 +747,9 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&Box<fhirbolt_model::r4b::resources::TestScriptMetadataLink>>
+    for crate::context::ser::SerializationContext<
+        &Box<fhirbolt_model::r4b::resources::TestScriptMetadataLink>,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -743,7 +759,9 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&Vec<fhirbolt_model::r4b::resources::TestScriptMetadataLink>>
+    for crate::context::ser::SerializationContext<
+        &Vec<fhirbolt_model::r4b::resources::TestScriptMetadataLink>,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -758,7 +776,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Vec<Box<fhirbolt_model::r4b::resources::TestScriptMetadataLink>>,
     >
 {
@@ -1039,7 +1057,9 @@ impl<'de> serde::de::DeserializeSeed<'de>
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&fhirbolt_model::r4b::resources::TestScriptMetadataCapability>
+    for crate::context::ser::SerializationContext<
+        &fhirbolt_model::r4b::resources::TestScriptMetadataCapability,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -1253,7 +1273,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Box<fhirbolt_model::r4b::resources::TestScriptMetadataCapability>,
     >
 {
@@ -1265,7 +1285,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Vec<fhirbolt_model::r4b::resources::TestScriptMetadataCapability>,
     >
 {
@@ -1282,7 +1302,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Vec<Box<fhirbolt_model::r4b::resources::TestScriptMetadataCapability>>,
     >
 {
@@ -1836,7 +1856,9 @@ impl<'de> serde::de::DeserializeSeed<'de>
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&fhirbolt_model::r4b::resources::TestScriptMetadata>
+    for crate::context::ser::SerializationContext<
+        &fhirbolt_model::r4b::resources::TestScriptMetadata,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -1869,7 +1891,9 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&Box<fhirbolt_model::r4b::resources::TestScriptMetadata>>
+    for crate::context::ser::SerializationContext<
+        &Box<fhirbolt_model::r4b::resources::TestScriptMetadata>,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -1879,7 +1903,9 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&Vec<fhirbolt_model::r4b::resources::TestScriptMetadata>>
+    for crate::context::ser::SerializationContext<
+        &Vec<fhirbolt_model::r4b::resources::TestScriptMetadata>,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -1894,7 +1920,9 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&Vec<Box<fhirbolt_model::r4b::resources::TestScriptMetadata>>>
+    for crate::context::ser::SerializationContext<
+        &Vec<Box<fhirbolt_model::r4b::resources::TestScriptMetadata>>,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -2136,7 +2164,9 @@ impl<'de> serde::de::DeserializeSeed<'de>
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&fhirbolt_model::r4b::resources::TestScriptFixture>
+    for crate::context::ser::SerializationContext<
+        &fhirbolt_model::r4b::resources::TestScriptFixture,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -2204,7 +2234,9 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&Box<fhirbolt_model::r4b::resources::TestScriptFixture>>
+    for crate::context::ser::SerializationContext<
+        &Box<fhirbolt_model::r4b::resources::TestScriptFixture>,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -2214,7 +2246,9 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&Vec<fhirbolt_model::r4b::resources::TestScriptFixture>>
+    for crate::context::ser::SerializationContext<
+        &Vec<fhirbolt_model::r4b::resources::TestScriptFixture>,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -2229,7 +2263,9 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&Vec<Box<fhirbolt_model::r4b::resources::TestScriptFixture>>>
+    for crate::context::ser::SerializationContext<
+        &Vec<Box<fhirbolt_model::r4b::resources::TestScriptFixture>>,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -2538,7 +2574,9 @@ impl<'de> serde::de::DeserializeSeed<'de>
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&fhirbolt_model::r4b::resources::TestScriptVariable>
+    for crate::context::ser::SerializationContext<
+        &fhirbolt_model::r4b::resources::TestScriptVariable,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -2727,7 +2765,9 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&Box<fhirbolt_model::r4b::resources::TestScriptVariable>>
+    for crate::context::ser::SerializationContext<
+        &Box<fhirbolt_model::r4b::resources::TestScriptVariable>,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -2737,7 +2777,9 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&Vec<fhirbolt_model::r4b::resources::TestScriptVariable>>
+    for crate::context::ser::SerializationContext<
+        &Vec<fhirbolt_model::r4b::resources::TestScriptVariable>,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -2752,7 +2794,9 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&Vec<Box<fhirbolt_model::r4b::resources::TestScriptVariable>>>
+    for crate::context::ser::SerializationContext<
+        &Vec<Box<fhirbolt_model::r4b::resources::TestScriptVariable>>,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -3259,7 +3303,7 @@ impl<'de> serde::de::DeserializeSeed<'de>
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &fhirbolt_model::r4b::resources::TestScriptSetupActionOperationRequestHeader,
     >
 {
@@ -3324,7 +3368,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Box<fhirbolt_model::r4b::resources::TestScriptSetupActionOperationRequestHeader>,
     >
 {
@@ -3336,7 +3380,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Vec<fhirbolt_model::r4b::resources::TestScriptSetupActionOperationRequestHeader>,
     >
 {
@@ -3353,7 +3397,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Vec<Box<fhirbolt_model::r4b::resources::TestScriptSetupActionOperationRequestHeader>>,
     >
 {
@@ -3648,7 +3692,9 @@ impl<'de> serde::de::DeserializeSeed<'de>
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&fhirbolt_model::r4b::resources::TestScriptSetupActionOperation>
+    for crate::context::ser::SerializationContext<
+        &fhirbolt_model::r4b::resources::TestScriptSetupActionOperation,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -3996,7 +4042,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Box<fhirbolt_model::r4b::resources::TestScriptSetupActionOperation>,
     >
 {
@@ -4008,7 +4054,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Vec<fhirbolt_model::r4b::resources::TestScriptSetupActionOperation>,
     >
 {
@@ -4025,7 +4071,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Vec<Box<fhirbolt_model::r4b::resources::TestScriptSetupActionOperation>>,
     >
 {
@@ -4830,7 +4876,9 @@ impl<'de> serde::de::DeserializeSeed<'de>
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&fhirbolt_model::r4b::resources::TestScriptSetupActionAssert>
+    for crate::context::ser::SerializationContext<
+        &fhirbolt_model::r4b::resources::TestScriptSetupActionAssert,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -5321,7 +5369,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Box<fhirbolt_model::r4b::resources::TestScriptSetupActionAssert>,
     >
 {
@@ -5333,7 +5381,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Vec<fhirbolt_model::r4b::resources::TestScriptSetupActionAssert>,
     >
 {
@@ -5350,7 +5398,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Vec<Box<fhirbolt_model::r4b::resources::TestScriptSetupActionAssert>>,
     >
 {
@@ -6413,7 +6461,9 @@ impl<'de> serde::de::DeserializeSeed<'de>
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&fhirbolt_model::r4b::resources::TestScriptSetupAction>
+    for crate::context::ser::SerializationContext<
+        &fhirbolt_model::r4b::resources::TestScriptSetupAction,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -6444,7 +6494,9 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&Box<fhirbolt_model::r4b::resources::TestScriptSetupAction>>
+    for crate::context::ser::SerializationContext<
+        &Box<fhirbolt_model::r4b::resources::TestScriptSetupAction>,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -6454,7 +6506,9 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&Vec<fhirbolt_model::r4b::resources::TestScriptSetupAction>>
+    for crate::context::ser::SerializationContext<
+        &Vec<fhirbolt_model::r4b::resources::TestScriptSetupAction>,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -6469,7 +6523,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Vec<Box<fhirbolt_model::r4b::resources::TestScriptSetupAction>>,
     >
 {
@@ -6704,7 +6758,7 @@ impl<'de> serde::de::DeserializeSeed<'de>
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&fhirbolt_model::r4b::resources::TestScriptSetup>
+    for crate::context::ser::SerializationContext<&fhirbolt_model::r4b::resources::TestScriptSetup>
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -6734,7 +6788,9 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&Box<fhirbolt_model::r4b::resources::TestScriptSetup>>
+    for crate::context::ser::SerializationContext<
+        &Box<fhirbolt_model::r4b::resources::TestScriptSetup>,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -6744,7 +6800,9 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&Vec<fhirbolt_model::r4b::resources::TestScriptSetup>>
+    for crate::context::ser::SerializationContext<
+        &Vec<fhirbolt_model::r4b::resources::TestScriptSetup>,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -6759,7 +6817,9 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&Vec<Box<fhirbolt_model::r4b::resources::TestScriptSetup>>>
+    for crate::context::ser::SerializationContext<
+        &Vec<Box<fhirbolt_model::r4b::resources::TestScriptSetup>>,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -6984,7 +7044,9 @@ impl<'de> serde::de::DeserializeSeed<'de>
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&fhirbolt_model::r4b::resources::TestScriptTestAction>
+    for crate::context::ser::SerializationContext<
+        &fhirbolt_model::r4b::resources::TestScriptTestAction,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -7015,7 +7077,9 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&Box<fhirbolt_model::r4b::resources::TestScriptTestAction>>
+    for crate::context::ser::SerializationContext<
+        &Box<fhirbolt_model::r4b::resources::TestScriptTestAction>,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -7025,7 +7089,9 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&Vec<fhirbolt_model::r4b::resources::TestScriptTestAction>>
+    for crate::context::ser::SerializationContext<
+        &Vec<fhirbolt_model::r4b::resources::TestScriptTestAction>,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -7040,7 +7106,9 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&Vec<Box<fhirbolt_model::r4b::resources::TestScriptTestAction>>>
+    for crate::context::ser::SerializationContext<
+        &Vec<Box<fhirbolt_model::r4b::resources::TestScriptTestAction>>,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -7273,7 +7341,7 @@ impl<'de> serde::de::DeserializeSeed<'de>
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&fhirbolt_model::r4b::resources::TestScriptTest>
+    for crate::context::ser::SerializationContext<&fhirbolt_model::r4b::resources::TestScriptTest>
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -7345,7 +7413,9 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&Box<fhirbolt_model::r4b::resources::TestScriptTest>>
+    for crate::context::ser::SerializationContext<
+        &Box<fhirbolt_model::r4b::resources::TestScriptTest>,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -7355,7 +7425,9 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&Vec<fhirbolt_model::r4b::resources::TestScriptTest>>
+    for crate::context::ser::SerializationContext<
+        &Vec<fhirbolt_model::r4b::resources::TestScriptTest>,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -7370,7 +7442,9 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&Vec<Box<fhirbolt_model::r4b::resources::TestScriptTest>>>
+    for crate::context::ser::SerializationContext<
+        &Vec<Box<fhirbolt_model::r4b::resources::TestScriptTest>>,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -7674,7 +7748,9 @@ impl<'de> serde::de::DeserializeSeed<'de>
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&fhirbolt_model::r4b::resources::TestScriptTeardownAction>
+    for crate::context::ser::SerializationContext<
+        &fhirbolt_model::r4b::resources::TestScriptTeardownAction,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -7702,7 +7778,9 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&Box<fhirbolt_model::r4b::resources::TestScriptTeardownAction>>
+    for crate::context::ser::SerializationContext<
+        &Box<fhirbolt_model::r4b::resources::TestScriptTeardownAction>,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -7712,7 +7790,9 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&Vec<fhirbolt_model::r4b::resources::TestScriptTeardownAction>>
+    for crate::context::ser::SerializationContext<
+        &Vec<fhirbolt_model::r4b::resources::TestScriptTeardownAction>,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -7727,7 +7807,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Vec<Box<fhirbolt_model::r4b::resources::TestScriptTeardownAction>>,
     >
 {
@@ -7951,7 +8031,9 @@ impl<'de> serde::de::DeserializeSeed<'de>
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&fhirbolt_model::r4b::resources::TestScriptTeardown>
+    for crate::context::ser::SerializationContext<
+        &fhirbolt_model::r4b::resources::TestScriptTeardown,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -7981,7 +8063,9 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&Box<fhirbolt_model::r4b::resources::TestScriptTeardown>>
+    for crate::context::ser::SerializationContext<
+        &Box<fhirbolt_model::r4b::resources::TestScriptTeardown>,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -7991,7 +8075,9 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&Vec<fhirbolt_model::r4b::resources::TestScriptTeardown>>
+    for crate::context::ser::SerializationContext<
+        &Vec<fhirbolt_model::r4b::resources::TestScriptTeardown>,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -8006,7 +8092,9 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&Vec<Box<fhirbolt_model::r4b::resources::TestScriptTeardown>>>
+    for crate::context::ser::SerializationContext<
+        &Vec<Box<fhirbolt_model::r4b::resources::TestScriptTeardown>>,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -8233,7 +8321,7 @@ impl crate::Resource for fhirbolt_model::r4b::resources::TestScript {
     const FHIR_RELEASE: crate::FhirRelease = crate::FhirRelease::R4B;
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&fhirbolt_model::r4b::resources::TestScript>
+    for crate::context::ser::SerializationContext<&fhirbolt_model::r4b::resources::TestScript>
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -8586,7 +8674,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&Box<fhirbolt_model::r4b::resources::TestScript>>
+    for crate::context::ser::SerializationContext<&Box<fhirbolt_model::r4b::resources::TestScript>>
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -8596,7 +8684,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&Vec<fhirbolt_model::r4b::resources::TestScript>>
+    for crate::context::ser::SerializationContext<&Vec<fhirbolt_model::r4b::resources::TestScript>>
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -8611,7 +8699,9 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&Vec<Box<fhirbolt_model::r4b::resources::TestScript>>>
+    for crate::context::ser::SerializationContext<
+        &Vec<Box<fhirbolt_model::r4b::resources::TestScript>>,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where

@@ -1,4 +1,4 @@
-// Generated on 2023-04-13 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-14 by fhirbolt-codegen v0.1.0
 #[doc = "Base StructureDefinition for ParameterDefinition Type: The parameters to the module. This collection specifies both the input and output parameters. Input parameters are provided by the caller as part of the $evaluate operation. Output parameters are included in the GuidanceResponse."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub struct ParameterDefinition {

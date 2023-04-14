@@ -1,4 +1,4 @@
-// Generated on 2023-04-13 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-14 by fhirbolt-codegen v0.1.0
 #[doc = "Narrows the range of legal concerns to focus on the achievement of specific contractual objectives."]
 #[derive(Debug, Clone, PartialEq)]
 pub enum ContractTopic {

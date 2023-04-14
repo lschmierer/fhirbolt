@@ -34,7 +34,7 @@ pub fn implement_serialize(
     });
 
     quote! {
-        impl serde::ser::Serialize for crate::SerializationContext<&#namespace::#struct_name_ident> {
+        impl serde::ser::Serialize for crate::context::ser::SerializationContext<&#namespace::#struct_name_ident> {
             fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
             where
                 S: serde::ser::Serializer,
@@ -52,7 +52,7 @@ pub fn implement_serialize(
             }
         }
 
-        impl serde::ser::Serialize for crate::SerializationContext<&Box<#namespace::#struct_name_ident>> {
+        impl serde::ser::Serialize for crate::context::ser::SerializationContext<&Box<#namespace::#struct_name_ident>> {
             fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
             where
                 S: serde::ser::Serializer,
@@ -61,7 +61,7 @@ pub fn implement_serialize(
             }
         }
 
-        impl serde::ser::Serialize for crate::SerializationContext<&Vec<#namespace::#struct_name_ident>> {
+        impl serde::ser::Serialize for crate::context::ser::SerializationContext<&Vec<#namespace::#struct_name_ident>> {
             fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
             where
                 S: serde::ser::Serializer,
@@ -80,7 +80,7 @@ pub fn implement_serialize(
             }
         }
 
-        impl serde::ser::Serialize for crate::SerializationContext<&Vec<Box<#namespace::#struct_name_ident>>> {
+        impl serde::ser::Serialize for crate::context::ser::SerializationContext<&Vec<Box<#namespace::#struct_name_ident>>> {
             fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
             where
                 S: serde::ser::Serializer,
@@ -116,7 +116,7 @@ pub fn implement_serialize_resource_enum(
     });
 
     quote! {
-        impl serde::ser::Serialize for crate::SerializationContext<&#namespace::Resource> {
+        impl serde::ser::Serialize for crate::context::ser::SerializationContext<&#namespace::Resource> {
             fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
             where
                 S: serde::ser::Serializer,
@@ -130,7 +130,7 @@ pub fn implement_serialize_resource_enum(
             }
         }
 
-        impl serde::ser::Serialize for crate::SerializationContext<&Box<#namespace::Resource>> {
+        impl serde::ser::Serialize for crate::context::ser::SerializationContext<&Box<#namespace::Resource>> {
             fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
             where
                 S: serde::ser::Serializer,
@@ -139,7 +139,7 @@ pub fn implement_serialize_resource_enum(
             }
         }
 
-        impl serde::ser::Serialize for crate::SerializationContext<&Vec<Box<#namespace::Resource>>> {
+        impl serde::ser::Serialize for crate::context::ser::SerializationContext<&Vec<Box<#namespace::Resource>>> {
             fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
             where
                 S: serde::ser::Serializer,

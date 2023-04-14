@@ -17,7 +17,8 @@ const FHIR_DEFINITIONS_JSON_DOWNLOAD_URL: &str = "http://hl7.org/fhir/{}/definit
 
 const MODEL_OUTPUT_DIRECTORY: &str = "fhirbolt-model/src/generated";
 const SERDE_OUTPUT_DIRECTORY: &str = "fhirbolt-serde/src/model/generated";
-const TYPE_HINTS_OUTPUT_DIRECTORY: &str = "fhirbolt-shared/src/serde_helpers/type_hints/generated";
+const TYPE_HINTS_OUTPUT_DIRECTORY: &str = "fhirbolt-shared/src/type_hints/generated";
+const ELEMENT_MAP_OUTPUT_DIRECTORY: &str = "fhirbolt-shared/src/element_map/generated";
 
 fn tmp_dir(fhir_release: &str) -> PathBuf {
     let dir = PathBuf::from(env!("CARGO_MANIFEST_DIR"))
@@ -118,6 +119,7 @@ fn clear_generated() {
     fs::remove_dir_all(generate_dir(MODEL_OUTPUT_DIRECTORY)).unwrap();
     fs::remove_dir_all(generate_dir(SERDE_OUTPUT_DIRECTORY)).unwrap();
     fs::remove_dir_all(generate_dir(TYPE_HINTS_OUTPUT_DIRECTORY)).unwrap();
+    fs::remove_dir_all(generate_dir(ELEMENT_MAP_OUTPUT_DIRECTORY)).unwrap();
 }
 
 fn output_release_dir(target: &str, fhir_release: &str) -> PathBuf {
@@ -172,24 +174,18 @@ fn write_source_file(
     write!(file, "{}", tokens).unwrap();
 }
 
-fn write_root_mod_file(path: &str) {
+fn write_root_mod_file(path: &str, feature_gate: bool) {
     let mut file = File::create(&generate_dir(path).join("mod.rs")).unwrap();
 
     for fhir_release in BUILD_FHIR_RELEASES {
-        writeln!(
-            file,
-            "#[cfg(feature = \"{}\")]",
-            fhir_release.to_lowercase()
-        )
-        .unwrap();
-        writeln!(file, "pub mod {};", fhir_release.to_lowercase()).unwrap();
-    }
-}
-
-fn write_type_hints_root_mod_file(path: &str) {
-    let mut file = File::create(&generate_dir(path).join("mod.rs")).unwrap();
-
-    for fhir_release in BUILD_FHIR_RELEASES {
+        if feature_gate {
+            writeln!(
+                file,
+                "#[cfg(feature = \"{}\")]",
+                fhir_release.to_lowercase()
+            )
+            .unwrap();
+        }
         writeln!(file, "pub mod {};", fhir_release.to_lowercase()).unwrap();
     }
 }
@@ -239,6 +235,25 @@ fn type_hints_output_source_file(fhir_release: &str) -> PathBuf {
 
 fn write_type_hints_source_file(fhir_release: &str, tokens: &TokenStream) {
     let file_path = type_hints_output_source_file(fhir_release);
+    let mut file =
+        File::create(&file_path).expect(&format!("Error creating output file '{:?}'", file_path));
+
+    write!(
+        file,
+        "// Generated on {} by fhirbolt-codegen v{}\n",
+        OffsetDateTime::now_utc().date(),
+        env!("CARGO_PKG_VERSION")
+    )
+    .unwrap();
+    write!(file, "{}", tokens).unwrap();
+}
+
+fn element_map_output_source_file(fhir_release: &str) -> PathBuf {
+    generate_dir(ELEMENT_MAP_OUTPUT_DIRECTORY).join(format!("{}.rs", fhir_release.to_lowercase()))
+}
+
+fn write_element_map_source_file(fhir_release: &str, tokens: &TokenStream) {
+    let file_path = element_map_output_source_file(fhir_release);
     let mut file =
         File::create(&file_path).expect(&format!("Error creating output file '{:?}'", file_path));
 
@@ -305,6 +320,7 @@ fn generate_and_write(fhir_release: &str, types_bundle: &Bundle, resources_bundl
     );
 
     write_type_hints_source_file(fhir_release, &generated.type_hints);
+    write_element_map_source_file(fhir_release, &generated.element_map);
 }
 
 fn rustfmt() {
@@ -318,9 +334,10 @@ fn rustfmt() {
 fn main() {
     clear_generated();
 
-    write_root_mod_file(MODEL_OUTPUT_DIRECTORY);
-    write_root_mod_file(SERDE_OUTPUT_DIRECTORY);
-    write_type_hints_root_mod_file(TYPE_HINTS_OUTPUT_DIRECTORY);
+    write_root_mod_file(MODEL_OUTPUT_DIRECTORY, true);
+    write_root_mod_file(SERDE_OUTPUT_DIRECTORY, true);
+    write_root_mod_file(TYPE_HINTS_OUTPUT_DIRECTORY, false);
+    write_root_mod_file(ELEMENT_MAP_OUTPUT_DIRECTORY, false);
 
     for fhir_release in BUILD_FHIR_RELEASES {
         println!("Generating FHIR {}...", fhir_release);

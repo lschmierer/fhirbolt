@@ -1,6 +1,8 @@
-// Generated on 2023-04-13 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-14 by fhirbolt-codegen v0.1.0
 impl serde::ser::Serialize
-    for crate::SerializationContext<&fhirbolt_model::r4::resources::ExplanationOfBenefitRelated>
+    for crate::context::ser::SerializationContext<
+        &fhirbolt_model::r4::resources::ExplanationOfBenefitRelated,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -34,7 +36,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Box<fhirbolt_model::r4::resources::ExplanationOfBenefitRelated>,
     >
 {
@@ -46,7 +48,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Vec<fhirbolt_model::r4::resources::ExplanationOfBenefitRelated>,
     >
 {
@@ -63,7 +65,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Vec<Box<fhirbolt_model::r4::resources::ExplanationOfBenefitRelated>>,
     >
 {
@@ -323,7 +325,9 @@ impl<'de> serde::de::DeserializeSeed<'de>
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&fhirbolt_model::r4::resources::ExplanationOfBenefitPayee>
+    for crate::context::ser::SerializationContext<
+        &fhirbolt_model::r4::resources::ExplanationOfBenefitPayee,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -354,7 +358,9 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&Box<fhirbolt_model::r4::resources::ExplanationOfBenefitPayee>>
+    for crate::context::ser::SerializationContext<
+        &Box<fhirbolt_model::r4::resources::ExplanationOfBenefitPayee>,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -364,7 +370,9 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&Vec<fhirbolt_model::r4::resources::ExplanationOfBenefitPayee>>
+    for crate::context::ser::SerializationContext<
+        &Vec<fhirbolt_model::r4::resources::ExplanationOfBenefitPayee>,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -379,7 +387,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Vec<Box<fhirbolt_model::r4::resources::ExplanationOfBenefitPayee>>,
     >
 {
@@ -622,7 +630,9 @@ impl<'de> serde::de::DeserializeSeed<'de>
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&fhirbolt_model::r4::resources::ExplanationOfBenefitCareTeam>
+    for crate::context::ser::SerializationContext<
+        &fhirbolt_model::r4::resources::ExplanationOfBenefitCareTeam,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -696,7 +706,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Box<fhirbolt_model::r4::resources::ExplanationOfBenefitCareTeam>,
     >
 {
@@ -708,7 +718,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Vec<fhirbolt_model::r4::resources::ExplanationOfBenefitCareTeam>,
     >
 {
@@ -725,7 +735,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Vec<Box<fhirbolt_model::r4::resources::ExplanationOfBenefitCareTeam>>,
     >
 {
@@ -1068,7 +1078,7 @@ impl<'de> serde::de::DeserializeSeed<'de>
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &fhirbolt_model::r4::resources::ExplanationOfBenefitSupportingInfo,
     >
 {
@@ -1129,7 +1139,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Box<fhirbolt_model::r4::resources::ExplanationOfBenefitSupportingInfo>,
     >
 {
@@ -1141,7 +1151,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Vec<fhirbolt_model::r4::resources::ExplanationOfBenefitSupportingInfo>,
     >
 {
@@ -1158,7 +1168,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Vec<Box<fhirbolt_model::r4::resources::ExplanationOfBenefitSupportingInfo>>,
     >
 {
@@ -1572,7 +1582,9 @@ impl<'de> serde::de::DeserializeSeed<'de>
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&fhirbolt_model::r4::resources::ExplanationOfBenefitDiagnosis>
+    for crate::context::ser::SerializationContext<
+        &fhirbolt_model::r4::resources::ExplanationOfBenefitDiagnosis,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -1626,7 +1638,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Box<fhirbolt_model::r4::resources::ExplanationOfBenefitDiagnosis>,
     >
 {
@@ -1638,7 +1650,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Vec<fhirbolt_model::r4::resources::ExplanationOfBenefitDiagnosis>,
     >
 {
@@ -1655,7 +1667,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Vec<Box<fhirbolt_model::r4::resources::ExplanationOfBenefitDiagnosis>>,
     >
 {
@@ -1996,7 +2008,9 @@ impl<'de> serde::de::DeserializeSeed<'de>
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&fhirbolt_model::r4::resources::ExplanationOfBenefitProcedure>
+    for crate::context::ser::SerializationContext<
+        &fhirbolt_model::r4::resources::ExplanationOfBenefitProcedure,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -2068,7 +2082,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Box<fhirbolt_model::r4::resources::ExplanationOfBenefitProcedure>,
     >
 {
@@ -2080,7 +2094,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Vec<fhirbolt_model::r4::resources::ExplanationOfBenefitProcedure>,
     >
 {
@@ -2097,7 +2111,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Vec<Box<fhirbolt_model::r4::resources::ExplanationOfBenefitProcedure>>,
     >
 {
@@ -2473,7 +2487,9 @@ impl<'de> serde::de::DeserializeSeed<'de>
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&fhirbolt_model::r4::resources::ExplanationOfBenefitInsurance>
+    for crate::context::ser::SerializationContext<
+        &fhirbolt_model::r4::resources::ExplanationOfBenefitInsurance,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -2565,7 +2581,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Box<fhirbolt_model::r4::resources::ExplanationOfBenefitInsurance>,
     >
 {
@@ -2577,7 +2593,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Vec<fhirbolt_model::r4::resources::ExplanationOfBenefitInsurance>,
     >
 {
@@ -2594,7 +2610,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Vec<Box<fhirbolt_model::r4::resources::ExplanationOfBenefitInsurance>>,
     >
 {
@@ -2950,7 +2966,9 @@ impl<'de> serde::de::DeserializeSeed<'de>
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&fhirbolt_model::r4::resources::ExplanationOfBenefitAccident>
+    for crate::context::ser::SerializationContext<
+        &fhirbolt_model::r4::resources::ExplanationOfBenefitAccident,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -3018,7 +3036,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Box<fhirbolt_model::r4::resources::ExplanationOfBenefitAccident>,
     >
 {
@@ -3030,7 +3048,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Vec<fhirbolt_model::r4::resources::ExplanationOfBenefitAccident>,
     >
 {
@@ -3047,7 +3065,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Vec<Box<fhirbolt_model::r4::resources::ExplanationOfBenefitAccident>>,
     >
 {
@@ -3335,7 +3353,7 @@ impl<'de> serde::de::DeserializeSeed<'de>
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &fhirbolt_model::r4::resources::ExplanationOfBenefitItemAdjudication,
     >
 {
@@ -3394,7 +3412,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Box<fhirbolt_model::r4::resources::ExplanationOfBenefitItemAdjudication>,
     >
 {
@@ -3406,7 +3424,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Vec<fhirbolt_model::r4::resources::ExplanationOfBenefitItemAdjudication>,
     >
 {
@@ -3423,7 +3441,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Vec<Box<fhirbolt_model::r4::resources::ExplanationOfBenefitItemAdjudication>>,
     >
 {
@@ -3723,7 +3741,7 @@ impl<'de> serde::de::DeserializeSeed<'de>
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &fhirbolt_model::r4::resources::ExplanationOfBenefitItemDetailSubDetail,
     >
 {
@@ -3873,7 +3891,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Box<fhirbolt_model::r4::resources::ExplanationOfBenefitItemDetailSubDetail>,
     >
 {
@@ -3885,7 +3903,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Vec<fhirbolt_model::r4::resources::ExplanationOfBenefitItemDetailSubDetail>,
     >
 {
@@ -3902,7 +3920,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Vec<Box<fhirbolt_model::r4::resources::ExplanationOfBenefitItemDetailSubDetail>>,
     >
 {
@@ -4451,7 +4469,9 @@ impl<'de> serde::de::DeserializeSeed<'de>
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&fhirbolt_model::r4::resources::ExplanationOfBenefitItemDetail>
+    for crate::context::ser::SerializationContext<
+        &fhirbolt_model::r4::resources::ExplanationOfBenefitItemDetail,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -4604,7 +4624,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Box<fhirbolt_model::r4::resources::ExplanationOfBenefitItemDetail>,
     >
 {
@@ -4616,7 +4636,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Vec<fhirbolt_model::r4::resources::ExplanationOfBenefitItemDetail>,
     >
 {
@@ -4633,7 +4653,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Vec<Box<fhirbolt_model::r4::resources::ExplanationOfBenefitItemDetail>>,
     >
 {
@@ -5195,7 +5215,9 @@ impl<'de> serde::de::DeserializeSeed<'de>
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&fhirbolt_model::r4::resources::ExplanationOfBenefitItem>
+    for crate::context::ser::SerializationContext<
+        &fhirbolt_model::r4::resources::ExplanationOfBenefitItem,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -5577,7 +5599,9 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&Box<fhirbolt_model::r4::resources::ExplanationOfBenefitItem>>
+    for crate::context::ser::SerializationContext<
+        &Box<fhirbolt_model::r4::resources::ExplanationOfBenefitItem>,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -5587,7 +5611,9 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&Vec<fhirbolt_model::r4::resources::ExplanationOfBenefitItem>>
+    for crate::context::ser::SerializationContext<
+        &Vec<fhirbolt_model::r4::resources::ExplanationOfBenefitItem>,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -5602,7 +5628,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Vec<Box<fhirbolt_model::r4::resources::ExplanationOfBenefitItem>>,
     >
 {
@@ -6603,7 +6629,7 @@ impl<'de> serde::de::DeserializeSeed<'de>
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &fhirbolt_model::r4::resources::ExplanationOfBenefitAddItemDetailSubDetail,
     >
 {
@@ -6720,7 +6746,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Box<fhirbolt_model::r4::resources::ExplanationOfBenefitAddItemDetailSubDetail>,
     >
 {
@@ -6732,7 +6758,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Vec<fhirbolt_model::r4::resources::ExplanationOfBenefitAddItemDetailSubDetail>,
     >
 {
@@ -6749,7 +6775,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Vec<Box<fhirbolt_model::r4::resources::ExplanationOfBenefitAddItemDetailSubDetail>>,
     >
 {
@@ -7186,7 +7212,7 @@ impl<'de> serde::de::DeserializeSeed<'de>
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &fhirbolt_model::r4::resources::ExplanationOfBenefitAddItemDetail,
     >
 {
@@ -7308,7 +7334,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Box<fhirbolt_model::r4::resources::ExplanationOfBenefitAddItemDetail>,
     >
 {
@@ -7320,7 +7346,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Vec<fhirbolt_model::r4::resources::ExplanationOfBenefitAddItemDetail>,
     >
 {
@@ -7337,7 +7363,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Vec<Box<fhirbolt_model::r4::resources::ExplanationOfBenefitAddItemDetail>>,
     >
 {
@@ -7781,7 +7807,9 @@ impl<'de> serde::de::DeserializeSeed<'de>
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&fhirbolt_model::r4::resources::ExplanationOfBenefitAddItem>
+    for crate::context::ser::SerializationContext<
+        &fhirbolt_model::r4::resources::ExplanationOfBenefitAddItem,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -8090,7 +8118,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Box<fhirbolt_model::r4::resources::ExplanationOfBenefitAddItem>,
     >
 {
@@ -8102,7 +8130,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Vec<fhirbolt_model::r4::resources::ExplanationOfBenefitAddItem>,
     >
 {
@@ -8119,7 +8147,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Vec<Box<fhirbolt_model::r4::resources::ExplanationOfBenefitAddItem>>,
     >
 {
@@ -8944,7 +8972,9 @@ impl<'de> serde::de::DeserializeSeed<'de>
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&fhirbolt_model::r4::resources::ExplanationOfBenefitTotal>
+    for crate::context::ser::SerializationContext<
+        &fhirbolt_model::r4::resources::ExplanationOfBenefitTotal,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -8975,7 +9005,9 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&Box<fhirbolt_model::r4::resources::ExplanationOfBenefitTotal>>
+    for crate::context::ser::SerializationContext<
+        &Box<fhirbolt_model::r4::resources::ExplanationOfBenefitTotal>,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -8985,7 +9017,9 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&Vec<fhirbolt_model::r4::resources::ExplanationOfBenefitTotal>>
+    for crate::context::ser::SerializationContext<
+        &Vec<fhirbolt_model::r4::resources::ExplanationOfBenefitTotal>,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -9000,7 +9034,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Vec<Box<fhirbolt_model::r4::resources::ExplanationOfBenefitTotal>>,
     >
 {
@@ -9251,7 +9285,9 @@ impl<'de> serde::de::DeserializeSeed<'de>
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&fhirbolt_model::r4::resources::ExplanationOfBenefitPayment>
+    for crate::context::ser::SerializationContext<
+        &fhirbolt_model::r4::resources::ExplanationOfBenefitPayment,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -9312,7 +9348,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Box<fhirbolt_model::r4::resources::ExplanationOfBenefitPayment>,
     >
 {
@@ -9324,7 +9360,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Vec<fhirbolt_model::r4::resources::ExplanationOfBenefitPayment>,
     >
 {
@@ -9341,7 +9377,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Vec<Box<fhirbolt_model::r4::resources::ExplanationOfBenefitPayment>>,
     >
 {
@@ -9660,7 +9696,9 @@ impl<'de> serde::de::DeserializeSeed<'de>
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&fhirbolt_model::r4::resources::ExplanationOfBenefitProcessNote>
+    for crate::context::ser::SerializationContext<
+        &fhirbolt_model::r4::resources::ExplanationOfBenefitProcessNote,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -9751,7 +9789,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Box<fhirbolt_model::r4::resources::ExplanationOfBenefitProcessNote>,
     >
 {
@@ -9763,7 +9801,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Vec<fhirbolt_model::r4::resources::ExplanationOfBenefitProcessNote>,
     >
 {
@@ -9780,7 +9818,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Vec<Box<fhirbolt_model::r4::resources::ExplanationOfBenefitProcessNote>>,
     >
 {
@@ -10115,7 +10153,7 @@ impl<'de> serde::de::DeserializeSeed<'de>
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &fhirbolt_model::r4::resources::ExplanationOfBenefitBenefitBalanceFinancial,
     >
 {
@@ -10149,7 +10187,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Box<fhirbolt_model::r4::resources::ExplanationOfBenefitBenefitBalanceFinancial>,
     >
 {
@@ -10161,7 +10199,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Vec<fhirbolt_model::r4::resources::ExplanationOfBenefitBenefitBalanceFinancial>,
     >
 {
@@ -10178,7 +10216,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Vec<Box<fhirbolt_model::r4::resources::ExplanationOfBenefitBenefitBalanceFinancial>>,
     >
 {
@@ -10519,7 +10557,7 @@ impl<'de> serde::de::DeserializeSeed<'de>
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &fhirbolt_model::r4::resources::ExplanationOfBenefitBenefitBalance,
     >
 {
@@ -10626,7 +10664,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Box<fhirbolt_model::r4::resources::ExplanationOfBenefitBenefitBalance>,
     >
 {
@@ -10638,7 +10676,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Vec<fhirbolt_model::r4::resources::ExplanationOfBenefitBenefitBalance>,
     >
 {
@@ -10655,7 +10693,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Vec<Box<fhirbolt_model::r4::resources::ExplanationOfBenefitBenefitBalance>>,
     >
 {
@@ -11051,7 +11089,9 @@ impl crate::Resource for fhirbolt_model::r4::resources::ExplanationOfBenefit {
     const FHIR_RELEASE: crate::FhirRelease = crate::FhirRelease::R4;
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&fhirbolt_model::r4::resources::ExplanationOfBenefit>
+    for crate::context::ser::SerializationContext<
+        &fhirbolt_model::r4::resources::ExplanationOfBenefit,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -11425,7 +11465,9 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&Box<fhirbolt_model::r4::resources::ExplanationOfBenefit>>
+    for crate::context::ser::SerializationContext<
+        &Box<fhirbolt_model::r4::resources::ExplanationOfBenefit>,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -11435,7 +11477,9 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&Vec<fhirbolt_model::r4::resources::ExplanationOfBenefit>>
+    for crate::context::ser::SerializationContext<
+        &Vec<fhirbolt_model::r4::resources::ExplanationOfBenefit>,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -11450,7 +11494,9 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&Vec<Box<fhirbolt_model::r4::resources::ExplanationOfBenefit>>>
+    for crate::context::ser::SerializationContext<
+        &Vec<Box<fhirbolt_model::r4::resources::ExplanationOfBenefit>>,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where

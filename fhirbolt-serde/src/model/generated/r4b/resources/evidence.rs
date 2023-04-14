@@ -1,6 +1,8 @@
-// Generated on 2023-04-13 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-14 by fhirbolt-codegen v0.1.0
 impl serde::ser::Serialize
-    for crate::SerializationContext<&fhirbolt_model::r4b::resources::EvidenceVariableDefinition>
+    for crate::context::ser::SerializationContext<
+        &fhirbolt_model::r4b::resources::EvidenceVariableDefinition,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -61,7 +63,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Box<fhirbolt_model::r4b::resources::EvidenceVariableDefinition>,
     >
 {
@@ -73,7 +75,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Vec<fhirbolt_model::r4b::resources::EvidenceVariableDefinition>,
     >
 {
@@ -90,7 +92,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Vec<Box<fhirbolt_model::r4b::resources::EvidenceVariableDefinition>>,
     >
 {
@@ -410,7 +412,9 @@ impl<'de> serde::de::DeserializeSeed<'de>
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&fhirbolt_model::r4b::resources::EvidenceStatisticSampleSize>
+    for crate::context::ser::SerializationContext<
+        &fhirbolt_model::r4b::resources::EvidenceStatisticSampleSize,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -524,7 +528,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Box<fhirbolt_model::r4b::resources::EvidenceStatisticSampleSize>,
     >
 {
@@ -536,7 +540,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Vec<fhirbolt_model::r4b::resources::EvidenceStatisticSampleSize>,
     >
 {
@@ -553,7 +557,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Vec<Box<fhirbolt_model::r4b::resources::EvidenceStatisticSampleSize>>,
     >
 {
@@ -953,7 +957,7 @@ impl<'de> serde::de::DeserializeSeed<'de>
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &fhirbolt_model::r4b::resources::EvidenceStatisticAttributeEstimate,
     >
 {
@@ -1041,7 +1045,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Box<fhirbolt_model::r4b::resources::EvidenceStatisticAttributeEstimate>,
     >
 {
@@ -1053,7 +1057,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Vec<fhirbolt_model::r4b::resources::EvidenceStatisticAttributeEstimate>,
     >
 {
@@ -1070,7 +1074,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Vec<Box<fhirbolt_model::r4b::resources::EvidenceStatisticAttributeEstimate>>,
     >
 {
@@ -1422,7 +1426,7 @@ impl<'de> serde::de::DeserializeSeed<'de>
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &fhirbolt_model::r4b::resources::EvidenceStatisticModelCharacteristicVariable,
     >
 {
@@ -1488,7 +1492,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Box<fhirbolt_model::r4b::resources::EvidenceStatisticModelCharacteristicVariable>,
     >
 {
@@ -1500,7 +1504,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Vec<fhirbolt_model::r4b::resources::EvidenceStatisticModelCharacteristicVariable>,
     >
 {
@@ -1517,7 +1521,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Vec<Box<fhirbolt_model::r4b::resources::EvidenceStatisticModelCharacteristicVariable>>,
     >
 {
@@ -1853,7 +1857,7 @@ impl<'de> serde::de::DeserializeSeed<'de>
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &fhirbolt_model::r4b::resources::EvidenceStatisticModelCharacteristic,
     >
 {
@@ -1894,7 +1898,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Box<fhirbolt_model::r4b::resources::EvidenceStatisticModelCharacteristic>,
     >
 {
@@ -1906,7 +1910,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Vec<fhirbolt_model::r4b::resources::EvidenceStatisticModelCharacteristic>,
     >
 {
@@ -1923,7 +1927,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Vec<Box<fhirbolt_model::r4b::resources::EvidenceStatisticModelCharacteristic>>,
     >
 {
@@ -2205,7 +2209,9 @@ impl<'de> serde::de::DeserializeSeed<'de>
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&fhirbolt_model::r4b::resources::EvidenceStatistic>
+    for crate::context::ser::SerializationContext<
+        &fhirbolt_model::r4b::resources::EvidenceStatistic,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -2318,7 +2324,9 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&Box<fhirbolt_model::r4b::resources::EvidenceStatistic>>
+    for crate::context::ser::SerializationContext<
+        &Box<fhirbolt_model::r4b::resources::EvidenceStatistic>,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -2328,7 +2336,9 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&Vec<fhirbolt_model::r4b::resources::EvidenceStatistic>>
+    for crate::context::ser::SerializationContext<
+        &Vec<fhirbolt_model::r4b::resources::EvidenceStatistic>,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -2343,7 +2353,9 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&Vec<Box<fhirbolt_model::r4b::resources::EvidenceStatistic>>>
+    for crate::context::ser::SerializationContext<
+        &Vec<Box<fhirbolt_model::r4b::resources::EvidenceStatistic>>,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -2787,7 +2799,9 @@ impl<'de> serde::de::DeserializeSeed<'de>
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&fhirbolt_model::r4b::resources::EvidenceCertainty>
+    for crate::context::ser::SerializationContext<
+        &fhirbolt_model::r4b::resources::EvidenceCertainty,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -2868,7 +2882,9 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&Box<fhirbolt_model::r4b::resources::EvidenceCertainty>>
+    for crate::context::ser::SerializationContext<
+        &Box<fhirbolt_model::r4b::resources::EvidenceCertainty>,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -2878,7 +2894,9 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&Vec<fhirbolt_model::r4b::resources::EvidenceCertainty>>
+    for crate::context::ser::SerializationContext<
+        &Vec<fhirbolt_model::r4b::resources::EvidenceCertainty>,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -2893,7 +2911,9 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&Vec<Box<fhirbolt_model::r4b::resources::EvidenceCertainty>>>
+    for crate::context::ser::SerializationContext<
+        &Vec<Box<fhirbolt_model::r4b::resources::EvidenceCertainty>>,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -3240,7 +3260,7 @@ impl crate::Resource for fhirbolt_model::r4b::resources::Evidence {
     const FHIR_RELEASE: crate::FhirRelease = crate::FhirRelease::R4B;
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&fhirbolt_model::r4b::resources::Evidence>
+    for crate::context::ser::SerializationContext<&fhirbolt_model::r4b::resources::Evidence>
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -3622,7 +3642,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&Box<fhirbolt_model::r4b::resources::Evidence>>
+    for crate::context::ser::SerializationContext<&Box<fhirbolt_model::r4b::resources::Evidence>>
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -3632,7 +3652,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&Vec<fhirbolt_model::r4b::resources::Evidence>>
+    for crate::context::ser::SerializationContext<&Vec<fhirbolt_model::r4b::resources::Evidence>>
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -3647,7 +3667,9 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&Vec<Box<fhirbolt_model::r4b::resources::Evidence>>>
+    for crate::context::ser::SerializationContext<
+        &Vec<Box<fhirbolt_model::r4b::resources::Evidence>>,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where

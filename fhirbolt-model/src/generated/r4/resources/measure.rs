@@ -1,4 +1,4 @@
-// Generated on 2023-04-13 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-14 by fhirbolt-codegen v0.1.0
 #[doc = "The intended subjects for the measure. If this element is not provided, a Patient subject is assumed, but the subject of the measure can be anything."]
 #[derive(Debug, Clone, PartialEq)]
 pub enum MeasureSubject {

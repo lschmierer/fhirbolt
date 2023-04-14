@@ -1,6 +1,8 @@
-// Generated on 2023-04-13 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-14 by fhirbolt-codegen v0.1.0
 impl serde::ser::Serialize
-    for crate::SerializationContext<&fhirbolt_model::r4b::resources::SubstanceDefinitionMoiety>
+    for crate::context::ser::SerializationContext<
+        &fhirbolt_model::r4b::resources::SubstanceDefinitionMoiety,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -115,7 +117,9 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&Box<fhirbolt_model::r4b::resources::SubstanceDefinitionMoiety>>
+    for crate::context::ser::SerializationContext<
+        &Box<fhirbolt_model::r4b::resources::SubstanceDefinitionMoiety>,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -125,7 +129,9 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&Vec<fhirbolt_model::r4b::resources::SubstanceDefinitionMoiety>>
+    for crate::context::ser::SerializationContext<
+        &Vec<fhirbolt_model::r4b::resources::SubstanceDefinitionMoiety>,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -140,7 +146,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Vec<Box<fhirbolt_model::r4b::resources::SubstanceDefinitionMoiety>>,
     >
 {
@@ -527,7 +533,9 @@ impl<'de> serde::de::DeserializeSeed<'de>
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&fhirbolt_model::r4b::resources::SubstanceDefinitionProperty>
+    for crate::context::ser::SerializationContext<
+        &fhirbolt_model::r4b::resources::SubstanceDefinitionProperty,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -556,7 +564,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Box<fhirbolt_model::r4b::resources::SubstanceDefinitionProperty>,
     >
 {
@@ -568,7 +576,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Vec<fhirbolt_model::r4b::resources::SubstanceDefinitionProperty>,
     >
 {
@@ -585,7 +593,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Vec<Box<fhirbolt_model::r4b::resources::SubstanceDefinitionProperty>>,
     >
 {
@@ -889,7 +897,7 @@ impl<'de> serde::de::DeserializeSeed<'de>
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &fhirbolt_model::r4b::resources::SubstanceDefinitionMolecularWeight,
     >
 {
@@ -925,7 +933,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Box<fhirbolt_model::r4b::resources::SubstanceDefinitionMolecularWeight>,
     >
 {
@@ -937,7 +945,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Vec<fhirbolt_model::r4b::resources::SubstanceDefinitionMolecularWeight>,
     >
 {
@@ -954,7 +962,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Vec<Box<fhirbolt_model::r4b::resources::SubstanceDefinitionMolecularWeight>>,
     >
 {
@@ -1200,7 +1208,7 @@ impl<'de> serde::de::DeserializeSeed<'de>
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &fhirbolt_model::r4b::resources::SubstanceDefinitionStructureRepresentation,
     >
 {
@@ -1257,7 +1265,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Box<fhirbolt_model::r4b::resources::SubstanceDefinitionStructureRepresentation>,
     >
 {
@@ -1269,7 +1277,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Vec<fhirbolt_model::r4b::resources::SubstanceDefinitionStructureRepresentation>,
     >
 {
@@ -1286,7 +1294,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Vec<Box<fhirbolt_model::r4b::resources::SubstanceDefinitionStructureRepresentation>>,
     >
 {
@@ -1579,7 +1587,9 @@ impl<'de> serde::de::DeserializeSeed<'de>
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&fhirbolt_model::r4b::resources::SubstanceDefinitionStructure>
+    for crate::context::ser::SerializationContext<
+        &fhirbolt_model::r4b::resources::SubstanceDefinitionStructure,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -1672,7 +1682,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Box<fhirbolt_model::r4b::resources::SubstanceDefinitionStructure>,
     >
 {
@@ -1684,7 +1694,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Vec<fhirbolt_model::r4b::resources::SubstanceDefinitionStructure>,
     >
 {
@@ -1701,7 +1711,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Vec<Box<fhirbolt_model::r4b::resources::SubstanceDefinitionStructure>>,
     >
 {
@@ -2099,7 +2109,9 @@ impl<'de> serde::de::DeserializeSeed<'de>
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&fhirbolt_model::r4b::resources::SubstanceDefinitionCode>
+    for crate::context::ser::SerializationContext<
+        &fhirbolt_model::r4b::resources::SubstanceDefinitionCode,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -2159,7 +2171,9 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&Box<fhirbolt_model::r4b::resources::SubstanceDefinitionCode>>
+    for crate::context::ser::SerializationContext<
+        &Box<fhirbolt_model::r4b::resources::SubstanceDefinitionCode>,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -2169,7 +2183,9 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&Vec<fhirbolt_model::r4b::resources::SubstanceDefinitionCode>>
+    for crate::context::ser::SerializationContext<
+        &Vec<fhirbolt_model::r4b::resources::SubstanceDefinitionCode>,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -2184,7 +2200,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Vec<Box<fhirbolt_model::r4b::resources::SubstanceDefinitionCode>>,
     >
 {
@@ -2485,7 +2501,7 @@ impl<'de> serde::de::DeserializeSeed<'de>
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &fhirbolt_model::r4b::resources::SubstanceDefinitionNameOfficial,
     >
 {
@@ -2539,7 +2555,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Box<fhirbolt_model::r4b::resources::SubstanceDefinitionNameOfficial>,
     >
 {
@@ -2551,7 +2567,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Vec<fhirbolt_model::r4b::resources::SubstanceDefinitionNameOfficial>,
     >
 {
@@ -2568,7 +2584,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Vec<Box<fhirbolt_model::r4b::resources::SubstanceDefinitionNameOfficial>>,
     >
 {
@@ -2829,7 +2845,9 @@ impl<'de> serde::de::DeserializeSeed<'de>
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&fhirbolt_model::r4b::resources::SubstanceDefinitionName>
+    for crate::context::ser::SerializationContext<
+        &fhirbolt_model::r4b::resources::SubstanceDefinitionName,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -2933,7 +2951,9 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&Box<fhirbolt_model::r4b::resources::SubstanceDefinitionName>>
+    for crate::context::ser::SerializationContext<
+        &Box<fhirbolt_model::r4b::resources::SubstanceDefinitionName>,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -2943,7 +2963,9 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&Vec<fhirbolt_model::r4b::resources::SubstanceDefinitionName>>
+    for crate::context::ser::SerializationContext<
+        &Vec<fhirbolt_model::r4b::resources::SubstanceDefinitionName>,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -2958,7 +2980,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Vec<Box<fhirbolt_model::r4b::resources::SubstanceDefinitionName>>,
     >
 {
@@ -3419,7 +3441,7 @@ impl<'de> serde::de::DeserializeSeed<'de>
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &fhirbolt_model::r4b::resources::SubstanceDefinitionRelationship,
     >
 {
@@ -3522,7 +3544,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Box<fhirbolt_model::r4b::resources::SubstanceDefinitionRelationship>,
     >
 {
@@ -3534,7 +3556,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Vec<fhirbolt_model::r4b::resources::SubstanceDefinitionRelationship>,
     >
 {
@@ -3551,7 +3573,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Vec<Box<fhirbolt_model::r4b::resources::SubstanceDefinitionRelationship>>,
     >
 {
@@ -3920,7 +3942,7 @@ impl<'de> serde::de::DeserializeSeed<'de>
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &fhirbolt_model::r4b::resources::SubstanceDefinitionSourceMaterial,
     >
 {
@@ -3964,7 +3986,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Box<fhirbolt_model::r4b::resources::SubstanceDefinitionSourceMaterial>,
     >
 {
@@ -3976,7 +3998,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Vec<fhirbolt_model::r4b::resources::SubstanceDefinitionSourceMaterial>,
     >
 {
@@ -3993,7 +4015,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Vec<Box<fhirbolt_model::r4b::resources::SubstanceDefinitionSourceMaterial>>,
     >
 {
@@ -4269,7 +4291,9 @@ impl crate::Resource for fhirbolt_model::r4b::resources::SubstanceDefinition {
     const FHIR_RELEASE: crate::FhirRelease = crate::FhirRelease::R4B;
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&fhirbolt_model::r4b::resources::SubstanceDefinition>
+    for crate::context::ser::SerializationContext<
+        &fhirbolt_model::r4b::resources::SubstanceDefinition,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -4461,7 +4485,9 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&Box<fhirbolt_model::r4b::resources::SubstanceDefinition>>
+    for crate::context::ser::SerializationContext<
+        &Box<fhirbolt_model::r4b::resources::SubstanceDefinition>,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -4471,7 +4497,9 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&Vec<fhirbolt_model::r4b::resources::SubstanceDefinition>>
+    for crate::context::ser::SerializationContext<
+        &Vec<fhirbolt_model::r4b::resources::SubstanceDefinition>,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -4486,7 +4514,9 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&Vec<Box<fhirbolt_model::r4b::resources::SubstanceDefinition>>>
+    for crate::context::ser::SerializationContext<
+        &Vec<Box<fhirbolt_model::r4b::resources::SubstanceDefinition>>,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where

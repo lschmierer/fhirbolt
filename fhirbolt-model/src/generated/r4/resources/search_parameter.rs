@@ -1,4 +1,4 @@
-// Generated on 2023-04-13 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-14 by fhirbolt-codegen v0.1.0
 #[doc = "Used to define the parts of a composite search parameter."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub struct SearchParameterComponent {

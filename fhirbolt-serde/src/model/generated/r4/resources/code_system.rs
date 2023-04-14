@@ -1,6 +1,6 @@
-// Generated on 2023-04-13 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-14 by fhirbolt-codegen v0.1.0
 impl serde::ser::Serialize
-    for crate::SerializationContext<&fhirbolt_model::r4::resources::CodeSystemFilter>
+    for crate::context::ser::SerializationContext<&fhirbolt_model::r4::resources::CodeSystemFilter>
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -127,7 +127,9 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&Box<fhirbolt_model::r4::resources::CodeSystemFilter>>
+    for crate::context::ser::SerializationContext<
+        &Box<fhirbolt_model::r4::resources::CodeSystemFilter>,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -137,7 +139,9 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&Vec<fhirbolt_model::r4::resources::CodeSystemFilter>>
+    for crate::context::ser::SerializationContext<
+        &Vec<fhirbolt_model::r4::resources::CodeSystemFilter>,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -152,7 +156,9 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&Vec<Box<fhirbolt_model::r4::resources::CodeSystemFilter>>>
+    for crate::context::ser::SerializationContext<
+        &Vec<Box<fhirbolt_model::r4::resources::CodeSystemFilter>>,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -562,7 +568,9 @@ impl<'de> serde::de::DeserializeSeed<'de>
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&fhirbolt_model::r4::resources::CodeSystemProperty>
+    for crate::context::ser::SerializationContext<
+        &fhirbolt_model::r4::resources::CodeSystemProperty,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -663,7 +671,9 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&Box<fhirbolt_model::r4::resources::CodeSystemProperty>>
+    for crate::context::ser::SerializationContext<
+        &Box<fhirbolt_model::r4::resources::CodeSystemProperty>,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -673,7 +683,9 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&Vec<fhirbolt_model::r4::resources::CodeSystemProperty>>
+    for crate::context::ser::SerializationContext<
+        &Vec<fhirbolt_model::r4::resources::CodeSystemProperty>,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -688,7 +700,9 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&Vec<Box<fhirbolt_model::r4::resources::CodeSystemProperty>>>
+    for crate::context::ser::SerializationContext<
+        &Vec<Box<fhirbolt_model::r4::resources::CodeSystemProperty>>,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -1063,7 +1077,9 @@ impl<'de> serde::de::DeserializeSeed<'de>
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&fhirbolt_model::r4::resources::CodeSystemConceptDesignation>
+    for crate::context::ser::SerializationContext<
+        &fhirbolt_model::r4::resources::CodeSystemConceptDesignation,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -1131,7 +1147,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Box<fhirbolt_model::r4::resources::CodeSystemConceptDesignation>,
     >
 {
@@ -1143,7 +1159,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Vec<fhirbolt_model::r4::resources::CodeSystemConceptDesignation>,
     >
 {
@@ -1160,7 +1176,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Vec<Box<fhirbolt_model::r4::resources::CodeSystemConceptDesignation>>,
     >
 {
@@ -1471,7 +1487,9 @@ impl<'de> serde::de::DeserializeSeed<'de>
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&fhirbolt_model::r4::resources::CodeSystemConceptProperty>
+    for crate::context::ser::SerializationContext<
+        &fhirbolt_model::r4::resources::CodeSystemConceptProperty,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -1637,7 +1655,9 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&Box<fhirbolt_model::r4::resources::CodeSystemConceptProperty>>
+    for crate::context::ser::SerializationContext<
+        &Box<fhirbolt_model::r4::resources::CodeSystemConceptProperty>,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -1647,7 +1667,9 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&Vec<fhirbolt_model::r4::resources::CodeSystemConceptProperty>>
+    for crate::context::ser::SerializationContext<
+        &Vec<fhirbolt_model::r4::resources::CodeSystemConceptProperty>,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -1662,7 +1684,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Vec<Box<fhirbolt_model::r4::resources::CodeSystemConceptProperty>>,
     >
 {
@@ -2086,7 +2108,7 @@ impl<'de> serde::de::DeserializeSeed<'de>
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&fhirbolt_model::r4::resources::CodeSystemConcept>
+    for crate::context::ser::SerializationContext<&fhirbolt_model::r4::resources::CodeSystemConcept>
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -2185,7 +2207,9 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&Box<fhirbolt_model::r4::resources::CodeSystemConcept>>
+    for crate::context::ser::SerializationContext<
+        &Box<fhirbolt_model::r4::resources::CodeSystemConcept>,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -2195,7 +2219,9 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&Vec<fhirbolt_model::r4::resources::CodeSystemConcept>>
+    for crate::context::ser::SerializationContext<
+        &Vec<fhirbolt_model::r4::resources::CodeSystemConcept>,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -2210,7 +2236,9 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&Vec<Box<fhirbolt_model::r4::resources::CodeSystemConcept>>>
+    for crate::context::ser::SerializationContext<
+        &Vec<Box<fhirbolt_model::r4::resources::CodeSystemConcept>>,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -2615,7 +2643,7 @@ impl crate::Resource for fhirbolt_model::r4::resources::CodeSystem {
     const FHIR_RELEASE: crate::FhirRelease = crate::FhirRelease::R4;
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&fhirbolt_model::r4::resources::CodeSystem>
+    for crate::context::ser::SerializationContext<&fhirbolt_model::r4::resources::CodeSystem>
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -3124,7 +3152,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&Box<fhirbolt_model::r4::resources::CodeSystem>>
+    for crate::context::ser::SerializationContext<&Box<fhirbolt_model::r4::resources::CodeSystem>>
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -3134,7 +3162,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&Vec<fhirbolt_model::r4::resources::CodeSystem>>
+    for crate::context::ser::SerializationContext<&Vec<fhirbolt_model::r4::resources::CodeSystem>>
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -3149,7 +3177,9 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&Vec<Box<fhirbolt_model::r4::resources::CodeSystem>>>
+    for crate::context::ser::SerializationContext<
+        &Vec<Box<fhirbolt_model::r4::resources::CodeSystem>>,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where

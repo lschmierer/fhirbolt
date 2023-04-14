@@ -1,4 +1,4 @@
-// Generated on 2023-04-13 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-14 by fhirbolt-codegen v0.1.0
 #[doc = "The point in time or period over which the subject was assessed."]
 #[derive(Debug, Clone, PartialEq)]
 pub enum ClinicalImpressionEffective {

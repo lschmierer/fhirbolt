@@ -1,4 +1,4 @@
-// Generated on 2023-04-13 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-14 by fhirbolt-codegen v0.1.0
 #[doc = "Base StructureDefinition for ContactDetail Type: Specifies contact information for a person or organization.\n\nNeed to track contact information in the same way across multiple resources."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub struct ContactDetail {

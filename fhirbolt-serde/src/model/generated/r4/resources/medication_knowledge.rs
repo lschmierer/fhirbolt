@@ -1,6 +1,6 @@
-// Generated on 2023-04-13 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-14 by fhirbolt-codegen v0.1.0
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &fhirbolt_model::r4::resources::MedicationKnowledgeRelatedMedicationKnowledge,
     >
 {
@@ -33,7 +33,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Box<fhirbolt_model::r4::resources::MedicationKnowledgeRelatedMedicationKnowledge>,
     >
 {
@@ -45,7 +45,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Vec<fhirbolt_model::r4::resources::MedicationKnowledgeRelatedMedicationKnowledge>,
     >
 {
@@ -62,7 +62,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Vec<Box<fhirbolt_model::r4::resources::MedicationKnowledgeRelatedMedicationKnowledge>>,
     >
 {
@@ -314,7 +314,9 @@ impl<'de> serde::de::DeserializeSeed<'de>
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&fhirbolt_model::r4::resources::MedicationKnowledgeMonograph>
+    for crate::context::ser::SerializationContext<
+        &fhirbolt_model::r4::resources::MedicationKnowledgeMonograph,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -345,7 +347,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Box<fhirbolt_model::r4::resources::MedicationKnowledgeMonograph>,
     >
 {
@@ -357,7 +359,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Vec<fhirbolt_model::r4::resources::MedicationKnowledgeMonograph>,
     >
 {
@@ -374,7 +376,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Vec<Box<fhirbolt_model::r4::resources::MedicationKnowledgeMonograph>>,
     >
 {
@@ -613,7 +615,9 @@ impl<'de> serde::de::DeserializeSeed<'de>
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&fhirbolt_model::r4::resources::MedicationKnowledgeIngredient>
+    for crate::context::ser::SerializationContext<
+        &fhirbolt_model::r4::resources::MedicationKnowledgeIngredient,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -679,7 +683,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Box<fhirbolt_model::r4::resources::MedicationKnowledgeIngredient>,
     >
 {
@@ -691,7 +695,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Vec<fhirbolt_model::r4::resources::MedicationKnowledgeIngredient>,
     >
 {
@@ -708,7 +712,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Vec<Box<fhirbolt_model::r4::resources::MedicationKnowledgeIngredient>>,
     >
 {
@@ -1007,7 +1011,9 @@ impl<'de> serde::de::DeserializeSeed<'de>
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&fhirbolt_model::r4::resources::MedicationKnowledgeCost>
+    for crate::context::ser::SerializationContext<
+        &fhirbolt_model::r4::resources::MedicationKnowledgeCost,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -1055,7 +1061,9 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&Box<fhirbolt_model::r4::resources::MedicationKnowledgeCost>>
+    for crate::context::ser::SerializationContext<
+        &Box<fhirbolt_model::r4::resources::MedicationKnowledgeCost>,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -1065,7 +1073,9 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&Vec<fhirbolt_model::r4::resources::MedicationKnowledgeCost>>
+    for crate::context::ser::SerializationContext<
+        &Vec<fhirbolt_model::r4::resources::MedicationKnowledgeCost>,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -1080,7 +1090,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Vec<Box<fhirbolt_model::r4::resources::MedicationKnowledgeCost>>,
     >
 {
@@ -1370,7 +1380,7 @@ impl<'de> serde::de::DeserializeSeed<'de>
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &fhirbolt_model::r4::resources::MedicationKnowledgeMonitoringProgram,
     >
 {
@@ -1421,7 +1431,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Box<fhirbolt_model::r4::resources::MedicationKnowledgeMonitoringProgram>,
     >
 {
@@ -1433,7 +1443,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Vec<fhirbolt_model::r4::resources::MedicationKnowledgeMonitoringProgram>,
     >
 {
@@ -1450,7 +1460,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Vec<Box<fhirbolt_model::r4::resources::MedicationKnowledgeMonitoringProgram>>,
     >
 {
@@ -1714,7 +1724,7 @@ impl<'de> serde::de::DeserializeSeed<'de>
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &fhirbolt_model::r4::resources::MedicationKnowledgeAdministrationGuidelinesDosage,
     >
 {
@@ -1747,7 +1757,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Box<fhirbolt_model::r4::resources::MedicationKnowledgeAdministrationGuidelinesDosage>,
     >
 {
@@ -1759,7 +1769,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Vec<fhirbolt_model::r4::resources::MedicationKnowledgeAdministrationGuidelinesDosage>,
     >
 {
@@ -1776,7 +1786,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Vec<Box<fhirbolt_model::r4::resources::MedicationKnowledgeAdministrationGuidelinesDosage>>,
     >
 {
@@ -2002,16 +2012,16 @@ impl<'de> serde::de::DeserializeSeed<'de>
         deserializer.deserialize_seq(Visitor(self))
     }
 }
-impl serde :: ser :: Serialize for crate :: SerializationContext < & fhirbolt_model :: r4 :: resources :: MedicationKnowledgeAdministrationGuidelinesPatientCharacteristics > { fn serialize < S > (& self , serializer : S) -> Result < S :: Ok , S :: Error > where S : serde :: ser :: Serializer , { use serde :: ser :: SerializeMap ; let mut state = serializer . serialize_map (None) ? ; if let Some (value) = self . value . r#id . as_ref () { state . serialize_entry ("id" , value) ? ; } if ! self . value . r#extension . is_empty () { self . with_context (& self . value . r#extension , | ctx | state . serialize_entry ("extension" , ctx)) ? ; } if ! self . value . r#modifier_extension . is_empty () { self . with_context (& self . value . r#modifier_extension , | ctx | state . serialize_entry ("modifierExtension" , ctx)) ? ; } match self . value . r#characteristic { fhirbolt_model :: r4 :: resources :: MedicationKnowledgeAdministrationGuidelinesPatientCharacteristicsCharacteristic :: CodeableConcept (ref value) => { self . with_context (value , | ctx | state . serialize_entry ("characteristicCodeableConcept" , ctx)) ? ; } , fhirbolt_model :: r4 :: resources :: MedicationKnowledgeAdministrationGuidelinesPatientCharacteristicsCharacteristic :: Quantity (ref value) => { self . with_context (value , | ctx | state . serialize_entry ("characteristicQuantity" , ctx)) ? ; } , fhirbolt_model :: r4 :: resources :: MedicationKnowledgeAdministrationGuidelinesPatientCharacteristicsCharacteristic :: Invalid => { return Err (serde :: ser :: Error :: custom ("characteristic is a required field")) } } if self . output_json { if ! self . value . r#value . is_empty () { let values = self . value . r#value . iter () . map (| v | & v . value) . map (| v | v . as_ref () . map (| some | Ok (some)) . transpose ()) . collect :: < Result < Vec < _ > , _ >> () ? ; if values . iter () . any (| v | v . is_some ()) { state . serialize_entry ("value" , & values) ? ; } let requires_elements = self . value . r#value . iter () . any (| e | e . id . is_some () || ! e . extension . is_empty ()) ; if requires_elements { let primitive_elements : Vec < _ > = self . value . r#value . iter () . map (| e | if e . id . is_some () || ! e . extension . is_empty () { Some (super :: super :: serde_helpers :: PrimitiveElement { id : e . id . as_ref () , extension : & e . extension , }) } else { None }) . collect () ; self . with_context (& primitive_elements , | ctx | state . serialize_entry ("_value" , ctx)) ? ; } } } else { if ! self . value . r#value . is_empty () { self . with_context (& self . value . r#value , | ctx | state . serialize_entry ("value" , ctx)) ? ; } } state . end () } }
-impl serde :: ser :: Serialize for crate :: SerializationContext < & Box < fhirbolt_model :: r4 :: resources :: MedicationKnowledgeAdministrationGuidelinesPatientCharacteristics >> { fn serialize < S > (& self , serializer : S) -> Result < S :: Ok , S :: Error > where S : serde :: ser :: Serializer , { self . with_context (self . value . as_ref () , | ctx | ctx . serialize (serializer)) } }
-impl serde :: ser :: Serialize for crate :: SerializationContext < & Vec < fhirbolt_model :: r4 :: resources :: MedicationKnowledgeAdministrationGuidelinesPatientCharacteristics >> { fn serialize < S > (& self , serializer : S) -> Result < S :: Ok , S :: Error > where S : serde :: ser :: Serializer , { use serde :: ser :: SerializeSeq ; let mut seq_serializer = serializer . serialize_seq (Some (self . value . len ())) ? ; for value in self . value { self . with_context (value , | ctx | { seq_serializer . serialize_element (ctx) }) ? } seq_serializer . end () } }
-impl serde :: ser :: Serialize for crate :: SerializationContext < & Vec < Box < fhirbolt_model :: r4 :: resources :: MedicationKnowledgeAdministrationGuidelinesPatientCharacteristics >> > { fn serialize < S > (& self , serializer : S) -> Result < S :: Ok , S :: Error > where S : serde :: ser :: Serializer , { use serde :: ser :: SerializeSeq ; let mut seq_serializer = serializer . serialize_seq (Some (self . value . len ())) ? ; for value in self . value { self . with_context (value , | ctx | { seq_serializer . serialize_element (ctx) }) ? } seq_serializer . end () } }
+impl serde :: ser :: Serialize for crate :: context :: ser :: SerializationContext < & fhirbolt_model :: r4 :: resources :: MedicationKnowledgeAdministrationGuidelinesPatientCharacteristics > { fn serialize < S > (& self , serializer : S) -> Result < S :: Ok , S :: Error > where S : serde :: ser :: Serializer , { use serde :: ser :: SerializeMap ; let mut state = serializer . serialize_map (None) ? ; if let Some (value) = self . value . r#id . as_ref () { state . serialize_entry ("id" , value) ? ; } if ! self . value . r#extension . is_empty () { self . with_context (& self . value . r#extension , | ctx | state . serialize_entry ("extension" , ctx)) ? ; } if ! self . value . r#modifier_extension . is_empty () { self . with_context (& self . value . r#modifier_extension , | ctx | state . serialize_entry ("modifierExtension" , ctx)) ? ; } match self . value . r#characteristic { fhirbolt_model :: r4 :: resources :: MedicationKnowledgeAdministrationGuidelinesPatientCharacteristicsCharacteristic :: CodeableConcept (ref value) => { self . with_context (value , | ctx | state . serialize_entry ("characteristicCodeableConcept" , ctx)) ? ; } , fhirbolt_model :: r4 :: resources :: MedicationKnowledgeAdministrationGuidelinesPatientCharacteristicsCharacteristic :: Quantity (ref value) => { self . with_context (value , | ctx | state . serialize_entry ("characteristicQuantity" , ctx)) ? ; } , fhirbolt_model :: r4 :: resources :: MedicationKnowledgeAdministrationGuidelinesPatientCharacteristicsCharacteristic :: Invalid => { return Err (serde :: ser :: Error :: custom ("characteristic is a required field")) } } if self . output_json { if ! self . value . r#value . is_empty () { let values = self . value . r#value . iter () . map (| v | & v . value) . map (| v | v . as_ref () . map (| some | Ok (some)) . transpose ()) . collect :: < Result < Vec < _ > , _ >> () ? ; if values . iter () . any (| v | v . is_some ()) { state . serialize_entry ("value" , & values) ? ; } let requires_elements = self . value . r#value . iter () . any (| e | e . id . is_some () || ! e . extension . is_empty ()) ; if requires_elements { let primitive_elements : Vec < _ > = self . value . r#value . iter () . map (| e | if e . id . is_some () || ! e . extension . is_empty () { Some (super :: super :: serde_helpers :: PrimitiveElement { id : e . id . as_ref () , extension : & e . extension , }) } else { None }) . collect () ; self . with_context (& primitive_elements , | ctx | state . serialize_entry ("_value" , ctx)) ? ; } } } else { if ! self . value . r#value . is_empty () { self . with_context (& self . value . r#value , | ctx | state . serialize_entry ("value" , ctx)) ? ; } } state . end () } }
+impl serde :: ser :: Serialize for crate :: context :: ser :: SerializationContext < & Box < fhirbolt_model :: r4 :: resources :: MedicationKnowledgeAdministrationGuidelinesPatientCharacteristics >> { fn serialize < S > (& self , serializer : S) -> Result < S :: Ok , S :: Error > where S : serde :: ser :: Serializer , { self . with_context (self . value . as_ref () , | ctx | ctx . serialize (serializer)) } }
+impl serde :: ser :: Serialize for crate :: context :: ser :: SerializationContext < & Vec < fhirbolt_model :: r4 :: resources :: MedicationKnowledgeAdministrationGuidelinesPatientCharacteristics >> { fn serialize < S > (& self , serializer : S) -> Result < S :: Ok , S :: Error > where S : serde :: ser :: Serializer , { use serde :: ser :: SerializeSeq ; let mut seq_serializer = serializer . serialize_seq (Some (self . value . len ())) ? ; for value in self . value { self . with_context (value , | ctx | { seq_serializer . serialize_element (ctx) }) ? } seq_serializer . end () } }
+impl serde :: ser :: Serialize for crate :: context :: ser :: SerializationContext < & Vec < Box < fhirbolt_model :: r4 :: resources :: MedicationKnowledgeAdministrationGuidelinesPatientCharacteristics >> > { fn serialize < S > (& self , serializer : S) -> Result < S :: Ok , S :: Error > where S : serde :: ser :: Serializer , { use serde :: ser :: SerializeSeq ; let mut seq_serializer = serializer . serialize_seq (Some (self . value . len ())) ? ; for value in self . value { self . with_context (value , | ctx | { seq_serializer . serialize_element (ctx) }) ? } seq_serializer . end () } }
 impl < 'de > serde :: de :: DeserializeSeed < 'de > for & mut crate :: context :: de :: DeserializationContext < fhirbolt_model :: r4 :: resources :: MedicationKnowledgeAdministrationGuidelinesPatientCharacteristics > { type Value = fhirbolt_model :: r4 :: resources :: MedicationKnowledgeAdministrationGuidelinesPatientCharacteristics ; fn deserialize < D > (self , deserializer : D) -> Result < Self :: Value , D :: Error > where D : serde :: de :: Deserializer < 'de > , { struct Visitor < 'a > (& 'a mut crate :: context :: de :: DeserializationContext < fhirbolt_model :: r4 :: resources :: MedicationKnowledgeAdministrationGuidelinesPatientCharacteristics >) ; impl < 'de > serde :: de :: Visitor < 'de > for Visitor < '_ > { type Value = fhirbolt_model :: r4 :: resources :: MedicationKnowledgeAdministrationGuidelinesPatientCharacteristics ; fn expecting (& self , formatter : & mut std :: fmt :: Formatter) -> std :: fmt :: Result { formatter . write_str ("MedicationKnowledgeAdministrationGuidelinesPatientCharacteristics") } fn visit_map < V > (self , mut map_access : V) -> Result < fhirbolt_model :: r4 :: resources :: MedicationKnowledgeAdministrationGuidelinesPatientCharacteristics , V :: Error > where V : serde :: de :: MapAccess < 'de > , { # [derive (serde :: Deserialize)] # [serde (field_identifier)] enum Field { # [serde (rename = "id")] Id , # [serde (rename = "extension")] Extension , # [serde (rename = "modifierExtension")] ModifierExtension , # [serde (rename = "characteristicCodeableConcept")] CharacteristicCodeableConcept , # [serde (rename = "characteristicQuantity")] CharacteristicQuantity , # [serde (rename = "value")] Value , # [serde (rename = "_value")] ValuePrimitiveElement , Unknown (std :: string :: String) , } fn unknown_field_error < T , E : serde :: de :: Error > (field : & str) -> Result < T , E > { Err (E :: unknown_field (field , & ["id" , "extension" , "modifierExtension" , "characteristicCodeableConcept" , "characteristicQuantity" , "value" ,])) } let mut r#id : Option < std :: string :: String > = None ; let mut r#extension : Option < Vec < Box < fhirbolt_model :: r4 :: types :: Extension > > > = None ; let mut r#modifier_extension : Option < Vec < Box < fhirbolt_model :: r4 :: types :: Extension > > > = None ; let mut r#characteristic : Option < fhirbolt_model :: r4 :: resources :: MedicationKnowledgeAdministrationGuidelinesPatientCharacteristicsCharacteristic > = None ; let mut r#value : Option < Vec < fhirbolt_model :: r4 :: types :: String > > = None ; while let Some (map_access_key) = map_access . next_key () ? { match map_access_key { Field :: Id => { if r#id . is_some () { return Err (serde :: de :: Error :: duplicate_field ("id")) ; } r#id = Some (map_access . next_value () ?) ; } , Field :: Extension => { if self . 0 . from_json { if r#extension . is_some () { return Err (serde :: de :: Error :: duplicate_field ("extension")) ; } r#extension = Some (map_access . next_value_seed (self . 0 . transmute :: < Vec < Box < fhirbolt_model :: r4 :: types :: Extension > >> ()) ?) ; } else { let vec = r#extension . get_or_insert (Default :: default ()) ; vec . push (map_access . next_value_seed (self . 0 . transmute :: < Box < fhirbolt_model :: r4 :: types :: Extension > > ()) ?) ; } } , Field :: ModifierExtension => { if self . 0 . from_json { if r#modifier_extension . is_some () { return Err (serde :: de :: Error :: duplicate_field ("modifierExtension")) ; } r#modifier_extension = Some (map_access . next_value_seed (self . 0 . transmute :: < Vec < Box < fhirbolt_model :: r4 :: types :: Extension > >> ()) ?) ; } else { let vec = r#modifier_extension . get_or_insert (Default :: default ()) ; vec . push (map_access . next_value_seed (self . 0 . transmute :: < Box < fhirbolt_model :: r4 :: types :: Extension > > ()) ?) ; } } , Field :: CharacteristicCodeableConcept => { if r#characteristic . is_some () { return Err (serde :: de :: Error :: duplicate_field ("characteristicCodeableConcept")) ; } r#characteristic = Some (fhirbolt_model :: r4 :: resources :: MedicationKnowledgeAdministrationGuidelinesPatientCharacteristicsCharacteristic :: CodeableConcept (map_access . next_value_seed (self . 0 . transmute :: < Box < fhirbolt_model :: r4 :: types :: CodeableConcept > > ()) ?)) ; } , Field :: CharacteristicQuantity => { if r#characteristic . is_some () { return Err (serde :: de :: Error :: duplicate_field ("characteristicQuantity")) ; } r#characteristic = Some (fhirbolt_model :: r4 :: resources :: MedicationKnowledgeAdministrationGuidelinesPatientCharacteristicsCharacteristic :: Quantity (map_access . next_value_seed (self . 0 . transmute :: < Box < fhirbolt_model :: r4 :: types :: Quantity > > ()) ?)) ; } , Field :: Value => { if self . 0 . from_json { let values : Vec < Option < _ >> = map_access . next_value () ? ; let vec = r#value . get_or_insert (std :: iter :: repeat (Default :: default ()) . take (values . len ()) . collect :: < Vec < _ >> ()) ; if vec . len () != values . len () { return Err (serde :: de :: Error :: invalid_length (values . len () , & "primitive elements length")) ; } if vec . iter () . any (| v | v . value . is_some ()) { return Err (serde :: de :: Error :: duplicate_field ("value")) ; } for (i , value) in values . into_iter () . enumerate () { if let Some (value) = value { vec [i] . value = Some (value) ; } } } else { let vec = r#value . get_or_insert (Default :: default ()) ; vec . push (map_access . next_value_seed (self . 0 . transmute :: < fhirbolt_model :: r4 :: types :: String > ()) ?) ; } } , Field :: ValuePrimitiveElement => { if self . 0 . from_json { let elements : Vec < Option < super :: super :: serde_helpers :: PrimitiveElementOwned >> = map_access . next_value_seed (self . 0 . transmute :: < Vec < Option < super :: super :: serde_helpers :: PrimitiveElementOwned >> > ()) ? ; let vec = r#value . get_or_insert (std :: iter :: repeat (Default :: default ()) . take (elements . len ()) . collect :: < Vec < _ >> ()) ; if vec . len () != elements . len () { return Err (serde :: de :: Error :: invalid_length (elements . len () , & "primitive values length")) ; } if vec . iter () . any (| e | e . id . is_some () || ! e . extension . is_empty ()) { return Err (serde :: de :: Error :: duplicate_field ("_value")) ; } for (i , element) in elements . into_iter () . enumerate () { if let Some (element) = element { vec [i] . id = element . id ; vec [i] . extension = element . extension ; } } } else { return unknown_field_error ("value") ; } } , Field :: Unknown (key) => if self . 0 . config . mode == crate :: context :: de :: DeserializationMode :: Strict { return unknown_field_error (& key) ; } } } Ok (fhirbolt_model :: r4 :: resources :: MedicationKnowledgeAdministrationGuidelinesPatientCharacteristics { r#id , r#extension : r#extension . unwrap_or (vec ! []) , r#modifier_extension : r#modifier_extension . unwrap_or (vec ! []) , r#characteristic : if self . 0 . config . mode == crate :: context :: de :: DeserializationMode :: Lax { r#characteristic . unwrap_or (Default :: default ()) } else { r#characteristic . ok_or (serde :: de :: Error :: missing_field ("characteristic[x]")) ? } , r#value : r#value . unwrap_or (vec ! []) , }) } } deserializer . deserialize_map (Visitor (self)) } }
 impl < 'de > serde :: de :: DeserializeSeed < 'de > for & mut crate :: context :: de :: DeserializationContext < Box < fhirbolt_model :: r4 :: resources :: MedicationKnowledgeAdministrationGuidelinesPatientCharacteristics >> { type Value = Box < fhirbolt_model :: r4 :: resources :: MedicationKnowledgeAdministrationGuidelinesPatientCharacteristics > ; fn deserialize < D > (self , deserializer : D) -> Result < Self :: Value , D :: Error > where D : serde :: de :: Deserializer < 'de > , { self . transmute :: < fhirbolt_model :: r4 :: resources :: MedicationKnowledgeAdministrationGuidelinesPatientCharacteristics > () . deserialize (deserializer) . map (Box :: new) } }
 impl < 'de > serde :: de :: DeserializeSeed < 'de > for & mut crate :: context :: de :: DeserializationContext < Vec < fhirbolt_model :: r4 :: resources :: MedicationKnowledgeAdministrationGuidelinesPatientCharacteristics >> { type Value = Vec < fhirbolt_model :: r4 :: resources :: MedicationKnowledgeAdministrationGuidelinesPatientCharacteristics > ; fn deserialize < D > (self , deserializer : D) -> Result < Self :: Value , D :: Error > where D : serde :: de :: Deserializer < 'de > , { struct Visitor < 'a > (& 'a mut crate :: context :: de :: DeserializationContext < Vec < fhirbolt_model :: r4 :: resources :: MedicationKnowledgeAdministrationGuidelinesPatientCharacteristics >>) ; impl < 'de > serde :: de :: Visitor < 'de > for Visitor < '_ > { type Value = Vec < fhirbolt_model :: r4 :: resources :: MedicationKnowledgeAdministrationGuidelinesPatientCharacteristics > ; fn expecting (& self , formatter : & mut std :: fmt :: Formatter) -> std :: fmt :: Result { formatter . write_str ("a sequence") } fn visit_seq < A > (self , mut seq : A) -> Result < Self :: Value , A :: Error > where A : serde :: de :: SeqAccess < 'de > , { let mut values = Vec :: new () ; while let Some (value) = seq . next_element_seed (self . 0 . transmute :: < fhirbolt_model :: r4 :: resources :: MedicationKnowledgeAdministrationGuidelinesPatientCharacteristics > ()) ? { values . push (value) ; } Ok (values) } } deserializer . deserialize_seq (Visitor (self)) } }
 impl < 'de > serde :: de :: DeserializeSeed < 'de > for & mut crate :: context :: de :: DeserializationContext < Vec < Box < fhirbolt_model :: r4 :: resources :: MedicationKnowledgeAdministrationGuidelinesPatientCharacteristics >> > { type Value = Vec < Box < fhirbolt_model :: r4 :: resources :: MedicationKnowledgeAdministrationGuidelinesPatientCharacteristics >> ; fn deserialize < D > (self , deserializer : D) -> Result < Self :: Value , D :: Error > where D : serde :: de :: Deserializer < 'de > , { struct Visitor < 'a > (& 'a mut crate :: context :: de :: DeserializationContext < Vec < Box < fhirbolt_model :: r4 :: resources :: MedicationKnowledgeAdministrationGuidelinesPatientCharacteristics >> >) ; impl < 'de > serde :: de :: Visitor < 'de > for Visitor < '_ > { type Value = Vec < Box < fhirbolt_model :: r4 :: resources :: MedicationKnowledgeAdministrationGuidelinesPatientCharacteristics >> ; fn expecting (& self , formatter : & mut std :: fmt :: Formatter) -> std :: fmt :: Result { formatter . write_str ("a sequence") } fn visit_seq < A > (self , mut seq : A) -> Result < Self :: Value , A :: Error > where A : serde :: de :: SeqAccess < 'de > , { let mut values = Vec :: new () ; while let Some (value) = seq . next_element_seed (self . 0 . transmute :: < Box < fhirbolt_model :: r4 :: resources :: MedicationKnowledgeAdministrationGuidelinesPatientCharacteristics >> ()) ? { values . push (value) ; } Ok (values) } } deserializer . deserialize_seq (Visitor (self)) } }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &fhirbolt_model::r4::resources::MedicationKnowledgeAdministrationGuidelines,
     >
 {
@@ -2051,7 +2061,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Box<fhirbolt_model::r4::resources::MedicationKnowledgeAdministrationGuidelines>,
     >
 {
@@ -2063,7 +2073,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Vec<fhirbolt_model::r4::resources::MedicationKnowledgeAdministrationGuidelines>,
     >
 {
@@ -2080,7 +2090,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Vec<Box<fhirbolt_model::r4::resources::MedicationKnowledgeAdministrationGuidelines>>,
     >
 {
@@ -2363,7 +2373,7 @@ impl<'de> serde::de::DeserializeSeed<'de>
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &fhirbolt_model::r4::resources::MedicationKnowledgeMedicineClassification,
     >
 {
@@ -2396,7 +2406,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Box<fhirbolt_model::r4::resources::MedicationKnowledgeMedicineClassification>,
     >
 {
@@ -2408,7 +2418,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Vec<fhirbolt_model::r4::resources::MedicationKnowledgeMedicineClassification>,
     >
 {
@@ -2425,7 +2435,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Vec<Box<fhirbolt_model::r4::resources::MedicationKnowledgeMedicineClassification>>,
     >
 {
@@ -2693,7 +2703,9 @@ impl<'de> serde::de::DeserializeSeed<'de>
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&fhirbolt_model::r4::resources::MedicationKnowledgePackaging>
+    for crate::context::ser::SerializationContext<
+        &fhirbolt_model::r4::resources::MedicationKnowledgePackaging,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -2724,7 +2736,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Box<fhirbolt_model::r4::resources::MedicationKnowledgePackaging>,
     >
 {
@@ -2736,7 +2748,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Vec<fhirbolt_model::r4::resources::MedicationKnowledgePackaging>,
     >
 {
@@ -2753,7 +2765,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Vec<Box<fhirbolt_model::r4::resources::MedicationKnowledgePackaging>>,
     >
 {
@@ -2992,7 +3004,7 @@ impl<'de> serde::de::DeserializeSeed<'de>
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &fhirbolt_model::r4::resources::MedicationKnowledgeDrugCharacteristic,
     >
 {
@@ -3025,7 +3037,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Box<fhirbolt_model::r4::resources::MedicationKnowledgeDrugCharacteristic>,
     >
 {
@@ -3037,7 +3049,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Vec<fhirbolt_model::r4::resources::MedicationKnowledgeDrugCharacteristic>,
     >
 {
@@ -3054,7 +3066,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Vec<Box<fhirbolt_model::r4::resources::MedicationKnowledgeDrugCharacteristic>>,
     >
 {
@@ -3364,7 +3376,7 @@ impl<'de> serde::de::DeserializeSeed<'de>
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &fhirbolt_model::r4::resources::MedicationKnowledgeRegulatorySubstitution,
     >
 {
@@ -3411,7 +3423,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Box<fhirbolt_model::r4::resources::MedicationKnowledgeRegulatorySubstitution>,
     >
 {
@@ -3423,7 +3435,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Vec<fhirbolt_model::r4::resources::MedicationKnowledgeRegulatorySubstitution>,
     >
 {
@@ -3440,7 +3452,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Vec<Box<fhirbolt_model::r4::resources::MedicationKnowledgeRegulatorySubstitution>>,
     >
 {
@@ -3718,7 +3730,7 @@ impl<'de> serde::de::DeserializeSeed<'de>
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &fhirbolt_model::r4::resources::MedicationKnowledgeRegulatorySchedule,
     >
 {
@@ -3748,7 +3760,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Box<fhirbolt_model::r4::resources::MedicationKnowledgeRegulatorySchedule>,
     >
 {
@@ -3760,7 +3772,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Vec<fhirbolt_model::r4::resources::MedicationKnowledgeRegulatorySchedule>,
     >
 {
@@ -3777,7 +3789,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Vec<Box<fhirbolt_model::r4::resources::MedicationKnowledgeRegulatorySchedule>>,
     >
 {
@@ -4014,7 +4026,7 @@ impl<'de> serde::de::DeserializeSeed<'de>
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &fhirbolt_model::r4::resources::MedicationKnowledgeRegulatoryMaxDispense,
     >
 {
@@ -4047,7 +4059,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Box<fhirbolt_model::r4::resources::MedicationKnowledgeRegulatoryMaxDispense>,
     >
 {
@@ -4059,7 +4071,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Vec<fhirbolt_model::r4::resources::MedicationKnowledgeRegulatoryMaxDispense>,
     >
 {
@@ -4076,7 +4088,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Vec<Box<fhirbolt_model::r4::resources::MedicationKnowledgeRegulatoryMaxDispense>>,
     >
 {
@@ -4332,7 +4344,9 @@ impl<'de> serde::de::DeserializeSeed<'de>
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&fhirbolt_model::r4::resources::MedicationKnowledgeRegulatory>
+    for crate::context::ser::SerializationContext<
+        &fhirbolt_model::r4::resources::MedicationKnowledgeRegulatory,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -4373,7 +4387,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Box<fhirbolt_model::r4::resources::MedicationKnowledgeRegulatory>,
     >
 {
@@ -4385,7 +4399,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Vec<fhirbolt_model::r4::resources::MedicationKnowledgeRegulatory>,
     >
 {
@@ -4402,7 +4416,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Vec<Box<fhirbolt_model::r4::resources::MedicationKnowledgeRegulatory>>,
     >
 {
@@ -4696,7 +4710,9 @@ impl<'de> serde::de::DeserializeSeed<'de>
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&fhirbolt_model::r4::resources::MedicationKnowledgeKinetics>
+    for crate::context::ser::SerializationContext<
+        &fhirbolt_model::r4::resources::MedicationKnowledgeKinetics,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -4734,7 +4750,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Box<fhirbolt_model::r4::resources::MedicationKnowledgeKinetics>,
     >
 {
@@ -4746,7 +4762,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Vec<fhirbolt_model::r4::resources::MedicationKnowledgeKinetics>,
     >
 {
@@ -4763,7 +4779,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Vec<Box<fhirbolt_model::r4::resources::MedicationKnowledgeKinetics>>,
     >
 {
@@ -5046,7 +5062,9 @@ impl crate::Resource for fhirbolt_model::r4::resources::MedicationKnowledge {
     const FHIR_RELEASE: crate::FhirRelease = crate::FhirRelease::R4;
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&fhirbolt_model::r4::resources::MedicationKnowledge>
+    for crate::context::ser::SerializationContext<
+        &fhirbolt_model::r4::resources::MedicationKnowledge,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -5297,7 +5315,9 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&Box<fhirbolt_model::r4::resources::MedicationKnowledge>>
+    for crate::context::ser::SerializationContext<
+        &Box<fhirbolt_model::r4::resources::MedicationKnowledge>,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -5307,7 +5327,9 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&Vec<fhirbolt_model::r4::resources::MedicationKnowledge>>
+    for crate::context::ser::SerializationContext<
+        &Vec<fhirbolt_model::r4::resources::MedicationKnowledge>,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -5322,7 +5344,9 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&Vec<Box<fhirbolt_model::r4::resources::MedicationKnowledge>>>
+    for crate::context::ser::SerializationContext<
+        &Vec<Box<fhirbolt_model::r4::resources::MedicationKnowledge>>,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where

@@ -1,6 +1,8 @@
-// Generated on 2023-04-13 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-14 by fhirbolt-codegen v0.1.0
 impl serde::ser::Serialize
-    for crate::SerializationContext<&fhirbolt_model::r4::resources::MeasureReportGroupPopulation>
+    for crate::context::ser::SerializationContext<
+        &fhirbolt_model::r4::resources::MeasureReportGroupPopulation,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -52,7 +54,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Box<fhirbolt_model::r4::resources::MeasureReportGroupPopulation>,
     >
 {
@@ -64,7 +66,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Vec<fhirbolt_model::r4::resources::MeasureReportGroupPopulation>,
     >
 {
@@ -81,7 +83,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Vec<Box<fhirbolt_model::r4::resources::MeasureReportGroupPopulation>>,
     >
 {
@@ -363,7 +365,7 @@ impl<'de> serde::de::DeserializeSeed<'de>
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &fhirbolt_model::r4::resources::MeasureReportGroupStratifierStratumComponent,
     >
 {
@@ -394,7 +396,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Box<fhirbolt_model::r4::resources::MeasureReportGroupStratifierStratumComponent>,
     >
 {
@@ -406,7 +408,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Vec<fhirbolt_model::r4::resources::MeasureReportGroupStratifierStratumComponent>,
     >
 {
@@ -423,7 +425,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Vec<Box<fhirbolt_model::r4::resources::MeasureReportGroupStratifierStratumComponent>>,
     >
 {
@@ -678,7 +680,7 @@ impl<'de> serde::de::DeserializeSeed<'de>
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &fhirbolt_model::r4::resources::MeasureReportGroupStratifierStratumPopulation,
     >
 {
@@ -732,7 +734,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Box<fhirbolt_model::r4::resources::MeasureReportGroupStratifierStratumPopulation>,
     >
 {
@@ -744,7 +746,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Vec<fhirbolt_model::r4::resources::MeasureReportGroupStratifierStratumPopulation>,
     >
 {
@@ -761,7 +763,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Vec<Box<fhirbolt_model::r4::resources::MeasureReportGroupStratifierStratumPopulation>>,
     >
 {
@@ -1044,7 +1046,7 @@ impl<'de> serde::de::DeserializeSeed<'de>
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &fhirbolt_model::r4::resources::MeasureReportGroupStratifierStratum,
     >
 {
@@ -1087,7 +1089,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Box<fhirbolt_model::r4::resources::MeasureReportGroupStratifierStratum>,
     >
 {
@@ -1099,7 +1101,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Vec<fhirbolt_model::r4::resources::MeasureReportGroupStratifierStratum>,
     >
 {
@@ -1116,7 +1118,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Vec<Box<fhirbolt_model::r4::resources::MeasureReportGroupStratifierStratum>>,
     >
 {
@@ -1393,7 +1395,9 @@ impl<'de> serde::de::DeserializeSeed<'de>
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&fhirbolt_model::r4::resources::MeasureReportGroupStratifier>
+    for crate::context::ser::SerializationContext<
+        &fhirbolt_model::r4::resources::MeasureReportGroupStratifier,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -1426,7 +1430,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Box<fhirbolt_model::r4::resources::MeasureReportGroupStratifier>,
     >
 {
@@ -1438,7 +1442,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Vec<fhirbolt_model::r4::resources::MeasureReportGroupStratifier>,
     >
 {
@@ -1455,7 +1459,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Vec<Box<fhirbolt_model::r4::resources::MeasureReportGroupStratifier>>,
     >
 {
@@ -1708,7 +1712,9 @@ impl<'de> serde::de::DeserializeSeed<'de>
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&fhirbolt_model::r4::resources::MeasureReportGroup>
+    for crate::context::ser::SerializationContext<
+        &fhirbolt_model::r4::resources::MeasureReportGroup,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -1749,7 +1755,9 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&Box<fhirbolt_model::r4::resources::MeasureReportGroup>>
+    for crate::context::ser::SerializationContext<
+        &Box<fhirbolt_model::r4::resources::MeasureReportGroup>,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -1759,7 +1767,9 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&Vec<fhirbolt_model::r4::resources::MeasureReportGroup>>
+    for crate::context::ser::SerializationContext<
+        &Vec<fhirbolt_model::r4::resources::MeasureReportGroup>,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -1774,7 +1784,9 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&Vec<Box<fhirbolt_model::r4::resources::MeasureReportGroup>>>
+    for crate::context::ser::SerializationContext<
+        &Vec<Box<fhirbolt_model::r4::resources::MeasureReportGroup>>,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -2067,7 +2079,7 @@ impl crate::Resource for fhirbolt_model::r4::resources::MeasureReport {
     const FHIR_RELEASE: crate::FhirRelease = crate::FhirRelease::R4;
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&fhirbolt_model::r4::resources::MeasureReport>
+    for crate::context::ser::SerializationContext<&fhirbolt_model::r4::resources::MeasureReport>
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -2251,7 +2263,9 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&Box<fhirbolt_model::r4::resources::MeasureReport>>
+    for crate::context::ser::SerializationContext<
+        &Box<fhirbolt_model::r4::resources::MeasureReport>,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -2261,7 +2275,9 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&Vec<fhirbolt_model::r4::resources::MeasureReport>>
+    for crate::context::ser::SerializationContext<
+        &Vec<fhirbolt_model::r4::resources::MeasureReport>,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -2276,7 +2292,9 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&Vec<Box<fhirbolt_model::r4::resources::MeasureReport>>>
+    for crate::context::ser::SerializationContext<
+        &Vec<Box<fhirbolt_model::r4::resources::MeasureReport>>,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where

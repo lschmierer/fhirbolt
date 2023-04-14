@@ -1,6 +1,6 @@
-// Generated on 2023-04-13 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-14 by fhirbolt-codegen v0.1.0
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &fhirbolt_model::r4::resources::ConceptMapGroupElementTargetDependsOn,
     >
 {
@@ -107,7 +107,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Box<fhirbolt_model::r4::resources::ConceptMapGroupElementTargetDependsOn>,
     >
 {
@@ -119,7 +119,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Vec<fhirbolt_model::r4::resources::ConceptMapGroupElementTargetDependsOn>,
     >
 {
@@ -136,7 +136,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Vec<Box<fhirbolt_model::r4::resources::ConceptMapGroupElementTargetDependsOn>>,
     >
 {
@@ -521,7 +521,9 @@ impl<'de> serde::de::DeserializeSeed<'de>
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&fhirbolt_model::r4::resources::ConceptMapGroupElementTarget>
+    for crate::context::ser::SerializationContext<
+        &fhirbolt_model::r4::resources::ConceptMapGroupElementTarget,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -640,7 +642,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Box<fhirbolt_model::r4::resources::ConceptMapGroupElementTarget>,
     >
 {
@@ -652,7 +654,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Vec<fhirbolt_model::r4::resources::ConceptMapGroupElementTarget>,
     >
 {
@@ -669,7 +671,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Vec<Box<fhirbolt_model::r4::resources::ConceptMapGroupElementTarget>>,
     >
 {
@@ -1077,7 +1079,9 @@ impl<'de> serde::de::DeserializeSeed<'de>
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&fhirbolt_model::r4::resources::ConceptMapGroupElement>
+    for crate::context::ser::SerializationContext<
+        &fhirbolt_model::r4::resources::ConceptMapGroupElement,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -1149,7 +1153,9 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&Box<fhirbolt_model::r4::resources::ConceptMapGroupElement>>
+    for crate::context::ser::SerializationContext<
+        &Box<fhirbolt_model::r4::resources::ConceptMapGroupElement>,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -1159,7 +1165,9 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&Vec<fhirbolt_model::r4::resources::ConceptMapGroupElement>>
+    for crate::context::ser::SerializationContext<
+        &Vec<fhirbolt_model::r4::resources::ConceptMapGroupElement>,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -1174,7 +1182,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Vec<Box<fhirbolt_model::r4::resources::ConceptMapGroupElement>>,
     >
 {
@@ -1491,7 +1499,9 @@ impl<'de> serde::de::DeserializeSeed<'de>
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&fhirbolt_model::r4::resources::ConceptMapGroupUnmapped>
+    for crate::context::ser::SerializationContext<
+        &fhirbolt_model::r4::resources::ConceptMapGroupUnmapped,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -1596,7 +1606,9 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&Box<fhirbolt_model::r4::resources::ConceptMapGroupUnmapped>>
+    for crate::context::ser::SerializationContext<
+        &Box<fhirbolt_model::r4::resources::ConceptMapGroupUnmapped>,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -1606,7 +1618,9 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&Vec<fhirbolt_model::r4::resources::ConceptMapGroupUnmapped>>
+    for crate::context::ser::SerializationContext<
+        &Vec<fhirbolt_model::r4::resources::ConceptMapGroupUnmapped>,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -1621,7 +1635,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Vec<Box<fhirbolt_model::r4::resources::ConceptMapGroupUnmapped>>,
     >
 {
@@ -1994,7 +2008,7 @@ impl<'de> serde::de::DeserializeSeed<'de>
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&fhirbolt_model::r4::resources::ConceptMapGroup>
+    for crate::context::ser::SerializationContext<&fhirbolt_model::r4::resources::ConceptMapGroup>
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -2111,7 +2125,9 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&Box<fhirbolt_model::r4::resources::ConceptMapGroup>>
+    for crate::context::ser::SerializationContext<
+        &Box<fhirbolt_model::r4::resources::ConceptMapGroup>,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -2121,7 +2137,9 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&Vec<fhirbolt_model::r4::resources::ConceptMapGroup>>
+    for crate::context::ser::SerializationContext<
+        &Vec<fhirbolt_model::r4::resources::ConceptMapGroup>,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -2136,7 +2154,9 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&Vec<Box<fhirbolt_model::r4::resources::ConceptMapGroup>>>
+    for crate::context::ser::SerializationContext<
+        &Vec<Box<fhirbolt_model::r4::resources::ConceptMapGroup>>,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -2545,7 +2565,7 @@ impl crate::Resource for fhirbolt_model::r4::resources::ConceptMap {
     const FHIR_RELEASE: crate::FhirRelease = crate::FhirRelease::R4;
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&fhirbolt_model::r4::resources::ConceptMap>
+    for crate::context::ser::SerializationContext<&fhirbolt_model::r4::resources::ConceptMap>
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -2970,7 +2990,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&Box<fhirbolt_model::r4::resources::ConceptMap>>
+    for crate::context::ser::SerializationContext<&Box<fhirbolt_model::r4::resources::ConceptMap>>
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -2980,7 +3000,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&Vec<fhirbolt_model::r4::resources::ConceptMap>>
+    for crate::context::ser::SerializationContext<&Vec<fhirbolt_model::r4::resources::ConceptMap>>
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -2995,7 +3015,9 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&Vec<Box<fhirbolt_model::r4::resources::ConceptMap>>>
+    for crate::context::ser::SerializationContext<
+        &Vec<Box<fhirbolt_model::r4::resources::ConceptMap>>,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where

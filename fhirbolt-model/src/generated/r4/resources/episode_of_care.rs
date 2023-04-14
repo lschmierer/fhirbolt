@@ -1,4 +1,4 @@
-// Generated on 2023-04-13 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-14 by fhirbolt-codegen v0.1.0
 #[doc = "The history of statuses that the EpisodeOfCare has been through (without requiring processing the history of the resource)."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub struct EpisodeOfCareStatusHistory {

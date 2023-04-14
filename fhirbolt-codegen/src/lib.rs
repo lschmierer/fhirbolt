@@ -3,12 +3,12 @@ mod codegen;
 mod ir;
 pub mod model;
 
-use codegen::{
-    generate_resource_enum, generate_resource_enum_serde, generate_serde_helpers,
-    generate_serde_modules, generate_struct_modules, generate_type_hints,
-};
 use proc_macro2::TokenStream;
 
+use codegen::{
+    generate_element_map, generate_resource_enum, generate_resource_enum_serde,
+    generate_serde_helpers, generate_serde_modules, generate_struct_modules, generate_type_hints,
+};
 use ir::parse_modules;
 use model::Bundle;
 
@@ -21,6 +21,7 @@ pub struct Generated {
     pub resource_enum_serde_source_file: SourceFile,
     pub serde_helpers: SourceFile,
     pub type_hints: TokenStream,
+    pub element_map: TokenStream,
 }
 pub struct SourceFile {
     pub name: String,
@@ -33,9 +34,10 @@ pub fn generate_all<'a>(
     release: &str,
 ) -> Generated {
     let mut type_hints = Default::default();
+    let mut element_map = Default::default();
 
-    let type_modules = parse_modules(types_bundle, &mut type_hints);
-    let resource_modules = parse_modules(resources_bundle, &mut type_hints);
+    let type_modules = parse_modules(types_bundle, &mut type_hints, &mut element_map);
+    let resource_modules = parse_modules(resources_bundle, &mut type_hints, &mut element_map);
 
     Generated {
         types_struct_source_files: generate_struct_modules(&type_modules),
@@ -46,5 +48,6 @@ pub fn generate_all<'a>(
         resource_enum_serde_source_file: generate_resource_enum_serde(&resource_modules, release),
         serde_helpers: generate_serde_helpers(release),
         type_hints: generate_type_hints(&type_hints),
+        element_map: generate_element_map(&element_map),
     }
 }

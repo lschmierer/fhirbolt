@@ -6,11 +6,10 @@ use std::{
     mem::{self},
 };
 
-use fhirbolt_shared::serde_helpers::number::NumberValueEmitter;
 use serde::ser::{self, Impossible, Serialize};
 
 use crate::{
-    number::NUMBER_TOKEN,
+    number::{NumberValueEmitter, NUMBER_TOKEN},
     xml::{
         error::{Error, Result},
         event::{Element, Event},

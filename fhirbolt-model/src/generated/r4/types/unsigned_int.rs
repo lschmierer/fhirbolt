@@ -1,4 +1,4 @@
-// Generated on 2023-04-13 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-14 by fhirbolt-codegen v0.1.0
 #[doc = "Base StructureDefinition for unsignedInt type: An integer with a value that is not negative (e.g. >= 0)"]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub struct UnsignedInt {

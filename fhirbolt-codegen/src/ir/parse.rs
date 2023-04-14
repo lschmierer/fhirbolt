@@ -7,6 +7,8 @@ use crate::ir::{
 };
 use crate::model::{Bundle, ElementDefinition, Resource, StructureDefinition};
 
+use super::ElementMap;
+
 const PRIMITIVES: &[&str] = &[
     "base64Binary",
     "boolean",
@@ -39,7 +41,6 @@ const ABSTRACT_RESOURCES: &[&str] = &[
 
 const RESOURCE_COMMON_FIELDS: &[&str] = &[
     "id",
-    "url",
     "meta",
     "implicitRules",
     "language",
@@ -51,6 +52,7 @@ const COMMON_SEQUENCE_FIELDS: &[&str] = &["extension", "modifierExtension"];
 pub fn parse_modules<'a>(
     bundle: &Bundle,
     type_hint_collector: &mut TypeHints,
+    element_map_collector: &mut ElementMap,
 ) -> Vec<RustFhirModule> {
     flatten_bundle(bundle)
         .filter(|s| s.kind != "logical")
@@ -82,6 +84,7 @@ pub fn parse_modules<'a>(
             parse_struct(
                 &mut module,
                 type_hint_collector,
+                element_map_collector,
                 &s.name,
                 resource_name,
                 &s.snapshot.element.iter().collect::<Vec<_>>(),
@@ -103,6 +106,7 @@ fn flatten_bundle(bundle: &Bundle) -> impl Iterator<Item = &StructureDefinition>
 fn parse_struct(
     module_collector: &mut RustFhirModule,
     type_hint_collector: &mut TypeHints,
+    element_map_collector: &mut ElementMap,
     name: &str,
     resource_name: Option<String>,
     element_definitions: &[&ElementDefinition],
@@ -112,6 +116,7 @@ fn parse_struct(
     let fields = parse_fields(
         module_collector,
         type_hint_collector,
+        element_map_collector,
         name,
         element_definitions,
         element_path_strip_prefix,
@@ -130,6 +135,7 @@ fn parse_struct(
 fn parse_fields(
     module_collector: &mut RustFhirModule,
     type_hint_collector: &mut TypeHints,
+    element_map_collector: &mut ElementMap,
     struct_name: &str,
     element_definitions: &[&ElementDefinition],
     element_path_strip_prefix: &str,
@@ -162,6 +168,7 @@ fn parse_fields(
                 parse_struct(
                     module_collector,
                     type_hint_collector,
+                    element_map_collector,
                     &type_name,
                     None,
                     &element_definitions,
@@ -173,6 +180,7 @@ fn parse_fields(
             parse_field(
                 module_collector,
                 type_hint_collector,
+                element_map_collector,
                 struct_name,
                 &element_definitions[0],
                 element_path_strip_prefix,
@@ -186,6 +194,7 @@ fn parse_fields(
 fn parse_field(
     module_collector: &mut RustFhirModule,
     type_hint_collector: &mut TypeHints,
+    element_map_collector: &mut ElementMap,
     struct_name: &str,
     element_definition: &ElementDefinition,
     element_path_strip_prefix: &str,
@@ -216,6 +225,7 @@ fn parse_field(
         let contains_primitive = create_value_enum(
             module_collector,
             type_hint_collector,
+            element_map_collector,
             &element_definition.path,
             &name,
             variants,
@@ -228,6 +238,8 @@ fn parse_field(
             contains_primitive,
         }
     } else {
+        collect_element_map(element_map_collector, element_path_strip_prefix, field_name);
+
         if let Some(types) = element_definition.r#type.as_ref() {
             let code = &types.first().unwrap().code;
             if code == "BackboneElement" || code == "Element" {
@@ -282,6 +294,7 @@ fn parse_field(
 fn create_value_enum<'a>(
     module_collector: &mut RustFhirModule,
     type_hint_collector: &mut TypeHints,
+    element_map_collector: &mut ElementMap,
     path: &str,
     enum_name: &str,
     types: Vec<&str>,
@@ -302,6 +315,9 @@ fn create_value_enum<'a>(
             let variant_path = path.replace("[x]", &variant_name);
 
             collect_type_hint(type_hint_collector, &variant_path, t, false);
+
+            let (parent, element) = variant_path.rsplit_once(".").unwrap();
+            collect_element_map(element_map_collector, parent, element);
 
             RustFhirEnumVariant {
                 // type like http://hl7.org/fhirpath/System.String
@@ -468,4 +484,15 @@ fn collect_type_hint_content_reference(
     type_hint_collector
         .content_reference_paths
         .insert(path.to_string(), content_reference[1..].to_string());
+}
+
+fn collect_element_map(element_map_collector: &mut ElementMap, parent: &str, element: &str) {
+    let set = element_map_collector
+        .0
+        .entry(parent.to_string())
+        .or_default();
+
+    if !set.contains(element) {
+        set.insert(element.to_string());
+    }
 }

@@ -1,6 +1,6 @@
-// Generated on 2023-04-13 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-14 by fhirbolt-codegen v0.1.0
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &fhirbolt_model::r4::resources::DeviceDefinitionUdiDeviceIdentifier,
     >
 {
@@ -88,7 +88,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Box<fhirbolt_model::r4::resources::DeviceDefinitionUdiDeviceIdentifier>,
     >
 {
@@ -100,7 +100,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Vec<fhirbolt_model::r4::resources::DeviceDefinitionUdiDeviceIdentifier>,
     >
 {
@@ -117,7 +117,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Vec<Box<fhirbolt_model::r4::resources::DeviceDefinitionUdiDeviceIdentifier>>,
     >
 {
@@ -467,7 +467,9 @@ impl<'de> serde::de::DeserializeSeed<'de>
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&fhirbolt_model::r4::resources::DeviceDefinitionDeviceName>
+    for crate::context::ser::SerializationContext<
+        &fhirbolt_model::r4::resources::DeviceDefinitionDeviceName,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -526,7 +528,9 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&Box<fhirbolt_model::r4::resources::DeviceDefinitionDeviceName>>
+    for crate::context::ser::SerializationContext<
+        &Box<fhirbolt_model::r4::resources::DeviceDefinitionDeviceName>,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -536,7 +540,9 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&Vec<fhirbolt_model::r4::resources::DeviceDefinitionDeviceName>>
+    for crate::context::ser::SerializationContext<
+        &Vec<fhirbolt_model::r4::resources::DeviceDefinitionDeviceName>,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -551,7 +557,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Vec<Box<fhirbolt_model::r4::resources::DeviceDefinitionDeviceName>>,
     >
 {
@@ -843,7 +849,9 @@ impl<'de> serde::de::DeserializeSeed<'de>
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&fhirbolt_model::r4::resources::DeviceDefinitionSpecialization>
+    for crate::context::ser::SerializationContext<
+        &fhirbolt_model::r4::resources::DeviceDefinitionSpecialization,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -910,7 +918,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Box<fhirbolt_model::r4::resources::DeviceDefinitionSpecialization>,
     >
 {
@@ -922,7 +930,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Vec<fhirbolt_model::r4::resources::DeviceDefinitionSpecialization>,
     >
 {
@@ -939,7 +947,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Vec<Box<fhirbolt_model::r4::resources::DeviceDefinitionSpecialization>>,
     >
 {
@@ -1238,7 +1246,9 @@ impl<'de> serde::de::DeserializeSeed<'de>
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&fhirbolt_model::r4::resources::DeviceDefinitionCapability>
+    for crate::context::ser::SerializationContext<
+        &fhirbolt_model::r4::resources::DeviceDefinitionCapability,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -1269,7 +1279,9 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&Box<fhirbolt_model::r4::resources::DeviceDefinitionCapability>>
+    for crate::context::ser::SerializationContext<
+        &Box<fhirbolt_model::r4::resources::DeviceDefinitionCapability>,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -1279,7 +1291,9 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&Vec<fhirbolt_model::r4::resources::DeviceDefinitionCapability>>
+    for crate::context::ser::SerializationContext<
+        &Vec<fhirbolt_model::r4::resources::DeviceDefinitionCapability>,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -1294,7 +1308,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Vec<Box<fhirbolt_model::r4::resources::DeviceDefinitionCapability>>,
     >
 {
@@ -1550,7 +1564,9 @@ impl<'de> serde::de::DeserializeSeed<'de>
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&fhirbolt_model::r4::resources::DeviceDefinitionProperty>
+    for crate::context::ser::SerializationContext<
+        &fhirbolt_model::r4::resources::DeviceDefinitionProperty,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -1586,7 +1602,9 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&Box<fhirbolt_model::r4::resources::DeviceDefinitionProperty>>
+    for crate::context::ser::SerializationContext<
+        &Box<fhirbolt_model::r4::resources::DeviceDefinitionProperty>,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -1596,7 +1614,9 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&Vec<fhirbolt_model::r4::resources::DeviceDefinitionProperty>>
+    for crate::context::ser::SerializationContext<
+        &Vec<fhirbolt_model::r4::resources::DeviceDefinitionProperty>,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -1611,7 +1631,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Vec<Box<fhirbolt_model::r4::resources::DeviceDefinitionProperty>>,
     >
 {
@@ -1895,7 +1915,9 @@ impl<'de> serde::de::DeserializeSeed<'de>
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&fhirbolt_model::r4::resources::DeviceDefinitionMaterial>
+    for crate::context::ser::SerializationContext<
+        &fhirbolt_model::r4::resources::DeviceDefinitionMaterial,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -1967,7 +1989,9 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&Box<fhirbolt_model::r4::resources::DeviceDefinitionMaterial>>
+    for crate::context::ser::SerializationContext<
+        &Box<fhirbolt_model::r4::resources::DeviceDefinitionMaterial>,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -1977,7 +2001,9 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&Vec<fhirbolt_model::r4::resources::DeviceDefinitionMaterial>>
+    for crate::context::ser::SerializationContext<
+        &Vec<fhirbolt_model::r4::resources::DeviceDefinitionMaterial>,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -1992,7 +2018,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Vec<Box<fhirbolt_model::r4::resources::DeviceDefinitionMaterial>>,
     >
 {
@@ -2314,7 +2340,7 @@ impl crate::Resource for fhirbolt_model::r4::resources::DeviceDefinition {
     const FHIR_RELEASE: crate::FhirRelease = crate::FhirRelease::R4;
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&fhirbolt_model::r4::resources::DeviceDefinition>
+    for crate::context::ser::SerializationContext<&fhirbolt_model::r4::resources::DeviceDefinition>
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -2611,7 +2637,9 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&Box<fhirbolt_model::r4::resources::DeviceDefinition>>
+    for crate::context::ser::SerializationContext<
+        &Box<fhirbolt_model::r4::resources::DeviceDefinition>,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -2621,7 +2649,9 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&Vec<fhirbolt_model::r4::resources::DeviceDefinition>>
+    for crate::context::ser::SerializationContext<
+        &Vec<fhirbolt_model::r4::resources::DeviceDefinition>,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -2636,7 +2666,9 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&Vec<Box<fhirbolt_model::r4::resources::DeviceDefinition>>>
+    for crate::context::ser::SerializationContext<
+        &Vec<Box<fhirbolt_model::r4::resources::DeviceDefinition>>,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where

@@ -91,7 +91,10 @@ impl<const R: FhirRelease> Serialize for SerializationContext<&Element<R>> {
             is_resource = true;
         }
 
-        for (key, value) in self.value {
+        let mut values = self.value.iter().collect::<Vec<_>>();
+        values.sort_unstable_by_key(|(k, _v)| self.unwrap_current_path().position_of_child(k));
+
+        for (key, value) in values {
             self.unwrap_current_path_mut().push(&key);
 
             if self.output_json && self.unwrap_current_path().current_element_is_primitive() {

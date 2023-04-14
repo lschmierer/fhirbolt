@@ -1,6 +1,6 @@
-// Generated on 2023-04-13 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-14 by fhirbolt-codegen v0.1.0
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &fhirbolt_model::r4::types::ElementDefinitionSlicingDiscriminator,
     >
 {
@@ -56,7 +56,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Box<fhirbolt_model::r4::types::ElementDefinitionSlicingDiscriminator>,
     >
 {
@@ -68,7 +68,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Vec<fhirbolt_model::r4::types::ElementDefinitionSlicingDiscriminator>,
     >
 {
@@ -85,7 +85,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Vec<Box<fhirbolt_model::r4::types::ElementDefinitionSlicingDiscriminator>>,
     >
 {
@@ -353,7 +353,9 @@ impl<'de> serde::de::DeserializeSeed<'de>
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&fhirbolt_model::r4::types::ElementDefinitionSlicing>
+    for crate::context::ser::SerializationContext<
+        &fhirbolt_model::r4::types::ElementDefinitionSlicing,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -439,7 +441,9 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&Box<fhirbolt_model::r4::types::ElementDefinitionSlicing>>
+    for crate::context::ser::SerializationContext<
+        &Box<fhirbolt_model::r4::types::ElementDefinitionSlicing>,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -449,7 +453,9 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&Vec<fhirbolt_model::r4::types::ElementDefinitionSlicing>>
+    for crate::context::ser::SerializationContext<
+        &Vec<fhirbolt_model::r4::types::ElementDefinitionSlicing>,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -464,7 +470,9 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&Vec<Box<fhirbolt_model::r4::types::ElementDefinitionSlicing>>>
+    for crate::context::ser::SerializationContext<
+        &Vec<Box<fhirbolt_model::r4::types::ElementDefinitionSlicing>>,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -790,7 +798,7 @@ impl<'de> serde::de::DeserializeSeed<'de>
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&fhirbolt_model::r4::types::ElementDefinitionBase>
+    for crate::context::ser::SerializationContext<&fhirbolt_model::r4::types::ElementDefinitionBase>
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -857,7 +865,9 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&Box<fhirbolt_model::r4::types::ElementDefinitionBase>>
+    for crate::context::ser::SerializationContext<
+        &Box<fhirbolt_model::r4::types::ElementDefinitionBase>,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -867,7 +877,9 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&Vec<fhirbolt_model::r4::types::ElementDefinitionBase>>
+    for crate::context::ser::SerializationContext<
+        &Vec<fhirbolt_model::r4::types::ElementDefinitionBase>,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -882,7 +894,9 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&Vec<Box<fhirbolt_model::r4::types::ElementDefinitionBase>>>
+    for crate::context::ser::SerializationContext<
+        &Vec<Box<fhirbolt_model::r4::types::ElementDefinitionBase>>,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -1192,7 +1206,7 @@ impl<'de> serde::de::DeserializeSeed<'de>
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&fhirbolt_model::r4::types::ElementDefinitionType>
+    for crate::context::ser::SerializationContext<&fhirbolt_model::r4::types::ElementDefinitionType>
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -1385,7 +1399,9 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&Box<fhirbolt_model::r4::types::ElementDefinitionType>>
+    for crate::context::ser::SerializationContext<
+        &Box<fhirbolt_model::r4::types::ElementDefinitionType>,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -1395,7 +1411,9 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&Vec<fhirbolt_model::r4::types::ElementDefinitionType>>
+    for crate::context::ser::SerializationContext<
+        &Vec<fhirbolt_model::r4::types::ElementDefinitionType>,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -1410,7 +1428,9 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&Vec<Box<fhirbolt_model::r4::types::ElementDefinitionType>>>
+    for crate::context::ser::SerializationContext<
+        &Vec<Box<fhirbolt_model::r4::types::ElementDefinitionType>>,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -1899,7 +1919,9 @@ impl<'de> serde::de::DeserializeSeed<'de>
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&fhirbolt_model::r4::types::ElementDefinitionExample>
+    for crate::context::ser::SerializationContext<
+        &fhirbolt_model::r4::types::ElementDefinitionExample,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -2423,7 +2445,9 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&Box<fhirbolt_model::r4::types::ElementDefinitionExample>>
+    for crate::context::ser::SerializationContext<
+        &Box<fhirbolt_model::r4::types::ElementDefinitionExample>,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -2433,7 +2457,9 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&Vec<fhirbolt_model::r4::types::ElementDefinitionExample>>
+    for crate::context::ser::SerializationContext<
+        &Vec<fhirbolt_model::r4::types::ElementDefinitionExample>,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -2448,7 +2474,9 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&Vec<Box<fhirbolt_model::r4::types::ElementDefinitionExample>>>
+    for crate::context::ser::SerializationContext<
+        &Vec<Box<fhirbolt_model::r4::types::ElementDefinitionExample>>,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -3687,7 +3715,9 @@ impl<'de> serde::de::DeserializeSeed<'de>
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&fhirbolt_model::r4::types::ElementDefinitionConstraint>
+    for crate::context::ser::SerializationContext<
+        &fhirbolt_model::r4::types::ElementDefinitionConstraint,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -3844,7 +3874,9 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&Box<fhirbolt_model::r4::types::ElementDefinitionConstraint>>
+    for crate::context::ser::SerializationContext<
+        &Box<fhirbolt_model::r4::types::ElementDefinitionConstraint>,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -3854,7 +3886,9 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&Vec<fhirbolt_model::r4::types::ElementDefinitionConstraint>>
+    for crate::context::ser::SerializationContext<
+        &Vec<fhirbolt_model::r4::types::ElementDefinitionConstraint>,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -3869,7 +3903,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Vec<Box<fhirbolt_model::r4::types::ElementDefinitionConstraint>>,
     >
 {
@@ -4337,7 +4371,9 @@ impl<'de> serde::de::DeserializeSeed<'de>
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&fhirbolt_model::r4::types::ElementDefinitionBinding>
+    for crate::context::ser::SerializationContext<
+        &fhirbolt_model::r4::types::ElementDefinitionBinding,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -4418,7 +4454,9 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&Box<fhirbolt_model::r4::types::ElementDefinitionBinding>>
+    for crate::context::ser::SerializationContext<
+        &Box<fhirbolt_model::r4::types::ElementDefinitionBinding>,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -4428,7 +4466,9 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&Vec<fhirbolt_model::r4::types::ElementDefinitionBinding>>
+    for crate::context::ser::SerializationContext<
+        &Vec<fhirbolt_model::r4::types::ElementDefinitionBinding>,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -4443,7 +4483,9 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&Vec<Box<fhirbolt_model::r4::types::ElementDefinitionBinding>>>
+    for crate::context::ser::SerializationContext<
+        &Vec<Box<fhirbolt_model::r4::types::ElementDefinitionBinding>>,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -4747,7 +4789,9 @@ impl<'de> serde::de::DeserializeSeed<'de>
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&fhirbolt_model::r4::types::ElementDefinitionMapping>
+    for crate::context::ser::SerializationContext<
+        &fhirbolt_model::r4::types::ElementDefinitionMapping,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -4843,7 +4887,9 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&Box<fhirbolt_model::r4::types::ElementDefinitionMapping>>
+    for crate::context::ser::SerializationContext<
+        &Box<fhirbolt_model::r4::types::ElementDefinitionMapping>,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -4853,7 +4899,9 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&Vec<fhirbolt_model::r4::types::ElementDefinitionMapping>>
+    for crate::context::ser::SerializationContext<
+        &Vec<fhirbolt_model::r4::types::ElementDefinitionMapping>,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -4868,7 +4916,9 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&Vec<Box<fhirbolt_model::r4::types::ElementDefinitionMapping>>>
+    for crate::context::ser::SerializationContext<
+        &Vec<Box<fhirbolt_model::r4::types::ElementDefinitionMapping>>,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -5212,7 +5262,7 @@ impl<'de> serde::de::DeserializeSeed<'de>
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&fhirbolt_model::r4::types::ElementDefinition>
+    for crate::context::ser::SerializationContext<&fhirbolt_model::r4::types::ElementDefinition>
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -7725,7 +7775,9 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&Box<fhirbolt_model::r4::types::ElementDefinition>>
+    for crate::context::ser::SerializationContext<
+        &Box<fhirbolt_model::r4::types::ElementDefinition>,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -7735,7 +7787,9 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&Vec<fhirbolt_model::r4::types::ElementDefinition>>
+    for crate::context::ser::SerializationContext<
+        &Vec<fhirbolt_model::r4::types::ElementDefinition>,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -7750,7 +7804,9 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&Vec<Box<fhirbolt_model::r4::types::ElementDefinition>>>
+    for crate::context::ser::SerializationContext<
+        &Vec<Box<fhirbolt_model::r4::types::ElementDefinition>>,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where

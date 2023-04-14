@@ -36,7 +36,10 @@ pub mod xml;
 mod context;
 mod number;
 
-pub use context::{de::*, ser::*};
+pub use context::{
+    de::{DeserializationConfig, DeserializationMode, DeserializeResource},
+    ser::SerializeResource,
+};
 
 use fhirbolt_shared::FhirRelease;
 use std::fmt::Debug;

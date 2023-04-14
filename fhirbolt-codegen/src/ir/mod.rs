@@ -5,7 +5,7 @@ use linked_hash_set::LinkedHashSet;
 
 pub use parse::parse_modules;
 
-#[derive(Default)]
+#[derive(Default, Debug)]
 pub struct TypeHints {
     pub type_paths: LinkedHashMap<String, String>,
     pub array_paths: LinkedHashSet<String>,
@@ -17,6 +17,9 @@ pub struct TypeHints {
     pub other_primitives_paths: LinkedHashSet<String>,
     pub content_reference_paths: LinkedHashMap<String, String>,
 }
+
+#[derive(Default, Debug)]
+pub struct ElementMap(pub LinkedHashMap<String, LinkedHashSet<String>>);
 
 #[derive(Default, Debug)]
 pub struct RustFhirModule {

@@ -17,7 +17,7 @@ pub fn generate_serde_helpers(release: &str) -> SourceFile {
                 pub extension: &'a Vec<Box<#namespace::types::Extension>>,
             }
 
-            impl<'a> serde::ser::Serialize for crate::SerializationContext<&PrimitiveElement<'a>> {
+            impl<'a> serde::ser::Serialize for crate::context::ser::SerializationContext<&PrimitiveElement<'a>> {
                 fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
                 where
                     S: serde::ser::Serializer,
@@ -38,7 +38,7 @@ pub fn generate_serde_helpers(release: &str) -> SourceFile {
                 }
             }
 
-            impl<'a> serde::ser::Serialize for crate::SerializationContext<Option<&PrimitiveElement<'a>>> {
+            impl<'a> serde::ser::Serialize for crate::context::ser::SerializationContext<Option<&PrimitiveElement<'a>>> {
                 fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
                 where
                     S: serde::ser::Serializer,
@@ -51,7 +51,7 @@ pub fn generate_serde_helpers(release: &str) -> SourceFile {
                 }
             }
 
-            impl<'a> serde::ser::Serialize for crate::SerializationContext<&Vec<Option<PrimitiveElement<'a>>>> {
+            impl<'a> serde::ser::Serialize for crate::context::ser::SerializationContext<&Vec<Option<PrimitiveElement<'a>>>> {
                 fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
                 where
                     S: serde::ser::Serializer,

@@ -1,6 +1,6 @@
-// Generated on 2023-04-13 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-14 by fhirbolt-codegen v0.1.0
 impl serde::ser::Serialize
-    for crate::SerializationContext<&fhirbolt_model::r4b::resources::CitationSummary>
+    for crate::context::ser::SerializationContext<&fhirbolt_model::r4b::resources::CitationSummary>
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -45,7 +45,9 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&Box<fhirbolt_model::r4b::resources::CitationSummary>>
+    for crate::context::ser::SerializationContext<
+        &Box<fhirbolt_model::r4b::resources::CitationSummary>,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -55,7 +57,9 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&Vec<fhirbolt_model::r4b::resources::CitationSummary>>
+    for crate::context::ser::SerializationContext<
+        &Vec<fhirbolt_model::r4b::resources::CitationSummary>,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -70,7 +74,9 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&Vec<Box<fhirbolt_model::r4b::resources::CitationSummary>>>
+    for crate::context::ser::SerializationContext<
+        &Vec<Box<fhirbolt_model::r4b::resources::CitationSummary>>,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -323,7 +329,9 @@ impl<'de> serde::de::DeserializeSeed<'de>
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&fhirbolt_model::r4b::resources::CitationClassification>
+    for crate::context::ser::SerializationContext<
+        &fhirbolt_model::r4b::resources::CitationClassification,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -356,7 +364,9 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&Box<fhirbolt_model::r4b::resources::CitationClassification>>
+    for crate::context::ser::SerializationContext<
+        &Box<fhirbolt_model::r4b::resources::CitationClassification>,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -366,7 +376,9 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&Vec<fhirbolt_model::r4b::resources::CitationClassification>>
+    for crate::context::ser::SerializationContext<
+        &Vec<fhirbolt_model::r4b::resources::CitationClassification>,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -381,7 +393,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Vec<Box<fhirbolt_model::r4b::resources::CitationClassification>>,
     >
 {
@@ -620,7 +632,9 @@ impl<'de> serde::de::DeserializeSeed<'de>
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&fhirbolt_model::r4b::resources::CitationStatusDate>
+    for crate::context::ser::SerializationContext<
+        &fhirbolt_model::r4b::resources::CitationStatusDate,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -672,7 +686,9 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&Box<fhirbolt_model::r4b::resources::CitationStatusDate>>
+    for crate::context::ser::SerializationContext<
+        &Box<fhirbolt_model::r4b::resources::CitationStatusDate>,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -682,7 +698,9 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&Vec<fhirbolt_model::r4b::resources::CitationStatusDate>>
+    for crate::context::ser::SerializationContext<
+        &Vec<fhirbolt_model::r4b::resources::CitationStatusDate>,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -697,7 +715,9 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&Vec<Box<fhirbolt_model::r4b::resources::CitationStatusDate>>>
+    for crate::context::ser::SerializationContext<
+        &Vec<Box<fhirbolt_model::r4b::resources::CitationStatusDate>>,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -979,7 +999,9 @@ impl<'de> serde::de::DeserializeSeed<'de>
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&fhirbolt_model::r4b::resources::CitationRelatesTo>
+    for crate::context::ser::SerializationContext<
+        &fhirbolt_model::r4b::resources::CitationRelatesTo,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -1045,7 +1067,9 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&Box<fhirbolt_model::r4b::resources::CitationRelatesTo>>
+    for crate::context::ser::SerializationContext<
+        &Box<fhirbolt_model::r4b::resources::CitationRelatesTo>,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -1055,7 +1079,9 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&Vec<fhirbolt_model::r4b::resources::CitationRelatesTo>>
+    for crate::context::ser::SerializationContext<
+        &Vec<fhirbolt_model::r4b::resources::CitationRelatesTo>,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -1070,7 +1096,9 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&Vec<Box<fhirbolt_model::r4b::resources::CitationRelatesTo>>>
+    for crate::context::ser::SerializationContext<
+        &Vec<Box<fhirbolt_model::r4b::resources::CitationRelatesTo>>,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -1399,7 +1427,9 @@ impl<'de> serde::de::DeserializeSeed<'de>
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&fhirbolt_model::r4b::resources::CitationCitedArtifactVersion>
+    for crate::context::ser::SerializationContext<
+        &fhirbolt_model::r4b::resources::CitationCitedArtifactVersion,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -1446,7 +1476,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Box<fhirbolt_model::r4b::resources::CitationCitedArtifactVersion>,
     >
 {
@@ -1458,7 +1488,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Vec<fhirbolt_model::r4b::resources::CitationCitedArtifactVersion>,
     >
 {
@@ -1475,7 +1505,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Vec<Box<fhirbolt_model::r4b::resources::CitationCitedArtifactVersion>>,
     >
 {
@@ -1741,7 +1771,7 @@ impl<'de> serde::de::DeserializeSeed<'de>
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &fhirbolt_model::r4b::resources::CitationCitedArtifactStatusDate,
     >
 {
@@ -1795,7 +1825,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Box<fhirbolt_model::r4b::resources::CitationCitedArtifactStatusDate>,
     >
 {
@@ -1807,7 +1837,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Vec<fhirbolt_model::r4b::resources::CitationCitedArtifactStatusDate>,
     >
 {
@@ -1824,7 +1854,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Vec<Box<fhirbolt_model::r4b::resources::CitationCitedArtifactStatusDate>>,
     >
 {
@@ -2101,7 +2131,9 @@ impl<'de> serde::de::DeserializeSeed<'de>
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&fhirbolt_model::r4b::resources::CitationCitedArtifactTitle>
+    for crate::context::ser::SerializationContext<
+        &fhirbolt_model::r4b::resources::CitationCitedArtifactTitle,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -2149,7 +2181,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Box<fhirbolt_model::r4b::resources::CitationCitedArtifactTitle>,
     >
 {
@@ -2161,7 +2193,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Vec<fhirbolt_model::r4b::resources::CitationCitedArtifactTitle>,
     >
 {
@@ -2178,7 +2210,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Vec<Box<fhirbolt_model::r4b::resources::CitationCitedArtifactTitle>>,
     >
 {
@@ -2458,7 +2490,9 @@ impl<'de> serde::de::DeserializeSeed<'de>
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&fhirbolt_model::r4b::resources::CitationCitedArtifactAbstract>
+    for crate::context::ser::SerializationContext<
+        &fhirbolt_model::r4b::resources::CitationCitedArtifactAbstract,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -2527,7 +2561,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Box<fhirbolt_model::r4b::resources::CitationCitedArtifactAbstract>,
     >
 {
@@ -2539,7 +2573,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Vec<fhirbolt_model::r4b::resources::CitationCitedArtifactAbstract>,
     >
 {
@@ -2556,7 +2590,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Vec<Box<fhirbolt_model::r4b::resources::CitationCitedArtifactAbstract>>,
     >
 {
@@ -2865,7 +2899,9 @@ impl<'de> serde::de::DeserializeSeed<'de>
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&fhirbolt_model::r4b::resources::CitationCitedArtifactPart>
+    for crate::context::ser::SerializationContext<
+        &fhirbolt_model::r4b::resources::CitationCitedArtifactPart,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -2917,7 +2953,9 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&Box<fhirbolt_model::r4b::resources::CitationCitedArtifactPart>>
+    for crate::context::ser::SerializationContext<
+        &Box<fhirbolt_model::r4b::resources::CitationCitedArtifactPart>,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -2927,7 +2965,9 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&Vec<fhirbolt_model::r4b::resources::CitationCitedArtifactPart>>
+    for crate::context::ser::SerializationContext<
+        &Vec<fhirbolt_model::r4b::resources::CitationCitedArtifactPart>,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -2942,7 +2982,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Vec<Box<fhirbolt_model::r4b::resources::CitationCitedArtifactPart>>,
     >
 {
@@ -3210,7 +3250,9 @@ impl<'de> serde::de::DeserializeSeed<'de>
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&fhirbolt_model::r4b::resources::CitationCitedArtifactRelatesTo>
+    for crate::context::ser::SerializationContext<
+        &fhirbolt_model::r4b::resources::CitationCitedArtifactRelatesTo,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -3284,7 +3326,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Box<fhirbolt_model::r4b::resources::CitationCitedArtifactRelatesTo>,
     >
 {
@@ -3296,7 +3338,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Vec<fhirbolt_model::r4b::resources::CitationCitedArtifactRelatesTo>,
     >
 {
@@ -3313,7 +3355,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Vec<Box<fhirbolt_model::r4b::resources::CitationCitedArtifactRelatesTo>>,
     >
 {
@@ -3622,7 +3664,7 @@ impl<'de> serde::de::DeserializeSeed<'de>
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &fhirbolt_model::r4b::resources::CitationCitedArtifactPublicationFormPublishedIn,
     >
 {
@@ -3702,7 +3744,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Box<fhirbolt_model::r4b::resources::CitationCitedArtifactPublicationFormPublishedIn>,
     >
 {
@@ -3714,7 +3756,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Vec<fhirbolt_model::r4b::resources::CitationCitedArtifactPublicationFormPublishedIn>,
     >
 {
@@ -3731,7 +3773,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Vec<Box<fhirbolt_model::r4b::resources::CitationCitedArtifactPublicationFormPublishedIn>>,
     >
 {
@@ -4057,16 +4099,16 @@ impl<'de> serde::de::DeserializeSeed<'de>
         deserializer.deserialize_seq(Visitor(self))
     }
 }
-impl serde :: ser :: Serialize for crate :: SerializationContext < & fhirbolt_model :: r4b :: resources :: CitationCitedArtifactPublicationFormPeriodicReleaseDateOfPublication > { fn serialize < S > (& self , serializer : S) -> Result < S :: Ok , S :: Error > where S : serde :: ser :: Serializer , { use serde :: ser :: SerializeMap ; let mut state = serializer . serialize_map (None) ? ; if let Some (value) = self . value . r#id . as_ref () { state . serialize_entry ("id" , value) ? ; } if ! self . value . r#extension . is_empty () { self . with_context (& self . value . r#extension , | ctx | state . serialize_entry ("extension" , ctx)) ? ; } if ! self . value . r#modifier_extension . is_empty () { self . with_context (& self . value . r#modifier_extension , | ctx | state . serialize_entry ("modifierExtension" , ctx)) ? ; } if self . output_json { if let Some (some) = self . value . r#date . as_ref () { if let Some (some) = some . value . as_ref () { let some = Ok (some) ? ; state . serialize_entry ("date" , & some) ? ; } if some . id . is_some () || ! some . extension . is_empty () { let primitive_element = super :: super :: serde_helpers :: PrimitiveElement { id : some . id . as_ref () , extension : & some . extension , } ; self . with_context (& primitive_element , | ctx | state . serialize_entry ("_date" , ctx)) ? ; } } } else { if let Some (some) = self . value . r#date . as_ref () { self . with_context (some , | ctx | state . serialize_entry ("date" , ctx)) ? ; } } if self . output_json { if let Some (some) = self . value . r#year . as_ref () { if let Some (some) = some . value . as_ref () { let some = Ok (some) ? ; state . serialize_entry ("year" , & some) ? ; } if some . id . is_some () || ! some . extension . is_empty () { let primitive_element = super :: super :: serde_helpers :: PrimitiveElement { id : some . id . as_ref () , extension : & some . extension , } ; self . with_context (& primitive_element , | ctx | state . serialize_entry ("_year" , ctx)) ? ; } } } else { if let Some (some) = self . value . r#year . as_ref () { self . with_context (some , | ctx | state . serialize_entry ("year" , ctx)) ? ; } } if self . output_json { if let Some (some) = self . value . r#month . as_ref () { if let Some (some) = some . value . as_ref () { let some = Ok (some) ? ; state . serialize_entry ("month" , & some) ? ; } if some . id . is_some () || ! some . extension . is_empty () { let primitive_element = super :: super :: serde_helpers :: PrimitiveElement { id : some . id . as_ref () , extension : & some . extension , } ; self . with_context (& primitive_element , | ctx | state . serialize_entry ("_month" , ctx)) ? ; } } } else { if let Some (some) = self . value . r#month . as_ref () { self . with_context (some , | ctx | state . serialize_entry ("month" , ctx)) ? ; } } if self . output_json { if let Some (some) = self . value . r#day . as_ref () { if let Some (some) = some . value . as_ref () { let some = Ok (some) ? ; state . serialize_entry ("day" , & some) ? ; } if some . id . is_some () || ! some . extension . is_empty () { let primitive_element = super :: super :: serde_helpers :: PrimitiveElement { id : some . id . as_ref () , extension : & some . extension , } ; self . with_context (& primitive_element , | ctx | state . serialize_entry ("_day" , ctx)) ? ; } } } else { if let Some (some) = self . value . r#day . as_ref () { self . with_context (some , | ctx | state . serialize_entry ("day" , ctx)) ? ; } } if self . output_json { if let Some (some) = self . value . r#season . as_ref () { if let Some (some) = some . value . as_ref () { let some = Ok (some) ? ; state . serialize_entry ("season" , & some) ? ; } if some . id . is_some () || ! some . extension . is_empty () { let primitive_element = super :: super :: serde_helpers :: PrimitiveElement { id : some . id . as_ref () , extension : & some . extension , } ; self . with_context (& primitive_element , | ctx | state . serialize_entry ("_season" , ctx)) ? ; } } } else { if let Some (some) = self . value . r#season . as_ref () { self . with_context (some , | ctx | state . serialize_entry ("season" , ctx)) ? ; } } if self . output_json { if let Some (some) = self . value . r#text . as_ref () { if let Some (some) = some . value . as_ref () { let some = Ok (some) ? ; state . serialize_entry ("text" , & some) ? ; } if some . id . is_some () || ! some . extension . is_empty () { let primitive_element = super :: super :: serde_helpers :: PrimitiveElement { id : some . id . as_ref () , extension : & some . extension , } ; self . with_context (& primitive_element , | ctx | state . serialize_entry ("_text" , ctx)) ? ; } } } else { if let Some (some) = self . value . r#text . as_ref () { self . with_context (some , | ctx | state . serialize_entry ("text" , ctx)) ? ; } } state . end () } }
-impl serde :: ser :: Serialize for crate :: SerializationContext < & Box < fhirbolt_model :: r4b :: resources :: CitationCitedArtifactPublicationFormPeriodicReleaseDateOfPublication >> { fn serialize < S > (& self , serializer : S) -> Result < S :: Ok , S :: Error > where S : serde :: ser :: Serializer , { self . with_context (self . value . as_ref () , | ctx | ctx . serialize (serializer)) } }
-impl serde :: ser :: Serialize for crate :: SerializationContext < & Vec < fhirbolt_model :: r4b :: resources :: CitationCitedArtifactPublicationFormPeriodicReleaseDateOfPublication >> { fn serialize < S > (& self , serializer : S) -> Result < S :: Ok , S :: Error > where S : serde :: ser :: Serializer , { use serde :: ser :: SerializeSeq ; let mut seq_serializer = serializer . serialize_seq (Some (self . value . len ())) ? ; for value in self . value { self . with_context (value , | ctx | { seq_serializer . serialize_element (ctx) }) ? } seq_serializer . end () } }
-impl serde :: ser :: Serialize for crate :: SerializationContext < & Vec < Box < fhirbolt_model :: r4b :: resources :: CitationCitedArtifactPublicationFormPeriodicReleaseDateOfPublication >> > { fn serialize < S > (& self , serializer : S) -> Result < S :: Ok , S :: Error > where S : serde :: ser :: Serializer , { use serde :: ser :: SerializeSeq ; let mut seq_serializer = serializer . serialize_seq (Some (self . value . len ())) ? ; for value in self . value { self . with_context (value , | ctx | { seq_serializer . serialize_element (ctx) }) ? } seq_serializer . end () } }
+impl serde :: ser :: Serialize for crate :: context :: ser :: SerializationContext < & fhirbolt_model :: r4b :: resources :: CitationCitedArtifactPublicationFormPeriodicReleaseDateOfPublication > { fn serialize < S > (& self , serializer : S) -> Result < S :: Ok , S :: Error > where S : serde :: ser :: Serializer , { use serde :: ser :: SerializeMap ; let mut state = serializer . serialize_map (None) ? ; if let Some (value) = self . value . r#id . as_ref () { state . serialize_entry ("id" , value) ? ; } if ! self . value . r#extension . is_empty () { self . with_context (& self . value . r#extension , | ctx | state . serialize_entry ("extension" , ctx)) ? ; } if ! self . value . r#modifier_extension . is_empty () { self . with_context (& self . value . r#modifier_extension , | ctx | state . serialize_entry ("modifierExtension" , ctx)) ? ; } if self . output_json { if let Some (some) = self . value . r#date . as_ref () { if let Some (some) = some . value . as_ref () { let some = Ok (some) ? ; state . serialize_entry ("date" , & some) ? ; } if some . id . is_some () || ! some . extension . is_empty () { let primitive_element = super :: super :: serde_helpers :: PrimitiveElement { id : some . id . as_ref () , extension : & some . extension , } ; self . with_context (& primitive_element , | ctx | state . serialize_entry ("_date" , ctx)) ? ; } } } else { if let Some (some) = self . value . r#date . as_ref () { self . with_context (some , | ctx | state . serialize_entry ("date" , ctx)) ? ; } } if self . output_json { if let Some (some) = self . value . r#year . as_ref () { if let Some (some) = some . value . as_ref () { let some = Ok (some) ? ; state . serialize_entry ("year" , & some) ? ; } if some . id . is_some () || ! some . extension . is_empty () { let primitive_element = super :: super :: serde_helpers :: PrimitiveElement { id : some . id . as_ref () , extension : & some . extension , } ; self . with_context (& primitive_element , | ctx | state . serialize_entry ("_year" , ctx)) ? ; } } } else { if let Some (some) = self . value . r#year . as_ref () { self . with_context (some , | ctx | state . serialize_entry ("year" , ctx)) ? ; } } if self . output_json { if let Some (some) = self . value . r#month . as_ref () { if let Some (some) = some . value . as_ref () { let some = Ok (some) ? ; state . serialize_entry ("month" , & some) ? ; } if some . id . is_some () || ! some . extension . is_empty () { let primitive_element = super :: super :: serde_helpers :: PrimitiveElement { id : some . id . as_ref () , extension : & some . extension , } ; self . with_context (& primitive_element , | ctx | state . serialize_entry ("_month" , ctx)) ? ; } } } else { if let Some (some) = self . value . r#month . as_ref () { self . with_context (some , | ctx | state . serialize_entry ("month" , ctx)) ? ; } } if self . output_json { if let Some (some) = self . value . r#day . as_ref () { if let Some (some) = some . value . as_ref () { let some = Ok (some) ? ; state . serialize_entry ("day" , & some) ? ; } if some . id . is_some () || ! some . extension . is_empty () { let primitive_element = super :: super :: serde_helpers :: PrimitiveElement { id : some . id . as_ref () , extension : & some . extension , } ; self . with_context (& primitive_element , | ctx | state . serialize_entry ("_day" , ctx)) ? ; } } } else { if let Some (some) = self . value . r#day . as_ref () { self . with_context (some , | ctx | state . serialize_entry ("day" , ctx)) ? ; } } if self . output_json { if let Some (some) = self . value . r#season . as_ref () { if let Some (some) = some . value . as_ref () { let some = Ok (some) ? ; state . serialize_entry ("season" , & some) ? ; } if some . id . is_some () || ! some . extension . is_empty () { let primitive_element = super :: super :: serde_helpers :: PrimitiveElement { id : some . id . as_ref () , extension : & some . extension , } ; self . with_context (& primitive_element , | ctx | state . serialize_entry ("_season" , ctx)) ? ; } } } else { if let Some (some) = self . value . r#season . as_ref () { self . with_context (some , | ctx | state . serialize_entry ("season" , ctx)) ? ; } } if self . output_json { if let Some (some) = self . value . r#text . as_ref () { if let Some (some) = some . value . as_ref () { let some = Ok (some) ? ; state . serialize_entry ("text" , & some) ? ; } if some . id . is_some () || ! some . extension . is_empty () { let primitive_element = super :: super :: serde_helpers :: PrimitiveElement { id : some . id . as_ref () , extension : & some . extension , } ; self . with_context (& primitive_element , | ctx | state . serialize_entry ("_text" , ctx)) ? ; } } } else { if let Some (some) = self . value . r#text . as_ref () { self . with_context (some , | ctx | state . serialize_entry ("text" , ctx)) ? ; } } state . end () } }
+impl serde :: ser :: Serialize for crate :: context :: ser :: SerializationContext < & Box < fhirbolt_model :: r4b :: resources :: CitationCitedArtifactPublicationFormPeriodicReleaseDateOfPublication >> { fn serialize < S > (& self , serializer : S) -> Result < S :: Ok , S :: Error > where S : serde :: ser :: Serializer , { self . with_context (self . value . as_ref () , | ctx | ctx . serialize (serializer)) } }
+impl serde :: ser :: Serialize for crate :: context :: ser :: SerializationContext < & Vec < fhirbolt_model :: r4b :: resources :: CitationCitedArtifactPublicationFormPeriodicReleaseDateOfPublication >> { fn serialize < S > (& self , serializer : S) -> Result < S :: Ok , S :: Error > where S : serde :: ser :: Serializer , { use serde :: ser :: SerializeSeq ; let mut seq_serializer = serializer . serialize_seq (Some (self . value . len ())) ? ; for value in self . value { self . with_context (value , | ctx | { seq_serializer . serialize_element (ctx) }) ? } seq_serializer . end () } }
+impl serde :: ser :: Serialize for crate :: context :: ser :: SerializationContext < & Vec < Box < fhirbolt_model :: r4b :: resources :: CitationCitedArtifactPublicationFormPeriodicReleaseDateOfPublication >> > { fn serialize < S > (& self , serializer : S) -> Result < S :: Ok , S :: Error > where S : serde :: ser :: Serializer , { use serde :: ser :: SerializeSeq ; let mut seq_serializer = serializer . serialize_seq (Some (self . value . len ())) ? ; for value in self . value { self . with_context (value , | ctx | { seq_serializer . serialize_element (ctx) }) ? } seq_serializer . end () } }
 impl < 'de > serde :: de :: DeserializeSeed < 'de > for & mut crate :: context :: de :: DeserializationContext < fhirbolt_model :: r4b :: resources :: CitationCitedArtifactPublicationFormPeriodicReleaseDateOfPublication > { type Value = fhirbolt_model :: r4b :: resources :: CitationCitedArtifactPublicationFormPeriodicReleaseDateOfPublication ; fn deserialize < D > (self , deserializer : D) -> Result < Self :: Value , D :: Error > where D : serde :: de :: Deserializer < 'de > , { struct Visitor < 'a > (& 'a mut crate :: context :: de :: DeserializationContext < fhirbolt_model :: r4b :: resources :: CitationCitedArtifactPublicationFormPeriodicReleaseDateOfPublication >) ; impl < 'de > serde :: de :: Visitor < 'de > for Visitor < '_ > { type Value = fhirbolt_model :: r4b :: resources :: CitationCitedArtifactPublicationFormPeriodicReleaseDateOfPublication ; fn expecting (& self , formatter : & mut std :: fmt :: Formatter) -> std :: fmt :: Result { formatter . write_str ("CitationCitedArtifactPublicationFormPeriodicReleaseDateOfPublication") } fn visit_map < V > (self , mut map_access : V) -> Result < fhirbolt_model :: r4b :: resources :: CitationCitedArtifactPublicationFormPeriodicReleaseDateOfPublication , V :: Error > where V : serde :: de :: MapAccess < 'de > , { # [derive (serde :: Deserialize)] # [serde (field_identifier)] enum Field { # [serde (rename = "id")] Id , # [serde (rename = "extension")] Extension , # [serde (rename = "modifierExtension")] ModifierExtension , # [serde (rename = "date")] Date , # [serde (rename = "_date")] DatePrimitiveElement , # [serde (rename = "year")] Year , # [serde (rename = "_year")] YearPrimitiveElement , # [serde (rename = "month")] Month , # [serde (rename = "_month")] MonthPrimitiveElement , # [serde (rename = "day")] Day , # [serde (rename = "_day")] DayPrimitiveElement , # [serde (rename = "season")] Season , # [serde (rename = "_season")] SeasonPrimitiveElement , # [serde (rename = "text")] Text , # [serde (rename = "_text")] TextPrimitiveElement , Unknown (std :: string :: String) , } fn unknown_field_error < T , E : serde :: de :: Error > (field : & str) -> Result < T , E > { Err (E :: unknown_field (field , & ["id" , "extension" , "modifierExtension" , "date" , "year" , "month" , "day" , "season" , "text" ,])) } let mut r#id : Option < std :: string :: String > = None ; let mut r#extension : Option < Vec < Box < fhirbolt_model :: r4b :: types :: Extension > > > = None ; let mut r#modifier_extension : Option < Vec < Box < fhirbolt_model :: r4b :: types :: Extension > > > = None ; let mut r#date : Option < fhirbolt_model :: r4b :: types :: Date > = None ; let mut r#year : Option < fhirbolt_model :: r4b :: types :: String > = None ; let mut r#month : Option < fhirbolt_model :: r4b :: types :: String > = None ; let mut r#day : Option < fhirbolt_model :: r4b :: types :: String > = None ; let mut r#season : Option < fhirbolt_model :: r4b :: types :: String > = None ; let mut r#text : Option < fhirbolt_model :: r4b :: types :: String > = None ; while let Some (map_access_key) = map_access . next_key () ? { match map_access_key { Field :: Id => { if r#id . is_some () { return Err (serde :: de :: Error :: duplicate_field ("id")) ; } r#id = Some (map_access . next_value () ?) ; } , Field :: Extension => { if self . 0 . from_json { if r#extension . is_some () { return Err (serde :: de :: Error :: duplicate_field ("extension")) ; } r#extension = Some (map_access . next_value_seed (self . 0 . transmute :: < Vec < Box < fhirbolt_model :: r4b :: types :: Extension > >> ()) ?) ; } else { let vec = r#extension . get_or_insert (Default :: default ()) ; vec . push (map_access . next_value_seed (self . 0 . transmute :: < Box < fhirbolt_model :: r4b :: types :: Extension > > ()) ?) ; } } , Field :: ModifierExtension => { if self . 0 . from_json { if r#modifier_extension . is_some () { return Err (serde :: de :: Error :: duplicate_field ("modifierExtension")) ; } r#modifier_extension = Some (map_access . next_value_seed (self . 0 . transmute :: < Vec < Box < fhirbolt_model :: r4b :: types :: Extension > >> ()) ?) ; } else { let vec = r#modifier_extension . get_or_insert (Default :: default ()) ; vec . push (map_access . next_value_seed (self . 0 . transmute :: < Box < fhirbolt_model :: r4b :: types :: Extension > > ()) ?) ; } } , Field :: Date => { if self . 0 . from_json { let some = r#date . get_or_insert (Default :: default ()) ; if some . value . is_some () { return Err (serde :: de :: Error :: duplicate_field ("date")) ; } let value : _ = map_access . next_value () ? ; some . value = Some (value) ; } else { if r#date . is_some () { return Err (serde :: de :: Error :: duplicate_field ("date")) ; } r#date = Some (map_access . next_value_seed (self . 0 . transmute :: < fhirbolt_model :: r4b :: types :: Date > ()) ?) ; } } , Field :: DatePrimitiveElement => { if self . 0 . from_json { let some = r#date . get_or_insert (Default :: default ()) ; if some . id . is_some () || ! some . extension . is_empty () { return Err (serde :: de :: Error :: duplicate_field ("_date")) ; } let super :: super :: serde_helpers :: PrimitiveElementOwned { id , extension } = map_access . next_value_seed (self . 0 . transmute :: < super :: super :: serde_helpers :: PrimitiveElementOwned > ()) ? ; some . id = id ; some . extension = extension ; } else { return unknown_field_error ("date") ; } } , Field :: Year => { if self . 0 . from_json { let some = r#year . get_or_insert (Default :: default ()) ; if some . value . is_some () { return Err (serde :: de :: Error :: duplicate_field ("year")) ; } let value : _ = map_access . next_value () ? ; some . value = Some (value) ; } else { if r#year . is_some () { return Err (serde :: de :: Error :: duplicate_field ("year")) ; } r#year = Some (map_access . next_value_seed (self . 0 . transmute :: < fhirbolt_model :: r4b :: types :: String > ()) ?) ; } } , Field :: YearPrimitiveElement => { if self . 0 . from_json { let some = r#year . get_or_insert (Default :: default ()) ; if some . id . is_some () || ! some . extension . is_empty () { return Err (serde :: de :: Error :: duplicate_field ("_year")) ; } let super :: super :: serde_helpers :: PrimitiveElementOwned { id , extension } = map_access . next_value_seed (self . 0 . transmute :: < super :: super :: serde_helpers :: PrimitiveElementOwned > ()) ? ; some . id = id ; some . extension = extension ; } else { return unknown_field_error ("year") ; } } , Field :: Month => { if self . 0 . from_json { let some = r#month . get_or_insert (Default :: default ()) ; if some . value . is_some () { return Err (serde :: de :: Error :: duplicate_field ("month")) ; } let value : _ = map_access . next_value () ? ; some . value = Some (value) ; } else { if r#month . is_some () { return Err (serde :: de :: Error :: duplicate_field ("month")) ; } r#month = Some (map_access . next_value_seed (self . 0 . transmute :: < fhirbolt_model :: r4b :: types :: String > ()) ?) ; } } , Field :: MonthPrimitiveElement => { if self . 0 . from_json { let some = r#month . get_or_insert (Default :: default ()) ; if some . id . is_some () || ! some . extension . is_empty () { return Err (serde :: de :: Error :: duplicate_field ("_month")) ; } let super :: super :: serde_helpers :: PrimitiveElementOwned { id , extension } = map_access . next_value_seed (self . 0 . transmute :: < super :: super :: serde_helpers :: PrimitiveElementOwned > ()) ? ; some . id = id ; some . extension = extension ; } else { return unknown_field_error ("month") ; } } , Field :: Day => { if self . 0 . from_json { let some = r#day . get_or_insert (Default :: default ()) ; if some . value . is_some () { return Err (serde :: de :: Error :: duplicate_field ("day")) ; } let value : _ = map_access . next_value () ? ; some . value = Some (value) ; } else { if r#day . is_some () { return Err (serde :: de :: Error :: duplicate_field ("day")) ; } r#day = Some (map_access . next_value_seed (self . 0 . transmute :: < fhirbolt_model :: r4b :: types :: String > ()) ?) ; } } , Field :: DayPrimitiveElement => { if self . 0 . from_json { let some = r#day . get_or_insert (Default :: default ()) ; if some . id . is_some () || ! some . extension . is_empty () { return Err (serde :: de :: Error :: duplicate_field ("_day")) ; } let super :: super :: serde_helpers :: PrimitiveElementOwned { id , extension } = map_access . next_value_seed (self . 0 . transmute :: < super :: super :: serde_helpers :: PrimitiveElementOwned > ()) ? ; some . id = id ; some . extension = extension ; } else { return unknown_field_error ("day") ; } } , Field :: Season => { if self . 0 . from_json { let some = r#season . get_or_insert (Default :: default ()) ; if some . value . is_some () { return Err (serde :: de :: Error :: duplicate_field ("season")) ; } let value : _ = map_access . next_value () ? ; some . value = Some (value) ; } else { if r#season . is_some () { return Err (serde :: de :: Error :: duplicate_field ("season")) ; } r#season = Some (map_access . next_value_seed (self . 0 . transmute :: < fhirbolt_model :: r4b :: types :: String > ()) ?) ; } } , Field :: SeasonPrimitiveElement => { if self . 0 . from_json { let some = r#season . get_or_insert (Default :: default ()) ; if some . id . is_some () || ! some . extension . is_empty () { return Err (serde :: de :: Error :: duplicate_field ("_season")) ; } let super :: super :: serde_helpers :: PrimitiveElementOwned { id , extension } = map_access . next_value_seed (self . 0 . transmute :: < super :: super :: serde_helpers :: PrimitiveElementOwned > ()) ? ; some . id = id ; some . extension = extension ; } else { return unknown_field_error ("season") ; } } , Field :: Text => { if self . 0 . from_json { let some = r#text . get_or_insert (Default :: default ()) ; if some . value . is_some () { return Err (serde :: de :: Error :: duplicate_field ("text")) ; } let value : _ = map_access . next_value () ? ; some . value = Some (value) ; } else { if r#text . is_some () { return Err (serde :: de :: Error :: duplicate_field ("text")) ; } r#text = Some (map_access . next_value_seed (self . 0 . transmute :: < fhirbolt_model :: r4b :: types :: String > ()) ?) ; } } , Field :: TextPrimitiveElement => { if self . 0 . from_json { let some = r#text . get_or_insert (Default :: default ()) ; if some . id . is_some () || ! some . extension . is_empty () { return Err (serde :: de :: Error :: duplicate_field ("_text")) ; } let super :: super :: serde_helpers :: PrimitiveElementOwned { id , extension } = map_access . next_value_seed (self . 0 . transmute :: < super :: super :: serde_helpers :: PrimitiveElementOwned > ()) ? ; some . id = id ; some . extension = extension ; } else { return unknown_field_error ("text") ; } } , Field :: Unknown (key) => if self . 0 . config . mode == crate :: context :: de :: DeserializationMode :: Strict { return unknown_field_error (& key) ; } } } Ok (fhirbolt_model :: r4b :: resources :: CitationCitedArtifactPublicationFormPeriodicReleaseDateOfPublication { r#id , r#extension : r#extension . unwrap_or (vec ! []) , r#modifier_extension : r#modifier_extension . unwrap_or (vec ! []) , r#date , r#year , r#month , r#day , r#season , r#text , }) } } deserializer . deserialize_map (Visitor (self)) } }
 impl < 'de > serde :: de :: DeserializeSeed < 'de > for & mut crate :: context :: de :: DeserializationContext < Box < fhirbolt_model :: r4b :: resources :: CitationCitedArtifactPublicationFormPeriodicReleaseDateOfPublication >> { type Value = Box < fhirbolt_model :: r4b :: resources :: CitationCitedArtifactPublicationFormPeriodicReleaseDateOfPublication > ; fn deserialize < D > (self , deserializer : D) -> Result < Self :: Value , D :: Error > where D : serde :: de :: Deserializer < 'de > , { self . transmute :: < fhirbolt_model :: r4b :: resources :: CitationCitedArtifactPublicationFormPeriodicReleaseDateOfPublication > () . deserialize (deserializer) . map (Box :: new) } }
 impl < 'de > serde :: de :: DeserializeSeed < 'de > for & mut crate :: context :: de :: DeserializationContext < Vec < fhirbolt_model :: r4b :: resources :: CitationCitedArtifactPublicationFormPeriodicReleaseDateOfPublication >> { type Value = Vec < fhirbolt_model :: r4b :: resources :: CitationCitedArtifactPublicationFormPeriodicReleaseDateOfPublication > ; fn deserialize < D > (self , deserializer : D) -> Result < Self :: Value , D :: Error > where D : serde :: de :: Deserializer < 'de > , { struct Visitor < 'a > (& 'a mut crate :: context :: de :: DeserializationContext < Vec < fhirbolt_model :: r4b :: resources :: CitationCitedArtifactPublicationFormPeriodicReleaseDateOfPublication >>) ; impl < 'de > serde :: de :: Visitor < 'de > for Visitor < '_ > { type Value = Vec < fhirbolt_model :: r4b :: resources :: CitationCitedArtifactPublicationFormPeriodicReleaseDateOfPublication > ; fn expecting (& self , formatter : & mut std :: fmt :: Formatter) -> std :: fmt :: Result { formatter . write_str ("a sequence") } fn visit_seq < A > (self , mut seq : A) -> Result < Self :: Value , A :: Error > where A : serde :: de :: SeqAccess < 'de > , { let mut values = Vec :: new () ; while let Some (value) = seq . next_element_seed (self . 0 . transmute :: < fhirbolt_model :: r4b :: resources :: CitationCitedArtifactPublicationFormPeriodicReleaseDateOfPublication > ()) ? { values . push (value) ; } Ok (values) } } deserializer . deserialize_seq (Visitor (self)) } }
 impl < 'de > serde :: de :: DeserializeSeed < 'de > for & mut crate :: context :: de :: DeserializationContext < Vec < Box < fhirbolt_model :: r4b :: resources :: CitationCitedArtifactPublicationFormPeriodicReleaseDateOfPublication >> > { type Value = Vec < Box < fhirbolt_model :: r4b :: resources :: CitationCitedArtifactPublicationFormPeriodicReleaseDateOfPublication >> ; fn deserialize < D > (self , deserializer : D) -> Result < Self :: Value , D :: Error > where D : serde :: de :: Deserializer < 'de > , { struct Visitor < 'a > (& 'a mut crate :: context :: de :: DeserializationContext < Vec < Box < fhirbolt_model :: r4b :: resources :: CitationCitedArtifactPublicationFormPeriodicReleaseDateOfPublication >> >) ; impl < 'de > serde :: de :: Visitor < 'de > for Visitor < '_ > { type Value = Vec < Box < fhirbolt_model :: r4b :: resources :: CitationCitedArtifactPublicationFormPeriodicReleaseDateOfPublication >> ; fn expecting (& self , formatter : & mut std :: fmt :: Formatter) -> std :: fmt :: Result { formatter . write_str ("a sequence") } fn visit_seq < A > (self , mut seq : A) -> Result < Self :: Value , A :: Error > where A : serde :: de :: SeqAccess < 'de > , { let mut values = Vec :: new () ; while let Some (value) = seq . next_element_seed (self . 0 . transmute :: < Box < fhirbolt_model :: r4b :: resources :: CitationCitedArtifactPublicationFormPeriodicReleaseDateOfPublication >> ()) ? { values . push (value) ; } Ok (values) } } deserializer . deserialize_seq (Visitor (self)) } }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &fhirbolt_model::r4b::resources::CitationCitedArtifactPublicationFormPeriodicRelease,
     >
 {
@@ -4141,7 +4183,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Box<fhirbolt_model::r4b::resources::CitationCitedArtifactPublicationFormPeriodicRelease>,
     >
 {
@@ -4153,7 +4195,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Vec<fhirbolt_model::r4b::resources::CitationCitedArtifactPublicationFormPeriodicRelease>,
     >
 {
@@ -4170,7 +4212,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Vec<
             Box<
                 fhirbolt_model::r4b::resources::CitationCitedArtifactPublicationFormPeriodicRelease,
@@ -4467,7 +4509,7 @@ impl<'de> serde::de::DeserializeSeed<'de>
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &fhirbolt_model::r4b::resources::CitationCitedArtifactPublicationForm,
     >
 {
@@ -4673,7 +4715,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Box<fhirbolt_model::r4b::resources::CitationCitedArtifactPublicationForm>,
     >
 {
@@ -4685,7 +4727,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Vec<fhirbolt_model::r4b::resources::CitationCitedArtifactPublicationForm>,
     >
 {
@@ -4702,7 +4744,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Vec<Box<fhirbolt_model::r4b::resources::CitationCitedArtifactPublicationForm>>,
     >
 {
@@ -5271,7 +5313,7 @@ impl<'de> serde::de::DeserializeSeed<'de>
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &fhirbolt_model::r4b::resources::CitationCitedArtifactWebLocation,
     >
 {
@@ -5322,7 +5364,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Box<fhirbolt_model::r4b::resources::CitationCitedArtifactWebLocation>,
     >
 {
@@ -5334,7 +5376,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Vec<fhirbolt_model::r4b::resources::CitationCitedArtifactWebLocation>,
     >
 {
@@ -5351,7 +5393,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Vec<Box<fhirbolt_model::r4b::resources::CitationCitedArtifactWebLocation>>,
     >
 {
@@ -5594,7 +5636,7 @@ impl<'de> serde::de::DeserializeSeed<'de>
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &fhirbolt_model::r4b::resources::CitationCitedArtifactClassificationWhoClassified,
     >
 {
@@ -5674,7 +5716,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Box<fhirbolt_model::r4b::resources::CitationCitedArtifactClassificationWhoClassified>,
     >
 {
@@ -5686,7 +5728,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Vec<fhirbolt_model::r4b::resources::CitationCitedArtifactClassificationWhoClassified>,
     >
 {
@@ -5703,7 +5745,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Vec<Box<fhirbolt_model::r4b::resources::CitationCitedArtifactClassificationWhoClassified>>,
     >
 {
@@ -6020,7 +6062,7 @@ impl<'de> serde::de::DeserializeSeed<'de>
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &fhirbolt_model::r4b::resources::CitationCitedArtifactClassification,
     >
 {
@@ -6058,7 +6100,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Box<fhirbolt_model::r4b::resources::CitationCitedArtifactClassification>,
     >
 {
@@ -6070,7 +6112,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Vec<fhirbolt_model::r4b::resources::CitationCitedArtifactClassification>,
     >
 {
@@ -6087,7 +6129,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Vec<Box<fhirbolt_model::r4b::resources::CitationCitedArtifactClassification>>,
     >
 {
@@ -6344,7 +6386,7 @@ impl<'de> serde::de::DeserializeSeed<'de>
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &fhirbolt_model::r4b::resources::CitationCitedArtifactContributorshipEntryAffiliationInfo,
     >
 {
@@ -6417,9 +6459,9 @@ impl serde::ser::Serialize
         state.end()
     }
 }
-impl serde :: ser :: Serialize for crate :: SerializationContext < & Box < fhirbolt_model :: r4b :: resources :: CitationCitedArtifactContributorshipEntryAffiliationInfo >> { fn serialize < S > (& self , serializer : S) -> Result < S :: Ok , S :: Error > where S : serde :: ser :: Serializer , { self . with_context (self . value . as_ref () , | ctx | ctx . serialize (serializer)) } }
-impl serde :: ser :: Serialize for crate :: SerializationContext < & Vec < fhirbolt_model :: r4b :: resources :: CitationCitedArtifactContributorshipEntryAffiliationInfo >> { fn serialize < S > (& self , serializer : S) -> Result < S :: Ok , S :: Error > where S : serde :: ser :: Serializer , { use serde :: ser :: SerializeSeq ; let mut seq_serializer = serializer . serialize_seq (Some (self . value . len ())) ? ; for value in self . value { self . with_context (value , | ctx | { seq_serializer . serialize_element (ctx) }) ? } seq_serializer . end () } }
-impl serde :: ser :: Serialize for crate :: SerializationContext < & Vec < Box < fhirbolt_model :: r4b :: resources :: CitationCitedArtifactContributorshipEntryAffiliationInfo >> > { fn serialize < S > (& self , serializer : S) -> Result < S :: Ok , S :: Error > where S : serde :: ser :: Serializer , { use serde :: ser :: SerializeSeq ; let mut seq_serializer = serializer . serialize_seq (Some (self . value . len ())) ? ; for value in self . value { self . with_context (value , | ctx | { seq_serializer . serialize_element (ctx) }) ? } seq_serializer . end () } }
+impl serde :: ser :: Serialize for crate :: context :: ser :: SerializationContext < & Box < fhirbolt_model :: r4b :: resources :: CitationCitedArtifactContributorshipEntryAffiliationInfo >> { fn serialize < S > (& self , serializer : S) -> Result < S :: Ok , S :: Error > where S : serde :: ser :: Serializer , { self . with_context (self . value . as_ref () , | ctx | ctx . serialize (serializer)) } }
+impl serde :: ser :: Serialize for crate :: context :: ser :: SerializationContext < & Vec < fhirbolt_model :: r4b :: resources :: CitationCitedArtifactContributorshipEntryAffiliationInfo >> { fn serialize < S > (& self , serializer : S) -> Result < S :: Ok , S :: Error > where S : serde :: ser :: Serializer , { use serde :: ser :: SerializeSeq ; let mut seq_serializer = serializer . serialize_seq (Some (self . value . len ())) ? ; for value in self . value { self . with_context (value , | ctx | { seq_serializer . serialize_element (ctx) }) ? } seq_serializer . end () } }
+impl serde :: ser :: Serialize for crate :: context :: ser :: SerializationContext < & Vec < Box < fhirbolt_model :: r4b :: resources :: CitationCitedArtifactContributorshipEntryAffiliationInfo >> > { fn serialize < S > (& self , serializer : S) -> Result < S :: Ok , S :: Error > where S : serde :: ser :: Serializer , { use serde :: ser :: SerializeSeq ; let mut seq_serializer = serializer . serialize_seq (Some (self . value . len ())) ? ; for value in self . value { self . with_context (value , | ctx | { seq_serializer . serialize_element (ctx) }) ? } seq_serializer . end () } }
 impl<'de> serde::de::DeserializeSeed<'de>
     for &mut crate::context::de::DeserializationContext<
         fhirbolt_model::r4b::resources::CitationCitedArtifactContributorshipEntryAffiliationInfo,
@@ -6600,16 +6642,16 @@ impl<'de> serde::de::DeserializeSeed<'de>
 impl < 'de > serde :: de :: DeserializeSeed < 'de > for & mut crate :: context :: de :: DeserializationContext < Box < fhirbolt_model :: r4b :: resources :: CitationCitedArtifactContributorshipEntryAffiliationInfo >> { type Value = Box < fhirbolt_model :: r4b :: resources :: CitationCitedArtifactContributorshipEntryAffiliationInfo > ; fn deserialize < D > (self , deserializer : D) -> Result < Self :: Value , D :: Error > where D : serde :: de :: Deserializer < 'de > , { self . transmute :: < fhirbolt_model :: r4b :: resources :: CitationCitedArtifactContributorshipEntryAffiliationInfo > () . deserialize (deserializer) . map (Box :: new) } }
 impl < 'de > serde :: de :: DeserializeSeed < 'de > for & mut crate :: context :: de :: DeserializationContext < Vec < fhirbolt_model :: r4b :: resources :: CitationCitedArtifactContributorshipEntryAffiliationInfo >> { type Value = Vec < fhirbolt_model :: r4b :: resources :: CitationCitedArtifactContributorshipEntryAffiliationInfo > ; fn deserialize < D > (self , deserializer : D) -> Result < Self :: Value , D :: Error > where D : serde :: de :: Deserializer < 'de > , { struct Visitor < 'a > (& 'a mut crate :: context :: de :: DeserializationContext < Vec < fhirbolt_model :: r4b :: resources :: CitationCitedArtifactContributorshipEntryAffiliationInfo >>) ; impl < 'de > serde :: de :: Visitor < 'de > for Visitor < '_ > { type Value = Vec < fhirbolt_model :: r4b :: resources :: CitationCitedArtifactContributorshipEntryAffiliationInfo > ; fn expecting (& self , formatter : & mut std :: fmt :: Formatter) -> std :: fmt :: Result { formatter . write_str ("a sequence") } fn visit_seq < A > (self , mut seq : A) -> Result < Self :: Value , A :: Error > where A : serde :: de :: SeqAccess < 'de > , { let mut values = Vec :: new () ; while let Some (value) = seq . next_element_seed (self . 0 . transmute :: < fhirbolt_model :: r4b :: resources :: CitationCitedArtifactContributorshipEntryAffiliationInfo > ()) ? { values . push (value) ; } Ok (values) } } deserializer . deserialize_seq (Visitor (self)) } }
 impl < 'de > serde :: de :: DeserializeSeed < 'de > for & mut crate :: context :: de :: DeserializationContext < Vec < Box < fhirbolt_model :: r4b :: resources :: CitationCitedArtifactContributorshipEntryAffiliationInfo >> > { type Value = Vec < Box < fhirbolt_model :: r4b :: resources :: CitationCitedArtifactContributorshipEntryAffiliationInfo >> ; fn deserialize < D > (self , deserializer : D) -> Result < Self :: Value , D :: Error > where D : serde :: de :: Deserializer < 'de > , { struct Visitor < 'a > (& 'a mut crate :: context :: de :: DeserializationContext < Vec < Box < fhirbolt_model :: r4b :: resources :: CitationCitedArtifactContributorshipEntryAffiliationInfo >> >) ; impl < 'de > serde :: de :: Visitor < 'de > for Visitor < '_ > { type Value = Vec < Box < fhirbolt_model :: r4b :: resources :: CitationCitedArtifactContributorshipEntryAffiliationInfo >> ; fn expecting (& self , formatter : & mut std :: fmt :: Formatter) -> std :: fmt :: Result { formatter . write_str ("a sequence") } fn visit_seq < A > (self , mut seq : A) -> Result < Self :: Value , A :: Error > where A : serde :: de :: SeqAccess < 'de > , { let mut values = Vec :: new () ; while let Some (value) = seq . next_element_seed (self . 0 . transmute :: < Box < fhirbolt_model :: r4b :: resources :: CitationCitedArtifactContributorshipEntryAffiliationInfo >> ()) ? { values . push (value) ; } Ok (values) } } deserializer . deserialize_seq (Visitor (self)) } }
-impl serde :: ser :: Serialize for crate :: SerializationContext < & fhirbolt_model :: r4b :: resources :: CitationCitedArtifactContributorshipEntryContributionInstance > { fn serialize < S > (& self , serializer : S) -> Result < S :: Ok , S :: Error > where S : serde :: ser :: Serializer , { use serde :: ser :: SerializeMap ; let mut state = serializer . serialize_map (None) ? ; if let Some (value) = self . value . r#id . as_ref () { state . serialize_entry ("id" , value) ? ; } if ! self . value . r#extension . is_empty () { self . with_context (& self . value . r#extension , | ctx | state . serialize_entry ("extension" , ctx)) ? ; } if ! self . value . r#modifier_extension . is_empty () { self . with_context (& self . value . r#modifier_extension , | ctx | state . serialize_entry ("modifierExtension" , ctx)) ? ; } self . with_context (& self . value . r#type , | ctx | state . serialize_entry ("type" , ctx)) ? ; if self . output_json { if let Some (some) = self . value . r#time . as_ref () { if let Some (some) = some . value . as_ref () { let some = Ok (some) ? ; state . serialize_entry ("time" , & some) ? ; } if some . id . is_some () || ! some . extension . is_empty () { let primitive_element = super :: super :: serde_helpers :: PrimitiveElement { id : some . id . as_ref () , extension : & some . extension , } ; self . with_context (& primitive_element , | ctx | state . serialize_entry ("_time" , ctx)) ? ; } } } else { if let Some (some) = self . value . r#time . as_ref () { self . with_context (some , | ctx | state . serialize_entry ("time" , ctx)) ? ; } } state . end () } }
-impl serde :: ser :: Serialize for crate :: SerializationContext < & Box < fhirbolt_model :: r4b :: resources :: CitationCitedArtifactContributorshipEntryContributionInstance >> { fn serialize < S > (& self , serializer : S) -> Result < S :: Ok , S :: Error > where S : serde :: ser :: Serializer , { self . with_context (self . value . as_ref () , | ctx | ctx . serialize (serializer)) } }
-impl serde :: ser :: Serialize for crate :: SerializationContext < & Vec < fhirbolt_model :: r4b :: resources :: CitationCitedArtifactContributorshipEntryContributionInstance >> { fn serialize < S > (& self , serializer : S) -> Result < S :: Ok , S :: Error > where S : serde :: ser :: Serializer , { use serde :: ser :: SerializeSeq ; let mut seq_serializer = serializer . serialize_seq (Some (self . value . len ())) ? ; for value in self . value { self . with_context (value , | ctx | { seq_serializer . serialize_element (ctx) }) ? } seq_serializer . end () } }
-impl serde :: ser :: Serialize for crate :: SerializationContext < & Vec < Box < fhirbolt_model :: r4b :: resources :: CitationCitedArtifactContributorshipEntryContributionInstance >> > { fn serialize < S > (& self , serializer : S) -> Result < S :: Ok , S :: Error > where S : serde :: ser :: Serializer , { use serde :: ser :: SerializeSeq ; let mut seq_serializer = serializer . serialize_seq (Some (self . value . len ())) ? ; for value in self . value { self . with_context (value , | ctx | { seq_serializer . serialize_element (ctx) }) ? } seq_serializer . end () } }
+impl serde :: ser :: Serialize for crate :: context :: ser :: SerializationContext < & fhirbolt_model :: r4b :: resources :: CitationCitedArtifactContributorshipEntryContributionInstance > { fn serialize < S > (& self , serializer : S) -> Result < S :: Ok , S :: Error > where S : serde :: ser :: Serializer , { use serde :: ser :: SerializeMap ; let mut state = serializer . serialize_map (None) ? ; if let Some (value) = self . value . r#id . as_ref () { state . serialize_entry ("id" , value) ? ; } if ! self . value . r#extension . is_empty () { self . with_context (& self . value . r#extension , | ctx | state . serialize_entry ("extension" , ctx)) ? ; } if ! self . value . r#modifier_extension . is_empty () { self . with_context (& self . value . r#modifier_extension , | ctx | state . serialize_entry ("modifierExtension" , ctx)) ? ; } self . with_context (& self . value . r#type , | ctx | state . serialize_entry ("type" , ctx)) ? ; if self . output_json { if let Some (some) = self . value . r#time . as_ref () { if let Some (some) = some . value . as_ref () { let some = Ok (some) ? ; state . serialize_entry ("time" , & some) ? ; } if some . id . is_some () || ! some . extension . is_empty () { let primitive_element = super :: super :: serde_helpers :: PrimitiveElement { id : some . id . as_ref () , extension : & some . extension , } ; self . with_context (& primitive_element , | ctx | state . serialize_entry ("_time" , ctx)) ? ; } } } else { if let Some (some) = self . value . r#time . as_ref () { self . with_context (some , | ctx | state . serialize_entry ("time" , ctx)) ? ; } } state . end () } }
+impl serde :: ser :: Serialize for crate :: context :: ser :: SerializationContext < & Box < fhirbolt_model :: r4b :: resources :: CitationCitedArtifactContributorshipEntryContributionInstance >> { fn serialize < S > (& self , serializer : S) -> Result < S :: Ok , S :: Error > where S : serde :: ser :: Serializer , { self . with_context (self . value . as_ref () , | ctx | ctx . serialize (serializer)) } }
+impl serde :: ser :: Serialize for crate :: context :: ser :: SerializationContext < & Vec < fhirbolt_model :: r4b :: resources :: CitationCitedArtifactContributorshipEntryContributionInstance >> { fn serialize < S > (& self , serializer : S) -> Result < S :: Ok , S :: Error > where S : serde :: ser :: Serializer , { use serde :: ser :: SerializeSeq ; let mut seq_serializer = serializer . serialize_seq (Some (self . value . len ())) ? ; for value in self . value { self . with_context (value , | ctx | { seq_serializer . serialize_element (ctx) }) ? } seq_serializer . end () } }
+impl serde :: ser :: Serialize for crate :: context :: ser :: SerializationContext < & Vec < Box < fhirbolt_model :: r4b :: resources :: CitationCitedArtifactContributorshipEntryContributionInstance >> > { fn serialize < S > (& self , serializer : S) -> Result < S :: Ok , S :: Error > where S : serde :: ser :: Serializer , { use serde :: ser :: SerializeSeq ; let mut seq_serializer = serializer . serialize_seq (Some (self . value . len ())) ? ; for value in self . value { self . with_context (value , | ctx | { seq_serializer . serialize_element (ctx) }) ? } seq_serializer . end () } }
 impl < 'de > serde :: de :: DeserializeSeed < 'de > for & mut crate :: context :: de :: DeserializationContext < fhirbolt_model :: r4b :: resources :: CitationCitedArtifactContributorshipEntryContributionInstance > { type Value = fhirbolt_model :: r4b :: resources :: CitationCitedArtifactContributorshipEntryContributionInstance ; fn deserialize < D > (self , deserializer : D) -> Result < Self :: Value , D :: Error > where D : serde :: de :: Deserializer < 'de > , { struct Visitor < 'a > (& 'a mut crate :: context :: de :: DeserializationContext < fhirbolt_model :: r4b :: resources :: CitationCitedArtifactContributorshipEntryContributionInstance >) ; impl < 'de > serde :: de :: Visitor < 'de > for Visitor < '_ > { type Value = fhirbolt_model :: r4b :: resources :: CitationCitedArtifactContributorshipEntryContributionInstance ; fn expecting (& self , formatter : & mut std :: fmt :: Formatter) -> std :: fmt :: Result { formatter . write_str ("CitationCitedArtifactContributorshipEntryContributionInstance") } fn visit_map < V > (self , mut map_access : V) -> Result < fhirbolt_model :: r4b :: resources :: CitationCitedArtifactContributorshipEntryContributionInstance , V :: Error > where V : serde :: de :: MapAccess < 'de > , { # [derive (serde :: Deserialize)] # [serde (field_identifier)] enum Field { # [serde (rename = "id")] Id , # [serde (rename = "extension")] Extension , # [serde (rename = "modifierExtension")] ModifierExtension , # [serde (rename = "type")] Type , # [serde (rename = "time")] Time , # [serde (rename = "_time")] TimePrimitiveElement , Unknown (std :: string :: String) , } fn unknown_field_error < T , E : serde :: de :: Error > (field : & str) -> Result < T , E > { Err (E :: unknown_field (field , & ["id" , "extension" , "modifierExtension" , "type" , "time" ,])) } let mut r#id : Option < std :: string :: String > = None ; let mut r#extension : Option < Vec < Box < fhirbolt_model :: r4b :: types :: Extension > > > = None ; let mut r#modifier_extension : Option < Vec < Box < fhirbolt_model :: r4b :: types :: Extension > > > = None ; let mut r#type : Option < Box < fhirbolt_model :: r4b :: types :: CodeableConcept > > = None ; let mut r#time : Option < fhirbolt_model :: r4b :: types :: DateTime > = None ; while let Some (map_access_key) = map_access . next_key () ? { match map_access_key { Field :: Id => { if r#id . is_some () { return Err (serde :: de :: Error :: duplicate_field ("id")) ; } r#id = Some (map_access . next_value () ?) ; } , Field :: Extension => { if self . 0 . from_json { if r#extension . is_some () { return Err (serde :: de :: Error :: duplicate_field ("extension")) ; } r#extension = Some (map_access . next_value_seed (self . 0 . transmute :: < Vec < Box < fhirbolt_model :: r4b :: types :: Extension > >> ()) ?) ; } else { let vec = r#extension . get_or_insert (Default :: default ()) ; vec . push (map_access . next_value_seed (self . 0 . transmute :: < Box < fhirbolt_model :: r4b :: types :: Extension > > ()) ?) ; } } , Field :: ModifierExtension => { if self . 0 . from_json { if r#modifier_extension . is_some () { return Err (serde :: de :: Error :: duplicate_field ("modifierExtension")) ; } r#modifier_extension = Some (map_access . next_value_seed (self . 0 . transmute :: < Vec < Box < fhirbolt_model :: r4b :: types :: Extension > >> ()) ?) ; } else { let vec = r#modifier_extension . get_or_insert (Default :: default ()) ; vec . push (map_access . next_value_seed (self . 0 . transmute :: < Box < fhirbolt_model :: r4b :: types :: Extension > > ()) ?) ; } } , Field :: Type => { if r#type . is_some () { return Err (serde :: de :: Error :: duplicate_field ("type")) ; } r#type = Some (map_access . next_value_seed (self . 0 . transmute :: < Box < fhirbolt_model :: r4b :: types :: CodeableConcept > > ()) ?) ; } , Field :: Time => { if self . 0 . from_json { let some = r#time . get_or_insert (Default :: default ()) ; if some . value . is_some () { return Err (serde :: de :: Error :: duplicate_field ("time")) ; } let value : _ = map_access . next_value () ? ; some . value = Some (value) ; } else { if r#time . is_some () { return Err (serde :: de :: Error :: duplicate_field ("time")) ; } r#time = Some (map_access . next_value_seed (self . 0 . transmute :: < fhirbolt_model :: r4b :: types :: DateTime > ()) ?) ; } } , Field :: TimePrimitiveElement => { if self . 0 . from_json { let some = r#time . get_or_insert (Default :: default ()) ; if some . id . is_some () || ! some . extension . is_empty () { return Err (serde :: de :: Error :: duplicate_field ("_time")) ; } let super :: super :: serde_helpers :: PrimitiveElementOwned { id , extension } = map_access . next_value_seed (self . 0 . transmute :: < super :: super :: serde_helpers :: PrimitiveElementOwned > ()) ? ; some . id = id ; some . extension = extension ; } else { return unknown_field_error ("time") ; } } , Field :: Unknown (key) => if self . 0 . config . mode == crate :: context :: de :: DeserializationMode :: Strict { return unknown_field_error (& key) ; } } } Ok (fhirbolt_model :: r4b :: resources :: CitationCitedArtifactContributorshipEntryContributionInstance { r#id , r#extension : r#extension . unwrap_or (vec ! []) , r#modifier_extension : r#modifier_extension . unwrap_or (vec ! []) , r#type : if self . 0 . config . mode == crate :: context :: de :: DeserializationMode :: Lax { r#type . unwrap_or (Default :: default ()) } else { r#type . ok_or (serde :: de :: Error :: missing_field ("type")) ? } , r#time , }) } } deserializer . deserialize_map (Visitor (self)) } }
 impl < 'de > serde :: de :: DeserializeSeed < 'de > for & mut crate :: context :: de :: DeserializationContext < Box < fhirbolt_model :: r4b :: resources :: CitationCitedArtifactContributorshipEntryContributionInstance >> { type Value = Box < fhirbolt_model :: r4b :: resources :: CitationCitedArtifactContributorshipEntryContributionInstance > ; fn deserialize < D > (self , deserializer : D) -> Result < Self :: Value , D :: Error > where D : serde :: de :: Deserializer < 'de > , { self . transmute :: < fhirbolt_model :: r4b :: resources :: CitationCitedArtifactContributorshipEntryContributionInstance > () . deserialize (deserializer) . map (Box :: new) } }
 impl < 'de > serde :: de :: DeserializeSeed < 'de > for & mut crate :: context :: de :: DeserializationContext < Vec < fhirbolt_model :: r4b :: resources :: CitationCitedArtifactContributorshipEntryContributionInstance >> { type Value = Vec < fhirbolt_model :: r4b :: resources :: CitationCitedArtifactContributorshipEntryContributionInstance > ; fn deserialize < D > (self , deserializer : D) -> Result < Self :: Value , D :: Error > where D : serde :: de :: Deserializer < 'de > , { struct Visitor < 'a > (& 'a mut crate :: context :: de :: DeserializationContext < Vec < fhirbolt_model :: r4b :: resources :: CitationCitedArtifactContributorshipEntryContributionInstance >>) ; impl < 'de > serde :: de :: Visitor < 'de > for Visitor < '_ > { type Value = Vec < fhirbolt_model :: r4b :: resources :: CitationCitedArtifactContributorshipEntryContributionInstance > ; fn expecting (& self , formatter : & mut std :: fmt :: Formatter) -> std :: fmt :: Result { formatter . write_str ("a sequence") } fn visit_seq < A > (self , mut seq : A) -> Result < Self :: Value , A :: Error > where A : serde :: de :: SeqAccess < 'de > , { let mut values = Vec :: new () ; while let Some (value) = seq . next_element_seed (self . 0 . transmute :: < fhirbolt_model :: r4b :: resources :: CitationCitedArtifactContributorshipEntryContributionInstance > ()) ? { values . push (value) ; } Ok (values) } } deserializer . deserialize_seq (Visitor (self)) } }
 impl < 'de > serde :: de :: DeserializeSeed < 'de > for & mut crate :: context :: de :: DeserializationContext < Vec < Box < fhirbolt_model :: r4b :: resources :: CitationCitedArtifactContributorshipEntryContributionInstance >> > { type Value = Vec < Box < fhirbolt_model :: r4b :: resources :: CitationCitedArtifactContributorshipEntryContributionInstance >> ; fn deserialize < D > (self , deserializer : D) -> Result < Self :: Value , D :: Error > where D : serde :: de :: Deserializer < 'de > , { struct Visitor < 'a > (& 'a mut crate :: context :: de :: DeserializationContext < Vec < Box < fhirbolt_model :: r4b :: resources :: CitationCitedArtifactContributorshipEntryContributionInstance >> >) ; impl < 'de > serde :: de :: Visitor < 'de > for Visitor < '_ > { type Value = Vec < Box < fhirbolt_model :: r4b :: resources :: CitationCitedArtifactContributorshipEntryContributionInstance >> ; fn expecting (& self , formatter : & mut std :: fmt :: Formatter) -> std :: fmt :: Result { formatter . write_str ("a sequence") } fn visit_seq < A > (self , mut seq : A) -> Result < Self :: Value , A :: Error > where A : serde :: de :: SeqAccess < 'de > , { let mut values = Vec :: new () ; while let Some (value) = seq . next_element_seed (self . 0 . transmute :: < Box < fhirbolt_model :: r4b :: resources :: CitationCitedArtifactContributorshipEntryContributionInstance >> ()) ? { values . push (value) ; } Ok (values) } } deserializer . deserialize_seq (Visitor (self)) } }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &fhirbolt_model::r4b::resources::CitationCitedArtifactContributorshipEntry,
     >
 {
@@ -6758,7 +6800,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Box<fhirbolt_model::r4b::resources::CitationCitedArtifactContributorshipEntry>,
     >
 {
@@ -6770,7 +6812,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Vec<fhirbolt_model::r4b::resources::CitationCitedArtifactContributorshipEntry>,
     >
 {
@@ -6787,7 +6829,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Vec<Box<fhirbolt_model::r4b::resources::CitationCitedArtifactContributorshipEntry>>,
     >
 {
@@ -7310,7 +7352,7 @@ impl<'de> serde::de::DeserializeSeed<'de>
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &fhirbolt_model::r4b::resources::CitationCitedArtifactContributorshipSummary,
     >
 {
@@ -7365,7 +7407,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Box<fhirbolt_model::r4b::resources::CitationCitedArtifactContributorshipSummary>,
     >
 {
@@ -7377,7 +7419,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Vec<fhirbolt_model::r4b::resources::CitationCitedArtifactContributorshipSummary>,
     >
 {
@@ -7394,7 +7436,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Vec<Box<fhirbolt_model::r4b::resources::CitationCitedArtifactContributorshipSummary>>,
     >
 {
@@ -7685,7 +7727,7 @@ impl<'de> serde::de::DeserializeSeed<'de>
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &fhirbolt_model::r4b::resources::CitationCitedArtifactContributorship,
     >
 {
@@ -7743,7 +7785,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Box<fhirbolt_model::r4b::resources::CitationCitedArtifactContributorship>,
     >
 {
@@ -7755,7 +7797,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Vec<fhirbolt_model::r4b::resources::CitationCitedArtifactContributorship>,
     >
 {
@@ -7772,7 +7814,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Vec<Box<fhirbolt_model::r4b::resources::CitationCitedArtifactContributorship>>,
     >
 {
@@ -8060,7 +8102,9 @@ impl<'de> serde::de::DeserializeSeed<'de>
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&fhirbolt_model::r4b::resources::CitationCitedArtifact>
+    for crate::context::ser::SerializationContext<
+        &fhirbolt_model::r4b::resources::CitationCitedArtifact,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -8168,7 +8212,9 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&Box<fhirbolt_model::r4b::resources::CitationCitedArtifact>>
+    for crate::context::ser::SerializationContext<
+        &Box<fhirbolt_model::r4b::resources::CitationCitedArtifact>,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -8178,7 +8224,9 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&Vec<fhirbolt_model::r4b::resources::CitationCitedArtifact>>
+    for crate::context::ser::SerializationContext<
+        &Vec<fhirbolt_model::r4b::resources::CitationCitedArtifact>,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -8193,7 +8241,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Vec<Box<fhirbolt_model::r4b::resources::CitationCitedArtifact>>,
     >
 {
@@ -8692,7 +8740,7 @@ impl crate::Resource for fhirbolt_model::r4b::resources::Citation {
     const FHIR_RELEASE: crate::FhirRelease = crate::FhirRelease::R4B;
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&fhirbolt_model::r4b::resources::Citation>
+    for crate::context::ser::SerializationContext<&fhirbolt_model::r4b::resources::Citation>
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -9116,7 +9164,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&Box<fhirbolt_model::r4b::resources::Citation>>
+    for crate::context::ser::SerializationContext<&Box<fhirbolt_model::r4b::resources::Citation>>
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -9126,7 +9174,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&Vec<fhirbolt_model::r4b::resources::Citation>>
+    for crate::context::ser::SerializationContext<&Vec<fhirbolt_model::r4b::resources::Citation>>
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -9141,7 +9189,9 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&Vec<Box<fhirbolt_model::r4b::resources::Citation>>>
+    for crate::context::ser::SerializationContext<
+        &Vec<Box<fhirbolt_model::r4b::resources::Citation>>,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where

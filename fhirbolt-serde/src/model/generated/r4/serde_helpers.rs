@@ -1,9 +1,11 @@
-// Generated on 2023-04-13 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-14 by fhirbolt-codegen v0.1.0
 pub struct PrimitiveElement<'a> {
     pub id: Option<&'a std::string::String>,
     pub extension: &'a Vec<Box<fhirbolt_model::r4::types::Extension>>,
 }
-impl<'a> serde::ser::Serialize for crate::SerializationContext<&PrimitiveElement<'a>> {
+impl<'a> serde::ser::Serialize
+    for crate::context::ser::SerializationContext<&PrimitiveElement<'a>>
+{
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
         S: serde::ser::Serializer,
@@ -21,7 +23,9 @@ impl<'a> serde::ser::Serialize for crate::SerializationContext<&PrimitiveElement
         state.end()
     }
 }
-impl<'a> serde::ser::Serialize for crate::SerializationContext<Option<&PrimitiveElement<'a>>> {
+impl<'a> serde::ser::Serialize
+    for crate::context::ser::SerializationContext<Option<&PrimitiveElement<'a>>>
+{
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
         S: serde::ser::Serializer,
@@ -33,7 +37,9 @@ impl<'a> serde::ser::Serialize for crate::SerializationContext<Option<&Primitive
         }
     }
 }
-impl<'a> serde::ser::Serialize for crate::SerializationContext<&Vec<Option<PrimitiveElement<'a>>>> {
+impl<'a> serde::ser::Serialize
+    for crate::context::ser::SerializationContext<&Vec<Option<PrimitiveElement<'a>>>>
+{
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
         S: serde::ser::Serializer,

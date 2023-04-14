@@ -1,6 +1,6 @@
-// Generated on 2023-04-13 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-14 by fhirbolt-codegen v0.1.0
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &fhirbolt_model::r4::resources::CoverageEligibilityRequestSupportingInfo,
     >
 {
@@ -70,7 +70,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Box<fhirbolt_model::r4::resources::CoverageEligibilityRequestSupportingInfo>,
     >
 {
@@ -82,7 +82,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Vec<fhirbolt_model::r4::resources::CoverageEligibilityRequestSupportingInfo>,
     >
 {
@@ -99,7 +99,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Vec<Box<fhirbolt_model::r4::resources::CoverageEligibilityRequestSupportingInfo>>,
     >
 {
@@ -425,7 +425,7 @@ impl<'de> serde::de::DeserializeSeed<'de>
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &fhirbolt_model::r4::resources::CoverageEligibilityRequestInsurance,
     >
 {
@@ -499,7 +499,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Box<fhirbolt_model::r4::resources::CoverageEligibilityRequestInsurance>,
     >
 {
@@ -511,7 +511,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Vec<fhirbolt_model::r4::resources::CoverageEligibilityRequestInsurance>,
     >
 {
@@ -528,7 +528,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Vec<Box<fhirbolt_model::r4::resources::CoverageEligibilityRequestInsurance>>,
     >
 {
@@ -844,7 +844,7 @@ impl<'de> serde::de::DeserializeSeed<'de>
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &fhirbolt_model::r4::resources::CoverageEligibilityRequestItemDiagnosis,
     >
 {
@@ -874,7 +874,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Box<fhirbolt_model::r4::resources::CoverageEligibilityRequestItemDiagnosis>,
     >
 {
@@ -886,7 +886,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Vec<fhirbolt_model::r4::resources::CoverageEligibilityRequestItemDiagnosis>,
     >
 {
@@ -903,7 +903,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Vec<Box<fhirbolt_model::r4::resources::CoverageEligibilityRequestItemDiagnosis>>,
     >
 {
@@ -1153,7 +1153,9 @@ impl<'de> serde::de::DeserializeSeed<'de>
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&fhirbolt_model::r4::resources::CoverageEligibilityRequestItem>
+    for crate::context::ser::SerializationContext<
+        &fhirbolt_model::r4::resources::CoverageEligibilityRequestItem,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -1256,7 +1258,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Box<fhirbolt_model::r4::resources::CoverageEligibilityRequestItem>,
     >
 {
@@ -1268,7 +1270,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Vec<fhirbolt_model::r4::resources::CoverageEligibilityRequestItem>,
     >
 {
@@ -1285,7 +1287,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Vec<Box<fhirbolt_model::r4::resources::CoverageEligibilityRequestItem>>,
     >
 {
@@ -1735,7 +1737,9 @@ impl crate::Resource for fhirbolt_model::r4::resources::CoverageEligibilityReque
     const FHIR_RELEASE: crate::FhirRelease = crate::FhirRelease::R4;
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&fhirbolt_model::r4::resources::CoverageEligibilityRequest>
+    for crate::context::ser::SerializationContext<
+        &fhirbolt_model::r4::resources::CoverageEligibilityRequest,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -1966,7 +1970,9 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&Box<fhirbolt_model::r4::resources::CoverageEligibilityRequest>>
+    for crate::context::ser::SerializationContext<
+        &Box<fhirbolt_model::r4::resources::CoverageEligibilityRequest>,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -1976,7 +1982,9 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&Vec<fhirbolt_model::r4::resources::CoverageEligibilityRequest>>
+    for crate::context::ser::SerializationContext<
+        &Vec<fhirbolt_model::r4::resources::CoverageEligibilityRequest>,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -1991,7 +1999,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Vec<Box<fhirbolt_model::r4::resources::CoverageEligibilityRequest>>,
     >
 {

@@ -1,6 +1,8 @@
-// Generated on 2023-04-13 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-14 by fhirbolt-codegen v0.1.0
 impl serde::ser::Serialize
-    for crate::SerializationContext<&fhirbolt_model::r4::resources::ExampleScenarioActor>
+    for crate::context::ser::SerializationContext<
+        &fhirbolt_model::r4::resources::ExampleScenarioActor,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -103,7 +105,9 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&Box<fhirbolt_model::r4::resources::ExampleScenarioActor>>
+    for crate::context::ser::SerializationContext<
+        &Box<fhirbolt_model::r4::resources::ExampleScenarioActor>,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -113,7 +117,9 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&Vec<fhirbolt_model::r4::resources::ExampleScenarioActor>>
+    for crate::context::ser::SerializationContext<
+        &Vec<fhirbolt_model::r4::resources::ExampleScenarioActor>,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -128,7 +134,9 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&Vec<Box<fhirbolt_model::r4::resources::ExampleScenarioActor>>>
+    for crate::context::ser::SerializationContext<
+        &Vec<Box<fhirbolt_model::r4::resources::ExampleScenarioActor>>,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -505,7 +513,9 @@ impl<'de> serde::de::DeserializeSeed<'de>
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&fhirbolt_model::r4::resources::ExampleScenarioInstanceVersion>
+    for crate::context::ser::SerializationContext<
+        &fhirbolt_model::r4::resources::ExampleScenarioInstanceVersion,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -571,7 +581,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Box<fhirbolt_model::r4::resources::ExampleScenarioInstanceVersion>,
     >
 {
@@ -583,7 +593,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Vec<fhirbolt_model::r4::resources::ExampleScenarioInstanceVersion>,
     >
 {
@@ -600,7 +610,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Vec<Box<fhirbolt_model::r4::resources::ExampleScenarioInstanceVersion>>,
     >
 {
@@ -905,7 +915,7 @@ impl<'de> serde::de::DeserializeSeed<'de>
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &fhirbolt_model::r4::resources::ExampleScenarioInstanceContainedInstance,
     >
 {
@@ -974,7 +984,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Box<fhirbolt_model::r4::resources::ExampleScenarioInstanceContainedInstance>,
     >
 {
@@ -986,7 +996,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Vec<fhirbolt_model::r4::resources::ExampleScenarioInstanceContainedInstance>,
     >
 {
@@ -1003,7 +1013,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Vec<Box<fhirbolt_model::r4::resources::ExampleScenarioInstanceContainedInstance>>,
     >
 {
@@ -1307,7 +1317,9 @@ impl<'de> serde::de::DeserializeSeed<'de>
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&fhirbolt_model::r4::resources::ExampleScenarioInstance>
+    for crate::context::ser::SerializationContext<
+        &fhirbolt_model::r4::resources::ExampleScenarioInstance,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -1426,7 +1438,9 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&Box<fhirbolt_model::r4::resources::ExampleScenarioInstance>>
+    for crate::context::ser::SerializationContext<
+        &Box<fhirbolt_model::r4::resources::ExampleScenarioInstance>,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -1436,7 +1450,9 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&Vec<fhirbolt_model::r4::resources::ExampleScenarioInstance>>
+    for crate::context::ser::SerializationContext<
+        &Vec<fhirbolt_model::r4::resources::ExampleScenarioInstance>,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -1451,7 +1467,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Vec<Box<fhirbolt_model::r4::resources::ExampleScenarioInstance>>,
     >
 {
@@ -1870,7 +1886,7 @@ impl<'de> serde::de::DeserializeSeed<'de>
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &fhirbolt_model::r4::resources::ExampleScenarioProcessStepOperation,
     >
 {
@@ -2069,7 +2085,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Box<fhirbolt_model::r4::resources::ExampleScenarioProcessStepOperation>,
     >
 {
@@ -2081,7 +2097,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Vec<fhirbolt_model::r4::resources::ExampleScenarioProcessStepOperation>,
     >
 {
@@ -2098,7 +2114,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Vec<Box<fhirbolt_model::r4::resources::ExampleScenarioProcessStepOperation>>,
     >
 {
@@ -2652,7 +2668,7 @@ impl<'de> serde::de::DeserializeSeed<'de>
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &fhirbolt_model::r4::resources::ExampleScenarioProcessStepAlternative,
     >
 {
@@ -2722,7 +2738,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Box<fhirbolt_model::r4::resources::ExampleScenarioProcessStepAlternative>,
     >
 {
@@ -2734,7 +2750,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Vec<fhirbolt_model::r4::resources::ExampleScenarioProcessStepAlternative>,
     >
 {
@@ -2751,7 +2767,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Vec<Box<fhirbolt_model::r4::resources::ExampleScenarioProcessStepAlternative>>,
     >
 {
@@ -3078,7 +3094,9 @@ impl<'de> serde::de::DeserializeSeed<'de>
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&fhirbolt_model::r4::resources::ExampleScenarioProcessStep>
+    for crate::context::ser::SerializationContext<
+        &fhirbolt_model::r4::resources::ExampleScenarioProcessStep,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -3137,7 +3155,9 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&Box<fhirbolt_model::r4::resources::ExampleScenarioProcessStep>>
+    for crate::context::ser::SerializationContext<
+        &Box<fhirbolt_model::r4::resources::ExampleScenarioProcessStep>,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -3147,7 +3167,9 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&Vec<fhirbolt_model::r4::resources::ExampleScenarioProcessStep>>
+    for crate::context::ser::SerializationContext<
+        &Vec<fhirbolt_model::r4::resources::ExampleScenarioProcessStep>,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -3162,7 +3184,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Vec<Box<fhirbolt_model::r4::resources::ExampleScenarioProcessStep>>,
     >
 {
@@ -3469,7 +3491,9 @@ impl<'de> serde::de::DeserializeSeed<'de>
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&fhirbolt_model::r4::resources::ExampleScenarioProcess>
+    for crate::context::ser::SerializationContext<
+        &fhirbolt_model::r4::resources::ExampleScenarioProcess,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -3579,7 +3603,9 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&Box<fhirbolt_model::r4::resources::ExampleScenarioProcess>>
+    for crate::context::ser::SerializationContext<
+        &Box<fhirbolt_model::r4::resources::ExampleScenarioProcess>,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -3589,7 +3615,9 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&Vec<fhirbolt_model::r4::resources::ExampleScenarioProcess>>
+    for crate::context::ser::SerializationContext<
+        &Vec<fhirbolt_model::r4::resources::ExampleScenarioProcess>,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -3604,7 +3632,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Vec<Box<fhirbolt_model::r4::resources::ExampleScenarioProcess>>,
     >
 {
@@ -4010,7 +4038,7 @@ impl crate::Resource for fhirbolt_model::r4::resources::ExampleScenario {
     const FHIR_RELEASE: crate::FhirRelease = crate::FhirRelease::R4;
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&fhirbolt_model::r4::resources::ExampleScenario>
+    for crate::context::ser::SerializationContext<&fhirbolt_model::r4::resources::ExampleScenario>
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -4356,7 +4384,9 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&Box<fhirbolt_model::r4::resources::ExampleScenario>>
+    for crate::context::ser::SerializationContext<
+        &Box<fhirbolt_model::r4::resources::ExampleScenario>,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -4366,7 +4396,9 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&Vec<fhirbolt_model::r4::resources::ExampleScenario>>
+    for crate::context::ser::SerializationContext<
+        &Vec<fhirbolt_model::r4::resources::ExampleScenario>,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -4381,7 +4413,9 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&Vec<Box<fhirbolt_model::r4::resources::ExampleScenario>>>
+    for crate::context::ser::SerializationContext<
+        &Vec<Box<fhirbolt_model::r4::resources::ExampleScenario>>,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where

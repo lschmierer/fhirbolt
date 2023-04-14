@@ -1,4 +1,4 @@
-// Generated on 2023-04-13 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-14 by fhirbolt-codegen v0.1.0
 #[doc = "A value that defines the context specified in this context of use. The interpretation of the value is defined by the code."]
 #[derive(Debug, Clone, PartialEq)]
 pub enum UsageContextValue {

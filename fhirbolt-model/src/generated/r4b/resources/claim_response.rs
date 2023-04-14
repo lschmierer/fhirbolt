@@ -1,4 +1,4 @@
-// Generated on 2023-04-13 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-14 by fhirbolt-codegen v0.1.0
 #[doc = "The date or dates when the service or product was supplied, performed or completed."]
 #[derive(Debug, Clone, PartialEq)]
 pub enum ClaimResponseAddItemServiced {

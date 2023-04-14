@@ -1,6 +1,8 @@
-// Generated on 2023-04-13 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-14 by fhirbolt-codegen v0.1.0
 impl serde::ser::Serialize
-    for crate::SerializationContext<&fhirbolt_model::r4::resources::ImagingStudySeriesPerformer>
+    for crate::context::ser::SerializationContext<
+        &fhirbolt_model::r4::resources::ImagingStudySeriesPerformer,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -31,7 +33,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Box<fhirbolt_model::r4::resources::ImagingStudySeriesPerformer>,
     >
 {
@@ -43,7 +45,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Vec<fhirbolt_model::r4::resources::ImagingStudySeriesPerformer>,
     >
 {
@@ -60,7 +62,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Vec<Box<fhirbolt_model::r4::resources::ImagingStudySeriesPerformer>>,
     >
 {
@@ -301,7 +303,9 @@ impl<'de> serde::de::DeserializeSeed<'de>
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&fhirbolt_model::r4::resources::ImagingStudySeriesInstance>
+    for crate::context::ser::SerializationContext<
+        &fhirbolt_model::r4::resources::ImagingStudySeriesInstance,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -386,7 +390,9 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&Box<fhirbolt_model::r4::resources::ImagingStudySeriesInstance>>
+    for crate::context::ser::SerializationContext<
+        &Box<fhirbolt_model::r4::resources::ImagingStudySeriesInstance>,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -396,7 +402,9 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&Vec<fhirbolt_model::r4::resources::ImagingStudySeriesInstance>>
+    for crate::context::ser::SerializationContext<
+        &Vec<fhirbolt_model::r4::resources::ImagingStudySeriesInstance>,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -411,7 +419,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Vec<Box<fhirbolt_model::r4::resources::ImagingStudySeriesInstance>>,
     >
 {
@@ -761,7 +769,9 @@ impl<'de> serde::de::DeserializeSeed<'de>
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&fhirbolt_model::r4::resources::ImagingStudySeries>
+    for crate::context::ser::SerializationContext<
+        &fhirbolt_model::r4::resources::ImagingStudySeries,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -914,7 +924,9 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&Box<fhirbolt_model::r4::resources::ImagingStudySeries>>
+    for crate::context::ser::SerializationContext<
+        &Box<fhirbolt_model::r4::resources::ImagingStudySeries>,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -924,7 +936,9 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&Vec<fhirbolt_model::r4::resources::ImagingStudySeries>>
+    for crate::context::ser::SerializationContext<
+        &Vec<fhirbolt_model::r4::resources::ImagingStudySeries>,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -939,7 +953,9 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&Vec<Box<fhirbolt_model::r4::resources::ImagingStudySeries>>>
+    for crate::context::ser::SerializationContext<
+        &Vec<Box<fhirbolt_model::r4::resources::ImagingStudySeries>>,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -1490,7 +1506,7 @@ impl crate::Resource for fhirbolt_model::r4::resources::ImagingStudy {
     const FHIR_RELEASE: crate::FhirRelease = crate::FhirRelease::R4;
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&fhirbolt_model::r4::resources::ImagingStudy>
+    for crate::context::ser::SerializationContext<&fhirbolt_model::r4::resources::ImagingStudy>
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -1735,7 +1751,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&Box<fhirbolt_model::r4::resources::ImagingStudy>>
+    for crate::context::ser::SerializationContext<&Box<fhirbolt_model::r4::resources::ImagingStudy>>
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -1745,7 +1761,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&Vec<fhirbolt_model::r4::resources::ImagingStudy>>
+    for crate::context::ser::SerializationContext<&Vec<fhirbolt_model::r4::resources::ImagingStudy>>
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -1760,7 +1776,9 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&Vec<Box<fhirbolt_model::r4::resources::ImagingStudy>>>
+    for crate::context::ser::SerializationContext<
+        &Vec<Box<fhirbolt_model::r4::resources::ImagingStudy>>,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where

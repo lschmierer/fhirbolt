@@ -1,4 +1,4 @@
-// Generated on 2023-04-13 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-14 by fhirbolt-codegen v0.1.0
 #[doc = "A duration or range of durations to apply to the relationship. For example, 30-60 minutes before."]
 #[derive(Debug, Clone, PartialEq)]
 pub enum RequestGroupActionRelatedActionOffset {

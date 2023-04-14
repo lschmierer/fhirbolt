@@ -1,4 +1,4 @@
-// Generated on 2023-04-13 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-14 by fhirbolt-codegen v0.1.0
 #[doc = "Identifies which record considered as the reference to the same real-world occurrence as well as how the items should be evaluated within the collection of linked items."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub struct LinkageItem {

@@ -1,5 +1,7 @@
-// Generated on 2023-04-13 by fhirbolt-codegen v0.1.0
-impl serde::ser::Serialize for crate::SerializationContext<&fhirbolt_model::r4::types::Period> {
+// Generated on 2023-04-14 by fhirbolt-codegen v0.1.0
+impl serde::ser::Serialize
+    for crate::context::ser::SerializationContext<&fhirbolt_model::r4::types::Period>
+{
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
         S: serde::ser::Serializer,
@@ -60,7 +62,7 @@ impl serde::ser::Serialize for crate::SerializationContext<&fhirbolt_model::r4::
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&Box<fhirbolt_model::r4::types::Period>>
+    for crate::context::ser::SerializationContext<&Box<fhirbolt_model::r4::types::Period>>
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -70,7 +72,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&Vec<fhirbolt_model::r4::types::Period>>
+    for crate::context::ser::SerializationContext<&Vec<fhirbolt_model::r4::types::Period>>
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -85,7 +87,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&Vec<Box<fhirbolt_model::r4::types::Period>>>
+    for crate::context::ser::SerializationContext<&Vec<Box<fhirbolt_model::r4::types::Period>>>
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where

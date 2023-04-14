@@ -1,6 +1,8 @@
-// Generated on 2023-04-13 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-14 by fhirbolt-codegen v0.1.0
 impl serde::ser::Serialize
-    for crate::SerializationContext<&fhirbolt_model::r4::resources::RiskEvidenceSynthesisSampleSize>
+    for crate::context::ser::SerializationContext<
+        &fhirbolt_model::r4::resources::RiskEvidenceSynthesisSampleSize,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -90,7 +92,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Box<fhirbolt_model::r4::resources::RiskEvidenceSynthesisSampleSize>,
     >
 {
@@ -102,7 +104,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Vec<fhirbolt_model::r4::resources::RiskEvidenceSynthesisSampleSize>,
     >
 {
@@ -119,7 +121,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Vec<Box<fhirbolt_model::r4::resources::RiskEvidenceSynthesisSampleSize>>,
     >
 {
@@ -457,7 +459,7 @@ impl<'de> serde::de::DeserializeSeed<'de>
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &fhirbolt_model::r4::resources::RiskEvidenceSynthesisRiskEstimatePrecisionEstimate,
     >
 {
@@ -554,7 +556,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Box<fhirbolt_model::r4::resources::RiskEvidenceSynthesisRiskEstimatePrecisionEstimate>,
     >
 {
@@ -566,7 +568,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Vec<fhirbolt_model::r4::resources::RiskEvidenceSynthesisRiskEstimatePrecisionEstimate>,
     >
 {
@@ -583,7 +585,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Vec<
             Box<fhirbolt_model::r4::resources::RiskEvidenceSynthesisRiskEstimatePrecisionEstimate>,
         >,
@@ -909,7 +911,7 @@ impl<'de> serde::de::DeserializeSeed<'de>
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &fhirbolt_model::r4::resources::RiskEvidenceSynthesisRiskEstimate,
     >
 {
@@ -1033,7 +1035,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Box<fhirbolt_model::r4::resources::RiskEvidenceSynthesisRiskEstimate>,
     >
 {
@@ -1045,7 +1047,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Vec<fhirbolt_model::r4::resources::RiskEvidenceSynthesisRiskEstimate>,
     >
 {
@@ -1062,7 +1064,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Vec<Box<fhirbolt_model::r4::resources::RiskEvidenceSynthesisRiskEstimate>>,
     >
 {
@@ -1476,7 +1478,7 @@ impl<'de> serde::de::DeserializeSeed<'de>
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &fhirbolt_model::r4::resources::RiskEvidenceSynthesisCertaintyCertaintySubcomponent,
     >
 {
@@ -1514,7 +1516,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Box<fhirbolt_model::r4::resources::RiskEvidenceSynthesisCertaintyCertaintySubcomponent>,
     >
 {
@@ -1526,7 +1528,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Vec<fhirbolt_model::r4::resources::RiskEvidenceSynthesisCertaintyCertaintySubcomponent>,
     >
 {
@@ -1543,7 +1545,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Vec<
             Box<fhirbolt_model::r4::resources::RiskEvidenceSynthesisCertaintyCertaintySubcomponent>,
         >,
@@ -1802,7 +1804,9 @@ impl<'de> serde::de::DeserializeSeed<'de>
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&fhirbolt_model::r4::resources::RiskEvidenceSynthesisCertainty>
+    for crate::context::ser::SerializationContext<
+        &fhirbolt_model::r4::resources::RiskEvidenceSynthesisCertainty,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -1840,7 +1844,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Box<fhirbolt_model::r4::resources::RiskEvidenceSynthesisCertainty>,
     >
 {
@@ -1852,7 +1856,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Vec<fhirbolt_model::r4::resources::RiskEvidenceSynthesisCertainty>,
     >
 {
@@ -1869,7 +1873,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Vec<Box<fhirbolt_model::r4::resources::RiskEvidenceSynthesisCertainty>>,
     >
 {
@@ -2150,7 +2154,9 @@ impl crate::Resource for fhirbolt_model::r4::resources::RiskEvidenceSynthesis {
     const FHIR_RELEASE: crate::FhirRelease = crate::FhirRelease::R4;
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&fhirbolt_model::r4::resources::RiskEvidenceSynthesis>
+    for crate::context::ser::SerializationContext<
+        &fhirbolt_model::r4::resources::RiskEvidenceSynthesis,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -2540,7 +2546,9 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&Box<fhirbolt_model::r4::resources::RiskEvidenceSynthesis>>
+    for crate::context::ser::SerializationContext<
+        &Box<fhirbolt_model::r4::resources::RiskEvidenceSynthesis>,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -2550,7 +2558,9 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&Vec<fhirbolt_model::r4::resources::RiskEvidenceSynthesis>>
+    for crate::context::ser::SerializationContext<
+        &Vec<fhirbolt_model::r4::resources::RiskEvidenceSynthesis>,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -2565,7 +2575,9 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&Vec<Box<fhirbolt_model::r4::resources::RiskEvidenceSynthesis>>>
+    for crate::context::ser::SerializationContext<
+        &Vec<Box<fhirbolt_model::r4::resources::RiskEvidenceSynthesis>>,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where

@@ -1,4 +1,4 @@
-// Generated on 2023-04-13 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-14 by fhirbolt-codegen v0.1.0
 #[doc = "Base StructureDefinition for Ratio Type: A relationship of two Quantity values - expressed as a numerator and a denominator.\n\nNeed to able to capture ratios for some measurements (titers) and some rates (costs)."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub struct Ratio {

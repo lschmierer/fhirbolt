@@ -3,10 +3,10 @@
 use std::fmt;
 
 pub mod element;
-pub mod serde_context;
 
+pub mod element_map;
 pub mod path;
-pub mod serde_helpers;
+pub mod type_hints;
 
 #[derive(Copy, Clone, PartialEq, Eq, Debug)]
 pub enum FhirRelease {

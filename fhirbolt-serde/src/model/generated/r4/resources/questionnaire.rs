@@ -1,6 +1,8 @@
-// Generated on 2023-04-13 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-14 by fhirbolt-codegen v0.1.0
 impl serde::ser::Serialize
-    for crate::SerializationContext<&fhirbolt_model::r4::resources::QuestionnaireItemEnableWhen>
+    for crate::context::ser::SerializationContext<
+        &fhirbolt_model::r4::resources::QuestionnaireItemEnableWhen,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -224,7 +226,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Box<fhirbolt_model::r4::resources::QuestionnaireItemEnableWhen>,
     >
 {
@@ -236,7 +238,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Vec<fhirbolt_model::r4::resources::QuestionnaireItemEnableWhen>,
     >
 {
@@ -253,7 +255,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Vec<Box<fhirbolt_model::r4::resources::QuestionnaireItemEnableWhen>>,
     >
 {
@@ -761,7 +763,9 @@ impl<'de> serde::de::DeserializeSeed<'de>
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&fhirbolt_model::r4::resources::QuestionnaireItemAnswerOption>
+    for crate::context::ser::SerializationContext<
+        &fhirbolt_model::r4::resources::QuestionnaireItemAnswerOption,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -902,7 +906,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Box<fhirbolt_model::r4::resources::QuestionnaireItemAnswerOption>,
     >
 {
@@ -914,7 +918,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Vec<fhirbolt_model::r4::resources::QuestionnaireItemAnswerOption>,
     >
 {
@@ -931,7 +935,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Vec<Box<fhirbolt_model::r4::resources::QuestionnaireItemAnswerOption>>,
     >
 {
@@ -1317,7 +1321,9 @@ impl<'de> serde::de::DeserializeSeed<'de>
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&fhirbolt_model::r4::resources::QuestionnaireItemInitial>
+    for crate::context::ser::SerializationContext<
+        &fhirbolt_model::r4::resources::QuestionnaireItemInitial,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -1513,7 +1519,9 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&Box<fhirbolt_model::r4::resources::QuestionnaireItemInitial>>
+    for crate::context::ser::SerializationContext<
+        &Box<fhirbolt_model::r4::resources::QuestionnaireItemInitial>,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -1523,7 +1531,9 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&Vec<fhirbolt_model::r4::resources::QuestionnaireItemInitial>>
+    for crate::context::ser::SerializationContext<
+        &Vec<fhirbolt_model::r4::resources::QuestionnaireItemInitial>,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -1538,7 +1548,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Vec<Box<fhirbolt_model::r4::resources::QuestionnaireItemInitial>>,
     >
 {
@@ -1996,7 +2006,7 @@ impl<'de> serde::de::DeserializeSeed<'de>
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&fhirbolt_model::r4::resources::QuestionnaireItem>
+    for crate::context::ser::SerializationContext<&fhirbolt_model::r4::resources::QuestionnaireItem>
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -2267,7 +2277,9 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&Box<fhirbolt_model::r4::resources::QuestionnaireItem>>
+    for crate::context::ser::SerializationContext<
+        &Box<fhirbolt_model::r4::resources::QuestionnaireItem>,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -2277,7 +2289,9 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&Vec<fhirbolt_model::r4::resources::QuestionnaireItem>>
+    for crate::context::ser::SerializationContext<
+        &Vec<fhirbolt_model::r4::resources::QuestionnaireItem>,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -2292,7 +2306,9 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&Vec<Box<fhirbolt_model::r4::resources::QuestionnaireItem>>>
+    for crate::context::ser::SerializationContext<
+        &Vec<Box<fhirbolt_model::r4::resources::QuestionnaireItem>>,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -3046,7 +3062,7 @@ impl crate::Resource for fhirbolt_model::r4::resources::Questionnaire {
     const FHIR_RELEASE: crate::FhirRelease = crate::FhirRelease::R4;
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&fhirbolt_model::r4::resources::Questionnaire>
+    for crate::context::ser::SerializationContext<&fhirbolt_model::r4::resources::Questionnaire>
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -3515,7 +3531,9 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&Box<fhirbolt_model::r4::resources::Questionnaire>>
+    for crate::context::ser::SerializationContext<
+        &Box<fhirbolt_model::r4::resources::Questionnaire>,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -3525,7 +3543,9 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&Vec<fhirbolt_model::r4::resources::Questionnaire>>
+    for crate::context::ser::SerializationContext<
+        &Vec<fhirbolt_model::r4::resources::Questionnaire>,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -3540,7 +3560,9 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&Vec<Box<fhirbolt_model::r4::resources::Questionnaire>>>
+    for crate::context::ser::SerializationContext<
+        &Vec<Box<fhirbolt_model::r4::resources::Questionnaire>>,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where

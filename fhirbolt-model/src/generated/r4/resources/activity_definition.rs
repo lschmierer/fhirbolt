@@ -1,4 +1,4 @@
-// Generated on 2023-04-13 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-14 by fhirbolt-codegen v0.1.0
 #[doc = "A code or group definition that describes the intended subject of the activity being defined."]
 #[derive(Debug, Clone, PartialEq)]
 pub enum ActivityDefinitionSubject {

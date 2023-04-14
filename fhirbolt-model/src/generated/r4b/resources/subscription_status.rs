@@ -1,4 +1,4 @@
-// Generated on 2023-04-13 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-14 by fhirbolt-codegen v0.1.0
 #[doc = "Detailed information about events relevant to this subscription notification."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub struct SubscriptionStatusNotificationEvent {

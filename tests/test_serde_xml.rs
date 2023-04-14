@@ -11,6 +11,7 @@ use fhirbolt::{
 use test_utils::{
     assert_xml_eq,
     examples::{examples, JsonOrXml},
+    shuffle,
 };
 
 fn test_serde_xml<'a, T, const R: FhirRelease>(mode: DeserializationMode)
@@ -39,7 +40,8 @@ where
         buffer.clear();
         file.read_to_end(&mut buffer).unwrap();
 
-        let element: Element<R> = fhirbolt::xml::from_slice(&buffer, None).unwrap();
+        let element: Element<R> =
+            shuffle::shuffle_element(fhirbolt::xml::from_slice(&buffer, None).unwrap());
 
         let mut element_buffer = Vec::new();
         _ = fhirbolt::xml::to_writer(&mut element_buffer, &element).unwrap();

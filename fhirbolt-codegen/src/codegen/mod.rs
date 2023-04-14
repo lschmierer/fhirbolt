@@ -1,4 +1,5 @@
 mod de;
+mod element_map;
 mod ser;
 mod serde_helpers;
 mod type_hints;
@@ -19,7 +20,10 @@ use self::{
     de::implement_deserialze,
     ser::{implement_serialize, implement_serialize_resource_enum},
 };
-pub use self::{serde_helpers::generate_serde_helpers, type_hints::generate_type_hints};
+pub use self::{
+    element_map::generate_element_map, serde_helpers::generate_serde_helpers,
+    type_hints::generate_type_hints,
+};
 
 lazy_static! {
     static ref URL_REGEX: Regex = Regex::new(r"http[\w./:]*[\w/:]").unwrap();

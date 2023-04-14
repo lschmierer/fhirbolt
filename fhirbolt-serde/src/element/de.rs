@@ -426,15 +426,19 @@ impl<'de, const R: FhirRelease> de::Deserializer<'de> for Deserializer<Value<R>>
 
 struct ElementAccess<const R: FhirRelease> {
     iter: indexmap::map::IntoIter<String, Value<R>>,
+    resource_type: Option<Value<R>>,
     next_key: Option<String>,
     next_value: Option<Value<R>>,
     next_seq_iter: Option<vec::IntoIter<Element<R>>>,
 }
 
 impl<const R: FhirRelease> ElementAccess<R> {
-    fn new(element: Element<R>) -> ElementAccess<R> {
+    fn new(mut element: Element<R>) -> ElementAccess<R> {
+        let resource_type = element.remove("resourceType");
+
         ElementAccess {
             iter: element.into_iter(),
+            resource_type,
             next_key: None,
             next_value: None,
             next_seq_iter: None,
@@ -449,7 +453,12 @@ impl<'de, const R: FhirRelease> MapAccess<'de> for ElementAccess<R> {
     where
         K: DeserializeSeed<'de>,
     {
-        if let Some(key) = &self.next_key {
+        if let Some(resource_type) = self.resource_type.take() {
+            self.next_value = Some(resource_type);
+
+            seed.deserialize(StrDeserializer::new("resourceType"))
+                .map(Some)
+        } else if let Some(key) = &self.next_key {
             seed.deserialize(StrDeserializer::new(key)).map(Some)
         } else if let Some((key, value)) = self.iter.next() {
             match value {

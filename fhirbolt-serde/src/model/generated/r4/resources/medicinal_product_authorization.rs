@@ -1,6 +1,6 @@
-// Generated on 2023-04-13 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-14 by fhirbolt-codegen v0.1.0
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &fhirbolt_model::r4::resources::MedicinalProductAuthorizationJurisdictionalAuthorization,
     >
 {
@@ -48,7 +48,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Box<
             fhirbolt_model::r4::resources::MedicinalProductAuthorizationJurisdictionalAuthorization,
         >,
@@ -62,7 +62,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Vec<
             fhirbolt_model::r4::resources::MedicinalProductAuthorizationJurisdictionalAuthorization,
         >,
@@ -80,7 +80,7 @@ impl serde::ser::Serialize
         seq_serializer.end()
     }
 }
-impl serde :: ser :: Serialize for crate :: SerializationContext < & Vec < Box < fhirbolt_model :: r4 :: resources :: MedicinalProductAuthorizationJurisdictionalAuthorization >> > { fn serialize < S > (& self , serializer : S) -> Result < S :: Ok , S :: Error > where S : serde :: ser :: Serializer , { use serde :: ser :: SerializeSeq ; let mut seq_serializer = serializer . serialize_seq (Some (self . value . len ())) ? ; for value in self . value { self . with_context (value , | ctx | { seq_serializer . serialize_element (ctx) }) ? } seq_serializer . end () } }
+impl serde :: ser :: Serialize for crate :: context :: ser :: SerializationContext < & Vec < Box < fhirbolt_model :: r4 :: resources :: MedicinalProductAuthorizationJurisdictionalAuthorization >> > { fn serialize < S > (& self , serializer : S) -> Result < S :: Ok , S :: Error > where S : serde :: ser :: Serializer , { use serde :: ser :: SerializeSeq ; let mut seq_serializer = serializer . serialize_seq (Some (self . value . len ())) ? ; for value in self . value { self . with_context (value , | ctx | { seq_serializer . serialize_element (ctx) }) ? } seq_serializer . end () } }
 impl<'de> serde::de::DeserializeSeed<'de>
     for &mut crate::context::de::DeserializationContext<
         fhirbolt_model::r4::resources::MedicinalProductAuthorizationJurisdictionalAuthorization,
@@ -309,7 +309,7 @@ impl<'de> serde::de::DeserializeSeed<'de>
 }
 impl < 'de > serde :: de :: DeserializeSeed < 'de > for & mut crate :: context :: de :: DeserializationContext < Vec < Box < fhirbolt_model :: r4 :: resources :: MedicinalProductAuthorizationJurisdictionalAuthorization >> > { type Value = Vec < Box < fhirbolt_model :: r4 :: resources :: MedicinalProductAuthorizationJurisdictionalAuthorization >> ; fn deserialize < D > (self , deserializer : D) -> Result < Self :: Value , D :: Error > where D : serde :: de :: Deserializer < 'de > , { struct Visitor < 'a > (& 'a mut crate :: context :: de :: DeserializationContext < Vec < Box < fhirbolt_model :: r4 :: resources :: MedicinalProductAuthorizationJurisdictionalAuthorization >> >) ; impl < 'de > serde :: de :: Visitor < 'de > for Visitor < '_ > { type Value = Vec < Box < fhirbolt_model :: r4 :: resources :: MedicinalProductAuthorizationJurisdictionalAuthorization >> ; fn expecting (& self , formatter : & mut std :: fmt :: Formatter) -> std :: fmt :: Result { formatter . write_str ("a sequence") } fn visit_seq < A > (self , mut seq : A) -> Result < Self :: Value , A :: Error > where A : serde :: de :: SeqAccess < 'de > , { let mut values = Vec :: new () ; while let Some (value) = seq . next_element_seed (self . 0 . transmute :: < Box < fhirbolt_model :: r4 :: resources :: MedicinalProductAuthorizationJurisdictionalAuthorization >> ()) ? { values . push (value) ; } Ok (values) } } deserializer . deserialize_seq (Visitor (self)) } }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &fhirbolt_model::r4::resources::MedicinalProductAuthorizationProcedure,
     >
 {
@@ -348,7 +348,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Box<fhirbolt_model::r4::resources::MedicinalProductAuthorizationProcedure>,
     >
 {
@@ -360,7 +360,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Vec<fhirbolt_model::r4::resources::MedicinalProductAuthorizationProcedure>,
     >
 {
@@ -377,7 +377,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Vec<Box<fhirbolt_model::r4::resources::MedicinalProductAuthorizationProcedure>>,
     >
 {
@@ -693,7 +693,9 @@ impl crate::Resource for fhirbolt_model::r4::resources::MedicinalProductAuthoriz
     const FHIR_RELEASE: crate::FhirRelease = crate::FhirRelease::R4;
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<&fhirbolt_model::r4::resources::MedicinalProductAuthorization>
+    for crate::context::ser::SerializationContext<
+        &fhirbolt_model::r4::resources::MedicinalProductAuthorization,
+    >
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -906,7 +908,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Box<fhirbolt_model::r4::resources::MedicinalProductAuthorization>,
     >
 {
@@ -918,7 +920,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Vec<fhirbolt_model::r4::resources::MedicinalProductAuthorization>,
     >
 {
@@ -935,7 +937,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::SerializationContext<
+    for crate::context::ser::SerializationContext<
         &Vec<Box<fhirbolt_model::r4::resources::MedicinalProductAuthorization>>,
     >
 {

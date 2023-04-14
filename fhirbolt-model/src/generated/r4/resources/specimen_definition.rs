@@ -1,4 +1,4 @@
-// Generated on 2023-04-13 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-14 by fhirbolt-codegen v0.1.0
 #[doc = "The minimum volume to be conditioned in the container."]
 #[derive(Debug, Clone, PartialEq)]
 pub enum SpecimenDefinitionTypeTestedContainerMinimumVolume {
