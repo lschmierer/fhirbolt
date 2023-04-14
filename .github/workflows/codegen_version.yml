@@ -1,0 +1,32 @@
+name: Codegen Version
+
+on: [pull_request]
+
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+  version_bumped:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: SebRollen/toml-action@v1.0.1
+        id: this_version
+        with:
+          file: fhirbolt-codegen/Cargo.toml
+          field: package.version
+      - uses: actions/checkout@v3
+        with:
+          ref: main
+      - uses: SebRollen/toml-action@v1.0.1
+        id: main_version
+        with:
+          file: fhirbolt-codegen/Cargo.toml
+          field: package.version
+      - name: Check updated
+        run: |
+          if [ ${{steps.this_version.outputs.value}} == ${{steps.main_version.outputs.value}} ]; then
+              exit 1
+          else
+              exit 0
+          fi
