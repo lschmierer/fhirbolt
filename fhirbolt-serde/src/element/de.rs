@@ -9,14 +9,10 @@ use serde::{
     forward_to_deserialize_any,
 };
 
-use fhirbolt_shared::{
-    element::{Element, Primitive, Value},
-    FhirRelease,
-};
+use fhirbolt_element::{Element, Primitive, Value};
+use fhirbolt_shared::FhirRelease;
 
-use crate::context::de::DeserializationContext;
-
-use super::error;
+use crate::{context::de::DeserializationContext, element::error};
 
 impl<'a, 'de, const R: FhirRelease> DeserializeSeed<'de> for DeserializationContext<Element<R>> {
     type Value = Element<R>;

@@ -1,8 +1,4 @@
-#![feature(adt_const_params)]
-
 use std::fmt;
-
-pub mod element;
 
 pub mod element_map;
 pub mod path;

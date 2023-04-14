@@ -1,9 +1,11 @@
+#![feature(adt_const_params)]
+
 use std::{
     fmt,
     ops::{Deref, DerefMut},
 };
 
-use crate::FhirRelease;
+use fhirbolt_shared::FhirRelease;
 
 #[derive(Clone, PartialEq)]
 pub struct Element<const R: FhirRelease> {

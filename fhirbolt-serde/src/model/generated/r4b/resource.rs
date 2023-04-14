@@ -482,12 +482,13 @@ impl<'de> serde::de::DeserializeSeed<'de>
         D: serde::de::Deserializer<'de>,
     {
         use crate::Resource;
-        let element_context = self . clone :: < fhirbolt_shared :: element :: Element < { fhirbolt_model :: r4b :: Resource :: FHIR_RELEASE } >> () ;
+        let element_context = self
+            .clone::<fhirbolt_element::Element<{ fhirbolt_model::r4b::Resource::FHIR_RELEASE }>>();
         let element = element_context.deserialize(deserializer)?;
         self.from_json = false;
-        if let Some(fhirbolt_shared::element::Value::Primitive(
-            fhirbolt_shared::element::Primitive::String(resource_type),
-        )) = element.get("resourceType")
+        if let Some(fhirbolt_element::Value::Primitive(fhirbolt_element::Primitive::String(
+            resource_type,
+        ))) = element.get("resourceType")
         {
             match resource_type.as_str() {
                 "Account" => {

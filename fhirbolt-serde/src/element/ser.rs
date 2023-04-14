@@ -1,20 +1,18 @@
 use std::str::FromStr;
 
-use fhirbolt_shared::{
-    element::{Element, Primitive, Value},
-    FhirRelease,
-};
 use serde::{
     ser::{self, Error, Impossible, SerializeMap, SerializeSeq},
     Serialize,
 };
 
+use fhirbolt_element::{Element, Primitive, Value};
+use fhirbolt_shared::FhirRelease;
+
 use crate::{
     context::ser::SerializationContext,
+    element::error,
     number::{NumberValueEmitter, NUMBER_TOKEN},
 };
-
-use super::error;
 
 impl<const R: FhirRelease> Serialize for SerializationContext<&Value<R>> {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

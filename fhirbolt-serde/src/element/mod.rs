@@ -1,9 +1,7 @@
 use serde::{de::DeserializeSeed, ser::Error, Serialize};
 
-use fhirbolt_shared::{
-    element::{Element, Value},
-    FhirRelease,
-};
+use fhirbolt_element::{Element, Value};
+use fhirbolt_shared::FhirRelease;
 
 use crate::{
     element::{self, de::Deserializer, error::Result},

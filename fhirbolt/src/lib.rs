@@ -57,12 +57,11 @@ pub use fhirbolt_model::FhirRelease;
 ///
 pub mod model {
     pub use fhirbolt_model::*;
-    pub use fhirbolt_serde::model::*;
 }
 
 pub mod element {
-    pub use fhirbolt_serde::element::*;
-    pub use fhirbolt_shared::element::*;
+    pub use crate::serde::element::*;
+    pub use fhirbolt_element::*;
 }
 
 pub mod serde {
