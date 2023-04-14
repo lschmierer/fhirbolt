@@ -111,7 +111,7 @@ pub fn generate_resource_enum_serde(
         name: "resource".into(),
         source: quote! {
             impl crate::Resource for #namespace::Resource {
-                const FHIR_RELEASE: crate::FhirRelease = crate::FhirRelease::#release_ident;
+                const FHIR_RELEASE: fhirbolt_shared::FhirRelease = fhirbolt_shared::FhirReleases::#release_ident;
             }
 
             #serialize_impl_tokens
@@ -264,7 +264,7 @@ fn generate_serde_module(module: &RustFhirModule, release: &str) -> SourceFile {
 
             quote! {
                 impl crate::Resource for #namespace::#name_ident {
-                    const FHIR_RELEASE: crate::FhirRelease = crate::FhirRelease::#release_ident;
+                    const FHIR_RELEASE: fhirbolt_shared::FhirRelease = fhirbolt_shared::FhirReleases::#release_ident;
                 }
             }
         } else {

@@ -1,11 +1,9 @@
-#![feature(adt_const_params)]
-
 use std::io::Read;
 
 use fhirbolt::{
     element::Element,
     serde::{DeserializationConfig, DeserializationMode, DeserializeResource, SerializeResource},
-    FhirRelease,
+    FhirRelease, FhirReleases,
 };
 
 use test_utils::{
@@ -24,7 +22,7 @@ where
 
     while let Some(mut file) = examples_iter.next() {
         match R {
-            FhirRelease::R4B => {
+            FhirReleases::R4B => {
                 if mode != DeserializationMode::Lax {
                     // missing status
                     if file.name() == "valuesets.xml" {
@@ -49,7 +47,7 @@ where
         assert_xml_eq(
             &element_buffer,
             &buffer,
-            R == FhirRelease::R4B && file.name() == "valuesets.xml",
+            R == FhirReleases::R4B && file.name() == "valuesets.xml",
         );
 
         let resource: T =
@@ -58,7 +56,7 @@ where
         assert_xml_eq(
             &fhirbolt::xml::to_vec(&resource).unwrap(),
             &buffer,
-            R == FhirRelease::R4B && file.name() == "valuesets.xml",
+            R == FhirReleases::R4B && file.name() == "valuesets.xml",
         );
 
         assert_eq!(
@@ -72,7 +70,7 @@ where
 
         if !(
             // missing status
-            R == FhirRelease::R4B && file.name() == "valuesets.xml"
+            R == FhirReleases::R4B && file.name() == "valuesets.xml"
         ) {
             assert_eq!(
                 fhirbolt::element::to_element::<R, T>(resource).unwrap(),
@@ -85,25 +83,25 @@ where
 #[cfg(feature = "r4")]
 #[test]
 fn test_serde_xml_r4() {
-    test_serde_xml::<fhirbolt::model::r4::Resource, { FhirRelease::R4 }>(
+    test_serde_xml::<fhirbolt::model::r4::Resource, { FhirReleases::R4 }>(
         DeserializationMode::Strict,
     );
-    test_serde_xml::<fhirbolt::model::r4::Resource, { FhirRelease::R4 }>(
+    test_serde_xml::<fhirbolt::model::r4::Resource, { FhirReleases::R4 }>(
         DeserializationMode::Compatibility,
     );
-    test_serde_xml::<fhirbolt::model::r4::Resource, { FhirRelease::R4 }>(DeserializationMode::Lax);
+    test_serde_xml::<fhirbolt::model::r4::Resource, { FhirReleases::R4 }>(DeserializationMode::Lax);
 }
 
 #[cfg(feature = "r4b")]
 #[test]
 fn test_serde_xml_r4b() {
-    test_serde_xml::<fhirbolt::model::r4b::Resource, { FhirRelease::R4B }>(
+    test_serde_xml::<fhirbolt::model::r4b::Resource, { FhirReleases::R4B }>(
         DeserializationMode::Strict,
     );
-    test_serde_xml::<fhirbolt::model::r4b::Resource, { FhirRelease::R4B }>(
+    test_serde_xml::<fhirbolt::model::r4b::Resource, { FhirReleases::R4B }>(
         DeserializationMode::Compatibility,
     );
-    test_serde_xml::<fhirbolt::model::r4b::Resource, { FhirRelease::R4B }>(
+    test_serde_xml::<fhirbolt::model::r4b::Resource, { FhirReleases::R4B }>(
         DeserializationMode::Lax,
     );
 }

@@ -1,6 +1,6 @@
 // Generated on 2023-04-14 by fhirbolt-codegen v0.1.0
 impl crate::Resource for fhirbolt_model::r4b::resources::EnrollmentRequest {
-    const FHIR_RELEASE: crate::FhirRelease = crate::FhirRelease::R4B;
+    const FHIR_RELEASE: fhirbolt_shared::FhirRelease = fhirbolt_shared::FhirReleases::R4B;
 }
 impl serde::ser::Serialize
     for crate::context::ser::SerializationContext<

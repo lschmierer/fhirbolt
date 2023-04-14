@@ -44,7 +44,7 @@
 //!
 //! You can pass a [`DeserializationConfig`](crate::serde::DeserializationConfig) to configure the deserialization behavior.
 
-pub use fhirbolt_model::FhirRelease;
+pub use fhirbolt_element::{FhirRelease, FhirReleases};
 
 /// Generated Rust structures for FHIR resources.
 ///

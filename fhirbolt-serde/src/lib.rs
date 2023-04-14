@@ -24,8 +24,6 @@
 //! ```
 //!
 
-#![feature(adt_const_params)]
-
 pub mod element;
 // TODO: remove after migrating model to SerializationContext
 pub mod model;
@@ -36,13 +34,14 @@ pub mod xml;
 mod context;
 mod number;
 
+use std::fmt::Debug;
+
+use fhirbolt_shared::FhirRelease;
+
 pub use context::{
     de::{DeserializationConfig, DeserializationMode, DeserializeResource},
     ser::SerializeResource,
 };
-
-use fhirbolt_shared::FhirRelease;
-use std::fmt::Debug;
 
 /// Marker trait for all types representing FHIR resources.
 pub trait Resource: Sized + Clone + PartialEq + Debug {

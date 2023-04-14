@@ -1,5 +1,3 @@
-#![feature(adt_const_params)]
-
 use std::io::Read;
 
 use assert_json_diff::assert_json_eq;
@@ -8,7 +6,7 @@ use serde_json::Value;
 use fhirbolt::{
     element::Element,
     serde::{DeserializationConfig, DeserializationMode, DeserializeResource, SerializeResource},
-    FhirRelease,
+    FhirRelease, FhirReleases,
 };
 
 use test_utils::examples::{examples, JsonOrXml};
@@ -34,7 +32,7 @@ where
         }
 
         match R {
-            FhirRelease::R4 => {
+            FhirReleases::R4 => {
                 if mode != DeserializationMode::Lax {
                     // all questionnaires seem to have missing linkIds
                     if file.name().ends_with("-questionnaire.json") {
@@ -42,7 +40,7 @@ where
                     }
                 }
             }
-            FhirRelease::R4B => {
+            FhirReleases::R4B => {
                 // R4B examples contain some rubbish
                 if file.name().starts_with("__MACOSX/") {
                     continue;
@@ -55,6 +53,7 @@ where
                     }
                 }
             }
+            _ => (),
         };
 
         println!("{}", file.name());
@@ -65,7 +64,7 @@ where
         let mut json_value: Value = serde_json::from_slice(&buffer).unwrap();
 
         // contains null value in primitive array, while fhirbolt accepts it, it does not replicate this
-        if R == FhirRelease::R4B {
+        if R == FhirReleases::R4B {
             if file.name().starts_with("examples-json/activitydefinition-") {
                 if let Some(timing) = json_value
                     .as_object_mut()
@@ -135,10 +134,10 @@ where
 
         if !(
             // all questionnaires seem to have missing linkIds
-            R == FhirRelease::R4 && file.name().ends_with("-questionnaire.json")
+            R == FhirReleases::R4 && file.name().ends_with("-questionnaire.json")
             ||
             // missing status
-            R == FhirRelease::R4B && MISSING_STATUS_FILES.contains(&file.name())
+            R == FhirReleases::R4B && MISSING_STATUS_FILES.contains(&file.name())
         ) {
             assert_eq!(
                 fhirbolt::element::to_element::<R, T>(resource).unwrap(),
@@ -152,25 +151,27 @@ where
 #[test]
 #[cfg_attr(not(feature = "r4"), ignore)]
 fn test_serde_json_r4() {
-    test_serde_json::<fhirbolt::model::r4::Resource, { FhirRelease::R4 }>(
+    test_serde_json::<fhirbolt::model::r4::Resource, { FhirReleases::R4 }>(
         DeserializationMode::Strict,
     );
-    test_serde_json::<fhirbolt::model::r4::Resource, { FhirRelease::R4 }>(
+    test_serde_json::<fhirbolt::model::r4::Resource, { FhirReleases::R4 }>(
         DeserializationMode::Compatibility,
     );
-    test_serde_json::<fhirbolt::model::r4::Resource, { FhirRelease::R4 }>(DeserializationMode::Lax);
+    test_serde_json::<fhirbolt::model::r4::Resource, { FhirReleases::R4 }>(
+        DeserializationMode::Lax,
+    );
 }
 
 #[cfg(feature = "r4b")]
 #[test]
 fn test_serde_json_r4b() {
-    test_serde_json::<fhirbolt::model::r4b::Resource, { FhirRelease::R4B }>(
+    test_serde_json::<fhirbolt::model::r4b::Resource, { FhirReleases::R4B }>(
         DeserializationMode::Strict,
     );
-    test_serde_json::<fhirbolt::model::r4b::Resource, { FhirRelease::R4B }>(
+    test_serde_json::<fhirbolt::model::r4b::Resource, { FhirReleases::R4B }>(
         DeserializationMode::Compatibility,
     );
-    test_serde_json::<fhirbolt::model::r4b::Resource, { FhirRelease::R4B }>(
+    test_serde_json::<fhirbolt::model::r4b::Resource, { FhirReleases::R4B }>(
         DeserializationMode::Lax,
     );
 }

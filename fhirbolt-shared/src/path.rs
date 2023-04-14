@@ -3,7 +3,7 @@ use std::mem;
 use crate::{
     element_map,
     type_hints::{self, TypeHints},
-    FhirRelease,
+    FhirRelease, FhirReleases,
 };
 
 const RESOURCE_COMMON_PRIMITIVE_FIELDS: &[&str] = &["id", "implicitRules", "language"];
@@ -11,8 +11,9 @@ const COMMON_SEQUENCE_FIELDS: &[&str] = &["extension", "modifierExtension"];
 
 fn type_hints(fhir_release: FhirRelease) -> &'static TypeHints {
     match fhir_release {
-        FhirRelease::R4 => &type_hints::r4::TYPE_HINTS,
-        FhirRelease::R4B => &type_hints::r4b::TYPE_HINTS,
+        FhirReleases::R4 => &type_hints::r4::TYPE_HINTS,
+        FhirReleases::R4B => &type_hints::r4b::TYPE_HINTS,
+        _ => panic!("invalid FHIR release"),
     }
 }
 
@@ -20,8 +21,9 @@ fn element_map(
     fhir_release: FhirRelease,
 ) -> &'static phf::Map<&'static str, &'static phf::OrderedSet<&'static str>> {
     match fhir_release {
-        FhirRelease::R4 => &element_map::r4::ELEMENT_MAP,
-        FhirRelease::R4B => &element_map::r4b::ELEMENT_MAP,
+        FhirReleases::R4 => &element_map::r4::ELEMENT_MAP,
+        FhirReleases::R4B => &element_map::r4b::ELEMENT_MAP,
+        _ => panic!("invalid FHIR release"),
     }
 }
 

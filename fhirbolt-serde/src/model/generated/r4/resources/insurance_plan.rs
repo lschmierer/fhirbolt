@@ -3192,7 +3192,7 @@ impl<'de> serde::de::DeserializeSeed<'de>
     }
 }
 impl crate::Resource for fhirbolt_model::r4::resources::InsurancePlan {
-    const FHIR_RELEASE: crate::FhirRelease = crate::FhirRelease::R4;
+    const FHIR_RELEASE: fhirbolt_shared::FhirRelease = fhirbolt_shared::FhirReleases::R4;
 }
 impl serde::ser::Serialize
     for crate::context::ser::SerializationContext<&fhirbolt_model::r4::resources::InsurancePlan>

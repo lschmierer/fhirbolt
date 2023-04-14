@@ -1,11 +1,9 @@
-#![feature(adt_const_params)]
-
 use std::{
     fmt,
     ops::{Deref, DerefMut},
 };
 
-use fhirbolt_shared::FhirRelease;
+pub use fhirbolt_shared::{FhirRelease, FhirReleases};
 
 #[derive(Clone, PartialEq)]
 pub struct Element<const R: FhirRelease> {
