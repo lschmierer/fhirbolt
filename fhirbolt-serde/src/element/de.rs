@@ -147,7 +147,7 @@ impl<'a, 'de> Visitor<'de> for ValueVisitor<'a> {
     where
         E: de::Error,
     {
-        let current_path = self.0.unwrap_current_path();
+        let current_path = &self.0.current_path;
         let current_element = current_path.current_element();
 
         if self.0.from_json {
@@ -209,22 +209,21 @@ impl<'a, 'de> Visitor<'de> for ValueVisitor<'a> {
                 key
             };
 
-            if (self.0.unwrap_current_path().current_element_is_resource()
-                || self.0.unwrap_current_path().is_empty())
+            if (self.0.current_path.current_element_is_resource() || self.0.current_path.is_empty())
                 && key == "resourceType"
             {
                 let value: String = map_access.next_value()?;
 
-                self.0.unwrap_current_path_mut().push(&value);
+                self.0.current_path.push(&value);
                 is_resource = true;
 
                 element
                     .0
                     .insert(key, InternalValue::Primitive(Primitive::String(value)));
             } else {
-                self.0.unwrap_current_path_mut().push(&key);
+                self.0.current_path.push(&key);
 
-                if self.0.from_json && self.0.unwrap_current_path().current_element_is_decimal() {
+                if self.0.from_json && self.0.current_path.current_element_is_decimal() {
                     let value: serde_json::Number = map_access.next_value()?;
 
                     let mut decimal_element = InternalElement::default();
@@ -265,7 +264,7 @@ impl<'a, 'de> Visitor<'de> for ValueVisitor<'a> {
                             }
                             (e, v) => *e = v,
                         }
-                    } else if self.0.unwrap_current_path().current_element_is_sequence() {
+                    } else if self.0.current_path.current_element_is_sequence() {
                         match value {
                             InternalValue::Element(e) => element
                                 .0
@@ -285,12 +284,12 @@ impl<'a, 'de> Visitor<'de> for ValueVisitor<'a> {
                     }
                 }
 
-                self.0.unwrap_current_path_mut().pop();
+                self.0.current_path.pop();
             }
         }
 
         if is_resource {
-            self.0.unwrap_current_path_mut().pop();
+            self.0.current_path.pop();
         }
 
         Ok(InternalValue::Element(element))

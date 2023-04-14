@@ -34,7 +34,7 @@ pub struct DeserializationContext<V> {
     // The JSON data model differs from the FHIR data model
     pub from_json: bool,
     // Used by the element model to keep track of its state in the element tree
-    current_path: Option<ElementPath>,
+    pub current_path: ElementPath,
 }
 
 impl<V> DeserializationContext<V> {
@@ -43,15 +43,8 @@ impl<V> DeserializationContext<V> {
             _phantom: PhantomData,
             config,
             from_json,
-            current_path: Some(ElementPath::new(r)),
+            current_path: ElementPath::new(r),
         }
-    }
-
-    pub fn unwrap_current_path(&self) -> &ElementPath {
-        self.current_path.as_ref().unwrap()
-    }
-    pub fn unwrap_current_path_mut(&mut self) -> &mut ElementPath {
-        self.current_path.as_mut().unwrap()
     }
 
     pub fn transmute<F>(&mut self) -> &mut DeserializationContext<F> {
