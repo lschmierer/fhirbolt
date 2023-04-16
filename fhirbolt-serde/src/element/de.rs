@@ -14,7 +14,9 @@ use serde::{
 use fhirbolt_element::{Element, Primitive, Value};
 use fhirbolt_shared::FhirRelease;
 
-use crate::{context::de::DeserializationContext, element::error};
+use crate::{context::de::DeserializationContext, element::error, DeserializationMode};
+
+pub const PRIMITIVE_CHILDREN: &[&str] = &["id", "extension", "value"];
 
 impl<'a, 'de, const R: FhirRelease> DeserializeSeed<'de> for DeserializationContext<Element<R>> {
     type Value = Element<R>;
@@ -211,6 +213,7 @@ impl<'a, 'de> Visitor<'de> for ValueVisitor<'a> {
                 key
             };
 
+            // in case of top-level resource: current_path is empty
             if (self.0.current_path.current_element_is_resource() || self.0.current_path.is_empty())
                 && key == "resourceType"
             {
@@ -223,6 +226,34 @@ impl<'a, 'de> Visitor<'de> for ValueVisitor<'a> {
                     .0
                     .insert(key, InternalValue::Primitive(Primitive::String(value)));
             } else {
+                // check if field is valid at current path
+                if self.0.config.mode == DeserializationMode::Strict {
+                    if self.0.current_path.current_element_is_primitive() {
+                        if !PRIMITIVE_CHILDREN.contains(&key.as_str()) {
+                            return Err(Error::custom(format_args!(
+                                "unknown field `{}`, expected one of {:?}",
+                                key, PRIMITIVE_CHILDREN
+                            )));
+                        }
+                    } else {
+                        let fields = self.0.current_path.children();
+
+                        if !fields.map(|s| s.contains(&key)).unwrap_or(false) {
+                            if let Some(expected_fields) = fields {
+                                return Err(Error::custom(format_args!(
+                                    "unknown field `{}`, expected one of {:?}",
+                                    key, expected_fields
+                                )));
+                            } else {
+                                return Err(Error::custom(format_args!(
+                                    "unknown field `{}`, there are no fields",
+                                    key
+                                )));
+                            }
+                        }
+                    }
+                }
+
                 self.0.current_path.push(&key);
 
                 if self.0.from_json && self.0.current_path.current_element_is_decimal() {

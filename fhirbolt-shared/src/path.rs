@@ -1,7 +1,7 @@
 use std::mem;
 
 use crate::{
-    element_map,
+    element_map::{self, ElementMap, ElementSet},
     type_hints::{self, TypeHints},
     FhirRelease, FhirReleases,
 };
@@ -17,9 +17,7 @@ fn type_hints(fhir_release: FhirRelease) -> &'static TypeHints {
     }
 }
 
-fn element_map(
-    fhir_release: FhirRelease,
-) -> &'static phf::Map<&'static str, &'static phf::OrderedSet<&'static str>> {
+fn element_map(fhir_release: FhirRelease) -> &'static ElementMap {
     match fhir_release {
         FhirReleases::R4 => &element_map::r4::ELEMENT_MAP,
         FhirReleases::R4B => &element_map::r4b::ELEMENT_MAP,
@@ -224,20 +222,29 @@ impl ElementPath {
         }
     }
 
-    pub fn position_of_child(&self, child: &str) -> usize {
+    pub fn children(&self) -> Option<&'static ElementSet> {
         let mut type_path = self.current_type_path().path.as_str();
 
         if let Some(current_type) = self.resolve_current_type() {
             if current_type != "Resource" {
                 type_path = current_type;
             }
+        } else if let Some(content_reference) = type_hints(self.fhir_release)
+            .content_reference_paths
+            .get(type_path)
+        {
+            type_path = content_reference;
         }
 
+        element_map(self.fhir_release).get(&type_path).copied()
+    }
+
+    pub fn position_of_child(&self, child: &str) -> usize {
+        // on R4 ExampleScenario.instance contains a field named "resourceType"
         if child == "resourceType" && self.current_type_path().path != "ExampleScenario.instance" {
             0
         } else {
-            element_map(self.fhir_release)
-                .get(&type_path)
+            self.children()
                 .map(|set| set.get_index(child))
                 .flatten()
                 .map(|i| i + 1)
