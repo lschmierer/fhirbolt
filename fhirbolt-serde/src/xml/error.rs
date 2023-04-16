@@ -1,3 +1,5 @@
+//! Errors when (de)serializing to/from XML.
+
 use std::{
     fmt::{self, Display},
     num, str,
@@ -9,7 +11,7 @@ mod quick_xml {
     pub use quick_xml::{events::attributes::AttrError, Error};
 }
 
-/// Alias for a Result with the error type [`fhirbolt::xml::Error`](Error).
+/// Alias for a Result with the error type [`fhirbolt::serde::xml::Error`](Error).
 pub type Result<T> = std::result::Result<T, Error>;
 
 /// This type represents all possible errors that can occur when serializing or deserializing XML data.

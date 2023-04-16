@@ -1,3 +1,5 @@
+//! Serialize FHIR resources as generic element.
+
 use std::str::FromStr;
 
 use serde::{

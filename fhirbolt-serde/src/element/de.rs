@@ -1,3 +1,5 @@
+//! Deserialize FHIR resources as generic element.
+
 use std::{mem, vec};
 
 use serde::{

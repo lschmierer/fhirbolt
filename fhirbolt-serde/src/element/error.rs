@@ -1,9 +1,13 @@
+//! Errors when converting between element model and structs.
 use std::{error, fmt, result};
 
 use serde::{de, ser};
 
+/// Error that can happen when converting between element model and structs.
 #[derive(Debug)]
 pub struct Error(String);
+
+/// Alias for a Result with the error type [`fhirbolt::serde::element::Error`](Error).
 pub type Result<T> = result::Result<T, Error>;
 
 impl error::Error for Error {}

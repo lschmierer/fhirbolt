@@ -1,3 +1,22 @@
+//! Generic element model.
+//!
+//! As deserialization differs slightly between FHIR releases,
+//! `Element` is generic over a FHIR release.
+//!
+//! # Example
+//! ```
+//! use fhirbolt::FhirReleases;
+//! use fhirbolt::element::{Element, Value, Primitive};
+//!
+//! let mut element = Element::<{ FhirReleases:: R4B }>::new();
+//! element.insert(
+//!     "resourceType".to_string(),
+//!     Value::Primitive(
+//!         Primitive::String("Observation".to_string())
+//!     )
+//! );
+//! // ...
+//! ```
 use std::{
     fmt,
     ops::{Deref, DerefMut},
@@ -5,9 +24,44 @@ use std::{
 
 pub use fhirbolt_shared::{FhirRelease, FhirReleases};
 
+/// Generic element in a FHIR resource.
+///
+/// As deserialization differs slightly between FHIR releases,
+/// `Element` is generic over a FHIR release.
+///
+/// # Example
+/// ```
+/// use fhirbolt::FhirReleases;
+/// use fhirbolt::element::{Element, Value, Primitive};
+///
+/// let mut element = Element::<{ FhirReleases:: R4B }>::new();
+/// element.insert(
+///     "resourceType".to_string(),
+///     Value::Primitive(
+///         Primitive::String("Observation".to_string())
+///     )
+/// );
+/// // ...
+/// ```
 #[derive(Clone, PartialEq)]
 pub struct Element<const R: FhirRelease> {
     map: indexmap::IndexMap<String, Value<R>>,
+}
+
+impl<const R: FhirRelease> Element<R> {
+    /// Create a new element.
+    pub fn new() -> Self {
+        Self {
+            map: indexmap::IndexMap::new(),
+        }
+    }
+
+    /// Create a new element wit preallocated capacity.
+    pub fn with_capacity(n: usize) -> Self {
+        Self {
+            map: indexmap::IndexMap::with_capacity(n),
+        }
+    }
 }
 
 impl<const R: FhirRelease> Deref for Element<R> {
@@ -68,6 +122,7 @@ impl<const R: FhirRelease> fmt::Debug for Element<R> {
     }
 }
 
+/// Generic value in a FHIR resource.
 #[derive(Clone, PartialEq)]
 pub enum Value<const R: FhirRelease> {
     Element(Element<R>),
@@ -85,6 +140,7 @@ impl<const R: FhirRelease> fmt::Debug for Value<R> {
     }
 }
 
+/// Primitive value in a FHIR resource.
 #[derive(Clone, Debug, PartialEq)]
 pub enum Primitive {
     Bool(bool),

@@ -12,11 +12,12 @@ use serde::{
 
 use fhirbolt_shared::{path::ElementPath, FhirRelease};
 
+pub use crate::xml::read::{IoRead, Read, SliceRead, StrRead};
+
 use crate::{
     xml::{
         error::{Error, Result},
         event::{Element, Event},
-        read::{self, Read},
     },
     DeserializationConfig, DeserializeResource,
 };
@@ -36,26 +37,24 @@ where
 ///
 /// # Example
 /// ```
-/// # fn main() {
 /// // The `Resource` type is an enum that contains all possible FHIR resources.
 /// // If the resource type is known in advance, you could also use a concrete resource type
 /// // (like e.g. `fhirbolt::model::r4b::resources::Observation`).
-/// use fhirbolt::model::r4b::Resource as R4BResource;
+/// use fhirbolt::model::r4b::Resource;
 ///
 /// // The type of `s` is `&str`
 /// let s = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>
-///     <Observation xmlns=\"http://hl7.org/fhir\">
-///         <status value=\"final\"/>
-///         <code>
-///             <text value=\"some code\"/>
-///         </code>
-///         <valueString value=\"some value\"/>
-///     </Observation>";
+/// <Observation xmlns=\"http://hl7.org/fhir\">
+///     <status value=\"final\"/>
+///     <code>
+///         <text value=\"some code\"/>
+///     </code>
+///     <valueString value=\"some value\"/>
+/// </Observation>";
 ///
 /// // `s.as_bytes()` returns `&[u8]` which implements `std::io::Read`
-/// let r: R4BResource = fhirbolt::xml::from_reader(s.as_bytes(), None).unwrap();
+/// let r: Resource = fhirbolt::xml::from_reader(s.as_bytes(), None).unwrap();
 /// println!("{:?}", r);
-/// # }
 /// ```
 ///
 /// # Errors
@@ -75,25 +74,23 @@ where
 ///
 /// # Example
 /// ```
-/// # fn main() {
 /// // The `Resource` type is an enum that contains all possible FHIR resources.
 /// // If the resource type is known in advance, you could also use a concrete resource type
 /// // (like e.g. `fhirbolt::model::r4b::resources::Observation`).
-/// use fhirbolt::model::r4b::Resource as R4BResource;
+/// use fhirbolt::model::r4b::Resource;
 ///
 /// // The type of `s` is `&[u8]`
 /// let b = b"<?xml version=\"1.0\" encoding=\"UTF-8\"?>
-///     <Observation xmlns=\"http://hl7.org/fhir\">
-///         <status value=\"final\"/>
-///         <code>
-///             <text value=\"some code\"/>
-///         </code>
-///         <valueString value=\"some value\"/>
-///     </Observation>";
+/// <Observation xmlns=\"http://hl7.org/fhir\">
+///     <status value=\"final\"/>
+///     <code>
+///         <text value=\"some code\"/>
+///     </code>
+///     <valueString value=\"some value\"/>
+/// </Observation>";
 ///
-/// let r: R4BResource = fhirbolt::xml::from_slice(b, None).unwrap();
+/// let r: Resource = fhirbolt::xml::from_slice(b, None).unwrap();
 /// println!("{:?}", r);
-/// # }
 /// ```
 ///
 /// # Errors
@@ -110,25 +107,23 @@ where
 ///
 /// # Example
 /// ```
-/// # fn main() {
 /// // The `Resource` type is an enum that contains all possible FHIR resources.
 /// // If the resource type is known in advance, you could also use a concrete resource type
 /// // (like e.g. `fhirbolt::model::r4b::resources::Observation`).
-/// use fhirbolt::model::r4b::Resource as R4BResource;
+/// use fhirbolt::model::r4b::Resource;
 ///
 /// // The type of `s` is `&str`
 /// let s = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>
-///     <Observation xmlns=\"http://hl7.org/fhir\">
-///         <status value=\"final\"/>
-///         <code>
-///             <text value=\"some code\"/>
-///         </code>
-///         <valueString value=\"some value\"/>
-///     </Observation>";
+/// <Observation xmlns=\"http://hl7.org/fhir\">
+///     <status value=\"final\"/>
+///     <code>
+///         <text value=\"some code\"/>
+///     </code>
+///     <valueString value=\"some value\"/>
+/// </Observation>";
 ///
-/// let r: R4BResource = fhirbolt::xml::from_str(s, None).unwrap();
+/// let r: Resource = fhirbolt::xml::from_str(s, None).unwrap();
 /// println!("{:?}", r);
-/// # }
 /// ```
 ///
 /// # Errors
@@ -146,21 +141,21 @@ pub struct Deserializer<R: Read> {
     next_event: Event,
 }
 
-impl<R: io::Read> Deserializer<read::IoRead<R>> {
+impl<R: io::Read> Deserializer<IoRead<R>> {
     pub fn from_reader(reader: R, fhir_release: FhirRelease) -> Result<Self> {
-        Deserializer::new(read::IoRead::new(reader), fhir_release)
+        Deserializer::new(IoRead::new(reader), fhir_release)
     }
 }
 
-impl<'a> Deserializer<read::SliceRead<'a>> {
+impl<'a> Deserializer<SliceRead<'a>> {
     pub fn from_slice(bytes: &'a [u8], fhir_release: FhirRelease) -> Result<Self> {
-        Deserializer::new(read::SliceRead::new(bytes), fhir_release)
+        Deserializer::new(SliceRead::new(bytes), fhir_release)
     }
 }
 
-impl<'a> Deserializer<read::StrRead<'a>> {
+impl<'a> Deserializer<StrRead<'a>> {
     pub fn from_str(s: &'a str, fhir_release: FhirRelease) -> Result<Self> {
-        Deserializer::new(read::StrRead::new(s), fhir_release)
+        Deserializer::new(StrRead::new(s), fhir_release)
     }
 }
 

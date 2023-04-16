@@ -3,9 +3,9 @@
 use std::io;
 
 use serde::de::DeserializeSeed;
-use serde_json::{error::Result, Deserializer};
+use serde_json::Deserializer;
 
-use crate::{DeserializationConfig, DeserializeResource};
+use crate::{json::Result, DeserializationConfig, DeserializeResource};
 
 fn from_deserializer<'a, R, T>(
     de: &mut Deserializer<R>,
@@ -22,26 +22,24 @@ where
 ///
 /// # Example
 /// ```
-/// # fn main() {
 /// // The `Resource` type is an enum that contains all possible FHIR resources.
 /// // If the resource type is known in advance, you could also use a concrete resource type
 /// // (like e.g. `fhirbolt::model::r4b::resources::Observation`).
-/// use fhirbolt::model::r4b::Resource as R4BResource;
+/// use fhirbolt::model::r4b::Resource;
 ///
 /// // The type of `s` is `&str`
 /// let s = "{
-///         \"resourceType\": \"Observation\",
-///         \"status\": \"final\",
-///         \"code\": {
-///             \"text\": \"some code\"
-///         },
-///         \"valueString\": \"some value\"
-///     }";
+///     \"resourceType\": \"Observation\",
+///     \"status\": \"final\",
+///     \"code\": {
+///         \"text\": \"some code\"
+///     },
+///     \"valueString\": \"some value\"
+/// }";
 ///
 /// // `s.as_bytes()` returns `&[u8]` which implements `std::io::Read`
-/// let r: R4BResource = fhirbolt::json::from_reader(s.as_bytes(), None).unwrap();
+/// let r: Resource = fhirbolt::json::from_reader(s.as_bytes(), None).unwrap();
 /// println!("{:?}", r);
-/// # }
 /// ```
 ///
 /// # Errors
@@ -59,25 +57,23 @@ where
 ///
 /// # Example
 /// ```
-/// # fn main() {
 /// // The `Resource` type is an enum that contains all possible FHIR resources.
 /// // If the resource type is known in advance, you could also use a concrete resource type
 /// // (like e.g. `fhirbolt::model::r4b::resources::Observation`).
-/// use fhirbolt::model::r4b::Resource as R4BResource;
+/// use fhirbolt::model::r4b::Resource;
 ///
 /// // The type of `b` is `&[u8]`
 /// let b = b"{
-///         \"resourceType\": \"Observation\",
-///         \"status\": \"final\",
-///         \"code\": {
-///             \"text\": \"some code\"
-///         },
-///         \"valueString\": \"some value\"
-///     }";
+///     \"resourceType\": \"Observation\",
+///     \"status\": \"final\",
+///     \"code\": {
+///         \"text\": \"some code\"
+///     },
+///     \"valueString\": \"some value\"
+/// }";
 ///
-/// let r: R4BResource = fhirbolt::json::from_slice(b, None).unwrap();
+/// let r: Resource = fhirbolt::json::from_slice(b, None).unwrap();
 /// println!("{:?}", r);
-/// # }
 /// ```
 ///
 /// # Errors
@@ -94,25 +90,23 @@ where
 ///
 /// # Example
 /// ```
-/// # fn main() {
 /// // The `Resource` type is an enum that contains all possible FHIR resources.
 /// // If the resource type is known in advance, you could also use a concrete resource type
 /// // (like e.g. `fhirbolt::model::r4b::resources::Observation`).
-/// use fhirbolt::model::r4b::Resource as R4BResource;
+/// use fhirbolt::model::r4b::Resource;
 ///
 /// // The type of `s` is `&str`
 /// let s = "{
-///         \"resourceType\": \"Observation\",
-///         \"status\": \"final\",
-///         \"code\": {
-///             \"text\": \"some code\"
-///         },
-///         \"valueString\": \"some value\"
-///     }";
+///     \"resourceType\": \"Observation\",
+///     \"status\": \"final\",
+///     \"code\": {
+///         \"text\": \"some code\"
+///     },
+///     \"valueString\": \"some value\"
+/// }";
 ///
-/// let r: R4BResource = fhirbolt::json::from_str(s, None).unwrap();
+/// let r: Resource = fhirbolt::json::from_str(s, None).unwrap();
 /// println!("{:?}", r);
-/// # }
 /// ```
 ///
 /// # Errors
@@ -129,27 +123,25 @@ where
 ///
 /// # Example
 /// ```
-/// # fn main() {
 /// // The `Resource` type is an enum that contains all possible FHIR resources.
 /// // If the resource type is known in advance, you could also use a concrete resource type
 /// // (like e.g. `fhirbolt::model::r4b::resources::Observation`).
-/// use fhirbolt::model::r4b::Resource as R4BResource;
+/// use fhirbolt::model::r4b::Resource;
 ///
 /// // The type of `s` is `&str`
 /// let s = "{
-///         \"resourceType\": \"Observation\",
-///         \"status\": \"final\",
-///         \"code\": {
-///             \"text\": \"some code\"
-///         },
-///         \"valueString\": \"some value\"
-///     }";
+///     \"resourceType\": \"Observation\",
+///     \"status\": \"final\",
+///     \"code\": {
+///         \"text\": \"some code\"
+///     },
+///     \"valueString\": \"some value\"
+/// }";
 ///
 /// let v: serde_json::Value = serde_json::from_str(s).unwrap();
 ///
-/// let r: R4BResource = fhirbolt::json::from_json_value(v, None).unwrap();
+/// let r: Resource = fhirbolt::json::from_json_value(v, None).unwrap();
 /// println!("{:?}", r);
-/// # }
 /// ```
 ///
 /// # Errors

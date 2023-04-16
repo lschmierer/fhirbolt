@@ -1,10 +1,11 @@
 //! Serialize FHIR resources to JSON.
+
 use std::io;
 
 use serde::ser::Serialize;
-use serde_json::{error::Result, Serializer};
+use serde_json::Serializer;
 
-use crate::SerializeResource;
+use crate::{json::Result, SerializeResource};
 
 /// Serialize the given resource as JSON into the IO stream.
 pub fn to_writer<W, T>(writer: W, value: &T) -> Result<()>
