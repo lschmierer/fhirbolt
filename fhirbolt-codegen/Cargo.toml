@@ -1,6 +1,6 @@
 [package]
 name = "fhirbolt-codegen"
-version = "0.1.0"
+version = "0.2.0"
 edition = "2018"
 publish = false
 
@@ -16,6 +16,4 @@ lazy_static = "1.4"
 quote = "1.0"
 proc-macro2 = "1.0"
 convert_case = "0.4"
-chrono = "0.4"
-
-fhirbolt-shared = { path = "../fhirbolt-shared" }
+time = "0.3"

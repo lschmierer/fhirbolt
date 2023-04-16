@@ -22,3 +22,45 @@ Javascript | tbd./tbd.    | tbd./tbd.  |                      |                 
 [Rust]: https://img.shields.io/crates/v/fhirbolt.svg
 [docs.rs]: https://docs.rs/fhirbolt
 [crates.io]: https://crates.io/crates/fhirbolt
+
+## Rust
+
+The Rust crate supports two working modes:
+1. a generic element model
+2. working with fully typed model structs.
+
+The element model is always enabled as it is also used internally for deserializing model structs.
+Model structs can be optionally enabled by specifying the desried FHIR release as Cargo feature.
+
+You should only include the release that you really need, as this signigicantly increases build time.
+
+```toml
+[dependencies]
+fhirbolt = { version = "0.2", features = ["r4b"] }
+```
+
+## Example
+
+```rust
+// The `Resource` type is an enum that contains all possible FHIR resources.
+// If the resource type is known in advance, you could also use a concrete resource type
+// (like e.g. `fhirbolt::model::r4b::resources::Observation`).
+use fhirbolt::model::r4b::Resource;
+use fhirbolt::serde::{DeserializationConfig, DeserializationMode};
+
+// The type of `s` is `&str`
+let s = "{
+        \"resourceType\": \"Observation\",
+        \"status\": \"final\",
+        \"code\": {
+            \"text\": \"some code\"
+        },
+        \"valueString\": \"some value\"
+    }";
+
+let r: Resource = fhirbolt::json::from_str(s, None).unwrap();
+
+match r {
+    Resource::Observation(o) => println!("deserialized observation: {:?}", r),
+    _ => (),
+}

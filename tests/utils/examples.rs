@@ -6,9 +6,17 @@ use std::{
 
 use zip::read::{ZipArchive, ZipFile};
 
-use fhirbolt::model::FhirRelease;
+use fhirbolt::{FhirRelease, FhirReleases};
 
 const BASE_URL: &str = "http://hl7.org/fhir/{release}/{file}";
+
+fn fhir_release_name(fhir_release: FhirRelease) -> &'static str {
+    match fhir_release {
+        FhirReleases::R4 => "r4",
+        FhirReleases::R4B => "r4b",
+        _ => panic!("unknown FHIR release"),
+    }
+}
 
 #[derive(Clone, Copy)]
 pub enum JsonOrXml {
@@ -68,7 +76,7 @@ pub fn examples(fhir_release: FhirRelease, json_or_xml: JsonOrXml) -> ExamplesIt
 
     ExamplesIterator {
         archive: archive,
-        index: if fhir_release == FhirRelease::R4B {
+        index: if fhir_release == FhirReleases::R4B {
             1
         } else {
             0
@@ -84,7 +92,7 @@ fn download_fhir_examples(fhir_release: FhirRelease, json_or_xml: JsonOrXml) -> 
         .join("target")
         .join("tmp")
         .join("fhirbolt")
-        .join(fhir_release.to_string().to_lowercase());
+        .join(fhir_release_name(fhir_release));
     let zip_path = folder_path.join(json_or_xml.as_str());
 
     if !zip_path.exists() {
@@ -102,10 +110,6 @@ fn download_fhir_examples(fhir_release: FhirRelease, json_or_xml: JsonOrXml) -> 
 }
 
 fn fhir_examples_url(fhir_release: FhirRelease, json_or_xml: JsonOrXml) -> String {
-    let url = str::replace(
-        BASE_URL,
-        "{release}",
-        &fhir_release.to_string().to_lowercase(),
-    );
+    let url = str::replace(BASE_URL, "{release}", fhir_release_name(fhir_release));
     str::replace(&url, "{file}", json_or_xml.as_str())
 }

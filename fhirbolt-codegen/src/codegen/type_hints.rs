@@ -19,7 +19,7 @@ pub fn generate_type_hints(type_hints: &TypeHints) -> TokenStream {
     quote! {
         use phf::{phf_map, phf_set};
 
-        pub static TYPE_HINTS: crate::helpers::type_hints::TypeHints = crate::helpers::type_hints::TypeHints {
+        pub static TYPE_HINTS: crate::type_hints::TypeHints = crate::type_hints::TypeHints {
             type_paths: #type_hints_type_paths_tokens,
             array_paths: #type_hints_array_paths_tokens,
             integer_paths: #type_hints_integer_paths_tokens,

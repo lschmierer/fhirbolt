@@ -1,4 +1,5 @@
 mod de;
+mod element_map;
 mod ser;
 mod serde_helpers;
 mod type_hints;
@@ -8,16 +9,21 @@ use proc_macro2::TokenStream;
 use quote::{format_ident, quote};
 use regex::{Captures, Regex};
 
-use fhirbolt_shared::FhirRelease;
-
 use crate::{
     casing::RustCasing,
+    codegen::de::implement_deserialze_resource_enum,
     ir::{RustFhirEnum, RustFhirModule, RustFhirStruct, RustFhirStructField},
     SourceFile,
 };
 
-use self::{de::implement_deserialze, ser::implement_serialize};
-pub use self::{serde_helpers::generate_serde_helpers, type_hints::generate_type_hints};
+use self::{
+    de::implement_deserialze,
+    ser::{implement_serialize, implement_serialize_resource_enum},
+};
+pub use self::{
+    element_map::generate_element_map, serde_helpers::generate_serde_helpers,
+    type_hints::generate_type_hints,
+};
 
 lazy_static! {
     static ref URL_REGEX: Regex = Regex::new(r"http[\w./:]*[\w/:]").unwrap();
@@ -55,17 +61,11 @@ fn format_doc_comment(text: &str) -> String {
     text.to_string()
 }
 
-pub fn generate_modules(modules: &[RustFhirModule], release: FhirRelease) -> Vec<SourceFile> {
-    modules
-        .iter()
-        .map(|m| generate_module(m, release))
-        .collect()
+pub fn generate_struct_modules(modules: &[RustFhirModule]) -> Vec<SourceFile> {
+    modules.iter().map(|m| generate_struct_module(m)).collect()
 }
 
-pub fn generate_resource_enum(
-    resource_modules: &[RustFhirModule],
-    release: FhirRelease,
-) -> SourceFile {
+pub fn generate_resource_enum(resource_modules: &[RustFhirModule]) -> SourceFile {
     let variants_tokens = resource_modules.iter().map(|r| {
         let ident = format_ident!("{}", r.resource_name.as_ref().unwrap());
         let doc_comment = format_doc_comment(&r.doc_comment);
@@ -76,14 +76,11 @@ pub fn generate_resource_enum(
         }
     });
 
-    let release_ident = format_ident!("{}", release.to_string());
-
     SourceFile {
         name: "resource".into(),
         source: quote! {
             #[doc="Enum representing all possible FHIR resources."]
-            #[derive(Default, Debug, Clone, serde::Serialize, serde::Deserialize)]
-            #[serde(tag = "resourceType")]
+            #[derive(Default, Debug, Clone, PartialEq)]
             pub enum Resource {
                 #(
                     #variants_tokens
@@ -91,21 +88,40 @@ pub fn generate_resource_enum(
                 #[default]
                 Invalid,
             }
-
-            impl crate::AnyResource for Resource {
-                fn fhir_release() -> crate::FhirRelease {
-                    crate::FhirRelease::#release_ident
-                }
-            }
         },
     }
 }
 
-fn generate_module(module: &RustFhirModule, release: FhirRelease) -> SourceFile {
-    let structs_tokens = module
-        .structs
-        .iter()
-        .map(|s| generate_struct(s, &module.enums, release));
+pub fn generate_resource_enum_serde(
+    resource_modules: &[RustFhirModule],
+    release: &str,
+) -> SourceFile {
+    let release_ident = format_ident!("{}", release.to_string());
+    let release_ident_module = format_ident!("{}", release.to_string().to_lowercase());
+
+    let namespace = quote! {
+            fhirbolt_model::#release_ident_module
+
+    };
+
+    let serialize_impl_tokens = implement_serialize_resource_enum(&resource_modules, &namespace);
+    let deserialize_impl_tokens = implement_deserialze_resource_enum(&resource_modules, &namespace);
+
+    SourceFile {
+        name: "resource".into(),
+        source: quote! {
+            impl crate::Resource for #namespace::Resource {
+                const FHIR_RELEASE: fhirbolt_shared::FhirRelease = fhirbolt_shared::FhirReleases::#release_ident;
+            }
+
+            #serialize_impl_tokens
+            #deserialize_impl_tokens
+        },
+    }
+}
+
+fn generate_struct_module(module: &RustFhirModule) -> SourceFile {
+    let structs_tokens = module.structs.iter().map(|s| generate_struct(s));
     let enums_tokens = module.enums.iter().map(|e| generate_enum(e));
 
     SourceFile {
@@ -121,63 +137,41 @@ fn generate_module(module: &RustFhirModule, release: FhirRelease) -> SourceFile 
     }
 }
 
-fn generate_struct(
-    r#struct: &RustFhirStruct,
-    enums: &[RustFhirEnum],
-    release: FhirRelease,
-) -> TokenStream {
+fn generate_struct(r#struct: &RustFhirStruct) -> TokenStream {
     let name_ident = format_ident!("{}", r#struct.struct_name);
     let fields_tokens = r#struct.fields.iter().map(|f| generate_field(f));
-
-    let impl_any_resource_tokens = if r#struct.resource_name.is_some() {
-        let release_ident = format_ident!("{}", release.to_string());
-
-        quote! {
-            impl crate::AnyResource for #name_ident {
-                fn fhir_release() -> crate::FhirRelease {
-                    crate::FhirRelease::#release_ident
-                }
-            }
-        }
-    } else {
-        quote! {}
-    };
-
-    let serde_impl_tokens = {
-        let serialize_impl_tokens = implement_serialize(&r#struct, enums);
-        let deserialize_impl_tokens = implement_deserialze(&r#struct, enums);
-        quote! {
-            #serialize_impl_tokens
-            #deserialize_impl_tokens
-        }
-    };
 
     let doc_comment = format_doc_comment(&r#struct.doc_comment);
 
     quote! {
         #[doc=#doc_comment]
-        #[derive(Default, Debug, Clone)]
+        #[derive(Default, Debug, Clone, PartialEq)]
         pub struct #name_ident {
             #(
                 #fields_tokens
             )*
         }
-
-        #impl_any_resource_tokens
-
-        #serde_impl_tokens
     }
 }
 
 fn generate_field(field: &RustFhirStructField) -> TokenStream {
     let name_ident = format_ident!("r#{}", field.name);
 
-    let type_tokens = field.r#type.name.parse().unwrap();
+    let type_tokens: TokenStream = field.r#type.name.parse().unwrap();
 
-    let type_tokens = if field.r#type.r#box {
-        quote! { Box<#type_tokens> }
-    } else {
+    let type_tokens = if field.r#type.name == "bool"
+        || field.r#type.name == "u32"
+        || field.r#type.name == "i32"
+        || field.r#type.name == "std::string::String"
+        || !(field.r#type.name.starts_with("types")
+            || field.r#type.name.starts_with("resources")
+            || field.r#type.name == "Resource")
+    {
         type_tokens
+    } else if field.r#type.r#box {
+        quote! { Box<super::super::#type_tokens> }
+    } else {
+        quote! { super::super::#type_tokens }
     };
 
     let type_tokens = if field.multiple {
@@ -203,13 +197,18 @@ fn generate_enum(r#enum: &RustFhirEnum) -> TokenStream {
         // type like http://hl7.org/fhirpath/System.String
         let variant_name_ident = format_ident!("{}", v.name);
 
-        let type_tokens = v.r#type.name.parse().unwrap();
+        let type_tokens: TokenStream = v.r#type.name.parse().unwrap();
 
-        let type_tokens = if v.r#type.r#box {
-            quote! { Box<#type_tokens> }
-        } else {
-            type_tokens
-        };
+        let type_tokens =
+            if v.r#type.name.starts_with("types") || v.r#type.name.starts_with("resources") {
+                if v.r#type.r#box {
+                    quote! { Box<super::super::#type_tokens> }
+                } else {
+                    quote! { super::super::#type_tokens }
+                }
+            } else {
+                type_tokens
+            };
 
         quote! {
             #variant_name_ident(#type_tokens),
@@ -220,7 +219,7 @@ fn generate_enum(r#enum: &RustFhirEnum) -> TokenStream {
 
     quote! {
         #[doc=#doc_comment_tokens]
-        #[derive(Debug, Clone)]
+        #[derive(Debug, Clone, PartialEq)]
         pub enum #name_ident {
             #(
                 #variants_tokens
@@ -233,5 +232,63 @@ fn generate_enum(r#enum: &RustFhirEnum) -> TokenStream {
                 #name_ident::Invalid
             }
         }
+    }
+}
+
+pub fn generate_serde_modules(modules: &[RustFhirModule], release: &str) -> Vec<SourceFile> {
+    modules
+        .iter()
+        .map(|m| generate_serde_module(m, release))
+        .collect()
+}
+
+fn generate_serde_module(module: &RustFhirModule, release: &str) -> SourceFile {
+    let release_ident = format_ident!("{}", release.to_string().to_lowercase());
+    let base_namespace = quote! {
+        fhirbolt_model::#release_ident
+    };
+    let namespace = if module.resource_name.is_some() {
+        quote! {
+            #base_namespace::resources
+        }
+    } else {
+        quote! {
+            #base_namespace::types
+        }
+    };
+
+    let serde_tokens = module.structs.iter().map(|s| {
+        let name_ident = format_ident!("{}", s.struct_name);
+        let impl_any_resource_tokens = if s.resource_name.is_some() {
+            let release_ident = format_ident!("{}", release.to_string());
+
+            quote! {
+                impl crate::Resource for #namespace::#name_ident {
+                    const FHIR_RELEASE: fhirbolt_shared::FhirRelease = fhirbolt_shared::FhirReleases::#release_ident;
+                }
+            }
+        } else {
+            quote! {}
+        };
+
+        let serialize_impl_tokens = implement_serialize(&s, &module.enums, &namespace);
+        let deserialize_impl_tokens =
+            implement_deserialze(&s, &module.enums, &namespace, &base_namespace);
+
+        quote! {
+            #impl_any_resource_tokens
+
+            #serialize_impl_tokens
+            #deserialize_impl_tokens
+        }
+    });
+
+    SourceFile {
+        name: module.module_name.clone(),
+        source: quote! {
+            #(
+                #serde_tokens
+            )*
+        },
     }
 }

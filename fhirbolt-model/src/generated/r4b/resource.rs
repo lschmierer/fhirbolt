@@ -1,7 +1,6 @@
-// Generated on 2022-12-28 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-16 by fhirbolt-codegen v0.2.0
 #[doc = "Enum representing all possible FHIR resources."]
-#[derive(Default, Debug, Clone, serde :: Serialize, serde :: Deserialize)]
-#[serde(tag = "resourceType")]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub enum Resource {
     #[doc = "A financial tool for tracking value accrued for a particular purpose.  In the healthcare field, used to track charges for a patient, cost centers, etc."]
     Account(Box<super::resources::Account>),
@@ -287,9 +286,4 @@ pub enum Resource {
     VisionPrescription(Box<super::resources::VisionPrescription>),
     #[default]
     Invalid,
-}
-impl crate::AnyResource for Resource {
-    fn fhir_release() -> crate::FhirRelease {
-        crate::FhirRelease::R4B
-    }
 }

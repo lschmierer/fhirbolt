@@ -196,6 +196,7 @@ impl QuickXmlEventMapper {
     }
 }
 
+/// Trait for iterating over XML input.
 pub trait Read {
     fn next_event(&mut self) -> Result<Event>;
 }

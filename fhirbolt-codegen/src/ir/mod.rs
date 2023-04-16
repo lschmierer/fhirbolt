@@ -5,7 +5,7 @@ use linked_hash_set::LinkedHashSet;
 
 pub use parse::parse_modules;
 
-#[derive(Default)]
+#[derive(Default, Debug)]
 pub struct TypeHints {
     pub type_paths: LinkedHashMap<String, String>,
     pub array_paths: LinkedHashSet<String>,
@@ -18,7 +18,10 @@ pub struct TypeHints {
     pub content_reference_paths: LinkedHashMap<String, String>,
 }
 
-#[derive(Default)]
+#[derive(Default, Debug)]
+pub struct ElementMap(pub LinkedHashMap<String, LinkedHashSet<String>>);
+
+#[derive(Default, Debug)]
 pub struct RustFhirModule {
     pub module_name: String,
     pub resource_name: Option<String>,
@@ -27,6 +30,7 @@ pub struct RustFhirModule {
     pub doc_comment: String,
 }
 
+#[derive(Debug)]
 pub struct RustFhirStruct {
     pub struct_name: String,
     pub resource_name: Option<String>,
@@ -35,6 +39,7 @@ pub struct RustFhirStruct {
     pub doc_comment: String,
 }
 
+#[derive(Debug)]
 pub struct RustFhirStructField {
     pub name: String,
     pub fhir_name: String,
@@ -45,17 +50,20 @@ pub struct RustFhirStructField {
     pub doc_comment: String,
 }
 
+#[derive(Debug)]
 pub struct RustFhirEnum {
     pub name: String,
     pub variants: Vec<RustFhirEnumVariant>,
     pub doc_comment: String,
 }
 
+#[derive(Debug)]
 pub struct RustFhirEnumVariant {
     pub name: String,
     pub r#type: RustFhirFieldType,
 }
 
+#[derive(Debug)]
 pub struct RustFhirFieldType {
     pub name: String,
     pub r#box: bool,

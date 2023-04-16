@@ -1,69 +1,71 @@
+use std::io::Read;
+
 use assert_json_diff::assert_json_eq;
-use serde::de::DeserializeOwned;
-use serde::Serialize;
 use serde_json::Value;
 
 use fhirbolt::{
-    model::{self, AnyResource, FhirRelease},
-    DeserializationConfig, DeserializationMode,
+    element::Element,
+    serde::{DeserializationConfig, DeserializationMode, DeserializeResource, SerializeResource},
+    FhirRelease, FhirReleases,
 };
 
 use test_utils::examples::{examples, JsonOrXml};
 
-fn test_serde_json<R: Serialize + DeserializeOwned + AnyResource>(mode: DeserializationMode) {
-    let mut examples_iter = examples(R::fhir_release(), JsonOrXml::Json);
+const MISSING_STATUS_FILES: &[&str] = &[
+    &"examples-json/codesystem-catalogType.json",
+    &"examples-json/valueset-catalogType.json",
+    &"examples-json/valuesets.json",
+];
 
-    while let Some(file) = examples_iter.next() {
-        let file_name = file.name().to_owned();
+fn test_serde_json<'a, T, const R: FhirRelease>(mode: DeserializationMode)
+where
+    T: DeserializeResource + SerializeResource,
+{
+    let mut examples_iter = examples(R, JsonOrXml::Json);
 
+    let mut buffer = Vec::new();
+
+    while let Some(mut file) = examples_iter.next() {
         // not a FHIR resource
-        if file_name.ends_with("package-min-ver.json") {
+        if file.name().ends_with("package-min-ver.json") {
             continue;
         }
 
-        match R::fhir_release() {
-            FhirRelease::R4 => {
+        match R {
+            FhirReleases::R4 => {
                 if mode != DeserializationMode::Lax {
                     // all questionnaires seem to have missing linkIds
-                    if file_name.ends_with("-questionnaire.json") {
+                    if file.name().ends_with("-questionnaire.json") {
                         continue;
                     }
                 }
             }
-            FhirRelease::R4B => {
+            FhirReleases::R4B => {
                 // R4B examples contain some rubbish
-                if file_name.starts_with("__MACOSX/") {
+                if file.name().starts_with("__MACOSX/") {
                     continue;
                 }
 
                 if mode != DeserializationMode::Lax {
                     // missing status
-                    if [
-                        "examples-json/codesystem-catalogType.json",
-                        "examples-json/valueset-catalogType.json",
-                        "examples-json/valuesets.json",
-                    ]
-                    .contains(&file_name.as_str())
-                    {
+                    if MISSING_STATUS_FILES.contains(&file.name()) {
                         continue;
                     }
                 }
             }
+            _ => (),
         };
 
-        println!("{}", file_name);
+        println!("{}", file.name());
 
-        let mut json_value: Value = serde_json::from_reader(file).unwrap();
+        buffer.clear();
+        file.read_to_end(&mut buffer).unwrap();
 
-        let resource: R = fhirbolt::json::from_json_value(
-            json_value.clone(),
-            Some(DeserializationConfig { mode }),
-        )
-        .unwrap();
+        let mut json_value: Value = serde_json::from_slice(&buffer).unwrap();
 
         // contains null value in primitive array, while fhirbolt accepts it, it does not replicate this
-        if R::fhir_release() == FhirRelease::R4B {
-            if file_name.starts_with("examples-json/activitydefinition-") {
+        if R == FhirReleases::R4B {
+            if file.name().starts_with("examples-json/activitydefinition-") {
                 if let Some(timing) = json_value
                     .as_object_mut()
                     .unwrap()
@@ -73,7 +75,7 @@ fn test_serde_json<R: Serialize + DeserializeOwned + AnyResource>(mode: Deserial
                     timing.remove("event");
                 }
             }
-            if file_name.starts_with("examples-json/plandefinition-") {
+            if file.name().starts_with("examples-json/plandefinition-") {
                 if let Some(timing) = json_value
                     .as_object_mut()
                     .unwrap()
@@ -99,20 +101,77 @@ fn test_serde_json<R: Serialize + DeserializeOwned + AnyResource>(mode: Deserial
             }
         }
 
-        assert_json_eq!(fhirbolt::json::to_json_value(resource).unwrap(), json_value);
+        let element_from_slice: Element<R> = fhirbolt::json::from_slice(&buffer, None).unwrap();
+
+        assert_json_eq!(
+            fhirbolt::json::to_json_value(element_from_slice.clone()).unwrap(),
+            json_value
+        );
+
+        let element_from_value: Element<R> =
+            fhirbolt::json::from_json_value(json_value.clone(), None).unwrap();
+
+        assert_json_eq!(
+            fhirbolt::json::to_json_value(element_from_value).unwrap(),
+            json_value
+        );
+
+        let resource: T =
+            fhirbolt::json::from_slice(&buffer, Some(DeserializationConfig { mode })).unwrap();
+        assert_json_eq!(
+            fhirbolt::json::to_json_value(resource.clone()).unwrap(),
+            json_value
+        );
+
+        assert_eq!(
+            fhirbolt::element::from_element::<R, T>(
+                element_from_slice.clone(),
+                Some(DeserializationConfig { mode })
+            )
+            .unwrap(),
+            resource
+        );
+
+        if !(
+            // all questionnaires seem to have missing linkIds
+            R == FhirReleases::R4 && file.name().ends_with("-questionnaire.json")
+            ||
+            // missing status
+            R == FhirReleases::R4B && MISSING_STATUS_FILES.contains(&file.name())
+        ) {
+            assert_eq!(
+                fhirbolt::element::to_element::<R, T>(resource).unwrap(),
+                element_from_slice
+            );
+        }
     }
 }
 
+#[cfg(feature = "r4")]
 #[test]
+#[cfg_attr(not(feature = "r4"), ignore)]
 fn test_serde_json_r4() {
-    test_serde_json::<model::r4::Resource>(DeserializationMode::Strict);
-    test_serde_json::<model::r4::Resource>(DeserializationMode::Compatibility);
-    test_serde_json::<model::r4::Resource>(DeserializationMode::Lax);
+    test_serde_json::<fhirbolt::model::r4::Resource, { FhirReleases::R4 }>(
+        DeserializationMode::Strict,
+    );
+    test_serde_json::<fhirbolt::model::r4::Resource, { FhirReleases::R4 }>(
+        DeserializationMode::Compatibility,
+    );
+    test_serde_json::<fhirbolt::model::r4::Resource, { FhirReleases::R4 }>(
+        DeserializationMode::Lax,
+    );
 }
 
+#[cfg(feature = "r4b")]
 #[test]
 fn test_serde_json_r4b() {
-    test_serde_json::<model::r4b::Resource>(DeserializationMode::Strict);
-    test_serde_json::<model::r4b::Resource>(DeserializationMode::Compatibility);
-    test_serde_json::<model::r4b::Resource>(DeserializationMode::Lax);
+    test_serde_json::<fhirbolt::model::r4b::Resource, { FhirReleases::R4B }>(
+        DeserializationMode::Strict,
+    );
+    test_serde_json::<fhirbolt::model::r4b::Resource, { FhirReleases::R4B }>(
+        DeserializationMode::Compatibility,
+    );
+    test_serde_json::<fhirbolt::model::r4b::Resource, { FhirReleases::R4B }>(
+        DeserializationMode::Lax,
+    );
 }

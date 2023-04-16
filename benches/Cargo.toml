@@ -6,6 +6,8 @@ publish = false
 
 [dependencies]
 criterion = "0.4"
+serde = "1.0"
+serde_json = "1.0"
 
 fhirbolt = { path = "../fhirbolt", features = ["r4"] }
 tests = { path = "../tests" }

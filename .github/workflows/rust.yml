@@ -21,7 +21,7 @@ jobs:
       - name: Build
         run: cargo build --release --verbose
   
-  test:
+  test_r4:
     needs: build
     runs-on: ubuntu-latest
 
@@ -31,7 +31,19 @@ jobs:
         with:
           shared-key: "rust-cache"
       - name: Run tests
-        run: cargo test --release --verbose
+        run: cargo test --features r4 --release --verbose
+  
+  test_r4b:
+    needs: build
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - uses: Swatinem/rust-cache@v2
+        with:
+          shared-key: "rust-cache"
+      - name: Run tests
+        run: cargo test --features r4b --release --verbose
 
   benchmark:
     needs: build

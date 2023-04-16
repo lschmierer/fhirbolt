@@ -1,0 +1,48 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug integration test 'test_serde_json'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--all-features",
+                    "--no-run",
+                    "--test=test_serde_json",
+                    "--package=tests"
+                ],
+                "filter": {
+                    "name": "test_serde_json",
+                    "kind": "test"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug integration test 'test_serde_xml'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--all-features",
+                    "--no-run",
+                    "--test=test_serde_xml",
+                    "--package=tests"
+                ],
+                "filter": {
+                    "name": "test_serde_xml",
+                    "kind": "test"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        }
+    ]
+}

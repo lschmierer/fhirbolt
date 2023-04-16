@@ -1,55 +1,55 @@
-use std::{borrow::Cow, io, mem};
+//! Serialize FHIR resources to XML.
+
+use std::{
+    borrow::Cow,
+    io,
+    mem::{self},
+};
 
 use serde::ser::{self, Impossible, Serialize};
 
-use fhirbolt_shared::{
-    serde_context::ser::{with_context, SerializationContext},
-    AnyResource,
-};
-
-use crate::xml::{
-    error::{Error, Result},
-    event::{Element, Event},
-    write::{self, Write},
+use crate::{
+    number::{NumberValueEmitter, NUMBER_TOKEN},
+    xml::{
+        error::{Error, Result},
+        event::{Element, Event},
+        write::{self, Write},
+    },
+    SerializeResource,
 };
 
 /// Serialize the given resource as XML into the IO stream.
 pub fn to_writer<W, T>(writer: W, value: &T) -> Result<()>
 where
     W: io::Write,
-    T: ?Sized + Serialize + AnyResource,
+    T: SerializeResource,
 {
-    with_context(SerializationContext { output_json: false }, || {
-        let mut ser = Serializer::from_writer::<T>(writer);
-        value.serialize(&mut ser)
-    })
+    value
+        .context(false, T::FHIR_RELEASE)
+        .serialize(&mut Serializer::new(writer))
 }
 
 /// Serialize the given resource as a XML byte vector.
 pub fn to_vec<T>(value: &T) -> Result<Vec<u8>>
 where
-    T: ?Sized + Serialize + AnyResource,
+    T: SerializeResource,
 {
-    with_context(SerializationContext { output_json: false }, || {
-        let mut writer = Vec::with_capacity(128);
-        to_writer(&mut writer, value)?;
-        Ok(writer)
-    })
+    let mut writer = Vec::with_capacity(128);
+    to_writer(&mut writer, value)?;
+    Ok(writer)
 }
 
 /// Serialize the given resource as a String of JSON.
 pub fn to_string<T>(value: &T) -> Result<String>
 where
-    T: ?Sized + Serialize + AnyResource,
+    T: SerializeResource,
 {
-    with_context(SerializationContext { output_json: false }, || {
-        let vec = to_vec(value)?;
-        let string = unsafe {
-            // We do not emit invalid UTF-8.
-            String::from_utf8_unchecked(vec)
-        };
-        Ok(string)
-    })
+    let vec = to_vec(value)?;
+    let string = unsafe {
+        // We do not emit invalid UTF-8.
+        String::from_utf8_unchecked(vec)
+    };
+    Ok(string)
 }
 
 #[derive(Debug)]
@@ -94,7 +94,7 @@ pub struct Serializer<W: Write> {
 }
 
 impl<W: io::Write> Serializer<write::IoWrite<W>> {
-    pub fn from_writer<T: ?Sized + AnyResource>(writer: W) -> Self {
+    pub fn new(writer: W) -> Self {
         Serializer {
             writer: write::IoWrite::new(writer),
             state_stack: vec![ElementState::new("", false)],
@@ -455,8 +455,7 @@ impl<'a, W: Write> ser::Serializer for &'a mut Serializer<W> {
     }
 
     fn serialize_struct(self, _name: &'static str, _len: usize) -> Result<Self::SerializeStruct> {
-        self.enter_map()?;
-
+        // serde_json Number is the only struct that cann occur
         Ok(self)
     }
 
@@ -521,11 +520,18 @@ impl<'a, W: Write> ser::SerializeStruct for &'a mut Serializer<W> {
     where
         T: ?Sized + Serialize,
     {
-        key.serialize(&mut **self)?;
-        value.serialize(&mut **self)
+        if key == NUMBER_TOKEN {
+            self.put(
+                value
+                    .serialize(NumberValueEmitter)
+                    .map_err(|err| Error::Message(err.to_string()))?,
+            )
+        } else {
+            Err(Error::Message("expected decimal".into()))
+        }
     }
 
     fn end(self) -> Result<()> {
-        self.leave_map()
+        Ok(())
     }
 }
