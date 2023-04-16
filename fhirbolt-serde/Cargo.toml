@@ -9,7 +9,7 @@ documentation = "https://docs.rs/fhirbolt"
 license = "MIT OR Apache-2.0"
 
 [package.metadata.docs.rs]
-all-features = true
+rustc-args = ["--cfg", "docsrs"]
 
 [features]
 r4 = ["fhirbolt-model/r4"]
