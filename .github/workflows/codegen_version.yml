@@ -10,12 +10,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: SebRollen/toml-action@v1.0.1
-        id: this_version
-        with:
-          file: fhirbolt-codegen/Cargo.toml
-          field: package.version
-      - uses: actions/checkout@v3
         with:
           ref: main
       - uses: SebRollen/toml-action@v1.0.1
@@ -23,10 +17,27 @@ jobs:
         with:
           file: fhirbolt-codegen/Cargo.toml
           field: package.version
-      - name: Check updated
+
+      - uses: actions/checkout@v3
+      - uses: SebRollen/toml-action@v1.0.1
+        id: this_version
+        with:
+          file: fhirbolt-codegen/Cargo.toml
+          field: package.version
+
+      - name: Check fhirbolt-codegen version updated if generated code changed
         run: |
-          if [ ${{steps.this_version.outputs.value}} == ${{steps.main_version.outputs.value}} ]; then
-              exit 1
-          else
+          if git diff --quiet HEAD origin/main -- **/generated/ ; then
+            if [ ${{steps.main_version.outputs.value}} != ${{steps.this_version.outputs.value}} ]; then
               exit 0
+            else
+              exit 1
+            fi
+          fi
+      - name: Check generated code has correct version (fhirbolt-codegen was run)
+        run: |
+          if grep -q v${{steps.this_version.outputs.value}} fhirbolt-model/src/generated/r4/resource.rs ; then
+              exit 0
+          else
+              exit 1
           fi
