@@ -1,4 +1,4 @@
-// Generated on 2023-04-14 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-16 by fhirbolt-codegen v0.2.0
 #[doc = "The source on which this consent statement is based. The source might be a scanned original paper form, or a reference to a consent that links back to such a source, a reference to a document repository (e.g. XDS) that stores the original consent document."]
 #[derive(Debug, Clone, PartialEq)]
 pub enum ConsentSource {

@@ -1,4 +1,4 @@
-// Generated on 2023-04-14 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-16 by fhirbolt-codegen v0.2.0
 #[doc = "A container for slots of time that may be available for booking appointments."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub struct Schedule {

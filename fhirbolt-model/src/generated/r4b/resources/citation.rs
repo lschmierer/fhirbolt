@@ -1,4 +1,4 @@
-// Generated on 2023-04-14 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-16 by fhirbolt-codegen v0.2.0
 #[doc = "The article or artifact that the Citation Resource is related to."]
 #[derive(Debug, Clone, PartialEq)]
 pub enum CitationRelatesToTarget {

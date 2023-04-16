@@ -1,4 +1,4 @@
-// Generated on 2023-04-14 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-16 by fhirbolt-codegen v0.2.0
 #[doc = "Base StructureDefinition for Range Type: A set of ordered Quantities defined by a low and high limit.\n\nNeed to be able to specify ranges of values."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub struct Range {

@@ -1,4 +1,4 @@
-// Generated on 2023-04-14 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-16 by fhirbolt-codegen v0.2.0
 #[doc = "Base StructureDefinition for decimal Type: A rational number with implicit precision"]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub struct Decimal {

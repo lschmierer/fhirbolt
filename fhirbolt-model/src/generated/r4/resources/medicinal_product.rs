@@ -1,4 +1,4 @@
-// Generated on 2023-04-14 by fhirbolt-codegen v0.1.0
+// Generated on 2023-04-16 by fhirbolt-codegen v0.2.0
 #[doc = "Condition for which the medicinal use applies."]
 #[derive(Debug, Clone, PartialEq)]
 pub enum MedicinalProductSpecialDesignationIndication {
