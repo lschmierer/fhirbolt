@@ -6,16 +6,16 @@ use fhirbolt_shared::{path::ElementPath, FhirRelease};
 
 use crate::Resource;
 
-pub trait DeserializeResource: Resource {
-    type Context: for<'de> DeserializeSeed<'de, Value = Self>;
+pub trait DeserializeResource<'de>: Resource {
+    type Context: DeserializeSeed<'de, Value = Self>;
 
     fn context(config: DeserializationConfig, from_json: bool, r: FhirRelease) -> Self::Context;
 }
 
-impl<T> DeserializeResource for T
+impl<'de, T> DeserializeResource<'de> for T
 where
     T: Resource,
-    DeserializationContext<T>: for<'de> DeserializeSeed<'de, Value = T>,
+    DeserializationContext<T>: DeserializeSeed<'de, Value = T>,
 {
     type Context = DeserializationContext<Self>;
 
@@ -23,6 +23,9 @@ where
         DeserializationContext::new(config, from_json, r)
     }
 }
+
+pub trait DeserializeResourceOwned: for<'de> DeserializeResource<'de> {}
+impl<T> DeserializeResourceOwned for T where T: for<'de> DeserializeResource<'de> {}
 
 /// Context for deserialization.
 #[derive(Default)]

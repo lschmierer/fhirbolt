@@ -19,7 +19,7 @@ use crate::{
         error::{Error, Result},
         event::{Element, Event},
     },
-    DeserializationConfig, DeserializeResource,
+    DeserializationConfig, DeserializeResourceOwned,
 };
 
 fn from_deserializer<R, T>(
@@ -28,7 +28,7 @@ fn from_deserializer<R, T>(
 ) -> Result<T>
 where
     R: Read,
-    T: DeserializeResource,
+    T: DeserializeResourceOwned,
 {
     T::context(config.unwrap_or(Default::default()), false, T::FHIR_RELEASE).deserialize(de)
 }
@@ -62,7 +62,7 @@ where
 /// This behavior can be modified by passing a [`DeserializationConfig`](crate::DeserializationConfig).
 pub fn from_reader<R: io::Read, T>(rdr: R, config: Option<DeserializationConfig>) -> Result<T>
 where
-    T: DeserializeResource,
+    T: DeserializeResourceOwned,
 {
     from_deserializer(
         &mut Deserializer::from_reader(rdr, T::FHIR_RELEASE)?,
@@ -98,7 +98,7 @@ where
 /// This behavior can be modified by passing a [`DeserializationConfig`](crate::DeserializationConfig).
 pub fn from_slice<T>(v: &[u8], config: Option<DeserializationConfig>) -> Result<T>
 where
-    T: DeserializeResource,
+    T: DeserializeResourceOwned,
 {
     from_deserializer(&mut Deserializer::from_slice(v, T::FHIR_RELEASE)?, config)
 }
@@ -131,7 +131,7 @@ where
 /// This behavior can be modified by passing a [`DeserializationConfig`](crate::DeserializationConfig).
 pub fn from_str<T>(s: &str, config: Option<DeserializationConfig>) -> Result<T>
 where
-    T: DeserializeResource,
+    T: DeserializeResourceOwned,
 {
     from_deserializer(&mut Deserializer::from_str(s, T::FHIR_RELEASE)?, config)
 }

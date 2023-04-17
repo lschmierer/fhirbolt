@@ -35,7 +35,7 @@ use serde::{de::DeserializeSeed, Serialize};
 
 use crate::{
     element::de::Deserializer, element::ser::Serializer, DeserializationConfig,
-    DeserializeResource, Resource, SerializeResource,
+    DeserializeResourceOwned, Resource, SerializeResource,
 };
 
 pub mod de;
@@ -85,7 +85,7 @@ pub fn from_element<'a, const R: FhirRelease, T>(
     config: Option<DeserializationConfig>,
 ) -> Result<T>
 where
-    T: DeserializeResource,
+    T: DeserializeResourceOwned,
 {
     T::context(config.unwrap_or(Default::default()), false, T::FHIR_RELEASE)
         .deserialize(Deserializer(element))

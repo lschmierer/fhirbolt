@@ -5,15 +5,15 @@ use std::io;
 use serde::de::DeserializeSeed;
 use serde_json::Deserializer;
 
-use crate::{json::Result, DeserializationConfig, DeserializeResource};
+use crate::{json::Result, DeserializationConfig, DeserializeResource, DeserializeResourceOwned};
 
-fn from_deserializer<'a, R, T>(
+fn from_deserializer<'de, R, T>(
     de: &mut Deserializer<R>,
     config: Option<DeserializationConfig>,
 ) -> Result<T>
 where
-    R: serde_json::de::Read<'a>,
-    T: DeserializeResource,
+    R: serde_json::de::Read<'de>,
+    T: DeserializeResource<'de>,
 {
     T::context(config.unwrap_or(Default::default()), true, T::FHIR_RELEASE).deserialize(de)
 }
@@ -48,7 +48,7 @@ where
 pub fn from_reader<R, T>(rdr: R, config: Option<DeserializationConfig>) -> Result<T>
 where
     R: io::Read,
-    T: DeserializeResource,
+    T: DeserializeResourceOwned,
 {
     from_deserializer(&mut Deserializer::from_reader(rdr), config)
 }
@@ -79,9 +79,9 @@ where
 /// # Errors
 /// The conversion can fail if the structure of the input does not match the FHIR resource `T`.
 /// This behavior can be modified by passing a [`DeserializationConfig`](crate::DeserializationConfig).
-pub fn from_slice<T>(v: &[u8], config: Option<DeserializationConfig>) -> Result<T>
+pub fn from_slice<'a, T>(v: &'a [u8], config: Option<DeserializationConfig>) -> Result<T>
 where
-    T: DeserializeResource,
+    T: DeserializeResource<'a>,
 {
     from_deserializer(&mut Deserializer::from_slice(v), config)
 }
@@ -112,9 +112,9 @@ where
 /// # Errors
 /// The conversion can fail if the structure of the input does not match the FHIR resource `T`.
 /// This behavior can be modified by passing a [`DeserializationConfig`](crate::DeserializationConfig).
-pub fn from_str<T>(s: &str, config: Option<DeserializationConfig>) -> Result<T>
+pub fn from_str<'a, T>(s: &'a str, config: Option<DeserializationConfig>) -> Result<T>
 where
-    T: DeserializeResource,
+    T: DeserializeResource<'a>,
 {
     from_deserializer(&mut Deserializer::from_str(s), config)
 }
@@ -152,7 +152,7 @@ pub fn from_json_value<T>(
     config: Option<DeserializationConfig>,
 ) -> Result<T>
 where
-    T: DeserializeResource,
+    T: DeserializeResourceOwned,
 {
     T::context(config.unwrap_or(Default::default()), true, T::FHIR_RELEASE).deserialize(value)
 }

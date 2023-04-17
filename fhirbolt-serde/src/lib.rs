@@ -14,7 +14,9 @@ use std::fmt::Debug;
 use fhirbolt_shared::FhirRelease;
 
 pub use context::{
-    de::{DeserializationConfig, DeserializationMode, DeserializeResource},
+    de::{
+        DeserializationConfig, DeserializationMode, DeserializeResource, DeserializeResourceOwned,
+    },
     ser::SerializeResource,
 };
 

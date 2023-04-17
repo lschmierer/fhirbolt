@@ -2,7 +2,9 @@ use std::io::Read;
 
 use fhirbolt::{
     element::Element,
-    serde::{DeserializationConfig, DeserializationMode, DeserializeResource, SerializeResource},
+    serde::{
+        DeserializationConfig, DeserializationMode, DeserializeResourceOwned, SerializeResource,
+    },
     FhirRelease, FhirReleases,
 };
 
@@ -14,7 +16,7 @@ use test_utils::{
 
 fn test_serde_xml<'a, T, const R: FhirRelease>(mode: DeserializationMode)
 where
-    T: DeserializeResource + SerializeResource,
+    T: DeserializeResourceOwned + SerializeResource,
 {
     let mut examples_iter = examples(R, JsonOrXml::Xml);
 

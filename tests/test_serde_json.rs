@@ -5,7 +5,9 @@ use serde_json::Value;
 
 use fhirbolt::{
     element::Element,
-    serde::{DeserializationConfig, DeserializationMode, DeserializeResource, SerializeResource},
+    serde::{
+        DeserializationConfig, DeserializationMode, DeserializeResourceOwned, SerializeResource,
+    },
     FhirRelease, FhirReleases,
 };
 
@@ -19,7 +21,7 @@ const MISSING_STATUS_FILES: &[&str] = &[
 
 fn test_serde_json<'a, T, const R: FhirRelease>(mode: DeserializationMode)
 where
-    T: DeserializeResource + SerializeResource,
+    T: DeserializeResourceOwned + SerializeResource,
 {
     let mut examples_iter = examples(R, JsonOrXml::Json);
 
