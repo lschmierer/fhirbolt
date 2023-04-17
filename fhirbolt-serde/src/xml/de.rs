@@ -190,6 +190,7 @@ impl<R: Read> Deserializer<R> {
 impl<'de, 'a, R: Read> de::Deserializer<'de> for &'a mut Deserializer<R> {
     type Error = Error;
 
+    #[inline]
     fn deserialize_any<V>(self, visitor: V) -> Result<V::Value>
     where
         V: Visitor<'de>,
@@ -217,6 +218,7 @@ impl<'a, R: Read> ElementDeserializer<'a, R> {
 impl<'de, 'a, R: Read> de::Deserializer<'de> for &'a mut ElementDeserializer<'a, R> {
     type Error = Error;
 
+    #[inline]
     fn deserialize_any<V>(self, visitor: V) -> Result<V::Value>
     where
         V: Visitor<'de>,
@@ -224,6 +226,7 @@ impl<'de, 'a, R: Read> de::Deserializer<'de> for &'a mut ElementDeserializer<'a,
         self.deserialize_map(visitor)
     }
 
+    #[inline]
     fn deserialize_map<V>(self, visitor: V) -> Result<V::Value>
     where
         V: Visitor<'de>,
@@ -231,6 +234,7 @@ impl<'de, 'a, R: Read> de::Deserializer<'de> for &'a mut ElementDeserializer<'a,
         visitor.visit_map(ElementAccess::new(self.de)?)
     }
 
+    #[inline]
     fn deserialize_struct<V>(
         self,
         _name: &'static str,

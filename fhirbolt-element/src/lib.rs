@@ -50,6 +50,7 @@ pub struct Element<const R: FhirRelease> {
 
 impl<const R: FhirRelease> Element<R> {
     /// Create a new element.
+    #[inline]
     pub fn new() -> Self {
         Self {
             map: indexmap::IndexMap::new(),
@@ -57,6 +58,7 @@ impl<const R: FhirRelease> Element<R> {
     }
 
     /// Create a new element wit preallocated capacity.
+    #[inline]
     pub fn with_capacity(n: usize) -> Self {
         Self {
             map: indexmap::IndexMap::with_capacity(n),
@@ -67,18 +69,21 @@ impl<const R: FhirRelease> Element<R> {
 impl<const R: FhirRelease> Deref for Element<R> {
     type Target = indexmap::IndexMap<String, Value<R>>;
 
+    #[inline]
     fn deref(&self) -> &Self::Target {
         &self.map
     }
 }
 
 impl<const R: FhirRelease> DerefMut for Element<R> {
+    #[inline]
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.map
     }
 }
 
 impl<const R: FhirRelease> FromIterator<(String, Value<R>)> for Element<R> {
+    #[inline]
     fn from_iter<I: IntoIterator<Item = (String, Value<R>)>>(iter: I) -> Self {
         Element {
             map: indexmap::IndexMap::from_iter(iter),
@@ -89,6 +94,8 @@ impl<const R: FhirRelease> FromIterator<(String, Value<R>)> for Element<R> {
 impl<'a, const R: FhirRelease> IntoIterator for &'a Element<R> {
     type Item = (&'a String, &'a Value<R>);
     type IntoIter = indexmap::map::Iter<'a, String, Value<R>>;
+
+    #[inline]
     fn into_iter(self) -> Self::IntoIter {
         self.iter()
     }
@@ -97,6 +104,8 @@ impl<'a, const R: FhirRelease> IntoIterator for &'a Element<R> {
 impl<'a, const R: FhirRelease> IntoIterator for &'a mut Element<R> {
     type Item = (&'a String, &'a mut Value<R>);
     type IntoIter = indexmap::map::IterMut<'a, String, Value<R>>;
+
+    #[inline]
     fn into_iter(self) -> Self::IntoIter {
         self.iter_mut()
     }
@@ -105,6 +114,8 @@ impl<'a, const R: FhirRelease> IntoIterator for &'a mut Element<R> {
 impl<const R: FhirRelease> IntoIterator for Element<R> {
     type Item = (String, Value<R>);
     type IntoIter = indexmap::map::IntoIter<String, Value<R>>;
+
+    #[inline]
     fn into_iter(self) -> Self::IntoIter {
         indexmap::IndexMap::into_iter(self.map)
     }

@@ -45,6 +45,7 @@ pub struct ElementPath {
 }
 
 impl ElementPath {
+    #[inline]
     pub fn new(fhir_release: FhirRelease) -> ElementPath {
         ElementPath {
             fhir_release,
@@ -52,12 +53,205 @@ impl ElementPath {
         }
     }
 
+    #[inline]
     pub fn is_empty(&self) -> bool {
         self.type_stack.len() == 1 && self.type_stack[0].len() == 0
     }
 
+    #[inline]
     pub fn current_element(&self) -> Option<&str> {
         self.current_type_path().split().last()
+    }
+
+    #[inline]
+    pub fn current_element_is_resource(&self) -> bool {
+        self.resolve_current_type() == Some("Resource")
+    }
+
+    #[inline]
+    pub fn current_element_is_primitive(&self) -> bool {
+        let current_type_path = self.current_type_path();
+
+        self.current_element_is_boolean()
+            || self.current_element_is_integer()
+            || self.current_element_is_unsigned_integer()
+            || self.current_element_is_positive_integer()
+            || self.current_element_is_decimal()
+            || type_hints(self.fhir_release)
+            .other_primitives_paths
+            .contains(&self.current_type_path().path)
+
+            // check if field of resource
+            || (current_type_path.len() == 2
+            && RESOURCE_COMMON_PRIMITIVE_FIELDS.contains(&current_type_path.split().last().unwrap()))
+    }
+
+    #[inline]
+    pub fn current_element_is_sequence(&self) -> bool {
+        let current_type_path = self.current_type_path();
+
+        current_type_path.split()
+            .last()
+            .map(|p| COMMON_SEQUENCE_FIELDS.contains(&p))
+            .unwrap_or(false)
+            // Resource.contained
+            || current_type_path.len() == 2 && current_type_path.split().last().unwrap() == "contained"
+            || type_hints(self.fhir_release)
+            .array_paths
+            .contains(&current_type_path.path)
+    }
+
+    #[inline]
+    pub fn current_element_is_boolean(&self) -> bool {
+        type_hints(self.fhir_release)
+            .boolean_paths
+            .contains(&self.current_type_path().path)
+    }
+
+    #[inline]
+    pub fn current_element_is_integer(&self) -> bool {
+        type_hints(self.fhir_release)
+            .integer_paths
+            .contains(&self.current_type_path().path)
+    }
+
+    #[inline]
+    pub fn current_element_is_unsigned_integer(&self) -> bool {
+        type_hints(self.fhir_release)
+            .unsigned_integer_paths
+            .contains(&self.current_type_path().path)
+    }
+
+    #[inline]
+    pub fn current_element_is_positive_integer(&self) -> bool {
+        type_hints(self.fhir_release)
+            .positive_integer_paths
+            .contains(&self.current_type_path().path)
+    }
+
+    #[inline]
+    pub fn current_element_is_decimal(&self) -> bool {
+        type_hints(self.fhir_release)
+            .decimal_paths
+            .contains(&self.current_type_path().path)
+    }
+
+    #[inline]
+    pub fn parent_element_is_boolean(&self) -> bool {
+        if let Some(path) = self.current_type_path().parent() {
+            type_hints(self.fhir_release).boolean_paths.contains(path)
+        } else {
+            false
+        }
+    }
+
+    #[inline]
+    pub fn parent_element_is_integer(&self) -> bool {
+        if let Some(path) = self.current_type_path().parent() {
+            type_hints(self.fhir_release).integer_paths.contains(path)
+        } else {
+            false
+        }
+    }
+
+    #[inline]
+    pub fn parent_element_is_unsigned_integer(&self) -> bool {
+        if let Some(path) = self.current_type_path().parent() {
+            type_hints(self.fhir_release)
+                .unsigned_integer_paths
+                .contains(path)
+        } else {
+            false
+        }
+    }
+
+    #[inline]
+    pub fn parent_element_is_positive_integer(&self) -> bool {
+        if let Some(path) = self.current_type_path().parent() {
+            type_hints(self.fhir_release)
+                .positive_integer_paths
+                .contains(path)
+        } else {
+            false
+        }
+    }
+
+    #[inline]
+    pub fn parent_element_is_decimal(&self) -> bool {
+        if let Some(path) = self.current_type_path().parent() {
+            type_hints(self.fhir_release).decimal_paths.contains(path)
+        } else {
+            false
+        }
+    }
+
+    #[inline]
+    pub fn currently_in_extension(&self) -> bool {
+        self.current_type_path().path.starts_with("Extension")
+    }
+
+    #[inline]
+    pub fn push(&mut self, element: &str) {
+        match self.resolve_current_type() {
+            Some("Resource") => self
+                .type_stack
+                .push(TypePath::new(element, self.fhir_release)),
+            Some(ty) => {
+                let mut type_path = TypePath::new(ty, self.fhir_release);
+                type_path.push(element);
+                self.type_stack.push(type_path);
+            }
+            None => self.type_stack.last_mut().unwrap().push(element),
+        }
+    }
+
+    #[inline]
+    pub fn pop(&mut self) {
+        self.type_stack.last_mut().unwrap().pop();
+
+        if self.type_stack.len() > 1
+            && self.type_stack.last().unwrap().len() <= 1
+            && !self.in_contained_resource()
+        {
+            self.type_stack.pop();
+        }
+    }
+
+    #[inline]
+    pub fn children(&self) -> Option<&'static ElementSet> {
+        let mut type_path = self.current_type_path().path.as_str();
+
+        if let Some(current_type) = self.resolve_current_type() {
+            if current_type != "Resource" {
+                type_path = current_type;
+            }
+        } else if let Some(content_reference) = type_hints(self.fhir_release)
+            .content_reference_paths
+            .get(type_path)
+        {
+            type_path = content_reference;
+        }
+
+        element_map(self.fhir_release).get(&type_path).copied()
+    }
+
+    #[inline]
+    pub fn position_of_child(&self, child: &str) -> usize {
+        // on R4 ExampleScenario.instance contains a field named "resourceType"
+        if child == "resourceType" && self.current_type_path().path != "ExampleScenario.instance" {
+            0
+        } else {
+            self.children()
+                .map(|set| set.get_index(child))
+                .flatten()
+                .map(|i| i + 1)
+                // move unknown to the end
+                .unwrap_or(usize::MAX)
+        }
+    }
+
+    fn current_type_path(&self) -> &TypePath {
+        self.type_stack.last().unwrap()
     }
 
     fn resolve_current_type(&self) -> Option<&str> {
@@ -84,175 +278,6 @@ impl ElementPath {
             .map(|t| *t)
     }
 
-    pub fn current_element_is_resource(&self) -> bool {
-        self.resolve_current_type() == Some("Resource")
-    }
-
-    pub fn current_element_is_primitive(&self) -> bool {
-        let current_type_path = self.current_type_path();
-
-        self.current_element_is_boolean()
-            || self.current_element_is_integer()
-            || self.current_element_is_unsigned_integer()
-            || self.current_element_is_positive_integer()
-            || self.current_element_is_decimal()
-            || type_hints(self.fhir_release)
-            .other_primitives_paths
-            .contains(&self.current_type_path().path)
-
-            // check if field of resource
-            || (current_type_path.len() == 2
-            && RESOURCE_COMMON_PRIMITIVE_FIELDS.contains(&current_type_path.split().last().unwrap()))
-    }
-
-    pub fn current_element_is_sequence(&self) -> bool {
-        let current_type_path = self.current_type_path();
-
-        current_type_path.split()
-            .last()
-            .map(|p| COMMON_SEQUENCE_FIELDS.contains(&p))
-            .unwrap_or(false)
-            // Resource.contained
-            || current_type_path.len() == 2 && current_type_path.split().last().unwrap() == "contained"
-            || type_hints(self.fhir_release)
-            .array_paths
-            .contains(&current_type_path.path)
-    }
-
-    pub fn current_element_is_boolean(&self) -> bool {
-        type_hints(self.fhir_release)
-            .boolean_paths
-            .contains(&self.current_type_path().path)
-    }
-
-    pub fn current_element_is_integer(&self) -> bool {
-        type_hints(self.fhir_release)
-            .integer_paths
-            .contains(&self.current_type_path().path)
-    }
-
-    pub fn current_element_is_unsigned_integer(&self) -> bool {
-        type_hints(self.fhir_release)
-            .unsigned_integer_paths
-            .contains(&self.current_type_path().path)
-    }
-
-    pub fn current_element_is_positive_integer(&self) -> bool {
-        type_hints(self.fhir_release)
-            .positive_integer_paths
-            .contains(&self.current_type_path().path)
-    }
-
-    pub fn current_element_is_decimal(&self) -> bool {
-        type_hints(self.fhir_release)
-            .decimal_paths
-            .contains(&self.current_type_path().path)
-    }
-
-    pub fn parent_element_is_boolean(&self) -> bool {
-        if let Some(path) = self.current_type_path().parent() {
-            type_hints(self.fhir_release).boolean_paths.contains(path)
-        } else {
-            false
-        }
-    }
-
-    pub fn parent_element_is_integer(&self) -> bool {
-        if let Some(path) = self.current_type_path().parent() {
-            type_hints(self.fhir_release).integer_paths.contains(path)
-        } else {
-            false
-        }
-    }
-
-    pub fn parent_element_is_unsigned_integer(&self) -> bool {
-        if let Some(path) = self.current_type_path().parent() {
-            type_hints(self.fhir_release)
-                .unsigned_integer_paths
-                .contains(path)
-        } else {
-            false
-        }
-    }
-
-    pub fn parent_element_is_positive_integer(&self) -> bool {
-        if let Some(path) = self.current_type_path().parent() {
-            type_hints(self.fhir_release)
-                .positive_integer_paths
-                .contains(path)
-        } else {
-            false
-        }
-    }
-
-    pub fn parent_element_is_decimal(&self) -> bool {
-        if let Some(path) = self.current_type_path().parent() {
-            type_hints(self.fhir_release).decimal_paths.contains(path)
-        } else {
-            false
-        }
-    }
-
-    pub fn currently_in_extension(&self) -> bool {
-        self.current_type_path().path.starts_with("Extension")
-    }
-
-    pub fn push(&mut self, element: &str) {
-        match self.resolve_current_type() {
-            Some("Resource") => self
-                .type_stack
-                .push(TypePath::new(element, self.fhir_release)),
-            Some(ty) => {
-                let mut type_path = TypePath::new(ty, self.fhir_release);
-                type_path.push(element);
-                self.type_stack.push(type_path);
-            }
-            None => self.type_stack.last_mut().unwrap().push(element),
-        }
-    }
-
-    pub fn pop(&mut self) {
-        self.type_stack.last_mut().unwrap().pop();
-
-        if self.type_stack.len() > 1
-            && self.type_stack.last().unwrap().len() <= 1
-            && !self.in_contained_resource()
-        {
-            self.type_stack.pop();
-        }
-    }
-
-    pub fn children(&self) -> Option<&'static ElementSet> {
-        let mut type_path = self.current_type_path().path.as_str();
-
-        if let Some(current_type) = self.resolve_current_type() {
-            if current_type != "Resource" {
-                type_path = current_type;
-            }
-        } else if let Some(content_reference) = type_hints(self.fhir_release)
-            .content_reference_paths
-            .get(type_path)
-        {
-            type_path = content_reference;
-        }
-
-        element_map(self.fhir_release).get(&type_path).copied()
-    }
-
-    pub fn position_of_child(&self, child: &str) -> usize {
-        // on R4 ExampleScenario.instance contains a field named "resourceType"
-        if child == "resourceType" && self.current_type_path().path != "ExampleScenario.instance" {
-            0
-        } else {
-            self.children()
-                .map(|set| set.get_index(child))
-                .flatten()
-                .map(|i| i + 1)
-                // move unknown to the end
-                .unwrap_or(usize::MAX)
-        }
-    }
-
     fn in_contained_resource(&self) -> bool {
         let second_last_type_path = &self.type_stack[self.type_stack.len() - 2];
 
@@ -263,10 +288,6 @@ impl ElementPath {
                     .type_paths
                     .get(&second_last_type_path.path)
                     == Some(&"Resource"))
-    }
-
-    fn current_type_path(&self) -> &TypePath {
-        self.type_stack.last().unwrap()
     }
 }
 

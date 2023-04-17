@@ -47,14 +47,17 @@ impl<V> SerializationContext<V> {
         }
     }
 
+    #[inline]
     pub fn unwrap_current_path(&self) -> Ref<ElementPath> {
         Ref::map(self.current_path.borrow(), |p| p.as_ref().unwrap())
     }
 
+    #[inline]
     pub fn unwrap_current_path_mut(&self) -> RefMut<ElementPath> {
         RefMut::map(self.current_path.borrow_mut(), |p| p.as_mut().unwrap())
     }
 
+    #[inline]
     pub fn with_context<P, R, F>(&self, value: P, with_fn: F) -> R
     where
         F: FnOnce(&SerializationContext<P>) -> R,

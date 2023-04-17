@@ -313,6 +313,7 @@ impl<'a, W: Write> ser::Serializer for &'a mut Serializer<W> {
     type SerializeStruct = Self;
     type SerializeStructVariant = Impossible<(), Error>;
 
+    #[inline]
     fn serialize_bool(self, v: bool) -> Result<()> {
         if v {
             self.put("true")
@@ -321,50 +322,62 @@ impl<'a, W: Write> ser::Serializer for &'a mut Serializer<W> {
         }
     }
 
+    #[inline]
     fn serialize_i8(self, v: i8) -> Result<()> {
         self.put(v.to_string())
     }
 
+    #[inline]
     fn serialize_i16(self, v: i16) -> Result<()> {
         self.put(v.to_string())
     }
 
+    #[inline]
     fn serialize_i32(self, v: i32) -> Result<()> {
         self.put(v.to_string())
     }
 
+    #[inline]
     fn serialize_i64(self, v: i64) -> Result<()> {
         self.put(v.to_string())
     }
 
+    #[inline]
     fn serialize_u8(self, v: u8) -> Result<()> {
         self.put(v.to_string())
     }
 
+    #[inline]
     fn serialize_u16(self, v: u16) -> Result<()> {
         self.put(v.to_string())
     }
 
+    #[inline]
     fn serialize_u32(self, v: u32) -> Result<()> {
         self.put(v.to_string())
     }
 
+    #[inline]
     fn serialize_u64(self, v: u64) -> Result<()> {
         self.put(v.to_string())
     }
 
+    #[inline]
     fn serialize_f32(self, v: f32) -> Result<()> {
         self.put(v.to_string())
     }
 
+    #[inline]
     fn serialize_f64(self, v: f64) -> Result<()> {
         self.put(v.to_string())
     }
 
+    #[inline]
     fn serialize_char(self, v: char) -> Result<()> {
         self.put(v.to_string())
     }
 
+    #[inline]
     fn serialize_str(self, v: &str) -> Result<()> {
         self.put(v.to_string())
     }
@@ -377,6 +390,7 @@ impl<'a, W: Write> ser::Serializer for &'a mut Serializer<W> {
         unimplemented!()
     }
 
+    #[inline]
     fn serialize_some<T: ?Sized>(self, value: &T) -> Result<()>
     where
         T: Serialize,
@@ -454,6 +468,7 @@ impl<'a, W: Write> ser::Serializer for &'a mut Serializer<W> {
         Ok(self)
     }
 
+    #[inline]
     fn serialize_struct(self, _name: &'static str, _len: usize) -> Result<Self::SerializeStruct> {
         // serde_json Number is the only struct that cann occur
         Ok(self)
@@ -474,7 +489,7 @@ impl<'a, W: Write> ser::SerializeSeq for &'a mut Serializer<W> {
     type Ok = ();
     type Error = Error;
 
-    // Serialize a single element of the sequence.
+    #[inline]
     fn serialize_element<T>(&mut self, value: &T) -> Result<()>
     where
         T: ?Sized + Serialize,
@@ -482,7 +497,7 @@ impl<'a, W: Write> ser::SerializeSeq for &'a mut Serializer<W> {
         value.serialize(&mut **self)
     }
 
-    // Close the sequence.
+    #[inline]
     fn end(self) -> Result<()> {
         self.leave_sequence();
         Ok(())
@@ -493,6 +508,7 @@ impl<'a, W: Write> ser::SerializeMap for &'a mut Serializer<W> {
     type Ok = ();
     type Error = Error;
 
+    #[inline]
     fn serialize_key<T>(&mut self, key: &T) -> Result<()>
     where
         T: ?Sized + Serialize,
@@ -500,6 +516,7 @@ impl<'a, W: Write> ser::SerializeMap for &'a mut Serializer<W> {
         key.serialize(&mut **self)
     }
 
+    #[inline]
     fn serialize_value<T>(&mut self, value: &T) -> Result<()>
     where
         T: ?Sized + Serialize,
@@ -507,6 +524,7 @@ impl<'a, W: Write> ser::SerializeMap for &'a mut Serializer<W> {
         value.serialize(&mut **self)
     }
 
+    #[inline]
     fn end(self) -> Result<()> {
         self.leave_map()
     }
@@ -516,6 +534,7 @@ impl<'a, W: Write> ser::SerializeStruct for &'a mut Serializer<W> {
     type Ok = ();
     type Error = Error;
 
+    #[inline]
     fn serialize_field<T>(&mut self, key: &'static str, value: &T) -> Result<()>
     where
         T: ?Sized + Serialize,
@@ -531,6 +550,7 @@ impl<'a, W: Write> ser::SerializeStruct for &'a mut Serializer<W> {
         }
     }
 
+    #[inline]
     fn end(self) -> Result<()> {
         Ok(())
     }

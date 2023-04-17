@@ -21,6 +21,7 @@ pub const PRIMITIVE_CHILDREN: &[&str] = &["id", "extension", "value"];
 impl<'a, 'de, const R: FhirRelease> DeserializeSeed<'de> for DeserializationContext<Element<R>> {
     type Value = Element<R>;
 
+    #[inline]
     fn deserialize<D>(mut self, deserializer: D) -> Result<Self::Value, D::Error>
     where
         D: de::Deserializer<'de>,
@@ -85,6 +86,7 @@ impl InternalValue {
 impl<'de> DeserializeSeed<'de> for &mut DeserializationContext<InternalValue> {
     type Value = InternalValue;
 
+    #[inline]
     fn deserialize<D>(self, deserializer: D) -> Result<Self::Value, D::Error>
     where
         D: de::Deserializer<'de>,
@@ -102,6 +104,7 @@ impl<'a, 'de> Visitor<'de> for ValueVisitor<'a> {
         formatter.write_str("a map")
     }
 
+    #[inline]
     fn visit_bool<E>(self, v: bool) -> Result<Self::Value, E>
     where
         E: de::Error,
@@ -117,6 +120,7 @@ impl<'a, 'de> Visitor<'de> for ValueVisitor<'a> {
         }
     }
 
+    #[inline]
     fn visit_i64<E>(self, v: i64) -> Result<Self::Value, E>
     where
         E: de::Error,
@@ -133,6 +137,7 @@ impl<'a, 'de> Visitor<'de> for ValueVisitor<'a> {
         }
     }
 
+    #[inline]
     fn visit_u64<E>(self, v: u64) -> Result<Self::Value, E>
     where
         E: de::Error,
@@ -140,6 +145,7 @@ impl<'a, 'de> Visitor<'de> for ValueVisitor<'a> {
         self.visit_i64(v as i64)
     }
 
+    #[inline]
     fn visit_f64<E>(self, v: f64) -> Result<Self::Value, E>
     where
         E: de::Error,
@@ -147,6 +153,7 @@ impl<'a, 'de> Visitor<'de> for ValueVisitor<'a> {
         self.visit_string(v.to_string())
     }
 
+    #[inline]
     fn visit_string<E>(self, v: String) -> Result<Self::Value, E>
     where
         E: de::Error,
@@ -191,6 +198,7 @@ impl<'a, 'de> Visitor<'de> for ValueVisitor<'a> {
         }
     }
 
+    #[inline]
     fn visit_str<E>(self, v: &str) -> Result<Self::Value, E>
     where
         E: de::Error,
@@ -362,6 +370,7 @@ impl<'a, 'de> Visitor<'de> for ValueVisitor<'a> {
 impl<'de> DeserializeSeed<'de> for &mut DeserializationContext<Option<InternalValue>> {
     type Value = Option<InternalValue>;
 
+    #[inline]
     fn deserialize<D>(self, deserializer: D) -> Result<Self::Value, D::Error>
     where
         D: de::Deserializer<'de>,
@@ -378,6 +387,7 @@ impl<'a, 'de> Visitor<'de> for SeqElementVisitor<'a> {
         formatter.write_str("a sequence element")
     }
 
+    #[inline]
     fn visit_map<V>(self, map_access: V) -> Result<Self::Value, V::Error>
     where
         V: MapAccess<'de>,
@@ -387,6 +397,7 @@ impl<'a, 'de> Visitor<'de> for SeqElementVisitor<'a> {
             .map(Some)
     }
 
+    #[inline]
     fn visit_some<D>(self, deserializer: D) -> Result<Self::Value, D::Error>
     where
         D: de::Deserializer<'de>,
@@ -397,6 +408,7 @@ impl<'a, 'de> Visitor<'de> for SeqElementVisitor<'a> {
             .map(Some)
     }
 
+    #[inline]
     fn visit_none<E>(self) -> Result<Self::Value, E>
     where
         E: de::Error,
@@ -410,6 +422,7 @@ pub struct Deserializer<T>(pub T);
 impl<'de, const R: FhirRelease> de::Deserializer<'de> for Deserializer<Element<R>> {
     type Error = error::Error;
 
+    #[inline]
     fn deserialize_any<V>(self, visitor: V) -> error::Result<V::Value>
     where
         V: Visitor<'de>,
@@ -427,6 +440,7 @@ impl<'de, const R: FhirRelease> de::Deserializer<'de> for Deserializer<Element<R
 impl<'de, const R: FhirRelease> de::Deserializer<'de> for Deserializer<Value<R>> {
     type Error = error::Error;
 
+    #[inline]
     fn deserialize_any<V>(self, visitor: V) -> error::Result<V::Value>
     where
         V: Visitor<'de>,

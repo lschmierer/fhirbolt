@@ -50,11 +50,13 @@ impl<V> DeserializationContext<V> {
         }
     }
 
+    #[inline]
     pub fn transmute<F>(&mut self) -> &mut DeserializationContext<F> {
         // DeserializationContext uses #[repr(C)] to make sure this is safe
         unsafe { mem::transmute(self) }
     }
 
+    #[inline]
     pub fn clone<F>(&self) -> DeserializationContext<F> {
         DeserializationContext {
             _phantom: PhantomData,
