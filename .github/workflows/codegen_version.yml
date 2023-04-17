@@ -28,6 +28,8 @@ jobs:
       - name: Check fhirbolt-codegen version updated if generated code changed
         run: |
           if git diff --quiet HEAD origin/main -- **/generated/ ; then
+            exit 0
+          else
             if [ ${{steps.main_version.outputs.value}} != ${{steps.this_version.outputs.value}} ]; then
               exit 0
             else
