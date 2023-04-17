@@ -11,6 +11,7 @@ license = "MIT OR Apache-2.0"
 keywords = ["hl7", "fhir"]
 
 [package.metadata.docs.rs]
+rustc-args = ["--cfg", "docsrs"]
 all-features = true
 
 [features]
