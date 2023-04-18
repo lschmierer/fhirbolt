@@ -1,4 +1,4 @@
-// Generated on 2023-04-16 by fhirbolt-codegen v0.2.0
+// Generated on 2023-04-18 by fhirbolt-codegen v0.2.0
 #[doc = "The target composition/document of this relationship."]
 #[derive(Debug, Clone, PartialEq)]
 pub enum CompositionRelatesToTarget {

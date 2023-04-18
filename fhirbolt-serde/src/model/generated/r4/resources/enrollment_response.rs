@@ -1,4 +1,4 @@
-// Generated on 2023-04-16 by fhirbolt-codegen v0.2.0
+// Generated on 2023-04-18 by fhirbolt-codegen v0.2.0
 impl crate::Resource for fhirbolt_model::r4::resources::EnrollmentResponse {
     const FHIR_RELEASE: fhirbolt_shared::FhirRelease = fhirbolt_shared::FhirReleases::R4;
 }

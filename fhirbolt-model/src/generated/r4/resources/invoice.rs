@@ -1,4 +1,4 @@
-// Generated on 2023-04-16 by fhirbolt-codegen v0.2.0
+// Generated on 2023-04-18 by fhirbolt-codegen v0.2.0
 #[doc = "The ChargeItem contains information such as the billing code, date, amount etc. If no further details are required for the lineItem, inline billing codes can be added using the CodeableConcept data type instead of the Reference."]
 #[derive(Debug, Clone, PartialEq)]
 pub enum InvoiceLineItemChargeItem {

@@ -1,4 +1,4 @@
-// Generated on 2023-04-16 by fhirbolt-codegen v0.2.0
+// Generated on 2023-04-18 by fhirbolt-codegen v0.2.0
 #[doc = "Base StructureDefinition for Address Type: An address expressed using postal conventions (as opposed to GPS or other location definition formats).  This data type may be used to convey addresses for use in delivering mail as well as for visiting locations which might not be valid for mail delivery.  There are a variety of postal address formats defined around the world.\n\nNeed to be able to record postal addresses, along with notes about their use."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub struct Address {

@@ -1,4 +1,4 @@
-// Generated on 2023-04-16 by fhirbolt-codegen v0.2.0
+// Generated on 2023-04-18 by fhirbolt-codegen v0.2.0
 #[doc = "A code or group definition that describes the intended subject of the contents of the library."]
 #[derive(Debug, Clone, PartialEq)]
 pub enum LibrarySubject {

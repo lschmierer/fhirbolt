@@ -1,4 +1,4 @@
-// Generated on 2023-04-16 by fhirbolt-codegen v0.2.0
+// Generated on 2023-04-18 by fhirbolt-codegen v0.2.0
 #[doc = "Base StructureDefinition for Age Type: A duration of time during which an organism (or a process) has existed."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub struct Age {

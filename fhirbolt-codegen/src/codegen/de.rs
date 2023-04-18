@@ -280,14 +280,16 @@ pub fn implement_deserialze_resource_enum(
             where
                 D: serde::de::Deserializer<'de>,
             {
-                use crate::Resource;
-
-                let element_context = self.clone::<fhirbolt_element::Element<{ #namespace::Resource::FHIR_RELEASE }>>();
+                let mut element_context = self.clone::<crate::element::internal::de::InternalElement>();
                 let element = element_context.deserialize(deserializer)?;
 
                 self.from_json = false;
 
-                if let Some(fhirbolt_element::Value::Primitive(fhirbolt_element::Primitive::String(resource_type))) = element.get("resourceType") {
+                if let Some(
+                    crate::element::internal::de::InternalValue::Primitive(
+                        crate::element::internal::de::InternalPrimitive::String(resource_type)
+                    )
+                ) = element.0.get("resourceType") {
                     match resource_type.as_str() {
                         #(
                             #match_resource_type

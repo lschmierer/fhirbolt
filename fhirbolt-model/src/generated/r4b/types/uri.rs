@@ -1,4 +1,4 @@
-// Generated on 2023-04-16 by fhirbolt-codegen v0.2.0
+// Generated on 2023-04-18 by fhirbolt-codegen v0.2.0
 #[doc = "Base StructureDefinition for uri Type: String of characters used to identify a name or a resource"]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub struct Uri {

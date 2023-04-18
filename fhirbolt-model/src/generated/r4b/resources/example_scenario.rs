@@ -1,4 +1,4 @@
-// Generated on 2023-04-16 by fhirbolt-codegen v0.2.0
+// Generated on 2023-04-18 by fhirbolt-codegen v0.2.0
 #[doc = "Actor participating in the resource."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub struct ExampleScenarioActor {

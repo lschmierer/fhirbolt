@@ -43,7 +43,7 @@ pub mod ser;
 
 pub mod error;
 
-mod internal;
+pub(crate) mod internal;
 
 impl<const R: FhirRelease> Resource for Element<R> {
     const FHIR_RELEASE: FhirRelease = R;

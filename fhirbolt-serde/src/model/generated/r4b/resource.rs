@@ -1,4 +1,4 @@
-// Generated on 2023-04-16 by fhirbolt-codegen v0.2.0
+// Generated on 2023-04-18 by fhirbolt-codegen v0.2.0
 impl crate::Resource for fhirbolt_model::r4b::Resource {
     const FHIR_RELEASE: fhirbolt_shared::FhirRelease = fhirbolt_shared::FhirReleases::R4B;
 }
@@ -481,14 +481,12 @@ impl<'de> serde::de::DeserializeSeed<'de>
     where
         D: serde::de::Deserializer<'de>,
     {
-        use crate::Resource;
-        let element_context = self
-            .clone::<fhirbolt_element::Element<{ fhirbolt_model::r4b::Resource::FHIR_RELEASE }>>();
+        let mut element_context = self.clone::<crate::element::internal::de::InternalElement>();
         let element = element_context.deserialize(deserializer)?;
         self.from_json = false;
-        if let Some(fhirbolt_element::Value::Primitive(fhirbolt_element::Primitive::String(
-            resource_type,
-        ))) = element.get("resourceType")
+        if let Some(crate::element::internal::de::InternalValue::Primitive(
+            crate::element::internal::de::InternalPrimitive::String(resource_type),
+        )) = element.0.get("resourceType")
         {
             match resource_type.as_str() {
                 "Account" => {

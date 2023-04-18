@@ -1,4 +1,4 @@
-// Generated on 2023-04-16 by fhirbolt-codegen v0.2.0
+// Generated on 2023-04-18 by fhirbolt-codegen v0.2.0
 #[doc = "This resource provides the insurance enrollment details to the insurer regarding a specified coverage."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub struct EnrollmentRequest {

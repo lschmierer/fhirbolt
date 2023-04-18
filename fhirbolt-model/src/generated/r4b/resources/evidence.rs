@@ -1,4 +1,4 @@
-// Generated on 2023-04-16 by fhirbolt-codegen v0.2.0
+// Generated on 2023-04-18 by fhirbolt-codegen v0.2.0
 #[doc = "Citation Resource or display of suggested citation for this evidence."]
 #[derive(Debug, Clone, PartialEq)]
 pub enum EvidenceCiteAs {
