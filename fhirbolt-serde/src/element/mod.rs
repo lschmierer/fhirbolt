@@ -43,6 +43,8 @@ pub mod ser;
 
 pub mod error;
 
+mod internal;
+
 impl<const R: FhirRelease> Resource for Element<R> {
     const FHIR_RELEASE: FhirRelease = R;
 }
@@ -87,8 +89,7 @@ pub fn from_element<'a, const R: FhirRelease, T>(
 where
     T: DeserializeResourceOwned,
 {
-    T::context(config.unwrap_or(Default::default()), false, T::FHIR_RELEASE)
-        .deserialize(Deserializer(element))
+    T::context(config.unwrap_or(Default::default()), false).deserialize(Deserializer(element))
 }
 
 /// Convert the given resource as an element.

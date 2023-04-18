@@ -19,7 +19,7 @@ r4b = ["fhirbolt-model/r4b"]
 indexmap = "1.9.2"
 quick-xml = "0.25"
 serde = { version = "1.0", features = ["derive"] }
-serde_json = { version = "1.0", features = ["arbitrary_precision"] }
+serde_json = { version = "1.0", features = ["arbitrary_precision", "preserve_order"] }
 
 fhirbolt-model = {  version = "0.2.0", path = "../fhirbolt-model", optional = true }
 fhirbolt-element = {  version = "0.2.0", path = "../fhirbolt-element" }

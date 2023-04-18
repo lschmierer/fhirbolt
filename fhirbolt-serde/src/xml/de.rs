@@ -19,18 +19,18 @@ use crate::{
         error::{Error, Result},
         event::{Element, Event},
     },
-    DeserializationConfig, DeserializeResourceOwned,
+    DeserializationConfig, DeserializeResource, DeserializeResourceOwned,
 };
 
-fn from_deserializer<R, T>(
+fn from_deserializer<'de, R, T>(
     de: &mut Deserializer<R>,
     config: Option<DeserializationConfig>,
 ) -> Result<T>
 where
     R: Read,
-    T: DeserializeResourceOwned,
+    T: DeserializeResource<'de>,
 {
-    T::context(config.unwrap_or(Default::default()), false, T::FHIR_RELEASE).deserialize(de)
+    T::context(config.unwrap_or(Default::default()), false).deserialize(de)
 }
 
 /// Deserialize an instance of resource type `T` directly from an IO stream of XML (e.g. coming from network).
@@ -96,9 +96,9 @@ where
 /// # Errors
 /// The conversion can fail if the structure of the input does not match the FHIR resource `T`.
 /// This behavior can be modified by passing a [`DeserializationConfig`](crate::DeserializationConfig).
-pub fn from_slice<T>(v: &[u8], config: Option<DeserializationConfig>) -> Result<T>
+pub fn from_slice<'a, T>(v: &'a [u8], config: Option<DeserializationConfig>) -> Result<T>
 where
-    T: DeserializeResourceOwned,
+    T: DeserializeResource<'a>,
 {
     from_deserializer(&mut Deserializer::from_slice(v, T::FHIR_RELEASE)?, config)
 }
@@ -129,9 +129,9 @@ where
 /// # Errors
 /// The conversion can fail if the structure of the input does not match the FHIR resource `T`.
 /// This behavior can be modified by passing a [`DeserializationConfig`](crate::DeserializationConfig).
-pub fn from_str<T>(s: &str, config: Option<DeserializationConfig>) -> Result<T>
+pub fn from_str<'a, T>(s: &'a str, config: Option<DeserializationConfig>) -> Result<T>
 where
-    T: DeserializeResourceOwned,
+    T: DeserializeResource<'a>,
 {
     from_deserializer(&mut Deserializer::from_str(s, T::FHIR_RELEASE)?, config)
 }

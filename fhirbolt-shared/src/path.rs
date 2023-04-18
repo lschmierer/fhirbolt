@@ -38,7 +38,7 @@ impl FirstLetterUppercase for &str {
     }
 }
 
-#[derive(Debug, Clone, Default)]
+#[derive(Debug, Clone)]
 pub struct ElementPath {
     fhir_release: FhirRelease,
     type_stack: Vec<TypePath>,
