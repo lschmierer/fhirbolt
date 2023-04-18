@@ -14,7 +14,7 @@ where
     T: SerializeResource,
 {
     value
-        .context(true, T::FHIR_RELEASE)
+        .serialization_context(true)
         .serialize(&mut Serializer::new(writer))
 }
 
@@ -25,7 +25,7 @@ where
     T: SerializeResource,
 {
     value
-        .context(true, T::FHIR_RELEASE)
+        .serialization_context(true)
         .serialize(&mut Serializer::new(writer))
 }
 
@@ -81,6 +81,6 @@ where
     T: SerializeResource,
 {
     value
-        .context(true, T::FHIR_RELEASE)
+        .serialization_context(true)
         .serialize(serde_json::value::Serializer)
 }

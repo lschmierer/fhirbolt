@@ -25,7 +25,7 @@ where
     T: SerializeResource,
 {
     value
-        .context(false, T::FHIR_RELEASE)
+        .serialization_context(false)
         .serialize(&mut Serializer::new(writer))
 }
 

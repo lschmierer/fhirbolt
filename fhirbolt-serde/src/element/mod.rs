@@ -89,7 +89,8 @@ pub fn from_element<'a, const R: FhirRelease, T>(
 where
     T: DeserializeResourceOwned,
 {
-    T::context(config.unwrap_or(Default::default()), false).deserialize(Deserializer(element))
+    T::deserialization_context(config.unwrap_or(Default::default()), false)
+        .deserialize(Deserializer(element))
 }
 
 /// Convert the given resource as an element.
@@ -97,7 +98,10 @@ pub fn to_element<const R: FhirRelease, T>(resource: T) -> Result<Element<R>>
 where
     T: SerializeResource,
 {
-    match resource.context(false, R).serialize(Serializer)? {
+    match resource
+        .serialization_context(false)
+        .serialize(Serializer)?
+    {
         Value::Element(e) => Ok(e),
         Value::Sequence(_) => Err(serde::ser::Error::custom(
             "invalid sequence, expected an element".to_string(),

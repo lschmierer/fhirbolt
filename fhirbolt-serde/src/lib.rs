@@ -15,9 +15,10 @@ use fhirbolt_shared::FhirRelease;
 
 pub use context::{
     de::{
-        DeserializationConfig, DeserializationMode, DeserializeResource, DeserializeResourceOwned,
+        DeserializationConfig, DeserializationContext, DeserializationMode, DeserializeResource,
+        DeserializeResourceOwned,
     },
-    ser::SerializeResource,
+    ser::{SerializationContext, SerializeResource},
 };
 
 /// Marker trait for all types representing FHIR resources.

@@ -11,7 +11,7 @@ pub trait SerializeResource: Resource {
     where
         Self: 'a;
 
-    fn context<'a>(&'a self, output_json: bool, r: FhirRelease) -> Self::Context<'a>;
+    fn serialization_context<'a>(&'a self, output_json: bool) -> Self::Context<'a>;
 }
 
 impl<T> SerializeResource for T
@@ -23,23 +23,23 @@ where
     where
         Self: 'a;
 
-    fn context<'a>(&'a self, output_json: bool, r: FhirRelease) -> Self::Context<'a> {
-        SerializationContext::new(self, output_json, r)
+    fn serialization_context<'a>(&'a self, output_json: bool) -> Self::Context<'a> {
+        SerializationContext::new(self, output_json, T::FHIR_RELEASE)
     }
 }
 
 /// Context for serialization.
 #[derive(Default)]
 pub struct SerializationContext<V> {
-    pub value: V,
+    pub(crate) value: V,
     // The JSON data model differs from the FHIR data model
-    pub output_json: bool,
+    pub(crate) output_json: bool,
     // Used by the element model to keep track of its state in the element tree
     current_path: RefCell<Option<ElementPath>>,
 }
 
 impl<V> SerializationContext<V> {
-    pub fn new(value: V, output_json: bool, r: FhirRelease) -> Self {
+    fn new(value: V, output_json: bool, r: FhirRelease) -> Self {
         SerializationContext {
             value,
             output_json,
@@ -47,18 +47,15 @@ impl<V> SerializationContext<V> {
         }
     }
 
-    #[inline]
-    pub fn unwrap_current_path(&self) -> Ref<ElementPath> {
+    pub(crate) fn unwrap_current_path(&self) -> Ref<ElementPath> {
         Ref::map(self.current_path.borrow(), |p| p.as_ref().unwrap())
     }
 
-    #[inline]
-    pub fn unwrap_current_path_mut(&self) -> RefMut<ElementPath> {
+    pub(crate) fn unwrap_current_path_mut(&self) -> RefMut<ElementPath> {
         RefMut::map(self.current_path.borrow_mut(), |p| p.as_mut().unwrap())
     }
 
-    #[inline]
-    pub fn with_context<P, R, F>(&self, value: P, with_fn: F) -> R
+    pub(crate) fn with_context<P, R, F>(&self, value: P, with_fn: F) -> R
     where
         F: FnOnce(&SerializationContext<P>) -> R,
     {

@@ -7,7 +7,7 @@ use crate::Resource;
 pub trait DeserializeResource<'de>: Resource {
     type Context: DeserializeSeed<'de, Value = Self>;
 
-    fn context(config: DeserializationConfig, from_json: bool) -> Self::Context;
+    fn deserialization_context(config: DeserializationConfig, from_json: bool) -> Self::Context;
 }
 
 impl<'de, T> DeserializeResource<'de> for T
@@ -17,7 +17,7 @@ where
 {
     type Context = DeserializationContext<Self>;
 
-    fn context(config: DeserializationConfig, from_json: bool) -> Self::Context {
+    fn deserialization_context(config: DeserializationConfig, from_json: bool) -> Self::Context {
         DeserializationContext::new(config, from_json)
     }
 }
@@ -30,9 +30,9 @@ impl<T> DeserializeResourceOwned for T where T: for<'de> DeserializeResource<'de
 pub struct DeserializationContext<V> {
     _phantom: PhantomData<V>,
     /// Deserialization config
-    pub config: DeserializationConfig,
+    pub(crate) config: DeserializationConfig,
     /// The JSON data model differs from the FHIR data model
-    pub from_json: bool,
+    pub(crate) from_json: bool,
     // Used by the element model to keep track of its state in the element tree
     current_element_stack: Vec<CurrentElement>,
 }
@@ -65,14 +65,12 @@ impl<V> DeserializationContext<V> {
         }
     }
 
-    #[inline]
-    pub fn transmute<F>(&mut self) -> &mut DeserializationContext<F> {
+    pub(crate) fn transmute<F>(&mut self) -> &mut DeserializationContext<F> {
         // DeserializationContext uses #[repr(C)] to make sure this is safe
         unsafe { mem::transmute(self) }
     }
 
-    #[inline]
-    pub fn clone<F>(&self) -> DeserializationContext<F> {
+    pub(crate) fn clone<F>(&self) -> DeserializationContext<F> {
         DeserializationContext {
             _phantom: PhantomData,
             config: self.config.clone(),
@@ -81,18 +79,18 @@ impl<V> DeserializationContext<V> {
         }
     }
 
-    pub fn current_element(&self) -> CurrentElement {
+    pub(crate) fn current_element(&self) -> CurrentElement {
         self.current_element_stack
             .last()
             .copied()
             .unwrap_or(CurrentElement::Other)
     }
 
-    pub fn push_current_element(&mut self, element: CurrentElement) {
+    pub(crate) fn push_current_element(&mut self, element: CurrentElement) {
         self.current_element_stack.push(element)
     }
 
-    pub fn pop_current_element(&mut self) {
+    pub(crate) fn pop_current_element(&mut self) {
         self.current_element_stack.pop();
     }
 }

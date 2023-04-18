@@ -15,7 +15,7 @@ where
     R: serde_json::de::Read<'de>,
     T: DeserializeResource<'de>,
 {
-    T::context(config.unwrap_or(Default::default()), true).deserialize(de)
+    T::deserialization_context(config.unwrap_or(Default::default()), true).deserialize(de)
 }
 
 /// Deserialize an instance of resource type `T` directly from an IO stream of JSON (e.g. coming from network).
@@ -154,5 +154,5 @@ pub fn from_json_value<T>(
 where
     T: DeserializeResourceOwned,
 {
-    T::context(config.unwrap_or(Default::default()), true).deserialize(value)
+    T::deserialization_context(config.unwrap_or(Default::default()), true).deserialize(value)
 }
