@@ -14,8 +14,11 @@ use std::fmt::Debug;
 use fhirbolt_shared::FhirRelease;
 
 pub use context::{
-    de::{DeserializationConfig, DeserializationMode, DeserializeResource},
-    ser::SerializeResource,
+    de::{
+        DeserializationConfig, DeserializationContext, DeserializationMode, DeserializeResource,
+        DeserializeResourceOwned,
+    },
+    ser::{SerializationConfig, SerializationContext, SerializeResource},
 };
 
 /// Marker trait for all types representing FHIR resources.

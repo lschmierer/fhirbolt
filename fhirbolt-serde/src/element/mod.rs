@@ -35,13 +35,15 @@ use serde::{de::DeserializeSeed, Serialize};
 
 use crate::{
     element::de::Deserializer, element::ser::Serializer, DeserializationConfig,
-    DeserializeResource, Resource, SerializeResource,
+    DeserializeResourceOwned, Resource, SerializeResource,
 };
 
 pub mod de;
 pub mod ser;
 
 pub mod error;
+
+pub(crate) mod internal;
 
 impl<const R: FhirRelease> Resource for Element<R> {
     const FHIR_RELEASE: FhirRelease = R;
@@ -85,9 +87,9 @@ pub fn from_element<'a, const R: FhirRelease, T>(
     config: Option<DeserializationConfig>,
 ) -> Result<T>
 where
-    T: DeserializeResource,
+    T: DeserializeResourceOwned,
 {
-    T::context(config.unwrap_or(Default::default()), false, T::FHIR_RELEASE)
+    T::deserialization_context(config.unwrap_or(Default::default()), false)
         .deserialize(Deserializer(element))
 }
 
@@ -96,7 +98,10 @@ pub fn to_element<const R: FhirRelease, T>(resource: T) -> Result<Element<R>>
 where
     T: SerializeResource,
 {
-    match resource.context(false, R).serialize(Serializer)? {
+    match resource
+        .serialization_context(Default::default(), false)
+        .serialize(Serializer)?
+    {
         Value::Element(e) => Ok(e),
         Value::Sequence(_) => Err(serde::ser::Error::custom(
             "invalid sequence, expected an element".to_string(),

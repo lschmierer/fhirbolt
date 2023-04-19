@@ -1,6 +1,6 @@
 //! Serialize FHIR resources as generic element.
 
-use std::str::FromStr;
+use std::{str::FromStr, vec};
 
 use serde::{
     ser::{self, Error, Impossible, SerializeMap, SerializeSeq},
@@ -17,6 +17,7 @@ use crate::{
 };
 
 impl<const R: FhirRelease> Serialize for SerializationContext<&Value<R>> {
+    #[inline]
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
         S: ser::Serializer,
@@ -49,6 +50,7 @@ impl<const R: FhirRelease> Serialize for SerializationContext<&Value<R>> {
 }
 
 impl<const R: FhirRelease> Serialize for SerializationContext<Vec<Option<&Value<R>>>> {
+    #[inline]
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
         S: ser::Serializer,
@@ -66,6 +68,7 @@ impl<const R: FhirRelease> Serialize for SerializationContext<Vec<Option<&Value<
 }
 
 impl<const R: FhirRelease> Serialize for SerializationContext<Option<&Value<R>>> {
+    #[inline]
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
         S: ser::Serializer,
@@ -79,6 +82,7 @@ impl<const R: FhirRelease> Serialize for SerializationContext<Option<&Value<R>>>
 }
 
 impl<const R: FhirRelease> Serialize for SerializationContext<&Element<R>> {
+    #[inline]
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
         S: ser::Serializer,
@@ -91,8 +95,29 @@ impl<const R: FhirRelease> Serialize for SerializationContext<&Element<R>> {
             is_resource = true;
         }
 
-        let mut values = self.value.iter().collect::<Vec<_>>();
-        values.sort_unstable_by_key(|(k, _v)| self.unwrap_current_path().position_of_child(k));
+        enum MaybeSorted<'a, const R: FhirRelease> {
+            Sorted(vec::IntoIter<(&'a String, &'a Value<R>)>),
+            Unsorted(indexmap::map::Iter<'a, String, Value<R>>),
+        }
+
+        impl<'a, const R: FhirRelease> Iterator for MaybeSorted<'a, R> {
+            type Item = (&'a String, &'a Value<R>);
+
+            fn next(&mut self) -> Option<Self::Item> {
+                match self {
+                    MaybeSorted::Sorted(i) => i.next(),
+                    MaybeSorted::Unsorted(i) => i.next(),
+                }
+            }
+        }
+
+        let values = if !self.output_json || self.config.sort_json {
+            let mut values = self.value.iter().collect::<Vec<_>>();
+            values.sort_unstable_by_key(|(k, _v)| self.unwrap_current_path().position_of_child(k));
+            MaybeSorted::Sorted(values.into_iter())
+        } else {
+            MaybeSorted::Unsorted(self.value.iter())
+        };
 
         for (key, value) in values {
             self.unwrap_current_path_mut().push(&key);
@@ -158,6 +183,7 @@ impl<const R: FhirRelease> Serialize for SerializationContext<&Element<R>> {
 }
 
 impl<const R: FhirRelease> Serialize for SerializationContext<Vec<&Element<R>>> {
+    #[inline]
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
         S: ser::Serializer,
@@ -210,6 +236,7 @@ impl<'a, const R: FhirRelease> PrimitiveElement<'a, R> {
 }
 
 impl<const R: FhirRelease> Serialize for SerializationContext<&PrimitiveElement<'_, R>> {
+    #[inline]
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
         S: ser::Serializer,
@@ -241,6 +268,7 @@ impl<const R: FhirRelease> Serialize for SerializationContext<&PrimitiveElement<
 impl<const R: FhirRelease> Serialize
     for SerializationContext<Vec<Option<&PrimitiveElement<'_, R>>>>
 {
+    #[inline]
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
         S: ser::Serializer,
@@ -258,6 +286,7 @@ impl<const R: FhirRelease> Serialize
 }
 
 impl<const R: FhirRelease> Serialize for SerializationContext<Option<&PrimitiveElement<'_, R>>> {
+    #[inline]
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
         S: ser::Serializer,
@@ -284,66 +313,82 @@ impl<const R: FhirRelease> ser::Serializer for Serializer<R> {
     type SerializeStruct = SerializeNumber<R>;
     type SerializeStructVariant = Impossible<Self::Ok, Self::Error>;
 
+    #[inline]
     fn serialize_bool(self, v: bool) -> Result<Self::Ok, Self::Error> {
         Ok(Value::Primitive(Primitive::Bool(v)))
     }
 
+    #[inline]
     fn serialize_i8(self, v: i8) -> Result<Self::Ok, Self::Error> {
         Ok(Value::Primitive(Primitive::Integer(v.into())))
     }
 
+    #[inline]
     fn serialize_i16(self, v: i16) -> Result<Self::Ok, Self::Error> {
         Ok(Value::Primitive(Primitive::Integer(v.into())))
     }
 
+    #[inline]
     fn serialize_i32(self, v: i32) -> Result<Self::Ok, Self::Error> {
         Ok(Value::Primitive(Primitive::Integer(v.into())))
     }
 
+    #[inline]
     fn serialize_i64(self, v: i64) -> Result<Self::Ok, Self::Error> {
         Ok(Value::Primitive(Primitive::Integer(v.into())))
     }
 
+    #[inline]
     fn serialize_u8(self, v: u8) -> Result<Self::Ok, Self::Error> {
         Ok(Value::Primitive(Primitive::Integer(v.into())))
     }
 
+    #[inline]
     fn serialize_u16(self, v: u16) -> Result<Self::Ok, Self::Error> {
         Ok(Value::Primitive(Primitive::Integer(v.into())))
     }
 
+    #[inline]
     fn serialize_u32(self, v: u32) -> Result<Self::Ok, Self::Error> {
         Ok(Value::Primitive(Primitive::Integer(v.into())))
     }
 
+    #[inline]
     fn serialize_u64(self, v: u64) -> Result<Self::Ok, Self::Error> {
         Ok(Value::Primitive(Primitive::Integer(v as i64)))
     }
 
+    #[inline]
     fn serialize_f32(self, v: f32) -> Result<Self::Ok, Self::Error> {
         Ok(Value::Primitive(Primitive::Decimal(v.to_string())))
     }
 
+    #[inline]
     fn serialize_f64(self, v: f64) -> Result<Self::Ok, Self::Error> {
         Ok(Value::Primitive(Primitive::Decimal(v.to_string())))
     }
 
+    #[inline]
     fn serialize_char(self, _v: char) -> Result<Self::Ok, Self::Error> {
         unimplemented!()
     }
 
+    #[inline]
     fn serialize_str(self, v: &str) -> Result<Self::Ok, Self::Error> {
         Ok(Value::Primitive(Primitive::String(v.into())))
     }
 
+    #[inline]
     fn serialize_bytes(self, _v: &[u8]) -> Result<Self::Ok, Self::Error> {
         unimplemented!()
     }
 
+    #[inline]
     fn serialize_none(self) -> Result<Self::Ok, Self::Error> {
         unimplemented!()
     }
 
+    #[inline]
     fn serialize_some<T: ?Sized>(self, _value: &T) -> Result<Self::Ok, Self::Error>
     where
         T: Serialize,
@@ -351,14 +396,17 @@ impl<const R: FhirRelease> ser::Serializer for Serializer<R> {
         unimplemented!()
     }
 
+    #[inline]
     fn serialize_unit(self) -> Result<Self::Ok, Self::Error> {
         unimplemented!()
     }
 
+    #[inline]
     fn serialize_unit_struct(self, _name: &'static str) -> Result<Self::Ok, Self::Error> {
         unimplemented!()
     }
 
+    #[inline]
     fn serialize_unit_variant(
         self,
         _name: &'static str,
@@ -368,6 +416,7 @@ impl<const R: FhirRelease> ser::Serializer for Serializer<R> {
         unimplemented!()
     }
 
+    #[inline]
     fn serialize_newtype_struct<T: ?Sized>(
         self,
         _name: &'static str,
@@ -379,6 +428,7 @@ impl<const R: FhirRelease> ser::Serializer for Serializer<R> {
         unimplemented!()
     }
 
+    #[inline]
     fn serialize_newtype_variant<T: ?Sized>(
         self,
         _name: &'static str,
@@ -392,14 +442,17 @@ impl<const R: FhirRelease> ser::Serializer for Serializer<R> {
         unimplemented!()
     }
 
+    #[inline]
     fn serialize_seq(self, _len: Option<usize>) -> Result<Self::SerializeSeq, Self::Error> {
         Ok(SerializeSequence { vec: Vec::new() })
     }
 
+    #[inline]
     fn serialize_tuple(self, _len: usize) -> Result<Self::SerializeTuple, Self::Error> {
         unimplemented!()
     }
 
+    #[inline]
     fn serialize_tuple_struct(
         self,
         _name: &'static str,
@@ -408,6 +461,7 @@ impl<const R: FhirRelease> ser::Serializer for Serializer<R> {
         unimplemented!()
     }
 
+    #[inline]
     fn serialize_tuple_variant(
         self,
         _name: &'static str,
@@ -418,6 +472,7 @@ impl<const R: FhirRelease> ser::Serializer for Serializer<R> {
         unimplemented!()
     }
 
+    #[inline]
     fn serialize_map(self, _len: Option<usize>) -> Result<Self::SerializeMap, Self::Error> {
         Ok(SerializeElement {
             map: indexmap::IndexMap::new(),
@@ -425,6 +480,7 @@ impl<const R: FhirRelease> ser::Serializer for Serializer<R> {
         })
     }
 
+    #[inline]
     fn serialize_struct(
         self,
         _name: &'static str,
@@ -434,6 +490,7 @@ impl<const R: FhirRelease> ser::Serializer for Serializer<R> {
         Ok(SerializeNumber(None))
     }
 
+    #[inline]
     fn serialize_struct_variant(
         self,
         _name: &'static str,
@@ -453,7 +510,7 @@ impl<const R: FhirRelease> ser::SerializeSeq for SerializeSequence<R> {
     type Ok = Value<R>;
     type Error = error::Error;
 
-    // Serialize a single element of the sequence.
+    #[inline]
     fn serialize_element<T>(&mut self, value: &T) -> error::Result<()>
     where
         T: ?Sized + Serialize,
@@ -465,7 +522,7 @@ impl<const R: FhirRelease> ser::SerializeSeq for SerializeSequence<R> {
         Ok(())
     }
 
-    // Close the sequence.
+    #[inline]
     fn end(self) -> error::Result<Value<R>> {
         Ok(Value::Sequence(self.vec))
     }
@@ -480,6 +537,7 @@ impl<const R: FhirRelease> ser::SerializeMap for SerializeElement<R> {
     type Ok = Value<R>;
     type Error = error::Error;
 
+    #[inline]
     fn serialize_key<T>(&mut self, key: &T) -> error::Result<()>
     where
         T: ?Sized + Serialize,
@@ -488,6 +546,7 @@ impl<const R: FhirRelease> ser::SerializeMap for SerializeElement<R> {
         Ok(())
     }
 
+    #[inline]
     fn serialize_value<T>(&mut self, value: &T) -> error::Result<()>
     where
         T: ?Sized + Serialize,
@@ -538,34 +597,42 @@ impl serde::Serializer for MapKeySerializer {
         unimplemented!()
     }
 
+    #[inline]
     fn serialize_i8(self, value: i8) -> error::Result<String> {
         Ok(value.to_string())
     }
 
+    #[inline]
     fn serialize_i16(self, value: i16) -> error::Result<String> {
         Ok(value.to_string())
     }
 
+    #[inline]
     fn serialize_i32(self, value: i32) -> error::Result<String> {
         Ok(value.to_string())
     }
 
+    #[inline]
     fn serialize_i64(self, value: i64) -> error::Result<String> {
         Ok(value.to_string())
     }
 
+    #[inline]
     fn serialize_u8(self, value: u8) -> error::Result<String> {
         Ok(value.to_string())
     }
 
+    #[inline]
     fn serialize_u16(self, value: u16) -> error::Result<String> {
         Ok(value.to_string())
     }
 
+    #[inline]
     fn serialize_u32(self, value: u32) -> error::Result<String> {
         Ok(value.to_string())
     }
 
+    #[inline]
     fn serialize_u64(self, value: u64) -> error::Result<String> {
         Ok(value.to_string())
     }
@@ -578,7 +645,6 @@ impl serde::Serializer for MapKeySerializer {
         unimplemented!()
     }
 
-    #[inline]
     fn serialize_char(self, _value: char) -> error::Result<String> {
         unimplemented!()
     }
@@ -679,6 +745,7 @@ impl<const R: FhirRelease> ser::SerializeStruct for SerializeNumber<R> {
     type Ok = Value<R>;
     type Error = error::Error;
 
+    #[inline]
     fn serialize_field<T>(&mut self, key: &'static str, value: &T) -> error::Result<()>
     where
         T: ?Sized + Serialize,

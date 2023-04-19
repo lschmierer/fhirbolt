@@ -50,13 +50,13 @@ use fhirbolt::serde::{DeserializationConfig, DeserializationMode};
 
 // The type of `s` is `&str`
 let s = "{
-        \"resourceType\": \"Observation\",
-        \"status\": \"final\",
-        \"code\": {
-            \"text\": \"some code\"
-        },
-        \"valueString\": \"some value\"
-    }";
+    \"resourceType\": \"Observation\",
+    \"status\": \"final\",
+    \"code\": {
+        \"text\": \"some code\"
+    },
+    \"valueString\": \"some value\"
+}";
 
 let r: Resource = fhirbolt::json::from_str(s, None).unwrap();
 

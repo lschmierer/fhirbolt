@@ -244,7 +244,10 @@ pub fn implement_deserialze(
 pub fn implement_deserialze_resource_enum(
     resource_modules: &[RustFhirModule],
     namespace: &TokenStream,
+    release: &str,
 ) -> TokenStream {
+    let release_ident = format_ident!("{}", release.to_string());
+
     let match_resource_type = resource_modules.iter().map(|r| {
         let ident = format_ident!("{}", r.resource_name.as_ref().unwrap());
         let name = r.resource_name.as_ref().unwrap();
@@ -280,14 +283,16 @@ pub fn implement_deserialze_resource_enum(
             where
                 D: serde::de::Deserializer<'de>,
             {
-                use crate::Resource;
-
-                let element_context = self.clone::<fhirbolt_element::Element<{ #namespace::Resource::FHIR_RELEASE }>>();
+                let mut element_context = self.clone::<crate::element::internal::de::InternalElement<{ fhirbolt_shared::FhirReleases::#release_ident }>>();
                 let element = element_context.deserialize(deserializer)?;
 
                 self.from_json = false;
 
-                if let Some(fhirbolt_element::Value::Primitive(fhirbolt_element::Primitive::String(resource_type))) = element.get("resourceType") {
+                if let Some(
+                    fhirbolt_element::Value::Primitive(
+                        fhirbolt_element::Primitive::String(resource_type)
+                    )
+                ) = element.0.get("resourceType") {
                     match resource_type.as_str() {
                         #(
                             #match_resource_type

@@ -105,7 +105,8 @@ pub fn generate_resource_enum_serde(
     };
 
     let serialize_impl_tokens = implement_serialize_resource_enum(&resource_modules, &namespace);
-    let deserialize_impl_tokens = implement_deserialze_resource_enum(&resource_modules, &namespace);
+    let deserialize_impl_tokens =
+        implement_deserialze_resource_enum(&resource_modules, &namespace, release);
 
     SourceFile {
         name: "resource".into(),

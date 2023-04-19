@@ -1,6 +1,6 @@
 use criterion::{black_box, criterion_group, criterion_main, Criterion, Throughput};
 
-use fhirbolt::{element::Element, FhirReleases};
+use fhirbolt::{element::Element, serde::SerializationConfig, FhirReleases};
 
 use test_utils::examples::{examples, ExampleFile, JsonOrXml};
 
@@ -58,15 +58,29 @@ pub fn bench(c: &mut Criterion) {
         })
     });
     group.bench_function("write account struct", |b| {
-        b.iter(|| black_box(fhirbolt::json::to_vec(&account_struct)))
+        b.iter(|| {
+            black_box(fhirbolt::json::to_vec(
+                &account_struct,
+                Some(SerializationConfig { sort_json: false }),
+            ))
+        })
     });
     group.bench_function("write account enum", |b| {
-        b.iter(|| black_box(fhirbolt::json::to_vec(&account_enum)))
+        b.iter(|| {
+            black_box(fhirbolt::json::to_vec(
+                &account_enum,
+                Some(SerializationConfig { sort_json: false }),
+            ))
+        })
     });
     group.bench_function("write account element", |b| {
         b.iter(|| {
             black_box(
-                fhirbolt::json::to_vec::<Element<{ FhirReleases::R4 }>>(&account_element).unwrap(),
+                fhirbolt::json::to_vec::<Element<{ FhirReleases::R4 }>>(
+                    &account_element,
+                    Some(SerializationConfig { sort_json: false }),
+                )
+                .unwrap(),
             )
         })
     });
@@ -108,15 +122,29 @@ pub fn bench(c: &mut Criterion) {
         })
     });
     group.bench_function("write account struct", |b| {
-        b.iter(|| black_box(fhirbolt::xml::to_vec(&account_struct)))
+        b.iter(|| {
+            black_box(fhirbolt::xml::to_vec(
+                &account_struct,
+                Some(SerializationConfig { sort_json: false }),
+            ))
+        })
     });
     group.bench_function("write account enum", |b| {
-        b.iter(|| black_box(fhirbolt::xml::to_vec(&account_enum)))
+        b.iter(|| {
+            black_box(fhirbolt::xml::to_vec(
+                &account_enum,
+                Some(SerializationConfig { sort_json: false }),
+            ))
+        })
     });
     group.bench_function("write account element", |b| {
         b.iter(|| {
             black_box(
-                fhirbolt::xml::to_vec::<Element<{ FhirReleases::R4 }>>(&account_element).unwrap(),
+                fhirbolt::xml::to_vec::<Element<{ FhirReleases::R4 }>>(
+                    &account_element,
+                    Some(SerializationConfig { sort_json: false }),
+                )
+                .unwrap(),
             )
         })
     });

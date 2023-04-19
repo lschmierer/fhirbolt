@@ -11,7 +11,11 @@ pub trait SerializeResource: Resource {
     where
         Self: 'a;
 
-    fn context<'a>(&'a self, output_json: bool, r: FhirRelease) -> Self::Context<'a>;
+    fn serialization_context<'a>(
+        &'a self,
+        config: SerializationConfig,
+        output_json: bool,
+    ) -> Self::Context<'a>;
 }
 
 impl<T> SerializeResource for T
@@ -23,44 +27,52 @@ where
     where
         Self: 'a;
 
-    fn context<'a>(&'a self, output_json: bool, r: FhirRelease) -> Self::Context<'a> {
-        SerializationContext::new(self, output_json, r)
+    fn serialization_context<'a>(
+        &'a self,
+        config: SerializationConfig,
+        output_json: bool,
+    ) -> Self::Context<'a> {
+        SerializationContext::new(self, config, output_json, T::FHIR_RELEASE)
     }
 }
 
 /// Context for serialization.
 #[derive(Default)]
 pub struct SerializationContext<V> {
-    pub value: V,
+    pub(crate) value: V,
+    // Serialization config
+    pub(crate) config: SerializationConfig,
     // The JSON data model differs from the FHIR data model
-    pub output_json: bool,
+    pub(crate) output_json: bool,
     // Used by the element model to keep track of its state in the element tree
     current_path: RefCell<Option<ElementPath>>,
 }
 
 impl<V> SerializationContext<V> {
-    pub fn new(value: V, output_json: bool, r: FhirRelease) -> Self {
+    fn new(value: V, config: SerializationConfig, output_json: bool, r: FhirRelease) -> Self {
         SerializationContext {
             value,
+            config,
             output_json,
             current_path: RefCell::new(Some(ElementPath::new(r))),
         }
     }
 
-    pub fn unwrap_current_path(&self) -> Ref<ElementPath> {
+    pub(crate) fn unwrap_current_path(&self) -> Ref<ElementPath> {
         Ref::map(self.current_path.borrow(), |p| p.as_ref().unwrap())
     }
 
-    pub fn unwrap_current_path_mut(&self) -> RefMut<ElementPath> {
+    pub(crate) fn unwrap_current_path_mut(&self) -> RefMut<ElementPath> {
         RefMut::map(self.current_path.borrow_mut(), |p| p.as_mut().unwrap())
     }
 
-    pub fn with_context<P, R, F>(&self, value: P, with_fn: F) -> R
+    pub(crate) fn with_context<P, R, F>(&self, value: P, with_fn: F) -> R
     where
         F: FnOnce(&SerializationContext<P>) -> R,
     {
         let context = SerializationContext {
             value,
+            config: self.config,
             output_json: self.output_json,
             current_path: RefCell::new(self.current_path.borrow_mut().take()),
         };
@@ -69,5 +81,18 @@ impl<V> SerializationContext<V> {
             .borrow_mut()
             .replace(context.current_path.borrow_mut().take().unwrap());
         result
+    }
+}
+
+#[derive(Copy, Clone)]
+pub struct SerializationConfig {
+    /// Wheter JSON fields should be sorted according
+    /// to the FHIR element order before serialization
+    pub sort_json: bool,
+}
+
+impl Default for SerializationConfig {
+    fn default() -> Self {
+        SerializationConfig { sort_json: true }
     }
 }

@@ -19,18 +19,18 @@ use crate::{
         error::{Error, Result},
         event::{Element, Event},
     },
-    DeserializationConfig, DeserializeResource,
+    DeserializationConfig, DeserializeResource, DeserializeResourceOwned,
 };
 
-fn from_deserializer<R, T>(
+fn from_deserializer<'de, R, T>(
     de: &mut Deserializer<R>,
     config: Option<DeserializationConfig>,
 ) -> Result<T>
 where
     R: Read,
-    T: DeserializeResource,
+    T: DeserializeResource<'de>,
 {
-    T::context(config.unwrap_or(Default::default()), false, T::FHIR_RELEASE).deserialize(de)
+    T::deserialization_context(config.unwrap_or(Default::default()), false).deserialize(de)
 }
 
 /// Deserialize an instance of resource type `T` directly from an IO stream of XML (e.g. coming from network).
@@ -62,7 +62,7 @@ where
 /// This behavior can be modified by passing a [`DeserializationConfig`](crate::DeserializationConfig).
 pub fn from_reader<R: io::Read, T>(rdr: R, config: Option<DeserializationConfig>) -> Result<T>
 where
-    T: DeserializeResource,
+    T: DeserializeResourceOwned,
 {
     from_deserializer(
         &mut Deserializer::from_reader(rdr, T::FHIR_RELEASE)?,
@@ -96,9 +96,9 @@ where
 /// # Errors
 /// The conversion can fail if the structure of the input does not match the FHIR resource `T`.
 /// This behavior can be modified by passing a [`DeserializationConfig`](crate::DeserializationConfig).
-pub fn from_slice<T>(v: &[u8], config: Option<DeserializationConfig>) -> Result<T>
+pub fn from_slice<'a, T>(v: &'a [u8], config: Option<DeserializationConfig>) -> Result<T>
 where
-    T: DeserializeResource,
+    T: DeserializeResource<'a>,
 {
     from_deserializer(&mut Deserializer::from_slice(v, T::FHIR_RELEASE)?, config)
 }
@@ -129,9 +129,9 @@ where
 /// # Errors
 /// The conversion can fail if the structure of the input does not match the FHIR resource `T`.
 /// This behavior can be modified by passing a [`DeserializationConfig`](crate::DeserializationConfig).
-pub fn from_str<T>(s: &str, config: Option<DeserializationConfig>) -> Result<T>
+pub fn from_str<'a, T>(s: &'a str, config: Option<DeserializationConfig>) -> Result<T>
 where
-    T: DeserializeResource,
+    T: DeserializeResource<'a>,
 {
     from_deserializer(&mut Deserializer::from_str(s, T::FHIR_RELEASE)?, config)
 }
@@ -190,6 +190,7 @@ impl<R: Read> Deserializer<R> {
 impl<'de, 'a, R: Read> de::Deserializer<'de> for &'a mut Deserializer<R> {
     type Error = Error;
 
+    #[inline]
     fn deserialize_any<V>(self, visitor: V) -> Result<V::Value>
     where
         V: Visitor<'de>,
@@ -217,6 +218,7 @@ impl<'a, R: Read> ElementDeserializer<'a, R> {
 impl<'de, 'a, R: Read> de::Deserializer<'de> for &'a mut ElementDeserializer<'a, R> {
     type Error = Error;
 
+    #[inline]
     fn deserialize_any<V>(self, visitor: V) -> Result<V::Value>
     where
         V: Visitor<'de>,
@@ -224,6 +226,7 @@ impl<'de, 'a, R: Read> de::Deserializer<'de> for &'a mut ElementDeserializer<'a,
         self.deserialize_map(visitor)
     }
 
+    #[inline]
     fn deserialize_map<V>(self, visitor: V) -> Result<V::Value>
     where
         V: Visitor<'de>,
@@ -231,6 +234,7 @@ impl<'de, 'a, R: Read> de::Deserializer<'de> for &'a mut ElementDeserializer<'a,
         visitor.visit_map(ElementAccess::new(self.de)?)
     }
 
+    #[inline]
     fn deserialize_struct<V>(
         self,
         _name: &'static str,

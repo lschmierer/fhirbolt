@@ -1,4 +1,4 @@
-// Generated on 2023-04-16 by fhirbolt-codegen v0.2.0
+// Generated on 2023-04-19 by fhirbolt-codegen v0.3.0
 #[doc = "This resource provides the status of the payment for goods and services rendered, and the request and response resource references."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub struct PaymentNotice {

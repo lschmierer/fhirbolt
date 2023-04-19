@@ -2,7 +2,9 @@ use std::io::Read;
 
 use fhirbolt::{
     element::Element,
-    serde::{DeserializationConfig, DeserializationMode, DeserializeResource, SerializeResource},
+    serde::{
+        DeserializationConfig, DeserializationMode, DeserializeResourceOwned, SerializeResource,
+    },
     FhirRelease, FhirReleases,
 };
 
@@ -14,7 +16,7 @@ use test_utils::{
 
 fn test_serde_xml<'a, T, const R: FhirRelease>(mode: DeserializationMode)
 where
-    T: DeserializeResource + SerializeResource,
+    T: DeserializeResourceOwned + SerializeResource,
 {
     let mut examples_iter = examples(R, JsonOrXml::Xml);
 
@@ -42,7 +44,7 @@ where
             shuffle::shuffle_element(fhirbolt::xml::from_slice(&buffer, None).unwrap());
 
         let mut element_buffer = Vec::new();
-        _ = fhirbolt::xml::to_writer(&mut element_buffer, &element).unwrap();
+        _ = fhirbolt::xml::to_writer(&mut element_buffer, &element, None).unwrap();
 
         assert_xml_eq(
             &element_buffer,
@@ -54,7 +56,7 @@ where
             fhirbolt::xml::from_slice(&buffer[..], Some(DeserializationConfig { mode })).unwrap();
 
         assert_xml_eq(
-            &fhirbolt::xml::to_vec(&resource).unwrap(),
+            &fhirbolt::xml::to_vec(&resource, None).unwrap(),
             &buffer,
             R == FhirReleases::R4B && file.name() == "valuesets.xml",
         );
