@@ -1,11 +1,7 @@
-use std::{collections::VecDeque, vec};
+use std::{iter, mem, vec};
 
 use serde::{
-    de::{
-        self,
-        value::{StrDeserializer, StringDeserializer},
-        DeserializeSeed, MapAccess, SeqAccess, Unexpected, Visitor,
-    },
+    de::{self, DeserializeSeed, MapAccess, SeqAccess, Unexpected, Visitor},
     forward_to_deserialize_any,
 };
 
@@ -21,24 +17,10 @@ use crate::{
 pub const PRIMITIVE_CHILDREN: &[&str] = &["id", "extension", "value"];
 
 #[derive(Default, Debug)]
-pub struct InternalElement(pub indexmap::IndexMap<String, InternalValue>);
+pub struct InternalElement<const R: FhirRelease>(pub Element<R>);
 
-#[derive(Debug)]
-pub enum InternalValue {
-    Element(InternalElement),
-    Sequence(Vec<Option<InternalElement>>),
-    Primitive(InternalPrimitive),
-}
-
-#[derive(Debug)]
-pub enum InternalPrimitive {
-    Bool(bool),
-    Integer(i64),
-    String(String),
-}
-
-impl InternalElement {
-    pub fn into_element<'a, D, const R: FhirRelease>(
+impl<const R: FhirRelease> InternalElement<R> {
+    pub fn into_element<'a, D>(
         self,
         deserialization_mode: DeserializationMode,
         current_path: &mut ElementPath,
@@ -46,206 +28,207 @@ impl InternalElement {
     where
         D: de::Deserializer<'a>,
     {
-        let mut is_resource = false;
-        let mut element = Element::new();
+        let mut element = self.0;
 
-        for (key, value) in self.0 {
-            // in case of top-level resource: current_path is empty
-            if (current_path.current_element_is_resource() || current_path.is_empty())
-                && key == "resourceType"
-            {
-                match value {
-                    InternalValue::Primitive(InternalPrimitive::String(s)) => {
-                        current_path.push(&s);
-                        is_resource = true;
-
-                        element.insert(key, Value::Primitive(Primitive::String(s)));
-                    }
-                    InternalValue::Primitive(InternalPrimitive::Bool(b)) => {
-                        return Err(de::Error::invalid_type(Unexpected::Bool(b), &"string"))
-                    }
-                    InternalValue::Primitive(InternalPrimitive::Integer(i)) => {
-                        return Err(de::Error::invalid_type(Unexpected::Signed(i), &"string"))
-                    }
-                    InternalValue::Element(_) => {
-                        return Err(de::Error::invalid_type(
-                            Unexpected::Other("element"),
-                            &"string",
-                        ))
-                    }
-                    InternalValue::Sequence(_) => {
-                        return Err(de::Error::invalid_type(
-                            Unexpected::Other("sequence"),
-                            &"string",
-                        ))
-                    }
-                }
-            } else {
-                // check if field is valid at current path
-                if deserialization_mode == DeserializationMode::Strict {
-                    if current_path.current_element_is_primitive() {
-                        if !PRIMITIVE_CHILDREN.contains(&key.as_str()) {
-                            return Err(de::Error::custom(format_args!(
-                                "unknown field `{}`, expected one of {:?}",
-                                key, PRIMITIVE_CHILDREN
-                            )));
-                        }
-                    } else {
-                        let fields = current_path.children();
-
-                        if !fields.map(|s| s.contains(&key)).unwrap_or(false) {
-                            if let Some(expected_fields) = fields {
-                                return Err(de::Error::custom(format_args!(
-                                    "unknown field `{}`, expected one of {:?}",
-                                    key,
-                                    &expected_fields.iter().collect::<Vec<_>>()
-                                )));
-                            } else {
-                                return Err(de::Error::custom(format_args!(
-                                    "unknown field `{}`, there are no fields",
-                                    key
-                                )));
-                            }
-                        }
-                    }
-                }
-
-                current_path.push(&key);
-
-                let value = value.into_value::<D, { R }>(deserialization_mode, current_path)?;
-                element.insert(
-                    key,
-                    match value {
-                        Value::Element(e) if current_path.current_element_is_sequence() => {
-                            Value::Sequence(vec![e])
-                        }
-                        value => value,
-                    },
-                );
-
-                current_path.pop();
-            }
-        }
-
-        if is_resource {
-            current_path.pop();
-        }
+        resolve_element_types::<D, R>(&mut element, deserialization_mode, current_path)?;
 
         Ok(element)
     }
-
-    pub fn from_element<const R: FhirRelease>(element: Element<R>) -> Self {
-        InternalElement(indexmap::IndexMap::from_iter(
-            element
-                .into_iter()
-                .map(|(key, value)| (key, InternalValue::from_value(value))),
-        ))
-    }
 }
 
-impl InternalValue {
-    fn into_value<'a, D, const R: FhirRelease>(
-        self,
-        deserialization_mode: DeserializationMode,
-        current_path: &mut ElementPath,
-    ) -> Result<Value<R>, D::Error>
-    where
-        D: de::Deserializer<'a>,
-    {
-        match self {
-            InternalValue::Element(e) => Ok(Value::Element(
-                e.into_element::<D, R>(deserialization_mode, current_path)?,
-            )),
-            InternalValue::Sequence(s) => Ok(Value::Sequence(
-                s.into_iter()
-                    .map(|e| {
-                        e.ok_or(de::Error::invalid_type(Unexpected::Option, &"a value"))
-                            .and_then(|e| {
-                                e.into_element::<D, R>(deserialization_mode, current_path)
-                            })
-                    })
-                    .collect::<Result<Vec<_>, D::Error>>()?,
-            )),
-            InternalValue::Primitive(p) => {
-                if current_path.parent_element_is_boolean() {
-                    let expected = "a boolean";
-                    match p {
-                        InternalPrimitive::Bool(b) => Ok(Value::Primitive(Primitive::Bool(b))),
-                        InternalPrimitive::Integer(i) => {
-                            Err(de::Error::invalid_type(Unexpected::Signed(i), &expected))
-                        }
-                        InternalPrimitive::String(s) => {
-                            Ok(Value::Primitive(Primitive::Bool(s.parse().map_err(
-                                |_| de::Error::invalid_value(Unexpected::Other(&s), &expected),
-                            )?)))
-                        }
-                    }
-                } else if current_path.parent_element_is_integer()
-                    || current_path.parent_element_is_positive_integer()
-                    || current_path.parent_element_is_unsigned_integer()
-                {
-                    let expected = "an integer";
-                    match p {
-                        InternalPrimitive::Bool(b) => {
-                            Err(de::Error::invalid_type(Unexpected::Bool(b), &expected))
-                        }
-                        InternalPrimitive::Integer(i) => {
-                            Ok(Value::Primitive(Primitive::Integer(i)))
-                        }
-                        InternalPrimitive::String(s) => {
-                            Ok(Value::Primitive(Primitive::Integer(s.parse().map_err(
-                                |_| de::Error::invalid_value(Unexpected::Other(&s), &expected),
-                            )?)))
-                        }
-                    }
-                } else if current_path.parent_element_is_decimal() {
-                    let expected = "a decimal";
-                    match p {
-                        InternalPrimitive::Bool(b) => {
-                            Err(de::Error::invalid_type(Unexpected::Bool(b), &expected))
-                        }
-                        InternalPrimitive::Integer(i) => {
-                            Ok(Value::Primitive(Primitive::Decimal(i.to_string())))
-                        }
-                        InternalPrimitive::String(s) => Ok(Value::Primitive(Primitive::Decimal(s))),
-                    }
-                } else {
-                    let expected = "a string";
-                    match p {
-                        InternalPrimitive::Bool(b) => {
-                            Err(de::Error::invalid_type(Unexpected::Bool(b), &expected))
-                        }
-                        InternalPrimitive::Integer(i) => {
-                            Err(de::Error::invalid_type(Unexpected::Signed(i), &expected))
-                        }
-                        InternalPrimitive::String(s) => Ok(Value::Primitive(Primitive::String(s))),
-                    }
+pub fn resolve_element_types<'a, D, const R: FhirRelease>(
+    element: &mut Element<R>,
+    deserialization_mode: DeserializationMode,
+    current_path: &mut ElementPath,
+) -> Result<(), D::Error>
+where
+    D: de::Deserializer<'a>,
+{
+    let mut is_resource = false;
+
+    for (key, value) in element.iter_mut() {
+        // in case of top-level resource: current_path is empty
+        if (current_path.current_element_is_resource() || current_path.is_empty())
+            && key == "resourceType"
+        {
+            if let Value::Primitive(Primitive::String(s)) = value {
+                current_path.push(&s);
+                is_resource = true;
+            }
+        } else {
+            // check if field is valid at current path
+            if deserialization_mode == DeserializationMode::Strict {
+                validate_field_is_valid::<D>(current_path, key)?;
+            }
+
+            current_path.push(&key);
+
+            resolve_value_types::<D, R>(value, deserialization_mode, current_path)?;
+
+            if current_path.current_element_is_sequence() {
+                if let Value::Element(e) = value {
+                    *value = Value::Sequence(vec![mem::take(e)]);
                 }
+            }
+
+            current_path.pop();
+        }
+    }
+
+    if is_resource {
+        current_path.pop();
+    }
+
+    Ok(())
+}
+
+fn validate_field_is_valid<'a, D>(current_path: &ElementPath, field: &str) -> Result<(), D::Error>
+where
+    D: de::Deserializer<'a>,
+{
+    if current_path.current_element_is_primitive() {
+        if !PRIMITIVE_CHILDREN.contains(&field) {
+            return Err(de::Error::custom(format_args!(
+                "unknown field `{}`, expected one of {:?}",
+                field, PRIMITIVE_CHILDREN
+            )));
+        }
+    } else {
+        let fields = current_path.children();
+
+        if !fields.map(|s| s.contains(field)).unwrap_or(false) {
+            if let Some(expected_fields) = fields {
+                return Err(de::Error::custom(format_args!(
+                    "unknown field `{}`, expected one of {:?}",
+                    field,
+                    &expected_fields.iter().collect::<Vec<_>>()
+                )));
+            } else {
+                return Err(de::Error::custom(format_args!(
+                    "unknown field `{}`, there are no fields",
+                    field
+                )));
             }
         }
     }
 
-    pub fn from_value<const R: FhirRelease>(value: Value<R>) -> Self {
-        match value {
-            Value::Element(e) => InternalValue::Element(InternalElement::from_element(e)),
-            Value::Sequence(s) => InternalValue::Sequence(
-                s.into_iter()
-                    .map(|e| Some(InternalElement::from_element(e)))
-                    .collect(),
-            ),
-            Value::Primitive(p) => match p {
-                Primitive::Bool(b) => InternalValue::Primitive(InternalPrimitive::Bool(b)),
-                Primitive::Integer(b) => InternalValue::Primitive(InternalPrimitive::Integer(b)),
-                Primitive::Decimal(s) | Primitive::String(s) => {
-                    InternalValue::Primitive(InternalPrimitive::String(s))
-                }
-            },
+    Ok(())
+}
+
+fn resolve_value_types<'a, D, const R: FhirRelease>(
+    value: &mut Value<R>,
+    deserialization_mode: DeserializationMode,
+    current_path: &mut ElementPath,
+) -> Result<(), D::Error>
+where
+    D: de::Deserializer<'a>,
+{
+    match value {
+        Value::Element(e) => {
+            resolve_element_types::<D, R>(e, deserialization_mode, current_path)?;
+        }
+        Value::Sequence(s) => {
+            for element in s {
+                resolve_element_types::<D, R>(element, deserialization_mode, current_path)?;
+            }
+        }
+        Value::Primitive(p) => {
+            if current_path.parent_element_is_boolean() {
+                *p = map_bool::<D>(p)?
+            } else if current_path.parent_element_is_integer()
+                || current_path.parent_element_is_positive_integer()
+                || current_path.parent_element_is_unsigned_integer()
+            {
+                *p = map_integer::<D>(p)?
+            } else if current_path.parent_element_is_decimal() {
+                *p = map_decimal::<D>(p)?
+            } else {
+                *p = map_string::<D>(p)?
+            }
+        }
+    }
+
+    Ok(())
+}
+
+fn map_bool<'a, D>(primitive: &Primitive) -> Result<Primitive, D::Error>
+where
+    D: de::Deserializer<'a>,
+{
+    let expected = "a boolean";
+    match primitive {
+        Primitive::Bool(b) => Ok(Primitive::Bool(*b)),
+        Primitive::Integer(i) => Err(de::Error::invalid_type(Unexpected::Signed(*i), &expected)),
+        Primitive::Decimal(s) => {
+            return Err(de::Error::invalid_type(
+                Unexpected::Other(&format!("decimal `{}`", s)),
+                &expected,
+            ))
+        }
+        Primitive::String(s) => {
+            Ok(Primitive::Bool(s.parse().map_err(|_| {
+                de::Error::invalid_value(Unexpected::Other(&s), &expected)
+            })?))
         }
     }
 }
 
-impl<'a, 'de> DeserializeSeed<'de> for &mut DeserializationContext<InternalElement> {
-    type Value = InternalElement;
+fn map_integer<'a, D>(primitive: &Primitive) -> Result<Primitive, D::Error>
+where
+    D: de::Deserializer<'a>,
+{
+    let expected = "an integer";
+    match primitive {
+        Primitive::Bool(b) => Err(de::Error::invalid_type(Unexpected::Bool(*b), &expected)),
+        Primitive::Integer(i) => Ok(Primitive::Integer(*i)),
+        Primitive::Decimal(s) => {
+            return Err(de::Error::invalid_type(
+                Unexpected::Other(&format!("decimal `{}`", s)),
+                &expected,
+            ))
+        }
+        Primitive::String(s) => {
+            Ok(Primitive::Integer(s.parse().map_err(|_| {
+                de::Error::invalid_value(Unexpected::Other(&s), &expected)
+            })?))
+        }
+    }
+}
+
+fn map_decimal<'a, D>(primitive: &mut Primitive) -> Result<Primitive, D::Error>
+where
+    D: de::Deserializer<'a>,
+{
+    let expected = "a decimal";
+    match primitive {
+        Primitive::Bool(b) => Err(de::Error::invalid_type(Unexpected::Bool(*b), &expected)),
+        Primitive::Integer(i) => Ok(Primitive::Decimal(i.to_string())),
+        Primitive::Decimal(s) | Primitive::String(s) => Ok(Primitive::Decimal(mem::take(s))),
+    }
+}
+
+fn map_string<'a, D>(primitive: &mut Primitive) -> Result<Primitive, D::Error>
+where
+    D: de::Deserializer<'a>,
+{
+    let expected = "a string";
+    match primitive {
+        Primitive::Bool(b) => Err(de::Error::invalid_type(Unexpected::Bool(*b), &expected)),
+        Primitive::Integer(i) => Err(de::Error::invalid_type(Unexpected::Signed(*i), &expected)),
+        Primitive::Decimal(s) => {
+            return Err(de::Error::invalid_type(
+                Unexpected::Other(&format!("decimal `{}`", s)),
+                &expected,
+            ))
+        }
+        Primitive::String(s) => Ok(Primitive::String(mem::take(s))),
+    }
+}
+
+impl<'a, 'de, const R: FhirRelease> DeserializeSeed<'de>
+    for &mut DeserializationContext<InternalElement<R>>
+{
+    type Value = InternalElement<R>;
 
     #[inline]
     fn deserialize<D>(self, deserializer: D) -> Result<Self::Value, D::Error>
@@ -253,11 +236,9 @@ impl<'a, 'de> DeserializeSeed<'de> for &mut DeserializationContext<InternalEleme
         D: de::Deserializer<'de>,
     {
         match deserializer.deserialize_any(ValueVisitor(self.transmute()))? {
-            InternalValue::Element(e) => Ok(e),
-            InternalValue::Sequence(_) => {
-                Err(de::Error::invalid_type(Unexpected::Seq, &"an element"))
-            }
-            InternalValue::Primitive(_) => Err(de::Error::invalid_type(
+            Value::Element(e) => Ok(InternalElement(e)),
+            Value::Sequence(_) => Err(de::Error::invalid_type(Unexpected::Seq, &"an element")),
+            Value::Primitive(_) => Err(de::Error::invalid_type(
                 Unexpected::Other("primitive"),
                 &"an element",
             )),
@@ -265,8 +246,8 @@ impl<'a, 'de> DeserializeSeed<'de> for &mut DeserializationContext<InternalEleme
     }
 }
 
-impl<'de> DeserializeSeed<'de> for &mut DeserializationContext<InternalValue> {
-    type Value = InternalValue;
+impl<'de, const R: FhirRelease> DeserializeSeed<'de> for &mut DeserializationContext<Value<R>> {
+    type Value = Value<R>;
 
     #[inline]
     fn deserialize<D>(self, deserializer: D) -> Result<Self::Value, D::Error>
@@ -277,16 +258,19 @@ impl<'de> DeserializeSeed<'de> for &mut DeserializationContext<InternalValue> {
     }
 }
 
-fn merge_sequences(
-    left: Vec<Option<InternalElement>>,
-    right: Vec<Option<InternalElement>>,
-) -> Vec<Option<InternalElement>> {
-    left.into_iter()
-        .zip(right)
+fn merge_sequences<const R: FhirRelease>(
+    left: Vec<Element<R>>,
+    right: Vec<Element<R>>,
+) -> Vec<Element<R>> {
+    let left_iter = left.into_iter().map(Some).chain(iter::repeat(None));
+    let right_iter = right.into_iter().map(Some).chain(iter::repeat(None));
+
+    left_iter
+        .zip(right_iter)
         .take_while(|(e, n)| e.is_some() || n.is_some())
-        .map(|(e, n)| match (e, n) {
+        .flat_map(|(e, n)| match (e, n) {
             (Some(mut e), Some(n)) => {
-                e.0.extend(n.0);
+                e.extend(n);
                 Some(e)
             }
             (Some(e), None) => Some(e),
@@ -296,10 +280,10 @@ fn merge_sequences(
         .collect()
 }
 
-struct ValueVisitor<'a>(&'a mut DeserializationContext<InternalValue>);
+struct ValueVisitor<'a, const R: FhirRelease>(&'a mut DeserializationContext<Value<R>>);
 
-impl<'a, 'de> Visitor<'de> for ValueVisitor<'a> {
-    type Value = InternalValue;
+impl<'a, 'de, const R: FhirRelease> Visitor<'de> for ValueVisitor<'a, R> {
+    type Value = Value<R>;
 
     fn expecting(&self, formatter: &mut std::fmt::Formatter) -> std::fmt::Result {
         formatter.write_str("a map")
@@ -311,14 +295,11 @@ impl<'a, 'de> Visitor<'de> for ValueVisitor<'a> {
         E: de::Error,
     {
         if self.0.from_json {
-            let mut element = InternalElement::default();
-            element.0.insert(
-                "value".into(),
-                InternalValue::Primitive(InternalPrimitive::Bool(v)),
-            );
-            Ok(InternalValue::Element(element))
+            let mut element = Element::default();
+            element.insert("value".into(), Value::Primitive(Primitive::Bool(v)));
+            Ok(Value::Element(element))
         } else {
-            Ok(InternalValue::Primitive(InternalPrimitive::Bool(v)))
+            Ok(Value::Primitive(Primitive::Bool(v)))
         }
     }
 
@@ -328,14 +309,11 @@ impl<'a, 'de> Visitor<'de> for ValueVisitor<'a> {
         E: de::Error,
     {
         if self.0.from_json {
-            let mut element = InternalElement::default();
-            element.0.insert(
-                "value".into(),
-                InternalValue::Primitive(InternalPrimitive::Integer(v)),
-            );
-            Ok(InternalValue::Element(element))
+            let mut element = Element::default();
+            element.insert("value".into(), Value::Primitive(Primitive::Integer(v)));
+            Ok(Value::Element(element))
         } else {
-            Ok(InternalValue::Primitive(InternalPrimitive::Integer(v)))
+            Ok(Value::Primitive(Primitive::Integer(v)))
         }
     }
 
@@ -364,17 +342,14 @@ impl<'a, 'de> Visitor<'de> for ValueVisitor<'a> {
             if self.0.current_element() == CurrentElement::Id
                 || self.0.current_element() == CurrentElement::ExtensionUrl
             {
-                Ok(InternalValue::Primitive(InternalPrimitive::String(v)))
+                Ok(Value::Primitive(Primitive::String(v)))
             } else {
-                let mut element = InternalElement::default();
-                element.0.insert(
-                    "value".into(),
-                    InternalValue::Primitive(InternalPrimitive::String(v)),
-                );
-                Ok(InternalValue::Element(element))
+                let mut element = Element::default();
+                element.insert("value".into(), Value::Primitive(Primitive::String(v)));
+                Ok(Value::Element(element))
             }
         } else {
-            Ok(InternalValue::Primitive(InternalPrimitive::String(v)))
+            Ok(Value::Primitive(Primitive::String(v)))
         }
     }
 
@@ -390,7 +365,7 @@ impl<'a, 'de> Visitor<'de> for ValueVisitor<'a> {
     where
         V: MapAccess<'de>,
     {
-        let mut element = InternalElement::default();
+        let mut element = Element::default();
 
         while let Some(key) = map_access.next_key::<String>()? {
             let key = if key.starts_with("_") {
@@ -404,10 +379,7 @@ impl<'a, 'de> Visitor<'de> for ValueVisitor<'a> {
             {
                 let value: String = map_access.next_value()?;
 
-                element.0.insert(
-                    key,
-                    InternalValue::Primitive(InternalPrimitive::String(value)),
-                );
+                element.insert(key, Value::Primitive(Primitive::String(value)));
             } else {
                 self.0.push_current_element(match key.as_str() {
                     "id" => CurrentElement::Id,
@@ -427,41 +399,41 @@ impl<'a, 'de> Visitor<'de> for ValueVisitor<'a> {
                     let serde_json_value: serde_json::Value = map_access.next_value()?;
                     match serde_json_value {
                         serde_json::Value::Number(n) => {
-                            let mut decimal_element = InternalElement::default();
-                            decimal_element.0.insert(
+                            let mut decimal_element = Element::default();
+                            decimal_element.insert(
                                 "value".into(),
-                                InternalValue::Primitive(InternalPrimitive::String(n.to_string())),
+                                Value::Primitive(Primitive::String(n.to_string())),
                             );
-                            InternalValue::Element(decimal_element)
+                            Value::Element(decimal_element)
                         }
                         serde_json_value => self
                             .0
-                            .transmute::<InternalValue>()
+                            .transmute::<Value<R>>()
                             .deserialize(serde_json_value)
                             .map_err(de::Error::custom)?,
                     }
                 } else {
-                    map_access.next_value_seed(self.0.transmute::<InternalValue>())?
+                    map_access.next_value_seed(self.0.transmute::<Value<R>>())?
                 };
 
-                let existing = element.0.remove(&key);
-                element.0.insert(
+                let existing = element.remove(&key);
+                element.insert(
                     key,
                     match (existing, value) {
-                        (Some(InternalValue::Element(mut e)), InternalValue::Element(n)) => {
+                        (Some(Value::Element(mut e)), Value::Element(n)) => {
                             if self.0.from_json {
-                                e.0.extend(n.0);
-                                InternalValue::Element(e)
+                                e.extend(n);
+                                Value::Element(e)
                             } else {
-                                InternalValue::Sequence(vec![Some(e), Some(n)])
+                                Value::Sequence(vec![e, n])
                             }
                         }
-                        (Some(InternalValue::Sequence(ev)), InternalValue::Sequence(nv)) => {
-                            InternalValue::Sequence(merge_sequences(ev, nv))
+                        (Some(Value::Sequence(ev)), Value::Sequence(nv)) => {
+                            Value::Sequence(merge_sequences(ev, nv))
                         }
-                        (Some(InternalValue::Sequence(mut es)), InternalValue::Element(n)) => {
-                            es.push(Some(n));
-                            InternalValue::Sequence(es)
+                        (Some(Value::Sequence(mut es)), Value::Element(n)) => {
+                            es.push(n);
+                            Value::Sequence(es)
                         }
                         (_e, v) => v,
                     },
@@ -471,7 +443,7 @@ impl<'a, 'de> Visitor<'de> for ValueVisitor<'a> {
             }
         }
 
-        Ok(InternalValue::Element(element))
+        Ok(Value::Element(element))
     }
 
     fn visit_seq<V>(self, mut seq_access: V) -> Result<Self::Value, V::Error>
@@ -481,32 +453,34 @@ impl<'a, 'de> Visitor<'de> for ValueVisitor<'a> {
         let mut elements = Vec::new();
 
         while let Some(value) =
-            seq_access.next_element_seed(self.0.transmute::<Option<InternalValue>>())?
+            seq_access.next_element_seed(self.0.transmute::<Option<Value<R>>>())?
         {
             match value {
-                Some(InternalValue::Element(e)) => elements.push(Some(e)),
-                Some(InternalValue::Sequence(_)) => {
+                Some(Value::Element(e)) => elements.push(e),
+                Some(Value::Sequence(_)) => {
                     return Err(de::Error::invalid_type(
                         Unexpected::Seq,
                         &"a sequence element",
                     ))
                 }
-                Some(InternalValue::Primitive(_)) => {
+                Some(Value::Primitive(_)) => {
                     return Err(de::Error::invalid_type(
                         Unexpected::Seq,
                         &"a sequence element",
                     ))
                 }
-                None => elements.push(None),
+                None => elements.push(Default::default()),
             }
         }
 
-        Ok(InternalValue::Sequence(elements))
+        Ok(Value::Sequence(elements))
     }
 }
 
-impl<'de> DeserializeSeed<'de> for &mut DeserializationContext<Option<InternalValue>> {
-    type Value = Option<InternalValue>;
+impl<'de, const R: FhirRelease> DeserializeSeed<'de>
+    for &mut DeserializationContext<Option<Value<R>>>
+{
+    type Value = Option<Value<R>>;
 
     #[inline]
     fn deserialize<D>(self, deserializer: D) -> Result<Self::Value, D::Error>
@@ -516,10 +490,13 @@ impl<'de> DeserializeSeed<'de> for &mut DeserializationContext<Option<InternalVa
         deserializer.deserialize_option(SeqElementVisitor(self))
     }
 }
-struct SeqElementVisitor<'a>(&'a mut DeserializationContext<Option<InternalValue>>);
 
-impl<'a, 'de> Visitor<'de> for SeqElementVisitor<'a> {
-    type Value = Option<InternalValue>;
+struct SeqElementVisitor<'a, const R: FhirRelease>(
+    &'a mut DeserializationContext<Option<Value<R>>>,
+);
+
+impl<'a, 'de, const R: FhirRelease> Visitor<'de> for SeqElementVisitor<'a, R> {
+    type Value = Option<Value<R>>;
 
     fn expecting(&self, formatter: &mut std::fmt::Formatter) -> std::fmt::Result {
         formatter.write_str("a sequence element")
@@ -541,7 +518,7 @@ impl<'a, 'de> Visitor<'de> for SeqElementVisitor<'a> {
         D: de::Deserializer<'de>,
     {
         self.0
-            .transmute::<InternalValue>()
+            .transmute::<Value<R>>()
             .deserialize(deserializer)
             .map(Some)
     }
@@ -555,7 +532,7 @@ impl<'a, 'de> Visitor<'de> for SeqElementVisitor<'a> {
     }
 }
 
-impl<'de> de::Deserializer<'de> for Deserializer<InternalElement> {
+impl<'de, const R: FhirRelease> de::Deserializer<'de> for Deserializer<InternalElement<R>> {
     type Error = element::error::Error;
 
     #[inline]
@@ -563,130 +540,12 @@ impl<'de> de::Deserializer<'de> for Deserializer<InternalElement> {
     where
         V: Visitor<'de>,
     {
-        visitor.visit_map(ElementAccess::new(self.0))
+        Deserializer(self.0 .0).deserialize_any(visitor)
     }
 
     forward_to_deserialize_any! {
         bool i8 i16 i32 i64 i128 u8 u16 u32 u64 u128 f32 f64 char str string
         bytes byte_buf option unit unit_struct newtype_struct tuple
         tuple_struct map struct enum seq identifier ignored_any
-    }
-}
-
-impl<'de> de::Deserializer<'de> for Deserializer<InternalValue> {
-    type Error = element::error::Error;
-
-    #[inline]
-    fn deserialize_any<V>(self, visitor: V) -> element::error::Result<V::Value>
-    where
-        V: Visitor<'de>,
-    {
-        match self.0 {
-            InternalValue::Element(e) => visitor.visit_map(ElementAccess::new(e)),
-            InternalValue::Sequence(_) => Err(de::Error::invalid_type(
-                Unexpected::Seq,
-                &"an element or primitive",
-            )),
-            InternalValue::Primitive(p) => match p {
-                InternalPrimitive::Bool(b) => visitor.visit_bool(b),
-                InternalPrimitive::Integer(i) => visitor.visit_i64(i),
-                InternalPrimitive::String(s) => visitor.visit_string(s),
-            },
-        }
-    }
-
-    forward_to_deserialize_any! {
-        bool i8 i16 i32 i64 i128 u8 u16 u32 u64 u128 f32 f64 char str string
-        bytes byte_buf option unit unit_struct newtype_struct tuple
-        tuple_struct enum map struct seq identifier ignored_any
-    }
-}
-
-struct ElementAccess {
-    iter: indexmap::map::IntoIter<String, InternalValue>,
-    resource_type: Option<InternalValue>,
-    next_key: Option<String>,
-    next_value: Option<InternalValue>,
-    next_seq: Option<VecDeque<InternalElement>>,
-}
-
-impl ElementAccess {
-    fn new(mut element: InternalElement) -> ElementAccess {
-        let resource_type = element.0.remove("resourceType");
-
-        ElementAccess {
-            iter: element.0.into_iter(),
-            resource_type,
-            next_key: None,
-            next_value: None,
-            next_seq: None,
-        }
-    }
-}
-
-impl<'de> MapAccess<'de> for ElementAccess {
-    type Error = element::error::Error;
-
-    fn next_key_seed<K>(&mut self, seed: K) -> element::error::Result<Option<K::Value>>
-    where
-        K: DeserializeSeed<'de>,
-    {
-        if let Some(resource_type) = self.resource_type.take() {
-            self.next_value = Some(resource_type);
-
-            seed.deserialize(StrDeserializer::new("resourceType"))
-                .map(Some)
-        } else if let Some(key) = &self.next_key {
-            seed.deserialize(StrDeserializer::new(key)).map(Some)
-        } else if let Some((key, value)) = self.iter.next() {
-            match value {
-                InternalValue::Sequence(s) => {
-                    self.next_key = Some(key);
-                    self.next_seq = Some(
-                        s.into_iter()
-                            .map(|e| {
-                                e.ok_or(element::error::Error(
-                                    "invalid None, expected a valu".to_string(),
-                                ))
-                            })
-                            .collect::<element::error::Result<_>>()?,
-                    );
-                    self.next_value = self
-                        .next_seq
-                        .as_mut()
-                        .unwrap()
-                        .pop_front()
-                        .map(InternalValue::Element);
-
-                    seed.deserialize(StrDeserializer::new(self.next_key.as_ref().unwrap()))
-                        .map(Some)
-                }
-                _ => {
-                    self.next_value = Some(value);
-
-                    seed.deserialize(StringDeserializer::new(key)).map(Some)
-                }
-            }
-        } else {
-            Ok(None)
-        }
-    }
-
-    fn next_value_seed<V>(&mut self, seed: V) -> element::error::Result<V::Value>
-    where
-        V: DeserializeSeed<'de>,
-    {
-        let next_value = self.next_value.take().unwrap();
-
-        if let Some(s) = &mut self.next_seq {
-            self.next_value = s.pop_front().map(InternalValue::Element);
-        }
-
-        if self.next_value.is_none() {
-            self.next_key = None;
-            self.next_seq = None;
-        }
-
-        seed.deserialize(Deserializer(next_value))
     }
 }

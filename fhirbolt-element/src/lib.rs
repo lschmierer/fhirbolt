@@ -43,7 +43,7 @@ pub use fhirbolt_shared::{FhirRelease, FhirReleases};
 /// );
 /// // ...
 /// ```
-#[derive(Clone, PartialEq)]
+#[derive(Default, Clone, PartialEq)]
 pub struct Element<const R: FhirRelease> {
     map: indexmap::IndexMap<String, Value<R>>,
 }

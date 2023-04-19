@@ -481,12 +481,15 @@ impl<'de> serde::de::DeserializeSeed<'de>
     where
         D: serde::de::Deserializer<'de>,
     {
-        let mut element_context = self.clone::<crate::element::internal::de::InternalElement>();
+        let mut element_context =
+            self.clone::<crate::element::internal::de::InternalElement<
+                { fhirbolt_shared::FhirReleases::R4B },
+            >>();
         let element = element_context.deserialize(deserializer)?;
         self.from_json = false;
-        if let Some(crate::element::internal::de::InternalValue::Primitive(
-            crate::element::internal::de::InternalPrimitive::String(resource_type),
-        )) = element.0.get("resourceType")
+        if let Some(fhirbolt_element::Value::Primitive(fhirbolt_element::Primitive::String(
+            resource_type,
+        ))) = element.0.get("resourceType")
         {
             match resource_type.as_str() {
                 "Account" => {
