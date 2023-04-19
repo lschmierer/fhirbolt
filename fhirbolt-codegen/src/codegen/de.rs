@@ -246,7 +246,7 @@ pub fn implement_deserialze_resource_enum(
     namespace: &TokenStream,
     release: &str,
 ) -> TokenStream {
-    let release_ident = format_ident!("{}", release.to_string().to_lowercase());
+    let release_ident = format_ident!("{}", release.to_string());
 
     let match_resource_type = resource_modules.iter().map(|r| {
         let ident = format_ident!("{}", r.resource_name.as_ref().unwrap());

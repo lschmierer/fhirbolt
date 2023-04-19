@@ -1,4 +1,4 @@
-// Generated on 2023-04-18 by fhirbolt-codegen v0.2.0
+// Generated on 2023-04-19 by fhirbolt-codegen v0.3.0
 #[doc = "Software that is covered by this capability statement.  It is used when the capability statement describes the capabilities of a particular software version, independent of an installation."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub struct CapabilityStatementSoftware {

@@ -1,4 +1,4 @@
-// Generated on 2023-04-18 by fhirbolt-codegen v0.2.0
+// Generated on 2023-04-19 by fhirbolt-codegen v0.3.0
 #[doc = "Base StructureDefinition for CodeableConcept Type: A concept that may be defined by a formal reference to a terminology or ontology or may be provided by text.\n\nThis is a common pattern in healthcare - a concept that may be defined by one or more codes from formal definitions including LOINC and SNOMED CT, and/or defined by the provision of text that captures a human sense of the concept."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub struct CodeableConcept {

@@ -1,4 +1,4 @@
-// Generated on 2023-04-18 by fhirbolt-codegen v0.2.0
+// Generated on 2023-04-19 by fhirbolt-codegen v0.3.0
 #[doc = "Base StructureDefinition for Attachment Type: For referring to data content defined in other formats.\n\nMany models need to include data defined in other specifications that is complex and opaque to the healthcare model. This includes documents, media recordings, structured data, etc."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub struct Attachment {

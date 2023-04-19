@@ -1,4 +1,4 @@
-// Generated on 2023-04-18 by fhirbolt-codegen v0.2.0
+// Generated on 2023-04-19 by fhirbolt-codegen v0.3.0
 #[doc = "Nominal position of the recommended dose in a series (e.g. dose 2 is the next recommended dose)."]
 #[derive(Debug, Clone, PartialEq)]
 pub enum ImmunizationRecommendationRecommendationDoseNumber {

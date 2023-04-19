@@ -1,4 +1,4 @@
-// Generated on 2023-04-18 by fhirbolt-codegen v0.2.0
+// Generated on 2023-04-19 by fhirbolt-codegen v0.3.0
 #[doc = "An identifier, CodeableConcept or canonical reference to the guidance that was requested."]
 #[derive(Debug, Clone, PartialEq)]
 pub enum GuidanceResponseModule {
