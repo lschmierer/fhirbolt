@@ -99,7 +99,7 @@ where
     T: SerializeResource,
 {
     match resource
-        .serialization_context(false)
+        .serialization_context(Default::default(), false)
         .serialize(Serializer)?
     {
         Value::Element(e) => Ok(e),

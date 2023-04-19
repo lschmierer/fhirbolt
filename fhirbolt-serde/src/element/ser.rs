@@ -1,6 +1,6 @@
 //! Serialize FHIR resources as generic element.
 
-use std::str::FromStr;
+use std::{str::FromStr, vec};
 
 use serde::{
     ser::{self, Error, Impossible, SerializeMap, SerializeSeq},
@@ -95,8 +95,29 @@ impl<const R: FhirRelease> Serialize for SerializationContext<&Element<R>> {
             is_resource = true;
         }
 
-        let mut values = self.value.iter().collect::<Vec<_>>();
-        values.sort_unstable_by_key(|(k, _v)| self.unwrap_current_path().position_of_child(k));
+        enum MaybeSorted<'a, const R: FhirRelease> {
+            Sorted(vec::IntoIter<(&'a String, &'a Value<R>)>),
+            Unsorted(indexmap::map::Iter<'a, String, Value<R>>),
+        }
+
+        impl<'a, const R: FhirRelease> Iterator for MaybeSorted<'a, R> {
+            type Item = (&'a String, &'a Value<R>);
+
+            fn next(&mut self) -> Option<Self::Item> {
+                match self {
+                    MaybeSorted::Sorted(i) => i.next(),
+                    MaybeSorted::Unsorted(i) => i.next(),
+                }
+            }
+        }
+
+        let values = if !self.output_json || self.config.sort_json {
+            let mut values = self.value.iter().collect::<Vec<_>>();
+            values.sort_unstable_by_key(|(k, _v)| self.unwrap_current_path().position_of_child(k));
+            MaybeSorted::Sorted(values.into_iter())
+        } else {
+            MaybeSorted::Unsorted(self.value.iter())
+        };
 
         for (key, value) in values {
             self.unwrap_current_path_mut().push(&key);

@@ -9,6 +9,7 @@ use std::{
 use serde::ser::{self, Impossible, Serialize};
 
 use crate::{
+    context::ser::SerializationConfig,
     number::{NumberValueEmitter, NUMBER_TOKEN},
     xml::{
         error::{Error, Result},
@@ -19,32 +20,32 @@ use crate::{
 };
 
 /// Serialize the given resource as XML into the IO stream.
-pub fn to_writer<W, T>(writer: W, value: &T) -> Result<()>
+pub fn to_writer<W, T>(writer: W, value: &T, config: Option<SerializationConfig>) -> Result<()>
 where
     W: io::Write,
     T: SerializeResource,
 {
     value
-        .serialization_context(false)
+        .serialization_context(config.unwrap_or(Default::default()), false)
         .serialize(&mut Serializer::new(writer))
 }
 
 /// Serialize the given resource as a XML byte vector.
-pub fn to_vec<T>(value: &T) -> Result<Vec<u8>>
+pub fn to_vec<T>(value: &T, config: Option<SerializationConfig>) -> Result<Vec<u8>>
 where
     T: SerializeResource,
 {
     let mut writer = Vec::with_capacity(128);
-    to_writer(&mut writer, value)?;
+    to_writer(&mut writer, value, config)?;
     Ok(writer)
 }
 
 /// Serialize the given resource as a String of JSON.
-pub fn to_string<T>(value: &T) -> Result<String>
+pub fn to_string<T>(value: &T, config: Option<SerializationConfig>) -> Result<String>
 where
     T: SerializeResource,
 {
-    let vec = to_vec(value)?;
+    let vec = to_vec(value, config)?;
     let string = unsafe {
         // We do not emit invalid UTF-8.
         String::from_utf8_unchecked(vec)

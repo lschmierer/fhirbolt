@@ -18,7 +18,7 @@ pub use context::{
         DeserializationConfig, DeserializationContext, DeserializationMode, DeserializeResource,
         DeserializeResourceOwned,
     },
-    ser::{SerializationContext, SerializeResource},
+    ser::{SerializationContext, SerializationConfig, SerializeResource},
 };
 
 /// Marker trait for all types representing FHIR resources.

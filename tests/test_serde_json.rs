@@ -106,7 +106,7 @@ where
         let element_from_slice: Element<R> = fhirbolt::json::from_slice(&buffer, None).unwrap();
 
         assert_json_eq!(
-            fhirbolt::json::to_json_value(element_from_slice.clone()).unwrap(),
+            fhirbolt::json::to_json_value(element_from_slice.clone(), None).unwrap(),
             json_value
         );
 
@@ -114,14 +114,14 @@ where
             fhirbolt::json::from_json_value(json_value.clone(), None).unwrap();
 
         assert_json_eq!(
-            fhirbolt::json::to_json_value(element_from_value).unwrap(),
+            fhirbolt::json::to_json_value(element_from_value, None).unwrap(),
             json_value
         );
 
         let resource: T =
             fhirbolt::json::from_slice(&buffer, Some(DeserializationConfig { mode })).unwrap();
         assert_json_eq!(
-            fhirbolt::json::to_json_value(resource.clone()).unwrap(),
+            fhirbolt::json::to_json_value(resource.clone(), None).unwrap(),
             json_value
         );
 
