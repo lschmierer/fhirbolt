@@ -27,6 +27,8 @@ jobs:
 
       - name: Check fhirbolt-codegen version updated if generated code changed
         run: |
+          shopt -s globstar
+          
           if git diff --quiet HEAD origin/main -- **/generated/ ; then
             echo No changes in generated code detected
             exit 0
