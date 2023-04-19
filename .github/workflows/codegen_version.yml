@@ -28,18 +28,24 @@ jobs:
       - name: Check fhirbolt-codegen version updated if generated code changed
         run: |
           if git diff --quiet HEAD origin/main -- **/generated/ ; then
+            echo No changes in generated code detected
             exit 0
           else
+            echo Changes in generated code detected
             if [ ${{steps.main_version.outputs.value}} != ${{steps.this_version.outputs.value}} ]; then
+              echo fhirbolt-codegen version was updted
               exit 0
             else
+              echo fhirbolt-codegen version was not updted
               exit 1
             fi
           fi
       - name: Check generated code has correct version (fhirbolt-codegen was run)
         run: |
           if grep -q v${{steps.this_version.outputs.value}} fhirbolt-model/src/generated/r4/resource.rs ; then
+              echo Generated code has correct fhirbolt-codegen version
               exit 0
           else
+              echo Generated code does not have correct fhirbolt-codegen version
               exit 1
           fi
