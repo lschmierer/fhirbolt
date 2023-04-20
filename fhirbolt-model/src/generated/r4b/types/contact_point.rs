@@ -1,4 +1,4 @@
-// Generated on 2023-04-19 by fhirbolt-codegen v0.3.0
+// Generated on 2023-04-20 by fhirbolt-codegen v0.4.0
 #[doc = "Base StructureDefinition for ContactPoint Type: Details for all kinds of technology mediated contact points for a person or organization, including telephone, email, etc.\n\nNeed to track phone, fax, mobile, sms numbers, email addresses, twitter tags, etc."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub struct ContactPoint {

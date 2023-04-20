@@ -11,7 +11,7 @@ use zip::read::{ZipArchive, ZipFile};
 
 use fhirbolt_codegen::{generate_all, model::Bundle, SourceFile};
 
-const BUILD_FHIR_RELEASES: &[&str] = &["R4", "R4B"];
+const BUILD_FHIR_RELEASES: &[&str] = &["R4", "R4B", "R5"];
 
 const FHIR_DEFINITIONS_JSON_DOWNLOAD_URL: &str = "http://hl7.org/fhir/{}/definitions.json.zip";
 

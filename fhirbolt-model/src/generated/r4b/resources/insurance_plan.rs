@@ -1,4 +1,4 @@
-// Generated on 2023-04-19 by fhirbolt-codegen v0.3.0
+// Generated on 2023-04-20 by fhirbolt-codegen v0.4.0
 #[doc = "The contact for the health insurance product for a certain purpose."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub struct InsurancePlanContact {

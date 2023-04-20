@@ -1,4 +1,4 @@
-// Generated on 2023-04-19 by fhirbolt-codegen v0.3.0
+// Generated on 2023-04-20 by fhirbolt-codegen v0.4.0
 #[doc = "Base StructureDefinition for id type: Any combination of letters, numerals, \"-\" and \".\", with a length limit of 64 characters.  (This might be an integer, an unprefixed OID, UUID or any other identifier pattern that meets these constraints.)  Ids are case-insensitive."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub struct Id {

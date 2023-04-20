@@ -8,6 +8,7 @@
 //! Currenlty supported FHIR releases:
 //!   * R4
 //!   * R4B
+//!   * R5
 //!
 //! The Rust crate supports two working modes:
 //! 1. a generic element model

@@ -11,6 +11,7 @@ pub struct TypeHints {
     pub array_paths: LinkedHashSet<String>,
     pub boolean_paths: LinkedHashSet<String>,
     pub integer_paths: LinkedHashSet<String>,
+    pub integer64_paths: LinkedHashSet<String>,
     pub unsigned_integer_paths: LinkedHashSet<String>,
     pub positive_integer_paths: LinkedHashSet<String>,
     pub decimal_integer_paths: LinkedHashSet<String>,

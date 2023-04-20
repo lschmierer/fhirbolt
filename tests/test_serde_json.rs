@@ -177,3 +177,17 @@ fn test_serde_json_r4b() {
         DeserializationMode::Lax,
     );
 }
+
+#[cfg(feature = "r5")]
+#[test]
+fn test_serde_json_r5() {
+    test_serde_json::<fhirbolt::model::r5::Resource, { FhirReleases::R5 }>(
+        DeserializationMode::Strict,
+    );
+    test_serde_json::<fhirbolt::model::r5::Resource, { FhirReleases::R5 }>(
+        DeserializationMode::Compatibility,
+    );
+    test_serde_json::<fhirbolt::model::r5::Resource, { FhirReleases::R5 }>(
+        DeserializationMode::Lax,
+    );
+}

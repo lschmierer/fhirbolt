@@ -1,4 +1,4 @@
-// Generated on 2023-04-19 by fhirbolt-codegen v0.3.0
+// Generated on 2023-04-20 by fhirbolt-codegen v0.4.0
 #[doc = "Time when specimen was collected from subject - the physiologically relevant time."]
 #[derive(Debug, Clone, PartialEq)]
 pub enum SpecimenCollectionCollected {

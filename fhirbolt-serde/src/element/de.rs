@@ -70,7 +70,8 @@ impl<'de, const R: FhirRelease> de::Deserializer<'de> for Deserializer<Value<R>>
             )),
             Value::Primitive(p) => match p {
                 Primitive::Bool(b) => visitor.visit_bool(b),
-                Primitive::Integer(i) => visitor.visit_i64(i),
+                Primitive::Integer(i) => visitor.visit_i32(i),
+                Primitive::Integer64(i) => visitor.visit_i64(i),
                 Primitive::Decimal(s) | Primitive::String(s) => visitor.visit_string(s),
             },
         }
@@ -85,7 +86,6 @@ impl<'de, const R: FhirRelease> de::Deserializer<'de> for Deserializer<Value<R>>
 
 struct ElementAccess<const R: FhirRelease> {
     iter: indexmap::map::IntoIter<String, Value<R>>,
-    resource_type: Option<Value<R>>,
     next_key: Option<String>,
     next_value: Option<Value<R>>,
     next_seq_iter: Option<vec::IntoIter<Element<R>>>,
@@ -93,14 +93,31 @@ struct ElementAccess<const R: FhirRelease> {
 
 impl<const R: FhirRelease> ElementAccess<R> {
     fn new(mut element: Element<R>) -> ElementAccess<R> {
+        // if in resource, it is important that the resourceType is deserialized as first field
         let resource_type = element.remove("resourceType");
+
+        let next_key = if resource_type.is_some() {
+            Some("resourceType".into())
+        } else {
+            None
+        };
+
+        let (next_seq_iter, next_value) = match resource_type {
+            Some(Value::Sequence(s)) => {
+                let mut iter = s.into_iter();
+                let next_value = iter.next().map(Value::Element);
+
+                (Some(iter), next_value)
+            }
+            Some(v) => (None, Some(v)),
+            _ => (None, None),
+        };
 
         ElementAccess {
             iter: element.into_iter(),
-            resource_type,
-            next_key: None,
-            next_value: None,
-            next_seq_iter: None,
+            next_key,
+            next_value,
+            next_seq_iter,
         }
     }
 }
@@ -112,12 +129,7 @@ impl<'de, const R: FhirRelease> MapAccess<'de> for ElementAccess<R> {
     where
         K: DeserializeSeed<'de>,
     {
-        if let Some(resource_type) = self.resource_type.take() {
-            self.next_value = Some(resource_type);
-
-            seed.deserialize(StrDeserializer::new("resourceType"))
-                .map(Some)
-        } else if let Some(key) = &self.next_key {
+        if let Some(key) = &self.next_key {
             seed.deserialize(StrDeserializer::new(key)).map(Some)
         } else if let Some((key, value)) = self.iter.next() {
             match value {

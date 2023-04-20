@@ -1,4 +1,4 @@
-// Generated on 2023-04-19 by fhirbolt-codegen v0.3.0
+// Generated on 2023-04-20 by fhirbolt-codegen v0.4.0
 #[doc = "The value of the trait that holds (or does not hold - see 'exclude') for members of the group."]
 #[derive(Debug, Clone, PartialEq)]
 pub enum GroupCharacteristicValue {

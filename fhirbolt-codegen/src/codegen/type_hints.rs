@@ -10,6 +10,7 @@ pub fn generate_type_hints(type_hints: &TypeHints) -> TokenStream {
     let type_hints_array_paths_tokens = generate_set(&type_hints.array_paths);
     let type_hints_boolean_paths_tokens = generate_set(&type_hints.boolean_paths);
     let type_hints_integer_paths_tokens = generate_set(&type_hints.integer_paths);
+    let type_hints_integer64_paths_tokens = generate_set(&type_hints.integer64_paths);
     let type_hints_unsigned_integer_paths_tokens = generate_set(&type_hints.unsigned_integer_paths);
     let type_hints_positive_integer_paths_tokens = generate_set(&type_hints.positive_integer_paths);
     let type_hints_decimal_paths_tokens = generate_set(&type_hints.decimal_integer_paths);
@@ -22,8 +23,9 @@ pub fn generate_type_hints(type_hints: &TypeHints) -> TokenStream {
         pub static TYPE_HINTS: crate::type_hints::TypeHints = crate::type_hints::TypeHints {
             type_paths: #type_hints_type_paths_tokens,
             array_paths: #type_hints_array_paths_tokens,
-            integer_paths: #type_hints_integer_paths_tokens,
             boolean_paths: #type_hints_boolean_paths_tokens,
+            integer_paths: #type_hints_integer_paths_tokens,
+            integer64_paths: #type_hints_integer64_paths_tokens,
             unsigned_integer_paths: #type_hints_unsigned_integer_paths_tokens,
             positive_integer_paths: #type_hints_positive_integer_paths_tokens,
             decimal_paths: #type_hints_decimal_paths_tokens,

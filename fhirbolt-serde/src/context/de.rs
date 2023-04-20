@@ -42,6 +42,10 @@ pub enum CurrentElement {
     Id,
     // ExampleScenario.instance has a "resourceType" field which requires special handling
     ExampleScenarioInstance,
+    // Consent.provision has a "resourceType" field which requires special handling
+    ConsentProvision,
+    // Subscription.filterBy has a "resourceType" field which requires special handling
+    SubscriptionFilterBy,
     // Extension.url can not have extensions
     Extension,
     // Extension.url can not have extensions

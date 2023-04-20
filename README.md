@@ -11,6 +11,7 @@ More elaborate features like validation (including cardinality and slicing) or f
 Currenlty supported FHIR releases:
   * R4
   * R4B
+  * R5
 
 ## Language Support
 

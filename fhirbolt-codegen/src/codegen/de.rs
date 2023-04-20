@@ -449,6 +449,7 @@ fn type_tokens(
     if field_type.name == "bool"
         || field_type.name == "u32"
         || field_type.name == "i32"
+        || field_type.name == "i64"
         || field_type.name == "std::string::String"
     {
         type_tokens
