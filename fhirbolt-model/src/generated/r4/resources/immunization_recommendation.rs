@@ -1,30 +1,22 @@
-// Generated on 2023-04-20 by fhirbolt-codegen v0.4.0
+// Generated on 2023-04-20 by fhirbolt-codegen v0.5.0
 #[doc = "Nominal position of the recommended dose in a series (e.g. dose 2 is the next recommended dose)."]
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub enum ImmunizationRecommendationRecommendationDoseNumber {
     PositiveInt(Box<super::super::types::PositiveInt>),
     String(Box<super::super::types::String>),
+    #[default]
     Invalid,
 }
-impl Default for ImmunizationRecommendationRecommendationDoseNumber {
-    fn default() -> ImmunizationRecommendationRecommendationDoseNumber {
-        ImmunizationRecommendationRecommendationDoseNumber::Invalid
-    }
-}
 #[doc = "The recommended number of doses to achieve immunity."]
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub enum ImmunizationRecommendationRecommendationSeriesDoses {
     PositiveInt(Box<super::super::types::PositiveInt>),
     String(Box<super::super::types::String>),
+    #[default]
     Invalid,
 }
-impl Default for ImmunizationRecommendationRecommendationSeriesDoses {
-    fn default() -> ImmunizationRecommendationRecommendationSeriesDoses {
-        ImmunizationRecommendationRecommendationSeriesDoses::Invalid
-    }
-}
 #[doc = "Vaccine date recommendations.  For example, earliest date to administer, latest date to administer, etc."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct ImmunizationRecommendationRecommendationDateCriterion {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -37,8 +29,27 @@ pub struct ImmunizationRecommendationRecommendationDateCriterion {
     #[doc = "The date whose meaning is specified by dateCriterion.code."]
     pub r#value: super::super::types::DateTime,
 }
+impl Default for ImmunizationRecommendationRecommendationDateCriterion {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#code: {
+                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#value: {
+                let mut default: super::super::types::DateTime = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+        }
+    }
+}
 #[doc = "Vaccine administration recommendations."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct ImmunizationRecommendationRecommendation {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -71,8 +82,33 @@ pub struct ImmunizationRecommendationRecommendation {
     #[doc = "Patient Information that supports the status and recommendation.  This includes patient observations, adverse reactions and allergy/intolerance information."]
     pub r#supporting_patient_information: Vec<Box<super::super::types::Reference>>,
 }
+impl Default for ImmunizationRecommendationRecommendation {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#vaccine_code: Default::default(),
+            r#target_disease: Default::default(),
+            r#contraindicated_vaccine_code: Default::default(),
+            r#forecast_status: {
+                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#forecast_reason: Default::default(),
+            r#date_criterion: Default::default(),
+            r#description: Default::default(),
+            r#series: Default::default(),
+            r#dose_number: Default::default(),
+            r#series_doses: Default::default(),
+            r#supporting_immunization: Default::default(),
+            r#supporting_patient_information: Default::default(),
+        }
+    }
+}
 #[doc = "A patient's point-in-time set of recommendations (i.e. forecasting) according to a published schedule with optional supporting justification."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct ImmunizationRecommendation {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,
@@ -100,4 +136,31 @@ pub struct ImmunizationRecommendation {
     pub r#authority: Option<Box<super::super::types::Reference>>,
     #[doc = "Vaccine administration recommendations."]
     pub r#recommendation: Vec<ImmunizationRecommendationRecommendation>,
+}
+impl Default for ImmunizationRecommendation {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#meta: Default::default(),
+            r#implicit_rules: Default::default(),
+            r#language: Default::default(),
+            r#text: Default::default(),
+            r#contained: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#identifier: Default::default(),
+            r#patient: {
+                let mut default: Box<super::super::types::Reference> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#date: {
+                let mut default: super::super::types::DateTime = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#authority: Default::default(),
+            r#recommendation: Default::default(),
+        }
+    }
 }

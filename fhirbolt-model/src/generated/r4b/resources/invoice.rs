@@ -1,18 +1,14 @@
-// Generated on 2023-04-20 by fhirbolt-codegen v0.4.0
+// Generated on 2023-04-20 by fhirbolt-codegen v0.5.0
 #[doc = "The ChargeItem contains information such as the billing code, date, amount etc. If no further details are required for the lineItem, inline billing codes can be added using the CodeableConcept data type instead of the Reference."]
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub enum InvoiceLineItemChargeItem {
     Reference(Box<super::super::types::Reference>),
     CodeableConcept(Box<super::super::types::CodeableConcept>),
+    #[default]
     Invalid,
 }
-impl Default for InvoiceLineItemChargeItem {
-    fn default() -> InvoiceLineItemChargeItem {
-        InvoiceLineItemChargeItem::Invalid
-    }
-}
 #[doc = "Indicates who or what performed or participated in the charged service."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct InvoiceParticipant {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -25,8 +21,23 @@ pub struct InvoiceParticipant {
     #[doc = "The device, practitioner, etc. who performed or participated in the service."]
     pub r#actor: Box<super::super::types::Reference>,
 }
+impl Default for InvoiceParticipant {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#role: Default::default(),
+            r#actor: {
+                let mut default: Box<super::super::types::Reference> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+        }
+    }
+}
 #[doc = "The price for a ChargeItem may be calculated as a base price with surcharges/deductions that apply in certain conditions. A ChargeItemDefinition resource that defines the prices, factors and conditions that apply to a billing code is currently under development. The priceComponent element can be used to offer transparency to the recipient of the Invoice as to how the prices have been calculated."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct InvoiceLineItemPriceComponent {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -43,8 +54,25 @@ pub struct InvoiceLineItemPriceComponent {
     #[doc = "The amount calculated for this component."]
     pub r#amount: Option<Box<super::super::types::Money>>,
 }
+impl Default for InvoiceLineItemPriceComponent {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#type: {
+                let mut default: super::super::types::Code = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#code: Default::default(),
+            r#factor: Default::default(),
+            r#amount: Default::default(),
+        }
+    }
+}
 #[doc = "Each line item represents one charge for goods and services rendered. Details such as date, code and amount are found in the referenced ChargeItem resource."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct InvoiceLineItem {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -59,8 +87,20 @@ pub struct InvoiceLineItem {
     #[doc = "The price for a ChargeItem may be calculated as a base price with surcharges/deductions that apply in certain conditions. A ChargeItemDefinition resource that defines the prices, factors and conditions that apply to a billing code is currently under development. The priceComponent element can be used to offer transparency to the recipient of the Invoice as to how the prices have been calculated."]
     pub r#price_component: Vec<InvoiceLineItemPriceComponent>,
 }
+impl Default for InvoiceLineItem {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#sequence: Default::default(),
+            r#charge_item: Default::default(),
+            r#price_component: Default::default(),
+        }
+    }
+}
 #[doc = "Invoice containing collected ChargeItems from an Account with calculated individual and total price for Billing purpose."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct Invoice {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,
@@ -110,4 +150,38 @@ pub struct Invoice {
     pub r#payment_terms: Option<super::super::types::Markdown>,
     #[doc = "Comments made about the invoice by the issuer, subject, or other participants."]
     pub r#note: Vec<Box<super::super::types::Annotation>>,
+}
+impl Default for Invoice {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#meta: Default::default(),
+            r#implicit_rules: Default::default(),
+            r#language: Default::default(),
+            r#text: Default::default(),
+            r#contained: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#identifier: Default::default(),
+            r#status: {
+                let mut default: super::super::types::Code = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#cancelled_reason: Default::default(),
+            r#type: Default::default(),
+            r#subject: Default::default(),
+            r#recipient: Default::default(),
+            r#date: Default::default(),
+            r#participant: Default::default(),
+            r#issuer: Default::default(),
+            r#account: Default::default(),
+            r#line_item: Default::default(),
+            r#total_price_component: Default::default(),
+            r#total_net: Default::default(),
+            r#total_gross: Default::default(),
+            r#payment_terms: Default::default(),
+            r#note: Default::default(),
+        }
+    }
 }

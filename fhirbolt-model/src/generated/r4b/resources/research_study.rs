@@ -1,6 +1,6 @@
-// Generated on 2023-04-20 by fhirbolt-codegen v0.4.0
+// Generated on 2023-04-20 by fhirbolt-codegen v0.5.0
 #[doc = "Describes an expected sequence of events for one of the participants of a study.  E.g. Exposure to drug A, wash-out, exposure to drug B, wash-out, follow-up."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct ResearchStudyArm {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -15,8 +15,24 @@ pub struct ResearchStudyArm {
     #[doc = "A succinct description of the path through the study that would be followed by a subject adhering to this arm."]
     pub r#description: Option<super::super::types::String>,
 }
+impl Default for ResearchStudyArm {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#name: {
+                let mut default: super::super::types::String = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#type: Default::default(),
+            r#description: Default::default(),
+        }
+    }
+}
 #[doc = "A goal that the study is aiming to achieve in terms of a scientific question to be answered by the analysis of data collected during the study."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct ResearchStudyObjective {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -29,8 +45,19 @@ pub struct ResearchStudyObjective {
     #[doc = "The kind of study objective."]
     pub r#type: Option<Box<super::super::types::CodeableConcept>>,
 }
+impl Default for ResearchStudyObjective {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#name: Default::default(),
+            r#type: Default::default(),
+        }
+    }
+}
 #[doc = "A process where a researcher or organization plans and then executes a series of steps intended to increase the field of healthcare-related knowledge.  This includes studies of safety, efficacy, comparative effectiveness and other information about medications, devices, therapies and other interventional and investigative techniques.  A ResearchStudy involves the gathering of information about human or animal subjects."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct ResearchStudy {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,
@@ -96,4 +123,46 @@ pub struct ResearchStudy {
     pub r#arm: Vec<ResearchStudyArm>,
     #[doc = "A goal that the study is aiming to achieve in terms of a scientific question to be answered by the analysis of data collected during the study."]
     pub r#objective: Vec<ResearchStudyObjective>,
+}
+impl Default for ResearchStudy {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#meta: Default::default(),
+            r#implicit_rules: Default::default(),
+            r#language: Default::default(),
+            r#text: Default::default(),
+            r#contained: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#identifier: Default::default(),
+            r#title: Default::default(),
+            r#protocol: Default::default(),
+            r#part_of: Default::default(),
+            r#status: {
+                let mut default: super::super::types::Code = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#primary_purpose_type: Default::default(),
+            r#phase: Default::default(),
+            r#category: Default::default(),
+            r#focus: Default::default(),
+            r#condition: Default::default(),
+            r#contact: Default::default(),
+            r#related_artifact: Default::default(),
+            r#keyword: Default::default(),
+            r#location: Default::default(),
+            r#description: Default::default(),
+            r#enrollment: Default::default(),
+            r#period: Default::default(),
+            r#sponsor: Default::default(),
+            r#principal_investigator: Default::default(),
+            r#site: Default::default(),
+            r#reason_stopped: Default::default(),
+            r#note: Default::default(),
+            r#arm: Default::default(),
+            r#objective: Default::default(),
+        }
+    }
 }

@@ -1,18 +1,14 @@
-// Generated on 2023-04-20 by fhirbolt-codegen v0.4.0
+// Generated on 2023-04-20 by fhirbolt-codegen v0.5.0
 #[doc = "Time of product collection."]
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub enum BiologicallyDerivedProductCollectionCollected {
     DateTime(Box<super::super::types::DateTime>),
     Period(Box<super::super::types::Period>),
+    #[default]
     Invalid,
 }
-impl Default for BiologicallyDerivedProductCollectionCollected {
-    fn default() -> BiologicallyDerivedProductCollectionCollected {
-        BiologicallyDerivedProductCollectionCollected::Invalid
-    }
-}
 #[doc = "Property values."]
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub enum BiologicallyDerivedProductPropertyValue {
     Boolean(Box<super::super::types::Boolean>),
     Integer(Box<super::super::types::Integer>),
@@ -23,15 +19,11 @@ pub enum BiologicallyDerivedProductPropertyValue {
     Ratio(Box<super::super::types::Ratio>),
     String(Box<super::super::types::String>),
     Attachment(Box<super::super::types::Attachment>),
+    #[default]
     Invalid,
 }
-impl Default for BiologicallyDerivedProductPropertyValue {
-    fn default() -> BiologicallyDerivedProductPropertyValue {
-        BiologicallyDerivedProductPropertyValue::Invalid
-    }
-}
 #[doc = "How this product was collected."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct BiologicallyDerivedProductCollection {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -46,8 +38,20 @@ pub struct BiologicallyDerivedProductCollection {
     #[doc = "Time of product collection."]
     pub r#collected: Option<BiologicallyDerivedProductCollectionCollected>,
 }
+impl Default for BiologicallyDerivedProductCollection {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#collector: Default::default(),
+            r#source: Default::default(),
+            r#collected: Default::default(),
+        }
+    }
+}
 #[doc = "A property that is specific to this BiologicallyDerviedProduct instance."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct BiologicallyDerivedProductProperty {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -60,8 +64,23 @@ pub struct BiologicallyDerivedProductProperty {
     #[doc = "Property values."]
     pub r#value: BiologicallyDerivedProductPropertyValue,
 }
+impl Default for BiologicallyDerivedProductProperty {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#type: {
+                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#value: Default::default(),
+        }
+    }
+}
 #[doc = "A biological material originating from a biological entity intended to be transplanted or infused into another (possibly the same) biological entity."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct BiologicallyDerivedProduct {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,
@@ -105,4 +124,31 @@ pub struct BiologicallyDerivedProduct {
     pub r#storage_temp_requirements: Option<Box<super::super::types::Range>>,
     #[doc = "A property that is specific to this BiologicallyDerviedProduct instance."]
     pub r#property: Vec<BiologicallyDerivedProductProperty>,
+}
+impl Default for BiologicallyDerivedProduct {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#meta: Default::default(),
+            r#implicit_rules: Default::default(),
+            r#language: Default::default(),
+            r#text: Default::default(),
+            r#contained: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#product_category: Default::default(),
+            r#product_code: Default::default(),
+            r#parent: Default::default(),
+            r#request: Default::default(),
+            r#identifier: Default::default(),
+            r#biological_source_event: Default::default(),
+            r#processing_facility: Default::default(),
+            r#division: Default::default(),
+            r#product_status: Default::default(),
+            r#expiration_date: Default::default(),
+            r#collection: Default::default(),
+            r#storage_temp_requirements: Default::default(),
+            r#property: Default::default(),
+        }
+    }
 }

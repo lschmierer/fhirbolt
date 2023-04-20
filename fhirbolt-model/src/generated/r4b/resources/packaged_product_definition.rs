@@ -1,33 +1,25 @@
-// Generated on 2023-04-20 by fhirbolt-codegen v0.4.0
+// Generated on 2023-04-20 by fhirbolt-codegen v0.5.0
 #[doc = "The shelf life time period can be specified using a numerical value for the period of time and its unit of time measurement The unit of measurement shall be specified in accordance with ISO 11240 and the resulting terminology The symbol and the symbol identifier shall be used."]
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub enum PackagedProductDefinitionPackageShelfLifeStoragePeriod {
     Duration(Box<super::super::types::Duration>),
     String(Box<super::super::types::String>),
+    #[default]
     Invalid,
 }
-impl Default for PackagedProductDefinitionPackageShelfLifeStoragePeriod {
-    fn default() -> PackagedProductDefinitionPackageShelfLifeStoragePeriod {
-        PackagedProductDefinitionPackageShelfLifeStoragePeriod::Invalid
-    }
-}
 #[doc = "A value for the characteristic."]
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub enum PackagedProductDefinitionPackagePropertyValue {
     CodeableConcept(Box<super::super::types::CodeableConcept>),
     Quantity(Box<super::super::types::Quantity>),
     Date(Box<super::super::types::Date>),
     Boolean(Box<super::super::types::Boolean>),
     Attachment(Box<super::super::types::Attachment>),
+    #[default]
     Invalid,
 }
-impl Default for PackagedProductDefinitionPackagePropertyValue {
-    fn default() -> PackagedProductDefinitionPackagePropertyValue {
-        PackagedProductDefinitionPackagePropertyValue::Invalid
-    }
-}
 #[doc = "The legal status of supply of the packaged item as classified by the regulator."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct PackagedProductDefinitionLegalStatusOfSupply {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -40,8 +32,19 @@ pub struct PackagedProductDefinitionLegalStatusOfSupply {
     #[doc = "The place where the legal status of supply applies. When not specified, this indicates it is unknown in this context."]
     pub r#jurisdiction: Option<Box<super::super::types::CodeableConcept>>,
 }
+impl Default for PackagedProductDefinitionLegalStatusOfSupply {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#code: Default::default(),
+            r#jurisdiction: Default::default(),
+        }
+    }
+}
 #[doc = "Shelf Life and storage information."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct PackagedProductDefinitionPackageShelfLifeStorage {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -56,8 +59,20 @@ pub struct PackagedProductDefinitionPackageShelfLifeStorage {
     #[doc = "Special precautions for storage, if any, can be specified using an appropriate controlled vocabulary. The controlled term and the controlled term identifier shall be specified."]
     pub r#special_precautions_for_storage: Vec<Box<super::super::types::CodeableConcept>>,
 }
+impl Default for PackagedProductDefinitionPackageShelfLifeStorage {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#type: Default::default(),
+            r#period: Default::default(),
+            r#special_precautions_for_storage: Default::default(),
+        }
+    }
+}
 #[doc = "General characteristics of this item."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct PackagedProductDefinitionPackageProperty {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -70,8 +85,23 @@ pub struct PackagedProductDefinitionPackageProperty {
     #[doc = "A value for the characteristic."]
     pub r#value: Option<PackagedProductDefinitionPackagePropertyValue>,
 }
+impl Default for PackagedProductDefinitionPackageProperty {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#type: {
+                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#value: Default::default(),
+        }
+    }
+}
 #[doc = "The item(s) within the packaging."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct PackagedProductDefinitionPackageContainedItem {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -84,8 +114,23 @@ pub struct PackagedProductDefinitionPackageContainedItem {
     #[doc = "The number of this type of item within this packaging."]
     pub r#amount: Option<Box<super::super::types::Quantity>>,
 }
+impl Default for PackagedProductDefinitionPackageContainedItem {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#item: {
+                let mut default: Box<super::super::types::CodeableReference> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#amount: Default::default(),
+        }
+    }
+}
 #[doc = "A packaging item, as a container for medically related items, possibly with other packaging items within, or a packaging component, such as bottle cap (which is not a device or a medication manufactured item)."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct PackagedProductDefinitionPackage {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -114,8 +159,27 @@ pub struct PackagedProductDefinitionPackage {
     #[doc = "Allows containers (and parts of containers) parwithin containers, still a single packaged product.  See also PackagedProductDefinition.package.containedItem.item(PackagedProductDefinition)."]
     pub r#package: Vec<PackagedProductDefinitionPackage>,
 }
+impl Default for PackagedProductDefinitionPackage {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#identifier: Default::default(),
+            r#type: Default::default(),
+            r#quantity: Default::default(),
+            r#material: Default::default(),
+            r#alternate_material: Default::default(),
+            r#shelf_life_storage: Default::default(),
+            r#manufacturer: Default::default(),
+            r#property: Default::default(),
+            r#contained_item: Default::default(),
+            r#package: Default::default(),
+        }
+    }
+}
 #[doc = "A medically related item or items, in a container or package."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct PackagedProductDefinition {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,
@@ -161,4 +225,32 @@ pub struct PackagedProductDefinition {
     pub r#manufacturer: Vec<Box<super::super::types::Reference>>,
     #[doc = "A packaging item, as a container for medically related items, possibly with other packaging items within, or a packaging component, such as bottle cap (which is not a device or a medication manufactured item)."]
     pub r#package: Option<PackagedProductDefinitionPackage>,
+}
+impl Default for PackagedProductDefinition {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#meta: Default::default(),
+            r#implicit_rules: Default::default(),
+            r#language: Default::default(),
+            r#text: Default::default(),
+            r#contained: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#identifier: Default::default(),
+            r#name: Default::default(),
+            r#type: Default::default(),
+            r#package_for: Default::default(),
+            r#status: Default::default(),
+            r#status_date: Default::default(),
+            r#contained_item_quantity: Default::default(),
+            r#description: Default::default(),
+            r#legal_status_of_supply: Default::default(),
+            r#marketing_status: Default::default(),
+            r#characteristic: Default::default(),
+            r#copackaged_indicator: Default::default(),
+            r#manufacturer: Default::default(),
+            r#package: Default::default(),
+        }
+    }
 }

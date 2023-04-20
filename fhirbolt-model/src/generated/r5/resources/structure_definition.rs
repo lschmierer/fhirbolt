@@ -1,18 +1,14 @@
-// Generated on 2023-04-20 by fhirbolt-codegen v0.4.0
+// Generated on 2023-04-20 by fhirbolt-codegen v0.5.0
 #[doc = "Indicates the mechanism used to compare versions to determine which is more current."]
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub enum StructureDefinitionVersionAlgorithm {
     String(Box<super::super::types::String>),
     Coding(Box<super::super::types::Coding>),
+    #[default]
     Invalid,
 }
-impl Default for StructureDefinitionVersionAlgorithm {
-    fn default() -> StructureDefinitionVersionAlgorithm {
-        StructureDefinitionVersionAlgorithm::Invalid
-    }
-}
 #[doc = "An external specification that the content is mapped to."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct StructureDefinitionMapping {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -29,8 +25,25 @@ pub struct StructureDefinitionMapping {
     #[doc = "Comments about this mapping, including version notes, issues, scope limitations, and other important notes for usage."]
     pub r#comment: Option<super::super::types::String>,
 }
+impl Default for StructureDefinitionMapping {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#identity: {
+                let mut default: super::super::types::Id = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#uri: Default::default(),
+            r#name: Default::default(),
+            r#comment: Default::default(),
+        }
+    }
+}
 #[doc = "Identifies the types of resource or data type elements to which the extension can be applied. For more guidance on using the 'context' element, see the [defining extensions page](defining-extensions.html#context)."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct StructureDefinitionContext {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -43,8 +56,27 @@ pub struct StructureDefinitionContext {
     #[doc = "An expression that defines where an extension can be used in resources."]
     pub r#expression: super::super::types::String,
 }
+impl Default for StructureDefinitionContext {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#type: {
+                let mut default: super::super::types::Code = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#expression: {
+                let mut default: super::super::types::String = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+        }
+    }
+}
 #[doc = "A snapshot view is expressed in a standalone form that can be used and interpreted without considering the base StructureDefinition."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct StructureDefinitionSnapshot {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -55,8 +87,18 @@ pub struct StructureDefinitionSnapshot {
     #[doc = "Captures constraints on each element within the resource."]
     pub r#element: Vec<Box<super::super::types::ElementDefinition>>,
 }
+impl Default for StructureDefinitionSnapshot {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#element: Default::default(),
+        }
+    }
+}
 #[doc = "A differential view is expressed relative to the base StructureDefinition - a statement of differences that it applies."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct StructureDefinitionDifferential {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -67,8 +109,18 @@ pub struct StructureDefinitionDifferential {
     #[doc = "Captures constraints on each element within the resource."]
     pub r#element: Vec<Box<super::super::types::ElementDefinition>>,
 }
+impl Default for StructureDefinitionDifferential {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#element: Default::default(),
+        }
+    }
+}
 #[doc = "A definition of a FHIR structure. This resource is used to describe the underlying resources, data types defined in FHIR, and also for describing extensions and constraints on resources and data types."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct StructureDefinition {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,
@@ -144,4 +196,71 @@ pub struct StructureDefinition {
     pub r#snapshot: Option<StructureDefinitionSnapshot>,
     #[doc = "A differential view is expressed relative to the base StructureDefinition - a statement of differences that it applies."]
     pub r#differential: Option<StructureDefinitionDifferential>,
+}
+impl Default for StructureDefinition {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#meta: Default::default(),
+            r#implicit_rules: Default::default(),
+            r#language: Default::default(),
+            r#text: Default::default(),
+            r#contained: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#url: {
+                let mut default: super::super::types::Uri = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#identifier: Default::default(),
+            r#version: Default::default(),
+            r#version_algorithm: Default::default(),
+            r#name: {
+                let mut default: super::super::types::String = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#title: Default::default(),
+            r#status: {
+                let mut default: super::super::types::Code = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#experimental: Default::default(),
+            r#date: Default::default(),
+            r#publisher: Default::default(),
+            r#contact: Default::default(),
+            r#description: Default::default(),
+            r#use_context: Default::default(),
+            r#jurisdiction: Default::default(),
+            r#purpose: Default::default(),
+            r#copyright: Default::default(),
+            r#copyright_label: Default::default(),
+            r#keyword: Default::default(),
+            r#fhir_version: Default::default(),
+            r#mapping: Default::default(),
+            r#kind: {
+                let mut default: super::super::types::Code = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#abstract: {
+                let mut default: super::super::types::Boolean = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#context: Default::default(),
+            r#context_invariant: Default::default(),
+            r#type: {
+                let mut default: super::super::types::Uri = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#base_definition: Default::default(),
+            r#derivation: Default::default(),
+            r#snapshot: Default::default(),
+            r#differential: Default::default(),
+        }
+    }
 }

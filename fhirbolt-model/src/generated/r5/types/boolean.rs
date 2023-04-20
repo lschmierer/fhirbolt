@@ -1,6 +1,6 @@
-// Generated on 2023-04-20 by fhirbolt-codegen v0.4.0
+// Generated on 2023-04-20 by fhirbolt-codegen v0.5.0
 #[doc = "boolean Type: Value of \"true\" or \"false\""]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct Boolean {
     #[doc = "unique id for the element within a resource (for internal references)"]
     pub r#id: Option<std::string::String>,
@@ -8,4 +8,13 @@ pub struct Boolean {
     pub r#extension: Vec<Box<super::super::types::Extension>>,
     #[doc = "The actual value"]
     pub r#value: Option<bool>,
+}
+impl Default for Boolean {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#value: Default::default(),
+        }
+    }
 }

@@ -1,6 +1,6 @@
-// Generated on 2023-04-20 by fhirbolt-codegen v0.4.0
+// Generated on 2023-04-20 by fhirbolt-codegen v0.5.0
 #[doc = "The set of payloads that are provided/available at this endpoint."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct EndpointPayload {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -13,8 +13,19 @@ pub struct EndpointPayload {
     #[doc = "The mime type to send the payload in - e.g. application/fhir+xml, application/fhir+json. If the mime type is not specified, then the sender could send any content (including no content depending on the connectionType)."]
     pub r#mime_type: Vec<super::super::types::Code>,
 }
+impl Default for EndpointPayload {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#type: Default::default(),
+            r#mime_type: Default::default(),
+        }
+    }
+}
 #[doc = "The technical details of an endpoint that can be used for electronic services, such as for web services providing XDS.b, a REST endpoint for another FHIR server, or a s/Mime email address. This may include any security context information."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct Endpoint {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,
@@ -56,4 +67,38 @@ pub struct Endpoint {
     pub r#address: super::super::types::Url,
     #[doc = "Additional headers / information to send as part of the notification."]
     pub r#header: Vec<super::super::types::String>,
+}
+impl Default for Endpoint {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#meta: Default::default(),
+            r#implicit_rules: Default::default(),
+            r#language: Default::default(),
+            r#text: Default::default(),
+            r#contained: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#identifier: Default::default(),
+            r#status: {
+                let mut default: super::super::types::Code = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#connection_type: Default::default(),
+            r#name: Default::default(),
+            r#description: Default::default(),
+            r#environment_type: Default::default(),
+            r#managing_organization: Default::default(),
+            r#contact: Default::default(),
+            r#period: Default::default(),
+            r#payload: Default::default(),
+            r#address: {
+                let mut default: super::super::types::Url = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#header: Default::default(),
+        }
+    }
 }

@@ -1,6 +1,6 @@
-// Generated on 2023-04-20 by fhirbolt-codegen v0.4.0
+// Generated on 2023-04-20 by fhirbolt-codegen v0.5.0
 #[doc = "Link to a resource that concerns the same actual person."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct PersonLink {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -13,8 +13,23 @@ pub struct PersonLink {
     #[doc = "Level of assurance that this link is associated with the target resource."]
     pub r#assurance: Option<super::super::types::Code>,
 }
+impl Default for PersonLink {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#target: {
+                let mut default: Box<super::super::types::Reference> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#assurance: Default::default(),
+        }
+    }
+}
 #[doc = "Demographics and administrative information about a person independent of a specific health-related context.\n\nNeed to track persons potentially across multiple roles."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct Person {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,
@@ -52,4 +67,28 @@ pub struct Person {
     pub r#active: Option<super::super::types::Boolean>,
     #[doc = "Link to a resource that concerns the same actual person."]
     pub r#link: Vec<PersonLink>,
+}
+impl Default for Person {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#meta: Default::default(),
+            r#implicit_rules: Default::default(),
+            r#language: Default::default(),
+            r#text: Default::default(),
+            r#contained: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#identifier: Default::default(),
+            r#name: Default::default(),
+            r#telecom: Default::default(),
+            r#gender: Default::default(),
+            r#birth_date: Default::default(),
+            r#address: Default::default(),
+            r#photo: Default::default(),
+            r#managing_organization: Default::default(),
+            r#active: Default::default(),
+            r#link: Default::default(),
+        }
+    }
 }

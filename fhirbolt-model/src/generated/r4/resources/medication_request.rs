@@ -1,42 +1,30 @@
-// Generated on 2023-04-20 by fhirbolt-codegen v0.4.0
+// Generated on 2023-04-20 by fhirbolt-codegen v0.5.0
 #[doc = "Indicates if this record was captured as a secondary 'reported' record rather than as an original primary source-of-truth record.  It may also indicate the source of the report."]
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub enum MedicationRequestReported {
     Boolean(Box<super::super::types::Boolean>),
     Reference(Box<super::super::types::Reference>),
+    #[default]
     Invalid,
 }
-impl Default for MedicationRequestReported {
-    fn default() -> MedicationRequestReported {
-        MedicationRequestReported::Invalid
-    }
-}
 #[doc = "Identifies the medication being requested. This is a link to a resource that represents the medication which may be the details of the medication or simply an attribute carrying a code that identifies the medication from a known list of medications."]
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub enum MedicationRequestMedication {
     CodeableConcept(Box<super::super::types::CodeableConcept>),
     Reference(Box<super::super::types::Reference>),
+    #[default]
     Invalid,
 }
-impl Default for MedicationRequestMedication {
-    fn default() -> MedicationRequestMedication {
-        MedicationRequestMedication::Invalid
-    }
-}
 #[doc = "True if the prescriber allows a different drug to be dispensed from what was prescribed."]
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub enum MedicationRequestSubstitutionAllowed {
     Boolean(Box<super::super::types::Boolean>),
     CodeableConcept(Box<super::super::types::CodeableConcept>),
+    #[default]
     Invalid,
 }
-impl Default for MedicationRequestSubstitutionAllowed {
-    fn default() -> MedicationRequestSubstitutionAllowed {
-        MedicationRequestSubstitutionAllowed::Invalid
-    }
-}
 #[doc = "Indicates the quantity or duration for the first dispense of the medication."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct MedicationRequestDispenseRequestInitialFill {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -49,8 +37,19 @@ pub struct MedicationRequestDispenseRequestInitialFill {
     #[doc = "The length of time that the first dispense is expected to last."]
     pub r#duration: Option<Box<super::super::types::Duration>>,
 }
+impl Default for MedicationRequestDispenseRequestInitialFill {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#quantity: Default::default(),
+            r#duration: Default::default(),
+        }
+    }
+}
 #[doc = "Indicates the specific details for the dispense or medication supply part of a medication request (also known as a Medication Prescription or Medication Order).  Note that this information is not always sent with the order.  There may be in some settings (e.g. hospitals) institutional or system support for completing the dispense details in the pharmacy department."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct MedicationRequestDispenseRequest {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -73,8 +72,24 @@ pub struct MedicationRequestDispenseRequest {
     #[doc = "Indicates the intended dispensing Organization specified by the prescriber."]
     pub r#performer: Option<Box<super::super::types::Reference>>,
 }
+impl Default for MedicationRequestDispenseRequest {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#initial_fill: Default::default(),
+            r#dispense_interval: Default::default(),
+            r#validity_period: Default::default(),
+            r#number_of_repeats_allowed: Default::default(),
+            r#quantity: Default::default(),
+            r#expected_supply_duration: Default::default(),
+            r#performer: Default::default(),
+        }
+    }
+}
 #[doc = "Indicates whether or not substitution can or should be part of the dispense. In some cases, substitution must happen, in other cases substitution must not happen. This block explains the prescriber's intent. If nothing is specified substitution may be done."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct MedicationRequestSubstitution {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -87,8 +102,19 @@ pub struct MedicationRequestSubstitution {
     #[doc = "Indicates the reason for the substitution, or why substitution must or must not be performed."]
     pub r#reason: Option<Box<super::super::types::CodeableConcept>>,
 }
+impl Default for MedicationRequestSubstitution {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#allowed: Default::default(),
+            r#reason: Default::default(),
+        }
+    }
+}
 #[doc = "An order or request for both supply of the medication and the instructions for administration of the medication to a patient. The resource is called \"MedicationRequest\" rather than \"MedicationPrescription\" or \"MedicationOrder\" to generalize the use across inpatient and outpatient settings, including care plans, etc., and to harmonize with workflow patterns."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct MedicationRequest {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,
@@ -170,4 +196,62 @@ pub struct MedicationRequest {
     pub r#detected_issue: Vec<Box<super::super::types::Reference>>,
     #[doc = "Links to Provenance records for past versions of this resource or fulfilling request or event resources that identify key state transitions or updates that are likely to be relevant to a user looking at the current version of the resource."]
     pub r#event_history: Vec<Box<super::super::types::Reference>>,
+}
+impl Default for MedicationRequest {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#meta: Default::default(),
+            r#implicit_rules: Default::default(),
+            r#language: Default::default(),
+            r#text: Default::default(),
+            r#contained: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#identifier: Default::default(),
+            r#status: {
+                let mut default: super::super::types::Code = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#status_reason: Default::default(),
+            r#intent: {
+                let mut default: super::super::types::Code = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#category: Default::default(),
+            r#priority: Default::default(),
+            r#do_not_perform: Default::default(),
+            r#reported: Default::default(),
+            r#medication: Default::default(),
+            r#subject: {
+                let mut default: Box<super::super::types::Reference> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#encounter: Default::default(),
+            r#supporting_information: Default::default(),
+            r#authored_on: Default::default(),
+            r#requester: Default::default(),
+            r#performer: Default::default(),
+            r#performer_type: Default::default(),
+            r#recorder: Default::default(),
+            r#reason_code: Default::default(),
+            r#reason_reference: Default::default(),
+            r#instantiates_canonical: Default::default(),
+            r#instantiates_uri: Default::default(),
+            r#based_on: Default::default(),
+            r#group_identifier: Default::default(),
+            r#course_of_therapy_type: Default::default(),
+            r#insurance: Default::default(),
+            r#note: Default::default(),
+            r#dosage_instruction: Default::default(),
+            r#dispense_request: Default::default(),
+            r#substitution: Default::default(),
+            r#prior_prescription: Default::default(),
+            r#detected_issue: Default::default(),
+            r#event_history: Default::default(),
+        }
+    }
 }

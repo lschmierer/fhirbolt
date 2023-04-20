@@ -1,6 +1,6 @@
-// Generated on 2023-04-20 by fhirbolt-codegen v0.4.0
+// Generated on 2023-04-20 by fhirbolt-codegen v0.5.0
 #[doc = "MonetaryComponent Type: Availability data for an {item}."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct MonetaryComponent {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -14,4 +14,20 @@ pub struct MonetaryComponent {
     pub r#factor: Option<super::super::types::Decimal>,
     #[doc = "Explicit value amount to be used."]
     pub r#amount: Option<Box<super::super::types::Money>>,
+}
+impl Default for MonetaryComponent {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#type: {
+                let mut default: super::super::types::Code = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#code: Default::default(),
+            r#factor: Default::default(),
+            r#amount: Default::default(),
+        }
+    }
 }

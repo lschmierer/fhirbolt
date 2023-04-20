@@ -1,6 +1,6 @@
-// Generated on 2023-04-20 by fhirbolt-codegen v0.4.0
+// Generated on 2023-04-20 by fhirbolt-codegen v0.5.0
 #[doc = "Attachment Type: For referring to data content defined in other formats.\n\nMany models need to include data defined in other specifications that is complex and opaque to the healthcare model. This includes documents, media recordings, structured data, etc."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct Attachment {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -32,4 +32,25 @@ pub struct Attachment {
     pub r#duration: Option<super::super::types::Decimal>,
     #[doc = "The number of pages when printed."]
     pub r#pages: Option<super::super::types::PositiveInt>,
+}
+impl Default for Attachment {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#content_type: Default::default(),
+            r#language: Default::default(),
+            r#data: Default::default(),
+            r#url: Default::default(),
+            r#size: Default::default(),
+            r#hash: Default::default(),
+            r#title: Default::default(),
+            r#creation: Default::default(),
+            r#height: Default::default(),
+            r#width: Default::default(),
+            r#frames: Default::default(),
+            r#duration: Default::default(),
+            r#pages: Default::default(),
+        }
+    }
 }

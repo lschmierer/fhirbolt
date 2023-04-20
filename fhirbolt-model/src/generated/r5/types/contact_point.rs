@@ -1,6 +1,6 @@
-// Generated on 2023-04-20 by fhirbolt-codegen v0.4.0
+// Generated on 2023-04-20 by fhirbolt-codegen v0.5.0
 #[doc = "ContactPoint Type: Details for all kinds of technology mediated contact points for a person or organization, including telephone, email, etc.\n\nNeed to track phone, fax, mobile, sms numbers, email addresses, twitter tags, etc."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct ContactPoint {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -16,4 +16,17 @@ pub struct ContactPoint {
     pub r#rank: Option<super::super::types::PositiveInt>,
     #[doc = "Time period when the contact point was/is in use."]
     pub r#period: Option<Box<super::super::types::Period>>,
+}
+impl Default for ContactPoint {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#system: Default::default(),
+            r#value: Default::default(),
+            r#use: Default::default(),
+            r#rank: Default::default(),
+            r#period: Default::default(),
+        }
+    }
 }

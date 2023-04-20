@@ -1,54 +1,38 @@
-// Generated on 2023-04-20 by fhirbolt-codegen v0.4.0
+// Generated on 2023-04-20 by fhirbolt-codegen v0.5.0
 #[doc = "Indicates the mechanism used to compare versions to determine which is more current."]
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub enum SpecimenDefinitionVersionAlgorithm {
     String(Box<super::super::types::String>),
     Coding(Box<super::super::types::Coding>),
+    #[default]
     Invalid,
 }
-impl Default for SpecimenDefinitionVersionAlgorithm {
-    fn default() -> SpecimenDefinitionVersionAlgorithm {
-        SpecimenDefinitionVersionAlgorithm::Invalid
-    }
-}
 #[doc = "A code or group definition that describes the intended subject  from which this kind of specimen is to be collected."]
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub enum SpecimenDefinitionSubject {
     CodeableConcept(Box<super::super::types::CodeableConcept>),
     Reference(Box<super::super::types::Reference>),
+    #[default]
     Invalid,
 }
-impl Default for SpecimenDefinitionSubject {
-    fn default() -> SpecimenDefinitionSubject {
-        SpecimenDefinitionSubject::Invalid
-    }
-}
 #[doc = "The minimum volume to be conditioned in the container."]
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub enum SpecimenDefinitionTypeTestedContainerMinimumVolume {
     Quantity(Box<super::super::types::Quantity>),
     String(Box<super::super::types::String>),
+    #[default]
     Invalid,
-}
-impl Default for SpecimenDefinitionTypeTestedContainerMinimumVolume {
-    fn default() -> SpecimenDefinitionTypeTestedContainerMinimumVolume {
-        SpecimenDefinitionTypeTestedContainerMinimumVolume::Invalid
-    }
-}
-#[doc = "Substance introduced in the kind of container to preserve, maintain or enhance the specimen. Examples: Formalin, Citrate, EDTA."]
-#[derive(Debug, Clone, PartialEq)]
-pub enum SpecimenDefinitionTypeTestedContainerAdditiveAdditive {
-    CodeableConcept(Box<super::super::types::CodeableConcept>),
-    Reference(Box<super::super::types::Reference>),
-    Invalid,
-}
-impl Default for SpecimenDefinitionTypeTestedContainerAdditiveAdditive {
-    fn default() -> SpecimenDefinitionTypeTestedContainerAdditiveAdditive {
-        SpecimenDefinitionTypeTestedContainerAdditiveAdditive::Invalid
-    }
 }
 #[doc = "Substance introduced in the kind of container to preserve, maintain or enhance the specimen. Examples: Formalin, Citrate, EDTA."]
 #[derive(Default, Debug, Clone, PartialEq)]
+pub enum SpecimenDefinitionTypeTestedContainerAdditiveAdditive {
+    CodeableConcept(Box<super::super::types::CodeableConcept>),
+    Reference(Box<super::super::types::Reference>),
+    #[default]
+    Invalid,
+}
+#[doc = "Substance introduced in the kind of container to preserve, maintain or enhance the specimen. Examples: Formalin, Citrate, EDTA."]
+#[derive(Debug, Clone, PartialEq)]
 pub struct SpecimenDefinitionTypeTestedContainerAdditive {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -59,8 +43,18 @@ pub struct SpecimenDefinitionTypeTestedContainerAdditive {
     #[doc = "Substance introduced in the kind of container to preserve, maintain or enhance the specimen. Examples: Formalin, Citrate, EDTA."]
     pub r#additive: SpecimenDefinitionTypeTestedContainerAdditiveAdditive,
 }
+impl Default for SpecimenDefinitionTypeTestedContainerAdditive {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#additive: Default::default(),
+        }
+    }
+}
 #[doc = "The specimen's container."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct SpecimenDefinitionTypeTestedContainer {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -85,8 +79,25 @@ pub struct SpecimenDefinitionTypeTestedContainer {
     #[doc = "Special processing that should be applied to the container for this kind of specimen."]
     pub r#preparation: Option<super::super::types::Markdown>,
 }
+impl Default for SpecimenDefinitionTypeTestedContainer {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#material: Default::default(),
+            r#type: Default::default(),
+            r#cap: Default::default(),
+            r#description: Default::default(),
+            r#capacity: Default::default(),
+            r#minimum_volume: Default::default(),
+            r#additive: Default::default(),
+            r#preparation: Default::default(),
+        }
+    }
+}
 #[doc = "Set of instructions for preservation/transport of the specimen at a defined temperature interval, prior the testing process."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct SpecimenDefinitionTypeTestedHandling {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -103,8 +114,21 @@ pub struct SpecimenDefinitionTypeTestedHandling {
     #[doc = "Additional textual instructions for the preservation or transport of the specimen. For instance, 'Protect from light exposure'."]
     pub r#instruction: Option<super::super::types::Markdown>,
 }
+impl Default for SpecimenDefinitionTypeTestedHandling {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#temperature_qualifier: Default::default(),
+            r#temperature_range: Default::default(),
+            r#max_duration: Default::default(),
+            r#instruction: Default::default(),
+        }
+    }
+}
 #[doc = "Specimen conditioned in a container as expected by the testing laboratory."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct SpecimenDefinitionTypeTested {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -133,8 +157,31 @@ pub struct SpecimenDefinitionTypeTested {
     #[doc = "Where the specimen will be tested: e.g., lab, sector, device or any combination of these."]
     pub r#testing_destination: Vec<Box<super::super::types::CodeableConcept>>,
 }
+impl Default for SpecimenDefinitionTypeTested {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#is_derived: Default::default(),
+            r#type: Default::default(),
+            r#preference: {
+                let mut default: super::super::types::Code = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#container: Default::default(),
+            r#requirement: Default::default(),
+            r#retention_time: Default::default(),
+            r#single_use: Default::default(),
+            r#rejection_criterion: Default::default(),
+            r#handling: Default::default(),
+            r#testing_destination: Default::default(),
+        }
+    }
+}
 #[doc = "A kind of specimen with associated set of requirements."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct SpecimenDefinition {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,
@@ -208,4 +255,50 @@ pub struct SpecimenDefinition {
     pub r#collection: Vec<Box<super::super::types::CodeableConcept>>,
     #[doc = "Specimen conditioned in a container as expected by the testing laboratory."]
     pub r#type_tested: Vec<SpecimenDefinitionTypeTested>,
+}
+impl Default for SpecimenDefinition {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#meta: Default::default(),
+            r#implicit_rules: Default::default(),
+            r#language: Default::default(),
+            r#text: Default::default(),
+            r#contained: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#url: Default::default(),
+            r#identifier: Default::default(),
+            r#version: Default::default(),
+            r#version_algorithm: Default::default(),
+            r#name: Default::default(),
+            r#title: Default::default(),
+            r#derived_from_canonical: Default::default(),
+            r#derived_from_uri: Default::default(),
+            r#status: {
+                let mut default: super::super::types::Code = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#experimental: Default::default(),
+            r#subject: Default::default(),
+            r#date: Default::default(),
+            r#publisher: Default::default(),
+            r#contact: Default::default(),
+            r#description: Default::default(),
+            r#use_context: Default::default(),
+            r#jurisdiction: Default::default(),
+            r#purpose: Default::default(),
+            r#copyright: Default::default(),
+            r#copyright_label: Default::default(),
+            r#approval_date: Default::default(),
+            r#last_review_date: Default::default(),
+            r#effective_period: Default::default(),
+            r#type_collected: Default::default(),
+            r#patient_preparation: Default::default(),
+            r#time_aspect: Default::default(),
+            r#collection: Default::default(),
+            r#type_tested: Default::default(),
+        }
+    }
 }

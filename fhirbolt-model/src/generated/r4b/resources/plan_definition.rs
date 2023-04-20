@@ -1,57 +1,41 @@
-// Generated on 2023-04-20 by fhirbolt-codegen v0.4.0
+// Generated on 2023-04-20 by fhirbolt-codegen v0.5.0
 #[doc = "A code, group definition, or canonical reference that describes  or identifies the intended subject of the plan definition. Canonical references are allowed to support the definition of protocols for drug and substance quality specifications, and is allowed to reference a MedicinalProductDefinition, SubstanceDefinition, AdministrableProductDefinition, ManufacturedItemDefinition, or PackagedProductDefinition resource."]
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub enum PlanDefinitionSubject {
     CodeableConcept(Box<super::super::types::CodeableConcept>),
     Reference(Box<super::super::types::Reference>),
     Canonical(Box<super::super::types::Canonical>),
+    #[default]
     Invalid,
 }
-impl Default for PlanDefinitionSubject {
-    fn default() -> PlanDefinitionSubject {
-        PlanDefinitionSubject::Invalid
-    }
-}
 #[doc = "The target value of the measure to be achieved to signify fulfillment of the goal, e.g. 150 pounds or 7.0%, or in the case of pharmaceutical quality - NMT 0.6%, Clear solution, etc. Either the high or low or both values of the range can be specified. When a low value is missing, it indicates that the goal is achieved at any value at or below the high value. Similarly, if the high value is missing, it indicates that the goal is achieved at any value at or above the low value."]
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub enum PlanDefinitionGoalTargetDetail {
     Quantity(Box<super::super::types::Quantity>),
     Range(Box<super::super::types::Range>),
     CodeableConcept(Box<super::super::types::CodeableConcept>),
+    #[default]
     Invalid,
 }
-impl Default for PlanDefinitionGoalTargetDetail {
-    fn default() -> PlanDefinitionGoalTargetDetail {
-        PlanDefinitionGoalTargetDetail::Invalid
-    }
-}
 #[doc = "A code, group definition, or canonical reference that describes the intended subject of the action and its children, if any. Canonical references are allowed to support the definition of protocols for drug and substance quality specifications, and is allowed to reference a MedicinalProductDefinition, SubstanceDefinition, AdministrableProductDefinition, ManufacturedItemDefinition, or PackagedProductDefinition resource."]
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub enum PlanDefinitionActionSubject {
     CodeableConcept(Box<super::super::types::CodeableConcept>),
     Reference(Box<super::super::types::Reference>),
     Canonical(Box<super::super::types::Canonical>),
+    #[default]
     Invalid,
 }
-impl Default for PlanDefinitionActionSubject {
-    fn default() -> PlanDefinitionActionSubject {
-        PlanDefinitionActionSubject::Invalid
-    }
-}
 #[doc = "A duration or range of durations to apply to the relationship. For example, 30-60 minutes before."]
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub enum PlanDefinitionActionRelatedActionOffset {
     Duration(Box<super::super::types::Duration>),
     Range(Box<super::super::types::Range>),
+    #[default]
     Invalid,
 }
-impl Default for PlanDefinitionActionRelatedActionOffset {
-    fn default() -> PlanDefinitionActionRelatedActionOffset {
-        PlanDefinitionActionRelatedActionOffset::Invalid
-    }
-}
 #[doc = "An optional value describing when the action should be performed."]
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub enum PlanDefinitionActionTiming {
     DateTime(Box<super::super::types::DateTime>),
     Age(Box<super::super::types::Age>),
@@ -59,27 +43,19 @@ pub enum PlanDefinitionActionTiming {
     Duration(Box<super::super::types::Duration>),
     Range(Box<super::super::types::Range>),
     Timing(Box<super::super::types::Timing>),
+    #[default]
     Invalid,
 }
-impl Default for PlanDefinitionActionTiming {
-    fn default() -> PlanDefinitionActionTiming {
-        PlanDefinitionActionTiming::Invalid
-    }
-}
 #[doc = "A reference to an ActivityDefinition that describes the action to be taken in detail, or a PlanDefinition that describes a series of actions to be taken."]
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub enum PlanDefinitionActionDefinition {
     Canonical(Box<super::super::types::Canonical>),
     Uri(Box<super::super::types::Uri>),
+    #[default]
     Invalid,
 }
-impl Default for PlanDefinitionActionDefinition {
-    fn default() -> PlanDefinitionActionDefinition {
-        PlanDefinitionActionDefinition::Invalid
-    }
-}
 #[doc = "Indicates what should be done and within what timeframe."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct PlanDefinitionGoalTarget {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -94,8 +70,20 @@ pub struct PlanDefinitionGoalTarget {
     #[doc = "Indicates the timeframe after the start of the goal in which the goal should be met."]
     pub r#due: Option<Box<super::super::types::Duration>>,
 }
+impl Default for PlanDefinitionGoalTarget {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#measure: Default::default(),
+            r#detail: Default::default(),
+            r#due: Default::default(),
+        }
+    }
+}
 #[doc = "A goal describes an expected outcome that activities within the plan are intended to achieve. For example, weight loss, restoring an activity of daily living, obtaining herd immunity via immunization, meeting a process improvement objective, meeting the acceptance criteria for a test as specified by a quality specification, etc."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct PlanDefinitionGoal {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -118,8 +106,28 @@ pub struct PlanDefinitionGoal {
     #[doc = "Indicates what should be done and within what timeframe."]
     pub r#target: Vec<PlanDefinitionGoalTarget>,
 }
+impl Default for PlanDefinitionGoal {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#category: Default::default(),
+            r#description: {
+                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#priority: Default::default(),
+            r#start: Default::default(),
+            r#addresses: Default::default(),
+            r#documentation: Default::default(),
+            r#target: Default::default(),
+        }
+    }
+}
 #[doc = "An expression that describes applicability criteria or start/stop conditions for the action."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct PlanDefinitionActionCondition {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -132,8 +140,23 @@ pub struct PlanDefinitionActionCondition {
     #[doc = "An expression that returns true or false, indicating whether the condition is satisfied."]
     pub r#expression: Option<Box<super::super::types::Expression>>,
 }
+impl Default for PlanDefinitionActionCondition {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#kind: {
+                let mut default: super::super::types::Code = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#expression: Default::default(),
+        }
+    }
+}
 #[doc = "A relationship to another action such as \"before\" or \"30-60 minutes after start of\"."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct PlanDefinitionActionRelatedAction {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -148,8 +171,28 @@ pub struct PlanDefinitionActionRelatedAction {
     #[doc = "A duration or range of durations to apply to the relationship. For example, 30-60 minutes before."]
     pub r#offset: Option<PlanDefinitionActionRelatedActionOffset>,
 }
+impl Default for PlanDefinitionActionRelatedAction {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#action_id: {
+                let mut default: super::super::types::Id = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#relationship: {
+                let mut default: super::super::types::Code = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#offset: Default::default(),
+        }
+    }
+}
 #[doc = "Indicates who should participate in performing the action described."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct PlanDefinitionActionParticipant {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -162,8 +205,23 @@ pub struct PlanDefinitionActionParticipant {
     #[doc = "The role the participant should play in performing the described action."]
     pub r#role: Option<Box<super::super::types::CodeableConcept>>,
 }
+impl Default for PlanDefinitionActionParticipant {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#type: {
+                let mut default: super::super::types::Code = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#role: Default::default(),
+        }
+    }
+}
 #[doc = "Customizations that should be applied to the statically defined resource. For example, if the dosage of a medication must be computed based on the patient's weight, a customization would be used to specify an expression that calculated the weight, and the path on the resource that would contain the result."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct PlanDefinitionActionDynamicValue {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -176,8 +234,19 @@ pub struct PlanDefinitionActionDynamicValue {
     #[doc = "An expression specifying the value of the customized element."]
     pub r#expression: Option<Box<super::super::types::Expression>>,
 }
+impl Default for PlanDefinitionActionDynamicValue {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#path: Default::default(),
+            r#expression: Default::default(),
+        }
+    }
+}
 #[doc = "An action or group of actions to be taken as part of the plan. For example, in clinical care, an action would be to prescribe a particular indicated medication, or perform a particular test as appropriate. In pharmaceutical quality, an action would be the test that needs to be performed on a drug product as defined in the quality specification."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct PlanDefinitionAction {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -240,8 +309,44 @@ pub struct PlanDefinitionAction {
     #[doc = "Sub actions that are contained within the action. The behavior of this action determines the functionality of the sub-actions. For example, a selection behavior of at-most-one indicates that of the sub-actions, at most one may be chosen as part of realizing the action definition."]
     pub r#action: Vec<PlanDefinitionAction>,
 }
+impl Default for PlanDefinitionAction {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#prefix: Default::default(),
+            r#title: Default::default(),
+            r#description: Default::default(),
+            r#text_equivalent: Default::default(),
+            r#priority: Default::default(),
+            r#code: Default::default(),
+            r#reason: Default::default(),
+            r#documentation: Default::default(),
+            r#goal_id: Default::default(),
+            r#subject: Default::default(),
+            r#trigger: Default::default(),
+            r#condition: Default::default(),
+            r#input: Default::default(),
+            r#output: Default::default(),
+            r#related_action: Default::default(),
+            r#timing: Default::default(),
+            r#participant: Default::default(),
+            r#type: Default::default(),
+            r#grouping_behavior: Default::default(),
+            r#selection_behavior: Default::default(),
+            r#required_behavior: Default::default(),
+            r#precheck_behavior: Default::default(),
+            r#cardinality_behavior: Default::default(),
+            r#definition: Default::default(),
+            r#transform: Default::default(),
+            r#dynamic_value: Default::default(),
+            r#action: Default::default(),
+        }
+    }
+}
 #[doc = "This resource allows for the definition of various types of plans as a sharable, consumable, and executable artifact. The resource is general enough to support the description of a broad range of clinical and non-clinical artifacts such as clinical decision support rules, order sets, protocols, and drug quality specifications."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct PlanDefinition {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,
@@ -321,4 +426,53 @@ pub struct PlanDefinition {
     pub r#goal: Vec<PlanDefinitionGoal>,
     #[doc = "An action or group of actions to be taken as part of the plan. For example, in clinical care, an action would be to prescribe a particular indicated medication, or perform a particular test as appropriate. In pharmaceutical quality, an action would be the test that needs to be performed on a drug product as defined in the quality specification."]
     pub r#action: Vec<PlanDefinitionAction>,
+}
+impl Default for PlanDefinition {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#meta: Default::default(),
+            r#implicit_rules: Default::default(),
+            r#language: Default::default(),
+            r#text: Default::default(),
+            r#contained: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#url: Default::default(),
+            r#identifier: Default::default(),
+            r#version: Default::default(),
+            r#name: Default::default(),
+            r#title: Default::default(),
+            r#subtitle: Default::default(),
+            r#type: Default::default(),
+            r#status: {
+                let mut default: super::super::types::Code = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#experimental: Default::default(),
+            r#subject: Default::default(),
+            r#date: Default::default(),
+            r#publisher: Default::default(),
+            r#contact: Default::default(),
+            r#description: Default::default(),
+            r#use_context: Default::default(),
+            r#jurisdiction: Default::default(),
+            r#purpose: Default::default(),
+            r#usage: Default::default(),
+            r#copyright: Default::default(),
+            r#approval_date: Default::default(),
+            r#last_review_date: Default::default(),
+            r#effective_period: Default::default(),
+            r#topic: Default::default(),
+            r#author: Default::default(),
+            r#editor: Default::default(),
+            r#reviewer: Default::default(),
+            r#endorser: Default::default(),
+            r#related_artifact: Default::default(),
+            r#library: Default::default(),
+            r#goal: Default::default(),
+            r#action: Default::default(),
+        }
+    }
 }

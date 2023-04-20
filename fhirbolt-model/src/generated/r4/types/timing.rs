@@ -1,19 +1,15 @@
-// Generated on 2023-04-20 by fhirbolt-codegen v0.4.0
+// Generated on 2023-04-20 by fhirbolt-codegen v0.5.0
 #[doc = "Either a duration for the length of the timing schedule, a range of possible length, or outer bounds for start and/or end limits of the timing schedule."]
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub enum TimingRepeatBounds {
     Duration(Box<super::super::types::Duration>),
     Range(Box<super::super::types::Range>),
     Period(Box<super::super::types::Period>),
+    #[default]
     Invalid,
 }
-impl Default for TimingRepeatBounds {
-    fn default() -> TimingRepeatBounds {
-        TimingRepeatBounds::Invalid
-    }
-}
 #[doc = "A set of rules that describe when the event is scheduled."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct TimingRepeat {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -50,8 +46,31 @@ pub struct TimingRepeat {
     #[doc = "The number of minutes from the event. If the event code does not indicate whether the minutes is before or after the event, then the offset is assumed to be after the event."]
     pub r#offset: Option<super::super::types::UnsignedInt>,
 }
+impl Default for TimingRepeat {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#bounds: Default::default(),
+            r#count: Default::default(),
+            r#count_max: Default::default(),
+            r#duration: Default::default(),
+            r#duration_max: Default::default(),
+            r#duration_unit: Default::default(),
+            r#frequency: Default::default(),
+            r#frequency_max: Default::default(),
+            r#period: Default::default(),
+            r#period_max: Default::default(),
+            r#period_unit: Default::default(),
+            r#day_of_week: Default::default(),
+            r#time_of_day: Default::default(),
+            r#when: Default::default(),
+            r#offset: Default::default(),
+        }
+    }
+}
 #[doc = "Base StructureDefinition for Timing Type: Specifies an event that may occur multiple times. Timing schedules are used to record when things are planned, expected or requested to occur. The most common usage is in dosage instructions for medications. They are also used when planning care of various kinds, and may be used for reporting the schedule to which past regular activities were carried out.\n\nNeed to able to track proposed timing schedules. There are several different ways to do this: one or more specified times, a simple rules like three times a day, or  before/after meals."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct Timing {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -65,4 +84,16 @@ pub struct Timing {
     pub r#repeat: Option<TimingRepeat>,
     #[doc = "A code for the timing schedule (or just text in code.text). Some codes such as BID are ubiquitous, but many institutions define their own additional codes. If a code is provided, the code is understood to be a complete statement of whatever is specified in the structured timing data, and either the code or the data may be used to interpret the Timing, with the exception that .repeat.bounds still applies over the code (and is not contained in the code)."]
     pub r#code: Option<Box<super::super::types::CodeableConcept>>,
+}
+impl Default for Timing {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#event: Default::default(),
+            r#repeat: Default::default(),
+            r#code: Default::default(),
+        }
+    }
 }

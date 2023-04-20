@@ -1,6 +1,6 @@
-// Generated on 2023-04-20 by fhirbolt-codegen v0.4.0
+// Generated on 2023-04-20 by fhirbolt-codegen v0.5.0
 #[doc = "The value of the parameter."]
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub enum ValueSetExpansionParameterValue {
     String(Box<super::super::types::String>),
     Boolean(Box<super::super::types::Boolean>),
@@ -9,15 +9,11 @@ pub enum ValueSetExpansionParameterValue {
     Uri(Box<super::super::types::Uri>),
     Code(Box<super::super::types::Code>),
     DateTime(Box<super::super::types::DateTime>),
+    #[default]
     Invalid,
 }
-impl Default for ValueSetExpansionParameterValue {
-    fn default() -> ValueSetExpansionParameterValue {
-        ValueSetExpansionParameterValue::Invalid
-    }
-}
 #[doc = "Additional representations for this concept when used in this value set - other languages, aliases, specialized purposes, used for particular purposes, etc."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct ValueSetComposeIncludeConceptDesignation {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -32,8 +28,24 @@ pub struct ValueSetComposeIncludeConceptDesignation {
     #[doc = "The text value for this designation."]
     pub r#value: super::super::types::String,
 }
+impl Default for ValueSetComposeIncludeConceptDesignation {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#language: Default::default(),
+            r#use: Default::default(),
+            r#value: {
+                let mut default: super::super::types::String = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+        }
+    }
+}
 #[doc = "Specifies a concept to be included or excluded."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct ValueSetComposeIncludeConcept {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -48,8 +60,24 @@ pub struct ValueSetComposeIncludeConcept {
     #[doc = "Additional representations for this concept when used in this value set - other languages, aliases, specialized purposes, used for particular purposes, etc."]
     pub r#designation: Vec<ValueSetComposeIncludeConceptDesignation>,
 }
+impl Default for ValueSetComposeIncludeConcept {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#code: {
+                let mut default: super::super::types::Code = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#display: Default::default(),
+            r#designation: Default::default(),
+        }
+    }
+}
 #[doc = "Select concepts by specify a matching criterion based on the properties (including relationships) defined by the system, or on filters defined by the system. If multiple filters are specified, they SHALL all be true."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct ValueSetComposeIncludeFilter {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -64,8 +92,32 @@ pub struct ValueSetComposeIncludeFilter {
     #[doc = "The match value may be either a code defined by the system, or a string value, which is a regex match on the literal string of the property value  (if the filter represents a property defined in CodeSystem) or of the system filter value (if the filter represents a filter defined in CodeSystem) when the operation is 'regex', or one of the values (true and false), when the operation is 'exists'."]
     pub r#value: super::super::types::String,
 }
+impl Default for ValueSetComposeIncludeFilter {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#property: {
+                let mut default: super::super::types::Code = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#op: {
+                let mut default: super::super::types::Code = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#value: {
+                let mut default: super::super::types::String = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+        }
+    }
+}
 #[doc = "Include one or more codes from a code system or other value set(s)."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct ValueSetComposeInclude {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -84,8 +136,22 @@ pub struct ValueSetComposeInclude {
     #[doc = "Selects the concepts found in this value set (based on its value set definition). This is an absolute URI that is a reference to ValueSet.url.  If multiple value sets are specified this includes the union of the contents of all of the referenced value sets."]
     pub r#value_set: Vec<super::super::types::Canonical>,
 }
+impl Default for ValueSetComposeInclude {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#system: Default::default(),
+            r#version: Default::default(),
+            r#concept: Default::default(),
+            r#filter: Default::default(),
+            r#value_set: Default::default(),
+        }
+    }
+}
 #[doc = "A set of criteria that define the contents of the value set by including or excluding codes selected from the specified code system(s) that the value set draws from. This is also known as the Content Logical Definition (CLD)."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct ValueSetCompose {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -102,8 +168,21 @@ pub struct ValueSetCompose {
     #[doc = "Exclude one or more codes from the value set based on code system filters and/or other value sets."]
     pub r#exclude: Vec<ValueSetComposeInclude>,
 }
+impl Default for ValueSetCompose {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#locked_date: Default::default(),
+            r#inactive: Default::default(),
+            r#include: Default::default(),
+            r#exclude: Default::default(),
+        }
+    }
+}
 #[doc = "A parameter that controlled the expansion process. These parameters may be used by users of expanded value sets to check whether the expansion is suitable for a particular purpose, or to pick the correct expansion."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct ValueSetExpansionParameter {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -116,8 +195,23 @@ pub struct ValueSetExpansionParameter {
     #[doc = "The value of the parameter."]
     pub r#value: Option<ValueSetExpansionParameterValue>,
 }
+impl Default for ValueSetExpansionParameter {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#name: {
+                let mut default: super::super::types::String = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#value: Default::default(),
+        }
+    }
+}
 #[doc = "The codes that are contained in the value set expansion."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct ValueSetExpansionContains {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -142,8 +236,25 @@ pub struct ValueSetExpansionContains {
     #[doc = "Other codes and entries contained under this entry in the hierarchy."]
     pub r#contains: Vec<ValueSetExpansionContains>,
 }
+impl Default for ValueSetExpansionContains {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#system: Default::default(),
+            r#abstract: Default::default(),
+            r#inactive: Default::default(),
+            r#version: Default::default(),
+            r#code: Default::default(),
+            r#display: Default::default(),
+            r#designation: Default::default(),
+            r#contains: Default::default(),
+        }
+    }
+}
 #[doc = "A value set can also be \"expanded\", where the value set is turned into a simple collection of enumerated codes. This element holds the expansion, if it has been performed."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct ValueSetExpansion {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -164,8 +275,27 @@ pub struct ValueSetExpansion {
     #[doc = "The codes that are contained in the value set expansion."]
     pub r#contains: Vec<ValueSetExpansionContains>,
 }
+impl Default for ValueSetExpansion {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#identifier: Default::default(),
+            r#timestamp: {
+                let mut default: super::super::types::DateTime = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#total: Default::default(),
+            r#offset: Default::default(),
+            r#parameter: Default::default(),
+            r#contains: Default::default(),
+        }
+    }
+}
 #[doc = "A ValueSet resource instance specifies a set of codes drawn from one or more code systems, intended for use in a particular context. Value sets link between `CodeSystem` definitions and their use in [coded elements](https://hl7.org/FHIR/terminologies.html))."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct ValueSet {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,
@@ -219,4 +349,40 @@ pub struct ValueSet {
     pub r#compose: Option<ValueSetCompose>,
     #[doc = "A value set can also be \"expanded\", where the value set is turned into a simple collection of enumerated codes. This element holds the expansion, if it has been performed."]
     pub r#expansion: Option<ValueSetExpansion>,
+}
+impl Default for ValueSet {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#meta: Default::default(),
+            r#implicit_rules: Default::default(),
+            r#language: Default::default(),
+            r#text: Default::default(),
+            r#contained: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#url: Default::default(),
+            r#identifier: Default::default(),
+            r#version: Default::default(),
+            r#name: Default::default(),
+            r#title: Default::default(),
+            r#status: {
+                let mut default: super::super::types::Code = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#experimental: Default::default(),
+            r#date: Default::default(),
+            r#publisher: Default::default(),
+            r#contact: Default::default(),
+            r#description: Default::default(),
+            r#use_context: Default::default(),
+            r#jurisdiction: Default::default(),
+            r#immutable: Default::default(),
+            r#purpose: Default::default(),
+            r#copyright: Default::default(),
+            r#compose: Default::default(),
+            r#expansion: Default::default(),
+        }
+    }
 }

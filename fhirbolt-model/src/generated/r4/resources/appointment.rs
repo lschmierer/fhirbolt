@@ -1,6 +1,6 @@
-// Generated on 2023-04-20 by fhirbolt-codegen v0.4.0
+// Generated on 2023-04-20 by fhirbolt-codegen v0.5.0
 #[doc = "List of participants involved in the appointment."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct AppointmentParticipant {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -19,8 +19,26 @@ pub struct AppointmentParticipant {
     #[doc = "Participation period of the actor."]
     pub r#period: Option<Box<super::super::types::Period>>,
 }
+impl Default for AppointmentParticipant {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#type: Default::default(),
+            r#actor: Default::default(),
+            r#required: Default::default(),
+            r#status: {
+                let mut default: super::super::types::Code = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#period: Default::default(),
+        }
+    }
+}
 #[doc = "A booking of a healthcare event among patient(s), practitioner(s), related person(s) and/or device(s) for a specific date/time. This may result in one or more Encounter(s)."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct Appointment {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,
@@ -82,4 +100,44 @@ pub struct Appointment {
     pub r#participant: Vec<AppointmentParticipant>,
     #[doc = "A set of date ranges (potentially including times) that the appointment is preferred to be scheduled within.\n\nThe duration (usually in minutes) could also be provided to indicate the length of the appointment to fill and populate the start/end times for the actual allocated time. However, in other situations the duration may be calculated by the scheduling system."]
     pub r#requested_period: Vec<Box<super::super::types::Period>>,
+}
+impl Default for Appointment {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#meta: Default::default(),
+            r#implicit_rules: Default::default(),
+            r#language: Default::default(),
+            r#text: Default::default(),
+            r#contained: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#identifier: Default::default(),
+            r#status: {
+                let mut default: super::super::types::Code = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#cancelation_reason: Default::default(),
+            r#service_category: Default::default(),
+            r#service_type: Default::default(),
+            r#specialty: Default::default(),
+            r#appointment_type: Default::default(),
+            r#reason_code: Default::default(),
+            r#reason_reference: Default::default(),
+            r#priority: Default::default(),
+            r#description: Default::default(),
+            r#supporting_information: Default::default(),
+            r#start: Default::default(),
+            r#end: Default::default(),
+            r#minutes_duration: Default::default(),
+            r#slot: Default::default(),
+            r#created: Default::default(),
+            r#comment: Default::default(),
+            r#patient_instruction: Default::default(),
+            r#based_on: Default::default(),
+            r#participant: Default::default(),
+            r#requested_period: Default::default(),
+        }
+    }
 }

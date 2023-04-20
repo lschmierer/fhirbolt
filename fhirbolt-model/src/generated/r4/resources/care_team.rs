@@ -1,6 +1,6 @@
-// Generated on 2023-04-20 by fhirbolt-codegen v0.4.0
+// Generated on 2023-04-20 by fhirbolt-codegen v0.5.0
 #[doc = "Identifies all people and organizations who are expected to be involved in the care team."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct CareTeamParticipant {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -17,8 +17,21 @@ pub struct CareTeamParticipant {
     #[doc = "Indicates when the specific member or organization did (or is intended to) come into effect and end."]
     pub r#period: Option<Box<super::super::types::Period>>,
 }
+impl Default for CareTeamParticipant {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#role: Default::default(),
+            r#member: Default::default(),
+            r#on_behalf_of: Default::default(),
+            r#period: Default::default(),
+        }
+    }
+}
 #[doc = "The Care Team includes all the people and organizations who plan to participate in the coordination and delivery of care for a patient."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct CareTeam {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,
@@ -62,4 +75,31 @@ pub struct CareTeam {
     pub r#telecom: Vec<Box<super::super::types::ContactPoint>>,
     #[doc = "Comments made about the CareTeam."]
     pub r#note: Vec<Box<super::super::types::Annotation>>,
+}
+impl Default for CareTeam {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#meta: Default::default(),
+            r#implicit_rules: Default::default(),
+            r#language: Default::default(),
+            r#text: Default::default(),
+            r#contained: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#identifier: Default::default(),
+            r#status: Default::default(),
+            r#category: Default::default(),
+            r#name: Default::default(),
+            r#subject: Default::default(),
+            r#encounter: Default::default(),
+            r#period: Default::default(),
+            r#participant: Default::default(),
+            r#reason_code: Default::default(),
+            r#reason_reference: Default::default(),
+            r#managing_organization: Default::default(),
+            r#telecom: Default::default(),
+            r#note: Default::default(),
+        }
+    }
 }

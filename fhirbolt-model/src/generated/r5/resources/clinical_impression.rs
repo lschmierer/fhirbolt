@@ -1,18 +1,14 @@
-// Generated on 2023-04-20 by fhirbolt-codegen v0.4.0
+// Generated on 2023-04-20 by fhirbolt-codegen v0.5.0
 #[doc = "The point in time or period over which the subject was assessed."]
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub enum ClinicalImpressionEffective {
     DateTime(Box<super::super::types::DateTime>),
     Period(Box<super::super::types::Period>),
+    #[default]
     Invalid,
 }
-impl Default for ClinicalImpressionEffective {
-    fn default() -> ClinicalImpressionEffective {
-        ClinicalImpressionEffective::Invalid
-    }
-}
 #[doc = "Specific findings or diagnoses that were considered likely or relevant to ongoing treatment."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct ClinicalImpressionFinding {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -25,8 +21,19 @@ pub struct ClinicalImpressionFinding {
     #[doc = "Which investigations support finding or diagnosis."]
     pub r#basis: Option<super::super::types::String>,
 }
+impl Default for ClinicalImpressionFinding {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#item: Default::default(),
+            r#basis: Default::default(),
+        }
+    }
+}
 #[doc = "A record of a clinical assessment performed to determine what problem(s) may affect the patient and before planning the treatments or management strategies that are best to manage a patient's condition. Assessments are often 1:1 with a clinical consultation / encounter,  but this varies greatly depending on the clinical workflow. This resource is called \"ClinicalImpression\" rather than \"ClinicalAssessment\" to avoid confusion with the recording of assessment tools such as Apgar score."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct ClinicalImpression {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,
@@ -82,4 +89,45 @@ pub struct ClinicalImpression {
     pub r#supporting_info: Vec<Box<super::super::types::Reference>>,
     #[doc = "Commentary about the impression, typically recorded after the impression itself was made, though supplemental notes by the original author could also appear."]
     pub r#note: Vec<Box<super::super::types::Annotation>>,
+}
+impl Default for ClinicalImpression {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#meta: Default::default(),
+            r#implicit_rules: Default::default(),
+            r#language: Default::default(),
+            r#text: Default::default(),
+            r#contained: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#identifier: Default::default(),
+            r#status: {
+                let mut default: super::super::types::Code = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#status_reason: Default::default(),
+            r#description: Default::default(),
+            r#subject: {
+                let mut default: Box<super::super::types::Reference> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#encounter: Default::default(),
+            r#effective: Default::default(),
+            r#date: Default::default(),
+            r#performer: Default::default(),
+            r#previous: Default::default(),
+            r#problem: Default::default(),
+            r#change_pattern: Default::default(),
+            r#protocol: Default::default(),
+            r#summary: Default::default(),
+            r#finding: Default::default(),
+            r#prognosis_codeable_concept: Default::default(),
+            r#prognosis_reference: Default::default(),
+            r#supporting_info: Default::default(),
+            r#note: Default::default(),
+        }
+    }
 }

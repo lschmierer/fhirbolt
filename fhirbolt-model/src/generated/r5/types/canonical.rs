@@ -1,6 +1,6 @@
-// Generated on 2023-04-20 by fhirbolt-codegen v0.4.0
+// Generated on 2023-04-20 by fhirbolt-codegen v0.5.0
 #[doc = "canonical type: A URI that is a reference to a canonical URL on a FHIR resource"]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct Canonical {
     #[doc = "unique id for the element within a resource (for internal references)"]
     pub r#id: Option<std::string::String>,
@@ -8,4 +8,13 @@ pub struct Canonical {
     pub r#extension: Vec<Box<super::super::types::Extension>>,
     #[doc = "Primitive value for canonical"]
     pub r#value: Option<std::string::String>,
+}
+impl Default for Canonical {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#value: Default::default(),
+        }
+    }
 }

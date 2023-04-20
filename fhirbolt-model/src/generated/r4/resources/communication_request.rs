@@ -1,31 +1,23 @@
-// Generated on 2023-04-20 by fhirbolt-codegen v0.4.0
+// Generated on 2023-04-20 by fhirbolt-codegen v0.5.0
 #[doc = "The communicated content (or for multi-part communications, one portion of the communication)."]
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub enum CommunicationRequestPayloadContent {
     String(Box<super::super::types::String>),
     Attachment(Box<super::super::types::Attachment>),
     Reference(Box<super::super::types::Reference>),
+    #[default]
     Invalid,
 }
-impl Default for CommunicationRequestPayloadContent {
-    fn default() -> CommunicationRequestPayloadContent {
-        CommunicationRequestPayloadContent::Invalid
-    }
-}
 #[doc = "The time when this communication is to occur."]
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub enum CommunicationRequestOccurrence {
     DateTime(Box<super::super::types::DateTime>),
     Period(Box<super::super::types::Period>),
+    #[default]
     Invalid,
 }
-impl Default for CommunicationRequestOccurrence {
-    fn default() -> CommunicationRequestOccurrence {
-        CommunicationRequestOccurrence::Invalid
-    }
-}
 #[doc = "Text, attachment(s), or resource(s) to be communicated to the recipient."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct CommunicationRequestPayload {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -36,8 +28,18 @@ pub struct CommunicationRequestPayload {
     #[doc = "The communicated content (or for multi-part communications, one portion of the communication)."]
     pub r#content: CommunicationRequestPayloadContent,
 }
+impl Default for CommunicationRequestPayload {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#content: Default::default(),
+        }
+    }
+}
 #[doc = "A request to convey information; e.g. the CDS system proposes that an alert be sent to a responsible provider, the CDS system proposes that the public health agency be notified about a reportable condition."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct CommunicationRequest {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,
@@ -99,4 +101,44 @@ pub struct CommunicationRequest {
     pub r#reason_reference: Vec<Box<super::super::types::Reference>>,
     #[doc = "Comments made about the request by the requester, sender, recipient, subject or other participants."]
     pub r#note: Vec<Box<super::super::types::Annotation>>,
+}
+impl Default for CommunicationRequest {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#meta: Default::default(),
+            r#implicit_rules: Default::default(),
+            r#language: Default::default(),
+            r#text: Default::default(),
+            r#contained: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#identifier: Default::default(),
+            r#based_on: Default::default(),
+            r#replaces: Default::default(),
+            r#group_identifier: Default::default(),
+            r#status: {
+                let mut default: super::super::types::Code = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#status_reason: Default::default(),
+            r#category: Default::default(),
+            r#priority: Default::default(),
+            r#do_not_perform: Default::default(),
+            r#medium: Default::default(),
+            r#subject: Default::default(),
+            r#about: Default::default(),
+            r#encounter: Default::default(),
+            r#payload: Default::default(),
+            r#occurrence: Default::default(),
+            r#authored_on: Default::default(),
+            r#requester: Default::default(),
+            r#recipient: Default::default(),
+            r#sender: Default::default(),
+            r#reason_code: Default::default(),
+            r#reason_reference: Default::default(),
+            r#note: Default::default(),
+        }
+    }
 }

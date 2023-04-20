@@ -1,20 +1,16 @@
-// Generated on 2023-04-20 by fhirbolt-codegen v0.4.0
+// Generated on 2023-04-20 by fhirbolt-codegen v0.5.0
 #[doc = "What address or number needs to be used for a user to connect to the virtual service to join. The channelType informs as to which datatype is appropriate to use (requires knowledge of the specific type)."]
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub enum VirtualServiceDetailAddress {
     Url(Box<super::super::types::Url>),
     String(Box<super::super::types::String>),
     ContactPoint(Box<super::super::types::ContactPoint>),
     ExtendedContactDetail(Box<super::super::types::ExtendedContactDetail>),
+    #[default]
     Invalid,
 }
-impl Default for VirtualServiceDetailAddress {
-    fn default() -> VirtualServiceDetailAddress {
-        VirtualServiceDetailAddress::Invalid
-    }
-}
 #[doc = "VirtualServiceDetail Type: Virtual Service Contact Details."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct VirtualServiceDetail {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -30,4 +26,17 @@ pub struct VirtualServiceDetail {
     pub r#max_participants: Option<super::super::types::PositiveInt>,
     #[doc = "Session Key required by the virtual service."]
     pub r#session_key: Option<super::super::types::String>,
+}
+impl Default for VirtualServiceDetail {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#channel_type: Default::default(),
+            r#address: Default::default(),
+            r#additional_info: Default::default(),
+            r#max_participants: Default::default(),
+            r#session_key: Default::default(),
+        }
+    }
 }

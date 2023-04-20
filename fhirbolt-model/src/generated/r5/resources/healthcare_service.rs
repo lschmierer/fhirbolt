@@ -1,6 +1,6 @@
-// Generated on 2023-04-20 by fhirbolt-codegen v0.4.0
+// Generated on 2023-04-20 by fhirbolt-codegen v0.5.0
 #[doc = "Does this service have specific eligibility requirements that need to be met in order to use the service?"]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct HealthcareServiceEligibility {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -13,8 +13,19 @@ pub struct HealthcareServiceEligibility {
     #[doc = "Describes the eligibility conditions for the service."]
     pub r#comment: Option<super::super::types::Markdown>,
 }
+impl Default for HealthcareServiceEligibility {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#code: Default::default(),
+            r#comment: Default::default(),
+        }
+    }
+}
 #[doc = "The details of a healthcare service available at a location or in a catalog.  In the case where there is a hierarchy of services (for example, Lab -> Pathology -> Wound Cultures), this can be represented using a set of linked HealthcareServices."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct HealthcareService {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,
@@ -78,4 +89,41 @@ pub struct HealthcareService {
     pub r#availability: Vec<Box<super::super::types::Availability>>,
     #[doc = "Technical endpoints providing access to services operated for the specific healthcare services defined at this resource."]
     pub r#endpoint: Vec<Box<super::super::types::Reference>>,
+}
+impl Default for HealthcareService {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#meta: Default::default(),
+            r#implicit_rules: Default::default(),
+            r#language: Default::default(),
+            r#text: Default::default(),
+            r#contained: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#identifier: Default::default(),
+            r#active: Default::default(),
+            r#provided_by: Default::default(),
+            r#offered_in: Default::default(),
+            r#category: Default::default(),
+            r#type: Default::default(),
+            r#specialty: Default::default(),
+            r#location: Default::default(),
+            r#name: Default::default(),
+            r#comment: Default::default(),
+            r#extra_details: Default::default(),
+            r#photo: Default::default(),
+            r#contact: Default::default(),
+            r#coverage_area: Default::default(),
+            r#service_provision_code: Default::default(),
+            r#eligibility: Default::default(),
+            r#program: Default::default(),
+            r#characteristic: Default::default(),
+            r#communication: Default::default(),
+            r#referral_method: Default::default(),
+            r#appointment_required: Default::default(),
+            r#availability: Default::default(),
+            r#endpoint: Default::default(),
+        }
+    }
 }

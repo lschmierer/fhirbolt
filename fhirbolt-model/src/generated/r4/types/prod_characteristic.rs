@@ -1,6 +1,6 @@
-// Generated on 2023-04-20 by fhirbolt-codegen v0.4.0
+// Generated on 2023-04-20 by fhirbolt-codegen v0.5.0
 #[doc = "Base StructureDefinition for ProdCharacteristic Type: The marketing status describes the date when a medicinal product is actually put on the market or the date as of which it is no longer available."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct ProdCharacteristic {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -30,4 +30,24 @@ pub struct ProdCharacteristic {
     pub r#image: Vec<Box<super::super::types::Attachment>>,
     #[doc = "Where applicable, the scoring can be specified An appropriate controlled vocabulary shall be used The term and the term identifier shall be used."]
     pub r#scoring: Option<Box<super::super::types::CodeableConcept>>,
+}
+impl Default for ProdCharacteristic {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#height: Default::default(),
+            r#width: Default::default(),
+            r#depth: Default::default(),
+            r#weight: Default::default(),
+            r#nominal_volume: Default::default(),
+            r#external_diameter: Default::default(),
+            r#shape: Default::default(),
+            r#color: Default::default(),
+            r#imprint: Default::default(),
+            r#image: Default::default(),
+            r#scoring: Default::default(),
+        }
+    }
 }

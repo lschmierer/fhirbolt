@@ -1,6 +1,6 @@
-// Generated on 2023-04-20 by fhirbolt-codegen v0.4.0
+// Generated on 2023-04-20 by fhirbolt-codegen v0.5.0
 #[doc = "Characteristics for quantitative results of this observation."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct ObservationDefinitionQuantitativeDetails {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -17,8 +17,21 @@ pub struct ObservationDefinitionQuantitativeDetails {
     #[doc = "Number of digits after decimal separator when the results of such observations are of type Quantity."]
     pub r#decimal_precision: Option<super::super::types::Integer>,
 }
+impl Default for ObservationDefinitionQuantitativeDetails {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#customary_unit: Default::default(),
+            r#unit: Default::default(),
+            r#conversion_factor: Default::default(),
+            r#decimal_precision: Default::default(),
+        }
+    }
+}
 #[doc = "Multiple  ranges of results qualified by different contexts for ordinal or continuous observations conforming to this ObservationDefinition."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct ObservationDefinitionQualifiedInterval {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -43,8 +56,25 @@ pub struct ObservationDefinitionQualifiedInterval {
     #[doc = "Text based condition for which the reference range is valid."]
     pub r#condition: Option<super::super::types::String>,
 }
+impl Default for ObservationDefinitionQualifiedInterval {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#category: Default::default(),
+            r#range: Default::default(),
+            r#context: Default::default(),
+            r#applies_to: Default::default(),
+            r#gender: Default::default(),
+            r#age: Default::default(),
+            r#gestational_age: Default::default(),
+            r#condition: Default::default(),
+        }
+    }
+}
 #[doc = "Set of definitional characteristics for a kind of observation or measurement produced or consumed by an orderable health care service.\n\nIn a catalog of health-related services that use or produce observations and measurements, this resource describes the expected characteristics of these observation / measurements."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct ObservationDefinition {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,
@@ -88,4 +118,35 @@ pub struct ObservationDefinition {
     pub r#abnormal_coded_value_set: Option<Box<super::super::types::Reference>>,
     #[doc = "The set of critical coded results for the observation conforming to this ObservationDefinition."]
     pub r#critical_coded_value_set: Option<Box<super::super::types::Reference>>,
+}
+impl Default for ObservationDefinition {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#meta: Default::default(),
+            r#implicit_rules: Default::default(),
+            r#language: Default::default(),
+            r#text: Default::default(),
+            r#contained: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#category: Default::default(),
+            r#code: {
+                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#identifier: Default::default(),
+            r#permitted_data_type: Default::default(),
+            r#multiple_results_allowed: Default::default(),
+            r#method: Default::default(),
+            r#preferred_report_name: Default::default(),
+            r#quantitative_details: Default::default(),
+            r#qualified_interval: Default::default(),
+            r#valid_coded_value_set: Default::default(),
+            r#normal_coded_value_set: Default::default(),
+            r#abnormal_coded_value_set: Default::default(),
+            r#critical_coded_value_set: Default::default(),
+        }
+    }
 }

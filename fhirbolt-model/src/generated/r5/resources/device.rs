@@ -1,6 +1,6 @@
-// Generated on 2023-04-20 by fhirbolt-codegen v0.4.0
+// Generated on 2023-04-20 by fhirbolt-codegen v0.5.0
 #[doc = "The value of the property specified by the associated property.type code."]
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub enum DevicePropertyValue {
     Quantity(Box<super::super::types::Quantity>),
     CodeableConcept(Box<super::super::types::CodeableConcept>),
@@ -9,15 +9,11 @@ pub enum DevicePropertyValue {
     Integer(Box<super::super::types::Integer>),
     Range(Box<super::super::types::Range>),
     Attachment(Box<super::super::types::Attachment>),
+    #[default]
     Invalid,
 }
-impl Default for DevicePropertyValue {
-    fn default() -> DevicePropertyValue {
-        DevicePropertyValue::Invalid
-    }
-}
 #[doc = "Unique device identifier (UDI) assigned to device label or package.  Note that the Device may include multiple udiCarriers as it either may include just the udiCarrier for the jurisdiction it is sold, or for multiple jurisdictions it could have been sold."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct DeviceUdiCarrier {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -38,8 +34,31 @@ pub struct DeviceUdiCarrier {
     #[doc = "A coded entry to indicate how the data was entered."]
     pub r#entry_type: Option<super::super::types::Code>,
 }
+impl Default for DeviceUdiCarrier {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#device_identifier: {
+                let mut default: super::super::types::String = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#issuer: {
+                let mut default: super::super::types::Uri = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#jurisdiction: Default::default(),
+            r#carrier_aidc: Default::default(),
+            r#carrier_hrf: Default::default(),
+            r#entry_type: Default::default(),
+        }
+    }
+}
 #[doc = "This represents the manufacturer's name of the device as provided by the device, from a UDI label, or by a person describing the Device.  This typically would be used when a person provides the name(s) or when the device represents one of the names available from DeviceDefinition."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct DeviceName {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -54,8 +73,28 @@ pub struct DeviceName {
     #[doc = "Indicates the default or preferred name to be displayed."]
     pub r#display: Option<super::super::types::Boolean>,
 }
+impl Default for DeviceName {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#value: {
+                let mut default: super::super::types::String = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#type: {
+                let mut default: super::super::types::Code = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#display: Default::default(),
+        }
+    }
+}
 #[doc = "The actual design of the device or software version running on the device."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct DeviceVersion {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -72,8 +111,25 @@ pub struct DeviceVersion {
     #[doc = "The version text."]
     pub r#value: super::super::types::String,
 }
+impl Default for DeviceVersion {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#type: Default::default(),
+            r#component: Default::default(),
+            r#install_date: Default::default(),
+            r#value: {
+                let mut default: super::super::types::String = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+        }
+    }
+}
 #[doc = "Identifies the standards, specifications, or formal guidances for the capabilities supported by the device. The device may be certified as conformant to these specifications e.g., communication, performance, process, measurement, or specialization standards."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct DeviceConformsTo {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -88,8 +144,24 @@ pub struct DeviceConformsTo {
     #[doc = "Identifies the specific form or variant of the standard, specification, or formal guidance. This may be a 'version number', release, document edition, publication year, or other label."]
     pub r#version: Option<super::super::types::String>,
 }
+impl Default for DeviceConformsTo {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#category: Default::default(),
+            r#specification: {
+                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#version: Default::default(),
+        }
+    }
+}
 #[doc = "Static or essentially fixed characteristics or features of the device (e.g., time or timing attributes, resolution, accuracy, intended use or instructions for use, and physical attributes) that are not otherwise captured in more specific attributes."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct DeviceProperty {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -102,8 +174,23 @@ pub struct DeviceProperty {
     #[doc = "The value of the property specified by the associated property.type code."]
     pub r#value: DevicePropertyValue,
 }
+impl Default for DeviceProperty {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#type: {
+                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#value: Default::default(),
+        }
+    }
+}
 #[doc = "This resource describes the properties (regulated, has real time clock, etc.), adminstrative (manufacturer name, model number, serial number, firmware, etc.), and type (knee replacement, blood pressure cuff, MRI, etc.) of a physical unit (these values do not change much within a given module, for example the serail number, manufacturer name, and model number). An actual unit may consist of several modules in a distinct hierarchy and these are represented by multiple Device resources and bound through the 'parent' element.\n\nAllows institutions to track their devices."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct Device {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,
@@ -185,4 +272,50 @@ pub struct Device {
     pub r#safety: Vec<Box<super::super::types::CodeableConcept>>,
     #[doc = "The higher level or encompassing device that this device is a logical part of."]
     pub r#parent: Option<Box<super::super::types::Reference>>,
+}
+impl Default for Device {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#meta: Default::default(),
+            r#implicit_rules: Default::default(),
+            r#language: Default::default(),
+            r#text: Default::default(),
+            r#contained: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#identifier: Default::default(),
+            r#display_name: Default::default(),
+            r#definition: Default::default(),
+            r#udi_carrier: Default::default(),
+            r#status: Default::default(),
+            r#availability_status: Default::default(),
+            r#biological_source_event: Default::default(),
+            r#manufacturer: Default::default(),
+            r#manufacture_date: Default::default(),
+            r#expiration_date: Default::default(),
+            r#lot_number: Default::default(),
+            r#serial_number: Default::default(),
+            r#name: Default::default(),
+            r#model_number: Default::default(),
+            r#part_number: Default::default(),
+            r#category: Default::default(),
+            r#type: Default::default(),
+            r#version: Default::default(),
+            r#conforms_to: Default::default(),
+            r#property: Default::default(),
+            r#mode: Default::default(),
+            r#cycle: Default::default(),
+            r#duration: Default::default(),
+            r#owner: Default::default(),
+            r#contact: Default::default(),
+            r#location: Default::default(),
+            r#url: Default::default(),
+            r#endpoint: Default::default(),
+            r#gateway: Default::default(),
+            r#note: Default::default(),
+            r#safety: Default::default(),
+            r#parent: Default::default(),
+        }
+    }
 }

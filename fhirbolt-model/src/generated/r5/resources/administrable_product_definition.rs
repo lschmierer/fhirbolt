@@ -1,6 +1,6 @@
-// Generated on 2023-04-20 by fhirbolt-codegen v0.4.0
+// Generated on 2023-04-20 by fhirbolt-codegen v0.5.0
 #[doc = "A value for the characteristic."]
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub enum AdministrableProductDefinitionPropertyValue {
     CodeableConcept(Box<super::super::types::CodeableConcept>),
     Quantity(Box<super::super::types::Quantity>),
@@ -9,15 +9,11 @@ pub enum AdministrableProductDefinitionPropertyValue {
     Markdown(Box<super::super::types::Markdown>),
     Attachment(Box<super::super::types::Attachment>),
     Reference(Box<super::super::types::Reference>),
+    #[default]
     Invalid,
 }
-impl Default for AdministrableProductDefinitionPropertyValue {
-    fn default() -> AdministrableProductDefinitionPropertyValue {
-        AdministrableProductDefinitionPropertyValue::Invalid
-    }
-}
 #[doc = "Characteristics e.g. a product's onset of action."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct AdministrableProductDefinitionProperty {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -32,8 +28,24 @@ pub struct AdministrableProductDefinitionProperty {
     #[doc = "The status of characteristic e.g. assigned or pending."]
     pub r#status: Option<Box<super::super::types::CodeableConcept>>,
 }
+impl Default for AdministrableProductDefinitionProperty {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#type: {
+                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#value: Default::default(),
+            r#status: Default::default(),
+        }
+    }
+}
 #[doc = "A species specific time during which consumption of animal product is not appropriate."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct AdministrableProductDefinitionRouteOfAdministrationTargetSpeciesWithdrawalPeriod {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -48,8 +60,28 @@ pub struct AdministrableProductDefinitionRouteOfAdministrationTargetSpeciesWithd
     #[doc = "Extra information about the withdrawal period."]
     pub r#supporting_information: Option<super::super::types::String>,
 }
+impl Default for AdministrableProductDefinitionRouteOfAdministrationTargetSpeciesWithdrawalPeriod {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#tissue: {
+                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#value: {
+                let mut default: Box<super::super::types::Quantity> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#supporting_information: Default::default(),
+        }
+    }
+}
 #[doc = "A species for which this route applies."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct AdministrableProductDefinitionRouteOfAdministrationTargetSpecies {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -63,8 +95,23 @@ pub struct AdministrableProductDefinitionRouteOfAdministrationTargetSpecies {
     pub r#withdrawal_period:
         Vec<AdministrableProductDefinitionRouteOfAdministrationTargetSpeciesWithdrawalPeriod>,
 }
+impl Default for AdministrableProductDefinitionRouteOfAdministrationTargetSpecies {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#code: {
+                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#withdrawal_period: Default::default(),
+        }
+    }
+}
 #[doc = "The path by which the product is taken into or makes contact with the body. In some regions this is referred to as the licenced or approved route. RouteOfAdministration cannot be used when the 'formOf' product already uses MedicinalProductDefinition.route (and vice versa)."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct AdministrableProductDefinitionRouteOfAdministration {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -87,8 +134,28 @@ pub struct AdministrableProductDefinitionRouteOfAdministration {
     #[doc = "A species for which this route applies."]
     pub r#target_species: Vec<AdministrableProductDefinitionRouteOfAdministrationTargetSpecies>,
 }
+impl Default for AdministrableProductDefinitionRouteOfAdministration {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#code: {
+                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#first_dose: Default::default(),
+            r#max_single_dose: Default::default(),
+            r#max_dose_per_day: Default::default(),
+            r#max_dose_per_treatment_period: Default::default(),
+            r#max_treatment_period: Default::default(),
+            r#target_species: Default::default(),
+        }
+    }
+}
 #[doc = "A medicinal product in the final form which is suitable for administering to a patient (after any mixing of multiple components, dissolution etc. has been performed)."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct AdministrableProductDefinition {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,
@@ -128,4 +195,33 @@ pub struct AdministrableProductDefinition {
     pub r#property: Vec<AdministrableProductDefinitionProperty>,
     #[doc = "The path by which the product is taken into or makes contact with the body. In some regions this is referred to as the licenced or approved route. RouteOfAdministration cannot be used when the 'formOf' product already uses MedicinalProductDefinition.route (and vice versa)."]
     pub r#route_of_administration: Vec<AdministrableProductDefinitionRouteOfAdministration>,
+}
+impl Default for AdministrableProductDefinition {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#meta: Default::default(),
+            r#implicit_rules: Default::default(),
+            r#language: Default::default(),
+            r#text: Default::default(),
+            r#contained: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#identifier: Default::default(),
+            r#status: {
+                let mut default: super::super::types::Code = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#form_of: Default::default(),
+            r#administrable_dose_form: Default::default(),
+            r#unit_of_presentation: Default::default(),
+            r#produced_from: Default::default(),
+            r#ingredient: Default::default(),
+            r#device: Default::default(),
+            r#description: Default::default(),
+            r#property: Default::default(),
+            r#route_of_administration: Default::default(),
+        }
+    }
 }

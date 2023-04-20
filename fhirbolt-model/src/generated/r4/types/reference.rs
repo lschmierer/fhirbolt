@@ -1,6 +1,6 @@
-// Generated on 2023-04-20 by fhirbolt-codegen v0.4.0
+// Generated on 2023-04-20 by fhirbolt-codegen v0.5.0
 #[doc = "Base StructureDefinition for Reference Type: A reference from one resource to another."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct Reference {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -14,4 +14,16 @@ pub struct Reference {
     pub r#identifier: Option<Box<super::super::types::Identifier>>,
     #[doc = "Plain text narrative that identifies the resource in addition to the resource reference."]
     pub r#display: Option<super::super::types::String>,
+}
+impl Default for Reference {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#reference: Default::default(),
+            r#type: Default::default(),
+            r#identifier: Default::default(),
+            r#display: Default::default(),
+        }
+    }
 }

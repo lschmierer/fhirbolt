@@ -1,18 +1,14 @@
-// Generated on 2023-04-20 by fhirbolt-codegen v0.4.0
+// Generated on 2023-04-20 by fhirbolt-codegen v0.5.0
 #[doc = "Indicates the mechanism used to compare versions to determine which is more current."]
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub enum ChargeItemDefinitionVersionAlgorithm {
     String(Box<super::super::types::String>),
     Coding(Box<super::super::types::Coding>),
+    #[default]
     Invalid,
 }
-impl Default for ChargeItemDefinitionVersionAlgorithm {
-    fn default() -> ChargeItemDefinitionVersionAlgorithm {
-        ChargeItemDefinitionVersionAlgorithm::Invalid
-    }
-}
 #[doc = "Expressions that describe applicability criteria for the billing code."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct ChargeItemDefinitionApplicability {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -27,8 +23,20 @@ pub struct ChargeItemDefinitionApplicability {
     #[doc = "Reference to / quotation of the external source of the group of properties."]
     pub r#related_artifact: Option<Box<super::super::types::RelatedArtifact>>,
 }
+impl Default for ChargeItemDefinitionApplicability {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#condition: Default::default(),
+            r#effective_period: Default::default(),
+            r#related_artifact: Default::default(),
+        }
+    }
+}
 #[doc = "Group of properties which are applicable under the same conditions. If no applicability rules are established for the group, then all properties always apply."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct ChargeItemDefinitionPropertyGroup {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -41,8 +49,19 @@ pub struct ChargeItemDefinitionPropertyGroup {
     #[doc = "The price for a ChargeItem may be calculated as a base price with surcharges/deductions that apply in certain conditions. A ChargeItemDefinition resource that defines the prices, factors and conditions that apply to a billing code is currently under development. The priceComponent element can be used to offer transparency to the recipient of the Invoice of how the prices have been calculated."]
     pub r#price_component: Vec<Box<super::super::types::MonetaryComponent>>,
 }
+impl Default for ChargeItemDefinitionPropertyGroup {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#applicability: Default::default(),
+            r#price_component: Default::default(),
+        }
+    }
+}
 #[doc = "The ChargeItemDefinition resource provides the properties that apply to the (billing) codes necessary to calculate costs and prices. The properties may differ largely depending on type and realm, therefore this resource gives only a rough structure and requires profiling for each type of billing code system."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct ChargeItemDefinition {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,
@@ -112,4 +131,48 @@ pub struct ChargeItemDefinition {
     pub r#applicability: Vec<ChargeItemDefinitionApplicability>,
     #[doc = "Group of properties which are applicable under the same conditions. If no applicability rules are established for the group, then all properties always apply."]
     pub r#property_group: Vec<ChargeItemDefinitionPropertyGroup>,
+}
+impl Default for ChargeItemDefinition {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#meta: Default::default(),
+            r#implicit_rules: Default::default(),
+            r#language: Default::default(),
+            r#text: Default::default(),
+            r#contained: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#url: Default::default(),
+            r#identifier: Default::default(),
+            r#version: Default::default(),
+            r#version_algorithm: Default::default(),
+            r#name: Default::default(),
+            r#title: Default::default(),
+            r#derived_from_uri: Default::default(),
+            r#part_of: Default::default(),
+            r#replaces: Default::default(),
+            r#status: {
+                let mut default: super::super::types::Code = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#experimental: Default::default(),
+            r#date: Default::default(),
+            r#publisher: Default::default(),
+            r#contact: Default::default(),
+            r#description: Default::default(),
+            r#use_context: Default::default(),
+            r#jurisdiction: Default::default(),
+            r#purpose: Default::default(),
+            r#copyright: Default::default(),
+            r#copyright_label: Default::default(),
+            r#approval_date: Default::default(),
+            r#last_review_date: Default::default(),
+            r#code: Default::default(),
+            r#instance: Default::default(),
+            r#applicability: Default::default(),
+            r#property_group: Default::default(),
+        }
+    }
 }

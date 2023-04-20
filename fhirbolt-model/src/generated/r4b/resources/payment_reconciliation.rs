@@ -1,6 +1,6 @@
-// Generated on 2023-04-20 by fhirbolt-codegen v0.4.0
+// Generated on 2023-04-20 by fhirbolt-codegen v0.5.0
 #[doc = "Distribution of the payment amount for a previously acknowledged payable."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct PaymentReconciliationDetail {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -29,8 +29,31 @@ pub struct PaymentReconciliationDetail {
     #[doc = "The monetary amount allocated from the total payment to the payable."]
     pub r#amount: Option<Box<super::super::types::Money>>,
 }
+impl Default for PaymentReconciliationDetail {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#identifier: Default::default(),
+            r#predecessor: Default::default(),
+            r#type: {
+                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#request: Default::default(),
+            r#submitter: Default::default(),
+            r#response: Default::default(),
+            r#date: Default::default(),
+            r#responsible: Default::default(),
+            r#payee: Default::default(),
+            r#amount: Default::default(),
+        }
+    }
+}
 #[doc = "A note that describes or explains the processing in a human readable form."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct PaymentReconciliationProcessNote {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -43,8 +66,19 @@ pub struct PaymentReconciliationProcessNote {
     #[doc = "The explanation or description associated with the processing."]
     pub r#text: Option<super::super::types::String>,
 }
+impl Default for PaymentReconciliationProcessNote {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#type: Default::default(),
+            r#text: Default::default(),
+        }
+    }
+}
 #[doc = "This resource provides the details including amount of a payment and allocates the payment items being paid."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct PaymentReconciliation {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,
@@ -92,4 +126,49 @@ pub struct PaymentReconciliation {
     pub r#form_code: Option<Box<super::super::types::CodeableConcept>>,
     #[doc = "A note that describes or explains the processing in a human readable form."]
     pub r#process_note: Vec<PaymentReconciliationProcessNote>,
+}
+impl Default for PaymentReconciliation {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#meta: Default::default(),
+            r#implicit_rules: Default::default(),
+            r#language: Default::default(),
+            r#text: Default::default(),
+            r#contained: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#identifier: Default::default(),
+            r#status: {
+                let mut default: super::super::types::Code = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#period: Default::default(),
+            r#created: {
+                let mut default: super::super::types::DateTime = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#payment_issuer: Default::default(),
+            r#request: Default::default(),
+            r#requestor: Default::default(),
+            r#outcome: Default::default(),
+            r#disposition: Default::default(),
+            r#payment_date: {
+                let mut default: super::super::types::Date = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#payment_amount: {
+                let mut default: Box<super::super::types::Money> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#payment_identifier: Default::default(),
+            r#detail: Default::default(),
+            r#form_code: Default::default(),
+            r#process_note: Default::default(),
+        }
+    }
 }

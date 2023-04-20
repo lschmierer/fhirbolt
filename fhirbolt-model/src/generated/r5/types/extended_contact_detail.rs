@@ -1,6 +1,6 @@
-// Generated on 2023-04-20 by fhirbolt-codegen v0.4.0
+// Generated on 2023-04-20 by fhirbolt-codegen v0.5.0
 #[doc = "ExtendedContactDetail Type: Specifies contact information for a specific purpose over a period of time, might be handled/monitored by a specific named person or organization.\n\nNeed to track contact and address information in the same way across multiple resources."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct ExtendedContactDetail {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -18,4 +18,18 @@ pub struct ExtendedContactDetail {
     pub r#organization: Option<Box<super::super::types::Reference>>,
     #[doc = "Period that this contact was valid for usage."]
     pub r#period: Option<Box<super::super::types::Period>>,
+}
+impl Default for ExtendedContactDetail {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#purpose: Default::default(),
+            r#name: Default::default(),
+            r#telecom: Default::default(),
+            r#address: Default::default(),
+            r#organization: Default::default(),
+            r#period: Default::default(),
+        }
+    }
 }

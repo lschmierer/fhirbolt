@@ -1,20 +1,16 @@
-// Generated on 2023-04-20 by fhirbolt-codegen v0.4.0
+// Generated on 2023-04-20 by fhirbolt-codegen v0.5.0
 #[doc = "The time or time-period the observed value is asserted as being true. For biological subjects - e.g. human patients - this is usually called the \"physiologically relevant time\". This is usually either the time of the procedure or of specimen collection, but very often the source of the date/time is not known, only the date/time itself."]
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub enum ObservationEffective {
     DateTime(Box<super::super::types::DateTime>),
     Period(Box<super::super::types::Period>),
     Timing(Box<super::super::types::Timing>),
     Instant(Box<super::super::types::Instant>),
+    #[default]
     Invalid,
 }
-impl Default for ObservationEffective {
-    fn default() -> ObservationEffective {
-        ObservationEffective::Invalid
-    }
-}
 #[doc = "The information determined as a result of making the observation, if the information has a simple value."]
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub enum ObservationValue {
     Quantity(Box<super::super::types::Quantity>),
     CodeableConcept(Box<super::super::types::CodeableConcept>),
@@ -27,15 +23,11 @@ pub enum ObservationValue {
     Time(Box<super::super::types::Time>),
     DateTime(Box<super::super::types::DateTime>),
     Period(Box<super::super::types::Period>),
+    #[default]
     Invalid,
 }
-impl Default for ObservationValue {
-    fn default() -> ObservationValue {
-        ObservationValue::Invalid
-    }
-}
 #[doc = "The information determined as a result of making the observation, if the information has a simple value."]
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub enum ObservationComponentValue {
     Quantity(Box<super::super::types::Quantity>),
     CodeableConcept(Box<super::super::types::CodeableConcept>),
@@ -48,15 +40,11 @@ pub enum ObservationComponentValue {
     Time(Box<super::super::types::Time>),
     DateTime(Box<super::super::types::DateTime>),
     Period(Box<super::super::types::Period>),
+    #[default]
     Invalid,
 }
-impl Default for ObservationComponentValue {
-    fn default() -> ObservationComponentValue {
-        ObservationComponentValue::Invalid
-    }
-}
 #[doc = "Guidance on how to interpret the value by comparison to a normal or recommended range.  Multiple reference ranges are interpreted as an \"OR\".   In other words, to represent two distinct target populations, two `referenceRange` elements would be used."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct ObservationReferenceRange {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -77,8 +65,23 @@ pub struct ObservationReferenceRange {
     #[doc = "Text based reference range in an observation which may be used when a quantitative range is not appropriate for an observation.  An example would be a reference value of \"Negative\" or a list or table of \"normals\"."]
     pub r#text: Option<super::super::types::String>,
 }
+impl Default for ObservationReferenceRange {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#low: Default::default(),
+            r#high: Default::default(),
+            r#type: Default::default(),
+            r#applies_to: Default::default(),
+            r#age: Default::default(),
+            r#text: Default::default(),
+        }
+    }
+}
 #[doc = "Some observations have multiple component observations.  These component observations are expressed as separate code value pairs that share the same attributes.  Examples include systolic and diastolic component observations for blood pressure measurement and multiple component observations for genetics observations."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct ObservationComponent {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -97,8 +100,26 @@ pub struct ObservationComponent {
     #[doc = "Guidance on how to interpret the value by comparison to a normal or recommended range."]
     pub r#reference_range: Vec<ObservationReferenceRange>,
 }
+impl Default for ObservationComponent {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#code: {
+                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#value: Default::default(),
+            r#data_absent_reason: Default::default(),
+            r#interpretation: Default::default(),
+            r#reference_range: Default::default(),
+        }
+    }
+}
 #[doc = "Measurements and simple assertions made about a patient, device or other subject.\n\nObservations are a key aspect of healthcare.  This resource is used to capture those that do not require more sophisticated mechanisms."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct Observation {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,
@@ -164,4 +185,50 @@ pub struct Observation {
     pub r#derived_from: Vec<Box<super::super::types::Reference>>,
     #[doc = "Some observations have multiple component observations.  These component observations are expressed as separate code value pairs that share the same attributes.  Examples include systolic and diastolic component observations for blood pressure measurement and multiple component observations for genetics observations."]
     pub r#component: Vec<ObservationComponent>,
+}
+impl Default for Observation {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#meta: Default::default(),
+            r#implicit_rules: Default::default(),
+            r#language: Default::default(),
+            r#text: Default::default(),
+            r#contained: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#identifier: Default::default(),
+            r#based_on: Default::default(),
+            r#part_of: Default::default(),
+            r#status: {
+                let mut default: super::super::types::Code = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#category: Default::default(),
+            r#code: {
+                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#subject: Default::default(),
+            r#focus: Default::default(),
+            r#encounter: Default::default(),
+            r#effective: Default::default(),
+            r#issued: Default::default(),
+            r#performer: Default::default(),
+            r#value: Default::default(),
+            r#data_absent_reason: Default::default(),
+            r#interpretation: Default::default(),
+            r#note: Default::default(),
+            r#body_site: Default::default(),
+            r#method: Default::default(),
+            r#specimen: Default::default(),
+            r#device: Default::default(),
+            r#reference_range: Default::default(),
+            r#has_member: Default::default(),
+            r#derived_from: Default::default(),
+            r#component: Default::default(),
+        }
+    }
 }

@@ -1,6 +1,6 @@
-// Generated on 2023-04-20 by fhirbolt-codegen v0.4.0
+// Generated on 2023-04-20 by fhirbolt-codegen v0.5.0
 #[doc = "The party(s) that are responsible for covering the payment of this account, and what order should they be applied to the account."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct AccountCoverage {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -13,8 +13,23 @@ pub struct AccountCoverage {
     #[doc = "The priority of the coverage in the context of this account."]
     pub r#priority: Option<super::super::types::PositiveInt>,
 }
+impl Default for AccountCoverage {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#coverage: {
+                let mut default: Box<super::super::types::Reference> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#priority: Default::default(),
+        }
+    }
+}
 #[doc = "The parties responsible for balancing the account if other payment options fall short."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct AccountGuarantor {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -29,8 +44,24 @@ pub struct AccountGuarantor {
     #[doc = "The timeframe during which the guarantor accepts responsibility for the account."]
     pub r#period: Option<Box<super::super::types::Period>>,
 }
+impl Default for AccountGuarantor {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#party: {
+                let mut default: Box<super::super::types::Reference> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#on_hold: Default::default(),
+            r#period: Default::default(),
+        }
+    }
+}
 #[doc = "When using an account for billing a specific Encounter the set of diagnoses that are relevant for billing are stored here on the account where they are able to be sequenced appropriately prior to processing to produce claim(s)."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct AccountDiagnosis {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -51,8 +82,27 @@ pub struct AccountDiagnosis {
     #[doc = "The package code can be used to group diagnoses that may be priced or delivered as a single product. Such as DRGs."]
     pub r#package_code: Vec<Box<super::super::types::CodeableConcept>>,
 }
+impl Default for AccountDiagnosis {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#sequence: Default::default(),
+            r#condition: {
+                let mut default: Box<super::super::types::CodeableReference> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#date_of_diagnosis: Default::default(),
+            r#type: Default::default(),
+            r#on_admission: Default::default(),
+            r#package_code: Default::default(),
+        }
+    }
+}
 #[doc = "When using an account for billing a specific Encounter the set of procedures that are relevant for billing are stored here on the account where they are able to be sequenced appropriately prior to processing to produce claim(s)."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct AccountProcedure {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -73,8 +123,27 @@ pub struct AccountProcedure {
     #[doc = "Any devices that were associated with the procedure relevant to the account."]
     pub r#device: Vec<Box<super::super::types::Reference>>,
 }
+impl Default for AccountProcedure {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#sequence: Default::default(),
+            r#code: {
+                let mut default: Box<super::super::types::CodeableReference> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#date_of_service: Default::default(),
+            r#type: Default::default(),
+            r#package_code: Default::default(),
+            r#device: Default::default(),
+        }
+    }
+}
 #[doc = "Other associated accounts related to this account."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct AccountRelatedAccount {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -87,8 +156,23 @@ pub struct AccountRelatedAccount {
     #[doc = "Reference to an associated Account."]
     pub r#account: Box<super::super::types::Reference>,
 }
+impl Default for AccountRelatedAccount {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#relationship: Default::default(),
+            r#account: {
+                let mut default: Box<super::super::types::Reference> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+        }
+    }
+}
 #[doc = "The calculated account balances - these are calculated and processed by the finance system.\r\rThe balances with a `term` that is not current are usually generated/updated by an invoicing or similar process."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct AccountBalance {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -105,8 +189,25 @@ pub struct AccountBalance {
     #[doc = "The actual balance value calculated for the age defined in the term property."]
     pub r#amount: Box<super::super::types::Money>,
 }
+impl Default for AccountBalance {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#aggregate: Default::default(),
+            r#term: Default::default(),
+            r#estimate: Default::default(),
+            r#amount: {
+                let mut default: Box<super::super::types::Money> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+        }
+    }
+}
 #[doc = "A financial tool for tracking value accrued for a particular purpose.  In the healthcare field, used to track charges for a patient, cost centers, etc."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct Account {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,
@@ -158,4 +259,39 @@ pub struct Account {
     pub r#balance: Vec<AccountBalance>,
     #[doc = "Time the balance amount was calculated."]
     pub r#calculated_at: Option<super::super::types::Instant>,
+}
+impl Default for Account {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#meta: Default::default(),
+            r#implicit_rules: Default::default(),
+            r#language: Default::default(),
+            r#text: Default::default(),
+            r#contained: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#identifier: Default::default(),
+            r#status: {
+                let mut default: super::super::types::Code = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#billing_status: Default::default(),
+            r#type: Default::default(),
+            r#name: Default::default(),
+            r#subject: Default::default(),
+            r#service_period: Default::default(),
+            r#coverage: Default::default(),
+            r#owner: Default::default(),
+            r#description: Default::default(),
+            r#guarantor: Default::default(),
+            r#diagnosis: Default::default(),
+            r#procedure: Default::default(),
+            r#related_account: Default::default(),
+            r#currency: Default::default(),
+            r#balance: Default::default(),
+            r#calculated_at: Default::default(),
+        }
+    }
 }

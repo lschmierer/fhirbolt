@@ -1,19 +1,15 @@
-// Generated on 2023-04-20 by fhirbolt-codegen v0.4.0
+// Generated on 2023-04-20 by fhirbolt-codegen v0.5.0
 #[doc = "Todo."]
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub enum SubstanceReferenceInformationTargetAmount {
     Quantity(Box<super::super::types::Quantity>),
     Range(Box<super::super::types::Range>),
     String(Box<super::super::types::String>),
+    #[default]
     Invalid,
 }
-impl Default for SubstanceReferenceInformationTargetAmount {
-    fn default() -> SubstanceReferenceInformationTargetAmount {
-        SubstanceReferenceInformationTargetAmount::Invalid
-    }
-}
 #[doc = "Todo."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct SubstanceReferenceInformationGene {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -28,8 +24,20 @@ pub struct SubstanceReferenceInformationGene {
     #[doc = "Todo."]
     pub r#source: Vec<Box<super::super::types::Reference>>,
 }
+impl Default for SubstanceReferenceInformationGene {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#gene_sequence_origin: Default::default(),
+            r#gene: Default::default(),
+            r#source: Default::default(),
+        }
+    }
+}
 #[doc = "Todo."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct SubstanceReferenceInformationGeneElement {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -44,8 +52,20 @@ pub struct SubstanceReferenceInformationGeneElement {
     #[doc = "Todo."]
     pub r#source: Vec<Box<super::super::types::Reference>>,
 }
+impl Default for SubstanceReferenceInformationGeneElement {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#type: Default::default(),
+            r#element: Default::default(),
+            r#source: Default::default(),
+        }
+    }
+}
 #[doc = "Todo."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct SubstanceReferenceInformationClassification {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -62,8 +82,21 @@ pub struct SubstanceReferenceInformationClassification {
     #[doc = "Todo."]
     pub r#source: Vec<Box<super::super::types::Reference>>,
 }
+impl Default for SubstanceReferenceInformationClassification {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#domain: Default::default(),
+            r#classification: Default::default(),
+            r#subtype: Default::default(),
+            r#source: Default::default(),
+        }
+    }
+}
 #[doc = "Todo."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct SubstanceReferenceInformationTarget {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -88,8 +121,25 @@ pub struct SubstanceReferenceInformationTarget {
     #[doc = "Todo."]
     pub r#source: Vec<Box<super::super::types::Reference>>,
 }
+impl Default for SubstanceReferenceInformationTarget {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#target: Default::default(),
+            r#type: Default::default(),
+            r#interaction: Default::default(),
+            r#organism: Default::default(),
+            r#organism_type: Default::default(),
+            r#amount: Default::default(),
+            r#amount_type: Default::default(),
+            r#source: Default::default(),
+        }
+    }
+}
 #[doc = "Todo."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct SubstanceReferenceInformation {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,
@@ -117,4 +167,23 @@ pub struct SubstanceReferenceInformation {
     pub r#classification: Vec<SubstanceReferenceInformationClassification>,
     #[doc = "Todo."]
     pub r#target: Vec<SubstanceReferenceInformationTarget>,
+}
+impl Default for SubstanceReferenceInformation {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#meta: Default::default(),
+            r#implicit_rules: Default::default(),
+            r#language: Default::default(),
+            r#text: Default::default(),
+            r#contained: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#comment: Default::default(),
+            r#gene: Default::default(),
+            r#gene_element: Default::default(),
+            r#classification: Default::default(),
+            r#target: Default::default(),
+        }
+    }
 }

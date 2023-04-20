@@ -1,79 +1,55 @@
-// Generated on 2023-04-20 by fhirbolt-codegen v0.4.0
+// Generated on 2023-04-20 by fhirbolt-codegen v0.5.0
 #[doc = "The date (and perhaps time) when the adverse event occurred."]
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub enum AdverseEventOccurrence {
     DateTime(Box<super::super::types::DateTime>),
     Period(Box<super::super::types::Period>),
     Timing(Box<super::super::types::Timing>),
+    #[default]
     Invalid,
 }
-impl Default for AdverseEventOccurrence {
-    fn default() -> AdverseEventOccurrence {
-        AdverseEventOccurrence::Invalid
-    }
-}
 #[doc = "Identifies the actual instance of what caused the adverse event.  May be a substance, medication, medication administration, medication statement or a device."]
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub enum AdverseEventSuspectEntityInstance {
     CodeableConcept(Box<super::super::types::CodeableConcept>),
     Reference(Box<super::super::types::Reference>),
+    #[default]
     Invalid,
 }
-impl Default for AdverseEventSuspectEntityInstance {
-    fn default() -> AdverseEventSuspectEntityInstance {
-        AdverseEventSuspectEntityInstance::Invalid
-    }
-}
 #[doc = "The item that is suspected to have increased the probability or severity of the adverse event."]
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub enum AdverseEventContributingFactorItem {
     Reference(Box<super::super::types::Reference>),
     CodeableConcept(Box<super::super::types::CodeableConcept>),
+    #[default]
     Invalid,
 }
-impl Default for AdverseEventContributingFactorItem {
-    fn default() -> AdverseEventContributingFactorItem {
-        AdverseEventContributingFactorItem::Invalid
-    }
-}
 #[doc = "The action that contributed to avoiding the adverse event."]
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub enum AdverseEventPreventiveActionItem {
     Reference(Box<super::super::types::Reference>),
     CodeableConcept(Box<super::super::types::CodeableConcept>),
+    #[default]
     Invalid,
 }
-impl Default for AdverseEventPreventiveActionItem {
-    fn default() -> AdverseEventPreventiveActionItem {
-        AdverseEventPreventiveActionItem::Invalid
-    }
-}
 #[doc = "The ameliorating action taken after the adverse event occured in order to reduce the extent of harm."]
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub enum AdverseEventMitigatingActionItem {
     Reference(Box<super::super::types::Reference>),
     CodeableConcept(Box<super::super::types::CodeableConcept>),
+    #[default]
     Invalid,
 }
-impl Default for AdverseEventMitigatingActionItem {
-    fn default() -> AdverseEventMitigatingActionItem {
-        AdverseEventMitigatingActionItem::Invalid
-    }
-}
 #[doc = "Relevant past history for the subject. In a clinical care context, an example being a patient had an adverse event following a pencillin administration and the patient had a previously documented penicillin allergy. In a clinical trials context, an example is a bunion or rash that was present prior to the study. Additionally, the supporting item can be a document that is relevant to this instance of the adverse event that is not part of the subject's medical history. For example, a clinical note, staff list, or material safety data sheet (MSDS).  Supporting information is not a contributing factor, preventive action, or mitigating action."]
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub enum AdverseEventSupportingInfoItem {
     Reference(Box<super::super::types::Reference>),
     CodeableConcept(Box<super::super::types::CodeableConcept>),
+    #[default]
     Invalid,
 }
-impl Default for AdverseEventSupportingInfoItem {
-    fn default() -> AdverseEventSupportingInfoItem {
-        AdverseEventSupportingInfoItem::Invalid
-    }
-}
 #[doc = "Indicates who or what participated in the adverse event and how they were involved."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct AdverseEventParticipant {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -86,8 +62,23 @@ pub struct AdverseEventParticipant {
     #[doc = "Indicates who or what participated in the event."]
     pub r#actor: Box<super::super::types::Reference>,
 }
+impl Default for AdverseEventParticipant {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#function: Default::default(),
+            r#actor: {
+                let mut default: Box<super::super::types::Reference> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+        }
+    }
+}
 #[doc = "Information on the possible cause of the event."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct AdverseEventSuspectEntityCausality {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -102,8 +93,20 @@ pub struct AdverseEventSuspectEntityCausality {
     #[doc = "The author of the information on the possible cause of the event."]
     pub r#author: Option<Box<super::super::types::Reference>>,
 }
+impl Default for AdverseEventSuspectEntityCausality {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#assessment_method: Default::default(),
+            r#entity_relatedness: Default::default(),
+            r#author: Default::default(),
+        }
+    }
+}
 #[doc = "Describes the entity that is suspected to have caused the adverse event."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct AdverseEventSuspectEntity {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -116,8 +119,19 @@ pub struct AdverseEventSuspectEntity {
     #[doc = "Information on the possible cause of the event."]
     pub r#causality: Option<AdverseEventSuspectEntityCausality>,
 }
+impl Default for AdverseEventSuspectEntity {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#instance: Default::default(),
+            r#causality: Default::default(),
+        }
+    }
+}
 #[doc = "The contributing factors suspected to have increased the probability or severity of the adverse event."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct AdverseEventContributingFactor {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -128,8 +142,18 @@ pub struct AdverseEventContributingFactor {
     #[doc = "The item that is suspected to have increased the probability or severity of the adverse event."]
     pub r#item: AdverseEventContributingFactorItem,
 }
+impl Default for AdverseEventContributingFactor {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#item: Default::default(),
+        }
+    }
+}
 #[doc = "Preventive actions that contributed to avoiding the adverse event."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct AdverseEventPreventiveAction {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -140,8 +164,18 @@ pub struct AdverseEventPreventiveAction {
     #[doc = "The action that contributed to avoiding the adverse event."]
     pub r#item: AdverseEventPreventiveActionItem,
 }
+impl Default for AdverseEventPreventiveAction {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#item: Default::default(),
+        }
+    }
+}
 #[doc = "The ameliorating action taken after the adverse event occured in order to reduce the extent of harm."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct AdverseEventMitigatingAction {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -152,8 +186,18 @@ pub struct AdverseEventMitigatingAction {
     #[doc = "The ameliorating action taken after the adverse event occured in order to reduce the extent of harm."]
     pub r#item: AdverseEventMitigatingActionItem,
 }
+impl Default for AdverseEventMitigatingAction {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#item: Default::default(),
+        }
+    }
+}
 #[doc = "Supporting information relevant to the event."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct AdverseEventSupportingInfo {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -164,8 +208,18 @@ pub struct AdverseEventSupportingInfo {
     #[doc = "Relevant past history for the subject. In a clinical care context, an example being a patient had an adverse event following a pencillin administration and the patient had a previously documented penicillin allergy. In a clinical trials context, an example is a bunion or rash that was present prior to the study. Additionally, the supporting item can be a document that is relevant to this instance of the adverse event that is not part of the subject's medical history. For example, a clinical note, staff list, or material safety data sheet (MSDS).  Supporting information is not a contributing factor, preventive action, or mitigating action."]
     pub r#item: AdverseEventSupportingInfoItem,
 }
+impl Default for AdverseEventSupportingInfo {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#item: Default::default(),
+        }
+    }
+}
 #[doc = "An event (i.e. any change to current patient status) that may be related to unintended effects on a patient or research participant. The unintended effects may require additional monitoring, treatment, hospitalization, or may result in death. The AdverseEvent resource also extends to potential or avoided events that could have had such effects. There are two major domains where the AdverseEvent resource is expected to be used. One is in clinical care reported adverse events and the other is in reporting adverse events in clinical  research trial management.  Adverse events can be reported by healthcare providers, patients, caregivers or by medical products manufacturers.  Given the differences between these two concepts, we recommend consulting the domain specific implementation guides when implementing the AdverseEvent Resource. The implementation guides include specific extensions, value sets and constraints."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct AdverseEvent {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,
@@ -231,4 +285,54 @@ pub struct AdverseEvent {
     pub r#supporting_info: Vec<AdverseEventSupportingInfo>,
     #[doc = "Comments made about the adverse event by the performer, subject or other participants."]
     pub r#note: Vec<Box<super::super::types::Annotation>>,
+}
+impl Default for AdverseEvent {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#meta: Default::default(),
+            r#implicit_rules: Default::default(),
+            r#language: Default::default(),
+            r#text: Default::default(),
+            r#contained: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#identifier: Default::default(),
+            r#status: {
+                let mut default: super::super::types::Code = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#actuality: {
+                let mut default: super::super::types::Code = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#category: Default::default(),
+            r#code: Default::default(),
+            r#subject: {
+                let mut default: Box<super::super::types::Reference> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#encounter: Default::default(),
+            r#occurrence: Default::default(),
+            r#detected: Default::default(),
+            r#recorded_date: Default::default(),
+            r#resulting_effect: Default::default(),
+            r#location: Default::default(),
+            r#seriousness: Default::default(),
+            r#outcome: Default::default(),
+            r#recorder: Default::default(),
+            r#participant: Default::default(),
+            r#study: Default::default(),
+            r#expected_in_research_study: Default::default(),
+            r#suspect_entity: Default::default(),
+            r#contributing_factor: Default::default(),
+            r#preventive_action: Default::default(),
+            r#mitigating_action: Default::default(),
+            r#supporting_info: Default::default(),
+            r#note: Default::default(),
+        }
+    }
 }

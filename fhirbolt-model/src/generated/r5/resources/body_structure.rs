@@ -1,6 +1,6 @@
-// Generated on 2023-04-20 by fhirbolt-codegen v0.4.0
+// Generated on 2023-04-20 by fhirbolt-codegen v0.5.0
 #[doc = "The distance in centimeters a certain observation is made from a body landmark."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct BodyStructureIncludedStructureBodyLandmarkOrientationDistanceFromLandmark {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -13,8 +13,19 @@ pub struct BodyStructureIncludedStructureBodyLandmarkOrientationDistanceFromLand
     #[doc = "The measured distance (e.g., in cm) from a body landmark."]
     pub r#value: Vec<Box<super::super::types::Quantity>>,
 }
+impl Default for BodyStructureIncludedStructureBodyLandmarkOrientationDistanceFromLandmark {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#device: Default::default(),
+            r#value: Default::default(),
+        }
+    }
+}
 #[doc = "Body locations in relation to a specific body landmark (tatoo, scar, other body structure)."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct BodyStructureIncludedStructureBodyLandmarkOrientation {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -32,8 +43,21 @@ pub struct BodyStructureIncludedStructureBodyLandmarkOrientation {
     #[doc = "The surface area a body location is in relation to a landmark."]
     pub r#surface_orientation: Vec<Box<super::super::types::CodeableConcept>>,
 }
+impl Default for BodyStructureIncludedStructureBodyLandmarkOrientation {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#landmark_description: Default::default(),
+            r#clock_face_position: Default::default(),
+            r#distance_from_landmark: Default::default(),
+            r#surface_orientation: Default::default(),
+        }
+    }
+}
 #[doc = "The anatomical location(s) or region(s) of the specimen, lesion, or body structure."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct BodyStructureIncludedStructure {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -52,8 +76,26 @@ pub struct BodyStructureIncludedStructure {
     #[doc = "Code that represents the included structure qualifier."]
     pub r#qualifier: Vec<Box<super::super::types::CodeableConcept>>,
 }
+impl Default for BodyStructureIncludedStructure {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#structure: {
+                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#laterality: Default::default(),
+            r#body_landmark_orientation: Default::default(),
+            r#spatial_reference: Default::default(),
+            r#qualifier: Default::default(),
+        }
+    }
+}
 #[doc = "Record details about an anatomical structure.  This resource may be used when a coded concept does not provide the necessary detail needed for the use case."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct BodyStructure {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,
@@ -87,4 +129,30 @@ pub struct BodyStructure {
     pub r#image: Vec<Box<super::super::types::Attachment>>,
     #[doc = "The person to which the body site belongs."]
     pub r#patient: Box<super::super::types::Reference>,
+}
+impl Default for BodyStructure {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#meta: Default::default(),
+            r#implicit_rules: Default::default(),
+            r#language: Default::default(),
+            r#text: Default::default(),
+            r#contained: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#identifier: Default::default(),
+            r#active: Default::default(),
+            r#morphology: Default::default(),
+            r#included_structure: Default::default(),
+            r#excluded_structure: Default::default(),
+            r#description: Default::default(),
+            r#image: Default::default(),
+            r#patient: {
+                let mut default: Box<super::super::types::Reference> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+        }
+    }
 }

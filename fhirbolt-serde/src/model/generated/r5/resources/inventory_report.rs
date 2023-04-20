@@ -1,4 +1,4 @@
-// Generated on 2023-04-20 by fhirbolt-codegen v0.4.0
+// Generated on 2023-04-20 by fhirbolt-codegen v0.5.0
 impl serde::ser::Serialize
     for crate::context::ser::SerializationContext<
         &fhirbolt_model::r5::resources::InventoryReportInventoryListingItem,
@@ -9,6 +9,13 @@ impl serde::ser::Serialize
         S: serde::ser::Serializer,
     {
         use serde::ser::SerializeMap;
+        #[allow(dead_code)]
+        fn missing_field_error<T, E: serde::ser::Error>(field: &str) -> Result<T, E> {
+            Err(E::custom(format!(
+                "missing required field `{}.{}`",
+                "InventoryReport.inventoryListing.item", field
+            )))
+        }
         let mut state = serializer.serialize_map(None)?;
         if let Some(value) = self.value.r#id.as_ref() {
             state.serialize_entry("id", value)?;
@@ -26,9 +33,15 @@ impl serde::ser::Serialize
         if let Some(some) = self.value.r#category.as_ref() {
             self.with_context(some, |ctx| state.serialize_entry("category", ctx))?;
         }
+        if self.value.r#quantity.id.as_deref() == Some("$invalid") {
+            return missing_field_error("quantity");
+        }
         self.with_context(&self.value.r#quantity, |ctx| {
             state.serialize_entry("quantity", ctx)
         })?;
+        if self.value.r#item.id.as_deref() == Some("$invalid") {
+            return missing_field_error("item");
+        }
         self.with_context(&self.value.r#item, |ctx| state.serialize_entry("item", ctx))?;
         state.end()
     }
@@ -336,6 +349,13 @@ impl serde::ser::Serialize
         S: serde::ser::Serializer,
     {
         use serde::ser::SerializeMap;
+        #[allow(dead_code)]
+        fn missing_field_error<T, E: serde::ser::Error>(field: &str) -> Result<T, E> {
+            Err(E::custom(format!(
+                "missing required field `{}.{}`",
+                "InventoryReport.inventoryListing", field
+            )))
+        }
         let mut state = serializer.serialize_map(None)?;
         if let Some(value) = self.value.r#id.as_ref() {
             state.serialize_entry("id", value)?;
@@ -725,6 +745,13 @@ impl serde::ser::Serialize
         S: serde::ser::Serializer,
     {
         use serde::ser::SerializeMap;
+        #[allow(dead_code)]
+        fn missing_field_error<T, E: serde::ser::Error>(field: &str) -> Result<T, E> {
+            Err(E::custom(format!(
+                "missing required field `{}.{}`",
+                "InventoryReport", field
+            )))
+        }
         let mut state = serializer.serialize_map(None)?;
         state.serialize_entry("resourceType", "InventoryReport")?;
         if let Some(value) = self.value.r#id.as_ref() {
@@ -799,6 +826,9 @@ impl serde::ser::Serialize
             })?;
         }
         if self.output_json {
+            if self.value.r#status.id.as_deref() == Some("$invalid") {
+                return missing_field_error("status");
+            }
             if let Some(some) = self.value.r#status.value.as_ref() {
                 let some = Ok(some)?;
                 state.serialize_entry("status", &some)?;
@@ -813,11 +843,17 @@ impl serde::ser::Serialize
                 })?;
             }
         } else {
+            if self.value.r#status.id.as_deref() == Some("$invalid") {
+                return missing_field_error("status");
+            }
             self.with_context(&self.value.r#status, |ctx| {
                 state.serialize_entry("status", ctx)
             })?;
         }
         if self.output_json {
+            if self.value.r#count_type.id.as_deref() == Some("$invalid") {
+                return missing_field_error("countType");
+            }
             if let Some(some) = self.value.r#count_type.value.as_ref() {
                 let some = Ok(some)?;
                 state.serialize_entry("countType", &some)?;
@@ -833,6 +869,9 @@ impl serde::ser::Serialize
                 })?;
             }
         } else {
+            if self.value.r#count_type.id.as_deref() == Some("$invalid") {
+                return missing_field_error("countType");
+            }
             self.with_context(&self.value.r#count_type, |ctx| {
                 state.serialize_entry("countType", ctx)
             })?;
@@ -846,6 +885,9 @@ impl serde::ser::Serialize
             })?;
         }
         if self.output_json {
+            if self.value.r#reported_date_time.id.as_deref() == Some("$invalid") {
+                return missing_field_error("reportedDateTime");
+            }
             if let Some(some) = self.value.r#reported_date_time.value.as_ref() {
                 let some = Ok(some)?;
                 state.serialize_entry("reportedDateTime", &some)?;
@@ -862,6 +904,9 @@ impl serde::ser::Serialize
                 })?;
             }
         } else {
+            if self.value.r#reported_date_time.id.as_deref() == Some("$invalid") {
+                return missing_field_error("reportedDateTime");
+            }
             self.with_context(&self.value.r#reported_date_time, |ctx| {
                 state.serialize_entry("reportedDateTime", ctx)
             })?;

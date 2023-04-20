@@ -1,4 +1,4 @@
-// Generated on 2023-04-20 by fhirbolt-codegen v0.4.0
+// Generated on 2023-04-20 by fhirbolt-codegen v0.5.0
 impl serde::ser::Serialize
     for crate::context::ser::SerializationContext<
         &fhirbolt_model::r4b::resources::AuditEventAgentNetwork,
@@ -9,6 +9,13 @@ impl serde::ser::Serialize
         S: serde::ser::Serializer,
     {
         use serde::ser::SerializeMap;
+        #[allow(dead_code)]
+        fn missing_field_error<T, E: serde::ser::Error>(field: &str) -> Result<T, E> {
+            Err(E::custom(format!(
+                "missing required field `{}.{}`",
+                "AuditEvent.agent.network", field
+            )))
+        }
         let mut state = serializer.serialize_map(None)?;
         if let Some(value) = self.value.r#id.as_ref() {
             state.serialize_entry("id", value)?;
@@ -382,6 +389,13 @@ impl serde::ser::Serialize
         S: serde::ser::Serializer,
     {
         use serde::ser::SerializeMap;
+        #[allow(dead_code)]
+        fn missing_field_error<T, E: serde::ser::Error>(field: &str) -> Result<T, E> {
+            Err(E::custom(format!(
+                "missing required field `{}.{}`",
+                "AuditEvent.agent", field
+            )))
+        }
         let mut state = serializer.serialize_map(None)?;
         if let Some(value) = self.value.r#id.as_ref() {
             state.serialize_entry("id", value)?;
@@ -448,6 +462,9 @@ impl serde::ser::Serialize
             }
         }
         if self.output_json {
+            if self.value.r#requestor.id.as_deref() == Some("$invalid") {
+                return missing_field_error("requestor");
+            }
             if let Some(some) = self.value.r#requestor.value.as_ref() {
                 let some = Ok(some)?;
                 state.serialize_entry("requestor", &some)?;
@@ -462,6 +479,9 @@ impl serde::ser::Serialize
                 })?;
             }
         } else {
+            if self.value.r#requestor.id.as_deref() == Some("$invalid") {
+                return missing_field_error("requestor");
+            }
             self.with_context(&self.value.r#requestor, |ctx| {
                 state.serialize_entry("requestor", ctx)
             })?;
@@ -1083,6 +1103,13 @@ impl serde::ser::Serialize
         S: serde::ser::Serializer,
     {
         use serde::ser::SerializeMap;
+        #[allow(dead_code)]
+        fn missing_field_error<T, E: serde::ser::Error>(field: &str) -> Result<T, E> {
+            Err(E::custom(format!(
+                "missing required field `{}.{}`",
+                "AuditEvent.source", field
+            )))
+        }
         let mut state = serializer.serialize_map(None)?;
         if let Some(value) = self.value.r#id.as_ref() {
             state.serialize_entry("id", value)?;
@@ -1117,6 +1144,9 @@ impl serde::ser::Serialize
             if let Some(some) = self.value.r#site.as_ref() {
                 self.with_context(some, |ctx| state.serialize_entry("site", ctx))?;
             }
+        }
+        if self.value.r#observer.id.as_deref() == Some("$invalid") {
+            return missing_field_error("observer");
         }
         self.with_context(&self.value.r#observer, |ctx| {
             state.serialize_entry("observer", ctx)
@@ -1455,6 +1485,13 @@ impl serde::ser::Serialize
         S: serde::ser::Serializer,
     {
         use serde::ser::SerializeMap;
+        #[allow(dead_code)]
+        fn missing_field_error<T, E: serde::ser::Error>(field: &str) -> Result<T, E> {
+            Err(E::custom(format!(
+                "missing required field `{}.{}`",
+                "AuditEvent.entity.detail", field
+            )))
+        }
         let mut state = serializer.serialize_map(None)?;
         if let Some(value) = self.value.r#id.as_ref() {
             state.serialize_entry("id", value)?;
@@ -1470,6 +1507,9 @@ impl serde::ser::Serialize
             })?;
         }
         if self.output_json {
+            if self.value.r#type.id.as_deref() == Some("$invalid") {
+                return missing_field_error("type");
+            }
             if let Some(some) = self.value.r#type.value.as_ref() {
                 let some = Ok(some)?;
                 state.serialize_entry("type", &some)?;
@@ -1484,6 +1524,9 @@ impl serde::ser::Serialize
                 })?;
             }
         } else {
+            if self.value.r#type.id.as_deref() == Some("$invalid") {
+                return missing_field_error("type");
+            }
             self.with_context(&self.value.r#type, |ctx| state.serialize_entry("type", ctx))?;
         }
         match self.value.r#value {
@@ -1881,6 +1924,13 @@ impl serde::ser::Serialize
         S: serde::ser::Serializer,
     {
         use serde::ser::SerializeMap;
+        #[allow(dead_code)]
+        fn missing_field_error<T, E: serde::ser::Error>(field: &str) -> Result<T, E> {
+            Err(E::custom(format!(
+                "missing required field `{}.{}`",
+                "AuditEvent.entity", field
+            )))
+        }
         let mut state = serializer.serialize_map(None)?;
         if let Some(value) = self.value.r#id.as_ref() {
             state.serialize_entry("id", value)?;
@@ -2456,6 +2506,13 @@ impl serde::ser::Serialize
         S: serde::ser::Serializer,
     {
         use serde::ser::SerializeMap;
+        #[allow(dead_code)]
+        fn missing_field_error<T, E: serde::ser::Error>(field: &str) -> Result<T, E> {
+            Err(E::custom(format!(
+                "missing required field `{}.{}`",
+                "AuditEvent", field
+            )))
+        }
         let mut state = serializer.serialize_map(None)?;
         state.serialize_entry("resourceType", "AuditEvent")?;
         if let Some(value) = self.value.r#id.as_ref() {
@@ -2524,6 +2581,9 @@ impl serde::ser::Serialize
                 state.serialize_entry("modifierExtension", ctx)
             })?;
         }
+        if self.value.r#type.id.as_deref() == Some("$invalid") {
+            return missing_field_error("type");
+        }
         self.with_context(&self.value.r#type, |ctx| state.serialize_entry("type", ctx))?;
         if !self.value.r#subtype.is_empty() {
             self.with_context(&self.value.r#subtype, |ctx| {
@@ -2555,6 +2615,9 @@ impl serde::ser::Serialize
             self.with_context(some, |ctx| state.serialize_entry("period", ctx))?;
         }
         if self.output_json {
+            if self.value.r#recorded.id.as_deref() == Some("$invalid") {
+                return missing_field_error("recorded");
+            }
             if let Some(some) = self.value.r#recorded.value.as_ref() {
                 let some = Ok(some)?;
                 state.serialize_entry("recorded", &some)?;
@@ -2569,6 +2632,9 @@ impl serde::ser::Serialize
                 })?;
             }
         } else {
+            if self.value.r#recorded.id.as_deref() == Some("$invalid") {
+                return missing_field_error("recorded");
+            }
             self.with_context(&self.value.r#recorded, |ctx| {
                 state.serialize_entry("recorded", ctx)
             })?;
@@ -2624,6 +2690,9 @@ impl serde::ser::Serialize
             self.with_context(&self.value.r#agent, |ctx| {
                 state.serialize_entry("agent", ctx)
             })?;
+        }
+        if self.value.r#source.id.as_deref() == Some("$invalid") {
+            return missing_field_error("source");
         }
         self.with_context(&self.value.r#source, |ctx| {
             state.serialize_entry("source", ctx)

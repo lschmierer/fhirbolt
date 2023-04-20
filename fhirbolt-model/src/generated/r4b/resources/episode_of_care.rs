@@ -1,6 +1,6 @@
-// Generated on 2023-04-20 by fhirbolt-codegen v0.4.0
+// Generated on 2023-04-20 by fhirbolt-codegen v0.5.0
 #[doc = "The history of statuses that the EpisodeOfCare has been through (without requiring processing the history of the resource)."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct EpisodeOfCareStatusHistory {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -13,8 +13,27 @@ pub struct EpisodeOfCareStatusHistory {
     #[doc = "The period during this EpisodeOfCare that the specific status applied."]
     pub r#period: Box<super::super::types::Period>,
 }
+impl Default for EpisodeOfCareStatusHistory {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#status: {
+                let mut default: super::super::types::Code = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#period: {
+                let mut default: Box<super::super::types::Period> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+        }
+    }
+}
 #[doc = "The list of diagnosis relevant to this episode of care."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct EpisodeOfCareDiagnosis {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -29,8 +48,24 @@ pub struct EpisodeOfCareDiagnosis {
     #[doc = "Ranking of the diagnosis (for each role type)."]
     pub r#rank: Option<super::super::types::PositiveInt>,
 }
+impl Default for EpisodeOfCareDiagnosis {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#condition: {
+                let mut default: Box<super::super::types::Reference> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#role: Default::default(),
+            r#rank: Default::default(),
+        }
+    }
+}
 #[doc = "An association between a patient and an organization / healthcare provider(s) during which time encounters may occur. The managing organization assumes a level of responsibility for the patient during this time."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct EpisodeOfCare {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,
@@ -72,4 +107,38 @@ pub struct EpisodeOfCare {
     pub r#team: Vec<Box<super::super::types::Reference>>,
     #[doc = "The set of accounts that may be used for billing for this EpisodeOfCare."]
     pub r#account: Vec<Box<super::super::types::Reference>>,
+}
+impl Default for EpisodeOfCare {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#meta: Default::default(),
+            r#implicit_rules: Default::default(),
+            r#language: Default::default(),
+            r#text: Default::default(),
+            r#contained: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#identifier: Default::default(),
+            r#status: {
+                let mut default: super::super::types::Code = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#status_history: Default::default(),
+            r#type: Default::default(),
+            r#diagnosis: Default::default(),
+            r#patient: {
+                let mut default: Box<super::super::types::Reference> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#managing_organization: Default::default(),
+            r#period: Default::default(),
+            r#referral_request: Default::default(),
+            r#care_manager: Default::default(),
+            r#team: Default::default(),
+            r#account: Default::default(),
+        }
+    }
 }

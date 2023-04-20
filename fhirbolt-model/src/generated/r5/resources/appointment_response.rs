@@ -1,6 +1,6 @@
-// Generated on 2023-04-20 by fhirbolt-codegen v0.4.0
+// Generated on 2023-04-20 by fhirbolt-codegen v0.5.0
 #[doc = "A reply to an appointment request for a patient and/or practitioner(s), such as a confirmation or rejection."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct AppointmentResponse {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,
@@ -42,4 +42,38 @@ pub struct AppointmentResponse {
     pub r#occurrence_date: Option<super::super::types::Date>,
     #[doc = "The recurrence ID (sequence number) of the specific appointment when responding to a recurring request."]
     pub r#recurrence_id: Option<super::super::types::PositiveInt>,
+}
+impl Default for AppointmentResponse {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#meta: Default::default(),
+            r#implicit_rules: Default::default(),
+            r#language: Default::default(),
+            r#text: Default::default(),
+            r#contained: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#identifier: Default::default(),
+            r#appointment: {
+                let mut default: Box<super::super::types::Reference> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#proposed_new_time: Default::default(),
+            r#start: Default::default(),
+            r#end: Default::default(),
+            r#participant_type: Default::default(),
+            r#actor: Default::default(),
+            r#participant_status: {
+                let mut default: super::super::types::Code = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#comment: Default::default(),
+            r#recurring: Default::default(),
+            r#occurrence_date: Default::default(),
+            r#recurrence_id: Default::default(),
+        }
+    }
 }

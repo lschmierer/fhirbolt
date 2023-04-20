@@ -1,6 +1,6 @@
-// Generated on 2023-04-20 by fhirbolt-codegen v0.4.0
+// Generated on 2023-04-20 by fhirbolt-codegen v0.5.0
 #[doc = "Many complex materials are fractions of parts of plants, animals, or minerals. Fraction elements are often necessary to define both Substances and Specified Group 1 Substances. For substances derived from Plants, fraction information will be captured at the Substance information level ( . Oils, Juices and Exudates). Additional information for Extracts, such as extraction solvent composition, will be captured at the Specified Substance Group 1 information level. For plasma-derived products fraction information will be captured at the Substance and the Specified Substance Group 1 levels."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct SubstanceSourceMaterialFractionDescription {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -13,8 +13,19 @@ pub struct SubstanceSourceMaterialFractionDescription {
     #[doc = "The specific type of the material constituting the component. For Herbal preparations the particulars of the extracts (liquid/dry) is described in Specified Substance Group 1."]
     pub r#material_type: Option<Box<super::super::types::CodeableConcept>>,
 }
+impl Default for SubstanceSourceMaterialFractionDescription {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#fraction: Default::default(),
+            r#material_type: Default::default(),
+        }
+    }
+}
 #[doc = "4.9.13.6.1 Author type (Conditional)."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct SubstanceSourceMaterialOrganismAuthor {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -27,8 +38,19 @@ pub struct SubstanceSourceMaterialOrganismAuthor {
     #[doc = "The author of an organism species shall be specified. The author year of an organism shall also be specified when applicable; refers to the year in which the first author(s) published the infraspecific plant/animal name (of any rank)."]
     pub r#author_description: Option<super::super::types::String>,
 }
+impl Default for SubstanceSourceMaterialOrganismAuthor {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#author_type: Default::default(),
+            r#author_description: Default::default(),
+        }
+    }
+}
 #[doc = "4.9.13.8.1 Hybrid species maternal organism ID (Optional)."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct SubstanceSourceMaterialOrganismHybrid {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -47,8 +69,22 @@ pub struct SubstanceSourceMaterialOrganismHybrid {
     #[doc = "The hybrid type of an organism shall be specified."]
     pub r#hybrid_type: Option<Box<super::super::types::CodeableConcept>>,
 }
+impl Default for SubstanceSourceMaterialOrganismHybrid {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#maternal_organism_id: Default::default(),
+            r#maternal_organism_name: Default::default(),
+            r#paternal_organism_id: Default::default(),
+            r#paternal_organism_name: Default::default(),
+            r#hybrid_type: Default::default(),
+        }
+    }
+}
 #[doc = "4.9.13.7.1 Kingdom (Conditional)."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct SubstanceSourceMaterialOrganismOrganismGeneral {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -65,8 +101,21 @@ pub struct SubstanceSourceMaterialOrganismOrganismGeneral {
     #[doc = "The order of an organism shall be specified,."]
     pub r#order: Option<Box<super::super::types::CodeableConcept>>,
 }
+impl Default for SubstanceSourceMaterialOrganismOrganismGeneral {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#kingdom: Default::default(),
+            r#phylum: Default::default(),
+            r#class: Default::default(),
+            r#order: Default::default(),
+        }
+    }
+}
 #[doc = "This subclause describes the organism which the substance is derived from. For vaccines, the parent organism shall be specified based on these subclause elements. As an example, full taxonomy will be described for the Substance Name: ., Leaf."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct SubstanceSourceMaterialOrganism {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -91,8 +140,25 @@ pub struct SubstanceSourceMaterialOrganism {
     #[doc = "4.9.13.7.1 Kingdom (Conditional)."]
     pub r#organism_general: Option<SubstanceSourceMaterialOrganismOrganismGeneral>,
 }
+impl Default for SubstanceSourceMaterialOrganism {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#family: Default::default(),
+            r#genus: Default::default(),
+            r#species: Default::default(),
+            r#intraspecific_type: Default::default(),
+            r#intraspecific_description: Default::default(),
+            r#author: Default::default(),
+            r#hybrid: Default::default(),
+            r#organism_general: Default::default(),
+        }
+    }
+}
 #[doc = "To do."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct SubstanceSourceMaterialPartDescription {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -105,8 +171,19 @@ pub struct SubstanceSourceMaterialPartDescription {
     #[doc = "The detailed anatomic location when the part can be extracted from different anatomical locations of the organism. Multiple alternative locations may apply."]
     pub r#part_location: Option<Box<super::super::types::CodeableConcept>>,
 }
+impl Default for SubstanceSourceMaterialPartDescription {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#part: Default::default(),
+            r#part_location: Default::default(),
+        }
+    }
+}
 #[doc = "Source material shall capture information on the taxonomic and anatomical origins as well as the fraction of a material that can result in or can be modified to form a substance. This set of data elements shall be used to define polymer substances isolated from biological matrices. Taxonomic and anatomical origins shall be described using a controlled vocabulary as required. This information is captured for naturally derived polymers ( . starch) and structurally diverse substances. For Organisms belonging to the Kingdom Plantae the Substance level defines the fresh material of a single species or infraspecies, the Herbal Drug and the Herbal preparation. For Herbal preparations, the fraction information will be captured at the Substance information level and additional information for herbal extracts will be captured at the Specified Substance Group 1 information level. See for further explanation the Substance Class: Structurally Diverse and the herbal annex."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct SubstanceSourceMaterial {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,
@@ -150,4 +227,31 @@ pub struct SubstanceSourceMaterial {
     pub r#organism: Option<SubstanceSourceMaterialOrganism>,
     #[doc = "To do."]
     pub r#part_description: Vec<SubstanceSourceMaterialPartDescription>,
+}
+impl Default for SubstanceSourceMaterial {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#meta: Default::default(),
+            r#implicit_rules: Default::default(),
+            r#language: Default::default(),
+            r#text: Default::default(),
+            r#contained: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#source_material_class: Default::default(),
+            r#source_material_type: Default::default(),
+            r#source_material_state: Default::default(),
+            r#organism_id: Default::default(),
+            r#organism_name: Default::default(),
+            r#parent_substance_id: Default::default(),
+            r#parent_substance_name: Default::default(),
+            r#country_of_origin: Default::default(),
+            r#geographical_location: Default::default(),
+            r#development_stage: Default::default(),
+            r#fraction_description: Default::default(),
+            r#organism: Default::default(),
+            r#part_description: Default::default(),
+        }
+    }
 }

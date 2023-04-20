@@ -1,31 +1,23 @@
-// Generated on 2023-04-20 by fhirbolt-codegen v0.4.0
+// Generated on 2023-04-20 by fhirbolt-codegen v0.5.0
 #[doc = "Indicates the mechanism used to compare versions to determine which is more current."]
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub enum ImplementationGuideVersionAlgorithm {
     String(Box<super::super::types::String>),
     Coding(Box<super::super::types::Coding>),
+    #[default]
     Invalid,
 }
-impl Default for ImplementationGuideVersionAlgorithm {
-    fn default() -> ImplementationGuideVersionAlgorithm {
-        ImplementationGuideVersionAlgorithm::Invalid
-    }
-}
 #[doc = "Indicates the URL or the actual content to provide for the page."]
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub enum ImplementationGuideDefinitionPageSource {
     Url(Box<super::super::types::Url>),
     String(Box<super::super::types::String>),
     Markdown(Box<super::super::types::Markdown>),
+    #[default]
     Invalid,
 }
-impl Default for ImplementationGuideDefinitionPageSource {
-    fn default() -> ImplementationGuideDefinitionPageSource {
-        ImplementationGuideDefinitionPageSource::Invalid
-    }
-}
 #[doc = "Another implementation guide that this implementation depends on. Typically, an implementation guide uses value sets, profiles etc.defined in other implementation guides."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct ImplementationGuideDependsOn {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -42,8 +34,25 @@ pub struct ImplementationGuideDependsOn {
     #[doc = "A description explaining the nature of the dependency on the listed IG."]
     pub r#reason: Option<super::super::types::Markdown>,
 }
+impl Default for ImplementationGuideDependsOn {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#uri: {
+                let mut default: super::super::types::Canonical = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#package_id: Default::default(),
+            r#version: Default::default(),
+            r#reason: Default::default(),
+        }
+    }
+}
 #[doc = "A set of profiles that all resources covered by this implementation guide must conform to."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct ImplementationGuideGlobal {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -56,8 +65,27 @@ pub struct ImplementationGuideGlobal {
     #[doc = "A reference to the profile that all instances must conform to."]
     pub r#profile: super::super::types::Canonical,
 }
+impl Default for ImplementationGuideGlobal {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#type: {
+                let mut default: super::super::types::Code = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#profile: {
+                let mut default: super::super::types::Canonical = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+        }
+    }
+}
 #[doc = "A logical group of resources. Logical groups can be used when building pages."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct ImplementationGuideDefinitionGrouping {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -70,8 +98,23 @@ pub struct ImplementationGuideDefinitionGrouping {
     #[doc = "Human readable text describing the package."]
     pub r#description: Option<super::super::types::Markdown>,
 }
+impl Default for ImplementationGuideDefinitionGrouping {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#name: {
+                let mut default: super::super::types::String = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#description: Default::default(),
+        }
+    }
+}
 #[doc = "A resource that is part of the implementation guide. Conformance resources (value set, structure definition, capability statements etc.) are obvious candidates for inclusion, but any kind of resource can be included as an example resource."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct ImplementationGuideDefinitionResource {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -94,8 +137,28 @@ pub struct ImplementationGuideDefinitionResource {
     #[doc = "Reference to the id of the grouping this resource appears in."]
     pub r#grouping_id: Option<super::super::types::Id>,
 }
+impl Default for ImplementationGuideDefinitionResource {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#reference: {
+                let mut default: Box<super::super::types::Reference> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#fhir_version: Default::default(),
+            r#name: Default::default(),
+            r#description: Default::default(),
+            r#is_example: Default::default(),
+            r#profile: Default::default(),
+            r#grouping_id: Default::default(),
+        }
+    }
+}
 #[doc = "A page / section in the implementation guide. The root page is the implementation guide home page."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct ImplementationGuideDefinitionPage {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -114,8 +177,34 @@ pub struct ImplementationGuideDefinitionPage {
     #[doc = "Nested Pages/Sections under this page."]
     pub r#page: Vec<ImplementationGuideDefinitionPage>,
 }
+impl Default for ImplementationGuideDefinitionPage {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#source: Default::default(),
+            r#name: {
+                let mut default: super::super::types::Url = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#title: {
+                let mut default: super::super::types::String = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#generation: {
+                let mut default: super::super::types::Code = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#page: Default::default(),
+        }
+    }
+}
 #[doc = "A set of parameters that defines how the implementation guide is built. The parameters are defined by the relevant tools that build the implementation guides."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct ImplementationGuideDefinitionParameter {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -128,8 +217,27 @@ pub struct ImplementationGuideDefinitionParameter {
     #[doc = "Value for named type."]
     pub r#value: super::super::types::String,
 }
+impl Default for ImplementationGuideDefinitionParameter {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#code: {
+                let mut default: Box<super::super::types::Coding> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#value: {
+                let mut default: super::super::types::String = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+        }
+    }
+}
 #[doc = "A template for building resources."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct ImplementationGuideDefinitionTemplate {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -144,8 +252,28 @@ pub struct ImplementationGuideDefinitionTemplate {
     #[doc = "The scope in which the template applies."]
     pub r#scope: Option<super::super::types::String>,
 }
+impl Default for ImplementationGuideDefinitionTemplate {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#code: {
+                let mut default: super::super::types::Code = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#source: {
+                let mut default: super::super::types::String = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#scope: Default::default(),
+        }
+    }
+}
 #[doc = "The information needed by an IG publisher tool to publish the whole implementation guide."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct ImplementationGuideDefinition {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -164,8 +292,22 @@ pub struct ImplementationGuideDefinition {
     #[doc = "A template for building resources."]
     pub r#template: Vec<ImplementationGuideDefinitionTemplate>,
 }
+impl Default for ImplementationGuideDefinition {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#grouping: Default::default(),
+            r#resource: Default::default(),
+            r#page: Default::default(),
+            r#parameter: Default::default(),
+            r#template: Default::default(),
+        }
+    }
+}
 #[doc = "A resource that is part of the implementation guide. Conformance resources (value set, structure definition, capability statements etc.) are obvious candidates for inclusion, but any kind of resource can be included as an example resource."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct ImplementationGuideManifestResource {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -182,8 +324,25 @@ pub struct ImplementationGuideManifestResource {
     #[doc = "The relative path for primary page for this resource within the IG."]
     pub r#relative_path: Option<super::super::types::Url>,
 }
+impl Default for ImplementationGuideManifestResource {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#reference: {
+                let mut default: Box<super::super::types::Reference> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#is_example: Default::default(),
+            r#profile: Default::default(),
+            r#relative_path: Default::default(),
+        }
+    }
+}
 #[doc = "Information about a page within the IG."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct ImplementationGuideManifestPage {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -198,8 +357,24 @@ pub struct ImplementationGuideManifestPage {
     #[doc = "The name of an anchor available on the page."]
     pub r#anchor: Vec<super::super::types::String>,
 }
+impl Default for ImplementationGuideManifestPage {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#name: {
+                let mut default: super::super::types::String = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#title: Default::default(),
+            r#anchor: Default::default(),
+        }
+    }
+}
 #[doc = "Information about an assembled implementation guide, created by the publication tooling."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct ImplementationGuideManifest {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -218,8 +393,22 @@ pub struct ImplementationGuideManifest {
     #[doc = "Indicates the relative path of an additional non-page, non-image file that is part of the IG - e.g. zip, jar and similar files that could be the target of a hyperlink in a derived IG."]
     pub r#other: Vec<super::super::types::String>,
 }
+impl Default for ImplementationGuideManifest {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#rendering: Default::default(),
+            r#resource: Default::default(),
+            r#page: Default::default(),
+            r#image: Default::default(),
+            r#other: Default::default(),
+        }
+    }
+}
 #[doc = "A set of rules of how a particular interoperability or standards problem is solved - typically through the use of FHIR resources. This resource is used to gather all the parts of an implementation guide into a logical whole and to publish a computable definition of all the parts.\n\nAn implementation guide is able to define default profiles that must apply to any use of a resource, so validation services may need to take one or more implementation guide resources when validating."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct ImplementationGuide {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,
@@ -285,4 +474,58 @@ pub struct ImplementationGuide {
     pub r#definition: Option<ImplementationGuideDefinition>,
     #[doc = "Information about an assembled implementation guide, created by the publication tooling."]
     pub r#manifest: Option<ImplementationGuideManifest>,
+}
+impl Default for ImplementationGuide {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#meta: Default::default(),
+            r#implicit_rules: Default::default(),
+            r#language: Default::default(),
+            r#text: Default::default(),
+            r#contained: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#url: {
+                let mut default: super::super::types::Uri = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#identifier: Default::default(),
+            r#version: Default::default(),
+            r#version_algorithm: Default::default(),
+            r#name: {
+                let mut default: super::super::types::String = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#title: Default::default(),
+            r#status: {
+                let mut default: super::super::types::Code = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#experimental: Default::default(),
+            r#date: Default::default(),
+            r#publisher: Default::default(),
+            r#contact: Default::default(),
+            r#description: Default::default(),
+            r#use_context: Default::default(),
+            r#jurisdiction: Default::default(),
+            r#purpose: Default::default(),
+            r#copyright: Default::default(),
+            r#copyright_label: Default::default(),
+            r#package_id: {
+                let mut default: super::super::types::Id = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#license: Default::default(),
+            r#fhir_version: Default::default(),
+            r#depends_on: Default::default(),
+            r#global: Default::default(),
+            r#definition: Default::default(),
+            r#manifest: Default::default(),
+        }
+    }
 }

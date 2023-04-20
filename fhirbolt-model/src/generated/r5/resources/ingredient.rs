@@ -1,47 +1,35 @@
-// Generated on 2023-04-20 by fhirbolt-codegen v0.4.0
+// Generated on 2023-04-20 by fhirbolt-codegen v0.5.0
 #[doc = "The quantity of substance in the unit of presentation, or in the volume (or mass) of the single pharmaceutical product or manufactured item. Unit of presentation refers to the quantity that the item occurs in e.g. a strength per tablet size, perhaps 'per 20mg' (the size of the tablet). It is not generally normalized as a unitary unit, which would be 'per mg')."]
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub enum IngredientSubstanceStrengthPresentation {
     Ratio(Box<super::super::types::Ratio>),
     RatioRange(Box<super::super::types::RatioRange>),
     CodeableConcept(Box<super::super::types::CodeableConcept>),
     Quantity(Box<super::super::types::Quantity>),
+    #[default]
     Invalid,
 }
-impl Default for IngredientSubstanceStrengthPresentation {
-    fn default() -> IngredientSubstanceStrengthPresentation {
-        IngredientSubstanceStrengthPresentation::Invalid
-    }
-}
 #[doc = "The strength per unitary volume (or mass)."]
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub enum IngredientSubstanceStrengthConcentration {
     Ratio(Box<super::super::types::Ratio>),
     RatioRange(Box<super::super::types::RatioRange>),
     CodeableConcept(Box<super::super::types::CodeableConcept>),
     Quantity(Box<super::super::types::Quantity>),
+    #[default]
     Invalid,
 }
-impl Default for IngredientSubstanceStrengthConcentration {
-    fn default() -> IngredientSubstanceStrengthConcentration {
-        IngredientSubstanceStrengthConcentration::Invalid
-    }
-}
 #[doc = "Strength expressed in terms of a reference substance."]
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub enum IngredientSubstanceStrengthReferenceStrengthStrength {
     Ratio(Box<super::super::types::Ratio>),
     RatioRange(Box<super::super::types::RatioRange>),
     Quantity(Box<super::super::types::Quantity>),
+    #[default]
     Invalid,
 }
-impl Default for IngredientSubstanceStrengthReferenceStrengthStrength {
-    fn default() -> IngredientSubstanceStrengthReferenceStrengthStrength {
-        IngredientSubstanceStrengthReferenceStrengthStrength::Invalid
-    }
-}
 #[doc = "The organization(s) that manufacture this ingredient. Can be used to indicate:         1) Organizations we are aware of that manufacture this ingredient         2) Specific Manufacturer(s) currently being used         3) Set of organisations allowed to manufacture this ingredient for this product         Users must be clear on the application of context relevant to their use case."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct IngredientManufacturer {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -54,8 +42,23 @@ pub struct IngredientManufacturer {
     #[doc = "An organization that manufactures this ingredient."]
     pub r#manufacturer: Box<super::super::types::Reference>,
 }
+impl Default for IngredientManufacturer {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#role: Default::default(),
+            r#manufacturer: {
+                let mut default: Box<super::super::types::Reference> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+        }
+    }
+}
 #[doc = "Strength expressed in terms of a reference substance. For when the ingredient strength is additionally expressed as equivalent to the strength of some other closely related substance (e.g. salt vs. base). Reference strength represents the strength (quantitative composition) of the active moiety of the active substance. There are situations when the active substance and active moiety are different, therefore both a strength and a reference strength are needed."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct IngredientSubstanceStrengthReferenceStrength {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -72,8 +75,25 @@ pub struct IngredientSubstanceStrengthReferenceStrength {
     #[doc = "The country or countries for which the strength range applies."]
     pub r#country: Vec<Box<super::super::types::CodeableConcept>>,
 }
+impl Default for IngredientSubstanceStrengthReferenceStrength {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#substance: {
+                let mut default: Box<super::super::types::CodeableReference> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#strength: Default::default(),
+            r#measurement_point: Default::default(),
+            r#country: Default::default(),
+        }
+    }
+}
 #[doc = "The quantity of substance in the unit of presentation, or in the volume (or mass) of the single pharmaceutical product or manufactured item. The allowed repetitions do not represent different strengths, but are different representations - mathematically equivalent - of a single strength."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct IngredientSubstanceStrength {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -98,8 +118,25 @@ pub struct IngredientSubstanceStrength {
     #[doc = "Strength expressed in terms of a reference substance. For when the ingredient strength is additionally expressed as equivalent to the strength of some other closely related substance (e.g. salt vs. base). Reference strength represents the strength (quantitative composition) of the active moiety of the active substance. There are situations when the active substance and active moiety are different, therefore both a strength and a reference strength are needed."]
     pub r#reference_strength: Vec<IngredientSubstanceStrengthReferenceStrength>,
 }
+impl Default for IngredientSubstanceStrength {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#presentation: Default::default(),
+            r#text_presentation: Default::default(),
+            r#concentration: Default::default(),
+            r#text_concentration: Default::default(),
+            r#basis: Default::default(),
+            r#measurement_point: Default::default(),
+            r#country: Default::default(),
+            r#reference_strength: Default::default(),
+        }
+    }
+}
 #[doc = "The substance that comprises this ingredient."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct IngredientSubstance {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -112,8 +149,23 @@ pub struct IngredientSubstance {
     #[doc = "The quantity of substance in the unit of presentation, or in the volume (or mass) of the single pharmaceutical product or manufactured item. The allowed repetitions do not represent different strengths, but are different representations - mathematically equivalent - of a single strength."]
     pub r#strength: Vec<IngredientSubstanceStrength>,
 }
+impl Default for IngredientSubstance {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#code: {
+                let mut default: Box<super::super::types::CodeableReference> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#strength: Default::default(),
+        }
+    }
+}
 #[doc = "An ingredient of a manufactured item or pharmaceutical product."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct Ingredient {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,
@@ -151,4 +203,40 @@ pub struct Ingredient {
     pub r#manufacturer: Vec<IngredientManufacturer>,
     #[doc = "The substance that comprises this ingredient."]
     pub r#substance: IngredientSubstance,
+}
+impl Default for Ingredient {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#meta: Default::default(),
+            r#implicit_rules: Default::default(),
+            r#language: Default::default(),
+            r#text: Default::default(),
+            r#contained: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#identifier: Default::default(),
+            r#status: {
+                let mut default: super::super::types::Code = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#for: Default::default(),
+            r#role: {
+                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#function: Default::default(),
+            r#group: Default::default(),
+            r#allergenic_indicator: Default::default(),
+            r#comment: Default::default(),
+            r#manufacturer: Default::default(),
+            r#substance: {
+                let mut default: IngredientSubstance = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+        }
+    }
 }

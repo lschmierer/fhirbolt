@@ -1,6 +1,6 @@
-// Generated on 2023-04-20 by fhirbolt-codegen v0.4.0
+// Generated on 2023-04-20 by fhirbolt-codegen v0.5.0
 #[doc = "url type: A URI that is a literal reference"]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct Url {
     #[doc = "unique id for the element within a resource (for internal references)"]
     pub r#id: Option<std::string::String>,
@@ -8,4 +8,13 @@ pub struct Url {
     pub r#extension: Vec<Box<super::super::types::Extension>>,
     #[doc = "Primitive value for url"]
     pub r#value: Option<std::string::String>,
+}
+impl Default for Url {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#value: Default::default(),
+        }
+    }
 }

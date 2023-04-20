@@ -1,18 +1,14 @@
-// Generated on 2023-04-20 by fhirbolt-codegen v0.4.0
+// Generated on 2023-04-20 by fhirbolt-codegen v0.5.0
 #[doc = "Indicates the mechanism used to compare versions to determine which is more current."]
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub enum ObservationDefinitionVersionAlgorithm {
     String(Box<super::super::types::String>),
     Coding(Box<super::super::types::Coding>),
+    #[default]
     Invalid,
 }
-impl Default for ObservationDefinitionVersionAlgorithm {
-    fn default() -> ObservationDefinitionVersionAlgorithm {
-        ObservationDefinitionVersionAlgorithm::Invalid
-    }
-}
 #[doc = "A set of qualified values associated with a context and a set of conditions -  provides a range for quantitative and ordinal observations and a collection of value sets for qualitative observations."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct ObservationDefinitionQualifiedValue {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -45,8 +41,29 @@ pub struct ObservationDefinitionQualifiedValue {
     #[doc = "The set of critical coded results for qualitative observations  that match the criteria of this set of qualified values."]
     pub r#critical_coded_value_set: Option<super::super::types::Canonical>,
 }
+impl Default for ObservationDefinitionQualifiedValue {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#context: Default::default(),
+            r#applies_to: Default::default(),
+            r#gender: Default::default(),
+            r#age: Default::default(),
+            r#gestational_age: Default::default(),
+            r#condition: Default::default(),
+            r#range_category: Default::default(),
+            r#range: Default::default(),
+            r#valid_coded_value_set: Default::default(),
+            r#normal_coded_value_set: Default::default(),
+            r#abnormal_coded_value_set: Default::default(),
+            r#critical_coded_value_set: Default::default(),
+        }
+    }
+}
 #[doc = "Some observations have multiple component observations, expressed as separate code value pairs."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct ObservationDefinitionComponent {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -63,8 +80,25 @@ pub struct ObservationDefinitionComponent {
     #[doc = "A set of qualified values associated with a context and a set of conditions -  provides a range for quantitative and ordinal observations and a collection of value sets for qualitative observations."]
     pub r#qualified_value: Vec<ObservationDefinitionQualifiedValue>,
 }
+impl Default for ObservationDefinitionComponent {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#code: {
+                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#permitted_data_type: Default::default(),
+            r#permitted_unit: Default::default(),
+            r#qualified_value: Default::default(),
+        }
+    }
+}
 #[doc = "Set of definitional characteristics for a kind of observation or measurement produced or consumed by an orderable health care service.\n\nIn a catalog of health-related services that use or produce observations and measurements, this resource describes the expected characteristics of these observation / measurements."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct ObservationDefinition {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,
@@ -156,4 +190,63 @@ pub struct ObservationDefinition {
     pub r#has_member: Vec<Box<super::super::types::Reference>>,
     #[doc = "Some observations have multiple component observations, expressed as separate code value pairs."]
     pub r#component: Vec<ObservationDefinitionComponent>,
+}
+impl Default for ObservationDefinition {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#meta: Default::default(),
+            r#implicit_rules: Default::default(),
+            r#language: Default::default(),
+            r#text: Default::default(),
+            r#contained: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#url: Default::default(),
+            r#identifier: Default::default(),
+            r#version: Default::default(),
+            r#version_algorithm: Default::default(),
+            r#name: Default::default(),
+            r#title: Default::default(),
+            r#status: {
+                let mut default: super::super::types::Code = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#experimental: Default::default(),
+            r#date: Default::default(),
+            r#publisher: Default::default(),
+            r#contact: Default::default(),
+            r#description: Default::default(),
+            r#use_context: Default::default(),
+            r#jurisdiction: Default::default(),
+            r#purpose: Default::default(),
+            r#copyright: Default::default(),
+            r#copyright_label: Default::default(),
+            r#approval_date: Default::default(),
+            r#last_review_date: Default::default(),
+            r#effective_period: Default::default(),
+            r#derived_from_canonical: Default::default(),
+            r#derived_from_uri: Default::default(),
+            r#subject: Default::default(),
+            r#performer_type: Default::default(),
+            r#category: Default::default(),
+            r#code: {
+                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#permitted_data_type: Default::default(),
+            r#multiple_results_allowed: Default::default(),
+            r#body_site: Default::default(),
+            r#method: Default::default(),
+            r#specimen: Default::default(),
+            r#device: Default::default(),
+            r#preferred_report_name: Default::default(),
+            r#permitted_unit: Default::default(),
+            r#qualified_value: Default::default(),
+            r#has_member: Default::default(),
+            r#component: Default::default(),
+        }
+    }
 }

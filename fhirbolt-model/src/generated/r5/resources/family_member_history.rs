@@ -1,76 +1,56 @@
-// Generated on 2023-04-20 by fhirbolt-codegen v0.4.0
+// Generated on 2023-04-20 by fhirbolt-codegen v0.5.0
 #[doc = "The actual or approximate date of birth of the relative."]
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub enum FamilyMemberHistoryBorn {
     Period(Box<super::super::types::Period>),
     Date(Box<super::super::types::Date>),
     String(Box<super::super::types::String>),
+    #[default]
     Invalid,
 }
-impl Default for FamilyMemberHistoryBorn {
-    fn default() -> FamilyMemberHistoryBorn {
-        FamilyMemberHistoryBorn::Invalid
-    }
-}
 #[doc = "The age of the relative at the time the family member history is recorded."]
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub enum FamilyMemberHistoryAge {
     Age(Box<super::super::types::Age>),
     Range(Box<super::super::types::Range>),
     String(Box<super::super::types::String>),
+    #[default]
     Invalid,
 }
-impl Default for FamilyMemberHistoryAge {
-    fn default() -> FamilyMemberHistoryAge {
-        FamilyMemberHistoryAge::Invalid
-    }
-}
 #[doc = "Deceased flag or the actual or approximate age of the relative at the time of death for the family member history record."]
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub enum FamilyMemberHistoryDeceased {
     Boolean(Box<super::super::types::Boolean>),
     Age(Box<super::super::types::Age>),
     Range(Box<super::super::types::Range>),
     Date(Box<super::super::types::Date>),
     String(Box<super::super::types::String>),
+    #[default]
     Invalid,
 }
-impl Default for FamilyMemberHistoryDeceased {
-    fn default() -> FamilyMemberHistoryDeceased {
-        FamilyMemberHistoryDeceased::Invalid
-    }
-}
 #[doc = "Either the age of onset, range of approximate age or descriptive string can be recorded.  For conditions with multiple occurrences, this describes the first known occurrence."]
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub enum FamilyMemberHistoryConditionOnset {
     Age(Box<super::super::types::Age>),
     Range(Box<super::super::types::Range>),
     Period(Box<super::super::types::Period>),
     String(Box<super::super::types::String>),
+    #[default]
     Invalid,
 }
-impl Default for FamilyMemberHistoryConditionOnset {
-    fn default() -> FamilyMemberHistoryConditionOnset {
-        FamilyMemberHistoryConditionOnset::Invalid
-    }
-}
 #[doc = "Estimated or actual date, date-time, period, or age when the procedure was performed. Allows a period to support complex procedures that span more than one date, and also allows for the length of the procedure to be captured."]
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub enum FamilyMemberHistoryProcedurePerformed {
     Age(Box<super::super::types::Age>),
     Range(Box<super::super::types::Range>),
     Period(Box<super::super::types::Period>),
     String(Box<super::super::types::String>),
     DateTime(Box<super::super::types::DateTime>),
+    #[default]
     Invalid,
 }
-impl Default for FamilyMemberHistoryProcedurePerformed {
-    fn default() -> FamilyMemberHistoryProcedurePerformed {
-        FamilyMemberHistoryProcedurePerformed::Invalid
-    }
-}
 #[doc = "Indicates who or what participated in the activities related to the family member history and how they were involved."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct FamilyMemberHistoryParticipant {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -83,8 +63,23 @@ pub struct FamilyMemberHistoryParticipant {
     #[doc = "Indicates who or what participated in the activities related to the family member history."]
     pub r#actor: Box<super::super::types::Reference>,
 }
+impl Default for FamilyMemberHistoryParticipant {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#function: Default::default(),
+            r#actor: {
+                let mut default: Box<super::super::types::Reference> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+        }
+    }
+}
 #[doc = "The significant Conditions (or condition) that the family member had. This is a repeating section to allow a system to represent more than one condition per resource, though there is nothing stopping multiple resources - one per condition."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct FamilyMemberHistoryCondition {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -103,8 +98,26 @@ pub struct FamilyMemberHistoryCondition {
     #[doc = "An area where general notes can be placed about this specific condition."]
     pub r#note: Vec<Box<super::super::types::Annotation>>,
 }
+impl Default for FamilyMemberHistoryCondition {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#code: {
+                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#outcome: Default::default(),
+            r#contributed_to_death: Default::default(),
+            r#onset: Default::default(),
+            r#note: Default::default(),
+        }
+    }
+}
 #[doc = "The significant Procedures (or procedure) that the family member had. This is a repeating section to allow a system to represent more than one procedure per resource, though there is nothing stopping multiple resources - one per procedure."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct FamilyMemberHistoryProcedure {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -123,8 +136,26 @@ pub struct FamilyMemberHistoryProcedure {
     #[doc = "An area where general notes can be placed about this specific procedure."]
     pub r#note: Vec<Box<super::super::types::Annotation>>,
 }
+impl Default for FamilyMemberHistoryProcedure {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#code: {
+                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#outcome: Default::default(),
+            r#contributed_to_death: Default::default(),
+            r#performed: Default::default(),
+            r#note: Default::default(),
+        }
+    }
+}
 #[doc = "Significant health conditions for a person related to the patient relevant in the context of care for the patient."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct FamilyMemberHistory {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,
@@ -180,4 +211,49 @@ pub struct FamilyMemberHistory {
     pub r#condition: Vec<FamilyMemberHistoryCondition>,
     #[doc = "The significant Procedures (or procedure) that the family member had. This is a repeating section to allow a system to represent more than one procedure per resource, though there is nothing stopping multiple resources - one per procedure."]
     pub r#procedure: Vec<FamilyMemberHistoryProcedure>,
+}
+impl Default for FamilyMemberHistory {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#meta: Default::default(),
+            r#implicit_rules: Default::default(),
+            r#language: Default::default(),
+            r#text: Default::default(),
+            r#contained: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#identifier: Default::default(),
+            r#instantiates_canonical: Default::default(),
+            r#instantiates_uri: Default::default(),
+            r#status: {
+                let mut default: super::super::types::Code = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#data_absent_reason: Default::default(),
+            r#patient: {
+                let mut default: Box<super::super::types::Reference> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#date: Default::default(),
+            r#participant: Default::default(),
+            r#name: Default::default(),
+            r#relationship: {
+                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#sex: Default::default(),
+            r#born: Default::default(),
+            r#age: Default::default(),
+            r#estimated_age: Default::default(),
+            r#deceased: Default::default(),
+            r#reason: Default::default(),
+            r#note: Default::default(),
+            r#condition: Default::default(),
+            r#procedure: Default::default(),
+        }
+    }
 }

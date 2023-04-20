@@ -1,6 +1,6 @@
-// Generated on 2023-04-20 by fhirbolt-codegen v0.4.0
+// Generated on 2023-04-20 by fhirbolt-codegen v0.5.0
 #[doc = "Relationships that this document has with other document references that already exist."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct DocumentReferenceRelatesTo {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -13,8 +13,27 @@ pub struct DocumentReferenceRelatesTo {
     #[doc = "The target document of this relationship."]
     pub r#target: Box<super::super::types::Reference>,
 }
+impl Default for DocumentReferenceRelatesTo {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#code: {
+                let mut default: super::super::types::Code = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#target: {
+                let mut default: Box<super::super::types::Reference> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+        }
+    }
+}
 #[doc = "The document and format referenced. There may be multiple content element repetitions, each with a different format."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct DocumentReferenceContent {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -27,8 +46,23 @@ pub struct DocumentReferenceContent {
     #[doc = "An identifier of the document encoding, structure, and template that the document conforms to beyond the base format indicated in the mimeType."]
     pub r#format: Option<Box<super::super::types::Coding>>,
 }
+impl Default for DocumentReferenceContent {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#attachment: {
+                let mut default: Box<super::super::types::Attachment> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#format: Default::default(),
+        }
+    }
+}
 #[doc = "The clinical context in which the document was prepared."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct DocumentReferenceContext {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -51,8 +85,24 @@ pub struct DocumentReferenceContext {
     #[doc = "Related identifiers or resources associated with the DocumentReference."]
     pub r#related: Vec<Box<super::super::types::Reference>>,
 }
+impl Default for DocumentReferenceContext {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#encounter: Default::default(),
+            r#event: Default::default(),
+            r#period: Default::default(),
+            r#facility_type: Default::default(),
+            r#practice_setting: Default::default(),
+            r#source_patient_info: Default::default(),
+            r#related: Default::default(),
+        }
+    }
+}
 #[doc = "A reference to a document of any kind for any purpose. Provides metadata about the document so that the document can be discovered and managed. The scope of a document is any seralized object with a mime-type, so includes formal patient centric documents (CDA), cliical notes, scanned paper, and non-patient specific documents like policy text."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct DocumentReference {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,
@@ -102,4 +152,38 @@ pub struct DocumentReference {
     pub r#content: Vec<DocumentReferenceContent>,
     #[doc = "The clinical context in which the document was prepared."]
     pub r#context: Option<DocumentReferenceContext>,
+}
+impl Default for DocumentReference {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#meta: Default::default(),
+            r#implicit_rules: Default::default(),
+            r#language: Default::default(),
+            r#text: Default::default(),
+            r#contained: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#master_identifier: Default::default(),
+            r#identifier: Default::default(),
+            r#status: {
+                let mut default: super::super::types::Code = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#doc_status: Default::default(),
+            r#type: Default::default(),
+            r#category: Default::default(),
+            r#subject: Default::default(),
+            r#date: Default::default(),
+            r#author: Default::default(),
+            r#authenticator: Default::default(),
+            r#custodian: Default::default(),
+            r#relates_to: Default::default(),
+            r#description: Default::default(),
+            r#security_label: Default::default(),
+            r#content: Default::default(),
+            r#context: Default::default(),
+        }
+    }
 }

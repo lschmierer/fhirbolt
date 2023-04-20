@@ -1,6 +1,6 @@
-// Generated on 2023-04-20 by fhirbolt-codegen v0.4.0
+// Generated on 2023-04-20 by fhirbolt-codegen v0.5.0
 #[doc = "uuid type: A UUID, represented as a URI"]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct Uuid {
     #[doc = "unique id for the element within a resource (for internal references)"]
     pub r#id: Option<std::string::String>,
@@ -8,4 +8,13 @@ pub struct Uuid {
     pub r#extension: Vec<Box<super::super::types::Extension>>,
     #[doc = "Primitive value for uuid"]
     pub r#value: Option<std::string::String>,
+}
+impl Default for Uuid {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#value: Default::default(),
+        }
+    }
 }

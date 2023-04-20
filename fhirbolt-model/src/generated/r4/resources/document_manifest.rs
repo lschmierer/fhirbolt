@@ -1,6 +1,6 @@
-// Generated on 2023-04-20 by fhirbolt-codegen v0.4.0
+// Generated on 2023-04-20 by fhirbolt-codegen v0.5.0
 #[doc = "Related identifiers or resources associated with the DocumentManifest."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct DocumentManifestRelated {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -13,8 +13,19 @@ pub struct DocumentManifestRelated {
     #[doc = "Related Resource to this DocumentManifest. For example, Order, ServiceRequest,  Procedure, EligibilityRequest, etc."]
     pub r#ref: Option<Box<super::super::types::Reference>>,
 }
+impl Default for DocumentManifestRelated {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#identifier: Default::default(),
+            r#ref: Default::default(),
+        }
+    }
+}
 #[doc = "A collection of documents compiled for a purpose together with metadata that applies to the collection."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct DocumentManifest {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,
@@ -56,4 +67,34 @@ pub struct DocumentManifest {
     pub r#content: Vec<Box<super::super::types::Reference>>,
     #[doc = "Related identifiers or resources associated with the DocumentManifest."]
     pub r#related: Vec<DocumentManifestRelated>,
+}
+impl Default for DocumentManifest {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#meta: Default::default(),
+            r#implicit_rules: Default::default(),
+            r#language: Default::default(),
+            r#text: Default::default(),
+            r#contained: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#master_identifier: Default::default(),
+            r#identifier: Default::default(),
+            r#status: {
+                let mut default: super::super::types::Code = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#type: Default::default(),
+            r#subject: Default::default(),
+            r#created: Default::default(),
+            r#author: Default::default(),
+            r#recipient: Default::default(),
+            r#source: Default::default(),
+            r#description: Default::default(),
+            r#content: Default::default(),
+            r#related: Default::default(),
+        }
+    }
 }

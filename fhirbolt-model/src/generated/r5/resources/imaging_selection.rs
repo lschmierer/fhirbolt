@@ -1,6 +1,6 @@
-// Generated on 2023-04-20 by fhirbolt-codegen v0.4.0
+// Generated on 2023-04-20 by fhirbolt-codegen v0.5.0
 #[doc = "Selector of the instances – human or machine."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct ImagingSelectionPerformer {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -13,8 +13,19 @@ pub struct ImagingSelectionPerformer {
     #[doc = "Author – human or machine."]
     pub r#actor: Option<Box<super::super::types::Reference>>,
 }
+impl Default for ImagingSelectionPerformer {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#function: Default::default(),
+            r#actor: Default::default(),
+        }
+    }
+}
 #[doc = "Each imaging selection instance or frame list might includes an image region, specified by a region type and a set of 2D coordinates.\n       If the parent imagingSelection.instance contains a subset element of type frame, the image region applies to all frames in the subset list."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct ImagingSelectionInstanceImageRegion2D {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -27,8 +38,23 @@ pub struct ImagingSelectionInstanceImageRegion2D {
     #[doc = "The coordinates describing the image region. Encoded as a set of (column, row) pairs that denote positions in the selected image / frames specified with sub-pixel resolution.\n       The origin at the TLHC of the TLHC pixel is 0.0\\0.0, the BRHC of the TLHC pixel is 1.0\\1.0, and the BRHC of the BRHC pixel is the number of columns\\rows in the image / frames. The values must be within the range 0\\0 to the number of columns\\rows in the image / frames."]
     pub r#coordinate: Vec<super::super::types::Decimal>,
 }
+impl Default for ImagingSelectionInstanceImageRegion2D {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#region_type: {
+                let mut default: super::super::types::Code = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#coordinate: Default::default(),
+        }
+    }
+}
 #[doc = "Each imaging selection might includes a 3D image region, specified by a region type and a set of 3D coordinates."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct ImagingSelectionInstanceImageRegion3D {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -41,8 +67,23 @@ pub struct ImagingSelectionInstanceImageRegion3D {
     #[doc = "The coordinates describing the image region. Encoded as an ordered set of (x,y,z) triplets (in mm and may be negative) that define a region of interest in the patient-relative Reference Coordinate System defined by ImagingSelection.frameOfReferenceUid element."]
     pub r#coordinate: Vec<super::super::types::Decimal>,
 }
+impl Default for ImagingSelectionInstanceImageRegion3D {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#region_type: {
+                let mut default: super::super::types::Code = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#coordinate: Default::default(),
+        }
+    }
+}
 #[doc = "Each imaging selection includes one or more selected DICOM SOP instances."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct ImagingSelectionInstance {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -63,8 +104,27 @@ pub struct ImagingSelectionInstance {
     #[doc = "Each imaging selection might includes a 3D image region, specified by a region type and a set of 3D coordinates."]
     pub r#image_region_3_d: Vec<ImagingSelectionInstanceImageRegion3D>,
 }
+impl Default for ImagingSelectionInstance {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#uid: {
+                let mut default: super::super::types::Id = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#number: Default::default(),
+            r#sop_class: Default::default(),
+            r#subset: Default::default(),
+            r#image_region_2_d: Default::default(),
+            r#image_region_3_d: Default::default(),
+        }
+    }
+}
 #[doc = "A selection of DICOM SOP instances and/or frames within a single Study and Series. This might include additional specifics such as an image region, an Observation UID or a Segmentation Number, allowing linkage to an Observation Resource or transferring this information along with the ImagingStudy Resource."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct ImagingSelection {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,
@@ -116,4 +176,43 @@ pub struct ImagingSelection {
     pub r#focus: Vec<Box<super::super::types::Reference>>,
     #[doc = "Each imaging selection includes one or more selected DICOM SOP instances."]
     pub r#instance: Vec<ImagingSelectionInstance>,
+}
+impl Default for ImagingSelection {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#meta: Default::default(),
+            r#implicit_rules: Default::default(),
+            r#language: Default::default(),
+            r#text: Default::default(),
+            r#contained: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#identifier: Default::default(),
+            r#status: {
+                let mut default: super::super::types::Code = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#subject: Default::default(),
+            r#issued: Default::default(),
+            r#performer: Default::default(),
+            r#based_on: Default::default(),
+            r#category: Default::default(),
+            r#code: {
+                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#study_uid: Default::default(),
+            r#derived_from: Default::default(),
+            r#endpoint: Default::default(),
+            r#series_uid: Default::default(),
+            r#series_number: Default::default(),
+            r#frame_of_reference_uid: Default::default(),
+            r#body_site: Default::default(),
+            r#focus: Default::default(),
+            r#instance: Default::default(),
+        }
+    }
 }

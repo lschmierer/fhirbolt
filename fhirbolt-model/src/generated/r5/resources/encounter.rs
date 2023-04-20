@@ -1,6 +1,6 @@
-// Generated on 2023-04-20 by fhirbolt-codegen v0.4.0
+// Generated on 2023-04-20 by fhirbolt-codegen v0.5.0
 #[doc = "The list of people responsible for providing the service."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct EncounterParticipant {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -15,8 +15,20 @@ pub struct EncounterParticipant {
     #[doc = "Person involved in the encounter, the patient/group is also included here to indicate that the patient was actually participating in the encounter. Not including the patient here covers use cases such as a case meeting between practitioners about a patient - non contact times."]
     pub r#actor: Option<Box<super::super::types::Reference>>,
 }
+impl Default for EncounterParticipant {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#type: Default::default(),
+            r#period: Default::default(),
+            r#actor: Default::default(),
+        }
+    }
+}
 #[doc = "The list of medical reasons that are expected to be addressed during the episode of care."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct EncounterReason {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -29,8 +41,19 @@ pub struct EncounterReason {
     #[doc = "Reason the encounter takes place, expressed as a code or a reference to another resource. For admissions, this can be used for a coded admission diagnosis."]
     pub r#value: Vec<Box<super::super::types::CodeableReference>>,
 }
+impl Default for EncounterReason {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#use: Default::default(),
+            r#value: Default::default(),
+        }
+    }
+}
 #[doc = "The list of diagnosis relevant to this encounter."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct EncounterDiagnosis {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -43,8 +66,19 @@ pub struct EncounterDiagnosis {
     #[doc = "Role that this diagnosis has within the encounter (e.g. admission, billing, discharge …)."]
     pub r#use: Vec<Box<super::super::types::CodeableConcept>>,
 }
+impl Default for EncounterDiagnosis {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#condition: Default::default(),
+            r#use: Default::default(),
+        }
+    }
+}
 #[doc = "Details about the stay during which a healthcare service is provided.\r\rThis does not describe the event of admitting the patient, but rather any information that is relevant from the time of admittance until the time of discharge."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct EncounterAdmission {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -65,8 +99,23 @@ pub struct EncounterAdmission {
     #[doc = "Category or kind of location after discharge."]
     pub r#discharge_disposition: Option<Box<super::super::types::CodeableConcept>>,
 }
+impl Default for EncounterAdmission {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#pre_admission_identifier: Default::default(),
+            r#origin: Default::default(),
+            r#admit_source: Default::default(),
+            r#re_admission: Default::default(),
+            r#destination: Default::default(),
+            r#discharge_disposition: Default::default(),
+        }
+    }
+}
 #[doc = "List of locations where  the patient has been during this encounter."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct EncounterLocation {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -83,8 +132,25 @@ pub struct EncounterLocation {
     #[doc = "Time period during which the patient was present at the location."]
     pub r#period: Option<Box<super::super::types::Period>>,
 }
+impl Default for EncounterLocation {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#location: {
+                let mut default: Box<super::super::types::Reference> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#status: Default::default(),
+            r#form: Default::default(),
+            r#period: Default::default(),
+        }
+    }
+}
 #[doc = "An interaction between healthcare provider(s), and/or patient(s) for the purpose of providing healthcare service(s) or assessing the health status of patient(s)."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct Encounter {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,
@@ -158,4 +224,50 @@ pub struct Encounter {
     pub r#admission: Option<EncounterAdmission>,
     #[doc = "List of locations where  the patient has been during this encounter."]
     pub r#location: Vec<EncounterLocation>,
+}
+impl Default for Encounter {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#meta: Default::default(),
+            r#implicit_rules: Default::default(),
+            r#language: Default::default(),
+            r#text: Default::default(),
+            r#contained: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#identifier: Default::default(),
+            r#status: {
+                let mut default: super::super::types::Code = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#class: Default::default(),
+            r#priority: Default::default(),
+            r#type: Default::default(),
+            r#service_type: Default::default(),
+            r#subject: Default::default(),
+            r#subject_status: Default::default(),
+            r#episode_of_care: Default::default(),
+            r#based_on: Default::default(),
+            r#care_team: Default::default(),
+            r#part_of: Default::default(),
+            r#service_provider: Default::default(),
+            r#participant: Default::default(),
+            r#appointment: Default::default(),
+            r#virtual_service: Default::default(),
+            r#actual_period: Default::default(),
+            r#planned_start_date: Default::default(),
+            r#planned_end_date: Default::default(),
+            r#length: Default::default(),
+            r#reason: Default::default(),
+            r#diagnosis: Default::default(),
+            r#account: Default::default(),
+            r#diet_preference: Default::default(),
+            r#special_arrangement: Default::default(),
+            r#special_courtesy: Default::default(),
+            r#admission: Default::default(),
+            r#location: Default::default(),
+        }
+    }
 }

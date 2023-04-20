@@ -1,4 +1,4 @@
-// Generated on 2023-04-20 by fhirbolt-codegen v0.4.0
+// Generated on 2023-04-20 by fhirbolt-codegen v0.5.0
 #[doc = "Enum representing all possible FHIR resources."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum Resource {

@@ -1,6 +1,6 @@
-// Generated on 2023-04-20 by fhirbolt-codegen v0.4.0
+// Generated on 2023-04-20 by fhirbolt-codegen v0.5.0
 #[doc = "The linkages between sugar residues will also be captured."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct SubstanceNucleicAcidSubunitLinkage {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -17,8 +17,21 @@ pub struct SubstanceNucleicAcidSubunitLinkage {
     #[doc = "Residues shall be captured as described in 5.3.6.8.3."]
     pub r#residue_site: Option<super::super::types::String>,
 }
+impl Default for SubstanceNucleicAcidSubunitLinkage {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#connectivity: Default::default(),
+            r#identifier: Default::default(),
+            r#name: Default::default(),
+            r#residue_site: Default::default(),
+        }
+    }
+}
 #[doc = "5.3.6.8.1 Sugar ID (Mandatory)."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct SubstanceNucleicAcidSubunitSugar {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -33,8 +46,20 @@ pub struct SubstanceNucleicAcidSubunitSugar {
     #[doc = "The residues that contain a given sugar will be captured. The order of given residues will be captured in the 5‘-3‘direction consistent with the base sequences listed above."]
     pub r#residue_site: Option<super::super::types::String>,
 }
+impl Default for SubstanceNucleicAcidSubunitSugar {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#identifier: Default::default(),
+            r#name: Default::default(),
+            r#residue_site: Default::default(),
+        }
+    }
+}
 #[doc = "Subunits are listed in order of decreasing length; sequences of the same length will be ordered by molecular weight; subunits that have identical sequences will be repeated multiple times."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct SubstanceNucleicAcidSubunit {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -59,8 +84,25 @@ pub struct SubstanceNucleicAcidSubunit {
     #[doc = "5.3.6.8.1 Sugar ID (Mandatory)."]
     pub r#sugar: Vec<SubstanceNucleicAcidSubunitSugar>,
 }
+impl Default for SubstanceNucleicAcidSubunit {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#subunit: Default::default(),
+            r#sequence: Default::default(),
+            r#length: Default::default(),
+            r#sequence_attachment: Default::default(),
+            r#five_prime: Default::default(),
+            r#three_prime: Default::default(),
+            r#linkage: Default::default(),
+            r#sugar: Default::default(),
+        }
+    }
+}
 #[doc = "Nucleic acids are defined by three distinct elements: the base, sugar and linkage. Individual substance/moiety IDs will be created for each of these elements. The nucleotide sequence will be always entered in the 5’-3’ direction."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct SubstanceNucleicAcid {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,
@@ -88,4 +130,23 @@ pub struct SubstanceNucleicAcid {
     pub r#oligo_nucleotide_type: Option<Box<super::super::types::CodeableConcept>>,
     #[doc = "Subunits are listed in order of decreasing length; sequences of the same length will be ordered by molecular weight; subunits that have identical sequences will be repeated multiple times."]
     pub r#subunit: Vec<SubstanceNucleicAcidSubunit>,
+}
+impl Default for SubstanceNucleicAcid {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#meta: Default::default(),
+            r#implicit_rules: Default::default(),
+            r#language: Default::default(),
+            r#text: Default::default(),
+            r#contained: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#sequence_type: Default::default(),
+            r#number_of_subunits: Default::default(),
+            r#area_of_hybridisation: Default::default(),
+            r#oligo_nucleotide_type: Default::default(),
+            r#subunit: Default::default(),
+        }
+    }
 }

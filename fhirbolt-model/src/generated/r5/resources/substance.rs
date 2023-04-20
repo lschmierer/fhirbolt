@@ -1,18 +1,14 @@
-// Generated on 2023-04-20 by fhirbolt-codegen v0.4.0
+// Generated on 2023-04-20 by fhirbolt-codegen v0.5.0
 #[doc = "Another substance that is a component of this substance."]
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub enum SubstanceIngredientSubstance {
     CodeableConcept(Box<super::super::types::CodeableConcept>),
     Reference(Box<super::super::types::Reference>),
+    #[default]
     Invalid,
 }
-impl Default for SubstanceIngredientSubstance {
-    fn default() -> SubstanceIngredientSubstance {
-        SubstanceIngredientSubstance::Invalid
-    }
-}
 #[doc = "A substance can be composed of other substances."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct SubstanceIngredient {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -25,8 +21,19 @@ pub struct SubstanceIngredient {
     #[doc = "Another substance that is a component of this substance."]
     pub r#substance: SubstanceIngredientSubstance,
 }
+impl Default for SubstanceIngredient {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#quantity: Default::default(),
+            r#substance: Default::default(),
+        }
+    }
+}
 #[doc = "A homogeneous material with a definite composition."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct Substance {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,
@@ -62,4 +69,35 @@ pub struct Substance {
     pub r#quantity: Option<Box<super::super::types::Quantity>>,
     #[doc = "A substance can be composed of other substances."]
     pub r#ingredient: Vec<SubstanceIngredient>,
+}
+impl Default for Substance {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#meta: Default::default(),
+            r#implicit_rules: Default::default(),
+            r#language: Default::default(),
+            r#text: Default::default(),
+            r#contained: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#identifier: Default::default(),
+            r#instance: {
+                let mut default: super::super::types::Boolean = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#status: Default::default(),
+            r#category: Default::default(),
+            r#code: {
+                let mut default: Box<super::super::types::CodeableReference> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#description: Default::default(),
+            r#expiry: Default::default(),
+            r#quantity: Default::default(),
+            r#ingredient: Default::default(),
+        }
+    }
 }

@@ -1,4 +1,4 @@
-// Generated on 2023-04-20 by fhirbolt-codegen v0.4.0
+// Generated on 2023-04-20 by fhirbolt-codegen v0.5.0
 impl crate::Resource for fhirbolt_model::r4b::resources::PaymentNotice {
     const FHIR_RELEASE: fhirbolt_shared::FhirRelease = fhirbolt_shared::FhirReleases::R4B;
 }
@@ -10,6 +10,13 @@ impl serde::ser::Serialize
         S: serde::ser::Serializer,
     {
         use serde::ser::SerializeMap;
+        #[allow(dead_code)]
+        fn missing_field_error<T, E: serde::ser::Error>(field: &str) -> Result<T, E> {
+            Err(E::custom(format!(
+                "missing required field `{}.{}`",
+                "PaymentNotice", field
+            )))
+        }
         let mut state = serializer.serialize_map(None)?;
         state.serialize_entry("resourceType", "PaymentNotice")?;
         if let Some(value) = self.value.r#id.as_ref() {
@@ -84,6 +91,9 @@ impl serde::ser::Serialize
             })?;
         }
         if self.output_json {
+            if self.value.r#status.id.as_deref() == Some("$invalid") {
+                return missing_field_error("status");
+            }
             if let Some(some) = self.value.r#status.value.as_ref() {
                 let some = Ok(some)?;
                 state.serialize_entry("status", &some)?;
@@ -98,6 +108,9 @@ impl serde::ser::Serialize
                 })?;
             }
         } else {
+            if self.value.r#status.id.as_deref() == Some("$invalid") {
+                return missing_field_error("status");
+            }
             self.with_context(&self.value.r#status, |ctx| {
                 state.serialize_entry("status", ctx)
             })?;
@@ -109,6 +122,9 @@ impl serde::ser::Serialize
             self.with_context(some, |ctx| state.serialize_entry("response", ctx))?;
         }
         if self.output_json {
+            if self.value.r#created.id.as_deref() == Some("$invalid") {
+                return missing_field_error("created");
+            }
             if let Some(some) = self.value.r#created.value.as_ref() {
                 let some = Ok(some)?;
                 state.serialize_entry("created", &some)?;
@@ -123,12 +139,18 @@ impl serde::ser::Serialize
                 })?;
             }
         } else {
+            if self.value.r#created.id.as_deref() == Some("$invalid") {
+                return missing_field_error("created");
+            }
             self.with_context(&self.value.r#created, |ctx| {
                 state.serialize_entry("created", ctx)
             })?;
         }
         if let Some(some) = self.value.r#provider.as_ref() {
             self.with_context(some, |ctx| state.serialize_entry("provider", ctx))?;
+        }
+        if self.value.r#payment.id.as_deref() == Some("$invalid") {
+            return missing_field_error("payment");
         }
         self.with_context(&self.value.r#payment, |ctx| {
             state.serialize_entry("payment", ctx)
@@ -157,9 +179,15 @@ impl serde::ser::Serialize
         if let Some(some) = self.value.r#payee.as_ref() {
             self.with_context(some, |ctx| state.serialize_entry("payee", ctx))?;
         }
+        if self.value.r#recipient.id.as_deref() == Some("$invalid") {
+            return missing_field_error("recipient");
+        }
         self.with_context(&self.value.r#recipient, |ctx| {
             state.serialize_entry("recipient", ctx)
         })?;
+        if self.value.r#amount.id.as_deref() == Some("$invalid") {
+            return missing_field_error("amount");
+        }
         self.with_context(&self.value.r#amount, |ctx| {
             state.serialize_entry("amount", ctx)
         })?;

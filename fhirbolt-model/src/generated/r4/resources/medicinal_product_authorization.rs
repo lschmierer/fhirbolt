@@ -1,18 +1,14 @@
-// Generated on 2023-04-20 by fhirbolt-codegen v0.4.0
+// Generated on 2023-04-20 by fhirbolt-codegen v0.5.0
 #[doc = "Date of procedure."]
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub enum MedicinalProductAuthorizationProcedureDate {
     Period(Box<super::super::types::Period>),
     DateTime(Box<super::super::types::DateTime>),
+    #[default]
     Invalid,
 }
-impl Default for MedicinalProductAuthorizationProcedureDate {
-    fn default() -> MedicinalProductAuthorizationProcedureDate {
-        MedicinalProductAuthorizationProcedureDate::Invalid
-    }
-}
 #[doc = "Authorization in areas within a country."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct MedicinalProductAuthorizationJurisdictionalAuthorization {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -31,8 +27,22 @@ pub struct MedicinalProductAuthorizationJurisdictionalAuthorization {
     #[doc = "The start and expected end date of the authorization."]
     pub r#validity_period: Option<Box<super::super::types::Period>>,
 }
+impl Default for MedicinalProductAuthorizationJurisdictionalAuthorization {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#identifier: Default::default(),
+            r#country: Default::default(),
+            r#jurisdiction: Default::default(),
+            r#legal_status_of_supply: Default::default(),
+            r#validity_period: Default::default(),
+        }
+    }
+}
 #[doc = "The regulatory procedure for granting or amending a marketing authorization."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct MedicinalProductAuthorizationProcedure {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -49,8 +59,25 @@ pub struct MedicinalProductAuthorizationProcedure {
     #[doc = "Applcations submitted to obtain a marketing authorization."]
     pub r#application: Vec<MedicinalProductAuthorizationProcedure>,
 }
+impl Default for MedicinalProductAuthorizationProcedure {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#identifier: Default::default(),
+            r#type: {
+                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#date: Default::default(),
+            r#application: Default::default(),
+        }
+    }
+}
 #[doc = "The regulatory authorization of a medicinal product."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct MedicinalProductAuthorization {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,
@@ -101,4 +128,34 @@ pub struct MedicinalProductAuthorization {
     pub r#regulator: Option<Box<super::super::types::Reference>>,
     #[doc = "The regulatory procedure for granting or amending a marketing authorization."]
     pub r#procedure: Option<MedicinalProductAuthorizationProcedure>,
+}
+impl Default for MedicinalProductAuthorization {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#meta: Default::default(),
+            r#implicit_rules: Default::default(),
+            r#language: Default::default(),
+            r#text: Default::default(),
+            r#contained: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#identifier: Default::default(),
+            r#subject: Default::default(),
+            r#country: Default::default(),
+            r#jurisdiction: Default::default(),
+            r#status: Default::default(),
+            r#status_date: Default::default(),
+            r#restore_date: Default::default(),
+            r#validity_period: Default::default(),
+            r#data_exclusivity_period: Default::default(),
+            r#date_of_first_authorization: Default::default(),
+            r#international_birth_date: Default::default(),
+            r#legal_basis: Default::default(),
+            r#jurisdictional_authorization: Default::default(),
+            r#holder: Default::default(),
+            r#regulator: Default::default(),
+            r#procedure: Default::default(),
+        }
+    }
 }

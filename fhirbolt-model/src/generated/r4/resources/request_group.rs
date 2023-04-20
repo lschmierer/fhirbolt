@@ -1,18 +1,14 @@
-// Generated on 2023-04-20 by fhirbolt-codegen v0.4.0
+// Generated on 2023-04-20 by fhirbolt-codegen v0.5.0
 #[doc = "A duration or range of durations to apply to the relationship. For example, 30-60 minutes before."]
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub enum RequestGroupActionRelatedActionOffset {
     Duration(Box<super::super::types::Duration>),
     Range(Box<super::super::types::Range>),
+    #[default]
     Invalid,
 }
-impl Default for RequestGroupActionRelatedActionOffset {
-    fn default() -> RequestGroupActionRelatedActionOffset {
-        RequestGroupActionRelatedActionOffset::Invalid
-    }
-}
 #[doc = "An optional value describing when the action should be performed."]
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub enum RequestGroupActionTiming {
     DateTime(Box<super::super::types::DateTime>),
     Age(Box<super::super::types::Age>),
@@ -20,15 +16,11 @@ pub enum RequestGroupActionTiming {
     Duration(Box<super::super::types::Duration>),
     Range(Box<super::super::types::Range>),
     Timing(Box<super::super::types::Timing>),
+    #[default]
     Invalid,
 }
-impl Default for RequestGroupActionTiming {
-    fn default() -> RequestGroupActionTiming {
-        RequestGroupActionTiming::Invalid
-    }
-}
 #[doc = "An expression that describes applicability criteria, or start/stop conditions for the action."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct RequestGroupActionCondition {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -41,8 +33,23 @@ pub struct RequestGroupActionCondition {
     #[doc = "An expression that returns true or false, indicating whether or not the condition is satisfied."]
     pub r#expression: Option<Box<super::super::types::Expression>>,
 }
+impl Default for RequestGroupActionCondition {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#kind: {
+                let mut default: super::super::types::Code = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#expression: Default::default(),
+        }
+    }
+}
 #[doc = "A relationship to another action such as \"before\" or \"30-60 minutes after start of\"."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct RequestGroupActionRelatedAction {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -57,8 +64,28 @@ pub struct RequestGroupActionRelatedAction {
     #[doc = "A duration or range of durations to apply to the relationship. For example, 30-60 minutes before."]
     pub r#offset: Option<RequestGroupActionRelatedActionOffset>,
 }
+impl Default for RequestGroupActionRelatedAction {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#action_id: {
+                let mut default: super::super::types::Id = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#relationship: {
+                let mut default: super::super::types::Code = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#offset: Default::default(),
+        }
+    }
+}
 #[doc = "The actions, if any, produced by the evaluation of the artifact."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct RequestGroupAction {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -105,8 +132,36 @@ pub struct RequestGroupAction {
     #[doc = "Sub actions."]
     pub r#action: Vec<RequestGroupAction>,
 }
+impl Default for RequestGroupAction {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#prefix: Default::default(),
+            r#title: Default::default(),
+            r#description: Default::default(),
+            r#text_equivalent: Default::default(),
+            r#priority: Default::default(),
+            r#code: Default::default(),
+            r#documentation: Default::default(),
+            r#condition: Default::default(),
+            r#related_action: Default::default(),
+            r#timing: Default::default(),
+            r#participant: Default::default(),
+            r#type: Default::default(),
+            r#grouping_behavior: Default::default(),
+            r#selection_behavior: Default::default(),
+            r#required_behavior: Default::default(),
+            r#precheck_behavior: Default::default(),
+            r#cardinality_behavior: Default::default(),
+            r#resource: Default::default(),
+            r#action: Default::default(),
+        }
+    }
+}
 #[doc = "A group of related requests that can be used to capture intended activities that have inter-dependencies such as \"give this medication after that one\"."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct RequestGroup {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,
@@ -160,4 +215,44 @@ pub struct RequestGroup {
     pub r#note: Vec<Box<super::super::types::Annotation>>,
     #[doc = "The actions, if any, produced by the evaluation of the artifact."]
     pub r#action: Vec<RequestGroupAction>,
+}
+impl Default for RequestGroup {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#meta: Default::default(),
+            r#implicit_rules: Default::default(),
+            r#language: Default::default(),
+            r#text: Default::default(),
+            r#contained: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#identifier: Default::default(),
+            r#instantiates_canonical: Default::default(),
+            r#instantiates_uri: Default::default(),
+            r#based_on: Default::default(),
+            r#replaces: Default::default(),
+            r#group_identifier: Default::default(),
+            r#status: {
+                let mut default: super::super::types::Code = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#intent: {
+                let mut default: super::super::types::Code = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#priority: Default::default(),
+            r#code: Default::default(),
+            r#subject: Default::default(),
+            r#encounter: Default::default(),
+            r#authored_on: Default::default(),
+            r#author: Default::default(),
+            r#reason_code: Default::default(),
+            r#reason_reference: Default::default(),
+            r#note: Default::default(),
+            r#action: Default::default(),
+        }
+    }
 }

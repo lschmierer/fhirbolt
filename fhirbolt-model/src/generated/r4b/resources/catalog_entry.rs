@@ -1,6 +1,6 @@
-// Generated on 2023-04-20 by fhirbolt-codegen v0.4.0
+// Generated on 2023-04-20 by fhirbolt-codegen v0.5.0
 #[doc = "Used for example, to point to a substance, or to a device used to administer a medication."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct CatalogEntryRelatedEntry {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -13,8 +13,27 @@ pub struct CatalogEntryRelatedEntry {
     #[doc = "The reference to the related item."]
     pub r#item: Box<super::super::types::Reference>,
 }
+impl Default for CatalogEntryRelatedEntry {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#relationtype: {
+                let mut default: super::super::types::Code = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#item: {
+                let mut default: Box<super::super::types::Reference> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+        }
+    }
+}
 #[doc = "Catalog entries are wrappers that contextualize items included in a catalog."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct CatalogEntry {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,
@@ -58,4 +77,39 @@ pub struct CatalogEntry {
     pub r#additional_classification: Vec<Box<super::super::types::CodeableConcept>>,
     #[doc = "Used for example, to point to a substance, or to a device used to administer a medication."]
     pub r#related_entry: Vec<CatalogEntryRelatedEntry>,
+}
+impl Default for CatalogEntry {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#meta: Default::default(),
+            r#implicit_rules: Default::default(),
+            r#language: Default::default(),
+            r#text: Default::default(),
+            r#contained: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#identifier: Default::default(),
+            r#type: Default::default(),
+            r#orderable: {
+                let mut default: super::super::types::Boolean = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#referenced_item: {
+                let mut default: Box<super::super::types::Reference> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#additional_identifier: Default::default(),
+            r#classification: Default::default(),
+            r#status: Default::default(),
+            r#validity_period: Default::default(),
+            r#valid_to: Default::default(),
+            r#last_updated: Default::default(),
+            r#additional_characteristic: Default::default(),
+            r#additional_classification: Default::default(),
+            r#related_entry: Default::default(),
+        }
+    }
 }

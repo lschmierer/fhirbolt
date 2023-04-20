@@ -1,6 +1,6 @@
-// Generated on 2023-04-20 by fhirbolt-codegen v0.4.0
+// Generated on 2023-04-20 by fhirbolt-codegen v0.5.0
 #[doc = "The answer (or one of the answers) provided by the respondent to the question."]
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub enum QuestionnaireResponseItemAnswerValue {
     Boolean(Box<super::super::types::Boolean>),
     Decimal(Box<super::super::types::Decimal>),
@@ -14,15 +14,11 @@ pub enum QuestionnaireResponseItemAnswerValue {
     Coding(Box<super::super::types::Coding>),
     Quantity(Box<super::super::types::Quantity>),
     Reference(Box<super::super::types::Reference>),
+    #[default]
     Invalid,
 }
-impl Default for QuestionnaireResponseItemAnswerValue {
-    fn default() -> QuestionnaireResponseItemAnswerValue {
-        QuestionnaireResponseItemAnswerValue::Invalid
-    }
-}
 #[doc = "The respondent's answer(s) to the question."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct QuestionnaireResponseItemAnswer {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -35,8 +31,19 @@ pub struct QuestionnaireResponseItemAnswer {
     #[doc = "Nested groups and/or questions found within this particular answer."]
     pub r#item: Vec<QuestionnaireResponseItem>,
 }
+impl Default for QuestionnaireResponseItemAnswer {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#value: Default::default(),
+            r#item: Default::default(),
+        }
+    }
+}
 #[doc = "A group or question item from the original questionnaire for which answers are provided."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct QuestionnaireResponseItem {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -55,8 +62,26 @@ pub struct QuestionnaireResponseItem {
     #[doc = "Questions or sub-groups nested beneath a question or group."]
     pub r#item: Vec<QuestionnaireResponseItem>,
 }
+impl Default for QuestionnaireResponseItem {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#link_id: {
+                let mut default: super::super::types::String = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#definition: Default::default(),
+            r#text: Default::default(),
+            r#answer: Default::default(),
+            r#item: Default::default(),
+        }
+    }
+}
 #[doc = "A structured set of questions and their answers. The questions are ordered and grouped into coherent subsets, corresponding to the structure of the grouping of the questionnaire being responded to.\n\nTo support structured, hierarchical reporting of data gathered using digital forms and other questionnaires."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct QuestionnaireResponse {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,
@@ -96,4 +121,33 @@ pub struct QuestionnaireResponse {
     pub r#source: Option<Box<super::super::types::Reference>>,
     #[doc = "A group or question item from the original questionnaire for which answers are provided."]
     pub r#item: Vec<QuestionnaireResponseItem>,
+}
+impl Default for QuestionnaireResponse {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#meta: Default::default(),
+            r#implicit_rules: Default::default(),
+            r#language: Default::default(),
+            r#text: Default::default(),
+            r#contained: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#identifier: Default::default(),
+            r#based_on: Default::default(),
+            r#part_of: Default::default(),
+            r#questionnaire: Default::default(),
+            r#status: {
+                let mut default: super::super::types::Code = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#subject: Default::default(),
+            r#encounter: Default::default(),
+            r#authored: Default::default(),
+            r#author: Default::default(),
+            r#source: Default::default(),
+            r#item: Default::default(),
+        }
+    }
 }

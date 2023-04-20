@@ -1,6 +1,6 @@
-// Generated on 2023-04-20 by fhirbolt-codegen v0.4.0
+// Generated on 2023-04-20 by fhirbolt-codegen v0.5.0
 #[doc = "Indicates who or what performed the event."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct MedicationDispensePerformer {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -13,8 +13,23 @@ pub struct MedicationDispensePerformer {
     #[doc = "The device, practitioner, etc. who performed the action.  It should be assumed that the actor is the dispenser of the medication."]
     pub r#actor: Box<super::super::types::Reference>,
 }
+impl Default for MedicationDispensePerformer {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#function: Default::default(),
+            r#actor: {
+                let mut default: Box<super::super::types::Reference> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+        }
+    }
+}
 #[doc = "Indicates whether or not substitution was made as part of the dispense.  In some cases, substitution will be expected but does not happen, in other cases substitution is not expected but does happen.  This block explains what substitution did or did not happen and why.  If nothing is specified, substitution was not done."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct MedicationDispenseSubstitution {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -31,8 +46,25 @@ pub struct MedicationDispenseSubstitution {
     #[doc = "The person or organization that has primary responsibility for the substitution."]
     pub r#responsible_party: Option<Box<super::super::types::Reference>>,
 }
+impl Default for MedicationDispenseSubstitution {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#was_substituted: {
+                let mut default: super::super::types::Boolean = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#type: Default::default(),
+            r#reason: Default::default(),
+            r#responsible_party: Default::default(),
+        }
+    }
+}
 #[doc = "Indicates that a medication product is to be or has been dispensed for a named person/patient.  This includes a description of the medication product (supply) provided and the instructions for administering the medication.  The medication dispense is the result of a pharmacy system responding to a medication order."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct MedicationDispense {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,
@@ -104,4 +136,57 @@ pub struct MedicationDispense {
     pub r#substitution: Option<MedicationDispenseSubstitution>,
     #[doc = "A summary of the events of interest that have occurred, such as when the dispense was verified."]
     pub r#event_history: Vec<Box<super::super::types::Reference>>,
+}
+impl Default for MedicationDispense {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#meta: Default::default(),
+            r#implicit_rules: Default::default(),
+            r#language: Default::default(),
+            r#text: Default::default(),
+            r#contained: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#identifier: Default::default(),
+            r#based_on: Default::default(),
+            r#part_of: Default::default(),
+            r#status: {
+                let mut default: super::super::types::Code = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#not_performed_reason: Default::default(),
+            r#status_changed: Default::default(),
+            r#category: Default::default(),
+            r#medication: {
+                let mut default: Box<super::super::types::CodeableReference> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#subject: {
+                let mut default: Box<super::super::types::Reference> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#encounter: Default::default(),
+            r#supporting_information: Default::default(),
+            r#performer: Default::default(),
+            r#location: Default::default(),
+            r#authorizing_prescription: Default::default(),
+            r#type: Default::default(),
+            r#quantity: Default::default(),
+            r#days_supply: Default::default(),
+            r#recorded: Default::default(),
+            r#when_prepared: Default::default(),
+            r#when_handed_over: Default::default(),
+            r#destination: Default::default(),
+            r#receiver: Default::default(),
+            r#note: Default::default(),
+            r#rendered_dosage_instruction: Default::default(),
+            r#dosage_instruction: Default::default(),
+            r#substitution: Default::default(),
+            r#event_history: Default::default(),
+        }
+    }
 }

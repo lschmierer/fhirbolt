@@ -1,19 +1,15 @@
-// Generated on 2023-04-20 by fhirbolt-codegen v0.4.0
+// Generated on 2023-04-20 by fhirbolt-codegen v0.5.0
 #[doc = "Specifies how many (or how much) of the items there are in this Medication.  For example, 250 mg per tablet.  This is expressed as a ratio where the numerator is 250mg and the denominator is 1 tablet but can also be expressed a quantity when the denominator is assumed to be 1 tablet."]
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub enum MedicationIngredientStrength {
     Ratio(Box<super::super::types::Ratio>),
     CodeableConcept(Box<super::super::types::CodeableConcept>),
     Quantity(Box<super::super::types::Quantity>),
+    #[default]
     Invalid,
 }
-impl Default for MedicationIngredientStrength {
-    fn default() -> MedicationIngredientStrength {
-        MedicationIngredientStrength::Invalid
-    }
-}
 #[doc = "Identifies a particular constituent of interest in the product."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct MedicationIngredient {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -28,8 +24,24 @@ pub struct MedicationIngredient {
     #[doc = "Specifies how many (or how much) of the items there are in this Medication.  For example, 250 mg per tablet.  This is expressed as a ratio where the numerator is 250mg and the denominator is 1 tablet but can also be expressed a quantity when the denominator is assumed to be 1 tablet."]
     pub r#strength: Option<MedicationIngredientStrength>,
 }
+impl Default for MedicationIngredient {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#item: {
+                let mut default: Box<super::super::types::CodeableReference> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#is_active: Default::default(),
+            r#strength: Default::default(),
+        }
+    }
+}
 #[doc = "Information that only applies to packages (not products)."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct MedicationBatch {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -42,8 +54,19 @@ pub struct MedicationBatch {
     #[doc = "When this specific batch of product will expire."]
     pub r#expiration_date: Option<super::super::types::DateTime>,
 }
+impl Default for MedicationBatch {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#lot_number: Default::default(),
+            r#expiration_date: Default::default(),
+        }
+    }
+}
 #[doc = "This resource is primarily used for the identification and definition of a medication, including ingredients, for the purposes of prescribing, dispensing, and administering a medication as well as for making statements about medication use."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct Medication {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,
@@ -79,4 +102,27 @@ pub struct Medication {
     pub r#batch: Option<MedicationBatch>,
     #[doc = "A reference to a knowledge resource that provides more information about this medication."]
     pub r#definition: Option<Box<super::super::types::Reference>>,
+}
+impl Default for Medication {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#meta: Default::default(),
+            r#implicit_rules: Default::default(),
+            r#language: Default::default(),
+            r#text: Default::default(),
+            r#contained: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#identifier: Default::default(),
+            r#code: Default::default(),
+            r#status: Default::default(),
+            r#marketing_authorization_holder: Default::default(),
+            r#dose_form: Default::default(),
+            r#total_volume: Default::default(),
+            r#ingredient: Default::default(),
+            r#batch: Default::default(),
+            r#definition: Default::default(),
+        }
+    }
 }

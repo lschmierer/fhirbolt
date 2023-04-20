@@ -1,4 +1,4 @@
-// Generated on 2023-04-20 by fhirbolt-codegen v0.4.0
+// Generated on 2023-04-20 by fhirbolt-codegen v0.5.0
 impl crate::Resource for fhirbolt_model::r4::resources::BodyStructure {
     const FHIR_RELEASE: fhirbolt_shared::FhirRelease = fhirbolt_shared::FhirReleases::R4;
 }
@@ -10,6 +10,13 @@ impl serde::ser::Serialize
         S: serde::ser::Serializer,
     {
         use serde::ser::SerializeMap;
+        #[allow(dead_code)]
+        fn missing_field_error<T, E: serde::ser::Error>(field: &str) -> Result<T, E> {
+            Err(E::custom(format!(
+                "missing required field `{}.{}`",
+                "BodyStructure", field
+            )))
+        }
         let mut state = serializer.serialize_map(None)?;
         state.serialize_entry("resourceType", "BodyStructure")?;
         if let Some(value) = self.value.r#id.as_ref() {
@@ -140,6 +147,9 @@ impl serde::ser::Serialize
             self.with_context(&self.value.r#image, |ctx| {
                 state.serialize_entry("image", ctx)
             })?;
+        }
+        if self.value.r#patient.id.as_deref() == Some("$invalid") {
+            return missing_field_error("patient");
         }
         self.with_context(&self.value.r#patient, |ctx| {
             state.serialize_entry("patient", ctx)

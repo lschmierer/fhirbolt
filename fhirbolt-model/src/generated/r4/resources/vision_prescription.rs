@@ -1,6 +1,6 @@
-// Generated on 2023-04-20 by fhirbolt-codegen v0.4.0
+// Generated on 2023-04-20 by fhirbolt-codegen v0.5.0
 #[doc = "Allows for adjustment on two axis."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct VisionPrescriptionLensSpecificationPrism {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -13,8 +13,27 @@ pub struct VisionPrescriptionLensSpecificationPrism {
     #[doc = "The relative base, or reference lens edge, for the prism."]
     pub r#base: super::super::types::Code,
 }
+impl Default for VisionPrescriptionLensSpecificationPrism {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#amount: {
+                let mut default: super::super::types::Decimal = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#base: {
+                let mut default: super::super::types::Code = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+        }
+    }
+}
 #[doc = "Contain the details of  the individual lens specifications and serves as the authorization for the fullfillment by certified professionals."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct VisionPrescriptionLensSpecification {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -51,8 +70,39 @@ pub struct VisionPrescriptionLensSpecification {
     #[doc = "Notes for special requirements such as coatings and lens materials."]
     pub r#note: Vec<Box<super::super::types::Annotation>>,
 }
+impl Default for VisionPrescriptionLensSpecification {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#product: {
+                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#eye: {
+                let mut default: super::super::types::Code = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#sphere: Default::default(),
+            r#cylinder: Default::default(),
+            r#axis: Default::default(),
+            r#prism: Default::default(),
+            r#add: Default::default(),
+            r#power: Default::default(),
+            r#back_curve: Default::default(),
+            r#diameter: Default::default(),
+            r#duration: Default::default(),
+            r#color: Default::default(),
+            r#brand: Default::default(),
+            r#note: Default::default(),
+        }
+    }
+}
 #[doc = "An authorization for the provision of glasses and/or contact lenses to a patient."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct VisionPrescription {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,
@@ -86,4 +136,46 @@ pub struct VisionPrescription {
     pub r#prescriber: Box<super::super::types::Reference>,
     #[doc = "Contain the details of  the individual lens specifications and serves as the authorization for the fullfillment by certified professionals."]
     pub r#lens_specification: Vec<VisionPrescriptionLensSpecification>,
+}
+impl Default for VisionPrescription {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#meta: Default::default(),
+            r#implicit_rules: Default::default(),
+            r#language: Default::default(),
+            r#text: Default::default(),
+            r#contained: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#identifier: Default::default(),
+            r#status: {
+                let mut default: super::super::types::Code = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#created: {
+                let mut default: super::super::types::DateTime = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#patient: {
+                let mut default: Box<super::super::types::Reference> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#encounter: Default::default(),
+            r#date_written: {
+                let mut default: super::super::types::DateTime = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#prescriber: {
+                let mut default: Box<super::super::types::Reference> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#lens_specification: Default::default(),
+        }
+    }
 }

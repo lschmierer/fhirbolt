@@ -1,19 +1,15 @@
-// Generated on 2023-04-20 by fhirbolt-codegen v0.4.0
+// Generated on 2023-04-20 by fhirbolt-codegen v0.5.0
 #[doc = "The reference sequence that represents the starting sequence."]
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub enum MolecularSequenceRelativeStartingSequenceSequence {
     CodeableConcept(Box<super::super::types::CodeableConcept>),
     String(Box<super::super::types::String>),
     Reference(Box<super::super::types::Reference>),
+    #[default]
     Invalid,
 }
-impl Default for MolecularSequenceRelativeStartingSequenceSequence {
-    fn default() -> MolecularSequenceRelativeStartingSequenceSequence {
-        MolecularSequenceRelativeStartingSequenceSequence::Invalid
-    }
-}
 #[doc = "A sequence that is used as a starting sequence to describe variants that are present in a sequence analyzed."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct MolecularSequenceRelativeStartingSequence {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -36,8 +32,24 @@ pub struct MolecularSequenceRelativeStartingSequence {
     #[doc = "An absolute reference to a strand. The Watson strand is the strand whose 5'-end is on the short arm of the chromosome, and the Crick strand as the one whose 5'-end is on the long arm."]
     pub r#strand: Option<super::super::types::Code>,
 }
+impl Default for MolecularSequenceRelativeStartingSequence {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#genome_assembly: Default::default(),
+            r#chromosome: Default::default(),
+            r#sequence: Default::default(),
+            r#window_start: Default::default(),
+            r#window_end: Default::default(),
+            r#orientation: Default::default(),
+            r#strand: Default::default(),
+        }
+    }
+}
 #[doc = "Changes in sequence from the starting sequence."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct MolecularSequenceRelativeEdit {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -54,8 +66,21 @@ pub struct MolecularSequenceRelativeEdit {
     #[doc = "Allele in the starting sequence. Nucleotide(s)/amino acids from start position of sequence to stop position of sequence on the positive (+) strand of the starting sequence. When the sequence  type is DNA, it should be the sequence on the positive (+) strand. This will lay in the range between variant.start and variant.end."]
     pub r#replaced_sequence: Option<super::super::types::String>,
 }
+impl Default for MolecularSequenceRelativeEdit {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#start: Default::default(),
+            r#end: Default::default(),
+            r#replacement_sequence: Default::default(),
+            r#replaced_sequence: Default::default(),
+        }
+    }
+}
 #[doc = "A sequence defined relative to another sequence."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct MolecularSequenceRelative {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -74,8 +99,26 @@ pub struct MolecularSequenceRelative {
     #[doc = "Changes in sequence from the starting sequence."]
     pub r#edit: Vec<MolecularSequenceRelativeEdit>,
 }
+impl Default for MolecularSequenceRelative {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#coordinate_system: {
+                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#ordinal_position: Default::default(),
+            r#sequence_range: Default::default(),
+            r#starting_sequence: Default::default(),
+            r#edit: Default::default(),
+        }
+    }
+}
 #[doc = "Representation of a molecular sequence."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct MolecularSequence {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,
@@ -113,4 +156,28 @@ pub struct MolecularSequence {
     pub r#formatted: Vec<Box<super::super::types::Attachment>>,
     #[doc = "A sequence defined relative to another sequence."]
     pub r#relative: Vec<MolecularSequenceRelative>,
+}
+impl Default for MolecularSequence {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#meta: Default::default(),
+            r#implicit_rules: Default::default(),
+            r#language: Default::default(),
+            r#text: Default::default(),
+            r#contained: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#identifier: Default::default(),
+            r#type: Default::default(),
+            r#subject: Default::default(),
+            r#focus: Default::default(),
+            r#specimen: Default::default(),
+            r#device: Default::default(),
+            r#performer: Default::default(),
+            r#literal: Default::default(),
+            r#formatted: Default::default(),
+            r#relative: Default::default(),
+        }
+    }
 }

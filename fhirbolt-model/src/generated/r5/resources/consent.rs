@@ -1,6 +1,6 @@
-// Generated on 2023-04-20 by fhirbolt-codegen v0.4.0
+// Generated on 2023-04-20 by fhirbolt-codegen v0.5.0
 #[doc = "A Reference or URL used to uniquely identify the policy the organization will enforce for this Consent. This Reference or URL should be specific to the version of the policy and should be dereferencable to a computable policy of some form."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct ConsentPolicyBasis {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -13,8 +13,19 @@ pub struct ConsentPolicyBasis {
     #[doc = "A URL that links to a computable version of the policy the organization will enforce for this Consent."]
     pub r#url: Option<super::super::types::Url>,
 }
+impl Default for ConsentPolicyBasis {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#reference: Default::default(),
+            r#url: Default::default(),
+        }
+    }
+}
 #[doc = "Whether a treatment instruction (e.g. artificial respiration: yes or no) was verified with the patient, his/her family or another authorized person."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct ConsentVerification {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -33,8 +44,26 @@ pub struct ConsentVerification {
     #[doc = "Date(s) verification was collected."]
     pub r#verification_date: Vec<super::super::types::DateTime>,
 }
+impl Default for ConsentVerification {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#verified: {
+                let mut default: super::super::types::Boolean = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#verification_type: Default::default(),
+            r#verified_by: Default::default(),
+            r#verified_with: Default::default(),
+            r#verification_date: Default::default(),
+        }
+    }
+}
 #[doc = "Who or what is controlled by this provision. Use group to identify a set of actors by some property they share (e.g. 'admitting officers')."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct ConsentProvisionActor {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -47,8 +76,19 @@ pub struct ConsentProvisionActor {
     #[doc = "The resource that identifies the actor. To identify actors by type, use group to identify a set of actors by some property they share (e.g. 'admitting officers')."]
     pub r#reference: Option<Box<super::super::types::Reference>>,
 }
+impl Default for ConsentProvisionActor {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#role: Default::default(),
+            r#reference: Default::default(),
+        }
+    }
+}
 #[doc = "The resources controlled by this provision if specific resources are referenced."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct ConsentProvisionData {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -61,8 +101,27 @@ pub struct ConsentProvisionData {
     #[doc = "A reference to a specific resource that defines which resources are covered by this consent."]
     pub r#reference: Box<super::super::types::Reference>,
 }
+impl Default for ConsentProvisionData {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#meaning: {
+                let mut default: super::super::types::Code = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#reference: {
+                let mut default: Box<super::super::types::Reference> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+        }
+    }
+}
 #[doc = "An exception to the base policy of this consent. An exception can be an addition or removal of access permissions."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct ConsentProvision {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -95,8 +154,29 @@ pub struct ConsentProvision {
     #[doc = "Provisions which provide exceptions to the base provision or subprovisions."]
     pub r#provision: Vec<ConsentProvision>,
 }
+impl Default for ConsentProvision {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#period: Default::default(),
+            r#actor: Default::default(),
+            r#action: Default::default(),
+            r#security_label: Default::default(),
+            r#purpose: Default::default(),
+            r#document_type: Default::default(),
+            r#resource_type: Default::default(),
+            r#code: Default::default(),
+            r#data_period: Default::default(),
+            r#data: Default::default(),
+            r#expression: Default::default(),
+            r#provision: Default::default(),
+        }
+    }
+}
 #[doc = "A record of a healthcare consumer’s  choices  or choices made on their behalf by a third party, which permits or denies identified recipient(s) or recipient role(s) to perform one or more actions within a given policy context, for specific purposes and periods of time."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct Consent {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,
@@ -150,4 +230,40 @@ pub struct Consent {
     pub r#decision: Option<super::super::types::Code>,
     #[doc = "An exception to the base policy of this consent. An exception can be an addition or removal of access permissions."]
     pub r#provision: Vec<ConsentProvision>,
+}
+impl Default for Consent {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#meta: Default::default(),
+            r#implicit_rules: Default::default(),
+            r#language: Default::default(),
+            r#text: Default::default(),
+            r#contained: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#identifier: Default::default(),
+            r#status: {
+                let mut default: super::super::types::Code = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#category: Default::default(),
+            r#subject: Default::default(),
+            r#date: Default::default(),
+            r#period: Default::default(),
+            r#grantor: Default::default(),
+            r#grantee: Default::default(),
+            r#manager: Default::default(),
+            r#controller: Default::default(),
+            r#source_attachment: Default::default(),
+            r#source_reference: Default::default(),
+            r#regulatory_basis: Default::default(),
+            r#policy_basis: Default::default(),
+            r#policy_text: Default::default(),
+            r#verification: Default::default(),
+            r#decision: Default::default(),
+            r#provision: Default::default(),
+        }
+    }
 }

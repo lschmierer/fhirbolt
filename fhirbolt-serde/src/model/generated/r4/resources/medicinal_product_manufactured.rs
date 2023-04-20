@@ -1,4 +1,4 @@
-// Generated on 2023-04-20 by fhirbolt-codegen v0.4.0
+// Generated on 2023-04-20 by fhirbolt-codegen v0.5.0
 impl crate::Resource for fhirbolt_model::r4::resources::MedicinalProductManufactured {
     const FHIR_RELEASE: fhirbolt_shared::FhirRelease = fhirbolt_shared::FhirReleases::R4;
 }
@@ -12,6 +12,13 @@ impl serde::ser::Serialize
         S: serde::ser::Serializer,
     {
         use serde::ser::SerializeMap;
+        #[allow(dead_code)]
+        fn missing_field_error<T, E: serde::ser::Error>(field: &str) -> Result<T, E> {
+            Err(E::custom(format!(
+                "missing required field `{}.{}`",
+                "MedicinalProductManufactured", field
+            )))
+        }
         let mut state = serializer.serialize_map(None)?;
         state.serialize_entry("resourceType", "MedicinalProductManufactured")?;
         if let Some(value) = self.value.r#id.as_ref() {
@@ -80,11 +87,17 @@ impl serde::ser::Serialize
                 state.serialize_entry("modifierExtension", ctx)
             })?;
         }
+        if self.value.r#manufactured_dose_form.id.as_deref() == Some("$invalid") {
+            return missing_field_error("manufacturedDoseForm");
+        }
         self.with_context(&self.value.r#manufactured_dose_form, |ctx| {
             state.serialize_entry("manufacturedDoseForm", ctx)
         })?;
         if let Some(some) = self.value.r#unit_of_presentation.as_ref() {
             self.with_context(some, |ctx| state.serialize_entry("unitOfPresentation", ctx))?;
+        }
+        if self.value.r#quantity.id.as_deref() == Some("$invalid") {
+            return missing_field_error("quantity");
         }
         self.with_context(&self.value.r#quantity, |ctx| {
             state.serialize_entry("quantity", ctx)

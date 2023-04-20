@@ -1,30 +1,22 @@
-// Generated on 2023-04-20 by fhirbolt-codegen v0.4.0
+// Generated on 2023-04-20 by fhirbolt-codegen v0.5.0
 #[doc = "Indicates the mechanism used to compare versions to determine which is more current."]
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub enum ConditionDefinitionVersionAlgorithm {
     String(Box<super::super::types::String>),
     Coding(Box<super::super::types::Coding>),
+    #[default]
     Invalid,
 }
-impl Default for ConditionDefinitionVersionAlgorithm {
-    fn default() -> ConditionDefinitionVersionAlgorithm {
-        ConditionDefinitionVersionAlgorithm::Invalid
-    }
-}
 #[doc = "Value of Observation."]
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub enum ConditionDefinitionPreconditionValue {
     CodeableConcept(Box<super::super::types::CodeableConcept>),
     Quantity(Box<super::super::types::Quantity>),
+    #[default]
     Invalid,
 }
-impl Default for ConditionDefinitionPreconditionValue {
-    fn default() -> ConditionDefinitionPreconditionValue {
-        ConditionDefinitionPreconditionValue::Invalid
-    }
-}
 #[doc = "Observations particularly relevant to this condition."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct ConditionDefinitionObservation {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -37,8 +29,19 @@ pub struct ConditionDefinitionObservation {
     #[doc = "Code for relevant Observation."]
     pub r#code: Option<Box<super::super::types::CodeableConcept>>,
 }
+impl Default for ConditionDefinitionObservation {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#category: Default::default(),
+            r#code: Default::default(),
+        }
+    }
+}
 #[doc = "Medications particularly relevant for this condition."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct ConditionDefinitionMedication {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -51,8 +54,19 @@ pub struct ConditionDefinitionMedication {
     #[doc = "Code for relevant Medication."]
     pub r#code: Option<Box<super::super::types::CodeableConcept>>,
 }
+impl Default for ConditionDefinitionMedication {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#category: Default::default(),
+            r#code: Default::default(),
+        }
+    }
+}
 #[doc = "An observation that suggests that this condition applies."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct ConditionDefinitionPrecondition {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -67,8 +81,28 @@ pub struct ConditionDefinitionPrecondition {
     #[doc = "Value of Observation."]
     pub r#value: Option<ConditionDefinitionPreconditionValue>,
 }
+impl Default for ConditionDefinitionPrecondition {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#type: {
+                let mut default: super::super::types::Code = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#code: {
+                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#value: Default::default(),
+        }
+    }
+}
 #[doc = "Questionnaire for this condition."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct ConditionDefinitionQuestionnaire {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -81,8 +115,27 @@ pub struct ConditionDefinitionQuestionnaire {
     #[doc = "Specific Questionnaire."]
     pub r#reference: Box<super::super::types::Reference>,
 }
+impl Default for ConditionDefinitionQuestionnaire {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#purpose: {
+                let mut default: super::super::types::Code = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#reference: {
+                let mut default: Box<super::super::types::Reference> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+        }
+    }
+}
 #[doc = "Plan that is appropriate."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct ConditionDefinitionPlan {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -95,8 +148,23 @@ pub struct ConditionDefinitionPlan {
     #[doc = "The actual plan."]
     pub r#reference: Box<super::super::types::Reference>,
 }
+impl Default for ConditionDefinitionPlan {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#role: Default::default(),
+            r#reference: {
+                let mut default: Box<super::super::types::Reference> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+        }
+    }
+}
 #[doc = "A definition of a condition and information relevant to managing it."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct ConditionDefinition {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,
@@ -172,4 +240,55 @@ pub struct ConditionDefinition {
     pub r#questionnaire: Vec<ConditionDefinitionQuestionnaire>,
     #[doc = "Plan that is appropriate."]
     pub r#plan: Vec<ConditionDefinitionPlan>,
+}
+impl Default for ConditionDefinition {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#meta: Default::default(),
+            r#implicit_rules: Default::default(),
+            r#language: Default::default(),
+            r#text: Default::default(),
+            r#contained: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#url: Default::default(),
+            r#identifier: Default::default(),
+            r#version: Default::default(),
+            r#version_algorithm: Default::default(),
+            r#name: Default::default(),
+            r#title: Default::default(),
+            r#subtitle: Default::default(),
+            r#status: {
+                let mut default: super::super::types::Code = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#experimental: Default::default(),
+            r#date: Default::default(),
+            r#publisher: Default::default(),
+            r#contact: Default::default(),
+            r#description: Default::default(),
+            r#use_context: Default::default(),
+            r#jurisdiction: Default::default(),
+            r#code: {
+                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#severity: Default::default(),
+            r#body_site: Default::default(),
+            r#stage: Default::default(),
+            r#has_severity: Default::default(),
+            r#has_body_site: Default::default(),
+            r#has_stage: Default::default(),
+            r#definition: Default::default(),
+            r#observation: Default::default(),
+            r#medication: Default::default(),
+            r#precondition: Default::default(),
+            r#team: Default::default(),
+            r#questionnaire: Default::default(),
+            r#plan: Default::default(),
+        }
+    }
 }

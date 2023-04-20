@@ -1,34 +1,26 @@
-// Generated on 2023-04-20 by fhirbolt-codegen v0.4.0
+// Generated on 2023-04-20 by fhirbolt-codegen v0.5.0
 #[doc = "The article or artifact that the Citation Resource is related to."]
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub enum CitationRelatesToTarget {
     Uri(Box<super::super::types::Uri>),
     Identifier(Box<super::super::types::Identifier>),
     Reference(Box<super::super::types::Reference>),
     Attachment(Box<super::super::types::Attachment>),
+    #[default]
     Invalid,
 }
-impl Default for CitationRelatesToTarget {
-    fn default() -> CitationRelatesToTarget {
-        CitationRelatesToTarget::Invalid
-    }
-}
 #[doc = "The article or artifact that the cited artifact is related to."]
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub enum CitationCitedArtifactRelatesToTarget {
     Uri(Box<super::super::types::Uri>),
     Identifier(Box<super::super::types::Identifier>),
     Reference(Box<super::super::types::Reference>),
     Attachment(Box<super::super::types::Attachment>),
+    #[default]
     Invalid,
 }
-impl Default for CitationCitedArtifactRelatesToTarget {
-    fn default() -> CitationCitedArtifactRelatesToTarget {
-        CitationCitedArtifactRelatesToTarget::Invalid
-    }
-}
 #[doc = "A human-readable display of the citation."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct CitationSummary {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -41,8 +33,23 @@ pub struct CitationSummary {
     #[doc = "The human-readable display of the citation."]
     pub r#text: super::super::types::Markdown,
 }
+impl Default for CitationSummary {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#style: Default::default(),
+            r#text: {
+                let mut default: super::super::types::Markdown = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+        }
+    }
+}
 #[doc = "The assignment to an organizing scheme."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct CitationClassification {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -55,8 +62,19 @@ pub struct CitationClassification {
     #[doc = "The specific classification value."]
     pub r#classifier: Vec<Box<super::super::types::CodeableConcept>>,
 }
+impl Default for CitationClassification {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#type: Default::default(),
+            r#classifier: Default::default(),
+        }
+    }
+}
 #[doc = "An effective date or period for a status of the citation."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct CitationStatusDate {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -71,8 +89,28 @@ pub struct CitationStatusDate {
     #[doc = "When the status started and/or ended."]
     pub r#period: Box<super::super::types::Period>,
 }
+impl Default for CitationStatusDate {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#activity: {
+                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#actual: Default::default(),
+            r#period: {
+                let mut default: Box<super::super::types::Period> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+        }
+    }
+}
 #[doc = "Artifact related to the Citation Resource."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct CitationRelatesTo {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -87,8 +125,24 @@ pub struct CitationRelatesTo {
     #[doc = "The article or artifact that the Citation Resource is related to."]
     pub r#target: CitationRelatesToTarget,
 }
+impl Default for CitationRelatesTo {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#relationship_type: {
+                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#target_classifier: Default::default(),
+            r#target: Default::default(),
+        }
+    }
+}
 #[doc = "The defined version of the cited artifact."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct CitationCitedArtifactVersion {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -101,8 +155,23 @@ pub struct CitationCitedArtifactVersion {
     #[doc = "Citation for the main version of the cited artifact."]
     pub r#base_citation: Option<Box<super::super::types::Reference>>,
 }
+impl Default for CitationCitedArtifactVersion {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#value: {
+                let mut default: super::super::types::String = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#base_citation: Default::default(),
+        }
+    }
+}
 #[doc = "An effective date or period for a status of the cited artifact."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct CitationCitedArtifactStatusDate {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -117,8 +186,28 @@ pub struct CitationCitedArtifactStatusDate {
     #[doc = "When the status started and/or ended."]
     pub r#period: Box<super::super::types::Period>,
 }
+impl Default for CitationCitedArtifactStatusDate {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#activity: {
+                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#actual: Default::default(),
+            r#period: {
+                let mut default: Box<super::super::types::Period> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+        }
+    }
+}
 #[doc = "The title details of the article or artifact."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct CitationCitedArtifactTitle {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -133,8 +222,24 @@ pub struct CitationCitedArtifactTitle {
     #[doc = "The title of the article or artifact."]
     pub r#text: super::super::types::Markdown,
 }
+impl Default for CitationCitedArtifactTitle {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#type: Default::default(),
+            r#language: Default::default(),
+            r#text: {
+                let mut default: super::super::types::Markdown = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+        }
+    }
+}
 #[doc = "Summary of the article or artifact."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct CitationCitedArtifactAbstract {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -151,8 +256,25 @@ pub struct CitationCitedArtifactAbstract {
     #[doc = "Copyright notice for the abstract."]
     pub r#copyright: Option<super::super::types::Markdown>,
 }
+impl Default for CitationCitedArtifactAbstract {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#type: Default::default(),
+            r#language: Default::default(),
+            r#text: {
+                let mut default: super::super::types::Markdown = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#copyright: Default::default(),
+        }
+    }
+}
 #[doc = "The component of the article or artifact."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct CitationCitedArtifactPart {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -167,8 +289,20 @@ pub struct CitationCitedArtifactPart {
     #[doc = "The citation for the full article or artifact."]
     pub r#base_citation: Option<Box<super::super::types::Reference>>,
 }
+impl Default for CitationCitedArtifactPart {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#type: Default::default(),
+            r#value: Default::default(),
+            r#base_citation: Default::default(),
+        }
+    }
+}
 #[doc = "The artifact related to the cited artifact."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct CitationCitedArtifactRelatesTo {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -183,8 +317,24 @@ pub struct CitationCitedArtifactRelatesTo {
     #[doc = "The article or artifact that the cited artifact is related to."]
     pub r#target: CitationCitedArtifactRelatesToTarget,
 }
+impl Default for CitationCitedArtifactRelatesTo {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#relationship_type: {
+                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#target_classifier: Default::default(),
+            r#target: Default::default(),
+        }
+    }
+}
 #[doc = "The collection the cited article or artifact is published in."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct CitationCitedArtifactPublicationFormPublishedIn {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -203,8 +353,22 @@ pub struct CitationCitedArtifactPublicationFormPublishedIn {
     #[doc = "Geographic location of the publisher."]
     pub r#publisher_location: Option<super::super::types::String>,
 }
+impl Default for CitationCitedArtifactPublicationFormPublishedIn {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#type: Default::default(),
+            r#identifier: Default::default(),
+            r#title: Default::default(),
+            r#publisher: Default::default(),
+            r#publisher_location: Default::default(),
+        }
+    }
+}
 #[doc = "Defining the date on which the issue of the journal was published."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct CitationCitedArtifactPublicationFormPeriodicReleaseDateOfPublication {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -225,8 +389,23 @@ pub struct CitationCitedArtifactPublicationFormPeriodicReleaseDateOfPublication 
     #[doc = "Text representation of the date of which the issue of the journal was published."]
     pub r#text: Option<super::super::types::String>,
 }
+impl Default for CitationCitedArtifactPublicationFormPeriodicReleaseDateOfPublication {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#date: Default::default(),
+            r#year: Default::default(),
+            r#month: Default::default(),
+            r#day: Default::default(),
+            r#season: Default::default(),
+            r#text: Default::default(),
+        }
+    }
+}
 #[doc = "The specific issue in which the cited article resides."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct CitationCitedArtifactPublicationFormPeriodicRelease {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -244,8 +423,21 @@ pub struct CitationCitedArtifactPublicationFormPeriodicRelease {
     pub r#date_of_publication:
         Option<CitationCitedArtifactPublicationFormPeriodicReleaseDateOfPublication>,
 }
+impl Default for CitationCitedArtifactPublicationFormPeriodicRelease {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#cited_medium: Default::default(),
+            r#volume: Default::default(),
+            r#issue: Default::default(),
+            r#date_of_publication: Default::default(),
+        }
+    }
+}
 #[doc = "If multiple, used to represent alternative forms of the article that are not separate citations."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct CitationCitedArtifactPublicationForm {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -276,8 +468,28 @@ pub struct CitationCitedArtifactPublicationForm {
     #[doc = "Copyright notice for the full article or artifact."]
     pub r#copyright: Option<super::super::types::Markdown>,
 }
+impl Default for CitationCitedArtifactPublicationForm {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#published_in: Default::default(),
+            r#periodic_release: Default::default(),
+            r#article_date: Default::default(),
+            r#last_revision_date: Default::default(),
+            r#language: Default::default(),
+            r#accession_number: Default::default(),
+            r#page_string: Default::default(),
+            r#first_page: Default::default(),
+            r#last_page: Default::default(),
+            r#page_count: Default::default(),
+            r#copyright: Default::default(),
+        }
+    }
+}
 #[doc = "Used for any URL for the article or artifact cited."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct CitationCitedArtifactWebLocation {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -290,8 +502,19 @@ pub struct CitationCitedArtifactWebLocation {
     #[doc = "The specific URL."]
     pub r#url: Option<super::super::types::Uri>,
 }
+impl Default for CitationCitedArtifactWebLocation {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#type: Default::default(),
+            r#url: Default::default(),
+        }
+    }
+}
 #[doc = "Provenance and copyright of classification."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct CitationCitedArtifactClassificationWhoClassified {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -310,8 +533,22 @@ pub struct CitationCitedArtifactClassificationWhoClassified {
     #[doc = "Acceptable to re-use the classification."]
     pub r#free_to_share: Option<super::super::types::Boolean>,
 }
+impl Default for CitationCitedArtifactClassificationWhoClassified {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#person: Default::default(),
+            r#organization: Default::default(),
+            r#publisher: Default::default(),
+            r#classifier_copyright: Default::default(),
+            r#free_to_share: Default::default(),
+        }
+    }
+}
 #[doc = "The assignment to an organizing scheme."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct CitationCitedArtifactClassification {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -326,8 +563,20 @@ pub struct CitationCitedArtifactClassification {
     #[doc = "Provenance and copyright of classification."]
     pub r#who_classified: Option<CitationCitedArtifactClassificationWhoClassified>,
 }
+impl Default for CitationCitedArtifactClassification {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#type: Default::default(),
+            r#classifier: Default::default(),
+            r#who_classified: Default::default(),
+        }
+    }
+}
 #[doc = "Organization affiliated with the entity."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct CitationCitedArtifactContributorshipEntryAffiliationInfo {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -342,8 +591,20 @@ pub struct CitationCitedArtifactContributorshipEntryAffiliationInfo {
     #[doc = "Identifier for the organization."]
     pub r#identifier: Vec<Box<super::super::types::Identifier>>,
 }
+impl Default for CitationCitedArtifactContributorshipEntryAffiliationInfo {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#affiliation: Default::default(),
+            r#role: Default::default(),
+            r#identifier: Default::default(),
+        }
+    }
+}
 #[doc = "Contributions with accounting for time or number."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct CitationCitedArtifactContributorshipEntryContributionInstance {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -356,8 +617,23 @@ pub struct CitationCitedArtifactContributorshipEntryContributionInstance {
     #[doc = "The time that the contribution was made."]
     pub r#time: Option<super::super::types::DateTime>,
 }
+impl Default for CitationCitedArtifactContributorshipEntryContributionInstance {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#type: {
+                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#time: Default::default(),
+        }
+    }
+}
 #[doc = "An individual entity named in the author list or contributor list."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct CitationCitedArtifactContributorshipEntry {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -390,8 +666,29 @@ pub struct CitationCitedArtifactContributorshipEntry {
     #[doc = "Used to code order of authors."]
     pub r#list_order: Option<super::super::types::PositiveInt>,
 }
+impl Default for CitationCitedArtifactContributorshipEntry {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#name: Default::default(),
+            r#initials: Default::default(),
+            r#collective_name: Default::default(),
+            r#identifier: Default::default(),
+            r#affiliation_info: Default::default(),
+            r#address: Default::default(),
+            r#telecom: Default::default(),
+            r#contribution_type: Default::default(),
+            r#role: Default::default(),
+            r#contribution_instance: Default::default(),
+            r#corresponding_contact: Default::default(),
+            r#list_order: Default::default(),
+        }
+    }
+}
 #[doc = "Used to record a display of the author/contributor list without separate coding for each list member."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct CitationCitedArtifactContributorshipSummary {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -408,8 +705,25 @@ pub struct CitationCitedArtifactContributorshipSummary {
     #[doc = "The display string for the author list, contributor list, or contributorship statement."]
     pub r#value: super::super::types::Markdown,
 }
+impl Default for CitationCitedArtifactContributorshipSummary {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#type: Default::default(),
+            r#style: Default::default(),
+            r#source: Default::default(),
+            r#value: {
+                let mut default: super::super::types::Markdown = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+        }
+    }
+}
 #[doc = "This element is used to list authors and other contributors, their contact information, specific contributions, and summary statements."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct CitationCitedArtifactContributorship {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -424,8 +738,20 @@ pub struct CitationCitedArtifactContributorship {
     #[doc = "Used to record a display of the author/contributor list without separate coding for each list member."]
     pub r#summary: Vec<CitationCitedArtifactContributorshipSummary>,
 }
+impl Default for CitationCitedArtifactContributorship {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#complete: Default::default(),
+            r#entry: Default::default(),
+            r#summary: Default::default(),
+        }
+    }
+}
 #[doc = "The article or artifact being described."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct CitationCitedArtifact {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -464,8 +790,32 @@ pub struct CitationCitedArtifact {
     #[doc = "Any additional information or content for the article or artifact."]
     pub r#note: Vec<Box<super::super::types::Annotation>>,
 }
+impl Default for CitationCitedArtifact {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#identifier: Default::default(),
+            r#related_identifier: Default::default(),
+            r#date_accessed: Default::default(),
+            r#version: Default::default(),
+            r#current_state: Default::default(),
+            r#status_date: Default::default(),
+            r#title: Default::default(),
+            r#abstract: Default::default(),
+            r#part: Default::default(),
+            r#relates_to: Default::default(),
+            r#publication_form: Default::default(),
+            r#web_location: Default::default(),
+            r#classification: Default::default(),
+            r#contributorship: Default::default(),
+            r#note: Default::default(),
+        }
+    }
+}
 #[doc = "The Citation Resource enables reference to any knowledge artifact for purposes of identification and attribution. The Citation Resource supports existing reference structures and developing publication practices such as versioning, expressing complex contributorship roles, and referencing computable resources."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct Citation {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,
@@ -541,4 +891,51 @@ pub struct Citation {
     pub r#relates_to: Vec<CitationRelatesTo>,
     #[doc = "The article or artifact being described."]
     pub r#cited_artifact: Option<CitationCitedArtifact>,
+}
+impl Default for Citation {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#meta: Default::default(),
+            r#implicit_rules: Default::default(),
+            r#language: Default::default(),
+            r#text: Default::default(),
+            r#contained: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#url: Default::default(),
+            r#identifier: Default::default(),
+            r#version: Default::default(),
+            r#name: Default::default(),
+            r#title: Default::default(),
+            r#status: {
+                let mut default: super::super::types::Code = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#experimental: Default::default(),
+            r#date: Default::default(),
+            r#publisher: Default::default(),
+            r#contact: Default::default(),
+            r#description: Default::default(),
+            r#use_context: Default::default(),
+            r#jurisdiction: Default::default(),
+            r#purpose: Default::default(),
+            r#copyright: Default::default(),
+            r#approval_date: Default::default(),
+            r#last_review_date: Default::default(),
+            r#effective_period: Default::default(),
+            r#author: Default::default(),
+            r#editor: Default::default(),
+            r#reviewer: Default::default(),
+            r#endorser: Default::default(),
+            r#summary: Default::default(),
+            r#classification: Default::default(),
+            r#note: Default::default(),
+            r#current_state: Default::default(),
+            r#status_date: Default::default(),
+            r#relates_to: Default::default(),
+            r#cited_artifact: Default::default(),
+        }
+    }
 }

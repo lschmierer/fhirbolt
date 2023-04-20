@@ -1,30 +1,22 @@
-// Generated on 2023-04-20 by fhirbolt-codegen v0.4.0
+// Generated on 2023-04-20 by fhirbolt-codegen v0.5.0
 #[doc = "Indicates the mechanism used to compare versions to determine which is more current."]
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub enum MessageDefinitionVersionAlgorithm {
     String(Box<super::super::types::String>),
     Coding(Box<super::super::types::Coding>),
+    #[default]
     Invalid,
 }
-impl Default for MessageDefinitionVersionAlgorithm {
-    fn default() -> MessageDefinitionVersionAlgorithm {
-        MessageDefinitionVersionAlgorithm::Invalid
-    }
-}
 #[doc = "Event code or link to the EventDefinition."]
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub enum MessageDefinitionEvent {
     Coding(Box<super::super::types::Coding>),
     Uri(Box<super::super::types::Uri>),
+    #[default]
     Invalid,
 }
-impl Default for MessageDefinitionEvent {
-    fn default() -> MessageDefinitionEvent {
-        MessageDefinitionEvent::Invalid
-    }
-}
 #[doc = "Identifies the resource (or resources) that are being addressed by the event.  For example, the Encounter for an admit message or two Account records for a merge."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct MessageDefinitionFocus {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -41,8 +33,29 @@ pub struct MessageDefinitionFocus {
     #[doc = "Identifies the maximum number of resources of this type that must be pointed to by a message in order for it to be valid against this MessageDefinition."]
     pub r#max: Option<super::super::types::String>,
 }
+impl Default for MessageDefinitionFocus {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#code: {
+                let mut default: super::super::types::Code = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#profile: Default::default(),
+            r#min: {
+                let mut default: super::super::types::UnsignedInt = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#max: Default::default(),
+        }
+    }
+}
 #[doc = "Indicates what types of messages may be sent as an application-level response to this message."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct MessageDefinitionAllowedResponse {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -55,8 +68,23 @@ pub struct MessageDefinitionAllowedResponse {
     #[doc = "Provides a description of the circumstances in which this response should be used (as opposed to one of the alternative responses)."]
     pub r#situation: Option<super::super::types::Markdown>,
 }
+impl Default for MessageDefinitionAllowedResponse {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#message: {
+                let mut default: super::super::types::Canonical = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#situation: Default::default(),
+        }
+    }
+}
 #[doc = "Defines the characteristics of a message that can be shared between systems, including the type of event that initiates the message, the content to be transmitted and what response(s), if any, are permitted.\n\nAllows messages to be defined once and re-used across systems."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct MessageDefinition {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,
@@ -126,4 +154,52 @@ pub struct MessageDefinition {
     pub r#allowed_response: Vec<MessageDefinitionAllowedResponse>,
     #[doc = "Graph is Canonical reference to a GraphDefinition. If a URL is provided, it is the canonical reference to a GraphDefinition that it controls what additional resources are to be added to the Bundle when building the message. The GraphDefinition can also specify profiles that apply to the various resources."]
     pub r#graph: Option<super::super::types::Canonical>,
+}
+impl Default for MessageDefinition {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#meta: Default::default(),
+            r#implicit_rules: Default::default(),
+            r#language: Default::default(),
+            r#text: Default::default(),
+            r#contained: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#url: Default::default(),
+            r#identifier: Default::default(),
+            r#version: Default::default(),
+            r#version_algorithm: Default::default(),
+            r#name: Default::default(),
+            r#title: Default::default(),
+            r#replaces: Default::default(),
+            r#status: {
+                let mut default: super::super::types::Code = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#experimental: Default::default(),
+            r#date: {
+                let mut default: super::super::types::DateTime = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#publisher: Default::default(),
+            r#contact: Default::default(),
+            r#description: Default::default(),
+            r#use_context: Default::default(),
+            r#jurisdiction: Default::default(),
+            r#purpose: Default::default(),
+            r#copyright: Default::default(),
+            r#copyright_label: Default::default(),
+            r#base: Default::default(),
+            r#parent: Default::default(),
+            r#event: Default::default(),
+            r#category: Default::default(),
+            r#focus: Default::default(),
+            r#response_required: Default::default(),
+            r#allowed_response: Default::default(),
+            r#graph: Default::default(),
+        }
+    }
 }

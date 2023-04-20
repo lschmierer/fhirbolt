@@ -1,18 +1,14 @@
-// Generated on 2023-04-20 by fhirbolt-codegen v0.4.0
+// Generated on 2023-04-20 by fhirbolt-codegen v0.5.0
 #[doc = "The rate of administration of formula via a feeding pump, e.g. 60 mL per hour, according to the specified schedule."]
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub enum NutritionOrderEnteralFormulaAdministrationRate {
     Quantity(Box<super::super::types::Quantity>),
     Ratio(Box<super::super::types::Ratio>),
+    #[default]
     Invalid,
 }
-impl Default for NutritionOrderEnteralFormulaAdministrationRate {
-    fn default() -> NutritionOrderEnteralFormulaAdministrationRate {
-        NutritionOrderEnteralFormulaAdministrationRate::Invalid
-    }
-}
 #[doc = "Class that defines the quantity and type of nutrient modifications (for example carbohydrate, fiber or sodium) required for the oral diet."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct NutritionOrderOralDietNutrient {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -25,8 +21,19 @@ pub struct NutritionOrderOralDietNutrient {
     #[doc = "The quantity of the specified nutrient to include in diet."]
     pub r#amount: Option<Box<super::super::types::Quantity>>,
 }
+impl Default for NutritionOrderOralDietNutrient {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#modifier: Default::default(),
+            r#amount: Default::default(),
+        }
+    }
+}
 #[doc = "Class that describes any texture modifications required for the patient to safely consume various types of solid foods."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct NutritionOrderOralDietTexture {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -39,8 +46,19 @@ pub struct NutritionOrderOralDietTexture {
     #[doc = "The food type(s) (e.g. meats, all foods)  that the texture modification applies to.  This could be all foods types."]
     pub r#food_type: Option<Box<super::super::types::CodeableConcept>>,
 }
+impl Default for NutritionOrderOralDietTexture {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#modifier: Default::default(),
+            r#food_type: Default::default(),
+        }
+    }
+}
 #[doc = "Diet given orally in contrast to enteral (tube) feeding."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct NutritionOrderOralDiet {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -61,8 +79,23 @@ pub struct NutritionOrderOralDiet {
     #[doc = "Free text or additional instructions or information pertaining to the oral diet."]
     pub r#instruction: Option<super::super::types::String>,
 }
+impl Default for NutritionOrderOralDiet {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#type: Default::default(),
+            r#schedule: Default::default(),
+            r#nutrient: Default::default(),
+            r#texture: Default::default(),
+            r#fluid_consistency_type: Default::default(),
+            r#instruction: Default::default(),
+        }
+    }
+}
 #[doc = "Oral nutritional products given in order to add further nutritional value to the patient's diet."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct NutritionOrderSupplement {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -81,8 +114,22 @@ pub struct NutritionOrderSupplement {
     #[doc = "Free text or additional instructions or information pertaining to the oral supplement."]
     pub r#instruction: Option<super::super::types::String>,
 }
+impl Default for NutritionOrderSupplement {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#type: Default::default(),
+            r#product_name: Default::default(),
+            r#schedule: Default::default(),
+            r#quantity: Default::default(),
+            r#instruction: Default::default(),
+        }
+    }
+}
 #[doc = "Formula administration instructions as structured data.  This repeating structure allows for changing the administration rate or volume over time for both bolus and continuous feeding.  An example of this would be an instruction to increase the rate of continuous feeding every 2 hours."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct NutritionOrderEnteralFormulaAdministration {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -97,8 +144,20 @@ pub struct NutritionOrderEnteralFormulaAdministration {
     #[doc = "The rate of administration of formula via a feeding pump, e.g. 60 mL per hour, according to the specified schedule."]
     pub r#rate: Option<NutritionOrderEnteralFormulaAdministrationRate>,
 }
+impl Default for NutritionOrderEnteralFormulaAdministration {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#schedule: Default::default(),
+            r#quantity: Default::default(),
+            r#rate: Default::default(),
+        }
+    }
+}
 #[doc = "Feeding provided through the gastrointestinal tract via a tube, catheter, or stoma that delivers nutrition distal to the oral cavity."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct NutritionOrderEnteralFormula {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -125,8 +184,26 @@ pub struct NutritionOrderEnteralFormula {
     #[doc = "Free text formula administration, feeding instructions or additional instructions or information."]
     pub r#administration_instruction: Option<super::super::types::String>,
 }
+impl Default for NutritionOrderEnteralFormula {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#base_formula_type: Default::default(),
+            r#base_formula_product_name: Default::default(),
+            r#additive_type: Default::default(),
+            r#additive_product_name: Default::default(),
+            r#caloric_density: Default::default(),
+            r#routeof_administration: Default::default(),
+            r#administration: Default::default(),
+            r#max_volume_to_deliver: Default::default(),
+            r#administration_instruction: Default::default(),
+        }
+    }
+}
 #[doc = "A request to supply a diet, formula feeding (enteral) or oral nutritional supplement to a patient/resident."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct NutritionOrder {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,
@@ -178,4 +255,51 @@ pub struct NutritionOrder {
     pub r#enteral_formula: Option<NutritionOrderEnteralFormula>,
     #[doc = "Comments made about the {{title}} by the requester, performer, subject or other participants."]
     pub r#note: Vec<Box<super::super::types::Annotation>>,
+}
+impl Default for NutritionOrder {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#meta: Default::default(),
+            r#implicit_rules: Default::default(),
+            r#language: Default::default(),
+            r#text: Default::default(),
+            r#contained: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#identifier: Default::default(),
+            r#instantiates_canonical: Default::default(),
+            r#instantiates_uri: Default::default(),
+            r#instantiates: Default::default(),
+            r#status: {
+                let mut default: super::super::types::Code = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#intent: {
+                let mut default: super::super::types::Code = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#patient: {
+                let mut default: Box<super::super::types::Reference> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#encounter: Default::default(),
+            r#date_time: {
+                let mut default: super::super::types::DateTime = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#orderer: Default::default(),
+            r#allergy_intolerance: Default::default(),
+            r#food_preference_modifier: Default::default(),
+            r#exclude_food_modifier: Default::default(),
+            r#oral_diet: Default::default(),
+            r#supplement: Default::default(),
+            r#enteral_formula: Default::default(),
+            r#note: Default::default(),
+        }
+    }
 }

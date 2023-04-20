@@ -1,31 +1,23 @@
-// Generated on 2023-04-20 by fhirbolt-codegen v0.4.0
+// Generated on 2023-04-20 by fhirbolt-codegen v0.5.0
 #[doc = "Display of or reference to the bibliographic citation of the comment, classifier, or rating."]
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub enum ArtifactAssessmentCiteAs {
     Reference(Box<super::super::types::Reference>),
     Markdown(Box<super::super::types::Markdown>),
+    #[default]
     Invalid,
 }
-impl Default for ArtifactAssessmentCiteAs {
-    fn default() -> ArtifactAssessmentCiteAs {
-        ArtifactAssessmentCiteAs::Invalid
-    }
-}
 #[doc = "A reference to a resource, canonical resource, or non-FHIR resource which the comment or assessment is about."]
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub enum ArtifactAssessmentArtifact {
     Reference(Box<super::super::types::Reference>),
     Canonical(Box<super::super::types::Canonical>),
     Uri(Box<super::super::types::Uri>),
+    #[default]
     Invalid,
 }
-impl Default for ArtifactAssessmentArtifact {
-    fn default() -> ArtifactAssessmentArtifact {
-        ArtifactAssessmentArtifact::Invalid
-    }
-}
 #[doc = "A component comment, classifier, or rating of the artifact."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct ArtifactAssessmentContent {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -54,8 +46,27 @@ pub struct ArtifactAssessmentContent {
     #[doc = "If the informationType is container, the components of the content."]
     pub r#component: Vec<ArtifactAssessmentContent>,
 }
+impl Default for ArtifactAssessmentContent {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#information_type: Default::default(),
+            r#summary: Default::default(),
+            r#type: Default::default(),
+            r#classifier: Default::default(),
+            r#quantity: Default::default(),
+            r#author: Default::default(),
+            r#path: Default::default(),
+            r#related_artifact: Default::default(),
+            r#free_to_share: Default::default(),
+            r#component: Default::default(),
+        }
+    }
+}
 #[doc = "This Resource provides one or more comments, classifiers or ratings about a Resource and supports attribution and rights management metadata for the added content."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct ArtifactAssessment {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,
@@ -95,4 +106,29 @@ pub struct ArtifactAssessment {
     pub r#workflow_status: Option<super::super::types::Code>,
     #[doc = "Indicates the disposition of the responsible party to the comment or change request."]
     pub r#disposition: Option<super::super::types::Code>,
+}
+impl Default for ArtifactAssessment {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#meta: Default::default(),
+            r#implicit_rules: Default::default(),
+            r#language: Default::default(),
+            r#text: Default::default(),
+            r#contained: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#identifier: Default::default(),
+            r#title: Default::default(),
+            r#cite_as: Default::default(),
+            r#date: Default::default(),
+            r#copyright: Default::default(),
+            r#approval_date: Default::default(),
+            r#last_review_date: Default::default(),
+            r#artifact: Default::default(),
+            r#content: Default::default(),
+            r#workflow_status: Default::default(),
+            r#disposition: Default::default(),
+        }
+    }
 }

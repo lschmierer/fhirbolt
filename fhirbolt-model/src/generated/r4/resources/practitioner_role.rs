@@ -1,6 +1,6 @@
-// Generated on 2023-04-20 by fhirbolt-codegen v0.4.0
+// Generated on 2023-04-20 by fhirbolt-codegen v0.5.0
 #[doc = "A collection of times the practitioner is available or performing this role at the location and/or healthcareservice."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct PractitionerRoleAvailableTime {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -17,8 +17,21 @@ pub struct PractitionerRoleAvailableTime {
     #[doc = "The closing time of day. Note: If the AllDay flag is set, then this time is ignored."]
     pub r#available_end_time: Option<super::super::types::Time>,
 }
+impl Default for PractitionerRoleAvailableTime {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#days_of_week: Default::default(),
+            r#all_day: Default::default(),
+            r#available_start_time: Default::default(),
+            r#available_end_time: Default::default(),
+        }
+    }
+}
 #[doc = "The practitioner is not available or performing this role during this period of time due to the provided reason."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct PractitionerRoleNotAvailable {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -31,8 +44,23 @@ pub struct PractitionerRoleNotAvailable {
     #[doc = "Service is not available (seasonally or for a public holiday) from this date."]
     pub r#during: Option<Box<super::super::types::Period>>,
 }
+impl Default for PractitionerRoleNotAvailable {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#description: {
+                let mut default: super::super::types::String = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#during: Default::default(),
+        }
+    }
+}
 #[doc = "A specific set of Roles/Locations/specialties/services that a practitioner may perform at an organization for a period of time.\n\nNeed to track services that a healthcare provider is able to provide at an organization's location, and the services that they can perform there."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct PractitionerRole {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,
@@ -78,4 +106,32 @@ pub struct PractitionerRole {
     pub r#availability_exceptions: Option<super::super::types::String>,
     #[doc = "Technical endpoints providing access to services operated for the practitioner with this role."]
     pub r#endpoint: Vec<Box<super::super::types::Reference>>,
+}
+impl Default for PractitionerRole {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#meta: Default::default(),
+            r#implicit_rules: Default::default(),
+            r#language: Default::default(),
+            r#text: Default::default(),
+            r#contained: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#identifier: Default::default(),
+            r#active: Default::default(),
+            r#period: Default::default(),
+            r#practitioner: Default::default(),
+            r#organization: Default::default(),
+            r#code: Default::default(),
+            r#specialty: Default::default(),
+            r#location: Default::default(),
+            r#healthcare_service: Default::default(),
+            r#telecom: Default::default(),
+            r#available_time: Default::default(),
+            r#not_available: Default::default(),
+            r#availability_exceptions: Default::default(),
+            r#endpoint: Default::default(),
+        }
+    }
 }

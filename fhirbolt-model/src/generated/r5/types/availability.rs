@@ -1,6 +1,6 @@
-// Generated on 2023-04-20 by fhirbolt-codegen v0.4.0
+// Generated on 2023-04-20 by fhirbolt-codegen v0.5.0
 #[doc = "Times the {item} is available."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct AvailabilityAvailableTime {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -15,8 +15,20 @@ pub struct AvailabilityAvailableTime {
     #[doc = "Closing time of day (ignored if allDay = true)."]
     pub r#available_end_time: Option<super::super::types::Time>,
 }
+impl Default for AvailabilityAvailableTime {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#days_of_week: Default::default(),
+            r#all_day: Default::default(),
+            r#available_start_time: Default::default(),
+            r#available_end_time: Default::default(),
+        }
+    }
+}
 #[doc = "Not available during this time due to provided reason."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct AvailabilityNotAvailableTime {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -27,8 +39,18 @@ pub struct AvailabilityNotAvailableTime {
     #[doc = "Service not available during this period."]
     pub r#during: Option<Box<super::super::types::Period>>,
 }
+impl Default for AvailabilityNotAvailableTime {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#description: Default::default(),
+            r#during: Default::default(),
+        }
+    }
+}
 #[doc = "Availability Type: Availability data for an {item}."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct Availability {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -38,4 +60,14 @@ pub struct Availability {
     pub r#available_time: Vec<AvailabilityAvailableTime>,
     #[doc = "Not available during this time due to provided reason."]
     pub r#not_available_time: Vec<AvailabilityNotAvailableTime>,
+}
+impl Default for Availability {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#available_time: Default::default(),
+            r#not_available_time: Default::default(),
+        }
+    }
 }

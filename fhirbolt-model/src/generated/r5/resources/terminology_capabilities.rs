@@ -1,18 +1,14 @@
-// Generated on 2023-04-20 by fhirbolt-codegen v0.4.0
+// Generated on 2023-04-20 by fhirbolt-codegen v0.5.0
 #[doc = "Indicates the mechanism used to compare versions to determine which is more current."]
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub enum TerminologyCapabilitiesVersionAlgorithm {
     String(Box<super::super::types::String>),
     Coding(Box<super::super::types::Coding>),
+    #[default]
     Invalid,
 }
-impl Default for TerminologyCapabilitiesVersionAlgorithm {
-    fn default() -> TerminologyCapabilitiesVersionAlgorithm {
-        TerminologyCapabilitiesVersionAlgorithm::Invalid
-    }
-}
 #[doc = "Software that is covered by this terminology capability statement.  It is used when the statement describes the capabilities of a particular software version, independent of an installation."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct TerminologyCapabilitiesSoftware {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -25,8 +21,23 @@ pub struct TerminologyCapabilitiesSoftware {
     #[doc = "The version identifier for the software covered by this statement."]
     pub r#version: Option<super::super::types::String>,
 }
+impl Default for TerminologyCapabilitiesSoftware {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#name: {
+                let mut default: super::super::types::String = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#version: Default::default(),
+        }
+    }
+}
 #[doc = "Identifies a specific implementation instance that is described by the terminology capability statement - i.e. a particular installation, rather than the capabilities of a software program."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct TerminologyCapabilitiesImplementation {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -39,8 +50,23 @@ pub struct TerminologyCapabilitiesImplementation {
     #[doc = "An absolute base URL for the implementation."]
     pub r#url: Option<super::super::types::Url>,
 }
+impl Default for TerminologyCapabilitiesImplementation {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#description: {
+                let mut default: super::super::types::String = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#url: Default::default(),
+        }
+    }
+}
 #[doc = "Filter Properties supported."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct TerminologyCapabilitiesCodeSystemVersionFilter {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -53,8 +79,23 @@ pub struct TerminologyCapabilitiesCodeSystemVersionFilter {
     #[doc = "Operations supported for the property."]
     pub r#op: Vec<super::super::types::Code>,
 }
+impl Default for TerminologyCapabilitiesCodeSystemVersionFilter {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#code: {
+                let mut default: super::super::types::Code = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#op: Default::default(),
+        }
+    }
+}
 #[doc = "For the code system, a list of versions that are supported by the server."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct TerminologyCapabilitiesCodeSystemVersion {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -75,8 +116,23 @@ pub struct TerminologyCapabilitiesCodeSystemVersion {
     #[doc = "Properties supported for $lookup."]
     pub r#property: Vec<super::super::types::Code>,
 }
+impl Default for TerminologyCapabilitiesCodeSystemVersion {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#code: Default::default(),
+            r#is_default: Default::default(),
+            r#compositional: Default::default(),
+            r#language: Default::default(),
+            r#filter: Default::default(),
+            r#property: Default::default(),
+        }
+    }
+}
 #[doc = "Identifies a code system that is supported by the server. If there is a no code system URL, then this declares the general assumptions a client can make about support for any CodeSystem resource."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct TerminologyCapabilitiesCodeSystem {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -93,8 +149,25 @@ pub struct TerminologyCapabilitiesCodeSystem {
     #[doc = "True if subsumption is supported for this version of the code system."]
     pub r#subsumption: Option<super::super::types::Boolean>,
 }
+impl Default for TerminologyCapabilitiesCodeSystem {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#uri: Default::default(),
+            r#version: Default::default(),
+            r#content: {
+                let mut default: super::super::types::Code = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#subsumption: Default::default(),
+        }
+    }
+}
 #[doc = "Supported expansion parameter."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct TerminologyCapabilitiesExpansionParameter {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -107,8 +180,23 @@ pub struct TerminologyCapabilitiesExpansionParameter {
     #[doc = "Description of support for parameter."]
     pub r#documentation: Option<super::super::types::String>,
 }
+impl Default for TerminologyCapabilitiesExpansionParameter {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#name: {
+                let mut default: super::super::types::Code = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#documentation: Default::default(),
+        }
+    }
+}
 #[doc = "Information about the [ValueSet/$expand](https://hl7.org/FHIR/valueset-operation-expand.html)) operation."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct TerminologyCapabilitiesExpansion {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -127,8 +215,22 @@ pub struct TerminologyCapabilitiesExpansion {
     #[doc = "Documentation about text searching works."]
     pub r#text_filter: Option<super::super::types::Markdown>,
 }
+impl Default for TerminologyCapabilitiesExpansion {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#hierarchical: Default::default(),
+            r#paging: Default::default(),
+            r#incomplete: Default::default(),
+            r#parameter: Default::default(),
+            r#text_filter: Default::default(),
+        }
+    }
+}
 #[doc = "Information about the [ValueSet/$validate-code](valueset-operation-validate-code.html) operation."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct TerminologyCapabilitiesValidateCode {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -139,8 +241,22 @@ pub struct TerminologyCapabilitiesValidateCode {
     #[doc = "Whether translations are validated."]
     pub r#translations: super::super::types::Boolean,
 }
+impl Default for TerminologyCapabilitiesValidateCode {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#translations: {
+                let mut default: super::super::types::Boolean = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+        }
+    }
+}
 #[doc = "Information about the [ConceptMap/$translate](https://hl7.org/FHIR/conceptmap-operation-translate.html)) operation."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct TerminologyCapabilitiesTranslation {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -151,8 +267,22 @@ pub struct TerminologyCapabilitiesTranslation {
     #[doc = "Whether the client must identify the map."]
     pub r#needs_map: super::super::types::Boolean,
 }
+impl Default for TerminologyCapabilitiesTranslation {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#needs_map: {
+                let mut default: super::super::types::Boolean = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+        }
+    }
+}
 #[doc = "Whether the $closure operation is supported."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct TerminologyCapabilitiesClosure {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -163,8 +293,18 @@ pub struct TerminologyCapabilitiesClosure {
     #[doc = "If cross-system closure is supported."]
     pub r#translation: Option<super::super::types::Boolean>,
 }
+impl Default for TerminologyCapabilitiesClosure {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#translation: Default::default(),
+        }
+    }
+}
 #[doc = "A TerminologyCapabilities resource documents a set of capabilities (behaviors) of a FHIR Terminology Server that may be used as a statement of actual server functionality or a statement of required or desired server implementation."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct TerminologyCapabilities {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,
@@ -236,4 +376,57 @@ pub struct TerminologyCapabilities {
     pub r#translation: Option<TerminologyCapabilitiesTranslation>,
     #[doc = "Whether the $closure operation is supported."]
     pub r#closure: Option<TerminologyCapabilitiesClosure>,
+}
+impl Default for TerminologyCapabilities {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#meta: Default::default(),
+            r#implicit_rules: Default::default(),
+            r#language: Default::default(),
+            r#text: Default::default(),
+            r#contained: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#url: Default::default(),
+            r#identifier: Default::default(),
+            r#version: Default::default(),
+            r#version_algorithm: Default::default(),
+            r#name: Default::default(),
+            r#title: Default::default(),
+            r#status: {
+                let mut default: super::super::types::Code = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#experimental: Default::default(),
+            r#date: {
+                let mut default: super::super::types::DateTime = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#publisher: Default::default(),
+            r#contact: Default::default(),
+            r#description: Default::default(),
+            r#use_context: Default::default(),
+            r#jurisdiction: Default::default(),
+            r#purpose: Default::default(),
+            r#copyright: Default::default(),
+            r#copyright_label: Default::default(),
+            r#kind: {
+                let mut default: super::super::types::Code = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#software: Default::default(),
+            r#implementation: Default::default(),
+            r#locked_date: Default::default(),
+            r#code_system: Default::default(),
+            r#expansion: Default::default(),
+            r#code_search: Default::default(),
+            r#validate_code: Default::default(),
+            r#translation: Default::default(),
+            r#closure: Default::default(),
+        }
+    }
 }

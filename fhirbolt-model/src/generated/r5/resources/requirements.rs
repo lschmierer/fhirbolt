@@ -1,18 +1,14 @@
-// Generated on 2023-04-20 by fhirbolt-codegen v0.4.0
+// Generated on 2023-04-20 by fhirbolt-codegen v0.5.0
 #[doc = "Indicates the mechanism used to compare versions to determine which is more current."]
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub enum RequirementsVersionAlgorithm {
     String(Box<super::super::types::String>),
     Coding(Box<super::super::types::Coding>),
+    #[default]
     Invalid,
 }
-impl Default for RequirementsVersionAlgorithm {
-    fn default() -> RequirementsVersionAlgorithm {
-        RequirementsVersionAlgorithm::Invalid
-    }
-}
 #[doc = "The actual statement of requirement, in markdown format."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct RequirementsStatement {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -41,8 +37,35 @@ pub struct RequirementsStatement {
     #[doc = "Who asked for this statement to be a requirement. By default, it's assumed that the publisher knows who it is if it matters."]
     pub r#source: Vec<Box<super::super::types::Reference>>,
 }
+impl Default for RequirementsStatement {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#key: {
+                let mut default: super::super::types::Id = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#label: Default::default(),
+            r#conformance: Default::default(),
+            r#conditionality: Default::default(),
+            r#requirement: {
+                let mut default: super::super::types::Markdown = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#derived_from: Default::default(),
+            r#parent: Default::default(),
+            r#satisfied_by: Default::default(),
+            r#reference: Default::default(),
+            r#source: Default::default(),
+        }
+    }
+}
 #[doc = "The Requirements resource is used to describe an actor - a human or an application that plays a role in data exchange, and that may have obligations associated with the role the actor plays."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct Requirements {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,
@@ -102,4 +125,43 @@ pub struct Requirements {
     pub r#actor: Vec<super::super::types::Canonical>,
     #[doc = "The actual statement of requirement, in markdown format."]
     pub r#statement: Vec<RequirementsStatement>,
+}
+impl Default for Requirements {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#meta: Default::default(),
+            r#implicit_rules: Default::default(),
+            r#language: Default::default(),
+            r#text: Default::default(),
+            r#contained: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#url: Default::default(),
+            r#identifier: Default::default(),
+            r#version: Default::default(),
+            r#version_algorithm: Default::default(),
+            r#name: Default::default(),
+            r#title: Default::default(),
+            r#status: {
+                let mut default: super::super::types::Code = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#experimental: Default::default(),
+            r#date: Default::default(),
+            r#publisher: Default::default(),
+            r#contact: Default::default(),
+            r#description: Default::default(),
+            r#use_context: Default::default(),
+            r#jurisdiction: Default::default(),
+            r#purpose: Default::default(),
+            r#copyright: Default::default(),
+            r#copyright_label: Default::default(),
+            r#derived_from: Default::default(),
+            r#reference: Default::default(),
+            r#actor: Default::default(),
+            r#statement: Default::default(),
+        }
+    }
 }

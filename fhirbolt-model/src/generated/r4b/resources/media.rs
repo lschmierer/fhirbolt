@@ -1,18 +1,14 @@
-// Generated on 2023-04-20 by fhirbolt-codegen v0.4.0
+// Generated on 2023-04-20 by fhirbolt-codegen v0.5.0
 #[doc = "The date and time(s) at which the media was collected."]
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub enum MediaCreated {
     DateTime(Box<super::super::types::DateTime>),
     Period(Box<super::super::types::Period>),
+    #[default]
     Invalid,
 }
-impl Default for MediaCreated {
-    fn default() -> MediaCreated {
-        MediaCreated::Invalid
-    }
-}
 #[doc = "A photo, video, or audio recording acquired or used in healthcare. The actual content may be inline or provided by direct reference."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct Media {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,
@@ -74,4 +70,48 @@ pub struct Media {
     pub r#content: Box<super::super::types::Attachment>,
     #[doc = "Comments made about the media by the performer, subject or other participants."]
     pub r#note: Vec<Box<super::super::types::Annotation>>,
+}
+impl Default for Media {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#meta: Default::default(),
+            r#implicit_rules: Default::default(),
+            r#language: Default::default(),
+            r#text: Default::default(),
+            r#contained: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#identifier: Default::default(),
+            r#based_on: Default::default(),
+            r#part_of: Default::default(),
+            r#status: {
+                let mut default: super::super::types::Code = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#type: Default::default(),
+            r#modality: Default::default(),
+            r#view: Default::default(),
+            r#subject: Default::default(),
+            r#encounter: Default::default(),
+            r#created: Default::default(),
+            r#issued: Default::default(),
+            r#operator: Default::default(),
+            r#reason_code: Default::default(),
+            r#body_site: Default::default(),
+            r#device_name: Default::default(),
+            r#device: Default::default(),
+            r#height: Default::default(),
+            r#width: Default::default(),
+            r#frames: Default::default(),
+            r#duration: Default::default(),
+            r#content: {
+                let mut default: Box<super::super::types::Attachment> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#note: Default::default(),
+        }
+    }
 }

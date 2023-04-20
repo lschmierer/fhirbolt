@@ -1,18 +1,14 @@
-// Generated on 2023-04-20 by fhirbolt-codegen v0.4.0
+// Generated on 2023-04-20 by fhirbolt-codegen v0.5.0
 #[doc = "Indicates the mechanism used to compare versions to determine which is more current."]
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub enum SubscriptionTopicVersionAlgorithm {
     String(Box<super::super::types::String>),
     Coding(Box<super::super::types::Coding>),
+    #[default]
     Invalid,
 }
-impl Default for SubscriptionTopicVersionAlgorithm {
-    fn default() -> SubscriptionTopicVersionAlgorithm {
-        SubscriptionTopicVersionAlgorithm::Invalid
-    }
-}
 #[doc = "The FHIR query based rules that the server should use to determine when to trigger a notification for this subscription topic."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct SubscriptionTopicResourceTriggerQueryCriteria {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -31,8 +27,22 @@ pub struct SubscriptionTopicResourceTriggerQueryCriteria {
     #[doc = "If set to `true`, both the `current` and `previous` query criteria must evaluate `true` to trigger a notification for this topic.  If set to `false` or not present, a notification for this topic will be triggered if either the `current` or `previous` tests evaluate to `true`."]
     pub r#require_both: Option<super::super::types::Boolean>,
 }
+impl Default for SubscriptionTopicResourceTriggerQueryCriteria {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#previous: Default::default(),
+            r#result_for_create: Default::default(),
+            r#current: Default::default(),
+            r#result_for_delete: Default::default(),
+            r#require_both: Default::default(),
+        }
+    }
+}
 #[doc = "A definition of a resource-based event that triggers a notification based on the SubscriptionTopic. The criteria may be just a human readable description and/or a full FHIR search string or FHIRPath expression. Multiple triggers are considered OR joined (e.g., a resource update matching ANY of the definitions will trigger a notification)."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct SubscriptionTopicResourceTrigger {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -51,8 +61,26 @@ pub struct SubscriptionTopicResourceTrigger {
     #[doc = "The FHIRPath based rules that the server should use to determine when to trigger a notification for this topic."]
     pub r#fhir_path_criteria: Option<super::super::types::String>,
 }
+impl Default for SubscriptionTopicResourceTrigger {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#description: Default::default(),
+            r#resource: {
+                let mut default: super::super::types::Uri = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#supported_interaction: Default::default(),
+            r#query_criteria: Default::default(),
+            r#fhir_path_criteria: Default::default(),
+        }
+    }
+}
 #[doc = "Event definition which can be used to trigger the SubscriptionTopic."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct SubscriptionTopicEventTrigger {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -67,8 +95,28 @@ pub struct SubscriptionTopicEventTrigger {
     #[doc = "URL of the Resource that is the focus type used in this event trigger.  Relative URLs are relative to the StructureDefinition root of the implemented FHIR version (e.g., <http://hl7.org/fhir/StructureDefinition>). For example, \"Patient\" maps to <http://hl7.org/fhir/StructureDefinition/Patient>.  For more information, see <a href=\"elementdefinition-definitions.html#ElementDefinition.type.code\">ElementDefinition.type.code</a>."]
     pub r#resource: super::super::types::Uri,
 }
+impl Default for SubscriptionTopicEventTrigger {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#description: Default::default(),
+            r#event: {
+                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#resource: {
+                let mut default: super::super::types::Uri = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+        }
+    }
+}
 #[doc = "List of properties by which Subscriptions on the SubscriptionTopic can be filtered. May be defined Search Parameters (e.g., Encounter.patient) or parameters defined within this SubscriptionTopic context (e.g., hub.event)."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct SubscriptionTopicCanFilterBy {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -89,8 +137,27 @@ pub struct SubscriptionTopicCanFilterBy {
     #[doc = "Modifiers allowed for the filter parameter."]
     pub r#modifier: Vec<super::super::types::Code>,
 }
+impl Default for SubscriptionTopicCanFilterBy {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#description: Default::default(),
+            r#resource: Default::default(),
+            r#filter_parameter: {
+                let mut default: super::super::types::String = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#filter_definition: Default::default(),
+            r#comparator: Default::default(),
+            r#modifier: Default::default(),
+        }
+    }
+}
 #[doc = "List of properties to describe the shape (e.g., resources) included in notifications from this Subscription Topic."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct SubscriptionTopicNotificationShape {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -105,8 +172,24 @@ pub struct SubscriptionTopicNotificationShape {
     #[doc = "Search-style _revinclude directives, rooted in the resource for this shape. Servers SHOULD include resources listed here, if they exist and the user is authorized to receive them.  Clients SHOULD be prepared to receive these additional resources, but SHALL function properly without them."]
     pub r#rev_include: Vec<super::super::types::String>,
 }
+impl Default for SubscriptionTopicNotificationShape {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#resource: {
+                let mut default: super::super::types::Uri = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#include: Default::default(),
+            r#rev_include: Default::default(),
+        }
+    }
+}
 #[doc = "Describes a stream of resource state changes identified by trigger criteria and annotated with labels useful to filter projections from this topic."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct SubscriptionTopic {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,
@@ -174,4 +257,51 @@ pub struct SubscriptionTopic {
     pub r#can_filter_by: Vec<SubscriptionTopicCanFilterBy>,
     #[doc = "List of properties to describe the shape (e.g., resources) included in notifications from this Subscription Topic."]
     pub r#notification_shape: Vec<SubscriptionTopicNotificationShape>,
+}
+impl Default for SubscriptionTopic {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#meta: Default::default(),
+            r#implicit_rules: Default::default(),
+            r#language: Default::default(),
+            r#text: Default::default(),
+            r#contained: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#url: {
+                let mut default: super::super::types::Uri = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#identifier: Default::default(),
+            r#version: Default::default(),
+            r#version_algorithm: Default::default(),
+            r#name: Default::default(),
+            r#title: Default::default(),
+            r#derived_from: Default::default(),
+            r#status: {
+                let mut default: super::super::types::Code = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#experimental: Default::default(),
+            r#date: Default::default(),
+            r#publisher: Default::default(),
+            r#contact: Default::default(),
+            r#description: Default::default(),
+            r#use_context: Default::default(),
+            r#jurisdiction: Default::default(),
+            r#purpose: Default::default(),
+            r#copyright: Default::default(),
+            r#copyright_label: Default::default(),
+            r#approval_date: Default::default(),
+            r#last_review_date: Default::default(),
+            r#effective_period: Default::default(),
+            r#resource_trigger: Default::default(),
+            r#event_trigger: Default::default(),
+            r#can_filter_by: Default::default(),
+            r#notification_shape: Default::default(),
+        }
+    }
 }

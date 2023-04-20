@@ -121,6 +121,7 @@ fn parse_struct(
     module_collector.structs.push(RustFhirStruct {
         struct_name: name.to_rust_type_casing(),
         resource_name,
+        path: element_path_strip_prefix.to_string(),
         is_primitive: PRIMITIVES.contains(&name),
         fields,
         doc_comment,

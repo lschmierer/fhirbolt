@@ -1,6 +1,6 @@
-// Generated on 2023-04-20 by fhirbolt-codegen v0.4.0
+// Generated on 2023-04-20 by fhirbolt-codegen v0.5.0
 #[doc = "Todo."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct SubstancePolymerMonomerSetStartingMaterial {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -17,8 +17,21 @@ pub struct SubstancePolymerMonomerSetStartingMaterial {
     #[doc = "Todo."]
     pub r#amount: Option<Box<super::super::types::SubstanceAmount>>,
 }
+impl Default for SubstancePolymerMonomerSetStartingMaterial {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#material: Default::default(),
+            r#type: Default::default(),
+            r#is_defining: Default::default(),
+            r#amount: Default::default(),
+        }
+    }
+}
 #[doc = "Todo."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct SubstancePolymerMonomerSet {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -31,8 +44,19 @@ pub struct SubstancePolymerMonomerSet {
     #[doc = "Todo."]
     pub r#starting_material: Vec<SubstancePolymerMonomerSetStartingMaterial>,
 }
+impl Default for SubstancePolymerMonomerSet {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#ratio_type: Default::default(),
+            r#starting_material: Default::default(),
+        }
+    }
+}
 #[doc = "Todo."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct SubstancePolymerRepeatRepeatUnitDegreeOfPolymerisation {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -45,8 +69,19 @@ pub struct SubstancePolymerRepeatRepeatUnitDegreeOfPolymerisation {
     #[doc = "Todo."]
     pub r#amount: Option<Box<super::super::types::SubstanceAmount>>,
 }
+impl Default for SubstancePolymerRepeatRepeatUnitDegreeOfPolymerisation {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#degree: Default::default(),
+            r#amount: Default::default(),
+        }
+    }
+}
 #[doc = "Todo."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct SubstancePolymerRepeatRepeatUnitStructuralRepresentation {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -61,8 +96,20 @@ pub struct SubstancePolymerRepeatRepeatUnitStructuralRepresentation {
     #[doc = "Todo."]
     pub r#attachment: Option<Box<super::super::types::Attachment>>,
 }
+impl Default for SubstancePolymerRepeatRepeatUnitStructuralRepresentation {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#type: Default::default(),
+            r#representation: Default::default(),
+            r#attachment: Default::default(),
+        }
+    }
+}
 #[doc = "Todo."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct SubstancePolymerRepeatRepeatUnit {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -81,8 +128,22 @@ pub struct SubstancePolymerRepeatRepeatUnit {
     #[doc = "Todo."]
     pub r#structural_representation: Vec<SubstancePolymerRepeatRepeatUnitStructuralRepresentation>,
 }
+impl Default for SubstancePolymerRepeatRepeatUnit {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#orientation_of_polymerisation: Default::default(),
+            r#repeat_unit: Default::default(),
+            r#amount: Default::default(),
+            r#degree_of_polymerisation: Default::default(),
+            r#structural_representation: Default::default(),
+        }
+    }
+}
 #[doc = "Todo."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct SubstancePolymerRepeat {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -99,8 +160,21 @@ pub struct SubstancePolymerRepeat {
     #[doc = "Todo."]
     pub r#repeat_unit: Vec<SubstancePolymerRepeatRepeatUnit>,
 }
+impl Default for SubstancePolymerRepeat {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#number_of_units: Default::default(),
+            r#average_molecular_formula: Default::default(),
+            r#repeat_unit_amount_type: Default::default(),
+            r#repeat_unit: Default::default(),
+        }
+    }
+}
 #[doc = "Todo."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct SubstancePolymer {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,
@@ -130,4 +204,24 @@ pub struct SubstancePolymer {
     pub r#monomer_set: Vec<SubstancePolymerMonomerSet>,
     #[doc = "Todo."]
     pub r#repeat: Vec<SubstancePolymerRepeat>,
+}
+impl Default for SubstancePolymer {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#meta: Default::default(),
+            r#implicit_rules: Default::default(),
+            r#language: Default::default(),
+            r#text: Default::default(),
+            r#contained: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#class: Default::default(),
+            r#geometry: Default::default(),
+            r#copolymer_connectivity: Default::default(),
+            r#modification: Default::default(),
+            r#monomer_set: Default::default(),
+            r#repeat: Default::default(),
+        }
+    }
 }

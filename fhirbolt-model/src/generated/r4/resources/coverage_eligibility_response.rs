@@ -1,44 +1,32 @@
-// Generated on 2023-04-20 by fhirbolt-codegen v0.4.0
+// Generated on 2023-04-20 by fhirbolt-codegen v0.5.0
 #[doc = "The date or dates when the enclosed suite of services were performed or completed."]
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub enum CoverageEligibilityResponseServiced {
     Date(Box<super::super::types::Date>),
     Period(Box<super::super::types::Period>),
+    #[default]
     Invalid,
 }
-impl Default for CoverageEligibilityResponseServiced {
-    fn default() -> CoverageEligibilityResponseServiced {
-        CoverageEligibilityResponseServiced::Invalid
-    }
-}
 #[doc = "The quantity of the benefit which is permitted under the coverage."]
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub enum CoverageEligibilityResponseInsuranceItemBenefitAllowed {
     UnsignedInt(Box<super::super::types::UnsignedInt>),
     String(Box<super::super::types::String>),
     Money(Box<super::super::types::Money>),
+    #[default]
     Invalid,
 }
-impl Default for CoverageEligibilityResponseInsuranceItemBenefitAllowed {
-    fn default() -> CoverageEligibilityResponseInsuranceItemBenefitAllowed {
-        CoverageEligibilityResponseInsuranceItemBenefitAllowed::Invalid
-    }
-}
 #[doc = "The quantity of the benefit which have been consumed to date."]
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub enum CoverageEligibilityResponseInsuranceItemBenefitUsed {
     UnsignedInt(Box<super::super::types::UnsignedInt>),
     String(Box<super::super::types::String>),
     Money(Box<super::super::types::Money>),
+    #[default]
     Invalid,
 }
-impl Default for CoverageEligibilityResponseInsuranceItemBenefitUsed {
-    fn default() -> CoverageEligibilityResponseInsuranceItemBenefitUsed {
-        CoverageEligibilityResponseInsuranceItemBenefitUsed::Invalid
-    }
-}
 #[doc = "Benefits used to date."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct CoverageEligibilityResponseInsuranceItemBenefit {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -53,8 +41,24 @@ pub struct CoverageEligibilityResponseInsuranceItemBenefit {
     #[doc = "The quantity of the benefit which have been consumed to date."]
     pub r#used: Option<CoverageEligibilityResponseInsuranceItemBenefitUsed>,
 }
+impl Default for CoverageEligibilityResponseInsuranceItemBenefit {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#type: {
+                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#allowed: Default::default(),
+            r#used: Default::default(),
+        }
+    }
+}
 #[doc = "Benefits and optionally current balances, and authorization details by category or service."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct CoverageEligibilityResponseInsuranceItem {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -91,8 +95,31 @@ pub struct CoverageEligibilityResponseInsuranceItem {
     #[doc = "A web location for obtaining requirements or descriptive information regarding the preauthorization."]
     pub r#authorization_url: Option<super::super::types::Uri>,
 }
+impl Default for CoverageEligibilityResponseInsuranceItem {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#category: Default::default(),
+            r#product_or_service: Default::default(),
+            r#modifier: Default::default(),
+            r#provider: Default::default(),
+            r#excluded: Default::default(),
+            r#name: Default::default(),
+            r#description: Default::default(),
+            r#network: Default::default(),
+            r#unit: Default::default(),
+            r#term: Default::default(),
+            r#benefit: Default::default(),
+            r#authorization_required: Default::default(),
+            r#authorization_supporting: Default::default(),
+            r#authorization_url: Default::default(),
+        }
+    }
+}
 #[doc = "Financial instruments for reimbursement for the health care products and services."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct CoverageEligibilityResponseInsurance {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -109,8 +136,25 @@ pub struct CoverageEligibilityResponseInsurance {
     #[doc = "Benefits and optionally current balances, and authorization details by category or service."]
     pub r#item: Vec<CoverageEligibilityResponseInsuranceItem>,
 }
+impl Default for CoverageEligibilityResponseInsurance {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#coverage: {
+                let mut default: Box<super::super::types::Reference> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#inforce: Default::default(),
+            r#benefit_period: Default::default(),
+            r#item: Default::default(),
+        }
+    }
+}
 #[doc = "Errors encountered during the processing of the request."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct CoverageEligibilityResponseError {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -121,8 +165,22 @@ pub struct CoverageEligibilityResponseError {
     #[doc = "An error code,from a specified code system, which details why the eligibility check could not be performed."]
     pub r#code: Box<super::super::types::CodeableConcept>,
 }
+impl Default for CoverageEligibilityResponseError {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#code: {
+                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+        }
+    }
+}
 #[doc = "This resource provides eligibility and plan details from the processing of an CoverageEligibilityRequest resource."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct CoverageEligibilityResponse {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,
@@ -170,4 +228,57 @@ pub struct CoverageEligibilityResponse {
     pub r#form: Option<Box<super::super::types::CodeableConcept>>,
     #[doc = "Errors encountered during the processing of the request."]
     pub r#error: Vec<CoverageEligibilityResponseError>,
+}
+impl Default for CoverageEligibilityResponse {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#meta: Default::default(),
+            r#implicit_rules: Default::default(),
+            r#language: Default::default(),
+            r#text: Default::default(),
+            r#contained: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#identifier: Default::default(),
+            r#status: {
+                let mut default: super::super::types::Code = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#purpose: Default::default(),
+            r#patient: {
+                let mut default: Box<super::super::types::Reference> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#serviced: Default::default(),
+            r#created: {
+                let mut default: super::super::types::DateTime = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#requestor: Default::default(),
+            r#request: {
+                let mut default: Box<super::super::types::Reference> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#outcome: {
+                let mut default: super::super::types::Code = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#disposition: Default::default(),
+            r#insurer: {
+                let mut default: Box<super::super::types::Reference> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#insurance: Default::default(),
+            r#pre_auth_ref: Default::default(),
+            r#form: Default::default(),
+            r#error: Default::default(),
+        }
+    }
 }

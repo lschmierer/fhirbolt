@@ -1,6 +1,6 @@
-// Generated on 2023-04-20 by fhirbolt-codegen v0.4.0
+// Generated on 2023-04-20 by fhirbolt-codegen v0.5.0
 #[doc = "Batch numbering."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct MedicinalProductPackagedBatchIdentifier {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -13,8 +13,23 @@ pub struct MedicinalProductPackagedBatchIdentifier {
     #[doc = "A number appearing on the immediate packaging (and not the outer packaging)."]
     pub r#immediate_packaging: Option<Box<super::super::types::Identifier>>,
 }
+impl Default for MedicinalProductPackagedBatchIdentifier {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#outer_packaging: {
+                let mut default: Box<super::super::types::Identifier> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#immediate_packaging: Default::default(),
+        }
+    }
+}
 #[doc = "A packaging item, as a contained for medicine, possibly with other packaging items within."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct MedicinalProductPackagedPackageItem {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -47,8 +62,37 @@ pub struct MedicinalProductPackagedPackageItem {
     #[doc = "Manufacturer of this Package Item."]
     pub r#manufacturer: Vec<Box<super::super::types::Reference>>,
 }
+impl Default for MedicinalProductPackagedPackageItem {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#identifier: Default::default(),
+            r#type: {
+                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#quantity: {
+                let mut default: Box<super::super::types::Quantity> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#material: Default::default(),
+            r#alternate_material: Default::default(),
+            r#device: Default::default(),
+            r#manufactured_item: Default::default(),
+            r#package_item: Default::default(),
+            r#physical_characteristics: Default::default(),
+            r#other_characteristics: Default::default(),
+            r#shelf_life_storage: Default::default(),
+            r#manufacturer: Default::default(),
+        }
+    }
+}
 #[doc = "A medicinal product in a container or package."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct MedicinalProductPackaged {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,
@@ -84,4 +128,27 @@ pub struct MedicinalProductPackaged {
     pub r#batch_identifier: Vec<MedicinalProductPackagedBatchIdentifier>,
     #[doc = "A packaging item, as a contained for medicine, possibly with other packaging items within."]
     pub r#package_item: Vec<MedicinalProductPackagedPackageItem>,
+}
+impl Default for MedicinalProductPackaged {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#meta: Default::default(),
+            r#implicit_rules: Default::default(),
+            r#language: Default::default(),
+            r#text: Default::default(),
+            r#contained: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#identifier: Default::default(),
+            r#subject: Default::default(),
+            r#description: Default::default(),
+            r#legal_status_of_supply: Default::default(),
+            r#marketing_status: Default::default(),
+            r#marketing_authorization: Default::default(),
+            r#manufacturer: Default::default(),
+            r#batch_identifier: Default::default(),
+            r#package_item: Default::default(),
+        }
+    }
 }

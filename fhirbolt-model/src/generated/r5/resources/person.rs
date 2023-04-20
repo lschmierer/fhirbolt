@@ -1,18 +1,14 @@
-// Generated on 2023-04-20 by fhirbolt-codegen v0.4.0
+// Generated on 2023-04-20 by fhirbolt-codegen v0.5.0
 #[doc = "Indicates if the individual is deceased or not."]
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub enum PersonDeceased {
     Boolean(Box<super::super::types::Boolean>),
     DateTime(Box<super::super::types::DateTime>),
+    #[default]
     Invalid,
 }
-impl Default for PersonDeceased {
-    fn default() -> PersonDeceased {
-        PersonDeceased::Invalid
-    }
-}
 #[doc = "A language which may be used to communicate with the person about his or her health."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct PersonCommunication {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -25,8 +21,23 @@ pub struct PersonCommunication {
     #[doc = "Indicates whether or not the person prefers this language (over other languages he masters up a certain level)."]
     pub r#preferred: Option<super::super::types::Boolean>,
 }
+impl Default for PersonCommunication {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#language: {
+                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#preferred: Default::default(),
+        }
+    }
+}
 #[doc = "Link to a resource that concerns the same actual person."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct PersonLink {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -39,8 +50,23 @@ pub struct PersonLink {
     #[doc = "Level of assurance that this link is associated with the target resource."]
     pub r#assurance: Option<super::super::types::Code>,
 }
+impl Default for PersonLink {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#target: {
+                let mut default: Box<super::super::types::Reference> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#assurance: Default::default(),
+        }
+    }
+}
 #[doc = "Demographics and administrative information about a person independent of a specific health-related context.\n\nNeed to track persons potentially across multiple roles."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct Person {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,
@@ -84,4 +110,31 @@ pub struct Person {
     pub r#managing_organization: Option<Box<super::super::types::Reference>>,
     #[doc = "Link to a resource that concerns the same actual person."]
     pub r#link: Vec<PersonLink>,
+}
+impl Default for Person {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#meta: Default::default(),
+            r#implicit_rules: Default::default(),
+            r#language: Default::default(),
+            r#text: Default::default(),
+            r#contained: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#identifier: Default::default(),
+            r#active: Default::default(),
+            r#name: Default::default(),
+            r#telecom: Default::default(),
+            r#gender: Default::default(),
+            r#birth_date: Default::default(),
+            r#deceased: Default::default(),
+            r#address: Default::default(),
+            r#marital_status: Default::default(),
+            r#photo: Default::default(),
+            r#communication: Default::default(),
+            r#managing_organization: Default::default(),
+            r#link: Default::default(),
+        }
+    }
 }

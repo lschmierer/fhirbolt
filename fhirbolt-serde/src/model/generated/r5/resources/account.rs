@@ -1,4 +1,4 @@
-// Generated on 2023-04-20 by fhirbolt-codegen v0.4.0
+// Generated on 2023-04-20 by fhirbolt-codegen v0.5.0
 impl serde::ser::Serialize
     for crate::context::ser::SerializationContext<&fhirbolt_model::r5::resources::AccountCoverage>
 {
@@ -7,6 +7,13 @@ impl serde::ser::Serialize
         S: serde::ser::Serializer,
     {
         use serde::ser::SerializeMap;
+        #[allow(dead_code)]
+        fn missing_field_error<T, E: serde::ser::Error>(field: &str) -> Result<T, E> {
+            Err(E::custom(format!(
+                "missing required field `{}.{}`",
+                "Account.coverage", field
+            )))
+        }
         let mut state = serializer.serialize_map(None)?;
         if let Some(value) = self.value.r#id.as_ref() {
             state.serialize_entry("id", value)?;
@@ -20,6 +27,9 @@ impl serde::ser::Serialize
             self.with_context(&self.value.r#modifier_extension, |ctx| {
                 state.serialize_entry("modifierExtension", ctx)
             })?;
+        }
+        if self.value.r#coverage.id.as_deref() == Some("$invalid") {
+            return missing_field_error("coverage");
         }
         self.with_context(&self.value.r#coverage, |ctx| {
             state.serialize_entry("coverage", ctx)
@@ -365,6 +375,13 @@ impl serde::ser::Serialize
         S: serde::ser::Serializer,
     {
         use serde::ser::SerializeMap;
+        #[allow(dead_code)]
+        fn missing_field_error<T, E: serde::ser::Error>(field: &str) -> Result<T, E> {
+            Err(E::custom(format!(
+                "missing required field `{}.{}`",
+                "Account.guarantor", field
+            )))
+        }
         let mut state = serializer.serialize_map(None)?;
         if let Some(value) = self.value.r#id.as_ref() {
             state.serialize_entry("id", value)?;
@@ -378,6 +395,9 @@ impl serde::ser::Serialize
             self.with_context(&self.value.r#modifier_extension, |ctx| {
                 state.serialize_entry("modifierExtension", ctx)
             })?;
+        }
+        if self.value.r#party.id.as_deref() == Some("$invalid") {
+            return missing_field_error("party");
         }
         self.with_context(&self.value.r#party, |ctx| {
             state.serialize_entry("party", ctx)
@@ -737,6 +757,13 @@ impl serde::ser::Serialize
         S: serde::ser::Serializer,
     {
         use serde::ser::SerializeMap;
+        #[allow(dead_code)]
+        fn missing_field_error<T, E: serde::ser::Error>(field: &str) -> Result<T, E> {
+            Err(E::custom(format!(
+                "missing required field `{}.{}`",
+                "Account.diagnosis", field
+            )))
+        }
         let mut state = serializer.serialize_map(None)?;
         if let Some(value) = self.value.r#id.as_ref() {
             state.serialize_entry("id", value)?;
@@ -771,6 +798,9 @@ impl serde::ser::Serialize
             if let Some(some) = self.value.r#sequence.as_ref() {
                 self.with_context(some, |ctx| state.serialize_entry("sequence", ctx))?;
             }
+        }
+        if self.value.r#condition.id.as_deref() == Some("$invalid") {
+            return missing_field_error("condition");
         }
         self.with_context(&self.value.r#condition, |ctx| {
             state.serialize_entry("condition", ctx)
@@ -1269,6 +1299,13 @@ impl serde::ser::Serialize
         S: serde::ser::Serializer,
     {
         use serde::ser::SerializeMap;
+        #[allow(dead_code)]
+        fn missing_field_error<T, E: serde::ser::Error>(field: &str) -> Result<T, E> {
+            Err(E::custom(format!(
+                "missing required field `{}.{}`",
+                "Account.procedure", field
+            )))
+        }
         let mut state = serializer.serialize_map(None)?;
         if let Some(value) = self.value.r#id.as_ref() {
             state.serialize_entry("id", value)?;
@@ -1303,6 +1340,9 @@ impl serde::ser::Serialize
             if let Some(some) = self.value.r#sequence.as_ref() {
                 self.with_context(some, |ctx| state.serialize_entry("sequence", ctx))?;
             }
+        }
+        if self.value.r#code.id.as_deref() == Some("$invalid") {
+            return missing_field_error("code");
         }
         self.with_context(&self.value.r#code, |ctx| state.serialize_entry("code", ctx))?;
         if self.output_json {
@@ -1763,6 +1803,13 @@ impl serde::ser::Serialize
         S: serde::ser::Serializer,
     {
         use serde::ser::SerializeMap;
+        #[allow(dead_code)]
+        fn missing_field_error<T, E: serde::ser::Error>(field: &str) -> Result<T, E> {
+            Err(E::custom(format!(
+                "missing required field `{}.{}`",
+                "Account.relatedAccount", field
+            )))
+        }
         let mut state = serializer.serialize_map(None)?;
         if let Some(value) = self.value.r#id.as_ref() {
             state.serialize_entry("id", value)?;
@@ -1779,6 +1826,9 @@ impl serde::ser::Serialize
         }
         if let Some(some) = self.value.r#relationship.as_ref() {
             self.with_context(some, |ctx| state.serialize_entry("relationship", ctx))?;
+        }
+        if self.value.r#account.id.as_deref() == Some("$invalid") {
+            return missing_field_error("account");
         }
         self.with_context(&self.value.r#account, |ctx| {
             state.serialize_entry("account", ctx)
@@ -2077,6 +2127,13 @@ impl serde::ser::Serialize
         S: serde::ser::Serializer,
     {
         use serde::ser::SerializeMap;
+        #[allow(dead_code)]
+        fn missing_field_error<T, E: serde::ser::Error>(field: &str) -> Result<T, E> {
+            Err(E::custom(format!(
+                "missing required field `{}.{}`",
+                "Account.balance", field
+            )))
+        }
         let mut state = serializer.serialize_map(None)?;
         if let Some(value) = self.value.r#id.as_ref() {
             state.serialize_entry("id", value)?;
@@ -2117,6 +2174,9 @@ impl serde::ser::Serialize
             if let Some(some) = self.value.r#estimate.as_ref() {
                 self.with_context(some, |ctx| state.serialize_entry("estimate", ctx))?;
             }
+        }
+        if self.value.r#amount.id.as_deref() == Some("$invalid") {
+            return missing_field_error("amount");
         }
         self.with_context(&self.value.r#amount, |ctx| {
             state.serialize_entry("amount", ctx)
@@ -2462,6 +2522,13 @@ impl serde::ser::Serialize
         S: serde::ser::Serializer,
     {
         use serde::ser::SerializeMap;
+        #[allow(dead_code)]
+        fn missing_field_error<T, E: serde::ser::Error>(field: &str) -> Result<T, E> {
+            Err(E::custom(format!(
+                "missing required field `{}.{}`",
+                "Account", field
+            )))
+        }
         let mut state = serializer.serialize_map(None)?;
         state.serialize_entry("resourceType", "Account")?;
         if let Some(value) = self.value.r#id.as_ref() {
@@ -2536,6 +2603,9 @@ impl serde::ser::Serialize
             })?;
         }
         if self.output_json {
+            if self.value.r#status.id.as_deref() == Some("$invalid") {
+                return missing_field_error("status");
+            }
             if let Some(some) = self.value.r#status.value.as_ref() {
                 let some = Ok(some)?;
                 state.serialize_entry("status", &some)?;
@@ -2550,6 +2620,9 @@ impl serde::ser::Serialize
                 })?;
             }
         } else {
+            if self.value.r#status.id.as_deref() == Some("$invalid") {
+                return missing_field_error("status");
+            }
             self.with_context(&self.value.r#status, |ctx| {
                 state.serialize_entry("status", ctx)
             })?;

@@ -1,18 +1,14 @@
-// Generated on 2023-04-20 by fhirbolt-codegen v0.4.0
+// Generated on 2023-04-20 by fhirbolt-codegen v0.5.0
 #[doc = "Condition for which the medicinal use applies."]
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub enum MedicinalProductSpecialDesignationIndication {
     CodeableConcept(Box<super::super::types::CodeableConcept>),
     Reference(Box<super::super::types::Reference>),
+    #[default]
     Invalid,
 }
-impl Default for MedicinalProductSpecialDesignationIndication {
-    fn default() -> MedicinalProductSpecialDesignationIndication {
-        MedicinalProductSpecialDesignationIndication::Invalid
-    }
-}
 #[doc = "Coding words or phrases of the name."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct MedicinalProductNameNamePart {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -25,8 +21,27 @@ pub struct MedicinalProductNameNamePart {
     #[doc = "Idenifying type for this part of the name (e.g. strength part)."]
     pub r#type: Box<super::super::types::Coding>,
 }
+impl Default for MedicinalProductNameNamePart {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#part: {
+                let mut default: super::super::types::String = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#type: {
+                let mut default: Box<super::super::types::Coding> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+        }
+    }
+}
 #[doc = "Country where the name applies."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct MedicinalProductNameCountryLanguage {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -41,8 +56,28 @@ pub struct MedicinalProductNameCountryLanguage {
     #[doc = "Language code for this name."]
     pub r#language: Box<super::super::types::CodeableConcept>,
 }
+impl Default for MedicinalProductNameCountryLanguage {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#country: {
+                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#jurisdiction: Default::default(),
+            r#language: {
+                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+        }
+    }
+}
 #[doc = "The product's name, including full name and possibly coded parts."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct MedicinalProductName {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -57,8 +92,24 @@ pub struct MedicinalProductName {
     #[doc = "Country where the name applies."]
     pub r#country_language: Vec<MedicinalProductNameCountryLanguage>,
 }
+impl Default for MedicinalProductName {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#product_name: {
+                let mut default: super::super::types::String = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#name_part: Default::default(),
+            r#country_language: Default::default(),
+        }
+    }
+}
 #[doc = "An operation applied to the product, for manufacturing or adminsitrative purpose."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct MedicinalProductManufacturingBusinessOperation {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -79,8 +130,23 @@ pub struct MedicinalProductManufacturingBusinessOperation {
     #[doc = "A regulator which oversees the operation."]
     pub r#regulator: Option<Box<super::super::types::Reference>>,
 }
+impl Default for MedicinalProductManufacturingBusinessOperation {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#operation_type: Default::default(),
+            r#authorisation_reference_number: Default::default(),
+            r#effective_date: Default::default(),
+            r#confidentiality_indicator: Default::default(),
+            r#manufacturer: Default::default(),
+            r#regulator: Default::default(),
+        }
+    }
+}
 #[doc = "Indicates if the medicinal product has an orphan designation for the treatment of a rare disease."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct MedicinalProductSpecialDesignation {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -103,8 +169,24 @@ pub struct MedicinalProductSpecialDesignation {
     #[doc = "Animal species for which this applies."]
     pub r#species: Option<Box<super::super::types::CodeableConcept>>,
 }
+impl Default for MedicinalProductSpecialDesignation {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#identifier: Default::default(),
+            r#type: Default::default(),
+            r#intended_use: Default::default(),
+            r#indication: Default::default(),
+            r#status: Default::default(),
+            r#date: Default::default(),
+            r#species: Default::default(),
+        }
+    }
+}
 #[doc = "Detailed definition of a medicinal product, typically for uses other than direct patient care (e.g. regulatory use)."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct MedicinalProduct {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,
@@ -162,4 +244,38 @@ pub struct MedicinalProduct {
     pub r#manufacturing_business_operation: Vec<MedicinalProductManufacturingBusinessOperation>,
     #[doc = "Indicates if the medicinal product has an orphan designation for the treatment of a rare disease."]
     pub r#special_designation: Vec<MedicinalProductSpecialDesignation>,
+}
+impl Default for MedicinalProduct {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#meta: Default::default(),
+            r#implicit_rules: Default::default(),
+            r#language: Default::default(),
+            r#text: Default::default(),
+            r#contained: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#identifier: Default::default(),
+            r#type: Default::default(),
+            r#domain: Default::default(),
+            r#combined_pharmaceutical_dose_form: Default::default(),
+            r#legal_status_of_supply: Default::default(),
+            r#additional_monitoring_indicator: Default::default(),
+            r#special_measures: Default::default(),
+            r#paediatric_use_indicator: Default::default(),
+            r#product_classification: Default::default(),
+            r#marketing_status: Default::default(),
+            r#pharmaceutical_product: Default::default(),
+            r#packaged_medicinal_product: Default::default(),
+            r#attached_document: Default::default(),
+            r#master_file: Default::default(),
+            r#contact: Default::default(),
+            r#clinical_trial: Default::default(),
+            r#name: Default::default(),
+            r#cross_reference: Default::default(),
+            r#manufacturing_business_operation: Default::default(),
+            r#special_designation: Default::default(),
+        }
+    }
 }

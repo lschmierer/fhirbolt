@@ -1,6 +1,6 @@
-// Generated on 2023-04-20 by fhirbolt-codegen v0.4.0
+// Generated on 2023-04-20 by fhirbolt-codegen v0.5.0
 #[doc = "The contact for the health insurance product for a certain purpose."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct InsurancePlanContact {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -17,8 +17,21 @@ pub struct InsurancePlanContact {
     #[doc = "Visiting or postal addresses for the contact."]
     pub r#address: Option<Box<super::super::types::Address>>,
 }
+impl Default for InsurancePlanContact {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#purpose: Default::default(),
+            r#name: Default::default(),
+            r#telecom: Default::default(),
+            r#address: Default::default(),
+        }
+    }
+}
 #[doc = "The specific limits on the benefit."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct InsurancePlanCoverageBenefitLimit {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -31,8 +44,19 @@ pub struct InsurancePlanCoverageBenefitLimit {
     #[doc = "The specific limit on the benefit."]
     pub r#code: Option<Box<super::super::types::CodeableConcept>>,
 }
+impl Default for InsurancePlanCoverageBenefitLimit {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#value: Default::default(),
+            r#code: Default::default(),
+        }
+    }
+}
 #[doc = "Specific benefits under this type of coverage."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct InsurancePlanCoverageBenefit {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -47,8 +71,24 @@ pub struct InsurancePlanCoverageBenefit {
     #[doc = "The specific limits on the benefit."]
     pub r#limit: Vec<InsurancePlanCoverageBenefitLimit>,
 }
+impl Default for InsurancePlanCoverageBenefit {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#type: {
+                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#requirement: Default::default(),
+            r#limit: Default::default(),
+        }
+    }
+}
 #[doc = "Details about the coverage offered by the insurance product."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct InsurancePlanCoverage {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -63,8 +103,24 @@ pub struct InsurancePlanCoverage {
     #[doc = "Specific benefits under this type of coverage."]
     pub r#benefit: Vec<InsurancePlanCoverageBenefit>,
 }
+impl Default for InsurancePlanCoverage {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#type: {
+                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#network: Default::default(),
+            r#benefit: Default::default(),
+        }
+    }
+}
 #[doc = "Overall costs associated with the plan."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct InsurancePlanPlanGeneralCost {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -81,8 +137,21 @@ pub struct InsurancePlanPlanGeneralCost {
     #[doc = "Additional information about the general costs associated with this plan."]
     pub r#comment: Option<super::super::types::String>,
 }
+impl Default for InsurancePlanPlanGeneralCost {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#type: Default::default(),
+            r#group_size: Default::default(),
+            r#cost: Default::default(),
+            r#comment: Default::default(),
+        }
+    }
+}
 #[doc = "List of the costs associated with a specific benefit."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct InsurancePlanPlanSpecificCostBenefitCost {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -99,8 +168,25 @@ pub struct InsurancePlanPlanSpecificCostBenefitCost {
     #[doc = "The actual cost value. (some of the costs may be represented as percentages rather than currency, e.g. 10% coinsurance)."]
     pub r#value: Option<Box<super::super::types::Quantity>>,
 }
+impl Default for InsurancePlanPlanSpecificCostBenefitCost {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#type: {
+                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#applicability: Default::default(),
+            r#qualifiers: Default::default(),
+            r#value: Default::default(),
+        }
+    }
+}
 #[doc = "List of the specific benefits under this category of benefit."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct InsurancePlanPlanSpecificCostBenefit {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -113,8 +199,23 @@ pub struct InsurancePlanPlanSpecificCostBenefit {
     #[doc = "List of the costs associated with a specific benefit."]
     pub r#cost: Vec<InsurancePlanPlanSpecificCostBenefitCost>,
 }
+impl Default for InsurancePlanPlanSpecificCostBenefit {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#type: {
+                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#cost: Default::default(),
+        }
+    }
+}
 #[doc = "Costs associated with the coverage provided by the product."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct InsurancePlanPlanSpecificCost {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -127,8 +228,23 @@ pub struct InsurancePlanPlanSpecificCost {
     #[doc = "List of the specific benefits under this category of benefit."]
     pub r#benefit: Vec<InsurancePlanPlanSpecificCostBenefit>,
 }
+impl Default for InsurancePlanPlanSpecificCost {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#category: {
+                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#benefit: Default::default(),
+        }
+    }
+}
 #[doc = "Details about an insurance plan."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct InsurancePlanPlan {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -149,8 +265,23 @@ pub struct InsurancePlanPlan {
     #[doc = "Costs associated with the coverage provided by the product."]
     pub r#specific_cost: Vec<InsurancePlanPlanSpecificCost>,
 }
+impl Default for InsurancePlanPlan {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#identifier: Default::default(),
+            r#type: Default::default(),
+            r#coverage_area: Default::default(),
+            r#network: Default::default(),
+            r#general_cost: Default::default(),
+            r#specific_cost: Default::default(),
+        }
+    }
+}
 #[doc = "Details of a Health Insurance product/plan provided by an organization."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct InsurancePlan {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,
@@ -196,4 +327,32 @@ pub struct InsurancePlan {
     pub r#coverage: Vec<InsurancePlanCoverage>,
     #[doc = "Details about an insurance plan."]
     pub r#plan: Vec<InsurancePlanPlan>,
+}
+impl Default for InsurancePlan {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#meta: Default::default(),
+            r#implicit_rules: Default::default(),
+            r#language: Default::default(),
+            r#text: Default::default(),
+            r#contained: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#identifier: Default::default(),
+            r#status: Default::default(),
+            r#type: Default::default(),
+            r#name: Default::default(),
+            r#alias: Default::default(),
+            r#period: Default::default(),
+            r#owned_by: Default::default(),
+            r#administered_by: Default::default(),
+            r#coverage_area: Default::default(),
+            r#contact: Default::default(),
+            r#endpoint: Default::default(),
+            r#network: Default::default(),
+            r#coverage: Default::default(),
+            r#plan: Default::default(),
+        }
+    }
 }

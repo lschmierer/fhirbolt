@@ -1,6 +1,6 @@
-// Generated on 2023-04-20 by fhirbolt-codegen v0.4.0
+// Generated on 2023-04-20 by fhirbolt-codegen v0.5.0
 #[doc = "The current state (status) of the subject and resons for status change where appropriate."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct ResearchSubjectProgress {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -21,8 +21,23 @@ pub struct ResearchSubjectProgress {
     #[doc = "The date when the state ended."]
     pub r#end_date: Option<super::super::types::DateTime>,
 }
+impl Default for ResearchSubjectProgress {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#type: Default::default(),
+            r#subject_state: Default::default(),
+            r#milestone: Default::default(),
+            r#reason: Default::default(),
+            r#start_date: Default::default(),
+            r#end_date: Default::default(),
+        }
+    }
+}
 #[doc = "A ResearchSubject is a participant or object which is the recipient of investigative activities in a research study."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct ResearchSubject {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,
@@ -58,4 +73,39 @@ pub struct ResearchSubject {
     pub r#actual_comparison_group: Option<super::super::types::Id>,
     #[doc = "A record of the patient's informed agreement to participate in the study."]
     pub r#consent: Vec<Box<super::super::types::Reference>>,
+}
+impl Default for ResearchSubject {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#meta: Default::default(),
+            r#implicit_rules: Default::default(),
+            r#language: Default::default(),
+            r#text: Default::default(),
+            r#contained: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#identifier: Default::default(),
+            r#status: {
+                let mut default: super::super::types::Code = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#progress: Default::default(),
+            r#period: Default::default(),
+            r#study: {
+                let mut default: Box<super::super::types::Reference> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#subject: {
+                let mut default: Box<super::super::types::Reference> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#assigned_comparison_group: Default::default(),
+            r#actual_comparison_group: Default::default(),
+            r#consent: Default::default(),
+        }
+    }
 }

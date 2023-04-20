@@ -1,31 +1,23 @@
-// Generated on 2023-04-20 by fhirbolt-codegen v0.4.0
+// Generated on 2023-04-20 by fhirbolt-codegen v0.5.0
 #[doc = "The period, timing or frequency upon which the described activity is to occur."]
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub enum CarePlanActivityDetailScheduled {
     Timing(Box<super::super::types::Timing>),
     Period(Box<super::super::types::Period>),
     String(Box<super::super::types::String>),
+    #[default]
     Invalid,
 }
-impl Default for CarePlanActivityDetailScheduled {
-    fn default() -> CarePlanActivityDetailScheduled {
-        CarePlanActivityDetailScheduled::Invalid
-    }
-}
 #[doc = "Identifies the food, drug or other product to be consumed or supplied in the activity."]
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub enum CarePlanActivityDetailProduct {
     CodeableConcept(Box<super::super::types::CodeableConcept>),
     Reference(Box<super::super::types::Reference>),
+    #[default]
     Invalid,
 }
-impl Default for CarePlanActivityDetailProduct {
-    fn default() -> CarePlanActivityDetailProduct {
-        CarePlanActivityDetailProduct::Invalid
-    }
-}
 #[doc = "A simple summary of a planned activity suitable for a general care plan system (e.g. form driven) that doesn't know about specific resources such as procedure etc."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct CarePlanActivityDetail {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -68,8 +60,38 @@ pub struct CarePlanActivityDetail {
     #[doc = "This provides a textual description of constraints on the intended activity occurrence, including relation to other activities.  It may also include objectives, pre-conditions and end-conditions.  Finally, it may convey specifics about the activity such as body site, method, route, etc."]
     pub r#description: Option<super::super::types::String>,
 }
+impl Default for CarePlanActivityDetail {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#kind: Default::default(),
+            r#instantiates_canonical: Default::default(),
+            r#instantiates_uri: Default::default(),
+            r#code: Default::default(),
+            r#reason_code: Default::default(),
+            r#reason_reference: Default::default(),
+            r#goal: Default::default(),
+            r#status: {
+                let mut default: super::super::types::Code = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#status_reason: Default::default(),
+            r#do_not_perform: Default::default(),
+            r#scheduled: Default::default(),
+            r#location: Default::default(),
+            r#performer: Default::default(),
+            r#product: Default::default(),
+            r#daily_amount: Default::default(),
+            r#quantity: Default::default(),
+            r#description: Default::default(),
+        }
+    }
+}
 #[doc = "Identifies a planned action to occur as part of the plan.  For example, a medication to be used, lab tests to perform, self-monitoring, education, etc."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct CarePlanActivity {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -88,8 +110,22 @@ pub struct CarePlanActivity {
     #[doc = "A simple summary of a planned activity suitable for a general care plan system (e.g. form driven) that doesn't know about specific resources such as procedure etc."]
     pub r#detail: Option<CarePlanActivityDetail>,
 }
+impl Default for CarePlanActivity {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#outcome_codeable_concept: Default::default(),
+            r#outcome_reference: Default::default(),
+            r#progress: Default::default(),
+            r#reference: Default::default(),
+            r#detail: Default::default(),
+        }
+    }
+}
 #[doc = "Describes the intention of how one or more practitioners intend to deliver care for a particular patient, group or community for a period of time, possibly limited to care for a specific condition or set of conditions."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct CarePlan {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,
@@ -153,4 +189,53 @@ pub struct CarePlan {
     pub r#activity: Vec<CarePlanActivity>,
     #[doc = "General notes about the care plan not covered elsewhere."]
     pub r#note: Vec<Box<super::super::types::Annotation>>,
+}
+impl Default for CarePlan {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#meta: Default::default(),
+            r#implicit_rules: Default::default(),
+            r#language: Default::default(),
+            r#text: Default::default(),
+            r#contained: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#identifier: Default::default(),
+            r#instantiates_canonical: Default::default(),
+            r#instantiates_uri: Default::default(),
+            r#based_on: Default::default(),
+            r#replaces: Default::default(),
+            r#part_of: Default::default(),
+            r#status: {
+                let mut default: super::super::types::Code = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#intent: {
+                let mut default: super::super::types::Code = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#category: Default::default(),
+            r#title: Default::default(),
+            r#description: Default::default(),
+            r#subject: {
+                let mut default: Box<super::super::types::Reference> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#encounter: Default::default(),
+            r#period: Default::default(),
+            r#created: Default::default(),
+            r#author: Default::default(),
+            r#contributor: Default::default(),
+            r#care_team: Default::default(),
+            r#addresses: Default::default(),
+            r#supporting_info: Default::default(),
+            r#goal: Default::default(),
+            r#activity: Default::default(),
+            r#note: Default::default(),
+        }
+    }
 }

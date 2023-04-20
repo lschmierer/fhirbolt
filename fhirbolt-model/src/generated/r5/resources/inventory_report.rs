@@ -1,6 +1,6 @@
-// Generated on 2023-04-20 by fhirbolt-codegen v0.4.0
+// Generated on 2023-04-20 by fhirbolt-codegen v0.5.0
 #[doc = "The item or items in this listing."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct InventoryReportInventoryListingItem {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -15,8 +15,28 @@ pub struct InventoryReportInventoryListingItem {
     #[doc = "The code or reference to the item type."]
     pub r#item: Box<super::super::types::CodeableReference>,
 }
+impl Default for InventoryReportInventoryListingItem {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#category: Default::default(),
+            r#quantity: {
+                let mut default: Box<super::super::types::Quantity> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#item: {
+                let mut default: Box<super::super::types::CodeableReference> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+        }
+    }
+}
 #[doc = "An inventory listing section (grouped by any of the attributes)."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct InventoryReportInventoryListing {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -33,8 +53,21 @@ pub struct InventoryReportInventoryListing {
     #[doc = "The item or items in this listing."]
     pub r#item: Vec<InventoryReportInventoryListingItem>,
 }
+impl Default for InventoryReportInventoryListing {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#location: Default::default(),
+            r#item_status: Default::default(),
+            r#counting_date_time: Default::default(),
+            r#item: Default::default(),
+        }
+    }
+}
 #[doc = "A report of inventory or stock items."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct InventoryReport {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,
@@ -72,4 +105,40 @@ pub struct InventoryReport {
     pub r#inventory_listing: Vec<InventoryReportInventoryListing>,
     #[doc = "A note associated with the InventoryReport."]
     pub r#note: Vec<Box<super::super::types::Annotation>>,
+}
+impl Default for InventoryReport {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#meta: Default::default(),
+            r#implicit_rules: Default::default(),
+            r#language: Default::default(),
+            r#text: Default::default(),
+            r#contained: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#identifier: Default::default(),
+            r#status: {
+                let mut default: super::super::types::Code = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#count_type: {
+                let mut default: super::super::types::Code = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#operation_type: Default::default(),
+            r#operation_type_reason: Default::default(),
+            r#reported_date_time: {
+                let mut default: super::super::types::DateTime = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#reporter: Default::default(),
+            r#reporting_period: Default::default(),
+            r#inventory_listing: Default::default(),
+            r#note: Default::default(),
+        }
+    }
 }

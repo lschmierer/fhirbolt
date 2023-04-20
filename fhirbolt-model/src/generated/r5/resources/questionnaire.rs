@@ -1,18 +1,14 @@
-// Generated on 2023-04-20 by fhirbolt-codegen v0.4.0
+// Generated on 2023-04-20 by fhirbolt-codegen v0.5.0
 #[doc = "Indicates the mechanism used to compare versions to determine which is more current."]
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub enum QuestionnaireVersionAlgorithm {
     String(Box<super::super::types::String>),
     Coding(Box<super::super::types::Coding>),
+    #[default]
     Invalid,
 }
-impl Default for QuestionnaireVersionAlgorithm {
-    fn default() -> QuestionnaireVersionAlgorithm {
-        QuestionnaireVersionAlgorithm::Invalid
-    }
-}
 #[doc = "A value that the referenced question is tested using the specified operator in order for the item to be enabled.  If there are multiple answers, a match on any of the answers suffices.  If different behavior is desired (all must match, at least 2 must match, etc.), consider using the enableWhenExpression extension."]
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub enum QuestionnaireItemEnableWhenAnswer {
     Boolean(Box<super::super::types::Boolean>),
     Decimal(Box<super::super::types::Decimal>),
@@ -24,15 +20,11 @@ pub enum QuestionnaireItemEnableWhenAnswer {
     Coding(Box<super::super::types::Coding>),
     Quantity(Box<super::super::types::Quantity>),
     Reference(Box<super::super::types::Reference>),
+    #[default]
     Invalid,
 }
-impl Default for QuestionnaireItemEnableWhenAnswer {
-    fn default() -> QuestionnaireItemEnableWhenAnswer {
-        QuestionnaireItemEnableWhenAnswer::Invalid
-    }
-}
 #[doc = "A potential answer that's allowed as the answer to this question."]
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub enum QuestionnaireItemAnswerOptionValue {
     Integer(Box<super::super::types::Integer>),
     Date(Box<super::super::types::Date>),
@@ -40,15 +32,11 @@ pub enum QuestionnaireItemAnswerOptionValue {
     String(Box<super::super::types::String>),
     Coding(Box<super::super::types::Coding>),
     Reference(Box<super::super::types::Reference>),
+    #[default]
     Invalid,
 }
-impl Default for QuestionnaireItemAnswerOptionValue {
-    fn default() -> QuestionnaireItemAnswerOptionValue {
-        QuestionnaireItemAnswerOptionValue::Invalid
-    }
-}
 #[doc = "The actual value to for an initial answer."]
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub enum QuestionnaireItemInitialValue {
     Boolean(Box<super::super::types::Boolean>),
     Decimal(Box<super::super::types::Decimal>),
@@ -62,15 +50,11 @@ pub enum QuestionnaireItemInitialValue {
     Coding(Box<super::super::types::Coding>),
     Quantity(Box<super::super::types::Quantity>),
     Reference(Box<super::super::types::Reference>),
+    #[default]
     Invalid,
 }
-impl Default for QuestionnaireItemInitialValue {
-    fn default() -> QuestionnaireItemInitialValue {
-        QuestionnaireItemInitialValue::Invalid
-    }
-}
 #[doc = "A constraint indicating that this item should only be enabled (displayed/allow answers to be captured) when the specified condition is true."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct QuestionnaireItemEnableWhen {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -85,8 +69,28 @@ pub struct QuestionnaireItemEnableWhen {
     #[doc = "A value that the referenced question is tested using the specified operator in order for the item to be enabled.  If there are multiple answers, a match on any of the answers suffices.  If different behavior is desired (all must match, at least 2 must match, etc.), consider using the enableWhenExpression extension."]
     pub r#answer: QuestionnaireItemEnableWhenAnswer,
 }
+impl Default for QuestionnaireItemEnableWhen {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#question: {
+                let mut default: super::super::types::String = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#operator: {
+                let mut default: super::super::types::Code = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#answer: Default::default(),
+        }
+    }
+}
 #[doc = "One of the permitted answers for the question."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct QuestionnaireItemAnswerOption {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -99,8 +103,19 @@ pub struct QuestionnaireItemAnswerOption {
     #[doc = "Indicates whether the answer value is selected when the list of possible answers is initially shown."]
     pub r#initial_selected: Option<super::super::types::Boolean>,
 }
+impl Default for QuestionnaireItemAnswerOption {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#value: Default::default(),
+            r#initial_selected: Default::default(),
+        }
+    }
+}
 #[doc = "One or more values that should be pre-populated in the answer when initially rendering the questionnaire for user input."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct QuestionnaireItemInitial {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -111,8 +126,18 @@ pub struct QuestionnaireItemInitial {
     #[doc = "The actual value to for an initial answer."]
     pub r#value: QuestionnaireItemInitialValue,
 }
+impl Default for QuestionnaireItemInitial {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#value: Default::default(),
+        }
+    }
+}
 #[doc = "A particular question, question grouping or display text that is part of the questionnaire."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct QuestionnaireItem {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -157,8 +182,43 @@ pub struct QuestionnaireItem {
     #[doc = "Text, questions and other groups to be nested beneath a question or group."]
     pub r#item: Vec<QuestionnaireItem>,
 }
+impl Default for QuestionnaireItem {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#link_id: {
+                let mut default: super::super::types::String = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#definition: Default::default(),
+            r#code: Default::default(),
+            r#prefix: Default::default(),
+            r#text: Default::default(),
+            r#type: {
+                let mut default: super::super::types::Code = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#enable_when: Default::default(),
+            r#enable_behavior: Default::default(),
+            r#disabled_display: Default::default(),
+            r#required: Default::default(),
+            r#repeats: Default::default(),
+            r#read_only: Default::default(),
+            r#max_length: Default::default(),
+            r#answer_constraint: Default::default(),
+            r#answer_value_set: Default::default(),
+            r#answer_option: Default::default(),
+            r#initial: Default::default(),
+            r#item: Default::default(),
+        }
+    }
+}
 #[doc = "A structured set of questions intended to guide the collection of answers from end-users. Questionnaires provide detailed control over order, presentation, phraseology and grouping to allow coherent, consistent data collection.\n\nTo support structured, hierarchical registration of data gathered using digital forms and other questionnaires.  Questionnaires provide greater control over presentation and allow capture of data in a domain-independent way (i.e. capturing information that would otherwise require multiple distinct types of resources)."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct Questionnaire {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,
@@ -224,4 +284,46 @@ pub struct Questionnaire {
     pub r#code: Vec<Box<super::super::types::Coding>>,
     #[doc = "A particular question, question grouping or display text that is part of the questionnaire."]
     pub r#item: Vec<QuestionnaireItem>,
+}
+impl Default for Questionnaire {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#meta: Default::default(),
+            r#implicit_rules: Default::default(),
+            r#language: Default::default(),
+            r#text: Default::default(),
+            r#contained: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#url: Default::default(),
+            r#identifier: Default::default(),
+            r#version: Default::default(),
+            r#version_algorithm: Default::default(),
+            r#name: Default::default(),
+            r#title: Default::default(),
+            r#derived_from: Default::default(),
+            r#status: {
+                let mut default: super::super::types::Code = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#experimental: Default::default(),
+            r#subject_type: Default::default(),
+            r#date: Default::default(),
+            r#publisher: Default::default(),
+            r#contact: Default::default(),
+            r#description: Default::default(),
+            r#use_context: Default::default(),
+            r#jurisdiction: Default::default(),
+            r#purpose: Default::default(),
+            r#copyright: Default::default(),
+            r#copyright_label: Default::default(),
+            r#approval_date: Default::default(),
+            r#last_review_date: Default::default(),
+            r#effective_period: Default::default(),
+            r#code: Default::default(),
+            r#item: Default::default(),
+        }
+    }
 }

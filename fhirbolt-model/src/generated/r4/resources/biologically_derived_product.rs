@@ -1,42 +1,30 @@
-// Generated on 2023-04-20 by fhirbolt-codegen v0.4.0
+// Generated on 2023-04-20 by fhirbolt-codegen v0.5.0
 #[doc = "Time of product collection."]
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub enum BiologicallyDerivedProductCollectionCollected {
     DateTime(Box<super::super::types::DateTime>),
     Period(Box<super::super::types::Period>),
+    #[default]
     Invalid,
 }
-impl Default for BiologicallyDerivedProductCollectionCollected {
-    fn default() -> BiologicallyDerivedProductCollectionCollected {
-        BiologicallyDerivedProductCollectionCollected::Invalid
-    }
-}
 #[doc = "Time of processing."]
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub enum BiologicallyDerivedProductProcessingTime {
     DateTime(Box<super::super::types::DateTime>),
     Period(Box<super::super::types::Period>),
+    #[default]
     Invalid,
 }
-impl Default for BiologicallyDerivedProductProcessingTime {
-    fn default() -> BiologicallyDerivedProductProcessingTime {
-        BiologicallyDerivedProductProcessingTime::Invalid
-    }
-}
 #[doc = "Time of manipulation."]
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub enum BiologicallyDerivedProductManipulationTime {
     DateTime(Box<super::super::types::DateTime>),
     Period(Box<super::super::types::Period>),
+    #[default]
     Invalid,
 }
-impl Default for BiologicallyDerivedProductManipulationTime {
-    fn default() -> BiologicallyDerivedProductManipulationTime {
-        BiologicallyDerivedProductManipulationTime::Invalid
-    }
-}
 #[doc = "How this product was collected."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct BiologicallyDerivedProductCollection {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -51,8 +39,20 @@ pub struct BiologicallyDerivedProductCollection {
     #[doc = "Time of product collection."]
     pub r#collected: Option<BiologicallyDerivedProductCollectionCollected>,
 }
+impl Default for BiologicallyDerivedProductCollection {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#collector: Default::default(),
+            r#source: Default::default(),
+            r#collected: Default::default(),
+        }
+    }
+}
 #[doc = "Any processing of the product during collection that does not change the fundamental nature of the product. For example adding anti-coagulants during the collection of Peripheral Blood Stem Cells."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct BiologicallyDerivedProductProcessing {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -69,8 +69,21 @@ pub struct BiologicallyDerivedProductProcessing {
     #[doc = "Time of processing."]
     pub r#time: Option<BiologicallyDerivedProductProcessingTime>,
 }
+impl Default for BiologicallyDerivedProductProcessing {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#description: Default::default(),
+            r#procedure: Default::default(),
+            r#additive: Default::default(),
+            r#time: Default::default(),
+        }
+    }
+}
 #[doc = "Any manipulation of product post-collection that is intended to alter the product.  For example a buffy-coat enrichment or CD8 reduction of Peripheral Blood Stem Cells to make it more suitable for infusion."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct BiologicallyDerivedProductManipulation {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -83,8 +96,19 @@ pub struct BiologicallyDerivedProductManipulation {
     #[doc = "Time of manipulation."]
     pub r#time: Option<BiologicallyDerivedProductManipulationTime>,
 }
+impl Default for BiologicallyDerivedProductManipulation {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#description: Default::default(),
+            r#time: Default::default(),
+        }
+    }
+}
 #[doc = "Product storage."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct BiologicallyDerivedProductStorage {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -101,8 +125,21 @@ pub struct BiologicallyDerivedProductStorage {
     #[doc = "Storage timeperiod."]
     pub r#duration: Option<Box<super::super::types::Period>>,
 }
+impl Default for BiologicallyDerivedProductStorage {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#description: Default::default(),
+            r#temperature: Default::default(),
+            r#scale: Default::default(),
+            r#duration: Default::default(),
+        }
+    }
+}
 #[doc = "A material substance originating from a biological entity intended to be transplanted or infused\ninto another (possibly the same) biological entity."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct BiologicallyDerivedProduct {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,
@@ -142,4 +179,29 @@ pub struct BiologicallyDerivedProduct {
     pub r#manipulation: Option<BiologicallyDerivedProductManipulation>,
     #[doc = "Product storage."]
     pub r#storage: Vec<BiologicallyDerivedProductStorage>,
+}
+impl Default for BiologicallyDerivedProduct {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#meta: Default::default(),
+            r#implicit_rules: Default::default(),
+            r#language: Default::default(),
+            r#text: Default::default(),
+            r#contained: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#identifier: Default::default(),
+            r#product_category: Default::default(),
+            r#product_code: Default::default(),
+            r#status: Default::default(),
+            r#request: Default::default(),
+            r#quantity: Default::default(),
+            r#parent: Default::default(),
+            r#collection: Default::default(),
+            r#processing: Default::default(),
+            r#manipulation: Default::default(),
+            r#storage: Default::default(),
+        }
+    }
 }

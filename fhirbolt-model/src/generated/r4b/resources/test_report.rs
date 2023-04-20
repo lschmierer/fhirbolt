@@ -1,6 +1,6 @@
-// Generated on 2023-04-20 by fhirbolt-codegen v0.4.0
+// Generated on 2023-04-20 by fhirbolt-codegen v0.5.0
 #[doc = "A participant in the test execution, either the execution engine, a client, or a server."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct TestReportParticipant {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -15,8 +15,28 @@ pub struct TestReportParticipant {
     #[doc = "The display name of the participant."]
     pub r#display: Option<super::super::types::String>,
 }
+impl Default for TestReportParticipant {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#type: {
+                let mut default: super::super::types::Code = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#uri: {
+                let mut default: super::super::types::Uri = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#display: Default::default(),
+        }
+    }
+}
 #[doc = "The operation performed."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct TestReportSetupActionOperation {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -31,8 +51,24 @@ pub struct TestReportSetupActionOperation {
     #[doc = "A link to further details on the result."]
     pub r#detail: Option<super::super::types::Uri>,
 }
+impl Default for TestReportSetupActionOperation {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#result: {
+                let mut default: super::super::types::Code = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#message: Default::default(),
+            r#detail: Default::default(),
+        }
+    }
+}
 #[doc = "The results of the assertion performed on the previous operations."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct TestReportSetupActionAssert {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -47,8 +83,24 @@ pub struct TestReportSetupActionAssert {
     #[doc = "A link to further details on the result."]
     pub r#detail: Option<super::super::types::String>,
 }
+impl Default for TestReportSetupActionAssert {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#result: {
+                let mut default: super::super::types::Code = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#message: Default::default(),
+            r#detail: Default::default(),
+        }
+    }
+}
 #[doc = "Action would contain either an operation or an assertion."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct TestReportSetupAction {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -61,8 +113,19 @@ pub struct TestReportSetupAction {
     #[doc = "The results of the assertion performed on the previous operations."]
     pub r#assert: Option<TestReportSetupActionAssert>,
 }
+impl Default for TestReportSetupAction {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#operation: Default::default(),
+            r#assert: Default::default(),
+        }
+    }
+}
 #[doc = "The results of the series of required setup operations before the tests were executed."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct TestReportSetup {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -73,8 +136,18 @@ pub struct TestReportSetup {
     #[doc = "Action would contain either an operation or an assertion."]
     pub r#action: Vec<TestReportSetupAction>,
 }
+impl Default for TestReportSetup {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#action: Default::default(),
+        }
+    }
+}
 #[doc = "Action would contain either an operation or an assertion."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct TestReportTestAction {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -87,8 +160,19 @@ pub struct TestReportTestAction {
     #[doc = "The results of the assertion performed on the previous operations."]
     pub r#assert: Option<TestReportSetupActionAssert>,
 }
+impl Default for TestReportTestAction {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#operation: Default::default(),
+            r#assert: Default::default(),
+        }
+    }
+}
 #[doc = "A test executed from the test script."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct TestReportTest {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -103,8 +187,20 @@ pub struct TestReportTest {
     #[doc = "Action would contain either an operation or an assertion."]
     pub r#action: Vec<TestReportTestAction>,
 }
+impl Default for TestReportTest {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#name: Default::default(),
+            r#description: Default::default(),
+            r#action: Default::default(),
+        }
+    }
+}
 #[doc = "The teardown action will only contain an operation."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct TestReportTeardownAction {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -115,8 +211,22 @@ pub struct TestReportTeardownAction {
     #[doc = "An operation would involve a REST request to a server."]
     pub r#operation: TestReportSetupActionOperation,
 }
+impl Default for TestReportTeardownAction {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#operation: {
+                let mut default: TestReportSetupActionOperation = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+        }
+    }
+}
 #[doc = "The results of the series of operations required to clean up after all the tests were executed (successfully or otherwise)."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct TestReportTeardown {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -127,8 +237,18 @@ pub struct TestReportTeardown {
     #[doc = "The teardown action will only contain an operation."]
     pub r#action: Vec<TestReportTeardownAction>,
 }
+impl Default for TestReportTeardown {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#action: Default::default(),
+        }
+    }
+}
 #[doc = "A summary of information based on the results of executing a TestScript."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct TestReport {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,
@@ -170,4 +290,42 @@ pub struct TestReport {
     pub r#test: Vec<TestReportTest>,
     #[doc = "The results of the series of operations required to clean up after all the tests were executed (successfully or otherwise)."]
     pub r#teardown: Option<TestReportTeardown>,
+}
+impl Default for TestReport {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#meta: Default::default(),
+            r#implicit_rules: Default::default(),
+            r#language: Default::default(),
+            r#text: Default::default(),
+            r#contained: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#identifier: Default::default(),
+            r#name: Default::default(),
+            r#status: {
+                let mut default: super::super::types::Code = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#test_script: {
+                let mut default: Box<super::super::types::Reference> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#result: {
+                let mut default: super::super::types::Code = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#score: Default::default(),
+            r#tester: Default::default(),
+            r#issued: Default::default(),
+            r#participant: Default::default(),
+            r#setup: Default::default(),
+            r#test: Default::default(),
+            r#teardown: Default::default(),
+        }
+    }
 }

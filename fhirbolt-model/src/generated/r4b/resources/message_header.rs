@@ -1,18 +1,14 @@
-// Generated on 2023-04-20 by fhirbolt-codegen v0.4.0
+// Generated on 2023-04-20 by fhirbolt-codegen v0.5.0
 #[doc = "Code that identifies the event this message represents and connects it with its definition. Events defined as part of the FHIR specification have the system value \"<http://terminology.hl7.org/CodeSystem/message>-events\".  Alternatively uri to the EventDefinition."]
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub enum MessageHeaderEvent {
     Coding(Box<super::super::types::Coding>),
     Uri(Box<super::super::types::Uri>),
+    #[default]
     Invalid,
 }
-impl Default for MessageHeaderEvent {
-    fn default() -> MessageHeaderEvent {
-        MessageHeaderEvent::Invalid
-    }
-}
 #[doc = "The destination application which the message is intended for."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct MessageHeaderDestination {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -29,8 +25,25 @@ pub struct MessageHeaderDestination {
     #[doc = "Allows data conveyed by a message to be addressed to a particular person or department when routing to a specific application isn't sufficient."]
     pub r#receiver: Option<Box<super::super::types::Reference>>,
 }
+impl Default for MessageHeaderDestination {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#name: Default::default(),
+            r#target: Default::default(),
+            r#endpoint: {
+                let mut default: super::super::types::Url = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#receiver: Default::default(),
+        }
+    }
+}
 #[doc = "The source application from which this message originated."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct MessageHeaderSource {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -49,8 +62,26 @@ pub struct MessageHeaderSource {
     #[doc = "Identifies the routing target to send acknowledgements to."]
     pub r#endpoint: super::super::types::Url,
 }
+impl Default for MessageHeaderSource {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#name: Default::default(),
+            r#software: Default::default(),
+            r#version: Default::default(),
+            r#contact: Default::default(),
+            r#endpoint: {
+                let mut default: super::super::types::Url = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+        }
+    }
+}
 #[doc = "Information about the message that this message is a response to.  Only present if this message is a response."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct MessageHeaderResponse {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -65,8 +96,28 @@ pub struct MessageHeaderResponse {
     #[doc = "Full details of any issues found in the message."]
     pub r#details: Option<Box<super::super::types::Reference>>,
 }
+impl Default for MessageHeaderResponse {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#identifier: {
+                let mut default: super::super::types::Id = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#code: {
+                let mut default: super::super::types::Code = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#details: Default::default(),
+        }
+    }
+}
 #[doc = "The header for a message exchange that is either requesting or responding to an action.  The reference(s) that are the subject of the action as well as other information related to the action are typically transmitted in a bundle in which the MessageHeader resource instance is the first resource in the bundle.\n\nMany implementations are not prepared to use REST and need a messaging based infrastructure."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct MessageHeader {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,
@@ -106,4 +157,33 @@ pub struct MessageHeader {
     pub r#focus: Vec<Box<super::super::types::Reference>>,
     #[doc = "Permanent link to the MessageDefinition for this message."]
     pub r#definition: Option<super::super::types::Canonical>,
+}
+impl Default for MessageHeader {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#meta: Default::default(),
+            r#implicit_rules: Default::default(),
+            r#language: Default::default(),
+            r#text: Default::default(),
+            r#contained: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#event: Default::default(),
+            r#destination: Default::default(),
+            r#sender: Default::default(),
+            r#enterer: Default::default(),
+            r#author: Default::default(),
+            r#source: {
+                let mut default: MessageHeaderSource = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#responsible: Default::default(),
+            r#reason: Default::default(),
+            r#response: Default::default(),
+            r#focus: Default::default(),
+            r#definition: Default::default(),
+        }
+    }
 }

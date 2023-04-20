@@ -1,6 +1,6 @@
-// Generated on 2023-04-20 by fhirbolt-codegen v0.4.0
+// Generated on 2023-04-20 by fhirbolt-codegen v0.5.0
 #[doc = "The manufactured item as contained in the packaged medicinal product."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct MedicinalProductManufactured {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,
@@ -32,4 +32,33 @@ pub struct MedicinalProductManufactured {
     pub r#physical_characteristics: Option<Box<super::super::types::ProdCharacteristic>>,
     #[doc = "Other codeable characteristics."]
     pub r#other_characteristics: Vec<Box<super::super::types::CodeableConcept>>,
+}
+impl Default for MedicinalProductManufactured {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#meta: Default::default(),
+            r#implicit_rules: Default::default(),
+            r#language: Default::default(),
+            r#text: Default::default(),
+            r#contained: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#manufactured_dose_form: {
+                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#unit_of_presentation: Default::default(),
+            r#quantity: {
+                let mut default: Box<super::super::types::Quantity> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#manufacturer: Default::default(),
+            r#ingredient: Default::default(),
+            r#physical_characteristics: Default::default(),
+            r#other_characteristics: Default::default(),
+        }
+    }
 }

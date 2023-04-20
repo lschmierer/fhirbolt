@@ -1,6 +1,6 @@
-// Generated on 2023-04-20 by fhirbolt-codegen v0.4.0
+// Generated on 2023-04-20 by fhirbolt-codegen v0.5.0
 #[doc = "An error, warning, or information message that results from a system action."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct OperationOutcomeIssue {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -21,8 +21,31 @@ pub struct OperationOutcomeIssue {
     #[doc = "A [simple subset of FHIRPath](fhirpath.html#simple) limited to element names, repetition indicators and the default child accessor that identifies one of the elements in the resource that caused this issue to be raised."]
     pub r#expression: Vec<super::super::types::String>,
 }
+impl Default for OperationOutcomeIssue {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#severity: {
+                let mut default: super::super::types::Code = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#code: {
+                let mut default: super::super::types::Code = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#details: Default::default(),
+            r#diagnostics: Default::default(),
+            r#location: Default::default(),
+            r#expression: Default::default(),
+        }
+    }
+}
 #[doc = "A collection of error, warning, or information messages that result from a system action."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct OperationOutcome {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,
@@ -42,4 +65,19 @@ pub struct OperationOutcome {
     pub r#modifier_extension: Vec<Box<super::super::types::Extension>>,
     #[doc = "An error, warning, or information message that results from a system action."]
     pub r#issue: Vec<OperationOutcomeIssue>,
+}
+impl Default for OperationOutcome {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#meta: Default::default(),
+            r#implicit_rules: Default::default(),
+            r#language: Default::default(),
+            r#text: Default::default(),
+            r#contained: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#issue: Default::default(),
+        }
+    }
 }

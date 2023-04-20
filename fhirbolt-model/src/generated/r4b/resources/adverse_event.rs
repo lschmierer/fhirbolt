@@ -1,6 +1,6 @@
-// Generated on 2023-04-20 by fhirbolt-codegen v0.4.0
+// Generated on 2023-04-20 by fhirbolt-codegen v0.5.0
 #[doc = "Information on the possible cause of the event."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct AdverseEventSuspectEntityCausality {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -17,8 +17,21 @@ pub struct AdverseEventSuspectEntityCausality {
     #[doc = "ProbabilityScale | Bayesian | Checklist."]
     pub r#method: Option<Box<super::super::types::CodeableConcept>>,
 }
+impl Default for AdverseEventSuspectEntityCausality {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#assessment: Default::default(),
+            r#product_relatedness: Default::default(),
+            r#author: Default::default(),
+            r#method: Default::default(),
+        }
+    }
+}
 #[doc = "Describes the entity that is suspected to have caused the adverse event."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct AdverseEventSuspectEntity {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -31,8 +44,23 @@ pub struct AdverseEventSuspectEntity {
     #[doc = "Information on the possible cause of the event."]
     pub r#causality: Vec<AdverseEventSuspectEntityCausality>,
 }
+impl Default for AdverseEventSuspectEntity {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#instance: {
+                let mut default: Box<super::super::types::Reference> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#causality: Default::default(),
+        }
+    }
+}
 #[doc = "Actual or  potential/avoided event causing unintended physical injury resulting from or contributed to by medical care, a research study or other healthcare setting factors that requires additional monitoring, treatment, or hospitalization, or that results in death."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct AdverseEvent {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,
@@ -90,4 +118,46 @@ pub struct AdverseEvent {
     pub r#reference_document: Vec<Box<super::super::types::Reference>>,
     #[doc = "AdverseEvent.study."]
     pub r#study: Vec<Box<super::super::types::Reference>>,
+}
+impl Default for AdverseEvent {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#meta: Default::default(),
+            r#implicit_rules: Default::default(),
+            r#language: Default::default(),
+            r#text: Default::default(),
+            r#contained: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#identifier: Default::default(),
+            r#actuality: {
+                let mut default: super::super::types::Code = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#category: Default::default(),
+            r#event: Default::default(),
+            r#subject: {
+                let mut default: Box<super::super::types::Reference> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#encounter: Default::default(),
+            r#date: Default::default(),
+            r#detected: Default::default(),
+            r#recorded_date: Default::default(),
+            r#resulting_condition: Default::default(),
+            r#location: Default::default(),
+            r#seriousness: Default::default(),
+            r#severity: Default::default(),
+            r#outcome: Default::default(),
+            r#recorder: Default::default(),
+            r#contributor: Default::default(),
+            r#suspect_entity: Default::default(),
+            r#subject_medical_history: Default::default(),
+            r#reference_document: Default::default(),
+            r#study: Default::default(),
+        }
+    }
 }

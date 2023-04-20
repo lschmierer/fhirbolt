@@ -1,19 +1,15 @@
-// Generated on 2023-04-20 by fhirbolt-codegen v0.4.0
+// Generated on 2023-04-20 by fhirbolt-codegen v0.5.0
 #[doc = "Used to capture quantitative values for a variety of elements. If only limits are given, the arithmetic mean would be the average. If only a single definite value for a given element is given, it would be captured in this field."]
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub enum SubstanceAmountAmount {
     Quantity(Box<super::super::types::Quantity>),
     Range(Box<super::super::types::Range>),
     String(Box<super::super::types::String>),
+    #[default]
     Invalid,
 }
-impl Default for SubstanceAmountAmount {
-    fn default() -> SubstanceAmountAmount {
-        SubstanceAmountAmount::Invalid
-    }
-}
 #[doc = "Reference range of possible or expected values."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct SubstanceAmountReferenceRange {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -24,8 +20,18 @@ pub struct SubstanceAmountReferenceRange {
     #[doc = "Upper limit possible or expected."]
     pub r#high_limit: Option<Box<super::super::types::Quantity>>,
 }
+impl Default for SubstanceAmountReferenceRange {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#low_limit: Default::default(),
+            r#high_limit: Default::default(),
+        }
+    }
+}
 #[doc = "Base StructureDefinition for SubstanceAmount Type: Chemical substances are a single substance type whose primary defining element is the molecular structure. Chemical substances shall be defined on the basis of their complete covalent molecular structure; the presence of a salt (counter-ion) and/or solvates (water, alcohols) is also captured. Purity, grade, physical form or particle size are not taken into account in the definition of a chemical substance or in the assignment of a Substance ID."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct SubstanceAmount {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -41,4 +47,17 @@ pub struct SubstanceAmount {
     pub r#amount_text: Option<super::super::types::String>,
     #[doc = "Reference range of possible or expected values."]
     pub r#reference_range: Option<SubstanceAmountReferenceRange>,
+}
+impl Default for SubstanceAmount {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#amount: Default::default(),
+            r#amount_type: Default::default(),
+            r#amount_text: Default::default(),
+            r#reference_range: Default::default(),
+        }
+    }
 }

@@ -1,4 +1,4 @@
-// Generated on 2023-04-20 by fhirbolt-codegen v0.4.0
+// Generated on 2023-04-20 by fhirbolt-codegen v0.5.0
 impl crate::Resource for fhirbolt_model::r4b::resources::Slot {
     const FHIR_RELEASE: fhirbolt_shared::FhirRelease = fhirbolt_shared::FhirReleases::R4B;
 }
@@ -10,6 +10,13 @@ impl serde::ser::Serialize
         S: serde::ser::Serializer,
     {
         use serde::ser::SerializeMap;
+        #[allow(dead_code)]
+        fn missing_field_error<T, E: serde::ser::Error>(field: &str) -> Result<T, E> {
+            Err(E::custom(format!(
+                "missing required field `{}.{}`",
+                "Slot", field
+            )))
+        }
         let mut state = serializer.serialize_map(None)?;
         state.serialize_entry("resourceType", "Slot")?;
         if let Some(value) = self.value.r#id.as_ref() {
@@ -101,10 +108,16 @@ impl serde::ser::Serialize
         if let Some(some) = self.value.r#appointment_type.as_ref() {
             self.with_context(some, |ctx| state.serialize_entry("appointmentType", ctx))?;
         }
+        if self.value.r#schedule.id.as_deref() == Some("$invalid") {
+            return missing_field_error("schedule");
+        }
         self.with_context(&self.value.r#schedule, |ctx| {
             state.serialize_entry("schedule", ctx)
         })?;
         if self.output_json {
+            if self.value.r#status.id.as_deref() == Some("$invalid") {
+                return missing_field_error("status");
+            }
             if let Some(some) = self.value.r#status.value.as_ref() {
                 let some = Ok(some)?;
                 state.serialize_entry("status", &some)?;
@@ -119,11 +132,17 @@ impl serde::ser::Serialize
                 })?;
             }
         } else {
+            if self.value.r#status.id.as_deref() == Some("$invalid") {
+                return missing_field_error("status");
+            }
             self.with_context(&self.value.r#status, |ctx| {
                 state.serialize_entry("status", ctx)
             })?;
         }
         if self.output_json {
+            if self.value.r#start.id.as_deref() == Some("$invalid") {
+                return missing_field_error("start");
+            }
             if let Some(some) = self.value.r#start.value.as_ref() {
                 let some = Ok(some)?;
                 state.serialize_entry("start", &some)?;
@@ -138,11 +157,17 @@ impl serde::ser::Serialize
                 })?;
             }
         } else {
+            if self.value.r#start.id.as_deref() == Some("$invalid") {
+                return missing_field_error("start");
+            }
             self.with_context(&self.value.r#start, |ctx| {
                 state.serialize_entry("start", ctx)
             })?;
         }
         if self.output_json {
+            if self.value.r#end.id.as_deref() == Some("$invalid") {
+                return missing_field_error("end");
+            }
             if let Some(some) = self.value.r#end.value.as_ref() {
                 let some = Ok(some)?;
                 state.serialize_entry("end", &some)?;
@@ -155,6 +180,9 @@ impl serde::ser::Serialize
                 self.with_context(&primitive_element, |ctx| state.serialize_entry("_end", ctx))?;
             }
         } else {
+            if self.value.r#end.id.as_deref() == Some("$invalid") {
+                return missing_field_error("end");
+            }
             self.with_context(&self.value.r#end, |ctx| state.serialize_entry("end", ctx))?;
         }
         if self.output_json {

@@ -1,18 +1,14 @@
-// Generated on 2023-04-20 by fhirbolt-codegen v0.4.0
+// Generated on 2023-04-20 by fhirbolt-codegen v0.5.0
 #[doc = "Relevant date for this case."]
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub enum RegulatedAuthorizationCaseDate {
     Period(Box<super::super::types::Period>),
     DateTime(Box<super::super::types::DateTime>),
+    #[default]
     Invalid,
 }
-impl Default for RegulatedAuthorizationCaseDate {
-    fn default() -> RegulatedAuthorizationCaseDate {
-        RegulatedAuthorizationCaseDate::Invalid
-    }
-}
 #[doc = "The case or regulatory procedure for granting or amending a regulated authorization. An authorization is granted in response to submissions/applications by those seeking authorization. A case is the administrative process that deals with the application(s) that relate to this and assesses them. Note: This area is subject to ongoing review and the workgroup is seeking implementer feedback on its use (see link at bottom of page)."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct RegulatedAuthorizationCase {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -31,8 +27,22 @@ pub struct RegulatedAuthorizationCase {
     #[doc = "A regulatory submission from an organization to a regulator, as part of an assessing case. Multiple applications may occur over time, with more or different information to support or modify the submission or the authorization. The applications can be considered as steps within the longer running case or procedure for this authorization process."]
     pub r#application: Vec<RegulatedAuthorizationCase>,
 }
+impl Default for RegulatedAuthorizationCase {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#identifier: Default::default(),
+            r#type: Default::default(),
+            r#status: Default::default(),
+            r#date: Default::default(),
+            r#application: Default::default(),
+        }
+    }
+}
 #[doc = "Regulatory approval, clearance or licencing related to a regulated product, treatment, facility or activity that is cited in a guidance, regulation, rule or legislative act. An example is Market Authorization relating to a Medicinal Product."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct RegulatedAuthorization {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,
@@ -80,4 +90,33 @@ pub struct RegulatedAuthorization {
     pub r#attached_document: Vec<Box<super::super::types::Reference>>,
     #[doc = "The case or regulatory procedure for granting or amending a regulated authorization. An authorization is granted in response to submissions/applications by those seeking authorization. A case is the administrative process that deals with the application(s) that relate to this and assesses them. Note: This area is subject to ongoing review and the workgroup is seeking implementer feedback on its use (see link at bottom of page)."]
     pub r#case: Option<RegulatedAuthorizationCase>,
+}
+impl Default for RegulatedAuthorization {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#meta: Default::default(),
+            r#implicit_rules: Default::default(),
+            r#language: Default::default(),
+            r#text: Default::default(),
+            r#contained: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#identifier: Default::default(),
+            r#subject: Default::default(),
+            r#type: Default::default(),
+            r#description: Default::default(),
+            r#region: Default::default(),
+            r#status: Default::default(),
+            r#status_date: Default::default(),
+            r#validity_period: Default::default(),
+            r#indication: Default::default(),
+            r#intended_use: Default::default(),
+            r#basis: Default::default(),
+            r#holder: Default::default(),
+            r#regulator: Default::default(),
+            r#attached_document: Default::default(),
+            r#case: Default::default(),
+        }
+    }
 }

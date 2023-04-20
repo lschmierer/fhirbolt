@@ -1,6 +1,6 @@
-// Generated on 2023-04-20 by fhirbolt-codegen v0.4.0
+// Generated on 2023-04-20 by fhirbolt-codegen v0.5.0
 #[doc = "Coding Type: A reference to a code defined by a terminology system.\n\nReferences to codes are very common in healthcare models."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct Coding {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -16,4 +16,17 @@ pub struct Coding {
     pub r#display: Option<super::super::types::String>,
     #[doc = "Indicates that this coding was chosen by a user directly - e.g. off a pick list of available items (codes or displays)."]
     pub r#user_selected: Option<super::super::types::Boolean>,
+}
+impl Default for Coding {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#system: Default::default(),
+            r#version: Default::default(),
+            r#code: Default::default(),
+            r#display: Default::default(),
+            r#user_selected: Default::default(),
+        }
+    }
 }
