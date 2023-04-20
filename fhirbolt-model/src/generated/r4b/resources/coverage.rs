@@ -1,4 +1,4 @@
-// Generated on 2023-04-19 by fhirbolt-codegen v0.3.0
+// Generated on 2023-04-20 by fhirbolt-codegen v0.4.0
 #[doc = "The amount due from the patient for the cost category."]
 #[derive(Debug, Clone, PartialEq)]
 pub enum CoverageCostToBeneficiaryValue {

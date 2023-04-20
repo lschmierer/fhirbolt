@@ -21,7 +21,7 @@ jobs:
       - name: Build
         run: cargo build --release --verbose
   
-  test_r4:
+  test_serde_json_r4:
     needs: build
     runs-on: ubuntu-latest
 
@@ -31,9 +31,9 @@ jobs:
         with:
           shared-key: "rust-cache"
       - name: Run tests
-        run: cargo test --features r4 --release --verbose
+        run: cargo test -p tests --test test_serde_json --features r4 --release --verbose
   
-  test_r4b:
+  test_serde_xml_r4:
     needs: build
     runs-on: ubuntu-latest
 
@@ -43,7 +43,55 @@ jobs:
         with:
           shared-key: "rust-cache"
       - name: Run tests
-        run: cargo test --features r4b --release --verbose
+        run: cargo test -p tests --test test_serde_xml --features r4 --release --verbose
+  
+  test_serde_json_r4b:
+    needs: build
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - uses: Swatinem/rust-cache@v2
+        with:
+          shared-key: "rust-cache"
+      - name: Run tests
+        run: cargo test -p tests --test test_serde_json --features r4b --release --verbose
+  
+  test_serde_xml_r4b:
+    needs: build
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - uses: Swatinem/rust-cache@v2
+        with:
+          shared-key: "rust-cache"
+      - name: Run tests
+        run: cargo test -p tests --test test_serde_xml --features r4b --release --verbose
+  
+  test_serde_json_r5:
+    needs: build
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - uses: Swatinem/rust-cache@v2
+        with:
+          shared-key: "rust-cache"
+      - name: Run tests
+        run: cargo test -p tests --test test_serde_json --features r5 --release --verbose
+  
+  test_serde_xml_r5:
+    needs: build
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - uses: Swatinem/rust-cache@v2
+        with:
+          shared-key: "rust-cache"
+      - name: Run tests
+        run: cargo test -p tests --test test_serde_xml --features r5 --release --verbose
 
   benchmark:
     needs: build

@@ -20,6 +20,7 @@ const PRIMITIVES: &[&str] = &[
     "id",
     "instant",
     "integer",
+    "integer64",
     "markdown",
     "oid",
     "positiveInt",
@@ -30,13 +31,6 @@ const PRIMITIVES: &[&str] = &[
     "url",
     "uuid",
     "xhtml",
-];
-
-const ABSTRACT_RESOURCES: &[&str] = &[
-    "Resource",
-    "DomainResource",
-    "MetadataResource",
-    "CanonicalResource",
 ];
 
 const RESOURCE_COMMON_FIELDS: &[&str] = &[
@@ -56,7 +50,8 @@ pub fn parse_modules<'a>(
 ) -> Vec<RustFhirModule> {
     flatten_bundle(bundle)
         .filter(|s| s.kind != "logical")
-        .filter(|s| !ABSTRACT_RESOURCES.contains(&s.name.as_str()))
+        .filter(|s| !s.r#abstract)
+        //.filter(|s| !ABSTRACT_TYPES.contains(&s.name.as_str()))
         .filter(|s| s.name != "Element")
         .map(|s| {
             let is_resource = s.kind == "resource";
@@ -344,10 +339,17 @@ fn match_field_type(path: &str, code: &str, force_box: bool) -> RustFhirFieldTyp
             r#box: false,
             contains_primitive: false,
         },
-        "System.Integer" => RustFhirFieldType {
-            name: "i32".into(),
-            r#box: false,
-            contains_primitive: false,
+        "System.Integer" => match path {
+            "integer64.value" => RustFhirFieldType {
+                name: "i64".into(),
+                r#box: false,
+                contains_primitive: false,
+            },
+            _ => RustFhirFieldType {
+                name: "i32".into(),
+                r#box: false,
+                contains_primitive: false,
+            },
         },
         "System.String" => match path {
             "unsignedInt.value" | "positiveInt.value" => RustFhirFieldType {
@@ -423,6 +425,9 @@ fn collect_type_hint(
         }
         "integer" => {
             type_hint_collector.integer_paths.insert(path.to_string());
+        }
+        "integer64" => {
+            type_hint_collector.integer64_paths.insert(path.to_string());
         }
         "unsignedInt" => {
             type_hint_collector

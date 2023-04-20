@@ -7,6 +7,7 @@ use crate::ir::{
 
 const XHTML_TYPE: &str = "types::Xhtml";
 const DECIMAL_TYPE: &str = "types::Decimal";
+const INTEGER64_TYPE: &str = "types::Integer64";
 
 pub fn implement_serialize(
     r#struct: &RustFhirStruct,
@@ -243,6 +244,8 @@ fn serialize_enum_variant(
 
     let map_intermediate_type_tokens: TokenStream = if variant.r#type.name == DECIMAL_TYPE {
         quote! { some.parse::<serde_json::Number>().map_err(|_| serde::ser::Error::custom("error serializing decimal")) }
+    } else if variant.r#type.name == INTEGER64_TYPE {
+        quote! { Ok(some.to_string()) }
     } else {
         quote! { Ok(some) }
     };
@@ -286,8 +289,8 @@ fn serialize_primitive_value(field: &RustFhirStructField, is_decimal: bool) -> T
 
     if is_decimal && field.name == "value" {
         quote! {
-            if let Some(some) = self.value.value.as_ref() {
-                let _value = some
+            if let Some(value) = self.value.value.as_ref() {
+                let _value = value
                     .parse::<serde_json::Number>()
                     .map_err(|_| serde::ser::Error::custom("error serializing decimal"))?;
                 state.serialize_entry("value", &_value)?;
@@ -327,6 +330,8 @@ fn serialize_primitive_json(field: &RustFhirStructField) -> TokenStream {
 
     let map_intermediate_type_tokens: TokenStream = if field.r#type.name == DECIMAL_TYPE {
         quote! { some.parse::<serde_json::Number>().map_err(|_| serde::ser::Error::custom("error serializing decimal")) }
+    } else if field.r#type.name == INTEGER64_TYPE {
+        quote! { Ok(some.to_string()) }
     } else {
         quote! { Ok(some) }
     };

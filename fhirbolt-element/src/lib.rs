@@ -155,7 +155,8 @@ impl<const R: FhirRelease> fmt::Debug for Value<R> {
 #[derive(Clone, Debug, PartialEq)]
 pub enum Primitive {
     Bool(bool),
-    Integer(i64),
+    Integer(i32),
+    Integer64(i64),
     Decimal(String),
     String(String),
 }

@@ -19,6 +19,7 @@ path = "test_serde_xml.rs"
 [features]
 r4 = ["fhirbolt/r4"]
 r4b = ["fhirbolt/r4b"]
+r5 = ["fhirbolt/r5"]
 
 [dependencies]
 reqwest = { version = "0.11", features = ["blocking"] }

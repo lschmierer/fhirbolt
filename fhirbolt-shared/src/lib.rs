@@ -21,4 +21,6 @@ pub mod FhirReleases {
     pub const R4: FhirRelease = 4_0;
     /// Constant for FHIR release R4B.
     pub const R4B: FhirRelease = 4_3;
+    /// Constant for FHIR release R5.
+    pub const R5: FhirRelease = 5_0;
 }

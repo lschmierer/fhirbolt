@@ -1,4 +1,4 @@
-// Generated on 2023-04-19 by fhirbolt-codegen v0.3.0
+// Generated on 2023-04-20 by fhirbolt-codegen v0.4.0
 impl serde::ser::Serialize
     for crate::context::ser::SerializationContext<&fhirbolt_model::r4b::types::Decimal>
 {
@@ -16,8 +16,8 @@ impl serde::ser::Serialize
                 state.serialize_entry("extension", ctx)
             })?;
         }
-        if let Some(some) = self.value.value.as_ref() {
-            let _value = some
+        if let Some(value) = self.value.value.as_ref() {
+            let _value = value
                 .parse::<serde_json::Number>()
                 .map_err(|_| serde::ser::Error::custom("error serializing decimal"))?;
             state.serialize_entry("value", &_value)?;

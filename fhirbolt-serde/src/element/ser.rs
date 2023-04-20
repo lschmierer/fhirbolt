@@ -33,7 +33,8 @@ impl<const R: FhirRelease> Serialize for SerializationContext<&Value<R>> {
             }
             Value::Primitive(value) => match value {
                 Primitive::Bool(b) => serializer.serialize_bool(*b),
-                Primitive::Integer(i) => serializer.serialize_i64(*i),
+                Primitive::Integer(i) => serializer.serialize_i32(*i),
+                Primitive::Integer64(i) => serializer.serialize_str(&i.to_string()),
                 Primitive::Decimal(s) => {
                     if self.output_json {
                         serde_json::Number::from_str(s)
@@ -113,7 +114,9 @@ impl<const R: FhirRelease> Serialize for SerializationContext<&Element<R>> {
 
         let values = if !self.output_json || self.config.sort_json {
             let mut values = self.value.iter().collect::<Vec<_>>();
+
             values.sort_unstable_by_key(|(k, _v)| self.unwrap_current_path().position_of_child(k));
+
             MaybeSorted::Sorted(values.into_iter())
         } else {
             MaybeSorted::Unsorted(self.value.iter())
@@ -335,7 +338,7 @@ impl<const R: FhirRelease> ser::Serializer for Serializer<R> {
 
     #[inline]
     fn serialize_i64(self, v: i64) -> Result<Self::Ok, Self::Error> {
-        Ok(Value::Primitive(Primitive::Integer(v.into())))
+        Ok(Value::Primitive(Primitive::Integer64(v.into())))
     }
 
     #[inline]
@@ -350,12 +353,12 @@ impl<const R: FhirRelease> ser::Serializer for Serializer<R> {
 
     #[inline]
     fn serialize_u32(self, v: u32) -> Result<Self::Ok, Self::Error> {
-        Ok(Value::Primitive(Primitive::Integer(v.into())))
+        Ok(Value::Primitive(Primitive::Integer(v as i32)))
     }
 
     #[inline]
     fn serialize_u64(self, v: u64) -> Result<Self::Ok, Self::Error> {
-        Ok(Value::Primitive(Primitive::Integer(v as i64)))
+        Ok(Value::Primitive(Primitive::Integer64(v as i64)))
     }
 
     #[inline]

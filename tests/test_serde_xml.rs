@@ -107,3 +107,15 @@ fn test_serde_xml_r4b() {
         DeserializationMode::Lax,
     );
 }
+
+#[cfg(feature = "r5")]
+#[test]
+fn test_serde_xml_r5() {
+    test_serde_xml::<fhirbolt::model::r5::Resource, { FhirReleases::R5 }>(
+        DeserializationMode::Strict,
+    );
+    test_serde_xml::<fhirbolt::model::r5::Resource, { FhirReleases::R5 }>(
+        DeserializationMode::Compatibility,
+    );
+    test_serde_xml::<fhirbolt::model::r5::Resource, { FhirReleases::R5 }>(DeserializationMode::Lax);
+}

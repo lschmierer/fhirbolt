@@ -51,6 +51,7 @@ pub struct StructureDefinition {
     pub description: Option<String>,
     pub purpose: Option<String>,
     pub kind: String,
+    pub r#abstract: bool,
     pub r#type: String,
     pub name: String,
     pub snapshot: StructureDefinitionSnapshot,

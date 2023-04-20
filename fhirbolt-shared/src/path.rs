@@ -13,6 +13,7 @@ fn type_hints(fhir_release: FhirRelease) -> &'static TypeHints {
     match fhir_release {
         FhirReleases::R4 => &type_hints::r4::TYPE_HINTS,
         FhirReleases::R4B => &type_hints::r4b::TYPE_HINTS,
+        FhirReleases::R5 => &type_hints::r5::TYPE_HINTS,
         _ => panic!("invalid FHIR release"),
     }
 }
@@ -21,6 +22,7 @@ fn element_map(fhir_release: FhirRelease) -> &'static ElementMap {
     match fhir_release {
         FhirReleases::R4 => &element_map::r4::ELEMENT_MAP,
         FhirReleases::R4B => &element_map::r4b::ELEMENT_MAP,
+        FhirReleases::R5 => &element_map::r5::ELEMENT_MAP,
         _ => panic!("invalid FHIR release"),
     }
 }
@@ -73,7 +75,8 @@ impl ElementPath {
         let current_type_path = self.current_type_path();
 
         self.current_element_is_boolean()
-            || self.current_element_is_integer()
+        || self.current_element_is_integer64()
+        || self.current_element_is_integer()
             || self.current_element_is_unsigned_integer()
             || self.current_element_is_positive_integer()
             || self.current_element_is_decimal()
@@ -116,6 +119,13 @@ impl ElementPath {
     }
 
     #[inline]
+    pub fn current_element_is_integer64(&self) -> bool {
+        type_hints(self.fhir_release)
+            .integer64_paths
+            .contains(&self.current_type_path().path)
+    }
+
+    #[inline]
     pub fn current_element_is_unsigned_integer(&self) -> bool {
         type_hints(self.fhir_release)
             .unsigned_integer_paths
@@ -149,6 +159,15 @@ impl ElementPath {
     pub fn parent_element_is_integer(&self) -> bool {
         if let Some(path) = self.current_type_path().parent() {
             type_hints(self.fhir_release).integer_paths.contains(path)
+        } else {
+            false
+        }
+    }
+
+    #[inline]
+    pub fn parent_element_is_integer64(&self) -> bool {
+        if let Some(path) = self.current_type_path().parent() {
+            type_hints(self.fhir_release).integer64_paths.contains(path)
         } else {
             false
         }
@@ -237,8 +256,14 @@ impl ElementPath {
 
     #[inline]
     pub fn position_of_child(&self, child: &str) -> usize {
-        // on R4 ExampleScenario.instance contains a field named "resourceType"
-        if child == "resourceType" && self.current_type_path().path != "ExampleScenario.instance" {
+        if child == "resourceType"
+            // on R4 ExampleScenario.instance contains a field named "resourceType"
+            && !self.current_type_path().path.starts_with(&"ExampleScenario.instance")
+            // on R5 Consent.provision contains a field named "resourceType"
+            && !self.current_type_path().path.starts_with(&"Consent.provision")
+            // on R5 Subscription.filterBy contains a field named "resourceType"
+            && !self.current_type_path().path.starts_with(&"Subscription.filterBy")
+        {
             0
         } else {
             self.children()

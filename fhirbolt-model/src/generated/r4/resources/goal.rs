@@ -1,4 +1,4 @@
-// Generated on 2023-04-19 by fhirbolt-codegen v0.3.0
+// Generated on 2023-04-20 by fhirbolt-codegen v0.4.0
 #[doc = "The date or event after which the goal should begin being pursued."]
 #[derive(Debug, Clone, PartialEq)]
 pub enum GoalStart {

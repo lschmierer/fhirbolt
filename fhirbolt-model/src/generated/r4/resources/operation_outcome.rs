@@ -1,4 +1,4 @@
-// Generated on 2023-04-19 by fhirbolt-codegen v0.3.0
+// Generated on 2023-04-20 by fhirbolt-codegen v0.4.0
 #[doc = "An error, warning, or information message that results from a system action."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub struct OperationOutcomeIssue {

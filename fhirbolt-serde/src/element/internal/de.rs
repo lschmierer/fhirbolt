@@ -140,6 +140,8 @@ where
                 || current_path.parent_element_is_unsigned_integer()
             {
                 *p = map_integer::<D>(p)?
+            } else if current_path.parent_element_is_integer64() {
+                *p = map_integer64::<D>(p)?
             } else if current_path.parent_element_is_decimal() {
                 *p = map_decimal::<D>(p)?
             } else {
@@ -158,7 +160,14 @@ where
     let expected = "a boolean";
     match primitive {
         Primitive::Bool(b) => Ok(Primitive::Bool(*b)),
-        Primitive::Integer(i) => Err(de::Error::invalid_type(Unexpected::Signed(*i), &expected)),
+        Primitive::Integer(i) => Err(de::Error::invalid_type(
+            Unexpected::Signed((*i).into()),
+            &expected,
+        )),
+        Primitive::Integer64(i) => Err(de::Error::invalid_type(
+            Unexpected::Other(&format!("integer `{}`", i)),
+            &expected,
+        )),
         Primitive::Decimal(s) => {
             return Err(de::Error::invalid_type(
                 Unexpected::Other(&format!("decimal `{}`", s)),
@@ -180,7 +189,8 @@ where
     let expected = "an integer";
     match primitive {
         Primitive::Bool(b) => Err(de::Error::invalid_type(Unexpected::Bool(*b), &expected)),
-        Primitive::Integer(i) => Ok(Primitive::Integer(*i)),
+        Primitive::Integer(i) => Ok(Primitive::Integer(*i as i32)),
+        Primitive::Integer64(i) => Ok(Primitive::Integer(*i as i32)),
         Primitive::Decimal(s) => {
             return Err(de::Error::invalid_type(
                 Unexpected::Other(&format!("decimal `{}`", s)),
@@ -195,6 +205,29 @@ where
     }
 }
 
+fn map_integer64<'a, D>(primitive: &Primitive) -> Result<Primitive, D::Error>
+where
+    D: de::Deserializer<'a>,
+{
+    let expected = "an integer64";
+    match primitive {
+        Primitive::Bool(b) => Err(de::Error::invalid_type(Unexpected::Bool(*b), &expected)),
+        Primitive::Integer(i) => Ok(Primitive::Integer64((*i).into())),
+        Primitive::Integer64(i) => Ok(Primitive::Integer64(*i)),
+        Primitive::Decimal(s) => {
+            return Err(de::Error::invalid_type(
+                Unexpected::Other(&format!("decimal `{}`", s)),
+                &expected,
+            ))
+        }
+        Primitive::String(s) => {
+            Ok(Primitive::Integer64(s.parse().map_err(|_| {
+                de::Error::invalid_value(Unexpected::Other(&s), &expected)
+            })?))
+        }
+    }
+}
+
 fn map_decimal<'a, D>(primitive: &mut Primitive) -> Result<Primitive, D::Error>
 where
     D: de::Deserializer<'a>,
@@ -203,6 +236,7 @@ where
     match primitive {
         Primitive::Bool(b) => Err(de::Error::invalid_type(Unexpected::Bool(*b), &expected)),
         Primitive::Integer(i) => Ok(Primitive::Decimal(i.to_string())),
+        Primitive::Integer64(i) => Ok(Primitive::Decimal(i.to_string())),
         Primitive::Decimal(s) | Primitive::String(s) => Ok(Primitive::Decimal(mem::take(s))),
     }
 }
@@ -214,7 +248,14 @@ where
     let expected = "a string";
     match primitive {
         Primitive::Bool(b) => Err(de::Error::invalid_type(Unexpected::Bool(*b), &expected)),
-        Primitive::Integer(i) => Err(de::Error::invalid_type(Unexpected::Signed(*i), &expected)),
+        Primitive::Integer(i) => Err(de::Error::invalid_type(
+            Unexpected::Signed((*i).into()),
+            &expected,
+        )),
+        Primitive::Integer64(i) => Err(de::Error::invalid_type(
+            Unexpected::Other(&format!("integer `{}`", i)),
+            &expected,
+        )),
         Primitive::Decimal(s) => {
             return Err(de::Error::invalid_type(
                 Unexpected::Other(&format!("decimal `{}`", s)),
@@ -304,25 +345,34 @@ impl<'a, 'de, const R: FhirRelease> Visitor<'de> for ValueVisitor<'a, R> {
     }
 
     #[inline]
+    fn visit_u64<E>(self, v: u64) -> Result<Self::Value, E>
+    where
+        E: de::Error,
+    {
+        if self.0.from_json {
+            let mut element = Element::default();
+            element.insert(
+                "value".into(),
+                Value::Primitive(Primitive::Integer64(v as i64)),
+            );
+            Ok(Value::Element(element))
+        } else {
+            Ok(Value::Primitive(Primitive::Integer64(v as i64)))
+        }
+    }
+
+    #[inline]
     fn visit_i64<E>(self, v: i64) -> Result<Self::Value, E>
     where
         E: de::Error,
     {
         if self.0.from_json {
             let mut element = Element::default();
-            element.insert("value".into(), Value::Primitive(Primitive::Integer(v)));
+            element.insert("value".into(), Value::Primitive(Primitive::Integer64(v)));
             Ok(Value::Element(element))
         } else {
-            Ok(Value::Primitive(Primitive::Integer(v)))
+            Ok(Value::Primitive(Primitive::Integer64(v)))
         }
-    }
-
-    #[inline]
-    fn visit_u64<E>(self, v: u64) -> Result<Self::Value, E>
-    where
-        E: de::Error,
-    {
-        self.visit_i64(v as i64)
     }
 
     #[inline]
@@ -330,7 +380,16 @@ impl<'a, 'de, const R: FhirRelease> Visitor<'de> for ValueVisitor<'a, R> {
     where
         E: de::Error,
     {
-        self.visit_string(v.to_string())
+        if self.0.from_json {
+            let mut element = Element::default();
+            element.insert(
+                "value".into(),
+                Value::Primitive(Primitive::Decimal(v.to_string())),
+            );
+            Ok(Value::Element(element))
+        } else {
+            Ok(Value::Primitive(Primitive::Decimal(v.to_string())))
+        }
     }
 
     #[inline]
@@ -376,6 +435,8 @@ impl<'a, 'de, const R: FhirRelease> Visitor<'de> for ValueVisitor<'a, R> {
 
             if key == "resourceType"
                 && self.0.current_element() != CurrentElement::ExampleScenarioInstance
+                && self.0.current_element() != CurrentElement::ConsentProvision
+                && self.0.current_element() != CurrentElement::SubscriptionFilterBy
             {
                 let value: String = map_access.next_value()?;
 
@@ -384,6 +445,8 @@ impl<'a, 'de, const R: FhirRelease> Visitor<'de> for ValueVisitor<'a, R> {
                 self.0.push_current_element(match key.as_str() {
                     "id" => CurrentElement::Id,
                     "instance" => CurrentElement::ExampleScenarioInstance,
+                    "provision" => CurrentElement::ConsentProvision,
+                    "filterBy" => CurrentElement::SubscriptionFilterBy,
                     "extension" | "modifierExtension" => CurrentElement::Extension,
                     "url" => {
                         if self.0.current_element() == CurrentElement::Extension {
@@ -452,9 +515,29 @@ impl<'a, 'de, const R: FhirRelease> Visitor<'de> for ValueVisitor<'a, R> {
     {
         let mut elements = Vec::new();
 
-        while let Some(value) =
+        while let Some(value) = if self.0.from_json {
+            let serde_json_value: Option<Option<serde_json::Value>> = seq_access.next_element()?;
+            match serde_json_value {
+                Some(Some(serde_json::Value::Number(n))) => {
+                    let mut decimal_element = Element::default();
+                    decimal_element.insert(
+                        "value".into(),
+                        Value::Primitive(Primitive::String(n.to_string())),
+                    );
+                    Some(Some(Value::Element(decimal_element)))
+                }
+                Some(Some(serde_json_value)) => Some(Some(
+                    self.0
+                        .transmute::<Value<R>>()
+                        .deserialize(serde_json_value)
+                        .map_err(de::Error::custom)?,
+                )),
+                Some(None) => Some(None),
+                None => None,
+            }
+        } else {
             seq_access.next_element_seed(self.0.transmute::<Option<Value<R>>>())?
-        {
+        } {
             match value {
                 Some(Value::Element(e)) => elements.push(e),
                 Some(Value::Sequence(_)) => {

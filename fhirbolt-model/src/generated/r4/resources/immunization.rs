@@ -1,4 +1,4 @@
-// Generated on 2023-04-19 by fhirbolt-codegen v0.3.0
+// Generated on 2023-04-20 by fhirbolt-codegen v0.4.0
 #[doc = "Date vaccine administered or was to be administered."]
 #[derive(Debug, Clone, PartialEq)]
 pub enum ImmunizationOccurrence {

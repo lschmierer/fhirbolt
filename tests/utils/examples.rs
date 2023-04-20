@@ -14,6 +14,7 @@ fn fhir_release_name(fhir_release: FhirRelease) -> &'static str {
     match fhir_release {
         FhirReleases::R4 => "r4",
         FhirReleases::R4B => "r4b",
+        FhirReleases::R5 => "r5",
         _ => panic!("unknown FHIR release"),
     }
 }
