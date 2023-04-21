@@ -37,7 +37,7 @@ You should only include the release that you really need, as this signigicantly 
 
 ```toml
 [dependencies]
-fhirbolt = { version = "0.2", features = ["r4b"] }
+fhirbolt = { version = "0.3", features = ["r4b"] }
 ```
 
 ## Example
