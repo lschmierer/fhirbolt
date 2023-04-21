@@ -1,6 +1,6 @@
-// Generated on 2023-04-20 by fhirbolt-codegen v0.4.0
+// Generated on 2023-04-20 by fhirbolt-codegen v0.5.0
 #[doc = "Base StructureDefinition for Expression Type: A expression that is evaluated in a specified context and returns a value. The context of use of the expression must specify the context in which the expression is evaluated, and how the result of the expression is used."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct Expression {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -16,4 +16,21 @@ pub struct Expression {
     pub r#expression: Option<super::super::types::String>,
     #[doc = "A URI that defines where the expression is found."]
     pub r#reference: Option<super::super::types::Uri>,
+}
+impl Default for Expression {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#description: Default::default(),
+            r#name: Default::default(),
+            r#language: {
+                let mut default: super::super::types::Code = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#expression: Default::default(),
+            r#reference: Default::default(),
+        }
+    }
 }

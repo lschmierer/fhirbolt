@@ -1,18 +1,14 @@
-// Generated on 2023-04-20 by fhirbolt-codegen v0.4.0
+// Generated on 2023-04-20 by fhirbolt-codegen v0.5.0
 #[doc = "Indicates the mechanism used to compare versions to determine which is more current."]
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub enum GraphDefinitionVersionAlgorithm {
     String(Box<super::super::types::String>),
     Coding(Box<super::super::types::Coding>),
+    #[default]
     Invalid,
 }
-impl Default for GraphDefinitionVersionAlgorithm {
-    fn default() -> GraphDefinitionVersionAlgorithm {
-        GraphDefinitionVersionAlgorithm::Invalid
-    }
-}
 #[doc = "Potential target for the link."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct GraphDefinitionNode {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -29,8 +25,29 @@ pub struct GraphDefinitionNode {
     #[doc = "Profile for the target resource."]
     pub r#profile: Option<super::super::types::Canonical>,
 }
+impl Default for GraphDefinitionNode {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#node_id: {
+                let mut default: super::super::types::Id = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#description: Default::default(),
+            r#type: {
+                let mut default: super::super::types::Code = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#profile: Default::default(),
+        }
+    }
+}
 #[doc = "Compartment Consistency Rules."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct GraphDefinitionLinkCompartment {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -49,8 +66,34 @@ pub struct GraphDefinitionLinkCompartment {
     #[doc = "Documentation for FHIRPath expression."]
     pub r#description: Option<super::super::types::String>,
 }
+impl Default for GraphDefinitionLinkCompartment {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#use: {
+                let mut default: super::super::types::Code = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#rule: {
+                let mut default: super::super::types::Code = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#code: {
+                let mut default: super::super::types::Code = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#expression: Default::default(),
+            r#description: Default::default(),
+        }
+    }
+}
 #[doc = "Links this graph makes rules about."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct GraphDefinitionLink {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -77,8 +120,34 @@ pub struct GraphDefinitionLink {
     #[doc = "Compartment Consistency Rules."]
     pub r#compartment: Vec<GraphDefinitionLinkCompartment>,
 }
+impl Default for GraphDefinitionLink {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#description: Default::default(),
+            r#min: Default::default(),
+            r#max: Default::default(),
+            r#source_id: {
+                let mut default: super::super::types::Id = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#path: Default::default(),
+            r#slice_name: Default::default(),
+            r#target_id: {
+                let mut default: super::super::types::Id = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#params: Default::default(),
+            r#compartment: Default::default(),
+        }
+    }
+}
 #[doc = "A formal computable definition of a graph of resources - that is, a coherent set of resources that form a graph by following references. The Graph Definition resource defines a set and makes rules about the set."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct GraphDefinition {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,
@@ -136,4 +205,46 @@ pub struct GraphDefinition {
     pub r#node: Vec<GraphDefinitionNode>,
     #[doc = "Links this graph makes rules about."]
     pub r#link: Vec<GraphDefinitionLink>,
+}
+impl Default for GraphDefinition {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#meta: Default::default(),
+            r#implicit_rules: Default::default(),
+            r#language: Default::default(),
+            r#text: Default::default(),
+            r#contained: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#url: Default::default(),
+            r#identifier: Default::default(),
+            r#version: Default::default(),
+            r#version_algorithm: Default::default(),
+            r#name: {
+                let mut default: super::super::types::String = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#title: Default::default(),
+            r#status: {
+                let mut default: super::super::types::Code = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#experimental: Default::default(),
+            r#date: Default::default(),
+            r#publisher: Default::default(),
+            r#contact: Default::default(),
+            r#description: Default::default(),
+            r#use_context: Default::default(),
+            r#jurisdiction: Default::default(),
+            r#purpose: Default::default(),
+            r#copyright: Default::default(),
+            r#copyright_label: Default::default(),
+            r#start: Default::default(),
+            r#node: Default::default(),
+            r#link: Default::default(),
+        }
+    }
 }

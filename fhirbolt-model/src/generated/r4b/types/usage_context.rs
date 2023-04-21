@@ -1,20 +1,16 @@
-// Generated on 2023-04-20 by fhirbolt-codegen v0.4.0
+// Generated on 2023-04-20 by fhirbolt-codegen v0.5.0
 #[doc = "A value that defines the context specified in this context of use. The interpretation of the value is defined by the code."]
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub enum UsageContextValue {
     CodeableConcept(Box<super::super::types::CodeableConcept>),
     Quantity(Box<super::super::types::Quantity>),
     Range(Box<super::super::types::Range>),
     Reference(Box<super::super::types::Reference>),
+    #[default]
     Invalid,
 }
-impl Default for UsageContextValue {
-    fn default() -> UsageContextValue {
-        UsageContextValue::Invalid
-    }
-}
 #[doc = "Base StructureDefinition for UsageContext Type: Specifies clinical/business/etc. metadata that can be used to retrieve, index and/or categorize an artifact. This metadata can either be specific to the applicable population (e.g., age category, DRG) or the specific context of care (e.g., venue, care setting, provider of care).\n\nConsumers of the resource must be able to determine the intended applicability for the resource. Ideally, this information would be used programmatically to determine when and how it should be incorporated or exposed."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct UsageContext {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -24,4 +20,18 @@ pub struct UsageContext {
     pub r#code: Box<super::super::types::Coding>,
     #[doc = "A value that defines the context specified in this context of use. The interpretation of the value is defined by the code."]
     pub r#value: UsageContextValue,
+}
+impl Default for UsageContext {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#code: {
+                let mut default: Box<super::super::types::Coding> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#value: Default::default(),
+        }
+    }
 }

@@ -1,6 +1,6 @@
-// Generated on 2023-04-20 by fhirbolt-codegen v0.4.0
+// Generated on 2023-04-20 by fhirbolt-codegen v0.5.0
 #[doc = "This resource describes a product or service that is available through a program and includes the conditions and constraints of availability.  All of the information in this resource is specific to the inclusion of the item in the formulary and is not inherent to the item itself."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct FormularyItem {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,
@@ -24,4 +24,21 @@ pub struct FormularyItem {
     pub r#code: Option<Box<super::super::types::CodeableConcept>>,
     #[doc = "The validity about the information of the formulary item and not of the underlying product or service itself."]
     pub r#status: Option<super::super::types::Code>,
+}
+impl Default for FormularyItem {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#meta: Default::default(),
+            r#implicit_rules: Default::default(),
+            r#language: Default::default(),
+            r#text: Default::default(),
+            r#contained: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#identifier: Default::default(),
+            r#code: Default::default(),
+            r#status: Default::default(),
+        }
+    }
 }

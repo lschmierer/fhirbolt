@@ -1,18 +1,14 @@
-// Generated on 2023-04-20 by fhirbolt-codegen v0.4.0
+// Generated on 2023-04-20 by fhirbolt-codegen v0.5.0
 #[doc = "The date or event after which the goal should begin being pursued."]
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub enum GoalStart {
     Date(Box<super::super::types::Date>),
     CodeableConcept(Box<super::super::types::CodeableConcept>),
+    #[default]
     Invalid,
 }
-impl Default for GoalStart {
-    fn default() -> GoalStart {
-        GoalStart::Invalid
-    }
-}
 #[doc = "The target value of the focus to be achieved to signify the fulfillment of the goal, e.g. 150 pounds, 7.0%. Either the high or low or both values of the range can be specified. When a low value is missing, it indicates that the goal is achieved at any focus value at or below the high value. Similarly, if the high value is missing, it indicates that the goal is achieved at any focus value at or above the low value."]
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub enum GoalTargetDetail {
     Quantity(Box<super::super::types::Quantity>),
     Range(Box<super::super::types::Range>),
@@ -21,27 +17,19 @@ pub enum GoalTargetDetail {
     Boolean(Box<super::super::types::Boolean>),
     Integer(Box<super::super::types::Integer>),
     Ratio(Box<super::super::types::Ratio>),
+    #[default]
     Invalid,
 }
-impl Default for GoalTargetDetail {
-    fn default() -> GoalTargetDetail {
-        GoalTargetDetail::Invalid
-    }
-}
 #[doc = "Indicates either the date or the duration after start by which the goal should be met."]
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub enum GoalTargetDue {
     Date(Box<super::super::types::Date>),
     Duration(Box<super::super::types::Duration>),
+    #[default]
     Invalid,
 }
-impl Default for GoalTargetDue {
-    fn default() -> GoalTargetDue {
-        GoalTargetDue::Invalid
-    }
-}
 #[doc = "Indicates what should be done by when."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct GoalTarget {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -56,8 +44,20 @@ pub struct GoalTarget {
     #[doc = "Indicates either the date or the duration after start by which the goal should be met."]
     pub r#due: Option<GoalTargetDue>,
 }
+impl Default for GoalTarget {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#measure: Default::default(),
+            r#detail: Default::default(),
+            r#due: Default::default(),
+        }
+    }
+}
 #[doc = "Describes the intended objective(s) for a patient, group or organization care, for example, weight loss, restoring an activity of daily living, obtaining herd immunity via immunization, meeting a process improvement objective, etc."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct Goal {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,
@@ -107,4 +107,46 @@ pub struct Goal {
     pub r#note: Vec<Box<super::super::types::Annotation>>,
     #[doc = "Identifies the change (or lack of change) at the point when the status of the goal is assessed."]
     pub r#outcome: Vec<Box<super::super::types::CodeableReference>>,
+}
+impl Default for Goal {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#meta: Default::default(),
+            r#implicit_rules: Default::default(),
+            r#language: Default::default(),
+            r#text: Default::default(),
+            r#contained: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#identifier: Default::default(),
+            r#lifecycle_status: {
+                let mut default: super::super::types::Code = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#achievement_status: Default::default(),
+            r#category: Default::default(),
+            r#continuous: Default::default(),
+            r#priority: Default::default(),
+            r#description: {
+                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#subject: {
+                let mut default: Box<super::super::types::Reference> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#start: Default::default(),
+            r#target: Default::default(),
+            r#status_date: Default::default(),
+            r#status_reason: Default::default(),
+            r#source: Default::default(),
+            r#addresses: Default::default(),
+            r#note: Default::default(),
+            r#outcome: Default::default(),
+        }
+    }
 }

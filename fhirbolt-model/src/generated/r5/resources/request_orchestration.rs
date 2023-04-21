@@ -1,18 +1,14 @@
-// Generated on 2023-04-20 by fhirbolt-codegen v0.4.0
+// Generated on 2023-04-20 by fhirbolt-codegen v0.5.0
 #[doc = "A duration or range of durations to apply to the relationship. For example, 30-60 minutes before."]
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub enum RequestOrchestrationActionRelatedActionOffset {
     Duration(Box<super::super::types::Duration>),
     Range(Box<super::super::types::Range>),
+    #[default]
     Invalid,
 }
-impl Default for RequestOrchestrationActionRelatedActionOffset {
-    fn default() -> RequestOrchestrationActionRelatedActionOffset {
-        RequestOrchestrationActionRelatedActionOffset::Invalid
-    }
-}
 #[doc = "An optional value describing when the action should be performed."]
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub enum RequestOrchestrationActionTiming {
     DateTime(Box<super::super::types::DateTime>),
     Age(Box<super::super::types::Age>),
@@ -20,39 +16,27 @@ pub enum RequestOrchestrationActionTiming {
     Duration(Box<super::super::types::Duration>),
     Range(Box<super::super::types::Range>),
     Timing(Box<super::super::types::Timing>),
+    #[default]
     Invalid,
 }
-impl Default for RequestOrchestrationActionTiming {
-    fn default() -> RequestOrchestrationActionTiming {
-        RequestOrchestrationActionTiming::Invalid
-    }
-}
 #[doc = "A reference to the actual participant."]
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub enum RequestOrchestrationActionParticipantActor {
     Canonical(Box<super::super::types::Canonical>),
     Reference(Box<super::super::types::Reference>),
+    #[default]
     Invalid,
 }
-impl Default for RequestOrchestrationActionParticipantActor {
-    fn default() -> RequestOrchestrationActionParticipantActor {
-        RequestOrchestrationActionParticipantActor::Invalid
-    }
-}
 #[doc = "A reference to an ActivityDefinition that describes the action to be taken in detail, a PlanDefinition that describes a series of actions to be taken, a Questionnaire that should be filled out, a SpecimenDefinition describing a specimen to be collected, or an ObservationDefinition that specifies what observation should be captured."]
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub enum RequestOrchestrationActionDefinition {
     Canonical(Box<super::super::types::Canonical>),
     Uri(Box<super::super::types::Uri>),
+    #[default]
     Invalid,
 }
-impl Default for RequestOrchestrationActionDefinition {
-    fn default() -> RequestOrchestrationActionDefinition {
-        RequestOrchestrationActionDefinition::Invalid
-    }
-}
 #[doc = "An expression that describes applicability criteria, or start/stop conditions for the action."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct RequestOrchestrationActionCondition {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -65,8 +49,23 @@ pub struct RequestOrchestrationActionCondition {
     #[doc = "An expression that returns true or false, indicating whether or not the condition is satisfied."]
     pub r#expression: Option<Box<super::super::types::Expression>>,
 }
+impl Default for RequestOrchestrationActionCondition {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#kind: {
+                let mut default: super::super::types::Code = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#expression: Default::default(),
+        }
+    }
+}
 #[doc = "Defines input data requirements for the action."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct RequestOrchestrationActionInput {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -81,8 +80,20 @@ pub struct RequestOrchestrationActionInput {
     #[doc = "Points to an existing input or output element that provides data to this input."]
     pub r#related_data: Option<super::super::types::Id>,
 }
+impl Default for RequestOrchestrationActionInput {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#title: Default::default(),
+            r#requirement: Default::default(),
+            r#related_data: Default::default(),
+        }
+    }
+}
 #[doc = "Defines the outputs of the action, if any."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct RequestOrchestrationActionOutput {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -97,8 +108,20 @@ pub struct RequestOrchestrationActionOutput {
     #[doc = "Points to an existing input or output element that is results as output from the action."]
     pub r#related_data: Option<super::super::types::String>,
 }
+impl Default for RequestOrchestrationActionOutput {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#title: Default::default(),
+            r#requirement: Default::default(),
+            r#related_data: Default::default(),
+        }
+    }
+}
 #[doc = "A relationship to another action such as \"before\" or \"30-60 minutes after start of\"."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct RequestOrchestrationActionRelatedAction {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -115,8 +138,29 @@ pub struct RequestOrchestrationActionRelatedAction {
     #[doc = "A duration or range of durations to apply to the relationship. For example, 30-60 minutes before."]
     pub r#offset: Option<RequestOrchestrationActionRelatedActionOffset>,
 }
+impl Default for RequestOrchestrationActionRelatedAction {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#target_id: {
+                let mut default: super::super::types::Id = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#relationship: {
+                let mut default: super::super::types::Code = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#end_relationship: Default::default(),
+            r#offset: Default::default(),
+        }
+    }
+}
 #[doc = "The participant that should perform or be responsible for this action."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct RequestOrchestrationActionParticipant {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -137,8 +181,23 @@ pub struct RequestOrchestrationActionParticipant {
     #[doc = "A reference to the actual participant."]
     pub r#actor: Option<RequestOrchestrationActionParticipantActor>,
 }
+impl Default for RequestOrchestrationActionParticipant {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#type: Default::default(),
+            r#type_canonical: Default::default(),
+            r#type_reference: Default::default(),
+            r#role: Default::default(),
+            r#function: Default::default(),
+            r#actor: Default::default(),
+        }
+    }
+}
 #[doc = "Customizations that should be applied to the statically defined resource. For example, if the dosage of a medication must be computed based on the patient's weight, a customization would be used to specify an expression that calculated the weight, and the path on the resource that would contain the result."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct RequestOrchestrationActionDynamicValue {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -151,8 +210,19 @@ pub struct RequestOrchestrationActionDynamicValue {
     #[doc = "An expression specifying the value of the customized element."]
     pub r#expression: Option<Box<super::super::types::Expression>>,
 }
+impl Default for RequestOrchestrationActionDynamicValue {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#path: Default::default(),
+            r#expression: Default::default(),
+        }
+    }
+}
 #[doc = "The actions, if any, produced by the evaluation of the artifact."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct RequestOrchestrationAction {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -215,8 +285,44 @@ pub struct RequestOrchestrationAction {
     #[doc = "Sub actions."]
     pub r#action: Vec<RequestOrchestrationAction>,
 }
+impl Default for RequestOrchestrationAction {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#link_id: Default::default(),
+            r#prefix: Default::default(),
+            r#title: Default::default(),
+            r#description: Default::default(),
+            r#text_equivalent: Default::default(),
+            r#priority: Default::default(),
+            r#code: Default::default(),
+            r#documentation: Default::default(),
+            r#goal: Default::default(),
+            r#condition: Default::default(),
+            r#input: Default::default(),
+            r#output: Default::default(),
+            r#related_action: Default::default(),
+            r#timing: Default::default(),
+            r#location: Default::default(),
+            r#participant: Default::default(),
+            r#type: Default::default(),
+            r#grouping_behavior: Default::default(),
+            r#selection_behavior: Default::default(),
+            r#required_behavior: Default::default(),
+            r#precheck_behavior: Default::default(),
+            r#cardinality_behavior: Default::default(),
+            r#resource: Default::default(),
+            r#definition: Default::default(),
+            r#transform: Default::default(),
+            r#dynamic_value: Default::default(),
+            r#action: Default::default(),
+        }
+    }
+}
 #[doc = "A set of related requests that can be used to capture intended activities that have inter-dependencies such as \"give this medication after that one\"."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct RequestOrchestration {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,
@@ -270,4 +376,44 @@ pub struct RequestOrchestration {
     pub r#note: Vec<Box<super::super::types::Annotation>>,
     #[doc = "The actions, if any, produced by the evaluation of the artifact."]
     pub r#action: Vec<RequestOrchestrationAction>,
+}
+impl Default for RequestOrchestration {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#meta: Default::default(),
+            r#implicit_rules: Default::default(),
+            r#language: Default::default(),
+            r#text: Default::default(),
+            r#contained: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#identifier: Default::default(),
+            r#instantiates_canonical: Default::default(),
+            r#instantiates_uri: Default::default(),
+            r#based_on: Default::default(),
+            r#replaces: Default::default(),
+            r#group_identifier: Default::default(),
+            r#status: {
+                let mut default: super::super::types::Code = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#intent: {
+                let mut default: super::super::types::Code = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#priority: Default::default(),
+            r#code: Default::default(),
+            r#subject: Default::default(),
+            r#encounter: Default::default(),
+            r#authored_on: Default::default(),
+            r#author: Default::default(),
+            r#reason: Default::default(),
+            r#goal: Default::default(),
+            r#note: Default::default(),
+            r#action: Default::default(),
+        }
+    }
 }

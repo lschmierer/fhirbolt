@@ -1,6 +1,6 @@
-// Generated on 2023-04-20 by fhirbolt-codegen v0.4.0
+// Generated on 2023-04-20 by fhirbolt-codegen v0.5.0
 #[doc = "HumanName Type: A name, normally of a human, that can be used for other living entities (e.g. animals but not organizations) that have been assigned names by a human and may need the use of name parts or the need for usage information.\n\nNeed to be able to record names, along with notes about their use."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct HumanName {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -20,4 +20,19 @@ pub struct HumanName {
     pub r#suffix: Vec<super::super::types::String>,
     #[doc = "Indicates the period of time when this name was valid for the named person."]
     pub r#period: Option<Box<super::super::types::Period>>,
+}
+impl Default for HumanName {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#use: Default::default(),
+            r#text: Default::default(),
+            r#family: Default::default(),
+            r#given: Default::default(),
+            r#prefix: Default::default(),
+            r#suffix: Default::default(),
+            r#period: Default::default(),
+        }
+    }
 }

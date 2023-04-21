@@ -1,18 +1,14 @@
-// Generated on 2023-04-20 by fhirbolt-codegen v0.4.0
+// Generated on 2023-04-20 by fhirbolt-codegen v0.5.0
 #[doc = "The  value of the extra detail."]
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub enum AuditEventEntityDetailValue {
     String(Box<super::super::types::String>),
     Base64Binary(Box<super::super::types::Base64Binary>),
+    #[default]
     Invalid,
 }
-impl Default for AuditEventEntityDetailValue {
-    fn default() -> AuditEventEntityDetailValue {
-        AuditEventEntityDetailValue::Invalid
-    }
-}
 #[doc = "Logical network location for application activity, if the activity has a network location."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct AuditEventAgentNetwork {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -25,8 +21,19 @@ pub struct AuditEventAgentNetwork {
     #[doc = "An identifier for the type of network access point that originated the audit event."]
     pub r#type: Option<super::super::types::Code>,
 }
+impl Default for AuditEventAgentNetwork {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#address: Default::default(),
+            r#type: Default::default(),
+        }
+    }
+}
 #[doc = "An actor taking an active role in the event or activity that is logged."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct AuditEventAgent {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -57,8 +64,32 @@ pub struct AuditEventAgent {
     #[doc = "The reason (purpose of use), specific to this agent, that was used during the event being recorded."]
     pub r#purpose_of_use: Vec<Box<super::super::types::CodeableConcept>>,
 }
+impl Default for AuditEventAgent {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#type: Default::default(),
+            r#role: Default::default(),
+            r#who: Default::default(),
+            r#alt_id: Default::default(),
+            r#name: Default::default(),
+            r#requestor: {
+                let mut default: super::super::types::Boolean = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#location: Default::default(),
+            r#policy: Default::default(),
+            r#media: Default::default(),
+            r#network: Default::default(),
+            r#purpose_of_use: Default::default(),
+        }
+    }
+}
 #[doc = "The system that is reporting the event."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct AuditEventSource {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -73,8 +104,24 @@ pub struct AuditEventSource {
     #[doc = "Code specifying the type of source where event originated."]
     pub r#type: Vec<Box<super::super::types::Coding>>,
 }
+impl Default for AuditEventSource {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#site: Default::default(),
+            r#observer: {
+                let mut default: Box<super::super::types::Reference> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#type: Default::default(),
+        }
+    }
+}
 #[doc = "Tagged value pairs for conveying additional information about the entity."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct AuditEventEntityDetail {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -87,8 +134,23 @@ pub struct AuditEventEntityDetail {
     #[doc = "The  value of the extra detail."]
     pub r#value: AuditEventEntityDetailValue,
 }
+impl Default for AuditEventEntityDetail {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#type: {
+                let mut default: super::super::types::String = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#value: Default::default(),
+        }
+    }
+}
 #[doc = "Specific instances of data or objects that have been accessed."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct AuditEventEntity {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -115,8 +177,26 @@ pub struct AuditEventEntity {
     #[doc = "Tagged value pairs for conveying additional information about the entity."]
     pub r#detail: Vec<AuditEventEntityDetail>,
 }
+impl Default for AuditEventEntity {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#what: Default::default(),
+            r#type: Default::default(),
+            r#role: Default::default(),
+            r#lifecycle: Default::default(),
+            r#security_label: Default::default(),
+            r#name: Default::default(),
+            r#description: Default::default(),
+            r#query: Default::default(),
+            r#detail: Default::default(),
+        }
+    }
+}
 #[doc = "A record of an event made for purposes of maintaining a security log. Typical uses include detection of intrusion attempts and monitoring for inappropriate usage."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct AuditEvent {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,
@@ -156,4 +236,41 @@ pub struct AuditEvent {
     pub r#source: AuditEventSource,
     #[doc = "Specific instances of data or objects that have been accessed."]
     pub r#entity: Vec<AuditEventEntity>,
+}
+impl Default for AuditEvent {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#meta: Default::default(),
+            r#implicit_rules: Default::default(),
+            r#language: Default::default(),
+            r#text: Default::default(),
+            r#contained: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#type: {
+                let mut default: Box<super::super::types::Coding> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#subtype: Default::default(),
+            r#action: Default::default(),
+            r#period: Default::default(),
+            r#recorded: {
+                let mut default: super::super::types::Instant = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#outcome: Default::default(),
+            r#outcome_desc: Default::default(),
+            r#purpose_of_event: Default::default(),
+            r#agent: Default::default(),
+            r#source: {
+                let mut default: AuditEventSource = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#entity: Default::default(),
+        }
+    }
 }

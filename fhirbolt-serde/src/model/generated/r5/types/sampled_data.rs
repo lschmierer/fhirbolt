@@ -1,4 +1,4 @@
-// Generated on 2023-04-20 by fhirbolt-codegen v0.4.0
+// Generated on 2023-04-20 by fhirbolt-codegen v0.5.0
 impl serde::ser::Serialize
     for crate::context::ser::SerializationContext<&fhirbolt_model::r5::types::SampledData>
 {
@@ -7,6 +7,13 @@ impl serde::ser::Serialize
         S: serde::ser::Serializer,
     {
         use serde::ser::SerializeMap;
+        #[allow(dead_code)]
+        fn missing_field_error<T, E: serde::ser::Error>(field: &str) -> Result<T, E> {
+            Err(E::custom(format!(
+                "missing required field `{}.{}`",
+                "SampledData", field
+            )))
+        }
         let mut state = serializer.serialize_map(None)?;
         if let Some(value) = self.value.r#id.as_ref() {
             state.serialize_entry("id", value)?;
@@ -15,6 +22,9 @@ impl serde::ser::Serialize
             self.with_context(&self.value.r#extension, |ctx| {
                 state.serialize_entry("extension", ctx)
             })?;
+        }
+        if self.value.r#origin.id.as_deref() == Some("$invalid") {
+            return missing_field_error("origin");
         }
         self.with_context(&self.value.r#origin, |ctx| {
             state.serialize_entry("origin", ctx)
@@ -43,6 +53,9 @@ impl serde::ser::Serialize
             }
         }
         if self.output_json {
+            if self.value.r#interval_unit.id.as_deref() == Some("$invalid") {
+                return missing_field_error("intervalUnit");
+            }
             if let Some(some) = self.value.r#interval_unit.value.as_ref() {
                 let some = Ok(some)?;
                 state.serialize_entry("intervalUnit", &some)?;
@@ -59,6 +72,9 @@ impl serde::ser::Serialize
                 })?;
             }
         } else {
+            if self.value.r#interval_unit.id.as_deref() == Some("$invalid") {
+                return missing_field_error("intervalUnit");
+            }
             self.with_context(&self.value.r#interval_unit, |ctx| {
                 state.serialize_entry("intervalUnit", ctx)
             })?;
@@ -133,6 +149,9 @@ impl serde::ser::Serialize
             }
         }
         if self.output_json {
+            if self.value.r#dimensions.id.as_deref() == Some("$invalid") {
+                return missing_field_error("dimensions");
+            }
             if let Some(some) = self.value.r#dimensions.value.as_ref() {
                 let some = Ok(some)?;
                 state.serialize_entry("dimensions", &some)?;
@@ -148,6 +167,9 @@ impl serde::ser::Serialize
                 })?;
             }
         } else {
+            if self.value.r#dimensions.id.as_deref() == Some("$invalid") {
+                return missing_field_error("dimensions");
+            }
             self.with_context(&self.value.r#dimensions, |ctx| {
                 state.serialize_entry("dimensions", ctx)
             })?;

@@ -1,18 +1,14 @@
-// Generated on 2023-04-20 by fhirbolt-codegen v0.4.0
+// Generated on 2023-04-20 by fhirbolt-codegen v0.5.0
 #[doc = "Citation Resource or display of suggested citation for this evidence."]
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub enum EvidenceCiteAs {
     Reference(Box<super::super::types::Reference>),
     Markdown(Box<super::super::types::Markdown>),
+    #[default]
     Invalid,
 }
-impl Default for EvidenceCiteAs {
-    fn default() -> EvidenceCiteAs {
-        EvidenceCiteAs::Invalid
-    }
-}
 #[doc = "Evidence variable such as population, exposure, or outcome."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct EvidenceVariableDefinition {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -33,8 +29,27 @@ pub struct EvidenceVariableDefinition {
     #[doc = "Indication of quality of match between intended variable to actual variable."]
     pub r#directness_match: Option<Box<super::super::types::CodeableConcept>>,
 }
+impl Default for EvidenceVariableDefinition {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#description: Default::default(),
+            r#note: Default::default(),
+            r#variable_role: {
+                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#observed: Default::default(),
+            r#intended: Default::default(),
+            r#directness_match: Default::default(),
+        }
+    }
+}
 #[doc = "Number of samples in the statistic."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct EvidenceStatisticSampleSize {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -53,8 +68,22 @@ pub struct EvidenceStatisticSampleSize {
     #[doc = "Number of participants with known results for measured variables."]
     pub r#known_data_count: Option<super::super::types::UnsignedInt>,
 }
+impl Default for EvidenceStatisticSampleSize {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#description: Default::default(),
+            r#note: Default::default(),
+            r#number_of_studies: Default::default(),
+            r#number_of_participants: Default::default(),
+            r#known_data_count: Default::default(),
+        }
+    }
+}
 #[doc = "A statistical attribute of the statistic such as a measure of heterogeneity."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct EvidenceStatisticAttributeEstimate {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -77,8 +106,24 @@ pub struct EvidenceStatisticAttributeEstimate {
     #[doc = "A nested attribute estimate; which is the attribute estimate of an attribute estimate."]
     pub r#attribute_estimate: Vec<EvidenceStatisticAttributeEstimate>,
 }
+impl Default for EvidenceStatisticAttributeEstimate {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#description: Default::default(),
+            r#note: Default::default(),
+            r#type: Default::default(),
+            r#quantity: Default::default(),
+            r#level: Default::default(),
+            r#range: Default::default(),
+            r#attribute_estimate: Default::default(),
+        }
+    }
+}
 #[doc = "A variable adjusted for in the adjusted analysis."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct EvidenceStatisticModelCharacteristicVariable {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -97,8 +142,26 @@ pub struct EvidenceStatisticModelCharacteristicVariable {
     #[doc = "Range of values for grouping of ordinal or polychotomous variables."]
     pub r#value_range: Vec<Box<super::super::types::Range>>,
 }
+impl Default for EvidenceStatisticModelCharacteristicVariable {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#variable_definition: {
+                let mut default: Box<super::super::types::Reference> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#handling: Default::default(),
+            r#value_category: Default::default(),
+            r#value_quantity: Default::default(),
+            r#value_range: Default::default(),
+        }
+    }
+}
 #[doc = "A component of the method to generate the statistic."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct EvidenceStatisticModelCharacteristic {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -115,8 +178,25 @@ pub struct EvidenceStatisticModelCharacteristic {
     #[doc = "An attribute of the statistic used as a model characteristic."]
     pub r#attribute_estimate: Vec<EvidenceStatisticAttributeEstimate>,
 }
+impl Default for EvidenceStatisticModelCharacteristic {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#code: {
+                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#value: Default::default(),
+            r#variable: Default::default(),
+            r#attribute_estimate: Default::default(),
+        }
+    }
+}
 #[doc = "Values and parameters for a single statistic."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct EvidenceStatistic {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -145,8 +225,27 @@ pub struct EvidenceStatistic {
     #[doc = "A component of the method to generate the statistic."]
     pub r#model_characteristic: Vec<EvidenceStatisticModelCharacteristic>,
 }
+impl Default for EvidenceStatistic {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#description: Default::default(),
+            r#note: Default::default(),
+            r#statistic_type: Default::default(),
+            r#category: Default::default(),
+            r#quantity: Default::default(),
+            r#number_of_events: Default::default(),
+            r#number_affected: Default::default(),
+            r#sample_size: Default::default(),
+            r#attribute_estimate: Default::default(),
+            r#model_characteristic: Default::default(),
+        }
+    }
+}
 #[doc = "Assessment of certainty, confidence in the estimates, or quality of the evidence."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct EvidenceCertainty {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -167,8 +266,23 @@ pub struct EvidenceCertainty {
     #[doc = "A domain or subdomain of certainty."]
     pub r#subcomponent: Vec<EvidenceCertainty>,
 }
+impl Default for EvidenceCertainty {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#description: Default::default(),
+            r#note: Default::default(),
+            r#type: Default::default(),
+            r#rating: Default::default(),
+            r#rater: Default::default(),
+            r#subcomponent: Default::default(),
+        }
+    }
+}
 #[doc = "The Evidence Resource provides a machine-interpretable expression of an evidence concept including the evidence variables (eg population, exposures/interventions, comparators, outcomes, measured variables, confounding variables), the statistics, and the certainty of this evidence."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct Evidence {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,
@@ -236,4 +350,47 @@ pub struct Evidence {
     pub r#statistic: Vec<EvidenceStatistic>,
     #[doc = "Assessment of certainty, confidence in the estimates, or quality of the evidence."]
     pub r#certainty: Vec<EvidenceCertainty>,
+}
+impl Default for Evidence {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#meta: Default::default(),
+            r#implicit_rules: Default::default(),
+            r#language: Default::default(),
+            r#text: Default::default(),
+            r#contained: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#url: Default::default(),
+            r#identifier: Default::default(),
+            r#version: Default::default(),
+            r#title: Default::default(),
+            r#cite_as: Default::default(),
+            r#status: {
+                let mut default: super::super::types::Code = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#date: Default::default(),
+            r#use_context: Default::default(),
+            r#approval_date: Default::default(),
+            r#last_review_date: Default::default(),
+            r#publisher: Default::default(),
+            r#contact: Default::default(),
+            r#author: Default::default(),
+            r#editor: Default::default(),
+            r#reviewer: Default::default(),
+            r#endorser: Default::default(),
+            r#related_artifact: Default::default(),
+            r#description: Default::default(),
+            r#assertion: Default::default(),
+            r#note: Default::default(),
+            r#variable_definition: Default::default(),
+            r#synthesis_type: Default::default(),
+            r#study_type: Default::default(),
+            r#statistic: Default::default(),
+            r#certainty: Default::default(),
+        }
+    }
 }

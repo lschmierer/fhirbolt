@@ -34,6 +34,8 @@ pub fn implement_serialize(
         )
     });
 
+    let path = &r#struct.path;
+
     quote! {
         impl serde::ser::Serialize for crate::context::ser::SerializationContext<&#namespace::#struct_name_ident> {
             fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
@@ -41,6 +43,11 @@ pub fn implement_serialize(
                 S: serde::ser::Serializer,
             {
                 use serde::ser::SerializeMap;
+
+                #[allow(dead_code)]
+                fn missing_field_error<T, E: serde::ser::Error>(field: &str) -> Result<T, E> {
+                    Err(E::custom(format!("missing required field `{}.{}`", #path, field)))
+                }
 
                 let mut state = serializer.serialize_map(None)?;
                 #serialize_resource_type_tokens
@@ -413,6 +420,10 @@ fn serialize_primitive_json(field: &RustFhirStructField) -> TokenStream {
             },
         };
         quote! {
+            if self.value.#field_name_ident.id.as_deref() == Some("$invalid") {
+                return missing_field_error(#fhir_name)
+            }
+
             #serialize_value_tokens
 
             if self.value.#field_name_ident.id.is_some() #check_extension_is_empty_tokens {
@@ -445,6 +456,10 @@ fn serialize_element(field: &RustFhirStructField) -> TokenStream {
         }
     } else {
         quote! {
+            if self.value.#field_name_ident.id.as_deref() == Some("$invalid") {
+                return missing_field_error(#fhir_name)
+            }
+
             self.with_context(&self.value.#field_name_ident, |ctx| state.serialize_entry(#fhir_name, ctx))?;
         }
     }

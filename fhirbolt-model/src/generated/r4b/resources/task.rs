@@ -1,6 +1,6 @@
-// Generated on 2023-04-20 by fhirbolt-codegen v0.4.0
+// Generated on 2023-04-20 by fhirbolt-codegen v0.5.0
 #[doc = "The value of the input parameter as a basic type."]
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub enum TaskInputValue {
     Base64Binary(Box<super::super::types::Base64Binary>),
     Boolean(Box<super::super::types::Boolean>),
@@ -52,15 +52,11 @@ pub enum TaskInputValue {
     UsageContext(Box<super::super::types::UsageContext>),
     Dosage(Box<super::super::types::Dosage>),
     Meta(Box<super::super::types::Meta>),
+    #[default]
     Invalid,
 }
-impl Default for TaskInputValue {
-    fn default() -> TaskInputValue {
-        TaskInputValue::Invalid
-    }
-}
 #[doc = "The value of the Output parameter as a basic type."]
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub enum TaskOutputValue {
     Base64Binary(Box<super::super::types::Base64Binary>),
     Boolean(Box<super::super::types::Boolean>),
@@ -112,15 +108,11 @@ pub enum TaskOutputValue {
     UsageContext(Box<super::super::types::UsageContext>),
     Dosage(Box<super::super::types::Dosage>),
     Meta(Box<super::super::types::Meta>),
+    #[default]
     Invalid,
 }
-impl Default for TaskOutputValue {
-    fn default() -> TaskOutputValue {
-        TaskOutputValue::Invalid
-    }
-}
 #[doc = "If the Task.focus is a request resource and the task is seeking fulfillment (i.e. is asking for the request to be actioned), this element identifies any limitations on what parts of the referenced request should be actioned."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct TaskRestriction {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -135,8 +127,20 @@ pub struct TaskRestriction {
     #[doc = "For requests that are targeted to more than on potential recipient/target, for whom is fulfillment sought?"]
     pub r#recipient: Vec<Box<super::super::types::Reference>>,
 }
+impl Default for TaskRestriction {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#repetitions: Default::default(),
+            r#period: Default::default(),
+            r#recipient: Default::default(),
+        }
+    }
+}
 #[doc = "Additional information that may be needed in the execution of the task."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct TaskInput {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -149,8 +153,23 @@ pub struct TaskInput {
     #[doc = "The value of the input parameter as a basic type."]
     pub r#value: TaskInputValue,
 }
+impl Default for TaskInput {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#type: {
+                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#value: Default::default(),
+        }
+    }
+}
 #[doc = "Outputs produced by the Task."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct TaskOutput {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -163,8 +182,23 @@ pub struct TaskOutput {
     #[doc = "The value of the Output parameter as a basic type."]
     pub r#value: TaskOutputValue,
 }
+impl Default for TaskOutput {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#type: {
+                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#value: Default::default(),
+        }
+    }
+}
 #[doc = "A task to be performed."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct Task {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,
@@ -244,4 +278,57 @@ pub struct Task {
     pub r#input: Vec<TaskInput>,
     #[doc = "Outputs produced by the Task."]
     pub r#output: Vec<TaskOutput>,
+}
+impl Default for Task {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#meta: Default::default(),
+            r#implicit_rules: Default::default(),
+            r#language: Default::default(),
+            r#text: Default::default(),
+            r#contained: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#identifier: Default::default(),
+            r#instantiates_canonical: Default::default(),
+            r#instantiates_uri: Default::default(),
+            r#based_on: Default::default(),
+            r#group_identifier: Default::default(),
+            r#part_of: Default::default(),
+            r#status: {
+                let mut default: super::super::types::Code = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#status_reason: Default::default(),
+            r#business_status: Default::default(),
+            r#intent: {
+                let mut default: super::super::types::Code = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#priority: Default::default(),
+            r#code: Default::default(),
+            r#description: Default::default(),
+            r#focus: Default::default(),
+            r#for: Default::default(),
+            r#encounter: Default::default(),
+            r#execution_period: Default::default(),
+            r#authored_on: Default::default(),
+            r#last_modified: Default::default(),
+            r#requester: Default::default(),
+            r#performer_type: Default::default(),
+            r#owner: Default::default(),
+            r#location: Default::default(),
+            r#reason_code: Default::default(),
+            r#reason_reference: Default::default(),
+            r#insurance: Default::default(),
+            r#note: Default::default(),
+            r#relevant_history: Default::default(),
+            r#restriction: Default::default(),
+            r#input: Default::default(),
+            r#output: Default::default(),
+        }
+    }
 }

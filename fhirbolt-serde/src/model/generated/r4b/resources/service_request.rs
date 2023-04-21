@@ -1,4 +1,4 @@
-// Generated on 2023-04-20 by fhirbolt-codegen v0.4.0
+// Generated on 2023-04-20 by fhirbolt-codegen v0.5.0
 impl crate::Resource for fhirbolt_model::r4b::resources::ServiceRequest {
     const FHIR_RELEASE: fhirbolt_shared::FhirRelease = fhirbolt_shared::FhirReleases::R4B;
 }
@@ -10,6 +10,13 @@ impl serde::ser::Serialize
         S: serde::ser::Serializer,
     {
         use serde::ser::SerializeMap;
+        #[allow(dead_code)]
+        fn missing_field_error<T, E: serde::ser::Error>(field: &str) -> Result<T, E> {
+            Err(E::custom(format!(
+                "missing required field `{}.{}`",
+                "ServiceRequest", field
+            )))
+        }
         let mut state = serializer.serialize_map(None)?;
         state.serialize_entry("resourceType", "ServiceRequest")?;
         if let Some(value) = self.value.r#id.as_ref() {
@@ -187,6 +194,9 @@ impl serde::ser::Serialize
             self.with_context(some, |ctx| state.serialize_entry("requisition", ctx))?;
         }
         if self.output_json {
+            if self.value.r#status.id.as_deref() == Some("$invalid") {
+                return missing_field_error("status");
+            }
             if let Some(some) = self.value.r#status.value.as_ref() {
                 let some = Ok(some)?;
                 state.serialize_entry("status", &some)?;
@@ -201,11 +211,17 @@ impl serde::ser::Serialize
                 })?;
             }
         } else {
+            if self.value.r#status.id.as_deref() == Some("$invalid") {
+                return missing_field_error("status");
+            }
             self.with_context(&self.value.r#status, |ctx| {
                 state.serialize_entry("status", ctx)
             })?;
         }
         if self.output_json {
+            if self.value.r#intent.id.as_deref() == Some("$invalid") {
+                return missing_field_error("intent");
+            }
             if let Some(some) = self.value.r#intent.value.as_ref() {
                 let some = Ok(some)?;
                 state.serialize_entry("intent", &some)?;
@@ -220,6 +236,9 @@ impl serde::ser::Serialize
                 })?;
             }
         } else {
+            if self.value.r#intent.id.as_deref() == Some("$invalid") {
+                return missing_field_error("intent");
+            }
             self.with_context(&self.value.r#intent, |ctx| {
                 state.serialize_entry("intent", ctx)
             })?;
@@ -294,6 +313,9 @@ impl serde::ser::Serialize
                     return Err(serde::ser::Error::custom("quantity is invalid"))
                 }
             }
+        }
+        if self.value.r#subject.id.as_deref() == Some("$invalid") {
+            return missing_field_error("subject");
         }
         self.with_context(&self.value.r#subject, |ctx| {
             state.serialize_entry("subject", ctx)

@@ -1,4 +1,4 @@
-// Generated on 2023-04-20 by fhirbolt-codegen v0.4.0
+// Generated on 2023-04-20 by fhirbolt-codegen v0.5.0
 impl serde::ser::Serialize
     for crate::context::ser::SerializationContext<
         &fhirbolt_model::r4b::resources::DeviceDefinitionUdiDeviceIdentifier,
@@ -9,6 +9,13 @@ impl serde::ser::Serialize
         S: serde::ser::Serializer,
     {
         use serde::ser::SerializeMap;
+        #[allow(dead_code)]
+        fn missing_field_error<T, E: serde::ser::Error>(field: &str) -> Result<T, E> {
+            Err(E::custom(format!(
+                "missing required field `{}.{}`",
+                "DeviceDefinition.udiDeviceIdentifier", field
+            )))
+        }
         let mut state = serializer.serialize_map(None)?;
         if let Some(value) = self.value.r#id.as_ref() {
             state.serialize_entry("id", value)?;
@@ -24,6 +31,9 @@ impl serde::ser::Serialize
             })?;
         }
         if self.output_json {
+            if self.value.r#device_identifier.id.as_deref() == Some("$invalid") {
+                return missing_field_error("deviceIdentifier");
+            }
             if let Some(some) = self.value.r#device_identifier.value.as_ref() {
                 let some = Ok(some)?;
                 state.serialize_entry("deviceIdentifier", &some)?;
@@ -40,11 +50,17 @@ impl serde::ser::Serialize
                 })?;
             }
         } else {
+            if self.value.r#device_identifier.id.as_deref() == Some("$invalid") {
+                return missing_field_error("deviceIdentifier");
+            }
             self.with_context(&self.value.r#device_identifier, |ctx| {
                 state.serialize_entry("deviceIdentifier", ctx)
             })?;
         }
         if self.output_json {
+            if self.value.r#issuer.id.as_deref() == Some("$invalid") {
+                return missing_field_error("issuer");
+            }
             if let Some(some) = self.value.r#issuer.value.as_ref() {
                 let some = Ok(some)?;
                 state.serialize_entry("issuer", &some)?;
@@ -59,11 +75,17 @@ impl serde::ser::Serialize
                 })?;
             }
         } else {
+            if self.value.r#issuer.id.as_deref() == Some("$invalid") {
+                return missing_field_error("issuer");
+            }
             self.with_context(&self.value.r#issuer, |ctx| {
                 state.serialize_entry("issuer", ctx)
             })?;
         }
         if self.output_json {
+            if self.value.r#jurisdiction.id.as_deref() == Some("$invalid") {
+                return missing_field_error("jurisdiction");
+            }
             if let Some(some) = self.value.r#jurisdiction.value.as_ref() {
                 let some = Ok(some)?;
                 state.serialize_entry("jurisdiction", &some)?;
@@ -80,6 +102,9 @@ impl serde::ser::Serialize
                 })?;
             }
         } else {
+            if self.value.r#jurisdiction.id.as_deref() == Some("$invalid") {
+                return missing_field_error("jurisdiction");
+            }
             self.with_context(&self.value.r#jurisdiction, |ctx| {
                 state.serialize_entry("jurisdiction", ctx)
             })?;
@@ -472,6 +497,13 @@ impl serde::ser::Serialize
         S: serde::ser::Serializer,
     {
         use serde::ser::SerializeMap;
+        #[allow(dead_code)]
+        fn missing_field_error<T, E: serde::ser::Error>(field: &str) -> Result<T, E> {
+            Err(E::custom(format!(
+                "missing required field `{}.{}`",
+                "DeviceDefinition.deviceName", field
+            )))
+        }
         let mut state = serializer.serialize_map(None)?;
         if let Some(value) = self.value.r#id.as_ref() {
             state.serialize_entry("id", value)?;
@@ -487,6 +519,9 @@ impl serde::ser::Serialize
             })?;
         }
         if self.output_json {
+            if self.value.r#name.id.as_deref() == Some("$invalid") {
+                return missing_field_error("name");
+            }
             if let Some(some) = self.value.r#name.value.as_ref() {
                 let some = Ok(some)?;
                 state.serialize_entry("name", &some)?;
@@ -501,9 +536,15 @@ impl serde::ser::Serialize
                 })?;
             }
         } else {
+            if self.value.r#name.id.as_deref() == Some("$invalid") {
+                return missing_field_error("name");
+            }
             self.with_context(&self.value.r#name, |ctx| state.serialize_entry("name", ctx))?;
         }
         if self.output_json {
+            if self.value.r#type.id.as_deref() == Some("$invalid") {
+                return missing_field_error("type");
+            }
             if let Some(some) = self.value.r#type.value.as_ref() {
                 let some = Ok(some)?;
                 state.serialize_entry("type", &some)?;
@@ -518,6 +559,9 @@ impl serde::ser::Serialize
                 })?;
             }
         } else {
+            if self.value.r#type.id.as_deref() == Some("$invalid") {
+                return missing_field_error("type");
+            }
             self.with_context(&self.value.r#type, |ctx| state.serialize_entry("type", ctx))?;
         }
         state.end()
@@ -842,6 +886,13 @@ impl serde::ser::Serialize
         S: serde::ser::Serializer,
     {
         use serde::ser::SerializeMap;
+        #[allow(dead_code)]
+        fn missing_field_error<T, E: serde::ser::Error>(field: &str) -> Result<T, E> {
+            Err(E::custom(format!(
+                "missing required field `{}.{}`",
+                "DeviceDefinition.specialization", field
+            )))
+        }
         let mut state = serializer.serialize_map(None)?;
         if let Some(value) = self.value.r#id.as_ref() {
             state.serialize_entry("id", value)?;
@@ -857,6 +908,9 @@ impl serde::ser::Serialize
             })?;
         }
         if self.output_json {
+            if self.value.r#system_type.id.as_deref() == Some("$invalid") {
+                return missing_field_error("systemType");
+            }
             if let Some(some) = self.value.r#system_type.value.as_ref() {
                 let some = Ok(some)?;
                 state.serialize_entry("systemType", &some)?;
@@ -873,6 +927,9 @@ impl serde::ser::Serialize
                 })?;
             }
         } else {
+            if self.value.r#system_type.id.as_deref() == Some("$invalid") {
+                return missing_field_error("systemType");
+            }
             self.with_context(&self.value.r#system_type, |ctx| {
                 state.serialize_entry("systemType", ctx)
             })?;
@@ -1221,6 +1278,13 @@ impl serde::ser::Serialize
         S: serde::ser::Serializer,
     {
         use serde::ser::SerializeMap;
+        #[allow(dead_code)]
+        fn missing_field_error<T, E: serde::ser::Error>(field: &str) -> Result<T, E> {
+            Err(E::custom(format!(
+                "missing required field `{}.{}`",
+                "DeviceDefinition.capability", field
+            )))
+        }
         let mut state = serializer.serialize_map(None)?;
         if let Some(value) = self.value.r#id.as_ref() {
             state.serialize_entry("id", value)?;
@@ -1234,6 +1298,9 @@ impl serde::ser::Serialize
             self.with_context(&self.value.r#modifier_extension, |ctx| {
                 state.serialize_entry("modifierExtension", ctx)
             })?;
+        }
+        if self.value.r#type.id.as_deref() == Some("$invalid") {
+            return missing_field_error("type");
         }
         self.with_context(&self.value.r#type, |ctx| state.serialize_entry("type", ctx))?;
         if !self.value.r#description.is_empty() {
@@ -1527,6 +1594,13 @@ impl serde::ser::Serialize
         S: serde::ser::Serializer,
     {
         use serde::ser::SerializeMap;
+        #[allow(dead_code)]
+        fn missing_field_error<T, E: serde::ser::Error>(field: &str) -> Result<T, E> {
+            Err(E::custom(format!(
+                "missing required field `{}.{}`",
+                "DeviceDefinition.property", field
+            )))
+        }
         let mut state = serializer.serialize_map(None)?;
         if let Some(value) = self.value.r#id.as_ref() {
             state.serialize_entry("id", value)?;
@@ -1540,6 +1614,9 @@ impl serde::ser::Serialize
             self.with_context(&self.value.r#modifier_extension, |ctx| {
                 state.serialize_entry("modifierExtension", ctx)
             })?;
+        }
+        if self.value.r#type.id.as_deref() == Some("$invalid") {
+            return missing_field_error("type");
         }
         self.with_context(&self.value.r#type, |ctx| state.serialize_entry("type", ctx))?;
         if !self.value.r#value_quantity.is_empty() {
@@ -1867,6 +1944,13 @@ impl serde::ser::Serialize
         S: serde::ser::Serializer,
     {
         use serde::ser::SerializeMap;
+        #[allow(dead_code)]
+        fn missing_field_error<T, E: serde::ser::Error>(field: &str) -> Result<T, E> {
+            Err(E::custom(format!(
+                "missing required field `{}.{}`",
+                "DeviceDefinition.material", field
+            )))
+        }
         let mut state = serializer.serialize_map(None)?;
         if let Some(value) = self.value.r#id.as_ref() {
             state.serialize_entry("id", value)?;
@@ -1880,6 +1964,9 @@ impl serde::ser::Serialize
             self.with_context(&self.value.r#modifier_extension, |ctx| {
                 state.serialize_entry("modifierExtension", ctx)
             })?;
+        }
+        if self.value.r#substance.id.as_deref() == Some("$invalid") {
+            return missing_field_error("substance");
         }
         self.with_context(&self.value.r#substance, |ctx| {
             state.serialize_entry("substance", ctx)
@@ -2279,6 +2366,13 @@ impl serde::ser::Serialize
         S: serde::ser::Serializer,
     {
         use serde::ser::SerializeMap;
+        #[allow(dead_code)]
+        fn missing_field_error<T, E: serde::ser::Error>(field: &str) -> Result<T, E> {
+            Err(E::custom(format!(
+                "missing required field `{}.{}`",
+                "DeviceDefinition", field
+            )))
+        }
         let mut state = serializer.serialize_map(None)?;
         state.serialize_entry("resourceType", "DeviceDefinition")?;
         if let Some(value) = self.value.r#id.as_ref() {

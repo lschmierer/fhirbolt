@@ -1,6 +1,6 @@
-// Generated on 2023-04-20 by fhirbolt-codegen v0.4.0
+// Generated on 2023-04-20 by fhirbolt-codegen v0.5.0
 #[doc = "Define members of the evidence element using Codes (such as condition, medication, or observation), Expressions ( using an expression language such as FHIRPath or CQL) or DataRequirements (such as Diabetes diagnosis onset in the last year)."]
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub enum EvidenceVariableCharacteristicDefinition {
     Reference(Box<super::super::types::Reference>),
     Canonical(Box<super::super::types::Canonical>),
@@ -8,29 +8,21 @@ pub enum EvidenceVariableCharacteristicDefinition {
     Expression(Box<super::super::types::Expression>),
     DataRequirement(Box<super::super::types::DataRequirement>),
     TriggerDefinition(Box<super::super::types::TriggerDefinition>),
+    #[default]
     Invalid,
 }
-impl Default for EvidenceVariableCharacteristicDefinition {
-    fn default() -> EvidenceVariableCharacteristicDefinition {
-        EvidenceVariableCharacteristicDefinition::Invalid
-    }
-}
 #[doc = "Indicates what effective period the study covers."]
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub enum EvidenceVariableCharacteristicParticipantEffective {
     DateTime(Box<super::super::types::DateTime>),
     Period(Box<super::super::types::Period>),
     Duration(Box<super::super::types::Duration>),
     Timing(Box<super::super::types::Timing>),
+    #[default]
     Invalid,
 }
-impl Default for EvidenceVariableCharacteristicParticipantEffective {
-    fn default() -> EvidenceVariableCharacteristicParticipantEffective {
-        EvidenceVariableCharacteristicParticipantEffective::Invalid
-    }
-}
 #[doc = "A characteristic that defines the members of the evidence element. Multiple characteristics are applied with \"and\" semantics."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct EvidenceVariableCharacteristic {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -53,8 +45,24 @@ pub struct EvidenceVariableCharacteristic {
     #[doc = "Indicates how elements are aggregated within the study effective period."]
     pub r#group_measure: Option<super::super::types::Code>,
 }
+impl Default for EvidenceVariableCharacteristic {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#description: Default::default(),
+            r#definition: Default::default(),
+            r#usage_context: Default::default(),
+            r#exclude: Default::default(),
+            r#participant_effective: Default::default(),
+            r#time_from_start: Default::default(),
+            r#group_measure: Default::default(),
+        }
+    }
+}
 #[doc = "The EvidenceVariable resource describes a \"PICO\" element that knowledge (evidence, assertion, recommendation) is about.\n\nNeed to be able to define and reuse the definition of individual elements of a research question."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct EvidenceVariable {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,
@@ -126,4 +134,49 @@ pub struct EvidenceVariable {
     pub r#type: Option<super::super::types::Code>,
     #[doc = "A characteristic that defines the members of the evidence element. Multiple characteristics are applied with \"and\" semantics."]
     pub r#characteristic: Vec<EvidenceVariableCharacteristic>,
+}
+impl Default for EvidenceVariable {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#meta: Default::default(),
+            r#implicit_rules: Default::default(),
+            r#language: Default::default(),
+            r#text: Default::default(),
+            r#contained: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#url: Default::default(),
+            r#identifier: Default::default(),
+            r#version: Default::default(),
+            r#name: Default::default(),
+            r#title: Default::default(),
+            r#short_title: Default::default(),
+            r#subtitle: Default::default(),
+            r#status: {
+                let mut default: super::super::types::Code = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#date: Default::default(),
+            r#publisher: Default::default(),
+            r#contact: Default::default(),
+            r#description: Default::default(),
+            r#note: Default::default(),
+            r#use_context: Default::default(),
+            r#jurisdiction: Default::default(),
+            r#copyright: Default::default(),
+            r#approval_date: Default::default(),
+            r#last_review_date: Default::default(),
+            r#effective_period: Default::default(),
+            r#topic: Default::default(),
+            r#author: Default::default(),
+            r#editor: Default::default(),
+            r#reviewer: Default::default(),
+            r#endorser: Default::default(),
+            r#related_artifact: Default::default(),
+            r#type: Default::default(),
+            r#characteristic: Default::default(),
+        }
+    }
 }

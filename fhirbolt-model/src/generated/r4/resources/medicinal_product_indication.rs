@@ -1,18 +1,14 @@
-// Generated on 2023-04-20 by fhirbolt-codegen v0.4.0
+// Generated on 2023-04-20 by fhirbolt-codegen v0.5.0
 #[doc = "Reference to a specific medication (active substance, medicinal product or class of products) as part of an indication or contraindication."]
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub enum MedicinalProductIndicationOtherTherapyMedication {
     CodeableConcept(Box<super::super::types::CodeableConcept>),
     Reference(Box<super::super::types::Reference>),
+    #[default]
     Invalid,
 }
-impl Default for MedicinalProductIndicationOtherTherapyMedication {
-    fn default() -> MedicinalProductIndicationOtherTherapyMedication {
-        MedicinalProductIndicationOtherTherapyMedication::Invalid
-    }
-}
 #[doc = "Information about the use of the medicinal product in relation to other therapies described as part of the indication."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct MedicinalProductIndicationOtherTherapy {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -25,8 +21,23 @@ pub struct MedicinalProductIndicationOtherTherapy {
     #[doc = "Reference to a specific medication (active substance, medicinal product or class of products) as part of an indication or contraindication."]
     pub r#medication: MedicinalProductIndicationOtherTherapyMedication,
 }
+impl Default for MedicinalProductIndicationOtherTherapy {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#therapy_relationship_type: {
+                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#medication: Default::default(),
+        }
+    }
+}
 #[doc = "Indication for the Medicinal Product."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct MedicinalProductIndication {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,
@@ -62,4 +73,27 @@ pub struct MedicinalProductIndication {
     pub r#undesirable_effect: Vec<Box<super::super::types::Reference>>,
     #[doc = "The population group to which this applies."]
     pub r#population: Vec<Box<super::super::types::Population>>,
+}
+impl Default for MedicinalProductIndication {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#meta: Default::default(),
+            r#implicit_rules: Default::default(),
+            r#language: Default::default(),
+            r#text: Default::default(),
+            r#contained: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#subject: Default::default(),
+            r#disease_symptom_procedure: Default::default(),
+            r#disease_status: Default::default(),
+            r#comorbidity: Default::default(),
+            r#intended_effect: Default::default(),
+            r#duration: Default::default(),
+            r#other_therapy: Default::default(),
+            r#undesirable_effect: Default::default(),
+            r#population: Default::default(),
+        }
+    }
 }

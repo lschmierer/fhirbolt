@@ -1,6 +1,6 @@
-// Generated on 2023-04-20 by fhirbolt-codegen v0.4.0
+// Generated on 2023-04-20 by fhirbolt-codegen v0.5.0
 #[doc = "Details where to send notifications when resources are received that meet the criteria."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct SubscriptionChannel {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -17,8 +17,25 @@ pub struct SubscriptionChannel {
     #[doc = "Additional headers / information to send as part of the notification."]
     pub r#header: Vec<super::super::types::String>,
 }
+impl Default for SubscriptionChannel {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#type: {
+                let mut default: super::super::types::Code = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#endpoint: Default::default(),
+            r#payload: Default::default(),
+            r#header: Default::default(),
+        }
+    }
+}
 #[doc = "The subscription resource is used to define a push-based subscription from a server to another system. Once a subscription is registered with the server, the server checks every resource that is created or updated, and if the resource matches the given criteria, it sends a message on the defined \"channel\" so that another system can take an appropriate action."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct Subscription {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,
@@ -50,4 +67,41 @@ pub struct Subscription {
     pub r#error: Option<super::super::types::String>,
     #[doc = "Details where to send notifications when resources are received that meet the criteria."]
     pub r#channel: SubscriptionChannel,
+}
+impl Default for Subscription {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#meta: Default::default(),
+            r#implicit_rules: Default::default(),
+            r#language: Default::default(),
+            r#text: Default::default(),
+            r#contained: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#status: {
+                let mut default: super::super::types::Code = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#contact: Default::default(),
+            r#end: Default::default(),
+            r#reason: {
+                let mut default: super::super::types::String = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#criteria: {
+                let mut default: super::super::types::String = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#error: Default::default(),
+            r#channel: {
+                let mut default: SubscriptionChannel = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+        }
+    }
 }

@@ -1,18 +1,14 @@
-// Generated on 2023-04-20 by fhirbolt-codegen v0.4.0
+// Generated on 2023-04-20 by fhirbolt-codegen v0.5.0
 #[doc = "The intended subjects for the ResearchDefinition. If this element is not provided, a Patient subject is assumed, but the subject of the ResearchDefinition can be anything."]
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub enum ResearchDefinitionSubject {
     CodeableConcept(Box<super::super::types::CodeableConcept>),
     Reference(Box<super::super::types::Reference>),
+    #[default]
     Invalid,
 }
-impl Default for ResearchDefinitionSubject {
-    fn default() -> ResearchDefinitionSubject {
-        ResearchDefinitionSubject::Invalid
-    }
-}
 #[doc = "The ResearchDefinition resource describes the conditional state (population and any exposures being compared within the population) and outcome (if specified) that the knowledge (evidence, assertion, recommendation) is about."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct ResearchDefinition {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,
@@ -98,4 +94,60 @@ pub struct ResearchDefinition {
     pub r#exposure_alternative: Option<Box<super::super::types::Reference>>,
     #[doc = "A reference to a ResearchElementDefinition resomece that defines the outcome for the research."]
     pub r#outcome: Option<Box<super::super::types::Reference>>,
+}
+impl Default for ResearchDefinition {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#meta: Default::default(),
+            r#implicit_rules: Default::default(),
+            r#language: Default::default(),
+            r#text: Default::default(),
+            r#contained: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#url: Default::default(),
+            r#identifier: Default::default(),
+            r#version: Default::default(),
+            r#name: Default::default(),
+            r#title: Default::default(),
+            r#short_title: Default::default(),
+            r#subtitle: Default::default(),
+            r#status: {
+                let mut default: super::super::types::Code = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#experimental: Default::default(),
+            r#subject: Default::default(),
+            r#date: Default::default(),
+            r#publisher: Default::default(),
+            r#contact: Default::default(),
+            r#description: Default::default(),
+            r#comment: Default::default(),
+            r#use_context: Default::default(),
+            r#jurisdiction: Default::default(),
+            r#purpose: Default::default(),
+            r#usage: Default::default(),
+            r#copyright: Default::default(),
+            r#approval_date: Default::default(),
+            r#last_review_date: Default::default(),
+            r#effective_period: Default::default(),
+            r#topic: Default::default(),
+            r#author: Default::default(),
+            r#editor: Default::default(),
+            r#reviewer: Default::default(),
+            r#endorser: Default::default(),
+            r#related_artifact: Default::default(),
+            r#library: Default::default(),
+            r#population: {
+                let mut default: Box<super::super::types::Reference> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#exposure: Default::default(),
+            r#exposure_alternative: Default::default(),
+            r#outcome: Default::default(),
+        }
+    }
 }

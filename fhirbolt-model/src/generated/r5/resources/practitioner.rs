@@ -1,18 +1,14 @@
-// Generated on 2023-04-20 by fhirbolt-codegen v0.4.0
+// Generated on 2023-04-20 by fhirbolt-codegen v0.5.0
 #[doc = "Indicates if the practitioner is deceased or not."]
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub enum PractitionerDeceased {
     Boolean(Box<super::super::types::Boolean>),
     DateTime(Box<super::super::types::DateTime>),
+    #[default]
     Invalid,
 }
-impl Default for PractitionerDeceased {
-    fn default() -> PractitionerDeceased {
-        PractitionerDeceased::Invalid
-    }
-}
 #[doc = "The official qualifications, certifications, accreditations, training, licenses (and other types of educations/skills/capabilities) that authorize or otherwise pertain to the provision of care by the practitioner.\r\rFor example, a medical license issued by a medical board of licensure authorizing the practitioner to practice medicine within a certain locality."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct PractitionerQualification {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -29,8 +25,25 @@ pub struct PractitionerQualification {
     #[doc = "Organization that regulates and issues the qualification."]
     pub r#issuer: Option<Box<super::super::types::Reference>>,
 }
+impl Default for PractitionerQualification {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#identifier: Default::default(),
+            r#code: {
+                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#period: Default::default(),
+            r#issuer: Default::default(),
+        }
+    }
+}
 #[doc = "A language which may be used to communicate with the practitioner, often for correspondence/administrative purposes.\r\rThe `PractitionerRole.communication` property should be used for publishing the languages that a practitioner is able to communicate with patients (on a per Organization/Role basis)."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct PractitionerCommunication {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -43,8 +56,23 @@ pub struct PractitionerCommunication {
     #[doc = "Indicates whether or not the person prefers this language (over other languages he masters up a certain level)."]
     pub r#preferred: Option<super::super::types::Boolean>,
 }
+impl Default for PractitionerCommunication {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#language: {
+                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#preferred: Default::default(),
+        }
+    }
+}
 #[doc = "A person who is directly or indirectly involved in the provisioning of healthcare or related services.\n\nNeed to track doctors, staff, locums etc. for both healthcare practitioners, funders, etc."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct Practitioner {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,
@@ -84,4 +112,29 @@ pub struct Practitioner {
     pub r#qualification: Vec<PractitionerQualification>,
     #[doc = "A language which may be used to communicate with the practitioner, often for correspondence/administrative purposes.\r\rThe `PractitionerRole.communication` property should be used for publishing the languages that a practitioner is able to communicate with patients (on a per Organization/Role basis)."]
     pub r#communication: Vec<PractitionerCommunication>,
+}
+impl Default for Practitioner {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#meta: Default::default(),
+            r#implicit_rules: Default::default(),
+            r#language: Default::default(),
+            r#text: Default::default(),
+            r#contained: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#identifier: Default::default(),
+            r#active: Default::default(),
+            r#name: Default::default(),
+            r#telecom: Default::default(),
+            r#gender: Default::default(),
+            r#birth_date: Default::default(),
+            r#deceased: Default::default(),
+            r#address: Default::default(),
+            r#photo: Default::default(),
+            r#qualification: Default::default(),
+            r#communication: Default::default(),
+        }
+    }
 }

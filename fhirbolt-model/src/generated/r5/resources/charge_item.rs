@@ -1,19 +1,15 @@
-// Generated on 2023-04-20 by fhirbolt-codegen v0.4.0
+// Generated on 2023-04-20 by fhirbolt-codegen v0.5.0
 #[doc = "Date/time(s) or duration when the charged service was applied."]
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub enum ChargeItemOccurrence {
     DateTime(Box<super::super::types::DateTime>),
     Period(Box<super::super::types::Period>),
     Timing(Box<super::super::types::Timing>),
+    #[default]
     Invalid,
 }
-impl Default for ChargeItemOccurrence {
-    fn default() -> ChargeItemOccurrence {
-        ChargeItemOccurrence::Invalid
-    }
-}
 #[doc = "Indicates who or what performed or participated in the charged service."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct ChargeItemPerformer {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -26,8 +22,23 @@ pub struct ChargeItemPerformer {
     #[doc = "The device, practitioner, etc. who performed or participated in the service."]
     pub r#actor: Box<super::super::types::Reference>,
 }
+impl Default for ChargeItemPerformer {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#function: Default::default(),
+            r#actor: {
+                let mut default: Box<super::super::types::Reference> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+        }
+    }
+}
 #[doc = "The resource ChargeItem describes the provision of healthcare provider products for a certain patient, therefore referring not only to the product, but containing in addition details of the provision, like date, time, amounts and participating organizations and persons. Main Usage of the ChargeItem is to enable the billing process and internal cost allocation."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct ChargeItem {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,
@@ -97,4 +108,56 @@ pub struct ChargeItem {
     pub r#note: Vec<Box<super::super::types::Annotation>>,
     #[doc = "Further information supporting this charge."]
     pub r#supporting_information: Vec<Box<super::super::types::Reference>>,
+}
+impl Default for ChargeItem {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#meta: Default::default(),
+            r#implicit_rules: Default::default(),
+            r#language: Default::default(),
+            r#text: Default::default(),
+            r#contained: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#identifier: Default::default(),
+            r#definition_uri: Default::default(),
+            r#definition_canonical: Default::default(),
+            r#status: {
+                let mut default: super::super::types::Code = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#part_of: Default::default(),
+            r#code: {
+                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#subject: {
+                let mut default: Box<super::super::types::Reference> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#encounter: Default::default(),
+            r#occurrence: Default::default(),
+            r#performer: Default::default(),
+            r#performing_organization: Default::default(),
+            r#requesting_organization: Default::default(),
+            r#cost_center: Default::default(),
+            r#quantity: Default::default(),
+            r#bodysite: Default::default(),
+            r#unit_price_component: Default::default(),
+            r#total_price_component: Default::default(),
+            r#override_reason: Default::default(),
+            r#enterer: Default::default(),
+            r#entered_date: Default::default(),
+            r#reason: Default::default(),
+            r#service: Default::default(),
+            r#product: Default::default(),
+            r#account: Default::default(),
+            r#note: Default::default(),
+            r#supporting_information: Default::default(),
+        }
+    }
 }

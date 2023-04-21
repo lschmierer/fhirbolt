@@ -1,31 +1,23 @@
-// Generated on 2023-04-20 by fhirbolt-codegen v0.4.0
+// Generated on 2023-04-20 by fhirbolt-codegen v0.5.0
 #[doc = "Identifies the medication, substance or device being dispensed. This is either a link to a resource representing the details of the item or a code that identifies the item from a known list."]
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub enum SupplyDeliverySuppliedItemItem {
     CodeableConcept(Box<super::super::types::CodeableConcept>),
     Reference(Box<super::super::types::Reference>),
+    #[default]
     Invalid,
 }
-impl Default for SupplyDeliverySuppliedItemItem {
-    fn default() -> SupplyDeliverySuppliedItemItem {
-        SupplyDeliverySuppliedItemItem::Invalid
-    }
-}
 #[doc = "The date or time(s) the activity occurred."]
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub enum SupplyDeliveryOccurrence {
     DateTime(Box<super::super::types::DateTime>),
     Period(Box<super::super::types::Period>),
     Timing(Box<super::super::types::Timing>),
+    #[default]
     Invalid,
 }
-impl Default for SupplyDeliveryOccurrence {
-    fn default() -> SupplyDeliveryOccurrence {
-        SupplyDeliveryOccurrence::Invalid
-    }
-}
 #[doc = "The item that is being delivered or has been supplied."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct SupplyDeliverySuppliedItem {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -38,8 +30,19 @@ pub struct SupplyDeliverySuppliedItem {
     #[doc = "Identifies the medication, substance or device being dispensed. This is either a link to a resource representing the details of the item or a code that identifies the item from a known list."]
     pub r#item: Option<SupplyDeliverySuppliedItemItem>,
 }
+impl Default for SupplyDeliverySuppliedItem {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#quantity: Default::default(),
+            r#item: Default::default(),
+        }
+    }
+}
 #[doc = "Record of delivery of what is supplied."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct SupplyDelivery {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,
@@ -79,4 +82,29 @@ pub struct SupplyDelivery {
     pub r#destination: Option<Box<super::super::types::Reference>>,
     #[doc = "Identifies the person who picked up the Supply."]
     pub r#receiver: Vec<Box<super::super::types::Reference>>,
+}
+impl Default for SupplyDelivery {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#meta: Default::default(),
+            r#implicit_rules: Default::default(),
+            r#language: Default::default(),
+            r#text: Default::default(),
+            r#contained: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#identifier: Default::default(),
+            r#based_on: Default::default(),
+            r#part_of: Default::default(),
+            r#status: Default::default(),
+            r#patient: Default::default(),
+            r#type: Default::default(),
+            r#supplied_item: Default::default(),
+            r#occurrence: Default::default(),
+            r#supplier: Default::default(),
+            r#destination: Default::default(),
+            r#receiver: Default::default(),
+        }
+    }
 }

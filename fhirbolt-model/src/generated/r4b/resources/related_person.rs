@@ -1,6 +1,6 @@
-// Generated on 2023-04-20 by fhirbolt-codegen v0.4.0
+// Generated on 2023-04-20 by fhirbolt-codegen v0.5.0
 #[doc = "A language which may be used to communicate with about the patient's health."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct RelatedPersonCommunication {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -13,8 +13,23 @@ pub struct RelatedPersonCommunication {
     #[doc = "Indicates whether or not the patient prefers this language (over other languages he masters up a certain level)."]
     pub r#preferred: Option<super::super::types::Boolean>,
 }
+impl Default for RelatedPersonCommunication {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#language: {
+                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#preferred: Default::default(),
+        }
+    }
+}
 #[doc = "Information about a person that is involved in the care for a patient, but who is not the target of healthcare, nor has a formal responsibility in the care process.\n\nNeed to track persons related to the patient or the healthcare process."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct RelatedPerson {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,
@@ -56,4 +71,34 @@ pub struct RelatedPerson {
     pub r#period: Option<Box<super::super::types::Period>>,
     #[doc = "A language which may be used to communicate with about the patient's health."]
     pub r#communication: Vec<RelatedPersonCommunication>,
+}
+impl Default for RelatedPerson {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#meta: Default::default(),
+            r#implicit_rules: Default::default(),
+            r#language: Default::default(),
+            r#text: Default::default(),
+            r#contained: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#identifier: Default::default(),
+            r#active: Default::default(),
+            r#patient: {
+                let mut default: Box<super::super::types::Reference> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#relationship: Default::default(),
+            r#name: Default::default(),
+            r#telecom: Default::default(),
+            r#gender: Default::default(),
+            r#birth_date: Default::default(),
+            r#address: Default::default(),
+            r#photo: Default::default(),
+            r#period: Default::default(),
+            r#communication: Default::default(),
+        }
+    }
 }

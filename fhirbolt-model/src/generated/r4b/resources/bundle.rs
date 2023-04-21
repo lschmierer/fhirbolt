@@ -1,6 +1,6 @@
-// Generated on 2023-04-20 by fhirbolt-codegen v0.4.0
+// Generated on 2023-04-20 by fhirbolt-codegen v0.5.0
 #[doc = "A series of links that provide context to this bundle."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct BundleLink {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -13,8 +13,27 @@ pub struct BundleLink {
     #[doc = "The reference details for the link."]
     pub r#url: super::super::types::Uri,
 }
+impl Default for BundleLink {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#relation: {
+                let mut default: super::super::types::String = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#url: {
+                let mut default: super::super::types::Uri = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+        }
+    }
+}
 #[doc = "Information about the search process that lead to the creation of this entry."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct BundleEntrySearch {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -27,8 +46,19 @@ pub struct BundleEntrySearch {
     #[doc = "When searching, the server's search ranking score for the entry."]
     pub r#score: Option<super::super::types::Decimal>,
 }
+impl Default for BundleEntrySearch {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#mode: Default::default(),
+            r#score: Default::default(),
+        }
+    }
+}
 #[doc = "Additional information about how this entry should be processed as part of a transaction or batch.  For history, it shows how the entry was processed to create the version contained in the entry."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct BundleEntryRequest {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -49,8 +79,31 @@ pub struct BundleEntryRequest {
     #[doc = "Instruct the server not to perform the create if a specified resource already exists. For further information, see the API documentation for [\"Conditional Create\"](<http.html>#ccreate). This is just the query portion of the URL - what follows the \"?\" (not including the \"?\")."]
     pub r#if_none_exist: Option<super::super::types::String>,
 }
+impl Default for BundleEntryRequest {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#method: {
+                let mut default: super::super::types::Code = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#url: {
+                let mut default: super::super::types::Uri = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#if_none_match: Default::default(),
+            r#if_modified_since: Default::default(),
+            r#if_match: Default::default(),
+            r#if_none_exist: Default::default(),
+        }
+    }
+}
 #[doc = "Indicates the results of processing the corresponding 'request' entry in the batch or transaction being responded to or what the results of an operation where when returning history."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct BundleEntryResponse {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -69,8 +122,26 @@ pub struct BundleEntryResponse {
     #[doc = "An OperationOutcome containing hints and warnings produced as part of processing this entry in a batch or transaction."]
     pub r#outcome: Option<Box<super::super::Resource>>,
 }
+impl Default for BundleEntryResponse {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#status: {
+                let mut default: super::super::types::String = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#location: Default::default(),
+            r#etag: Default::default(),
+            r#last_modified: Default::default(),
+            r#outcome: Default::default(),
+        }
+    }
+}
 #[doc = "An entry in a bundle resource - will either contain a resource or information about a resource (transactions and history only)."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct BundleEntry {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -91,8 +162,23 @@ pub struct BundleEntry {
     #[doc = "Indicates the results of processing the corresponding 'request' entry in the batch or transaction being responded to or what the results of an operation where when returning history."]
     pub r#response: Option<BundleEntryResponse>,
 }
+impl Default for BundleEntry {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#link: Default::default(),
+            r#full_url: Default::default(),
+            r#resource: Default::default(),
+            r#search: Default::default(),
+            r#request: Default::default(),
+            r#response: Default::default(),
+        }
+    }
+}
 #[doc = "A container for a collection of resources."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct Bundle {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,
@@ -116,4 +202,25 @@ pub struct Bundle {
     pub r#entry: Vec<BundleEntry>,
     #[doc = "Digital Signature - base64 encoded. XML-DSig or a JWT."]
     pub r#signature: Option<Box<super::super::types::Signature>>,
+}
+impl Default for Bundle {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#meta: Default::default(),
+            r#implicit_rules: Default::default(),
+            r#language: Default::default(),
+            r#identifier: Default::default(),
+            r#type: {
+                let mut default: super::super::types::Code = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#timestamp: Default::default(),
+            r#total: Default::default(),
+            r#link: Default::default(),
+            r#entry: Default::default(),
+            r#signature: Default::default(),
+        }
+    }
 }

@@ -1,6 +1,6 @@
-// Generated on 2023-04-20 by fhirbolt-codegen v0.4.0
+// Generated on 2023-04-20 by fhirbolt-codegen v0.5.0
 #[doc = "This resource provides the status of the payment for goods and services rendered, and the request and response resource references."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct PaymentNotice {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,
@@ -42,4 +42,46 @@ pub struct PaymentNotice {
     pub r#amount: Box<super::super::types::Money>,
     #[doc = "A code indicating whether payment has been sent or cleared."]
     pub r#payment_status: Option<Box<super::super::types::CodeableConcept>>,
+}
+impl Default for PaymentNotice {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#meta: Default::default(),
+            r#implicit_rules: Default::default(),
+            r#language: Default::default(),
+            r#text: Default::default(),
+            r#contained: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#identifier: Default::default(),
+            r#status: {
+                let mut default: super::super::types::Code = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#request: Default::default(),
+            r#response: Default::default(),
+            r#created: {
+                let mut default: super::super::types::DateTime = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#reporter: Default::default(),
+            r#payment: Default::default(),
+            r#payment_date: Default::default(),
+            r#payee: Default::default(),
+            r#recipient: {
+                let mut default: Box<super::super::types::Reference> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#amount: {
+                let mut default: Box<super::super::types::Money> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#payment_status: Default::default(),
+        }
+    }
 }

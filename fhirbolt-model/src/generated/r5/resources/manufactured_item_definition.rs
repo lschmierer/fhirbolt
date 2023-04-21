@@ -1,6 +1,6 @@
-// Generated on 2023-04-20 by fhirbolt-codegen v0.4.0
+// Generated on 2023-04-20 by fhirbolt-codegen v0.5.0
 #[doc = "A value for the characteristic."]
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub enum ManufacturedItemDefinitionPropertyValue {
     CodeableConcept(Box<super::super::types::CodeableConcept>),
     Quantity(Box<super::super::types::Quantity>),
@@ -9,15 +9,11 @@ pub enum ManufacturedItemDefinitionPropertyValue {
     Markdown(Box<super::super::types::Markdown>),
     Attachment(Box<super::super::types::Attachment>),
     Reference(Box<super::super::types::Reference>),
+    #[default]
     Invalid,
 }
-impl Default for ManufacturedItemDefinitionPropertyValue {
-    fn default() -> ManufacturedItemDefinitionPropertyValue {
-        ManufacturedItemDefinitionPropertyValue::Invalid
-    }
-}
 #[doc = "General characteristics of this item."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct ManufacturedItemDefinitionProperty {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -30,8 +26,23 @@ pub struct ManufacturedItemDefinitionProperty {
     #[doc = "A value for the characteristic."]
     pub r#value: Option<ManufacturedItemDefinitionPropertyValue>,
 }
+impl Default for ManufacturedItemDefinitionProperty {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#type: {
+                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#value: Default::default(),
+        }
+    }
+}
 #[doc = "A reference to a constituent of the manufactured item as a whole, linked here so that its component location within the item can be indicated. This not where the item's ingredient are primarily stated (for which see Ingredient.for or ManufacturedItemDefinition.ingredient)."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct ManufacturedItemDefinitionComponentConstituent {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -48,8 +59,21 @@ pub struct ManufacturedItemDefinitionComponentConstituent {
     #[doc = "The ingredient that is the constituent of the given component."]
     pub r#has_ingredient: Vec<Box<super::super::types::CodeableReference>>,
 }
+impl Default for ManufacturedItemDefinitionComponentConstituent {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#amount: Default::default(),
+            r#location: Default::default(),
+            r#function: Default::default(),
+            r#has_ingredient: Default::default(),
+        }
+    }
+}
 #[doc = "Physical parts of the manufactured item, that it is intrisically made from. This is distinct from the ingredients that are part of its chemical makeup."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct ManufacturedItemDefinitionComponent {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -70,8 +94,27 @@ pub struct ManufacturedItemDefinitionComponent {
     #[doc = "A component that this component contains or is made from."]
     pub r#component: Vec<ManufacturedItemDefinitionComponent>,
 }
+impl Default for ManufacturedItemDefinitionComponent {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#type: {
+                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#function: Default::default(),
+            r#amount: Default::default(),
+            r#constituent: Default::default(),
+            r#property: Default::default(),
+            r#component: Default::default(),
+        }
+    }
+}
 #[doc = "The definition and characteristics of a medicinal manufactured item, such as a tablet or capsule, as contained in a packaged medicinal product."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct ManufacturedItemDefinition {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,
@@ -109,4 +152,36 @@ pub struct ManufacturedItemDefinition {
     pub r#property: Vec<ManufacturedItemDefinitionProperty>,
     #[doc = "Physical parts of the manufactured item, that it is intrisically made from. This is distinct from the ingredients that are part of its chemical makeup."]
     pub r#component: Vec<ManufacturedItemDefinitionComponent>,
+}
+impl Default for ManufacturedItemDefinition {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#meta: Default::default(),
+            r#implicit_rules: Default::default(),
+            r#language: Default::default(),
+            r#text: Default::default(),
+            r#contained: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#identifier: Default::default(),
+            r#status: {
+                let mut default: super::super::types::Code = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#name: Default::default(),
+            r#manufactured_dose_form: {
+                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#unit_of_presentation: Default::default(),
+            r#manufacturer: Default::default(),
+            r#marketing_status: Default::default(),
+            r#ingredient: Default::default(),
+            r#property: Default::default(),
+            r#component: Default::default(),
+        }
+    }
 }

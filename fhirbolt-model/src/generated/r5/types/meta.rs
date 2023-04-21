@@ -1,6 +1,6 @@
-// Generated on 2023-04-20 by fhirbolt-codegen v0.4.0
+// Generated on 2023-04-20 by fhirbolt-codegen v0.5.0
 #[doc = "Meta Type: The metadata about a resource. This is content in the resource that is maintained by the infrastructure. Changes to the content might not always be associated with version changes to the resource."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct Meta {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -18,4 +18,18 @@ pub struct Meta {
     pub r#security: Vec<Box<super::super::types::Coding>>,
     #[doc = "Tags applied to this resource. Tags are intended to be used to identify and relate resources to process and workflow, and applications are not required to consider the tags when interpreting the meaning of a resource."]
     pub r#tag: Vec<Box<super::super::types::Coding>>,
+}
+impl Default for Meta {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#version_id: Default::default(),
+            r#last_updated: Default::default(),
+            r#source: Default::default(),
+            r#profile: Default::default(),
+            r#security: Default::default(),
+            r#tag: Default::default(),
+        }
+    }
 }

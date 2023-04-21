@@ -1,6 +1,6 @@
-// Generated on 2023-04-20 by fhirbolt-codegen v0.4.0
+// Generated on 2023-04-20 by fhirbolt-codegen v0.5.0
 #[doc = "A specific set of Roles/Locations/specialties/services that a practitioner may perform, or has performed at an organization during a period of time.\n\nNeed to track services that a healthcare provider is able to provide at an organization's location, and the services that they can perform there."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct PractitionerRole {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,
@@ -46,4 +46,32 @@ pub struct PractitionerRole {
     pub r#availability: Vec<Box<super::super::types::Availability>>,
     #[doc = " Technical endpoints providing access to services operated for the practitioner with this role. Commonly used for locating scheduling services, or identifying where to send referrals electronically."]
     pub r#endpoint: Vec<Box<super::super::types::Reference>>,
+}
+impl Default for PractitionerRole {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#meta: Default::default(),
+            r#implicit_rules: Default::default(),
+            r#language: Default::default(),
+            r#text: Default::default(),
+            r#contained: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#identifier: Default::default(),
+            r#active: Default::default(),
+            r#period: Default::default(),
+            r#practitioner: Default::default(),
+            r#organization: Default::default(),
+            r#code: Default::default(),
+            r#specialty: Default::default(),
+            r#location: Default::default(),
+            r#healthcare_service: Default::default(),
+            r#contact: Default::default(),
+            r#characteristic: Default::default(),
+            r#communication: Default::default(),
+            r#availability: Default::default(),
+            r#endpoint: Default::default(),
+        }
+    }
 }

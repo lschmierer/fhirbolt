@@ -1,21 +1,17 @@
-// Generated on 2023-04-20 by fhirbolt-codegen v0.4.0
+// Generated on 2023-04-20 by fhirbolt-codegen v0.5.0
 #[doc = "Estimated or actual date,  date-time, or age when allergy or intolerance was identified."]
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub enum AllergyIntoleranceOnset {
     DateTime(Box<super::super::types::DateTime>),
     Age(Box<super::super::types::Age>),
     Period(Box<super::super::types::Period>),
     Range(Box<super::super::types::Range>),
     String(Box<super::super::types::String>),
+    #[default]
     Invalid,
 }
-impl Default for AllergyIntoleranceOnset {
-    fn default() -> AllergyIntoleranceOnset {
-        AllergyIntoleranceOnset::Invalid
-    }
-}
 #[doc = "Indicates who or what participated in the activities related to the allergy or intolerance and how they were involved."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct AllergyIntoleranceParticipant {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -28,8 +24,23 @@ pub struct AllergyIntoleranceParticipant {
     #[doc = "Indicates who or what participated in the activities related to the allergy or intolerance."]
     pub r#actor: Box<super::super::types::Reference>,
 }
+impl Default for AllergyIntoleranceParticipant {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#function: Default::default(),
+            r#actor: {
+                let mut default: Box<super::super::types::Reference> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+        }
+    }
+}
 #[doc = "Details about each adverse reaction event linked to exposure to the identified substance."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct AllergyIntoleranceReaction {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -52,8 +63,24 @@ pub struct AllergyIntoleranceReaction {
     #[doc = "Additional text about the adverse reaction event not captured in other fields."]
     pub r#note: Vec<Box<super::super::types::Annotation>>,
 }
+impl Default for AllergyIntoleranceReaction {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#substance: Default::default(),
+            r#manifestation: Default::default(),
+            r#description: Default::default(),
+            r#onset: Default::default(),
+            r#severity: Default::default(),
+            r#exposure_route: Default::default(),
+            r#note: Default::default(),
+        }
+    }
+}
 #[doc = "Risk of harmful or undesirable, physiological response which is unique to an individual and associated with exposure to a substance.\n\nTo record a clinical assessment of a propensity, or potential risk to an individual, of an adverse reaction upon future exposure to the specified substance, or class of substance."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct AllergyIntolerance {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,
@@ -101,4 +128,37 @@ pub struct AllergyIntolerance {
     pub r#note: Vec<Box<super::super::types::Annotation>>,
     #[doc = "Details about each adverse reaction event linked to exposure to the identified substance."]
     pub r#reaction: Vec<AllergyIntoleranceReaction>,
+}
+impl Default for AllergyIntolerance {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#meta: Default::default(),
+            r#implicit_rules: Default::default(),
+            r#language: Default::default(),
+            r#text: Default::default(),
+            r#contained: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#identifier: Default::default(),
+            r#clinical_status: Default::default(),
+            r#verification_status: Default::default(),
+            r#type: Default::default(),
+            r#category: Default::default(),
+            r#criticality: Default::default(),
+            r#code: Default::default(),
+            r#patient: {
+                let mut default: Box<super::super::types::Reference> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#encounter: Default::default(),
+            r#onset: Default::default(),
+            r#recorded_date: Default::default(),
+            r#participant: Default::default(),
+            r#last_occurrence: Default::default(),
+            r#note: Default::default(),
+            r#reaction: Default::default(),
+        }
+    }
 }

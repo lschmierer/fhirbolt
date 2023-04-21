@@ -1,6 +1,6 @@
-// Generated on 2023-04-20 by fhirbolt-codegen v0.4.0
+// Generated on 2023-04-20 by fhirbolt-codegen v0.5.0
 #[doc = "Base StructureDefinition for RelatedArtifact Type: Related artifacts such as additional documentation, justification, or bibliographic references.\n\nKnowledge resources must be able to provide enough information for consumers of the content (and/or interventions or results produced by the content) to be able to determine and understand the justification for and evidence in support of the content."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct RelatedArtifact {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -20,4 +20,23 @@ pub struct RelatedArtifact {
     pub r#document: Option<Box<super::super::types::Attachment>>,
     #[doc = "The related resource, such as a library, value set, profile, or other knowledge resource."]
     pub r#resource: Option<super::super::types::Canonical>,
+}
+impl Default for RelatedArtifact {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#type: {
+                let mut default: super::super::types::Code = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#label: Default::default(),
+            r#display: Default::default(),
+            r#citation: Default::default(),
+            r#url: Default::default(),
+            r#document: Default::default(),
+            r#resource: Default::default(),
+        }
+    }
 }

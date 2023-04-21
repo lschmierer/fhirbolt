@@ -1,6 +1,6 @@
-// Generated on 2023-04-20 by fhirbolt-codegen v0.4.0
+// Generated on 2023-04-20 by fhirbolt-codegen v0.5.0
 #[doc = "List of participants involved in the appointment."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct AppointmentParticipant {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -19,8 +19,26 @@ pub struct AppointmentParticipant {
     #[doc = "Participation status of the actor."]
     pub r#status: super::super::types::Code,
 }
+impl Default for AppointmentParticipant {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#type: Default::default(),
+            r#period: Default::default(),
+            r#actor: Default::default(),
+            r#required: Default::default(),
+            r#status: {
+                let mut default: super::super::types::Code = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+        }
+    }
+}
 #[doc = "Information about weekly recurring appointments."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct AppointmentRecurrenceTemplateWeeklyTemplate {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -45,8 +63,25 @@ pub struct AppointmentRecurrenceTemplateWeeklyTemplate {
     #[doc = "The interval defines if the recurrence is every nth week. The default is every week, so it is expected that this value will be 2 or more.\r\re.g. For recurring every second week this interval would be 2, or every third week the interval would be 3."]
     pub r#week_interval: Option<super::super::types::PositiveInt>,
 }
+impl Default for AppointmentRecurrenceTemplateWeeklyTemplate {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#monday: Default::default(),
+            r#tuesday: Default::default(),
+            r#wednesday: Default::default(),
+            r#thursday: Default::default(),
+            r#friday: Default::default(),
+            r#saturday: Default::default(),
+            r#sunday: Default::default(),
+            r#week_interval: Default::default(),
+        }
+    }
+}
 #[doc = "Information about monthly recurring appointments."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct AppointmentRecurrenceTemplateMonthlyTemplate {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -63,8 +98,25 @@ pub struct AppointmentRecurrenceTemplateMonthlyTemplate {
     #[doc = "Indicates that recurring appointments should occur every nth month."]
     pub r#month_interval: super::super::types::PositiveInt,
 }
+impl Default for AppointmentRecurrenceTemplateMonthlyTemplate {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#day_of_month: Default::default(),
+            r#nth_week_of_month: Default::default(),
+            r#day_of_week: Default::default(),
+            r#month_interval: {
+                let mut default: super::super::types::PositiveInt = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+        }
+    }
+}
 #[doc = "Information about yearly recurring appointments."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct AppointmentRecurrenceTemplateYearlyTemplate {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -75,8 +127,22 @@ pub struct AppointmentRecurrenceTemplateYearlyTemplate {
     #[doc = "Appointment recurs every nth year."]
     pub r#year_interval: super::super::types::PositiveInt,
 }
+impl Default for AppointmentRecurrenceTemplateYearlyTemplate {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#year_interval: {
+                let mut default: super::super::types::PositiveInt = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+        }
+    }
+}
 #[doc = "The details of the recurrence pattern or template that is used to generate recurring appointments."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct AppointmentRecurrenceTemplate {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -105,8 +171,31 @@ pub struct AppointmentRecurrenceTemplate {
     #[doc = "Any dates, such as holidays, that should be excluded from the recurrence."]
     pub r#excluding_recurrence_id: Vec<super::super::types::PositiveInt>,
 }
+impl Default for AppointmentRecurrenceTemplate {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#timezone: Default::default(),
+            r#recurrence_type: {
+                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#last_occurrence_date: Default::default(),
+            r#occurrence_count: Default::default(),
+            r#occurrence_date: Default::default(),
+            r#weekly_template: Default::default(),
+            r#monthly_template: Default::default(),
+            r#yearly_template: Default::default(),
+            r#excluding_date: Default::default(),
+            r#excluding_recurrence_id: Default::default(),
+        }
+    }
+}
 #[doc = "A booking of a healthcare event among patient(s), practitioner(s), related person(s) and/or device(s) for a specific date/time. This may result in one or more Encounter(s)."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct Appointment {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,
@@ -188,4 +277,54 @@ pub struct Appointment {
     pub r#occurrence_changed: Option<super::super::types::Boolean>,
     #[doc = "The details of the recurrence pattern or template that is used to generate recurring appointments."]
     pub r#recurrence_template: Vec<AppointmentRecurrenceTemplate>,
+}
+impl Default for Appointment {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#meta: Default::default(),
+            r#implicit_rules: Default::default(),
+            r#language: Default::default(),
+            r#text: Default::default(),
+            r#contained: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#identifier: Default::default(),
+            r#status: {
+                let mut default: super::super::types::Code = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#cancellation_reason: Default::default(),
+            r#class: Default::default(),
+            r#service_category: Default::default(),
+            r#service_type: Default::default(),
+            r#specialty: Default::default(),
+            r#appointment_type: Default::default(),
+            r#reason: Default::default(),
+            r#priority: Default::default(),
+            r#description: Default::default(),
+            r#replaces: Default::default(),
+            r#virtual_service: Default::default(),
+            r#supporting_information: Default::default(),
+            r#previous_appointment: Default::default(),
+            r#originating_appointment: Default::default(),
+            r#start: Default::default(),
+            r#end: Default::default(),
+            r#minutes_duration: Default::default(),
+            r#requested_period: Default::default(),
+            r#slot: Default::default(),
+            r#account: Default::default(),
+            r#created: Default::default(),
+            r#cancellation_date: Default::default(),
+            r#note: Default::default(),
+            r#patient_instruction: Default::default(),
+            r#based_on: Default::default(),
+            r#subject: Default::default(),
+            r#participant: Default::default(),
+            r#recurrence_id: Default::default(),
+            r#occurrence_changed: Default::default(),
+            r#recurrence_template: Default::default(),
+        }
+    }
 }

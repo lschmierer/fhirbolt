@@ -1,6 +1,6 @@
-// Generated on 2023-04-20 by fhirbolt-codegen v0.4.0
+// Generated on 2023-04-20 by fhirbolt-codegen v0.5.0
 #[doc = "Conveys the content if the parameter is a data type."]
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub enum ParametersParameterValue {
     Base64Binary(Box<super::super::types::Base64Binary>),
     Boolean(Box<super::super::types::Boolean>),
@@ -52,15 +52,11 @@ pub enum ParametersParameterValue {
     UsageContext(Box<super::super::types::UsageContext>),
     Dosage(Box<super::super::types::Dosage>),
     Meta(Box<super::super::types::Meta>),
+    #[default]
     Invalid,
 }
-impl Default for ParametersParameterValue {
-    fn default() -> ParametersParameterValue {
-        ParametersParameterValue::Invalid
-    }
-}
 #[doc = "A parameter passed to or received from the operation."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct ParametersParameter {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -77,8 +73,25 @@ pub struct ParametersParameter {
     #[doc = "A named part of a multi-part parameter."]
     pub r#part: Vec<ParametersParameter>,
 }
+impl Default for ParametersParameter {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#name: {
+                let mut default: super::super::types::String = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#value: Default::default(),
+            r#resource: Default::default(),
+            r#part: Default::default(),
+        }
+    }
+}
 #[doc = "This resource is a non-persisted resource used to pass information into and back from an [operation](https://hl7.org/FHIR/operations.html)). It has no other use, and there is no RESTful endpoint associated with it."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct Parameters {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,
@@ -90,4 +103,15 @@ pub struct Parameters {
     pub r#language: Option<super::super::types::Code>,
     #[doc = "A parameter passed to or received from the operation."]
     pub r#parameter: Vec<ParametersParameter>,
+}
+impl Default for Parameters {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#meta: Default::default(),
+            r#implicit_rules: Default::default(),
+            r#language: Default::default(),
+            r#parameter: Default::default(),
+        }
+    }
 }

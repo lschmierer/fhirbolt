@@ -1,4 +1,4 @@
-// Generated on 2023-04-20 by fhirbolt-codegen v0.4.0
+// Generated on 2023-04-20 by fhirbolt-codegen v0.5.0
 impl serde::ser::Serialize
     for crate::context::ser::SerializationContext<
         &fhirbolt_model::r4::resources::MedicinalProductPharmaceuticalCharacteristics,
@@ -9,6 +9,13 @@ impl serde::ser::Serialize
         S: serde::ser::Serializer,
     {
         use serde::ser::SerializeMap;
+        #[allow(dead_code)]
+        fn missing_field_error<T, E: serde::ser::Error>(field: &str) -> Result<T, E> {
+            Err(E::custom(format!(
+                "missing required field `{}.{}`",
+                "MedicinalProductPharmaceutical.characteristics", field
+            )))
+        }
         let mut state = serializer.serialize_map(None)?;
         if let Some(value) = self.value.r#id.as_ref() {
             state.serialize_entry("id", value)?;
@@ -22,6 +29,9 @@ impl serde::ser::Serialize
             self.with_context(&self.value.r#modifier_extension, |ctx| {
                 state.serialize_entry("modifierExtension", ctx)
             })?;
+        }
+        if self.value.r#code.id.as_deref() == Some("$invalid") {
+            return missing_field_error("code");
         }
         self.with_context(&self.value.r#code, |ctx| state.serialize_entry("code", ctx))?;
         if let Some(some) = self.value.r#status.as_ref() {
@@ -300,7 +310,7 @@ impl<'de> serde::de::DeserializeSeed<'de>
         deserializer.deserialize_seq(Visitor(self))
     }
 }
-impl serde :: ser :: Serialize for crate :: context :: ser :: SerializationContext < & fhirbolt_model :: r4 :: resources :: MedicinalProductPharmaceuticalRouteOfAdministrationTargetSpeciesWithdrawalPeriod > { fn serialize < S > (& self , serializer : S) -> Result < S :: Ok , S :: Error > where S : serde :: ser :: Serializer , { use serde :: ser :: SerializeMap ; let mut state = serializer . serialize_map (None) ? ; if let Some (value) = self . value . r#id . as_ref () { state . serialize_entry ("id" , value) ? ; } if ! self . value . r#extension . is_empty () { self . with_context (& self . value . r#extension , | ctx | state . serialize_entry ("extension" , ctx)) ? ; } if ! self . value . r#modifier_extension . is_empty () { self . with_context (& self . value . r#modifier_extension , | ctx | state . serialize_entry ("modifierExtension" , ctx)) ? ; } self . with_context (& self . value . r#tissue , | ctx | state . serialize_entry ("tissue" , ctx)) ? ; self . with_context (& self . value . r#value , | ctx | state . serialize_entry ("value" , ctx)) ? ; if self . output_json { if let Some (some) = self . value . r#supporting_information . as_ref () { if let Some (some) = some . value . as_ref () { let some = Ok (some) ? ; state . serialize_entry ("supportingInformation" , & some) ? ; } if some . id . is_some () || ! some . extension . is_empty () { let primitive_element = super :: super :: serde_helpers :: PrimitiveElement { id : some . id . as_ref () , extension : & some . extension , } ; self . with_context (& primitive_element , | ctx | state . serialize_entry ("_supportingInformation" , ctx)) ? ; } } } else { if let Some (some) = self . value . r#supporting_information . as_ref () { self . with_context (some , | ctx | state . serialize_entry ("supportingInformation" , ctx)) ? ; } } state . end () } }
+impl serde :: ser :: Serialize for crate :: context :: ser :: SerializationContext < & fhirbolt_model :: r4 :: resources :: MedicinalProductPharmaceuticalRouteOfAdministrationTargetSpeciesWithdrawalPeriod > { fn serialize < S > (& self , serializer : S) -> Result < S :: Ok , S :: Error > where S : serde :: ser :: Serializer , { use serde :: ser :: SerializeMap ; # [allow (dead_code)] fn missing_field_error < T , E : serde :: ser :: Error > (field : & str) -> Result < T , E > { Err (E :: custom (format ! ("missing required field `{}.{}`" , "MedicinalProductPharmaceutical.routeOfAdministration.targetSpecies.withdrawalPeriod" , field))) } let mut state = serializer . serialize_map (None) ? ; if let Some (value) = self . value . r#id . as_ref () { state . serialize_entry ("id" , value) ? ; } if ! self . value . r#extension . is_empty () { self . with_context (& self . value . r#extension , | ctx | state . serialize_entry ("extension" , ctx)) ? ; } if ! self . value . r#modifier_extension . is_empty () { self . with_context (& self . value . r#modifier_extension , | ctx | state . serialize_entry ("modifierExtension" , ctx)) ? ; } if self . value . r#tissue . id . as_deref () == Some ("$invalid") { return missing_field_error ("tissue") } self . with_context (& self . value . r#tissue , | ctx | state . serialize_entry ("tissue" , ctx)) ? ; if self . value . r#value . id . as_deref () == Some ("$invalid") { return missing_field_error ("value") } self . with_context (& self . value . r#value , | ctx | state . serialize_entry ("value" , ctx)) ? ; if self . output_json { if let Some (some) = self . value . r#supporting_information . as_ref () { if let Some (some) = some . value . as_ref () { let some = Ok (some) ? ; state . serialize_entry ("supportingInformation" , & some) ? ; } if some . id . is_some () || ! some . extension . is_empty () { let primitive_element = super :: super :: serde_helpers :: PrimitiveElement { id : some . id . as_ref () , extension : & some . extension , } ; self . with_context (& primitive_element , | ctx | state . serialize_entry ("_supportingInformation" , ctx)) ? ; } } } else { if let Some (some) = self . value . r#supporting_information . as_ref () { self . with_context (some , | ctx | state . serialize_entry ("supportingInformation" , ctx)) ? ; } } state . end () } }
 impl serde :: ser :: Serialize for crate :: context :: ser :: SerializationContext < & Box < fhirbolt_model :: r4 :: resources :: MedicinalProductPharmaceuticalRouteOfAdministrationTargetSpeciesWithdrawalPeriod >> { fn serialize < S > (& self , serializer : S) -> Result < S :: Ok , S :: Error > where S : serde :: ser :: Serializer , { self . with_context (self . value . as_ref () , | ctx | ctx . serialize (serializer)) } }
 impl serde :: ser :: Serialize for crate :: context :: ser :: SerializationContext < & Vec < fhirbolt_model :: r4 :: resources :: MedicinalProductPharmaceuticalRouteOfAdministrationTargetSpeciesWithdrawalPeriod >> { fn serialize < S > (& self , serializer : S) -> Result < S :: Ok , S :: Error > where S : serde :: ser :: Serializer , { use serde :: ser :: SerializeSeq ; let mut seq_serializer = serializer . serialize_seq (Some (self . value . len ())) ? ; for value in self . value { self . with_context (value , | ctx | { seq_serializer . serialize_element (ctx) }) ? } seq_serializer . end () } }
 impl serde :: ser :: Serialize for crate :: context :: ser :: SerializationContext < & Vec < Box < fhirbolt_model :: r4 :: resources :: MedicinalProductPharmaceuticalRouteOfAdministrationTargetSpeciesWithdrawalPeriod >> > { fn serialize < S > (& self , serializer : S) -> Result < S :: Ok , S :: Error > where S : serde :: ser :: Serializer , { use serde :: ser :: SerializeSeq ; let mut seq_serializer = serializer . serialize_seq (Some (self . value . len ())) ? ; for value in self . value { self . with_context (value , | ctx | { seq_serializer . serialize_element (ctx) }) ? } seq_serializer . end () } }
@@ -308,7 +318,7 @@ impl < 'de > serde :: de :: DeserializeSeed < 'de > for & mut crate :: context :
 impl < 'de > serde :: de :: DeserializeSeed < 'de > for & mut crate :: context :: de :: DeserializationContext < Box < fhirbolt_model :: r4 :: resources :: MedicinalProductPharmaceuticalRouteOfAdministrationTargetSpeciesWithdrawalPeriod >> { type Value = Box < fhirbolt_model :: r4 :: resources :: MedicinalProductPharmaceuticalRouteOfAdministrationTargetSpeciesWithdrawalPeriod > ; fn deserialize < D > (self , deserializer : D) -> Result < Self :: Value , D :: Error > where D : serde :: de :: Deserializer < 'de > , { self . transmute :: < fhirbolt_model :: r4 :: resources :: MedicinalProductPharmaceuticalRouteOfAdministrationTargetSpeciesWithdrawalPeriod > () . deserialize (deserializer) . map (Box :: new) } }
 impl < 'de > serde :: de :: DeserializeSeed < 'de > for & mut crate :: context :: de :: DeserializationContext < Vec < fhirbolt_model :: r4 :: resources :: MedicinalProductPharmaceuticalRouteOfAdministrationTargetSpeciesWithdrawalPeriod >> { type Value = Vec < fhirbolt_model :: r4 :: resources :: MedicinalProductPharmaceuticalRouteOfAdministrationTargetSpeciesWithdrawalPeriod > ; fn deserialize < D > (self , deserializer : D) -> Result < Self :: Value , D :: Error > where D : serde :: de :: Deserializer < 'de > , { struct Visitor < 'a > (& 'a mut crate :: context :: de :: DeserializationContext < Vec < fhirbolt_model :: r4 :: resources :: MedicinalProductPharmaceuticalRouteOfAdministrationTargetSpeciesWithdrawalPeriod >>) ; impl < 'de > serde :: de :: Visitor < 'de > for Visitor < '_ > { type Value = Vec < fhirbolt_model :: r4 :: resources :: MedicinalProductPharmaceuticalRouteOfAdministrationTargetSpeciesWithdrawalPeriod > ; fn expecting (& self , formatter : & mut std :: fmt :: Formatter) -> std :: fmt :: Result { formatter . write_str ("a sequence") } fn visit_seq < A > (self , mut seq : A) -> Result < Self :: Value , A :: Error > where A : serde :: de :: SeqAccess < 'de > , { let mut values = Vec :: new () ; while let Some (value) = seq . next_element_seed (self . 0 . transmute :: < fhirbolt_model :: r4 :: resources :: MedicinalProductPharmaceuticalRouteOfAdministrationTargetSpeciesWithdrawalPeriod > ()) ? { values . push (value) ; } Ok (values) } } deserializer . deserialize_seq (Visitor (self)) } }
 impl < 'de > serde :: de :: DeserializeSeed < 'de > for & mut crate :: context :: de :: DeserializationContext < Vec < Box < fhirbolt_model :: r4 :: resources :: MedicinalProductPharmaceuticalRouteOfAdministrationTargetSpeciesWithdrawalPeriod >> > { type Value = Vec < Box < fhirbolt_model :: r4 :: resources :: MedicinalProductPharmaceuticalRouteOfAdministrationTargetSpeciesWithdrawalPeriod >> ; fn deserialize < D > (self , deserializer : D) -> Result < Self :: Value , D :: Error > where D : serde :: de :: Deserializer < 'de > , { struct Visitor < 'a > (& 'a mut crate :: context :: de :: DeserializationContext < Vec < Box < fhirbolt_model :: r4 :: resources :: MedicinalProductPharmaceuticalRouteOfAdministrationTargetSpeciesWithdrawalPeriod >> >) ; impl < 'de > serde :: de :: Visitor < 'de > for Visitor < '_ > { type Value = Vec < Box < fhirbolt_model :: r4 :: resources :: MedicinalProductPharmaceuticalRouteOfAdministrationTargetSpeciesWithdrawalPeriod >> ; fn expecting (& self , formatter : & mut std :: fmt :: Formatter) -> std :: fmt :: Result { formatter . write_str ("a sequence") } fn visit_seq < A > (self , mut seq : A) -> Result < Self :: Value , A :: Error > where A : serde :: de :: SeqAccess < 'de > , { let mut values = Vec :: new () ; while let Some (value) = seq . next_element_seed (self . 0 . transmute :: < Box < fhirbolt_model :: r4 :: resources :: MedicinalProductPharmaceuticalRouteOfAdministrationTargetSpeciesWithdrawalPeriod >> ()) ? { values . push (value) ; } Ok (values) } } deserializer . deserialize_seq (Visitor (self)) } }
-impl serde :: ser :: Serialize for crate :: context :: ser :: SerializationContext < & fhirbolt_model :: r4 :: resources :: MedicinalProductPharmaceuticalRouteOfAdministrationTargetSpecies > { fn serialize < S > (& self , serializer : S) -> Result < S :: Ok , S :: Error > where S : serde :: ser :: Serializer , { use serde :: ser :: SerializeMap ; let mut state = serializer . serialize_map (None) ? ; if let Some (value) = self . value . r#id . as_ref () { state . serialize_entry ("id" , value) ? ; } if ! self . value . r#extension . is_empty () { self . with_context (& self . value . r#extension , | ctx | state . serialize_entry ("extension" , ctx)) ? ; } if ! self . value . r#modifier_extension . is_empty () { self . with_context (& self . value . r#modifier_extension , | ctx | state . serialize_entry ("modifierExtension" , ctx)) ? ; } self . with_context (& self . value . r#code , | ctx | state . serialize_entry ("code" , ctx)) ? ; if ! self . value . r#withdrawal_period . is_empty () { self . with_context (& self . value . r#withdrawal_period , | ctx | state . serialize_entry ("withdrawalPeriod" , ctx)) ? ; } state . end () } }
+impl serde :: ser :: Serialize for crate :: context :: ser :: SerializationContext < & fhirbolt_model :: r4 :: resources :: MedicinalProductPharmaceuticalRouteOfAdministrationTargetSpecies > { fn serialize < S > (& self , serializer : S) -> Result < S :: Ok , S :: Error > where S : serde :: ser :: Serializer , { use serde :: ser :: SerializeMap ; # [allow (dead_code)] fn missing_field_error < T , E : serde :: ser :: Error > (field : & str) -> Result < T , E > { Err (E :: custom (format ! ("missing required field `{}.{}`" , "MedicinalProductPharmaceutical.routeOfAdministration.targetSpecies" , field))) } let mut state = serializer . serialize_map (None) ? ; if let Some (value) = self . value . r#id . as_ref () { state . serialize_entry ("id" , value) ? ; } if ! self . value . r#extension . is_empty () { self . with_context (& self . value . r#extension , | ctx | state . serialize_entry ("extension" , ctx)) ? ; } if ! self . value . r#modifier_extension . is_empty () { self . with_context (& self . value . r#modifier_extension , | ctx | state . serialize_entry ("modifierExtension" , ctx)) ? ; } if self . value . r#code . id . as_deref () == Some ("$invalid") { return missing_field_error ("code") } self . with_context (& self . value . r#code , | ctx | state . serialize_entry ("code" , ctx)) ? ; if ! self . value . r#withdrawal_period . is_empty () { self . with_context (& self . value . r#withdrawal_period , | ctx | state . serialize_entry ("withdrawalPeriod" , ctx)) ? ; } state . end () } }
 impl serde :: ser :: Serialize for crate :: context :: ser :: SerializationContext < & Box < fhirbolt_model :: r4 :: resources :: MedicinalProductPharmaceuticalRouteOfAdministrationTargetSpecies >> { fn serialize < S > (& self , serializer : S) -> Result < S :: Ok , S :: Error > where S : serde :: ser :: Serializer , { self . with_context (self . value . as_ref () , | ctx | ctx . serialize (serializer)) } }
 impl serde :: ser :: Serialize for crate :: context :: ser :: SerializationContext < & Vec < fhirbolt_model :: r4 :: resources :: MedicinalProductPharmaceuticalRouteOfAdministrationTargetSpecies >> { fn serialize < S > (& self , serializer : S) -> Result < S :: Ok , S :: Error > where S : serde :: ser :: Serializer , { use serde :: ser :: SerializeSeq ; let mut seq_serializer = serializer . serialize_seq (Some (self . value . len ())) ? ; for value in self . value { self . with_context (value , | ctx | { seq_serializer . serialize_element (ctx) }) ? } seq_serializer . end () } }
 impl serde :: ser :: Serialize for crate :: context :: ser :: SerializationContext < & Vec < Box < fhirbolt_model :: r4 :: resources :: MedicinalProductPharmaceuticalRouteOfAdministrationTargetSpecies >> > { fn serialize < S > (& self , serializer : S) -> Result < S :: Ok , S :: Error > where S : serde :: ser :: Serializer , { use serde :: ser :: SerializeSeq ; let mut seq_serializer = serializer . serialize_seq (Some (self . value . len ())) ? ; for value in self . value { self . with_context (value , | ctx | { seq_serializer . serialize_element (ctx) }) ? } seq_serializer . end () } }
@@ -326,6 +336,13 @@ impl serde::ser::Serialize
         S: serde::ser::Serializer,
     {
         use serde::ser::SerializeMap;
+        #[allow(dead_code)]
+        fn missing_field_error<T, E: serde::ser::Error>(field: &str) -> Result<T, E> {
+            Err(E::custom(format!(
+                "missing required field `{}.{}`",
+                "MedicinalProductPharmaceutical.routeOfAdministration", field
+            )))
+        }
         let mut state = serializer.serialize_map(None)?;
         if let Some(value) = self.value.r#id.as_ref() {
             state.serialize_entry("id", value)?;
@@ -339,6 +356,9 @@ impl serde::ser::Serialize
             self.with_context(&self.value.r#modifier_extension, |ctx| {
                 state.serialize_entry("modifierExtension", ctx)
             })?;
+        }
+        if self.value.r#code.id.as_deref() == Some("$invalid") {
+            return missing_field_error("code");
         }
         self.with_context(&self.value.r#code, |ctx| state.serialize_entry("code", ctx))?;
         if let Some(some) = self.value.r#first_dose.as_ref() {
@@ -723,6 +743,13 @@ impl serde::ser::Serialize
         S: serde::ser::Serializer,
     {
         use serde::ser::SerializeMap;
+        #[allow(dead_code)]
+        fn missing_field_error<T, E: serde::ser::Error>(field: &str) -> Result<T, E> {
+            Err(E::custom(format!(
+                "missing required field `{}.{}`",
+                "MedicinalProductPharmaceutical", field
+            )))
+        }
         let mut state = serializer.serialize_map(None)?;
         state.serialize_entry("resourceType", "MedicinalProductPharmaceutical")?;
         if let Some(value) = self.value.r#id.as_ref() {
@@ -795,6 +822,9 @@ impl serde::ser::Serialize
             self.with_context(&self.value.r#identifier, |ctx| {
                 state.serialize_entry("identifier", ctx)
             })?;
+        }
+        if self.value.r#administrable_dose_form.id.as_deref() == Some("$invalid") {
+            return missing_field_error("administrableDoseForm");
         }
         self.with_context(&self.value.r#administrable_dose_form, |ctx| {
             state.serialize_entry("administrableDoseForm", ctx)

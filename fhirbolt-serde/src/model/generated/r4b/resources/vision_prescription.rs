@@ -1,4 +1,4 @@
-// Generated on 2023-04-20 by fhirbolt-codegen v0.4.0
+// Generated on 2023-04-20 by fhirbolt-codegen v0.5.0
 impl serde::ser::Serialize
     for crate::context::ser::SerializationContext<
         &fhirbolt_model::r4b::resources::VisionPrescriptionLensSpecificationPrism,
@@ -9,6 +9,13 @@ impl serde::ser::Serialize
         S: serde::ser::Serializer,
     {
         use serde::ser::SerializeMap;
+        #[allow(dead_code)]
+        fn missing_field_error<T, E: serde::ser::Error>(field: &str) -> Result<T, E> {
+            Err(E::custom(format!(
+                "missing required field `{}.{}`",
+                "VisionPrescription.lensSpecification.prism", field
+            )))
+        }
         let mut state = serializer.serialize_map(None)?;
         if let Some(value) = self.value.r#id.as_ref() {
             state.serialize_entry("id", value)?;
@@ -24,6 +31,9 @@ impl serde::ser::Serialize
             })?;
         }
         if self.output_json {
+            if self.value.r#amount.id.as_deref() == Some("$invalid") {
+                return missing_field_error("amount");
+            }
             if let Some(some) = self.value.r#amount.value.as_ref() {
                 let some = some
                     .parse::<serde_json::Number>()
@@ -40,11 +50,17 @@ impl serde::ser::Serialize
                 })?;
             }
         } else {
+            if self.value.r#amount.id.as_deref() == Some("$invalid") {
+                return missing_field_error("amount");
+            }
             self.with_context(&self.value.r#amount, |ctx| {
                 state.serialize_entry("amount", ctx)
             })?;
         }
         if self.output_json {
+            if self.value.r#base.id.as_deref() == Some("$invalid") {
+                return missing_field_error("base");
+            }
             if let Some(some) = self.value.r#base.value.as_ref() {
                 let some = Ok(some)?;
                 state.serialize_entry("base", &some)?;
@@ -59,6 +75,9 @@ impl serde::ser::Serialize
                 })?;
             }
         } else {
+            if self.value.r#base.id.as_deref() == Some("$invalid") {
+                return missing_field_error("base");
+            }
             self.with_context(&self.value.r#base, |ctx| state.serialize_entry("base", ctx))?;
         }
         state.end()
@@ -395,6 +414,13 @@ impl serde::ser::Serialize
         S: serde::ser::Serializer,
     {
         use serde::ser::SerializeMap;
+        #[allow(dead_code)]
+        fn missing_field_error<T, E: serde::ser::Error>(field: &str) -> Result<T, E> {
+            Err(E::custom(format!(
+                "missing required field `{}.{}`",
+                "VisionPrescription.lensSpecification", field
+            )))
+        }
         let mut state = serializer.serialize_map(None)?;
         if let Some(value) = self.value.r#id.as_ref() {
             state.serialize_entry("id", value)?;
@@ -409,10 +435,16 @@ impl serde::ser::Serialize
                 state.serialize_entry("modifierExtension", ctx)
             })?;
         }
+        if self.value.r#product.id.as_deref() == Some("$invalid") {
+            return missing_field_error("product");
+        }
         self.with_context(&self.value.r#product, |ctx| {
             state.serialize_entry("product", ctx)
         })?;
         if self.output_json {
+            if self.value.r#eye.id.as_deref() == Some("$invalid") {
+                return missing_field_error("eye");
+            }
             if let Some(some) = self.value.r#eye.value.as_ref() {
                 let some = Ok(some)?;
                 state.serialize_entry("eye", &some)?;
@@ -425,6 +457,9 @@ impl serde::ser::Serialize
                 self.with_context(&primitive_element, |ctx| state.serialize_entry("_eye", ctx))?;
             }
         } else {
+            if self.value.r#eye.id.as_deref() == Some("$invalid") {
+                return missing_field_error("eye");
+            }
             self.with_context(&self.value.r#eye, |ctx| state.serialize_entry("eye", ctx))?;
         }
         if self.output_json {
@@ -1336,6 +1371,13 @@ impl serde::ser::Serialize
         S: serde::ser::Serializer,
     {
         use serde::ser::SerializeMap;
+        #[allow(dead_code)]
+        fn missing_field_error<T, E: serde::ser::Error>(field: &str) -> Result<T, E> {
+            Err(E::custom(format!(
+                "missing required field `{}.{}`",
+                "VisionPrescription", field
+            )))
+        }
         let mut state = serializer.serialize_map(None)?;
         state.serialize_entry("resourceType", "VisionPrescription")?;
         if let Some(value) = self.value.r#id.as_ref() {
@@ -1410,6 +1452,9 @@ impl serde::ser::Serialize
             })?;
         }
         if self.output_json {
+            if self.value.r#status.id.as_deref() == Some("$invalid") {
+                return missing_field_error("status");
+            }
             if let Some(some) = self.value.r#status.value.as_ref() {
                 let some = Ok(some)?;
                 state.serialize_entry("status", &some)?;
@@ -1424,11 +1469,17 @@ impl serde::ser::Serialize
                 })?;
             }
         } else {
+            if self.value.r#status.id.as_deref() == Some("$invalid") {
+                return missing_field_error("status");
+            }
             self.with_context(&self.value.r#status, |ctx| {
                 state.serialize_entry("status", ctx)
             })?;
         }
         if self.output_json {
+            if self.value.r#created.id.as_deref() == Some("$invalid") {
+                return missing_field_error("created");
+            }
             if let Some(some) = self.value.r#created.value.as_ref() {
                 let some = Ok(some)?;
                 state.serialize_entry("created", &some)?;
@@ -1443,9 +1494,15 @@ impl serde::ser::Serialize
                 })?;
             }
         } else {
+            if self.value.r#created.id.as_deref() == Some("$invalid") {
+                return missing_field_error("created");
+            }
             self.with_context(&self.value.r#created, |ctx| {
                 state.serialize_entry("created", ctx)
             })?;
+        }
+        if self.value.r#patient.id.as_deref() == Some("$invalid") {
+            return missing_field_error("patient");
         }
         self.with_context(&self.value.r#patient, |ctx| {
             state.serialize_entry("patient", ctx)
@@ -1454,6 +1511,9 @@ impl serde::ser::Serialize
             self.with_context(some, |ctx| state.serialize_entry("encounter", ctx))?;
         }
         if self.output_json {
+            if self.value.r#date_written.id.as_deref() == Some("$invalid") {
+                return missing_field_error("dateWritten");
+            }
             if let Some(some) = self.value.r#date_written.value.as_ref() {
                 let some = Ok(some)?;
                 state.serialize_entry("dateWritten", &some)?;
@@ -1470,9 +1530,15 @@ impl serde::ser::Serialize
                 })?;
             }
         } else {
+            if self.value.r#date_written.id.as_deref() == Some("$invalid") {
+                return missing_field_error("dateWritten");
+            }
             self.with_context(&self.value.r#date_written, |ctx| {
                 state.serialize_entry("dateWritten", ctx)
             })?;
+        }
+        if self.value.r#prescriber.id.as_deref() == Some("$invalid") {
+            return missing_field_error("prescriber");
         }
         self.with_context(&self.value.r#prescriber, |ctx| {
             state.serialize_entry("prescriber", ctx)

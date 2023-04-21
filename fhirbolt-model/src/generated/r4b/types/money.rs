@@ -1,6 +1,6 @@
-// Generated on 2023-04-20 by fhirbolt-codegen v0.4.0
+// Generated on 2023-04-20 by fhirbolt-codegen v0.5.0
 #[doc = "Base StructureDefinition for Money Type: An amount of economic utility in some recognized currency."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct Money {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -10,4 +10,14 @@ pub struct Money {
     pub r#value: Option<super::super::types::Decimal>,
     #[doc = "ISO 4217 Currency Code."]
     pub r#currency: Option<super::super::types::Code>,
+}
+impl Default for Money {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#value: Default::default(),
+            r#currency: Default::default(),
+        }
+    }
 }

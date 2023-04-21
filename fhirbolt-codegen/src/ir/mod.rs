@@ -35,6 +35,7 @@ pub struct RustFhirModule {
 pub struct RustFhirStruct {
     pub struct_name: String,
     pub resource_name: Option<String>,
+    pub path: String,
     pub is_primitive: bool,
     pub fields: Vec<RustFhirStructField>,
     pub doc_comment: String,

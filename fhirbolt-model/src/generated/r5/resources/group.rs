@@ -1,21 +1,17 @@
-// Generated on 2023-04-20 by fhirbolt-codegen v0.4.0
+// Generated on 2023-04-20 by fhirbolt-codegen v0.5.0
 #[doc = "The value of the trait that holds (or does not hold - see 'exclude') for members of the group."]
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub enum GroupCharacteristicValue {
     CodeableConcept(Box<super::super::types::CodeableConcept>),
     Boolean(Box<super::super::types::Boolean>),
     Quantity(Box<super::super::types::Quantity>),
     Range(Box<super::super::types::Range>),
     Reference(Box<super::super::types::Reference>),
+    #[default]
     Invalid,
 }
-impl Default for GroupCharacteristicValue {
-    fn default() -> GroupCharacteristicValue {
-        GroupCharacteristicValue::Invalid
-    }
-}
 #[doc = "Identifies traits whose presence r absence is shared by members of the group."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct GroupCharacteristic {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -32,8 +28,29 @@ pub struct GroupCharacteristic {
     #[doc = "The period over which the characteristic is tested; e.g. the patient had an operation during the month of June."]
     pub r#period: Option<Box<super::super::types::Period>>,
 }
+impl Default for GroupCharacteristic {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#code: {
+                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#value: Default::default(),
+            r#exclude: {
+                let mut default: super::super::types::Boolean = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#period: Default::default(),
+        }
+    }
+}
 #[doc = "Identifies the resource instances that are members of the group."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct GroupMember {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -48,8 +65,24 @@ pub struct GroupMember {
     #[doc = "A flag to indicate that the member is no longer in the group, but previously may have been a member."]
     pub r#inactive: Option<super::super::types::Boolean>,
 }
+impl Default for GroupMember {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#entity: {
+                let mut default: Box<super::super::types::Reference> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#period: Default::default(),
+            r#inactive: Default::default(),
+        }
+    }
+}
 #[doc = "Represents a defined collection of entities that may be discussed or acted upon collectively but which are not expected to act collectively, and are not formally or legally recognized; i.e. a collection of entities that isn't an Organization."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct Group {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,
@@ -89,4 +122,37 @@ pub struct Group {
     pub r#characteristic: Vec<GroupCharacteristic>,
     #[doc = "Identifies the resource instances that are members of the group."]
     pub r#member: Vec<GroupMember>,
+}
+impl Default for Group {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#meta: Default::default(),
+            r#implicit_rules: Default::default(),
+            r#language: Default::default(),
+            r#text: Default::default(),
+            r#contained: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#identifier: Default::default(),
+            r#active: Default::default(),
+            r#type: {
+                let mut default: super::super::types::Code = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#membership: {
+                let mut default: super::super::types::Code = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#code: Default::default(),
+            r#name: Default::default(),
+            r#description: Default::default(),
+            r#quantity: Default::default(),
+            r#managing_entity: Default::default(),
+            r#characteristic: Default::default(),
+            r#member: Default::default(),
+        }
+    }
 }

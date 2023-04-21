@@ -1,19 +1,15 @@
-// Generated on 2023-04-20 by fhirbolt-codegen v0.4.0
+// Generated on 2023-04-20 by fhirbolt-codegen v0.5.0
 #[doc = "An identifier, CodeableConcept or canonical reference to the guidance that was requested."]
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub enum GuidanceResponseModule {
     Uri(Box<super::super::types::Uri>),
     Canonical(Box<super::super::types::Canonical>),
     CodeableConcept(Box<super::super::types::CodeableConcept>),
+    #[default]
     Invalid,
 }
-impl Default for GuidanceResponseModule {
-    fn default() -> GuidanceResponseModule {
-        GuidanceResponseModule::Invalid
-    }
-}
 #[doc = "A guidance response is the formal response to a guidance request, including any output parameters returned by the evaluation, as well as the description of any proposed actions to be taken.\n\nThe GuidanceResponse resource supports recording the results of decision support interactions, reportability determination for public health, as well as the communication of additional data requirements for subsequent interactions."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct GuidanceResponse {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,
@@ -61,4 +57,37 @@ pub struct GuidanceResponse {
     pub r#result: Option<Box<super::super::types::Reference>>,
     #[doc = "If the evaluation could not be completed due to lack of information, or additional information would potentially result in a more accurate response, this element will a description of the data required in order to proceed with the evaluation. A subsequent request to the service should include this data."]
     pub r#data_requirement: Vec<Box<super::super::types::DataRequirement>>,
+}
+impl Default for GuidanceResponse {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#meta: Default::default(),
+            r#implicit_rules: Default::default(),
+            r#language: Default::default(),
+            r#text: Default::default(),
+            r#contained: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#request_identifier: Default::default(),
+            r#identifier: Default::default(),
+            r#module: Default::default(),
+            r#status: {
+                let mut default: super::super::types::Code = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#subject: Default::default(),
+            r#encounter: Default::default(),
+            r#occurrence_date_time: Default::default(),
+            r#performer: Default::default(),
+            r#reason_code: Default::default(),
+            r#reason_reference: Default::default(),
+            r#note: Default::default(),
+            r#evaluation_message: Default::default(),
+            r#output_parameters: Default::default(),
+            r#result: Default::default(),
+            r#data_requirement: Default::default(),
+        }
+    }
 }

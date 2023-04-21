@@ -1,36 +1,28 @@
-// Generated on 2023-04-20 by fhirbolt-codegen v0.4.0
+// Generated on 2023-04-20 by fhirbolt-codegen v0.5.0
 #[doc = "Estimated or actual date or date-time  the condition began, in the opinion of the clinician."]
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub enum ConditionOnset {
     DateTime(Box<super::super::types::DateTime>),
     Age(Box<super::super::types::Age>),
     Period(Box<super::super::types::Period>),
     Range(Box<super::super::types::Range>),
     String(Box<super::super::types::String>),
+    #[default]
     Invalid,
 }
-impl Default for ConditionOnset {
-    fn default() -> ConditionOnset {
-        ConditionOnset::Invalid
-    }
-}
 #[doc = "The date or estimated date that the condition resolved or went into remission. This is called \"abatement\" because of the many overloaded connotations associated with \"remission\" or \"resolution\" - Some conditions, such as chronic conditions, are never really resolved, but they can abate."]
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub enum ConditionAbatement {
     DateTime(Box<super::super::types::DateTime>),
     Age(Box<super::super::types::Age>),
     Period(Box<super::super::types::Period>),
     Range(Box<super::super::types::Range>),
     String(Box<super::super::types::String>),
+    #[default]
     Invalid,
 }
-impl Default for ConditionAbatement {
-    fn default() -> ConditionAbatement {
-        ConditionAbatement::Invalid
-    }
-}
 #[doc = "Indicates who or what participated in the activities related to the condition and how they were involved."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct ConditionParticipant {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -43,8 +35,23 @@ pub struct ConditionParticipant {
     #[doc = "Indicates who or what participated in the activities related to the condition."]
     pub r#actor: Box<super::super::types::Reference>,
 }
+impl Default for ConditionParticipant {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#function: Default::default(),
+            r#actor: {
+                let mut default: Box<super::super::types::Reference> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+        }
+    }
+}
 #[doc = "A simple summary of the stage such as \"Stage 3\" or \"Early Onset\". The determination of the stage is disease-specific, such as cancer, retinopathy of prematurity, kidney diseases, Alzheimer's, or Parkinson disease."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct ConditionStage {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -59,8 +66,20 @@ pub struct ConditionStage {
     #[doc = "The kind of staging, such as pathological or clinical staging."]
     pub r#type: Option<Box<super::super::types::CodeableConcept>>,
 }
+impl Default for ConditionStage {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#summary: Default::default(),
+            r#assessment: Default::default(),
+            r#type: Default::default(),
+        }
+    }
+}
 #[doc = "A clinical condition, problem, diagnosis, or other event, situation, issue, or clinical concept that has risen to a level of concern."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct Condition {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,
@@ -110,4 +129,42 @@ pub struct Condition {
     pub r#evidence: Vec<Box<super::super::types::CodeableReference>>,
     #[doc = "Additional information about the Condition. This is a general notes/comments entry  for description of the Condition, its diagnosis and prognosis."]
     pub r#note: Vec<Box<super::super::types::Annotation>>,
+}
+impl Default for Condition {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#meta: Default::default(),
+            r#implicit_rules: Default::default(),
+            r#language: Default::default(),
+            r#text: Default::default(),
+            r#contained: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#identifier: Default::default(),
+            r#clinical_status: {
+                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#verification_status: Default::default(),
+            r#category: Default::default(),
+            r#severity: Default::default(),
+            r#code: Default::default(),
+            r#body_site: Default::default(),
+            r#subject: {
+                let mut default: Box<super::super::types::Reference> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#encounter: Default::default(),
+            r#onset: Default::default(),
+            r#abatement: Default::default(),
+            r#recorded_date: Default::default(),
+            r#participant: Default::default(),
+            r#stage: Default::default(),
+            r#evidence: Default::default(),
+            r#note: Default::default(),
+        }
+    }
 }

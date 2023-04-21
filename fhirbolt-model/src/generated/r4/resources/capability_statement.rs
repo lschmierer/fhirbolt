@@ -1,6 +1,6 @@
-// Generated on 2023-04-20 by fhirbolt-codegen v0.4.0
+// Generated on 2023-04-20 by fhirbolt-codegen v0.5.0
 #[doc = "Software that is covered by this capability statement.  It is used when the capability statement describes the capabilities of a particular software version, independent of an installation."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct CapabilityStatementSoftware {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -15,8 +15,24 @@ pub struct CapabilityStatementSoftware {
     #[doc = "Date this version of the software was released."]
     pub r#release_date: Option<super::super::types::DateTime>,
 }
+impl Default for CapabilityStatementSoftware {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#name: {
+                let mut default: super::super::types::String = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#version: Default::default(),
+            r#release_date: Default::default(),
+        }
+    }
+}
 #[doc = "Identifies a specific implementation instance that is described by the capability statement - i.e. a particular installation, rather than the capabilities of a software program."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct CapabilityStatementImplementation {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -31,8 +47,24 @@ pub struct CapabilityStatementImplementation {
     #[doc = "The organization responsible for the management of the instance and oversight of the data on the server at the specified URL."]
     pub r#custodian: Option<Box<super::super::types::Reference>>,
 }
+impl Default for CapabilityStatementImplementation {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#description: {
+                let mut default: super::super::types::String = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#url: Default::default(),
+            r#custodian: Default::default(),
+        }
+    }
+}
 #[doc = "Information about security implementation from an interface perspective - what a client needs to know."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct CapabilityStatementRestSecurity {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -47,8 +79,20 @@ pub struct CapabilityStatementRestSecurity {
     #[doc = "General description of how security works."]
     pub r#description: Option<super::super::types::Markdown>,
 }
+impl Default for CapabilityStatementRestSecurity {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#cors: Default::default(),
+            r#service: Default::default(),
+            r#description: Default::default(),
+        }
+    }
+}
 #[doc = "Identifies a restful operation supported by the solution."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct CapabilityStatementRestResourceInteraction {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -61,8 +105,23 @@ pub struct CapabilityStatementRestResourceInteraction {
     #[doc = "Guidance specific to the implementation of this operation, such as 'delete is a logical delete' or 'updates are only allowed with version id' or 'creates permitted from pre-authorized certificates only'."]
     pub r#documentation: Option<super::super::types::Markdown>,
 }
+impl Default for CapabilityStatementRestResourceInteraction {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#code: {
+                let mut default: super::super::types::Code = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#documentation: Default::default(),
+        }
+    }
+}
 #[doc = "Search parameters for implementations to support and/or make use of - either references to ones defined in the specification, or additional ones defined for/by the implementation."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct CapabilityStatementRestResourceSearchParam {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -79,8 +138,29 @@ pub struct CapabilityStatementRestResourceSearchParam {
     #[doc = "This allows documentation of any distinct behaviors about how the search parameter is used.  For example, text matching algorithms."]
     pub r#documentation: Option<super::super::types::Markdown>,
 }
+impl Default for CapabilityStatementRestResourceSearchParam {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#name: {
+                let mut default: super::super::types::String = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#definition: Default::default(),
+            r#type: {
+                let mut default: super::super::types::Code = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#documentation: Default::default(),
+        }
+    }
+}
 #[doc = "Definition of an operation or a named query together with its parameters and their meaning and type. Consult the definition of the operation for details about how to invoke the operation, and the parameters."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct CapabilityStatementRestResourceOperation {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -95,8 +175,28 @@ pub struct CapabilityStatementRestResourceOperation {
     #[doc = "Documentation that describes anything special about the operation behavior, possibly detailing different behavior for system, type and instance-level invocation of the operation."]
     pub r#documentation: Option<super::super::types::Markdown>,
 }
+impl Default for CapabilityStatementRestResourceOperation {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#name: {
+                let mut default: super::super::types::String = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#definition: {
+                let mut default: super::super::types::Canonical = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#documentation: Default::default(),
+        }
+    }
+}
 #[doc = "A specification of the restful capabilities of the solution for a specific resource type."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct CapabilityStatementRestResource {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -139,8 +239,38 @@ pub struct CapabilityStatementRestResource {
     #[doc = "Definition of an operation or a named query together with its parameters and their meaning and type. Consult the definition of the operation for details about how to invoke the operation, and the parameters."]
     pub r#operation: Vec<CapabilityStatementRestResourceOperation>,
 }
+impl Default for CapabilityStatementRestResource {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#type: {
+                let mut default: super::super::types::Code = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#profile: Default::default(),
+            r#supported_profile: Default::default(),
+            r#documentation: Default::default(),
+            r#interaction: Default::default(),
+            r#versioning: Default::default(),
+            r#read_history: Default::default(),
+            r#update_create: Default::default(),
+            r#conditional_create: Default::default(),
+            r#conditional_read: Default::default(),
+            r#conditional_update: Default::default(),
+            r#conditional_delete: Default::default(),
+            r#reference_policy: Default::default(),
+            r#search_include: Default::default(),
+            r#search_rev_include: Default::default(),
+            r#search_param: Default::default(),
+            r#operation: Default::default(),
+        }
+    }
+}
 #[doc = "A specification of restful operations supported by the system."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct CapabilityStatementRestInteraction {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -153,8 +283,23 @@ pub struct CapabilityStatementRestInteraction {
     #[doc = "Guidance specific to the implementation of this operation, such as limitations on the kind of transactions allowed, or information about system wide search is implemented."]
     pub r#documentation: Option<super::super::types::Markdown>,
 }
+impl Default for CapabilityStatementRestInteraction {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#code: {
+                let mut default: super::super::types::Code = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#documentation: Default::default(),
+        }
+    }
+}
 #[doc = "A definition of the restful capabilities of the solution, if any."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct CapabilityStatementRest {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -179,8 +324,29 @@ pub struct CapabilityStatementRest {
     #[doc = "An absolute URI which is a reference to the definition of a compartment that the system supports. The reference is to a CompartmentDefinition resource by its canonical URL ."]
     pub r#compartment: Vec<super::super::types::Canonical>,
 }
+impl Default for CapabilityStatementRest {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#mode: {
+                let mut default: super::super::types::Code = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#documentation: Default::default(),
+            r#security: Default::default(),
+            r#resource: Default::default(),
+            r#interaction: Default::default(),
+            r#search_param: Default::default(),
+            r#operation: Default::default(),
+            r#compartment: Default::default(),
+        }
+    }
+}
 #[doc = "An endpoint (network accessible address) to which messages and/or replies are to be sent."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct CapabilityStatementMessagingEndpoint {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -193,8 +359,27 @@ pub struct CapabilityStatementMessagingEndpoint {
     #[doc = "The network address of the endpoint. For solutions that do not use network addresses for routing, it can be just an identifier."]
     pub r#address: super::super::types::Url,
 }
+impl Default for CapabilityStatementMessagingEndpoint {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#protocol: {
+                let mut default: Box<super::super::types::Coding> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#address: {
+                let mut default: super::super::types::Url = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+        }
+    }
+}
 #[doc = "References to message definitions for messages this system can send or receive."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct CapabilityStatementMessagingSupportedMessage {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -207,8 +392,27 @@ pub struct CapabilityStatementMessagingSupportedMessage {
     #[doc = "Points to a message definition that identifies the messaging event, message structure, allowed responses, etc."]
     pub r#definition: super::super::types::Canonical,
 }
+impl Default for CapabilityStatementMessagingSupportedMessage {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#mode: {
+                let mut default: super::super::types::Code = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#definition: {
+                let mut default: super::super::types::Canonical = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+        }
+    }
+}
 #[doc = "A description of the messaging capabilities of the solution."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct CapabilityStatementMessaging {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -225,8 +429,21 @@ pub struct CapabilityStatementMessaging {
     #[doc = "References to message definitions for messages this system can send or receive."]
     pub r#supported_message: Vec<CapabilityStatementMessagingSupportedMessage>,
 }
+impl Default for CapabilityStatementMessaging {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#endpoint: Default::default(),
+            r#reliable_cache: Default::default(),
+            r#documentation: Default::default(),
+            r#supported_message: Default::default(),
+        }
+    }
+}
 #[doc = "A document definition."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct CapabilityStatementDocument {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -241,8 +458,28 @@ pub struct CapabilityStatementDocument {
     #[doc = "A profile on the document Bundle that constrains which resources are present, and their contents."]
     pub r#profile: super::super::types::Canonical,
 }
+impl Default for CapabilityStatementDocument {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#mode: {
+                let mut default: super::super::types::Code = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#documentation: Default::default(),
+            r#profile: {
+                let mut default: super::super::types::Canonical = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+        }
+    }
+}
 #[doc = "A Capability Statement documents a set of capabilities (behaviors) of a FHIR Server for a particular version of FHIR that may be used as a statement of actual server functionality or a statement of required or desired server implementation."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct CapabilityStatement {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,
@@ -312,4 +549,60 @@ pub struct CapabilityStatement {
     pub r#messaging: Vec<CapabilityStatementMessaging>,
     #[doc = "A document definition."]
     pub r#document: Vec<CapabilityStatementDocument>,
+}
+impl Default for CapabilityStatement {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#meta: Default::default(),
+            r#implicit_rules: Default::default(),
+            r#language: Default::default(),
+            r#text: Default::default(),
+            r#contained: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#url: Default::default(),
+            r#version: Default::default(),
+            r#name: Default::default(),
+            r#title: Default::default(),
+            r#status: {
+                let mut default: super::super::types::Code = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#experimental: Default::default(),
+            r#date: {
+                let mut default: super::super::types::DateTime = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#publisher: Default::default(),
+            r#contact: Default::default(),
+            r#description: Default::default(),
+            r#use_context: Default::default(),
+            r#jurisdiction: Default::default(),
+            r#purpose: Default::default(),
+            r#copyright: Default::default(),
+            r#kind: {
+                let mut default: super::super::types::Code = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#instantiates: Default::default(),
+            r#imports: Default::default(),
+            r#software: Default::default(),
+            r#implementation: Default::default(),
+            r#fhir_version: {
+                let mut default: super::super::types::Code = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#format: Default::default(),
+            r#patch_format: Default::default(),
+            r#implementation_guide: Default::default(),
+            r#rest: Default::default(),
+            r#messaging: Default::default(),
+            r#document: Default::default(),
+        }
+    }
 }

@@ -1,6 +1,6 @@
-// Generated on 2023-04-20 by fhirbolt-codegen v0.4.0
+// Generated on 2023-04-20 by fhirbolt-codegen v0.5.0
 #[doc = "The filter properties to be applied to narrow the subscription topic stream.  When multiple filters are applied, evaluates to true if all the conditions applicable to that resource are met; otherwise it returns false (i.e., logical AND)."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct SubscriptionFilterBy {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -19,8 +19,30 @@ pub struct SubscriptionFilterBy {
     #[doc = "The literal value or resource path as is legal in search - for example, `Patient/123` or `le1950`."]
     pub r#value: super::super::types::String,
 }
+impl Default for SubscriptionFilterBy {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#resource_type: Default::default(),
+            r#filter_parameter: {
+                let mut default: super::super::types::String = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#comparator: Default::default(),
+            r#modifier: Default::default(),
+            r#value: {
+                let mut default: super::super::types::String = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+        }
+    }
+}
 #[doc = "Channel-dependent information to send as part of the notification (e.g., HTTP Headers)."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct SubscriptionParameter {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -33,8 +55,27 @@ pub struct SubscriptionParameter {
     #[doc = "Parameter value for information passed to the channel for notifications, for example in the case of a REST hook wanting to pass through an authorization header, the value would be `Bearer 0193...`."]
     pub r#value: super::super::types::String,
 }
+impl Default for SubscriptionParameter {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#name: {
+                let mut default: super::super::types::String = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#value: {
+                let mut default: super::super::types::String = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+        }
+    }
+}
 #[doc = "The subscription resource describes a particular client's request to be notified about a SubscriptionTopic."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct Subscription {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,
@@ -86,4 +127,47 @@ pub struct Subscription {
     pub r#content: Option<super::super::types::Code>,
     #[doc = "If present, the maximum number of events that will be included in a notification bundle. Note that this is not a strict limit on the number of entries in a bundle, as dependent resources can be included."]
     pub r#max_count: Option<super::super::types::PositiveInt>,
+}
+impl Default for Subscription {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#meta: Default::default(),
+            r#implicit_rules: Default::default(),
+            r#language: Default::default(),
+            r#text: Default::default(),
+            r#contained: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#identifier: Default::default(),
+            r#name: Default::default(),
+            r#status: {
+                let mut default: super::super::types::Code = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#topic: {
+                let mut default: super::super::types::Canonical = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#contact: Default::default(),
+            r#end: Default::default(),
+            r#managing_entity: Default::default(),
+            r#reason: Default::default(),
+            r#filter_by: Default::default(),
+            r#channel_type: {
+                let mut default: Box<super::super::types::Coding> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#endpoint: Default::default(),
+            r#parameter: Default::default(),
+            r#heartbeat_period: Default::default(),
+            r#timeout: Default::default(),
+            r#content_type: Default::default(),
+            r#content: Default::default(),
+            r#max_count: Default::default(),
+        }
+    }
 }

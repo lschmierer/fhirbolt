@@ -1,19 +1,15 @@
-// Generated on 2023-04-20 by fhirbolt-codegen v0.4.0
+// Generated on 2023-04-20 by fhirbolt-codegen v0.5.0
 #[doc = "A code, group definition, or canonical reference that describes  or identifies the intended subject of the activity being defined.  Canonical references are allowed to support the definition of protocols for drug and substance quality specifications, and is allowed to reference a MedicinalProductDefinition, SubstanceDefinition, AdministrableProductDefinition, ManufacturedItemDefinition, or PackagedProductDefinition resource."]
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub enum ActivityDefinitionSubject {
     CodeableConcept(Box<super::super::types::CodeableConcept>),
     Reference(Box<super::super::types::Reference>),
     Canonical(Box<super::super::types::Canonical>),
+    #[default]
     Invalid,
 }
-impl Default for ActivityDefinitionSubject {
-    fn default() -> ActivityDefinitionSubject {
-        ActivityDefinitionSubject::Invalid
-    }
-}
 #[doc = "The period, timing or frequency upon which the described activity is to occur."]
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub enum ActivityDefinitionTiming {
     Timing(Box<super::super::types::Timing>),
     DateTime(Box<super::super::types::DateTime>),
@@ -21,27 +17,19 @@ pub enum ActivityDefinitionTiming {
     Period(Box<super::super::types::Period>),
     Range(Box<super::super::types::Range>),
     Duration(Box<super::super::types::Duration>),
+    #[default]
     Invalid,
 }
-impl Default for ActivityDefinitionTiming {
-    fn default() -> ActivityDefinitionTiming {
-        ActivityDefinitionTiming::Invalid
-    }
-}
 #[doc = "Identifies the food, drug or other product being consumed or supplied in the activity."]
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub enum ActivityDefinitionProduct {
     Reference(Box<super::super::types::Reference>),
     CodeableConcept(Box<super::super::types::CodeableConcept>),
+    #[default]
     Invalid,
 }
-impl Default for ActivityDefinitionProduct {
-    fn default() -> ActivityDefinitionProduct {
-        ActivityDefinitionProduct::Invalid
-    }
-}
 #[doc = "Indicates who should participate in performing the action described."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct ActivityDefinitionParticipant {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -54,8 +42,23 @@ pub struct ActivityDefinitionParticipant {
     #[doc = "The role the participant should play in performing the described action."]
     pub r#role: Option<Box<super::super::types::CodeableConcept>>,
 }
+impl Default for ActivityDefinitionParticipant {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#type: {
+                let mut default: super::super::types::Code = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#role: Default::default(),
+        }
+    }
+}
 #[doc = "Dynamic values that will be evaluated to produce values for elements of the resulting resource. For example, if the dosage of a medication must be computed based on the patient's weight, a dynamic value would be used to specify an expression that calculated the weight, and the path on the request resource that would contain the result."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct ActivityDefinitionDynamicValue {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -68,8 +71,27 @@ pub struct ActivityDefinitionDynamicValue {
     #[doc = "An expression specifying the value of the customized element."]
     pub r#expression: Box<super::super::types::Expression>,
 }
+impl Default for ActivityDefinitionDynamicValue {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#path: {
+                let mut default: super::super::types::String = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#expression: {
+                let mut default: Box<super::super::types::Expression> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+        }
+    }
+}
 #[doc = "This resource allows for the definition of some activity to be performed, independent of a particular patient, practitioner, or other performance context."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct ActivityDefinition {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,
@@ -179,4 +201,68 @@ pub struct ActivityDefinition {
     pub r#transform: Option<super::super::types::Canonical>,
     #[doc = "Dynamic values that will be evaluated to produce values for elements of the resulting resource. For example, if the dosage of a medication must be computed based on the patient's weight, a dynamic value would be used to specify an expression that calculated the weight, and the path on the request resource that would contain the result."]
     pub r#dynamic_value: Vec<ActivityDefinitionDynamicValue>,
+}
+impl Default for ActivityDefinition {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#meta: Default::default(),
+            r#implicit_rules: Default::default(),
+            r#language: Default::default(),
+            r#text: Default::default(),
+            r#contained: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#url: Default::default(),
+            r#identifier: Default::default(),
+            r#version: Default::default(),
+            r#name: Default::default(),
+            r#title: Default::default(),
+            r#subtitle: Default::default(),
+            r#status: {
+                let mut default: super::super::types::Code = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#experimental: Default::default(),
+            r#subject: Default::default(),
+            r#date: Default::default(),
+            r#publisher: Default::default(),
+            r#contact: Default::default(),
+            r#description: Default::default(),
+            r#use_context: Default::default(),
+            r#jurisdiction: Default::default(),
+            r#purpose: Default::default(),
+            r#usage: Default::default(),
+            r#copyright: Default::default(),
+            r#approval_date: Default::default(),
+            r#last_review_date: Default::default(),
+            r#effective_period: Default::default(),
+            r#topic: Default::default(),
+            r#author: Default::default(),
+            r#editor: Default::default(),
+            r#reviewer: Default::default(),
+            r#endorser: Default::default(),
+            r#related_artifact: Default::default(),
+            r#library: Default::default(),
+            r#kind: Default::default(),
+            r#profile: Default::default(),
+            r#code: Default::default(),
+            r#intent: Default::default(),
+            r#priority: Default::default(),
+            r#do_not_perform: Default::default(),
+            r#timing: Default::default(),
+            r#location: Default::default(),
+            r#participant: Default::default(),
+            r#product: Default::default(),
+            r#quantity: Default::default(),
+            r#dosage: Default::default(),
+            r#body_site: Default::default(),
+            r#specimen_requirement: Default::default(),
+            r#observation_requirement: Default::default(),
+            r#observation_result_requirement: Default::default(),
+            r#transform: Default::default(),
+            r#dynamic_value: Default::default(),
+        }
+    }
 }

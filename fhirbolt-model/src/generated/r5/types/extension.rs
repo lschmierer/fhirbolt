@@ -1,6 +1,6 @@
-// Generated on 2023-04-20 by fhirbolt-codegen v0.4.0
+// Generated on 2023-04-20 by fhirbolt-codegen v0.5.0
 #[doc = "Value of extension - must be one of a constrained set of the data types (see [Extensibility](https://hl7.org/FHIR/extensibility.html)) for a list)."]
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub enum ExtensionValue {
     Base64Binary(Box<super::super::types::Base64Binary>),
     Boolean(Box<super::super::types::Boolean>),
@@ -56,15 +56,11 @@ pub enum ExtensionValue {
     ExtendedContactDetail(Box<super::super::types::ExtendedContactDetail>),
     Dosage(Box<super::super::types::Dosage>),
     Meta(Box<super::super::types::Meta>),
+    #[default]
     Invalid,
 }
-impl Default for ExtensionValue {
-    fn default() -> ExtensionValue {
-        ExtensionValue::Invalid
-    }
-}
 #[doc = "Extension Type: Optional Extension Element - found in all resources.\n\nThe ability to add extensions in a structured way is what keeps FHIR resources simple."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct Extension {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -74,4 +70,14 @@ pub struct Extension {
     pub r#url: std::string::String,
     #[doc = "Value of extension - must be one of a constrained set of the data types (see [Extensibility](https://hl7.org/FHIR/extensibility.html)) for a list)."]
     pub r#value: Option<ExtensionValue>,
+}
+impl Default for Extension {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#url: Default::default(),
+            r#value: Default::default(),
+        }
+    }
 }

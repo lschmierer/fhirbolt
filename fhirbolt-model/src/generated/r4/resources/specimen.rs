@@ -1,54 +1,38 @@
-// Generated on 2023-04-20 by fhirbolt-codegen v0.4.0
+// Generated on 2023-04-20 by fhirbolt-codegen v0.5.0
 #[doc = "Time when specimen was collected from subject - the physiologically relevant time."]
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub enum SpecimenCollectionCollected {
     DateTime(Box<super::super::types::DateTime>),
     Period(Box<super::super::types::Period>),
+    #[default]
     Invalid,
 }
-impl Default for SpecimenCollectionCollected {
-    fn default() -> SpecimenCollectionCollected {
-        SpecimenCollectionCollected::Invalid
-    }
-}
 #[doc = "Abstinence or reduction from some or all food, drink, or both, for a period of time prior to sample collection."]
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub enum SpecimenCollectionFastingStatus {
     CodeableConcept(Box<super::super::types::CodeableConcept>),
     Duration(Box<super::super::types::Duration>),
+    #[default]
     Invalid,
 }
-impl Default for SpecimenCollectionFastingStatus {
-    fn default() -> SpecimenCollectionFastingStatus {
-        SpecimenCollectionFastingStatus::Invalid
-    }
-}
 #[doc = "A record of the time or period when the specimen processing occurred.  For example the time of sample fixation or the period of time the sample was in formalin."]
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub enum SpecimenProcessingTime {
     DateTime(Box<super::super::types::DateTime>),
     Period(Box<super::super::types::Period>),
+    #[default]
     Invalid,
 }
-impl Default for SpecimenProcessingTime {
-    fn default() -> SpecimenProcessingTime {
-        SpecimenProcessingTime::Invalid
-    }
-}
 #[doc = "Introduced substance to preserve, maintain or enhance the specimen. Examples: Formalin, Citrate, EDTA."]
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub enum SpecimenContainerAdditive {
     CodeableConcept(Box<super::super::types::CodeableConcept>),
     Reference(Box<super::super::types::Reference>),
+    #[default]
     Invalid,
 }
-impl Default for SpecimenContainerAdditive {
-    fn default() -> SpecimenContainerAdditive {
-        SpecimenContainerAdditive::Invalid
-    }
-}
 #[doc = "Details concerning the specimen collection."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct SpecimenCollection {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -71,8 +55,24 @@ pub struct SpecimenCollection {
     #[doc = "Abstinence or reduction from some or all food, drink, or both, for a period of time prior to sample collection."]
     pub r#fasting_status: Option<SpecimenCollectionFastingStatus>,
 }
+impl Default for SpecimenCollection {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#collector: Default::default(),
+            r#collected: Default::default(),
+            r#duration: Default::default(),
+            r#quantity: Default::default(),
+            r#method: Default::default(),
+            r#body_site: Default::default(),
+            r#fasting_status: Default::default(),
+        }
+    }
+}
 #[doc = "Details concerning processing and processing steps for the specimen."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct SpecimenProcessing {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -89,8 +89,21 @@ pub struct SpecimenProcessing {
     #[doc = "A record of the time or period when the specimen processing occurred.  For example the time of sample fixation or the period of time the sample was in formalin."]
     pub r#time: Option<SpecimenProcessingTime>,
 }
+impl Default for SpecimenProcessing {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#description: Default::default(),
+            r#procedure: Default::default(),
+            r#additive: Default::default(),
+            r#time: Default::default(),
+        }
+    }
+}
 #[doc = "The container holding the specimen.  The recursive nature of containers; i.e. blood in tube in tray in rack is not addressed here."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct SpecimenContainer {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -111,8 +124,23 @@ pub struct SpecimenContainer {
     #[doc = "Introduced substance to preserve, maintain or enhance the specimen. Examples: Formalin, Citrate, EDTA."]
     pub r#additive: Option<SpecimenContainerAdditive>,
 }
+impl Default for SpecimenContainer {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#identifier: Default::default(),
+            r#description: Default::default(),
+            r#type: Default::default(),
+            r#capacity: Default::default(),
+            r#specimen_quantity: Default::default(),
+            r#additive: Default::default(),
+        }
+    }
+}
 #[doc = "A sample to be used for analysis."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct Specimen {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,
@@ -156,4 +184,31 @@ pub struct Specimen {
     pub r#condition: Vec<Box<super::super::types::CodeableConcept>>,
     #[doc = "To communicate any details or issues about the specimen or during the specimen collection. (for example: broken vial, sent with patient, frozen)."]
     pub r#note: Vec<Box<super::super::types::Annotation>>,
+}
+impl Default for Specimen {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#meta: Default::default(),
+            r#implicit_rules: Default::default(),
+            r#language: Default::default(),
+            r#text: Default::default(),
+            r#contained: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#identifier: Default::default(),
+            r#accession_identifier: Default::default(),
+            r#status: Default::default(),
+            r#type: Default::default(),
+            r#subject: Default::default(),
+            r#received_time: Default::default(),
+            r#parent: Default::default(),
+            r#request: Default::default(),
+            r#collection: Default::default(),
+            r#processing: Default::default(),
+            r#container: Default::default(),
+            r#condition: Default::default(),
+            r#note: Default::default(),
+        }
+    }
 }

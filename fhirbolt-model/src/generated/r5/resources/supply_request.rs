@@ -1,33 +1,25 @@
-// Generated on 2023-04-20 by fhirbolt-codegen v0.4.0
+// Generated on 2023-04-20 by fhirbolt-codegen v0.5.0
 #[doc = "The value of the device detail."]
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub enum SupplyRequestParameterValue {
     CodeableConcept(Box<super::super::types::CodeableConcept>),
     Quantity(Box<super::super::types::Quantity>),
     Range(Box<super::super::types::Range>),
     Boolean(Box<super::super::types::Boolean>),
+    #[default]
     Invalid,
 }
-impl Default for SupplyRequestParameterValue {
-    fn default() -> SupplyRequestParameterValue {
-        SupplyRequestParameterValue::Invalid
-    }
-}
 #[doc = "When the request should be fulfilled."]
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub enum SupplyRequestOccurrence {
     DateTime(Box<super::super::types::DateTime>),
     Period(Box<super::super::types::Period>),
     Timing(Box<super::super::types::Timing>),
+    #[default]
     Invalid,
 }
-impl Default for SupplyRequestOccurrence {
-    fn default() -> SupplyRequestOccurrence {
-        SupplyRequestOccurrence::Invalid
-    }
-}
 #[doc = "Specific parameters for the ordered item.  For example, the size of the indicated item."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct SupplyRequestParameter {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -40,8 +32,19 @@ pub struct SupplyRequestParameter {
     #[doc = "The value of the device detail."]
     pub r#value: Option<SupplyRequestParameterValue>,
 }
+impl Default for SupplyRequestParameter {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#code: Default::default(),
+            r#value: Default::default(),
+        }
+    }
+}
 #[doc = "A record of a non-patient specific request for a medication, substance, device, certain types of biologically derived product, and nutrition product used in the healthcare setting."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct SupplyRequest {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,
@@ -91,4 +94,42 @@ pub struct SupplyRequest {
     pub r#deliver_from: Option<Box<super::super::types::Reference>>,
     #[doc = "Where the supply is destined to go."]
     pub r#deliver_to: Option<Box<super::super::types::Reference>>,
+}
+impl Default for SupplyRequest {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#meta: Default::default(),
+            r#implicit_rules: Default::default(),
+            r#language: Default::default(),
+            r#text: Default::default(),
+            r#contained: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#identifier: Default::default(),
+            r#status: Default::default(),
+            r#based_on: Default::default(),
+            r#category: Default::default(),
+            r#priority: Default::default(),
+            r#deliver_for: Default::default(),
+            r#item: {
+                let mut default: Box<super::super::types::CodeableReference> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#quantity: {
+                let mut default: Box<super::super::types::Quantity> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#parameter: Default::default(),
+            r#occurrence: Default::default(),
+            r#authored_on: Default::default(),
+            r#requester: Default::default(),
+            r#supplier: Default::default(),
+            r#reason: Default::default(),
+            r#deliver_from: Default::default(),
+            r#deliver_to: Default::default(),
+        }
+    }
 }

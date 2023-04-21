@@ -1,6 +1,6 @@
-// Generated on 2023-04-20 by fhirbolt-codegen v0.4.0
+// Generated on 2023-04-20 by fhirbolt-codegen v0.5.0
 #[doc = "Identifies an action that has occurred or is a planned action to occur as part of the plan. For example, a medication to be used, lab tests to perform, self-monitoring that has occurred, education etc."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct CarePlanActivity {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -15,8 +15,20 @@ pub struct CarePlanActivity {
     #[doc = "The details of the proposed activity represented in a specific resource."]
     pub r#planned_activity_reference: Option<Box<super::super::types::Reference>>,
 }
+impl Default for CarePlanActivity {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#performed_activity: Default::default(),
+            r#progress: Default::default(),
+            r#planned_activity_reference: Default::default(),
+        }
+    }
+}
 #[doc = "Describes the intention of how one or more practitioners intend to deliver care for a particular patient, group or community for a period of time, possibly limited to care for a specific condition or set of conditions."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct CarePlan {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,
@@ -80,4 +92,53 @@ pub struct CarePlan {
     pub r#activity: Vec<CarePlanActivity>,
     #[doc = "General notes about the care plan not covered elsewhere."]
     pub r#note: Vec<Box<super::super::types::Annotation>>,
+}
+impl Default for CarePlan {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#meta: Default::default(),
+            r#implicit_rules: Default::default(),
+            r#language: Default::default(),
+            r#text: Default::default(),
+            r#contained: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#identifier: Default::default(),
+            r#instantiates_canonical: Default::default(),
+            r#instantiates_uri: Default::default(),
+            r#based_on: Default::default(),
+            r#replaces: Default::default(),
+            r#part_of: Default::default(),
+            r#status: {
+                let mut default: super::super::types::Code = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#intent: {
+                let mut default: super::super::types::Code = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#category: Default::default(),
+            r#title: Default::default(),
+            r#description: Default::default(),
+            r#subject: {
+                let mut default: Box<super::super::types::Reference> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#encounter: Default::default(),
+            r#period: Default::default(),
+            r#created: Default::default(),
+            r#custodian: Default::default(),
+            r#contributor: Default::default(),
+            r#care_team: Default::default(),
+            r#addresses: Default::default(),
+            r#supporting_info: Default::default(),
+            r#goal: Default::default(),
+            r#activity: Default::default(),
+            r#note: Default::default(),
+        }
+    }
 }

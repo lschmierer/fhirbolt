@@ -1,42 +1,30 @@
-// Generated on 2023-04-20 by fhirbolt-codegen v0.4.0
+// Generated on 2023-04-20 by fhirbolt-codegen v0.5.0
 #[doc = "Indicates the mechanism used to compare versions to determine which is more current."]
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub enum TestPlanVersionAlgorithm {
     String(Box<super::super::types::String>),
     Coding(Box<super::super::types::Coding>),
+    #[default]
     Invalid,
 }
-impl Default for TestPlanVersionAlgorithm {
-    fn default() -> TestPlanVersionAlgorithm {
-        TestPlanVersionAlgorithm::Invalid
-    }
-}
 #[doc = "The actual content of the cases - references to TestScripts or externally defined content."]
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub enum TestPlanTestCaseTestRunScriptSource {
     String(Box<super::super::types::String>),
     Reference(Box<super::super::types::Reference>),
+    #[default]
     Invalid,
 }
-impl Default for TestPlanTestCaseTestRunScriptSource {
-    fn default() -> TestPlanTestCaseTestRunScriptSource {
-        TestPlanTestCaseTestRunScriptSource::Invalid
-    }
-}
 #[doc = "Pointer to a definition of test resources - narrative or structured e.g. synthetic data generation, etc."]
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub enum TestPlanTestCaseTestDataSource {
     String(Box<super::super::types::String>),
     Reference(Box<super::super::types::Reference>),
+    #[default]
     Invalid,
 }
-impl Default for TestPlanTestCaseTestDataSource {
-    fn default() -> TestPlanTestCaseTestDataSource {
-        TestPlanTestCaseTestDataSource::Invalid
-    }
-}
 #[doc = "The required criteria to execute the test plan - e.g. preconditions, previous tests..."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct TestPlanDependency {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -49,8 +37,19 @@ pub struct TestPlanDependency {
     #[doc = "Predecessor test plans - those that are expected to be successfully performed as a dependency for the execution of this test plan."]
     pub r#predecessor: Option<Box<super::super::types::Reference>>,
 }
+impl Default for TestPlanDependency {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#description: Default::default(),
+            r#predecessor: Default::default(),
+        }
+    }
+}
 #[doc = "The required criteria to execute the test case - e.g. preconditions, previous tests."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct TestPlanTestCaseDependency {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -63,8 +62,19 @@ pub struct TestPlanTestCaseDependency {
     #[doc = "Link to predecessor test plans."]
     pub r#predecessor: Option<Box<super::super::types::Reference>>,
 }
+impl Default for TestPlanTestCaseDependency {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#description: Default::default(),
+            r#predecessor: Default::default(),
+        }
+    }
+}
 #[doc = "The test cases in a structured language e.g. gherkin, Postman, or FHIR TestScript."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct TestPlanTestCaseTestRunScript {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -77,8 +87,19 @@ pub struct TestPlanTestCaseTestRunScript {
     #[doc = "The actual content of the cases - references to TestScripts or externally defined content."]
     pub r#source: Option<TestPlanTestCaseTestRunScriptSource>,
 }
+impl Default for TestPlanTestCaseTestRunScript {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#language: Default::default(),
+            r#source: Default::default(),
+        }
+    }
+}
 #[doc = "The actual test to be executed."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct TestPlanTestCaseTestRun {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -91,8 +112,19 @@ pub struct TestPlanTestCaseTestRun {
     #[doc = "The test cases in a structured language e.g. gherkin, Postman, or FHIR TestScript."]
     pub r#script: Option<TestPlanTestCaseTestRunScript>,
 }
+impl Default for TestPlanTestCaseTestRun {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#narrative: Default::default(),
+            r#script: Default::default(),
+        }
+    }
+}
 #[doc = "The test data used in the test case."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct TestPlanTestCaseTestData {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -107,8 +139,24 @@ pub struct TestPlanTestCaseTestData {
     #[doc = "Pointer to a definition of test resources - narrative or structured e.g. synthetic data generation, etc."]
     pub r#source: Option<TestPlanTestCaseTestDataSource>,
 }
+impl Default for TestPlanTestCaseTestData {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#type: {
+                let mut default: Box<super::super::types::Coding> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#content: Default::default(),
+            r#source: Default::default(),
+        }
+    }
+}
 #[doc = "The test assertions - the expectations of test results from the execution of the test case."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct TestPlanTestCaseAssertion {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -123,8 +171,20 @@ pub struct TestPlanTestCaseAssertion {
     #[doc = "The test assertion - the expected outcome from the test case execution."]
     pub r#result: Vec<Box<super::super::types::CodeableReference>>,
 }
+impl Default for TestPlanTestCaseAssertion {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#type: Default::default(),
+            r#object: Default::default(),
+            r#result: Default::default(),
+        }
+    }
+}
 #[doc = "The individual test cases that are part of this plan, when they they are made explicit."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct TestPlanTestCase {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -145,8 +205,23 @@ pub struct TestPlanTestCase {
     #[doc = "The test assertions - the expectations of test results from the execution of the test case."]
     pub r#assertion: Vec<TestPlanTestCaseAssertion>,
 }
+impl Default for TestPlanTestCase {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#sequence: Default::default(),
+            r#scope: Default::default(),
+            r#dependency: Default::default(),
+            r#test_run: Default::default(),
+            r#test_data: Default::default(),
+            r#assertion: Default::default(),
+        }
+    }
+}
 #[doc = "A plan for executing testing on an artifact or specifications"]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct TestPlan {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,
@@ -210,4 +285,45 @@ pub struct TestPlan {
     pub r#exit_criteria: Option<super::super::types::Markdown>,
     #[doc = "The individual test cases that are part of this plan, when they they are made explicit."]
     pub r#test_case: Vec<TestPlanTestCase>,
+}
+impl Default for TestPlan {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#meta: Default::default(),
+            r#implicit_rules: Default::default(),
+            r#language: Default::default(),
+            r#text: Default::default(),
+            r#contained: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#url: Default::default(),
+            r#identifier: Default::default(),
+            r#version: Default::default(),
+            r#version_algorithm: Default::default(),
+            r#name: Default::default(),
+            r#title: Default::default(),
+            r#status: {
+                let mut default: super::super::types::Code = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#experimental: Default::default(),
+            r#date: Default::default(),
+            r#publisher: Default::default(),
+            r#contact: Default::default(),
+            r#description: Default::default(),
+            r#use_context: Default::default(),
+            r#jurisdiction: Default::default(),
+            r#purpose: Default::default(),
+            r#copyright: Default::default(),
+            r#copyright_label: Default::default(),
+            r#category: Default::default(),
+            r#scope: Default::default(),
+            r#test_tools: Default::default(),
+            r#dependency: Default::default(),
+            r#exit_criteria: Default::default(),
+            r#test_case: Default::default(),
+        }
+    }
 }

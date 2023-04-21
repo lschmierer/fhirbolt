@@ -1,6 +1,6 @@
-// Generated on 2023-04-20 by fhirbolt-codegen v0.4.0
+// Generated on 2023-04-20 by fhirbolt-codegen v0.5.0
 #[doc = "Detailed information about events relevant to this subscription notification."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct SubscriptionStatusNotificationEvent {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -17,8 +17,25 @@ pub struct SubscriptionStatusNotificationEvent {
     #[doc = "Additional context information for this event. Generally, this will contain references to additional resources included with the event (e.g., the Patient relevant to an Encounter), however it MAY refer to non-FHIR objects."]
     pub r#additional_context: Vec<Box<super::super::types::Reference>>,
 }
+impl Default for SubscriptionStatusNotificationEvent {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#event_number: {
+                let mut default: super::super::types::String = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#timestamp: Default::default(),
+            r#focus: Default::default(),
+            r#additional_context: Default::default(),
+        }
+    }
+}
 #[doc = "The SubscriptionStatus resource describes the state of a Subscription during notifications."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct SubscriptionStatus {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,
@@ -50,4 +67,33 @@ pub struct SubscriptionStatus {
     pub r#topic: Option<super::super::types::Canonical>,
     #[doc = "A record of errors that occurred when the server processed a notification."]
     pub r#error: Vec<Box<super::super::types::CodeableConcept>>,
+}
+impl Default for SubscriptionStatus {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#meta: Default::default(),
+            r#implicit_rules: Default::default(),
+            r#language: Default::default(),
+            r#text: Default::default(),
+            r#contained: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#status: Default::default(),
+            r#type: {
+                let mut default: super::super::types::Code = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#events_since_subscription_start: Default::default(),
+            r#notification_event: Default::default(),
+            r#subscription: {
+                let mut default: Box<super::super::types::Reference> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#topic: Default::default(),
+            r#error: Default::default(),
+        }
+    }
 }

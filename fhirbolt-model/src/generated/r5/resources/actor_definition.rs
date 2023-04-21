@@ -1,18 +1,14 @@
-// Generated on 2023-04-20 by fhirbolt-codegen v0.4.0
+// Generated on 2023-04-20 by fhirbolt-codegen v0.5.0
 #[doc = "Indicates the mechanism used to compare versions to determine which is more current."]
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub enum ActorDefinitionVersionAlgorithm {
     String(Box<super::super::types::String>),
     Coding(Box<super::super::types::Coding>),
+    #[default]
     Invalid,
 }
-impl Default for ActorDefinitionVersionAlgorithm {
-    fn default() -> ActorDefinitionVersionAlgorithm {
-        ActorDefinitionVersionAlgorithm::Invalid
-    }
-}
 #[doc = "The ActorDefinition resource is used to describe an actor - a human or an application that plays a role in data exchange, and that may have obligations associated with the role the actor plays."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct ActorDefinition {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,
@@ -74,4 +70,48 @@ pub struct ActorDefinition {
     pub r#capabilities: Option<super::super::types::Canonical>,
     #[doc = "A url that identifies the definition of this actor in another IG (which IG must be listed in the dependencies). This actor inherits all the obligations etc. as defined in the other IG."]
     pub r#derived_from: Vec<super::super::types::Canonical>,
+}
+impl Default for ActorDefinition {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#meta: Default::default(),
+            r#implicit_rules: Default::default(),
+            r#language: Default::default(),
+            r#text: Default::default(),
+            r#contained: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#url: Default::default(),
+            r#identifier: Default::default(),
+            r#version: Default::default(),
+            r#version_algorithm: Default::default(),
+            r#name: Default::default(),
+            r#title: Default::default(),
+            r#status: {
+                let mut default: super::super::types::Code = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#experimental: Default::default(),
+            r#date: Default::default(),
+            r#publisher: Default::default(),
+            r#contact: Default::default(),
+            r#description: Default::default(),
+            r#use_context: Default::default(),
+            r#jurisdiction: Default::default(),
+            r#purpose: Default::default(),
+            r#copyright: Default::default(),
+            r#copyright_label: Default::default(),
+            r#type: {
+                let mut default: super::super::types::Code = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#documentation: Default::default(),
+            r#reference: Default::default(),
+            r#capabilities: Default::default(),
+            r#derived_from: Default::default(),
+        }
+    }
 }

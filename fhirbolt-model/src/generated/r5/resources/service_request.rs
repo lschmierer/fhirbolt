@@ -1,6 +1,6 @@
-// Generated on 2023-04-20 by fhirbolt-codegen v0.4.0
+// Generated on 2023-04-20 by fhirbolt-codegen v0.5.0
 #[doc = "Indicates a value for the order detail."]
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub enum ServiceRequestOrderDetailParameterValue {
     Quantity(Box<super::super::types::Quantity>),
     Ratio(Box<super::super::types::Ratio>),
@@ -9,65 +9,45 @@ pub enum ServiceRequestOrderDetailParameterValue {
     CodeableConcept(Box<super::super::types::CodeableConcept>),
     String(Box<super::super::types::String>),
     Period(Box<super::super::types::Period>),
+    #[default]
     Invalid,
 }
-impl Default for ServiceRequestOrderDetailParameterValue {
-    fn default() -> ServiceRequestOrderDetailParameterValue {
-        ServiceRequestOrderDetailParameterValue::Invalid
-    }
-}
 #[doc = "An amount of service being requested which can be a quantity ( for example $1,500 home modification), a ratio ( for example, 20 half day visits per month), or a range (2.0 to 1.8 Gy per fraction)."]
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub enum ServiceRequestQuantity {
     Quantity(Box<super::super::types::Quantity>),
     Ratio(Box<super::super::types::Ratio>),
     Range(Box<super::super::types::Range>),
+    #[default]
     Invalid,
 }
-impl Default for ServiceRequestQuantity {
-    fn default() -> ServiceRequestQuantity {
-        ServiceRequestQuantity::Invalid
-    }
-}
 #[doc = "The date/time at which the requested service should occur."]
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub enum ServiceRequestOccurrence {
     DateTime(Box<super::super::types::DateTime>),
     Period(Box<super::super::types::Period>),
     Timing(Box<super::super::types::Timing>),
+    #[default]
     Invalid,
 }
-impl Default for ServiceRequestOccurrence {
-    fn default() -> ServiceRequestOccurrence {
-        ServiceRequestOccurrence::Invalid
-    }
-}
 #[doc = "If a CodeableConcept is present, it indicates the pre-condition for performing the service.  For example \"pain\", \"on flare-up\", etc."]
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub enum ServiceRequestAsNeeded {
     Boolean(Box<super::super::types::Boolean>),
     CodeableConcept(Box<super::super::types::CodeableConcept>),
+    #[default]
     Invalid,
 }
-impl Default for ServiceRequestAsNeeded {
-    fn default() -> ServiceRequestAsNeeded {
-        ServiceRequestAsNeeded::Invalid
-    }
-}
 #[doc = "Instructions in terms that are understood by the patient or consumer."]
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub enum ServiceRequestPatientInstructionInstruction {
     Markdown(Box<super::super::types::Markdown>),
     Reference(Box<super::super::types::Reference>),
+    #[default]
     Invalid,
 }
-impl Default for ServiceRequestPatientInstructionInstruction {
-    fn default() -> ServiceRequestPatientInstructionInstruction {
-        ServiceRequestPatientInstructionInstruction::Invalid
-    }
-}
 #[doc = "The parameter details for the service being requested."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct ServiceRequestOrderDetailParameter {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -80,8 +60,23 @@ pub struct ServiceRequestOrderDetailParameter {
     #[doc = "Indicates a value for the order detail."]
     pub r#value: ServiceRequestOrderDetailParameterValue,
 }
+impl Default for ServiceRequestOrderDetailParameter {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#code: {
+                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#value: Default::default(),
+        }
+    }
+}
 #[doc = "Additional details and instructions about the how the services are to be delivered.   For example, and order for a urinary catheter may have an order detail for an external or indwelling catheter, or an order for a bandage may require additional instructions specifying how the bandage should be applied."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct ServiceRequestOrderDetail {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -94,8 +89,19 @@ pub struct ServiceRequestOrderDetail {
     #[doc = "The parameter details for the service being requested."]
     pub r#parameter: Vec<ServiceRequestOrderDetailParameter>,
 }
+impl Default for ServiceRequestOrderDetail {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#parameter_focus: Default::default(),
+            r#parameter: Default::default(),
+        }
+    }
+}
 #[doc = "Instructions in terms that are understood by the patient or consumer."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct ServiceRequestPatientInstruction {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -106,8 +112,18 @@ pub struct ServiceRequestPatientInstruction {
     #[doc = "Instructions in terms that are understood by the patient or consumer."]
     pub r#instruction: Option<ServiceRequestPatientInstructionInstruction>,
 }
+impl Default for ServiceRequestPatientInstruction {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#instruction: Default::default(),
+        }
+    }
+}
 #[doc = "A record of a request for service such as diagnostic investigations, treatments, or operations to be performed."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct ServiceRequest {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,
@@ -191,4 +207,63 @@ pub struct ServiceRequest {
     pub r#patient_instruction: Vec<ServiceRequestPatientInstruction>,
     #[doc = "Key events in the history of the request."]
     pub r#relevant_history: Vec<Box<super::super::types::Reference>>,
+}
+impl Default for ServiceRequest {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#meta: Default::default(),
+            r#implicit_rules: Default::default(),
+            r#language: Default::default(),
+            r#text: Default::default(),
+            r#contained: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#identifier: Default::default(),
+            r#instantiates_canonical: Default::default(),
+            r#instantiates_uri: Default::default(),
+            r#based_on: Default::default(),
+            r#replaces: Default::default(),
+            r#requisition: Default::default(),
+            r#status: {
+                let mut default: super::super::types::Code = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#intent: {
+                let mut default: super::super::types::Code = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#category: Default::default(),
+            r#priority: Default::default(),
+            r#do_not_perform: Default::default(),
+            r#code: Default::default(),
+            r#order_detail: Default::default(),
+            r#quantity: Default::default(),
+            r#subject: {
+                let mut default: Box<super::super::types::Reference> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#focus: Default::default(),
+            r#encounter: Default::default(),
+            r#occurrence: Default::default(),
+            r#as_needed: Default::default(),
+            r#authored_on: Default::default(),
+            r#requester: Default::default(),
+            r#performer_type: Default::default(),
+            r#performer: Default::default(),
+            r#location: Default::default(),
+            r#reason: Default::default(),
+            r#insurance: Default::default(),
+            r#supporting_info: Default::default(),
+            r#specimen: Default::default(),
+            r#body_site: Default::default(),
+            r#body_structure: Default::default(),
+            r#note: Default::default(),
+            r#patient_instruction: Default::default(),
+            r#relevant_history: Default::default(),
+        }
+    }
 }

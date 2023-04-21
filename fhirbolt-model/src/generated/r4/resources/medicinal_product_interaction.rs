@@ -1,18 +1,14 @@
-// Generated on 2023-04-20 by fhirbolt-codegen v0.4.0
+// Generated on 2023-04-20 by fhirbolt-codegen v0.5.0
 #[doc = "The specific medication, food or laboratory test that interacts."]
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub enum MedicinalProductInteractionInteractantItem {
     Reference(Box<super::super::types::Reference>),
     CodeableConcept(Box<super::super::types::CodeableConcept>),
+    #[default]
     Invalid,
 }
-impl Default for MedicinalProductInteractionInteractantItem {
-    fn default() -> MedicinalProductInteractionInteractantItem {
-        MedicinalProductInteractionInteractantItem::Invalid
-    }
-}
 #[doc = "The specific medication, food or laboratory test that interacts."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct MedicinalProductInteractionInteractant {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -23,8 +19,18 @@ pub struct MedicinalProductInteractionInteractant {
     #[doc = "The specific medication, food or laboratory test that interacts."]
     pub r#item: MedicinalProductInteractionInteractantItem,
 }
+impl Default for MedicinalProductInteractionInteractant {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#item: Default::default(),
+        }
+    }
+}
 #[doc = "The interactions of the medicinal product with other medicinal products, or other forms of interactions."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct MedicinalProductInteraction {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,
@@ -56,4 +62,25 @@ pub struct MedicinalProductInteraction {
     pub r#incidence: Option<Box<super::super::types::CodeableConcept>>,
     #[doc = "Actions for managing the interaction."]
     pub r#management: Option<Box<super::super::types::CodeableConcept>>,
+}
+impl Default for MedicinalProductInteraction {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#meta: Default::default(),
+            r#implicit_rules: Default::default(),
+            r#language: Default::default(),
+            r#text: Default::default(),
+            r#contained: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#subject: Default::default(),
+            r#description: Default::default(),
+            r#interactant: Default::default(),
+            r#type: Default::default(),
+            r#effect: Default::default(),
+            r#incidence: Default::default(),
+            r#management: Default::default(),
+        }
+    }
 }

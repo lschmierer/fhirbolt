@@ -1,57 +1,40 @@
-// Generated on 2023-04-20 by fhirbolt-codegen v0.4.0
+// Generated on 2023-04-20 by fhirbolt-codegen v0.5.0
 #[doc = "The actual ingredient - either a substance (simple ingredient) or another medication."]
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub enum MedicationKnowledgeIngredientItem {
     CodeableConcept(Box<super::super::types::CodeableConcept>),
     Reference(Box<super::super::types::Reference>),
+    #[default]
     Invalid,
 }
-impl Default for MedicationKnowledgeIngredientItem {
-    fn default() -> MedicationKnowledgeIngredientItem {
-        MedicationKnowledgeIngredientItem::Invalid
-    }
-}
 #[doc = "Indication for use that apply to the specific administration guidelines."]
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub enum MedicationKnowledgeAdministrationGuidelinesIndication {
     CodeableConcept(Box<super::super::types::CodeableConcept>),
     Reference(Box<super::super::types::Reference>),
+    #[default]
     Invalid,
 }
-impl Default for MedicationKnowledgeAdministrationGuidelinesIndication {
-    fn default() -> MedicationKnowledgeAdministrationGuidelinesIndication {
-        MedicationKnowledgeAdministrationGuidelinesIndication::Invalid
-    }
-}
 #[doc = "Specific characteristic that is relevant to the administration guideline (e.g. height, weight, gender)."]
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub enum MedicationKnowledgeAdministrationGuidelinesPatientCharacteristicsCharacteristic {
     CodeableConcept(Box<super::super::types::CodeableConcept>),
     Quantity(Box<super::super::types::Quantity>),
+    #[default]
     Invalid,
 }
-impl Default for MedicationKnowledgeAdministrationGuidelinesPatientCharacteristicsCharacteristic {
-    fn default() -> MedicationKnowledgeAdministrationGuidelinesPatientCharacteristicsCharacteristic
-    {
-        MedicationKnowledgeAdministrationGuidelinesPatientCharacteristicsCharacteristic::Invalid
-    }
-}
 #[doc = "Description of the characteristic."]
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub enum MedicationKnowledgeDrugCharacteristicValue {
     CodeableConcept(Box<super::super::types::CodeableConcept>),
     String(Box<super::super::types::String>),
     Quantity(Box<super::super::types::Quantity>),
     Base64Binary(Box<super::super::types::Base64Binary>),
+    #[default]
     Invalid,
 }
-impl Default for MedicationKnowledgeDrugCharacteristicValue {
-    fn default() -> MedicationKnowledgeDrugCharacteristicValue {
-        MedicationKnowledgeDrugCharacteristicValue::Invalid
-    }
-}
 #[doc = "Associated or related knowledge about a medication."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct MedicationKnowledgeRelatedMedicationKnowledge {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -64,8 +47,23 @@ pub struct MedicationKnowledgeRelatedMedicationKnowledge {
     #[doc = "Associated documentation about the associated medication knowledge."]
     pub r#reference: Vec<Box<super::super::types::Reference>>,
 }
+impl Default for MedicationKnowledgeRelatedMedicationKnowledge {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#type: {
+                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#reference: Default::default(),
+        }
+    }
+}
 #[doc = "Associated documentation about the medication."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct MedicationKnowledgeMonograph {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -78,8 +76,19 @@ pub struct MedicationKnowledgeMonograph {
     #[doc = "Associated documentation about the medication."]
     pub r#source: Option<Box<super::super::types::Reference>>,
 }
+impl Default for MedicationKnowledgeMonograph {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#type: Default::default(),
+            r#source: Default::default(),
+        }
+    }
+}
 #[doc = "Identifies a particular constituent of interest in the product."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct MedicationKnowledgeIngredient {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -94,8 +103,20 @@ pub struct MedicationKnowledgeIngredient {
     #[doc = "Specifies how many (or how much) of the items there are in this Medication.  For example, 250 mg per tablet.  This is expressed as a ratio where the numerator is 250mg and the denominator is 1 tablet."]
     pub r#strength: Option<Box<super::super::types::Ratio>>,
 }
+impl Default for MedicationKnowledgeIngredient {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#item: Default::default(),
+            r#is_active: Default::default(),
+            r#strength: Default::default(),
+        }
+    }
+}
 #[doc = "The price of the medication."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct MedicationKnowledgeCost {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -110,8 +131,28 @@ pub struct MedicationKnowledgeCost {
     #[doc = "The price of the medication."]
     pub r#cost: Box<super::super::types::Money>,
 }
+impl Default for MedicationKnowledgeCost {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#type: {
+                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#source: Default::default(),
+            r#cost: {
+                let mut default: Box<super::super::types::Money> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+        }
+    }
+}
 #[doc = "The program under which the medication is reviewed."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct MedicationKnowledgeMonitoringProgram {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -124,8 +165,19 @@ pub struct MedicationKnowledgeMonitoringProgram {
     #[doc = "Name of the reviewing program."]
     pub r#name: Option<super::super::types::String>,
 }
+impl Default for MedicationKnowledgeMonitoringProgram {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#type: Default::default(),
+            r#name: Default::default(),
+        }
+    }
+}
 #[doc = "Dosage for the medication for the specific guidelines."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct MedicationKnowledgeAdministrationGuidelinesDosage {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -138,8 +190,23 @@ pub struct MedicationKnowledgeAdministrationGuidelinesDosage {
     #[doc = "Dosage for the medication for the specific guidelines."]
     pub r#dosage: Vec<Box<super::super::types::Dosage>>,
 }
+impl Default for MedicationKnowledgeAdministrationGuidelinesDosage {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#type: {
+                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#dosage: Default::default(),
+        }
+    }
+}
 #[doc = "Characteristics of the patient that are relevant to the administration guidelines (for example, height, weight, gender, etc.)."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct MedicationKnowledgeAdministrationGuidelinesPatientCharacteristics {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -153,8 +220,19 @@ pub struct MedicationKnowledgeAdministrationGuidelinesPatientCharacteristics {
     #[doc = "The specific characteristic (e.g. height, weight, gender, etc.)."]
     pub r#value: Vec<super::super::types::String>,
 }
+impl Default for MedicationKnowledgeAdministrationGuidelinesPatientCharacteristics {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#characteristic: Default::default(),
+            r#value: Default::default(),
+        }
+    }
+}
 #[doc = "Guidelines for the administration of the medication."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct MedicationKnowledgeAdministrationGuidelines {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -170,8 +248,20 @@ pub struct MedicationKnowledgeAdministrationGuidelines {
     pub r#patient_characteristics:
         Vec<MedicationKnowledgeAdministrationGuidelinesPatientCharacteristics>,
 }
+impl Default for MedicationKnowledgeAdministrationGuidelines {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#dosage: Default::default(),
+            r#indication: Default::default(),
+            r#patient_characteristics: Default::default(),
+        }
+    }
+}
 #[doc = "Categorization of the medication within a formulary or classification system."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct MedicationKnowledgeMedicineClassification {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -184,8 +274,23 @@ pub struct MedicationKnowledgeMedicineClassification {
     #[doc = "Specific category assigned to the medication (e.g. anti-infective, anti-hypertensive, antibiotic, etc.)."]
     pub r#classification: Vec<Box<super::super::types::CodeableConcept>>,
 }
+impl Default for MedicationKnowledgeMedicineClassification {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#type: {
+                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#classification: Default::default(),
+        }
+    }
+}
 #[doc = "Information that only applies to packages (not products)."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct MedicationKnowledgePackaging {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -198,8 +303,19 @@ pub struct MedicationKnowledgePackaging {
     #[doc = "The number of product units the package would contain if fully loaded."]
     pub r#quantity: Option<Box<super::super::types::Quantity>>,
 }
+impl Default for MedicationKnowledgePackaging {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#type: Default::default(),
+            r#quantity: Default::default(),
+        }
+    }
+}
 #[doc = "Specifies descriptive properties of the medicine, such as color, shape, imprints, etc."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct MedicationKnowledgeDrugCharacteristic {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -212,8 +328,19 @@ pub struct MedicationKnowledgeDrugCharacteristic {
     #[doc = "Description of the characteristic."]
     pub r#value: Option<MedicationKnowledgeDrugCharacteristicValue>,
 }
+impl Default for MedicationKnowledgeDrugCharacteristic {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#type: Default::default(),
+            r#value: Default::default(),
+        }
+    }
+}
 #[doc = "Specifies if changes are allowed when dispensing a medication from a regulatory perspective."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct MedicationKnowledgeRegulatorySubstitution {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -226,8 +353,27 @@ pub struct MedicationKnowledgeRegulatorySubstitution {
     #[doc = "Specifies if regulation allows for changes in the medication when dispensing."]
     pub r#allowed: super::super::types::Boolean,
 }
+impl Default for MedicationKnowledgeRegulatorySubstitution {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#type: {
+                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#allowed: {
+                let mut default: super::super::types::Boolean = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+        }
+    }
+}
 #[doc = "Specifies the schedule of a medication in jurisdiction."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct MedicationKnowledgeRegulatorySchedule {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -238,8 +384,22 @@ pub struct MedicationKnowledgeRegulatorySchedule {
     #[doc = "Specifies the specific drug schedule."]
     pub r#schedule: Box<super::super::types::CodeableConcept>,
 }
+impl Default for MedicationKnowledgeRegulatorySchedule {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#schedule: {
+                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+        }
+    }
+}
 #[doc = "The maximum number of units of the medication that can be dispensed in a period."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct MedicationKnowledgeRegulatoryMaxDispense {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -252,8 +412,23 @@ pub struct MedicationKnowledgeRegulatoryMaxDispense {
     #[doc = "The period that applies to the maximum number of units."]
     pub r#period: Option<Box<super::super::types::Duration>>,
 }
+impl Default for MedicationKnowledgeRegulatoryMaxDispense {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#quantity: {
+                let mut default: Box<super::super::types::Quantity> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#period: Default::default(),
+        }
+    }
+}
 #[doc = "Regulatory information about a medication."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct MedicationKnowledgeRegulatory {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -270,8 +445,25 @@ pub struct MedicationKnowledgeRegulatory {
     #[doc = "The maximum number of units of the medication that can be dispensed in a period."]
     pub r#max_dispense: Option<MedicationKnowledgeRegulatoryMaxDispense>,
 }
+impl Default for MedicationKnowledgeRegulatory {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#regulatory_authority: {
+                let mut default: Box<super::super::types::Reference> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#substitution: Default::default(),
+            r#schedule: Default::default(),
+            r#max_dispense: Default::default(),
+        }
+    }
+}
 #[doc = "The time course of drug absorption, distribution, metabolism and excretion of a medication from the body."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct MedicationKnowledgeKinetics {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -286,8 +478,20 @@ pub struct MedicationKnowledgeKinetics {
     #[doc = "The time required for any specified property (e.g., the concentration of a substance in the body) to decrease by half."]
     pub r#half_life_period: Option<Box<super::super::types::Duration>>,
 }
+impl Default for MedicationKnowledgeKinetics {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#area_under_curve: Default::default(),
+            r#lethal_dose_50: Default::default(),
+            r#half_life_period: Default::default(),
+        }
+    }
+}
 #[doc = "Information about a medication that is used to support knowledge."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct MedicationKnowledge {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,
@@ -349,4 +553,40 @@ pub struct MedicationKnowledge {
     pub r#regulatory: Vec<MedicationKnowledgeRegulatory>,
     #[doc = "The time course of drug absorption, distribution, metabolism and excretion of a medication from the body."]
     pub r#kinetics: Vec<MedicationKnowledgeKinetics>,
+}
+impl Default for MedicationKnowledge {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#meta: Default::default(),
+            r#implicit_rules: Default::default(),
+            r#language: Default::default(),
+            r#text: Default::default(),
+            r#contained: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#code: Default::default(),
+            r#status: Default::default(),
+            r#manufacturer: Default::default(),
+            r#dose_form: Default::default(),
+            r#amount: Default::default(),
+            r#synonym: Default::default(),
+            r#related_medication_knowledge: Default::default(),
+            r#associated_medication: Default::default(),
+            r#product_type: Default::default(),
+            r#monograph: Default::default(),
+            r#ingredient: Default::default(),
+            r#preparation_instruction: Default::default(),
+            r#intended_route: Default::default(),
+            r#cost: Default::default(),
+            r#monitoring_program: Default::default(),
+            r#administration_guidelines: Default::default(),
+            r#medicine_classification: Default::default(),
+            r#packaging: Default::default(),
+            r#drug_characteristic: Default::default(),
+            r#contraindication: Default::default(),
+            r#regulatory: Default::default(),
+            r#kinetics: Default::default(),
+        }
+    }
 }

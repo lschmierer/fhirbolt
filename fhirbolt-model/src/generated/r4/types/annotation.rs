@@ -1,18 +1,14 @@
-// Generated on 2023-04-20 by fhirbolt-codegen v0.4.0
+// Generated on 2023-04-20 by fhirbolt-codegen v0.5.0
 #[doc = "The individual responsible for making the annotation."]
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub enum AnnotationAuthor {
     Reference(Box<super::super::types::Reference>),
     String(Box<super::super::types::String>),
+    #[default]
     Invalid,
 }
-impl Default for AnnotationAuthor {
-    fn default() -> AnnotationAuthor {
-        AnnotationAuthor::Invalid
-    }
-}
 #[doc = "Base StructureDefinition for Annotation Type: A  text note which also  contains information about who made the statement and when."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct Annotation {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -24,4 +20,19 @@ pub struct Annotation {
     pub r#time: Option<super::super::types::DateTime>,
     #[doc = "The text of the annotation in markdown format."]
     pub r#text: super::super::types::Markdown,
+}
+impl Default for Annotation {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#author: Default::default(),
+            r#time: Default::default(),
+            r#text: {
+                let mut default: super::super::types::Markdown = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+        }
+    }
 }

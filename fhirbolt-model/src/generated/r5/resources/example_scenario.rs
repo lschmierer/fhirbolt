@@ -1,30 +1,22 @@
-// Generated on 2023-04-20 by fhirbolt-codegen v0.4.0
+// Generated on 2023-04-20 by fhirbolt-codegen v0.5.0
 #[doc = "Indicates the mechanism used to compare versions to determine which is more current."]
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub enum ExampleScenarioVersionAlgorithm {
     String(Box<super::super::types::String>),
     Coding(Box<super::super::types::Coding>),
+    #[default]
     Invalid,
 }
-impl Default for ExampleScenarioVersionAlgorithm {
-    fn default() -> ExampleScenarioVersionAlgorithm {
-        ExampleScenarioVersionAlgorithm::Invalid
-    }
-}
 #[doc = "Refers to a profile, template or other ruleset the instance adheres to."]
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub enum ExampleScenarioInstanceStructureProfile {
     Canonical(Box<super::super::types::Canonical>),
     Uri(Box<super::super::types::Uri>),
+    #[default]
     Invalid,
 }
-impl Default for ExampleScenarioInstanceStructureProfile {
-    fn default() -> ExampleScenarioInstanceStructureProfile {
-        ExampleScenarioInstanceStructureProfile::Invalid
-    }
-}
 #[doc = "A system or person who shares or receives an instance within the scenario."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct ExampleScenarioActor {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -41,8 +33,33 @@ pub struct ExampleScenarioActor {
     #[doc = "An explanation of who/what the actor is and its role in the scenario."]
     pub r#description: Option<super::super::types::Markdown>,
 }
+impl Default for ExampleScenarioActor {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#key: {
+                let mut default: super::super::types::String = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#type: {
+                let mut default: super::super::types::Code = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#title: {
+                let mut default: super::super::types::String = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#description: Default::default(),
+        }
+    }
+}
 #[doc = "Represents the instance as it was at a specific time-point."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct ExampleScenarioInstanceVersion {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -59,8 +76,29 @@ pub struct ExampleScenarioInstanceVersion {
     #[doc = "Points to an instance (typically an example) that shows the data that would flow at this point in the scenario."]
     pub r#content: Option<Box<super::super::types::Reference>>,
 }
+impl Default for ExampleScenarioInstanceVersion {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#key: {
+                let mut default: super::super::types::String = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#title: {
+                let mut default: super::super::types::String = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#description: Default::default(),
+            r#content: Default::default(),
+        }
+    }
+}
 #[doc = "References to other instances that can be found within this instance (e.g. the observations contained in a bundle)."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct ExampleScenarioInstanceContainedInstance {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -73,8 +111,23 @@ pub struct ExampleScenarioInstanceContainedInstance {
     #[doc = "A reference to the key of a specific version of an instance in this instance."]
     pub r#version_reference: Option<super::super::types::String>,
 }
+impl Default for ExampleScenarioInstanceContainedInstance {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#instance_reference: {
+                let mut default: super::super::types::String = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#version_reference: Default::default(),
+        }
+    }
+}
 #[doc = "A single data collection that is shared as part of the scenario."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct ExampleScenarioInstance {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -101,8 +154,38 @@ pub struct ExampleScenarioInstance {
     #[doc = "References to other instances that can be found within this instance (e.g. the observations contained in a bundle)."]
     pub r#contained_instance: Vec<ExampleScenarioInstanceContainedInstance>,
 }
+impl Default for ExampleScenarioInstance {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#key: {
+                let mut default: super::super::types::String = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#structure_type: {
+                let mut default: Box<super::super::types::Coding> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#structure_version: Default::default(),
+            r#structure_profile: Default::default(),
+            r#title: {
+                let mut default: super::super::types::String = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#description: Default::default(),
+            r#content: Default::default(),
+            r#version: Default::default(),
+            r#contained_instance: Default::default(),
+        }
+    }
+}
 #[doc = "The step represents a single operation invoked on receiver by sender."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct ExampleScenarioProcessStepOperation {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -129,8 +212,30 @@ pub struct ExampleScenarioProcessStepOperation {
     #[doc = "A reference to the instance that is transmitted from receiver to requester as part of the operation's synchronous response (if any)."]
     pub r#response: Option<ExampleScenarioInstanceContainedInstance>,
 }
+impl Default for ExampleScenarioProcessStepOperation {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#type: Default::default(),
+            r#title: {
+                let mut default: super::super::types::String = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#initiator: Default::default(),
+            r#receiver: Default::default(),
+            r#description: Default::default(),
+            r#initiator_active: Default::default(),
+            r#receiver_active: Default::default(),
+            r#request: Default::default(),
+            r#response: Default::default(),
+        }
+    }
+}
 #[doc = "Indicates an alternative step that can be taken instead of the sub-process, scenario or operation.  E.g. to represent non-happy-path/exceptional/atypical circumstances."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct ExampleScenarioProcessStepAlternative {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -145,8 +250,24 @@ pub struct ExampleScenarioProcessStepAlternative {
     #[doc = "Indicates the operation, sub-process or scenario that happens if the alternative option is selected."]
     pub r#step: Vec<ExampleScenarioProcessStep>,
 }
+impl Default for ExampleScenarioProcessStepAlternative {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#title: {
+                let mut default: super::super::types::String = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#description: Default::default(),
+            r#step: Default::default(),
+        }
+    }
+}
 #[doc = "A significant action that occurs as part of the process."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct ExampleScenarioProcessStep {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -167,8 +288,23 @@ pub struct ExampleScenarioProcessStep {
     #[doc = "If true, indicates that, following this step, there is a pause in the flow and the subsequent step will occur at some later time (triggered by some event)."]
     pub r#pause: Option<super::super::types::Boolean>,
 }
+impl Default for ExampleScenarioProcessStep {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#number: Default::default(),
+            r#process: Default::default(),
+            r#workflow: Default::default(),
+            r#operation: Default::default(),
+            r#alternative: Default::default(),
+            r#pause: Default::default(),
+        }
+    }
+}
 #[doc = "A group of operations that represents a significant step within a scenario."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct ExampleScenarioProcess {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -187,8 +323,26 @@ pub struct ExampleScenarioProcess {
     #[doc = "A significant action that occurs as part of the process."]
     pub r#step: Vec<ExampleScenarioProcessStep>,
 }
+impl Default for ExampleScenarioProcess {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#title: {
+                let mut default: super::super::types::String = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#description: Default::default(),
+            r#pre_conditions: Default::default(),
+            r#post_conditions: Default::default(),
+            r#step: Default::default(),
+        }
+    }
+}
 #[doc = "A walkthrough of a workflow showing the interaction between systems and the instances shared, possibly including the evolution of instances over time."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct ExampleScenario {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,
@@ -246,4 +400,42 @@ pub struct ExampleScenario {
     pub r#instance: Vec<ExampleScenarioInstance>,
     #[doc = "A group of operations that represents a significant step within a scenario."]
     pub r#process: Vec<ExampleScenarioProcess>,
+}
+impl Default for ExampleScenario {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#meta: Default::default(),
+            r#implicit_rules: Default::default(),
+            r#language: Default::default(),
+            r#text: Default::default(),
+            r#contained: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#url: Default::default(),
+            r#identifier: Default::default(),
+            r#version: Default::default(),
+            r#version_algorithm: Default::default(),
+            r#name: Default::default(),
+            r#title: Default::default(),
+            r#status: {
+                let mut default: super::super::types::Code = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#experimental: Default::default(),
+            r#date: Default::default(),
+            r#publisher: Default::default(),
+            r#contact: Default::default(),
+            r#description: Default::default(),
+            r#use_context: Default::default(),
+            r#jurisdiction: Default::default(),
+            r#purpose: Default::default(),
+            r#copyright: Default::default(),
+            r#copyright_label: Default::default(),
+            r#actor: Default::default(),
+            r#instance: Default::default(),
+            r#process: Default::default(),
+        }
+    }
 }

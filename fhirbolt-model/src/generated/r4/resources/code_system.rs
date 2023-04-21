@@ -1,6 +1,6 @@
-// Generated on 2023-04-20 by fhirbolt-codegen v0.4.0
+// Generated on 2023-04-20 by fhirbolt-codegen v0.5.0
 #[doc = "The value of this property."]
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub enum CodeSystemConceptPropertyValue {
     Code(Box<super::super::types::Code>),
     Coding(Box<super::super::types::Coding>),
@@ -9,15 +9,11 @@ pub enum CodeSystemConceptPropertyValue {
     Boolean(Box<super::super::types::Boolean>),
     DateTime(Box<super::super::types::DateTime>),
     Decimal(Box<super::super::types::Decimal>),
+    #[default]
     Invalid,
 }
-impl Default for CodeSystemConceptPropertyValue {
-    fn default() -> CodeSystemConceptPropertyValue {
-        CodeSystemConceptPropertyValue::Invalid
-    }
-}
 #[doc = "A filter that can be used in a value set compose statement when selecting concepts using a filter."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct CodeSystemFilter {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -34,8 +30,29 @@ pub struct CodeSystemFilter {
     #[doc = "A description of what the value for the filter should be."]
     pub r#value: super::super::types::String,
 }
+impl Default for CodeSystemFilter {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#code: {
+                let mut default: super::super::types::Code = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#description: Default::default(),
+            r#operator: Default::default(),
+            r#value: {
+                let mut default: super::super::types::String = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+        }
+    }
+}
 #[doc = "A property defines an additional slot through which additional information can be provided about a concept."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct CodeSystemProperty {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -52,8 +69,29 @@ pub struct CodeSystemProperty {
     #[doc = "The type of the property value. Properties of type \"code\" contain a code defined by the code system (e.g. a reference to another defined concept)."]
     pub r#type: super::super::types::Code,
 }
+impl Default for CodeSystemProperty {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#code: {
+                let mut default: super::super::types::Code = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#uri: Default::default(),
+            r#description: Default::default(),
+            r#type: {
+                let mut default: super::super::types::Code = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+        }
+    }
+}
 #[doc = "Additional representations for the concept - other languages, aliases, specialized purposes, used for particular purposes, etc."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct CodeSystemConceptDesignation {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -68,8 +106,24 @@ pub struct CodeSystemConceptDesignation {
     #[doc = "The text value for this designation."]
     pub r#value: super::super::types::String,
 }
+impl Default for CodeSystemConceptDesignation {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#language: Default::default(),
+            r#use: Default::default(),
+            r#value: {
+                let mut default: super::super::types::String = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+        }
+    }
+}
 #[doc = "A property value for this concept."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct CodeSystemConceptProperty {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -82,8 +136,23 @@ pub struct CodeSystemConceptProperty {
     #[doc = "The value of this property."]
     pub r#value: CodeSystemConceptPropertyValue,
 }
+impl Default for CodeSystemConceptProperty {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#code: {
+                let mut default: super::super::types::Code = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#value: Default::default(),
+        }
+    }
+}
 #[doc = "Concepts that are in the code system. The concept definitions are inherently hierarchical, but the definitions must be consulted to determine what the meanings of the hierarchical relationships are."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct CodeSystemConcept {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -104,8 +173,27 @@ pub struct CodeSystemConcept {
     #[doc = "Defines children of a concept to produce a hierarchy of concepts. The nature of the relationships is variable (is-a/contains/categorizes) - see hierarchyMeaning."]
     pub r#concept: Vec<CodeSystemConcept>,
 }
+impl Default for CodeSystemConcept {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#code: {
+                let mut default: super::super::types::Code = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#display: Default::default(),
+            r#definition: Default::default(),
+            r#designation: Default::default(),
+            r#property: Default::default(),
+            r#concept: Default::default(),
+        }
+    }
+}
 #[doc = "The CodeSystem resource is used to declare the existence of and describe a code system or code system supplement and its key properties, and optionally define a part or all of its content."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct CodeSystem {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,
@@ -175,4 +263,52 @@ pub struct CodeSystem {
     pub r#property: Vec<CodeSystemProperty>,
     #[doc = "Concepts that are in the code system. The concept definitions are inherently hierarchical, but the definitions must be consulted to determine what the meanings of the hierarchical relationships are."]
     pub r#concept: Vec<CodeSystemConcept>,
+}
+impl Default for CodeSystem {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#meta: Default::default(),
+            r#implicit_rules: Default::default(),
+            r#language: Default::default(),
+            r#text: Default::default(),
+            r#contained: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#url: Default::default(),
+            r#identifier: Default::default(),
+            r#version: Default::default(),
+            r#name: Default::default(),
+            r#title: Default::default(),
+            r#status: {
+                let mut default: super::super::types::Code = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#experimental: Default::default(),
+            r#date: Default::default(),
+            r#publisher: Default::default(),
+            r#contact: Default::default(),
+            r#description: Default::default(),
+            r#use_context: Default::default(),
+            r#jurisdiction: Default::default(),
+            r#purpose: Default::default(),
+            r#copyright: Default::default(),
+            r#case_sensitive: Default::default(),
+            r#value_set: Default::default(),
+            r#hierarchy_meaning: Default::default(),
+            r#compositional: Default::default(),
+            r#version_needed: Default::default(),
+            r#content: {
+                let mut default: super::super::types::Code = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#supplements: Default::default(),
+            r#count: Default::default(),
+            r#filter: Default::default(),
+            r#property: Default::default(),
+            r#concept: Default::default(),
+        }
+    }
 }

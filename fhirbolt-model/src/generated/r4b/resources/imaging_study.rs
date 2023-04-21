@@ -1,6 +1,6 @@
-// Generated on 2023-04-20 by fhirbolt-codegen v0.4.0
+// Generated on 2023-04-20 by fhirbolt-codegen v0.5.0
 #[doc = "Indicates who or what performed the series and how they were involved."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct ImagingStudySeriesPerformer {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -13,8 +13,23 @@ pub struct ImagingStudySeriesPerformer {
     #[doc = "Indicates who or what performed the series."]
     pub r#actor: Box<super::super::types::Reference>,
 }
+impl Default for ImagingStudySeriesPerformer {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#function: Default::default(),
+            r#actor: {
+                let mut default: Box<super::super::types::Reference> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+        }
+    }
+}
 #[doc = "A single SOP instance within the series, e.g. an image, or presentation state."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct ImagingStudySeriesInstance {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -31,8 +46,29 @@ pub struct ImagingStudySeriesInstance {
     #[doc = "The description of the instance."]
     pub r#title: Option<super::super::types::String>,
 }
+impl Default for ImagingStudySeriesInstance {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#uid: {
+                let mut default: super::super::types::Id = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#sop_class: {
+                let mut default: Box<super::super::types::Coding> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#number: Default::default(),
+            r#title: Default::default(),
+        }
+    }
+}
 #[doc = "Each study has one or more series of images or other content."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct ImagingStudySeries {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -65,8 +101,37 @@ pub struct ImagingStudySeries {
     #[doc = "A single SOP instance within the series, e.g. an image, or presentation state."]
     pub r#instance: Vec<ImagingStudySeriesInstance>,
 }
+impl Default for ImagingStudySeries {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#uid: {
+                let mut default: super::super::types::Id = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#number: Default::default(),
+            r#modality: {
+                let mut default: Box<super::super::types::Coding> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#description: Default::default(),
+            r#number_of_instances: Default::default(),
+            r#endpoint: Default::default(),
+            r#body_site: Default::default(),
+            r#laterality: Default::default(),
+            r#specimen: Default::default(),
+            r#started: Default::default(),
+            r#performer: Default::default(),
+            r#instance: Default::default(),
+        }
+    }
+}
 #[doc = "Representation of the content produced in a DICOM imaging study. A study comprises a set of series, each of which includes a set of Service-Object Pair Instances (SOP Instances - images or other data) acquired or produced in a common context.  A series is of only one modality (e.g. X-ray, CT, MR, ultrasound), but a study may have multiple series of different modalities."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct ImagingStudy {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,
@@ -124,4 +189,46 @@ pub struct ImagingStudy {
     pub r#description: Option<super::super::types::String>,
     #[doc = "Each study has one or more series of images or other content."]
     pub r#series: Vec<ImagingStudySeries>,
+}
+impl Default for ImagingStudy {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#meta: Default::default(),
+            r#implicit_rules: Default::default(),
+            r#language: Default::default(),
+            r#text: Default::default(),
+            r#contained: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#identifier: Default::default(),
+            r#status: {
+                let mut default: super::super::types::Code = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#modality: Default::default(),
+            r#subject: {
+                let mut default: Box<super::super::types::Reference> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#encounter: Default::default(),
+            r#started: Default::default(),
+            r#based_on: Default::default(),
+            r#referrer: Default::default(),
+            r#interpreter: Default::default(),
+            r#endpoint: Default::default(),
+            r#number_of_series: Default::default(),
+            r#number_of_instances: Default::default(),
+            r#procedure_reference: Default::default(),
+            r#procedure_code: Default::default(),
+            r#location: Default::default(),
+            r#reason_code: Default::default(),
+            r#reason_reference: Default::default(),
+            r#note: Default::default(),
+            r#description: Default::default(),
+            r#series: Default::default(),
+        }
+    }
 }

@@ -1,33 +1,25 @@
-// Generated on 2023-04-20 by fhirbolt-codegen v0.4.0
+// Generated on 2023-04-20 by fhirbolt-codegen v0.5.0
 #[doc = "The value of the device detail."]
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub enum DeviceRequestParameterValue {
     CodeableConcept(Box<super::super::types::CodeableConcept>),
     Quantity(Box<super::super::types::Quantity>),
     Range(Box<super::super::types::Range>),
     Boolean(Box<super::super::types::Boolean>),
+    #[default]
     Invalid,
 }
-impl Default for DeviceRequestParameterValue {
-    fn default() -> DeviceRequestParameterValue {
-        DeviceRequestParameterValue::Invalid
-    }
-}
 #[doc = "The timing schedule for the use of the device. The Schedule data type allows many different expressions, for example. \"Every 8 hours\"; \"Three times a day\"; \"1/2 an hour before breakfast for 10 days from 23-Dec 2011:\"; \"15 Oct 2013, 17 Oct 2013 and 1 Nov 2013\"."]
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub enum DeviceRequestOccurrence {
     DateTime(Box<super::super::types::DateTime>),
     Period(Box<super::super::types::Period>),
     Timing(Box<super::super::types::Timing>),
+    #[default]
     Invalid,
 }
-impl Default for DeviceRequestOccurrence {
-    fn default() -> DeviceRequestOccurrence {
-        DeviceRequestOccurrence::Invalid
-    }
-}
 #[doc = "Specific parameters for the ordered item.  For example, the prism value for lenses."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct DeviceRequestParameter {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -40,8 +32,19 @@ pub struct DeviceRequestParameter {
     #[doc = "The value of the device detail."]
     pub r#value: Option<DeviceRequestParameterValue>,
 }
+impl Default for DeviceRequestParameter {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#code: Default::default(),
+            r#value: Default::default(),
+        }
+    }
+}
 #[doc = "Represents a request a device to be provided to a specific patient. The device may be an implantable device to be subsequently implanted, or an external assistive device, such as a walker, to be delivered and subsequently be used."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct DeviceRequest {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,
@@ -111,4 +114,56 @@ pub struct DeviceRequest {
     pub r#note: Vec<Box<super::super::types::Annotation>>,
     #[doc = "Key events in the history of the request."]
     pub r#relevant_history: Vec<Box<super::super::types::Reference>>,
+}
+impl Default for DeviceRequest {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#meta: Default::default(),
+            r#implicit_rules: Default::default(),
+            r#language: Default::default(),
+            r#text: Default::default(),
+            r#contained: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#identifier: Default::default(),
+            r#instantiates_canonical: Default::default(),
+            r#instantiates_uri: Default::default(),
+            r#based_on: Default::default(),
+            r#replaces: Default::default(),
+            r#group_identifier: Default::default(),
+            r#status: Default::default(),
+            r#intent: {
+                let mut default: super::super::types::Code = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#priority: Default::default(),
+            r#do_not_perform: Default::default(),
+            r#code: {
+                let mut default: Box<super::super::types::CodeableReference> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#quantity: Default::default(),
+            r#parameter: Default::default(),
+            r#subject: {
+                let mut default: Box<super::super::types::Reference> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#encounter: Default::default(),
+            r#occurrence: Default::default(),
+            r#authored_on: Default::default(),
+            r#requester: Default::default(),
+            r#performer: Default::default(),
+            r#reason: Default::default(),
+            r#as_needed: Default::default(),
+            r#as_needed_for: Default::default(),
+            r#insurance: Default::default(),
+            r#supporting_info: Default::default(),
+            r#note: Default::default(),
+            r#relevant_history: Default::default(),
+        }
+    }
 }

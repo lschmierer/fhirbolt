@@ -1,6 +1,6 @@
-// Generated on 2023-04-20 by fhirbolt-codegen v0.4.0
+// Generated on 2023-04-20 by fhirbolt-codegen v0.5.0
 #[doc = "The value of the attribute."]
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub enum InventoryItemCharacteristicValue {
     String(Box<super::super::types::String>),
     Integer(Box<super::super::types::Integer>),
@@ -15,15 +15,11 @@ pub enum InventoryItemCharacteristicValue {
     Address(Box<super::super::types::Address>),
     Duration(Box<super::super::types::Duration>),
     CodeableConcept(Box<super::super::types::CodeableConcept>),
+    #[default]
     Invalid,
 }
-impl Default for InventoryItemCharacteristicValue {
-    fn default() -> InventoryItemCharacteristicValue {
-        InventoryItemCharacteristicValue::Invalid
-    }
-}
 #[doc = "The item name(s) - the brand name, or common name, functional name, generic name."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct InventoryItemName {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -38,8 +34,32 @@ pub struct InventoryItemName {
     #[doc = "The name or designation that the item is given."]
     pub r#name: super::super::types::String,
 }
+impl Default for InventoryItemName {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#name_type: {
+                let mut default: Box<super::super::types::Coding> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#language: {
+                let mut default: super::super::types::Code = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#name: {
+                let mut default: super::super::types::String = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+        }
+    }
+}
 #[doc = "Organization(s) responsible for the product."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct InventoryItemResponsibleOrganization {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -52,8 +72,27 @@ pub struct InventoryItemResponsibleOrganization {
     #[doc = "An organization that has an association with the item, e.g. manufacturer, distributor, responsible, etc."]
     pub r#organization: Box<super::super::types::Reference>,
 }
+impl Default for InventoryItemResponsibleOrganization {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#role: {
+                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#organization: {
+                let mut default: Box<super::super::types::Reference> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+        }
+    }
+}
 #[doc = "The descriptive characteristics of the inventory item."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct InventoryItemDescription {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -66,8 +105,19 @@ pub struct InventoryItemDescription {
     #[doc = "Textual description of the item."]
     pub r#description: Option<super::super::types::String>,
 }
+impl Default for InventoryItemDescription {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#language: Default::default(),
+            r#description: Default::default(),
+        }
+    }
+}
 #[doc = "Association with other items or products."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct InventoryItemAssociation {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -82,8 +132,32 @@ pub struct InventoryItemAssociation {
     #[doc = "The quantity of the related product in this product - Numerator is the quantity of the related product. Denominator is the quantity of the present product. For example a value of 20 means that this product contains 20 units of the related product; a value of 1:20 means the inverse - that the contained product contains 20 units of the present product."]
     pub r#quantity: Box<super::super::types::Ratio>,
 }
+impl Default for InventoryItemAssociation {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#association_type: {
+                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#related_item: {
+                let mut default: Box<super::super::types::Reference> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#quantity: {
+                let mut default: Box<super::super::types::Ratio> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+        }
+    }
+}
 #[doc = "The descriptive or identifying characteristics of the item."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct InventoryItemCharacteristic {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -96,8 +170,23 @@ pub struct InventoryItemCharacteristic {
     #[doc = "The value of the attribute."]
     pub r#value: InventoryItemCharacteristicValue,
 }
+impl Default for InventoryItemCharacteristic {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#characteristic_type: {
+                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#value: Default::default(),
+        }
+    }
+}
 #[doc = "Instances or occurrences of the product."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct InventoryItemInstance {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -116,8 +205,22 @@ pub struct InventoryItemInstance {
     #[doc = "The location that the item is associated with."]
     pub r#location: Option<Box<super::super::types::Reference>>,
 }
+impl Default for InventoryItemInstance {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#identifier: Default::default(),
+            r#lot_number: Default::default(),
+            r#expiry: Default::default(),
+            r#subject: Default::default(),
+            r#location: Default::default(),
+        }
+    }
+}
 #[doc = "functional description of an inventory item used in inventory and supply-related workflows."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct InventoryItem {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,
@@ -163,4 +266,36 @@ pub struct InventoryItem {
     pub r#instance: Option<InventoryItemInstance>,
     #[doc = "Link to a product resource used in clinical workflows."]
     pub r#product_reference: Option<Box<super::super::types::Reference>>,
+}
+impl Default for InventoryItem {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#meta: Default::default(),
+            r#implicit_rules: Default::default(),
+            r#language: Default::default(),
+            r#text: Default::default(),
+            r#contained: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#identifier: Default::default(),
+            r#status: {
+                let mut default: super::super::types::Code = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#category: Default::default(),
+            r#code: Default::default(),
+            r#name: Default::default(),
+            r#responsible_organization: Default::default(),
+            r#description: Default::default(),
+            r#inventory_status: Default::default(),
+            r#base_unit: Default::default(),
+            r#net_content: Default::default(),
+            r#association: Default::default(),
+            r#characteristic: Default::default(),
+            r#instance: Default::default(),
+            r#product_reference: Default::default(),
+        }
+    }
 }

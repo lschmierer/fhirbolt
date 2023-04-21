@@ -1,30 +1,22 @@
-// Generated on 2023-04-20 by fhirbolt-codegen v0.4.0
+// Generated on 2023-04-20 by fhirbolt-codegen v0.5.0
 #[doc = "Timing or duration information, that may be associated with use with the indicated condition e.g. Adult patients suffering from myocardial infarction (from a few days until less than 35 days), ischaemic stroke (from 7 days until less than 6 months)."]
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub enum ClinicalUseDefinitionIndicationDuration {
     Range(Box<super::super::types::Range>),
     String(Box<super::super::types::String>),
+    #[default]
     Invalid,
 }
-impl Default for ClinicalUseDefinitionIndicationDuration {
-    fn default() -> ClinicalUseDefinitionIndicationDuration {
-        ClinicalUseDefinitionIndicationDuration::Invalid
-    }
-}
 #[doc = "The specific medication, product, food, substance etc. or laboratory test that interacts."]
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub enum ClinicalUseDefinitionInteractionInteractantItem {
     Reference(Box<super::super::types::Reference>),
     CodeableConcept(Box<super::super::types::CodeableConcept>),
+    #[default]
     Invalid,
 }
-impl Default for ClinicalUseDefinitionInteractionInteractantItem {
-    fn default() -> ClinicalUseDefinitionInteractionInteractantItem {
-        ClinicalUseDefinitionInteractionInteractantItem::Invalid
-    }
-}
 #[doc = "Information about the use of the medicinal product in relation to other therapies described as part of the contraindication."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct ClinicalUseDefinitionContraindicationOtherTherapy {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -37,8 +29,27 @@ pub struct ClinicalUseDefinitionContraindicationOtherTherapy {
     #[doc = "Reference to a specific medication (active substance, medicinal product or class of products, biological, food etc.) as part of an indication or contraindication."]
     pub r#treatment: Box<super::super::types::CodeableReference>,
 }
+impl Default for ClinicalUseDefinitionContraindicationOtherTherapy {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#relationship_type: {
+                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#treatment: {
+                let mut default: Box<super::super::types::CodeableReference> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+        }
+    }
+}
 #[doc = "Specifics for when this is a contraindication."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct ClinicalUseDefinitionContraindication {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -59,8 +70,23 @@ pub struct ClinicalUseDefinitionContraindication {
     #[doc = "Information about the use of the medicinal product in relation to other therapies described as part of the contraindication."]
     pub r#other_therapy: Vec<ClinicalUseDefinitionContraindicationOtherTherapy>,
 }
+impl Default for ClinicalUseDefinitionContraindication {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#disease_symptom_procedure: Default::default(),
+            r#disease_status: Default::default(),
+            r#comorbidity: Default::default(),
+            r#indication: Default::default(),
+            r#applicability: Default::default(),
+            r#other_therapy: Default::default(),
+        }
+    }
+}
 #[doc = "Specifics for when this is an indication."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct ClinicalUseDefinitionIndication {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -85,8 +111,25 @@ pub struct ClinicalUseDefinitionIndication {
     #[doc = "Information about the use of the medicinal product in relation to other therapies described as part of the indication."]
     pub r#other_therapy: Vec<ClinicalUseDefinitionContraindicationOtherTherapy>,
 }
+impl Default for ClinicalUseDefinitionIndication {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#disease_symptom_procedure: Default::default(),
+            r#disease_status: Default::default(),
+            r#comorbidity: Default::default(),
+            r#intended_effect: Default::default(),
+            r#duration: Default::default(),
+            r#undesirable_effect: Default::default(),
+            r#applicability: Default::default(),
+            r#other_therapy: Default::default(),
+        }
+    }
+}
 #[doc = "The specific medication, product, food, substance etc. or laboratory test that interacts."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct ClinicalUseDefinitionInteractionInteractant {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -97,8 +140,18 @@ pub struct ClinicalUseDefinitionInteractionInteractant {
     #[doc = "The specific medication, product, food, substance etc. or laboratory test that interacts."]
     pub r#item: ClinicalUseDefinitionInteractionInteractantItem,
 }
+impl Default for ClinicalUseDefinitionInteractionInteractant {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#item: Default::default(),
+        }
+    }
+}
 #[doc = "Specifics for when this is an interaction."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct ClinicalUseDefinitionInteraction {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -117,8 +170,22 @@ pub struct ClinicalUseDefinitionInteraction {
     #[doc = "Actions for managing the interaction."]
     pub r#management: Vec<Box<super::super::types::CodeableConcept>>,
 }
+impl Default for ClinicalUseDefinitionInteraction {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#interactant: Default::default(),
+            r#type: Default::default(),
+            r#effect: Default::default(),
+            r#incidence: Default::default(),
+            r#management: Default::default(),
+        }
+    }
+}
 #[doc = "Describe the possible undesirable effects (negative outcomes) from the use of the medicinal product as treatment."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct ClinicalUseDefinitionUndesirableEffect {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -133,8 +200,20 @@ pub struct ClinicalUseDefinitionUndesirableEffect {
     #[doc = "How often the effect is seen."]
     pub r#frequency_of_occurrence: Option<Box<super::super::types::CodeableConcept>>,
 }
+impl Default for ClinicalUseDefinitionUndesirableEffect {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#symptom_condition_effect: Default::default(),
+            r#classification: Default::default(),
+            r#frequency_of_occurrence: Default::default(),
+        }
+    }
+}
 #[doc = "A critical piece of information about environmental, health or physical risks or hazards that serve as caution to the user. For example 'Do not operate heavy machinery', 'May cause drowsiness', or 'Get medical advice/attention if you feel unwell'."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct ClinicalUseDefinitionWarning {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -147,8 +226,19 @@ pub struct ClinicalUseDefinitionWarning {
     #[doc = "A coded or unformatted textual definition of this warning."]
     pub r#code: Option<Box<super::super::types::CodeableConcept>>,
 }
+impl Default for ClinicalUseDefinitionWarning {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#description: Default::default(),
+            r#code: Default::default(),
+        }
+    }
+}
 #[doc = "A single issue - either an indication, contraindication, interaction or an undesirable effect for a medicinal product, medication, device or procedure."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct ClinicalUseDefinition {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,
@@ -190,4 +280,34 @@ pub struct ClinicalUseDefinition {
     pub r#undesirable_effect: Option<ClinicalUseDefinitionUndesirableEffect>,
     #[doc = "A critical piece of information about environmental, health or physical risks or hazards that serve as caution to the user. For example 'Do not operate heavy machinery', 'May cause drowsiness', or 'Get medical advice/attention if you feel unwell'."]
     pub r#warning: Option<ClinicalUseDefinitionWarning>,
+}
+impl Default for ClinicalUseDefinition {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#meta: Default::default(),
+            r#implicit_rules: Default::default(),
+            r#language: Default::default(),
+            r#text: Default::default(),
+            r#contained: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#identifier: Default::default(),
+            r#type: {
+                let mut default: super::super::types::Code = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#category: Default::default(),
+            r#subject: Default::default(),
+            r#status: Default::default(),
+            r#contraindication: Default::default(),
+            r#indication: Default::default(),
+            r#interaction: Default::default(),
+            r#population: Default::default(),
+            r#library: Default::default(),
+            r#undesirable_effect: Default::default(),
+            r#warning: Default::default(),
+        }
+    }
 }

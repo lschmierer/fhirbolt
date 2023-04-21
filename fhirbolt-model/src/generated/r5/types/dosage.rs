@@ -1,31 +1,23 @@
-// Generated on 2023-04-20 by fhirbolt-codegen v0.4.0
+// Generated on 2023-04-20 by fhirbolt-codegen v0.5.0
 #[doc = "Amount of medication per dose."]
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub enum DosageDoseAndRateDose {
     Range(Box<super::super::types::Range>),
     Quantity(Box<super::super::types::Quantity>),
+    #[default]
     Invalid,
 }
-impl Default for DosageDoseAndRateDose {
-    fn default() -> DosageDoseAndRateDose {
-        DosageDoseAndRateDose::Invalid
-    }
-}
 #[doc = "Amount of medication per unit of time."]
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub enum DosageDoseAndRateRate {
     Ratio(Box<super::super::types::Ratio>),
     Range(Box<super::super::types::Range>),
     Quantity(Box<super::super::types::Quantity>),
+    #[default]
     Invalid,
 }
-impl Default for DosageDoseAndRateRate {
-    fn default() -> DosageDoseAndRateRate {
-        DosageDoseAndRateRate::Invalid
-    }
-}
 #[doc = "Depending on the resource,this is the amount of medication administered, to  be administered or typical amount to be administered."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct DosageDoseAndRate {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -38,8 +30,19 @@ pub struct DosageDoseAndRate {
     #[doc = "Amount of medication per unit of time."]
     pub r#rate: Option<DosageDoseAndRateRate>,
 }
+impl Default for DosageDoseAndRate {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#type: Default::default(),
+            r#dose: Default::default(),
+            r#rate: Default::default(),
+        }
+    }
+}
 #[doc = "Dosage Type: Indicates how the medication is/was taken or should be taken by the patient."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct Dosage {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -75,4 +78,27 @@ pub struct Dosage {
     pub r#max_dose_per_administration: Option<Box<super::super::types::Quantity>>,
     #[doc = "Upper limit on medication per lifetime of the patient."]
     pub r#max_dose_per_lifetime: Option<Box<super::super::types::Quantity>>,
+}
+impl Default for Dosage {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#sequence: Default::default(),
+            r#text: Default::default(),
+            r#additional_instruction: Default::default(),
+            r#patient_instruction: Default::default(),
+            r#timing: Default::default(),
+            r#as_needed: Default::default(),
+            r#as_needed_for: Default::default(),
+            r#site: Default::default(),
+            r#route: Default::default(),
+            r#method: Default::default(),
+            r#dose_and_rate: Default::default(),
+            r#max_dose_per_period: Default::default(),
+            r#max_dose_per_administration: Default::default(),
+            r#max_dose_per_lifetime: Default::default(),
+        }
+    }
 }

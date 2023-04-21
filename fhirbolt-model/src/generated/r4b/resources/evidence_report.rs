@@ -1,45 +1,33 @@
-// Generated on 2023-04-20 by fhirbolt-codegen v0.4.0
+// Generated on 2023-04-20 by fhirbolt-codegen v0.5.0
 #[doc = "Citation Resource or display of suggested citation for this report."]
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub enum EvidenceReportCiteAs {
     Reference(Box<super::super::types::Reference>),
     Markdown(Box<super::super::types::Markdown>),
+    #[default]
     Invalid,
 }
-impl Default for EvidenceReportCiteAs {
-    fn default() -> EvidenceReportCiteAs {
-        EvidenceReportCiteAs::Invalid
-    }
-}
 #[doc = "Characteristic value."]
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub enum EvidenceReportSubjectCharacteristicValue {
     Reference(Box<super::super::types::Reference>),
     CodeableConcept(Box<super::super::types::CodeableConcept>),
     Boolean(Box<super::super::types::Boolean>),
     Quantity(Box<super::super::types::Quantity>),
     Range(Box<super::super::types::Range>),
+    #[default]
     Invalid,
 }
-impl Default for EvidenceReportSubjectCharacteristicValue {
-    fn default() -> EvidenceReportSubjectCharacteristicValue {
-        EvidenceReportSubjectCharacteristicValue::Invalid
-    }
-}
 #[doc = "The target composition/document of this relationship."]
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub enum EvidenceReportRelatesToTarget {
     Identifier(Box<super::super::types::Identifier>),
     Reference(Box<super::super::types::Reference>),
+    #[default]
     Invalid,
 }
-impl Default for EvidenceReportRelatesToTarget {
-    fn default() -> EvidenceReportRelatesToTarget {
-        EvidenceReportRelatesToTarget::Invalid
-    }
-}
 #[doc = "Characteristic."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct EvidenceReportSubjectCharacteristic {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -56,8 +44,25 @@ pub struct EvidenceReportSubjectCharacteristic {
     #[doc = "Timeframe for the characteristic."]
     pub r#period: Option<Box<super::super::types::Period>>,
 }
+impl Default for EvidenceReportSubjectCharacteristic {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#code: {
+                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#value: Default::default(),
+            r#exclude: Default::default(),
+            r#period: Default::default(),
+        }
+    }
+}
 #[doc = "Specifies the subject or focus of the report. Answers \"What is this report about?\"."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct EvidenceReportSubject {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -70,8 +75,19 @@ pub struct EvidenceReportSubject {
     #[doc = "Used for general notes and annotations not coded elsewhere."]
     pub r#note: Vec<Box<super::super::types::Annotation>>,
 }
+impl Default for EvidenceReportSubject {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#characteristic: Default::default(),
+            r#note: Default::default(),
+        }
+    }
+}
 #[doc = "Relationships that this composition has with other compositions or documents that already exist."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct EvidenceReportRelatesTo {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -84,8 +100,23 @@ pub struct EvidenceReportRelatesTo {
     #[doc = "The target composition/document of this relationship."]
     pub r#target: EvidenceReportRelatesToTarget,
 }
+impl Default for EvidenceReportRelatesTo {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#code: {
+                let mut default: super::super::types::Code = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#target: Default::default(),
+        }
+    }
+}
 #[doc = "The root of the sections that make up the composition."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct EvidenceReportSection {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -118,8 +149,29 @@ pub struct EvidenceReportSection {
     #[doc = "A nested sub-section within this section."]
     pub r#section: Vec<EvidenceReportSection>,
 }
+impl Default for EvidenceReportSection {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#title: Default::default(),
+            r#focus: Default::default(),
+            r#focus_reference: Default::default(),
+            r#author: Default::default(),
+            r#text: Default::default(),
+            r#mode: Default::default(),
+            r#ordered_by: Default::default(),
+            r#entry_classifier: Default::default(),
+            r#entry_reference: Default::default(),
+            r#entry_quantity: Default::default(),
+            r#empty_reason: Default::default(),
+            r#section: Default::default(),
+        }
+    }
+}
 #[doc = "The EvidenceReport Resource is a specialized container for a collection of resources and codable concepts, adapted to support compositions of Evidence, EvidenceVariable, and Citation resources and related concepts."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct EvidenceReport {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,
@@ -173,4 +225,44 @@ pub struct EvidenceReport {
     pub r#relates_to: Vec<EvidenceReportRelatesTo>,
     #[doc = "The root of the sections that make up the composition."]
     pub r#section: Vec<EvidenceReportSection>,
+}
+impl Default for EvidenceReport {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#meta: Default::default(),
+            r#implicit_rules: Default::default(),
+            r#language: Default::default(),
+            r#text: Default::default(),
+            r#contained: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#url: Default::default(),
+            r#status: {
+                let mut default: super::super::types::Code = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#use_context: Default::default(),
+            r#identifier: Default::default(),
+            r#related_identifier: Default::default(),
+            r#cite_as: Default::default(),
+            r#type: Default::default(),
+            r#note: Default::default(),
+            r#related_artifact: Default::default(),
+            r#subject: {
+                let mut default: EvidenceReportSubject = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#publisher: Default::default(),
+            r#contact: Default::default(),
+            r#author: Default::default(),
+            r#editor: Default::default(),
+            r#reviewer: Default::default(),
+            r#endorser: Default::default(),
+            r#relates_to: Default::default(),
+            r#section: Default::default(),
+        }
+    }
 }

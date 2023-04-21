@@ -1,4 +1,4 @@
-// Generated on 2023-04-20 by fhirbolt-codegen v0.4.0
+// Generated on 2023-04-20 by fhirbolt-codegen v0.5.0
 impl serde::ser::Serialize
     for crate::context::ser::SerializationContext<
         &fhirbolt_model::r5::resources::ServiceRequestOrderDetailParameter,
@@ -9,6 +9,13 @@ impl serde::ser::Serialize
         S: serde::ser::Serializer,
     {
         use serde::ser::SerializeMap;
+        #[allow(dead_code)]
+        fn missing_field_error<T, E: serde::ser::Error>(field: &str) -> Result<T, E> {
+            Err(E::custom(format!(
+                "missing required field `{}.{}`",
+                "ServiceRequest.orderDetail.parameter", field
+            )))
+        }
         let mut state = serializer.serialize_map(None)?;
         if let Some(value) = self.value.r#id.as_ref() {
             state.serialize_entry("id", value)?;
@@ -22,6 +29,9 @@ impl serde::ser::Serialize
             self.with_context(&self.value.r#modifier_extension, |ctx| {
                 state.serialize_entry("modifierExtension", ctx)
             })?;
+        }
+        if self.value.r#code.id.as_deref() == Some("$invalid") {
+            return missing_field_error("code");
         }
         self.with_context(&self.value.r#code, |ctx| state.serialize_entry("code", ctx))?;
         match self . value . r#value { fhirbolt_model :: r5 :: resources :: ServiceRequestOrderDetailParameterValue :: Quantity (ref value) => { self . with_context (value , | ctx | state . serialize_entry ("valueQuantity" , ctx)) ? ; } , fhirbolt_model :: r5 :: resources :: ServiceRequestOrderDetailParameterValue :: Ratio (ref value) => { self . with_context (value , | ctx | state . serialize_entry ("valueRatio" , ctx)) ? ; } , fhirbolt_model :: r5 :: resources :: ServiceRequestOrderDetailParameterValue :: Range (ref value) => { self . with_context (value , | ctx | state . serialize_entry ("valueRange" , ctx)) ? ; } , fhirbolt_model :: r5 :: resources :: ServiceRequestOrderDetailParameterValue :: Boolean (ref value) => { if self . output_json { if let Some (some) = value . value . as_ref () { let some = Ok (some) ? ; state . serialize_entry ("valueBoolean" , & some) ? ; } if value . id . is_some () || ! value . extension . is_empty () { let primitive_element = super :: super :: serde_helpers :: PrimitiveElement { id : value . id . as_ref () , extension : & value . extension , } ; self . with_context (& primitive_element , | ctx | state . serialize_entry ("_valueBoolean" , ctx)) ? ; } } else { self . with_context (value , | ctx | state . serialize_entry ("valueBoolean" , ctx)) ? ; } } , fhirbolt_model :: r5 :: resources :: ServiceRequestOrderDetailParameterValue :: CodeableConcept (ref value) => { self . with_context (value , | ctx | state . serialize_entry ("valueCodeableConcept" , ctx)) ? ; } , fhirbolt_model :: r5 :: resources :: ServiceRequestOrderDetailParameterValue :: String (ref value) => { if self . output_json { if let Some (some) = value . value . as_ref () { let some = Ok (some) ? ; state . serialize_entry ("valueString" , & some) ? ; } if value . id . is_some () || ! value . extension . is_empty () { let primitive_element = super :: super :: serde_helpers :: PrimitiveElement { id : value . id . as_ref () , extension : & value . extension , } ; self . with_context (& primitive_element , | ctx | state . serialize_entry ("_valueString" , ctx)) ? ; } } else { self . with_context (value , | ctx | state . serialize_entry ("valueString" , ctx)) ? ; } } , fhirbolt_model :: r5 :: resources :: ServiceRequestOrderDetailParameterValue :: Period (ref value) => { self . with_context (value , | ctx | state . serialize_entry ("valuePeriod" , ctx)) ? ; } , fhirbolt_model :: r5 :: resources :: ServiceRequestOrderDetailParameterValue :: Invalid => { return Err (serde :: ser :: Error :: custom ("value is a required field")) } }
@@ -403,6 +413,13 @@ impl serde::ser::Serialize
         S: serde::ser::Serializer,
     {
         use serde::ser::SerializeMap;
+        #[allow(dead_code)]
+        fn missing_field_error<T, E: serde::ser::Error>(field: &str) -> Result<T, E> {
+            Err(E::custom(format!(
+                "missing required field `{}.{}`",
+                "ServiceRequest.orderDetail", field
+            )))
+        }
         let mut state = serializer.serialize_map(None)?;
         if let Some(value) = self.value.r#id.as_ref() {
             state.serialize_entry("id", value)?;
@@ -720,6 +737,13 @@ impl serde::ser::Serialize
         S: serde::ser::Serializer,
     {
         use serde::ser::SerializeMap;
+        #[allow(dead_code)]
+        fn missing_field_error<T, E: serde::ser::Error>(field: &str) -> Result<T, E> {
+            Err(E::custom(format!(
+                "missing required field `{}.{}`",
+                "ServiceRequest.patientInstruction", field
+            )))
+        }
         let mut state = serializer.serialize_map(None)?;
         if let Some(value) = self.value.r#id.as_ref() {
             state.serialize_entry("id", value)?;
@@ -1034,6 +1058,13 @@ impl serde::ser::Serialize
         S: serde::ser::Serializer,
     {
         use serde::ser::SerializeMap;
+        #[allow(dead_code)]
+        fn missing_field_error<T, E: serde::ser::Error>(field: &str) -> Result<T, E> {
+            Err(E::custom(format!(
+                "missing required field `{}.{}`",
+                "ServiceRequest", field
+            )))
+        }
         let mut state = serializer.serialize_map(None)?;
         state.serialize_entry("resourceType", "ServiceRequest")?;
         if let Some(value) = self.value.r#id.as_ref() {
@@ -1211,6 +1242,9 @@ impl serde::ser::Serialize
             self.with_context(some, |ctx| state.serialize_entry("requisition", ctx))?;
         }
         if self.output_json {
+            if self.value.r#status.id.as_deref() == Some("$invalid") {
+                return missing_field_error("status");
+            }
             if let Some(some) = self.value.r#status.value.as_ref() {
                 let some = Ok(some)?;
                 state.serialize_entry("status", &some)?;
@@ -1225,11 +1259,17 @@ impl serde::ser::Serialize
                 })?;
             }
         } else {
+            if self.value.r#status.id.as_deref() == Some("$invalid") {
+                return missing_field_error("status");
+            }
             self.with_context(&self.value.r#status, |ctx| {
                 state.serialize_entry("status", ctx)
             })?;
         }
         if self.output_json {
+            if self.value.r#intent.id.as_deref() == Some("$invalid") {
+                return missing_field_error("intent");
+            }
             if let Some(some) = self.value.r#intent.value.as_ref() {
                 let some = Ok(some)?;
                 state.serialize_entry("intent", &some)?;
@@ -1244,6 +1284,9 @@ impl serde::ser::Serialize
                 })?;
             }
         } else {
+            if self.value.r#intent.id.as_deref() == Some("$invalid") {
+                return missing_field_error("intent");
+            }
             self.with_context(&self.value.r#intent, |ctx| {
                 state.serialize_entry("intent", ctx)
             })?;
@@ -1318,6 +1361,9 @@ impl serde::ser::Serialize
                     return Err(serde::ser::Error::custom("quantity is invalid"))
                 }
             }
+        }
+        if self.value.r#subject.id.as_deref() == Some("$invalid") {
+            return missing_field_error("subject");
         }
         self.with_context(&self.value.r#subject, |ctx| {
             state.serialize_entry("subject", ctx)

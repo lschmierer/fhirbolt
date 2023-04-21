@@ -1,6 +1,6 @@
-// Generated on 2023-04-20 by fhirbolt-codegen v0.4.0
+// Generated on 2023-04-20 by fhirbolt-codegen v0.5.0
 #[doc = "The asserted justification for using the data."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct PermissionJustification {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -13,8 +13,19 @@ pub struct PermissionJustification {
     #[doc = "Justifing rational."]
     pub r#evidence: Vec<Box<super::super::types::Reference>>,
 }
+impl Default for PermissionJustification {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#basis: Default::default(),
+            r#evidence: Default::default(),
+        }
+    }
+}
 #[doc = "Explicit FHIR Resource references."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct PermissionRuleDataResource {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -27,8 +38,27 @@ pub struct PermissionRuleDataResource {
     #[doc = "A reference to a specific resource that defines which resources are covered by this consent."]
     pub r#reference: Box<super::super::types::Reference>,
 }
+impl Default for PermissionRuleDataResource {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#meaning: {
+                let mut default: super::super::types::Code = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#reference: {
+                let mut default: Box<super::super::types::Reference> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+        }
+    }
+}
 #[doc = "A description or definition of which activities are allowed to be done on the data."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct PermissionRuleData {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -45,8 +75,21 @@ pub struct PermissionRuleData {
     #[doc = "Used when other data selection elements are insufficient."]
     pub r#expression: Option<Box<super::super::types::Expression>>,
 }
+impl Default for PermissionRuleData {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#resource: Default::default(),
+            r#security: Default::default(),
+            r#period: Default::default(),
+            r#expression: Default::default(),
+        }
+    }
+}
 #[doc = "A description or definition of which activities are allowed to be done on the data."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct PermissionRuleActivity {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -61,8 +104,20 @@ pub struct PermissionRuleActivity {
     #[doc = "The purpose for which the permission is given."]
     pub r#purpose: Vec<Box<super::super::types::CodeableConcept>>,
 }
+impl Default for PermissionRuleActivity {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#actor: Default::default(),
+            r#action: Default::default(),
+            r#purpose: Default::default(),
+        }
+    }
+}
 #[doc = "A set of rules."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct PermissionRule {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -79,8 +134,21 @@ pub struct PermissionRule {
     #[doc = "What limits apply to the use of the data."]
     pub r#limit: Vec<Box<super::super::types::CodeableConcept>>,
 }
+impl Default for PermissionRule {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#type: Default::default(),
+            r#data: Default::default(),
+            r#activity: Default::default(),
+            r#limit: Default::default(),
+        }
+    }
+}
 #[doc = "Permission resource holds access rules for a given data and context."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct Permission {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,
@@ -112,4 +180,33 @@ pub struct Permission {
     pub r#combining: super::super::types::Code,
     #[doc = "A set of rules."]
     pub r#rule: Vec<PermissionRule>,
+}
+impl Default for Permission {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#meta: Default::default(),
+            r#implicit_rules: Default::default(),
+            r#language: Default::default(),
+            r#text: Default::default(),
+            r#contained: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#status: {
+                let mut default: super::super::types::Code = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#asserter: Default::default(),
+            r#date: Default::default(),
+            r#validity: Default::default(),
+            r#justification: Default::default(),
+            r#combining: {
+                let mut default: super::super::types::Code = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#rule: Default::default(),
+        }
+    }
 }

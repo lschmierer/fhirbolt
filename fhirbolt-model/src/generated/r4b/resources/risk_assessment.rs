@@ -1,42 +1,30 @@
-// Generated on 2023-04-20 by fhirbolt-codegen v0.4.0
+// Generated on 2023-04-20 by fhirbolt-codegen v0.5.0
 #[doc = "The date (and possibly time) the risk assessment was performed."]
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub enum RiskAssessmentOccurrence {
     DateTime(Box<super::super::types::DateTime>),
     Period(Box<super::super::types::Period>),
+    #[default]
     Invalid,
 }
-impl Default for RiskAssessmentOccurrence {
-    fn default() -> RiskAssessmentOccurrence {
-        RiskAssessmentOccurrence::Invalid
-    }
-}
 #[doc = "Indicates how likely the outcome is (in the specified timeframe)."]
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub enum RiskAssessmentPredictionProbability {
     Decimal(Box<super::super::types::Decimal>),
     Range(Box<super::super::types::Range>),
+    #[default]
     Invalid,
 }
-impl Default for RiskAssessmentPredictionProbability {
-    fn default() -> RiskAssessmentPredictionProbability {
-        RiskAssessmentPredictionProbability::Invalid
-    }
-}
 #[doc = "Indicates the period of time or age range of the subject to which the specified probability applies."]
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub enum RiskAssessmentPredictionWhen {
     Period(Box<super::super::types::Period>),
     Range(Box<super::super::types::Range>),
+    #[default]
     Invalid,
 }
-impl Default for RiskAssessmentPredictionWhen {
-    fn default() -> RiskAssessmentPredictionWhen {
-        RiskAssessmentPredictionWhen::Invalid
-    }
-}
 #[doc = "Describes the expected outcome for the subject."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct RiskAssessmentPrediction {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -57,8 +45,23 @@ pub struct RiskAssessmentPrediction {
     #[doc = "Additional information explaining the basis for the prediction."]
     pub r#rationale: Option<super::super::types::String>,
 }
+impl Default for RiskAssessmentPrediction {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#outcome: Default::default(),
+            r#probability: Default::default(),
+            r#qualitative_risk: Default::default(),
+            r#relative_risk: Default::default(),
+            r#when: Default::default(),
+            r#rationale: Default::default(),
+        }
+    }
+}
 #[doc = "An assessment of the likely outcome(s) for a patient or other subject as well as the likelihood of each outcome."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct RiskAssessment {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,
@@ -110,4 +113,43 @@ pub struct RiskAssessment {
     pub r#mitigation: Option<super::super::types::String>,
     #[doc = "Additional comments about the risk assessment."]
     pub r#note: Vec<Box<super::super::types::Annotation>>,
+}
+impl Default for RiskAssessment {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#meta: Default::default(),
+            r#implicit_rules: Default::default(),
+            r#language: Default::default(),
+            r#text: Default::default(),
+            r#contained: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#identifier: Default::default(),
+            r#based_on: Default::default(),
+            r#parent: Default::default(),
+            r#status: {
+                let mut default: super::super::types::Code = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#method: Default::default(),
+            r#code: Default::default(),
+            r#subject: {
+                let mut default: Box<super::super::types::Reference> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#encounter: Default::default(),
+            r#occurrence: Default::default(),
+            r#condition: Default::default(),
+            r#performer: Default::default(),
+            r#reason_code: Default::default(),
+            r#reason_reference: Default::default(),
+            r#basis: Default::default(),
+            r#prediction: Default::default(),
+            r#mitigation: Default::default(),
+            r#note: Default::default(),
+        }
+    }
 }

@@ -1,18 +1,14 @@
-// Generated on 2023-04-20 by fhirbolt-codegen v0.4.0
+// Generated on 2023-04-20 by fhirbolt-codegen v0.5.0
 #[doc = "The target composition/document of this relationship."]
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub enum CompositionRelatesToTarget {
     Identifier(Box<super::super::types::Identifier>),
     Reference(Box<super::super::types::Reference>),
+    #[default]
     Invalid,
 }
-impl Default for CompositionRelatesToTarget {
-    fn default() -> CompositionRelatesToTarget {
-        CompositionRelatesToTarget::Invalid
-    }
-}
 #[doc = "A participant who has attested to the accuracy of the composition/document."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct CompositionAttester {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -27,8 +23,24 @@ pub struct CompositionAttester {
     #[doc = "Who attested the composition in the specified way."]
     pub r#party: Option<Box<super::super::types::Reference>>,
 }
+impl Default for CompositionAttester {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#mode: {
+                let mut default: super::super::types::Code = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#time: Default::default(),
+            r#party: Default::default(),
+        }
+    }
+}
 #[doc = "Relationships that this composition has with other compositions or documents that already exist."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct CompositionRelatesTo {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -41,8 +53,23 @@ pub struct CompositionRelatesTo {
     #[doc = "The target composition/document of this relationship."]
     pub r#target: CompositionRelatesToTarget,
 }
+impl Default for CompositionRelatesTo {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#code: {
+                let mut default: super::super::types::Code = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#target: Default::default(),
+        }
+    }
+}
 #[doc = "The clinical service, such as a colonoscopy or an appendectomy, being documented."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct CompositionEvent {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -57,8 +84,20 @@ pub struct CompositionEvent {
     #[doc = "The description and/or reference of the event(s) being documented. For example, this could be used to document such a colonoscopy or an appendectomy."]
     pub r#detail: Vec<Box<super::super::types::Reference>>,
 }
+impl Default for CompositionEvent {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#code: Default::default(),
+            r#period: Default::default(),
+            r#detail: Default::default(),
+        }
+    }
+}
 #[doc = "The root of the sections that make up the composition."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct CompositionSection {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -87,8 +126,27 @@ pub struct CompositionSection {
     #[doc = "A nested sub-section within this section."]
     pub r#section: Vec<CompositionSection>,
 }
+impl Default for CompositionSection {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#title: Default::default(),
+            r#code: Default::default(),
+            r#author: Default::default(),
+            r#focus: Default::default(),
+            r#text: Default::default(),
+            r#mode: Default::default(),
+            r#ordered_by: Default::default(),
+            r#entry: Default::default(),
+            r#empty_reason: Default::default(),
+            r#section: Default::default(),
+        }
+    }
+}
 #[doc = "A set of healthcare-related information that is assembled together into a single logical package that provides a single coherent statement of meaning, establishes its own context and that has clinical attestation with regard to who is making the statement. A Composition defines the structure and narrative content necessary for a document. However, a Composition alone does not constitute a document. Rather, the Composition must be the first entry in a Bundle where Bundle.type=document, and any other resources referenced from Composition must be included as subsequent entries in the Bundle (for example Patient, Practitioner, Encounter, etc.).\n\nTo support documents, and also to capture the EN13606 notion of an attested commit to the patient EHR, and to allow a set of disparate resources at the information/engineering level to be gathered into a clinical statement."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct Composition {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,
@@ -136,4 +194,49 @@ pub struct Composition {
     pub r#event: Vec<CompositionEvent>,
     #[doc = "The root of the sections that make up the composition."]
     pub r#section: Vec<CompositionSection>,
+}
+impl Default for Composition {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#meta: Default::default(),
+            r#implicit_rules: Default::default(),
+            r#language: Default::default(),
+            r#text: Default::default(),
+            r#contained: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#identifier: Default::default(),
+            r#status: {
+                let mut default: super::super::types::Code = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#type: {
+                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#category: Default::default(),
+            r#subject: Default::default(),
+            r#encounter: Default::default(),
+            r#date: {
+                let mut default: super::super::types::DateTime = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#author: Default::default(),
+            r#title: {
+                let mut default: super::super::types::String = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#confidentiality: Default::default(),
+            r#attester: Default::default(),
+            r#custodian: Default::default(),
+            r#relates_to: Default::default(),
+            r#event: Default::default(),
+            r#section: Default::default(),
+        }
+    }
 }

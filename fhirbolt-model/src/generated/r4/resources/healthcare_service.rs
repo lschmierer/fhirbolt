@@ -1,6 +1,6 @@
-// Generated on 2023-04-20 by fhirbolt-codegen v0.4.0
+// Generated on 2023-04-20 by fhirbolt-codegen v0.5.0
 #[doc = "Does this service have specific eligibility requirements that need to be met in order to use the service?"]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct HealthcareServiceEligibility {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -13,8 +13,19 @@ pub struct HealthcareServiceEligibility {
     #[doc = "Describes the eligibility conditions for the service."]
     pub r#comment: Option<super::super::types::Markdown>,
 }
+impl Default for HealthcareServiceEligibility {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#code: Default::default(),
+            r#comment: Default::default(),
+        }
+    }
+}
 #[doc = "A collection of times that the Service Site is available."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct HealthcareServiceAvailableTime {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -31,8 +42,21 @@ pub struct HealthcareServiceAvailableTime {
     #[doc = "The closing time of day. Note: If the AllDay flag is set, then this time is ignored."]
     pub r#available_end_time: Option<super::super::types::Time>,
 }
+impl Default for HealthcareServiceAvailableTime {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#days_of_week: Default::default(),
+            r#all_day: Default::default(),
+            r#available_start_time: Default::default(),
+            r#available_end_time: Default::default(),
+        }
+    }
+}
 #[doc = "The HealthcareService is not available during this period of time due to the provided reason."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct HealthcareServiceNotAvailable {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -45,8 +69,23 @@ pub struct HealthcareServiceNotAvailable {
     #[doc = "Service is not available (seasonally or for a public holiday) from this date."]
     pub r#during: Option<Box<super::super::types::Period>>,
 }
+impl Default for HealthcareServiceNotAvailable {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#description: {
+                let mut default: super::super::types::String = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#during: Default::default(),
+        }
+    }
+}
 #[doc = "The details of a healthcare service available at a location."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct HealthcareService {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,
@@ -112,4 +151,42 @@ pub struct HealthcareService {
     pub r#availability_exceptions: Option<super::super::types::String>,
     #[doc = "Technical endpoints providing access to services operated for the specific healthcare services defined at this resource."]
     pub r#endpoint: Vec<Box<super::super::types::Reference>>,
+}
+impl Default for HealthcareService {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#meta: Default::default(),
+            r#implicit_rules: Default::default(),
+            r#language: Default::default(),
+            r#text: Default::default(),
+            r#contained: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#identifier: Default::default(),
+            r#active: Default::default(),
+            r#provided_by: Default::default(),
+            r#category: Default::default(),
+            r#type: Default::default(),
+            r#specialty: Default::default(),
+            r#location: Default::default(),
+            r#name: Default::default(),
+            r#comment: Default::default(),
+            r#extra_details: Default::default(),
+            r#photo: Default::default(),
+            r#telecom: Default::default(),
+            r#coverage_area: Default::default(),
+            r#service_provision_code: Default::default(),
+            r#eligibility: Default::default(),
+            r#program: Default::default(),
+            r#characteristic: Default::default(),
+            r#communication: Default::default(),
+            r#referral_method: Default::default(),
+            r#appointment_required: Default::default(),
+            r#available_time: Default::default(),
+            r#not_available: Default::default(),
+            r#availability_exceptions: Default::default(),
+            r#endpoint: Default::default(),
+        }
+    }
 }

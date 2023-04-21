@@ -1,18 +1,14 @@
-// Generated on 2023-04-20 by fhirbolt-codegen v0.4.0
+// Generated on 2023-04-20 by fhirbolt-codegen v0.5.0
 #[doc = "Date vaccine administered or was to be administered."]
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub enum ImmunizationOccurrence {
     DateTime(Box<super::super::types::DateTime>),
     String(Box<super::super::types::String>),
+    #[default]
     Invalid,
 }
-impl Default for ImmunizationOccurrence {
-    fn default() -> ImmunizationOccurrence {
-        ImmunizationOccurrence::Invalid
-    }
-}
 #[doc = "Indicates who performed the immunization event."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct ImmunizationPerformer {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -25,8 +21,23 @@ pub struct ImmunizationPerformer {
     #[doc = "The practitioner or organization who performed the action."]
     pub r#actor: Box<super::super::types::Reference>,
 }
+impl Default for ImmunizationPerformer {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#function: Default::default(),
+            r#actor: {
+                let mut default: Box<super::super::types::Reference> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+        }
+    }
+}
 #[doc = "Indicates a patient's eligibility for a funding program."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct ImmunizationProgramEligibility {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -39,8 +50,27 @@ pub struct ImmunizationProgramEligibility {
     #[doc = "Indicates the patient's eligility status for for a specific payment program."]
     pub r#program_status: Box<super::super::types::CodeableConcept>,
 }
+impl Default for ImmunizationProgramEligibility {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#program: {
+                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#program_status: {
+                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+        }
+    }
+}
 #[doc = "Categorical data indicating that an adverse event is associated in time to an immunization."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct ImmunizationReaction {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -55,8 +85,20 @@ pub struct ImmunizationReaction {
     #[doc = "Self-reported indicator."]
     pub r#reported: Option<super::super::types::Boolean>,
 }
+impl Default for ImmunizationReaction {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#date: Default::default(),
+            r#manifestation: Default::default(),
+            r#reported: Default::default(),
+        }
+    }
+}
 #[doc = "The protocol (set of recommendations) being followed by the provider who administered the dose."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct ImmunizationProtocolApplied {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -75,8 +117,26 @@ pub struct ImmunizationProtocolApplied {
     #[doc = "The recommended number of doses to achieve immunity as intended by the practitioner administering the dose."]
     pub r#series_doses: Option<super::super::types::String>,
 }
+impl Default for ImmunizationProtocolApplied {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#series: Default::default(),
+            r#authority: Default::default(),
+            r#target_disease: Default::default(),
+            r#dose_number: {
+                let mut default: super::super::types::String = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#series_doses: Default::default(),
+        }
+    }
+}
 #[doc = "Describes the event of a patient being administered a vaccine or a record of an immunization as reported by a patient, a clinician or another party."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct Immunization {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,
@@ -150,4 +210,58 @@ pub struct Immunization {
     pub r#reaction: Vec<ImmunizationReaction>,
     #[doc = "The protocol (set of recommendations) being followed by the provider who administered the dose."]
     pub r#protocol_applied: Vec<ImmunizationProtocolApplied>,
+}
+impl Default for Immunization {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#meta: Default::default(),
+            r#implicit_rules: Default::default(),
+            r#language: Default::default(),
+            r#text: Default::default(),
+            r#contained: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#identifier: Default::default(),
+            r#based_on: Default::default(),
+            r#status: {
+                let mut default: super::super::types::Code = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#status_reason: Default::default(),
+            r#vaccine_code: {
+                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#administered_product: Default::default(),
+            r#manufacturer: Default::default(),
+            r#lot_number: Default::default(),
+            r#expiration_date: Default::default(),
+            r#patient: {
+                let mut default: Box<super::super::types::Reference> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#encounter: Default::default(),
+            r#supporting_information: Default::default(),
+            r#occurrence: Default::default(),
+            r#primary_source: Default::default(),
+            r#information_source: Default::default(),
+            r#location: Default::default(),
+            r#site: Default::default(),
+            r#route: Default::default(),
+            r#dose_quantity: Default::default(),
+            r#performer: Default::default(),
+            r#note: Default::default(),
+            r#reason: Default::default(),
+            r#is_subpotent: Default::default(),
+            r#subpotent_reason: Default::default(),
+            r#program_eligibility: Default::default(),
+            r#funding_source: Default::default(),
+            r#reaction: Default::default(),
+            r#protocol_applied: Default::default(),
+        }
+    }
 }

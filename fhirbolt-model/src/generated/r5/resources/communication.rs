@@ -1,19 +1,15 @@
-// Generated on 2023-04-20 by fhirbolt-codegen v0.4.0
+// Generated on 2023-04-20 by fhirbolt-codegen v0.5.0
 #[doc = "A communicated content (or for multi-part communications, one portion of the communication)."]
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub enum CommunicationPayloadContent {
     Attachment(Box<super::super::types::Attachment>),
     Reference(Box<super::super::types::Reference>),
     CodeableConcept(Box<super::super::types::CodeableConcept>),
+    #[default]
     Invalid,
 }
-impl Default for CommunicationPayloadContent {
-    fn default() -> CommunicationPayloadContent {
-        CommunicationPayloadContent::Invalid
-    }
-}
 #[doc = "Text, attachment(s), or resource(s) that was communicated to the recipient."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct CommunicationPayload {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -24,8 +20,18 @@ pub struct CommunicationPayload {
     #[doc = "A communicated content (or for multi-part communications, one portion of the communication)."]
     pub r#content: CommunicationPayloadContent,
 }
+impl Default for CommunicationPayload {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#content: Default::default(),
+        }
+    }
+}
 #[doc = "A clinical or business level record of information being transmitted or shared; e.g. an alert that was sent to a responsible provider, a public health agency communication to a provider/reporter in response to a case report for a reportable condition."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct Communication {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,
@@ -87,4 +93,44 @@ pub struct Communication {
     pub r#payload: Vec<CommunicationPayload>,
     #[doc = "Additional notes or commentary about the communication by the sender, receiver or other interested parties."]
     pub r#note: Vec<Box<super::super::types::Annotation>>,
+}
+impl Default for Communication {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#meta: Default::default(),
+            r#implicit_rules: Default::default(),
+            r#language: Default::default(),
+            r#text: Default::default(),
+            r#contained: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#identifier: Default::default(),
+            r#instantiates_canonical: Default::default(),
+            r#instantiates_uri: Default::default(),
+            r#based_on: Default::default(),
+            r#part_of: Default::default(),
+            r#in_response_to: Default::default(),
+            r#status: {
+                let mut default: super::super::types::Code = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#status_reason: Default::default(),
+            r#category: Default::default(),
+            r#priority: Default::default(),
+            r#medium: Default::default(),
+            r#subject: Default::default(),
+            r#topic: Default::default(),
+            r#about: Default::default(),
+            r#encounter: Default::default(),
+            r#sent: Default::default(),
+            r#received: Default::default(),
+            r#recipient: Default::default(),
+            r#sender: Default::default(),
+            r#reason: Default::default(),
+            r#payload: Default::default(),
+            r#note: Default::default(),
+        }
+    }
 }

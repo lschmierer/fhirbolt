@@ -1,6 +1,6 @@
-// Generated on 2023-04-20 by fhirbolt-codegen v0.4.0
+// Generated on 2023-04-20 by fhirbolt-codegen v0.5.0
 #[doc = "Entries in this list."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct ListEntry {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -17,8 +17,25 @@ pub struct ListEntry {
     #[doc = "A reference to the actual resource from which data was derived."]
     pub r#item: Box<super::super::types::Reference>,
 }
+impl Default for ListEntry {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#flag: Default::default(),
+            r#deleted: Default::default(),
+            r#date: Default::default(),
+            r#item: {
+                let mut default: Box<super::super::types::Reference> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+        }
+    }
+}
 #[doc = "A List is a curated collection of resources, for things such as problem lists, allergy lists, facility list, organization list, etc."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct List {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,
@@ -62,4 +79,39 @@ pub struct List {
     pub r#entry: Vec<ListEntry>,
     #[doc = "If the list is empty, why the list is empty."]
     pub r#empty_reason: Option<Box<super::super::types::CodeableConcept>>,
+}
+impl Default for List {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#meta: Default::default(),
+            r#implicit_rules: Default::default(),
+            r#language: Default::default(),
+            r#text: Default::default(),
+            r#contained: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#identifier: Default::default(),
+            r#status: {
+                let mut default: super::super::types::Code = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#mode: {
+                let mut default: super::super::types::Code = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#title: Default::default(),
+            r#code: Default::default(),
+            r#subject: Default::default(),
+            r#encounter: Default::default(),
+            r#date: Default::default(),
+            r#source: Default::default(),
+            r#ordered_by: Default::default(),
+            r#note: Default::default(),
+            r#entry: Default::default(),
+            r#empty_reason: Default::default(),
+        }
+    }
 }

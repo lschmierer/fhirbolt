@@ -1,6 +1,6 @@
-// Generated on 2023-04-20 by fhirbolt-codegen v0.4.0
+// Generated on 2023-04-20 by fhirbolt-codegen v0.5.0
 #[doc = "A container for slots of time that may be available for booking appointments."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct Schedule {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,
@@ -34,4 +34,26 @@ pub struct Schedule {
     pub r#planning_horizon: Option<Box<super::super::types::Period>>,
     #[doc = "Comments on the availability to describe any extended information. Such as custom constraints on the slots that may be associated."]
     pub r#comment: Option<super::super::types::String>,
+}
+impl Default for Schedule {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#meta: Default::default(),
+            r#implicit_rules: Default::default(),
+            r#language: Default::default(),
+            r#text: Default::default(),
+            r#contained: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#identifier: Default::default(),
+            r#active: Default::default(),
+            r#service_category: Default::default(),
+            r#service_type: Default::default(),
+            r#specialty: Default::default(),
+            r#actor: Default::default(),
+            r#planning_horizon: Default::default(),
+            r#comment: Default::default(),
+        }
+    }
 }

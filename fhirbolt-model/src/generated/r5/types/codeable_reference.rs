@@ -1,6 +1,6 @@
-// Generated on 2023-04-20 by fhirbolt-codegen v0.4.0
+// Generated on 2023-04-20 by fhirbolt-codegen v0.5.0
 #[doc = "CodeableReference Type: A reference to a resource (by instance), or instead, a reference to a concept defined in a terminology or ontology (by class).\n\nThis is a common pattern in record keeping - a reference may be made to a specific condition, observation, plan, or definition, or a reference may be made to a general concept defined in a knowledge base somewhere."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct CodeableReference {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -10,4 +10,14 @@ pub struct CodeableReference {
     pub r#concept: Option<Box<super::super::types::CodeableConcept>>,
     #[doc = "A reference to a resource the provides exact details about the information being referenced."]
     pub r#reference: Option<Box<super::super::types::Reference>>,
+}
+impl Default for CodeableReference {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#concept: Default::default(),
+            r#reference: Default::default(),
+        }
+    }
 }

@@ -1,18 +1,14 @@
-// Generated on 2023-04-20 by fhirbolt-codegen v0.4.0
+// Generated on 2023-04-20 by fhirbolt-codegen v0.5.0
 #[doc = "Indicates the mechanism used to compare versions to determine which is more current."]
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub enum StructureMapVersionAlgorithm {
     String(Box<super::super::types::String>),
     Coding(Box<super::super::types::Coding>),
+    #[default]
     Invalid,
 }
-impl Default for StructureMapVersionAlgorithm {
-    fn default() -> StructureMapVersionAlgorithm {
-        StructureMapVersionAlgorithm::Invalid
-    }
-}
 #[doc = "Parameter value - variable or literal."]
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub enum StructureMapGroupRuleTargetParameterValue {
     Id(Box<super::super::types::Id>),
     String(Box<super::super::types::String>),
@@ -22,15 +18,11 @@ pub enum StructureMapGroupRuleTargetParameterValue {
     Date(Box<super::super::types::Date>),
     Time(Box<super::super::types::Time>),
     DateTime(Box<super::super::types::DateTime>),
+    #[default]
     Invalid,
 }
-impl Default for StructureMapGroupRuleTargetParameterValue {
-    fn default() -> StructureMapGroupRuleTargetParameterValue {
-        StructureMapGroupRuleTargetParameterValue::Invalid
-    }
-}
 #[doc = "A structure definition used by this map. The structure definition may describe instances that are converted, or the instances that are produced."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct StructureMapStructure {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -47,8 +39,29 @@ pub struct StructureMapStructure {
     #[doc = "Documentation that describes how the structure is used in the mapping."]
     pub r#documentation: Option<super::super::types::String>,
 }
+impl Default for StructureMapStructure {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#url: {
+                let mut default: super::super::types::Canonical = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#mode: {
+                let mut default: super::super::types::Code = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#alias: Default::default(),
+            r#documentation: Default::default(),
+        }
+    }
+}
 #[doc = "Definition of a constant value used in the map rules."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct StructureMapConst {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -61,8 +74,19 @@ pub struct StructureMapConst {
     #[doc = "A FHIRPath expression that is the value of this variable."]
     pub r#value: Option<super::super::types::String>,
 }
+impl Default for StructureMapConst {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#name: Default::default(),
+            r#value: Default::default(),
+        }
+    }
+}
 #[doc = "A name assigned to an instance of data. The instance must be provided when the mapping is invoked."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct StructureMapGroupInput {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -79,8 +103,29 @@ pub struct StructureMapGroupInput {
     #[doc = "Documentation for this instance of data."]
     pub r#documentation: Option<super::super::types::String>,
 }
+impl Default for StructureMapGroupInput {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#name: {
+                let mut default: super::super::types::Id = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#type: Default::default(),
+            r#mode: {
+                let mut default: super::super::types::Code = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#documentation: Default::default(),
+        }
+    }
+}
 #[doc = "Source inputs to the mapping."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct StructureMapGroupRuleSource {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -111,8 +156,32 @@ pub struct StructureMapGroupRuleSource {
     #[doc = "A FHIRPath expression which specifies a message to put in the transform log when content matching the source rule is found."]
     pub r#log_message: Option<super::super::types::String>,
 }
+impl Default for StructureMapGroupRuleSource {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#context: {
+                let mut default: super::super::types::Id = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#min: Default::default(),
+            r#max: Default::default(),
+            r#type: Default::default(),
+            r#default_value: Default::default(),
+            r#element: Default::default(),
+            r#list_mode: Default::default(),
+            r#variable: Default::default(),
+            r#condition: Default::default(),
+            r#check: Default::default(),
+            r#log_message: Default::default(),
+        }
+    }
+}
 #[doc = "Parameters to the transform."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct StructureMapGroupRuleTargetParameter {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -123,8 +192,18 @@ pub struct StructureMapGroupRuleTargetParameter {
     #[doc = "Parameter value - variable or literal."]
     pub r#value: StructureMapGroupRuleTargetParameterValue,
 }
+impl Default for StructureMapGroupRuleTargetParameter {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#value: Default::default(),
+        }
+    }
+}
 #[doc = "Content to create because of this mapping rule."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct StructureMapGroupRuleTarget {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -147,8 +226,24 @@ pub struct StructureMapGroupRuleTarget {
     #[doc = "Parameters to the transform."]
     pub r#parameter: Vec<StructureMapGroupRuleTargetParameter>,
 }
+impl Default for StructureMapGroupRuleTarget {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#context: Default::default(),
+            r#element: Default::default(),
+            r#variable: Default::default(),
+            r#list_mode: Default::default(),
+            r#list_rule_id: Default::default(),
+            r#transform: Default::default(),
+            r#parameter: Default::default(),
+        }
+    }
+}
 #[doc = "Which other rules to apply in the context of this rule."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct StructureMapGroupRuleDependent {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -161,8 +256,23 @@ pub struct StructureMapGroupRuleDependent {
     #[doc = "Parameter to pass to the rule or group."]
     pub r#parameter: Vec<StructureMapGroupRuleTargetParameter>,
 }
+impl Default for StructureMapGroupRuleDependent {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#name: {
+                let mut default: super::super::types::Id = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#parameter: Default::default(),
+        }
+    }
+}
 #[doc = "Transform Rule from source to target."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct StructureMapGroupRule {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -183,8 +293,23 @@ pub struct StructureMapGroupRule {
     #[doc = "Documentation for this instance of data."]
     pub r#documentation: Option<super::super::types::String>,
 }
+impl Default for StructureMapGroupRule {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#name: Default::default(),
+            r#source: Default::default(),
+            r#target: Default::default(),
+            r#rule: Default::default(),
+            r#dependent: Default::default(),
+            r#documentation: Default::default(),
+        }
+    }
+}
 #[doc = "Organizes the mapping into managable chunks for human review/ease of maintenance."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct StructureMapGroup {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -205,8 +330,27 @@ pub struct StructureMapGroup {
     #[doc = "Transform Rule from source to target."]
     pub r#rule: Vec<StructureMapGroupRule>,
 }
+impl Default for StructureMapGroup {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#name: {
+                let mut default: super::super::types::Id = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#extends: Default::default(),
+            r#type_mode: Default::default(),
+            r#documentation: Default::default(),
+            r#input: Default::default(),
+            r#rule: Default::default(),
+        }
+    }
+}
 #[doc = "A Map of relationships between 2 structures that can be used to transform data."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct StructureMap {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,
@@ -266,4 +410,51 @@ pub struct StructureMap {
     pub r#const: Vec<StructureMapConst>,
     #[doc = "Organizes the mapping into managable chunks for human review/ease of maintenance."]
     pub r#group: Vec<StructureMapGroup>,
+}
+impl Default for StructureMap {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#meta: Default::default(),
+            r#implicit_rules: Default::default(),
+            r#language: Default::default(),
+            r#text: Default::default(),
+            r#contained: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#url: {
+                let mut default: super::super::types::Uri = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#identifier: Default::default(),
+            r#version: Default::default(),
+            r#version_algorithm: Default::default(),
+            r#name: {
+                let mut default: super::super::types::String = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#title: Default::default(),
+            r#status: {
+                let mut default: super::super::types::Code = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#experimental: Default::default(),
+            r#date: Default::default(),
+            r#publisher: Default::default(),
+            r#contact: Default::default(),
+            r#description: Default::default(),
+            r#use_context: Default::default(),
+            r#jurisdiction: Default::default(),
+            r#purpose: Default::default(),
+            r#copyright: Default::default(),
+            r#copyright_label: Default::default(),
+            r#structure: Default::default(),
+            r#import: Default::default(),
+            r#const: Default::default(),
+            r#group: Default::default(),
+        }
+    }
 }

@@ -1,19 +1,15 @@
-// Generated on 2023-04-20 by fhirbolt-codegen v0.4.0
+// Generated on 2023-04-20 by fhirbolt-codegen v0.5.0
 #[doc = "How often the device was used."]
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub enum DeviceUsageTiming {
     Timing(Box<super::super::types::Timing>),
     Period(Box<super::super::types::Period>),
     DateTime(Box<super::super::types::DateTime>),
+    #[default]
     Invalid,
 }
-impl Default for DeviceUsageTiming {
-    fn default() -> DeviceUsageTiming {
-        DeviceUsageTiming::Invalid
-    }
-}
 #[doc = "This indicates how or if the device is being used."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct DeviceUsageAdherence {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -26,8 +22,23 @@ pub struct DeviceUsageAdherence {
     #[doc = "Reason for adherence type."]
     pub r#reason: Vec<Box<super::super::types::CodeableConcept>>,
 }
+impl Default for DeviceUsageAdherence {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#code: {
+                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#reason: Default::default(),
+        }
+    }
+}
 #[doc = "A record of a device being used by a patient where the record is the result of a report from the patient or a clinician."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct DeviceUsage {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,
@@ -79,4 +90,47 @@ pub struct DeviceUsage {
     pub r#body_site: Option<Box<super::super::types::CodeableReference>>,
     #[doc = "Details about the device statement that were not represented at all or sufficiently in one of the attributes provided in a class. These may include for example a comment, an instruction, or a note associated with the statement."]
     pub r#note: Vec<Box<super::super::types::Annotation>>,
+}
+impl Default for DeviceUsage {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#meta: Default::default(),
+            r#implicit_rules: Default::default(),
+            r#language: Default::default(),
+            r#text: Default::default(),
+            r#contained: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#identifier: Default::default(),
+            r#based_on: Default::default(),
+            r#status: {
+                let mut default: super::super::types::Code = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#category: Default::default(),
+            r#patient: {
+                let mut default: Box<super::super::types::Reference> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#derived_from: Default::default(),
+            r#context: Default::default(),
+            r#timing: Default::default(),
+            r#date_asserted: Default::default(),
+            r#usage_status: Default::default(),
+            r#usage_reason: Default::default(),
+            r#adherence: Default::default(),
+            r#information_source: Default::default(),
+            r#device: {
+                let mut default: Box<super::super::types::CodeableReference> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#reason: Default::default(),
+            r#body_site: Default::default(),
+            r#note: Default::default(),
+        }
+    }
 }

@@ -1,6 +1,6 @@
-// Generated on 2023-04-20 by fhirbolt-codegen v0.4.0
+// Generated on 2023-04-20 by fhirbolt-codegen v0.5.0
 #[doc = "Identifier Type: An identifier - identifies some entity uniquely and unambiguously. Typically this is used for business identifiers.\n\nNeed to be able to identify things with confidence and be sure that the identification is not subject to misinterpretation."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct Identifier {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -18,4 +18,18 @@ pub struct Identifier {
     pub r#period: Option<Box<super::super::types::Period>>,
     #[doc = "Organization that issued/manages the identifier."]
     pub r#assigner: Option<Box<super::super::types::Reference>>,
+}
+impl Default for Identifier {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#use: Default::default(),
+            r#type: Default::default(),
+            r#system: Default::default(),
+            r#value: Default::default(),
+            r#period: Default::default(),
+            r#assigner: Default::default(),
+        }
+    }
 }

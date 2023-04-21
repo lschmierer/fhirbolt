@@ -1,4 +1,4 @@
-// Generated on 2023-04-20 by fhirbolt-codegen v0.4.0
+// Generated on 2023-04-20 by fhirbolt-codegen v0.5.0
 impl crate::Resource for fhirbolt_model::r4::resources::AppointmentResponse {
     const FHIR_RELEASE: fhirbolt_shared::FhirRelease = fhirbolt_shared::FhirReleases::R4;
 }
@@ -12,6 +12,13 @@ impl serde::ser::Serialize
         S: serde::ser::Serializer,
     {
         use serde::ser::SerializeMap;
+        #[allow(dead_code)]
+        fn missing_field_error<T, E: serde::ser::Error>(field: &str) -> Result<T, E> {
+            Err(E::custom(format!(
+                "missing required field `{}.{}`",
+                "AppointmentResponse", field
+            )))
+        }
         let mut state = serializer.serialize_map(None)?;
         state.serialize_entry("resourceType", "AppointmentResponse")?;
         if let Some(value) = self.value.r#id.as_ref() {
@@ -85,6 +92,9 @@ impl serde::ser::Serialize
                 state.serialize_entry("identifier", ctx)
             })?;
         }
+        if self.value.r#appointment.id.as_deref() == Some("$invalid") {
+            return missing_field_error("appointment");
+        }
         self.with_context(&self.value.r#appointment, |ctx| {
             state.serialize_entry("appointment", ctx)
         })?;
@@ -139,6 +149,9 @@ impl serde::ser::Serialize
             self.with_context(some, |ctx| state.serialize_entry("actor", ctx))?;
         }
         if self.output_json {
+            if self.value.r#participant_status.id.as_deref() == Some("$invalid") {
+                return missing_field_error("participantStatus");
+            }
             if let Some(some) = self.value.r#participant_status.value.as_ref() {
                 let some = Ok(some)?;
                 state.serialize_entry("participantStatus", &some)?;
@@ -155,6 +168,9 @@ impl serde::ser::Serialize
                 })?;
             }
         } else {
+            if self.value.r#participant_status.id.as_deref() == Some("$invalid") {
+                return missing_field_error("participantStatus");
+            }
             self.with_context(&self.value.r#participant_status, |ctx| {
                 state.serialize_entry("participantStatus", ctx)
             })?;

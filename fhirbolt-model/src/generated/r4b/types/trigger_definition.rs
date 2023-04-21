@@ -1,20 +1,16 @@
-// Generated on 2023-04-20 by fhirbolt-codegen v0.4.0
+// Generated on 2023-04-20 by fhirbolt-codegen v0.5.0
 #[doc = "The timing of the event (if this is a periodic trigger)."]
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub enum TriggerDefinitionTiming {
     Timing(Box<super::super::types::Timing>),
     Reference(Box<super::super::types::Reference>),
     Date(Box<super::super::types::Date>),
     DateTime(Box<super::super::types::DateTime>),
+    #[default]
     Invalid,
 }
-impl Default for TriggerDefinitionTiming {
-    fn default() -> TriggerDefinitionTiming {
-        TriggerDefinitionTiming::Invalid
-    }
-}
 #[doc = "Base StructureDefinition for TriggerDefinition Type: A description of a triggering event. Triggering events can be named events, data events, or periodic, as determined by the type element."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct TriggerDefinition {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -30,4 +26,21 @@ pub struct TriggerDefinition {
     pub r#data: Vec<Box<super::super::types::DataRequirement>>,
     #[doc = "A boolean-valued expression that is evaluated in the context of the container of the trigger definition and returns whether or not the trigger fires."]
     pub r#condition: Option<Box<super::super::types::Expression>>,
+}
+impl Default for TriggerDefinition {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#type: {
+                let mut default: super::super::types::Code = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#name: Default::default(),
+            r#timing: Default::default(),
+            r#data: Default::default(),
+            r#condition: Default::default(),
+        }
+    }
 }

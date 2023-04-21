@@ -1,44 +1,32 @@
-// Generated on 2023-04-20 by fhirbolt-codegen v0.4.0
+// Generated on 2023-04-20 by fhirbolt-codegen v0.5.0
 #[doc = "The intended subjects of the data requirement. If this element is not provided, a Patient subject is assumed."]
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub enum DataRequirementSubject {
     CodeableConcept(Box<super::super::types::CodeableConcept>),
     Reference(Box<super::super::types::Reference>),
+    #[default]
     Invalid,
 }
-impl Default for DataRequirementSubject {
-    fn default() -> DataRequirementSubject {
-        DataRequirementSubject::Invalid
-    }
-}
 #[doc = "The value of the filter. If period is specified, the filter will return only those data items that fall within the bounds determined by the Period, inclusive of the period boundaries. If dateTime is specified, the filter will return only those data items that are equal to the specified dateTime. If a Duration is specified, the filter will return only those data items that fall within Duration before now."]
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub enum DataRequirementDateFilterValue {
     DateTime(Box<super::super::types::DateTime>),
     Period(Box<super::super::types::Period>),
     Duration(Box<super::super::types::Duration>),
+    #[default]
     Invalid,
 }
-impl Default for DataRequirementDateFilterValue {
-    fn default() -> DataRequirementDateFilterValue {
-        DataRequirementDateFilterValue::Invalid
-    }
-}
 #[doc = "The value of the filter."]
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub enum DataRequirementValueFilterValue {
     DateTime(Box<super::super::types::DateTime>),
     Period(Box<super::super::types::Period>),
     Duration(Box<super::super::types::Duration>),
+    #[default]
     Invalid,
 }
-impl Default for DataRequirementValueFilterValue {
-    fn default() -> DataRequirementValueFilterValue {
-        DataRequirementValueFilterValue::Invalid
-    }
-}
 #[doc = "Code filters specify additional constraints on the data, specifying the value set of interest for a particular element of the data. Each code filter defines an additional constraint on the data, i.e. code filters are AND'ed, not OR'ed."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct DataRequirementCodeFilter {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -53,8 +41,20 @@ pub struct DataRequirementCodeFilter {
     #[doc = "The codes for the code filter. If values are given, the filter will return only those data items for which the code-valued attribute specified by the path has a value that is one of the specified codes. If codes are specified in addition to a value set, the filter returns items matching a code in the value set or one of the specified codes."]
     pub r#code: Vec<Box<super::super::types::Coding>>,
 }
+impl Default for DataRequirementCodeFilter {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#path: Default::default(),
+            r#search_param: Default::default(),
+            r#value_set: Default::default(),
+            r#code: Default::default(),
+        }
+    }
+}
 #[doc = "Date filters specify additional constraints on the data in terms of the applicable date range for specific elements. Each date filter specifies an additional constraint on the data, i.e. date filters are AND'ed, not OR'ed."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct DataRequirementDateFilter {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -67,8 +67,19 @@ pub struct DataRequirementDateFilter {
     #[doc = "The value of the filter. If period is specified, the filter will return only those data items that fall within the bounds determined by the Period, inclusive of the period boundaries. If dateTime is specified, the filter will return only those data items that are equal to the specified dateTime. If a Duration is specified, the filter will return only those data items that fall within Duration before now."]
     pub r#value: Option<DataRequirementDateFilterValue>,
 }
+impl Default for DataRequirementDateFilter {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#path: Default::default(),
+            r#search_param: Default::default(),
+            r#value: Default::default(),
+        }
+    }
+}
 #[doc = "Value filters specify additional constraints on the data for elements other than code-valued or date-valued. Each value filter specifies an additional constraint on the data (i.e. valueFilters are AND'ed, not OR'ed)."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct DataRequirementValueFilter {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -83,8 +94,20 @@ pub struct DataRequirementValueFilter {
     #[doc = "The value of the filter."]
     pub r#value: Option<DataRequirementValueFilterValue>,
 }
+impl Default for DataRequirementValueFilter {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#path: Default::default(),
+            r#search_param: Default::default(),
+            r#comparator: Default::default(),
+            r#value: Default::default(),
+        }
+    }
+}
 #[doc = "Specifies the order of the results to be returned."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct DataRequirementSort {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -95,8 +118,26 @@ pub struct DataRequirementSort {
     #[doc = "The direction of the sort, ascending or descending."]
     pub r#direction: super::super::types::Code,
 }
+impl Default for DataRequirementSort {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#path: {
+                let mut default: super::super::types::String = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#direction: {
+                let mut default: super::super::types::Code = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+        }
+    }
+}
 #[doc = "DataRequirement Type: Describes a required data item for evaluation in terms of the type of data, and optional code or date-based filters of the data."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct DataRequirement {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -120,4 +161,25 @@ pub struct DataRequirement {
     pub r#limit: Option<super::super::types::PositiveInt>,
     #[doc = "Specifies the order of the results to be returned."]
     pub r#sort: Vec<DataRequirementSort>,
+}
+impl Default for DataRequirement {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#type: {
+                let mut default: super::super::types::Code = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#profile: Default::default(),
+            r#subject: Default::default(),
+            r#must_support: Default::default(),
+            r#code_filter: Default::default(),
+            r#date_filter: Default::default(),
+            r#value_filter: Default::default(),
+            r#limit: Default::default(),
+            r#sort: Default::default(),
+        }
+    }
 }

@@ -1,4 +1,4 @@
-// Generated on 2023-04-20 by fhirbolt-codegen v0.4.0
+// Generated on 2023-04-20 by fhirbolt-codegen v0.5.0
 impl serde::ser::Serialize
     for crate::context::ser::SerializationContext<
         &fhirbolt_model::r5::resources::DeviceMetricCalibration,
@@ -9,6 +9,13 @@ impl serde::ser::Serialize
         S: serde::ser::Serializer,
     {
         use serde::ser::SerializeMap;
+        #[allow(dead_code)]
+        fn missing_field_error<T, E: serde::ser::Error>(field: &str) -> Result<T, E> {
+            Err(E::custom(format!(
+                "missing required field `{}.{}`",
+                "DeviceMetric.calibration", field
+            )))
+        }
         let mut state = serializer.serialize_map(None)?;
         if let Some(value) = self.value.r#id.as_ref() {
             state.serialize_entry("id", value)?;
@@ -461,6 +468,13 @@ impl serde::ser::Serialize
         S: serde::ser::Serializer,
     {
         use serde::ser::SerializeMap;
+        #[allow(dead_code)]
+        fn missing_field_error<T, E: serde::ser::Error>(field: &str) -> Result<T, E> {
+            Err(E::custom(format!(
+                "missing required field `{}.{}`",
+                "DeviceMetric", field
+            )))
+        }
         let mut state = serializer.serialize_map(None)?;
         state.serialize_entry("resourceType", "DeviceMetric")?;
         if let Some(value) = self.value.r#id.as_ref() {
@@ -534,9 +548,15 @@ impl serde::ser::Serialize
                 state.serialize_entry("identifier", ctx)
             })?;
         }
+        if self.value.r#type.id.as_deref() == Some("$invalid") {
+            return missing_field_error("type");
+        }
         self.with_context(&self.value.r#type, |ctx| state.serialize_entry("type", ctx))?;
         if let Some(some) = self.value.r#unit.as_ref() {
             self.with_context(some, |ctx| state.serialize_entry("unit", ctx))?;
+        }
+        if self.value.r#device.id.as_deref() == Some("$invalid") {
+            return missing_field_error("device");
         }
         self.with_context(&self.value.r#device, |ctx| {
             state.serialize_entry("device", ctx)
@@ -584,6 +604,9 @@ impl serde::ser::Serialize
             }
         }
         if self.output_json {
+            if self.value.r#category.id.as_deref() == Some("$invalid") {
+                return missing_field_error("category");
+            }
             if let Some(some) = self.value.r#category.value.as_ref() {
                 let some = Ok(some)?;
                 state.serialize_entry("category", &some)?;
@@ -598,6 +621,9 @@ impl serde::ser::Serialize
                 })?;
             }
         } else {
+            if self.value.r#category.id.as_deref() == Some("$invalid") {
+                return missing_field_error("category");
+            }
             self.with_context(&self.value.r#category, |ctx| {
                 state.serialize_entry("category", ctx)
             })?;

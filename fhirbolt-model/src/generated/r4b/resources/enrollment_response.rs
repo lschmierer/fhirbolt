@@ -1,6 +1,6 @@
-// Generated on 2023-04-20 by fhirbolt-codegen v0.4.0
+// Generated on 2023-04-20 by fhirbolt-codegen v0.5.0
 #[doc = "This resource provides enrollment and plan details from the processing of an EnrollmentRequest resource."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct EnrollmentResponse {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,
@@ -34,4 +34,26 @@ pub struct EnrollmentResponse {
     pub r#organization: Option<Box<super::super::types::Reference>>,
     #[doc = "The practitioner who is responsible for the services rendered to the patient."]
     pub r#request_provider: Option<Box<super::super::types::Reference>>,
+}
+impl Default for EnrollmentResponse {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#meta: Default::default(),
+            r#implicit_rules: Default::default(),
+            r#language: Default::default(),
+            r#text: Default::default(),
+            r#contained: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#identifier: Default::default(),
+            r#status: Default::default(),
+            r#request: Default::default(),
+            r#outcome: Default::default(),
+            r#disposition: Default::default(),
+            r#created: Default::default(),
+            r#organization: Default::default(),
+            r#request_provider: Default::default(),
+        }
+    }
 }

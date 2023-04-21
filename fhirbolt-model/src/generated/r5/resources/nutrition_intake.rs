@@ -1,30 +1,22 @@
-// Generated on 2023-04-20 by fhirbolt-codegen v0.4.0
+// Generated on 2023-04-20 by fhirbolt-codegen v0.5.0
 #[doc = "The interval of time during which it is being asserted that the patient is/was consuming the food or fluid."]
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub enum NutritionIntakeOccurrence {
     DateTime(Box<super::super::types::DateTime>),
     Period(Box<super::super::types::Period>),
+    #[default]
     Invalid,
 }
-impl Default for NutritionIntakeOccurrence {
-    fn default() -> NutritionIntakeOccurrence {
-        NutritionIntakeOccurrence::Invalid
-    }
-}
 #[doc = "The person or organization that provided the information about the consumption of this food or fluid. Note: Use derivedFrom when a NutritionIntake is derived from other resources."]
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub enum NutritionIntakeReported {
     Boolean(Box<super::super::types::Boolean>),
     Reference(Box<super::super::types::Reference>),
+    #[default]
     Invalid,
 }
-impl Default for NutritionIntakeReported {
-    fn default() -> NutritionIntakeReported {
-        NutritionIntakeReported::Invalid
-    }
-}
 #[doc = "What food or fluid product or item was consumed."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct NutritionIntakeConsumedItem {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -47,8 +39,32 @@ pub struct NutritionIntakeConsumedItem {
     #[doc = "Document the reason the food or fluid was not consumed, such as refused, held, etc."]
     pub r#not_consumed_reason: Option<Box<super::super::types::CodeableConcept>>,
 }
+impl Default for NutritionIntakeConsumedItem {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#type: {
+                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#nutrition_product: {
+                let mut default: Box<super::super::types::CodeableReference> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#schedule: Default::default(),
+            r#amount: Default::default(),
+            r#rate: Default::default(),
+            r#not_consumed: Default::default(),
+            r#not_consumed_reason: Default::default(),
+        }
+    }
+}
 #[doc = "Total nutrient amounts for the whole meal, product, serving, etc."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct NutritionIntakeIngredientLabel {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -61,8 +77,27 @@ pub struct NutritionIntakeIngredientLabel {
     #[doc = "Total amount of nutrient consumed."]
     pub r#amount: Box<super::super::types::Quantity>,
 }
+impl Default for NutritionIntakeIngredientLabel {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#nutrient: {
+                let mut default: Box<super::super::types::CodeableReference> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#amount: {
+                let mut default: Box<super::super::types::Quantity> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+        }
+    }
+}
 #[doc = "Who performed the intake and how they were involved."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct NutritionIntakePerformer {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -75,8 +110,23 @@ pub struct NutritionIntakePerformer {
     #[doc = "Who performed the intake."]
     pub r#actor: Box<super::super::types::Reference>,
 }
+impl Default for NutritionIntakePerformer {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#function: Default::default(),
+            r#actor: {
+                let mut default: Box<super::super::types::Reference> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+        }
+    }
+}
 #[doc = "A record of food or fluid that is being consumed by a patient.  A NutritionIntake may indicate that the patient may be consuming the food or fluid now or has consumed the food or fluid in the past.  The source of this information can be the patient, significant other (such as a family member or spouse), or a clinician.  A common scenario where this information is captured is during the history taking process during a patient visit or stay or through an app that tracks food or fluids consumed.   The consumption information may come from sources such as the patient's memory, from a nutrition label,  or from a clinician documenting observed intake."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct NutritionIntake {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,
@@ -134,4 +184,46 @@ pub struct NutritionIntake {
     pub r#reason: Vec<Box<super::super::types::CodeableReference>>,
     #[doc = "Provides extra information about the Nutrition Intake that is not conveyed by the other attributes."]
     pub r#note: Vec<Box<super::super::types::Annotation>>,
+}
+impl Default for NutritionIntake {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#meta: Default::default(),
+            r#implicit_rules: Default::default(),
+            r#language: Default::default(),
+            r#text: Default::default(),
+            r#contained: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#identifier: Default::default(),
+            r#instantiates_canonical: Default::default(),
+            r#instantiates_uri: Default::default(),
+            r#based_on: Default::default(),
+            r#part_of: Default::default(),
+            r#status: {
+                let mut default: super::super::types::Code = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#status_reason: Default::default(),
+            r#code: Default::default(),
+            r#subject: {
+                let mut default: Box<super::super::types::Reference> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#encounter: Default::default(),
+            r#occurrence: Default::default(),
+            r#recorded: Default::default(),
+            r#reported: Default::default(),
+            r#consumed_item: Default::default(),
+            r#ingredient_label: Default::default(),
+            r#performer: Default::default(),
+            r#location: Default::default(),
+            r#derived_from: Default::default(),
+            r#reason: Default::default(),
+            r#note: Default::default(),
+        }
+    }
 }

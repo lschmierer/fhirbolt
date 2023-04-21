@@ -1,6 +1,6 @@
-// Generated on 2023-04-20 by fhirbolt-codegen v0.4.0
+// Generated on 2023-04-20 by fhirbolt-codegen v0.5.0
 #[doc = "Describes the calibrations that have been performed or that are required to be performed."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct DeviceMetricCalibration {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -15,8 +15,20 @@ pub struct DeviceMetricCalibration {
     #[doc = "Describes the time last calibration has been performed."]
     pub r#time: Option<super::super::types::Instant>,
 }
+impl Default for DeviceMetricCalibration {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#type: Default::default(),
+            r#state: Default::default(),
+            r#time: Default::default(),
+        }
+    }
+}
 #[doc = "Describes a measurement, calculation or setting capability of a medical device."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct DeviceMetric {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,
@@ -54,4 +66,36 @@ pub struct DeviceMetric {
     pub r#measurement_period: Option<Box<super::super::types::Timing>>,
     #[doc = "Describes the calibrations that have been performed or that are required to be performed."]
     pub r#calibration: Vec<DeviceMetricCalibration>,
+}
+impl Default for DeviceMetric {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#meta: Default::default(),
+            r#implicit_rules: Default::default(),
+            r#language: Default::default(),
+            r#text: Default::default(),
+            r#contained: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#identifier: Default::default(),
+            r#type: {
+                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#unit: Default::default(),
+            r#source: Default::default(),
+            r#parent: Default::default(),
+            r#operational_status: Default::default(),
+            r#color: Default::default(),
+            r#category: {
+                let mut default: super::super::types::Code = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#measurement_period: Default::default(),
+            r#calibration: Default::default(),
+        }
+    }
 }

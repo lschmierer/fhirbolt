@@ -1,6 +1,6 @@
-// Generated on 2023-04-20 by fhirbolt-codegen v0.4.0
+// Generated on 2023-04-20 by fhirbolt-codegen v0.5.0
 #[doc = "Strength expressed in terms of a reference substance."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct MedicinalProductIngredientSpecifiedSubstanceStrengthReferenceStrength {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -19,8 +19,26 @@ pub struct MedicinalProductIngredientSpecifiedSubstanceStrengthReferenceStrength
     #[doc = "The country or countries for which the strength range applies."]
     pub r#country: Vec<Box<super::super::types::CodeableConcept>>,
 }
+impl Default for MedicinalProductIngredientSpecifiedSubstanceStrengthReferenceStrength {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#substance: Default::default(),
+            r#strength: {
+                let mut default: Box<super::super::types::Ratio> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#strength_low_limit: Default::default(),
+            r#measurement_point: Default::default(),
+            r#country: Default::default(),
+        }
+    }
+}
 #[doc = "Quantity of the substance or specified substance present in the manufactured item or pharmaceutical product."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct MedicinalProductIngredientSpecifiedSubstanceStrength {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -44,8 +62,28 @@ pub struct MedicinalProductIngredientSpecifiedSubstanceStrength {
     pub r#reference_strength:
         Vec<MedicinalProductIngredientSpecifiedSubstanceStrengthReferenceStrength>,
 }
+impl Default for MedicinalProductIngredientSpecifiedSubstanceStrength {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#presentation: {
+                let mut default: Box<super::super::types::Ratio> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#presentation_low_limit: Default::default(),
+            r#concentration: Default::default(),
+            r#concentration_low_limit: Default::default(),
+            r#measurement_point: Default::default(),
+            r#country: Default::default(),
+            r#reference_strength: Default::default(),
+        }
+    }
+}
 #[doc = "A specified substance that comprises this ingredient."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct MedicinalProductIngredientSpecifiedSubstance {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -62,8 +100,29 @@ pub struct MedicinalProductIngredientSpecifiedSubstance {
     #[doc = "Quantity of the substance or specified substance present in the manufactured item or pharmaceutical product."]
     pub r#strength: Vec<MedicinalProductIngredientSpecifiedSubstanceStrength>,
 }
+impl Default for MedicinalProductIngredientSpecifiedSubstance {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#code: {
+                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#group: {
+                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#confidentiality: Default::default(),
+            r#strength: Default::default(),
+        }
+    }
+}
 #[doc = "The ingredient substance."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct MedicinalProductIngredientSubstance {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -76,8 +135,23 @@ pub struct MedicinalProductIngredientSubstance {
     #[doc = "Quantity of the substance or specified substance present in the manufactured item or pharmaceutical product."]
     pub r#strength: Vec<MedicinalProductIngredientSpecifiedSubstanceStrength>,
 }
+impl Default for MedicinalProductIngredientSubstance {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#code: {
+                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#strength: Default::default(),
+        }
+    }
+}
 #[doc = "An ingredient of a manufactured item or pharmaceutical product."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct MedicinalProductIngredient {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,
@@ -107,4 +181,28 @@ pub struct MedicinalProductIngredient {
     pub r#specified_substance: Vec<MedicinalProductIngredientSpecifiedSubstance>,
     #[doc = "The ingredient substance."]
     pub r#substance: Option<MedicinalProductIngredientSubstance>,
+}
+impl Default for MedicinalProductIngredient {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#meta: Default::default(),
+            r#implicit_rules: Default::default(),
+            r#language: Default::default(),
+            r#text: Default::default(),
+            r#contained: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#identifier: Default::default(),
+            r#role: {
+                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#allergenic_indicator: Default::default(),
+            r#manufacturer: Default::default(),
+            r#specified_substance: Default::default(),
+            r#substance: Default::default(),
+        }
+    }
 }

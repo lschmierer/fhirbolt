@@ -1,6 +1,6 @@
-// Generated on 2023-04-20 by fhirbolt-codegen v0.4.0
+// Generated on 2023-04-20 by fhirbolt-codegen v0.5.0
 #[doc = "A description of the size of the sample involved in the synthesis."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct EffectEvidenceSynthesisSampleSize {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -15,8 +15,20 @@ pub struct EffectEvidenceSynthesisSampleSize {
     #[doc = "Number of participants included in this evidence synthesis."]
     pub r#number_of_participants: Option<super::super::types::Integer>,
 }
+impl Default for EffectEvidenceSynthesisSampleSize {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#description: Default::default(),
+            r#number_of_studies: Default::default(),
+            r#number_of_participants: Default::default(),
+        }
+    }
+}
 #[doc = "A description of the results for each exposure considered in the effect estimate."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct EffectEvidenceSynthesisResultsByExposure {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -33,8 +45,25 @@ pub struct EffectEvidenceSynthesisResultsByExposure {
     #[doc = "Reference to a RiskEvidenceSynthesis resource."]
     pub r#risk_evidence_synthesis: Box<super::super::types::Reference>,
 }
+impl Default for EffectEvidenceSynthesisResultsByExposure {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#description: Default::default(),
+            r#exposure_state: Default::default(),
+            r#variant_state: Default::default(),
+            r#risk_evidence_synthesis: {
+                let mut default: Box<super::super::types::Reference> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+        }
+    }
+}
 #[doc = "A description of the precision of the estimate for the effect."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct EffectEvidenceSynthesisEffectEstimatePrecisionEstimate {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -51,8 +80,21 @@ pub struct EffectEvidenceSynthesisEffectEstimatePrecisionEstimate {
     #[doc = "Upper bound of confidence interval."]
     pub r#to: Option<super::super::types::Decimal>,
 }
+impl Default for EffectEvidenceSynthesisEffectEstimatePrecisionEstimate {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#type: Default::default(),
+            r#level: Default::default(),
+            r#from: Default::default(),
+            r#to: Default::default(),
+        }
+    }
+}
 #[doc = "The estimated effect of the exposure variant."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct EffectEvidenceSynthesisEffectEstimate {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -73,8 +115,23 @@ pub struct EffectEvidenceSynthesisEffectEstimate {
     #[doc = "A description of the precision of the estimate for the effect."]
     pub r#precision_estimate: Vec<EffectEvidenceSynthesisEffectEstimatePrecisionEstimate>,
 }
+impl Default for EffectEvidenceSynthesisEffectEstimate {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#description: Default::default(),
+            r#type: Default::default(),
+            r#variant_state: Default::default(),
+            r#value: Default::default(),
+            r#unit_of_measure: Default::default(),
+            r#precision_estimate: Default::default(),
+        }
+    }
+}
 #[doc = "A description of a component of the overall certainty."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct EffectEvidenceSynthesisCertaintyCertaintySubcomponent {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -89,8 +146,20 @@ pub struct EffectEvidenceSynthesisCertaintyCertaintySubcomponent {
     #[doc = "A human-readable string to clarify or explain concepts about the resource."]
     pub r#note: Vec<Box<super::super::types::Annotation>>,
 }
+impl Default for EffectEvidenceSynthesisCertaintyCertaintySubcomponent {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#type: Default::default(),
+            r#rating: Default::default(),
+            r#note: Default::default(),
+        }
+    }
+}
 #[doc = "A description of the certainty of the effect estimate."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct EffectEvidenceSynthesisCertainty {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -105,8 +174,20 @@ pub struct EffectEvidenceSynthesisCertainty {
     #[doc = "A description of a component of the overall certainty."]
     pub r#certainty_subcomponent: Vec<EffectEvidenceSynthesisCertaintyCertaintySubcomponent>,
 }
+impl Default for EffectEvidenceSynthesisCertainty {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#rating: Default::default(),
+            r#note: Default::default(),
+            r#certainty_subcomponent: Default::default(),
+        }
+    }
+}
 #[doc = "The EffectEvidenceSynthesis resource describes the difference in an outcome between exposures states in a population where the effect estimate is derived from a combination of research studies."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct EffectEvidenceSynthesis {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,
@@ -190,4 +271,71 @@ pub struct EffectEvidenceSynthesis {
     pub r#effect_estimate: Vec<EffectEvidenceSynthesisEffectEstimate>,
     #[doc = "A description of the certainty of the effect estimate."]
     pub r#certainty: Vec<EffectEvidenceSynthesisCertainty>,
+}
+impl Default for EffectEvidenceSynthesis {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#meta: Default::default(),
+            r#implicit_rules: Default::default(),
+            r#language: Default::default(),
+            r#text: Default::default(),
+            r#contained: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#url: Default::default(),
+            r#identifier: Default::default(),
+            r#version: Default::default(),
+            r#name: Default::default(),
+            r#title: Default::default(),
+            r#status: {
+                let mut default: super::super::types::Code = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#date: Default::default(),
+            r#publisher: Default::default(),
+            r#contact: Default::default(),
+            r#description: Default::default(),
+            r#note: Default::default(),
+            r#use_context: Default::default(),
+            r#jurisdiction: Default::default(),
+            r#copyright: Default::default(),
+            r#approval_date: Default::default(),
+            r#last_review_date: Default::default(),
+            r#effective_period: Default::default(),
+            r#topic: Default::default(),
+            r#author: Default::default(),
+            r#editor: Default::default(),
+            r#reviewer: Default::default(),
+            r#endorser: Default::default(),
+            r#related_artifact: Default::default(),
+            r#synthesis_type: Default::default(),
+            r#study_type: Default::default(),
+            r#population: {
+                let mut default: Box<super::super::types::Reference> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#exposure: {
+                let mut default: Box<super::super::types::Reference> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#exposure_alternative: {
+                let mut default: Box<super::super::types::Reference> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#outcome: {
+                let mut default: Box<super::super::types::Reference> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#sample_size: Default::default(),
+            r#results_by_exposure: Default::default(),
+            r#effect_estimate: Default::default(),
+            r#certainty: Default::default(),
+        }
+    }
 }

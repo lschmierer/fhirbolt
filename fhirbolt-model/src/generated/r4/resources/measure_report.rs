@@ -1,6 +1,6 @@
-// Generated on 2023-04-20 by fhirbolt-codegen v0.4.0
+// Generated on 2023-04-20 by fhirbolt-codegen v0.5.0
 #[doc = "The populations that make up the population group, one for each type of population appropriate for the measure."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct MeasureReportGroupPopulation {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -15,8 +15,20 @@ pub struct MeasureReportGroupPopulation {
     #[doc = "This element refers to a List of subject level MeasureReport resources, one for each subject in this population."]
     pub r#subject_results: Option<Box<super::super::types::Reference>>,
 }
+impl Default for MeasureReportGroupPopulation {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#code: Default::default(),
+            r#count: Default::default(),
+            r#subject_results: Default::default(),
+        }
+    }
+}
 #[doc = "A stratifier component value."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct MeasureReportGroupStratifierStratumComponent {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -29,8 +41,27 @@ pub struct MeasureReportGroupStratifierStratumComponent {
     #[doc = "The stratum component value."]
     pub r#value: Box<super::super::types::CodeableConcept>,
 }
+impl Default for MeasureReportGroupStratifierStratumComponent {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#code: {
+                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#value: {
+                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+        }
+    }
+}
 #[doc = "The populations that make up the stratum, one for each type of population appropriate to the measure."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct MeasureReportGroupStratifierStratumPopulation {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -45,8 +76,20 @@ pub struct MeasureReportGroupStratifierStratumPopulation {
     #[doc = "This element refers to a List of subject level MeasureReport resources, one for each subject in this population in this stratum."]
     pub r#subject_results: Option<Box<super::super::types::Reference>>,
 }
+impl Default for MeasureReportGroupStratifierStratumPopulation {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#code: Default::default(),
+            r#count: Default::default(),
+            r#subject_results: Default::default(),
+        }
+    }
+}
 #[doc = "This element contains the results for a single stratum within the stratifier. For example, when stratifying on administrative gender, there will be four strata, one for each possible gender value."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct MeasureReportGroupStratifierStratum {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -63,8 +106,21 @@ pub struct MeasureReportGroupStratifierStratum {
     #[doc = "The measure score for this stratum, calculated as appropriate for the measure type and scoring method, and based on only the members of this stratum."]
     pub r#measure_score: Option<Box<super::super::types::Quantity>>,
 }
+impl Default for MeasureReportGroupStratifierStratum {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#value: Default::default(),
+            r#component: Default::default(),
+            r#population: Default::default(),
+            r#measure_score: Default::default(),
+        }
+    }
+}
 #[doc = "When a measure includes multiple stratifiers, there will be a stratifier group for each stratifier defined by the measure."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct MeasureReportGroupStratifier {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -77,8 +133,19 @@ pub struct MeasureReportGroupStratifier {
     #[doc = "This element contains the results for a single stratum within the stratifier. For example, when stratifying on administrative gender, there will be four strata, one for each possible gender value."]
     pub r#stratum: Vec<MeasureReportGroupStratifierStratum>,
 }
+impl Default for MeasureReportGroupStratifier {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#code: Default::default(),
+            r#stratum: Default::default(),
+        }
+    }
+}
 #[doc = "The results of the calculation, one for each population group in the measure."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct MeasureReportGroup {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -95,8 +162,21 @@ pub struct MeasureReportGroup {
     #[doc = "When a measure includes multiple stratifiers, there will be a stratifier group for each stratifier defined by the measure."]
     pub r#stratifier: Vec<MeasureReportGroupStratifier>,
 }
+impl Default for MeasureReportGroup {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#code: Default::default(),
+            r#population: Default::default(),
+            r#measure_score: Default::default(),
+            r#stratifier: Default::default(),
+        }
+    }
+}
 #[doc = "The MeasureReport resource contains the results of the calculation of a measure; and optionally a reference to the resources involved in that calculation."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct MeasureReport {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,
@@ -136,4 +216,45 @@ pub struct MeasureReport {
     pub r#group: Vec<MeasureReportGroup>,
     #[doc = "A reference to a Bundle containing the Resources that were used in the calculation of this measure."]
     pub r#evaluated_resource: Vec<Box<super::super::types::Reference>>,
+}
+impl Default for MeasureReport {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#meta: Default::default(),
+            r#implicit_rules: Default::default(),
+            r#language: Default::default(),
+            r#text: Default::default(),
+            r#contained: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#identifier: Default::default(),
+            r#status: {
+                let mut default: super::super::types::Code = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#type: {
+                let mut default: super::super::types::Code = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#measure: {
+                let mut default: super::super::types::Canonical = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#subject: Default::default(),
+            r#date: Default::default(),
+            r#reporter: Default::default(),
+            r#period: {
+                let mut default: Box<super::super::types::Period> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#improvement_notation: Default::default(),
+            r#group: Default::default(),
+            r#evaluated_resource: Default::default(),
+        }
+    }
 }

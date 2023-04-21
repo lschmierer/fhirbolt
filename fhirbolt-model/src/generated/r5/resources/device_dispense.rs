@@ -1,6 +1,6 @@
-// Generated on 2023-04-20 by fhirbolt-codegen v0.4.0
+// Generated on 2023-04-20 by fhirbolt-codegen v0.5.0
 #[doc = "Indicates who or what performed the event."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct DeviceDispensePerformer {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -13,8 +13,23 @@ pub struct DeviceDispensePerformer {
     #[doc = "The device, practitioner, etc. who performed the action.  It should be assumed that the actor is the dispenser of the device."]
     pub r#actor: Box<super::super::types::Reference>,
 }
+impl Default for DeviceDispensePerformer {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#function: Default::default(),
+            r#actor: {
+                let mut default: Box<super::super::types::Reference> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+        }
+    }
+}
 #[doc = "Indicates that a device is to be or has been dispensed for a named person/patient.  This includes a description of the product (supply) provided and the instructions for using the device."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct DeviceDispense {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,
@@ -74,4 +89,51 @@ pub struct DeviceDispense {
     pub r#usage_instruction: Option<super::super::types::Markdown>,
     #[doc = "A summary of the events of interest that have occurred, such as when the dispense was verified."]
     pub r#event_history: Vec<Box<super::super::types::Reference>>,
+}
+impl Default for DeviceDispense {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#meta: Default::default(),
+            r#implicit_rules: Default::default(),
+            r#language: Default::default(),
+            r#text: Default::default(),
+            r#contained: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#identifier: Default::default(),
+            r#based_on: Default::default(),
+            r#part_of: Default::default(),
+            r#status: {
+                let mut default: super::super::types::Code = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#status_reason: Default::default(),
+            r#category: Default::default(),
+            r#device: {
+                let mut default: Box<super::super::types::CodeableReference> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#subject: {
+                let mut default: Box<super::super::types::Reference> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#receiver: Default::default(),
+            r#encounter: Default::default(),
+            r#supporting_information: Default::default(),
+            r#performer: Default::default(),
+            r#location: Default::default(),
+            r#type: Default::default(),
+            r#quantity: Default::default(),
+            r#prepared_date: Default::default(),
+            r#when_handed_over: Default::default(),
+            r#destination: Default::default(),
+            r#note: Default::default(),
+            r#usage_instruction: Default::default(),
+            r#event_history: Default::default(),
+        }
+    }
 }

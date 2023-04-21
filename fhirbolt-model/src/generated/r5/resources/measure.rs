@@ -1,42 +1,30 @@
-// Generated on 2023-04-20 by fhirbolt-codegen v0.4.0
+// Generated on 2023-04-20 by fhirbolt-codegen v0.5.0
 #[doc = "Indicates the mechanism used to compare versions to determine which is more current."]
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub enum MeasureVersionAlgorithm {
     String(Box<super::super::types::String>),
     Coding(Box<super::super::types::Coding>),
+    #[default]
     Invalid,
 }
-impl Default for MeasureVersionAlgorithm {
-    fn default() -> MeasureVersionAlgorithm {
-        MeasureVersionAlgorithm::Invalid
-    }
-}
 #[doc = "The intended subjects for the measure. If this element is not provided, a Patient subject is assumed, but the subject of the measure can be anything."]
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub enum MeasureSubject {
     CodeableConcept(Box<super::super::types::CodeableConcept>),
     Reference(Box<super::super::types::Reference>),
+    #[default]
     Invalid,
 }
-impl Default for MeasureSubject {
-    fn default() -> MeasureSubject {
-        MeasureSubject::Invalid
-    }
-}
 #[doc = "The intended subjects for the measure. If this element is not provided, a Patient subject is assumed, but the subject of the measure can be anything."]
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub enum MeasureGroupSubject {
     CodeableConcept(Box<super::super::types::CodeableConcept>),
     Reference(Box<super::super::types::Reference>),
+    #[default]
     Invalid,
 }
-impl Default for MeasureGroupSubject {
-    fn default() -> MeasureGroupSubject {
-        MeasureGroupSubject::Invalid
-    }
-}
 #[doc = "Provides a description of an individual term used within the measure."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct MeasureTerm {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -49,8 +37,19 @@ pub struct MeasureTerm {
     #[doc = "Provides a definition for the term as used within the measure."]
     pub r#definition: Option<super::super::types::Markdown>,
 }
+impl Default for MeasureTerm {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#code: Default::default(),
+            r#definition: Default::default(),
+        }
+    }
+}
 #[doc = "A population criteria for the measure."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct MeasureGroupPopulation {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -73,8 +72,24 @@ pub struct MeasureGroupPopulation {
     #[doc = "Specifies which method should be used to aggregate measure observation values. For most scoring types, this is implied by scoring (e.g. a proportion measure counts members of the populations). For continuous variables, however, this information must be specified to ensure correct calculation."]
     pub r#aggregate_method: Option<Box<super::super::types::CodeableConcept>>,
 }
+impl Default for MeasureGroupPopulation {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#link_id: Default::default(),
+            r#code: Default::default(),
+            r#description: Default::default(),
+            r#criteria: Default::default(),
+            r#group_definition: Default::default(),
+            r#input_population_id: Default::default(),
+            r#aggregate_method: Default::default(),
+        }
+    }
+}
 #[doc = "A component of the stratifier criteria for the measure report, specified as either the name of a valid CQL expression defined within a referenced library or a valid FHIR Resource Path."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct MeasureGroupStratifierComponent {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -93,8 +108,22 @@ pub struct MeasureGroupStratifierComponent {
     #[doc = "A Group resource that defines this population as a set of characteristics."]
     pub r#group_definition: Option<Box<super::super::types::Reference>>,
 }
+impl Default for MeasureGroupStratifierComponent {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#link_id: Default::default(),
+            r#code: Default::default(),
+            r#description: Default::default(),
+            r#criteria: Default::default(),
+            r#group_definition: Default::default(),
+        }
+    }
+}
 #[doc = "The stratifier criteria for the measure report, specified as either the name of a valid CQL expression defined within a referenced library or a valid FHIR Resource Path."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct MeasureGroupStratifier {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -115,8 +144,23 @@ pub struct MeasureGroupStratifier {
     #[doc = "A component of the stratifier criteria for the measure report, specified as either the name of a valid CQL expression defined within a referenced library or a valid FHIR Resource Path."]
     pub r#component: Vec<MeasureGroupStratifierComponent>,
 }
+impl Default for MeasureGroupStratifier {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#link_id: Default::default(),
+            r#code: Default::default(),
+            r#description: Default::default(),
+            r#criteria: Default::default(),
+            r#group_definition: Default::default(),
+            r#component: Default::default(),
+        }
+    }
+}
 #[doc = "A group of population criteria for the measure."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct MeasureGroup {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -151,8 +195,30 @@ pub struct MeasureGroup {
     #[doc = "The stratifier criteria for the measure report, specified as either the name of a valid CQL expression defined within a referenced library or a valid FHIR Resource Path."]
     pub r#stratifier: Vec<MeasureGroupStratifier>,
 }
+impl Default for MeasureGroup {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#link_id: Default::default(),
+            r#code: Default::default(),
+            r#description: Default::default(),
+            r#type: Default::default(),
+            r#subject: Default::default(),
+            r#basis: Default::default(),
+            r#scoring: Default::default(),
+            r#scoring_unit: Default::default(),
+            r#rate_aggregation: Default::default(),
+            r#improvement_notation: Default::default(),
+            r#library: Default::default(),
+            r#population: Default::default(),
+            r#stratifier: Default::default(),
+        }
+    }
+}
 #[doc = "The supplemental data criteria for the measure report, specified as either the name of a valid CQL expression within a referenced library, or a valid FHIR Resource Path."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct MeasureSupplementalData {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -171,8 +237,26 @@ pub struct MeasureSupplementalData {
     #[doc = "The criteria for the supplemental data. This is typically the name of a valid expression defined within a referenced library, but it may also be a path to a specific data element. The criteria defines the data to be returned for this element."]
     pub r#criteria: Box<super::super::types::Expression>,
 }
+impl Default for MeasureSupplementalData {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#link_id: Default::default(),
+            r#code: Default::default(),
+            r#usage: Default::default(),
+            r#description: Default::default(),
+            r#criteria: {
+                let mut default: Box<super::super::types::Expression> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+        }
+    }
+}
 #[doc = "The Measure resource provides the definition of a quality measure."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct Measure {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,
@@ -280,4 +364,67 @@ pub struct Measure {
     pub r#group: Vec<MeasureGroup>,
     #[doc = "The supplemental data criteria for the measure report, specified as either the name of a valid CQL expression within a referenced library, or a valid FHIR Resource Path."]
     pub r#supplemental_data: Vec<MeasureSupplementalData>,
+}
+impl Default for Measure {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#meta: Default::default(),
+            r#implicit_rules: Default::default(),
+            r#language: Default::default(),
+            r#text: Default::default(),
+            r#contained: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#url: Default::default(),
+            r#identifier: Default::default(),
+            r#version: Default::default(),
+            r#version_algorithm: Default::default(),
+            r#name: Default::default(),
+            r#title: Default::default(),
+            r#subtitle: Default::default(),
+            r#status: {
+                let mut default: super::super::types::Code = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#experimental: Default::default(),
+            r#subject: Default::default(),
+            r#basis: Default::default(),
+            r#date: Default::default(),
+            r#publisher: Default::default(),
+            r#contact: Default::default(),
+            r#description: Default::default(),
+            r#use_context: Default::default(),
+            r#jurisdiction: Default::default(),
+            r#purpose: Default::default(),
+            r#usage: Default::default(),
+            r#copyright: Default::default(),
+            r#copyright_label: Default::default(),
+            r#approval_date: Default::default(),
+            r#last_review_date: Default::default(),
+            r#effective_period: Default::default(),
+            r#topic: Default::default(),
+            r#author: Default::default(),
+            r#editor: Default::default(),
+            r#reviewer: Default::default(),
+            r#endorser: Default::default(),
+            r#related_artifact: Default::default(),
+            r#library: Default::default(),
+            r#disclaimer: Default::default(),
+            r#scoring: Default::default(),
+            r#scoring_unit: Default::default(),
+            r#composite_scoring: Default::default(),
+            r#type: Default::default(),
+            r#risk_adjustment: Default::default(),
+            r#rate_aggregation: Default::default(),
+            r#rationale: Default::default(),
+            r#clinical_recommendation_statement: Default::default(),
+            r#improvement_notation: Default::default(),
+            r#term: Default::default(),
+            r#guidance: Default::default(),
+            r#group: Default::default(),
+            r#supplemental_data: Default::default(),
+        }
+    }
 }

@@ -1,6 +1,6 @@
-// Generated on 2023-04-20 by fhirbolt-codegen v0.4.0
+// Generated on 2023-04-20 by fhirbolt-codegen v0.5.0
 #[doc = "Information about the primary source(s) involved in validation."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct VerificationResultPrimarySource {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -23,8 +23,24 @@ pub struct VerificationResultPrimarySource {
     #[doc = "Type of alerts/updates the primary source can send (specific requested changes; any changes; as defined by source)."]
     pub r#push_type_available: Vec<Box<super::super::types::CodeableConcept>>,
 }
+impl Default for VerificationResultPrimarySource {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#who: Default::default(),
+            r#type: Default::default(),
+            r#communication_method: Default::default(),
+            r#validation_status: Default::default(),
+            r#validation_date: Default::default(),
+            r#can_push_updates: Default::default(),
+            r#push_type_available: Default::default(),
+        }
+    }
+}
 #[doc = "Information about the entity attesting to information."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct VerificationResultAttestation {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -49,8 +65,25 @@ pub struct VerificationResultAttestation {
     #[doc = "Signed assertion by the attestation source that they have attested to the information."]
     pub r#source_signature: Option<Box<super::super::types::Signature>>,
 }
+impl Default for VerificationResultAttestation {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#who: Default::default(),
+            r#on_behalf_of: Default::default(),
+            r#communication_method: Default::default(),
+            r#date: Default::default(),
+            r#source_identity_certificate: Default::default(),
+            r#proxy_identity_certificate: Default::default(),
+            r#proxy_signature: Default::default(),
+            r#source_signature: Default::default(),
+        }
+    }
+}
 #[doc = "Information about the entity validating information."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct VerificationResultValidator {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -65,8 +98,24 @@ pub struct VerificationResultValidator {
     #[doc = "Signed assertion by the validator that they have validated the information."]
     pub r#attestation_signature: Option<Box<super::super::types::Signature>>,
 }
+impl Default for VerificationResultValidator {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#organization: {
+                let mut default: Box<super::super::types::Reference> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#identity_certificate: Default::default(),
+            r#attestation_signature: Default::default(),
+        }
+    }
+}
 #[doc = "Describes validation requirements, source(s), status and dates for one or more elements."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct VerificationResult {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,
@@ -112,4 +161,36 @@ pub struct VerificationResult {
     pub r#attestation: Option<VerificationResultAttestation>,
     #[doc = "Information about the entity validating information."]
     pub r#validator: Vec<VerificationResultValidator>,
+}
+impl Default for VerificationResult {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#meta: Default::default(),
+            r#implicit_rules: Default::default(),
+            r#language: Default::default(),
+            r#text: Default::default(),
+            r#contained: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#target: Default::default(),
+            r#target_location: Default::default(),
+            r#need: Default::default(),
+            r#status: {
+                let mut default: super::super::types::Code = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#status_date: Default::default(),
+            r#validation_type: Default::default(),
+            r#validation_process: Default::default(),
+            r#frequency: Default::default(),
+            r#last_performed: Default::default(),
+            r#next_scheduled: Default::default(),
+            r#failure_action: Default::default(),
+            r#primary_source: Default::default(),
+            r#attestation: Default::default(),
+            r#validator: Default::default(),
+        }
+    }
 }

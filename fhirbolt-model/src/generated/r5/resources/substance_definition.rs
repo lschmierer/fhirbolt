@@ -1,58 +1,42 @@
-// Generated on 2023-04-20 by fhirbolt-codegen v0.4.0
+// Generated on 2023-04-20 by fhirbolt-codegen v0.5.0
 #[doc = "Quantitative value for this moiety."]
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub enum SubstanceDefinitionMoietyAmount {
     Quantity(Box<super::super::types::Quantity>),
     String(Box<super::super::types::String>),
+    #[default]
     Invalid,
 }
-impl Default for SubstanceDefinitionMoietyAmount {
-    fn default() -> SubstanceDefinitionMoietyAmount {
-        SubstanceDefinitionMoietyAmount::Invalid
-    }
-}
 #[doc = "A value for the property."]
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub enum SubstanceDefinitionPropertyValue {
     CodeableConcept(Box<super::super::types::CodeableConcept>),
     Quantity(Box<super::super::types::Quantity>),
     Date(Box<super::super::types::Date>),
     Boolean(Box<super::super::types::Boolean>),
     Attachment(Box<super::super::types::Attachment>),
+    #[default]
     Invalid,
 }
-impl Default for SubstanceDefinitionPropertyValue {
-    fn default() -> SubstanceDefinitionPropertyValue {
-        SubstanceDefinitionPropertyValue::Invalid
-    }
-}
 #[doc = "A pointer to another substance, as a resource or just a representational code."]
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub enum SubstanceDefinitionRelationshipSubstanceDefinition {
     Reference(Box<super::super::types::Reference>),
     CodeableConcept(Box<super::super::types::CodeableConcept>),
+    #[default]
     Invalid,
 }
-impl Default for SubstanceDefinitionRelationshipSubstanceDefinition {
-    fn default() -> SubstanceDefinitionRelationshipSubstanceDefinition {
-        SubstanceDefinitionRelationshipSubstanceDefinition::Invalid
-    }
-}
 #[doc = "A numeric factor for the relationship, for instance to express that the salt of a substance has some percentage of the active substance in relation to some other."]
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub enum SubstanceDefinitionRelationshipAmount {
     Quantity(Box<super::super::types::Quantity>),
     Ratio(Box<super::super::types::Ratio>),
     String(Box<super::super::types::String>),
+    #[default]
     Invalid,
 }
-impl Default for SubstanceDefinitionRelationshipAmount {
-    fn default() -> SubstanceDefinitionRelationshipAmount {
-        SubstanceDefinitionRelationshipAmount::Invalid
-    }
-}
 #[doc = "Moiety, for structural modifications."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct SubstanceDefinitionMoiety {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -77,8 +61,25 @@ pub struct SubstanceDefinitionMoiety {
     #[doc = "The measurement type of the quantitative value. In capturing the actual relative amounts of substances or molecular fragments it may be necessary to indicate whether the amount refers to, for example, a mole ratio or weight ratio."]
     pub r#measurement_type: Option<Box<super::super::types::CodeableConcept>>,
 }
+impl Default for SubstanceDefinitionMoiety {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#role: Default::default(),
+            r#identifier: Default::default(),
+            r#name: Default::default(),
+            r#stereochemistry: Default::default(),
+            r#optical_activity: Default::default(),
+            r#molecular_formula: Default::default(),
+            r#amount: Default::default(),
+            r#measurement_type: Default::default(),
+        }
+    }
+}
 #[doc = "General specifications for this substance."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct SubstanceDefinitionCharacterization {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -95,8 +96,21 @@ pub struct SubstanceDefinitionCharacterization {
     #[doc = "The data produced by the analytical instrument or a pictorial representation of that data. Examples: a JCAMP, JDX, or ADX file, or a chromatogram or spectrum analysis."]
     pub r#file: Vec<Box<super::super::types::Attachment>>,
 }
+impl Default for SubstanceDefinitionCharacterization {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#technique: Default::default(),
+            r#form: Default::default(),
+            r#description: Default::default(),
+            r#file: Default::default(),
+        }
+    }
+}
 #[doc = "General specifications for this substance."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct SubstanceDefinitionProperty {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -109,8 +123,23 @@ pub struct SubstanceDefinitionProperty {
     #[doc = "A value for the property."]
     pub r#value: Option<SubstanceDefinitionPropertyValue>,
 }
+impl Default for SubstanceDefinitionProperty {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#type: {
+                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#value: Default::default(),
+        }
+    }
+}
 #[doc = "The average mass of a molecule of a compound compared to 1/12 the mass of carbon 12 and calculated as the sum of the atomic weights of the constituent atoms."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct SubstanceDefinitionMolecularWeight {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -125,8 +154,24 @@ pub struct SubstanceDefinitionMolecularWeight {
     #[doc = "Used to capture quantitative values for a variety of elements. If only limits are given, the arithmetic mean would be the average. If only a single definite value for a given element is given, it would be captured in this field."]
     pub r#amount: Box<super::super::types::Quantity>,
 }
+impl Default for SubstanceDefinitionMolecularWeight {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#method: Default::default(),
+            r#type: Default::default(),
+            r#amount: {
+                let mut default: Box<super::super::types::Quantity> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+        }
+    }
+}
 #[doc = "A depiction of the structure of the substance."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct SubstanceDefinitionStructureRepresentation {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -143,8 +188,21 @@ pub struct SubstanceDefinitionStructureRepresentation {
     #[doc = "An attached file with the structural representation e.g. a molecular structure graphic of the substance, a JCAMP or AnIML file."]
     pub r#document: Option<Box<super::super::types::Reference>>,
 }
+impl Default for SubstanceDefinitionStructureRepresentation {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#type: Default::default(),
+            r#representation: Default::default(),
+            r#format: Default::default(),
+            r#document: Default::default(),
+        }
+    }
+}
 #[doc = "Structural information."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct SubstanceDefinitionStructure {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -169,8 +227,25 @@ pub struct SubstanceDefinitionStructure {
     #[doc = "A depiction of the structure of the substance."]
     pub r#representation: Vec<SubstanceDefinitionStructureRepresentation>,
 }
+impl Default for SubstanceDefinitionStructure {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#stereochemistry: Default::default(),
+            r#optical_activity: Default::default(),
+            r#molecular_formula: Default::default(),
+            r#molecular_formula_by_moiety: Default::default(),
+            r#molecular_weight: Default::default(),
+            r#technique: Default::default(),
+            r#source_document: Default::default(),
+            r#representation: Default::default(),
+        }
+    }
+}
 #[doc = "Codes associated with the substance."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct SubstanceDefinitionCode {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -189,8 +264,22 @@ pub struct SubstanceDefinitionCode {
     #[doc = "Supporting literature."]
     pub r#source: Vec<Box<super::super::types::Reference>>,
 }
+impl Default for SubstanceDefinitionCode {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#code: Default::default(),
+            r#status: Default::default(),
+            r#status_date: Default::default(),
+            r#note: Default::default(),
+            r#source: Default::default(),
+        }
+    }
+}
 #[doc = "Details of the official nature of this name."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct SubstanceDefinitionNameOfficial {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -205,8 +294,20 @@ pub struct SubstanceDefinitionNameOfficial {
     #[doc = "Date of the official name change."]
     pub r#date: Option<super::super::types::DateTime>,
 }
+impl Default for SubstanceDefinitionNameOfficial {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#authority: Default::default(),
+            r#status: Default::default(),
+            r#date: Default::default(),
+        }
+    }
+}
 #[doc = "Names applicable to this substance."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct SubstanceDefinitionName {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -237,8 +338,32 @@ pub struct SubstanceDefinitionName {
     #[doc = "Supporting literature."]
     pub r#source: Vec<Box<super::super::types::Reference>>,
 }
+impl Default for SubstanceDefinitionName {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#name: {
+                let mut default: super::super::types::String = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#type: Default::default(),
+            r#status: Default::default(),
+            r#preferred: Default::default(),
+            r#language: Default::default(),
+            r#domain: Default::default(),
+            r#jurisdiction: Default::default(),
+            r#synonym: Default::default(),
+            r#translation: Default::default(),
+            r#official: Default::default(),
+            r#source: Default::default(),
+        }
+    }
+}
 #[doc = "A link between this substance and another, with details of the relationship."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct SubstanceDefinitionRelationship {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -261,8 +386,28 @@ pub struct SubstanceDefinitionRelationship {
     #[doc = "Supporting literature."]
     pub r#source: Vec<Box<super::super::types::Reference>>,
 }
+impl Default for SubstanceDefinitionRelationship {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#substance_definition: Default::default(),
+            r#type: {
+                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#is_defining: Default::default(),
+            r#amount: Default::default(),
+            r#ratio_high_limit_amount: Default::default(),
+            r#comparator: Default::default(),
+            r#source: Default::default(),
+        }
+    }
+}
 #[doc = "Material or taxonomic/anatomical source for the substance."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct SubstanceDefinitionSourceMaterial {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -281,8 +426,22 @@ pub struct SubstanceDefinitionSourceMaterial {
     #[doc = "The country or countries where the material is harvested."]
     pub r#country_of_origin: Vec<Box<super::super::types::CodeableConcept>>,
 }
+impl Default for SubstanceDefinitionSourceMaterial {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#type: Default::default(),
+            r#genus: Default::default(),
+            r#species: Default::default(),
+            r#part: Default::default(),
+            r#country_of_origin: Default::default(),
+        }
+    }
+}
 #[doc = "The detailed description of a substance, typically at a level beyond what is used for prescribing."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct SubstanceDefinition {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,
@@ -348,4 +507,42 @@ pub struct SubstanceDefinition {
     pub r#protein: Option<Box<super::super::types::Reference>>,
     #[doc = "Material or taxonomic/anatomical source for the substance."]
     pub r#source_material: Option<SubstanceDefinitionSourceMaterial>,
+}
+impl Default for SubstanceDefinition {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#meta: Default::default(),
+            r#implicit_rules: Default::default(),
+            r#language: Default::default(),
+            r#text: Default::default(),
+            r#contained: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#identifier: Default::default(),
+            r#version: Default::default(),
+            r#status: Default::default(),
+            r#classification: Default::default(),
+            r#domain: Default::default(),
+            r#grade: Default::default(),
+            r#description: Default::default(),
+            r#information_source: Default::default(),
+            r#note: Default::default(),
+            r#manufacturer: Default::default(),
+            r#supplier: Default::default(),
+            r#moiety: Default::default(),
+            r#characterization: Default::default(),
+            r#property: Default::default(),
+            r#reference_information: Default::default(),
+            r#molecular_weight: Default::default(),
+            r#structure: Default::default(),
+            r#code: Default::default(),
+            r#name: Default::default(),
+            r#relationship: Default::default(),
+            r#nucleic_acid: Default::default(),
+            r#polymer: Default::default(),
+            r#protein: Default::default(),
+            r#source_material: Default::default(),
+        }
+    }
 }

@@ -1,19 +1,15 @@
-// Generated on 2023-04-20 by fhirbolt-codegen v0.4.0
+// Generated on 2023-04-20 by fhirbolt-codegen v0.5.0
 #[doc = "Code|uri|canonical."]
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub enum DocumentReferenceContentProfileValue {
     Coding(Box<super::super::types::Coding>),
     Uri(Box<super::super::types::Uri>),
     Canonical(Box<super::super::types::Canonical>),
+    #[default]
     Invalid,
 }
-impl Default for DocumentReferenceContentProfileValue {
-    fn default() -> DocumentReferenceContentProfileValue {
-        DocumentReferenceContentProfileValue::Invalid
-    }
-}
 #[doc = "A participant who has authenticated the accuracy of the document."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct DocumentReferenceAttester {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -28,8 +24,24 @@ pub struct DocumentReferenceAttester {
     #[doc = "Who attested the document in the specified way."]
     pub r#party: Option<Box<super::super::types::Reference>>,
 }
+impl Default for DocumentReferenceAttester {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#mode: {
+                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#time: Default::default(),
+            r#party: Default::default(),
+        }
+    }
+}
 #[doc = "Relationships that this document has with other document references that already exist."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct DocumentReferenceRelatesTo {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -42,8 +54,27 @@ pub struct DocumentReferenceRelatesTo {
     #[doc = "The target document of this relationship."]
     pub r#target: Box<super::super::types::Reference>,
 }
+impl Default for DocumentReferenceRelatesTo {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#code: {
+                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#target: {
+                let mut default: Box<super::super::types::Reference> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+        }
+    }
+}
 #[doc = "An identifier of the document constraints, encoding, structure, and template that the document conforms to beyond the base format indicated in the mimeType."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct DocumentReferenceContentProfile {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -54,8 +85,18 @@ pub struct DocumentReferenceContentProfile {
     #[doc = "Code|uri|canonical."]
     pub r#value: DocumentReferenceContentProfileValue,
 }
+impl Default for DocumentReferenceContentProfile {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#value: Default::default(),
+        }
+    }
+}
 #[doc = "The document and format referenced.  If there are multiple content element repetitions, these must all represent the same document in different format, or attachment metadata."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct DocumentReferenceContent {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -68,8 +109,23 @@ pub struct DocumentReferenceContent {
     #[doc = "An identifier of the document constraints, encoding, structure, and template that the document conforms to beyond the base format indicated in the mimeType."]
     pub r#profile: Vec<DocumentReferenceContentProfile>,
 }
+impl Default for DocumentReferenceContent {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#attachment: {
+                let mut default: Box<super::super::types::Attachment> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#profile: Default::default(),
+        }
+    }
+}
 #[doc = "A reference to a document of any kind for any purpose. While the term “document” implies a more narrow focus, for this resource this “document” encompasses *any* serialized object with a mime-type, it includes formal patient-centric documents (CDA), clinical notes, scanned paper, non-patient specific documents like policy text, as well as a photo, video, or audio recording acquired or used in healthcare.  The DocumentReference resource provides metadata about the document so that the document can be discovered and managed.  The actual content may be inline base64 encoded data or provided by direct reference."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct DocumentReference {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,
@@ -133,4 +189,45 @@ pub struct DocumentReference {
     pub r#security_label: Vec<Box<super::super::types::CodeableConcept>>,
     #[doc = "The document and format referenced.  If there are multiple content element repetitions, these must all represent the same document in different format, or attachment metadata."]
     pub r#content: Vec<DocumentReferenceContent>,
+}
+impl Default for DocumentReference {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#meta: Default::default(),
+            r#implicit_rules: Default::default(),
+            r#language: Default::default(),
+            r#text: Default::default(),
+            r#contained: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#identifier: Default::default(),
+            r#version: Default::default(),
+            r#based_on: Default::default(),
+            r#status: {
+                let mut default: super::super::types::Code = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#doc_status: Default::default(),
+            r#modality: Default::default(),
+            r#type: Default::default(),
+            r#category: Default::default(),
+            r#subject: Default::default(),
+            r#context: Default::default(),
+            r#event: Default::default(),
+            r#body_site: Default::default(),
+            r#facility_type: Default::default(),
+            r#practice_setting: Default::default(),
+            r#period: Default::default(),
+            r#date: Default::default(),
+            r#author: Default::default(),
+            r#attester: Default::default(),
+            r#custodian: Default::default(),
+            r#relates_to: Default::default(),
+            r#description: Default::default(),
+            r#security_label: Default::default(),
+            r#content: Default::default(),
+        }
+    }
 }

@@ -1,6 +1,6 @@
-// Generated on 2023-04-20 by fhirbolt-codegen v0.4.0
+// Generated on 2023-04-20 by fhirbolt-codegen v0.5.0
 #[doc = "Describe the undesirable effects of the medicinal product."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct MedicinalProductUndesirableEffect {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,
@@ -28,4 +28,23 @@ pub struct MedicinalProductUndesirableEffect {
     pub r#frequency_of_occurrence: Option<Box<super::super::types::CodeableConcept>>,
     #[doc = "The population group to which this applies."]
     pub r#population: Vec<Box<super::super::types::Population>>,
+}
+impl Default for MedicinalProductUndesirableEffect {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#meta: Default::default(),
+            r#implicit_rules: Default::default(),
+            r#language: Default::default(),
+            r#text: Default::default(),
+            r#contained: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#subject: Default::default(),
+            r#symptom_condition_effect: Default::default(),
+            r#classification: Default::default(),
+            r#frequency_of_occurrence: Default::default(),
+            r#population: Default::default(),
+        }
+    }
 }

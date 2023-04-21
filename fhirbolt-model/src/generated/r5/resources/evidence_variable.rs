@@ -1,18 +1,14 @@
-// Generated on 2023-04-20 by fhirbolt-codegen v0.4.0
+// Generated on 2023-04-20 by fhirbolt-codegen v0.5.0
 #[doc = "Indicates the mechanism used to compare versions to determine which is more current."]
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub enum EvidenceVariableVersionAlgorithm {
     String(Box<super::super::types::String>),
     Coding(Box<super::super::types::Coding>),
+    #[default]
     Invalid,
 }
-impl Default for EvidenceVariableVersionAlgorithm {
-    fn default() -> EvidenceVariableVersionAlgorithm {
-        EvidenceVariableVersionAlgorithm::Invalid
-    }
-}
 #[doc = "Defines the characteristic when paired with characteristic.type."]
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub enum EvidenceVariableCharacteristicDefinitionByTypeAndValueValue {
     CodeableConcept(Box<super::super::types::CodeableConcept>),
     Boolean(Box<super::super::types::Boolean>),
@@ -20,66 +16,46 @@ pub enum EvidenceVariableCharacteristicDefinitionByTypeAndValueValue {
     Range(Box<super::super::types::Range>),
     Reference(Box<super::super::types::Reference>),
     Id(Box<super::super::types::Id>),
+    #[default]
     Invalid,
 }
-impl Default for EvidenceVariableCharacteristicDefinitionByTypeAndValueValue {
-    fn default() -> EvidenceVariableCharacteristicDefinitionByTypeAndValueValue {
-        EvidenceVariableCharacteristicDefinitionByTypeAndValueValue::Invalid
-    }
-}
 #[doc = "Number of occurrences meeting the characteristic."]
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub enum EvidenceVariableCharacteristicInstances {
     Quantity(Box<super::super::types::Quantity>),
     Range(Box<super::super::types::Range>),
+    #[default]
     Invalid,
 }
-impl Default for EvidenceVariableCharacteristicInstances {
-    fn default() -> EvidenceVariableCharacteristicInstances {
-        EvidenceVariableCharacteristicInstances::Invalid
-    }
-}
 #[doc = "Length of time in which the characteristic is met."]
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub enum EvidenceVariableCharacteristicDuration {
     Quantity(Box<super::super::types::Quantity>),
     Range(Box<super::super::types::Range>),
+    #[default]
     Invalid,
 }
-impl Default for EvidenceVariableCharacteristicDuration {
-    fn default() -> EvidenceVariableCharacteristicDuration {
-        EvidenceVariableCharacteristicDuration::Invalid
-    }
-}
 #[doc = "The event used as a base point (reference point) in time."]
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub enum EvidenceVariableCharacteristicTimeFromEventEvent {
     CodeableConcept(Box<super::super::types::CodeableConcept>),
     Reference(Box<super::super::types::Reference>),
     DateTime(Box<super::super::types::DateTime>),
     Id(Box<super::super::types::Id>),
+    #[default]
     Invalid,
 }
-impl Default for EvidenceVariableCharacteristicTimeFromEventEvent {
-    fn default() -> EvidenceVariableCharacteristicTimeFromEventEvent {
-        EvidenceVariableCharacteristicTimeFromEventEvent::Invalid
-    }
-}
 #[doc = "Definition of the grouping."]
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub enum EvidenceVariableCategoryValue {
     CodeableConcept(Box<super::super::types::CodeableConcept>),
     Quantity(Box<super::super::types::Quantity>),
     Range(Box<super::super::types::Range>),
+    #[default]
     Invalid,
 }
-impl Default for EvidenceVariableCategoryValue {
-    fn default() -> EvidenceVariableCategoryValue {
-        EvidenceVariableCategoryValue::Invalid
-    }
-}
 #[doc = "Defines the characteristic using both a type and value\\[x\\] elements."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct EvidenceVariableCharacteristicDefinitionByTypeAndValue {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -98,8 +74,26 @@ pub struct EvidenceVariableCharacteristicDefinitionByTypeAndValue {
     #[doc = "Defines the reference point for comparison when valueQuantity or valueRange is not compared to zero."]
     pub r#offset: Option<Box<super::super::types::CodeableConcept>>,
 }
+impl Default for EvidenceVariableCharacteristicDefinitionByTypeAndValue {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#type: {
+                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#method: Default::default(),
+            r#device: Default::default(),
+            r#value: Default::default(),
+            r#offset: Default::default(),
+        }
+    }
+}
 #[doc = "Defines the characteristic as a combination of two or more characteristics."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct EvidenceVariableCharacteristicDefinitionByCombination {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -114,8 +108,24 @@ pub struct EvidenceVariableCharacteristicDefinitionByCombination {
     #[doc = "A defining factor of the characteristic."]
     pub r#characteristic: Vec<EvidenceVariableCharacteristic>,
 }
+impl Default for EvidenceVariableCharacteristicDefinitionByCombination {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#code: {
+                let mut default: super::super::types::Code = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#threshold: Default::default(),
+            r#characteristic: Default::default(),
+        }
+    }
+}
 #[doc = "Timing in which the characteristic is determined."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct EvidenceVariableCharacteristicTimeFromEvent {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -134,8 +144,22 @@ pub struct EvidenceVariableCharacteristicTimeFromEvent {
     #[doc = "Used to express the observation within a period before and/or after the event."]
     pub r#range: Option<Box<super::super::types::Range>>,
 }
+impl Default for EvidenceVariableCharacteristicTimeFromEvent {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#description: Default::default(),
+            r#note: Default::default(),
+            r#event: Default::default(),
+            r#quantity: Default::default(),
+            r#range: Default::default(),
+        }
+    }
+}
 #[doc = "A defining factor of the EvidenceVariable. Multiple characteristics are applied with \"and\" semantics."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct EvidenceVariableCharacteristic {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -173,8 +197,31 @@ pub struct EvidenceVariableCharacteristic {
     #[doc = "Timing in which the characteristic is determined."]
     pub r#time_from_event: Vec<EvidenceVariableCharacteristicTimeFromEvent>,
 }
+impl Default for EvidenceVariableCharacteristic {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#link_id: Default::default(),
+            r#description: Default::default(),
+            r#note: Default::default(),
+            r#exclude: Default::default(),
+            r#definition_reference: Default::default(),
+            r#definition_canonical: Default::default(),
+            r#definition_codeable_concept: Default::default(),
+            r#definition_expression: Default::default(),
+            r#definition_id: Default::default(),
+            r#definition_by_type_and_value: Default::default(),
+            r#definition_by_combination: Default::default(),
+            r#instances: Default::default(),
+            r#duration: Default::default(),
+            r#time_from_event: Default::default(),
+        }
+    }
+}
 #[doc = "A grouping for ordinal or polychotomous variables."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct EvidenceVariableCategory {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -187,8 +234,19 @@ pub struct EvidenceVariableCategory {
     #[doc = "Definition of the grouping."]
     pub r#value: Option<EvidenceVariableCategoryValue>,
 }
+impl Default for EvidenceVariableCategory {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#name: Default::default(),
+            r#value: Default::default(),
+        }
+    }
+}
 #[doc = "The EvidenceVariable resource describes an element that knowledge (Evidence) is about.\n\nNeed to be able to define and reuse the definition of individual elements of a research question."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct EvidenceVariable {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,
@@ -266,4 +324,52 @@ pub struct EvidenceVariable {
     pub r#handling: Option<super::super::types::Code>,
     #[doc = "A grouping for ordinal or polychotomous variables."]
     pub r#category: Vec<EvidenceVariableCategory>,
+}
+impl Default for EvidenceVariable {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#meta: Default::default(),
+            r#implicit_rules: Default::default(),
+            r#language: Default::default(),
+            r#text: Default::default(),
+            r#contained: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#url: Default::default(),
+            r#identifier: Default::default(),
+            r#version: Default::default(),
+            r#version_algorithm: Default::default(),
+            r#name: Default::default(),
+            r#title: Default::default(),
+            r#short_title: Default::default(),
+            r#status: {
+                let mut default: super::super::types::Code = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#experimental: Default::default(),
+            r#date: Default::default(),
+            r#publisher: Default::default(),
+            r#contact: Default::default(),
+            r#description: Default::default(),
+            r#note: Default::default(),
+            r#use_context: Default::default(),
+            r#purpose: Default::default(),
+            r#copyright: Default::default(),
+            r#copyright_label: Default::default(),
+            r#approval_date: Default::default(),
+            r#last_review_date: Default::default(),
+            r#effective_period: Default::default(),
+            r#author: Default::default(),
+            r#editor: Default::default(),
+            r#reviewer: Default::default(),
+            r#endorser: Default::default(),
+            r#related_artifact: Default::default(),
+            r#actual: Default::default(),
+            r#characteristic: Default::default(),
+            r#handling: Default::default(),
+            r#category: Default::default(),
+        }
+    }
 }

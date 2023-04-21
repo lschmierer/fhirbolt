@@ -33,6 +33,30 @@ jobs:
       - name: Run tests
         run: cargo test -p tests --test test_serde_json --features r4 --release --verbose
   
+  unit_tests:
+    needs: build
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - uses: Swatinem/rust-cache@v2
+        with:
+          shared-key: "rust-cache"
+      - name: Run tests
+        run: cargo test --lib
+  
+  doc_tests:
+    needs: build
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - uses: Swatinem/rust-cache@v2
+        with:
+          shared-key: "rust-cache"
+      - name: Run tests
+        run: cargo test --doc
+  
   test_serde_xml_r4:
     needs: build
     runs-on: ubuntu-latest

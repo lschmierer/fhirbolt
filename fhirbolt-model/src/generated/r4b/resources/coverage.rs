@@ -1,18 +1,14 @@
-// Generated on 2023-04-20 by fhirbolt-codegen v0.4.0
+// Generated on 2023-04-20 by fhirbolt-codegen v0.5.0
 #[doc = "The amount due from the patient for the cost category."]
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub enum CoverageCostToBeneficiaryValue {
     Quantity(Box<super::super::types::Quantity>),
     Money(Box<super::super::types::Money>),
+    #[default]
     Invalid,
 }
-impl Default for CoverageCostToBeneficiaryValue {
-    fn default() -> CoverageCostToBeneficiaryValue {
-        CoverageCostToBeneficiaryValue::Invalid
-    }
-}
 #[doc = "A suite of underwriter specific classifiers."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct CoverageClass {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -27,8 +23,28 @@ pub struct CoverageClass {
     #[doc = "A short description for the class."]
     pub r#name: Option<super::super::types::String>,
 }
+impl Default for CoverageClass {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#type: {
+                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#value: {
+                let mut default: super::super::types::String = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#name: Default::default(),
+        }
+    }
+}
 #[doc = "A suite of codes indicating exceptions or reductions to patient costs and their effective periods."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct CoverageCostToBeneficiaryException {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -41,8 +57,23 @@ pub struct CoverageCostToBeneficiaryException {
     #[doc = "The timeframe during when the exception is in force."]
     pub r#period: Option<Box<super::super::types::Period>>,
 }
+impl Default for CoverageCostToBeneficiaryException {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#type: {
+                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#period: Default::default(),
+        }
+    }
+}
 #[doc = "A suite of codes indicating the cost category and associated amount which have been detailed in the policy and may have been  included on the health card."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct CoverageCostToBeneficiary {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -57,8 +88,20 @@ pub struct CoverageCostToBeneficiary {
     #[doc = "A suite of codes indicating exceptions or reductions to patient costs and their effective periods."]
     pub r#exception: Vec<CoverageCostToBeneficiaryException>,
 }
+impl Default for CoverageCostToBeneficiary {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#type: Default::default(),
+            r#value: Default::default(),
+            r#exception: Default::default(),
+        }
+    }
+}
 #[doc = "Financial instrument which may be used to reimburse or pay for health care products and services. Includes both insurance and self-payment.\n\nCoverage provides a link between covered parties (patients) and the payors of their healthcare costs (both insurance and self-pay)."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct Coverage {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,
@@ -110,4 +153,43 @@ pub struct Coverage {
     pub r#subrogation: Option<super::super::types::Boolean>,
     #[doc = "The policy(s) which constitute this insurance coverage."]
     pub r#contract: Vec<Box<super::super::types::Reference>>,
+}
+impl Default for Coverage {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#meta: Default::default(),
+            r#implicit_rules: Default::default(),
+            r#language: Default::default(),
+            r#text: Default::default(),
+            r#contained: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#identifier: Default::default(),
+            r#status: {
+                let mut default: super::super::types::Code = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#type: Default::default(),
+            r#policy_holder: Default::default(),
+            r#subscriber: Default::default(),
+            r#subscriber_id: Default::default(),
+            r#beneficiary: {
+                let mut default: Box<super::super::types::Reference> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#dependent: Default::default(),
+            r#relationship: Default::default(),
+            r#period: Default::default(),
+            r#payor: Default::default(),
+            r#class: Default::default(),
+            r#order: Default::default(),
+            r#network: Default::default(),
+            r#cost_to_beneficiary: Default::default(),
+            r#subrogation: Default::default(),
+            r#contract: Default::default(),
+        }
+    }
 }

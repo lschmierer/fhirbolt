@@ -1,30 +1,22 @@
-// Generated on 2023-04-20 by fhirbolt-codegen v0.4.0
+// Generated on 2023-04-20 by fhirbolt-codegen v0.5.0
 #[doc = "Indicates if the individual is deceased or not."]
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub enum PatientDeceased {
     Boolean(Box<super::super::types::Boolean>),
     DateTime(Box<super::super::types::DateTime>),
+    #[default]
     Invalid,
 }
-impl Default for PatientDeceased {
-    fn default() -> PatientDeceased {
-        PatientDeceased::Invalid
-    }
-}
 #[doc = "Indicates whether the patient is part of a multiple (boolean) or indicates the actual birth order (integer)."]
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub enum PatientMultipleBirth {
     Boolean(Box<super::super::types::Boolean>),
     Integer(Box<super::super::types::Integer>),
+    #[default]
     Invalid,
 }
-impl Default for PatientMultipleBirth {
-    fn default() -> PatientMultipleBirth {
-        PatientMultipleBirth::Invalid
-    }
-}
 #[doc = "A contact party (e.g. guardian, partner, friend) for the patient."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct PatientContact {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -47,8 +39,24 @@ pub struct PatientContact {
     #[doc = "The period during which this contact person or organization is valid to be contacted relating to this patient."]
     pub r#period: Option<Box<super::super::types::Period>>,
 }
+impl Default for PatientContact {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#relationship: Default::default(),
+            r#name: Default::default(),
+            r#telecom: Default::default(),
+            r#address: Default::default(),
+            r#gender: Default::default(),
+            r#organization: Default::default(),
+            r#period: Default::default(),
+        }
+    }
+}
 #[doc = "A language which may be used to communicate with the patient about his or her health."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct PatientCommunication {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -61,8 +69,23 @@ pub struct PatientCommunication {
     #[doc = "Indicates whether or not the patient prefers this language (over other languages he masters up a certain level)."]
     pub r#preferred: Option<super::super::types::Boolean>,
 }
+impl Default for PatientCommunication {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#language: {
+                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#preferred: Default::default(),
+        }
+    }
+}
 #[doc = "Link to another patient resource that concerns the same actual patient."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct PatientLink {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -75,8 +98,27 @@ pub struct PatientLink {
     #[doc = "The type of link between this patient resource and another patient resource."]
     pub r#type: super::super::types::Code,
 }
+impl Default for PatientLink {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#other: {
+                let mut default: Box<super::super::types::Reference> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#type: {
+                let mut default: super::super::types::Code = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+        }
+    }
+}
 #[doc = "Demographics and other administrative information about an individual or animal receiving care or other health-related services.\n\nTracking patient is the center of the healthcare process."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct Patient {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,
@@ -126,4 +168,34 @@ pub struct Patient {
     pub r#managing_organization: Option<Box<super::super::types::Reference>>,
     #[doc = "Link to another patient resource that concerns the same actual patient."]
     pub r#link: Vec<PatientLink>,
+}
+impl Default for Patient {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#meta: Default::default(),
+            r#implicit_rules: Default::default(),
+            r#language: Default::default(),
+            r#text: Default::default(),
+            r#contained: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#identifier: Default::default(),
+            r#active: Default::default(),
+            r#name: Default::default(),
+            r#telecom: Default::default(),
+            r#gender: Default::default(),
+            r#birth_date: Default::default(),
+            r#deceased: Default::default(),
+            r#address: Default::default(),
+            r#marital_status: Default::default(),
+            r#multiple_birth: Default::default(),
+            r#photo: Default::default(),
+            r#contact: Default::default(),
+            r#communication: Default::default(),
+            r#general_practitioner: Default::default(),
+            r#managing_organization: Default::default(),
+            r#link: Default::default(),
+        }
+    }
 }

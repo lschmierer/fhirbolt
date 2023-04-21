@@ -1,31 +1,23 @@
-// Generated on 2023-04-20 by fhirbolt-codegen v0.4.0
+// Generated on 2023-04-20 by fhirbolt-codegen v0.5.0
 #[doc = "A specific date/time or interval of time during which the administration took place (or did not take place). For many administrations, such as swallowing a tablet the use of dateTime is more appropriate."]
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub enum MedicationAdministrationOccurence {
     DateTime(Box<super::super::types::DateTime>),
     Period(Box<super::super::types::Period>),
     Timing(Box<super::super::types::Timing>),
+    #[default]
     Invalid,
 }
-impl Default for MedicationAdministrationOccurence {
-    fn default() -> MedicationAdministrationOccurence {
-        MedicationAdministrationOccurence::Invalid
-    }
-}
 #[doc = "Identifies the speed with which the medication was or will be introduced into the patient.  Typically, the rate for an infusion e.g. 100 ml per 1 hour or 100 ml/hr.  May also be expressed as a rate per unit of time, e.g. 500 ml per 2 hours.  Other examples:  200 mcg/min or 200 mcg/1 minute; 1 liter/8 hours."]
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub enum MedicationAdministrationDosageRate {
     Ratio(Box<super::super::types::Ratio>),
     Quantity(Box<super::super::types::Quantity>),
+    #[default]
     Invalid,
 }
-impl Default for MedicationAdministrationDosageRate {
-    fn default() -> MedicationAdministrationDosageRate {
-        MedicationAdministrationDosageRate::Invalid
-    }
-}
 #[doc = "The performer of the medication treatment.  For devices this is the device that performed the administration of the medication.  An IV Pump would be an example of a device that is performing the administration. Both the IV Pump and the practitioner that set the rate or bolus on the pump can be listed as performers."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct MedicationAdministrationPerformer {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -38,8 +30,23 @@ pub struct MedicationAdministrationPerformer {
     #[doc = "Indicates who or what performed the medication administration."]
     pub r#actor: Box<super::super::types::CodeableReference>,
 }
+impl Default for MedicationAdministrationPerformer {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#function: Default::default(),
+            r#actor: {
+                let mut default: Box<super::super::types::CodeableReference> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+        }
+    }
+}
 #[doc = "Describes the medication dosage information details e.g. dose, rate, site, route, etc."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct MedicationAdministrationDosage {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -60,8 +67,23 @@ pub struct MedicationAdministrationDosage {
     #[doc = "Identifies the speed with which the medication was or will be introduced into the patient.  Typically, the rate for an infusion e.g. 100 ml per 1 hour or 100 ml/hr.  May also be expressed as a rate per unit of time, e.g. 500 ml per 2 hours.  Other examples:  200 mcg/min or 200 mcg/1 minute; 1 liter/8 hours."]
     pub r#rate: Option<MedicationAdministrationDosageRate>,
 }
+impl Default for MedicationAdministrationDosage {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#text: Default::default(),
+            r#site: Default::default(),
+            r#route: Default::default(),
+            r#method: Default::default(),
+            r#dose: Default::default(),
+            r#rate: Default::default(),
+        }
+    }
+}
 #[doc = "Describes the event of a patient consuming or otherwise being administered a medication.  This may be as simple as swallowing a tablet or it may be a long running infusion. Related resources tie this event to the authorizing prescription, and the specific encounter between patient and health care practitioner. This event can also be used to record waste using a status of not-done and the appropriate statusReason."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct MedicationAdministration {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,
@@ -121,4 +143,51 @@ pub struct MedicationAdministration {
     pub r#dosage: Option<MedicationAdministrationDosage>,
     #[doc = "A summary of the events of interest that have occurred, such as when the administration was verified."]
     pub r#event_history: Vec<Box<super::super::types::Reference>>,
+}
+impl Default for MedicationAdministration {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#meta: Default::default(),
+            r#implicit_rules: Default::default(),
+            r#language: Default::default(),
+            r#text: Default::default(),
+            r#contained: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#identifier: Default::default(),
+            r#based_on: Default::default(),
+            r#part_of: Default::default(),
+            r#status: {
+                let mut default: super::super::types::Code = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#status_reason: Default::default(),
+            r#category: Default::default(),
+            r#medication: {
+                let mut default: Box<super::super::types::CodeableReference> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#subject: {
+                let mut default: Box<super::super::types::Reference> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#encounter: Default::default(),
+            r#supporting_information: Default::default(),
+            r#occurence: Default::default(),
+            r#recorded: Default::default(),
+            r#is_sub_potent: Default::default(),
+            r#sub_potent_reason: Default::default(),
+            r#performer: Default::default(),
+            r#reason: Default::default(),
+            r#request: Default::default(),
+            r#device: Default::default(),
+            r#note: Default::default(),
+            r#dosage: Default::default(),
+            r#event_history: Default::default(),
+        }
+    }
 }

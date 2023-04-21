@@ -1,6 +1,6 @@
-// Generated on 2023-04-20 by fhirbolt-codegen v0.4.0
+// Generated on 2023-04-20 by fhirbolt-codegen v0.5.0
 #[doc = "Base StructureDefinition for Address Type: An address expressed using postal conventions (as opposed to GPS or other location definition formats).  This data type may be used to convey addresses for use in delivering mail as well as for visiting locations which might not be valid for mail delivery.  There are a variety of postal address formats defined around the world.\n\nNeed to be able to record postal addresses, along with notes about their use."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct Address {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -26,4 +26,22 @@ pub struct Address {
     pub r#country: Option<super::super::types::String>,
     #[doc = "Time period when address was/is in use."]
     pub r#period: Option<Box<super::super::types::Period>>,
+}
+impl Default for Address {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#use: Default::default(),
+            r#type: Default::default(),
+            r#text: Default::default(),
+            r#line: Default::default(),
+            r#city: Default::default(),
+            r#district: Default::default(),
+            r#state: Default::default(),
+            r#postal_code: Default::default(),
+            r#country: Default::default(),
+            r#period: Default::default(),
+        }
+    }
 }

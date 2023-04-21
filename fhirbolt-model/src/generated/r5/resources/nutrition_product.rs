@@ -1,6 +1,6 @@
-// Generated on 2023-04-20 by fhirbolt-codegen v0.4.0
+// Generated on 2023-04-20 by fhirbolt-codegen v0.5.0
 #[doc = "The actual characteristic value corresponding to the type."]
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub enum NutritionProductCharacteristicValue {
     CodeableConcept(Box<super::super::types::CodeableConcept>),
     String(Box<super::super::types::String>),
@@ -8,15 +8,11 @@ pub enum NutritionProductCharacteristicValue {
     Base64Binary(Box<super::super::types::Base64Binary>),
     Attachment(Box<super::super::types::Attachment>),
     Boolean(Box<super::super::types::Boolean>),
+    #[default]
     Invalid,
 }
-impl Default for NutritionProductCharacteristicValue {
-    fn default() -> NutritionProductCharacteristicValue {
-        NutritionProductCharacteristicValue::Invalid
-    }
-}
 #[doc = "The product's nutritional information expressed by the nutrients."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct NutritionProductNutrient {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -29,8 +25,19 @@ pub struct NutritionProductNutrient {
     #[doc = "The amount of nutrient expressed in one or more units: X per pack / per serving / per dose."]
     pub r#amount: Vec<Box<super::super::types::Ratio>>,
 }
+impl Default for NutritionProductNutrient {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#item: Default::default(),
+            r#amount: Default::default(),
+        }
+    }
+}
 #[doc = "Ingredients contained in this product."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct NutritionProductIngredient {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -43,8 +50,23 @@ pub struct NutritionProductIngredient {
     #[doc = "The amount of ingredient that is in the product."]
     pub r#amount: Vec<Box<super::super::types::Ratio>>,
 }
+impl Default for NutritionProductIngredient {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#item: {
+                let mut default: Box<super::super::types::CodeableReference> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#amount: Default::default(),
+        }
+    }
+}
 #[doc = "Specifies descriptive properties of the nutrition product."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct NutritionProductCharacteristic {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -57,8 +79,23 @@ pub struct NutritionProductCharacteristic {
     #[doc = "The actual characteristic value corresponding to the type."]
     pub r#value: NutritionProductCharacteristicValue,
 }
+impl Default for NutritionProductCharacteristic {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#type: {
+                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#value: Default::default(),
+        }
+    }
+}
 #[doc = "Conveys instance-level information about this product item. One or several physical, countable instances or occurrences of the product."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct NutritionProductInstance {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -81,8 +118,24 @@ pub struct NutritionProductInstance {
     #[doc = "An identifier that supports traceability to the event during which material in this product from one or more biological entities was obtained or pooled."]
     pub r#biological_source_event: Option<Box<super::super::types::Identifier>>,
 }
+impl Default for NutritionProductInstance {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#quantity: Default::default(),
+            r#identifier: Default::default(),
+            r#name: Default::default(),
+            r#lot_number: Default::default(),
+            r#expiry: Default::default(),
+            r#use_by: Default::default(),
+            r#biological_source_event: Default::default(),
+        }
+    }
+}
 #[doc = "A food or supplement that is consumed by patients."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct NutritionProduct {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,
@@ -120,4 +173,32 @@ pub struct NutritionProduct {
     pub r#instance: Vec<NutritionProductInstance>,
     #[doc = "Comments made about the product."]
     pub r#note: Vec<Box<super::super::types::Annotation>>,
+}
+impl Default for NutritionProduct {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#meta: Default::default(),
+            r#implicit_rules: Default::default(),
+            r#language: Default::default(),
+            r#text: Default::default(),
+            r#contained: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#code: Default::default(),
+            r#status: {
+                let mut default: super::super::types::Code = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#category: Default::default(),
+            r#manufacturer: Default::default(),
+            r#nutrient: Default::default(),
+            r#ingredient: Default::default(),
+            r#known_allergen: Default::default(),
+            r#characteristic: Default::default(),
+            r#instance: Default::default(),
+            r#note: Default::default(),
+        }
+    }
 }

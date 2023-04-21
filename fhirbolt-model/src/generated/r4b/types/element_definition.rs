@@ -1,6 +1,6 @@
-// Generated on 2023-04-20 by fhirbolt-codegen v0.4.0
+// Generated on 2023-04-20 by fhirbolt-codegen v0.5.0
 #[doc = "The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false')."]
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub enum ElementDefinitionDefaultValue {
     Base64Binary(Box<super::super::types::Base64Binary>),
     Boolean(Box<super::super::types::Boolean>),
@@ -53,15 +53,11 @@ pub enum ElementDefinitionDefaultValue {
     TriggerDefinition(Box<super::super::types::TriggerDefinition>),
     UsageContext(Box<super::super::types::UsageContext>),
     Dosage(Box<super::super::types::Dosage>),
+    #[default]
     Invalid,
 }
-impl Default for ElementDefinitionDefaultValue {
-    fn default() -> ElementDefinitionDefaultValue {
-        ElementDefinitionDefaultValue::Invalid
-    }
-}
 #[doc = "Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing."]
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub enum ElementDefinitionFixed {
     Base64Binary(Box<super::super::types::Base64Binary>),
     Boolean(Box<super::super::types::Boolean>),
@@ -114,15 +110,11 @@ pub enum ElementDefinitionFixed {
     TriggerDefinition(Box<super::super::types::TriggerDefinition>),
     UsageContext(Box<super::super::types::UsageContext>),
     Dosage(Box<super::super::types::Dosage>),
+    #[default]
     Invalid,
 }
-impl Default for ElementDefinitionFixed {
-    fn default() -> ElementDefinitionFixed {
-        ElementDefinitionFixed::Invalid
-    }
-}
 #[doc = "Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  \n\nWhen pattern\\[x\\] is used to constrain a primitive, it means that the value provided in the pattern\\[x\\] must match the instance value exactly.\n\nWhen pattern\\[x\\] is used to constrain an array, it means that each element provided in the pattern\\[x\\] array must (recursively) match at least one element from the instance array.\n\nWhen pattern\\[x\\] is used to constrain a complex object, it means that each property in the pattern must be present in the complex object, and its value must recursively match -- i.e.,\n\n1. If primitive: it must match exactly the pattern value\n2. If a complex object: it must match (recursively) the pattern value\n3. If an array: it must match (recursively) the pattern value."]
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub enum ElementDefinitionPattern {
     Base64Binary(Box<super::super::types::Base64Binary>),
     Boolean(Box<super::super::types::Boolean>),
@@ -175,15 +167,11 @@ pub enum ElementDefinitionPattern {
     TriggerDefinition(Box<super::super::types::TriggerDefinition>),
     UsageContext(Box<super::super::types::UsageContext>),
     Dosage(Box<super::super::types::Dosage>),
+    #[default]
     Invalid,
 }
-impl Default for ElementDefinitionPattern {
-    fn default() -> ElementDefinitionPattern {
-        ElementDefinitionPattern::Invalid
-    }
-}
 #[doc = "The actual value for the element, which must be one of the types allowed for this element."]
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub enum ElementDefinitionExampleValue {
     Base64Binary(Box<super::super::types::Base64Binary>),
     Boolean(Box<super::super::types::Boolean>),
@@ -236,15 +224,11 @@ pub enum ElementDefinitionExampleValue {
     TriggerDefinition(Box<super::super::types::TriggerDefinition>),
     UsageContext(Box<super::super::types::UsageContext>),
     Dosage(Box<super::super::types::Dosage>),
+    #[default]
     Invalid,
 }
-impl Default for ElementDefinitionExampleValue {
-    fn default() -> ElementDefinitionExampleValue {
-        ElementDefinitionExampleValue::Invalid
-    }
-}
 #[doc = "The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity."]
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub enum ElementDefinitionMinValue {
     Date(Box<super::super::types::Date>),
     DateTime(Box<super::super::types::DateTime>),
@@ -255,15 +239,11 @@ pub enum ElementDefinitionMinValue {
     PositiveInt(Box<super::super::types::PositiveInt>),
     UnsignedInt(Box<super::super::types::UnsignedInt>),
     Quantity(Box<super::super::types::Quantity>),
+    #[default]
     Invalid,
 }
-impl Default for ElementDefinitionMinValue {
-    fn default() -> ElementDefinitionMinValue {
-        ElementDefinitionMinValue::Invalid
-    }
-}
 #[doc = "The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity."]
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub enum ElementDefinitionMaxValue {
     Date(Box<super::super::types::Date>),
     DateTime(Box<super::super::types::DateTime>),
@@ -274,15 +254,11 @@ pub enum ElementDefinitionMaxValue {
     PositiveInt(Box<super::super::types::PositiveInt>),
     UnsignedInt(Box<super::super::types::UnsignedInt>),
     Quantity(Box<super::super::types::Quantity>),
+    #[default]
     Invalid,
 }
-impl Default for ElementDefinitionMaxValue {
-    fn default() -> ElementDefinitionMaxValue {
-        ElementDefinitionMaxValue::Invalid
-    }
-}
 #[doc = "Designates which child elements are used to discriminate between the slices when processing an instance. If one or more discriminators are provided, the value of the child elements in the instance data SHALL completely distinguish which slice the element in the resource matches based on the allowed values for those elements in each of the slices."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct ElementDefinitionSlicingDiscriminator {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -293,8 +269,26 @@ pub struct ElementDefinitionSlicingDiscriminator {
     #[doc = "A FHIRPath expression, using [the simple subset of FHIRPath](fhirpath.html#simple), that is used to identify the element on which discrimination is based."]
     pub r#path: super::super::types::String,
 }
+impl Default for ElementDefinitionSlicingDiscriminator {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#type: {
+                let mut default: super::super::types::Code = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#path: {
+                let mut default: super::super::types::String = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+        }
+    }
+}
 #[doc = "Indicates that the element is sliced into a set of alternative definitions (i.e. in a structure definition, there are multiple different constraints on a single element in the base resource). Slicing can be used in any resource that has cardinality ..* on the base resource, or any resource with a choice of types. The set of slices is any elements that come after this in the element sequence that have the same path, until a shorter path occurs (the shorter path terminates the set)."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct ElementDefinitionSlicing {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -309,8 +303,24 @@ pub struct ElementDefinitionSlicing {
     #[doc = "Whether additional slices are allowed or not. When the slices are ordered, profile authors can also say that additional slices are only allowed at the end."]
     pub r#rules: super::super::types::Code,
 }
+impl Default for ElementDefinitionSlicing {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#discriminator: Default::default(),
+            r#description: Default::default(),
+            r#ordered: Default::default(),
+            r#rules: {
+                let mut default: super::super::types::Code = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+        }
+    }
+}
 #[doc = "Information about the base definition of the element, provided to make it unnecessary for tools to trace the deviation of the element through the derived and related profiles. When the element definition is not the original definition of an element - i.g. either in a constraint on another type, or for elements from a super type in a snap shot - then the information in provided in the element definition may be different to the base definition. On the original definition of the element, it will be same."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct ElementDefinitionBase {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -323,8 +333,31 @@ pub struct ElementDefinitionBase {
     #[doc = "Maximum cardinality of the base element identified by the path."]
     pub r#max: super::super::types::String,
 }
+impl Default for ElementDefinitionBase {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#path: {
+                let mut default: super::super::types::String = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#min: {
+                let mut default: super::super::types::UnsignedInt = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#max: {
+                let mut default: super::super::types::String = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+        }
+    }
+}
 #[doc = "The data type or resource that the value of this element is permitted to be."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct ElementDefinitionType {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -341,8 +374,25 @@ pub struct ElementDefinitionType {
     #[doc = "Whether this reference needs to be version specific or version independent, or whether either can be used."]
     pub r#versioning: Option<super::super::types::Code>,
 }
+impl Default for ElementDefinitionType {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#code: {
+                let mut default: super::super::types::Uri = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#profile: Default::default(),
+            r#target_profile: Default::default(),
+            r#aggregation: Default::default(),
+            r#versioning: Default::default(),
+        }
+    }
+}
 #[doc = "A sample value for this element demonstrating the type of information that would typically be found in the element."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct ElementDefinitionExample {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -353,8 +403,22 @@ pub struct ElementDefinitionExample {
     #[doc = "The actual value for the element, which must be one of the types allowed for this element."]
     pub r#value: ElementDefinitionExampleValue,
 }
+impl Default for ElementDefinitionExample {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#label: {
+                let mut default: super::super::types::String = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#value: Default::default(),
+        }
+    }
+}
 #[doc = "Formal constraints such as co-occurrence and other constraints that can be computationally evaluated within the context of the instance."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct ElementDefinitionConstraint {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -375,8 +439,35 @@ pub struct ElementDefinitionConstraint {
     #[doc = "A reference to the original source of the constraint, for traceability purposes."]
     pub r#source: Option<super::super::types::Canonical>,
 }
+impl Default for ElementDefinitionConstraint {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#key: {
+                let mut default: super::super::types::Id = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#requirements: Default::default(),
+            r#severity: {
+                let mut default: super::super::types::Code = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#human: {
+                let mut default: super::super::types::String = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#expression: Default::default(),
+            r#xpath: Default::default(),
+            r#source: Default::default(),
+        }
+    }
+}
 #[doc = "Binds to a value set if this element is coded (code, Coding, CodeableConcept, Quantity), or the data types (string, uri)."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct ElementDefinitionBinding {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -389,8 +480,23 @@ pub struct ElementDefinitionBinding {
     #[doc = "Refers to the value set that identifies the set of codes the binding refers to."]
     pub r#value_set: Option<super::super::types::Canonical>,
 }
+impl Default for ElementDefinitionBinding {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#strength: {
+                let mut default: super::super::types::Code = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#description: Default::default(),
+            r#value_set: Default::default(),
+        }
+    }
+}
 #[doc = "Identifies a concept from an external specification that roughly corresponds to this element."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct ElementDefinitionMapping {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -405,8 +511,28 @@ pub struct ElementDefinitionMapping {
     #[doc = "Comments that provide information about the mapping or its use."]
     pub r#comment: Option<super::super::types::String>,
 }
+impl Default for ElementDefinitionMapping {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#identity: {
+                let mut default: super::super::types::Id = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#language: Default::default(),
+            r#map: {
+                let mut default: super::super::types::String = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#comment: Default::default(),
+        }
+    }
+}
 #[doc = "Base StructureDefinition for ElementDefinition Type: Captures constraints on each element within the resource, profile, or extension."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct ElementDefinition {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -482,4 +608,51 @@ pub struct ElementDefinition {
     pub r#binding: Option<ElementDefinitionBinding>,
     #[doc = "Identifies a concept from an external specification that roughly corresponds to this element."]
     pub r#mapping: Vec<ElementDefinitionMapping>,
+}
+impl Default for ElementDefinition {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#path: {
+                let mut default: super::super::types::String = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#representation: Default::default(),
+            r#slice_name: Default::default(),
+            r#slice_is_constraining: Default::default(),
+            r#label: Default::default(),
+            r#code: Default::default(),
+            r#slicing: Default::default(),
+            r#short: Default::default(),
+            r#definition: Default::default(),
+            r#comment: Default::default(),
+            r#requirements: Default::default(),
+            r#alias: Default::default(),
+            r#min: Default::default(),
+            r#max: Default::default(),
+            r#base: Default::default(),
+            r#content_reference: Default::default(),
+            r#type: Default::default(),
+            r#default_value: Default::default(),
+            r#meaning_when_missing: Default::default(),
+            r#order_meaning: Default::default(),
+            r#fixed: Default::default(),
+            r#pattern: Default::default(),
+            r#example: Default::default(),
+            r#min_value: Default::default(),
+            r#max_value: Default::default(),
+            r#max_length: Default::default(),
+            r#condition: Default::default(),
+            r#constraint: Default::default(),
+            r#must_support: Default::default(),
+            r#is_modifier: Default::default(),
+            r#is_modifier_reason: Default::default(),
+            r#is_summary: Default::default(),
+            r#binding: Default::default(),
+            r#mapping: Default::default(),
+        }
+    }
 }

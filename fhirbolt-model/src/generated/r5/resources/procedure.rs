@@ -1,6 +1,6 @@
-// Generated on 2023-04-20 by fhirbolt-codegen v0.4.0
+// Generated on 2023-04-20 by fhirbolt-codegen v0.5.0
 #[doc = "Estimated or actual date, date-time, period, or age when the procedure did occur or is occurring.  Allows a period to support complex procedures that span more than one date, and also allows for the length of the procedure to be captured."]
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub enum ProcedureOccurrence {
     DateTime(Box<super::super::types::DateTime>),
     Period(Box<super::super::types::Period>),
@@ -8,27 +8,19 @@ pub enum ProcedureOccurrence {
     Age(Box<super::super::types::Age>),
     Range(Box<super::super::types::Range>),
     Timing(Box<super::super::types::Timing>),
+    #[default]
     Invalid,
 }
-impl Default for ProcedureOccurrence {
-    fn default() -> ProcedureOccurrence {
-        ProcedureOccurrence::Invalid
-    }
-}
 #[doc = "Indicates if this record was captured as a secondary 'reported' record rather than as an original primary source-of-truth record.  It may also indicate the source of the report."]
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub enum ProcedureReported {
     Boolean(Box<super::super::types::Boolean>),
     Reference(Box<super::super::types::Reference>),
+    #[default]
     Invalid,
 }
-impl Default for ProcedureReported {
-    fn default() -> ProcedureReported {
-        ProcedureReported::Invalid
-    }
-}
 #[doc = "Indicates who or what performed the procedure and how they were involved."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct ProcedurePerformer {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -45,8 +37,25 @@ pub struct ProcedurePerformer {
     #[doc = "Time period during which the performer performed the procedure."]
     pub r#period: Option<Box<super::super::types::Period>>,
 }
+impl Default for ProcedurePerformer {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#function: Default::default(),
+            r#actor: {
+                let mut default: Box<super::super::types::Reference> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#on_behalf_of: Default::default(),
+            r#period: Default::default(),
+        }
+    }
+}
 #[doc = "A device that is implanted, removed or otherwise manipulated (calibration, battery replacement, fitting a prosthesis, attaching a wound-vac, etc.) as a focal portion of the Procedure."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct ProcedureFocalDevice {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -59,8 +68,23 @@ pub struct ProcedureFocalDevice {
     #[doc = "The device that was manipulated (changed) during the procedure."]
     pub r#manipulated: Box<super::super::types::Reference>,
 }
+impl Default for ProcedureFocalDevice {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#action: Default::default(),
+            r#manipulated: {
+                let mut default: Box<super::super::types::Reference> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+        }
+    }
+}
 #[doc = "An action that is or was performed on or for a patient, practitioner, device, organization, or location. For example, this can be a physical intervention on a patient like an operation, or less invasive like long term services, counseling, or hypnotherapy.  This can be a quality or safety inspection for a location, organization, or device.  This can be an accreditation procedure on a practitioner for licensing."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct Procedure {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,
@@ -134,4 +158,54 @@ pub struct Procedure {
     pub r#used: Vec<Box<super::super::types::CodeableReference>>,
     #[doc = "Other resources from the patient record that may be relevant to the procedure.  The information from these resources was either used to create the instance or is provided to help with its interpretation. This extension should not be used if more specific inline elements or extensions are available."]
     pub r#supporting_info: Vec<Box<super::super::types::Reference>>,
+}
+impl Default for Procedure {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#meta: Default::default(),
+            r#implicit_rules: Default::default(),
+            r#language: Default::default(),
+            r#text: Default::default(),
+            r#contained: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#identifier: Default::default(),
+            r#instantiates_canonical: Default::default(),
+            r#instantiates_uri: Default::default(),
+            r#based_on: Default::default(),
+            r#part_of: Default::default(),
+            r#status: {
+                let mut default: super::super::types::Code = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#status_reason: Default::default(),
+            r#category: Default::default(),
+            r#code: Default::default(),
+            r#subject: {
+                let mut default: Box<super::super::types::Reference> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#focus: Default::default(),
+            r#encounter: Default::default(),
+            r#occurrence: Default::default(),
+            r#recorded: Default::default(),
+            r#recorder: Default::default(),
+            r#reported: Default::default(),
+            r#performer: Default::default(),
+            r#location: Default::default(),
+            r#reason: Default::default(),
+            r#body_site: Default::default(),
+            r#outcome: Default::default(),
+            r#report: Default::default(),
+            r#complication: Default::default(),
+            r#follow_up: Default::default(),
+            r#note: Default::default(),
+            r#focal_device: Default::default(),
+            r#used: Default::default(),
+            r#supporting_info: Default::default(),
+        }
+    }
 }

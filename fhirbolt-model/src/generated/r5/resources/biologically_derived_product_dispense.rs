@@ -1,6 +1,6 @@
-// Generated on 2023-04-20 by fhirbolt-codegen v0.4.0
+// Generated on 2023-04-20 by fhirbolt-codegen v0.5.0
 #[doc = "Indicates who or what performed an action."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct BiologicallyDerivedProductDispensePerformer {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -13,8 +13,23 @@ pub struct BiologicallyDerivedProductDispensePerformer {
     #[doc = "Identifies the person responsible for the action."]
     pub r#actor: Box<super::super::types::Reference>,
 }
+impl Default for BiologicallyDerivedProductDispensePerformer {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#function: Default::default(),
+            r#actor: {
+                let mut default: Box<super::super::types::Reference> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+        }
+    }
+}
 #[doc = "A record of dispensation of a biologically derived product."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct BiologicallyDerivedProductDispense {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,
@@ -64,4 +79,46 @@ pub struct BiologicallyDerivedProductDispense {
     pub r#note: Vec<Box<super::super::types::Annotation>>,
     #[doc = "Specific instructions for use."]
     pub r#usage_instruction: Option<super::super::types::String>,
+}
+impl Default for BiologicallyDerivedProductDispense {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#meta: Default::default(),
+            r#implicit_rules: Default::default(),
+            r#language: Default::default(),
+            r#text: Default::default(),
+            r#contained: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#identifier: Default::default(),
+            r#based_on: Default::default(),
+            r#part_of: Default::default(),
+            r#status: {
+                let mut default: super::super::types::Code = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#origin_relationship_type: Default::default(),
+            r#product: {
+                let mut default: Box<super::super::types::Reference> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#patient: {
+                let mut default: Box<super::super::types::Reference> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#match_status: Default::default(),
+            r#performer: Default::default(),
+            r#location: Default::default(),
+            r#quantity: Default::default(),
+            r#prepared_date: Default::default(),
+            r#when_handed_over: Default::default(),
+            r#destination: Default::default(),
+            r#note: Default::default(),
+            r#usage_instruction: Default::default(),
+        }
+    }
 }

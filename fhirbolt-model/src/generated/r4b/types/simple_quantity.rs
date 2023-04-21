@@ -1,6 +1,6 @@
-// Generated on 2023-04-20 by fhirbolt-codegen v0.4.0
+// Generated on 2023-04-20 by fhirbolt-codegen v0.5.0
 #[doc = "A fixed quantity (no comparator)"]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct SimpleQuantity {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -14,4 +14,16 @@ pub struct SimpleQuantity {
     pub r#system: Option<super::super::types::Uri>,
     #[doc = "A computer processable form of the unit in some unit representation system."]
     pub r#code: Option<super::super::types::Code>,
+}
+impl Default for SimpleQuantity {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#value: Default::default(),
+            r#unit: Default::default(),
+            r#system: Default::default(),
+            r#code: Default::default(),
+        }
+    }
 }

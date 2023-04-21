@@ -1,4 +1,5 @@
 mod de;
+mod default;
 mod element_map;
 mod ser;
 mod serde_helpers;
@@ -11,7 +12,7 @@ use regex::{Captures, Regex};
 
 use crate::{
     casing::RustCasing,
-    codegen::de::implement_deserialze_resource_enum,
+    codegen::{de::implement_deserialze_resource_enum, default::implement_default},
     ir::{RustFhirEnum, RustFhirModule, RustFhirStruct, RustFhirStructField},
     SourceFile,
 };
@@ -144,14 +145,18 @@ fn generate_struct(r#struct: &RustFhirStruct) -> TokenStream {
 
     let doc_comment = format_doc_comment(&r#struct.doc_comment);
 
+    let default_impl = implement_default(r#struct);
+
     quote! {
         #[doc=#doc_comment]
-        #[derive(Default, Debug, Clone, PartialEq)]
+        #[derive(Debug, Clone, PartialEq)]
         pub struct #name_ident {
             #(
                 #fields_tokens
             )*
         }
+
+        #default_impl
     }
 }
 
@@ -220,18 +225,13 @@ fn generate_enum(r#enum: &RustFhirEnum) -> TokenStream {
 
     quote! {
         #[doc=#doc_comment_tokens]
-        #[derive(Debug, Clone, PartialEq)]
+        #[derive(Default, Debug, Clone, PartialEq)]
         pub enum #name_ident {
             #(
                 #variants_tokens
             )*
+            #[default]
             Invalid,
-        }
-
-        impl Default for #name_ident {
-            fn default() -> #name_ident {
-                #name_ident::Invalid
-            }
         }
     }
 }

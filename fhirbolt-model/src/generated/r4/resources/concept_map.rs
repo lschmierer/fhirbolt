@@ -1,30 +1,22 @@
-// Generated on 2023-04-20 by fhirbolt-codegen v0.4.0
+// Generated on 2023-04-20 by fhirbolt-codegen v0.5.0
 #[doc = "Identifier for the source value set that contains the concepts that are being mapped and provides context for the mappings."]
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub enum ConceptMapSource {
     Uri(Box<super::super::types::Uri>),
     Canonical(Box<super::super::types::Canonical>),
+    #[default]
     Invalid,
 }
-impl Default for ConceptMapSource {
-    fn default() -> ConceptMapSource {
-        ConceptMapSource::Invalid
-    }
-}
 #[doc = "The target value set provides context for the mappings. Note that the mapping is made between concepts, not between value sets, but the value set provides important context about how the concept mapping choices are made."]
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub enum ConceptMapTarget {
     Uri(Box<super::super::types::Uri>),
     Canonical(Box<super::super::types::Canonical>),
+    #[default]
     Invalid,
 }
-impl Default for ConceptMapTarget {
-    fn default() -> ConceptMapTarget {
-        ConceptMapTarget::Invalid
-    }
-}
 #[doc = "A set of additional dependencies for this mapping to hold. This mapping is only applicable if the specified element can be resolved, and it has the specified value."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct ConceptMapGroupElementTargetDependsOn {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -41,8 +33,29 @@ pub struct ConceptMapGroupElementTargetDependsOn {
     #[doc = "The display for the code. The display is only provided to help editors when editing the concept map."]
     pub r#display: Option<super::super::types::String>,
 }
+impl Default for ConceptMapGroupElementTargetDependsOn {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#property: {
+                let mut default: super::super::types::Uri = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#system: Default::default(),
+            r#value: {
+                let mut default: super::super::types::String = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#display: Default::default(),
+        }
+    }
+}
 #[doc = "A concept from the target value set that this concept maps to."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct ConceptMapGroupElementTarget {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -63,8 +76,27 @@ pub struct ConceptMapGroupElementTarget {
     #[doc = "A set of additional outcomes from this mapping to other elements. To properly execute this mapping, the specified element must be mapped to some data element or source that is in context. The mapping may still be useful without a place for the additional data elements, but the equivalence cannot be relied on."]
     pub r#product: Vec<ConceptMapGroupElementTargetDependsOn>,
 }
+impl Default for ConceptMapGroupElementTarget {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#code: Default::default(),
+            r#display: Default::default(),
+            r#equivalence: {
+                let mut default: super::super::types::Code = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#comment: Default::default(),
+            r#depends_on: Default::default(),
+            r#product: Default::default(),
+        }
+    }
+}
 #[doc = "Mappings for an individual concept in the source to one or more concepts in the target."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct ConceptMapGroupElement {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -79,8 +111,20 @@ pub struct ConceptMapGroupElement {
     #[doc = "A concept from the target value set that this concept maps to."]
     pub r#target: Vec<ConceptMapGroupElementTarget>,
 }
+impl Default for ConceptMapGroupElement {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#code: Default::default(),
+            r#display: Default::default(),
+            r#target: Default::default(),
+        }
+    }
+}
 #[doc = "What to do when there is no mapping for the source concept. \"Unmapped\" does not include codes that are unmatched, and the unmapped element is ignored in a code is specified to have equivalence = unmatched."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct ConceptMapGroupUnmapped {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -97,8 +141,25 @@ pub struct ConceptMapGroupUnmapped {
     #[doc = "The canonical reference to an additional ConceptMap resource instance to use for mapping if this ConceptMap resource contains no matching mapping for the source concept."]
     pub r#url: Option<super::super::types::Canonical>,
 }
+impl Default for ConceptMapGroupUnmapped {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#mode: {
+                let mut default: super::super::types::Code = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#code: Default::default(),
+            r#display: Default::default(),
+            r#url: Default::default(),
+        }
+    }
+}
 #[doc = "A group of mappings that all have the same source and target system."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct ConceptMapGroup {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -119,8 +180,23 @@ pub struct ConceptMapGroup {
     #[doc = "What to do when there is no mapping for the source concept. \"Unmapped\" does not include codes that are unmatched, and the unmapped element is ignored in a code is specified to have equivalence = unmatched."]
     pub r#unmapped: Option<ConceptMapGroupUnmapped>,
 }
+impl Default for ConceptMapGroup {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#source: Default::default(),
+            r#source_version: Default::default(),
+            r#target: Default::default(),
+            r#target_version: Default::default(),
+            r#element: Default::default(),
+            r#unmapped: Default::default(),
+        }
+    }
+}
 #[doc = "A statement of relationships from one set of concepts to one or more other concepts - either concepts in code systems, or data element/data element concepts, or classes in class models."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct ConceptMap {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,
@@ -174,4 +250,40 @@ pub struct ConceptMap {
     pub r#target: Option<ConceptMapTarget>,
     #[doc = "A group of mappings that all have the same source and target system."]
     pub r#group: Vec<ConceptMapGroup>,
+}
+impl Default for ConceptMap {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#meta: Default::default(),
+            r#implicit_rules: Default::default(),
+            r#language: Default::default(),
+            r#text: Default::default(),
+            r#contained: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#url: Default::default(),
+            r#identifier: Default::default(),
+            r#version: Default::default(),
+            r#name: Default::default(),
+            r#title: Default::default(),
+            r#status: {
+                let mut default: super::super::types::Code = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#experimental: Default::default(),
+            r#date: Default::default(),
+            r#publisher: Default::default(),
+            r#contact: Default::default(),
+            r#description: Default::default(),
+            r#use_context: Default::default(),
+            r#jurisdiction: Default::default(),
+            r#purpose: Default::default(),
+            r#copyright: Default::default(),
+            r#source: Default::default(),
+            r#target: Default::default(),
+            r#group: Default::default(),
+        }
+    }
 }

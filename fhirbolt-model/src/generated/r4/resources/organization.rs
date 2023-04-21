@@ -1,6 +1,6 @@
-// Generated on 2023-04-20 by fhirbolt-codegen v0.4.0
+// Generated on 2023-04-20 by fhirbolt-codegen v0.5.0
 #[doc = "Contact for the organization for a certain purpose."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct OrganizationContact {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -17,8 +17,21 @@ pub struct OrganizationContact {
     #[doc = "Visiting or postal addresses for the contact."]
     pub r#address: Option<Box<super::super::types::Address>>,
 }
+impl Default for OrganizationContact {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#purpose: Default::default(),
+            r#name: Default::default(),
+            r#telecom: Default::default(),
+            r#address: Default::default(),
+        }
+    }
+}
 #[doc = "A formally or informally recognized grouping of people or organizations formed for the purpose of achieving some form of collective action.  Includes companies, institutions, corporations, departments, community groups, healthcare practice groups, payer/insurer, etc."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct Organization {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,
@@ -56,4 +69,28 @@ pub struct Organization {
     pub r#contact: Vec<OrganizationContact>,
     #[doc = "Technical endpoints providing access to services operated for the organization."]
     pub r#endpoint: Vec<Box<super::super::types::Reference>>,
+}
+impl Default for Organization {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#meta: Default::default(),
+            r#implicit_rules: Default::default(),
+            r#language: Default::default(),
+            r#text: Default::default(),
+            r#contained: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#identifier: Default::default(),
+            r#active: Default::default(),
+            r#type: Default::default(),
+            r#name: Default::default(),
+            r#alias: Default::default(),
+            r#telecom: Default::default(),
+            r#address: Default::default(),
+            r#part_of: Default::default(),
+            r#contact: Default::default(),
+            r#endpoint: Default::default(),
+        }
+    }
 }

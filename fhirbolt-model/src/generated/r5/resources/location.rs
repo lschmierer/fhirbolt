@@ -1,6 +1,6 @@
-// Generated on 2023-04-20 by fhirbolt-codegen v0.4.0
+// Generated on 2023-04-20 by fhirbolt-codegen v0.5.0
 #[doc = "The absolute geographic location of the Location, expressed using the WGS84 datum (This is the same co-ordinate system used in KML)."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct LocationPosition {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -15,8 +15,28 @@ pub struct LocationPosition {
     #[doc = "Altitude. The value domain and the interpretation are the same as for the text of the altitude element in KML (see notes on Location main page)."]
     pub r#altitude: Option<super::super::types::Decimal>,
 }
+impl Default for LocationPosition {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#longitude: {
+                let mut default: super::super::types::Decimal = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#latitude: {
+                let mut default: super::super::types::Decimal = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#altitude: Default::default(),
+        }
+    }
+}
 #[doc = "Details and position information for a place where services are provided and resources and participants may be stored, found, contained, or accommodated."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct Location {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,
@@ -70,4 +90,36 @@ pub struct Location {
     pub r#virtual_service: Vec<Box<super::super::types::VirtualServiceDetail>>,
     #[doc = "Technical endpoints providing access to services operated for the location."]
     pub r#endpoint: Vec<Box<super::super::types::Reference>>,
+}
+impl Default for Location {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#meta: Default::default(),
+            r#implicit_rules: Default::default(),
+            r#language: Default::default(),
+            r#text: Default::default(),
+            r#contained: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#identifier: Default::default(),
+            r#status: Default::default(),
+            r#operational_status: Default::default(),
+            r#name: Default::default(),
+            r#alias: Default::default(),
+            r#description: Default::default(),
+            r#mode: Default::default(),
+            r#type: Default::default(),
+            r#contact: Default::default(),
+            r#address: Default::default(),
+            r#form: Default::default(),
+            r#position: Default::default(),
+            r#managing_organization: Default::default(),
+            r#part_of: Default::default(),
+            r#characteristic: Default::default(),
+            r#hours_of_operation: Default::default(),
+            r#virtual_service: Default::default(),
+            r#endpoint: Default::default(),
+        }
+    }
 }

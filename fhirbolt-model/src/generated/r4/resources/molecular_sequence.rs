@@ -1,6 +1,6 @@
-// Generated on 2023-04-20 by fhirbolt-codegen v0.4.0
+// Generated on 2023-04-20 by fhirbolt-codegen v0.5.0
 #[doc = "A sequence that is used as a reference to describe variants that are present in a sequence analyzed."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct MolecularSequenceReferenceSeq {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -27,8 +27,26 @@ pub struct MolecularSequenceReferenceSeq {
     #[doc = "End position of the window on the reference sequence. If the coordinate system is 0-based then end is exclusive and does not include the last position. If the coordinate system is 1-base, then end is inclusive and includes the last position."]
     pub r#window_end: Option<super::super::types::Integer>,
 }
+impl Default for MolecularSequenceReferenceSeq {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#chromosome: Default::default(),
+            r#genome_build: Default::default(),
+            r#orientation: Default::default(),
+            r#reference_seq_id: Default::default(),
+            r#reference_seq_pointer: Default::default(),
+            r#reference_seq_string: Default::default(),
+            r#strand: Default::default(),
+            r#window_start: Default::default(),
+            r#window_end: Default::default(),
+        }
+    }
+}
 #[doc = "The definition of variant here originates from Sequence ontology ([variant_of](<http://www.sequenceontology.org/browser/current_svn/term/variant_of>)). This element can represent amino acid or nucleic sequence change(including insertion,deletion,SNP,etc.)  It can represent some complex mutation or segment variation with the assist of CIGAR string."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct MolecularSequenceVariant {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -49,8 +67,23 @@ pub struct MolecularSequenceVariant {
     #[doc = "A pointer to an Observation containing variant information."]
     pub r#variant_pointer: Option<Box<super::super::types::Reference>>,
 }
+impl Default for MolecularSequenceVariant {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#start: Default::default(),
+            r#end: Default::default(),
+            r#observed_allele: Default::default(),
+            r#reference_allele: Default::default(),
+            r#cigar: Default::default(),
+            r#variant_pointer: Default::default(),
+        }
+    }
+}
 #[doc = "Receiver Operator Characteristic (ROC) Curve  to give sensitivity/specificity tradeoff."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct MolecularSequenceQualityRoc {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -73,8 +106,24 @@ pub struct MolecularSequenceQualityRoc {
     #[doc = "Calculated fScore if the GQ score threshold was set to \"score\" field value."]
     pub r#f_measure: Vec<super::super::types::Decimal>,
 }
+impl Default for MolecularSequenceQualityRoc {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#score: Default::default(),
+            r#num_tp: Default::default(),
+            r#num_fp: Default::default(),
+            r#num_fn: Default::default(),
+            r#precision: Default::default(),
+            r#sensitivity: Default::default(),
+            r#f_measure: Default::default(),
+        }
+    }
+}
 #[doc = "An experimental feature attribute that defines the quality of the feature in a quantitative way, such as a phred quality score ([SO:0001686](<http://www.sequenceontology.org/browser/current_svn/term/SO:0001686>))."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct MolecularSequenceQuality {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -113,8 +162,36 @@ pub struct MolecularSequenceQuality {
     #[doc = "Receiver Operator Characteristic (ROC) Curve  to give sensitivity/specificity tradeoff."]
     pub r#roc: Option<MolecularSequenceQualityRoc>,
 }
+impl Default for MolecularSequenceQuality {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#type: {
+                let mut default: super::super::types::Code = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#standard_sequence: Default::default(),
+            r#start: Default::default(),
+            r#end: Default::default(),
+            r#score: Default::default(),
+            r#method: Default::default(),
+            r#truth_tp: Default::default(),
+            r#query_tp: Default::default(),
+            r#truth_fn: Default::default(),
+            r#query_fp: Default::default(),
+            r#gt_fp: Default::default(),
+            r#precision: Default::default(),
+            r#recall: Default::default(),
+            r#f_score: Default::default(),
+            r#roc: Default::default(),
+        }
+    }
+}
 #[doc = "Configurations of the external repository. The repository shall store target's observedSeq or records related with target's observedSeq."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct MolecularSequenceRepository {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -135,8 +212,27 @@ pub struct MolecularSequenceRepository {
     #[doc = "Id of the read in this external repository."]
     pub r#readset_id: Option<super::super::types::String>,
 }
+impl Default for MolecularSequenceRepository {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#type: {
+                let mut default: super::super::types::Code = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#url: Default::default(),
+            r#name: Default::default(),
+            r#dataset_id: Default::default(),
+            r#variantset_id: Default::default(),
+            r#readset_id: Default::default(),
+        }
+    }
+}
 #[doc = "Structural variant outer."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct MolecularSequenceStructureVariantOuter {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -149,8 +245,19 @@ pub struct MolecularSequenceStructureVariantOuter {
     #[doc = "Structural variant outer end. If the coordinate system is 0-based then end is exclusive and does not include the last position. If the coordinate system is 1-base, then end is inclusive and includes the last position."]
     pub r#end: Option<super::super::types::Integer>,
 }
+impl Default for MolecularSequenceStructureVariantOuter {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#start: Default::default(),
+            r#end: Default::default(),
+        }
+    }
+}
 #[doc = "Structural variant inner."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct MolecularSequenceStructureVariantInner {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -163,8 +270,19 @@ pub struct MolecularSequenceStructureVariantInner {
     #[doc = "Structural variant inner end. If the coordinate system is 0-based then end is exclusive and does not include the last position. If the coordinate system is 1-base, then end is inclusive and includes the last position."]
     pub r#end: Option<super::super::types::Integer>,
 }
+impl Default for MolecularSequenceStructureVariantInner {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#start: Default::default(),
+            r#end: Default::default(),
+        }
+    }
+}
 #[doc = "Information about chromosome structure variation."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct MolecularSequenceStructureVariant {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -183,8 +301,22 @@ pub struct MolecularSequenceStructureVariant {
     #[doc = "Structural variant inner."]
     pub r#inner: Option<MolecularSequenceStructureVariantInner>,
 }
+impl Default for MolecularSequenceStructureVariant {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#variant_type: Default::default(),
+            r#exact: Default::default(),
+            r#length: Default::default(),
+            r#outer: Default::default(),
+            r#inner: Default::default(),
+        }
+    }
+}
 #[doc = "Raw data describing a biological sequence."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct MolecularSequence {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,
@@ -234,4 +366,38 @@ pub struct MolecularSequence {
     pub r#pointer: Vec<Box<super::super::types::Reference>>,
     #[doc = "Information about chromosome structure variation."]
     pub r#structure_variant: Vec<MolecularSequenceStructureVariant>,
+}
+impl Default for MolecularSequence {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#meta: Default::default(),
+            r#implicit_rules: Default::default(),
+            r#language: Default::default(),
+            r#text: Default::default(),
+            r#contained: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#identifier: Default::default(),
+            r#type: Default::default(),
+            r#coordinate_system: {
+                let mut default: super::super::types::Integer = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#patient: Default::default(),
+            r#specimen: Default::default(),
+            r#device: Default::default(),
+            r#performer: Default::default(),
+            r#quantity: Default::default(),
+            r#reference_seq: Default::default(),
+            r#variant: Default::default(),
+            r#observed_seq: Default::default(),
+            r#quality: Default::default(),
+            r#read_coverage: Default::default(),
+            r#repository: Default::default(),
+            r#pointer: Default::default(),
+            r#structure_variant: Default::default(),
+        }
+    }
 }

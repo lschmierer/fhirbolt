@@ -1,18 +1,14 @@
-// Generated on 2023-04-20 by fhirbolt-codegen v0.4.0
+// Generated on 2023-04-20 by fhirbolt-codegen v0.5.0
 #[doc = "The age of the specific population."]
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub enum PopulationAge {
     Range(Box<super::super::types::Range>),
     CodeableConcept(Box<super::super::types::CodeableConcept>),
+    #[default]
     Invalid,
 }
-impl Default for PopulationAge {
-    fn default() -> PopulationAge {
-        PopulationAge::Invalid
-    }
-}
 #[doc = "Base StructureDefinition for Population Type: A populatioof people with some set of grouping criteria."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct Population {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -28,4 +24,17 @@ pub struct Population {
     pub r#race: Option<Box<super::super::types::CodeableConcept>>,
     #[doc = "The existing physiological conditions of the specific population to which this applies."]
     pub r#physiological_condition: Option<Box<super::super::types::CodeableConcept>>,
+}
+impl Default for Population {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#age: Default::default(),
+            r#gender: Default::default(),
+            r#race: Default::default(),
+            r#physiological_condition: Default::default(),
+        }
+    }
 }

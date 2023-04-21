@@ -1,6 +1,6 @@
-// Generated on 2023-04-20 by fhirbolt-codegen v0.4.0
+// Generated on 2023-04-20 by fhirbolt-codegen v0.5.0
 #[doc = "Defines an affiliation/assotiation/relationship between 2 distinct organizations, that is not a part-of relationship/sub-division relationship.\n\nNeed to define relationships between organizations that are not sub-divisions of the same organization (part-of relationships)."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct OrganizationAffiliation {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,
@@ -42,4 +42,30 @@ pub struct OrganizationAffiliation {
     pub r#contact: Vec<Box<super::super::types::ExtendedContactDetail>>,
     #[doc = "Technical endpoints providing access to services operated for this role."]
     pub r#endpoint: Vec<Box<super::super::types::Reference>>,
+}
+impl Default for OrganizationAffiliation {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#meta: Default::default(),
+            r#implicit_rules: Default::default(),
+            r#language: Default::default(),
+            r#text: Default::default(),
+            r#contained: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#identifier: Default::default(),
+            r#active: Default::default(),
+            r#period: Default::default(),
+            r#organization: Default::default(),
+            r#participating_organization: Default::default(),
+            r#network: Default::default(),
+            r#code: Default::default(),
+            r#specialty: Default::default(),
+            r#location: Default::default(),
+            r#healthcare_service: Default::default(),
+            r#contact: Default::default(),
+            r#endpoint: Default::default(),
+        }
+    }
 }

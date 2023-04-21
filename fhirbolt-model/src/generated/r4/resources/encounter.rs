@@ -1,6 +1,6 @@
-// Generated on 2023-04-20 by fhirbolt-codegen v0.4.0
+// Generated on 2023-04-20 by fhirbolt-codegen v0.5.0
 #[doc = "The status history permits the encounter resource to contain the status history without needing to read through the historical versions of the resource, or even have the server store them."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct EncounterStatusHistory {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -13,8 +13,27 @@ pub struct EncounterStatusHistory {
     #[doc = "The time that the episode was in the specified status."]
     pub r#period: Box<super::super::types::Period>,
 }
+impl Default for EncounterStatusHistory {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#status: {
+                let mut default: super::super::types::Code = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#period: {
+                let mut default: Box<super::super::types::Period> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+        }
+    }
+}
 #[doc = "The class history permits the tracking of the encounters transitions without needing to go  through the resource history.  This would be used for a case where an admission starts of as an emergency encounter, then transitions into an inpatient scenario. Doing this and not restarting a new encounter ensures that any lab/diagnostic results can more easily follow the patient and not require re-processing and not get lost or cancelled during a kind of discharge from emergency to inpatient."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct EncounterClassHistory {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -27,8 +46,27 @@ pub struct EncounterClassHistory {
     #[doc = "The time that the episode was in the specified class."]
     pub r#period: Box<super::super::types::Period>,
 }
+impl Default for EncounterClassHistory {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#class: {
+                let mut default: Box<super::super::types::Coding> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#period: {
+                let mut default: Box<super::super::types::Period> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+        }
+    }
+}
 #[doc = "The list of people responsible for providing the service."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct EncounterParticipant {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -43,8 +81,20 @@ pub struct EncounterParticipant {
     #[doc = "Persons involved in the encounter other than the patient."]
     pub r#individual: Option<Box<super::super::types::Reference>>,
 }
+impl Default for EncounterParticipant {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#type: Default::default(),
+            r#period: Default::default(),
+            r#individual: Default::default(),
+        }
+    }
+}
 #[doc = "The list of diagnosis relevant to this encounter."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct EncounterDiagnosis {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -59,8 +109,24 @@ pub struct EncounterDiagnosis {
     #[doc = "Ranking of the diagnosis (for each role type)."]
     pub r#rank: Option<super::super::types::PositiveInt>,
 }
+impl Default for EncounterDiagnosis {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#condition: {
+                let mut default: Box<super::super::types::Reference> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#use: Default::default(),
+            r#rank: Default::default(),
+        }
+    }
+}
 #[doc = "Details about the admission to a healthcare service."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct EncounterHospitalization {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -87,8 +153,26 @@ pub struct EncounterHospitalization {
     #[doc = "Category or kind of location after discharge."]
     pub r#discharge_disposition: Option<Box<super::super::types::CodeableConcept>>,
 }
+impl Default for EncounterHospitalization {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#pre_admission_identifier: Default::default(),
+            r#origin: Default::default(),
+            r#admit_source: Default::default(),
+            r#re_admission: Default::default(),
+            r#diet_preference: Default::default(),
+            r#special_courtesy: Default::default(),
+            r#special_arrangement: Default::default(),
+            r#destination: Default::default(),
+            r#discharge_disposition: Default::default(),
+        }
+    }
+}
 #[doc = "List of locations where  the patient has been during this encounter."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct EncounterLocation {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -105,8 +189,25 @@ pub struct EncounterLocation {
     #[doc = "Time period during which the patient was present at the location."]
     pub r#period: Option<Box<super::super::types::Period>>,
 }
+impl Default for EncounterLocation {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#location: {
+                let mut default: Box<super::super::types::Reference> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#status: Default::default(),
+            r#physical_type: Default::default(),
+            r#period: Default::default(),
+        }
+    }
+}
 #[doc = "An interaction between a patient and healthcare provider(s) for the purpose of providing healthcare service(s) or assessing the health status of a patient."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct Encounter {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,
@@ -170,4 +271,49 @@ pub struct Encounter {
     pub r#service_provider: Option<Box<super::super::types::Reference>>,
     #[doc = "Another Encounter of which this encounter is a part of (administratively or in time)."]
     pub r#part_of: Option<Box<super::super::types::Reference>>,
+}
+impl Default for Encounter {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#meta: Default::default(),
+            r#implicit_rules: Default::default(),
+            r#language: Default::default(),
+            r#text: Default::default(),
+            r#contained: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#identifier: Default::default(),
+            r#status: {
+                let mut default: super::super::types::Code = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#status_history: Default::default(),
+            r#class: {
+                let mut default: Box<super::super::types::Coding> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#class_history: Default::default(),
+            r#type: Default::default(),
+            r#service_type: Default::default(),
+            r#priority: Default::default(),
+            r#subject: Default::default(),
+            r#episode_of_care: Default::default(),
+            r#based_on: Default::default(),
+            r#participant: Default::default(),
+            r#appointment: Default::default(),
+            r#period: Default::default(),
+            r#length: Default::default(),
+            r#reason_code: Default::default(),
+            r#reason_reference: Default::default(),
+            r#diagnosis: Default::default(),
+            r#account: Default::default(),
+            r#hospitalization: Default::default(),
+            r#location: Default::default(),
+            r#service_provider: Default::default(),
+            r#part_of: Default::default(),
+        }
+    }
 }

@@ -1,6 +1,6 @@
-// Generated on 2023-04-20 by fhirbolt-codegen v0.4.0
+// Generated on 2023-04-20 by fhirbolt-codegen v0.5.0
 #[doc = "Additional names for the study."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct ResearchStudyLabel {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -13,8 +13,19 @@ pub struct ResearchStudyLabel {
     #[doc = "The name."]
     pub r#value: Option<super::super::types::String>,
 }
+impl Default for ResearchStudyLabel {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#type: Default::default(),
+            r#value: Default::default(),
+        }
+    }
+}
 #[doc = "Sponsors, collaborators, and other parties."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct ResearchStudyAssociatedParty {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -33,8 +44,26 @@ pub struct ResearchStudyAssociatedParty {
     #[doc = "Individual or organization associated with study (use practitionerRole to specify their organisation)."]
     pub r#party: Option<Box<super::super::types::Reference>>,
 }
+impl Default for ResearchStudyAssociatedParty {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#name: Default::default(),
+            r#role: {
+                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#period: Default::default(),
+            r#classifier: Default::default(),
+            r#party: Default::default(),
+        }
+    }
+}
 #[doc = "Status of study with time for that status."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct ResearchStudyProgressStatus {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -49,8 +78,24 @@ pub struct ResearchStudyProgressStatus {
     #[doc = "Date range."]
     pub r#period: Option<Box<super::super::types::Period>>,
 }
+impl Default for ResearchStudyProgressStatus {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#state: {
+                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#actual: Default::default(),
+            r#period: Default::default(),
+        }
+    }
+}
 #[doc = "Target or actual group of participants enrolled in study."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct ResearchStudyRecruitment {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -67,8 +112,21 @@ pub struct ResearchStudyRecruitment {
     #[doc = "Group of participants who were enrolled in study."]
     pub r#actual_group: Option<Box<super::super::types::Reference>>,
 }
+impl Default for ResearchStudyRecruitment {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#target_number: Default::default(),
+            r#actual_number: Default::default(),
+            r#eligibility: Default::default(),
+            r#actual_group: Default::default(),
+        }
+    }
+}
 #[doc = "Describes an expected event or sequence of events for one of the subjects of a study. E.g. for a living subject: exposure to drug A, wash-out, exposure to drug B, wash-out, follow-up. E.g. for a stability study: {store sample from lot A at 25 degrees for 1 month}, {store sample from lot A at 40 degrees for 1 month}."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct ResearchStudyComparisonGroup {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -89,8 +147,27 @@ pub struct ResearchStudyComparisonGroup {
     #[doc = "Group of participants who were enrolled in study comparisonGroup."]
     pub r#observed_group: Option<Box<super::super::types::Reference>>,
 }
+impl Default for ResearchStudyComparisonGroup {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#link_id: Default::default(),
+            r#name: {
+                let mut default: super::super::types::String = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#type: Default::default(),
+            r#description: Default::default(),
+            r#intended_exposure: Default::default(),
+            r#observed_group: Default::default(),
+        }
+    }
+}
 #[doc = "A goal that the study is aiming to achieve in terms of a scientific question to be answered by the analysis of data collected during the study."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct ResearchStudyObjective {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -105,8 +182,20 @@ pub struct ResearchStudyObjective {
     #[doc = "Free text description of the objective of the study.  This is what the study is trying to achieve rather than how it is going to achieve it (see ResearchStudy.description)."]
     pub r#description: Option<super::super::types::Markdown>,
 }
+impl Default for ResearchStudyObjective {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#name: Default::default(),
+            r#type: Default::default(),
+            r#description: Default::default(),
+        }
+    }
+}
 #[doc = "An \"outcome measure\", \"endpoint\", \"effect measure\" or \"measure of effect\" is a specific measurement or observation used to quantify the effect of experimental variables on the participants in a study, or for observational studies, to describe patterns of diseases or traits or associations with exposures, risk factors or treatment."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct ResearchStudyOutcomeMeasure {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -123,8 +212,21 @@ pub struct ResearchStudyOutcomeMeasure {
     #[doc = "Structured outcome definition."]
     pub r#reference: Option<Box<super::super::types::Reference>>,
 }
+impl Default for ResearchStudyOutcomeMeasure {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#name: Default::default(),
+            r#type: Default::default(),
+            r#description: Default::default(),
+            r#reference: Default::default(),
+        }
+    }
+}
 #[doc = "A scientific study of nature that sometimes includes processes involved in health and disease. For example, clinical trials are research studies that involve people. These studies may be related to new ways to screen, prevent, diagnose, and treat disease. They may also study certain outcomes and certain groups of people by looking at data collected in the past or future."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct ResearchStudy {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,
@@ -206,4 +308,54 @@ pub struct ResearchStudy {
     pub r#outcome_measure: Vec<ResearchStudyOutcomeMeasure>,
     #[doc = "Link to one or more sets of results generated by the study.  Could also link to a research registry holding the results such as ClinicalTrials.gov."]
     pub r#result: Vec<Box<super::super::types::Reference>>,
+}
+impl Default for ResearchStudy {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#meta: Default::default(),
+            r#implicit_rules: Default::default(),
+            r#language: Default::default(),
+            r#text: Default::default(),
+            r#contained: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#url: Default::default(),
+            r#identifier: Default::default(),
+            r#version: Default::default(),
+            r#name: Default::default(),
+            r#title: Default::default(),
+            r#label: Default::default(),
+            r#protocol: Default::default(),
+            r#part_of: Default::default(),
+            r#related_artifact: Default::default(),
+            r#date: Default::default(),
+            r#status: {
+                let mut default: super::super::types::Code = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#primary_purpose_type: Default::default(),
+            r#phase: Default::default(),
+            r#study_design: Default::default(),
+            r#focus: Default::default(),
+            r#condition: Default::default(),
+            r#keyword: Default::default(),
+            r#region: Default::default(),
+            r#description_summary: Default::default(),
+            r#description: Default::default(),
+            r#period: Default::default(),
+            r#site: Default::default(),
+            r#note: Default::default(),
+            r#classifier: Default::default(),
+            r#associated_party: Default::default(),
+            r#progress_status: Default::default(),
+            r#why_stopped: Default::default(),
+            r#recruitment: Default::default(),
+            r#comparison_group: Default::default(),
+            r#objective: Default::default(),
+            r#outcome_measure: Default::default(),
+            r#result: Default::default(),
+        }
+    }
 }

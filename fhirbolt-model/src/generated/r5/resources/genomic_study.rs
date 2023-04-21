@@ -1,18 +1,14 @@
-// Generated on 2023-04-20 by fhirbolt-codegen v0.4.0
+// Generated on 2023-04-20 by fhirbolt-codegen v0.5.0
 #[doc = "The analysis event or other GenomicStudy that generated this input file."]
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub enum GenomicStudyAnalysisInputGeneratedBy {
     Identifier(Box<super::super::types::Identifier>),
     Reference(Box<super::super::types::Reference>),
+    #[default]
     Invalid,
 }
-impl Default for GenomicStudyAnalysisInputGeneratedBy {
-    fn default() -> GenomicStudyAnalysisInputGeneratedBy {
-        GenomicStudyAnalysisInputGeneratedBy::Invalid
-    }
-}
 #[doc = "Inputs for the analysis event."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct GenomicStudyAnalysisInput {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -27,8 +23,20 @@ pub struct GenomicStudyAnalysisInput {
     #[doc = "The analysis event or other GenomicStudy that generated this input file."]
     pub r#generated_by: Option<GenomicStudyAnalysisInputGeneratedBy>,
 }
+impl Default for GenomicStudyAnalysisInput {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#file: Default::default(),
+            r#type: Default::default(),
+            r#generated_by: Default::default(),
+        }
+    }
+}
 #[doc = "Outputs for the analysis event."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct GenomicStudyAnalysisOutput {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -41,8 +49,19 @@ pub struct GenomicStudyAnalysisOutput {
     #[doc = "Type of output data, e.g., VCF, MAF, or BAM."]
     pub r#type: Option<Box<super::super::types::CodeableConcept>>,
 }
+impl Default for GenomicStudyAnalysisOutput {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#file: Default::default(),
+            r#type: Default::default(),
+        }
+    }
+}
 #[doc = "Performer for the analysis event."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct GenomicStudyAnalysisPerformer {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -55,8 +74,19 @@ pub struct GenomicStudyAnalysisPerformer {
     #[doc = "Role of the actor for this analysis."]
     pub r#role: Option<Box<super::super::types::CodeableConcept>>,
 }
+impl Default for GenomicStudyAnalysisPerformer {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#actor: Default::default(),
+            r#role: Default::default(),
+        }
+    }
+}
 #[doc = "Devices used for the analysis (e.g., instruments, software), with settings and parameters."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct GenomicStudyAnalysisDevice {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -69,8 +99,19 @@ pub struct GenomicStudyAnalysisDevice {
     #[doc = "Specific function for the device used for the analysis."]
     pub r#function: Option<Box<super::super::types::CodeableConcept>>,
 }
+impl Default for GenomicStudyAnalysisDevice {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#device: Default::default(),
+            r#function: Default::default(),
+        }
+    }
+}
 #[doc = "The details about a specific analysis that was performed in this GenomicStudy."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct GenomicStudyAnalysis {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -115,8 +156,35 @@ pub struct GenomicStudyAnalysis {
     #[doc = "Devices used for the analysis (e.g., instruments, software), with settings and parameters."]
     pub r#device: Vec<GenomicStudyAnalysisDevice>,
 }
+impl Default for GenomicStudyAnalysis {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#identifier: Default::default(),
+            r#method_type: Default::default(),
+            r#change_type: Default::default(),
+            r#genome_build: Default::default(),
+            r#instantiates_canonical: Default::default(),
+            r#instantiates_uri: Default::default(),
+            r#title: Default::default(),
+            r#focus: Default::default(),
+            r#specimen: Default::default(),
+            r#date: Default::default(),
+            r#note: Default::default(),
+            r#protocol_performed: Default::default(),
+            r#regions_studied: Default::default(),
+            r#regions_called: Default::default(),
+            r#input: Default::default(),
+            r#output: Default::default(),
+            r#performer: Default::default(),
+            r#device: Default::default(),
+        }
+    }
+}
 #[doc = "A set of analyses performed to analyze and generate genomic data."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct GenomicStudy {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,
@@ -164,4 +232,41 @@ pub struct GenomicStudy {
     pub r#description: Option<super::super::types::Markdown>,
     #[doc = "The details about a specific analysis that was performed in this GenomicStudy."]
     pub r#analysis: Vec<GenomicStudyAnalysis>,
+}
+impl Default for GenomicStudy {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#meta: Default::default(),
+            r#implicit_rules: Default::default(),
+            r#language: Default::default(),
+            r#text: Default::default(),
+            r#contained: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#identifier: Default::default(),
+            r#status: {
+                let mut default: super::super::types::Code = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#type: Default::default(),
+            r#subject: {
+                let mut default: Box<super::super::types::Reference> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#encounter: Default::default(),
+            r#start_date: Default::default(),
+            r#based_on: Default::default(),
+            r#referrer: Default::default(),
+            r#interpreter: Default::default(),
+            r#reason: Default::default(),
+            r#instantiates_canonical: Default::default(),
+            r#instantiates_uri: Default::default(),
+            r#note: Default::default(),
+            r#description: Default::default(),
+            r#analysis: Default::default(),
+        }
+    }
 }

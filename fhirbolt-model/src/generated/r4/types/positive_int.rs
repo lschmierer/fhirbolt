@@ -1,6 +1,6 @@
-// Generated on 2023-04-20 by fhirbolt-codegen v0.4.0
+// Generated on 2023-04-20 by fhirbolt-codegen v0.5.0
 #[doc = "Base StructureDefinition for positiveInt type: An integer with a value that is positive (e.g. >0)"]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct PositiveInt {
     #[doc = "unique id for the element within a resource (for internal references)"]
     pub r#id: Option<std::string::String>,
@@ -8,4 +8,13 @@ pub struct PositiveInt {
     pub r#extension: Vec<Box<super::super::types::Extension>>,
     #[doc = "Primitive value for positiveInt"]
     pub r#value: Option<u32>,
+}
+impl Default for PositiveInt {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#value: Default::default(),
+        }
+    }
 }

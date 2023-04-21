@@ -1,18 +1,14 @@
-// Generated on 2023-04-20 by fhirbolt-codegen v0.4.0
+// Generated on 2023-04-20 by fhirbolt-codegen v0.5.0
 #[doc = "The period during which the activity occurred."]
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Default, Debug, Clone, PartialEq)]
 pub enum ProvenanceOccurred {
     Period(Box<super::super::types::Period>),
     DateTime(Box<super::super::types::DateTime>),
+    #[default]
     Invalid,
 }
-impl Default for ProvenanceOccurred {
-    fn default() -> ProvenanceOccurred {
-        ProvenanceOccurred::Invalid
-    }
-}
 #[doc = "An actor taking a role in an activity  for which it can be assigned some degree of responsibility for the activity taking place."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct ProvenanceAgent {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -29,8 +25,25 @@ pub struct ProvenanceAgent {
     #[doc = "The agent that delegated authority to perform the activity performed by the agent.who element."]
     pub r#on_behalf_of: Option<Box<super::super::types::Reference>>,
 }
+impl Default for ProvenanceAgent {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#type: Default::default(),
+            r#role: Default::default(),
+            r#who: {
+                let mut default: Box<super::super::types::Reference> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#on_behalf_of: Default::default(),
+        }
+    }
+}
 #[doc = "An entity used in this activity."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct ProvenanceEntity {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
@@ -45,8 +58,28 @@ pub struct ProvenanceEntity {
     #[doc = "The entity is attributed to an agent to express the agent's responsibility for that entity, possibly along with other agents. This description can be understood as shorthand for saying that the agent was responsible for the activity which used the entity."]
     pub r#agent: Vec<ProvenanceAgent>,
 }
+impl Default for ProvenanceEntity {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#role: {
+                let mut default: super::super::types::Code = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#what: {
+                let mut default: Box<super::super::types::Reference> = Default::default();
+                default.id = Some("$invalid".to_string());
+                default
+            },
+            r#agent: Default::default(),
+        }
+    }
+}
 #[doc = "Provenance of a resource is a record that describes entities and processes involved in producing and delivering or otherwise influencing that resource. Provenance provides a critical foundation for assessing authenticity, enabling trust, and allowing reproducibility. Provenance assertions are a form of contextual metadata and can themselves become important records with their own provenance. Provenance statement indicates clinical significance in terms of confidence in authenticity, reliability, and trustworthiness, integrity, and stage in lifecycle (e.g. Document Completion - has the artifact been legally authenticated), all of which may impact security, privacy, and trust policies."]
-#[derive(Default, Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct Provenance {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
     pub r#id: Option<std::string::String>,
@@ -90,4 +123,31 @@ pub struct Provenance {
     pub r#entity: Vec<ProvenanceEntity>,
     #[doc = "A digital signature on the target Reference(s). The signer should match a Provenance.agent. The purpose of the signature is indicated."]
     pub r#signature: Vec<Box<super::super::types::Signature>>,
+}
+impl Default for Provenance {
+    fn default() -> Self {
+        Self {
+            r#id: Default::default(),
+            r#meta: Default::default(),
+            r#implicit_rules: Default::default(),
+            r#language: Default::default(),
+            r#text: Default::default(),
+            r#contained: Default::default(),
+            r#extension: Default::default(),
+            r#modifier_extension: Default::default(),
+            r#target: Default::default(),
+            r#occurred: Default::default(),
+            r#recorded: Default::default(),
+            r#policy: Default::default(),
+            r#location: Default::default(),
+            r#authorization: Default::default(),
+            r#activity: Default::default(),
+            r#based_on: Default::default(),
+            r#patient: Default::default(),
+            r#encounter: Default::default(),
+            r#agent: Default::default(),
+            r#entity: Default::default(),
+            r#signature: Default::default(),
+        }
+    }
 }
