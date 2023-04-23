@@ -1,0 +1,9 @@
+MSH|^~\&|SAP-ISH|001-0001|||20210419120309||ADT^A01|32187870|P|2.5|||AL|NE|DE|ISO8859-15
+EVN|A01|20210419120309||NP12I0||20210418152200|BAPIGWI
+PID||903971791|1121347684^3^ISO^^PI|903971791|Family name^Given name^^^^^L|Family name|20000101|F|Family name||Street^Other^City^State^A104^DEU||1-800-273-8255|1-800-273-8255|D|S||MRN||0112358||||||DE|||20000101|N|
+NK1|1|Family Name^Given Name|^^ISH|Street Address^Other Designation^City^State or Province^A104^DEU
+PV1||I|00000408^^^04G|AN||^^|||||||||||||1001887916^4^ISO^^VN||K|||K||||||||||||||||||||20210418152200|20210419120200||||||H
+PV2||GN^Gesunde Neugeborene^ISH|0601||||AN|||00001||
+IN1|1||0004028290^^^^FI~0108091041^^^^NI~0108091041^^^^HC|Daimler BKK|Rather Str. 51^^Düsseldorf^^40467^D|Family Name|903971791||||Name|20210418|99991231||F|Familiy Name^Given Name^Second Name^^^||20000101|Street Address^Other Designation^City^State or Province^A104^DEU|||01||||||||||||||||||||||Street Address|01
+ZBE|100188791600001|20210418152200||UPDATE
+ZZK|||||01||||20210418|00000000||003

@@ -1,0 +1,13 @@
+MSH|^~\&|SAP-ISH|001-0001|||20210419120309||ADT^A01|32187855|P|2.5|||AL|NE|DE|ISO8859-15
+EVN|A01|20210419120309||NP12IV||20210419115653|BAPIGWI
+PID||903971791|1306211406^3^ISO^^PI|903971791|Family name^Given name^^^^^L|Family name|20000101|M|Family name||Street^Other^City^State^A104^DEU||1-800-273-8255^^PH|1-800-273-8255|D|M|--|MRN||0112358||||||DE|||20000101|N|Oberhausen
+NK1|1|Family Name^Given Name|^^ISH|Street Address^Other Designation^City^State or Province^A104^DEU|1-800-273-8255^^PH
+PV1||I|00001004^^^10N|AS||^^|||0004007722^Adelkamp^Ulrike^^^^Dr. med.|||||0260530283|||||1001889418^6^ISO^^VN||K|||K||||||||||||||||||||20210419115653|||||||V
+PV2||A^Allgemeiner Patient^ISH|0101||||AS|||00005||Anlage 1B
+DG1|||F03^Nicht näher bezeichnete Demenz^I10|||AD
+DG1|||F03^Nicht näher bezeichnete Demenz^I10|||
+IN1|1||0004005266^^^^FI~0104077501^^^^NI~0104077501^^^^HC|Techniker-Krankenkasse|Bramfelder Str. 138^^Hamburg^^22305^D|Family Name|2009508919||||Name|19790101|99991231||R|Familiy Name^Given Name^Second Name^^^||20000101|Street Address^Other Designation^City^State or Province^A104^DEU|||01||||||||||||||S985249440||||||||Street Address|
+IN1|2|SZ^Selbstzahler^MIRTH|||^^^^^|Family Name|1733458383||||Name|19560401|99991231|||Familiy Name^Given Name^Second Name^^^||20000101|Street Address^Other Designation^City^State or Province^A104^DEU|||98||||||||||||||
+ZBE|100188941800001|20210419115653||UPDATE
+ZZK|||||98||||20210419|00000000||002
+ZZE|0001|1001889418|6026641|001|S985249440|19560401|Ulrich|Niermann|M|||||50354|Hürth|D|Berrenrather Str.||412||||19790101|00000000|101575519|104077501|D|Techniker Krankenkasse|TK||5||||38|0|5.2.0|00000000|||||20210419|00000000|DE_EGK|||0|||||00000000|00000000|9|9||1

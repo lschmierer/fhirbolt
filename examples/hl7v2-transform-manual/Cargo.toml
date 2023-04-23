@@ -1,0 +1,7 @@
+[package]
+name = "example-hl7v2-transform-manual"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+fhirbolt = { path = "../../fhirbolt", features = ["r5"] }

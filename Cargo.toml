@@ -8,4 +8,5 @@ members = [
     "fhirbolt-shared",
     "tests",
     "benches",
+    "examples/*"
 ]

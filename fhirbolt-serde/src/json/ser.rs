@@ -30,7 +30,7 @@ where
 {
     value
         .serialization_context(config.unwrap_or(Default::default()), true)
-        .serialize(&mut Serializer::new(writer))
+        .serialize(&mut Serializer::pretty(writer))
 }
 
 /// Serialize the given resource as a JSON byte vector.
