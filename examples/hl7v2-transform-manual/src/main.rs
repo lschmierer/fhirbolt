@@ -76,6 +76,7 @@ fn main() {
     println!("Transformation \x1B[32msuccesful\x1B[39m! 🚀")
 }
 
+/// Build a FHIR bundle from a list of resources.
 fn build_bundle(resources: Vec<Resource>) -> Bundle {
     Bundle {
         r#type: Code {

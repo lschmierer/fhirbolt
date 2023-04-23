@@ -27,6 +27,7 @@ const GENDER_MAP: &[(&str, &str)] = &[
     ("U", "unknown"),
 ];
 
+/// Map a HL7 v2 message to a FHIR patient.
 pub fn map_patient(message: &Message, id: &str) -> Patient {
     let pid_segment = message.segments_by_id("PID").next();
 

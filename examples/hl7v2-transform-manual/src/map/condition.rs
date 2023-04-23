@@ -10,6 +10,9 @@ use crate::hl7v2::{
 
 use super::{build_codeable_concept, build_reference};
 
+/// Map a HL7 v2 message to a list of FHIR conditions.
+///
+/// This function tries to remove duplicates.
 pub fn map_conditions(message: &Message, patient_id: &str, encounter_id: &str) -> Vec<Condition> {
     let mut conditions = vec![];
 

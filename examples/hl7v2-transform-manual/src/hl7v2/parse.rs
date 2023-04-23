@@ -2,6 +2,7 @@ use super::{Component, Field, Message, RepeatedField, Segment, SubComponent};
 
 const SEGMENT_DELIMITER: char = '\x0D'; // which is \r
 
+/// Hold HL7 v2 delimiters.
 struct Delimiters {
     field: char,
     repeat: char,
@@ -10,8 +11,12 @@ struct Delimiters {
     escape: char,
 }
 
+/// Parse a HL7 v2 message into an abstract datastrucutre.
+///
+/// # Limitations
+/// The HL7 parser currently does not handle escaping!
 pub fn parse(message_str: &str) -> Result<Message, String> {
-    println!("\x1B[33mWarning\x1B[39m: HL7 parse currently does not handle escaping!");
+    println!("\x1B[33mWarning\x1B[39m: HL7 parser currently does not handle escaping!");
 
     if !message_str.starts_with("MSH") {
         return Err("no MSH".into());

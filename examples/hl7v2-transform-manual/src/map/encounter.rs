@@ -12,6 +12,7 @@ use super::{build_codeable_concept, build_reference, map_code, map_identifier};
 
 const CLASS_MAP: &[(&str, &str)] = &[("I", "IMP"), ("O", "AMB"), ("E", "EMER")];
 
+/// Map a HL7 v2 message to a FHIR encounter.
 pub fn map_encounter(message: &Message, id: &str, patient_id: &str) -> Encounter {
     let pv1_segment = message.segments_by_id("PV1").next();
 

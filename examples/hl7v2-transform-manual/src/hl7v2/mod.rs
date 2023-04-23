@@ -1,3 +1,5 @@
+//! This module contains a model and a parser for HL7 v2 messages.
+
 use std::iter;
 
 use fhirbolt::model::r5::types::{Date, DateTime, String as FhirString};
@@ -6,30 +8,36 @@ pub use parse::parse;
 
 mod parse;
 
+/// HL7 v2 message.
 #[derive(Debug, PartialEq)]
 pub struct Message {
     header: Segment,
     segments: Vec<Segment>,
 }
 
+/// Segment (a line) in a HL7 v2 message.
 #[derive(Debug, PartialEq)]
 pub struct Segment {
     id: String,
     fields: Vec<RepeatedField>,
 }
 
+/// Type alias for repeated field in a HL7 v2 segment.
 pub type RepeatedField = Vec<Field>;
 
+/// A single field ofr a HL7 v2 segment.
 #[derive(Debug, PartialEq)]
 pub struct Field {
     components: Vec<Component>,
 }
 
+/// Component of a HL7 v2 field.
 #[derive(Debug, PartialEq)]
 pub struct Component {
     sub_components: Vec<SubComponent>,
 }
 
+/// Subcomponent of a HL7 v2 component.
 #[derive(Debug, PartialEq)]
 pub enum SubComponent {
     Empty,
@@ -37,7 +45,9 @@ pub enum SubComponent {
     Value(String),
 }
 
+/// Convinience accessors for a HL7 v2 message.
 pub trait MessageAccess {
+    /// Query all segments with givent segment id.
     fn segments_by_id<'a>(&'a self, id: &'a str) -> Box<dyn Iterator<Item = &'a Segment> + 'a>;
 }
 
@@ -50,8 +60,13 @@ impl MessageAccess for Message {
     }
 }
 
+/// Convinience accessors for a HL7 v2 segment.
 pub trait SegmentAccess {
+    /// Get the single field at given index.
+    ///
+    /// This returns only the fir field in case of repeats.
     fn field(&self, index: usize) -> Option<&Field>;
+    /// Get repeated fields at given index.
     fn repeated(&self, index: usize) -> &RepeatedField;
 }
 
@@ -75,18 +90,11 @@ impl SegmentAccess for Option<&Segment> {
     }
 }
 
-pub trait RepeatedFieldAccess {
-    fn get(&self, index: usize) -> Option<&Field>;
-}
-
-impl RepeatedFieldAccess for Option<&RepeatedField> {
-    fn get(&self, index: usize) -> Option<&Field> {
-        self.and_then(|f| f.get(index))
-    }
-}
-
+/// Convinience accessors for a HL7 v2 field.
 pub trait FieldAccess {
+    /// Get all components of this field.
     fn components(&self) -> &[Component];
+    /// Get component with given index.
     fn component(&self, index: usize) -> Option<&Component>;
 }
 
@@ -108,7 +116,9 @@ impl FieldAccess for Option<&Field> {
     }
 }
 
+/// Convinience accessors for a HL7 v2 component.
 pub trait ComponentAccess {
+    /// Get only the first sub-component.
     fn first_sub(&self) -> Option<&SubComponent>;
 }
 
@@ -124,11 +134,17 @@ impl ComponentAccess for Option<&Component> {
     }
 }
 
+/// Convinience accessors for a HL7 v2 sub-component.
 pub trait SubComponentAccess {
+    /// Get sub-component as string.
     fn as_str(&self) -> Option<&str>;
+    /// Get sub-component as bool.
     fn as_bool(&self) -> Option<bool>;
+    /// Convert sub-component to a FHIR String.
     fn to_fhir_string(&self) -> Option<FhirString>;
+    /// Convert sub-component to a FHIR Date.
     fn to_fhir_date(&self) -> Option<Date>;
+    /// Convert sub-component to a FHIR DateTime.
     fn to_fhir_date_time(&self) -> Option<DateTime>;
 }
 

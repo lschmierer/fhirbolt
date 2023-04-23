@@ -1,9 +1,9 @@
 # Example manual HL7 v2 to FHIR transformation
 
 This example demonstrates a simple transformation of HL7 v2 ADT A01 messages to FHIR resources.
-It implements a basic HL7 v2 parser (CAVE: does not handle escapes) and some mappings to FHIR resource fields.
+It implements a basic HL7 v2 parser (CAVE: does not handle escapes) and some mappings to FHIR resources.
 
-Use following command to run the example:
+Use following command from fhirbolt project root to run the example:
 ```
 cargo run --bin example-hl7v2-transform-manual
 ```
