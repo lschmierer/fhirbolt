@@ -120,7 +120,7 @@ pub struct BundleEntryResponse {
     #[doc = "The date/time that the resource was modified on the server."]
     pub r#last_modified: Option<super::super::types::Instant>,
     #[doc = "An OperationOutcome containing hints and warnings produced as part of processing this entry in a batch or transaction."]
-    pub r#outcome: Option<Box<super::super::Resource>>,
+    pub r#outcome: Option<super::super::Resource>,
 }
 impl Default for BundleEntryResponse {
     fn default() -> Self {
@@ -154,7 +154,7 @@ pub struct BundleEntry {
     #[doc = "The Absolute URL for the resource. Except for transactions and batches, each entry in a Bundle must have a fullUrl. The fullUrl SHALL NOT disagree with the id in the resource - i.e. if the fullUrl is not a urn:uuid, the URL shall be version-independent URL consistent with the Resource.id. The fullUrl is a version independent reference to the resource. Even when not required, fullUrl MAY be set to a urn:uuid to allow referencing entries in a transaction. The fullUrl can be an arbitrary URI and is not limited to urn:uuid, urn:oid, http, and <https>. The fullUrl element SHALL have a value except when: \n* invoking a create\n* invoking or responding to an operation where the body is not a single identified resource\n* invoking or returning the results of a search or history operation."]
     pub r#full_url: Option<super::super::types::Uri>,
     #[doc = "The Resource for the entry. The purpose/meaning of the resource is determined by the Bundle.type. This is allowed to be a Parameters resource if and only if it is referenced by something else within the Bundle that provides context/meaning."]
-    pub r#resource: Option<Box<super::super::Resource>>,
+    pub r#resource: Option<super::super::Resource>,
     #[doc = "Information about the search process that lead to the creation of this entry."]
     pub r#search: Option<BundleEntrySearch>,
     #[doc = "Additional information about how this entry should be processed as part of a transaction or batch.  For history, it shows how the entry was processed to create the version contained in the entry."]
@@ -203,7 +203,7 @@ pub struct Bundle {
     #[doc = "Digital Signature - base64 encoded. XML-DSig or a JWS."]
     pub r#signature: Option<Box<super::super::types::Signature>>,
     #[doc = "Captures issues and warnings that relate to the construction of the Bundle and the content within it."]
-    pub r#issues: Option<Box<super::super::Resource>>,
+    pub r#issues: Option<super::super::Resource>,
 }
 impl Default for Bundle {
     fn default() -> Self {

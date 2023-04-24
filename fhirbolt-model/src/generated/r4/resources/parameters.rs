@@ -69,7 +69,7 @@ pub struct ParametersParameter {
     #[doc = "If the parameter is a data type."]
     pub r#value: Option<ParametersParameterValue>,
     #[doc = "If the parameter is a whole resource."]
-    pub r#resource: Option<Box<super::super::Resource>>,
+    pub r#resource: Option<super::super::Resource>,
     #[doc = "A named part of a multi-part parameter."]
     pub r#part: Vec<ParametersParameter>,
 }

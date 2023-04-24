@@ -138,16 +138,7 @@ pub fn implement_serialize_resource_enum(
             }
         }
 
-        impl serde::ser::Serialize for crate::context::ser::SerializationContext<&Box<#namespace::Resource>> {
-            fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
-            where
-                S: serde::ser::Serializer,
-            {
-                self.with_context(self.value.as_ref(), |ctx| ctx.serialize(serializer))
-            }
-        }
-
-        impl serde::ser::Serialize for crate::context::ser::SerializationContext<&Vec<Box<#namespace::Resource>>> {
+        impl serde::ser::Serialize for crate::context::ser::SerializationContext<&Vec<#namespace::Resource>> {
             fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
             where
                 S: serde::ser::Serializer,

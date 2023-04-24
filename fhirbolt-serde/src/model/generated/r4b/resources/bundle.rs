@@ -1661,7 +1661,7 @@ impl<'de> serde::de::DeserializeSeed<'de>
                 let mut r#location: Option<fhirbolt_model::r4b::types::Uri> = None;
                 let mut r#etag: Option<fhirbolt_model::r4b::types::String> = None;
                 let mut r#last_modified: Option<fhirbolt_model::r4b::types::Instant> = None;
-                let mut r#outcome: Option<Box<fhirbolt_model::r4b::Resource>> = None;
+                let mut r#outcome: Option<fhirbolt_model::r4b::Resource> = None;
                 while let Some(map_access_key) = map_access.next_key()? {
                     match map_access_key {
                         Field::Id => {
@@ -1819,7 +1819,7 @@ impl<'de> serde::de::DeserializeSeed<'de>
                                 return Err(serde::de::Error::duplicate_field("outcome"));
                             }
                             r#outcome = Some(map_access.next_value_seed(
-                                self.0.transmute::<Box<fhirbolt_model::r4b::Resource>>(),
+                                self.0.transmute::<fhirbolt_model::r4b::Resource>(),
                             )?);
                         }
                         Field::Unknown(key) => {
@@ -2122,7 +2122,7 @@ impl<'de> serde::de::DeserializeSeed<'de>
                 > = None;
                 let mut r#link: Option<Vec<fhirbolt_model::r4b::resources::BundleLink>> = None;
                 let mut r#full_url: Option<fhirbolt_model::r4b::types::Uri> = None;
-                let mut r#resource: Option<Box<fhirbolt_model::r4b::Resource>> = None;
+                let mut r#resource: Option<fhirbolt_model::r4b::Resource> = None;
                 let mut r#search: Option<fhirbolt_model::r4b::resources::BundleEntrySearch> = None;
                 let mut r#request: Option<fhirbolt_model::r4b::resources::BundleEntryRequest> =
                     None;
@@ -2206,7 +2206,7 @@ impl<'de> serde::de::DeserializeSeed<'de>
                                 return Err(serde::de::Error::duplicate_field("resource"));
                             }
                             r#resource = Some(map_access.next_value_seed(
-                                self.0.transmute::<Box<fhirbolt_model::r4b::Resource>>(),
+                                self.0.transmute::<fhirbolt_model::r4b::Resource>(),
                             )?);
                         }
                         Field::Search => {

@@ -880,7 +880,7 @@ impl<'de> serde::de::DeserializeSeed<'de>
                 let mut r#name: Option<fhirbolt_model::r4b::types::String> = None;
                 let mut r#value: Option<fhirbolt_model::r4b::resources::ParametersParameterValue> =
                     None;
-                let mut r#resource: Option<Box<fhirbolt_model::r4b::Resource>> = None;
+                let mut r#resource: Option<fhirbolt_model::r4b::Resource> = None;
                 let mut r#part: Option<Vec<fhirbolt_model::r4b::resources::ParametersParameter>> =
                     None;
                 while let Some(map_access_key) = map_access.next_key()? {
@@ -1744,7 +1744,7 @@ impl<'de> serde::de::DeserializeSeed<'de>
                                 return Err(serde::de::Error::duplicate_field("resource"));
                             }
                             r#resource = Some(map_access.next_value_seed(
-                                self.0.transmute::<Box<fhirbolt_model::r4b::Resource>>(),
+                                self.0.transmute::<fhirbolt_model::r4b::Resource>(),
                             )?);
                         }
                         Field::Part => {

@@ -120,7 +120,7 @@ pub struct BundleEntryResponse {
     #[doc = "The date/time that the resource was modified on the server."]
     pub r#last_modified: Option<super::super::types::Instant>,
     #[doc = "An OperationOutcome containing hints and warnings produced as part of processing this entry in a batch or transaction."]
-    pub r#outcome: Option<Box<super::super::Resource>>,
+    pub r#outcome: Option<super::super::Resource>,
 }
 impl Default for BundleEntryResponse {
     fn default() -> Self {
@@ -154,7 +154,7 @@ pub struct BundleEntry {
     #[doc = "The Absolute URL for the resource.  The fullUrl SHALL NOT disagree with the id in the resource - i.e. if the fullUrl is not a urn:uuid, the URL shall be version-independent URL consistent with the Resource.id. The fullUrl is a version independent reference to the resource. The fullUrl element SHALL have a value except that: \n* fullUrl can be empty on a POST (although it does not need to when specifying a temporary id for reference in the bundle)\n* Results from operations might involve resources that are not identified."]
     pub r#full_url: Option<super::super::types::Uri>,
     #[doc = "The Resource for the entry. The purpose/meaning of the resource is determined by the Bundle.type."]
-    pub r#resource: Option<Box<super::super::Resource>>,
+    pub r#resource: Option<super::super::Resource>,
     #[doc = "Information about the search process that lead to the creation of this entry."]
     pub r#search: Option<BundleEntrySearch>,
     #[doc = "Additional information about how this entry should be processed as part of a transaction or batch.  For history, it shows how the entry was processed to create the version contained in the entry."]

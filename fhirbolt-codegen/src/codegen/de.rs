@@ -305,28 +305,17 @@ pub fn implement_deserialze_resource_enum(
             }
         }
 
-        impl<'de> serde::de::DeserializeSeed<'de> for &mut crate::context::de::DeserializationContext<Box<#namespace::Resource>> {
-            type Value = Box<#namespace::Resource>;
+        impl<'de> serde::de::DeserializeSeed<'de> for &mut crate::context::de::DeserializationContext<Vec<#namespace::Resource>> {
+            type Value = Vec<#namespace::Resource>;
 
             fn deserialize<D>(self, deserializer: D) -> Result<Self::Value, D::Error>
             where
                 D: serde::de::Deserializer<'de>,
             {
-                self.transmute::<#namespace::Resource>().deserialize(deserializer).map(Box::new)
-            }
-        }
-
-        impl<'de> serde::de::DeserializeSeed<'de> for &mut crate::context::de::DeserializationContext<Vec<Box<#namespace::Resource>>> {
-            type Value = Vec<Box<#namespace::Resource>>;
-
-            fn deserialize<D>(self, deserializer: D) -> Result<Self::Value, D::Error>
-            where
-                D: serde::de::Deserializer<'de>,
-            {
-                struct Visitor<'a>(&'a mut crate::context::de::DeserializationContext<Vec<Box<#namespace::Resource>>>);
+                struct Visitor<'a>(&'a mut crate::context::de::DeserializationContext<Vec<#namespace::Resource>>);
 
                 impl<'de> serde::de::Visitor<'de> for Visitor<'_> {
-                    type Value = Vec<Box<#namespace::Resource>>;
+                    type Value = Vec<#namespace::Resource>;
 
                     fn expecting(&self, formatter: &mut std::fmt::Formatter) -> std::fmt::Result {
                         formatter.write_str("a sequence of resources")
@@ -338,7 +327,7 @@ pub fn implement_deserialze_resource_enum(
                     {
                         let mut values = Vec::new();
 
-                        while let Some(value) = seq.next_element_seed(self.0.transmute::<Box<#namespace::Resource>>())? {
+                        while let Some(value) = seq.next_element_seed(self.0.transmute::<#namespace::Resource>())? {
                             values.push(value);
                         }
 

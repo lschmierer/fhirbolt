@@ -4862,7 +4862,7 @@ impl<'de> serde::de::DeserializeSeed<'de>
                 let mut r#implicit_rules: Option<fhirbolt_model::r4::types::Uri> = None;
                 let mut r#language: Option<fhirbolt_model::r4::types::Code> = None;
                 let mut r#text: Option<Box<fhirbolt_model::r4::types::Narrative>> = None;
-                let mut r#contained: Option<Vec<Box<fhirbolt_model::r4::Resource>>> = None;
+                let mut r#contained: Option<Vec<fhirbolt_model::r4::Resource>> = None;
                 let mut r#extension: Option<Vec<Box<fhirbolt_model::r4::types::Extension>>> = None;
                 let mut r#modifier_extension: Option<
                     Vec<Box<fhirbolt_model::r4::types::Extension>>,
@@ -4995,12 +4995,12 @@ impl<'de> serde::de::DeserializeSeed<'de>
                                     return Err(serde::de::Error::duplicate_field("contained"));
                                 }
                                 r#contained = Some(map_access.next_value_seed(
-                                    self.0.transmute::<Vec<Box<fhirbolt_model::r4::Resource>>>(),
+                                    self.0.transmute::<Vec<fhirbolt_model::r4::Resource>>(),
                                 )?);
                             } else {
                                 let vec = r#contained.get_or_insert(Default::default());
                                 vec.push(map_access.next_value_seed(
-                                    self.0.transmute::<Box<fhirbolt_model::r4::Resource>>(),
+                                    self.0.transmute::<fhirbolt_model::r4::Resource>(),
                                 )?);
                             }
                         }
