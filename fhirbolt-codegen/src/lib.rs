@@ -42,7 +42,7 @@ pub fn generate_all<'a>(
     Generated {
         types_struct_source_files: generate_struct_modules(&type_modules),
         resources_struct_source_files: generate_struct_modules(&resource_modules),
-        resource_enum_source_file: generate_resource_enum(&resource_modules),
+        resource_enum_source_file: generate_resource_enum(&resource_modules, release),
         types_serde_source_files: generate_serde_modules(&type_modules, release),
         resources_serde_source_files: generate_serde_modules(&resource_modules, release),
         resource_enum_serde_source_file: generate_resource_enum_serde(&resource_modules, release),
