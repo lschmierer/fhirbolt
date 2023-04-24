@@ -90,16 +90,7 @@ fn build_bundle(resources: Vec<Resource>) -> Bundle {
                     value: Some(format!(
                         "{}/{}",
                         BASE_URL,
-                        // this will be improved in a future version of fhirbolt
-                        // see https://github.com/lschmierer/fhirbolt/issues/18
-                        match &r {
-                            Resource::Patient(r) => format!("Patient/{}", r.id.as_ref().unwrap()),
-                            Resource::Encounter(r) =>
-                                format!("Encounter/{}", r.id.as_ref().unwrap()),
-                            Resource::Condition(r) =>
-                                format!("Condition/{}", r.id.as_ref().unwrap()),
-                            _ => unimplemented!(),
-                        }
+                        r.id().expect("Error: resource is missing an id")
                     )),
                     ..Default::default()
                 }),
