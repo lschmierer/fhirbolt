@@ -5,7 +5,7 @@ It implements a basic HL7 v2 parser (CAVE: does not handle escapes) and some map
 
 Use following command from fhirbolt project root to run the example:
 ```
-cargo run --bin example-hl7v2-transform-manual
+cargo run -p example-hl7v2-transform-manual
 ```
 
 ## Limitations
