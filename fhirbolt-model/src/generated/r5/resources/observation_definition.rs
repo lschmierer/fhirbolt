@@ -1,4 +1,4 @@
-// Generated on 2023-04-20 by fhirbolt-codegen v0.5.0
+// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
 #[doc = "Indicates the mechanism used to compare versions to determine which is more current."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum ObservationDefinitionVersionAlgorithm {
@@ -13,13 +13,13 @@ pub struct ObservationDefinitionQualifiedValue {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and managable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension."]
-    pub r#extension: Vec<Box<super::super::types::Extension>>,
+    pub r#extension: Vec<super::super::types::Extension>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and managable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself)."]
-    pub r#modifier_extension: Vec<Box<super::super::types::Extension>>,
+    pub r#modifier_extension: Vec<super::super::types::Extension>,
     #[doc = "A concept defining the context for this set of qualified values."]
     pub r#context: Option<Box<super::super::types::CodeableConcept>>,
     #[doc = "The target population this  set of qualified values applies to."]
-    pub r#applies_to: Vec<Box<super::super::types::CodeableConcept>>,
+    pub r#applies_to: Vec<super::super::types::CodeableConcept>,
     #[doc = "The gender this  set of qualified values applies to."]
     pub r#gender: Option<super::super::types::Code>,
     #[doc = "The age range this  set of qualified values applies to."]
@@ -68,15 +68,15 @@ pub struct ObservationDefinitionComponent {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and managable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension."]
-    pub r#extension: Vec<Box<super::super::types::Extension>>,
+    pub r#extension: Vec<super::super::types::Extension>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and managable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself)."]
-    pub r#modifier_extension: Vec<Box<super::super::types::Extension>>,
+    pub r#modifier_extension: Vec<super::super::types::Extension>,
     #[doc = "Describes what will be observed."]
     pub r#code: Box<super::super::types::CodeableConcept>,
     #[doc = "The data types allowed for the value element of the instance of this component observations."]
     pub r#permitted_data_type: Vec<super::super::types::Code>,
     #[doc = "Units allowed for the valueQuantity element in the instance observations conforming to this ObservationDefinition."]
-    pub r#permitted_unit: Vec<Box<super::super::types::Coding>>,
+    pub r#permitted_unit: Vec<super::super::types::Coding>,
     #[doc = "A set of qualified values associated with a context and a set of conditions -  provides a range for quantitative and ordinal observations and a collection of value sets for qualitative observations."]
     pub r#qualified_value: Vec<ObservationDefinitionQualifiedValue>,
 }
@@ -111,11 +111,11 @@ pub struct ObservationDefinition {
     #[doc = "A human-readable narrative that contains a summary of the resource and can be used to represent the content of the resource to a human. The narrative need not encode all the structured data, but is required to contain sufficient detail to make it \"clinically safe\" for a human to just read the narrative. Resource definitions may define what content should be represented in the narrative to ensure clinical safety."]
     pub r#text: Option<Box<super::super::types::Narrative>>,
     #[doc = "These resources do not have an independent existence apart from the resource that contains them - they cannot be identified independently, nor can they have their own independent transaction scope. This is allowed to be a Parameters resource if and only if it is referenced by a resource that provides context/meaning."]
-    pub r#contained: Vec<Box<super::super::Resource>>,
+    pub r#contained: Vec<super::super::Resource>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the resource. To make the use of extensions safe and managable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension."]
-    pub r#extension: Vec<Box<super::super::types::Extension>>,
+    pub r#extension: Vec<super::super::types::Extension>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the resource and that modifies the understanding of the element that contains it and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and managable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself)."]
-    pub r#modifier_extension: Vec<Box<super::super::types::Extension>>,
+    pub r#modifier_extension: Vec<super::super::types::Extension>,
     #[doc = "An absolute URL that is used to identify this ObservationDefinition when it is referenced in a specification, model, design or an instance. This SHALL be a URL, SHOULD be globally unique, and SHOULD be an address at which this ObservationDefinition is (or will be) published. The URL SHOULD include the major version of the ObservationDefinition. For more information see Technical and Business Versions."]
     pub r#url: Option<super::super::types::Uri>,
     #[doc = "Business identifiers assigned to this ObservationDefinition. by the performer and/or other systems. These identifiers remain constant as the resource is updated and propagates from server to server."]
@@ -137,13 +137,13 @@ pub struct ObservationDefinition {
     #[doc = "Helps establish the \"authority/credibility\" of the ObservationDefinition. May also allow for contact."]
     pub r#publisher: Option<super::super::types::String>,
     #[doc = "Contact details to assist a user in finding and communicating with the publisher."]
-    pub r#contact: Vec<Box<super::super::types::ContactDetail>>,
+    pub r#contact: Vec<super::super::types::ContactDetail>,
     #[doc = "A free text natural language description of the ObservationDefinition from the consumer's perspective."]
     pub r#description: Option<super::super::types::Markdown>,
     #[doc = "The content was developed with a focus and intent of supporting the contexts that are listed. These contexts may be general categories (gender, age, ...) or may be references to specific programs (insurance plans, studies, ...) and may be used to assist with indexing and searching for appropriate ObservationDefinition instances."]
-    pub r#use_context: Vec<Box<super::super::types::UsageContext>>,
+    pub r#use_context: Vec<super::super::types::UsageContext>,
     #[doc = "A jurisdiction in which the ObservationDefinition is intended to be used."]
-    pub r#jurisdiction: Vec<Box<super::super::types::CodeableConcept>>,
+    pub r#jurisdiction: Vec<super::super::types::CodeableConcept>,
     #[doc = "Explains why this ObservationDefinition is needed and why it has been designed as it has."]
     pub r#purpose: Option<super::super::types::Markdown>,
     #[doc = "Copyright statement relating to the ObservationDefinition and/or its contents. Copyright statements are generally legal restrictions on the use and publishing of the ObservationDefinition."]
@@ -161,11 +161,11 @@ pub struct ObservationDefinition {
     #[doc = "The URL pointing to an externally-defined observation definition, guideline or other definition that is adhered to in whole or in part by this definition."]
     pub r#derived_from_uri: Vec<super::super::types::Uri>,
     #[doc = "A code that describes the intended kind of subject of Observation instances conforming to this ObservationDefinition."]
-    pub r#subject: Vec<Box<super::super::types::CodeableConcept>>,
+    pub r#subject: Vec<super::super::types::CodeableConcept>,
     #[doc = "The type of individual/organization/device that is expected to act upon instances of this definition."]
     pub r#performer_type: Option<Box<super::super::types::CodeableConcept>>,
     #[doc = "A code that classifies the general type of observation."]
-    pub r#category: Vec<Box<super::super::types::CodeableConcept>>,
+    pub r#category: Vec<super::super::types::CodeableConcept>,
     #[doc = "Describes what will be observed. Sometimes this is called the observation \"name\"."]
     pub r#code: Box<super::super::types::CodeableConcept>,
     #[doc = "The data types allowed for the value element of the instance observations conforming to this ObservationDefinition."]
@@ -177,17 +177,17 @@ pub struct ObservationDefinition {
     #[doc = "The method or technique used to perform the observation."]
     pub r#method: Option<Box<super::super::types::CodeableConcept>>,
     #[doc = "The kind of specimen that this type of observation is produced on."]
-    pub r#specimen: Vec<Box<super::super::types::Reference>>,
+    pub r#specimen: Vec<super::super::types::Reference>,
     #[doc = "The measurement model of device or actual device used to produce observations of this type."]
-    pub r#device: Vec<Box<super::super::types::Reference>>,
+    pub r#device: Vec<super::super::types::Reference>,
     #[doc = "The preferred name to be used when reporting the results of observations conforming to this ObservationDefinition."]
     pub r#preferred_report_name: Option<super::super::types::String>,
     #[doc = "Units allowed for the valueQuantity element in the instance observations conforming to this ObservationDefinition."]
-    pub r#permitted_unit: Vec<Box<super::super::types::Coding>>,
+    pub r#permitted_unit: Vec<super::super::types::Coding>,
     #[doc = "A set of qualified values associated with a context and a set of conditions -  provides a range for quantitative and ordinal observations and a collection of value sets for qualitative observations."]
     pub r#qualified_value: Vec<ObservationDefinitionQualifiedValue>,
     #[doc = "This ObservationDefinition defines a group  observation (e.g. a battery, a panel of tests, a set of vital sign measurements) that includes the target as a member of the group."]
-    pub r#has_member: Vec<Box<super::super::types::Reference>>,
+    pub r#has_member: Vec<super::super::types::Reference>,
     #[doc = "Some observations have multiple component observations, expressed as separate code value pairs."]
     pub r#component: Vec<ObservationDefinitionComponent>,
 }

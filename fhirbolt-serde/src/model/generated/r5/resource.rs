@@ -1,4 +1,4 @@
-// Generated on 2023-04-20 by fhirbolt-codegen v0.5.0
+// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
 impl crate::Resource for fhirbolt_model::r5::Resource {
     const FHIR_RELEASE: fhirbolt_shared::FhirRelease = fhirbolt_shared::FhirReleases::R5;
 }
@@ -489,17 +489,7 @@ impl serde::ser::Serialize
     }
 }
 impl serde::ser::Serialize
-    for crate::context::ser::SerializationContext<&Box<fhirbolt_model::r5::Resource>>
-{
-    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
-    where
-        S: serde::ser::Serializer,
-    {
-        self.with_context(self.value.as_ref(), |ctx| ctx.serialize(serializer))
-    }
-}
-impl serde::ser::Serialize
-    for crate::context::ser::SerializationContext<&Vec<Box<fhirbolt_model::r5::Resource>>>
+    for crate::context::ser::SerializationContext<&Vec<fhirbolt_model::r5::Resource>>
 {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
@@ -1936,33 +1926,18 @@ impl<'de> serde::de::DeserializeSeed<'de>
     }
 }
 impl<'de> serde::de::DeserializeSeed<'de>
-    for &mut crate::context::de::DeserializationContext<Box<fhirbolt_model::r5::Resource>>
+    for &mut crate::context::de::DeserializationContext<Vec<fhirbolt_model::r5::Resource>>
 {
-    type Value = Box<fhirbolt_model::r5::Resource>;
-    fn deserialize<D>(self, deserializer: D) -> Result<Self::Value, D::Error>
-    where
-        D: serde::de::Deserializer<'de>,
-    {
-        self.transmute::<fhirbolt_model::r5::Resource>()
-            .deserialize(deserializer)
-            .map(Box::new)
-    }
-}
-impl<'de> serde::de::DeserializeSeed<'de>
-    for &mut crate::context::de::DeserializationContext<Vec<Box<fhirbolt_model::r5::Resource>>>
-{
-    type Value = Vec<Box<fhirbolt_model::r5::Resource>>;
+    type Value = Vec<fhirbolt_model::r5::Resource>;
     fn deserialize<D>(self, deserializer: D) -> Result<Self::Value, D::Error>
     where
         D: serde::de::Deserializer<'de>,
     {
         struct Visitor<'a>(
-            &'a mut crate::context::de::DeserializationContext<
-                Vec<Box<fhirbolt_model::r5::Resource>>,
-            >,
+            &'a mut crate::context::de::DeserializationContext<Vec<fhirbolt_model::r5::Resource>>,
         );
         impl<'de> serde::de::Visitor<'de> for Visitor<'_> {
-            type Value = Vec<Box<fhirbolt_model::r5::Resource>>;
+            type Value = Vec<fhirbolt_model::r5::Resource>;
             fn expecting(&self, formatter: &mut std::fmt::Formatter) -> std::fmt::Result {
                 formatter.write_str("a sequence of resources")
             }
@@ -1972,7 +1947,7 @@ impl<'de> serde::de::DeserializeSeed<'de>
             {
                 let mut values = Vec::new();
                 while let Some(value) =
-                    seq.next_element_seed(self.0.transmute::<Box<fhirbolt_model::r5::Resource>>())?
+                    seq.next_element_seed(self.0.transmute::<fhirbolt_model::r5::Resource>())?
                 {
                     values.push(value);
                 }

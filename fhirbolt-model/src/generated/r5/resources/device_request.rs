@@ -1,4 +1,4 @@
-// Generated on 2023-04-20 by fhirbolt-codegen v0.5.0
+// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
 #[doc = "The value of the device detail."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum DeviceRequestParameterValue {
@@ -24,9 +24,9 @@ pub struct DeviceRequestParameter {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and managable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension."]
-    pub r#extension: Vec<Box<super::super::types::Extension>>,
+    pub r#extension: Vec<super::super::types::Extension>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and managable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself)."]
-    pub r#modifier_extension: Vec<Box<super::super::types::Extension>>,
+    pub r#modifier_extension: Vec<super::super::types::Extension>,
     #[doc = "A code or string that identifies the device detail being asserted."]
     pub r#code: Option<Box<super::super::types::CodeableConcept>>,
     #[doc = "The value of the device detail."]
@@ -57,21 +57,21 @@ pub struct DeviceRequest {
     #[doc = "A human-readable narrative that contains a summary of the resource and can be used to represent the content of the resource to a human. The narrative need not encode all the structured data, but is required to contain sufficient detail to make it \"clinically safe\" for a human to just read the narrative. Resource definitions may define what content should be represented in the narrative to ensure clinical safety."]
     pub r#text: Option<Box<super::super::types::Narrative>>,
     #[doc = "These resources do not have an independent existence apart from the resource that contains them - they cannot be identified independently, nor can they have their own independent transaction scope. This is allowed to be a Parameters resource if and only if it is referenced by a resource that provides context/meaning."]
-    pub r#contained: Vec<Box<super::super::Resource>>,
+    pub r#contained: Vec<super::super::Resource>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the resource. To make the use of extensions safe and managable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension."]
-    pub r#extension: Vec<Box<super::super::types::Extension>>,
+    pub r#extension: Vec<super::super::types::Extension>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the resource and that modifies the understanding of the element that contains it and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and managable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself)."]
-    pub r#modifier_extension: Vec<Box<super::super::types::Extension>>,
+    pub r#modifier_extension: Vec<super::super::types::Extension>,
     #[doc = "Identifiers assigned to this order by the orderer or by the receiver."]
-    pub r#identifier: Vec<Box<super::super::types::Identifier>>,
+    pub r#identifier: Vec<super::super::types::Identifier>,
     #[doc = "The URL pointing to a FHIR-defined protocol, guideline, orderset or other definition that is adhered to in whole or in part by this DeviceRequest."]
     pub r#instantiates_canonical: Vec<super::super::types::Canonical>,
     #[doc = "The URL pointing to an externally maintained protocol, guideline, orderset or other definition that is adhered to in whole or in part by this DeviceRequest."]
     pub r#instantiates_uri: Vec<super::super::types::Uri>,
     #[doc = "Plan/proposal/order fulfilled by this request."]
-    pub r#based_on: Vec<Box<super::super::types::Reference>>,
+    pub r#based_on: Vec<super::super::types::Reference>,
     #[doc = "The request takes the place of the referenced completed or terminated request(s)."]
-    pub r#replaces: Vec<Box<super::super::types::Reference>>,
+    pub r#replaces: Vec<super::super::types::Reference>,
     #[doc = "A shared identifier common to multiple independent Request instances that were activated/authorized more or less simultaneously by a single author.  The presence of the same identifier on each request ties those requests together and may have business ramifications in terms of reporting of results, billing, etc.  E.g. a requisition number shared by a set of lab tests ordered together, or a prescription number shared by all meds ordered at one time."]
     pub r#group_identifier: Option<Box<super::super::types::Identifier>>,
     #[doc = "The status of the request."]
@@ -101,19 +101,19 @@ pub struct DeviceRequest {
     #[doc = "The desired individual or entity to provide the device to the subject of the request (e.g., patient, location)."]
     pub r#performer: Option<Box<super::super::types::CodeableReference>>,
     #[doc = "Reason or justification for the use of this device."]
-    pub r#reason: Vec<Box<super::super::types::CodeableReference>>,
+    pub r#reason: Vec<super::super::types::CodeableReference>,
     #[doc = "This status is to indicate whether the request is a PRN or may be given as needed."]
     pub r#as_needed: Option<super::super::types::Boolean>,
     #[doc = "The reason for using the device."]
     pub r#as_needed_for: Option<Box<super::super::types::CodeableConcept>>,
     #[doc = "Insurance plans, coverage extensions, pre-authorizations and/or pre-determinations that may be required for delivering the requested service."]
-    pub r#insurance: Vec<Box<super::super::types::Reference>>,
+    pub r#insurance: Vec<super::super::types::Reference>,
     #[doc = "Additional clinical information about the patient that may influence the request fulfilment.  For example, this may include where on the subject's body the device will be used (i.e. the target site)."]
-    pub r#supporting_info: Vec<Box<super::super::types::Reference>>,
+    pub r#supporting_info: Vec<super::super::types::Reference>,
     #[doc = "Details about this request that were not represented at all or sufficiently in one of the attributes provided in a class. These may include for example a comment, an instruction, or a note associated with the statement."]
-    pub r#note: Vec<Box<super::super::types::Annotation>>,
+    pub r#note: Vec<super::super::types::Annotation>,
     #[doc = "Key events in the history of the request."]
-    pub r#relevant_history: Vec<Box<super::super::types::Reference>>,
+    pub r#relevant_history: Vec<super::super::types::Reference>,
 }
 impl Default for DeviceRequest {
     fn default() -> Self {

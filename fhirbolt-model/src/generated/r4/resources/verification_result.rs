@@ -1,19 +1,19 @@
-// Generated on 2023-04-20 by fhirbolt-codegen v0.5.0
+// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
 #[doc = "Information about the primary source(s) involved in validation."]
 #[derive(Debug, Clone, PartialEq)]
 pub struct VerificationResultPrimarySource {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension."]
-    pub r#extension: Vec<Box<super::super::types::Extension>>,
+    pub r#extension: Vec<super::super::types::Extension>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself)."]
-    pub r#modifier_extension: Vec<Box<super::super::types::Extension>>,
+    pub r#modifier_extension: Vec<super::super::types::Extension>,
     #[doc = "Reference to the primary source."]
     pub r#who: Option<Box<super::super::types::Reference>>,
     #[doc = "Type of primary source (License Board; Primary Education; Continuing Education; Postal Service; Relationship owner; Registration Authority; legal source; issuing source; authoritative source)."]
-    pub r#type: Vec<Box<super::super::types::CodeableConcept>>,
+    pub r#type: Vec<super::super::types::CodeableConcept>,
     #[doc = "Method for communicating with the primary source (manual; API; Push)."]
-    pub r#communication_method: Vec<Box<super::super::types::CodeableConcept>>,
+    pub r#communication_method: Vec<super::super::types::CodeableConcept>,
     #[doc = "Status of the validation of the target against the primary source (successful; failed; unknown)."]
     pub r#validation_status: Option<Box<super::super::types::CodeableConcept>>,
     #[doc = "When the target was validated against the primary source."]
@@ -21,7 +21,7 @@ pub struct VerificationResultPrimarySource {
     #[doc = "Ability of the primary source to push updates/alerts (yes; no; undetermined)."]
     pub r#can_push_updates: Option<Box<super::super::types::CodeableConcept>>,
     #[doc = "Type of alerts/updates the primary source can send (specific requested changes; any changes; as defined by source)."]
-    pub r#push_type_available: Vec<Box<super::super::types::CodeableConcept>>,
+    pub r#push_type_available: Vec<super::super::types::CodeableConcept>,
 }
 impl Default for VerificationResultPrimarySource {
     fn default() -> Self {
@@ -45,9 +45,9 @@ pub struct VerificationResultAttestation {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension."]
-    pub r#extension: Vec<Box<super::super::types::Extension>>,
+    pub r#extension: Vec<super::super::types::Extension>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself)."]
-    pub r#modifier_extension: Vec<Box<super::super::types::Extension>>,
+    pub r#modifier_extension: Vec<super::super::types::Extension>,
     #[doc = "The individual or organization attesting to information."]
     pub r#who: Option<Box<super::super::types::Reference>>,
     #[doc = "When the who is asserting on behalf of another (organization or individual)."]
@@ -88,9 +88,9 @@ pub struct VerificationResultValidator {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension."]
-    pub r#extension: Vec<Box<super::super::types::Extension>>,
+    pub r#extension: Vec<super::super::types::Extension>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself)."]
-    pub r#modifier_extension: Vec<Box<super::super::types::Extension>>,
+    pub r#modifier_extension: Vec<super::super::types::Extension>,
     #[doc = "Reference to the organization validating information."]
     pub r#organization: Box<super::super::types::Reference>,
     #[doc = "A digital identity certificate associated with the validator."]
@@ -128,13 +128,13 @@ pub struct VerificationResult {
     #[doc = "A human-readable narrative that contains a summary of the resource and can be used to represent the content of the resource to a human. The narrative need not encode all the structured data, but is required to contain sufficient detail to make it \"clinically safe\" for a human to just read the narrative. Resource definitions may define what content should be represented in the narrative to ensure clinical safety."]
     pub r#text: Option<Box<super::super::types::Narrative>>,
     #[doc = "These resources do not have an independent existence apart from the resource that contains them - they cannot be identified independently, and nor can they have their own independent transaction scope."]
-    pub r#contained: Vec<Box<super::super::Resource>>,
+    pub r#contained: Vec<super::super::Resource>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the resource. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension."]
-    pub r#extension: Vec<Box<super::super::types::Extension>>,
+    pub r#extension: Vec<super::super::types::Extension>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the resource and that modifies the understanding of the element that contains it and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself)."]
-    pub r#modifier_extension: Vec<Box<super::super::types::Extension>>,
+    pub r#modifier_extension: Vec<super::super::types::Extension>,
     #[doc = "A resource that was validated."]
-    pub r#target: Vec<Box<super::super::types::Reference>>,
+    pub r#target: Vec<super::super::types::Reference>,
     #[doc = "The fhirpath location(s) within the resource that was validated."]
     pub r#target_location: Vec<super::super::types::String>,
     #[doc = "The frequency with which the target must be validated (none; initial; periodic)."]
@@ -146,7 +146,7 @@ pub struct VerificationResult {
     #[doc = "What the target is validated against (nothing; primary source; multiple sources)."]
     pub r#validation_type: Option<Box<super::super::types::CodeableConcept>>,
     #[doc = "The primary process by which the target is validated (edit check; value set; primary source; multiple sources; standalone; in context)."]
-    pub r#validation_process: Vec<Box<super::super::types::CodeableConcept>>,
+    pub r#validation_process: Vec<super::super::types::CodeableConcept>,
     #[doc = "Frequency of revalidation."]
     pub r#frequency: Option<Box<super::super::types::Timing>>,
     #[doc = "The date/time validation was last completed (including failed validations)."]

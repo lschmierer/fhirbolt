@@ -1,4 +1,4 @@
-// Generated on 2023-04-20 by fhirbolt-codegen v0.5.0
+// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
 #[doc = "The  value of the extra detail."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum AuditEventEntityDetailValue {
@@ -13,9 +13,9 @@ pub struct AuditEventAgentNetwork {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension."]
-    pub r#extension: Vec<Box<super::super::types::Extension>>,
+    pub r#extension: Vec<super::super::types::Extension>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself)."]
-    pub r#modifier_extension: Vec<Box<super::super::types::Extension>>,
+    pub r#modifier_extension: Vec<super::super::types::Extension>,
     #[doc = "An identifier for the network access point of the user device for the audit event."]
     pub r#address: Option<super::super::types::String>,
     #[doc = "An identifier for the type of network access point that originated the audit event."]
@@ -38,13 +38,13 @@ pub struct AuditEventAgent {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension."]
-    pub r#extension: Vec<Box<super::super::types::Extension>>,
+    pub r#extension: Vec<super::super::types::Extension>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself)."]
-    pub r#modifier_extension: Vec<Box<super::super::types::Extension>>,
+    pub r#modifier_extension: Vec<super::super::types::Extension>,
     #[doc = "Specification of the participation type the user plays when performing the event."]
     pub r#type: Option<Box<super::super::types::CodeableConcept>>,
     #[doc = "The security role that the user was acting under, that come from local codes defined by the access control security system (e.g. RBAC, ABAC) used in the local context."]
-    pub r#role: Vec<Box<super::super::types::CodeableConcept>>,
+    pub r#role: Vec<super::super::types::CodeableConcept>,
     #[doc = "Reference to who this agent is that was involved in the event."]
     pub r#who: Option<Box<super::super::types::Reference>>,
     #[doc = "Alternative agent Identifier. For a human, this should be a user identifier text string from authentication system. This identifier would be one known to a common authentication system (e.g. single sign-on), if available."]
@@ -62,7 +62,7 @@ pub struct AuditEventAgent {
     #[doc = "Logical network location for application activity, if the activity has a network location."]
     pub r#network: Option<AuditEventAgentNetwork>,
     #[doc = "The reason (purpose of use), specific to this agent, that was used during the event being recorded."]
-    pub r#purpose_of_use: Vec<Box<super::super::types::CodeableConcept>>,
+    pub r#purpose_of_use: Vec<super::super::types::CodeableConcept>,
 }
 impl Default for AuditEventAgent {
     fn default() -> Self {
@@ -94,15 +94,15 @@ pub struct AuditEventSource {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension."]
-    pub r#extension: Vec<Box<super::super::types::Extension>>,
+    pub r#extension: Vec<super::super::types::Extension>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself)."]
-    pub r#modifier_extension: Vec<Box<super::super::types::Extension>>,
+    pub r#modifier_extension: Vec<super::super::types::Extension>,
     #[doc = "Logical source location within the healthcare enterprise network.  For example, a hospital or other provider location within a multi-entity provider group."]
     pub r#site: Option<super::super::types::String>,
     #[doc = "Identifier of the source where the event was detected."]
     pub r#observer: Box<super::super::types::Reference>,
     #[doc = "Code specifying the type of source where event originated."]
-    pub r#type: Vec<Box<super::super::types::Coding>>,
+    pub r#type: Vec<super::super::types::Coding>,
 }
 impl Default for AuditEventSource {
     fn default() -> Self {
@@ -126,9 +126,9 @@ pub struct AuditEventEntityDetail {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension."]
-    pub r#extension: Vec<Box<super::super::types::Extension>>,
+    pub r#extension: Vec<super::super::types::Extension>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself)."]
-    pub r#modifier_extension: Vec<Box<super::super::types::Extension>>,
+    pub r#modifier_extension: Vec<super::super::types::Extension>,
     #[doc = "The type of extra detail provided in the value."]
     pub r#type: super::super::types::String,
     #[doc = "The  value of the extra detail."]
@@ -155,9 +155,9 @@ pub struct AuditEventEntity {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension."]
-    pub r#extension: Vec<Box<super::super::types::Extension>>,
+    pub r#extension: Vec<super::super::types::Extension>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself)."]
-    pub r#modifier_extension: Vec<Box<super::super::types::Extension>>,
+    pub r#modifier_extension: Vec<super::super::types::Extension>,
     #[doc = "Identifies a specific instance of the entity. The reference should be version specific."]
     pub r#what: Option<Box<super::super::types::Reference>>,
     #[doc = "The type of the object that was involved in this audit event."]
@@ -167,7 +167,7 @@ pub struct AuditEventEntity {
     #[doc = "Identifier for the data life-cycle stage for the entity."]
     pub r#lifecycle: Option<Box<super::super::types::Coding>>,
     #[doc = "Security labels for the identified entity."]
-    pub r#security_label: Vec<Box<super::super::types::Coding>>,
+    pub r#security_label: Vec<super::super::types::Coding>,
     #[doc = "A name of the entity in the audit event."]
     pub r#name: Option<super::super::types::String>,
     #[doc = "Text that describes the entity in more detail."]
@@ -209,15 +209,15 @@ pub struct AuditEvent {
     #[doc = "A human-readable narrative that contains a summary of the resource and can be used to represent the content of the resource to a human. The narrative need not encode all the structured data, but is required to contain sufficient detail to make it \"clinically safe\" for a human to just read the narrative. Resource definitions may define what content should be represented in the narrative to ensure clinical safety."]
     pub r#text: Option<Box<super::super::types::Narrative>>,
     #[doc = "These resources do not have an independent existence apart from the resource that contains them - they cannot be identified independently, and nor can they have their own independent transaction scope."]
-    pub r#contained: Vec<Box<super::super::Resource>>,
+    pub r#contained: Vec<super::super::Resource>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the resource. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension."]
-    pub r#extension: Vec<Box<super::super::types::Extension>>,
+    pub r#extension: Vec<super::super::types::Extension>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the resource and that modifies the understanding of the element that contains it and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself)."]
-    pub r#modifier_extension: Vec<Box<super::super::types::Extension>>,
+    pub r#modifier_extension: Vec<super::super::types::Extension>,
     #[doc = "Identifier for a family of the event.  For example, a menu item, program, rule, policy, function code, application name or URL. It identifies the performed function."]
     pub r#type: Box<super::super::types::Coding>,
     #[doc = "Identifier for the category of event."]
-    pub r#subtype: Vec<Box<super::super::types::Coding>>,
+    pub r#subtype: Vec<super::super::types::Coding>,
     #[doc = "Indicator for type of action performed during the event that generated the audit."]
     pub r#action: Option<super::super::types::Code>,
     #[doc = "The period during which the activity occurred."]
@@ -229,7 +229,7 @@ pub struct AuditEvent {
     #[doc = "A free text description of the outcome of the event."]
     pub r#outcome_desc: Option<super::super::types::String>,
     #[doc = "The purposeOfUse (reason) that was used during the event being recorded."]
-    pub r#purpose_of_event: Vec<Box<super::super::types::CodeableConcept>>,
+    pub r#purpose_of_event: Vec<super::super::types::CodeableConcept>,
     #[doc = "An actor taking an active role in the event or activity that is logged."]
     pub r#agent: Vec<AuditEventAgent>,
     #[doc = "The system that is reporting the event."]
