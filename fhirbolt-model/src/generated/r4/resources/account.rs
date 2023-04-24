@@ -5,9 +5,9 @@ pub struct AccountCoverage {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension."]
-    pub r#extension: Vec<Box<super::super::types::Extension>>,
+    pub r#extension: Vec<super::super::types::Extension>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself)."]
-    pub r#modifier_extension: Vec<Box<super::super::types::Extension>>,
+    pub r#modifier_extension: Vec<super::super::types::Extension>,
     #[doc = "The party(s) that contribute to payment (or part of) of the charges applied to this account (including self-pay).\n\nA coverage may only be responsible for specific types of charges, and the sequence of the coverages in the account could be important when processing billing."]
     pub r#coverage: Box<super::super::types::Reference>,
     #[doc = "The priority of the coverage in the context of this account."]
@@ -34,9 +34,9 @@ pub struct AccountGuarantor {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension."]
-    pub r#extension: Vec<Box<super::super::types::Extension>>,
+    pub r#extension: Vec<super::super::types::Extension>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself)."]
-    pub r#modifier_extension: Vec<Box<super::super::types::Extension>>,
+    pub r#modifier_extension: Vec<super::super::types::Extension>,
     #[doc = "The entity who is responsible."]
     pub r#party: Box<super::super::types::Reference>,
     #[doc = "A guarantor may be placed on credit hold or otherwise have their role temporarily suspended."]
@@ -76,11 +76,11 @@ pub struct Account {
     #[doc = "These resources do not have an independent existence apart from the resource that contains them - they cannot be identified independently, and nor can they have their own independent transaction scope."]
     pub r#contained: Vec<super::super::Resource>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the resource. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension."]
-    pub r#extension: Vec<Box<super::super::types::Extension>>,
+    pub r#extension: Vec<super::super::types::Extension>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the resource and that modifies the understanding of the element that contains it and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself)."]
-    pub r#modifier_extension: Vec<Box<super::super::types::Extension>>,
+    pub r#modifier_extension: Vec<super::super::types::Extension>,
     #[doc = "Unique identifier used to reference the account.  Might or might not be intended for human use (e.g. credit card number)."]
-    pub r#identifier: Vec<Box<super::super::types::Identifier>>,
+    pub r#identifier: Vec<super::super::types::Identifier>,
     #[doc = "Indicates whether the account is presently used/usable or not."]
     pub r#status: super::super::types::Code,
     #[doc = "Categorizes the account for reporting and searching purposes."]
@@ -88,7 +88,7 @@ pub struct Account {
     #[doc = "Name used for the account when displaying it to humans in reports, etc."]
     pub r#name: Option<super::super::types::String>,
     #[doc = "Identifies the entity which incurs the expenses. While the immediate recipients of services or goods might be entities related to the subject, the expenses were ultimately incurred by the subject of the Account."]
-    pub r#subject: Vec<Box<super::super::types::Reference>>,
+    pub r#subject: Vec<super::super::types::Reference>,
     #[doc = "The date range of services associated with this account."]
     pub r#service_period: Option<Box<super::super::types::Period>>,
     #[doc = "The party(s) that are responsible for covering the payment of this account, and what order should they be applied to the account."]

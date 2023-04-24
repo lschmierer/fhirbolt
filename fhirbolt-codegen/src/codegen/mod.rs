@@ -215,7 +215,7 @@ fn generate_field(field: &RustFhirStructField) -> TokenStream {
             || field.r#type.name == "Resource")
     {
         type_tokens
-    } else if field.r#type.r#box {
+    } else if field.r#type.r#box && !field.multiple {
         quote! { Box<super::super::#type_tokens> }
     } else {
         quote! { super::super::#type_tokens }

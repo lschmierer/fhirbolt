@@ -5,9 +5,9 @@ pub struct InventoryReportInventoryListingItem {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and managable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension."]
-    pub r#extension: Vec<Box<super::super::types::Extension>>,
+    pub r#extension: Vec<super::super::types::Extension>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and managable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself)."]
-    pub r#modifier_extension: Vec<Box<super::super::types::Extension>>,
+    pub r#modifier_extension: Vec<super::super::types::Extension>,
     #[doc = "The inventory category or classification of the items being reported. This is meant not for defining the product, but for inventory categories e.g. 'pending recount' or 'damaged'."]
     pub r#category: Option<Box<super::super::types::CodeableConcept>>,
     #[doc = "The quantity of the item or items being reported."]
@@ -41,9 +41,9 @@ pub struct InventoryReportInventoryListing {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and managable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension."]
-    pub r#extension: Vec<Box<super::super::types::Extension>>,
+    pub r#extension: Vec<super::super::types::Extension>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and managable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself)."]
-    pub r#modifier_extension: Vec<Box<super::super::types::Extension>>,
+    pub r#modifier_extension: Vec<super::super::types::Extension>,
     #[doc = "Location of the inventory items."]
     pub r#location: Option<Box<super::super::types::Reference>>,
     #[doc = "The status of the items."]
@@ -82,11 +82,11 @@ pub struct InventoryReport {
     #[doc = "These resources do not have an independent existence apart from the resource that contains them - they cannot be identified independently, nor can they have their own independent transaction scope. This is allowed to be a Parameters resource if and only if it is referenced by a resource that provides context/meaning."]
     pub r#contained: Vec<super::super::Resource>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the resource. To make the use of extensions safe and managable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension."]
-    pub r#extension: Vec<Box<super::super::types::Extension>>,
+    pub r#extension: Vec<super::super::types::Extension>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the resource and that modifies the understanding of the element that contains it and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and managable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself)."]
-    pub r#modifier_extension: Vec<Box<super::super::types::Extension>>,
+    pub r#modifier_extension: Vec<super::super::types::Extension>,
     #[doc = "Business identifier for the InventoryReport."]
-    pub r#identifier: Vec<Box<super::super::types::Identifier>>,
+    pub r#identifier: Vec<super::super::types::Identifier>,
     #[doc = "The status of the inventory check or notification - whether this is draft (e.g. the report is still pending some updates) or active."]
     pub r#status: super::super::types::Code,
     #[doc = "Whether the report is about the current inventory count (snapshot) or a differential change in inventory (change)."]
@@ -104,7 +104,7 @@ pub struct InventoryReport {
     #[doc = "An inventory listing section (grouped by any of the attributes)."]
     pub r#inventory_listing: Vec<InventoryReportInventoryListing>,
     #[doc = "A note associated with the InventoryReport."]
-    pub r#note: Vec<Box<super::super::types::Annotation>>,
+    pub r#note: Vec<super::super::types::Annotation>,
 }
 impl Default for InventoryReport {
     fn default() -> Self {

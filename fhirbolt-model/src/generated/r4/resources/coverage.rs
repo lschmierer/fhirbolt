@@ -13,9 +13,9 @@ pub struct CoverageClass {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension."]
-    pub r#extension: Vec<Box<super::super::types::Extension>>,
+    pub r#extension: Vec<super::super::types::Extension>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself)."]
-    pub r#modifier_extension: Vec<Box<super::super::types::Extension>>,
+    pub r#modifier_extension: Vec<super::super::types::Extension>,
     #[doc = "The type of classification for which an insurer-specific class label or number and optional name is provided, for example may be used to identify a class of coverage or employer group, Policy, Plan."]
     pub r#type: Box<super::super::types::CodeableConcept>,
     #[doc = "The alphanumeric string value associated with the insurer issued label."]
@@ -49,9 +49,9 @@ pub struct CoverageCostToBeneficiaryException {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension."]
-    pub r#extension: Vec<Box<super::super::types::Extension>>,
+    pub r#extension: Vec<super::super::types::Extension>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself)."]
-    pub r#modifier_extension: Vec<Box<super::super::types::Extension>>,
+    pub r#modifier_extension: Vec<super::super::types::Extension>,
     #[doc = "The code for the specific exception."]
     pub r#type: Box<super::super::types::CodeableConcept>,
     #[doc = "The timeframe during when the exception is in force."]
@@ -78,9 +78,9 @@ pub struct CoverageCostToBeneficiary {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension."]
-    pub r#extension: Vec<Box<super::super::types::Extension>>,
+    pub r#extension: Vec<super::super::types::Extension>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself)."]
-    pub r#modifier_extension: Vec<Box<super::super::types::Extension>>,
+    pub r#modifier_extension: Vec<super::super::types::Extension>,
     #[doc = "The category of patient centric costs associated with treatment."]
     pub r#type: Option<Box<super::super::types::CodeableConcept>>,
     #[doc = "The amount due from the patient for the cost category."]
@@ -116,11 +116,11 @@ pub struct Coverage {
     #[doc = "These resources do not have an independent existence apart from the resource that contains them - they cannot be identified independently, and nor can they have their own independent transaction scope."]
     pub r#contained: Vec<super::super::Resource>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the resource. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension."]
-    pub r#extension: Vec<Box<super::super::types::Extension>>,
+    pub r#extension: Vec<super::super::types::Extension>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the resource and that modifies the understanding of the element that contains it and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself)."]
-    pub r#modifier_extension: Vec<Box<super::super::types::Extension>>,
+    pub r#modifier_extension: Vec<super::super::types::Extension>,
     #[doc = "A unique identifier assigned to this coverage."]
-    pub r#identifier: Vec<Box<super::super::types::Identifier>>,
+    pub r#identifier: Vec<super::super::types::Identifier>,
     #[doc = "The status of the resource instance."]
     pub r#status: super::super::types::Code,
     #[doc = "The type of coverage: social program, medical plan, accident coverage (workers compensation, auto), group health or payment by an individual or organization."]
@@ -140,7 +140,7 @@ pub struct Coverage {
     #[doc = "Time period during which the coverage is in force. A missing start date indicates the start date isn't known, a missing end date means the coverage is continuing to be in force."]
     pub r#period: Option<Box<super::super::types::Period>>,
     #[doc = "The program or plan underwriter or payor including both insurance and non-insurance agreements, such as patient-pay agreements."]
-    pub r#payor: Vec<Box<super::super::types::Reference>>,
+    pub r#payor: Vec<super::super::types::Reference>,
     #[doc = "A suite of underwriter specific classifiers."]
     pub r#class: Vec<CoverageClass>,
     #[doc = "The order of applicability of this coverage relative to other coverages which are currently in force. Note, there may be gaps in the numbering and this does not imply primary, secondary etc. as the specific positioning of coverages depends upon the episode of care."]
@@ -152,7 +152,7 @@ pub struct Coverage {
     #[doc = "When 'subrogation=true' this insurance instance has been included not for adjudication but to provide insurers with the details to recover costs."]
     pub r#subrogation: Option<super::super::types::Boolean>,
     #[doc = "The policy(s) which constitute this insurance coverage."]
-    pub r#contract: Vec<Box<super::super::types::Reference>>,
+    pub r#contract: Vec<super::super::types::Reference>,
 }
 impl Default for Coverage {
     fn default() -> Self {

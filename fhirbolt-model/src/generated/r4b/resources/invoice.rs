@@ -13,9 +13,9 @@ pub struct InvoiceParticipant {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension."]
-    pub r#extension: Vec<Box<super::super::types::Extension>>,
+    pub r#extension: Vec<super::super::types::Extension>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself)."]
-    pub r#modifier_extension: Vec<Box<super::super::types::Extension>>,
+    pub r#modifier_extension: Vec<super::super::types::Extension>,
     #[doc = "Describes the type of involvement (e.g. transcriptionist, creator etc.). If the invoice has been created automatically, the Participant may be a billing engine or another kind of device."]
     pub r#role: Option<Box<super::super::types::CodeableConcept>>,
     #[doc = "The device, practitioner, etc. who performed or participated in the service."]
@@ -42,9 +42,9 @@ pub struct InvoiceLineItemPriceComponent {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension."]
-    pub r#extension: Vec<Box<super::super::types::Extension>>,
+    pub r#extension: Vec<super::super::types::Extension>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself)."]
-    pub r#modifier_extension: Vec<Box<super::super::types::Extension>>,
+    pub r#modifier_extension: Vec<super::super::types::Extension>,
     #[doc = "This code identifies the type of the component."]
     pub r#type: super::super::types::Code,
     #[doc = "A code that identifies the component. Codes may be used to differentiate between kinds of taxes, surcharges, discounts etc."]
@@ -77,9 +77,9 @@ pub struct InvoiceLineItem {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension."]
-    pub r#extension: Vec<Box<super::super::types::Extension>>,
+    pub r#extension: Vec<super::super::types::Extension>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself)."]
-    pub r#modifier_extension: Vec<Box<super::super::types::Extension>>,
+    pub r#modifier_extension: Vec<super::super::types::Extension>,
     #[doc = "Sequence in which the items appear on the invoice."]
     pub r#sequence: Option<super::super::types::PositiveInt>,
     #[doc = "The ChargeItem contains information such as the billing code, date, amount etc. If no further details are required for the lineItem, inline billing codes can be added using the CodeableConcept data type instead of the Reference."]
@@ -115,11 +115,11 @@ pub struct Invoice {
     #[doc = "These resources do not have an independent existence apart from the resource that contains them - they cannot be identified independently, and nor can they have their own independent transaction scope."]
     pub r#contained: Vec<super::super::Resource>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the resource. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension."]
-    pub r#extension: Vec<Box<super::super::types::Extension>>,
+    pub r#extension: Vec<super::super::types::Extension>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the resource and that modifies the understanding of the element that contains it and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself)."]
-    pub r#modifier_extension: Vec<Box<super::super::types::Extension>>,
+    pub r#modifier_extension: Vec<super::super::types::Extension>,
     #[doc = "Identifier of this Invoice, often used for reference in correspondence about this invoice or for tracking of payments."]
-    pub r#identifier: Vec<Box<super::super::types::Identifier>>,
+    pub r#identifier: Vec<super::super::types::Identifier>,
     #[doc = "The current state of the Invoice."]
     pub r#status: super::super::types::Code,
     #[doc = "In case of Invoice cancellation a reason must be given (entered in error, superseded by corrected invoice etc.)."]
@@ -149,7 +149,7 @@ pub struct Invoice {
     #[doc = "Payment details such as banking details, period of payment, deductibles, methods of payment."]
     pub r#payment_terms: Option<super::super::types::Markdown>,
     #[doc = "Comments made about the invoice by the issuer, subject, or other participants."]
-    pub r#note: Vec<Box<super::super::types::Annotation>>,
+    pub r#note: Vec<super::super::types::Annotation>,
 }
 impl Default for Invoice {
     fn default() -> Self {

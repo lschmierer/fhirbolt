@@ -54,9 +54,9 @@ pub struct AdverseEventParticipant {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and managable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension."]
-    pub r#extension: Vec<Box<super::super::types::Extension>>,
+    pub r#extension: Vec<super::super::types::Extension>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and managable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself)."]
-    pub r#modifier_extension: Vec<Box<super::super::types::Extension>>,
+    pub r#modifier_extension: Vec<super::super::types::Extension>,
     #[doc = "Distinguishes the type of involvement of the actor in the adverse event, such as contributor or informant."]
     pub r#function: Option<Box<super::super::types::CodeableConcept>>,
     #[doc = "Indicates who or what participated in the event."]
@@ -83,9 +83,9 @@ pub struct AdverseEventSuspectEntityCausality {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and managable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension."]
-    pub r#extension: Vec<Box<super::super::types::Extension>>,
+    pub r#extension: Vec<super::super::types::Extension>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and managable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself)."]
-    pub r#modifier_extension: Vec<Box<super::super::types::Extension>>,
+    pub r#modifier_extension: Vec<super::super::types::Extension>,
     #[doc = "The method of evaluating the relatedness of the suspected entity to the event."]
     pub r#assessment_method: Option<Box<super::super::types::CodeableConcept>>,
     #[doc = "The result of the assessment regarding the relatedness of the suspected entity to the event."]
@@ -111,9 +111,9 @@ pub struct AdverseEventSuspectEntity {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and managable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension."]
-    pub r#extension: Vec<Box<super::super::types::Extension>>,
+    pub r#extension: Vec<super::super::types::Extension>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and managable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself)."]
-    pub r#modifier_extension: Vec<Box<super::super::types::Extension>>,
+    pub r#modifier_extension: Vec<super::super::types::Extension>,
     #[doc = "Identifies the actual instance of what caused the adverse event.  May be a substance, medication, medication administration, medication statement or a device."]
     pub r#instance: AdverseEventSuspectEntityInstance,
     #[doc = "Information on the possible cause of the event."]
@@ -136,9 +136,9 @@ pub struct AdverseEventContributingFactor {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and managable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension."]
-    pub r#extension: Vec<Box<super::super::types::Extension>>,
+    pub r#extension: Vec<super::super::types::Extension>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and managable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself)."]
-    pub r#modifier_extension: Vec<Box<super::super::types::Extension>>,
+    pub r#modifier_extension: Vec<super::super::types::Extension>,
     #[doc = "The item that is suspected to have increased the probability or severity of the adverse event."]
     pub r#item: AdverseEventContributingFactorItem,
 }
@@ -158,9 +158,9 @@ pub struct AdverseEventPreventiveAction {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and managable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension."]
-    pub r#extension: Vec<Box<super::super::types::Extension>>,
+    pub r#extension: Vec<super::super::types::Extension>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and managable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself)."]
-    pub r#modifier_extension: Vec<Box<super::super::types::Extension>>,
+    pub r#modifier_extension: Vec<super::super::types::Extension>,
     #[doc = "The action that contributed to avoiding the adverse event."]
     pub r#item: AdverseEventPreventiveActionItem,
 }
@@ -180,9 +180,9 @@ pub struct AdverseEventMitigatingAction {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and managable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension."]
-    pub r#extension: Vec<Box<super::super::types::Extension>>,
+    pub r#extension: Vec<super::super::types::Extension>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and managable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself)."]
-    pub r#modifier_extension: Vec<Box<super::super::types::Extension>>,
+    pub r#modifier_extension: Vec<super::super::types::Extension>,
     #[doc = "The ameliorating action taken after the adverse event occured in order to reduce the extent of harm."]
     pub r#item: AdverseEventMitigatingActionItem,
 }
@@ -202,9 +202,9 @@ pub struct AdverseEventSupportingInfo {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and managable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension."]
-    pub r#extension: Vec<Box<super::super::types::Extension>>,
+    pub r#extension: Vec<super::super::types::Extension>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and managable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself)."]
-    pub r#modifier_extension: Vec<Box<super::super::types::Extension>>,
+    pub r#modifier_extension: Vec<super::super::types::Extension>,
     #[doc = "Relevant past history for the subject. In a clinical care context, an example being a patient had an adverse event following a pencillin administration and the patient had a previously documented penicillin allergy. In a clinical trials context, an example is a bunion or rash that was present prior to the study. Additionally, the supporting item can be a document that is relevant to this instance of the adverse event that is not part of the subject's medical history. For example, a clinical note, staff list, or material safety data sheet (MSDS).  Supporting information is not a contributing factor, preventive action, or mitigating action."]
     pub r#item: AdverseEventSupportingInfoItem,
 }
@@ -234,17 +234,17 @@ pub struct AdverseEvent {
     #[doc = "These resources do not have an independent existence apart from the resource that contains them - they cannot be identified independently, nor can they have their own independent transaction scope. This is allowed to be a Parameters resource if and only if it is referenced by a resource that provides context/meaning."]
     pub r#contained: Vec<super::super::Resource>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the resource. To make the use of extensions safe and managable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension."]
-    pub r#extension: Vec<Box<super::super::types::Extension>>,
+    pub r#extension: Vec<super::super::types::Extension>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the resource and that modifies the understanding of the element that contains it and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and managable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself)."]
-    pub r#modifier_extension: Vec<Box<super::super::types::Extension>>,
+    pub r#modifier_extension: Vec<super::super::types::Extension>,
     #[doc = "Business identifiers assigned to this adverse event by the performer or other systems which remain constant as the resource is updated and propagates from server to server."]
-    pub r#identifier: Vec<Box<super::super::types::Identifier>>,
+    pub r#identifier: Vec<super::super::types::Identifier>,
     #[doc = "The current state of the adverse event or potential adverse event."]
     pub r#status: super::super::types::Code,
     #[doc = "Whether the event actually happened or was a near miss. Note that this is independent of whether anyone was affected or harmed or how severely."]
     pub r#actuality: super::super::types::Code,
     #[doc = "The overall type of event, intended for search and filtering purposes."]
-    pub r#category: Vec<Box<super::super::types::CodeableConcept>>,
+    pub r#category: Vec<super::super::types::CodeableConcept>,
     #[doc = "Specific event that occurred or that was averted, such as patient fall, wrong organ removed, or wrong blood transfused."]
     pub r#code: Option<Box<super::super::types::CodeableConcept>>,
     #[doc = "This subject or group impacted by the event."]
@@ -258,19 +258,19 @@ pub struct AdverseEvent {
     #[doc = "The date on which the existence of the AdverseEvent was first recorded."]
     pub r#recorded_date: Option<super::super::types::DateTime>,
     #[doc = "Information about the condition that occurred as a result of the adverse event, such as hives due to the exposure to a substance (for example, a drug or a chemical) or a broken leg as a result of the fall."]
-    pub r#resulting_effect: Vec<Box<super::super::types::Reference>>,
+    pub r#resulting_effect: Vec<super::super::types::Reference>,
     #[doc = "The information about where the adverse event occurred."]
     pub r#location: Option<Box<super::super::types::Reference>>,
     #[doc = "Assessment whether this event, or averted event, was of clinical importance."]
     pub r#seriousness: Option<Box<super::super::types::CodeableConcept>>,
     #[doc = "Describes the type of outcome from the adverse event, such as resolved, recovering, ongoing, resolved-with-sequelae, or fatal."]
-    pub r#outcome: Vec<Box<super::super::types::CodeableConcept>>,
+    pub r#outcome: Vec<super::super::types::CodeableConcept>,
     #[doc = "Information on who recorded the adverse event.  May be the patient or a practitioner."]
     pub r#recorder: Option<Box<super::super::types::Reference>>,
     #[doc = "Indicates who or what participated in the adverse event and how they were involved."]
     pub r#participant: Vec<AdverseEventParticipant>,
     #[doc = "The research study that the subject is enrolled in."]
-    pub r#study: Vec<Box<super::super::types::Reference>>,
+    pub r#study: Vec<super::super::types::Reference>,
     #[doc = "Considered likely or probable or anticipated in the research study.  Whether the reported event matches any of the outcomes for the patient that are considered by the study as known or likely."]
     pub r#expected_in_research_study: Option<super::super::types::Boolean>,
     #[doc = "Describes the entity that is suspected to have caused the adverse event."]
@@ -284,7 +284,7 @@ pub struct AdverseEvent {
     #[doc = "Supporting information relevant to the event."]
     pub r#supporting_info: Vec<AdverseEventSupportingInfo>,
     #[doc = "Comments made about the adverse event by the performer, subject or other participants."]
-    pub r#note: Vec<Box<super::super::types::Annotation>>,
+    pub r#note: Vec<super::super::types::Annotation>,
 }
 impl Default for AdverseEvent {
     fn default() -> Self {

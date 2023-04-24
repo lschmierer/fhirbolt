@@ -5,9 +5,9 @@ pub struct Signature {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and managable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension."]
-    pub r#extension: Vec<Box<super::super::types::Extension>>,
+    pub r#extension: Vec<super::super::types::Extension>,
     #[doc = "An indication of the reason that the entity signed this document. This may be explicitly included as part of the signature information and can be used when determining accountability for various actions concerning the document."]
-    pub r#type: Vec<Box<super::super::types::Coding>>,
+    pub r#type: Vec<super::super::types::Coding>,
     #[doc = "When the digital signature was signed."]
     pub r#when: Option<super::super::types::Instant>,
     #[doc = "A reference to an application-usable description of the identity that signed  (e.g. the signature used their private key)."]

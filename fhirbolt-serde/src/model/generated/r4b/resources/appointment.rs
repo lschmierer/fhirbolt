@@ -117,23 +117,6 @@ impl serde::ser::Serialize
         seq_serializer.end()
     }
 }
-impl serde::ser::Serialize
-    for crate::context::ser::SerializationContext<
-        &Vec<Box<fhirbolt_model::r4b::resources::AppointmentParticipant>>,
-    >
-{
-    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
-    where
-        S: serde::ser::Serializer,
-    {
-        use serde::ser::SerializeSeq;
-        let mut seq_serializer = serializer.serialize_seq(Some(self.value.len()))?;
-        for value in self.value {
-            self.with_context(value, |ctx| seq_serializer.serialize_element(ctx))?
-        }
-        seq_serializer.end()
-    }
-}
 impl<'de> serde::de::DeserializeSeed<'de>
     for &mut crate::context::de::DeserializationContext<
         fhirbolt_model::r4b::resources::AppointmentParticipant,
@@ -202,12 +185,10 @@ impl<'de> serde::de::DeserializeSeed<'de>
                     ))
                 }
                 let mut r#id: Option<std::string::String> = None;
-                let mut r#extension: Option<Vec<Box<fhirbolt_model::r4b::types::Extension>>> = None;
-                let mut r#modifier_extension: Option<
-                    Vec<Box<fhirbolt_model::r4b::types::Extension>>,
-                > = None;
-                let mut r#type: Option<Vec<Box<fhirbolt_model::r4b::types::CodeableConcept>>> =
+                let mut r#extension: Option<Vec<fhirbolt_model::r4b::types::Extension>> = None;
+                let mut r#modifier_extension: Option<Vec<fhirbolt_model::r4b::types::Extension>> =
                     None;
+                let mut r#type: Option<Vec<fhirbolt_model::r4b::types::CodeableConcept>> = None;
                 let mut r#actor: Option<Box<fhirbolt_model::r4b::types::Reference>> = None;
                 let mut r#required: Option<fhirbolt_model::r4b::types::Code> = None;
                 let mut r#status: Option<fhirbolt_model::r4b::types::Code> = None;
@@ -225,10 +206,12 @@ impl<'de> serde::de::DeserializeSeed<'de>
                                 if r#extension.is_some() {
                                     return Err(serde::de::Error::duplicate_field("extension"));
                                 }
-                                r#extension = Some (map_access . next_value_seed (self . 0 . transmute :: < Vec < Box < fhirbolt_model :: r4b :: types :: Extension > >> ()) ?) ;
+                                r#extension = Some (map_access . next_value_seed (self . 0 . transmute :: < Vec < fhirbolt_model :: r4b :: types :: Extension >> ()) ?) ;
                             } else {
                                 let vec = r#extension.get_or_insert(Default::default());
-                                vec . push (map_access . next_value_seed (self . 0 . transmute :: < Box < fhirbolt_model :: r4b :: types :: Extension > > ()) ?) ;
+                                vec.push(map_access.next_value_seed(
+                                    self.0.transmute::<fhirbolt_model::r4b::types::Extension>(),
+                                )?);
                             }
                         }
                         Field::ModifierExtension => {
@@ -238,10 +221,12 @@ impl<'de> serde::de::DeserializeSeed<'de>
                                         "modifierExtension",
                                     ));
                                 }
-                                r#modifier_extension = Some (map_access . next_value_seed (self . 0 . transmute :: < Vec < Box < fhirbolt_model :: r4b :: types :: Extension > >> ()) ?) ;
+                                r#modifier_extension = Some (map_access . next_value_seed (self . 0 . transmute :: < Vec < fhirbolt_model :: r4b :: types :: Extension >> ()) ?) ;
                             } else {
                                 let vec = r#modifier_extension.get_or_insert(Default::default());
-                                vec . push (map_access . next_value_seed (self . 0 . transmute :: < Box < fhirbolt_model :: r4b :: types :: Extension > > ()) ?) ;
+                                vec.push(map_access.next_value_seed(
+                                    self.0.transmute::<fhirbolt_model::r4b::types::Extension>(),
+                                )?);
                             }
                         }
                         Field::Type => {
@@ -249,17 +234,10 @@ impl<'de> serde::de::DeserializeSeed<'de>
                                 if r#type.is_some() {
                                     return Err(serde::de::Error::duplicate_field("type"));
                                 }
-                                r#type =
-                                    Some(
-                                        map_access.next_value_seed(
-                                            self.0.transmute::<Vec<
-                                                Box<fhirbolt_model::r4b::types::CodeableConcept>,
-                                            >>(),
-                                        )?,
-                                    );
+                                r#type = Some (map_access . next_value_seed (self . 0 . transmute :: < Vec < fhirbolt_model :: r4b :: types :: CodeableConcept >> ()) ?) ;
                             } else {
                                 let vec = r#type.get_or_insert(Default::default());
-                                vec . push (map_access . next_value_seed (self . 0 . transmute :: < Box < fhirbolt_model :: r4b :: types :: CodeableConcept > > ()) ?) ;
+                                vec . push (map_access . next_value_seed (self . 0 . transmute :: < fhirbolt_model :: r4b :: types :: CodeableConcept > ()) ?) ;
                             }
                         }
                         Field::Actor => {
@@ -415,43 +393,6 @@ impl<'de> serde::de::DeserializeSeed<'de>
                 while let Some(value) = seq.next_element_seed(
                     self.0
                         .transmute::<fhirbolt_model::r4b::resources::AppointmentParticipant>(),
-                )? {
-                    values.push(value);
-                }
-                Ok(values)
-            }
-        }
-        deserializer.deserialize_seq(Visitor(self))
-    }
-}
-impl<'de> serde::de::DeserializeSeed<'de>
-    for &mut crate::context::de::DeserializationContext<
-        Vec<Box<fhirbolt_model::r4b::resources::AppointmentParticipant>>,
-    >
-{
-    type Value = Vec<Box<fhirbolt_model::r4b::resources::AppointmentParticipant>>;
-    fn deserialize<D>(self, deserializer: D) -> Result<Self::Value, D::Error>
-    where
-        D: serde::de::Deserializer<'de>,
-    {
-        struct Visitor<'a>(
-            &'a mut crate::context::de::DeserializationContext<
-                Vec<Box<fhirbolt_model::r4b::resources::AppointmentParticipant>>,
-            >,
-        );
-        impl<'de> serde::de::Visitor<'de> for Visitor<'_> {
-            type Value = Vec<Box<fhirbolt_model::r4b::resources::AppointmentParticipant>>;
-            fn expecting(&self, formatter: &mut std::fmt::Formatter) -> std::fmt::Result {
-                formatter.write_str("a sequence")
-            }
-            fn visit_seq<A>(self, mut seq: A) -> Result<Self::Value, A::Error>
-            where
-                A: serde::de::SeqAccess<'de>,
-            {
-                let mut values = Vec::new();
-                while let Some(value) = seq.next_element_seed(
-                    self.0
-                        .transmute::<Box<fhirbolt_model::r4b::resources::AppointmentParticipant>>(),
                 )? {
                     values.push(value);
                 }
@@ -827,23 +768,6 @@ impl serde::ser::Serialize
         seq_serializer.end()
     }
 }
-impl serde::ser::Serialize
-    for crate::context::ser::SerializationContext<
-        &Vec<Box<fhirbolt_model::r4b::resources::Appointment>>,
-    >
-{
-    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
-    where
-        S: serde::ser::Serializer,
-    {
-        use serde::ser::SerializeSeq;
-        let mut seq_serializer = serializer.serialize_seq(Some(self.value.len()))?;
-        for value in self.value {
-            self.with_context(value, |ctx| seq_serializer.serialize_element(ctx))?
-        }
-        seq_serializer.end()
-    }
-}
 impl<'de> serde::de::DeserializeSeed<'de>
     for crate::context::de::DeserializationContext<fhirbolt_model::r4b::resources::Appointment>
 {
@@ -1012,51 +936,45 @@ impl<'de> serde::de::DeserializeSeed<'de>
                 let mut r#language: Option<fhirbolt_model::r4b::types::Code> = None;
                 let mut r#text: Option<Box<fhirbolt_model::r4b::types::Narrative>> = None;
                 let mut r#contained: Option<Vec<fhirbolt_model::r4b::Resource>> = None;
-                let mut r#extension: Option<Vec<Box<fhirbolt_model::r4b::types::Extension>>> = None;
-                let mut r#modifier_extension: Option<
-                    Vec<Box<fhirbolt_model::r4b::types::Extension>>,
-                > = None;
-                let mut r#identifier: Option<Vec<Box<fhirbolt_model::r4b::types::Identifier>>> =
+                let mut r#extension: Option<Vec<fhirbolt_model::r4b::types::Extension>> = None;
+                let mut r#modifier_extension: Option<Vec<fhirbolt_model::r4b::types::Extension>> =
                     None;
+                let mut r#identifier: Option<Vec<fhirbolt_model::r4b::types::Identifier>> = None;
                 let mut r#status: Option<fhirbolt_model::r4b::types::Code> = None;
                 let mut r#cancelation_reason: Option<
                     Box<fhirbolt_model::r4b::types::CodeableConcept>,
                 > = None;
                 let mut r#service_category: Option<
-                    Vec<Box<fhirbolt_model::r4b::types::CodeableConcept>>,
+                    Vec<fhirbolt_model::r4b::types::CodeableConcept>,
                 > = None;
-                let mut r#service_type: Option<
-                    Vec<Box<fhirbolt_model::r4b::types::CodeableConcept>>,
-                > = None;
-                let mut r#specialty: Option<Vec<Box<fhirbolt_model::r4b::types::CodeableConcept>>> =
+                let mut r#service_type: Option<Vec<fhirbolt_model::r4b::types::CodeableConcept>> =
+                    None;
+                let mut r#specialty: Option<Vec<fhirbolt_model::r4b::types::CodeableConcept>> =
                     None;
                 let mut r#appointment_type: Option<
                     Box<fhirbolt_model::r4b::types::CodeableConcept>,
                 > = None;
-                let mut r#reason_code: Option<
-                    Vec<Box<fhirbolt_model::r4b::types::CodeableConcept>>,
-                > = None;
-                let mut r#reason_reference: Option<
-                    Vec<Box<fhirbolt_model::r4b::types::Reference>>,
-                > = None;
+                let mut r#reason_code: Option<Vec<fhirbolt_model::r4b::types::CodeableConcept>> =
+                    None;
+                let mut r#reason_reference: Option<Vec<fhirbolt_model::r4b::types::Reference>> =
+                    None;
                 let mut r#priority: Option<fhirbolt_model::r4b::types::UnsignedInt> = None;
                 let mut r#description: Option<fhirbolt_model::r4b::types::String> = None;
                 let mut r#supporting_information: Option<
-                    Vec<Box<fhirbolt_model::r4b::types::Reference>>,
+                    Vec<fhirbolt_model::r4b::types::Reference>,
                 > = None;
                 let mut r#start: Option<fhirbolt_model::r4b::types::Instant> = None;
                 let mut r#end: Option<fhirbolt_model::r4b::types::Instant> = None;
                 let mut r#minutes_duration: Option<fhirbolt_model::r4b::types::PositiveInt> = None;
-                let mut r#slot: Option<Vec<Box<fhirbolt_model::r4b::types::Reference>>> = None;
+                let mut r#slot: Option<Vec<fhirbolt_model::r4b::types::Reference>> = None;
                 let mut r#created: Option<fhirbolt_model::r4b::types::DateTime> = None;
                 let mut r#comment: Option<fhirbolt_model::r4b::types::String> = None;
                 let mut r#patient_instruction: Option<fhirbolt_model::r4b::types::String> = None;
-                let mut r#based_on: Option<Vec<Box<fhirbolt_model::r4b::types::Reference>>> = None;
+                let mut r#based_on: Option<Vec<fhirbolt_model::r4b::types::Reference>> = None;
                 let mut r#participant: Option<
                     Vec<fhirbolt_model::r4b::resources::AppointmentParticipant>,
                 > = None;
-                let mut r#requested_period: Option<Vec<Box<fhirbolt_model::r4b::types::Period>>> =
-                    None;
+                let mut r#requested_period: Option<Vec<fhirbolt_model::r4b::types::Period>> = None;
                 while let Some(map_access_key) = map_access.next_key()? {
                     match map_access_key {
                         Field::ResourceType => {
@@ -1175,10 +1093,12 @@ impl<'de> serde::de::DeserializeSeed<'de>
                                 if r#extension.is_some() {
                                     return Err(serde::de::Error::duplicate_field("extension"));
                                 }
-                                r#extension = Some (map_access . next_value_seed (self . 0 . transmute :: < Vec < Box < fhirbolt_model :: r4b :: types :: Extension > >> ()) ?) ;
+                                r#extension = Some (map_access . next_value_seed (self . 0 . transmute :: < Vec < fhirbolt_model :: r4b :: types :: Extension >> ()) ?) ;
                             } else {
                                 let vec = r#extension.get_or_insert(Default::default());
-                                vec . push (map_access . next_value_seed (self . 0 . transmute :: < Box < fhirbolt_model :: r4b :: types :: Extension > > ()) ?) ;
+                                vec.push(map_access.next_value_seed(
+                                    self.0.transmute::<fhirbolt_model::r4b::types::Extension>(),
+                                )?);
                             }
                         }
                         Field::ModifierExtension => {
@@ -1188,10 +1108,12 @@ impl<'de> serde::de::DeserializeSeed<'de>
                                         "modifierExtension",
                                     ));
                                 }
-                                r#modifier_extension = Some (map_access . next_value_seed (self . 0 . transmute :: < Vec < Box < fhirbolt_model :: r4b :: types :: Extension > >> ()) ?) ;
+                                r#modifier_extension = Some (map_access . next_value_seed (self . 0 . transmute :: < Vec < fhirbolt_model :: r4b :: types :: Extension >> ()) ?) ;
                             } else {
                                 let vec = r#modifier_extension.get_or_insert(Default::default());
-                                vec . push (map_access . next_value_seed (self . 0 . transmute :: < Box < fhirbolt_model :: r4b :: types :: Extension > > ()) ?) ;
+                                vec.push(map_access.next_value_seed(
+                                    self.0.transmute::<fhirbolt_model::r4b::types::Extension>(),
+                                )?);
                             }
                         }
                         Field::Identifier => {
@@ -1199,10 +1121,12 @@ impl<'de> serde::de::DeserializeSeed<'de>
                                 if r#identifier.is_some() {
                                     return Err(serde::de::Error::duplicate_field("identifier"));
                                 }
-                                r#identifier = Some (map_access . next_value_seed (self . 0 . transmute :: < Vec < Box < fhirbolt_model :: r4b :: types :: Identifier > >> ()) ?) ;
+                                r#identifier = Some (map_access . next_value_seed (self . 0 . transmute :: < Vec < fhirbolt_model :: r4b :: types :: Identifier >> ()) ?) ;
                             } else {
                                 let vec = r#identifier.get_or_insert(Default::default());
-                                vec . push (map_access . next_value_seed (self . 0 . transmute :: < Box < fhirbolt_model :: r4b :: types :: Identifier > > ()) ?) ;
+                                vec.push(map_access.next_value_seed(
+                                    self.0.transmute::<fhirbolt_model::r4b::types::Identifier>(),
+                                )?);
                             }
                         }
                         Field::Status => {
@@ -1248,17 +1172,10 @@ impl<'de> serde::de::DeserializeSeed<'de>
                                         "serviceCategory",
                                     ));
                                 }
-                                r#service_category =
-                                    Some(
-                                        map_access.next_value_seed(
-                                            self.0.transmute::<Vec<
-                                                Box<fhirbolt_model::r4b::types::CodeableConcept>,
-                                            >>(),
-                                        )?,
-                                    );
+                                r#service_category = Some (map_access . next_value_seed (self . 0 . transmute :: < Vec < fhirbolt_model :: r4b :: types :: CodeableConcept >> ()) ?) ;
                             } else {
                                 let vec = r#service_category.get_or_insert(Default::default());
-                                vec . push (map_access . next_value_seed (self . 0 . transmute :: < Box < fhirbolt_model :: r4b :: types :: CodeableConcept > > ()) ?) ;
+                                vec . push (map_access . next_value_seed (self . 0 . transmute :: < fhirbolt_model :: r4b :: types :: CodeableConcept > ()) ?) ;
                             }
                         }
                         Field::ServiceType => {
@@ -1266,17 +1183,10 @@ impl<'de> serde::de::DeserializeSeed<'de>
                                 if r#service_type.is_some() {
                                     return Err(serde::de::Error::duplicate_field("serviceType"));
                                 }
-                                r#service_type =
-                                    Some(
-                                        map_access.next_value_seed(
-                                            self.0.transmute::<Vec<
-                                                Box<fhirbolt_model::r4b::types::CodeableConcept>,
-                                            >>(),
-                                        )?,
-                                    );
+                                r#service_type = Some (map_access . next_value_seed (self . 0 . transmute :: < Vec < fhirbolt_model :: r4b :: types :: CodeableConcept >> ()) ?) ;
                             } else {
                                 let vec = r#service_type.get_or_insert(Default::default());
-                                vec . push (map_access . next_value_seed (self . 0 . transmute :: < Box < fhirbolt_model :: r4b :: types :: CodeableConcept > > ()) ?) ;
+                                vec . push (map_access . next_value_seed (self . 0 . transmute :: < fhirbolt_model :: r4b :: types :: CodeableConcept > ()) ?) ;
                             }
                         }
                         Field::Specialty => {
@@ -1284,17 +1194,10 @@ impl<'de> serde::de::DeserializeSeed<'de>
                                 if r#specialty.is_some() {
                                     return Err(serde::de::Error::duplicate_field("specialty"));
                                 }
-                                r#specialty =
-                                    Some(
-                                        map_access.next_value_seed(
-                                            self.0.transmute::<Vec<
-                                                Box<fhirbolt_model::r4b::types::CodeableConcept>,
-                                            >>(),
-                                        )?,
-                                    );
+                                r#specialty = Some (map_access . next_value_seed (self . 0 . transmute :: < Vec < fhirbolt_model :: r4b :: types :: CodeableConcept >> ()) ?) ;
                             } else {
                                 let vec = r#specialty.get_or_insert(Default::default());
-                                vec . push (map_access . next_value_seed (self . 0 . transmute :: < Box < fhirbolt_model :: r4b :: types :: CodeableConcept > > ()) ?) ;
+                                vec . push (map_access . next_value_seed (self . 0 . transmute :: < fhirbolt_model :: r4b :: types :: CodeableConcept > ()) ?) ;
                             }
                         }
                         Field::AppointmentType => {
@@ -1308,17 +1211,10 @@ impl<'de> serde::de::DeserializeSeed<'de>
                                 if r#reason_code.is_some() {
                                     return Err(serde::de::Error::duplicate_field("reasonCode"));
                                 }
-                                r#reason_code =
-                                    Some(
-                                        map_access.next_value_seed(
-                                            self.0.transmute::<Vec<
-                                                Box<fhirbolt_model::r4b::types::CodeableConcept>,
-                                            >>(),
-                                        )?,
-                                    );
+                                r#reason_code = Some (map_access . next_value_seed (self . 0 . transmute :: < Vec < fhirbolt_model :: r4b :: types :: CodeableConcept >> ()) ?) ;
                             } else {
                                 let vec = r#reason_code.get_or_insert(Default::default());
-                                vec . push (map_access . next_value_seed (self . 0 . transmute :: < Box < fhirbolt_model :: r4b :: types :: CodeableConcept > > ()) ?) ;
+                                vec . push (map_access . next_value_seed (self . 0 . transmute :: < fhirbolt_model :: r4b :: types :: CodeableConcept > ()) ?) ;
                             }
                         }
                         Field::ReasonReference => {
@@ -1328,10 +1224,12 @@ impl<'de> serde::de::DeserializeSeed<'de>
                                         "reasonReference",
                                     ));
                                 }
-                                r#reason_reference = Some (map_access . next_value_seed (self . 0 . transmute :: < Vec < Box < fhirbolt_model :: r4b :: types :: Reference > >> ()) ?) ;
+                                r#reason_reference = Some (map_access . next_value_seed (self . 0 . transmute :: < Vec < fhirbolt_model :: r4b :: types :: Reference >> ()) ?) ;
                             } else {
                                 let vec = r#reason_reference.get_or_insert(Default::default());
-                                vec . push (map_access . next_value_seed (self . 0 . transmute :: < Box < fhirbolt_model :: r4b :: types :: Reference > > ()) ?) ;
+                                vec.push(map_access.next_value_seed(
+                                    self.0.transmute::<fhirbolt_model::r4b::types::Reference>(),
+                                )?);
                             }
                         }
                         Field::Priority => {
@@ -1404,11 +1302,13 @@ impl<'de> serde::de::DeserializeSeed<'de>
                                         "supportingInformation",
                                     ));
                                 }
-                                r#supporting_information = Some (map_access . next_value_seed (self . 0 . transmute :: < Vec < Box < fhirbolt_model :: r4b :: types :: Reference > >> ()) ?) ;
+                                r#supporting_information = Some (map_access . next_value_seed (self . 0 . transmute :: < Vec < fhirbolt_model :: r4b :: types :: Reference >> ()) ?) ;
                             } else {
                                 let vec =
                                     r#supporting_information.get_or_insert(Default::default());
-                                vec . push (map_access . next_value_seed (self . 0 . transmute :: < Box < fhirbolt_model :: r4b :: types :: Reference > > ()) ?) ;
+                                vec.push(map_access.next_value_seed(
+                                    self.0.transmute::<fhirbolt_model::r4b::types::Reference>(),
+                                )?);
                             }
                         }
                         Field::Start => {
@@ -1515,10 +1415,12 @@ impl<'de> serde::de::DeserializeSeed<'de>
                                 if r#slot.is_some() {
                                     return Err(serde::de::Error::duplicate_field("slot"));
                                 }
-                                r#slot = Some (map_access . next_value_seed (self . 0 . transmute :: < Vec < Box < fhirbolt_model :: r4b :: types :: Reference > >> ()) ?) ;
+                                r#slot = Some (map_access . next_value_seed (self . 0 . transmute :: < Vec < fhirbolt_model :: r4b :: types :: Reference >> ()) ?) ;
                             } else {
                                 let vec = r#slot.get_or_insert(Default::default());
-                                vec . push (map_access . next_value_seed (self . 0 . transmute :: < Box < fhirbolt_model :: r4b :: types :: Reference > > ()) ?) ;
+                                vec.push(map_access.next_value_seed(
+                                    self.0.transmute::<fhirbolt_model::r4b::types::Reference>(),
+                                )?);
                             }
                         }
                         Field::Created => {
@@ -1622,10 +1524,12 @@ impl<'de> serde::de::DeserializeSeed<'de>
                                 if r#based_on.is_some() {
                                     return Err(serde::de::Error::duplicate_field("basedOn"));
                                 }
-                                r#based_on = Some (map_access . next_value_seed (self . 0 . transmute :: < Vec < Box < fhirbolt_model :: r4b :: types :: Reference > >> ()) ?) ;
+                                r#based_on = Some (map_access . next_value_seed (self . 0 . transmute :: < Vec < fhirbolt_model :: r4b :: types :: Reference >> ()) ?) ;
                             } else {
                                 let vec = r#based_on.get_or_insert(Default::default());
-                                vec . push (map_access . next_value_seed (self . 0 . transmute :: < Box < fhirbolt_model :: r4b :: types :: Reference > > ()) ?) ;
+                                vec.push(map_access.next_value_seed(
+                                    self.0.transmute::<fhirbolt_model::r4b::types::Reference>(),
+                                )?);
                             }
                         }
                         Field::Participant => {
@@ -1651,15 +1555,17 @@ impl<'de> serde::de::DeserializeSeed<'de>
                                         "requestedPeriod",
                                     ));
                                 }
-                                r#requested_period = Some (map_access . next_value_seed (self . 0 . transmute :: < Vec < Box < fhirbolt_model :: r4b :: types :: Period > >> ()) ?) ;
-                            } else {
-                                let vec = r#requested_period.get_or_insert(Default::default());
-                                vec.push(
+                                r#requested_period = Some(
                                     map_access.next_value_seed(
                                         self.0
-                                            .transmute::<Box<fhirbolt_model::r4b::types::Period>>(),
+                                            .transmute::<Vec<fhirbolt_model::r4b::types::Period>>(),
                                     )?,
                                 );
+                            } else {
+                                let vec = r#requested_period.get_or_insert(Default::default());
+                                vec.push(map_access.next_value_seed(
+                                    self.0.transmute::<fhirbolt_model::r4b::types::Period>(),
+                                )?);
                             }
                         }
                         Field::Unknown(key) => {
@@ -1755,43 +1661,6 @@ impl<'de> serde::de::DeserializeSeed<'de>
                 while let Some(value) = seq.next_element_seed(
                     self.0
                         .transmute::<fhirbolt_model::r4b::resources::Appointment>(),
-                )? {
-                    values.push(value);
-                }
-                Ok(values)
-            }
-        }
-        deserializer.deserialize_seq(Visitor(self))
-    }
-}
-impl<'de> serde::de::DeserializeSeed<'de>
-    for &mut crate::context::de::DeserializationContext<
-        Vec<Box<fhirbolt_model::r4b::resources::Appointment>>,
-    >
-{
-    type Value = Vec<Box<fhirbolt_model::r4b::resources::Appointment>>;
-    fn deserialize<D>(self, deserializer: D) -> Result<Self::Value, D::Error>
-    where
-        D: serde::de::Deserializer<'de>,
-    {
-        struct Visitor<'a>(
-            &'a mut crate::context::de::DeserializationContext<
-                Vec<Box<fhirbolt_model::r4b::resources::Appointment>>,
-            >,
-        );
-        impl<'de> serde::de::Visitor<'de> for Visitor<'_> {
-            type Value = Vec<Box<fhirbolt_model::r4b::resources::Appointment>>;
-            fn expecting(&self, formatter: &mut std::fmt::Formatter) -> std::fmt::Result {
-                formatter.write_str("a sequence")
-            }
-            fn visit_seq<A>(self, mut seq: A) -> Result<Self::Value, A::Error>
-            where
-                A: serde::de::SeqAccess<'de>,
-            {
-                let mut values = Vec::new();
-                while let Some(value) = seq.next_element_seed(
-                    self.0
-                        .transmute::<Box<fhirbolt_model::r4b::resources::Appointment>>(),
                 )? {
                     values.push(value);
                 }

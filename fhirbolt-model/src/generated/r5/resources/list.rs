@@ -5,9 +5,9 @@ pub struct ListEntry {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and managable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension."]
-    pub r#extension: Vec<Box<super::super::types::Extension>>,
+    pub r#extension: Vec<super::super::types::Extension>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and managable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself)."]
-    pub r#modifier_extension: Vec<Box<super::super::types::Extension>>,
+    pub r#modifier_extension: Vec<super::super::types::Extension>,
     #[doc = "The flag allows the system constructing the list to indicate the role and significance of the item in the list."]
     pub r#flag: Option<Box<super::super::types::CodeableConcept>>,
     #[doc = "True if this item is marked as deleted in the list."]
@@ -50,11 +50,11 @@ pub struct List {
     #[doc = "These resources do not have an independent existence apart from the resource that contains them - they cannot be identified independently, nor can they have their own independent transaction scope. This is allowed to be a Parameters resource if and only if it is referenced by a resource that provides context/meaning."]
     pub r#contained: Vec<super::super::Resource>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the resource. To make the use of extensions safe and managable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension."]
-    pub r#extension: Vec<Box<super::super::types::Extension>>,
+    pub r#extension: Vec<super::super::types::Extension>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the resource and that modifies the understanding of the element that contains it and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and managable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself)."]
-    pub r#modifier_extension: Vec<Box<super::super::types::Extension>>,
+    pub r#modifier_extension: Vec<super::super::types::Extension>,
     #[doc = "Identifier for the List assigned for business purposes outside the context of FHIR."]
-    pub r#identifier: Vec<Box<super::super::types::Identifier>>,
+    pub r#identifier: Vec<super::super::types::Identifier>,
     #[doc = "Indicates the current state of this list."]
     pub r#status: super::super::types::Code,
     #[doc = "How this list was prepared - whether it is a working list that is suitable for being maintained on an ongoing basis, or if it represents a snapshot of a list of items from another source, or whether it is a prepared list where items may be marked as added, modified or deleted."]
@@ -64,7 +64,7 @@ pub struct List {
     #[doc = "This code defines the purpose of the list - why it was created."]
     pub r#code: Option<Box<super::super::types::CodeableConcept>>,
     #[doc = "The common subject(s) (or patient(s)) of the resources that are in the list if there is one (or a set of subjects)."]
-    pub r#subject: Vec<Box<super::super::types::Reference>>,
+    pub r#subject: Vec<super::super::types::Reference>,
     #[doc = "The encounter that is the context in which this list was created."]
     pub r#encounter: Option<Box<super::super::types::Reference>>,
     #[doc = "Date list was last reviewed/revised and determined to be 'current'."]
@@ -74,7 +74,7 @@ pub struct List {
     #[doc = "What order applies to the items in the list."]
     pub r#ordered_by: Option<Box<super::super::types::CodeableConcept>>,
     #[doc = "Comments that apply to the overall list."]
-    pub r#note: Vec<Box<super::super::types::Annotation>>,
+    pub r#note: Vec<super::super::types::Annotation>,
     #[doc = "Entries in this list."]
     pub r#entry: Vec<ListEntry>,
     #[doc = "If the list is empty, why the list is empty."]

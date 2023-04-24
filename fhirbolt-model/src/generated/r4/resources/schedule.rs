@@ -15,21 +15,21 @@ pub struct Schedule {
     #[doc = "These resources do not have an independent existence apart from the resource that contains them - they cannot be identified independently, and nor can they have their own independent transaction scope."]
     pub r#contained: Vec<super::super::Resource>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the resource. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension."]
-    pub r#extension: Vec<Box<super::super::types::Extension>>,
+    pub r#extension: Vec<super::super::types::Extension>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the resource and that modifies the understanding of the element that contains it and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself)."]
-    pub r#modifier_extension: Vec<Box<super::super::types::Extension>>,
+    pub r#modifier_extension: Vec<super::super::types::Extension>,
     #[doc = "External Ids for this item."]
-    pub r#identifier: Vec<Box<super::super::types::Identifier>>,
+    pub r#identifier: Vec<super::super::types::Identifier>,
     #[doc = "Whether this schedule record is in active use or should not be used (such as was entered in error)."]
     pub r#active: Option<super::super::types::Boolean>,
     #[doc = "A broad categorization of the service that is to be performed during this appointment."]
-    pub r#service_category: Vec<Box<super::super::types::CodeableConcept>>,
+    pub r#service_category: Vec<super::super::types::CodeableConcept>,
     #[doc = "The specific service that is to be performed during this appointment."]
-    pub r#service_type: Vec<Box<super::super::types::CodeableConcept>>,
+    pub r#service_type: Vec<super::super::types::CodeableConcept>,
     #[doc = "The specialty of a practitioner that would be required to perform the service requested in this appointment."]
-    pub r#specialty: Vec<Box<super::super::types::CodeableConcept>>,
+    pub r#specialty: Vec<super::super::types::CodeableConcept>,
     #[doc = "Slots that reference this schedule resource provide the availability details to these referenced resource(s)."]
-    pub r#actor: Vec<Box<super::super::types::Reference>>,
+    pub r#actor: Vec<super::super::types::Reference>,
     #[doc = "The period of time that the slots that reference this Schedule resource cover (even if none exist). These  cover the amount of time that an organization's planning horizon; the interval for which they are currently accepting appointments. This does not define a \"template\" for planning outside these dates."]
     pub r#planning_horizon: Option<Box<super::super::types::Period>>,
     #[doc = "Comments on the availability to describe any extended information. Such as custom constraints on the slots that may be associated."]

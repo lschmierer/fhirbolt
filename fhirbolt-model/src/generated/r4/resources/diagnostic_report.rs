@@ -13,9 +13,9 @@ pub struct DiagnosticReportMedia {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension."]
-    pub r#extension: Vec<Box<super::super::types::Extension>>,
+    pub r#extension: Vec<super::super::types::Extension>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself)."]
-    pub r#modifier_extension: Vec<Box<super::super::types::Extension>>,
+    pub r#modifier_extension: Vec<super::super::types::Extension>,
     #[doc = "A comment about the image. Typically, this is used to provide an explanation for why the image is included, or to draw the viewer's attention to important features."]
     pub r#comment: Option<super::super::types::String>,
     #[doc = "Reference to the image source."]
@@ -52,17 +52,17 @@ pub struct DiagnosticReport {
     #[doc = "These resources do not have an independent existence apart from the resource that contains them - they cannot be identified independently, and nor can they have their own independent transaction scope."]
     pub r#contained: Vec<super::super::Resource>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the resource. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension."]
-    pub r#extension: Vec<Box<super::super::types::Extension>>,
+    pub r#extension: Vec<super::super::types::Extension>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the resource and that modifies the understanding of the element that contains it and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself)."]
-    pub r#modifier_extension: Vec<Box<super::super::types::Extension>>,
+    pub r#modifier_extension: Vec<super::super::types::Extension>,
     #[doc = "Identifiers assigned to this report by the performer or other systems."]
-    pub r#identifier: Vec<Box<super::super::types::Identifier>>,
+    pub r#identifier: Vec<super::super::types::Identifier>,
     #[doc = "Details concerning a service requested."]
-    pub r#based_on: Vec<Box<super::super::types::Reference>>,
+    pub r#based_on: Vec<super::super::types::Reference>,
     #[doc = "The status of the diagnostic report."]
     pub r#status: super::super::types::Code,
     #[doc = "A code that classifies the clinical discipline, department or diagnostic service that created the report (e.g. cardiology, biochemistry, hematology, MRI). This is used for searching, sorting and display purposes."]
-    pub r#category: Vec<Box<super::super::types::CodeableConcept>>,
+    pub r#category: Vec<super::super::types::CodeableConcept>,
     #[doc = "A code or name that describes this diagnostic report."]
     pub r#code: Box<super::super::types::CodeableConcept>,
     #[doc = "The subject of the report. Usually, but not always, this is a patient. However, diagnostic services also perform analyses on specimens collected from a variety of other sources."]
@@ -74,23 +74,23 @@ pub struct DiagnosticReport {
     #[doc = "The date and time that this version of the report was made available to providers, typically after the report was reviewed and verified."]
     pub r#issued: Option<super::super::types::Instant>,
     #[doc = "The diagnostic service that is responsible for issuing the report."]
-    pub r#performer: Vec<Box<super::super::types::Reference>>,
+    pub r#performer: Vec<super::super::types::Reference>,
     #[doc = "The practitioner or organization that is responsible for the report's conclusions and interpretations."]
-    pub r#results_interpreter: Vec<Box<super::super::types::Reference>>,
+    pub r#results_interpreter: Vec<super::super::types::Reference>,
     #[doc = "Details about the specimens on which this diagnostic report is based."]
-    pub r#specimen: Vec<Box<super::super::types::Reference>>,
+    pub r#specimen: Vec<super::super::types::Reference>,
     #[doc = "[Observations](https://hl7.org/FHIR/observation.html))  that are part of this diagnostic report."]
-    pub r#result: Vec<Box<super::super::types::Reference>>,
+    pub r#result: Vec<super::super::types::Reference>,
     #[doc = "One or more links to full details of any imaging performed during the diagnostic investigation. Typically, this is imaging performed by DICOM enabled modalities, but this is not required. A fully enabled PACS viewer can use this information to provide views of the source images."]
-    pub r#imaging_study: Vec<Box<super::super::types::Reference>>,
+    pub r#imaging_study: Vec<super::super::types::Reference>,
     #[doc = "A list of key images associated with this report. The images are generally created during the diagnostic process, and may be directly of the patient, or of treated specimens (i.e. slides of interest)."]
     pub r#media: Vec<DiagnosticReportMedia>,
     #[doc = "Concise and clinically contextualized summary conclusion (interpretation/impression) of the diagnostic report."]
     pub r#conclusion: Option<super::super::types::String>,
     #[doc = "One or more codes that represent the summary conclusion (interpretation/impression) of the diagnostic report."]
-    pub r#conclusion_code: Vec<Box<super::super::types::CodeableConcept>>,
+    pub r#conclusion_code: Vec<super::super::types::CodeableConcept>,
     #[doc = "Rich text representation of the entire result as issued by the diagnostic service. Multiple formats are allowed but they SHALL be semantically equivalent."]
-    pub r#presented_form: Vec<Box<super::super::types::Attachment>>,
+    pub r#presented_form: Vec<super::super::types::Attachment>,
 }
 impl Default for DiagnosticReport {
     fn default() -> Self {

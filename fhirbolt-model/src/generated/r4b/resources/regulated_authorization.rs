@@ -13,9 +13,9 @@ pub struct RegulatedAuthorizationCase {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension."]
-    pub r#extension: Vec<Box<super::super::types::Extension>>,
+    pub r#extension: Vec<super::super::types::Extension>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself)."]
-    pub r#modifier_extension: Vec<Box<super::super::types::Extension>>,
+    pub r#modifier_extension: Vec<super::super::types::Extension>,
     #[doc = "Identifier by which this case can be referenced."]
     pub r#identifier: Option<Box<super::super::types::Identifier>>,
     #[doc = "The defining type of case."]
@@ -57,19 +57,19 @@ pub struct RegulatedAuthorization {
     #[doc = "These resources do not have an independent existence apart from the resource that contains them - they cannot be identified independently, and nor can they have their own independent transaction scope."]
     pub r#contained: Vec<super::super::Resource>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the resource. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension."]
-    pub r#extension: Vec<Box<super::super::types::Extension>>,
+    pub r#extension: Vec<super::super::types::Extension>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the resource and that modifies the understanding of the element that contains it and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself)."]
-    pub r#modifier_extension: Vec<Box<super::super::types::Extension>>,
+    pub r#modifier_extension: Vec<super::super::types::Extension>,
     #[doc = "Business identifier for the authorization, typically assigned by the authorizing body."]
-    pub r#identifier: Vec<Box<super::super::types::Identifier>>,
+    pub r#identifier: Vec<super::super::types::Identifier>,
     #[doc = "The product type, treatment, facility or activity that is being authorized."]
-    pub r#subject: Vec<Box<super::super::types::Reference>>,
+    pub r#subject: Vec<super::super::types::Reference>,
     #[doc = "Overall type of this authorization, for example drug marketing approval, orphan drug designation."]
     pub r#type: Option<Box<super::super::types::CodeableConcept>>,
     #[doc = "General textual supporting information."]
     pub r#description: Option<super::super::types::Markdown>,
     #[doc = "The territory (e.g., country, jurisdiction etc.) in which the authorization has been granted."]
-    pub r#region: Vec<Box<super::super::types::CodeableConcept>>,
+    pub r#region: Vec<super::super::types::CodeableConcept>,
     #[doc = "The status that is authorised e.g. approved. Intermediate states and actions can be tracked with cases and applications."]
     pub r#status: Option<Box<super::super::types::CodeableConcept>>,
     #[doc = "The date at which the current status was assigned."]
@@ -81,7 +81,7 @@ pub struct RegulatedAuthorization {
     #[doc = "The intended use of the product, e.g. prevention, treatment, diagnosis."]
     pub r#intended_use: Option<Box<super::super::types::CodeableConcept>>,
     #[doc = "The legal or regulatory framework against which this authorization is granted, or other reasons for it."]
-    pub r#basis: Vec<Box<super::super::types::CodeableConcept>>,
+    pub r#basis: Vec<super::super::types::CodeableConcept>,
     #[doc = "The organization that has been granted this authorization, by some authoritative body (the 'regulator')."]
     pub r#holder: Option<Box<super::super::types::Reference>>,
     #[doc = "The regulatory authority or authorizing body granting the authorization. For example, European Medicines Agency (EMA), Food and Drug Administration (FDA), Health Canada (HC), etc."]

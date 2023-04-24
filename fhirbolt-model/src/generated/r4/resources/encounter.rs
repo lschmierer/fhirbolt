@@ -5,9 +5,9 @@ pub struct EncounterStatusHistory {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension."]
-    pub r#extension: Vec<Box<super::super::types::Extension>>,
+    pub r#extension: Vec<super::super::types::Extension>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself)."]
-    pub r#modifier_extension: Vec<Box<super::super::types::Extension>>,
+    pub r#modifier_extension: Vec<super::super::types::Extension>,
     #[doc = "planned | arrived | triaged | in-progress | onleave | finished | cancelled +."]
     pub r#status: super::super::types::Code,
     #[doc = "The time that the episode was in the specified status."]
@@ -38,9 +38,9 @@ pub struct EncounterClassHistory {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension."]
-    pub r#extension: Vec<Box<super::super::types::Extension>>,
+    pub r#extension: Vec<super::super::types::Extension>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself)."]
-    pub r#modifier_extension: Vec<Box<super::super::types::Extension>>,
+    pub r#modifier_extension: Vec<super::super::types::Extension>,
     #[doc = "inpatient | outpatient | ambulatory | emergency +."]
     pub r#class: Box<super::super::types::Coding>,
     #[doc = "The time that the episode was in the specified class."]
@@ -71,11 +71,11 @@ pub struct EncounterParticipant {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension."]
-    pub r#extension: Vec<Box<super::super::types::Extension>>,
+    pub r#extension: Vec<super::super::types::Extension>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself)."]
-    pub r#modifier_extension: Vec<Box<super::super::types::Extension>>,
+    pub r#modifier_extension: Vec<super::super::types::Extension>,
     #[doc = "Role of participant in encounter."]
-    pub r#type: Vec<Box<super::super::types::CodeableConcept>>,
+    pub r#type: Vec<super::super::types::CodeableConcept>,
     #[doc = "The period of time that the specified participant participated in the encounter. These can overlap or be sub-sets of the overall encounter's period."]
     pub r#period: Option<Box<super::super::types::Period>>,
     #[doc = "Persons involved in the encounter other than the patient."]
@@ -99,9 +99,9 @@ pub struct EncounterDiagnosis {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension."]
-    pub r#extension: Vec<Box<super::super::types::Extension>>,
+    pub r#extension: Vec<super::super::types::Extension>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself)."]
-    pub r#modifier_extension: Vec<Box<super::super::types::Extension>>,
+    pub r#modifier_extension: Vec<super::super::types::Extension>,
     #[doc = "Reason the encounter takes place, as specified using information from another resource. For admissions, this is the admission diagnosis. The indication will typically be a Condition (with other resources referenced in the evidence.detail), or a Procedure."]
     pub r#condition: Box<super::super::types::Reference>,
     #[doc = "Role that this diagnosis has within the encounter (e.g. admission, billing, discharge …)."]
@@ -131,9 +131,9 @@ pub struct EncounterHospitalization {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension."]
-    pub r#extension: Vec<Box<super::super::types::Extension>>,
+    pub r#extension: Vec<super::super::types::Extension>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself)."]
-    pub r#modifier_extension: Vec<Box<super::super::types::Extension>>,
+    pub r#modifier_extension: Vec<super::super::types::Extension>,
     #[doc = "Pre-admission identifier."]
     pub r#pre_admission_identifier: Option<Box<super::super::types::Identifier>>,
     #[doc = "The location/organization from which the patient came before admission."]
@@ -143,11 +143,11 @@ pub struct EncounterHospitalization {
     #[doc = "Whether this hospitalization is a readmission and why if known."]
     pub r#re_admission: Option<Box<super::super::types::CodeableConcept>>,
     #[doc = "Diet preferences reported by the patient."]
-    pub r#diet_preference: Vec<Box<super::super::types::CodeableConcept>>,
+    pub r#diet_preference: Vec<super::super::types::CodeableConcept>,
     #[doc = "Special courtesies (VIP, board member)."]
-    pub r#special_courtesy: Vec<Box<super::super::types::CodeableConcept>>,
+    pub r#special_courtesy: Vec<super::super::types::CodeableConcept>,
     #[doc = "Any special requests that have been made for this hospitalization encounter, such as the provision of specific equipment or other things."]
-    pub r#special_arrangement: Vec<Box<super::super::types::CodeableConcept>>,
+    pub r#special_arrangement: Vec<super::super::types::CodeableConcept>,
     #[doc = "Location/organization to which the patient is discharged."]
     pub r#destination: Option<Box<super::super::types::Reference>>,
     #[doc = "Category or kind of location after discharge."]
@@ -177,9 +177,9 @@ pub struct EncounterLocation {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension."]
-    pub r#extension: Vec<Box<super::super::types::Extension>>,
+    pub r#extension: Vec<super::super::types::Extension>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself)."]
-    pub r#modifier_extension: Vec<Box<super::super::types::Extension>>,
+    pub r#modifier_extension: Vec<super::super::types::Extension>,
     #[doc = "The location where the encounter takes place."]
     pub r#location: Box<super::super::types::Reference>,
     #[doc = "The status of the participants' presence at the specified location during the period specified. If the participant is no longer at the location, then the period will have an end date/time."]
@@ -222,11 +222,11 @@ pub struct Encounter {
     #[doc = "These resources do not have an independent existence apart from the resource that contains them - they cannot be identified independently, and nor can they have their own independent transaction scope."]
     pub r#contained: Vec<super::super::Resource>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the resource. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension."]
-    pub r#extension: Vec<Box<super::super::types::Extension>>,
+    pub r#extension: Vec<super::super::types::Extension>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the resource and that modifies the understanding of the element that contains it and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself)."]
-    pub r#modifier_extension: Vec<Box<super::super::types::Extension>>,
+    pub r#modifier_extension: Vec<super::super::types::Extension>,
     #[doc = "Identifier(s) by which this encounter is known."]
-    pub r#identifier: Vec<Box<super::super::types::Identifier>>,
+    pub r#identifier: Vec<super::super::types::Identifier>,
     #[doc = "planned | arrived | triaged | in-progress | onleave | finished | cancelled +."]
     pub r#status: super::super::types::Code,
     #[doc = "The status history permits the encounter resource to contain the status history without needing to read through the historical versions of the resource, or even have the server store them."]
@@ -236,7 +236,7 @@ pub struct Encounter {
     #[doc = "The class history permits the tracking of the encounters transitions without needing to go  through the resource history.  This would be used for a case where an admission starts of as an emergency encounter, then transitions into an inpatient scenario. Doing this and not restarting a new encounter ensures that any lab/diagnostic results can more easily follow the patient and not require re-processing and not get lost or cancelled during a kind of discharge from emergency to inpatient."]
     pub r#class_history: Vec<EncounterClassHistory>,
     #[doc = "Specific type of encounter (e.g. e-mail consultation, surgical day-care, skilled nursing, rehabilitation)."]
-    pub r#type: Vec<Box<super::super::types::CodeableConcept>>,
+    pub r#type: Vec<super::super::types::CodeableConcept>,
     #[doc = "Broad categorization of the service that is to be provided (e.g. cardiology)."]
     pub r#service_type: Option<Box<super::super::types::CodeableConcept>>,
     #[doc = "Indicates the urgency of the encounter."]
@@ -244,25 +244,25 @@ pub struct Encounter {
     #[doc = "The patient or group present at the encounter."]
     pub r#subject: Option<Box<super::super::types::Reference>>,
     #[doc = "Where a specific encounter should be classified as a part of a specific episode(s) of care this field should be used. This association can facilitate grouping of related encounters together for a specific purpose, such as government reporting, issue tracking, association via a common problem.  The association is recorded on the encounter as these are typically created after the episode of care and grouped on entry rather than editing the episode of care to append another encounter to it (the episode of care could span years)."]
-    pub r#episode_of_care: Vec<Box<super::super::types::Reference>>,
+    pub r#episode_of_care: Vec<super::super::types::Reference>,
     #[doc = "The request this encounter satisfies (e.g. incoming referral or procedure request)."]
-    pub r#based_on: Vec<Box<super::super::types::Reference>>,
+    pub r#based_on: Vec<super::super::types::Reference>,
     #[doc = "The list of people responsible for providing the service."]
     pub r#participant: Vec<EncounterParticipant>,
     #[doc = "The appointment that scheduled this encounter."]
-    pub r#appointment: Vec<Box<super::super::types::Reference>>,
+    pub r#appointment: Vec<super::super::types::Reference>,
     #[doc = "The start and end time of the encounter."]
     pub r#period: Option<Box<super::super::types::Period>>,
     #[doc = "Quantity of time the encounter lasted. This excludes the time during leaves of absence."]
     pub r#length: Option<Box<super::super::types::Duration>>,
     #[doc = "Reason the encounter takes place, expressed as a code. For admissions, this can be used for a coded admission diagnosis."]
-    pub r#reason_code: Vec<Box<super::super::types::CodeableConcept>>,
+    pub r#reason_code: Vec<super::super::types::CodeableConcept>,
     #[doc = "Reason the encounter takes place, expressed as a code. For admissions, this can be used for a coded admission diagnosis."]
-    pub r#reason_reference: Vec<Box<super::super::types::Reference>>,
+    pub r#reason_reference: Vec<super::super::types::Reference>,
     #[doc = "The list of diagnosis relevant to this encounter."]
     pub r#diagnosis: Vec<EncounterDiagnosis>,
     #[doc = "The set of accounts that may be used for billing for this Encounter."]
-    pub r#account: Vec<Box<super::super::types::Reference>>,
+    pub r#account: Vec<super::super::types::Reference>,
     #[doc = "Details about the admission to a healthcare service."]
     pub r#hospitalization: Option<EncounterHospitalization>,
     #[doc = "List of locations where  the patient has been during this encounter."]

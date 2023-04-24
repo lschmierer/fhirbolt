@@ -18,9 +18,9 @@ pub struct DeviceUdiCarrier {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and managable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension."]
-    pub r#extension: Vec<Box<super::super::types::Extension>>,
+    pub r#extension: Vec<super::super::types::Extension>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and managable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself)."]
-    pub r#modifier_extension: Vec<Box<super::super::types::Extension>>,
+    pub r#modifier_extension: Vec<super::super::types::Extension>,
     #[doc = "The device identifier (DI) is a mandatory, fixed portion of a UDI that identifies the labeler and the specific version or model of a device."]
     pub r#device_identifier: super::super::types::String,
     #[doc = "Organization that is charged with issuing UDIs for devices. For example, the US FDA issuers include: \n1) GS1: <http://hl7.org/fhir/NamingSystem/gs1>-di, \n2) HIBCC: <http://hl7.org/fhir/NamingSystem/hibcc>-diI, \n3) ICCBBA for blood containers: <http://hl7.org/fhir/NamingSystem/iccbba>-blood-di, \n4) ICCBA for other devices: <http://hl7.org/fhir/NamingSystem/iccbba>-other-di # Informationsstelle für Arzneispezialitäten (IFA GmbH) (EU only): <http://hl7.org/fhir/NamingSystem/ifa>-gmbh-di."]
@@ -63,9 +63,9 @@ pub struct DeviceName {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and managable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension."]
-    pub r#extension: Vec<Box<super::super::types::Extension>>,
+    pub r#extension: Vec<super::super::types::Extension>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and managable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself)."]
-    pub r#modifier_extension: Vec<Box<super::super::types::Extension>>,
+    pub r#modifier_extension: Vec<super::super::types::Extension>,
     #[doc = "The actual name that identifies the device."]
     pub r#value: super::super::types::String,
     #[doc = "Indicates the kind of name. RegisteredName | UserFriendlyName | PatientReportedName."]
@@ -99,9 +99,9 @@ pub struct DeviceVersion {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and managable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension."]
-    pub r#extension: Vec<Box<super::super::types::Extension>>,
+    pub r#extension: Vec<super::super::types::Extension>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and managable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself)."]
-    pub r#modifier_extension: Vec<Box<super::super::types::Extension>>,
+    pub r#modifier_extension: Vec<super::super::types::Extension>,
     #[doc = "The type of the device version, e.g. manufacturer, approved, internal."]
     pub r#type: Option<Box<super::super::types::CodeableConcept>>,
     #[doc = "The hardware or software module of the device to which the version applies."]
@@ -134,9 +134,9 @@ pub struct DeviceConformsTo {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and managable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension."]
-    pub r#extension: Vec<Box<super::super::types::Extension>>,
+    pub r#extension: Vec<super::super::types::Extension>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and managable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself)."]
-    pub r#modifier_extension: Vec<Box<super::super::types::Extension>>,
+    pub r#modifier_extension: Vec<super::super::types::Extension>,
     #[doc = "Describes the type of the standard, specification, or formal guidance."]
     pub r#category: Option<Box<super::super::types::CodeableConcept>>,
     #[doc = "Code that identifies the specific standard, specification, protocol, formal guidance, regulation, legislation, or certification scheme to which the device adheres."]
@@ -166,9 +166,9 @@ pub struct DeviceProperty {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and managable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension."]
-    pub r#extension: Vec<Box<super::super::types::Extension>>,
+    pub r#extension: Vec<super::super::types::Extension>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and managable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself)."]
-    pub r#modifier_extension: Vec<Box<super::super::types::Extension>>,
+    pub r#modifier_extension: Vec<super::super::types::Extension>,
     #[doc = "Code that specifies the property, such as resolution, color, size, being represented."]
     pub r#type: Box<super::super::types::CodeableConcept>,
     #[doc = "The value of the property specified by the associated property.type code."]
@@ -205,11 +205,11 @@ pub struct Device {
     #[doc = "These resources do not have an independent existence apart from the resource that contains them - they cannot be identified independently, nor can they have their own independent transaction scope. This is allowed to be a Parameters resource if and only if it is referenced by a resource that provides context/meaning."]
     pub r#contained: Vec<super::super::Resource>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the resource. To make the use of extensions safe and managable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension."]
-    pub r#extension: Vec<Box<super::super::types::Extension>>,
+    pub r#extension: Vec<super::super::types::Extension>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the resource and that modifies the understanding of the element that contains it and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and managable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself)."]
-    pub r#modifier_extension: Vec<Box<super::super::types::Extension>>,
+    pub r#modifier_extension: Vec<super::super::types::Extension>,
     #[doc = "Unique instance identifiers assigned to a device by manufacturers other organizations or owners."]
-    pub r#identifier: Vec<Box<super::super::types::Identifier>>,
+    pub r#identifier: Vec<super::super::types::Identifier>,
     #[doc = "The name used to display by default when the device is referenced. Based on intent of use by the resource creator, this may reflect one of the names in Device.name, or may be another simple name."]
     pub r#display_name: Option<super::super::types::String>,
     #[doc = "The reference to the definition for the device."]
@@ -239,9 +239,9 @@ pub struct Device {
     #[doc = "The part number or catalog number of the device."]
     pub r#part_number: Option<super::super::types::String>,
     #[doc = "Devices may be associated with one or more categories."]
-    pub r#category: Vec<Box<super::super::types::CodeableConcept>>,
+    pub r#category: Vec<super::super::types::CodeableConcept>,
     #[doc = "The kind or type of device. A device instance may have more than one type - in which case those are the types that apply to the specific instance of the device."]
-    pub r#type: Vec<Box<super::super::types::CodeableConcept>>,
+    pub r#type: Vec<super::super::types::CodeableConcept>,
     #[doc = "The actual design of the device or software version running on the device."]
     pub r#version: Vec<DeviceVersion>,
     #[doc = "Identifies the standards, specifications, or formal guidances for the capabilities supported by the device. The device may be certified as conformant to these specifications e.g., communication, performance, process, measurement, or specialization standards."]
@@ -257,19 +257,19 @@ pub struct Device {
     #[doc = "An organization that is responsible for the provision and ongoing maintenance of the device."]
     pub r#owner: Option<Box<super::super::types::Reference>>,
     #[doc = "Contact details for an organization or a particular human that is responsible for the device."]
-    pub r#contact: Vec<Box<super::super::types::ContactPoint>>,
+    pub r#contact: Vec<super::super::types::ContactPoint>,
     #[doc = "The place where the device can be found."]
     pub r#location: Option<Box<super::super::types::Reference>>,
     #[doc = "A network address on which the device may be contacted directly."]
     pub r#url: Option<super::super::types::Uri>,
     #[doc = "Technical endpoints providing access to services provided by the device defined at this resource."]
-    pub r#endpoint: Vec<Box<super::super::types::Reference>>,
+    pub r#endpoint: Vec<super::super::types::Reference>,
     #[doc = "The linked device acting as a communication controller, data collector, translator, or concentrator for the current device (e.g., mobile phone application that relays a blood pressure device's data)."]
-    pub r#gateway: Vec<Box<super::super::types::CodeableReference>>,
+    pub r#gateway: Vec<super::super::types::CodeableReference>,
     #[doc = "Descriptive information, usage information or implantation information that is not captured in an existing element."]
-    pub r#note: Vec<Box<super::super::types::Annotation>>,
+    pub r#note: Vec<super::super::types::Annotation>,
     #[doc = "Provides additional safety characteristics about a medical device.  For example devices containing latex."]
-    pub r#safety: Vec<Box<super::super::types::CodeableConcept>>,
+    pub r#safety: Vec<super::super::types::CodeableConcept>,
     #[doc = "The higher level or encompassing device that this device is a logical part of."]
     pub r#parent: Option<Box<super::super::types::Reference>>,
 }

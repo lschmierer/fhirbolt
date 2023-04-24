@@ -24,9 +24,9 @@ pub struct SupplyRequestParameter {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and managable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension."]
-    pub r#extension: Vec<Box<super::super::types::Extension>>,
+    pub r#extension: Vec<super::super::types::Extension>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and managable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself)."]
-    pub r#modifier_extension: Vec<Box<super::super::types::Extension>>,
+    pub r#modifier_extension: Vec<super::super::types::Extension>,
     #[doc = "A code or string that identifies the device detail being asserted."]
     pub r#code: Option<Box<super::super::types::CodeableConcept>>,
     #[doc = "The value of the device detail."]
@@ -59,15 +59,15 @@ pub struct SupplyRequest {
     #[doc = "These resources do not have an independent existence apart from the resource that contains them - they cannot be identified independently, nor can they have their own independent transaction scope. This is allowed to be a Parameters resource if and only if it is referenced by a resource that provides context/meaning."]
     pub r#contained: Vec<super::super::Resource>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the resource. To make the use of extensions safe and managable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension."]
-    pub r#extension: Vec<Box<super::super::types::Extension>>,
+    pub r#extension: Vec<super::super::types::Extension>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the resource and that modifies the understanding of the element that contains it and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and managable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself)."]
-    pub r#modifier_extension: Vec<Box<super::super::types::Extension>>,
+    pub r#modifier_extension: Vec<super::super::types::Extension>,
     #[doc = "Business identifiers assigned to this SupplyRequest by the author and/or other systems. These identifiers remain constant as the resource is updated and propagates from server to server."]
-    pub r#identifier: Vec<Box<super::super::types::Identifier>>,
+    pub r#identifier: Vec<super::super::types::Identifier>,
     #[doc = "Status of the supply request."]
     pub r#status: Option<super::super::types::Code>,
     #[doc = "Plan/proposal/order fulfilled by this request."]
-    pub r#based_on: Vec<Box<super::super::types::Reference>>,
+    pub r#based_on: Vec<super::super::types::Reference>,
     #[doc = "Category of supply, e.g.  central, non-stock, etc. This is used to support work flows associated with the supply process."]
     pub r#category: Option<Box<super::super::types::CodeableConcept>>,
     #[doc = "Indicates how quickly this SupplyRequest should be addressed with respect to other requests."]
@@ -87,9 +87,9 @@ pub struct SupplyRequest {
     #[doc = "The device, practitioner, etc. who initiated the request."]
     pub r#requester: Option<Box<super::super::types::Reference>>,
     #[doc = "Who is intended to fulfill the request."]
-    pub r#supplier: Vec<Box<super::super::types::Reference>>,
+    pub r#supplier: Vec<super::super::types::Reference>,
     #[doc = "The reason why the supply item was requested."]
-    pub r#reason: Vec<Box<super::super::types::CodeableReference>>,
+    pub r#reason: Vec<super::super::types::CodeableReference>,
     #[doc = "Where the supply is expected to come from."]
     pub r#deliver_from: Option<Box<super::super::types::Reference>>,
     #[doc = "Where the supply is destined to go."]

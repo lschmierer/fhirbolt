@@ -87,25 +87,6 @@ pub fn implement_serialize(
                 seq_serializer.end()
             }
         }
-
-        impl serde::ser::Serialize for crate::context::ser::SerializationContext<&Vec<Box<#namespace::#struct_name_ident>>> {
-            fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
-            where
-                S: serde::ser::Serializer,
-            {
-                use serde::ser::SerializeSeq;
-
-                let mut seq_serializer = serializer.serialize_seq(Some(self.value.len()))?;
-
-                for value in self.value {
-                    self.with_context(value, |ctx| {
-                        seq_serializer.serialize_element(ctx)
-                    })?
-                }
-
-                seq_serializer.end()
-            }
-        }
     }
 }
 

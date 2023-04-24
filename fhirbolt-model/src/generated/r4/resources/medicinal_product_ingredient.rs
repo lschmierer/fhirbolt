@@ -5,9 +5,9 @@ pub struct MedicinalProductIngredientSpecifiedSubstanceStrengthReferenceStrength
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension."]
-    pub r#extension: Vec<Box<super::super::types::Extension>>,
+    pub r#extension: Vec<super::super::types::Extension>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself)."]
-    pub r#modifier_extension: Vec<Box<super::super::types::Extension>>,
+    pub r#modifier_extension: Vec<super::super::types::Extension>,
     #[doc = "Relevant reference substance."]
     pub r#substance: Option<Box<super::super::types::CodeableConcept>>,
     #[doc = "Strength expressed in terms of a reference substance."]
@@ -17,7 +17,7 @@ pub struct MedicinalProductIngredientSpecifiedSubstanceStrengthReferenceStrength
     #[doc = "For when strength is measured at a particular point or distance."]
     pub r#measurement_point: Option<super::super::types::String>,
     #[doc = "The country or countries for which the strength range applies."]
-    pub r#country: Vec<Box<super::super::types::CodeableConcept>>,
+    pub r#country: Vec<super::super::types::CodeableConcept>,
 }
 impl Default for MedicinalProductIngredientSpecifiedSubstanceStrengthReferenceStrength {
     fn default() -> Self {
@@ -43,9 +43,9 @@ pub struct MedicinalProductIngredientSpecifiedSubstanceStrength {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension."]
-    pub r#extension: Vec<Box<super::super::types::Extension>>,
+    pub r#extension: Vec<super::super::types::Extension>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself)."]
-    pub r#modifier_extension: Vec<Box<super::super::types::Extension>>,
+    pub r#modifier_extension: Vec<super::super::types::Extension>,
     #[doc = "The quantity of substance in the unit of presentation, or in the volume (or mass) of the single pharmaceutical product or manufactured item."]
     pub r#presentation: Box<super::super::types::Ratio>,
     #[doc = "A lower limit for the quantity of substance in the unit of presentation. For use when there is a range of strengths, this is the lower limit, with the presentation attribute becoming the upper limit."]
@@ -57,7 +57,7 @@ pub struct MedicinalProductIngredientSpecifiedSubstanceStrength {
     #[doc = "For when strength is measured at a particular point or distance."]
     pub r#measurement_point: Option<super::super::types::String>,
     #[doc = "The country or countries for which the strength range applies."]
-    pub r#country: Vec<Box<super::super::types::CodeableConcept>>,
+    pub r#country: Vec<super::super::types::CodeableConcept>,
     #[doc = "Strength expressed in terms of a reference substance."]
     pub r#reference_strength:
         Vec<MedicinalProductIngredientSpecifiedSubstanceStrengthReferenceStrength>,
@@ -88,9 +88,9 @@ pub struct MedicinalProductIngredientSpecifiedSubstance {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension."]
-    pub r#extension: Vec<Box<super::super::types::Extension>>,
+    pub r#extension: Vec<super::super::types::Extension>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself)."]
-    pub r#modifier_extension: Vec<Box<super::super::types::Extension>>,
+    pub r#modifier_extension: Vec<super::super::types::Extension>,
     #[doc = "The specified substance."]
     pub r#code: Box<super::super::types::CodeableConcept>,
     #[doc = "The group of specified substance, e.g. group 1 to 4."]
@@ -127,9 +127,9 @@ pub struct MedicinalProductIngredientSubstance {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension."]
-    pub r#extension: Vec<Box<super::super::types::Extension>>,
+    pub r#extension: Vec<super::super::types::Extension>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself)."]
-    pub r#modifier_extension: Vec<Box<super::super::types::Extension>>,
+    pub r#modifier_extension: Vec<super::super::types::Extension>,
     #[doc = "The ingredient substance."]
     pub r#code: Box<super::super::types::CodeableConcept>,
     #[doc = "Quantity of the substance or specified substance present in the manufactured item or pharmaceutical product."]
@@ -166,9 +166,9 @@ pub struct MedicinalProductIngredient {
     #[doc = "These resources do not have an independent existence apart from the resource that contains them - they cannot be identified independently, and nor can they have their own independent transaction scope."]
     pub r#contained: Vec<super::super::Resource>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the resource. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension."]
-    pub r#extension: Vec<Box<super::super::types::Extension>>,
+    pub r#extension: Vec<super::super::types::Extension>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the resource and that modifies the understanding of the element that contains it and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself)."]
-    pub r#modifier_extension: Vec<Box<super::super::types::Extension>>,
+    pub r#modifier_extension: Vec<super::super::types::Extension>,
     #[doc = "The identifier(s) of this Ingredient that are assigned by business processes and/or used to refer to it when a direct URL reference to the resource itself is not appropriate."]
     pub r#identifier: Option<Box<super::super::types::Identifier>>,
     #[doc = "Ingredient role e.g. Active ingredient, excipient."]
@@ -176,7 +176,7 @@ pub struct MedicinalProductIngredient {
     #[doc = "If the ingredient is a known or suspected allergen."]
     pub r#allergenic_indicator: Option<super::super::types::Boolean>,
     #[doc = "Manufacturer of this Ingredient."]
-    pub r#manufacturer: Vec<Box<super::super::types::Reference>>,
+    pub r#manufacturer: Vec<super::super::types::Reference>,
     #[doc = "A specified substance that comprises this ingredient."]
     pub r#specified_substance: Vec<MedicinalProductIngredientSpecifiedSubstance>,
     #[doc = "The ingredient substance."]

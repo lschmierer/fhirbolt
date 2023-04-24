@@ -31,11 +31,11 @@ pub struct ImmunizationEvaluation {
     #[doc = "These resources do not have an independent existence apart from the resource that contains them - they cannot be identified independently, and nor can they have their own independent transaction scope."]
     pub r#contained: Vec<super::super::Resource>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the resource. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension."]
-    pub r#extension: Vec<Box<super::super::types::Extension>>,
+    pub r#extension: Vec<super::super::types::Extension>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the resource and that modifies the understanding of the element that contains it and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself)."]
-    pub r#modifier_extension: Vec<Box<super::super::types::Extension>>,
+    pub r#modifier_extension: Vec<super::super::types::Extension>,
     #[doc = "A unique identifier assigned to this immunization evaluation record."]
-    pub r#identifier: Vec<Box<super::super::types::Identifier>>,
+    pub r#identifier: Vec<super::super::types::Identifier>,
     #[doc = "Indicates the current status of the evaluation of the vaccination administration event."]
     pub r#status: super::super::types::Code,
     #[doc = "The individual for whom the evaluation is being done."]
@@ -51,7 +51,7 @@ pub struct ImmunizationEvaluation {
     #[doc = "Indicates if the dose is valid or not valid with respect to the published recommendations."]
     pub r#dose_status: Box<super::super::types::CodeableConcept>,
     #[doc = "Provides an explanation as to why the vaccine administration event is valid or not relative to the published recommendations."]
-    pub r#dose_status_reason: Vec<Box<super::super::types::CodeableConcept>>,
+    pub r#dose_status_reason: Vec<super::super::types::CodeableConcept>,
     #[doc = "Additional information about the evaluation."]
     pub r#description: Option<super::super::types::String>,
     #[doc = "One possible path to achieve presumed immunity against a disease - within the context of an authority."]

@@ -117,15 +117,15 @@ pub struct TaskRestriction {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension."]
-    pub r#extension: Vec<Box<super::super::types::Extension>>,
+    pub r#extension: Vec<super::super::types::Extension>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself)."]
-    pub r#modifier_extension: Vec<Box<super::super::types::Extension>>,
+    pub r#modifier_extension: Vec<super::super::types::Extension>,
     #[doc = "Indicates the number of times the requested action should occur."]
     pub r#repetitions: Option<super::super::types::PositiveInt>,
     #[doc = "Over what time-period is fulfillment sought."]
     pub r#period: Option<Box<super::super::types::Period>>,
     #[doc = "For requests that are targeted to more than on potential recipient/target, for whom is fulfillment sought?"]
-    pub r#recipient: Vec<Box<super::super::types::Reference>>,
+    pub r#recipient: Vec<super::super::types::Reference>,
 }
 impl Default for TaskRestriction {
     fn default() -> Self {
@@ -145,9 +145,9 @@ pub struct TaskInput {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension."]
-    pub r#extension: Vec<Box<super::super::types::Extension>>,
+    pub r#extension: Vec<super::super::types::Extension>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself)."]
-    pub r#modifier_extension: Vec<Box<super::super::types::Extension>>,
+    pub r#modifier_extension: Vec<super::super::types::Extension>,
     #[doc = "A code or description indicating how the input is intended to be used as part of the task execution."]
     pub r#type: Box<super::super::types::CodeableConcept>,
     #[doc = "The value of the input parameter as a basic type."]
@@ -174,9 +174,9 @@ pub struct TaskOutput {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension."]
-    pub r#extension: Vec<Box<super::super::types::Extension>>,
+    pub r#extension: Vec<super::super::types::Extension>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself)."]
-    pub r#modifier_extension: Vec<Box<super::super::types::Extension>>,
+    pub r#modifier_extension: Vec<super::super::types::Extension>,
     #[doc = "The name of the Output parameter."]
     pub r#type: Box<super::super::types::CodeableConcept>,
     #[doc = "The value of the Output parameter as a basic type."]
@@ -213,21 +213,21 @@ pub struct Task {
     #[doc = "These resources do not have an independent existence apart from the resource that contains them - they cannot be identified independently, and nor can they have their own independent transaction scope."]
     pub r#contained: Vec<super::super::Resource>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the resource. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension."]
-    pub r#extension: Vec<Box<super::super::types::Extension>>,
+    pub r#extension: Vec<super::super::types::Extension>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the resource and that modifies the understanding of the element that contains it and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself)."]
-    pub r#modifier_extension: Vec<Box<super::super::types::Extension>>,
+    pub r#modifier_extension: Vec<super::super::types::Extension>,
     #[doc = "The business identifier for this task."]
-    pub r#identifier: Vec<Box<super::super::types::Identifier>>,
+    pub r#identifier: Vec<super::super::types::Identifier>,
     #[doc = "The URL pointing to a *FHIR*-defined protocol, guideline, orderset or other definition that is adhered to in whole or in part by this Task."]
     pub r#instantiates_canonical: Option<super::super::types::Canonical>,
     #[doc = "The URL pointing to an *externally* maintained  protocol, guideline, orderset or other definition that is adhered to in whole or in part by this Task."]
     pub r#instantiates_uri: Option<super::super::types::Uri>,
     #[doc = "BasedOn refers to a higher-level authorization that triggered the creation of the task.  It references a \"request\" resource such as a ServiceRequest, MedicationRequest, ServiceRequest, CarePlan, etc. which is distinct from the \"request\" resource the task is seeking to fulfill.  This latter resource is referenced by FocusOn.  For example, based on a ServiceRequest (= BasedOn), a task is created to fulfill a procedureRequest ( = FocusOn ) to collect a specimen from a patient."]
-    pub r#based_on: Vec<Box<super::super::types::Reference>>,
+    pub r#based_on: Vec<super::super::types::Reference>,
     #[doc = "An identifier that links together multiple tasks and other requests that were created in the same context."]
     pub r#group_identifier: Option<Box<super::super::types::Identifier>>,
     #[doc = "Task that this particular task is part of."]
-    pub r#part_of: Vec<Box<super::super::types::Reference>>,
+    pub r#part_of: Vec<super::super::types::Reference>,
     #[doc = "The current status of the task."]
     pub r#status: super::super::types::Code,
     #[doc = "An explanation as to why this task is held, failed, was refused, etc."]
@@ -257,7 +257,7 @@ pub struct Task {
     #[doc = "The creator of the task."]
     pub r#requester: Option<Box<super::super::types::Reference>>,
     #[doc = "The kind of participant that should perform the task."]
-    pub r#performer_type: Vec<Box<super::super::types::CodeableConcept>>,
+    pub r#performer_type: Vec<super::super::types::CodeableConcept>,
     #[doc = "Individual organization or Device currently responsible for task execution."]
     pub r#owner: Option<Box<super::super::types::Reference>>,
     #[doc = "Principal physical location where the this task is performed."]
@@ -267,11 +267,11 @@ pub struct Task {
     #[doc = "A resource reference indicating why this task needs to be performed."]
     pub r#reason_reference: Option<Box<super::super::types::Reference>>,
     #[doc = "Insurance plans, coverage extensions, pre-authorizations and/or pre-determinations that may be relevant to the Task."]
-    pub r#insurance: Vec<Box<super::super::types::Reference>>,
+    pub r#insurance: Vec<super::super::types::Reference>,
     #[doc = "Free-text information captured about the task as it progresses."]
-    pub r#note: Vec<Box<super::super::types::Annotation>>,
+    pub r#note: Vec<super::super::types::Annotation>,
     #[doc = "Links to Provenance records for past versions of this Task that identify key state transitions or updates that are likely to be relevant to a user looking at the current version of the task."]
-    pub r#relevant_history: Vec<Box<super::super::types::Reference>>,
+    pub r#relevant_history: Vec<super::super::types::Reference>,
     #[doc = "If the Task.focus is a request resource and the task is seeking fulfillment (i.e. is asking for the request to be actioned), this element identifies any limitations on what parts of the referenced request should be actioned."]
     pub r#restriction: Option<TaskRestriction>,
     #[doc = "Additional information that may be needed in the execution of the task."]

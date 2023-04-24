@@ -5,9 +5,9 @@ pub struct EpisodeOfCareStatusHistory {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and managable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension."]
-    pub r#extension: Vec<Box<super::super::types::Extension>>,
+    pub r#extension: Vec<super::super::types::Extension>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and managable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself)."]
-    pub r#modifier_extension: Vec<Box<super::super::types::Extension>>,
+    pub r#modifier_extension: Vec<super::super::types::Extension>,
     #[doc = "planned | waitlist | active | onhold | finished | cancelled."]
     pub r#status: super::super::types::Code,
     #[doc = "The period during this EpisodeOfCare that the specific status applied."]
@@ -38,13 +38,13 @@ pub struct EpisodeOfCareReason {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and managable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension."]
-    pub r#extension: Vec<Box<super::super::types::Extension>>,
+    pub r#extension: Vec<super::super::types::Extension>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and managable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself)."]
-    pub r#modifier_extension: Vec<Box<super::super::types::Extension>>,
+    pub r#modifier_extension: Vec<super::super::types::Extension>,
     #[doc = "What the reason value should be used as e.g. Chief Complaint, Health Concern, Health Maintenance (including screening)."]
     pub r#use: Option<Box<super::super::types::CodeableConcept>>,
     #[doc = "The medical reason that is expected to be addressed during the episode of care, expressed as a text, code or a reference to another resource."]
-    pub r#value: Vec<Box<super::super::types::CodeableReference>>,
+    pub r#value: Vec<super::super::types::CodeableReference>,
 }
 impl Default for EpisodeOfCareReason {
     fn default() -> Self {
@@ -63,11 +63,11 @@ pub struct EpisodeOfCareDiagnosis {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and managable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension."]
-    pub r#extension: Vec<Box<super::super::types::Extension>>,
+    pub r#extension: Vec<super::super::types::Extension>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and managable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself)."]
-    pub r#modifier_extension: Vec<Box<super::super::types::Extension>>,
+    pub r#modifier_extension: Vec<super::super::types::Extension>,
     #[doc = "The medical condition that was addressed during the episode of care, expressed as a text, code or a reference to another resource."]
-    pub r#condition: Vec<Box<super::super::types::CodeableReference>>,
+    pub r#condition: Vec<super::super::types::CodeableReference>,
     #[doc = "Role that this diagnosis has within the episode of care (e.g. admission, billing, discharge …)."]
     pub r#use: Option<Box<super::super::types::CodeableConcept>>,
 }
@@ -98,17 +98,17 @@ pub struct EpisodeOfCare {
     #[doc = "These resources do not have an independent existence apart from the resource that contains them - they cannot be identified independently, nor can they have their own independent transaction scope. This is allowed to be a Parameters resource if and only if it is referenced by a resource that provides context/meaning."]
     pub r#contained: Vec<super::super::Resource>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the resource. To make the use of extensions safe and managable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension."]
-    pub r#extension: Vec<Box<super::super::types::Extension>>,
+    pub r#extension: Vec<super::super::types::Extension>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the resource and that modifies the understanding of the element that contains it and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and managable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself)."]
-    pub r#modifier_extension: Vec<Box<super::super::types::Extension>>,
+    pub r#modifier_extension: Vec<super::super::types::Extension>,
     #[doc = "The EpisodeOfCare may be known by different identifiers for different contexts of use, such as when an external agency is tracking the Episode for funding purposes."]
-    pub r#identifier: Vec<Box<super::super::types::Identifier>>,
+    pub r#identifier: Vec<super::super::types::Identifier>,
     #[doc = "planned | waitlist | active | onhold | finished | cancelled."]
     pub r#status: super::super::types::Code,
     #[doc = "The history of statuses that the EpisodeOfCare has been through (without requiring processing the history of the resource)."]
     pub r#status_history: Vec<EpisodeOfCareStatusHistory>,
     #[doc = "A classification of the type of episode of care; e.g. specialist referral, disease management, type of funded care."]
-    pub r#type: Vec<Box<super::super::types::CodeableConcept>>,
+    pub r#type: Vec<super::super::types::CodeableConcept>,
     #[doc = "The list of medical reasons that are expected to be addressed during the episode of care."]
     pub r#reason: Vec<EpisodeOfCareReason>,
     #[doc = "The list of medical conditions that were addressed during the episode of care."]
@@ -120,13 +120,13 @@ pub struct EpisodeOfCare {
     #[doc = "The interval during which the managing organization assumes the defined responsibility."]
     pub r#period: Option<Box<super::super::types::Period>>,
     #[doc = "Referral Request(s) that are fulfilled by this EpisodeOfCare, incoming referrals."]
-    pub r#referral_request: Vec<Box<super::super::types::Reference>>,
+    pub r#referral_request: Vec<super::super::types::Reference>,
     #[doc = "The practitioner that is the care manager/care coordinator for this patient."]
     pub r#care_manager: Option<Box<super::super::types::Reference>>,
     #[doc = "The list of practitioners that may be facilitating this episode of care for specific purposes."]
-    pub r#care_team: Vec<Box<super::super::types::Reference>>,
+    pub r#care_team: Vec<super::super::types::Reference>,
     #[doc = "The set of accounts that may be used for billing for this EpisodeOfCare."]
-    pub r#account: Vec<Box<super::super::types::Reference>>,
+    pub r#account: Vec<super::super::types::Reference>,
 }
 impl Default for EpisodeOfCare {
     fn default() -> Self {

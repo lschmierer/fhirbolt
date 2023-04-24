@@ -14,9 +14,9 @@ pub struct ChargeItemPerformer {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and managable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension."]
-    pub r#extension: Vec<Box<super::super::types::Extension>>,
+    pub r#extension: Vec<super::super::types::Extension>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and managable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself)."]
-    pub r#modifier_extension: Vec<Box<super::super::types::Extension>>,
+    pub r#modifier_extension: Vec<super::super::types::Extension>,
     #[doc = "Describes the type of performance or participation(e.g. primary surgeon, anesthesiologiest, etc.)."]
     pub r#function: Option<Box<super::super::types::CodeableConcept>>,
     #[doc = "The device, practitioner, etc. who performed or participated in the service."]
@@ -53,11 +53,11 @@ pub struct ChargeItem {
     #[doc = "These resources do not have an independent existence apart from the resource that contains them - they cannot be identified independently, nor can they have their own independent transaction scope. This is allowed to be a Parameters resource if and only if it is referenced by a resource that provides context/meaning."]
     pub r#contained: Vec<super::super::Resource>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the resource. To make the use of extensions safe and managable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension."]
-    pub r#extension: Vec<Box<super::super::types::Extension>>,
+    pub r#extension: Vec<super::super::types::Extension>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the resource and that modifies the understanding of the element that contains it and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and managable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself)."]
-    pub r#modifier_extension: Vec<Box<super::super::types::Extension>>,
+    pub r#modifier_extension: Vec<super::super::types::Extension>,
     #[doc = "Identifiers assigned to this event performer or other systems."]
-    pub r#identifier: Vec<Box<super::super::types::Identifier>>,
+    pub r#identifier: Vec<super::super::types::Identifier>,
     #[doc = "References the (external) source of pricing information, rules of application for the code this ChargeItem uses."]
     pub r#definition_uri: Vec<super::super::types::Uri>,
     #[doc = "References the source of pricing information, rules of application for the code this ChargeItem uses."]
@@ -65,7 +65,7 @@ pub struct ChargeItem {
     #[doc = "The current state of the ChargeItem."]
     pub r#status: super::super::types::Code,
     #[doc = "ChargeItems can be grouped to larger ChargeItems covering the whole set."]
-    pub r#part_of: Vec<Box<super::super::types::Reference>>,
+    pub r#part_of: Vec<super::super::types::Reference>,
     #[doc = "A code that identifies the charge, like a billing code."]
     pub r#code: Box<super::super::types::CodeableConcept>,
     #[doc = "The individual or set of individuals the action is being or was performed on."]
@@ -85,7 +85,7 @@ pub struct ChargeItem {
     #[doc = "Quantity of which the charge item has been serviced."]
     pub r#quantity: Option<Box<super::super::types::Quantity>>,
     #[doc = "The anatomical location where the related service has been applied."]
-    pub r#bodysite: Vec<Box<super::super::types::CodeableConcept>>,
+    pub r#bodysite: Vec<super::super::types::CodeableConcept>,
     #[doc = "The unit price of the chargable item."]
     pub r#unit_price_component: Option<Box<super::super::types::MonetaryComponent>>,
     #[doc = "The total price for the chargable item, accounting for the quantity."]
@@ -97,17 +97,17 @@ pub struct ChargeItem {
     #[doc = "Date the charge item was entered."]
     pub r#entered_date: Option<super::super::types::DateTime>,
     #[doc = "Describes why the event occurred in coded or textual form."]
-    pub r#reason: Vec<Box<super::super::types::CodeableConcept>>,
+    pub r#reason: Vec<super::super::types::CodeableConcept>,
     #[doc = "Indicated the rendered service that caused this charge."]
-    pub r#service: Vec<Box<super::super::types::CodeableReference>>,
+    pub r#service: Vec<super::super::types::CodeableReference>,
     #[doc = "Identifies the device, food, drug or other product being charged either by type code or reference to an instance."]
-    pub r#product: Vec<Box<super::super::types::CodeableReference>>,
+    pub r#product: Vec<super::super::types::CodeableReference>,
     #[doc = "Account into which this ChargeItems belongs."]
-    pub r#account: Vec<Box<super::super::types::Reference>>,
+    pub r#account: Vec<super::super::types::Reference>,
     #[doc = "Comments made about the event by the performer, subject or other participants."]
-    pub r#note: Vec<Box<super::super::types::Annotation>>,
+    pub r#note: Vec<super::super::types::Annotation>,
     #[doc = "Further information supporting this charge."]
-    pub r#supporting_information: Vec<Box<super::super::types::Reference>>,
+    pub r#supporting_information: Vec<super::super::types::Reference>,
 }
 impl Default for ChargeItem {
     fn default() -> Self {

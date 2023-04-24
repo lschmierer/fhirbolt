@@ -88,9 +88,9 @@ pub struct ContractContentDefinition {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension."]
-    pub r#extension: Vec<Box<super::super::types::Extension>>,
+    pub r#extension: Vec<super::super::types::Extension>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself)."]
-    pub r#modifier_extension: Vec<Box<super::super::types::Extension>>,
+    pub r#modifier_extension: Vec<super::super::types::Extension>,
     #[doc = "Precusory content structure and use, i.e., a boilerplate, template, application for a contract such as an insurance policy or benefits under a program, e.g., workers compensation."]
     pub r#type: Box<super::super::types::CodeableConcept>,
     #[doc = "Detailed Precusory content type."]
@@ -133,17 +133,17 @@ pub struct ContractTermSecurityLabel {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension."]
-    pub r#extension: Vec<Box<super::super::types::Extension>>,
+    pub r#extension: Vec<super::super::types::Extension>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself)."]
-    pub r#modifier_extension: Vec<Box<super::super::types::Extension>>,
+    pub r#modifier_extension: Vec<super::super::types::Extension>,
     #[doc = "Number used to link this term or term element to the applicable Security Label."]
     pub r#number: Vec<super::super::types::UnsignedInt>,
     #[doc = "Security label privacy tag that species the level of confidentiality protection required for this term and/or term elements."]
     pub r#classification: Box<super::super::types::Coding>,
     #[doc = "Security label privacy tag that species the applicable privacy and security policies governing this term and/or term elements."]
-    pub r#category: Vec<Box<super::super::types::Coding>>,
+    pub r#category: Vec<super::super::types::Coding>,
     #[doc = "Security label privacy tag that species the manner in which term and/or term elements are to be protected."]
-    pub r#control: Vec<Box<super::super::types::Coding>>,
+    pub r#control: Vec<super::super::types::Coding>,
 }
 impl Default for ContractTermSecurityLabel {
     fn default() -> Self {
@@ -168,11 +168,11 @@ pub struct ContractTermOfferParty {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension."]
-    pub r#extension: Vec<Box<super::super::types::Extension>>,
+    pub r#extension: Vec<super::super::types::Extension>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself)."]
-    pub r#modifier_extension: Vec<Box<super::super::types::Extension>>,
+    pub r#modifier_extension: Vec<super::super::types::Extension>,
     #[doc = "Participant in the offer."]
-    pub r#reference: Vec<Box<super::super::types::Reference>>,
+    pub r#reference: Vec<super::super::types::Reference>,
     #[doc = "How the party participates in the offer."]
     pub r#role: Box<super::super::types::CodeableConcept>,
 }
@@ -197,9 +197,9 @@ pub struct ContractTermOfferAnswer {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension."]
-    pub r#extension: Vec<Box<super::super::types::Extension>>,
+    pub r#extension: Vec<super::super::types::Extension>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself)."]
-    pub r#modifier_extension: Vec<Box<super::super::types::Extension>>,
+    pub r#modifier_extension: Vec<super::super::types::Extension>,
     #[doc = "Response to an offer clause or question text,  which enables selection of values to be agreed to, e.g., the period of participation, the date of occupancy of a rental, warrently duration, or whether biospecimen may be used for further research."]
     pub r#value: ContractTermOfferAnswerValue,
 }
@@ -219,11 +219,11 @@ pub struct ContractTermOffer {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension."]
-    pub r#extension: Vec<Box<super::super::types::Extension>>,
+    pub r#extension: Vec<super::super::types::Extension>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself)."]
-    pub r#modifier_extension: Vec<Box<super::super::types::Extension>>,
+    pub r#modifier_extension: Vec<super::super::types::Extension>,
     #[doc = "Unique identifier for this particular Contract Provision."]
-    pub r#identifier: Vec<Box<super::super::types::Identifier>>,
+    pub r#identifier: Vec<super::super::types::Identifier>,
     #[doc = "Offer Recipient."]
     pub r#party: Vec<ContractTermOfferParty>,
     #[doc = "The owner of an asset has the residual control rights over the asset: the right to decide all usages of the asset in any way not inconsistent with a prior contract, custom, or law (Hart, 1995, p. 30)."]
@@ -233,7 +233,7 @@ pub struct ContractTermOffer {
     #[doc = "Type of choice made by accepting party with respect to an offer made by an offeror/ grantee."]
     pub r#decision: Option<Box<super::super::types::CodeableConcept>>,
     #[doc = "How the decision about a Contract was conveyed."]
-    pub r#decision_mode: Vec<Box<super::super::types::CodeableConcept>>,
+    pub r#decision_mode: Vec<super::super::types::CodeableConcept>,
     #[doc = "Response to offer text."]
     pub r#answer: Vec<ContractTermOfferAnswer>,
     #[doc = "Human readable form of this Contract Offer."]
@@ -268,13 +268,13 @@ pub struct ContractTermAssetContext {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension."]
-    pub r#extension: Vec<Box<super::super::types::Extension>>,
+    pub r#extension: Vec<super::super::types::Extension>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself)."]
-    pub r#modifier_extension: Vec<Box<super::super::types::Extension>>,
+    pub r#modifier_extension: Vec<super::super::types::Extension>,
     #[doc = "Asset context reference may include the creator, custodian, or owning Person or Organization (e.g., bank, repository),  location held, e.g., building,  jurisdiction."]
     pub r#reference: Option<Box<super::super::types::Reference>>,
     #[doc = "Coded representation of the context generally or of the Referenced entity, such as the asset holder type or location."]
-    pub r#code: Vec<Box<super::super::types::CodeableConcept>>,
+    pub r#code: Vec<super::super::types::CodeableConcept>,
     #[doc = "Context description."]
     pub r#text: Option<super::super::types::String>,
 }
@@ -296,9 +296,9 @@ pub struct ContractTermAssetValuedItem {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension."]
-    pub r#extension: Vec<Box<super::super::types::Extension>>,
+    pub r#extension: Vec<super::super::types::Extension>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself)."]
-    pub r#modifier_extension: Vec<Box<super::super::types::Extension>>,
+    pub r#modifier_extension: Vec<super::super::types::Extension>,
     #[doc = "Specific type of Contract Valued Item that may be priced."]
     pub r#entity: Option<ContractTermAssetValuedItemEntity>,
     #[doc = "Identifies a Contract Valued Item instance."]
@@ -357,17 +357,17 @@ pub struct ContractTermAsset {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension."]
-    pub r#extension: Vec<Box<super::super::types::Extension>>,
+    pub r#extension: Vec<super::super::types::Extension>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself)."]
-    pub r#modifier_extension: Vec<Box<super::super::types::Extension>>,
+    pub r#modifier_extension: Vec<super::super::types::Extension>,
     #[doc = "Differentiates the kind of the asset ."]
     pub r#scope: Option<Box<super::super::types::CodeableConcept>>,
     #[doc = "Target entity type about which the term may be concerned."]
-    pub r#type: Vec<Box<super::super::types::CodeableConcept>>,
+    pub r#type: Vec<super::super::types::CodeableConcept>,
     #[doc = "Associated entities."]
-    pub r#type_reference: Vec<Box<super::super::types::Reference>>,
+    pub r#type_reference: Vec<super::super::types::Reference>,
     #[doc = "May be a subtype or part of an offered asset."]
-    pub r#subtype: Vec<Box<super::super::types::CodeableConcept>>,
+    pub r#subtype: Vec<super::super::types::CodeableConcept>,
     #[doc = "Specifies the applicability of the term to an asset resource instance, and instances it refers to orinstances that refer to it, and/or are owned by the offeree."]
     pub r#relationship: Option<Box<super::super::types::Coding>>,
     #[doc = "Circumstance of the asset."]
@@ -375,11 +375,11 @@ pub struct ContractTermAsset {
     #[doc = "Description of the quality and completeness of the asset that imay be a factor in its valuation."]
     pub r#condition: Option<super::super::types::String>,
     #[doc = "Type of Asset availability for use or ownership."]
-    pub r#period_type: Vec<Box<super::super::types::CodeableConcept>>,
+    pub r#period_type: Vec<super::super::types::CodeableConcept>,
     #[doc = "Asset relevant contractual time period."]
-    pub r#period: Vec<Box<super::super::types::Period>>,
+    pub r#period: Vec<super::super::types::Period>,
     #[doc = "Time period of asset use."]
-    pub r#use_period: Vec<Box<super::super::types::Period>>,
+    pub r#use_period: Vec<super::super::types::Period>,
     #[doc = "Clause or question text (Prose Object) concerning the asset in a linked form, such as a QuestionnaireResponse used in the formation of the contract."]
     pub r#text: Option<super::super::types::String>,
     #[doc = "Id [identifier??] of the clause or question text about the asset in the referenced form or QuestionnaireResponse."]
@@ -421,11 +421,11 @@ pub struct ContractTermActionSubject {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension."]
-    pub r#extension: Vec<Box<super::super::types::Extension>>,
+    pub r#extension: Vec<super::super::types::Extension>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself)."]
-    pub r#modifier_extension: Vec<Box<super::super::types::Extension>>,
+    pub r#modifier_extension: Vec<super::super::types::Extension>,
     #[doc = "The entity the action is performed or not performed on or for."]
-    pub r#reference: Vec<Box<super::super::types::Reference>>,
+    pub r#reference: Vec<super::super::types::Reference>,
     #[doc = "Role type of agent assigned roles in this Contract."]
     pub r#role: Option<Box<super::super::types::CodeableConcept>>,
 }
@@ -446,9 +446,9 @@ pub struct ContractTermAction {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension."]
-    pub r#extension: Vec<Box<super::super::types::Extension>>,
+    pub r#extension: Vec<super::super::types::Extension>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself)."]
-    pub r#modifier_extension: Vec<Box<super::super::types::Extension>>,
+    pub r#modifier_extension: Vec<super::super::types::Extension>,
     #[doc = "True if the term prohibits the  action."]
     pub r#do_not_perform: Option<super::super::types::Boolean>,
     #[doc = "Activity or service obligation to be done or not done, performed or not performed, effectuated or not by this Contract term."]
@@ -468,11 +468,11 @@ pub struct ContractTermAction {
     #[doc = "When action happens."]
     pub r#occurrence: Option<ContractTermActionOccurrence>,
     #[doc = "Who or what initiated the action and has responsibility for its activation."]
-    pub r#requester: Vec<Box<super::super::types::Reference>>,
+    pub r#requester: Vec<super::super::types::Reference>,
     #[doc = "Id [identifier??] of the clause or question text related to the requester of this action in the referenced form or QuestionnaireResponse."]
     pub r#requester_link_id: Vec<super::super::types::String>,
     #[doc = "The type of individual that is desired or required to perform or not perform the action."]
-    pub r#performer_type: Vec<Box<super::super::types::CodeableConcept>>,
+    pub r#performer_type: Vec<super::super::types::CodeableConcept>,
     #[doc = "The type of role or competency of an individual desired or required to perform or not perform the action."]
     pub r#performer_role: Option<Box<super::super::types::CodeableConcept>>,
     #[doc = "Indicates who or what is being asked to perform (or not perform) the ction."]
@@ -480,15 +480,15 @@ pub struct ContractTermAction {
     #[doc = "Id [identifier??] of the clause or question text related to the reason type or reference of this  action in the referenced form or QuestionnaireResponse."]
     pub r#performer_link_id: Vec<super::super::types::String>,
     #[doc = "Rationale for the action to be performed or not performed. Describes why the action is permitted or prohibited."]
-    pub r#reason_code: Vec<Box<super::super::types::CodeableConcept>>,
+    pub r#reason_code: Vec<super::super::types::CodeableConcept>,
     #[doc = "Indicates another resource whose existence justifies permitting or not permitting this action."]
-    pub r#reason_reference: Vec<Box<super::super::types::Reference>>,
+    pub r#reason_reference: Vec<super::super::types::Reference>,
     #[doc = "Describes why the action is to be performed or not performed in textual form."]
     pub r#reason: Vec<super::super::types::String>,
     #[doc = "Id [identifier??] of the clause or question text related to the reason type or reference of this  action in the referenced form or QuestionnaireResponse."]
     pub r#reason_link_id: Vec<super::super::types::String>,
     #[doc = "Comments made about the term action made by the requester, performer, subject or other participants."]
-    pub r#note: Vec<Box<super::super::types::Annotation>>,
+    pub r#note: Vec<super::super::types::Annotation>,
     #[doc = "Security labels that protects the action."]
     pub r#security_label_number: Vec<super::super::types::UnsignedInt>,
 }
@@ -540,9 +540,9 @@ pub struct ContractTerm {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension."]
-    pub r#extension: Vec<Box<super::super::types::Extension>>,
+    pub r#extension: Vec<super::super::types::Extension>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself)."]
-    pub r#modifier_extension: Vec<Box<super::super::types::Extension>>,
+    pub r#modifier_extension: Vec<super::super::types::Extension>,
     #[doc = "Unique identifier for this particular Contract Provision."]
     pub r#identifier: Option<Box<super::super::types::Identifier>>,
     #[doc = "When this Contract Provision was issued."]
@@ -599,15 +599,15 @@ pub struct ContractSigner {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension."]
-    pub r#extension: Vec<Box<super::super::types::Extension>>,
+    pub r#extension: Vec<super::super::types::Extension>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself)."]
-    pub r#modifier_extension: Vec<Box<super::super::types::Extension>>,
+    pub r#modifier_extension: Vec<super::super::types::Extension>,
     #[doc = "Role of this Contract signer, e.g. notary, grantee."]
     pub r#type: Box<super::super::types::Coding>,
     #[doc = "Party which is a signator to this Contract."]
     pub r#party: Box<super::super::types::Reference>,
     #[doc = "Legally binding Contract DSIG signature contents in Base64."]
-    pub r#signature: Vec<Box<super::super::types::Signature>>,
+    pub r#signature: Vec<super::super::types::Signature>,
 }
 impl Default for ContractSigner {
     fn default() -> Self {
@@ -635,9 +635,9 @@ pub struct ContractFriendly {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension."]
-    pub r#extension: Vec<Box<super::super::types::Extension>>,
+    pub r#extension: Vec<super::super::types::Extension>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself)."]
-    pub r#modifier_extension: Vec<Box<super::super::types::Extension>>,
+    pub r#modifier_extension: Vec<super::super::types::Extension>,
     #[doc = "Human readable rendering of this Contract in a format and representation intended to enhance comprehension and ensure understandability."]
     pub r#content: ContractFriendlyContent,
 }
@@ -657,9 +657,9 @@ pub struct ContractLegal {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension."]
-    pub r#extension: Vec<Box<super::super::types::Extension>>,
+    pub r#extension: Vec<super::super::types::Extension>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself)."]
-    pub r#modifier_extension: Vec<Box<super::super::types::Extension>>,
+    pub r#modifier_extension: Vec<super::super::types::Extension>,
     #[doc = "Contract legal text in human renderable form."]
     pub r#content: ContractLegalContent,
 }
@@ -679,9 +679,9 @@ pub struct ContractRule {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension."]
-    pub r#extension: Vec<Box<super::super::types::Extension>>,
+    pub r#extension: Vec<super::super::types::Extension>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself)."]
-    pub r#modifier_extension: Vec<Box<super::super::types::Extension>>,
+    pub r#modifier_extension: Vec<super::super::types::Extension>,
     #[doc = "Computable Contract conveyed using a policy rule language (e.g. XACML, DKAL, SecPal)."]
     pub r#content: ContractRuleContent,
 }
@@ -711,11 +711,11 @@ pub struct Contract {
     #[doc = "These resources do not have an independent existence apart from the resource that contains them - they cannot be identified independently, and nor can they have their own independent transaction scope."]
     pub r#contained: Vec<super::super::Resource>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the resource. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension."]
-    pub r#extension: Vec<Box<super::super::types::Extension>>,
+    pub r#extension: Vec<super::super::types::Extension>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the resource and that modifies the understanding of the element that contains it and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself)."]
-    pub r#modifier_extension: Vec<Box<super::super::types::Extension>>,
+    pub r#modifier_extension: Vec<super::super::types::Extension>,
     #[doc = "Unique identifier for this Contract or a derivative that references a Source Contract."]
-    pub r#identifier: Vec<Box<super::super::types::Identifier>>,
+    pub r#identifier: Vec<super::super::types::Identifier>,
     #[doc = "Canonical identifier for this contract, represented as a URI (globally unique)."]
     pub r#url: Option<super::super::types::Uri>,
     #[doc = "An edition identifier used for business purposes to label business significant variants."]
@@ -737,13 +737,13 @@ pub struct Contract {
     #[doc = "Event resulting in discontinuation or termination of this Contract instance by one or more parties to the contract."]
     pub r#expiration_type: Option<Box<super::super::types::CodeableConcept>>,
     #[doc = "The target entity impacted by or of interest to parties to the agreement."]
-    pub r#subject: Vec<Box<super::super::types::Reference>>,
+    pub r#subject: Vec<super::super::types::Reference>,
     #[doc = "A formally or informally recognized grouping of people, principals, organizations, or jurisdictions formed for the purpose of achieving some form of collective action such as the promulgation, administration and enforcement of contracts and policies."]
-    pub r#authority: Vec<Box<super::super::types::Reference>>,
+    pub r#authority: Vec<super::super::types::Reference>,
     #[doc = "Recognized governance framework or system operating with a circumscribed scope in accordance with specified principles, policies, processes or procedures for managing rights, actions, or behaviors of parties or principals relative to resources."]
-    pub r#domain: Vec<Box<super::super::types::Reference>>,
+    pub r#domain: Vec<super::super::types::Reference>,
     #[doc = "Sites in which the contract is complied with,  exercised, or in force."]
-    pub r#site: Vec<Box<super::super::types::Reference>>,
+    pub r#site: Vec<super::super::types::Reference>,
     #[doc = "A natural language name identifying this Contract definition, derivative, or instance in any legal state. Provides additional information about its content. This name should be usable as an identifier for the module by machine processing applications such as code generation."]
     pub r#name: Option<super::super::types::String>,
     #[doc = "A short, descriptive, user-friendly title for this Contract definition, derivative, or instance in any legal state.t giving additional information about its content."]
@@ -761,15 +761,15 @@ pub struct Contract {
     #[doc = "A high-level category for the legal instrument, whether constructed as a Contract definition, derivative, or instance in any legal state.  Provides additional information about its content within the context of the Contract's scope to distinguish the kinds of systems that would be interested in the contract."]
     pub r#type: Option<Box<super::super::types::CodeableConcept>>,
     #[doc = "Sub-category for the Contract that distinguishes the kinds of systems that would be interested in the Contract within the context of the Contract's scope."]
-    pub r#sub_type: Vec<Box<super::super::types::CodeableConcept>>,
+    pub r#sub_type: Vec<super::super::types::CodeableConcept>,
     #[doc = "Precusory content developed with a focus and intent of supporting the formation a Contract instance, which may be associated with and transformable into a Contract."]
     pub r#content_definition: Option<ContractContentDefinition>,
     #[doc = "One or more Contract Provisions, which may be related and conveyed as a group, and may contain nested groups."]
     pub r#term: Vec<ContractTerm>,
     #[doc = "Information that may be needed by/relevant to the performer in their execution of this term action."]
-    pub r#supporting_info: Vec<Box<super::super::types::Reference>>,
+    pub r#supporting_info: Vec<super::super::types::Reference>,
     #[doc = "Links to Provenance records for past versions of this Contract definition, derivative, or instance, which identify key state transitions or updates that are likely to be relevant to a user looking at the current version of the Contract.  The Provence.entity indicates the target that was changed in the update. <http://build.fhir.org/provenance>-definitions.html#Provenance.entity."]
-    pub r#relevant_history: Vec<Box<super::super::types::Reference>>,
+    pub r#relevant_history: Vec<super::super::types::Reference>,
     #[doc = "Parties with legal standing in the Contract, including the principal parties, the grantor(s) and grantee(s), which are any person or organization bound by the contract, and any ancillary parties, which facilitate the execution of the contract such as a notary or witness."]
     pub r#signer: Vec<ContractSigner>,
     #[doc = "The \"patient friendly language\" versionof the Contract in whole or in parts. \"Patient friendly language\" means the representation of the Contract and Contract Provisions in a manner that is readily accessible and understandable by a layperson in accordance with best practices for communication styles that ensure that those agreeing to or signing the Contract understand the roles, actions, obligations, responsibilities, and implication of the agreement."]
