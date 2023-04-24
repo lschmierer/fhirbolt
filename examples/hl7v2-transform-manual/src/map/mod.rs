@@ -35,13 +35,9 @@ fn build_reference<S: Into<String>>(reference: S) -> Box<Reference> {
 ///
 /// The `CodeableConcept` is alreadu wrapped in a `Vec` and a `Box`,
 /// because this is the most common useage.
-fn build_codeable_concept(
-    system: &str,
-    code: Code,
-    display: Option<&str>,
-) -> Vec<Box<CodeableConcept>> {
-    vec![Box::new(CodeableConcept {
-        coding: vec![Box::new(Coding {
+fn build_codeable_concept(system: &str, code: Code, display: Option<&str>) -> Vec<CodeableConcept> {
+    vec![CodeableConcept {
+        coding: vec![Coding {
             system: Some(Uri {
                 value: Some(system.to_string()),
                 ..Default::default()
@@ -49,21 +45,21 @@ fn build_codeable_concept(
             code: Some(code),
             display: display.map(build_fhir_string),
             ..Default::default()
-        })],
+        }],
         ..Default::default()
-    })]
+    }]
 }
 
 /// Map FHIR identifiers from a repeated field.
-fn map_identifier(fields: &RepeatedField) -> Vec<Box<Identifier>> {
+fn map_identifier(fields: &RepeatedField) -> Vec<Identifier> {
     fields
         .iter()
         .flat_map(|f| {
             if let Some(id) = f.component(1).first_sub().to_fhir_string() {
-                Some(Box::new(Identifier {
+                Some(Identifier {
                     value: Some(id),
                     ..Default::default()
-                }))
+                })
             } else {
                 None
             }

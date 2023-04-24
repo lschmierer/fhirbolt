@@ -94,7 +94,7 @@ fn build_bundle(resources: Vec<Resource>) -> Bundle {
                     )),
                     ..Default::default()
                 }),
-                resource: Some(Box::new(r)),
+                resource: Some(r),
                 ..Default::default()
             })
             .collect(),

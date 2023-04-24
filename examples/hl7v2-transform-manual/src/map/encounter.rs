@@ -31,7 +31,7 @@ pub fn map_encounter(message: &Message, id: &str, patient_id: &str) -> Encounter
     }
 }
 
-fn map_class(pv1_segment: Option<&Segment>) -> Vec<Box<CodeableConcept>> {
+fn map_class(pv1_segment: Option<&Segment>) -> Vec<CodeableConcept> {
     pv1_segment
         .field(2)
         .component(1)

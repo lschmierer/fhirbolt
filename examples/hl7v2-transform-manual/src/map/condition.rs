@@ -47,7 +47,7 @@ fn map_condition(dg1_segment: &Segment, patient_id: &str, encounter_id: &str) ->
 
 fn build_clinical_status_active() -> Box<CodeableConcept> {
     Box::new(CodeableConcept {
-        coding: vec![Box::new(Coding {
+        coding: vec![Coding {
             system: Some(Uri {
                 value: Some("http://terminology.hl7.org/CodeSystem/condition-clinical".to_string()),
                 ..Default::default()
@@ -57,7 +57,7 @@ fn build_clinical_status_active() -> Box<CodeableConcept> {
                 ..Default::default()
             }),
             ..Default::default()
-        })],
+        }],
         ..Default::default()
     })
 }
@@ -80,6 +80,7 @@ fn map_condition_code(field: Option<&Field>) -> Option<Box<CodeableConcept>> {
         build_codeable_concept(system, code, field.component(2).first_sub().as_str())
             .into_iter()
             .next()
+            .map(Box::new)
     } else {
         None
     }

@@ -47,7 +47,7 @@ pub fn map_patient(message: &Message, id: &str) -> Patient {
     }
 }
 
-fn map_name(fields: &RepeatedField) -> Vec<Box<HumanName>> {
+fn map_name(fields: &RepeatedField) -> Vec<HumanName> {
     fields
         .iter()
         .flat_map(|f| {
@@ -65,12 +65,12 @@ fn map_name(fields: &RepeatedField) -> Vec<Box<HumanName>> {
                 .and_then(|c| map_code(c, NAME_USE_MAP));
 
             if family_name.is_some() || !given_names.is_empty() {
-                Some(Box::new(HumanName {
+                Some(HumanName {
                     family: family_name,
                     given: given_names,
                     r#use,
                     ..Default::default()
-                }))
+                })
             } else {
                 None
             }
@@ -78,10 +78,7 @@ fn map_name(fields: &RepeatedField) -> Vec<Box<HumanName>> {
         .collect()
 }
 
-fn map_telecoms(
-    home_fields: &RepeatedField,
-    work_fields: &RepeatedField,
-) -> Vec<Box<ContactPoint>> {
+fn map_telecoms(home_fields: &RepeatedField, work_fields: &RepeatedField) -> Vec<ContactPoint> {
     let home_telecoms_iter = home_fields.iter().map(|f| map_telecom(f, "home"));
     let work_telecoms_iter = work_fields.iter().map(|f| map_telecom(f, "work"));
 
@@ -91,9 +88,9 @@ fn map_telecoms(
         .collect()
 }
 
-fn map_telecom(telecom_field: &Field, r#use: &str) -> Option<Box<ContactPoint>> {
+fn map_telecom(telecom_field: &Field, r#use: &str) -> Option<ContactPoint> {
     if let Some(number_string) = telecom_field.component(1).first_sub().to_fhir_string() {
-        Some(Box::new(ContactPoint {
+        Some(ContactPoint {
             system: Some(Code {
                 value: Some("phone".into()),
                 ..Default::default()
@@ -104,7 +101,7 @@ fn map_telecom(telecom_field: &Field, r#use: &str) -> Option<Box<ContactPoint>> 
                 ..Default::default()
             }),
             ..Default::default()
-        }))
+        })
     } else {
         None
     }
@@ -152,23 +149,21 @@ fn map_deceased(pid_segment: Option<&Segment>) -> Option<PatientDeceased> {
     }
 }
 
-fn map_address(fields: &RepeatedField) -> Vec<Box<Address>> {
+fn map_address(fields: &RepeatedField) -> Vec<Address> {
     fields
         .iter()
-        .map(|f| {
-            Box::new(Address {
-                line: f
-                    .components()
-                    .iter()
-                    .take(2)
-                    .flat_map(|c| c.first_sub().to_fhir_string())
-                    .collect(),
-                city: f.component(3).first_sub().to_fhir_string(),
-                state: f.component(4).first_sub().to_fhir_string(),
-                postal_code: f.component(5).first_sub().to_fhir_string(),
-                country: f.component(6).first_sub().to_fhir_string(),
-                ..Default::default()
-            })
+        .map(|f| Address {
+            line: f
+                .components()
+                .iter()
+                .take(2)
+                .flat_map(|c| c.first_sub().to_fhir_string())
+                .collect(),
+            city: f.component(3).first_sub().to_fhir_string(),
+            state: f.component(4).first_sub().to_fhir_string(),
+            postal_code: f.component(5).first_sub().to_fhir_string(),
+            country: f.component(6).first_sub().to_fhir_string(),
+            ..Default::default()
         })
         .collect()
 }
@@ -192,6 +187,7 @@ fn map_marital_status(pid_segment: Option<&Segment>) -> Option<Box<CodeableConce
             .into_iter()
             .next()
         })
+        .map(Box::new)
 }
 
 fn map_contacts(message: &Message) -> Vec<PatientContact> {
@@ -200,9 +196,15 @@ fn map_contacts(message: &Message) -> Vec<PatientContact> {
 
 fn map_contact(nk1_segment: &Segment) -> PatientContact {
     PatientContact {
-        name: map_name(nk1_segment.repeated(2)).into_iter().next(),
+        name: map_name(nk1_segment.repeated(2))
+            .into_iter()
+            .next()
+            .map(Box::new),
         telecom: map_telecoms(nk1_segment.repeated(5), nk1_segment.repeated(6)),
-        address: map_address(nk1_segment.repeated(4)).into_iter().next(),
+        address: map_address(nk1_segment.repeated(4))
+            .into_iter()
+            .next()
+            .map(Box::new),
         ..Default::default()
     }
 }
@@ -234,7 +236,7 @@ fn map_communicatiion(pid_segment: Option<&Segment>) -> Vec<PatientCommunication
         })
         .map(|c| {
             vec![PatientCommunication {
-                language: c,
+                language: Box::new(c),
                 preferred: Some(Boolean {
                     value: Some(true),
                     ..Default::default()
