@@ -1,4 +1,4 @@
-// Generated on 2023-04-20 by fhirbolt-codegen v0.5.0
+// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
 #[doc = "A code, group definition, or canonical reference that describes  or identifies the intended subject of the plan definition. Canonical references are allowed to support the definition of protocols for drug and substance quality specifications, and is allowed to reference a MedicinalProductDefinition, SubstanceDefinition, AdministrableProductDefinition, ManufacturedItemDefinition, or PackagedProductDefinition resource."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum PlanDefinitionSubject {

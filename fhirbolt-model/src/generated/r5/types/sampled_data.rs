@@ -1,4 +1,4 @@
-// Generated on 2023-04-20 by fhirbolt-codegen v0.5.0
+// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
 #[doc = "SampledData Type: A series of measurements taken by a device, with upper and lower limits. There may be more than one dimension in the data.\n\nThere is a need for a concise way to handle the data produced by devices that sample a physical state at a high frequency."]
 #[derive(Debug, Clone, PartialEq)]
 pub struct SampledData {

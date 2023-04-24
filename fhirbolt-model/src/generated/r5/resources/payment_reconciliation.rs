@@ -1,4 +1,4 @@
-// Generated on 2023-04-20 by fhirbolt-codegen v0.5.0
+// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
 #[doc = " Identifies the claim line item, encounter or other sub-element being paid. Note payment may be partial, that is not match the then outstanding balance or amount incurred."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum PaymentReconciliationAllocationTargetItem {

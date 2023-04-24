@@ -1,4 +1,4 @@
-// Generated on 2023-04-20 by fhirbolt-codegen v0.5.0
+// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
 #[doc = "Identifies an action that has occurred or is a planned action to occur as part of the plan. For example, a medication to be used, lab tests to perform, self-monitoring that has occurred, education etc."]
 #[derive(Debug, Clone, PartialEq)]
 pub struct CarePlanActivity {

@@ -66,7 +66,9 @@ pub fn generate_struct_modules(modules: &[RustFhirModule]) -> Vec<SourceFile> {
     modules.iter().map(|m| generate_struct_module(m)).collect()
 }
 
-pub fn generate_resource_enum(resource_modules: &[RustFhirModule]) -> SourceFile {
+pub fn generate_resource_enum(resource_modules: &[RustFhirModule], release: &str) -> SourceFile {
+    let release_ident_module = format_ident!("{}", release.to_string().to_lowercase());
+
     let variants_tokens = resource_modules.iter().map(|r| {
         let ident = format_ident!("{}", r.resource_name.as_ref().unwrap());
         let doc_comment = format_doc_comment(&r.doc_comment);
@@ -76,6 +78,26 @@ pub fn generate_resource_enum(resource_modules: &[RustFhirModule]) -> SourceFile
             #ident(Box<super::resources::#ident>),
         }
     });
+
+    let (match_id, match_meta): (Vec<_>, Vec<_>) = resource_modules
+        .iter()
+        .map(|r| {
+            let ident = format_ident!("{}", r.resource_name.as_ref().unwrap());
+
+            (
+                quote! {
+                    Resource::#ident(r) => {
+                        r.id.as_deref()
+                    },
+                },
+                quote! {
+                    Resource::#ident(r) => {
+                        r.meta.as_ref()
+                    },
+                },
+            )
+        })
+        .unzip();
 
     SourceFile {
         name: "resource".into(),
@@ -88,6 +110,26 @@ pub fn generate_resource_enum(resource_modules: &[RustFhirModule]) -> SourceFile
                 )*
                 #[default]
                 Invalid,
+            }
+
+            impl Resource {
+                pub fn id(&self) -> Option<&str> {
+                    match self {
+                        #(
+                            #match_id
+                        )*
+                        _ => None,
+                    }
+                }
+
+                pub fn meta(&self) -> Option<&Box<crate::#release_ident_module::types::Meta>> {
+                    match self {
+                        #(
+                            #match_meta
+                        )*
+                        _ => None,
+                    }
+                }
             }
         },
     }
@@ -102,7 +144,6 @@ pub fn generate_resource_enum_serde(
 
     let namespace = quote! {
             fhirbolt_model::#release_ident_module
-
     };
 
     let serialize_impl_tokens = implement_serialize_resource_enum(&resource_modules, &namespace);

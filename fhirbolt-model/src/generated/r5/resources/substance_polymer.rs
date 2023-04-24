@@ -1,4 +1,4 @@
-// Generated on 2023-04-20 by fhirbolt-codegen v0.5.0
+// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
 #[doc = "The starting materials - monomer(s) used in the synthesis of the polymer."]
 #[derive(Debug, Clone, PartialEq)]
 pub struct SubstancePolymerMonomerSetStartingMaterial {

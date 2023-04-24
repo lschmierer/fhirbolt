@@ -1,4 +1,4 @@
-// Generated on 2023-04-20 by fhirbolt-codegen v0.5.0
+// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
 #[doc = "ExtendedContactDetail Type: Specifies contact information for a specific purpose over a period of time, might be handled/monitored by a specific named person or organization.\n\nNeed to track contact and address information in the same way across multiple resources."]
 #[derive(Debug, Clone, PartialEq)]
 pub struct ExtendedContactDetail {

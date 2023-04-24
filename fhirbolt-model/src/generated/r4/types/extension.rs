@@ -1,4 +1,4 @@
-// Generated on 2023-04-20 by fhirbolt-codegen v0.5.0
+// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
 #[doc = "Value of extension - must be one of a constrained set of the data types (see [Extensibility](https://hl7.org/FHIR/extensibility.html)) for a list)."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum ExtensionValue {
