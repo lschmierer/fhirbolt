@@ -2,7 +2,7 @@
 
 use std::iter;
 
-use fhirbolt::model::r5::types::{Date, DateTime, String as FhirString};
+use fhirbolt::model::r5::types::{Code, Date, DateTime, String as FhirString};
 
 pub use parse::parse;
 
@@ -142,6 +142,8 @@ pub trait SubComponentAccess {
     fn as_bool(&self) -> Option<bool>;
     /// Convert sub-component to a FHIR String.
     fn to_fhir_string(&self) -> Option<FhirString>;
+    /// Convert sub-component to a FHIR Code.
+    fn to_fhir_code(&self) -> Option<Code>;
     /// Convert sub-component to a FHIR Date.
     fn to_fhir_date(&self) -> Option<Date>;
     /// Convert sub-component to a FHIR DateTime.
@@ -172,6 +174,15 @@ impl SubComponentAccess for SubComponent {
     fn to_fhir_string(&self) -> Option<FhirString> {
         match self {
             SubComponent::Value(v) => Some(FhirString {
+                value: Some(v.clone()),
+                ..Default::default()
+            }),
+            _ => None,
+        }
+    }
+    fn to_fhir_code(&self) -> Option<Code> {
+        match self {
+            SubComponent::Value(v) => Some(Code {
                 value: Some(v.clone()),
                 ..Default::default()
             }),
@@ -245,6 +256,9 @@ impl SubComponentAccess for Option<&SubComponent> {
     }
     fn to_fhir_string(&self) -> Option<FhirString> {
         self.and_then(SubComponent::to_fhir_string)
+    }
+    fn to_fhir_code(&self) -> Option<Code> {
+        self.and_then(SubComponent::to_fhir_code)
     }
     fn to_fhir_date(&self) -> Option<Date> {
         self.and_then(SubComponent::to_fhir_date)

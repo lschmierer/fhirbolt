@@ -173,11 +173,7 @@ fn map_marital_status(pid_segment: Option<&Segment>) -> Option<Box<CodeableConce
         .field(16)
         .component(1)
         .first_sub()
-        .as_str()
-        .map(|c| Code {
-            value: Some(c.into()),
-            ..Default::default()
-        })
+        .to_fhir_code()
         .and_then(|c| {
             build_codeable_concept(
                 "http://terminology.hl7.org/CodeSystem/v3-MaritalStatus",

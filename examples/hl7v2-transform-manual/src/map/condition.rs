@@ -63,10 +63,7 @@ fn build_clinical_status_active() -> Box<CodeableConcept> {
 }
 
 fn map_condition_code(field: Option<&Field>) -> Option<Box<CodeableConcept>> {
-    let code = field.component(1).first_sub().as_str().map(|c| Code {
-        value: Some(c.into()),
-        ..Default::default()
-    });
+    let code = field.component(1).first_sub().to_fhir_code();
     let system = match field.component(3).first_sub().as_str() {
         Some("I10") => Some("http://hl7.org/fhir/sid/icd-10"),
         Some(s) => {
