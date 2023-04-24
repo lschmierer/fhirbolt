@@ -21,17 +21,17 @@ pub struct Media {
     #[doc = "A human-readable narrative that contains a summary of the resource and can be used to represent the content of the resource to a human. The narrative need not encode all the structured data, but is required to contain sufficient detail to make it \"clinically safe\" for a human to just read the narrative. Resource definitions may define what content should be represented in the narrative to ensure clinical safety."]
     pub r#text: Option<Box<super::super::types::Narrative>>,
     #[doc = "These resources do not have an independent existence apart from the resource that contains them - they cannot be identified independently, and nor can they have their own independent transaction scope."]
-    pub r#contained: Vec<Box<super::super::Resource>>,
+    pub r#contained: Vec<super::super::Resource>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the resource. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension."]
-    pub r#extension: Vec<Box<super::super::types::Extension>>,
+    pub r#extension: Vec<super::super::types::Extension>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the resource and that modifies the understanding of the element that contains it and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself)."]
-    pub r#modifier_extension: Vec<Box<super::super::types::Extension>>,
+    pub r#modifier_extension: Vec<super::super::types::Extension>,
     #[doc = "Identifiers associated with the image - these may include identifiers for the image itself, identifiers for the context of its collection (e.g. series ids) and context ids such as accession numbers or other workflow identifiers."]
-    pub r#identifier: Vec<Box<super::super::types::Identifier>>,
+    pub r#identifier: Vec<super::super::types::Identifier>,
     #[doc = "A procedure that is fulfilled in whole or in part by the creation of this media."]
-    pub r#based_on: Vec<Box<super::super::types::Reference>>,
+    pub r#based_on: Vec<super::super::types::Reference>,
     #[doc = "A larger event of which this particular event is a component or step."]
-    pub r#part_of: Vec<Box<super::super::types::Reference>>,
+    pub r#part_of: Vec<super::super::types::Reference>,
     #[doc = "The current state of the {{title}}."]
     pub r#status: super::super::types::Code,
     #[doc = "A code that classifies whether the media is an image, video or audio recording or some other media category."]
@@ -51,7 +51,7 @@ pub struct Media {
     #[doc = "The person who administered the collection of the image."]
     pub r#operator: Option<Box<super::super::types::Reference>>,
     #[doc = "Describes why the event occurred in coded or textual form."]
-    pub r#reason_code: Vec<Box<super::super::types::CodeableConcept>>,
+    pub r#reason_code: Vec<super::super::types::CodeableConcept>,
     #[doc = "Indicates the site on the subject's body where the observation was made (i.e. the target site)."]
     pub r#body_site: Option<Box<super::super::types::CodeableConcept>>,
     #[doc = "The name of the device / manufacturer of the device  that was used to make the recording."]
@@ -69,7 +69,7 @@ pub struct Media {
     #[doc = "The actual content of the media - inline or by direct reference to the media source file."]
     pub r#content: Box<super::super::types::Attachment>,
     #[doc = "Comments made about the media by the performer, subject or other participants."]
-    pub r#note: Vec<Box<super::super::types::Annotation>>,
+    pub r#note: Vec<super::super::types::Annotation>,
 }
 impl Default for Media {
     fn default() -> Self {

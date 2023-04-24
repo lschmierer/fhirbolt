@@ -14,7 +14,7 @@ pub fn generate_serde_helpers(release: &str) -> SourceFile {
         source: quote! {
             pub struct PrimitiveElement<'a> {
                 pub id: Option<&'a std::string::String>,
-                pub extension: &'a Vec<Box<#namespace::types::Extension>>,
+                pub extension: &'a Vec<#namespace::types::Extension>,
             }
 
             impl<'a> serde::ser::Serialize for crate::context::ser::SerializationContext<&PrimitiveElement<'a>> {
@@ -72,7 +72,7 @@ pub fn generate_serde_helpers(release: &str) -> SourceFile {
 
             pub struct PrimitiveElementOwned {
                 pub id: Option<std::string::String>,
-                pub extension: Vec<Box<#namespace::types::Extension>>,
+                pub extension: Vec<#namespace::types::Extension>,
             }
 
             impl<'de> serde::de::DeserializeSeed<'de> for &mut crate::context::de::DeserializationContext<PrimitiveElementOwned> {
@@ -106,7 +106,7 @@ pub fn generate_serde_helpers(release: &str) -> SourceFile {
                             }
 
                             let mut r#id: Option<std::string::String> = None;
-                            let mut r#extension: Option<Vec<Box<#namespace::types::Extension>>> = None;
+                            let mut r#extension: Option<Vec<#namespace::types::Extension>> = None;
 
                             while let Some(map_access_key) = map_access.next_key()? {
                                 match map_access_key {
@@ -123,7 +123,7 @@ pub fn generate_serde_helpers(release: &str) -> SourceFile {
                                         r#extension = Some(
                                             map_access.next_value_seed(
                                                 self.0
-                                                    .transmute::<Vec<Box<#namespace::types::Extension>>>(
+                                                    .transmute::<Vec<#namespace::types::Extension>>(
                                                     ),
                                             )?,
                                         );

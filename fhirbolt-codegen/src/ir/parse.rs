@@ -376,7 +376,7 @@ fn match_field_type(path: &str, code: &str, force_box: bool) -> RustFhirFieldTyp
         },
         "Resource" => RustFhirFieldType {
             name: "Resource".into(),
-            r#box: true,
+            r#box: false,
             contains_primitive: false,
         },
         r#type => {

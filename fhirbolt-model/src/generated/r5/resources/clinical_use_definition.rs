@@ -21,9 +21,9 @@ pub struct ClinicalUseDefinitionContraindicationOtherTherapy {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and managable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension."]
-    pub r#extension: Vec<Box<super::super::types::Extension>>,
+    pub r#extension: Vec<super::super::types::Extension>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and managable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself)."]
-    pub r#modifier_extension: Vec<Box<super::super::types::Extension>>,
+    pub r#modifier_extension: Vec<super::super::types::Extension>,
     #[doc = "The type of relationship between the medicinal product indication or contraindication and another therapy."]
     pub r#relationship_type: Box<super::super::types::CodeableConcept>,
     #[doc = "Reference to a specific medication (active substance, medicinal product or class of products, biological, food etc.) as part of an indication or contraindication."]
@@ -54,17 +54,17 @@ pub struct ClinicalUseDefinitionContraindication {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and managable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension."]
-    pub r#extension: Vec<Box<super::super::types::Extension>>,
+    pub r#extension: Vec<super::super::types::Extension>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and managable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself)."]
-    pub r#modifier_extension: Vec<Box<super::super::types::Extension>>,
+    pub r#modifier_extension: Vec<super::super::types::Extension>,
     #[doc = "The situation that is being documented as contraindicating against this item."]
     pub r#disease_symptom_procedure: Option<Box<super::super::types::CodeableReference>>,
     #[doc = "The status of the disease or symptom for the contraindication, for example \"chronic\" or \"metastatic\"."]
     pub r#disease_status: Option<Box<super::super::types::CodeableReference>>,
     #[doc = "A comorbidity (concurrent condition) or coinfection."]
-    pub r#comorbidity: Vec<Box<super::super::types::CodeableReference>>,
+    pub r#comorbidity: Vec<super::super::types::CodeableReference>,
     #[doc = "The indication which this is a contraidication for."]
-    pub r#indication: Vec<Box<super::super::types::Reference>>,
+    pub r#indication: Vec<super::super::types::Reference>,
     #[doc = "An expression that returns true or false, indicating whether the indication is applicable or not, after having applied its other elements."]
     pub r#applicability: Option<Box<super::super::types::Expression>>,
     #[doc = "Information about the use of the medicinal product in relation to other therapies described as part of the contraindication."]
@@ -91,21 +91,21 @@ pub struct ClinicalUseDefinitionIndication {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and managable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension."]
-    pub r#extension: Vec<Box<super::super::types::Extension>>,
+    pub r#extension: Vec<super::super::types::Extension>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and managable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself)."]
-    pub r#modifier_extension: Vec<Box<super::super::types::Extension>>,
+    pub r#modifier_extension: Vec<super::super::types::Extension>,
     #[doc = "The situation that is being documented as an indicaton for this item."]
     pub r#disease_symptom_procedure: Option<Box<super::super::types::CodeableReference>>,
     #[doc = "The status of the disease or symptom for the indication, for example \"chronic\" or \"metastatic\"."]
     pub r#disease_status: Option<Box<super::super::types::CodeableReference>>,
     #[doc = "A comorbidity (concurrent condition) or coinfection as part of the indication."]
-    pub r#comorbidity: Vec<Box<super::super::types::CodeableReference>>,
+    pub r#comorbidity: Vec<super::super::types::CodeableReference>,
     #[doc = "The intended effect, aim or strategy to be achieved."]
     pub r#intended_effect: Option<Box<super::super::types::CodeableReference>>,
     #[doc = "Timing or duration information, that may be associated with use with the indicated condition e.g. Adult patients suffering from myocardial infarction (from a few days until less than 35 days), ischaemic stroke (from 7 days until less than 6 months)."]
     pub r#duration: Option<ClinicalUseDefinitionIndicationDuration>,
     #[doc = "An unwanted side effect or negative outcome that may happen if you use the drug (or other subject of this resource) for this indication."]
-    pub r#undesirable_effect: Vec<Box<super::super::types::Reference>>,
+    pub r#undesirable_effect: Vec<super::super::types::Reference>,
     #[doc = "An expression that returns true or false, indicating whether the indication is applicable or not, after having applied its other elements."]
     pub r#applicability: Option<Box<super::super::types::Expression>>,
     #[doc = "Information about the use of the medicinal product in relation to other therapies described as part of the indication."]
@@ -134,9 +134,9 @@ pub struct ClinicalUseDefinitionInteractionInteractant {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and managable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension."]
-    pub r#extension: Vec<Box<super::super::types::Extension>>,
+    pub r#extension: Vec<super::super::types::Extension>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and managable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself)."]
-    pub r#modifier_extension: Vec<Box<super::super::types::Extension>>,
+    pub r#modifier_extension: Vec<super::super::types::Extension>,
     #[doc = "The specific medication, product, food, substance etc. or laboratory test that interacts."]
     pub r#item: ClinicalUseDefinitionInteractionInteractantItem,
 }
@@ -156,9 +156,9 @@ pub struct ClinicalUseDefinitionInteraction {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and managable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension."]
-    pub r#extension: Vec<Box<super::super::types::Extension>>,
+    pub r#extension: Vec<super::super::types::Extension>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and managable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself)."]
-    pub r#modifier_extension: Vec<Box<super::super::types::Extension>>,
+    pub r#modifier_extension: Vec<super::super::types::Extension>,
     #[doc = "The specific medication, product, food, substance etc. or laboratory test that interacts."]
     pub r#interactant: Vec<ClinicalUseDefinitionInteractionInteractant>,
     #[doc = "The type of the interaction e.g. drug-drug interaction, drug-food interaction, drug-lab test interaction."]
@@ -168,7 +168,7 @@ pub struct ClinicalUseDefinitionInteraction {
     #[doc = "The incidence of the interaction, e.g. theoretical, observed."]
     pub r#incidence: Option<Box<super::super::types::CodeableConcept>>,
     #[doc = "Actions for managing the interaction."]
-    pub r#management: Vec<Box<super::super::types::CodeableConcept>>,
+    pub r#management: Vec<super::super::types::CodeableConcept>,
 }
 impl Default for ClinicalUseDefinitionInteraction {
     fn default() -> Self {
@@ -190,9 +190,9 @@ pub struct ClinicalUseDefinitionUndesirableEffect {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and managable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension."]
-    pub r#extension: Vec<Box<super::super::types::Extension>>,
+    pub r#extension: Vec<super::super::types::Extension>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and managable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself)."]
-    pub r#modifier_extension: Vec<Box<super::super::types::Extension>>,
+    pub r#modifier_extension: Vec<super::super::types::Extension>,
     #[doc = "The situation in which the undesirable effect may manifest."]
     pub r#symptom_condition_effect: Option<Box<super::super::types::CodeableReference>>,
     #[doc = "High level classification of the effect."]
@@ -218,9 +218,9 @@ pub struct ClinicalUseDefinitionWarning {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and managable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension."]
-    pub r#extension: Vec<Box<super::super::types::Extension>>,
+    pub r#extension: Vec<super::super::types::Extension>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and managable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself)."]
-    pub r#modifier_extension: Vec<Box<super::super::types::Extension>>,
+    pub r#modifier_extension: Vec<super::super::types::Extension>,
     #[doc = "A textual definition of this warning, with formatting."]
     pub r#description: Option<super::super::types::Markdown>,
     #[doc = "A coded or unformatted textual definition of this warning."]
@@ -251,19 +251,19 @@ pub struct ClinicalUseDefinition {
     #[doc = "A human-readable narrative that contains a summary of the resource and can be used to represent the content of the resource to a human. The narrative need not encode all the structured data, but is required to contain sufficient detail to make it \"clinically safe\" for a human to just read the narrative. Resource definitions may define what content should be represented in the narrative to ensure clinical safety."]
     pub r#text: Option<Box<super::super::types::Narrative>>,
     #[doc = "These resources do not have an independent existence apart from the resource that contains them - they cannot be identified independently, nor can they have their own independent transaction scope. This is allowed to be a Parameters resource if and only if it is referenced by a resource that provides context/meaning."]
-    pub r#contained: Vec<Box<super::super::Resource>>,
+    pub r#contained: Vec<super::super::Resource>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the resource. To make the use of extensions safe and managable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension."]
-    pub r#extension: Vec<Box<super::super::types::Extension>>,
+    pub r#extension: Vec<super::super::types::Extension>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the resource and that modifies the understanding of the element that contains it and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and managable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself)."]
-    pub r#modifier_extension: Vec<Box<super::super::types::Extension>>,
+    pub r#modifier_extension: Vec<super::super::types::Extension>,
     #[doc = "Business identifier for this issue."]
-    pub r#identifier: Vec<Box<super::super::types::Identifier>>,
+    pub r#identifier: Vec<super::super::types::Identifier>,
     #[doc = "indication | contraindication | interaction | undesirable-effect | warning."]
     pub r#type: super::super::types::Code,
     #[doc = "A categorisation of the issue, primarily for dividing warnings into subject heading areas such as \"Pregnancy and Lactation\", \"Overdose\", \"Effects on Ability to Drive and Use Machines\"."]
-    pub r#category: Vec<Box<super::super::types::CodeableConcept>>,
+    pub r#category: Vec<super::super::types::CodeableConcept>,
     #[doc = "The medication, product, substance, device, procedure etc. for which this is an indication."]
-    pub r#subject: Vec<Box<super::super::types::Reference>>,
+    pub r#subject: Vec<super::super::types::Reference>,
     #[doc = "Whether this is a current issue or one that has been retired etc."]
     pub r#status: Option<Box<super::super::types::CodeableConcept>>,
     #[doc = "Specifics for when this is a contraindication."]
@@ -273,7 +273,7 @@ pub struct ClinicalUseDefinition {
     #[doc = "Specifics for when this is an interaction."]
     pub r#interaction: Option<ClinicalUseDefinitionInteraction>,
     #[doc = "The population group to which this applies."]
-    pub r#population: Vec<Box<super::super::types::Reference>>,
+    pub r#population: Vec<super::super::types::Reference>,
     #[doc = "Logic used by the clinical use definition."]
     pub r#library: Vec<super::super::types::Canonical>,
     #[doc = "Describe the possible undesirable effects (negative outcomes) from the use of the medicinal product as treatment."]

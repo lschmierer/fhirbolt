@@ -29,9 +29,9 @@ pub struct ImmunizationPerformer {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension."]
-    pub r#extension: Vec<Box<super::super::types::Extension>>,
+    pub r#extension: Vec<super::super::types::Extension>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself)."]
-    pub r#modifier_extension: Vec<Box<super::super::types::Extension>>,
+    pub r#modifier_extension: Vec<super::super::types::Extension>,
     #[doc = "Describes the type of performance (e.g. ordering provider, administering provider, etc.)."]
     pub r#function: Option<Box<super::super::types::CodeableConcept>>,
     #[doc = "The practitioner or organization who performed the action."]
@@ -58,9 +58,9 @@ pub struct ImmunizationEducation {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension."]
-    pub r#extension: Vec<Box<super::super::types::Extension>>,
+    pub r#extension: Vec<super::super::types::Extension>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself)."]
-    pub r#modifier_extension: Vec<Box<super::super::types::Extension>>,
+    pub r#modifier_extension: Vec<super::super::types::Extension>,
     #[doc = "Identifier of the material presented to the patient."]
     pub r#document_type: Option<super::super::types::String>,
     #[doc = "Reference pointer to the educational material given to the patient if the information was on line."]
@@ -89,9 +89,9 @@ pub struct ImmunizationReaction {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension."]
-    pub r#extension: Vec<Box<super::super::types::Extension>>,
+    pub r#extension: Vec<super::super::types::Extension>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself)."]
-    pub r#modifier_extension: Vec<Box<super::super::types::Extension>>,
+    pub r#modifier_extension: Vec<super::super::types::Extension>,
     #[doc = "Date of reaction to the immunization."]
     pub r#date: Option<super::super::types::DateTime>,
     #[doc = "Details of the reaction."]
@@ -117,15 +117,15 @@ pub struct ImmunizationProtocolApplied {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension."]
-    pub r#extension: Vec<Box<super::super::types::Extension>>,
+    pub r#extension: Vec<super::super::types::Extension>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself)."]
-    pub r#modifier_extension: Vec<Box<super::super::types::Extension>>,
+    pub r#modifier_extension: Vec<super::super::types::Extension>,
     #[doc = "One possible path to achieve presumed immunity against a disease - within the context of an authority."]
     pub r#series: Option<super::super::types::String>,
     #[doc = "Indicates the authority who published the protocol (e.g. ACIP) that is being followed."]
     pub r#authority: Option<Box<super::super::types::Reference>>,
     #[doc = "The vaccine preventable disease the dose is being administered against."]
-    pub r#target_disease: Vec<Box<super::super::types::CodeableConcept>>,
+    pub r#target_disease: Vec<super::super::types::CodeableConcept>,
     #[doc = "Nominal position in a series."]
     pub r#dose_number: ImmunizationProtocolAppliedDoseNumber,
     #[doc = "The recommended number of doses to achieve immunity."]
@@ -159,13 +159,13 @@ pub struct Immunization {
     #[doc = "A human-readable narrative that contains a summary of the resource and can be used to represent the content of the resource to a human. The narrative need not encode all the structured data, but is required to contain sufficient detail to make it \"clinically safe\" for a human to just read the narrative. Resource definitions may define what content should be represented in the narrative to ensure clinical safety."]
     pub r#text: Option<Box<super::super::types::Narrative>>,
     #[doc = "These resources do not have an independent existence apart from the resource that contains them - they cannot be identified independently, and nor can they have their own independent transaction scope."]
-    pub r#contained: Vec<Box<super::super::Resource>>,
+    pub r#contained: Vec<super::super::Resource>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the resource. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension."]
-    pub r#extension: Vec<Box<super::super::types::Extension>>,
+    pub r#extension: Vec<super::super::types::Extension>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the resource and that modifies the understanding of the element that contains it and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself)."]
-    pub r#modifier_extension: Vec<Box<super::super::types::Extension>>,
+    pub r#modifier_extension: Vec<super::super::types::Extension>,
     #[doc = "A unique identifier assigned to this immunization record."]
-    pub r#identifier: Vec<Box<super::super::types::Identifier>>,
+    pub r#identifier: Vec<super::super::types::Identifier>,
     #[doc = "Indicates the current status of the immunization event."]
     pub r#status: super::super::types::Code,
     #[doc = "Indicates the reason the immunization event was not performed."]
@@ -201,19 +201,19 @@ pub struct Immunization {
     #[doc = "Indicates who performed the immunization event."]
     pub r#performer: Vec<ImmunizationPerformer>,
     #[doc = "Extra information about the immunization that is not conveyed by the other attributes."]
-    pub r#note: Vec<Box<super::super::types::Annotation>>,
+    pub r#note: Vec<super::super::types::Annotation>,
     #[doc = "Reasons why the vaccine was administered."]
-    pub r#reason_code: Vec<Box<super::super::types::CodeableConcept>>,
+    pub r#reason_code: Vec<super::super::types::CodeableConcept>,
     #[doc = "Condition, Observation or DiagnosticReport that supports why the immunization was administered."]
-    pub r#reason_reference: Vec<Box<super::super::types::Reference>>,
+    pub r#reason_reference: Vec<super::super::types::Reference>,
     #[doc = "Indication if a dose is considered to be subpotent. By default, a dose should be considered to be potent."]
     pub r#is_subpotent: Option<super::super::types::Boolean>,
     #[doc = "Reason why a dose is considered to be subpotent."]
-    pub r#subpotent_reason: Vec<Box<super::super::types::CodeableConcept>>,
+    pub r#subpotent_reason: Vec<super::super::types::CodeableConcept>,
     #[doc = "Educational material presented to the patient (or guardian) at the time of vaccine administration."]
     pub r#education: Vec<ImmunizationEducation>,
     #[doc = "Indicates a patient's eligibility for a funding program."]
-    pub r#program_eligibility: Vec<Box<super::super::types::CodeableConcept>>,
+    pub r#program_eligibility: Vec<super::super::types::CodeableConcept>,
     #[doc = "Indicates the source of the vaccine actually administered. This may be different than the patient eligibility (e.g. the patient may be eligible for a publically purchased vaccine but due to inventory issues, vaccine purchased with private funds was actually administered)."]
     pub r#funding_source: Option<Box<super::super::types::CodeableConcept>>,
     #[doc = "Categorical data indicating that an adverse event is associated in time to an immunization."]

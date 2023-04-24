@@ -99,9 +99,9 @@ pub struct ExplanationOfBenefitRelated {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension."]
-    pub r#extension: Vec<Box<super::super::types::Extension>>,
+    pub r#extension: Vec<super::super::types::Extension>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself)."]
-    pub r#modifier_extension: Vec<Box<super::super::types::Extension>>,
+    pub r#modifier_extension: Vec<super::super::types::Extension>,
     #[doc = "Reference to a related claim."]
     pub r#claim: Option<Box<super::super::types::Reference>>,
     #[doc = "A code to convey how the claims are related."]
@@ -127,9 +127,9 @@ pub struct ExplanationOfBenefitPayee {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension."]
-    pub r#extension: Vec<Box<super::super::types::Extension>>,
+    pub r#extension: Vec<super::super::types::Extension>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself)."]
-    pub r#modifier_extension: Vec<Box<super::super::types::Extension>>,
+    pub r#modifier_extension: Vec<super::super::types::Extension>,
     #[doc = "Type of Party to be reimbursed: Subscriber, provider, other."]
     pub r#type: Option<Box<super::super::types::CodeableConcept>>,
     #[doc = "Reference to the individual or organization to whom any payment will be made."]
@@ -152,9 +152,9 @@ pub struct ExplanationOfBenefitCareTeam {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension."]
-    pub r#extension: Vec<Box<super::super::types::Extension>>,
+    pub r#extension: Vec<super::super::types::Extension>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself)."]
-    pub r#modifier_extension: Vec<Box<super::super::types::Extension>>,
+    pub r#modifier_extension: Vec<super::super::types::Extension>,
     #[doc = "A number to uniquely identify care team entries."]
     pub r#sequence: super::super::types::PositiveInt,
     #[doc = "Member of the team who provided the product or service."]
@@ -194,9 +194,9 @@ pub struct ExplanationOfBenefitSupportingInfo {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension."]
-    pub r#extension: Vec<Box<super::super::types::Extension>>,
+    pub r#extension: Vec<super::super::types::Extension>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself)."]
-    pub r#modifier_extension: Vec<Box<super::super::types::Extension>>,
+    pub r#modifier_extension: Vec<super::super::types::Extension>,
     #[doc = "A number to uniquely identify supporting information entries."]
     pub r#sequence: super::super::types::PositiveInt,
     #[doc = "The general class of the information supplied: information; exception; accident, employment; onset, etc."]
@@ -239,15 +239,15 @@ pub struct ExplanationOfBenefitDiagnosis {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension."]
-    pub r#extension: Vec<Box<super::super::types::Extension>>,
+    pub r#extension: Vec<super::super::types::Extension>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself)."]
-    pub r#modifier_extension: Vec<Box<super::super::types::Extension>>,
+    pub r#modifier_extension: Vec<super::super::types::Extension>,
     #[doc = "A number to uniquely identify diagnosis entries."]
     pub r#sequence: super::super::types::PositiveInt,
     #[doc = "The nature of illness or problem in a coded form or as a reference to an external defined Condition."]
     pub r#diagnosis: ExplanationOfBenefitDiagnosisDiagnosis,
     #[doc = "When the condition was observed or the relative ranking."]
-    pub r#type: Vec<Box<super::super::types::CodeableConcept>>,
+    pub r#type: Vec<super::super::types::CodeableConcept>,
     #[doc = "Indication of whether the diagnosis was present on admission to a facility."]
     pub r#on_admission: Option<Box<super::super::types::CodeableConcept>>,
     #[doc = "A package billing code or bundle code used to group products and services to a particular health condition (such as heart attack) which is based on a predetermined grouping code system."]
@@ -277,19 +277,19 @@ pub struct ExplanationOfBenefitProcedure {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension."]
-    pub r#extension: Vec<Box<super::super::types::Extension>>,
+    pub r#extension: Vec<super::super::types::Extension>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself)."]
-    pub r#modifier_extension: Vec<Box<super::super::types::Extension>>,
+    pub r#modifier_extension: Vec<super::super::types::Extension>,
     #[doc = "A number to uniquely identify procedure entries."]
     pub r#sequence: super::super::types::PositiveInt,
     #[doc = "When the condition was observed or the relative ranking."]
-    pub r#type: Vec<Box<super::super::types::CodeableConcept>>,
+    pub r#type: Vec<super::super::types::CodeableConcept>,
     #[doc = "Date and optionally time the procedure was performed."]
     pub r#date: Option<super::super::types::DateTime>,
     #[doc = "The code or reference to a Procedure resource which identifies the clinical intervention performed."]
     pub r#procedure: ExplanationOfBenefitProcedureProcedure,
     #[doc = "Unique Device Identifiers associated with this line item."]
-    pub r#udi: Vec<Box<super::super::types::Reference>>,
+    pub r#udi: Vec<super::super::types::Reference>,
 }
 impl Default for ExplanationOfBenefitProcedure {
     fn default() -> Self {
@@ -315,9 +315,9 @@ pub struct ExplanationOfBenefitInsurance {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension."]
-    pub r#extension: Vec<Box<super::super::types::Extension>>,
+    pub r#extension: Vec<super::super::types::Extension>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself)."]
-    pub r#modifier_extension: Vec<Box<super::super::types::Extension>>,
+    pub r#modifier_extension: Vec<super::super::types::Extension>,
     #[doc = "A flag to indicate that this Coverage is to be used for adjudication of this claim when set to true."]
     pub r#focal: super::super::types::Boolean,
     #[doc = "Reference to the insurance card level information contained in the Coverage resource. The coverage issuing insurer will use these details to locate the patient's actual coverage within the insurer's information system."]
@@ -351,9 +351,9 @@ pub struct ExplanationOfBenefitAccident {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension."]
-    pub r#extension: Vec<Box<super::super::types::Extension>>,
+    pub r#extension: Vec<super::super::types::Extension>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself)."]
-    pub r#modifier_extension: Vec<Box<super::super::types::Extension>>,
+    pub r#modifier_extension: Vec<super::super::types::Extension>,
     #[doc = "Date of an accident event  related to the products and services contained in the claim."]
     pub r#date: Option<super::super::types::Date>,
     #[doc = "The type or context of the accident event for the purposes of selection of potential insurance coverages and determination of coordination between insurers."]
@@ -379,9 +379,9 @@ pub struct ExplanationOfBenefitItemAdjudication {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension."]
-    pub r#extension: Vec<Box<super::super::types::Extension>>,
+    pub r#extension: Vec<super::super::types::Extension>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself)."]
-    pub r#modifier_extension: Vec<Box<super::super::types::Extension>>,
+    pub r#modifier_extension: Vec<super::super::types::Extension>,
     #[doc = "A code to indicate the information type of this adjudication record. Information types may include: the value submitted, maximum values or percentages allowed or payable under the plan, amounts that the patient is responsible for in-aggregate or pertaining to this item, amounts paid by other coverages, and the benefit payable for this item."]
     pub r#category: Box<super::super::types::CodeableConcept>,
     #[doc = "A code supporting the understanding of the adjudication result and explaining variance from expected amount."]
@@ -414,9 +414,9 @@ pub struct ExplanationOfBenefitItemDetailSubDetail {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension."]
-    pub r#extension: Vec<Box<super::super::types::Extension>>,
+    pub r#extension: Vec<super::super::types::Extension>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself)."]
-    pub r#modifier_extension: Vec<Box<super::super::types::Extension>>,
+    pub r#modifier_extension: Vec<super::super::types::Extension>,
     #[doc = "A claim detail line. Either a simple (a product or service) or a 'group' of sub-details which are simple items."]
     pub r#sequence: super::super::types::PositiveInt,
     #[doc = "The type of revenue or cost center providing the product and/or service."]
@@ -426,9 +426,9 @@ pub struct ExplanationOfBenefitItemDetailSubDetail {
     #[doc = "When the value is a group code then this item collects a set of related claim details, otherwise this contains the product, service, drug or other billing code for the item."]
     pub r#product_or_service: Box<super::super::types::CodeableConcept>,
     #[doc = "Item typification or modifiers codes to convey additional context for the product or service."]
-    pub r#modifier: Vec<Box<super::super::types::CodeableConcept>>,
+    pub r#modifier: Vec<super::super::types::CodeableConcept>,
     #[doc = "Identifies the program under which this may be recovered."]
-    pub r#program_code: Vec<Box<super::super::types::CodeableConcept>>,
+    pub r#program_code: Vec<super::super::types::CodeableConcept>,
     #[doc = "The number of repetitions of a service or product."]
     pub r#quantity: Option<Box<super::super::types::Quantity>>,
     #[doc = "If the item is not a group then this is the fee for the product or service, otherwise this is the total of the fees for the details of the group."]
@@ -438,7 +438,7 @@ pub struct ExplanationOfBenefitItemDetailSubDetail {
     #[doc = "The quantity times the unit price for an additional service or product or charge."]
     pub r#net: Option<Box<super::super::types::Money>>,
     #[doc = "Unique Device Identifiers associated with this line item."]
-    pub r#udi: Vec<Box<super::super::types::Reference>>,
+    pub r#udi: Vec<super::super::types::Reference>,
     #[doc = "The numbers associated with notes below which apply to the adjudication of this item."]
     pub r#note_number: Vec<super::super::types::PositiveInt>,
     #[doc = "The adjudication results."]
@@ -480,9 +480,9 @@ pub struct ExplanationOfBenefitItemDetail {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension."]
-    pub r#extension: Vec<Box<super::super::types::Extension>>,
+    pub r#extension: Vec<super::super::types::Extension>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself)."]
-    pub r#modifier_extension: Vec<Box<super::super::types::Extension>>,
+    pub r#modifier_extension: Vec<super::super::types::Extension>,
     #[doc = "A claim detail line. Either a simple (a product or service) or a 'group' of sub-details which are simple items."]
     pub r#sequence: super::super::types::PositiveInt,
     #[doc = "The type of revenue or cost center providing the product and/or service."]
@@ -492,9 +492,9 @@ pub struct ExplanationOfBenefitItemDetail {
     #[doc = "When the value is a group code then this item collects a set of related claim details, otherwise this contains the product, service, drug or other billing code for the item."]
     pub r#product_or_service: Box<super::super::types::CodeableConcept>,
     #[doc = "Item typification or modifiers codes to convey additional context for the product or service."]
-    pub r#modifier: Vec<Box<super::super::types::CodeableConcept>>,
+    pub r#modifier: Vec<super::super::types::CodeableConcept>,
     #[doc = "Identifies the program under which this may be recovered."]
-    pub r#program_code: Vec<Box<super::super::types::CodeableConcept>>,
+    pub r#program_code: Vec<super::super::types::CodeableConcept>,
     #[doc = "The number of repetitions of a service or product."]
     pub r#quantity: Option<Box<super::super::types::Quantity>>,
     #[doc = "If the item is not a group then this is the fee for the product or service, otherwise this is the total of the fees for the details of the group."]
@@ -504,7 +504,7 @@ pub struct ExplanationOfBenefitItemDetail {
     #[doc = "The quantity times the unit price for an additional service or product or charge."]
     pub r#net: Option<Box<super::super::types::Money>>,
     #[doc = "Unique Device Identifiers associated with this line item."]
-    pub r#udi: Vec<Box<super::super::types::Reference>>,
+    pub r#udi: Vec<super::super::types::Reference>,
     #[doc = "The numbers associated with notes below which apply to the adjudication of this item."]
     pub r#note_number: Vec<super::super::types::PositiveInt>,
     #[doc = "The adjudication results."]
@@ -549,9 +549,9 @@ pub struct ExplanationOfBenefitItem {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension."]
-    pub r#extension: Vec<Box<super::super::types::Extension>>,
+    pub r#extension: Vec<super::super::types::Extension>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself)."]
-    pub r#modifier_extension: Vec<Box<super::super::types::Extension>>,
+    pub r#modifier_extension: Vec<super::super::types::Extension>,
     #[doc = "A number to uniquely identify item entries."]
     pub r#sequence: super::super::types::PositiveInt,
     #[doc = "Care team members related to this service or product."]
@@ -569,9 +569,9 @@ pub struct ExplanationOfBenefitItem {
     #[doc = "When the value is a group code then this item collects a set of related claim details, otherwise this contains the product, service, drug or other billing code for the item."]
     pub r#product_or_service: Box<super::super::types::CodeableConcept>,
     #[doc = "Item typification or modifiers codes to convey additional context for the product or service."]
-    pub r#modifier: Vec<Box<super::super::types::CodeableConcept>>,
+    pub r#modifier: Vec<super::super::types::CodeableConcept>,
     #[doc = "Identifies the program under which this may be recovered."]
-    pub r#program_code: Vec<Box<super::super::types::CodeableConcept>>,
+    pub r#program_code: Vec<super::super::types::CodeableConcept>,
     #[doc = "The date or dates when the service or product was supplied, performed or completed."]
     pub r#serviced: Option<ExplanationOfBenefitItemServiced>,
     #[doc = "Where the product or service was provided."]
@@ -585,13 +585,13 @@ pub struct ExplanationOfBenefitItem {
     #[doc = "The quantity times the unit price for an additional service or product or charge."]
     pub r#net: Option<Box<super::super::types::Money>>,
     #[doc = "Unique Device Identifiers associated with this line item."]
-    pub r#udi: Vec<Box<super::super::types::Reference>>,
+    pub r#udi: Vec<super::super::types::Reference>,
     #[doc = "Physical service site on the patient (limb, tooth, etc.)."]
     pub r#body_site: Option<Box<super::super::types::CodeableConcept>>,
     #[doc = "A region or surface of the bodySite, e.g. limb region or tooth surface(s)."]
-    pub r#sub_site: Vec<Box<super::super::types::CodeableConcept>>,
+    pub r#sub_site: Vec<super::super::types::CodeableConcept>,
     #[doc = "A billed item may include goods or services provided in multiple encounters."]
-    pub r#encounter: Vec<Box<super::super::types::Reference>>,
+    pub r#encounter: Vec<super::super::types::Reference>,
     #[doc = "The numbers associated with notes below which apply to the adjudication of this item."]
     pub r#note_number: Vec<super::super::types::PositiveInt>,
     #[doc = "If this item is a group then the values here are a summary of the adjudication of the detail items. If this item is a simple product or service then this is the result of the adjudication of this item."]
@@ -645,13 +645,13 @@ pub struct ExplanationOfBenefitAddItemDetailSubDetail {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension."]
-    pub r#extension: Vec<Box<super::super::types::Extension>>,
+    pub r#extension: Vec<super::super::types::Extension>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself)."]
-    pub r#modifier_extension: Vec<Box<super::super::types::Extension>>,
+    pub r#modifier_extension: Vec<super::super::types::Extension>,
     #[doc = "When the value is a group code then this item collects a set of related claim details, otherwise this contains the product, service, drug or other billing code for the item."]
     pub r#product_or_service: Box<super::super::types::CodeableConcept>,
     #[doc = "Item typification or modifiers codes to convey additional context for the product or service."]
-    pub r#modifier: Vec<Box<super::super::types::CodeableConcept>>,
+    pub r#modifier: Vec<super::super::types::CodeableConcept>,
     #[doc = "The number of repetitions of a service or product."]
     pub r#quantity: Option<Box<super::super::types::Quantity>>,
     #[doc = "If the item is not a group then this is the fee for the product or service, otherwise this is the total of the fees for the details of the group."]
@@ -692,13 +692,13 @@ pub struct ExplanationOfBenefitAddItemDetail {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension."]
-    pub r#extension: Vec<Box<super::super::types::Extension>>,
+    pub r#extension: Vec<super::super::types::Extension>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself)."]
-    pub r#modifier_extension: Vec<Box<super::super::types::Extension>>,
+    pub r#modifier_extension: Vec<super::super::types::Extension>,
     #[doc = "When the value is a group code then this item collects a set of related claim details, otherwise this contains the product, service, drug or other billing code for the item."]
     pub r#product_or_service: Box<super::super::types::CodeableConcept>,
     #[doc = "Item typification or modifiers codes to convey additional context for the product or service."]
-    pub r#modifier: Vec<Box<super::super::types::CodeableConcept>>,
+    pub r#modifier: Vec<super::super::types::CodeableConcept>,
     #[doc = "The number of repetitions of a service or product."]
     pub r#quantity: Option<Box<super::super::types::Quantity>>,
     #[doc = "If the item is not a group then this is the fee for the product or service, otherwise this is the total of the fees for the details of the group."]
@@ -742,9 +742,9 @@ pub struct ExplanationOfBenefitAddItem {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension."]
-    pub r#extension: Vec<Box<super::super::types::Extension>>,
+    pub r#extension: Vec<super::super::types::Extension>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself)."]
-    pub r#modifier_extension: Vec<Box<super::super::types::Extension>>,
+    pub r#modifier_extension: Vec<super::super::types::Extension>,
     #[doc = "Claim items which this service line is intended to replace."]
     pub r#item_sequence: Vec<super::super::types::PositiveInt>,
     #[doc = "The sequence number of the details within the claim item which this line is intended to replace."]
@@ -752,13 +752,13 @@ pub struct ExplanationOfBenefitAddItem {
     #[doc = "The sequence number of the sub-details woithin the details within the claim item which this line is intended to replace."]
     pub r#sub_detail_sequence: Vec<super::super::types::PositiveInt>,
     #[doc = "The providers who are authorized for the services rendered to the patient."]
-    pub r#provider: Vec<Box<super::super::types::Reference>>,
+    pub r#provider: Vec<super::super::types::Reference>,
     #[doc = "When the value is a group code then this item collects a set of related claim details, otherwise this contains the product, service, drug or other billing code for the item."]
     pub r#product_or_service: Box<super::super::types::CodeableConcept>,
     #[doc = "Item typification or modifiers codes to convey additional context for the product or service."]
-    pub r#modifier: Vec<Box<super::super::types::CodeableConcept>>,
+    pub r#modifier: Vec<super::super::types::CodeableConcept>,
     #[doc = "Identifies the program under which this may be recovered."]
-    pub r#program_code: Vec<Box<super::super::types::CodeableConcept>>,
+    pub r#program_code: Vec<super::super::types::CodeableConcept>,
     #[doc = "The date or dates when the service or product was supplied, performed or completed."]
     pub r#serviced: Option<ExplanationOfBenefitAddItemServiced>,
     #[doc = "Where the product or service was provided."]
@@ -774,7 +774,7 @@ pub struct ExplanationOfBenefitAddItem {
     #[doc = "Physical service site on the patient (limb, tooth, etc.)."]
     pub r#body_site: Option<Box<super::super::types::CodeableConcept>>,
     #[doc = "A region or surface of the bodySite, e.g. limb region or tooth surface(s)."]
-    pub r#sub_site: Vec<Box<super::super::types::CodeableConcept>>,
+    pub r#sub_site: Vec<super::super::types::CodeableConcept>,
     #[doc = "The numbers associated with notes below which apply to the adjudication of this item."]
     pub r#note_number: Vec<super::super::types::PositiveInt>,
     #[doc = "The adjudication results."]
@@ -819,9 +819,9 @@ pub struct ExplanationOfBenefitTotal {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension."]
-    pub r#extension: Vec<Box<super::super::types::Extension>>,
+    pub r#extension: Vec<super::super::types::Extension>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself)."]
-    pub r#modifier_extension: Vec<Box<super::super::types::Extension>>,
+    pub r#modifier_extension: Vec<super::super::types::Extension>,
     #[doc = "A code to indicate the information type of this adjudication record. Information types may include: the value submitted, maximum values or percentages allowed or payable under the plan, amounts that the patient is responsible for in aggregate or pertaining to this item, amounts paid by other coverages, and the benefit payable for this item."]
     pub r#category: Box<super::super::types::CodeableConcept>,
     #[doc = "Monetary total amount associated with the category."]
@@ -852,9 +852,9 @@ pub struct ExplanationOfBenefitPayment {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension."]
-    pub r#extension: Vec<Box<super::super::types::Extension>>,
+    pub r#extension: Vec<super::super::types::Extension>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself)."]
-    pub r#modifier_extension: Vec<Box<super::super::types::Extension>>,
+    pub r#modifier_extension: Vec<super::super::types::Extension>,
     #[doc = "Whether this represents partial or complete payment of the benefits payable."]
     pub r#type: Option<Box<super::super::types::CodeableConcept>>,
     #[doc = "Total amount of all adjustments to this payment included in this transaction which are not related to this claim's adjudication."]
@@ -889,9 +889,9 @@ pub struct ExplanationOfBenefitProcessNote {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension."]
-    pub r#extension: Vec<Box<super::super::types::Extension>>,
+    pub r#extension: Vec<super::super::types::Extension>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself)."]
-    pub r#modifier_extension: Vec<Box<super::super::types::Extension>>,
+    pub r#modifier_extension: Vec<super::super::types::Extension>,
     #[doc = "A number to uniquely identify a note entry."]
     pub r#number: Option<super::super::types::PositiveInt>,
     #[doc = "The business purpose of the note text."]
@@ -920,9 +920,9 @@ pub struct ExplanationOfBenefitBenefitBalanceFinancial {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension."]
-    pub r#extension: Vec<Box<super::super::types::Extension>>,
+    pub r#extension: Vec<super::super::types::Extension>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself)."]
-    pub r#modifier_extension: Vec<Box<super::super::types::Extension>>,
+    pub r#modifier_extension: Vec<super::super::types::Extension>,
     #[doc = "Classification of benefit being provided."]
     pub r#type: Box<super::super::types::CodeableConcept>,
     #[doc = "The quantity of the benefit which is permitted under the coverage."]
@@ -952,9 +952,9 @@ pub struct ExplanationOfBenefitBenefitBalance {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension."]
-    pub r#extension: Vec<Box<super::super::types::Extension>>,
+    pub r#extension: Vec<super::super::types::Extension>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself)."]
-    pub r#modifier_extension: Vec<Box<super::super::types::Extension>>,
+    pub r#modifier_extension: Vec<super::super::types::Extension>,
     #[doc = "Code to identify the general type of benefits under which products and services are provided."]
     pub r#category: Box<super::super::types::CodeableConcept>,
     #[doc = "True if the indicated class of service is excluded from the plan, missing or False indicates the product or service is included in the coverage."]
@@ -1007,13 +1007,13 @@ pub struct ExplanationOfBenefit {
     #[doc = "A human-readable narrative that contains a summary of the resource and can be used to represent the content of the resource to a human. The narrative need not encode all the structured data, but is required to contain sufficient detail to make it \"clinically safe\" for a human to just read the narrative. Resource definitions may define what content should be represented in the narrative to ensure clinical safety."]
     pub r#text: Option<Box<super::super::types::Narrative>>,
     #[doc = "These resources do not have an independent existence apart from the resource that contains them - they cannot be identified independently, and nor can they have their own independent transaction scope."]
-    pub r#contained: Vec<Box<super::super::Resource>>,
+    pub r#contained: Vec<super::super::Resource>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the resource. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension."]
-    pub r#extension: Vec<Box<super::super::types::Extension>>,
+    pub r#extension: Vec<super::super::types::Extension>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the resource and that modifies the understanding of the element that contains it and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself)."]
-    pub r#modifier_extension: Vec<Box<super::super::types::Extension>>,
+    pub r#modifier_extension: Vec<super::super::types::Extension>,
     #[doc = "A unique identifier assigned to this explanation of benefit."]
-    pub r#identifier: Vec<Box<super::super::types::Identifier>>,
+    pub r#identifier: Vec<super::super::types::Identifier>,
     #[doc = "The status of the resource instance."]
     pub r#status: super::super::types::Code,
     #[doc = "The category of claim, e.g. oral, pharmacy, vision, institutional, professional."]
@@ -1063,7 +1063,7 @@ pub struct ExplanationOfBenefit {
     #[doc = "Reference from the Insurer which is used in later communications which refers to this adjudication."]
     pub r#pre_auth_ref: Vec<super::super::types::String>,
     #[doc = "The timeframe during which the supplied preauthorization reference may be quoted on claims to obtain the adjudication as provided."]
-    pub r#pre_auth_ref_period: Vec<Box<super::super::types::Period>>,
+    pub r#pre_auth_ref_period: Vec<super::super::types::Period>,
     #[doc = "The members of the team who provided the products and services."]
     pub r#care_team: Vec<ExplanationOfBenefitCareTeam>,
     #[doc = "Additional information codes regarding exceptions, special considerations, the condition, situation, prior or concurrent issues."]

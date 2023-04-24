@@ -1,7 +1,7 @@
 // Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
 pub struct PrimitiveElement<'a> {
     pub id: Option<&'a std::string::String>,
-    pub extension: &'a Vec<Box<fhirbolt_model::r4::types::Extension>>,
+    pub extension: &'a Vec<fhirbolt_model::r4::types::Extension>,
 }
 impl<'a> serde::ser::Serialize
     for crate::context::ser::SerializationContext<&PrimitiveElement<'a>>
@@ -54,7 +54,7 @@ impl<'a> serde::ser::Serialize
 }
 pub struct PrimitiveElementOwned {
     pub id: Option<std::string::String>,
-    pub extension: Vec<Box<fhirbolt_model::r4::types::Extension>>,
+    pub extension: Vec<fhirbolt_model::r4::types::Extension>,
 }
 impl<'de> serde::de::DeserializeSeed<'de>
     for &mut crate::context::de::DeserializationContext<PrimitiveElementOwned>
@@ -86,7 +86,7 @@ impl<'de> serde::de::DeserializeSeed<'de>
                     Unknown(std::string::String),
                 }
                 let mut r#id: Option<std::string::String> = None;
-                let mut r#extension: Option<Vec<Box<fhirbolt_model::r4::types::Extension>>> = None;
+                let mut r#extension: Option<Vec<fhirbolt_model::r4::types::Extension>> = None;
                 while let Some(map_access_key) = map_access.next_key()? {
                     match map_access_key {
                         Field::Id => {
@@ -99,7 +99,12 @@ impl<'de> serde::de::DeserializeSeed<'de>
                             if r#extension.is_some() {
                                 return Err(serde::de::Error::duplicate_field("extension"));
                             }
-                            r#extension = Some (map_access . next_value_seed (self . 0 . transmute :: < Vec < Box < fhirbolt_model :: r4 :: types :: Extension >> > () ,) ? ,) ;
+                            r#extension = Some(
+                                map_access.next_value_seed(
+                                    self.0
+                                        .transmute::<Vec<fhirbolt_model::r4::types::Extension>>(),
+                                )?,
+                            );
                         }
                         Field::Unknown(key) => {
                             if self.0.config.mode == crate::context::de::DeserializationMode::Strict

@@ -5,11 +5,11 @@ pub struct RelatedArtifact {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and managable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension."]
-    pub r#extension: Vec<Box<super::super::types::Extension>>,
+    pub r#extension: Vec<super::super::types::Extension>,
     #[doc = "The type of relationship to the related artifact."]
     pub r#type: super::super::types::Code,
     #[doc = "Provides additional classifiers of the related artifact."]
-    pub r#classifier: Vec<Box<super::super::types::CodeableConcept>>,
+    pub r#classifier: Vec<super::super::types::CodeableConcept>,
     #[doc = "A short label that can be used to reference the citation from elsewhere in the containing artifact, such as a footnote index."]
     pub r#label: Option<super::super::types::String>,
     #[doc = "A brief description of the document or knowledge resource being referenced, suitable for display to a consumer."]

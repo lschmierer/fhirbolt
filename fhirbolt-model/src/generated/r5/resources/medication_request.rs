@@ -13,9 +13,9 @@ pub struct MedicationRequestDispenseRequestInitialFill {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and managable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension."]
-    pub r#extension: Vec<Box<super::super::types::Extension>>,
+    pub r#extension: Vec<super::super::types::Extension>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and managable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself)."]
-    pub r#modifier_extension: Vec<Box<super::super::types::Extension>>,
+    pub r#modifier_extension: Vec<super::super::types::Extension>,
     #[doc = "The amount or quantity to provide as part of the first dispense."]
     pub r#quantity: Option<Box<super::super::types::Quantity>>,
     #[doc = "The length of time that the first dispense is expected to last."]
@@ -38,9 +38,9 @@ pub struct MedicationRequestDispenseRequest {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and managable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension."]
-    pub r#extension: Vec<Box<super::super::types::Extension>>,
+    pub r#extension: Vec<super::super::types::Extension>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and managable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself)."]
-    pub r#modifier_extension: Vec<Box<super::super::types::Extension>>,
+    pub r#modifier_extension: Vec<super::super::types::Extension>,
     #[doc = "Indicates the quantity or duration for the first dispense of the medication."]
     pub r#initial_fill: Option<MedicationRequestDispenseRequestInitialFill>,
     #[doc = "The minimum period of time that must occur between dispenses of the medication."]
@@ -56,7 +56,7 @@ pub struct MedicationRequestDispenseRequest {
     #[doc = "Indicates the intended performing Organization that will dispense the medication as specified by the prescriber."]
     pub r#dispenser: Option<Box<super::super::types::Reference>>,
     #[doc = "Provides additional information to the dispenser, for example, counselling to be provided to the patient."]
-    pub r#dispenser_instruction: Vec<Box<super::super::types::Annotation>>,
+    pub r#dispenser_instruction: Vec<super::super::types::Annotation>,
     #[doc = "Provides information about the type of adherence packaging to be supplied for the medication dispense."]
     pub r#dose_administration_aid: Option<Box<super::super::types::CodeableConcept>>,
 }
@@ -84,9 +84,9 @@ pub struct MedicationRequestSubstitution {
     #[doc = "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."]
     pub r#id: Option<std::string::String>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and managable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension."]
-    pub r#extension: Vec<Box<super::super::types::Extension>>,
+    pub r#extension: Vec<super::super::types::Extension>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and managable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself)."]
-    pub r#modifier_extension: Vec<Box<super::super::types::Extension>>,
+    pub r#modifier_extension: Vec<super::super::types::Extension>,
     #[doc = "True if the prescriber allows a different drug to be dispensed from what was prescribed."]
     pub r#allowed: MedicationRequestSubstitutionAllowed,
     #[doc = "Indicates the reason for the substitution, or why substitution must or must not be performed."]
@@ -117,15 +117,15 @@ pub struct MedicationRequest {
     #[doc = "A human-readable narrative that contains a summary of the resource and can be used to represent the content of the resource to a human. The narrative need not encode all the structured data, but is required to contain sufficient detail to make it \"clinically safe\" for a human to just read the narrative. Resource definitions may define what content should be represented in the narrative to ensure clinical safety."]
     pub r#text: Option<Box<super::super::types::Narrative>>,
     #[doc = "These resources do not have an independent existence apart from the resource that contains them - they cannot be identified independently, nor can they have their own independent transaction scope. This is allowed to be a Parameters resource if and only if it is referenced by a resource that provides context/meaning."]
-    pub r#contained: Vec<Box<super::super::Resource>>,
+    pub r#contained: Vec<super::super::Resource>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the resource. To make the use of extensions safe and managable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension."]
-    pub r#extension: Vec<Box<super::super::types::Extension>>,
+    pub r#extension: Vec<super::super::types::Extension>,
     #[doc = "May be used to represent additional information that is not part of the basic definition of the resource and that modifies the understanding of the element that contains it and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and managable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself)."]
-    pub r#modifier_extension: Vec<Box<super::super::types::Extension>>,
+    pub r#modifier_extension: Vec<super::super::types::Extension>,
     #[doc = "Identifiers associated with this medication request that are defined by business processes and/or used to refer to it when a direct URL reference to the resource itself is not appropriate. They are business identifiers assigned to this resource by the performer or other systems and remain constant as the resource is updated and propagates from server to server."]
-    pub r#identifier: Vec<Box<super::super::types::Identifier>>,
+    pub r#identifier: Vec<super::super::types::Identifier>,
     #[doc = "A plan or request that is fulfilled in whole or in part by this medication request."]
-    pub r#based_on: Vec<Box<super::super::types::Reference>>,
+    pub r#based_on: Vec<super::super::types::Reference>,
     #[doc = "Reference to an order/prescription that is being replaced by this MedicationRequest."]
     pub r#prior_prescription: Option<Box<super::super::types::Reference>>,
     #[doc = "A shared identifier common to multiple independent Request instances that were activated/authorized more or less simultaneously by a single author.  The presence of the same identifier on each request ties those requests together and may have business ramifications in terms of reporting of results, billing, etc.  E.g. a requisition number shared by a set of lab tests ordered together, or a prescription number shared by all meds ordered at one time."]
@@ -139,7 +139,7 @@ pub struct MedicationRequest {
     #[doc = "Whether the request is a proposal, plan, or an original order."]
     pub r#intent: super::super::types::Code,
     #[doc = "An arbitrary categorization or grouping of the medication request.  It could be used for indicating where meds are intended to be administered, eg. in an inpatient setting or in a patient's home, or a legal category of the medication."]
-    pub r#category: Vec<Box<super::super::types::CodeableConcept>>,
+    pub r#category: Vec<super::super::types::CodeableConcept>,
     #[doc = "Indicates how quickly the Medication Request should be addressed with respect to other requests."]
     pub r#priority: Option<super::super::types::Code>,
     #[doc = "If true, indicates that the provider is asking for the patient to either stop taking or to not start taking the specified medication. For example, the patient is taking an existing medication and the provider is changing their medication. They want to create two seperate requests: one to stop using the current medication and another to start the new medication."]
@@ -149,11 +149,11 @@ pub struct MedicationRequest {
     #[doc = "The individual or group for whom the medication has been requested."]
     pub r#subject: Box<super::super::types::Reference>,
     #[doc = "The person or organization who provided the information about this request, if the source is someone other than the requestor.  This is often used when the MedicationRequest is reported by another person."]
-    pub r#information_source: Vec<Box<super::super::types::Reference>>,
+    pub r#information_source: Vec<super::super::types::Reference>,
     #[doc = "The Encounter during which this \\[x\\] was created or to which the creation of this record is tightly associated."]
     pub r#encounter: Option<Box<super::super::types::Reference>>,
     #[doc = "Information to support fulfilling (i.e. dispensing or administering) of the medication, for example, patient height and weight, a MedicationStatement for the patient)."]
-    pub r#supporting_information: Vec<Box<super::super::types::Reference>>,
+    pub r#supporting_information: Vec<super::super::types::Reference>,
     #[doc = "The date (and perhaps time) when the prescription was initially written or authored on."]
     pub r#authored_on: Option<super::super::types::DateTime>,
     #[doc = "The individual, organization, or device that initiated the request and has responsibility for its activation."]
@@ -163,31 +163,31 @@ pub struct MedicationRequest {
     #[doc = "Indicates the type of performer of the administration of the medication."]
     pub r#performer_type: Option<Box<super::super::types::CodeableConcept>>,
     #[doc = "The specified desired performer of the medication treatment (e.g. the performer of the medication administration).  For devices, this is the device that is intended to perform the administration of the medication.  An IV Pump would be an example of a device that is performing the administration.  Both the IV Pump and the practitioner that set the rate or bolus on the pump can be listed as performers."]
-    pub r#performer: Vec<Box<super::super::types::Reference>>,
+    pub r#performer: Vec<super::super::types::Reference>,
     #[doc = "The intended type of device that is to be used for the administration of the medication (for example, PCA Pump)."]
-    pub r#device: Vec<Box<super::super::types::CodeableReference>>,
+    pub r#device: Vec<super::super::types::CodeableReference>,
     #[doc = "The person who entered the order on behalf of another individual for example in the case of a verbal or a telephone order."]
     pub r#recorder: Option<Box<super::super::types::Reference>>,
     #[doc = "The reason or the indication for ordering or not ordering the medication."]
-    pub r#reason: Vec<Box<super::super::types::CodeableReference>>,
+    pub r#reason: Vec<super::super::types::CodeableReference>,
     #[doc = "The description of the overall pattern of the administration of the medication to the patient."]
     pub r#course_of_therapy_type: Option<Box<super::super::types::CodeableConcept>>,
     #[doc = "Insurance plans, coverage extensions, pre-authorizations and/or pre-determinations that may be required for delivering the requested service."]
-    pub r#insurance: Vec<Box<super::super::types::Reference>>,
+    pub r#insurance: Vec<super::super::types::Reference>,
     #[doc = "Extra information about the prescription that could not be conveyed by the other attributes."]
-    pub r#note: Vec<Box<super::super::types::Annotation>>,
+    pub r#note: Vec<super::super::types::Annotation>,
     #[doc = "The full representation of the dose of the medication included in all dosage instructions.  To be used when multiple dosage instructions are included to represent complex dosing such as increasing or tapering doses."]
     pub r#rendered_dosage_instruction: Option<super::super::types::Markdown>,
     #[doc = "The period over which the medication is to be taken.  Where there are multiple dosageInstruction lines (for example, tapering doses), this is the earliest date and the latest end date of the dosageInstructions."]
     pub r#effective_dose_period: Option<Box<super::super::types::Period>>,
     #[doc = "Specific instructions for how the medication is to be used by the patient."]
-    pub r#dosage_instruction: Vec<Box<super::super::types::Dosage>>,
+    pub r#dosage_instruction: Vec<super::super::types::Dosage>,
     #[doc = "Indicates the specific details for the dispense or medication supply part of a medication request (also known as a Medication Prescription or Medication Order).  Note that this information is not always sent with the order.  There may be in some settings (e.g. hospitals) institutional or system support for completing the dispense details in the pharmacy department."]
     pub r#dispense_request: Option<MedicationRequestDispenseRequest>,
     #[doc = "Indicates whether or not substitution can or should be part of the dispense. In some cases, substitution must happen, in other cases substitution must not happen. This block explains the prescriber's intent. If nothing is specified substitution may be done."]
     pub r#substitution: Option<MedicationRequestSubstitution>,
     #[doc = "Links to Provenance records for past versions of this resource or fulfilling request or event resources that identify key state transitions or updates that are likely to be relevant to a user looking at the current version of the resource."]
-    pub r#event_history: Vec<Box<super::super::types::Reference>>,
+    pub r#event_history: Vec<super::super::types::Reference>,
 }
 impl Default for MedicationRequest {
     fn default() -> Self {

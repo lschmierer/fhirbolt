@@ -204,40 +204,6 @@ pub fn implement_deserialze(
                 deserializer.deserialize_seq(Visitor(self))
             }
         }
-
-        impl<'de> serde::de::DeserializeSeed<'de> for &mut crate::context::de::DeserializationContext<Vec<Box<#namespace::#struct_name_ident>>> {
-            type Value = Vec<Box<#namespace::#struct_name_ident>>;
-
-            fn deserialize<D>(self, deserializer: D) -> Result<Self::Value, D::Error>
-            where
-                D: serde::de::Deserializer<'de>,
-            {
-                struct Visitor<'a>(&'a mut crate::context::de::DeserializationContext<Vec<Box<#namespace::#struct_name_ident>>>);
-
-                impl<'de> serde::de::Visitor<'de> for Visitor<'_> {
-                    type Value = Vec<Box<#namespace::#struct_name_ident>>;
-
-                    fn expecting(&self, formatter: &mut std::fmt::Formatter) -> std::fmt::Result {
-                        formatter.write_str("a sequence")
-                    }
-
-                    fn visit_seq<A>(self, mut seq: A) -> Result<Self::Value, A::Error>
-                    where
-                        A: serde::de::SeqAccess<'de>,
-                    {
-                        let mut values = Vec::new();
-
-                        while let Some(value) = seq.next_element_seed(self.0.transmute::<Box<#namespace::#struct_name_ident>>())? {
-                            values.push(value);
-                        }
-
-                        Ok(values)
-                    }
-                }
-
-                deserializer.deserialize_seq(Visitor(self))
-            }
-        }
     }
 }
 
@@ -305,28 +271,17 @@ pub fn implement_deserialze_resource_enum(
             }
         }
 
-        impl<'de> serde::de::DeserializeSeed<'de> for &mut crate::context::de::DeserializationContext<Box<#namespace::Resource>> {
-            type Value = Box<#namespace::Resource>;
+        impl<'de> serde::de::DeserializeSeed<'de> for &mut crate::context::de::DeserializationContext<Vec<#namespace::Resource>> {
+            type Value = Vec<#namespace::Resource>;
 
             fn deserialize<D>(self, deserializer: D) -> Result<Self::Value, D::Error>
             where
                 D: serde::de::Deserializer<'de>,
             {
-                self.transmute::<#namespace::Resource>().deserialize(deserializer).map(Box::new)
-            }
-        }
-
-        impl<'de> serde::de::DeserializeSeed<'de> for &mut crate::context::de::DeserializationContext<Vec<Box<#namespace::Resource>>> {
-            type Value = Vec<Box<#namespace::Resource>>;
-
-            fn deserialize<D>(self, deserializer: D) -> Result<Self::Value, D::Error>
-            where
-                D: serde::de::Deserializer<'de>,
-            {
-                struct Visitor<'a>(&'a mut crate::context::de::DeserializationContext<Vec<Box<#namespace::Resource>>>);
+                struct Visitor<'a>(&'a mut crate::context::de::DeserializationContext<Vec<#namespace::Resource>>);
 
                 impl<'de> serde::de::Visitor<'de> for Visitor<'_> {
-                    type Value = Vec<Box<#namespace::Resource>>;
+                    type Value = Vec<#namespace::Resource>;
 
                     fn expecting(&self, formatter: &mut std::fmt::Formatter) -> std::fmt::Result {
                         formatter.write_str("a sequence of resources")
@@ -338,7 +293,7 @@ pub fn implement_deserialze_resource_enum(
                     {
                         let mut values = Vec::new();
 
-                        while let Some(value) = seq.next_element_seed(self.0.transmute::<Box<#namespace::Resource>>())? {
+                        while let Some(value) = seq.next_element_seed(self.0.transmute::<#namespace::Resource>())? {
                             values.push(value);
                         }
 
@@ -426,7 +381,7 @@ fn field_mut_var(
 ) -> TokenStream {
     let field_name_ident = format_ident!("r#{}", field.name);
 
-    let type_tokens = type_tokens(&field.r#type, namespace, base_namespace);
+    let type_tokens = type_tokens(&field.r#type, field.multiple, namespace, base_namespace);
 
     let type_tokens = if field.multiple {
         quote! { Vec<#type_tokens> }
@@ -441,6 +396,7 @@ fn field_mut_var(
 
 fn type_tokens(
     field_type: &RustFhirFieldType,
+    multiple: bool,
     namespace: &TokenStream,
     base_namespace: &TokenStream,
 ) -> TokenStream {
@@ -458,7 +414,7 @@ fn type_tokens(
         || field_type.name == "Resource")
     {
         quote! {#namespace::#type_tokens}
-    } else if field_type.r#box {
+    } else if field_type.r#box && !multiple {
         quote! { Box<#base_namespace::#type_tokens> }
     } else {
         quote! {#base_namespace::#type_tokens}
@@ -562,7 +518,7 @@ fn deserialize_enum_variant(
     let fhir_primitive_element_name = format!("_{}", fhir_name);
     let fhir_primitive_element_name_poly = format!("_{}", fhir_name_poly);
 
-    let type_tokens = type_tokens(&variant.r#type, namespace, base_namespace);
+    let type_tokens = type_tokens(&variant.r#type, false, namespace, base_namespace);
 
     let field_enum_type_name =
         format_ident!("{}{}", field.fhir_name.to_rust_type_casing(), variant.name);
@@ -693,7 +649,7 @@ fn deserialize_primitive(
     let field_enum_type_primitive_element_name =
         format_ident!("{}PrimitiveElement", field_enum_type_name);
 
-    let type_tokens = type_tokens(&field.r#type, namespace, base_namespace);
+    let type_tokens = type_tokens(&field.r#type, field.multiple, namespace, base_namespace);
 
     let (intermediate_type_tokens, convert_intermediate_type_tokens): (TokenStream, TokenStream) =
         if field.r#type.name == DECIMAL_TYPE {
@@ -824,7 +780,7 @@ fn deserialize_element(
     let fhir_name = &field.fhir_name;
     let field_name_ident = format_ident!("r#{}", field.name);
 
-    let type_tokens = type_tokens(&field.r#type, namespace, base_namespace);
+    let type_tokens = type_tokens(&field.r#type, field.multiple, namespace, base_namespace);
 
     let field_enum_type_name = format_ident!("{}", field.fhir_name.to_rust_type_casing());
 
