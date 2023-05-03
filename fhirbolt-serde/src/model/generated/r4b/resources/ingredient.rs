@@ -49,10 +49,11 @@ impl serde::ser::Serialize for SerializationContext<&IngredientManufacturer> {
         }
         if self.value.r#manufacturer.id.as_deref() == Some("$invalid") {
             return missing_field_error("manufacturer");
+        } else {
+            self.with_context(&self.value.r#manufacturer, |ctx| {
+                state.serialize_entry("manufacturer", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#manufacturer, |ctx| {
-            state.serialize_entry("manufacturer", ctx)
-        })?;
         state.end()
     }
 }
@@ -1265,8 +1266,9 @@ impl serde::ser::Serialize for SerializationContext<&IngredientSubstance> {
         }
         if self.value.r#code.id.as_deref() == Some("$invalid") {
             return missing_field_error("code");
+        } else {
+            self.with_context(&self.value.r#code, |ctx| state.serialize_entry("code", ctx))?;
         }
-        self.with_context(&self.value.r#code, |ctx| state.serialize_entry("code", ctx))?;
         if !self.value.r#strength.is_empty() {
             self.with_context(&self.value.r#strength, |ctx| {
                 state.serialize_entry("strength", ctx)
@@ -1583,17 +1585,19 @@ impl serde::ser::Serialize for SerializationContext<&Ingredient> {
             }
         } else if self.value.r#status.id.as_deref() == Some("$invalid") {
             return missing_field_error("status");
+        } else {
+            self.with_context(&self.value.r#status, |ctx| {
+                state.serialize_entry("status", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#status, |ctx| {
-            state.serialize_entry("status", ctx)
-        })?;
         if !self.value.r#for.is_empty() {
             self.with_context(&self.value.r#for, |ctx| state.serialize_entry("for", ctx))?;
         }
         if self.value.r#role.id.as_deref() == Some("$invalid") {
             return missing_field_error("role");
+        } else {
+            self.with_context(&self.value.r#role, |ctx| state.serialize_entry("role", ctx))?;
         }
-        self.with_context(&self.value.r#role, |ctx| state.serialize_entry("role", ctx))?;
         if !self.value.r#function.is_empty() {
             self.with_context(&self.value.r#function, |ctx| {
                 state.serialize_entry("function", ctx)
@@ -1627,10 +1631,11 @@ impl serde::ser::Serialize for SerializationContext<&Ingredient> {
         }
         if self.value.r#substance.id.as_deref() == Some("$invalid") {
             return missing_field_error("substance");
+        } else {
+            self.with_context(&self.value.r#substance, |ctx| {
+                state.serialize_entry("substance", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#substance, |ctx| {
-            state.serialize_entry("substance", ctx)
-        })?;
         state.end()
     }
 }

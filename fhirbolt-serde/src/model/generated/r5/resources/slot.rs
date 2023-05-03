@@ -108,10 +108,11 @@ impl serde::ser::Serialize for SerializationContext<&Slot> {
         }
         if self.value.r#schedule.id.as_deref() == Some("$invalid") {
             return missing_field_error("schedule");
+        } else {
+            self.with_context(&self.value.r#schedule, |ctx| {
+                state.serialize_entry("schedule", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#schedule, |ctx| {
-            state.serialize_entry("schedule", ctx)
-        })?;
         if self.output_json {
             if self.value.r#status.id.as_deref() == Some("$invalid") {
                 return missing_field_error("status");
@@ -131,10 +132,11 @@ impl serde::ser::Serialize for SerializationContext<&Slot> {
             }
         } else if self.value.r#status.id.as_deref() == Some("$invalid") {
             return missing_field_error("status");
+        } else {
+            self.with_context(&self.value.r#status, |ctx| {
+                state.serialize_entry("status", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#status, |ctx| {
-            state.serialize_entry("status", ctx)
-        })?;
         if self.output_json {
             if self.value.r#start.id.as_deref() == Some("$invalid") {
                 return missing_field_error("start");
@@ -154,10 +156,11 @@ impl serde::ser::Serialize for SerializationContext<&Slot> {
             }
         } else if self.value.r#start.id.as_deref() == Some("$invalid") {
             return missing_field_error("start");
+        } else {
+            self.with_context(&self.value.r#start, |ctx| {
+                state.serialize_entry("start", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#start, |ctx| {
-            state.serialize_entry("start", ctx)
-        })?;
         if self.output_json {
             if self.value.r#end.id.as_deref() == Some("$invalid") {
                 return missing_field_error("end");
@@ -175,8 +178,9 @@ impl serde::ser::Serialize for SerializationContext<&Slot> {
             }
         } else if self.value.r#end.id.as_deref() == Some("$invalid") {
             return missing_field_error("end");
+        } else {
+            self.with_context(&self.value.r#end, |ctx| state.serialize_entry("end", ctx))?;
         }
-        self.with_context(&self.value.r#end, |ctx| state.serialize_entry("end", ctx))?;
         if self.output_json {
             if let Some(some) = self.value.r#overbooked.as_ref() {
                 if let Some(some) = some.value.as_ref().map(Ok) {

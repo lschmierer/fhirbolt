@@ -47,8 +47,9 @@ impl serde::ser::Serialize for SerializationContext<&CodeSystemFilter> {
             }
         } else if self.value.r#code.id.as_deref() == Some("$invalid") {
             return missing_field_error("code");
+        } else {
+            self.with_context(&self.value.r#code, |ctx| state.serialize_entry("code", ctx))?;
         }
-        self.with_context(&self.value.r#code, |ctx| state.serialize_entry("code", ctx))?;
         if self.output_json {
             if let Some(some) = self.value.r#description.as_ref() {
                 if let Some(some) = some.value.as_ref().map(Ok) {
@@ -131,10 +132,11 @@ impl serde::ser::Serialize for SerializationContext<&CodeSystemFilter> {
             }
         } else if self.value.r#value.id.as_deref() == Some("$invalid") {
             return missing_field_error("value");
+        } else {
+            self.with_context(&self.value.r#value, |ctx| {
+                state.serialize_entry("value", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#value, |ctx| {
-            state.serialize_entry("value", ctx)
-        })?;
         state.end()
     }
 }
@@ -551,8 +553,9 @@ impl serde::ser::Serialize for SerializationContext<&CodeSystemProperty> {
             }
         } else if self.value.r#code.id.as_deref() == Some("$invalid") {
             return missing_field_error("code");
+        } else {
+            self.with_context(&self.value.r#code, |ctx| state.serialize_entry("code", ctx))?;
         }
-        self.with_context(&self.value.r#code, |ctx| state.serialize_entry("code", ctx))?;
         if self.output_json {
             if let Some(some) = self.value.r#uri.as_ref() {
                 if let Some(some) = some.value.as_ref().map(Ok) {
@@ -610,8 +613,9 @@ impl serde::ser::Serialize for SerializationContext<&CodeSystemProperty> {
             }
         } else if self.value.r#type.id.as_deref() == Some("$invalid") {
             return missing_field_error("type");
+        } else {
+            self.with_context(&self.value.r#type, |ctx| state.serialize_entry("type", ctx))?;
         }
-        self.with_context(&self.value.r#type, |ctx| state.serialize_entry("type", ctx))?;
         state.end()
     }
 }
@@ -1024,10 +1028,11 @@ impl serde::ser::Serialize for SerializationContext<&CodeSystemConceptDesignatio
             }
         } else if self.value.r#value.id.as_deref() == Some("$invalid") {
             return missing_field_error("value");
+        } else {
+            self.with_context(&self.value.r#value, |ctx| {
+                state.serialize_entry("value", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#value, |ctx| {
-            state.serialize_entry("value", ctx)
-        })?;
         state.end()
     }
 }
@@ -1374,8 +1379,9 @@ impl serde::ser::Serialize for SerializationContext<&CodeSystemConceptProperty> 
             }
         } else if self.value.r#code.id.as_deref() == Some("$invalid") {
             return missing_field_error("code");
+        } else {
+            self.with_context(&self.value.r#code, |ctx| state.serialize_entry("code", ctx))?;
         }
-        self.with_context(&self.value.r#code, |ctx| state.serialize_entry("code", ctx))?;
         {
             use fhirbolt_model::r5::resources::CodeSystemConceptPropertyValue as _Enum;
             match self.value.r#value {
@@ -2137,8 +2143,9 @@ impl serde::ser::Serialize for SerializationContext<&CodeSystemConcept> {
             }
         } else if self.value.r#code.id.as_deref() == Some("$invalid") {
             return missing_field_error("code");
+        } else {
+            self.with_context(&self.value.r#code, |ctx| state.serialize_entry("code", ctx))?;
         }
-        self.with_context(&self.value.r#code, |ctx| state.serialize_entry("code", ctx))?;
         if self.output_json {
             if let Some(some) = self.value.r#display.as_ref() {
                 if let Some(some) = some.value.as_ref().map(Ok) {
@@ -2775,10 +2782,11 @@ impl serde::ser::Serialize for SerializationContext<&CodeSystem> {
             }
         } else if self.value.r#status.id.as_deref() == Some("$invalid") {
             return missing_field_error("status");
+        } else {
+            self.with_context(&self.value.r#status, |ctx| {
+                state.serialize_entry("status", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#status, |ctx| {
-            state.serialize_entry("status", ctx)
-        })?;
         if self.output_json {
             if let Some(some) = self.value.r#experimental.as_ref() {
                 if let Some(some) = some.value.as_ref().map(Ok) {
@@ -3112,10 +3120,11 @@ impl serde::ser::Serialize for SerializationContext<&CodeSystem> {
             }
         } else if self.value.r#content.id.as_deref() == Some("$invalid") {
             return missing_field_error("content");
+        } else {
+            self.with_context(&self.value.r#content, |ctx| {
+                state.serialize_entry("content", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#content, |ctx| {
-            state.serialize_entry("content", ctx)
-        })?;
         if self.output_json {
             if let Some(some) = self.value.r#supplements.as_ref() {
                 if let Some(some) = some.value.as_ref().map(Ok) {

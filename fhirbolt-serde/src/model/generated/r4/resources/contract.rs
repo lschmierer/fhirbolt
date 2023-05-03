@@ -30,8 +30,9 @@ impl serde::ser::Serialize for SerializationContext<&ContractContentDefinition> 
         }
         if self.value.r#type.id.as_deref() == Some("$invalid") {
             return missing_field_error("type");
+        } else {
+            self.with_context(&self.value.r#type, |ctx| state.serialize_entry("type", ctx))?;
         }
-        self.with_context(&self.value.r#type, |ctx| state.serialize_entry("type", ctx))?;
         if let Some(some) = self.value.r#sub_type.as_ref() {
             self.with_context(some, |ctx| state.serialize_entry("subType", ctx))?;
         }
@@ -78,10 +79,11 @@ impl serde::ser::Serialize for SerializationContext<&ContractContentDefinition> 
             }
         } else if self.value.r#publication_status.id.as_deref() == Some("$invalid") {
             return missing_field_error("publicationStatus");
+        } else {
+            self.with_context(&self.value.r#publication_status, |ctx| {
+                state.serialize_entry("publicationStatus", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#publication_status, |ctx| {
-            state.serialize_entry("publicationStatus", ctx)
-        })?;
         if self.output_json {
             if let Some(some) = self.value.r#copyright.as_ref() {
                 if let Some(some) = some.value.as_ref().map(Ok) {
@@ -538,10 +540,11 @@ impl serde::ser::Serialize for SerializationContext<&ContractTermSecurityLabel> 
         }
         if self.value.r#classification.id.as_deref() == Some("$invalid") {
             return missing_field_error("classification");
+        } else {
+            self.with_context(&self.value.r#classification, |ctx| {
+                state.serialize_entry("classification", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#classification, |ctx| {
-            state.serialize_entry("classification", ctx)
-        })?;
         if !self.value.r#category.is_empty() {
             self.with_context(&self.value.r#category, |ctx| {
                 state.serialize_entry("category", ctx)
@@ -896,8 +899,9 @@ impl serde::ser::Serialize for SerializationContext<&ContractTermOfferParty> {
         }
         if self.value.r#role.id.as_deref() == Some("$invalid") {
             return missing_field_error("role");
+        } else {
+            self.with_context(&self.value.r#role, |ctx| state.serialize_entry("role", ctx))?;
         }
-        self.with_context(&self.value.r#role, |ctx| state.serialize_entry("role", ctx))?;
         state.end()
     }
 }
@@ -4982,8 +4986,9 @@ impl serde::ser::Serialize for SerializationContext<&ContractTermAction> {
         }
         if self.value.r#type.id.as_deref() == Some("$invalid") {
             return missing_field_error("type");
+        } else {
+            self.with_context(&self.value.r#type, |ctx| state.serialize_entry("type", ctx))?;
         }
-        self.with_context(&self.value.r#type, |ctx| state.serialize_entry("type", ctx))?;
         if !self.value.r#subject.is_empty() {
             self.with_context(&self.value.r#subject, |ctx| {
                 state.serialize_entry("subject", ctx)
@@ -4991,10 +4996,11 @@ impl serde::ser::Serialize for SerializationContext<&ContractTermAction> {
         }
         if self.value.r#intent.id.as_deref() == Some("$invalid") {
             return missing_field_error("intent");
+        } else {
+            self.with_context(&self.value.r#intent, |ctx| {
+                state.serialize_entry("intent", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#intent, |ctx| {
-            state.serialize_entry("intent", ctx)
-        })?;
         if self.output_json {
             if !self.value.r#link_id.is_empty() {
                 let values = self
@@ -5041,10 +5047,11 @@ impl serde::ser::Serialize for SerializationContext<&ContractTermAction> {
         }
         if self.value.r#status.id.as_deref() == Some("$invalid") {
             return missing_field_error("status");
+        } else {
+            self.with_context(&self.value.r#status, |ctx| {
+                state.serialize_entry("status", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#status, |ctx| {
-            state.serialize_entry("status", ctx)
-        })?;
         if let Some(some) = self.value.r#context.as_ref() {
             self.with_context(some, |ctx| state.serialize_entry("context", ctx))?;
         }
@@ -6547,10 +6554,11 @@ impl serde::ser::Serialize for SerializationContext<&ContractTerm> {
         }
         if self.value.r#offer.id.as_deref() == Some("$invalid") {
             return missing_field_error("offer");
+        } else {
+            self.with_context(&self.value.r#offer, |ctx| {
+                state.serialize_entry("offer", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#offer, |ctx| {
-            state.serialize_entry("offer", ctx)
-        })?;
         if !self.value.r#asset.is_empty() {
             self.with_context(&self.value.r#asset, |ctx| {
                 state.serialize_entry("asset", ctx)
@@ -7045,14 +7053,16 @@ impl serde::ser::Serialize for SerializationContext<&ContractSigner> {
         }
         if self.value.r#type.id.as_deref() == Some("$invalid") {
             return missing_field_error("type");
+        } else {
+            self.with_context(&self.value.r#type, |ctx| state.serialize_entry("type", ctx))?;
         }
-        self.with_context(&self.value.r#type, |ctx| state.serialize_entry("type", ctx))?;
         if self.value.r#party.id.as_deref() == Some("$invalid") {
             return missing_field_error("party");
+        } else {
+            self.with_context(&self.value.r#party, |ctx| {
+                state.serialize_entry("party", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#party, |ctx| {
-            state.serialize_entry("party", ctx)
-        })?;
         if !self.value.r#signature.is_empty() {
             self.with_context(&self.value.r#signature, |ctx| {
                 state.serialize_entry("signature", ctx)

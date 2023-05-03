@@ -47,8 +47,9 @@ impl serde::ser::Serialize for SerializationContext<&ParametersParameter> {
             }
         } else if self.value.r#name.id.as_deref() == Some("$invalid") {
             return missing_field_error("name");
+        } else {
+            self.with_context(&self.value.r#name, |ctx| state.serialize_entry("name", ctx))?;
         }
-        self.with_context(&self.value.r#name, |ctx| state.serialize_entry("name", ctx))?;
         {
             use fhirbolt_model::r5::resources::ParametersParameterValue as _Enum;
             if let Some(some) = self.value.r#value.as_ref() {

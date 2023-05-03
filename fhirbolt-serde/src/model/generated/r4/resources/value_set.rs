@@ -69,10 +69,11 @@ impl serde::ser::Serialize for SerializationContext<&ValueSetComposeIncludeConce
             }
         } else if self.value.r#value.id.as_deref() == Some("$invalid") {
             return missing_field_error("value");
+        } else {
+            self.with_context(&self.value.r#value, |ctx| {
+                state.serialize_entry("value", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#value, |ctx| {
-            state.serialize_entry("value", ctx)
-        })?;
         state.end()
     }
 }
@@ -405,8 +406,9 @@ impl serde::ser::Serialize for SerializationContext<&ValueSetComposeIncludeConce
             }
         } else if self.value.r#code.id.as_deref() == Some("$invalid") {
             return missing_field_error("code");
+        } else {
+            self.with_context(&self.value.r#code, |ctx| state.serialize_entry("code", ctx))?;
         }
-        self.with_context(&self.value.r#code, |ctx| state.serialize_entry("code", ctx))?;
         if self.output_json {
             if let Some(some) = self.value.r#display.as_ref() {
                 if let Some(some) = some.value.as_ref().map(Ok) {
@@ -760,10 +762,11 @@ impl serde::ser::Serialize for SerializationContext<&ValueSetComposeIncludeFilte
             }
         } else if self.value.r#property.id.as_deref() == Some("$invalid") {
             return missing_field_error("property");
+        } else {
+            self.with_context(&self.value.r#property, |ctx| {
+                state.serialize_entry("property", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#property, |ctx| {
-            state.serialize_entry("property", ctx)
-        })?;
         if self.output_json {
             if self.value.r#op.id.as_deref() == Some("$invalid") {
                 return missing_field_error("op");
@@ -781,8 +784,9 @@ impl serde::ser::Serialize for SerializationContext<&ValueSetComposeIncludeFilte
             }
         } else if self.value.r#op.id.as_deref() == Some("$invalid") {
             return missing_field_error("op");
+        } else {
+            self.with_context(&self.value.r#op, |ctx| state.serialize_entry("op", ctx))?;
         }
-        self.with_context(&self.value.r#op, |ctx| state.serialize_entry("op", ctx))?;
         if self.output_json {
             if self.value.r#value.id.as_deref() == Some("$invalid") {
                 return missing_field_error("value");
@@ -802,10 +806,11 @@ impl serde::ser::Serialize for SerializationContext<&ValueSetComposeIncludeFilte
             }
         } else if self.value.r#value.id.as_deref() == Some("$invalid") {
             return missing_field_error("value");
+        } else {
+            self.with_context(&self.value.r#value, |ctx| {
+                state.serialize_entry("value", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#value, |ctx| {
-            state.serialize_entry("value", ctx)
-        })?;
         state.end()
     }
 }
@@ -2031,8 +2036,9 @@ impl serde::ser::Serialize for SerializationContext<&ValueSetExpansionParameter>
             }
         } else if self.value.r#name.id.as_deref() == Some("$invalid") {
             return missing_field_error("name");
+        } else {
+            self.with_context(&self.value.r#name, |ctx| state.serialize_entry("name", ctx))?;
         }
-        self.with_context(&self.value.r#name, |ctx| state.serialize_entry("name", ctx))?;
         {
             use fhirbolt_model::r4::resources::ValueSetExpansionParameterValue as _Enum;
             if let Some(some) = self.value.r#value.as_ref() {
@@ -3488,10 +3494,11 @@ impl serde::ser::Serialize for SerializationContext<&ValueSetExpansion> {
             }
         } else if self.value.r#timestamp.id.as_deref() == Some("$invalid") {
             return missing_field_error("timestamp");
+        } else {
+            self.with_context(&self.value.r#timestamp, |ctx| {
+                state.serialize_entry("timestamp", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#timestamp, |ctx| {
-            state.serialize_entry("timestamp", ctx)
-        })?;
         if self.output_json {
             if let Some(some) = self.value.r#total.as_ref() {
                 if let Some(some) = some.value.as_ref().map(Ok) {
@@ -4105,10 +4112,11 @@ impl serde::ser::Serialize for SerializationContext<&ValueSet> {
             }
         } else if self.value.r#status.id.as_deref() == Some("$invalid") {
             return missing_field_error("status");
+        } else {
+            self.with_context(&self.value.r#status, |ctx| {
+                state.serialize_entry("status", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#status, |ctx| {
-            state.serialize_entry("status", ctx)
-        })?;
         if self.output_json {
             if let Some(some) = self.value.r#experimental.as_ref() {
                 if let Some(some) = some.value.as_ref().map(Ok) {

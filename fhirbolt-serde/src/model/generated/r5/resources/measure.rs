@@ -2341,10 +2341,11 @@ impl serde::ser::Serialize for SerializationContext<&MeasureSupplementalData> {
         }
         if self.value.r#criteria.id.as_deref() == Some("$invalid") {
             return missing_field_error("criteria");
+        } else {
+            self.with_context(&self.value.r#criteria, |ctx| {
+                state.serialize_entry("criteria", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#criteria, |ctx| {
-            state.serialize_entry("criteria", ctx)
-        })?;
         state.end()
     }
 }
@@ -2890,10 +2891,11 @@ impl serde::ser::Serialize for SerializationContext<&Measure> {
             }
         } else if self.value.r#status.id.as_deref() == Some("$invalid") {
             return missing_field_error("status");
+        } else {
+            self.with_context(&self.value.r#status, |ctx| {
+                state.serialize_entry("status", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#status, |ctx| {
-            state.serialize_entry("status", ctx)
-        })?;
         if self.output_json {
             if let Some(some) = self.value.r#experimental.as_ref() {
                 if let Some(some) = some.value.as_ref().map(Ok) {

@@ -50,10 +50,11 @@ impl serde::ser::Serialize for SerializationContext<&LocationPosition> {
             }
         } else if self.value.r#longitude.id.as_deref() == Some("$invalid") {
             return missing_field_error("longitude");
+        } else {
+            self.with_context(&self.value.r#longitude, |ctx| {
+                state.serialize_entry("longitude", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#longitude, |ctx| {
-            state.serialize_entry("longitude", ctx)
-        })?;
         if self.output_json {
             if self.value.r#latitude.id.as_deref() == Some("$invalid") {
                 return missing_field_error("latitude");
@@ -76,10 +77,11 @@ impl serde::ser::Serialize for SerializationContext<&LocationPosition> {
             }
         } else if self.value.r#latitude.id.as_deref() == Some("$invalid") {
             return missing_field_error("latitude");
+        } else {
+            self.with_context(&self.value.r#latitude, |ctx| {
+                state.serialize_entry("latitude", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#latitude, |ctx| {
-            state.serialize_entry("latitude", ctx)
-        })?;
         if self.output_json {
             if let Some(some) = self.value.r#altitude.as_ref() {
                 if let Some(some) = some.value.as_ref().map(|v| {

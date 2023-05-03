@@ -1202,10 +1202,11 @@ impl serde::ser::Serialize for SerializationContext<&SpecimenDefinitionTypeTeste
             }
         } else if self.value.r#preference.id.as_deref() == Some("$invalid") {
             return missing_field_error("preference");
+        } else {
+            self.with_context(&self.value.r#preference, |ctx| {
+                state.serialize_entry("preference", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#preference, |ctx| {
-            state.serialize_entry("preference", ctx)
-        })?;
         if let Some(some) = self.value.r#container.as_ref() {
             self.with_context(some, |ctx| state.serialize_entry("container", ctx))?;
         }
@@ -2030,10 +2031,11 @@ impl serde::ser::Serialize for SerializationContext<&SpecimenDefinition> {
             }
         } else if self.value.r#status.id.as_deref() == Some("$invalid") {
             return missing_field_error("status");
+        } else {
+            self.with_context(&self.value.r#status, |ctx| {
+                state.serialize_entry("status", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#status, |ctx| {
-            state.serialize_entry("status", ctx)
-        })?;
         if self.output_json {
             if let Some(some) = self.value.r#experimental.as_ref() {
                 if let Some(some) = some.value.as_ref().map(Ok) {

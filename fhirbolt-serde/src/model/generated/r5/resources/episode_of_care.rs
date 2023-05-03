@@ -47,16 +47,18 @@ impl serde::ser::Serialize for SerializationContext<&EpisodeOfCareStatusHistory>
             }
         } else if self.value.r#status.id.as_deref() == Some("$invalid") {
             return missing_field_error("status");
+        } else {
+            self.with_context(&self.value.r#status, |ctx| {
+                state.serialize_entry("status", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#status, |ctx| {
-            state.serialize_entry("status", ctx)
-        })?;
         if self.value.r#period.id.as_deref() == Some("$invalid") {
             return missing_field_error("period");
+        } else {
+            self.with_context(&self.value.r#period, |ctx| {
+                state.serialize_entry("period", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#period, |ctx| {
-            state.serialize_entry("period", ctx)
-        })?;
         state.end()
     }
 }
@@ -868,10 +870,11 @@ impl serde::ser::Serialize for SerializationContext<&EpisodeOfCare> {
             }
         } else if self.value.r#status.id.as_deref() == Some("$invalid") {
             return missing_field_error("status");
+        } else {
+            self.with_context(&self.value.r#status, |ctx| {
+                state.serialize_entry("status", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#status, |ctx| {
-            state.serialize_entry("status", ctx)
-        })?;
         if !self.value.r#status_history.is_empty() {
             self.with_context(&self.value.r#status_history, |ctx| {
                 state.serialize_entry("statusHistory", ctx)
@@ -892,10 +895,11 @@ impl serde::ser::Serialize for SerializationContext<&EpisodeOfCare> {
         }
         if self.value.r#patient.id.as_deref() == Some("$invalid") {
             return missing_field_error("patient");
+        } else {
+            self.with_context(&self.value.r#patient, |ctx| {
+                state.serialize_entry("patient", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#patient, |ctx| {
-            state.serialize_entry("patient", ctx)
-        })?;
         if let Some(some) = self.value.r#managing_organization.as_ref() {
             self.with_context(some, |ctx| {
                 state.serialize_entry("managingOrganization", ctx)

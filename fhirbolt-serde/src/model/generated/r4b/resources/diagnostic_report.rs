@@ -49,8 +49,9 @@ impl serde::ser::Serialize for SerializationContext<&DiagnosticReportMedia> {
         }
         if self.value.r#link.id.as_deref() == Some("$invalid") {
             return missing_field_error("link");
+        } else {
+            self.with_context(&self.value.r#link, |ctx| state.serialize_entry("link", ctx))?;
         }
-        self.with_context(&self.value.r#link, |ctx| state.serialize_entry("link", ctx))?;
         state.end()
     }
 }
@@ -385,10 +386,11 @@ impl serde::ser::Serialize for SerializationContext<&DiagnosticReport> {
             }
         } else if self.value.r#status.id.as_deref() == Some("$invalid") {
             return missing_field_error("status");
+        } else {
+            self.with_context(&self.value.r#status, |ctx| {
+                state.serialize_entry("status", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#status, |ctx| {
-            state.serialize_entry("status", ctx)
-        })?;
         if !self.value.r#category.is_empty() {
             self.with_context(&self.value.r#category, |ctx| {
                 state.serialize_entry("category", ctx)
@@ -396,8 +398,9 @@ impl serde::ser::Serialize for SerializationContext<&DiagnosticReport> {
         }
         if self.value.r#code.id.as_deref() == Some("$invalid") {
             return missing_field_error("code");
+        } else {
+            self.with_context(&self.value.r#code, |ctx| state.serialize_entry("code", ctx))?;
         }
-        self.with_context(&self.value.r#code, |ctx| state.serialize_entry("code", ctx))?;
         if let Some(some) = self.value.r#subject.as_ref() {
             self.with_context(some, |ctx| state.serialize_entry("subject", ctx))?;
         }

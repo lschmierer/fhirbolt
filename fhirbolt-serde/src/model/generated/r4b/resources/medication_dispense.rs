@@ -33,10 +33,11 @@ impl serde::ser::Serialize for SerializationContext<&MedicationDispensePerformer
         }
         if self.value.r#actor.id.as_deref() == Some("$invalid") {
             return missing_field_error("actor");
+        } else {
+            self.with_context(&self.value.r#actor, |ctx| {
+                state.serialize_entry("actor", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#actor, |ctx| {
-            state.serialize_entry("actor", ctx)
-        })?;
         state.end()
     }
 }
@@ -288,10 +289,11 @@ impl serde::ser::Serialize for SerializationContext<&MedicationDispenseSubstitut
             }
         } else if self.value.r#was_substituted.id.as_deref() == Some("$invalid") {
             return missing_field_error("wasSubstituted");
+        } else {
+            self.with_context(&self.value.r#was_substituted, |ctx| {
+                state.serialize_entry("wasSubstituted", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#was_substituted, |ctx| {
-            state.serialize_entry("wasSubstituted", ctx)
-        })?;
         if let Some(some) = self.value.r#type.as_ref() {
             self.with_context(some, |ctx| state.serialize_entry("type", ctx))?;
         }
@@ -708,10 +710,11 @@ impl serde::ser::Serialize for SerializationContext<&MedicationDispense> {
             }
         } else if self.value.r#status.id.as_deref() == Some("$invalid") {
             return missing_field_error("status");
+        } else {
+            self.with_context(&self.value.r#status, |ctx| {
+                state.serialize_entry("status", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#status, |ctx| {
-            state.serialize_entry("status", ctx)
-        })?;
         {
             use fhirbolt_model::r4b::resources::MedicationDispenseStatusReason as _Enum;
             if let Some(some) = self.value.r#status_reason.as_ref() {

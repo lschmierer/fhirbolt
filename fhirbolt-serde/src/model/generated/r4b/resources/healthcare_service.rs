@@ -838,10 +838,11 @@ impl serde::ser::Serialize for SerializationContext<&HealthcareServiceNotAvailab
             }
         } else if self.value.r#description.id.as_deref() == Some("$invalid") {
             return missing_field_error("description");
+        } else {
+            self.with_context(&self.value.r#description, |ctx| {
+                state.serialize_entry("description", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#description, |ctx| {
-            state.serialize_entry("description", ctx)
-        })?;
         if let Some(some) = self.value.r#during.as_ref() {
             self.with_context(some, |ctx| state.serialize_entry("during", ctx))?;
         }

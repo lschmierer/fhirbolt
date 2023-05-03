@@ -1202,10 +1202,11 @@ impl serde::ser::Serialize for SerializationContext<&SpecimenDefinitionTypeTeste
             }
         } else if self.value.r#preference.id.as_deref() == Some("$invalid") {
             return missing_field_error("preference");
+        } else {
+            self.with_context(&self.value.r#preference, |ctx| {
+                state.serialize_entry("preference", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#preference, |ctx| {
-            state.serialize_entry("preference", ctx)
-        })?;
         if let Some(some) = self.value.r#container.as_ref() {
             self.with_context(some, |ctx| state.serialize_entry("container", ctx))?;
         }

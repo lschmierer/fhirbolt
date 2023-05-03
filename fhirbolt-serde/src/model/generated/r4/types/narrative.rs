@@ -42,10 +42,11 @@ impl serde::ser::Serialize for SerializationContext<&Narrative> {
             }
         } else if self.value.r#status.id.as_deref() == Some("$invalid") {
             return missing_field_error("status");
+        } else {
+            self.with_context(&self.value.r#status, |ctx| {
+                state.serialize_entry("status", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#status, |ctx| {
-            state.serialize_entry("status", ctx)
-        })?;
         if self.output_json {
             if self.value.r#div.id.as_deref() == Some("$invalid") {
                 return missing_field_error("div");
@@ -61,8 +62,9 @@ impl serde::ser::Serialize for SerializationContext<&Narrative> {
             }
         } else if self.value.r#div.id.as_deref() == Some("$invalid") {
             return missing_field_error("div");
+        } else {
+            self.with_context(&self.value.r#div, |ctx| state.serialize_entry("div", ctx))?;
         }
-        self.with_context(&self.value.r#div, |ctx| state.serialize_entry("div", ctx))?;
         state.end()
     }
 }

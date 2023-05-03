@@ -278,10 +278,11 @@ impl serde::ser::Serialize for SerializationContext<&ImagingSelectionInstanceIma
             }
         } else if self.value.r#region_type.id.as_deref() == Some("$invalid") {
             return missing_field_error("regionType");
+        } else {
+            self.with_context(&self.value.r#region_type, |ctx| {
+                state.serialize_entry("regionType", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#region_type, |ctx| {
-            state.serialize_entry("regionType", ctx)
-        })?;
         if self.output_json {
             if !self.value.r#coordinate.is_empty() {
                 let values = self
@@ -681,10 +682,11 @@ impl serde::ser::Serialize for SerializationContext<&ImagingSelectionInstanceIma
             }
         } else if self.value.r#region_type.id.as_deref() == Some("$invalid") {
             return missing_field_error("regionType");
+        } else {
+            self.with_context(&self.value.r#region_type, |ctx| {
+                state.serialize_entry("regionType", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#region_type, |ctx| {
-            state.serialize_entry("regionType", ctx)
-        })?;
         if self.output_json {
             if !self.value.r#coordinate.is_empty() {
                 let values = self
@@ -1080,8 +1082,9 @@ impl serde::ser::Serialize for SerializationContext<&ImagingSelectionInstance> {
             }
         } else if self.value.r#uid.id.as_deref() == Some("$invalid") {
             return missing_field_error("uid");
+        } else {
+            self.with_context(&self.value.r#uid, |ctx| state.serialize_entry("uid", ctx))?;
         }
-        self.with_context(&self.value.r#uid, |ctx| state.serialize_entry("uid", ctx))?;
         if self.output_json {
             if let Some(some) = self.value.r#number.as_ref() {
                 if let Some(some) = some.value.as_ref().map(Ok) {
@@ -1650,10 +1653,11 @@ impl serde::ser::Serialize for SerializationContext<&ImagingSelection> {
             }
         } else if self.value.r#status.id.as_deref() == Some("$invalid") {
             return missing_field_error("status");
+        } else {
+            self.with_context(&self.value.r#status, |ctx| {
+                state.serialize_entry("status", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#status, |ctx| {
-            state.serialize_entry("status", ctx)
-        })?;
         if let Some(some) = self.value.r#subject.as_ref() {
             self.with_context(some, |ctx| state.serialize_entry("subject", ctx))?;
         }
@@ -1693,8 +1697,9 @@ impl serde::ser::Serialize for SerializationContext<&ImagingSelection> {
         }
         if self.value.r#code.id.as_deref() == Some("$invalid") {
             return missing_field_error("code");
+        } else {
+            self.with_context(&self.value.r#code, |ctx| state.serialize_entry("code", ctx))?;
         }
-        self.with_context(&self.value.r#code, |ctx| state.serialize_entry("code", ctx))?;
         if self.output_json {
             if let Some(some) = self.value.r#study_uid.as_ref() {
                 if let Some(some) = some.value.as_ref().map(Ok) {

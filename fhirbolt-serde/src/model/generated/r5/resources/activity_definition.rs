@@ -425,14 +425,16 @@ impl serde::ser::Serialize for SerializationContext<&ActivityDefinitionDynamicVa
             }
         } else if self.value.r#path.id.as_deref() == Some("$invalid") {
             return missing_field_error("path");
+        } else {
+            self.with_context(&self.value.r#path, |ctx| state.serialize_entry("path", ctx))?;
         }
-        self.with_context(&self.value.r#path, |ctx| state.serialize_entry("path", ctx))?;
         if self.value.r#expression.id.as_deref() == Some("$invalid") {
             return missing_field_error("expression");
+        } else {
+            self.with_context(&self.value.r#expression, |ctx| {
+                state.serialize_entry("expression", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#expression, |ctx| {
-            state.serialize_entry("expression", ctx)
-        })?;
         state.end()
     }
 }
@@ -904,10 +906,11 @@ impl serde::ser::Serialize for SerializationContext<&ActivityDefinition> {
             }
         } else if self.value.r#status.id.as_deref() == Some("$invalid") {
             return missing_field_error("status");
+        } else {
+            self.with_context(&self.value.r#status, |ctx| {
+                state.serialize_entry("status", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#status, |ctx| {
-            state.serialize_entry("status", ctx)
-        })?;
         if self.output_json {
             if let Some(some) = self.value.r#experimental.as_ref() {
                 if let Some(some) = some.value.as_ref().map(Ok) {

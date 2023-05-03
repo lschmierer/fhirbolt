@@ -30,10 +30,11 @@ impl serde::ser::Serialize for SerializationContext<&CoveragePaymentBy> {
         }
         if self.value.r#party.id.as_deref() == Some("$invalid") {
             return missing_field_error("party");
+        } else {
+            self.with_context(&self.value.r#party, |ctx| {
+                state.serialize_entry("party", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#party, |ctx| {
-            state.serialize_entry("party", ctx)
-        })?;
         if self.output_json {
             if let Some(some) = self.value.r#responsibility.as_ref() {
                 if let Some(some) = some.value.as_ref().map(Ok) {
@@ -315,14 +316,16 @@ impl serde::ser::Serialize for SerializationContext<&CoverageClass> {
         }
         if self.value.r#type.id.as_deref() == Some("$invalid") {
             return missing_field_error("type");
+        } else {
+            self.with_context(&self.value.r#type, |ctx| state.serialize_entry("type", ctx))?;
         }
-        self.with_context(&self.value.r#type, |ctx| state.serialize_entry("type", ctx))?;
         if self.value.r#value.id.as_deref() == Some("$invalid") {
             return missing_field_error("value");
+        } else {
+            self.with_context(&self.value.r#value, |ctx| {
+                state.serialize_entry("value", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#value, |ctx| {
-            state.serialize_entry("value", ctx)
-        })?;
         if self.output_json {
             if let Some(some) = self.value.r#name.as_ref() {
                 if let Some(some) = some.value.as_ref().map(Ok) {
@@ -615,8 +618,9 @@ impl serde::ser::Serialize for SerializationContext<&CoverageCostToBeneficiaryEx
         }
         if self.value.r#type.id.as_deref() == Some("$invalid") {
             return missing_field_error("type");
+        } else {
+            self.with_context(&self.value.r#type, |ctx| state.serialize_entry("type", ctx))?;
         }
-        self.with_context(&self.value.r#type, |ctx| state.serialize_entry("type", ctx))?;
         if let Some(some) = self.value.r#period.as_ref() {
             self.with_context(some, |ctx| state.serialize_entry("period", ctx))?;
         }
@@ -1286,10 +1290,11 @@ impl serde::ser::Serialize for SerializationContext<&Coverage> {
             }
         } else if self.value.r#status.id.as_deref() == Some("$invalid") {
             return missing_field_error("status");
+        } else {
+            self.with_context(&self.value.r#status, |ctx| {
+                state.serialize_entry("status", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#status, |ctx| {
-            state.serialize_entry("status", ctx)
-        })?;
         if self.output_json {
             if self.value.r#kind.id.as_deref() == Some("$invalid") {
                 return missing_field_error("kind");
@@ -1309,8 +1314,9 @@ impl serde::ser::Serialize for SerializationContext<&Coverage> {
             }
         } else if self.value.r#kind.id.as_deref() == Some("$invalid") {
             return missing_field_error("kind");
+        } else {
+            self.with_context(&self.value.r#kind, |ctx| state.serialize_entry("kind", ctx))?;
         }
-        self.with_context(&self.value.r#kind, |ctx| state.serialize_entry("kind", ctx))?;
         if !self.value.r#payment_by.is_empty() {
             self.with_context(&self.value.r#payment_by, |ctx| {
                 state.serialize_entry("paymentBy", ctx)
@@ -1332,10 +1338,11 @@ impl serde::ser::Serialize for SerializationContext<&Coverage> {
         }
         if self.value.r#beneficiary.id.as_deref() == Some("$invalid") {
             return missing_field_error("beneficiary");
+        } else {
+            self.with_context(&self.value.r#beneficiary, |ctx| {
+                state.serialize_entry("beneficiary", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#beneficiary, |ctx| {
-            state.serialize_entry("beneficiary", ctx)
-        })?;
         if self.output_json {
             if let Some(some) = self.value.r#dependent.as_ref() {
                 if let Some(some) = some.value.as_ref().map(Ok) {

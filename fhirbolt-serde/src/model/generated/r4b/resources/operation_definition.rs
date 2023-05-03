@@ -47,10 +47,11 @@ impl serde::ser::Serialize for SerializationContext<&OperationDefinitionParamete
             }
         } else if self.value.r#strength.id.as_deref() == Some("$invalid") {
             return missing_field_error("strength");
+        } else {
+            self.with_context(&self.value.r#strength, |ctx| {
+                state.serialize_entry("strength", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#strength, |ctx| {
-            state.serialize_entry("strength", ctx)
-        })?;
         if self.output_json {
             if self.value.r#value_set.id.as_deref() == Some("$invalid") {
                 return missing_field_error("valueSet");
@@ -70,10 +71,11 @@ impl serde::ser::Serialize for SerializationContext<&OperationDefinitionParamete
             }
         } else if self.value.r#value_set.id.as_deref() == Some("$invalid") {
             return missing_field_error("valueSet");
+        } else {
+            self.with_context(&self.value.r#value_set, |ctx| {
+                state.serialize_entry("valueSet", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#value_set, |ctx| {
-            state.serialize_entry("valueSet", ctx)
-        })?;
         state.end()
     }
 }
@@ -393,10 +395,11 @@ impl serde::ser::Serialize for SerializationContext<&OperationDefinitionParamete
             }
         } else if self.value.r#source.id.as_deref() == Some("$invalid") {
             return missing_field_error("source");
+        } else {
+            self.with_context(&self.value.r#source, |ctx| {
+                state.serialize_entry("source", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#source, |ctx| {
-            state.serialize_entry("source", ctx)
-        })?;
         if self.output_json {
             if let Some(some) = self.value.r#source_id.as_ref() {
                 if let Some(some) = some.value.as_ref().map(Ok) {
@@ -729,8 +732,9 @@ impl serde::ser::Serialize for SerializationContext<&OperationDefinitionParamete
             }
         } else if self.value.r#name.id.as_deref() == Some("$invalid") {
             return missing_field_error("name");
+        } else {
+            self.with_context(&self.value.r#name, |ctx| state.serialize_entry("name", ctx))?;
         }
-        self.with_context(&self.value.r#name, |ctx| state.serialize_entry("name", ctx))?;
         if self.output_json {
             if self.value.r#use.id.as_deref() == Some("$invalid") {
                 return missing_field_error("use");
@@ -748,8 +752,9 @@ impl serde::ser::Serialize for SerializationContext<&OperationDefinitionParamete
             }
         } else if self.value.r#use.id.as_deref() == Some("$invalid") {
             return missing_field_error("use");
+        } else {
+            self.with_context(&self.value.r#use, |ctx| state.serialize_entry("use", ctx))?;
         }
-        self.with_context(&self.value.r#use, |ctx| state.serialize_entry("use", ctx))?;
         if self.output_json {
             if self.value.r#min.id.as_deref() == Some("$invalid") {
                 return missing_field_error("min");
@@ -767,8 +772,9 @@ impl serde::ser::Serialize for SerializationContext<&OperationDefinitionParamete
             }
         } else if self.value.r#min.id.as_deref() == Some("$invalid") {
             return missing_field_error("min");
+        } else {
+            self.with_context(&self.value.r#min, |ctx| state.serialize_entry("min", ctx))?;
         }
-        self.with_context(&self.value.r#min, |ctx| state.serialize_entry("min", ctx))?;
         if self.output_json {
             if self.value.r#max.id.as_deref() == Some("$invalid") {
                 return missing_field_error("max");
@@ -786,8 +792,9 @@ impl serde::ser::Serialize for SerializationContext<&OperationDefinitionParamete
             }
         } else if self.value.r#max.id.as_deref() == Some("$invalid") {
             return missing_field_error("max");
+        } else {
+            self.with_context(&self.value.r#max, |ctx| state.serialize_entry("max", ctx))?;
         }
-        self.with_context(&self.value.r#max, |ctx| state.serialize_entry("max", ctx))?;
         if self.output_json {
             if let Some(some) = self.value.r#documentation.as_ref() {
                 if let Some(some) = some.value.as_ref().map(Ok) {
@@ -2036,8 +2043,9 @@ impl serde::ser::Serialize for SerializationContext<&OperationDefinition> {
             }
         } else if self.value.r#name.id.as_deref() == Some("$invalid") {
             return missing_field_error("name");
+        } else {
+            self.with_context(&self.value.r#name, |ctx| state.serialize_entry("name", ctx))?;
         }
-        self.with_context(&self.value.r#name, |ctx| state.serialize_entry("name", ctx))?;
         if self.output_json {
             if let Some(some) = self.value.r#title.as_ref() {
                 if let Some(some) = some.value.as_ref().map(Ok) {
@@ -2076,10 +2084,11 @@ impl serde::ser::Serialize for SerializationContext<&OperationDefinition> {
             }
         } else if self.value.r#status.id.as_deref() == Some("$invalid") {
             return missing_field_error("status");
+        } else {
+            self.with_context(&self.value.r#status, |ctx| {
+                state.serialize_entry("status", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#status, |ctx| {
-            state.serialize_entry("status", ctx)
-        })?;
         if self.output_json {
             if self.value.r#kind.id.as_deref() == Some("$invalid") {
                 return missing_field_error("kind");
@@ -2099,8 +2108,9 @@ impl serde::ser::Serialize for SerializationContext<&OperationDefinition> {
             }
         } else if self.value.r#kind.id.as_deref() == Some("$invalid") {
             return missing_field_error("kind");
+        } else {
+            self.with_context(&self.value.r#kind, |ctx| state.serialize_entry("kind", ctx))?;
         }
-        self.with_context(&self.value.r#kind, |ctx| state.serialize_entry("kind", ctx))?;
         if self.output_json {
             if let Some(some) = self.value.r#experimental.as_ref() {
                 if let Some(some) = some.value.as_ref().map(Ok) {
@@ -2249,8 +2259,9 @@ impl serde::ser::Serialize for SerializationContext<&OperationDefinition> {
             }
         } else if self.value.r#code.id.as_deref() == Some("$invalid") {
             return missing_field_error("code");
+        } else {
+            self.with_context(&self.value.r#code, |ctx| state.serialize_entry("code", ctx))?;
         }
-        self.with_context(&self.value.r#code, |ctx| state.serialize_entry("code", ctx))?;
         if self.output_json {
             if let Some(some) = self.value.r#comment.as_ref() {
                 if let Some(some) = some.value.as_ref().map(Ok) {
@@ -2352,10 +2363,11 @@ impl serde::ser::Serialize for SerializationContext<&OperationDefinition> {
             }
         } else if self.value.r#system.id.as_deref() == Some("$invalid") {
             return missing_field_error("system");
+        } else {
+            self.with_context(&self.value.r#system, |ctx| {
+                state.serialize_entry("system", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#system, |ctx| {
-            state.serialize_entry("system", ctx)
-        })?;
         if self.output_json {
             if self.value.r#type.id.as_deref() == Some("$invalid") {
                 return missing_field_error("type");
@@ -2375,8 +2387,9 @@ impl serde::ser::Serialize for SerializationContext<&OperationDefinition> {
             }
         } else if self.value.r#type.id.as_deref() == Some("$invalid") {
             return missing_field_error("type");
+        } else {
+            self.with_context(&self.value.r#type, |ctx| state.serialize_entry("type", ctx))?;
         }
-        self.with_context(&self.value.r#type, |ctx| state.serialize_entry("type", ctx))?;
         if self.output_json {
             if self.value.r#instance.id.as_deref() == Some("$invalid") {
                 return missing_field_error("instance");
@@ -2396,10 +2409,11 @@ impl serde::ser::Serialize for SerializationContext<&OperationDefinition> {
             }
         } else if self.value.r#instance.id.as_deref() == Some("$invalid") {
             return missing_field_error("instance");
+        } else {
+            self.with_context(&self.value.r#instance, |ctx| {
+                state.serialize_entry("instance", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#instance, |ctx| {
-            state.serialize_entry("instance", ctx)
-        })?;
         if self.output_json {
             if let Some(some) = self.value.r#input_profile.as_ref() {
                 if let Some(some) = some.value.as_ref().map(Ok) {

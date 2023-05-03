@@ -473,10 +473,11 @@ impl serde::ser::Serialize for SerializationContext<&EffectEvidenceSynthesisResu
         }
         if self.value.r#risk_evidence_synthesis.id.as_deref() == Some("$invalid") {
             return missing_field_error("riskEvidenceSynthesis");
+        } else {
+            self.with_context(&self.value.r#risk_evidence_synthesis, |ctx| {
+                state.serialize_entry("riskEvidenceSynthesis", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#risk_evidence_synthesis, |ctx| {
-            state.serialize_entry("riskEvidenceSynthesis", ctx)
-        })?;
         state.end()
     }
 }
@@ -2367,10 +2368,11 @@ impl serde::ser::Serialize for SerializationContext<&EffectEvidenceSynthesis> {
             }
         } else if self.value.r#status.id.as_deref() == Some("$invalid") {
             return missing_field_error("status");
+        } else {
+            self.with_context(&self.value.r#status, |ctx| {
+                state.serialize_entry("status", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#status, |ctx| {
-            state.serialize_entry("status", ctx)
-        })?;
         if self.output_json {
             if let Some(some) = self.value.r#date.as_ref() {
                 if let Some(some) = some.value.as_ref().map(Ok) {
@@ -2544,28 +2546,32 @@ impl serde::ser::Serialize for SerializationContext<&EffectEvidenceSynthesis> {
         }
         if self.value.r#population.id.as_deref() == Some("$invalid") {
             return missing_field_error("population");
+        } else {
+            self.with_context(&self.value.r#population, |ctx| {
+                state.serialize_entry("population", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#population, |ctx| {
-            state.serialize_entry("population", ctx)
-        })?;
         if self.value.r#exposure.id.as_deref() == Some("$invalid") {
             return missing_field_error("exposure");
+        } else {
+            self.with_context(&self.value.r#exposure, |ctx| {
+                state.serialize_entry("exposure", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#exposure, |ctx| {
-            state.serialize_entry("exposure", ctx)
-        })?;
         if self.value.r#exposure_alternative.id.as_deref() == Some("$invalid") {
             return missing_field_error("exposureAlternative");
+        } else {
+            self.with_context(&self.value.r#exposure_alternative, |ctx| {
+                state.serialize_entry("exposureAlternative", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#exposure_alternative, |ctx| {
-            state.serialize_entry("exposureAlternative", ctx)
-        })?;
         if self.value.r#outcome.id.as_deref() == Some("$invalid") {
             return missing_field_error("outcome");
+        } else {
+            self.with_context(&self.value.r#outcome, |ctx| {
+                state.serialize_entry("outcome", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#outcome, |ctx| {
-            state.serialize_entry("outcome", ctx)
-        })?;
         if let Some(some) = self.value.r#sample_size.as_ref() {
             self.with_context(some, |ctx| state.serialize_entry("sampleSize", ctx))?;
         }

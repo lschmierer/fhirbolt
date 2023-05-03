@@ -47,8 +47,9 @@ impl serde::ser::Serialize for SerializationContext<&CompartmentDefinitionResour
             }
         } else if self.value.r#code.id.as_deref() == Some("$invalid") {
             return missing_field_error("code");
+        } else {
+            self.with_context(&self.value.r#code, |ctx| state.serialize_entry("code", ctx))?;
         }
-        self.with_context(&self.value.r#code, |ctx| state.serialize_entry("code", ctx))?;
         if self.output_json {
             if !self.value.r#param.is_empty() {
                 let values = self
@@ -546,8 +547,9 @@ impl serde::ser::Serialize for SerializationContext<&CompartmentDefinition> {
             }
         } else if self.value.r#url.id.as_deref() == Some("$invalid") {
             return missing_field_error("url");
+        } else {
+            self.with_context(&self.value.r#url, |ctx| state.serialize_entry("url", ctx))?;
         }
-        self.with_context(&self.value.r#url, |ctx| state.serialize_entry("url", ctx))?;
         if self.output_json {
             if let Some(some) = self.value.r#version.as_ref() {
                 if let Some(some) = some.value.as_ref().map(Ok) {
@@ -586,8 +588,9 @@ impl serde::ser::Serialize for SerializationContext<&CompartmentDefinition> {
             }
         } else if self.value.r#name.id.as_deref() == Some("$invalid") {
             return missing_field_error("name");
+        } else {
+            self.with_context(&self.value.r#name, |ctx| state.serialize_entry("name", ctx))?;
         }
-        self.with_context(&self.value.r#name, |ctx| state.serialize_entry("name", ctx))?;
         if self.output_json {
             if self.value.r#status.id.as_deref() == Some("$invalid") {
                 return missing_field_error("status");
@@ -607,10 +610,11 @@ impl serde::ser::Serialize for SerializationContext<&CompartmentDefinition> {
             }
         } else if self.value.r#status.id.as_deref() == Some("$invalid") {
             return missing_field_error("status");
+        } else {
+            self.with_context(&self.value.r#status, |ctx| {
+                state.serialize_entry("status", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#status, |ctx| {
-            state.serialize_entry("status", ctx)
-        })?;
         if self.output_json {
             if let Some(some) = self.value.r#experimental.as_ref() {
                 if let Some(some) = some.value.as_ref().map(Ok) {
@@ -735,8 +739,9 @@ impl serde::ser::Serialize for SerializationContext<&CompartmentDefinition> {
             }
         } else if self.value.r#code.id.as_deref() == Some("$invalid") {
             return missing_field_error("code");
+        } else {
+            self.with_context(&self.value.r#code, |ctx| state.serialize_entry("code", ctx))?;
         }
-        self.with_context(&self.value.r#code, |ctx| state.serialize_entry("code", ctx))?;
         if self.output_json {
             if self.value.r#search.id.as_deref() == Some("$invalid") {
                 return missing_field_error("search");
@@ -756,10 +761,11 @@ impl serde::ser::Serialize for SerializationContext<&CompartmentDefinition> {
             }
         } else if self.value.r#search.id.as_deref() == Some("$invalid") {
             return missing_field_error("search");
+        } else {
+            self.with_context(&self.value.r#search, |ctx| {
+                state.serialize_entry("search", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#search, |ctx| {
-            state.serialize_entry("search", ctx)
-        })?;
         if !self.value.r#resource.is_empty() {
             self.with_context(&self.value.r#resource, |ctx| {
                 state.serialize_entry("resource", ctx)

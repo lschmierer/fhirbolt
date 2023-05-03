@@ -30,8 +30,9 @@ impl serde::ser::Serialize for SerializationContext<&ManufacturedItemDefinitionP
         }
         if self.value.r#type.id.as_deref() == Some("$invalid") {
             return missing_field_error("type");
+        } else {
+            self.with_context(&self.value.r#type, |ctx| state.serialize_entry("type", ctx))?;
         }
-        self.with_context(&self.value.r#type, |ctx| state.serialize_entry("type", ctx))?;
         {
             use fhirbolt_model::r5::resources::ManufacturedItemDefinitionPropertyValue as _Enum;
             if let Some(some) = self.value.r#value.as_ref() {
@@ -907,8 +908,9 @@ impl serde::ser::Serialize for SerializationContext<&ManufacturedItemDefinitionC
         }
         if self.value.r#type.id.as_deref() == Some("$invalid") {
             return missing_field_error("type");
+        } else {
+            self.with_context(&self.value.r#type, |ctx| state.serialize_entry("type", ctx))?;
         }
-        self.with_context(&self.value.r#type, |ctx| state.serialize_entry("type", ctx))?;
         if !self.value.r#function.is_empty() {
             self.with_context(&self.value.r#function, |ctx| {
                 state.serialize_entry("function", ctx)
@@ -1337,10 +1339,11 @@ impl serde::ser::Serialize for SerializationContext<&ManufacturedItemDefinition>
             }
         } else if self.value.r#status.id.as_deref() == Some("$invalid") {
             return missing_field_error("status");
+        } else {
+            self.with_context(&self.value.r#status, |ctx| {
+                state.serialize_entry("status", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#status, |ctx| {
-            state.serialize_entry("status", ctx)
-        })?;
         if self.output_json {
             if let Some(some) = self.value.r#name.as_ref() {
                 if let Some(some) = some.value.as_ref().map(Ok) {
@@ -1362,10 +1365,11 @@ impl serde::ser::Serialize for SerializationContext<&ManufacturedItemDefinition>
         }
         if self.value.r#manufactured_dose_form.id.as_deref() == Some("$invalid") {
             return missing_field_error("manufacturedDoseForm");
+        } else {
+            self.with_context(&self.value.r#manufactured_dose_form, |ctx| {
+                state.serialize_entry("manufacturedDoseForm", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#manufactured_dose_form, |ctx| {
-            state.serialize_entry("manufacturedDoseForm", ctx)
-        })?;
         if let Some(some) = self.value.r#unit_of_presentation.as_ref() {
             self.with_context(some, |ctx| state.serialize_entry("unitOfPresentation", ctx))?;
         }

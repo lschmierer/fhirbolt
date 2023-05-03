@@ -42,8 +42,9 @@ impl serde::ser::Serialize for SerializationContext<&RelatedArtifact> {
             }
         } else if self.value.r#type.id.as_deref() == Some("$invalid") {
             return missing_field_error("type");
+        } else {
+            self.with_context(&self.value.r#type, |ctx| state.serialize_entry("type", ctx))?;
         }
-        self.with_context(&self.value.r#type, |ctx| state.serialize_entry("type", ctx))?;
         if !self.value.r#classifier.is_empty() {
             self.with_context(&self.value.r#classifier, |ctx| {
                 state.serialize_entry("classifier", ctx)

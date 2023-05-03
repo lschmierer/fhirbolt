@@ -269,8 +269,9 @@ impl serde::ser::Serialize for SerializationContext<&NutritionProductIngredient>
         }
         if self.value.r#item.id.as_deref() == Some("$invalid") {
             return missing_field_error("item");
+        } else {
+            self.with_context(&self.value.r#item, |ctx| state.serialize_entry("item", ctx))?;
         }
-        self.with_context(&self.value.r#item, |ctx| state.serialize_entry("item", ctx))?;
         if !self.value.r#amount.is_empty() {
             self.with_context(&self.value.r#amount, |ctx| {
                 state.serialize_entry("amount", ctx)
@@ -513,8 +514,9 @@ impl serde::ser::Serialize for SerializationContext<&NutritionProductProductChar
         }
         if self.value.r#type.id.as_deref() == Some("$invalid") {
             return missing_field_error("type");
+        } else {
+            self.with_context(&self.value.r#type, |ctx| state.serialize_entry("type", ctx))?;
         }
-        self.with_context(&self.value.r#type, |ctx| state.serialize_entry("type", ctx))?;
         {
             use fhirbolt_model::r4b::resources::NutritionProductProductCharacteristicValue as _Enum;
             match self.value.r#value {
@@ -1544,10 +1546,11 @@ impl serde::ser::Serialize for SerializationContext<&NutritionProduct> {
             }
         } else if self.value.r#status.id.as_deref() == Some("$invalid") {
             return missing_field_error("status");
+        } else {
+            self.with_context(&self.value.r#status, |ctx| {
+                state.serialize_entry("status", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#status, |ctx| {
-            state.serialize_entry("status", ctx)
-        })?;
         if !self.value.r#category.is_empty() {
             self.with_context(&self.value.r#category, |ctx| {
                 state.serialize_entry("category", ctx)

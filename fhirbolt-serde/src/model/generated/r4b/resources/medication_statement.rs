@@ -115,10 +115,11 @@ impl serde::ser::Serialize for SerializationContext<&MedicationStatement> {
             }
         } else if self.value.r#status.id.as_deref() == Some("$invalid") {
             return missing_field_error("status");
+        } else {
+            self.with_context(&self.value.r#status, |ctx| {
+                state.serialize_entry("status", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#status, |ctx| {
-            state.serialize_entry("status", ctx)
-        })?;
         if !self.value.r#status_reason.is_empty() {
             self.with_context(&self.value.r#status_reason, |ctx| {
                 state.serialize_entry("statusReason", ctx)
@@ -147,10 +148,11 @@ impl serde::ser::Serialize for SerializationContext<&MedicationStatement> {
         }
         if self.value.r#subject.id.as_deref() == Some("$invalid") {
             return missing_field_error("subject");
+        } else {
+            self.with_context(&self.value.r#subject, |ctx| {
+                state.serialize_entry("subject", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#subject, |ctx| {
-            state.serialize_entry("subject", ctx)
-        })?;
         if let Some(some) = self.value.r#context.as_ref() {
             self.with_context(some, |ctx| state.serialize_entry("context", ctx))?;
         }

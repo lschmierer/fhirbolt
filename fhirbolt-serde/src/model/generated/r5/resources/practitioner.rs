@@ -35,8 +35,9 @@ impl serde::ser::Serialize for SerializationContext<&PractitionerQualification> 
         }
         if self.value.r#code.id.as_deref() == Some("$invalid") {
             return missing_field_error("code");
+        } else {
+            self.with_context(&self.value.r#code, |ctx| state.serialize_entry("code", ctx))?;
         }
-        self.with_context(&self.value.r#code, |ctx| state.serialize_entry("code", ctx))?;
         if let Some(some) = self.value.r#period.as_ref() {
             self.with_context(some, |ctx| state.serialize_entry("period", ctx))?;
         }
@@ -314,10 +315,11 @@ impl serde::ser::Serialize for SerializationContext<&PractitionerCommunication> 
         }
         if self.value.r#language.id.as_deref() == Some("$invalid") {
             return missing_field_error("language");
+        } else {
+            self.with_context(&self.value.r#language, |ctx| {
+                state.serialize_entry("language", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#language, |ctx| {
-            state.serialize_entry("language", ctx)
-        })?;
         if self.output_json {
             if let Some(some) = self.value.r#preferred.as_ref() {
                 if let Some(some) = some.value.as_ref().map(Ok) {

@@ -47,8 +47,9 @@ impl serde::ser::Serialize for SerializationContext<&RequestGroupActionCondition
             }
         } else if self.value.r#kind.id.as_deref() == Some("$invalid") {
             return missing_field_error("kind");
+        } else {
+            self.with_context(&self.value.r#kind, |ctx| state.serialize_entry("kind", ctx))?;
         }
-        self.with_context(&self.value.r#kind, |ctx| state.serialize_entry("kind", ctx))?;
         if let Some(some) = self.value.r#expression.as_ref() {
             self.with_context(some, |ctx| state.serialize_entry("expression", ctx))?;
         }
@@ -328,10 +329,11 @@ impl serde::ser::Serialize for SerializationContext<&RequestGroupActionRelatedAc
             }
         } else if self.value.r#action_id.id.as_deref() == Some("$invalid") {
             return missing_field_error("actionId");
+        } else {
+            self.with_context(&self.value.r#action_id, |ctx| {
+                state.serialize_entry("actionId", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#action_id, |ctx| {
-            state.serialize_entry("actionId", ctx)
-        })?;
         if self.output_json {
             if self.value.r#relationship.id.as_deref() == Some("$invalid") {
                 return missing_field_error("relationship");
@@ -353,10 +355,11 @@ impl serde::ser::Serialize for SerializationContext<&RequestGroupActionRelatedAc
             }
         } else if self.value.r#relationship.id.as_deref() == Some("$invalid") {
             return missing_field_error("relationship");
+        } else {
+            self.with_context(&self.value.r#relationship, |ctx| {
+                state.serialize_entry("relationship", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#relationship, |ctx| {
-            state.serialize_entry("relationship", ctx)
-        })?;
         {
             use fhirbolt_model::r4b::resources::RequestGroupActionRelatedActionOffset as _Enum;
             if let Some(some) = self.value.r#offset.as_ref() {
@@ -2099,10 +2102,11 @@ impl serde::ser::Serialize for SerializationContext<&RequestGroup> {
             }
         } else if self.value.r#status.id.as_deref() == Some("$invalid") {
             return missing_field_error("status");
+        } else {
+            self.with_context(&self.value.r#status, |ctx| {
+                state.serialize_entry("status", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#status, |ctx| {
-            state.serialize_entry("status", ctx)
-        })?;
         if self.output_json {
             if self.value.r#intent.id.as_deref() == Some("$invalid") {
                 return missing_field_error("intent");
@@ -2122,10 +2126,11 @@ impl serde::ser::Serialize for SerializationContext<&RequestGroup> {
             }
         } else if self.value.r#intent.id.as_deref() == Some("$invalid") {
             return missing_field_error("intent");
+        } else {
+            self.with_context(&self.value.r#intent, |ctx| {
+                state.serialize_entry("intent", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#intent, |ctx| {
-            state.serialize_entry("intent", ctx)
-        })?;
         if self.output_json {
             if let Some(some) = self.value.r#priority.as_ref() {
                 if let Some(some) = some.value.as_ref().map(Ok) {

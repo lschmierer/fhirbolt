@@ -32,8 +32,9 @@ impl serde::ser::Serialize
         }
         if self.value.r#type.id.as_deref() == Some("$invalid") {
             return missing_field_error("type");
+        } else {
+            self.with_context(&self.value.r#type, |ctx| state.serialize_entry("type", ctx))?;
         }
-        self.with_context(&self.value.r#type, |ctx| state.serialize_entry("type", ctx))?;
         {
             use fhirbolt_model::r4b::resources::CoverageEligibilityResponseInsuranceItemBenefitAllowed as _Enum;
             if let Some(some) = self.value.r#allowed.as_ref() {
@@ -1361,10 +1362,11 @@ impl serde::ser::Serialize for SerializationContext<&CoverageEligibilityResponse
         }
         if self.value.r#coverage.id.as_deref() == Some("$invalid") {
             return missing_field_error("coverage");
+        } else {
+            self.with_context(&self.value.r#coverage, |ctx| {
+                state.serialize_entry("coverage", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#coverage, |ctx| {
-            state.serialize_entry("coverage", ctx)
-        })?;
         if self.output_json {
             if let Some(some) = self.value.r#inforce.as_ref() {
                 if let Some(some) = some.value.as_ref().map(Ok) {
@@ -1693,8 +1695,9 @@ impl serde::ser::Serialize for SerializationContext<&CoverageEligibilityResponse
         }
         if self.value.r#code.id.as_deref() == Some("$invalid") {
             return missing_field_error("code");
+        } else {
+            self.with_context(&self.value.r#code, |ctx| state.serialize_entry("code", ctx))?;
         }
-        self.with_context(&self.value.r#code, |ctx| state.serialize_entry("code", ctx))?;
         state.end()
     }
 }
@@ -1989,10 +1992,11 @@ impl serde::ser::Serialize for SerializationContext<&CoverageEligibilityResponse
             }
         } else if self.value.r#status.id.as_deref() == Some("$invalid") {
             return missing_field_error("status");
+        } else {
+            self.with_context(&self.value.r#status, |ctx| {
+                state.serialize_entry("status", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#status, |ctx| {
-            state.serialize_entry("status", ctx)
-        })?;
         if self.output_json {
             if !self.value.r#purpose.is_empty() {
                 let values = self
@@ -2039,10 +2043,11 @@ impl serde::ser::Serialize for SerializationContext<&CoverageEligibilityResponse
         }
         if self.value.r#patient.id.as_deref() == Some("$invalid") {
             return missing_field_error("patient");
+        } else {
+            self.with_context(&self.value.r#patient, |ctx| {
+                state.serialize_entry("patient", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#patient, |ctx| {
-            state.serialize_entry("patient", ctx)
-        })?;
         {
             use fhirbolt_model::r4b::resources::CoverageEligibilityResponseServiced as _Enum;
             if let Some(some) = self.value.r#serviced.as_ref() {
@@ -2096,19 +2101,21 @@ impl serde::ser::Serialize for SerializationContext<&CoverageEligibilityResponse
             }
         } else if self.value.r#created.id.as_deref() == Some("$invalid") {
             return missing_field_error("created");
+        } else {
+            self.with_context(&self.value.r#created, |ctx| {
+                state.serialize_entry("created", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#created, |ctx| {
-            state.serialize_entry("created", ctx)
-        })?;
         if let Some(some) = self.value.r#requestor.as_ref() {
             self.with_context(some, |ctx| state.serialize_entry("requestor", ctx))?;
         }
         if self.value.r#request.id.as_deref() == Some("$invalid") {
             return missing_field_error("request");
+        } else {
+            self.with_context(&self.value.r#request, |ctx| {
+                state.serialize_entry("request", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#request, |ctx| {
-            state.serialize_entry("request", ctx)
-        })?;
         if self.output_json {
             if self.value.r#outcome.id.as_deref() == Some("$invalid") {
                 return missing_field_error("outcome");
@@ -2128,10 +2135,11 @@ impl serde::ser::Serialize for SerializationContext<&CoverageEligibilityResponse
             }
         } else if self.value.r#outcome.id.as_deref() == Some("$invalid") {
             return missing_field_error("outcome");
+        } else {
+            self.with_context(&self.value.r#outcome, |ctx| {
+                state.serialize_entry("outcome", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#outcome, |ctx| {
-            state.serialize_entry("outcome", ctx)
-        })?;
         if self.output_json {
             if let Some(some) = self.value.r#disposition.as_ref() {
                 if let Some(some) = some.value.as_ref().map(Ok) {
@@ -2153,10 +2161,11 @@ impl serde::ser::Serialize for SerializationContext<&CoverageEligibilityResponse
         }
         if self.value.r#insurer.id.as_deref() == Some("$invalid") {
             return missing_field_error("insurer");
+        } else {
+            self.with_context(&self.value.r#insurer, |ctx| {
+                state.serialize_entry("insurer", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#insurer, |ctx| {
-            state.serialize_entry("insurer", ctx)
-        })?;
         if !self.value.r#insurance.is_empty() {
             self.with_context(&self.value.r#insurance, |ctx| {
                 state.serialize_entry("insurance", ctx)

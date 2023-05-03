@@ -33,10 +33,11 @@ impl serde::ser::Serialize for SerializationContext<&FamilyMemberHistoryParticip
         }
         if self.value.r#actor.id.as_deref() == Some("$invalid") {
             return missing_field_error("actor");
+        } else {
+            self.with_context(&self.value.r#actor, |ctx| {
+                state.serialize_entry("actor", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#actor, |ctx| {
-            state.serialize_entry("actor", ctx)
-        })?;
         state.end()
     }
 }
@@ -269,8 +270,9 @@ impl serde::ser::Serialize for SerializationContext<&FamilyMemberHistoryConditio
         }
         if self.value.r#code.id.as_deref() == Some("$invalid") {
             return missing_field_error("code");
+        } else {
+            self.with_context(&self.value.r#code, |ctx| state.serialize_entry("code", ctx))?;
         }
-        self.with_context(&self.value.r#code, |ctx| state.serialize_entry("code", ctx))?;
         if let Some(some) = self.value.r#outcome.as_ref() {
             self.with_context(some, |ctx| state.serialize_entry("outcome", ctx))?;
         }
@@ -745,8 +747,9 @@ impl serde::ser::Serialize for SerializationContext<&FamilyMemberHistoryProcedur
         }
         if self.value.r#code.id.as_deref() == Some("$invalid") {
             return missing_field_error("code");
+        } else {
+            self.with_context(&self.value.r#code, |ctx| state.serialize_entry("code", ctx))?;
         }
-        self.with_context(&self.value.r#code, |ctx| state.serialize_entry("code", ctx))?;
         if let Some(some) = self.value.r#outcome.as_ref() {
             self.with_context(some, |ctx| state.serialize_entry("outcome", ctx))?;
         }
@@ -1474,19 +1477,21 @@ impl serde::ser::Serialize for SerializationContext<&FamilyMemberHistory> {
             }
         } else if self.value.r#status.id.as_deref() == Some("$invalid") {
             return missing_field_error("status");
+        } else {
+            self.with_context(&self.value.r#status, |ctx| {
+                state.serialize_entry("status", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#status, |ctx| {
-            state.serialize_entry("status", ctx)
-        })?;
         if let Some(some) = self.value.r#data_absent_reason.as_ref() {
             self.with_context(some, |ctx| state.serialize_entry("dataAbsentReason", ctx))?;
         }
         if self.value.r#patient.id.as_deref() == Some("$invalid") {
             return missing_field_error("patient");
+        } else {
+            self.with_context(&self.value.r#patient, |ctx| {
+                state.serialize_entry("patient", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#patient, |ctx| {
-            state.serialize_entry("patient", ctx)
-        })?;
         if self.output_json {
             if let Some(some) = self.value.r#date.as_ref() {
                 if let Some(some) = some.value.as_ref().map(Ok) {
@@ -1532,10 +1537,11 @@ impl serde::ser::Serialize for SerializationContext<&FamilyMemberHistory> {
         }
         if self.value.r#relationship.id.as_deref() == Some("$invalid") {
             return missing_field_error("relationship");
+        } else {
+            self.with_context(&self.value.r#relationship, |ctx| {
+                state.serialize_entry("relationship", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#relationship, |ctx| {
-            state.serialize_entry("relationship", ctx)
-        })?;
         if let Some(some) = self.value.r#sex.as_ref() {
             self.with_context(some, |ctx| state.serialize_entry("sex", ctx))?;
         }

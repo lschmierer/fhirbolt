@@ -84,10 +84,11 @@ impl serde::ser::Serialize for SerializationContext<&Binary> {
             }
         } else if self.value.r#content_type.id.as_deref() == Some("$invalid") {
             return missing_field_error("contentType");
+        } else {
+            self.with_context(&self.value.r#content_type, |ctx| {
+                state.serialize_entry("contentType", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#content_type, |ctx| {
-            state.serialize_entry("contentType", ctx)
-        })?;
         if let Some(some) = self.value.r#security_context.as_ref() {
             self.with_context(some, |ctx| state.serialize_entry("securityContext", ctx))?;
         }

@@ -47,10 +47,11 @@ impl serde::ser::Serialize for SerializationContext<&QuestionnaireItemEnableWhen
             }
         } else if self.value.r#question.id.as_deref() == Some("$invalid") {
             return missing_field_error("question");
+        } else {
+            self.with_context(&self.value.r#question, |ctx| {
+                state.serialize_entry("question", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#question, |ctx| {
-            state.serialize_entry("question", ctx)
-        })?;
         if self.output_json {
             if self.value.r#operator.id.as_deref() == Some("$invalid") {
                 return missing_field_error("operator");
@@ -70,10 +71,11 @@ impl serde::ser::Serialize for SerializationContext<&QuestionnaireItemEnableWhen
             }
         } else if self.value.r#operator.id.as_deref() == Some("$invalid") {
             return missing_field_error("operator");
+        } else {
+            self.with_context(&self.value.r#operator, |ctx| {
+                state.serialize_entry("operator", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#operator, |ctx| {
-            state.serialize_entry("operator", ctx)
-        })?;
         {
             use fhirbolt_model::r4b::resources::QuestionnaireItemEnableWhenAnswer as _Enum;
             match self.value.r#answer {
@@ -2523,10 +2525,11 @@ impl serde::ser::Serialize for SerializationContext<&QuestionnaireItem> {
             }
         } else if self.value.r#link_id.id.as_deref() == Some("$invalid") {
             return missing_field_error("linkId");
+        } else {
+            self.with_context(&self.value.r#link_id, |ctx| {
+                state.serialize_entry("linkId", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#link_id, |ctx| {
-            state.serialize_entry("linkId", ctx)
-        })?;
         if self.output_json {
             if let Some(some) = self.value.r#definition.as_ref() {
                 if let Some(some) = some.value.as_ref().map(Ok) {
@@ -2606,8 +2609,9 @@ impl serde::ser::Serialize for SerializationContext<&QuestionnaireItem> {
             }
         } else if self.value.r#type.id.as_deref() == Some("$invalid") {
             return missing_field_error("type");
+        } else {
+            self.with_context(&self.value.r#type, |ctx| state.serialize_entry("type", ctx))?;
         }
-        self.with_context(&self.value.r#type, |ctx| state.serialize_entry("type", ctx))?;
         if !self.value.r#enable_when.is_empty() {
             self.with_context(&self.value.r#enable_when, |ctx| {
                 state.serialize_entry("enableWhen", ctx)
@@ -3722,10 +3726,11 @@ impl serde::ser::Serialize for SerializationContext<&Questionnaire> {
             }
         } else if self.value.r#status.id.as_deref() == Some("$invalid") {
             return missing_field_error("status");
+        } else {
+            self.with_context(&self.value.r#status, |ctx| {
+                state.serialize_entry("status", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#status, |ctx| {
-            state.serialize_entry("status", ctx)
-        })?;
         if self.output_json {
             if let Some(some) = self.value.r#experimental.as_ref() {
                 if let Some(some) = some.value.as_ref().map(Ok) {

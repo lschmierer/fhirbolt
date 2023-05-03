@@ -47,14 +47,16 @@ impl serde::ser::Serialize for SerializationContext<&DocumentReferenceRelatesTo>
             }
         } else if self.value.r#code.id.as_deref() == Some("$invalid") {
             return missing_field_error("code");
+        } else {
+            self.with_context(&self.value.r#code, |ctx| state.serialize_entry("code", ctx))?;
         }
-        self.with_context(&self.value.r#code, |ctx| state.serialize_entry("code", ctx))?;
         if self.value.r#target.id.as_deref() == Some("$invalid") {
             return missing_field_error("target");
+        } else {
+            self.with_context(&self.value.r#target, |ctx| {
+                state.serialize_entry("target", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#target, |ctx| {
-            state.serialize_entry("target", ctx)
-        })?;
         state.end()
     }
 }
@@ -316,10 +318,11 @@ impl serde::ser::Serialize for SerializationContext<&DocumentReferenceContent> {
         }
         if self.value.r#attachment.id.as_deref() == Some("$invalid") {
             return missing_field_error("attachment");
+        } else {
+            self.with_context(&self.value.r#attachment, |ctx| {
+                state.serialize_entry("attachment", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#attachment, |ctx| {
-            state.serialize_entry("attachment", ctx)
-        })?;
         if let Some(some) = self.value.r#format.as_ref() {
             self.with_context(some, |ctx| state.serialize_entry("format", ctx))?;
         }
@@ -993,10 +996,11 @@ impl serde::ser::Serialize for SerializationContext<&DocumentReference> {
             }
         } else if self.value.r#status.id.as_deref() == Some("$invalid") {
             return missing_field_error("status");
+        } else {
+            self.with_context(&self.value.r#status, |ctx| {
+                state.serialize_entry("status", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#status, |ctx| {
-            state.serialize_entry("status", ctx)
-        })?;
         if self.output_json {
             if let Some(some) = self.value.r#doc_status.as_ref() {
                 if let Some(some) = some.value.as_ref().map(Ok) {

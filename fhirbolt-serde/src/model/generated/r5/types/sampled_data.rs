@@ -25,10 +25,11 @@ impl serde::ser::Serialize for SerializationContext<&SampledData> {
         }
         if self.value.r#origin.id.as_deref() == Some("$invalid") {
             return missing_field_error("origin");
+        } else {
+            self.with_context(&self.value.r#origin, |ctx| {
+                state.serialize_entry("origin", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#origin, |ctx| {
-            state.serialize_entry("origin", ctx)
-        })?;
         if self.output_json {
             if let Some(some) = self.value.r#interval.as_ref() {
                 if let Some(some) = some.value.as_ref().map(|v| {
@@ -72,10 +73,11 @@ impl serde::ser::Serialize for SerializationContext<&SampledData> {
             }
         } else if self.value.r#interval_unit.id.as_deref() == Some("$invalid") {
             return missing_field_error("intervalUnit");
+        } else {
+            self.with_context(&self.value.r#interval_unit, |ctx| {
+                state.serialize_entry("intervalUnit", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#interval_unit, |ctx| {
-            state.serialize_entry("intervalUnit", ctx)
-        })?;
         if self.output_json {
             if let Some(some) = self.value.r#factor.as_ref() {
                 if let Some(some) = some.value.as_ref().map(|v| {
@@ -162,10 +164,11 @@ impl serde::ser::Serialize for SerializationContext<&SampledData> {
             }
         } else if self.value.r#dimensions.id.as_deref() == Some("$invalid") {
             return missing_field_error("dimensions");
+        } else {
+            self.with_context(&self.value.r#dimensions, |ctx| {
+                state.serialize_entry("dimensions", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#dimensions, |ctx| {
-            state.serialize_entry("dimensions", ctx)
-        })?;
         if self.output_json {
             if let Some(some) = self.value.r#code_map.as_ref() {
                 if let Some(some) = some.value.as_ref().map(Ok) {

@@ -33,14 +33,16 @@ impl serde::ser::Serialize for SerializationContext<&ProductShelfLife> {
         }
         if self.value.r#type.id.as_deref() == Some("$invalid") {
             return missing_field_error("type");
+        } else {
+            self.with_context(&self.value.r#type, |ctx| state.serialize_entry("type", ctx))?;
         }
-        self.with_context(&self.value.r#type, |ctx| state.serialize_entry("type", ctx))?;
         if self.value.r#period.id.as_deref() == Some("$invalid") {
             return missing_field_error("period");
+        } else {
+            self.with_context(&self.value.r#period, |ctx| {
+                state.serialize_entry("period", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#period, |ctx| {
-            state.serialize_entry("period", ctx)
-        })?;
         if !self.value.r#special_precautions_for_storage.is_empty() {
             self.with_context(&self.value.r#special_precautions_for_storage, |ctx| {
                 state.serialize_entry("specialPrecautionsForStorage", ctx)

@@ -47,16 +47,18 @@ impl serde::ser::Serialize for SerializationContext<&EncounterStatusHistory> {
             }
         } else if self.value.r#status.id.as_deref() == Some("$invalid") {
             return missing_field_error("status");
+        } else {
+            self.with_context(&self.value.r#status, |ctx| {
+                state.serialize_entry("status", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#status, |ctx| {
-            state.serialize_entry("status", ctx)
-        })?;
         if self.value.r#period.id.as_deref() == Some("$invalid") {
             return missing_field_error("period");
+        } else {
+            self.with_context(&self.value.r#period, |ctx| {
+                state.serialize_entry("period", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#period, |ctx| {
-            state.serialize_entry("period", ctx)
-        })?;
         state.end()
     }
 }
@@ -317,16 +319,18 @@ impl serde::ser::Serialize for SerializationContext<&EncounterClassHistory> {
         }
         if self.value.r#class.id.as_deref() == Some("$invalid") {
             return missing_field_error("class");
+        } else {
+            self.with_context(&self.value.r#class, |ctx| {
+                state.serialize_entry("class", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#class, |ctx| {
-            state.serialize_entry("class", ctx)
-        })?;
         if self.value.r#period.id.as_deref() == Some("$invalid") {
             return missing_field_error("period");
+        } else {
+            self.with_context(&self.value.r#period, |ctx| {
+                state.serialize_entry("period", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#period, |ctx| {
-            state.serialize_entry("period", ctx)
-        })?;
         state.end()
     }
 }
@@ -817,10 +821,11 @@ impl serde::ser::Serialize for SerializationContext<&EncounterDiagnosis> {
         }
         if self.value.r#condition.id.as_deref() == Some("$invalid") {
             return missing_field_error("condition");
+        } else {
+            self.with_context(&self.value.r#condition, |ctx| {
+                state.serialize_entry("condition", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#condition, |ctx| {
-            state.serialize_entry("condition", ctx)
-        })?;
         if let Some(some) = self.value.r#use.as_ref() {
             self.with_context(some, |ctx| state.serialize_entry("use", ctx))?;
         }
@@ -1529,10 +1534,11 @@ impl serde::ser::Serialize for SerializationContext<&EncounterLocation> {
         }
         if self.value.r#location.id.as_deref() == Some("$invalid") {
             return missing_field_error("location");
+        } else {
+            self.with_context(&self.value.r#location, |ctx| {
+                state.serialize_entry("location", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#location, |ctx| {
-            state.serialize_entry("location", ctx)
-        })?;
         if self.output_json {
             if let Some(some) = self.value.r#status.as_ref() {
                 if let Some(some) = some.value.as_ref().map(Ok) {
@@ -1919,10 +1925,11 @@ impl serde::ser::Serialize for SerializationContext<&Encounter> {
             }
         } else if self.value.r#status.id.as_deref() == Some("$invalid") {
             return missing_field_error("status");
+        } else {
+            self.with_context(&self.value.r#status, |ctx| {
+                state.serialize_entry("status", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#status, |ctx| {
-            state.serialize_entry("status", ctx)
-        })?;
         if !self.value.r#status_history.is_empty() {
             self.with_context(&self.value.r#status_history, |ctx| {
                 state.serialize_entry("statusHistory", ctx)
@@ -1930,10 +1937,11 @@ impl serde::ser::Serialize for SerializationContext<&Encounter> {
         }
         if self.value.r#class.id.as_deref() == Some("$invalid") {
             return missing_field_error("class");
+        } else {
+            self.with_context(&self.value.r#class, |ctx| {
+                state.serialize_entry("class", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#class, |ctx| {
-            state.serialize_entry("class", ctx)
-        })?;
         if !self.value.r#class_history.is_empty() {
             self.with_context(&self.value.r#class_history, |ctx| {
                 state.serialize_entry("classHistory", ctx)

@@ -55,10 +55,11 @@ impl serde::ser::Serialize for SerializationContext<&SubscriptionStatusNotificat
             }
         } else if self.value.r#event_number.id.as_deref() == Some("$invalid") {
             return missing_field_error("eventNumber");
+        } else {
+            self.with_context(&self.value.r#event_number, |ctx| {
+                state.serialize_entry("eventNumber", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#event_number, |ctx| {
-            state.serialize_entry("eventNumber", ctx)
-        })?;
         if self.output_json {
             if let Some(some) = self.value.r#timestamp.as_ref() {
                 if let Some(some) = some.value.as_ref().map(Ok) {
@@ -511,8 +512,9 @@ impl serde::ser::Serialize for SerializationContext<&SubscriptionStatus> {
             }
         } else if self.value.r#type.id.as_deref() == Some("$invalid") {
             return missing_field_error("type");
+        } else {
+            self.with_context(&self.value.r#type, |ctx| state.serialize_entry("type", ctx))?;
         }
-        self.with_context(&self.value.r#type, |ctx| state.serialize_entry("type", ctx))?;
         if self.output_json {
             if let Some(some) = self.value.r#events_since_subscription_start.as_ref() {
                 if let Some(some) = some.value.as_ref().map(|v| Ok(v.to_string())) {
@@ -541,10 +543,11 @@ impl serde::ser::Serialize for SerializationContext<&SubscriptionStatus> {
         }
         if self.value.r#subscription.id.as_deref() == Some("$invalid") {
             return missing_field_error("subscription");
+        } else {
+            self.with_context(&self.value.r#subscription, |ctx| {
+                state.serialize_entry("subscription", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#subscription, |ctx| {
-            state.serialize_entry("subscription", ctx)
-        })?;
         if self.output_json {
             if let Some(some) = self.value.r#topic.as_ref() {
                 if let Some(some) = some.value.as_ref().map(Ok) {

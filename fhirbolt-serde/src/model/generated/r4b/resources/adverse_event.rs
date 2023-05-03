@@ -353,10 +353,11 @@ impl serde::ser::Serialize for SerializationContext<&AdverseEventSuspectEntity> 
         }
         if self.value.r#instance.id.as_deref() == Some("$invalid") {
             return missing_field_error("instance");
+        } else {
+            self.with_context(&self.value.r#instance, |ctx| {
+                state.serialize_entry("instance", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#instance, |ctx| {
-            state.serialize_entry("instance", ctx)
-        })?;
         if !self.value.r#causality.is_empty() {
             self.with_context(&self.value.r#causality, |ctx| {
                 state.serialize_entry("causality", ctx)
@@ -678,10 +679,11 @@ impl serde::ser::Serialize for SerializationContext<&AdverseEvent> {
             }
         } else if self.value.r#actuality.id.as_deref() == Some("$invalid") {
             return missing_field_error("actuality");
+        } else {
+            self.with_context(&self.value.r#actuality, |ctx| {
+                state.serialize_entry("actuality", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#actuality, |ctx| {
-            state.serialize_entry("actuality", ctx)
-        })?;
         if !self.value.r#category.is_empty() {
             self.with_context(&self.value.r#category, |ctx| {
                 state.serialize_entry("category", ctx)
@@ -692,10 +694,11 @@ impl serde::ser::Serialize for SerializationContext<&AdverseEvent> {
         }
         if self.value.r#subject.id.as_deref() == Some("$invalid") {
             return missing_field_error("subject");
+        } else {
+            self.with_context(&self.value.r#subject, |ctx| {
+                state.serialize_entry("subject", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#subject, |ctx| {
-            state.serialize_entry("subject", ctx)
-        })?;
         if let Some(some) = self.value.r#encounter.as_ref() {
             self.with_context(some, |ctx| state.serialize_entry("encounter", ctx))?;
         }

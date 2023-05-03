@@ -32,8 +32,9 @@ impl serde::ser::Serialize
         }
         if self.value.r#code.id.as_deref() == Some("$invalid") {
             return missing_field_error("code");
+        } else {
+            self.with_context(&self.value.r#code, |ctx| state.serialize_entry("code", ctx))?;
         }
-        self.with_context(&self.value.r#code, |ctx| state.serialize_entry("code", ctx))?;
         if let Some(some) = self.value.r#status.as_ref() {
             self.with_context(some, |ctx| state.serialize_entry("status", ctx))?;
         }
@@ -279,16 +280,18 @@ impl serde::ser::Serialize
         }
         if self.value.r#tissue.id.as_deref() == Some("$invalid") {
             return missing_field_error("tissue");
+        } else {
+            self.with_context(&self.value.r#tissue, |ctx| {
+                state.serialize_entry("tissue", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#tissue, |ctx| {
-            state.serialize_entry("tissue", ctx)
-        })?;
         if self.value.r#value.id.as_deref() == Some("$invalid") {
             return missing_field_error("value");
+        } else {
+            self.with_context(&self.value.r#value, |ctx| {
+                state.serialize_entry("value", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#value, |ctx| {
-            state.serialize_entry("value", ctx)
-        })?;
         if self.output_json {
             if let Some(some) = self.value.r#supporting_information.as_ref() {
                 if let Some(some) = some.value.as_ref().map(Ok) {
@@ -612,8 +615,9 @@ impl serde::ser::Serialize
         }
         if self.value.r#code.id.as_deref() == Some("$invalid") {
             return missing_field_error("code");
+        } else {
+            self.with_context(&self.value.r#code, |ctx| state.serialize_entry("code", ctx))?;
         }
-        self.with_context(&self.value.r#code, |ctx| state.serialize_entry("code", ctx))?;
         if !self.value.r#withdrawal_period.is_empty() {
             self.with_context(&self.value.r#withdrawal_period, |ctx| {
                 state.serialize_entry("withdrawalPeriod", ctx)
@@ -890,8 +894,9 @@ impl serde::ser::Serialize
         }
         if self.value.r#code.id.as_deref() == Some("$invalid") {
             return missing_field_error("code");
+        } else {
+            self.with_context(&self.value.r#code, |ctx| state.serialize_entry("code", ctx))?;
         }
-        self.with_context(&self.value.r#code, |ctx| state.serialize_entry("code", ctx))?;
         if let Some(some) = self.value.r#first_dose.as_ref() {
             self.with_context(some, |ctx| state.serialize_entry("firstDose", ctx))?;
         }
@@ -1305,10 +1310,11 @@ impl serde::ser::Serialize for SerializationContext<&MedicinalProductPharmaceuti
         }
         if self.value.r#administrable_dose_form.id.as_deref() == Some("$invalid") {
             return missing_field_error("administrableDoseForm");
+        } else {
+            self.with_context(&self.value.r#administrable_dose_form, |ctx| {
+                state.serialize_entry("administrableDoseForm", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#administrable_dose_form, |ctx| {
-            state.serialize_entry("administrableDoseForm", ctx)
-        })?;
         if let Some(some) = self.value.r#unit_of_presentation.as_ref() {
             self.with_context(some, |ctx| state.serialize_entry("unitOfPresentation", ctx))?;
         }

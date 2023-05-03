@@ -49,14 +49,16 @@ impl serde::ser::Serialize for SerializationContext<&CatalogEntryRelatedEntry> {
             }
         } else if self.value.r#relationtype.id.as_deref() == Some("$invalid") {
             return missing_field_error("relationtype");
+        } else {
+            self.with_context(&self.value.r#relationtype, |ctx| {
+                state.serialize_entry("relationtype", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#relationtype, |ctx| {
-            state.serialize_entry("relationtype", ctx)
-        })?;
         if self.value.r#item.id.as_deref() == Some("$invalid") {
             return missing_field_error("item");
+        } else {
+            self.with_context(&self.value.r#item, |ctx| state.serialize_entry("item", ctx))?;
         }
-        self.with_context(&self.value.r#item, |ctx| state.serialize_entry("item", ctx))?;
         state.end()
     }
 }
@@ -403,16 +405,18 @@ impl serde::ser::Serialize for SerializationContext<&CatalogEntry> {
             }
         } else if self.value.r#orderable.id.as_deref() == Some("$invalid") {
             return missing_field_error("orderable");
+        } else {
+            self.with_context(&self.value.r#orderable, |ctx| {
+                state.serialize_entry("orderable", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#orderable, |ctx| {
-            state.serialize_entry("orderable", ctx)
-        })?;
         if self.value.r#referenced_item.id.as_deref() == Some("$invalid") {
             return missing_field_error("referencedItem");
+        } else {
+            self.with_context(&self.value.r#referenced_item, |ctx| {
+                state.serialize_entry("referencedItem", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#referenced_item, |ctx| {
-            state.serialize_entry("referencedItem", ctx)
-        })?;
         if !self.value.r#additional_identifier.is_empty() {
             self.with_context(&self.value.r#additional_identifier, |ctx| {
                 state.serialize_entry("additionalIdentifier", ctx)

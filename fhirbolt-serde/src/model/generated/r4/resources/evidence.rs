@@ -219,10 +219,11 @@ impl serde::ser::Serialize for SerializationContext<&Evidence> {
             }
         } else if self.value.r#status.id.as_deref() == Some("$invalid") {
             return missing_field_error("status");
+        } else {
+            self.with_context(&self.value.r#status, |ctx| {
+                state.serialize_entry("status", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#status, |ctx| {
-            state.serialize_entry("status", ctx)
-        })?;
         if self.output_json {
             if let Some(some) = self.value.r#date.as_ref() {
                 if let Some(some) = some.value.as_ref().map(Ok) {
@@ -390,10 +391,11 @@ impl serde::ser::Serialize for SerializationContext<&Evidence> {
         }
         if self.value.r#exposure_background.id.as_deref() == Some("$invalid") {
             return missing_field_error("exposureBackground");
+        } else {
+            self.with_context(&self.value.r#exposure_background, |ctx| {
+                state.serialize_entry("exposureBackground", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#exposure_background, |ctx| {
-            state.serialize_entry("exposureBackground", ctx)
-        })?;
         if !self.value.r#exposure_variant.is_empty() {
             self.with_context(&self.value.r#exposure_variant, |ctx| {
                 state.serialize_entry("exposureVariant", ctx)

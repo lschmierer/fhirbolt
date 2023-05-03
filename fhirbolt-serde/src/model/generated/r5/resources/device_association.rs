@@ -30,10 +30,11 @@ impl serde::ser::Serialize for SerializationContext<&DeviceAssociationOperation>
         }
         if self.value.r#status.id.as_deref() == Some("$invalid") {
             return missing_field_error("status");
+        } else {
+            self.with_context(&self.value.r#status, |ctx| {
+                state.serialize_entry("status", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#status, |ctx| {
-            state.serialize_entry("status", ctx)
-        })?;
         if !self.value.r#operator.is_empty() {
             self.with_context(&self.value.r#operator, |ctx| {
                 state.serialize_entry("operator", ctx)
@@ -358,10 +359,11 @@ impl serde::ser::Serialize for SerializationContext<&DeviceAssociation> {
         }
         if self.value.r#device.id.as_deref() == Some("$invalid") {
             return missing_field_error("device");
+        } else {
+            self.with_context(&self.value.r#device, |ctx| {
+                state.serialize_entry("device", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#device, |ctx| {
-            state.serialize_entry("device", ctx)
-        })?;
         if !self.value.r#category.is_empty() {
             self.with_context(&self.value.r#category, |ctx| {
                 state.serialize_entry("category", ctx)
@@ -369,10 +371,11 @@ impl serde::ser::Serialize for SerializationContext<&DeviceAssociation> {
         }
         if self.value.r#status.id.as_deref() == Some("$invalid") {
             return missing_field_error("status");
+        } else {
+            self.with_context(&self.value.r#status, |ctx| {
+                state.serialize_entry("status", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#status, |ctx| {
-            state.serialize_entry("status", ctx)
-        })?;
         if !self.value.r#status_reason.is_empty() {
             self.with_context(&self.value.r#status_reason, |ctx| {
                 state.serialize_entry("statusReason", ctx)

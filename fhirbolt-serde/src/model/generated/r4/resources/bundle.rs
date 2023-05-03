@@ -47,10 +47,11 @@ impl serde::ser::Serialize for SerializationContext<&BundleLink> {
             }
         } else if self.value.r#relation.id.as_deref() == Some("$invalid") {
             return missing_field_error("relation");
+        } else {
+            self.with_context(&self.value.r#relation, |ctx| {
+                state.serialize_entry("relation", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#relation, |ctx| {
-            state.serialize_entry("relation", ctx)
-        })?;
         if self.output_json {
             if self.value.r#url.id.as_deref() == Some("$invalid") {
                 return missing_field_error("url");
@@ -68,8 +69,9 @@ impl serde::ser::Serialize for SerializationContext<&BundleLink> {
             }
         } else if self.value.r#url.id.as_deref() == Some("$invalid") {
             return missing_field_error("url");
+        } else {
+            self.with_context(&self.value.r#url, |ctx| state.serialize_entry("url", ctx))?;
         }
-        self.with_context(&self.value.r#url, |ctx| state.serialize_entry("url", ctx))?;
         state.end()
     }
 }
@@ -680,10 +682,11 @@ impl serde::ser::Serialize for SerializationContext<&BundleEntryRequest> {
             }
         } else if self.value.r#method.id.as_deref() == Some("$invalid") {
             return missing_field_error("method");
+        } else {
+            self.with_context(&self.value.r#method, |ctx| {
+                state.serialize_entry("method", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#method, |ctx| {
-            state.serialize_entry("method", ctx)
-        })?;
         if self.output_json {
             if self.value.r#url.id.as_deref() == Some("$invalid") {
                 return missing_field_error("url");
@@ -701,8 +704,9 @@ impl serde::ser::Serialize for SerializationContext<&BundleEntryRequest> {
             }
         } else if self.value.r#url.id.as_deref() == Some("$invalid") {
             return missing_field_error("url");
+        } else {
+            self.with_context(&self.value.r#url, |ctx| state.serialize_entry("url", ctx))?;
         }
-        self.with_context(&self.value.r#url, |ctx| state.serialize_entry("url", ctx))?;
         if self.output_json {
             if let Some(some) = self.value.r#if_none_match.as_ref() {
                 if let Some(some) = some.value.as_ref().map(Ok) {
@@ -1254,10 +1258,11 @@ impl serde::ser::Serialize for SerializationContext<&BundleEntryResponse> {
             }
         } else if self.value.r#status.id.as_deref() == Some("$invalid") {
             return missing_field_error("status");
+        } else {
+            self.with_context(&self.value.r#status, |ctx| {
+                state.serialize_entry("status", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#status, |ctx| {
-            state.serialize_entry("status", ctx)
-        })?;
         if self.output_json {
             if let Some(some) = self.value.r#location.as_ref() {
                 if let Some(some) = some.value.as_ref().map(Ok) {
@@ -2104,8 +2109,9 @@ impl serde::ser::Serialize for SerializationContext<&Bundle> {
             }
         } else if self.value.r#type.id.as_deref() == Some("$invalid") {
             return missing_field_error("type");
+        } else {
+            self.with_context(&self.value.r#type, |ctx| state.serialize_entry("type", ctx))?;
         }
-        self.with_context(&self.value.r#type, |ctx| state.serialize_entry("type", ctx))?;
         if self.output_json {
             if let Some(some) = self.value.r#timestamp.as_ref() {
                 if let Some(some) = some.value.as_ref().map(Ok) {

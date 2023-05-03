@@ -49,10 +49,11 @@ impl serde::ser::Serialize for SerializationContext<&DeviceUdiCarrier> {
             }
         } else if self.value.r#device_identifier.id.as_deref() == Some("$invalid") {
             return missing_field_error("deviceIdentifier");
+        } else {
+            self.with_context(&self.value.r#device_identifier, |ctx| {
+                state.serialize_entry("deviceIdentifier", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#device_identifier, |ctx| {
-            state.serialize_entry("deviceIdentifier", ctx)
-        })?;
         if self.output_json {
             if self.value.r#issuer.id.as_deref() == Some("$invalid") {
                 return missing_field_error("issuer");
@@ -72,10 +73,11 @@ impl serde::ser::Serialize for SerializationContext<&DeviceUdiCarrier> {
             }
         } else if self.value.r#issuer.id.as_deref() == Some("$invalid") {
             return missing_field_error("issuer");
+        } else {
+            self.with_context(&self.value.r#issuer, |ctx| {
+                state.serialize_entry("issuer", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#issuer, |ctx| {
-            state.serialize_entry("issuer", ctx)
-        })?;
         if self.output_json {
             if let Some(some) = self.value.r#jurisdiction.as_ref() {
                 if let Some(some) = some.value.as_ref().map(Ok) {
@@ -630,10 +632,11 @@ impl serde::ser::Serialize for SerializationContext<&DeviceName> {
             }
         } else if self.value.r#value.id.as_deref() == Some("$invalid") {
             return missing_field_error("value");
+        } else {
+            self.with_context(&self.value.r#value, |ctx| {
+                state.serialize_entry("value", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#value, |ctx| {
-            state.serialize_entry("value", ctx)
-        })?;
         if self.output_json {
             if self.value.r#type.id.as_deref() == Some("$invalid") {
                 return missing_field_error("type");
@@ -653,8 +656,9 @@ impl serde::ser::Serialize for SerializationContext<&DeviceName> {
             }
         } else if self.value.r#type.id.as_deref() == Some("$invalid") {
             return missing_field_error("type");
+        } else {
+            self.with_context(&self.value.r#type, |ctx| state.serialize_entry("type", ctx))?;
         }
-        self.with_context(&self.value.r#type, |ctx| state.serialize_entry("type", ctx))?;
         if self.output_json {
             if let Some(some) = self.value.r#display.as_ref() {
                 if let Some(some) = some.value.as_ref().map(Ok) {
@@ -1043,10 +1047,11 @@ impl serde::ser::Serialize for SerializationContext<&DeviceVersion> {
             }
         } else if self.value.r#value.id.as_deref() == Some("$invalid") {
             return missing_field_error("value");
+        } else {
+            self.with_context(&self.value.r#value, |ctx| {
+                state.serialize_entry("value", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#value, |ctx| {
-            state.serialize_entry("value", ctx)
-        })?;
         state.end()
     }
 }
@@ -1360,10 +1365,11 @@ impl serde::ser::Serialize for SerializationContext<&DeviceConformsTo> {
         }
         if self.value.r#specification.id.as_deref() == Some("$invalid") {
             return missing_field_error("specification");
+        } else {
+            self.with_context(&self.value.r#specification, |ctx| {
+                state.serialize_entry("specification", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#specification, |ctx| {
-            state.serialize_entry("specification", ctx)
-        })?;
         if self.output_json {
             if let Some(some) = self.value.r#version.as_ref() {
                 if let Some(some) = some.value.as_ref().map(Ok) {
@@ -1655,8 +1661,9 @@ impl serde::ser::Serialize for SerializationContext<&DeviceProperty> {
         }
         if self.value.r#type.id.as_deref() == Some("$invalid") {
             return missing_field_error("type");
+        } else {
+            self.with_context(&self.value.r#type, |ctx| state.serialize_entry("type", ctx))?;
         }
-        self.with_context(&self.value.r#type, |ctx| state.serialize_entry("type", ctx))?;
         {
             use fhirbolt_model::r5::resources::DevicePropertyValue as _Enum;
             match self.value.r#value {

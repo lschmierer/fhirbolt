@@ -30,8 +30,9 @@ impl serde::ser::Serialize for SerializationContext<&AdministrableProductDefinit
         }
         if self.value.r#type.id.as_deref() == Some("$invalid") {
             return missing_field_error("type");
+        } else {
+            self.with_context(&self.value.r#type, |ctx| state.serialize_entry("type", ctx))?;
         }
-        self.with_context(&self.value.r#type, |ctx| state.serialize_entry("type", ctx))?;
         {
             use fhirbolt_model::r4b::resources::AdministrableProductDefinitionPropertyValue as _Enum;
             if let Some(some) = self.value.r#value.as_ref() {
@@ -502,16 +503,18 @@ impl serde::ser::Serialize
         }
         if self.value.r#tissue.id.as_deref() == Some("$invalid") {
             return missing_field_error("tissue");
+        } else {
+            self.with_context(&self.value.r#tissue, |ctx| {
+                state.serialize_entry("tissue", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#tissue, |ctx| {
-            state.serialize_entry("tissue", ctx)
-        })?;
         if self.value.r#value.id.as_deref() == Some("$invalid") {
             return missing_field_error("value");
+        } else {
+            self.with_context(&self.value.r#value, |ctx| {
+                state.serialize_entry("value", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#value, |ctx| {
-            state.serialize_entry("value", ctx)
-        })?;
         if self.output_json {
             if let Some(some) = self.value.r#supporting_information.as_ref() {
                 if let Some(some) = some.value.as_ref().map(Ok) {
@@ -835,8 +838,9 @@ impl serde::ser::Serialize
         }
         if self.value.r#code.id.as_deref() == Some("$invalid") {
             return missing_field_error("code");
+        } else {
+            self.with_context(&self.value.r#code, |ctx| state.serialize_entry("code", ctx))?;
         }
-        self.with_context(&self.value.r#code, |ctx| state.serialize_entry("code", ctx))?;
         if !self.value.r#withdrawal_period.is_empty() {
             self.with_context(&self.value.r#withdrawal_period, |ctx| {
                 state.serialize_entry("withdrawalPeriod", ctx)
@@ -1113,8 +1117,9 @@ impl serde::ser::Serialize
         }
         if self.value.r#code.id.as_deref() == Some("$invalid") {
             return missing_field_error("code");
+        } else {
+            self.with_context(&self.value.r#code, |ctx| state.serialize_entry("code", ctx))?;
         }
-        self.with_context(&self.value.r#code, |ctx| state.serialize_entry("code", ctx))?;
         if let Some(some) = self.value.r#first_dose.as_ref() {
             self.with_context(some, |ctx| state.serialize_entry("firstDose", ctx))?;
         }
@@ -1546,10 +1551,11 @@ impl serde::ser::Serialize for SerializationContext<&AdministrableProductDefinit
             }
         } else if self.value.r#status.id.as_deref() == Some("$invalid") {
             return missing_field_error("status");
+        } else {
+            self.with_context(&self.value.r#status, |ctx| {
+                state.serialize_entry("status", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#status, |ctx| {
-            state.serialize_entry("status", ctx)
-        })?;
         if !self.value.r#form_of.is_empty() {
             self.with_context(&self.value.r#form_of, |ctx| {
                 state.serialize_entry("formOf", ctx)

@@ -30,10 +30,11 @@ impl serde::ser::Serialize for SerializationContext<&EncounterHistoryLocation> {
         }
         if self.value.r#location.id.as_deref() == Some("$invalid") {
             return missing_field_error("location");
+        } else {
+            self.with_context(&self.value.r#location, |ctx| {
+                state.serialize_entry("location", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#location, |ctx| {
-            state.serialize_entry("location", ctx)
-        })?;
         if let Some(some) = self.value.r#form.as_ref() {
             self.with_context(some, |ctx| state.serialize_entry("form", ctx))?;
         }
@@ -346,16 +347,18 @@ impl serde::ser::Serialize for SerializationContext<&EncounterHistory> {
             }
         } else if self.value.r#status.id.as_deref() == Some("$invalid") {
             return missing_field_error("status");
+        } else {
+            self.with_context(&self.value.r#status, |ctx| {
+                state.serialize_entry("status", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#status, |ctx| {
-            state.serialize_entry("status", ctx)
-        })?;
         if self.value.r#class.id.as_deref() == Some("$invalid") {
             return missing_field_error("class");
+        } else {
+            self.with_context(&self.value.r#class, |ctx| {
+                state.serialize_entry("class", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#class, |ctx| {
-            state.serialize_entry("class", ctx)
-        })?;
         if !self.value.r#type.is_empty() {
             self.with_context(&self.value.r#type, |ctx| state.serialize_entry("type", ctx))?;
         }

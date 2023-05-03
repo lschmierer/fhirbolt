@@ -83,19 +83,21 @@ impl serde::ser::Serialize for SerializationContext<&MedicinalProductManufacture
         }
         if self.value.r#manufactured_dose_form.id.as_deref() == Some("$invalid") {
             return missing_field_error("manufacturedDoseForm");
+        } else {
+            self.with_context(&self.value.r#manufactured_dose_form, |ctx| {
+                state.serialize_entry("manufacturedDoseForm", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#manufactured_dose_form, |ctx| {
-            state.serialize_entry("manufacturedDoseForm", ctx)
-        })?;
         if let Some(some) = self.value.r#unit_of_presentation.as_ref() {
             self.with_context(some, |ctx| state.serialize_entry("unitOfPresentation", ctx))?;
         }
         if self.value.r#quantity.id.as_deref() == Some("$invalid") {
             return missing_field_error("quantity");
+        } else {
+            self.with_context(&self.value.r#quantity, |ctx| {
+                state.serialize_entry("quantity", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#quantity, |ctx| {
-            state.serialize_entry("quantity", ctx)
-        })?;
         if !self.value.r#manufacturer.is_empty() {
             self.with_context(&self.value.r#manufacturer, |ctx| {
                 state.serialize_entry("manufacturer", ctx)

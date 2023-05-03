@@ -30,10 +30,11 @@ impl serde::ser::Serialize for SerializationContext<&ObservationTriggeredBy> {
         }
         if self.value.r#observation.id.as_deref() == Some("$invalid") {
             return missing_field_error("observation");
+        } else {
+            self.with_context(&self.value.r#observation, |ctx| {
+                state.serialize_entry("observation", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#observation, |ctx| {
-            state.serialize_entry("observation", ctx)
-        })?;
         if self.output_json {
             if self.value.r#type.id.as_deref() == Some("$invalid") {
                 return missing_field_error("type");
@@ -53,8 +54,9 @@ impl serde::ser::Serialize for SerializationContext<&ObservationTriggeredBy> {
             }
         } else if self.value.r#type.id.as_deref() == Some("$invalid") {
             return missing_field_error("type");
+        } else {
+            self.with_context(&self.value.r#type, |ctx| state.serialize_entry("type", ctx))?;
         }
-        self.with_context(&self.value.r#type, |ctx| state.serialize_entry("type", ctx))?;
         if self.output_json {
             if let Some(some) = self.value.r#reason.as_ref() {
                 if let Some(some) = some.value.as_ref().map(Ok) {
@@ -756,8 +758,9 @@ impl serde::ser::Serialize for SerializationContext<&ObservationComponent> {
         }
         if self.value.r#code.id.as_deref() == Some("$invalid") {
             return missing_field_error("code");
+        } else {
+            self.with_context(&self.value.r#code, |ctx| state.serialize_entry("code", ctx))?;
         }
-        self.with_context(&self.value.r#code, |ctx| state.serialize_entry("code", ctx))?;
         {
             use fhirbolt_model::r5::resources::ObservationComponentValue as _Enum;
             if let Some(some) = self.value.r#value.as_ref() {
@@ -1739,10 +1742,11 @@ impl serde::ser::Serialize for SerializationContext<&Observation> {
             }
         } else if self.value.r#status.id.as_deref() == Some("$invalid") {
             return missing_field_error("status");
+        } else {
+            self.with_context(&self.value.r#status, |ctx| {
+                state.serialize_entry("status", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#status, |ctx| {
-            state.serialize_entry("status", ctx)
-        })?;
         if !self.value.r#category.is_empty() {
             self.with_context(&self.value.r#category, |ctx| {
                 state.serialize_entry("category", ctx)
@@ -1750,8 +1754,9 @@ impl serde::ser::Serialize for SerializationContext<&Observation> {
         }
         if self.value.r#code.id.as_deref() == Some("$invalid") {
             return missing_field_error("code");
+        } else {
+            self.with_context(&self.value.r#code, |ctx| state.serialize_entry("code", ctx))?;
         }
-        self.with_context(&self.value.r#code, |ctx| state.serialize_entry("code", ctx))?;
         if let Some(some) = self.value.r#subject.as_ref() {
             self.with_context(some, |ctx| state.serialize_entry("subject", ctx))?;
         }

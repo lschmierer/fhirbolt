@@ -590,10 +590,11 @@ impl serde::ser::Serialize for SerializationContext<&DeviceRequest> {
             }
         } else if self.value.r#intent.id.as_deref() == Some("$invalid") {
             return missing_field_error("intent");
+        } else {
+            self.with_context(&self.value.r#intent, |ctx| {
+                state.serialize_entry("intent", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#intent, |ctx| {
-            state.serialize_entry("intent", ctx)
-        })?;
         if self.output_json {
             if let Some(some) = self.value.r#priority.as_ref() {
                 if let Some(some) = some.value.as_ref().map(Ok) {
@@ -636,10 +637,11 @@ impl serde::ser::Serialize for SerializationContext<&DeviceRequest> {
         }
         if self.value.r#subject.id.as_deref() == Some("$invalid") {
             return missing_field_error("subject");
+        } else {
+            self.with_context(&self.value.r#subject, |ctx| {
+                state.serialize_entry("subject", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#subject, |ctx| {
-            state.serialize_entry("subject", ctx)
-        })?;
         if let Some(some) = self.value.r#encounter.as_ref() {
             self.with_context(some, |ctx| state.serialize_entry("encounter", ctx))?;
         }

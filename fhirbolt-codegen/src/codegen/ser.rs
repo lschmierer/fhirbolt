@@ -434,9 +434,9 @@ fn serialize_element(field: &RustFhirStructField) -> TokenStream {
         quote! {
             if self.value.#field_name_ident.id.as_deref() == Some("$invalid") {
                 return missing_field_error(#fhir_name)
+            } else {
+                self.with_context(&self.value.#field_name_ident, |ctx| state.serialize_entry(#fhir_name, ctx))?;
             }
-
-            self.with_context(&self.value.#field_name_ident, |ctx| state.serialize_entry(#fhir_name, ctx))?;
         }
     }
 }

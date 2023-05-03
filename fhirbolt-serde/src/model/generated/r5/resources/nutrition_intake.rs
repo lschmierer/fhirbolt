@@ -30,14 +30,16 @@ impl serde::ser::Serialize for SerializationContext<&NutritionIntakeConsumedItem
         }
         if self.value.r#type.id.as_deref() == Some("$invalid") {
             return missing_field_error("type");
+        } else {
+            self.with_context(&self.value.r#type, |ctx| state.serialize_entry("type", ctx))?;
         }
-        self.with_context(&self.value.r#type, |ctx| state.serialize_entry("type", ctx))?;
         if self.value.r#nutrition_product.id.as_deref() == Some("$invalid") {
             return missing_field_error("nutritionProduct");
+        } else {
+            self.with_context(&self.value.r#nutrition_product, |ctx| {
+                state.serialize_entry("nutritionProduct", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#nutrition_product, |ctx| {
-            state.serialize_entry("nutritionProduct", ctx)
-        })?;
         if let Some(some) = self.value.r#schedule.as_ref() {
             self.with_context(some, |ctx| state.serialize_entry("schedule", ctx))?;
         }
@@ -416,16 +418,18 @@ impl serde::ser::Serialize for SerializationContext<&NutritionIntakeIngredientLa
         }
         if self.value.r#nutrient.id.as_deref() == Some("$invalid") {
             return missing_field_error("nutrient");
+        } else {
+            self.with_context(&self.value.r#nutrient, |ctx| {
+                state.serialize_entry("nutrient", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#nutrient, |ctx| {
-            state.serialize_entry("nutrient", ctx)
-        })?;
         if self.value.r#amount.id.as_deref() == Some("$invalid") {
             return missing_field_error("amount");
+        } else {
+            self.with_context(&self.value.r#amount, |ctx| {
+                state.serialize_entry("amount", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#amount, |ctx| {
-            state.serialize_entry("amount", ctx)
-        })?;
         state.end()
     }
 }
@@ -669,10 +673,11 @@ impl serde::ser::Serialize for SerializationContext<&NutritionIntakePerformer> {
         }
         if self.value.r#actor.id.as_deref() == Some("$invalid") {
             return missing_field_error("actor");
+        } else {
+            self.with_context(&self.value.r#actor, |ctx| {
+                state.serialize_entry("actor", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#actor, |ctx| {
-            state.serialize_entry("actor", ctx)
-        })?;
         state.end()
     }
 }
@@ -1075,10 +1080,11 @@ impl serde::ser::Serialize for SerializationContext<&NutritionIntake> {
             }
         } else if self.value.r#status.id.as_deref() == Some("$invalid") {
             return missing_field_error("status");
+        } else {
+            self.with_context(&self.value.r#status, |ctx| {
+                state.serialize_entry("status", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#status, |ctx| {
-            state.serialize_entry("status", ctx)
-        })?;
         if !self.value.r#status_reason.is_empty() {
             self.with_context(&self.value.r#status_reason, |ctx| {
                 state.serialize_entry("statusReason", ctx)
@@ -1089,10 +1095,11 @@ impl serde::ser::Serialize for SerializationContext<&NutritionIntake> {
         }
         if self.value.r#subject.id.as_deref() == Some("$invalid") {
             return missing_field_error("subject");
+        } else {
+            self.with_context(&self.value.r#subject, |ctx| {
+                state.serialize_entry("subject", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#subject, |ctx| {
-            state.serialize_entry("subject", ctx)
-        })?;
         if let Some(some) = self.value.r#encounter.as_ref() {
             self.with_context(some, |ctx| state.serialize_entry("encounter", ctx))?;
         }

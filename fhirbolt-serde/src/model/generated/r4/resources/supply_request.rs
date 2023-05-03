@@ -510,10 +510,11 @@ impl serde::ser::Serialize for SerializationContext<&SupplyRequest> {
         }
         if self.value.r#quantity.id.as_deref() == Some("$invalid") {
             return missing_field_error("quantity");
+        } else {
+            self.with_context(&self.value.r#quantity, |ctx| {
+                state.serialize_entry("quantity", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#quantity, |ctx| {
-            state.serialize_entry("quantity", ctx)
-        })?;
         if !self.value.r#parameter.is_empty() {
             self.with_context(&self.value.r#parameter, |ctx| {
                 state.serialize_entry("parameter", ctx)

@@ -355,10 +355,11 @@ impl serde::ser::Serialize for SerializationContext<&ConsentVerification> {
             }
         } else if self.value.r#verified.id.as_deref() == Some("$invalid") {
             return missing_field_error("verified");
+        } else {
+            self.with_context(&self.value.r#verified, |ctx| {
+                state.serialize_entry("verified", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#verified, |ctx| {
-            state.serialize_entry("verified", ctx)
-        })?;
         if let Some(some) = self.value.r#verified_with.as_ref() {
             self.with_context(some, |ctx| state.serialize_entry("verifiedWith", ctx))?;
         }
@@ -690,14 +691,16 @@ impl serde::ser::Serialize for SerializationContext<&ConsentProvisionActor> {
         }
         if self.value.r#role.id.as_deref() == Some("$invalid") {
             return missing_field_error("role");
+        } else {
+            self.with_context(&self.value.r#role, |ctx| state.serialize_entry("role", ctx))?;
         }
-        self.with_context(&self.value.r#role, |ctx| state.serialize_entry("role", ctx))?;
         if self.value.r#reference.id.as_deref() == Some("$invalid") {
             return missing_field_error("reference");
+        } else {
+            self.with_context(&self.value.r#reference, |ctx| {
+                state.serialize_entry("reference", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#reference, |ctx| {
-            state.serialize_entry("reference", ctx)
-        })?;
         state.end()
     }
 }
@@ -948,16 +951,18 @@ impl serde::ser::Serialize for SerializationContext<&ConsentProvisionData> {
             }
         } else if self.value.r#meaning.id.as_deref() == Some("$invalid") {
             return missing_field_error("meaning");
+        } else {
+            self.with_context(&self.value.r#meaning, |ctx| {
+                state.serialize_entry("meaning", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#meaning, |ctx| {
-            state.serialize_entry("meaning", ctx)
-        })?;
         if self.value.r#reference.id.as_deref() == Some("$invalid") {
             return missing_field_error("reference");
+        } else {
+            self.with_context(&self.value.r#reference, |ctx| {
+                state.serialize_entry("reference", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#reference, |ctx| {
-            state.serialize_entry("reference", ctx)
-        })?;
         state.end()
     }
 }
@@ -1805,16 +1810,18 @@ impl serde::ser::Serialize for SerializationContext<&Consent> {
             }
         } else if self.value.r#status.id.as_deref() == Some("$invalid") {
             return missing_field_error("status");
+        } else {
+            self.with_context(&self.value.r#status, |ctx| {
+                state.serialize_entry("status", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#status, |ctx| {
-            state.serialize_entry("status", ctx)
-        })?;
         if self.value.r#scope.id.as_deref() == Some("$invalid") {
             return missing_field_error("scope");
+        } else {
+            self.with_context(&self.value.r#scope, |ctx| {
+                state.serialize_entry("scope", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#scope, |ctx| {
-            state.serialize_entry("scope", ctx)
-        })?;
         if !self.value.r#category.is_empty() {
             self.with_context(&self.value.r#category, |ctx| {
                 state.serialize_entry("category", ctx)

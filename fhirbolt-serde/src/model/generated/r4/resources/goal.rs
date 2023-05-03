@@ -737,10 +737,11 @@ impl serde::ser::Serialize for SerializationContext<&Goal> {
             }
         } else if self.value.r#lifecycle_status.id.as_deref() == Some("$invalid") {
             return missing_field_error("lifecycleStatus");
+        } else {
+            self.with_context(&self.value.r#lifecycle_status, |ctx| {
+                state.serialize_entry("lifecycleStatus", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#lifecycle_status, |ctx| {
-            state.serialize_entry("lifecycleStatus", ctx)
-        })?;
         if let Some(some) = self.value.r#achievement_status.as_ref() {
             self.with_context(some, |ctx| state.serialize_entry("achievementStatus", ctx))?;
         }
@@ -754,16 +755,18 @@ impl serde::ser::Serialize for SerializationContext<&Goal> {
         }
         if self.value.r#description.id.as_deref() == Some("$invalid") {
             return missing_field_error("description");
+        } else {
+            self.with_context(&self.value.r#description, |ctx| {
+                state.serialize_entry("description", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#description, |ctx| {
-            state.serialize_entry("description", ctx)
-        })?;
         if self.value.r#subject.id.as_deref() == Some("$invalid") {
             return missing_field_error("subject");
+        } else {
+            self.with_context(&self.value.r#subject, |ctx| {
+                state.serialize_entry("subject", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#subject, |ctx| {
-            state.serialize_entry("subject", ctx)
-        })?;
         {
             use fhirbolt_model::r4::resources::GoalStart as _Enum;
             if let Some(some) = self.value.r#start.as_ref() {

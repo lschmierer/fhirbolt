@@ -984,10 +984,11 @@ impl serde::ser::Serialize for SerializationContext<&QuestionnaireResponseItem> 
             }
         } else if self.value.r#link_id.id.as_deref() == Some("$invalid") {
             return missing_field_error("linkId");
+        } else {
+            self.with_context(&self.value.r#link_id, |ctx| {
+                state.serialize_entry("linkId", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#link_id, |ctx| {
-            state.serialize_entry("linkId", ctx)
-        })?;
         if self.output_json {
             if let Some(some) = self.value.r#definition.as_ref() {
                 if let Some(some) = some.value.as_ref().map(Ok) {
@@ -1513,10 +1514,11 @@ impl serde::ser::Serialize for SerializationContext<&QuestionnaireResponse> {
             }
         } else if self.value.r#status.id.as_deref() == Some("$invalid") {
             return missing_field_error("status");
+        } else {
+            self.with_context(&self.value.r#status, |ctx| {
+                state.serialize_entry("status", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#status, |ctx| {
-            state.serialize_entry("status", ctx)
-        })?;
         if let Some(some) = self.value.r#subject.as_ref() {
             self.with_context(some, |ctx| state.serialize_entry("subject", ctx))?;
         }

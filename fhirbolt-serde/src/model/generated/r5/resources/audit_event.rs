@@ -30,8 +30,9 @@ impl serde::ser::Serialize for SerializationContext<&AuditEventOutcome> {
         }
         if self.value.r#code.id.as_deref() == Some("$invalid") {
             return missing_field_error("code");
+        } else {
+            self.with_context(&self.value.r#code, |ctx| state.serialize_entry("code", ctx))?;
         }
-        self.with_context(&self.value.r#code, |ctx| state.serialize_entry("code", ctx))?;
         if !self.value.r#detail.is_empty() {
             self.with_context(&self.value.r#detail, |ctx| {
                 state.serialize_entry("detail", ctx)
@@ -273,8 +274,9 @@ impl serde::ser::Serialize for SerializationContext<&AuditEventAgent> {
         }
         if self.value.r#who.id.as_deref() == Some("$invalid") {
             return missing_field_error("who");
+        } else {
+            self.with_context(&self.value.r#who, |ctx| state.serialize_entry("who", ctx))?;
         }
-        self.with_context(&self.value.r#who, |ctx| state.serialize_entry("who", ctx))?;
         if self.output_json {
             if let Some(some) = self.value.r#requestor.as_ref() {
                 if let Some(some) = some.value.as_ref().map(Ok) {
@@ -937,10 +939,11 @@ impl serde::ser::Serialize for SerializationContext<&AuditEventSource> {
         }
         if self.value.r#observer.id.as_deref() == Some("$invalid") {
             return missing_field_error("observer");
+        } else {
+            self.with_context(&self.value.r#observer, |ctx| {
+                state.serialize_entry("observer", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#observer, |ctx| {
-            state.serialize_entry("observer", ctx)
-        })?;
         if !self.value.r#type.is_empty() {
             self.with_context(&self.value.r#type, |ctx| state.serialize_entry("type", ctx))?;
         }
@@ -1196,8 +1199,9 @@ impl serde::ser::Serialize for SerializationContext<&AuditEventEntityDetail> {
         }
         if self.value.r#type.id.as_deref() == Some("$invalid") {
             return missing_field_error("type");
+        } else {
+            self.with_context(&self.value.r#type, |ctx| state.serialize_entry("type", ctx))?;
         }
-        self.with_context(&self.value.r#type, |ctx| state.serialize_entry("type", ctx))?;
         {
             use fhirbolt_model::r5::resources::AuditEventEntityDetailValue as _Enum;
             match self.value.r#value {
@@ -2417,8 +2421,9 @@ impl serde::ser::Serialize for SerializationContext<&AuditEvent> {
         }
         if self.value.r#code.id.as_deref() == Some("$invalid") {
             return missing_field_error("code");
+        } else {
+            self.with_context(&self.value.r#code, |ctx| state.serialize_entry("code", ctx))?;
         }
-        self.with_context(&self.value.r#code, |ctx| state.serialize_entry("code", ctx))?;
         if self.output_json {
             if let Some(some) = self.value.r#action.as_ref() {
                 if let Some(some) = some.value.as_ref().map(Ok) {
@@ -2510,10 +2515,11 @@ impl serde::ser::Serialize for SerializationContext<&AuditEvent> {
             }
         } else if self.value.r#recorded.id.as_deref() == Some("$invalid") {
             return missing_field_error("recorded");
+        } else {
+            self.with_context(&self.value.r#recorded, |ctx| {
+                state.serialize_entry("recorded", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#recorded, |ctx| {
-            state.serialize_entry("recorded", ctx)
-        })?;
         if let Some(some) = self.value.r#outcome.as_ref() {
             self.with_context(some, |ctx| state.serialize_entry("outcome", ctx))?;
         }
@@ -2540,10 +2546,11 @@ impl serde::ser::Serialize for SerializationContext<&AuditEvent> {
         }
         if self.value.r#source.id.as_deref() == Some("$invalid") {
             return missing_field_error("source");
+        } else {
+            self.with_context(&self.value.r#source, |ctx| {
+                state.serialize_entry("source", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#source, |ctx| {
-            state.serialize_entry("source", ctx)
-        })?;
         if !self.value.r#entity.is_empty() {
             self.with_context(&self.value.r#entity, |ctx| {
                 state.serialize_entry("entity", ctx)

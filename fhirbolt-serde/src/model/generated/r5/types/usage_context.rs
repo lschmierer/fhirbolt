@@ -25,8 +25,9 @@ impl serde::ser::Serialize for SerializationContext<&UsageContext> {
         }
         if self.value.r#code.id.as_deref() == Some("$invalid") {
             return missing_field_error("code");
+        } else {
+            self.with_context(&self.value.r#code, |ctx| state.serialize_entry("code", ctx))?;
         }
-        self.with_context(&self.value.r#code, |ctx| state.serialize_entry("code", ctx))?;
         {
             use fhirbolt_model::r5::types::UsageContextValue as _Enum;
             match self.value.r#value {

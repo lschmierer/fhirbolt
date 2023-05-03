@@ -95,8 +95,9 @@ impl serde::ser::Serialize for SerializationContext<&Annotation> {
             }
         } else if self.value.r#text.id.as_deref() == Some("$invalid") {
             return missing_field_error("text");
+        } else {
+            self.with_context(&self.value.r#text, |ctx| state.serialize_entry("text", ctx))?;
         }
-        self.with_context(&self.value.r#text, |ctx| state.serialize_entry("text", ctx))?;
         state.end()
     }
 }

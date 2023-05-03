@@ -30,8 +30,9 @@ impl serde::ser::Serialize for SerializationContext<&MedicationIngredient> {
         }
         if self.value.r#item.id.as_deref() == Some("$invalid") {
             return missing_field_error("item");
+        } else {
+            self.with_context(&self.value.r#item, |ctx| state.serialize_entry("item", ctx))?;
         }
-        self.with_context(&self.value.r#item, |ctx| state.serialize_entry("item", ctx))?;
         if self.output_json {
             if let Some(some) = self.value.r#is_active.as_ref() {
                 if let Some(some) = some.value.as_ref().map(Ok) {

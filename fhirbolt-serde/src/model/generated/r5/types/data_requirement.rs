@@ -1303,8 +1303,9 @@ impl serde::ser::Serialize for SerializationContext<&DataRequirementSort> {
             }
         } else if self.value.r#path.id.as_deref() == Some("$invalid") {
             return missing_field_error("path");
+        } else {
+            self.with_context(&self.value.r#path, |ctx| state.serialize_entry("path", ctx))?;
         }
-        self.with_context(&self.value.r#path, |ctx| state.serialize_entry("path", ctx))?;
         if self.output_json {
             if self.value.r#direction.id.as_deref() == Some("$invalid") {
                 return missing_field_error("direction");
@@ -1324,10 +1325,11 @@ impl serde::ser::Serialize for SerializationContext<&DataRequirementSort> {
             }
         } else if self.value.r#direction.id.as_deref() == Some("$invalid") {
             return missing_field_error("direction");
+        } else {
+            self.with_context(&self.value.r#direction, |ctx| {
+                state.serialize_entry("direction", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#direction, |ctx| {
-            state.serialize_entry("direction", ctx)
-        })?;
         state.end()
     }
 }
@@ -1601,8 +1603,9 @@ impl serde::ser::Serialize for SerializationContext<&DataRequirement> {
             }
         } else if self.value.r#type.id.as_deref() == Some("$invalid") {
             return missing_field_error("type");
+        } else {
+            self.with_context(&self.value.r#type, |ctx| state.serialize_entry("type", ctx))?;
         }
-        self.with_context(&self.value.r#type, |ctx| state.serialize_entry("type", ctx))?;
         if self.output_json {
             if !self.value.r#profile.is_empty() {
                 let values = self

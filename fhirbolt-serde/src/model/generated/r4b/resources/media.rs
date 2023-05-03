@@ -115,10 +115,11 @@ impl serde::ser::Serialize for SerializationContext<&Media> {
             }
         } else if self.value.r#status.id.as_deref() == Some("$invalid") {
             return missing_field_error("status");
+        } else {
+            self.with_context(&self.value.r#status, |ctx| {
+                state.serialize_entry("status", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#status, |ctx| {
-            state.serialize_entry("status", ctx)
-        })?;
         if let Some(some) = self.value.r#type.as_ref() {
             self.with_context(some, |ctx| state.serialize_entry("type", ctx))?;
         }
@@ -301,10 +302,11 @@ impl serde::ser::Serialize for SerializationContext<&Media> {
         }
         if self.value.r#content.id.as_deref() == Some("$invalid") {
             return missing_field_error("content");
+        } else {
+            self.with_context(&self.value.r#content, |ctx| {
+                state.serialize_entry("content", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#content, |ctx| {
-            state.serialize_entry("content", ctx)
-        })?;
         if !self.value.r#note.is_empty() {
             self.with_context(&self.value.r#note, |ctx| state.serialize_entry("note", ctx))?;
         }

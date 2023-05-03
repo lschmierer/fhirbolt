@@ -333,8 +333,9 @@ impl serde::ser::Serialize for SerializationContext<&TransportInput> {
         }
         if self.value.r#type.id.as_deref() == Some("$invalid") {
             return missing_field_error("type");
+        } else {
+            self.with_context(&self.value.r#type, |ctx| state.serialize_entry("type", ctx))?;
         }
-        self.with_context(&self.value.r#type, |ctx| state.serialize_entry("type", ctx))?;
         {
             use fhirbolt_model::r5::resources::TransportInputValue as _Enum;
             match self.value.r#value {
@@ -2718,8 +2719,9 @@ impl serde::ser::Serialize for SerializationContext<&TransportOutput> {
         }
         if self.value.r#type.id.as_deref() == Some("$invalid") {
             return missing_field_error("type");
+        } else {
+            self.with_context(&self.value.r#type, |ctx| state.serialize_entry("type", ctx))?;
         }
-        self.with_context(&self.value.r#type, |ctx| state.serialize_entry("type", ctx))?;
         {
             use fhirbolt_model::r5::resources::TransportOutputValue as _Enum;
             match self.value.r#value {
@@ -5253,10 +5255,11 @@ impl serde::ser::Serialize for SerializationContext<&Transport> {
             }
         } else if self.value.r#intent.id.as_deref() == Some("$invalid") {
             return missing_field_error("intent");
+        } else {
+            self.with_context(&self.value.r#intent, |ctx| {
+                state.serialize_entry("intent", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#intent, |ctx| {
-            state.serialize_entry("intent", ctx)
-        })?;
         if self.output_json {
             if let Some(some) = self.value.r#priority.as_ref() {
                 if let Some(some) = some.value.as_ref().map(Ok) {
@@ -5406,16 +5409,18 @@ impl serde::ser::Serialize for SerializationContext<&Transport> {
         }
         if self.value.r#requested_location.id.as_deref() == Some("$invalid") {
             return missing_field_error("requestedLocation");
+        } else {
+            self.with_context(&self.value.r#requested_location, |ctx| {
+                state.serialize_entry("requestedLocation", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#requested_location, |ctx| {
-            state.serialize_entry("requestedLocation", ctx)
-        })?;
         if self.value.r#current_location.id.as_deref() == Some("$invalid") {
             return missing_field_error("currentLocation");
+        } else {
+            self.with_context(&self.value.r#current_location, |ctx| {
+                state.serialize_entry("currentLocation", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#current_location, |ctx| {
-            state.serialize_entry("currentLocation", ctx)
-        })?;
         if let Some(some) = self.value.r#reason.as_ref() {
             self.with_context(some, |ctx| state.serialize_entry("reason", ctx))?;
         }

@@ -511,12 +511,14 @@ impl serde::ser::Serialize for SerializationContext<&ConditionDefinitionPrecondi
             }
         } else if self.value.r#type.id.as_deref() == Some("$invalid") {
             return missing_field_error("type");
+        } else {
+            self.with_context(&self.value.r#type, |ctx| state.serialize_entry("type", ctx))?;
         }
-        self.with_context(&self.value.r#type, |ctx| state.serialize_entry("type", ctx))?;
         if self.value.r#code.id.as_deref() == Some("$invalid") {
             return missing_field_error("code");
+        } else {
+            self.with_context(&self.value.r#code, |ctx| state.serialize_entry("code", ctx))?;
         }
-        self.with_context(&self.value.r#code, |ctx| state.serialize_entry("code", ctx))?;
         {
             use fhirbolt_model::r5::resources::ConditionDefinitionPreconditionValue as _Enum;
             if let Some(some) = self.value.r#value.as_ref() {
@@ -856,16 +858,18 @@ impl serde::ser::Serialize for SerializationContext<&ConditionDefinitionQuestion
             }
         } else if self.value.r#purpose.id.as_deref() == Some("$invalid") {
             return missing_field_error("purpose");
+        } else {
+            self.with_context(&self.value.r#purpose, |ctx| {
+                state.serialize_entry("purpose", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#purpose, |ctx| {
-            state.serialize_entry("purpose", ctx)
-        })?;
         if self.value.r#reference.id.as_deref() == Some("$invalid") {
             return missing_field_error("reference");
+        } else {
+            self.with_context(&self.value.r#reference, |ctx| {
+                state.serialize_entry("reference", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#reference, |ctx| {
-            state.serialize_entry("reference", ctx)
-        })?;
         state.end()
     }
 }
@@ -1141,10 +1145,11 @@ impl serde::ser::Serialize for SerializationContext<&ConditionDefinitionPlan> {
         }
         if self.value.r#reference.id.as_deref() == Some("$invalid") {
             return missing_field_error("reference");
+        } else {
+            self.with_context(&self.value.r#reference, |ctx| {
+                state.serialize_entry("reference", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#reference, |ctx| {
-            state.serialize_entry("reference", ctx)
-        })?;
         state.end()
     }
 }
@@ -1580,10 +1585,11 @@ impl serde::ser::Serialize for SerializationContext<&ConditionDefinition> {
             }
         } else if self.value.r#status.id.as_deref() == Some("$invalid") {
             return missing_field_error("status");
+        } else {
+            self.with_context(&self.value.r#status, |ctx| {
+                state.serialize_entry("status", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#status, |ctx| {
-            state.serialize_entry("status", ctx)
-        })?;
         if self.output_json {
             if let Some(some) = self.value.r#experimental.as_ref() {
                 if let Some(some) = some.value.as_ref().map(Ok) {
@@ -1677,8 +1683,9 @@ impl serde::ser::Serialize for SerializationContext<&ConditionDefinition> {
         }
         if self.value.r#code.id.as_deref() == Some("$invalid") {
             return missing_field_error("code");
+        } else {
+            self.with_context(&self.value.r#code, |ctx| state.serialize_entry("code", ctx))?;
         }
-        self.with_context(&self.value.r#code, |ctx| state.serialize_entry("code", ctx))?;
         if let Some(some) = self.value.r#severity.as_ref() {
             self.with_context(some, |ctx| state.serialize_entry("severity", ctx))?;
         }

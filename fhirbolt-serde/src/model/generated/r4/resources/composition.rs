@@ -47,8 +47,9 @@ impl serde::ser::Serialize for SerializationContext<&CompositionAttester> {
             }
         } else if self.value.r#mode.id.as_deref() == Some("$invalid") {
             return missing_field_error("mode");
+        } else {
+            self.with_context(&self.value.r#mode, |ctx| state.serialize_entry("mode", ctx))?;
         }
-        self.with_context(&self.value.r#mode, |ctx| state.serialize_entry("mode", ctx))?;
         if self.output_json {
             if let Some(some) = self.value.r#time.as_ref() {
                 if let Some(some) = some.value.as_ref().map(Ok) {
@@ -388,8 +389,9 @@ impl serde::ser::Serialize for SerializationContext<&CompositionRelatesTo> {
             }
         } else if self.value.r#code.id.as_deref() == Some("$invalid") {
             return missing_field_error("code");
+        } else {
+            self.with_context(&self.value.r#code, |ctx| state.serialize_entry("code", ctx))?;
         }
-        self.with_context(&self.value.r#code, |ctx| state.serialize_entry("code", ctx))?;
         {
             use fhirbolt_model::r4::resources::CompositionRelatesToTarget as _Enum;
             match self.value.r#target {
@@ -1508,14 +1510,16 @@ impl serde::ser::Serialize for SerializationContext<&Composition> {
             }
         } else if self.value.r#status.id.as_deref() == Some("$invalid") {
             return missing_field_error("status");
+        } else {
+            self.with_context(&self.value.r#status, |ctx| {
+                state.serialize_entry("status", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#status, |ctx| {
-            state.serialize_entry("status", ctx)
-        })?;
         if self.value.r#type.id.as_deref() == Some("$invalid") {
             return missing_field_error("type");
+        } else {
+            self.with_context(&self.value.r#type, |ctx| state.serialize_entry("type", ctx))?;
         }
-        self.with_context(&self.value.r#type, |ctx| state.serialize_entry("type", ctx))?;
         if !self.value.r#category.is_empty() {
             self.with_context(&self.value.r#category, |ctx| {
                 state.serialize_entry("category", ctx)
@@ -1546,8 +1550,9 @@ impl serde::ser::Serialize for SerializationContext<&Composition> {
             }
         } else if self.value.r#date.id.as_deref() == Some("$invalid") {
             return missing_field_error("date");
+        } else {
+            self.with_context(&self.value.r#date, |ctx| state.serialize_entry("date", ctx))?;
         }
-        self.with_context(&self.value.r#date, |ctx| state.serialize_entry("date", ctx))?;
         if !self.value.r#author.is_empty() {
             self.with_context(&self.value.r#author, |ctx| {
                 state.serialize_entry("author", ctx)
@@ -1572,10 +1577,11 @@ impl serde::ser::Serialize for SerializationContext<&Composition> {
             }
         } else if self.value.r#title.id.as_deref() == Some("$invalid") {
             return missing_field_error("title");
+        } else {
+            self.with_context(&self.value.r#title, |ctx| {
+                state.serialize_entry("title", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#title, |ctx| {
-            state.serialize_entry("title", ctx)
-        })?;
         if self.output_json {
             if let Some(some) = self.value.r#confidentiality.as_ref() {
                 if let Some(some) = some.value.as_ref().map(Ok) {

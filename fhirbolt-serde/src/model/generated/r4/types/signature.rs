@@ -45,12 +45,14 @@ impl serde::ser::Serialize for SerializationContext<&Signature> {
             }
         } else if self.value.r#when.id.as_deref() == Some("$invalid") {
             return missing_field_error("when");
+        } else {
+            self.with_context(&self.value.r#when, |ctx| state.serialize_entry("when", ctx))?;
         }
-        self.with_context(&self.value.r#when, |ctx| state.serialize_entry("when", ctx))?;
         if self.value.r#who.id.as_deref() == Some("$invalid") {
             return missing_field_error("who");
+        } else {
+            self.with_context(&self.value.r#who, |ctx| state.serialize_entry("who", ctx))?;
         }
-        self.with_context(&self.value.r#who, |ctx| state.serialize_entry("who", ctx))?;
         if let Some(some) = self.value.r#on_behalf_of.as_ref() {
             self.with_context(some, |ctx| state.serialize_entry("onBehalfOf", ctx))?;
         }

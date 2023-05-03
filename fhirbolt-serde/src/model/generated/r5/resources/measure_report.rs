@@ -452,8 +452,9 @@ impl serde::ser::Serialize for SerializationContext<&MeasureReportGroupStratifie
         }
         if self.value.r#code.id.as_deref() == Some("$invalid") {
             return missing_field_error("code");
+        } else {
+            self.with_context(&self.value.r#code, |ctx| state.serialize_entry("code", ctx))?;
         }
-        self.with_context(&self.value.r#code, |ctx| state.serialize_entry("code", ctx))?;
         {
             use fhirbolt_model::r5::resources::MeasureReportGroupStratifierStratumComponentValue as _Enum;
             match self.value.r#value {
@@ -2869,10 +2870,11 @@ impl serde::ser::Serialize for SerializationContext<&MeasureReport> {
             }
         } else if self.value.r#status.id.as_deref() == Some("$invalid") {
             return missing_field_error("status");
+        } else {
+            self.with_context(&self.value.r#status, |ctx| {
+                state.serialize_entry("status", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#status, |ctx| {
-            state.serialize_entry("status", ctx)
-        })?;
         if self.output_json {
             if self.value.r#type.id.as_deref() == Some("$invalid") {
                 return missing_field_error("type");
@@ -2892,8 +2894,9 @@ impl serde::ser::Serialize for SerializationContext<&MeasureReport> {
             }
         } else if self.value.r#type.id.as_deref() == Some("$invalid") {
             return missing_field_error("type");
+        } else {
+            self.with_context(&self.value.r#type, |ctx| state.serialize_entry("type", ctx))?;
         }
-        self.with_context(&self.value.r#type, |ctx| state.serialize_entry("type", ctx))?;
         if self.output_json {
             if let Some(some) = self.value.r#data_update_type.as_ref() {
                 if let Some(some) = some.value.as_ref().map(Ok) {
@@ -2965,10 +2968,11 @@ impl serde::ser::Serialize for SerializationContext<&MeasureReport> {
         }
         if self.value.r#period.id.as_deref() == Some("$invalid") {
             return missing_field_error("period");
+        } else {
+            self.with_context(&self.value.r#period, |ctx| {
+                state.serialize_entry("period", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#period, |ctx| {
-            state.serialize_entry("period", ctx)
-        })?;
         if let Some(some) = self.value.r#input_parameters.as_ref() {
             self.with_context(some, |ctx| state.serialize_entry("inputParameters", ctx))?;
         }

@@ -30,8 +30,9 @@ impl serde::ser::Serialize for SerializationContext<&GroupCharacteristic> {
         }
         if self.value.r#code.id.as_deref() == Some("$invalid") {
             return missing_field_error("code");
+        } else {
+            self.with_context(&self.value.r#code, |ctx| state.serialize_entry("code", ctx))?;
         }
-        self.with_context(&self.value.r#code, |ctx| state.serialize_entry("code", ctx))?;
         {
             use fhirbolt_model::r4::resources::GroupCharacteristicValue as _Enum;
             match self.value.r#value {
@@ -92,10 +93,11 @@ impl serde::ser::Serialize for SerializationContext<&GroupCharacteristic> {
             }
         } else if self.value.r#exclude.id.as_deref() == Some("$invalid") {
             return missing_field_error("exclude");
+        } else {
+            self.with_context(&self.value.r#exclude, |ctx| {
+                state.serialize_entry("exclude", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#exclude, |ctx| {
-            state.serialize_entry("exclude", ctx)
-        })?;
         if let Some(some) = self.value.r#period.as_ref() {
             self.with_context(some, |ctx| state.serialize_entry("period", ctx))?;
         }
@@ -502,10 +504,11 @@ impl serde::ser::Serialize for SerializationContext<&GroupMember> {
         }
         if self.value.r#entity.id.as_deref() == Some("$invalid") {
             return missing_field_error("entity");
+        } else {
+            self.with_context(&self.value.r#entity, |ctx| {
+                state.serialize_entry("entity", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#entity, |ctx| {
-            state.serialize_entry("entity", ctx)
-        })?;
         if let Some(some) = self.value.r#period.as_ref() {
             self.with_context(some, |ctx| state.serialize_entry("period", ctx))?;
         }
@@ -892,8 +895,9 @@ impl serde::ser::Serialize for SerializationContext<&Group> {
             }
         } else if self.value.r#type.id.as_deref() == Some("$invalid") {
             return missing_field_error("type");
+        } else {
+            self.with_context(&self.value.r#type, |ctx| state.serialize_entry("type", ctx))?;
         }
-        self.with_context(&self.value.r#type, |ctx| state.serialize_entry("type", ctx))?;
         if self.output_json {
             if self.value.r#actual.id.as_deref() == Some("$invalid") {
                 return missing_field_error("actual");
@@ -913,10 +917,11 @@ impl serde::ser::Serialize for SerializationContext<&Group> {
             }
         } else if self.value.r#actual.id.as_deref() == Some("$invalid") {
             return missing_field_error("actual");
+        } else {
+            self.with_context(&self.value.r#actual, |ctx| {
+                state.serialize_entry("actual", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#actual, |ctx| {
-            state.serialize_entry("actual", ctx)
-        })?;
         if let Some(some) = self.value.r#code.as_ref() {
             self.with_context(some, |ctx| state.serialize_entry("code", ctx))?;
         }

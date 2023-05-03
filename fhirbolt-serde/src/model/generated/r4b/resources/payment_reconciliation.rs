@@ -36,8 +36,9 @@ impl serde::ser::Serialize for SerializationContext<&PaymentReconciliationDetail
         }
         if self.value.r#type.id.as_deref() == Some("$invalid") {
             return missing_field_error("type");
+        } else {
+            self.with_context(&self.value.r#type, |ctx| state.serialize_entry("type", ctx))?;
         }
-        self.with_context(&self.value.r#type, |ctx| state.serialize_entry("type", ctx))?;
         if let Some(some) = self.value.r#request.as_ref() {
             self.with_context(some, |ctx| state.serialize_entry("request", ctx))?;
         }
@@ -845,10 +846,11 @@ impl serde::ser::Serialize for SerializationContext<&PaymentReconciliation> {
             }
         } else if self.value.r#status.id.as_deref() == Some("$invalid") {
             return missing_field_error("status");
+        } else {
+            self.with_context(&self.value.r#status, |ctx| {
+                state.serialize_entry("status", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#status, |ctx| {
-            state.serialize_entry("status", ctx)
-        })?;
         if let Some(some) = self.value.r#period.as_ref() {
             self.with_context(some, |ctx| state.serialize_entry("period", ctx))?;
         }
@@ -871,10 +873,11 @@ impl serde::ser::Serialize for SerializationContext<&PaymentReconciliation> {
             }
         } else if self.value.r#created.id.as_deref() == Some("$invalid") {
             return missing_field_error("created");
+        } else {
+            self.with_context(&self.value.r#created, |ctx| {
+                state.serialize_entry("created", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#created, |ctx| {
-            state.serialize_entry("created", ctx)
-        })?;
         if let Some(some) = self.value.r#payment_issuer.as_ref() {
             self.with_context(some, |ctx| state.serialize_entry("paymentIssuer", ctx))?;
         }
@@ -943,16 +946,18 @@ impl serde::ser::Serialize for SerializationContext<&PaymentReconciliation> {
             }
         } else if self.value.r#payment_date.id.as_deref() == Some("$invalid") {
             return missing_field_error("paymentDate");
+        } else {
+            self.with_context(&self.value.r#payment_date, |ctx| {
+                state.serialize_entry("paymentDate", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#payment_date, |ctx| {
-            state.serialize_entry("paymentDate", ctx)
-        })?;
         if self.value.r#payment_amount.id.as_deref() == Some("$invalid") {
             return missing_field_error("paymentAmount");
+        } else {
+            self.with_context(&self.value.r#payment_amount, |ctx| {
+                state.serialize_entry("paymentAmount", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#payment_amount, |ctx| {
-            state.serialize_entry("paymentAmount", ctx)
-        })?;
         if let Some(some) = self.value.r#payment_identifier.as_ref() {
             self.with_context(some, |ctx| state.serialize_entry("paymentIdentifier", ctx))?;
         }

@@ -434,10 +434,11 @@ impl serde::ser::Serialize for SerializationContext<&Endpoint> {
             }
         } else if self.value.r#status.id.as_deref() == Some("$invalid") {
             return missing_field_error("status");
+        } else {
+            self.with_context(&self.value.r#status, |ctx| {
+                state.serialize_entry("status", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#status, |ctx| {
-            state.serialize_entry("status", ctx)
-        })?;
         if !self.value.r#connection_type.is_empty() {
             self.with_context(&self.value.r#connection_type, |ctx| {
                 state.serialize_entry("connectionType", ctx)
@@ -523,10 +524,11 @@ impl serde::ser::Serialize for SerializationContext<&Endpoint> {
             }
         } else if self.value.r#address.id.as_deref() == Some("$invalid") {
             return missing_field_error("address");
+        } else {
+            self.with_context(&self.value.r#address, |ctx| {
+                state.serialize_entry("address", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#address, |ctx| {
-            state.serialize_entry("address", ctx)
-        })?;
         if self.output_json {
             if !self.value.r#header.is_empty() {
                 let values = self

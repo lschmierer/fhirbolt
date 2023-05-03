@@ -47,12 +47,14 @@ impl serde::ser::Serialize for SerializationContext<&MedicinalProductNameNamePar
             }
         } else if self.value.r#part.id.as_deref() == Some("$invalid") {
             return missing_field_error("part");
+        } else {
+            self.with_context(&self.value.r#part, |ctx| state.serialize_entry("part", ctx))?;
         }
-        self.with_context(&self.value.r#part, |ctx| state.serialize_entry("part", ctx))?;
         if self.value.r#type.id.as_deref() == Some("$invalid") {
             return missing_field_error("type");
+        } else {
+            self.with_context(&self.value.r#type, |ctx| state.serialize_entry("type", ctx))?;
         }
-        self.with_context(&self.value.r#type, |ctx| state.serialize_entry("type", ctx))?;
         state.end()
     }
 }
@@ -316,19 +318,21 @@ impl serde::ser::Serialize for SerializationContext<&MedicinalProductNameCountry
         }
         if self.value.r#country.id.as_deref() == Some("$invalid") {
             return missing_field_error("country");
+        } else {
+            self.with_context(&self.value.r#country, |ctx| {
+                state.serialize_entry("country", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#country, |ctx| {
-            state.serialize_entry("country", ctx)
-        })?;
         if let Some(some) = self.value.r#jurisdiction.as_ref() {
             self.with_context(some, |ctx| state.serialize_entry("jurisdiction", ctx))?;
         }
         if self.value.r#language.id.as_deref() == Some("$invalid") {
             return missing_field_error("language");
+        } else {
+            self.with_context(&self.value.r#language, |ctx| {
+                state.serialize_entry("language", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#language, |ctx| {
-            state.serialize_entry("language", ctx)
-        })?;
         state.end()
     }
 }
@@ -610,10 +614,11 @@ impl serde::ser::Serialize for SerializationContext<&MedicinalProductName> {
             }
         } else if self.value.r#product_name.id.as_deref() == Some("$invalid") {
             return missing_field_error("productName");
+        } else {
+            self.with_context(&self.value.r#product_name, |ctx| {
+                state.serialize_entry("productName", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#product_name, |ctx| {
-            state.serialize_entry("productName", ctx)
-        })?;
         if !self.value.r#name_part.is_empty() {
             self.with_context(&self.value.r#name_part, |ctx| {
                 state.serialize_entry("namePart", ctx)

@@ -105,16 +105,18 @@ impl serde::ser::Serialize for SerializationContext<&ImmunizationEvaluation> {
             }
         } else if self.value.r#status.id.as_deref() == Some("$invalid") {
             return missing_field_error("status");
+        } else {
+            self.with_context(&self.value.r#status, |ctx| {
+                state.serialize_entry("status", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#status, |ctx| {
-            state.serialize_entry("status", ctx)
-        })?;
         if self.value.r#patient.id.as_deref() == Some("$invalid") {
             return missing_field_error("patient");
+        } else {
+            self.with_context(&self.value.r#patient, |ctx| {
+                state.serialize_entry("patient", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#patient, |ctx| {
-            state.serialize_entry("patient", ctx)
-        })?;
         if self.output_json {
             if let Some(some) = self.value.r#date.as_ref() {
                 if let Some(some) = some.value.as_ref().map(Ok) {
@@ -139,22 +141,25 @@ impl serde::ser::Serialize for SerializationContext<&ImmunizationEvaluation> {
         }
         if self.value.r#target_disease.id.as_deref() == Some("$invalid") {
             return missing_field_error("targetDisease");
+        } else {
+            self.with_context(&self.value.r#target_disease, |ctx| {
+                state.serialize_entry("targetDisease", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#target_disease, |ctx| {
-            state.serialize_entry("targetDisease", ctx)
-        })?;
         if self.value.r#immunization_event.id.as_deref() == Some("$invalid") {
             return missing_field_error("immunizationEvent");
+        } else {
+            self.with_context(&self.value.r#immunization_event, |ctx| {
+                state.serialize_entry("immunizationEvent", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#immunization_event, |ctx| {
-            state.serialize_entry("immunizationEvent", ctx)
-        })?;
         if self.value.r#dose_status.id.as_deref() == Some("$invalid") {
             return missing_field_error("doseStatus");
+        } else {
+            self.with_context(&self.value.r#dose_status, |ctx| {
+                state.serialize_entry("doseStatus", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#dose_status, |ctx| {
-            state.serialize_entry("doseStatus", ctx)
-        })?;
         if !self.value.r#dose_status_reason.is_empty() {
             self.with_context(&self.value.r#dose_status_reason, |ctx| {
                 state.serialize_entry("doseStatusReason", ctx)

@@ -47,10 +47,11 @@ impl serde::ser::Serialize for SerializationContext<&OperationOutcomeIssue> {
             }
         } else if self.value.r#severity.id.as_deref() == Some("$invalid") {
             return missing_field_error("severity");
+        } else {
+            self.with_context(&self.value.r#severity, |ctx| {
+                state.serialize_entry("severity", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#severity, |ctx| {
-            state.serialize_entry("severity", ctx)
-        })?;
         if self.output_json {
             if self.value.r#code.id.as_deref() == Some("$invalid") {
                 return missing_field_error("code");
@@ -70,8 +71,9 @@ impl serde::ser::Serialize for SerializationContext<&OperationOutcomeIssue> {
             }
         } else if self.value.r#code.id.as_deref() == Some("$invalid") {
             return missing_field_error("code");
+        } else {
+            self.with_context(&self.value.r#code, |ctx| state.serialize_entry("code", ctx))?;
         }
-        self.with_context(&self.value.r#code, |ctx| state.serialize_entry("code", ctx))?;
         if let Some(some) = self.value.r#details.as_ref() {
             self.with_context(some, |ctx| state.serialize_entry("details", ctx))?;
         }

@@ -47,8 +47,9 @@ impl serde::ser::Serialize for SerializationContext<&TerminologyCapabilitiesSoft
             }
         } else if self.value.r#name.id.as_deref() == Some("$invalid") {
             return missing_field_error("name");
+        } else {
+            self.with_context(&self.value.r#name, |ctx| state.serialize_entry("name", ctx))?;
         }
-        self.with_context(&self.value.r#name, |ctx| state.serialize_entry("name", ctx))?;
         if self.output_json {
             if let Some(some) = self.value.r#version.as_ref() {
                 if let Some(some) = some.value.as_ref().map(Ok) {
@@ -373,10 +374,11 @@ impl serde::ser::Serialize for SerializationContext<&TerminologyCapabilitiesImpl
             }
         } else if self.value.r#description.id.as_deref() == Some("$invalid") {
             return missing_field_error("description");
+        } else {
+            self.with_context(&self.value.r#description, |ctx| {
+                state.serialize_entry("description", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#description, |ctx| {
-            state.serialize_entry("description", ctx)
-        })?;
         if self.output_json {
             if let Some(some) = self.value.r#url.as_ref() {
                 if let Some(some) = some.value.as_ref().map(Ok) {
@@ -705,8 +707,9 @@ impl serde::ser::Serialize
             }
         } else if self.value.r#code.id.as_deref() == Some("$invalid") {
             return missing_field_error("code");
+        } else {
+            self.with_context(&self.value.r#code, |ctx| state.serialize_entry("code", ctx))?;
         }
-        self.with_context(&self.value.r#code, |ctx| state.serialize_entry("code", ctx))?;
         if self.output_json {
             if !self.value.r#op.is_empty() {
                 let values = self
@@ -2091,8 +2094,9 @@ impl serde::ser::Serialize for SerializationContext<&TerminologyCapabilitiesExpa
             }
         } else if self.value.r#name.id.as_deref() == Some("$invalid") {
             return missing_field_error("name");
+        } else {
+            self.with_context(&self.value.r#name, |ctx| state.serialize_entry("name", ctx))?;
         }
-        self.with_context(&self.value.r#name, |ctx| state.serialize_entry("name", ctx))?;
         if self.output_json {
             if let Some(some) = self.value.r#documentation.as_ref() {
                 if let Some(some) = some.value.as_ref().map(Ok) {
@@ -2903,10 +2907,11 @@ impl serde::ser::Serialize for SerializationContext<&TerminologyCapabilitiesVali
             }
         } else if self.value.r#translations.id.as_deref() == Some("$invalid") {
             return missing_field_error("translations");
+        } else {
+            self.with_context(&self.value.r#translations, |ctx| {
+                state.serialize_entry("translations", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#translations, |ctx| {
-            state.serialize_entry("translations", ctx)
-        })?;
         state.end()
     }
 }
@@ -3174,10 +3179,11 @@ impl serde::ser::Serialize for SerializationContext<&TerminologyCapabilitiesTran
             }
         } else if self.value.r#needs_map.id.as_deref() == Some("$invalid") {
             return missing_field_error("needsMap");
+        } else {
+            self.with_context(&self.value.r#needs_map, |ctx| {
+                state.serialize_entry("needsMap", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#needs_map, |ctx| {
-            state.serialize_entry("needsMap", ctx)
-        })?;
         state.end()
     }
 }
@@ -3831,10 +3837,11 @@ impl serde::ser::Serialize for SerializationContext<&TerminologyCapabilities> {
             }
         } else if self.value.r#status.id.as_deref() == Some("$invalid") {
             return missing_field_error("status");
+        } else {
+            self.with_context(&self.value.r#status, |ctx| {
+                state.serialize_entry("status", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#status, |ctx| {
-            state.serialize_entry("status", ctx)
-        })?;
         if self.output_json {
             if let Some(some) = self.value.r#experimental.as_ref() {
                 if let Some(some) = some.value.as_ref().map(Ok) {
@@ -3873,8 +3880,9 @@ impl serde::ser::Serialize for SerializationContext<&TerminologyCapabilities> {
             }
         } else if self.value.r#date.id.as_deref() == Some("$invalid") {
             return missing_field_error("date");
+        } else {
+            self.with_context(&self.value.r#date, |ctx| state.serialize_entry("date", ctx))?;
         }
-        self.with_context(&self.value.r#date, |ctx| state.serialize_entry("date", ctx))?;
         if self.output_json {
             if let Some(some) = self.value.r#publisher.as_ref() {
                 if let Some(some) = some.value.as_ref().map(Ok) {
@@ -3985,8 +3993,9 @@ impl serde::ser::Serialize for SerializationContext<&TerminologyCapabilities> {
             }
         } else if self.value.r#kind.id.as_deref() == Some("$invalid") {
             return missing_field_error("kind");
+        } else {
+            self.with_context(&self.value.r#kind, |ctx| state.serialize_entry("kind", ctx))?;
         }
-        self.with_context(&self.value.r#kind, |ctx| state.serialize_entry("kind", ctx))?;
         if let Some(some) = self.value.r#software.as_ref() {
             self.with_context(some, |ctx| state.serialize_entry("software", ctx))?;
         }

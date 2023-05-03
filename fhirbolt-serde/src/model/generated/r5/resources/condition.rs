@@ -33,10 +33,11 @@ impl serde::ser::Serialize for SerializationContext<&ConditionParticipant> {
         }
         if self.value.r#actor.id.as_deref() == Some("$invalid") {
             return missing_field_error("actor");
+        } else {
+            self.with_context(&self.value.r#actor, |ctx| {
+                state.serialize_entry("actor", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#actor, |ctx| {
-            state.serialize_entry("actor", ctx)
-        })?;
         state.end()
     }
 }
@@ -577,10 +578,11 @@ impl serde::ser::Serialize for SerializationContext<&Condition> {
         }
         if self.value.r#clinical_status.id.as_deref() == Some("$invalid") {
             return missing_field_error("clinicalStatus");
+        } else {
+            self.with_context(&self.value.r#clinical_status, |ctx| {
+                state.serialize_entry("clinicalStatus", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#clinical_status, |ctx| {
-            state.serialize_entry("clinicalStatus", ctx)
-        })?;
         if let Some(some) = self.value.r#verification_status.as_ref() {
             self.with_context(some, |ctx| state.serialize_entry("verificationStatus", ctx))?;
         }
@@ -602,10 +604,11 @@ impl serde::ser::Serialize for SerializationContext<&Condition> {
         }
         if self.value.r#subject.id.as_deref() == Some("$invalid") {
             return missing_field_error("subject");
+        } else {
+            self.with_context(&self.value.r#subject, |ctx| {
+                state.serialize_entry("subject", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#subject, |ctx| {
-            state.serialize_entry("subject", ctx)
-        })?;
         if let Some(some) = self.value.r#encounter.as_ref() {
             self.with_context(some, |ctx| state.serialize_entry("encounter", ctx))?;
         }

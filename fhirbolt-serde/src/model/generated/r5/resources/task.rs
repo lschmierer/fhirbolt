@@ -33,10 +33,11 @@ impl serde::ser::Serialize for SerializationContext<&TaskPerformer> {
         }
         if self.value.r#actor.id.as_deref() == Some("$invalid") {
             return missing_field_error("actor");
+        } else {
+            self.with_context(&self.value.r#actor, |ctx| {
+                state.serialize_entry("actor", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#actor, |ctx| {
-            state.serialize_entry("actor", ctx)
-        })?;
         state.end()
     }
 }
@@ -557,8 +558,9 @@ impl serde::ser::Serialize for SerializationContext<&TaskInput> {
         }
         if self.value.r#type.id.as_deref() == Some("$invalid") {
             return missing_field_error("type");
+        } else {
+            self.with_context(&self.value.r#type, |ctx| state.serialize_entry("type", ctx))?;
         }
-        self.with_context(&self.value.r#type, |ctx| state.serialize_entry("type", ctx))?;
         {
             use fhirbolt_model::r5::resources::TaskInputValue as _Enum;
             match self.value.r#value {
@@ -2942,8 +2944,9 @@ impl serde::ser::Serialize for SerializationContext<&TaskOutput> {
         }
         if self.value.r#type.id.as_deref() == Some("$invalid") {
             return missing_field_error("type");
+        } else {
+            self.with_context(&self.value.r#type, |ctx| state.serialize_entry("type", ctx))?;
         }
-        self.with_context(&self.value.r#type, |ctx| state.serialize_entry("type", ctx))?;
         {
             use fhirbolt_model::r5::resources::TaskOutputValue as _Enum;
             match self.value.r#value {
@@ -5455,10 +5458,11 @@ impl serde::ser::Serialize for SerializationContext<&Task> {
             }
         } else if self.value.r#status.id.as_deref() == Some("$invalid") {
             return missing_field_error("status");
+        } else {
+            self.with_context(&self.value.r#status, |ctx| {
+                state.serialize_entry("status", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#status, |ctx| {
-            state.serialize_entry("status", ctx)
-        })?;
         if let Some(some) = self.value.r#status_reason.as_ref() {
             self.with_context(some, |ctx| state.serialize_entry("statusReason", ctx))?;
         }
@@ -5484,10 +5488,11 @@ impl serde::ser::Serialize for SerializationContext<&Task> {
             }
         } else if self.value.r#intent.id.as_deref() == Some("$invalid") {
             return missing_field_error("intent");
+        } else {
+            self.with_context(&self.value.r#intent, |ctx| {
+                state.serialize_entry("intent", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#intent, |ctx| {
-            state.serialize_entry("intent", ctx)
-        })?;
         if self.output_json {
             if let Some(some) = self.value.r#priority.as_ref() {
                 if let Some(some) = some.value.as_ref().map(Ok) {

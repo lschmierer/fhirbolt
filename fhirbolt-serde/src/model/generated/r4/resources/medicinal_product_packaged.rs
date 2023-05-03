@@ -30,10 +30,11 @@ impl serde::ser::Serialize for SerializationContext<&MedicinalProductPackagedBat
         }
         if self.value.r#outer_packaging.id.as_deref() == Some("$invalid") {
             return missing_field_error("outerPackaging");
+        } else {
+            self.with_context(&self.value.r#outer_packaging, |ctx| {
+                state.serialize_entry("outerPackaging", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#outer_packaging, |ctx| {
-            state.serialize_entry("outerPackaging", ctx)
-        })?;
         if let Some(some) = self.value.r#immediate_packaging.as_ref() {
             self.with_context(some, |ctx| state.serialize_entry("immediatePackaging", ctx))?;
         }
@@ -290,14 +291,16 @@ impl serde::ser::Serialize for SerializationContext<&MedicinalProductPackagedPac
         }
         if self.value.r#type.id.as_deref() == Some("$invalid") {
             return missing_field_error("type");
+        } else {
+            self.with_context(&self.value.r#type, |ctx| state.serialize_entry("type", ctx))?;
         }
-        self.with_context(&self.value.r#type, |ctx| state.serialize_entry("type", ctx))?;
         if self.value.r#quantity.id.as_deref() == Some("$invalid") {
             return missing_field_error("quantity");
+        } else {
+            self.with_context(&self.value.r#quantity, |ctx| {
+                state.serialize_entry("quantity", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#quantity, |ctx| {
-            state.serialize_entry("quantity", ctx)
-        })?;
         if !self.value.r#material.is_empty() {
             self.with_context(&self.value.r#material, |ctx| {
                 state.serialize_entry("material", ctx)

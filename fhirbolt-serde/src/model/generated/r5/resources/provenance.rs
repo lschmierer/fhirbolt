@@ -36,8 +36,9 @@ impl serde::ser::Serialize for SerializationContext<&ProvenanceAgent> {
         }
         if self.value.r#who.id.as_deref() == Some("$invalid") {
             return missing_field_error("who");
+        } else {
+            self.with_context(&self.value.r#who, |ctx| state.serialize_entry("who", ctx))?;
         }
-        self.with_context(&self.value.r#who, |ctx| state.serialize_entry("who", ctx))?;
         if let Some(some) = self.value.r#on_behalf_of.as_ref() {
             self.with_context(some, |ctx| state.serialize_entry("onBehalfOf", ctx))?;
         }
@@ -322,12 +323,14 @@ impl serde::ser::Serialize for SerializationContext<&ProvenanceEntity> {
             }
         } else if self.value.r#role.id.as_deref() == Some("$invalid") {
             return missing_field_error("role");
+        } else {
+            self.with_context(&self.value.r#role, |ctx| state.serialize_entry("role", ctx))?;
         }
-        self.with_context(&self.value.r#role, |ctx| state.serialize_entry("role", ctx))?;
         if self.value.r#what.id.as_deref() == Some("$invalid") {
             return missing_field_error("what");
+        } else {
+            self.with_context(&self.value.r#what, |ctx| state.serialize_entry("what", ctx))?;
         }
-        self.with_context(&self.value.r#what, |ctx| state.serialize_entry("what", ctx))?;
         if !self.value.r#agent.is_empty() {
             self.with_context(&self.value.r#agent, |ctx| {
                 state.serialize_entry("agent", ctx)

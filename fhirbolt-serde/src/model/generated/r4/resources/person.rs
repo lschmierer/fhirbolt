@@ -30,10 +30,11 @@ impl serde::ser::Serialize for SerializationContext<&PersonLink> {
         }
         if self.value.r#target.id.as_deref() == Some("$invalid") {
             return missing_field_error("target");
+        } else {
+            self.with_context(&self.value.r#target, |ctx| {
+                state.serialize_entry("target", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#target, |ctx| {
-            state.serialize_entry("target", ctx)
-        })?;
         if self.output_json {
             if let Some(some) = self.value.r#assurance.as_ref() {
                 if let Some(some) = some.value.as_ref().map(Ok) {

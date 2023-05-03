@@ -30,10 +30,11 @@ impl serde::ser::Serialize for SerializationContext<&MedicinalProductContraindic
         }
         if self.value.r#therapy_relationship_type.id.as_deref() == Some("$invalid") {
             return missing_field_error("therapyRelationshipType");
+        } else {
+            self.with_context(&self.value.r#therapy_relationship_type, |ctx| {
+                state.serialize_entry("therapyRelationshipType", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#therapy_relationship_type, |ctx| {
-            state.serialize_entry("therapyRelationshipType", ctx)
-        })?;
         {
             use fhirbolt_model::r4::resources::MedicinalProductContraindicationOtherTherapyMedication as _Enum;
             match self.value.r#medication {

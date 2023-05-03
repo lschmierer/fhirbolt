@@ -33,10 +33,11 @@ impl serde::ser::Serialize for SerializationContext<&ImagingStudySeriesPerformer
         }
         if self.value.r#actor.id.as_deref() == Some("$invalid") {
             return missing_field_error("actor");
+        } else {
+            self.with_context(&self.value.r#actor, |ctx| {
+                state.serialize_entry("actor", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#actor, |ctx| {
-            state.serialize_entry("actor", ctx)
-        })?;
         state.end()
     }
 }
@@ -284,14 +285,16 @@ impl serde::ser::Serialize for SerializationContext<&ImagingStudySeriesInstance>
             }
         } else if self.value.r#uid.id.as_deref() == Some("$invalid") {
             return missing_field_error("uid");
+        } else {
+            self.with_context(&self.value.r#uid, |ctx| state.serialize_entry("uid", ctx))?;
         }
-        self.with_context(&self.value.r#uid, |ctx| state.serialize_entry("uid", ctx))?;
         if self.value.r#sop_class.id.as_deref() == Some("$invalid") {
             return missing_field_error("sopClass");
+        } else {
+            self.with_context(&self.value.r#sop_class, |ctx| {
+                state.serialize_entry("sopClass", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#sop_class, |ctx| {
-            state.serialize_entry("sopClass", ctx)
-        })?;
         if self.output_json {
             if let Some(some) = self.value.r#number.as_ref() {
                 if let Some(some) = some.value.as_ref().map(Ok) {
@@ -695,8 +698,9 @@ impl serde::ser::Serialize for SerializationContext<&ImagingStudySeries> {
             }
         } else if self.value.r#uid.id.as_deref() == Some("$invalid") {
             return missing_field_error("uid");
+        } else {
+            self.with_context(&self.value.r#uid, |ctx| state.serialize_entry("uid", ctx))?;
         }
-        self.with_context(&self.value.r#uid, |ctx| state.serialize_entry("uid", ctx))?;
         if self.output_json {
             if let Some(some) = self.value.r#number.as_ref() {
                 if let Some(some) = some.value.as_ref().map(Ok) {
@@ -718,10 +722,11 @@ impl serde::ser::Serialize for SerializationContext<&ImagingStudySeries> {
         }
         if self.value.r#modality.id.as_deref() == Some("$invalid") {
             return missing_field_error("modality");
+        } else {
+            self.with_context(&self.value.r#modality, |ctx| {
+                state.serialize_entry("modality", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#modality, |ctx| {
-            state.serialize_entry("modality", ctx)
-        })?;
         if self.output_json {
             if let Some(some) = self.value.r#description.as_ref() {
                 if let Some(some) = some.value.as_ref().map(Ok) {
@@ -1435,10 +1440,11 @@ impl serde::ser::Serialize for SerializationContext<&ImagingStudy> {
             }
         } else if self.value.r#status.id.as_deref() == Some("$invalid") {
             return missing_field_error("status");
+        } else {
+            self.with_context(&self.value.r#status, |ctx| {
+                state.serialize_entry("status", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#status, |ctx| {
-            state.serialize_entry("status", ctx)
-        })?;
         if !self.value.r#modality.is_empty() {
             self.with_context(&self.value.r#modality, |ctx| {
                 state.serialize_entry("modality", ctx)
@@ -1446,10 +1452,11 @@ impl serde::ser::Serialize for SerializationContext<&ImagingStudy> {
         }
         if self.value.r#subject.id.as_deref() == Some("$invalid") {
             return missing_field_error("subject");
+        } else {
+            self.with_context(&self.value.r#subject, |ctx| {
+                state.serialize_entry("subject", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#subject, |ctx| {
-            state.serialize_entry("subject", ctx)
-        })?;
         if let Some(some) = self.value.r#encounter.as_ref() {
             self.with_context(some, |ctx| state.serialize_entry("encounter", ctx))?;
         }

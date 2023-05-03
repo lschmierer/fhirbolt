@@ -30,25 +30,28 @@ impl serde::ser::Serialize for SerializationContext<&MarketingStatus> {
         }
         if self.value.r#country.id.as_deref() == Some("$invalid") {
             return missing_field_error("country");
+        } else {
+            self.with_context(&self.value.r#country, |ctx| {
+                state.serialize_entry("country", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#country, |ctx| {
-            state.serialize_entry("country", ctx)
-        })?;
         if let Some(some) = self.value.r#jurisdiction.as_ref() {
             self.with_context(some, |ctx| state.serialize_entry("jurisdiction", ctx))?;
         }
         if self.value.r#status.id.as_deref() == Some("$invalid") {
             return missing_field_error("status");
+        } else {
+            self.with_context(&self.value.r#status, |ctx| {
+                state.serialize_entry("status", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#status, |ctx| {
-            state.serialize_entry("status", ctx)
-        })?;
         if self.value.r#date_range.id.as_deref() == Some("$invalid") {
             return missing_field_error("dateRange");
+        } else {
+            self.with_context(&self.value.r#date_range, |ctx| {
+                state.serialize_entry("dateRange", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#date_range, |ctx| {
-            state.serialize_entry("dateRange", ctx)
-        })?;
         if self.output_json {
             if let Some(some) = self.value.r#restore_date.as_ref() {
                 if let Some(some) = some.value.as_ref().map(Ok) {

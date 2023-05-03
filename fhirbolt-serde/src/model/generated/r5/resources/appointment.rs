@@ -75,10 +75,11 @@ impl serde::ser::Serialize for SerializationContext<&AppointmentParticipant> {
             }
         } else if self.value.r#status.id.as_deref() == Some("$invalid") {
             return missing_field_error("status");
+        } else {
+            self.with_context(&self.value.r#status, |ctx| {
+                state.serialize_entry("status", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#status, |ctx| {
-            state.serialize_entry("status", ctx)
-        })?;
         state.end()
     }
 }
@@ -1154,10 +1155,11 @@ impl serde::ser::Serialize for SerializationContext<&AppointmentRecurrenceTempla
             }
         } else if self.value.r#month_interval.id.as_deref() == Some("$invalid") {
             return missing_field_error("monthInterval");
+        } else {
+            self.with_context(&self.value.r#month_interval, |ctx| {
+                state.serialize_entry("monthInterval", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#month_interval, |ctx| {
-            state.serialize_entry("monthInterval", ctx)
-        })?;
         state.end()
     }
 }
@@ -1511,10 +1513,11 @@ impl serde::ser::Serialize for SerializationContext<&AppointmentRecurrenceTempla
             }
         } else if self.value.r#year_interval.id.as_deref() == Some("$invalid") {
             return missing_field_error("yearInterval");
+        } else {
+            self.with_context(&self.value.r#year_interval, |ctx| {
+                state.serialize_entry("yearInterval", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#year_interval, |ctx| {
-            state.serialize_entry("yearInterval", ctx)
-        })?;
         state.end()
     }
 }
@@ -1775,10 +1778,11 @@ impl serde::ser::Serialize for SerializationContext<&AppointmentRecurrenceTempla
         }
         if self.value.r#recurrence_type.id.as_deref() == Some("$invalid") {
             return missing_field_error("recurrenceType");
+        } else {
+            self.with_context(&self.value.r#recurrence_type, |ctx| {
+                state.serialize_entry("recurrenceType", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#recurrence_type, |ctx| {
-            state.serialize_entry("recurrenceType", ctx)
-        })?;
         if self.output_json {
             if let Some(some) = self.value.r#last_occurrence_date.as_ref() {
                 if let Some(some) = some.value.as_ref().map(Ok) {
@@ -2642,10 +2646,11 @@ impl serde::ser::Serialize for SerializationContext<&Appointment> {
             }
         } else if self.value.r#status.id.as_deref() == Some("$invalid") {
             return missing_field_error("status");
+        } else {
+            self.with_context(&self.value.r#status, |ctx| {
+                state.serialize_entry("status", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#status, |ctx| {
-            state.serialize_entry("status", ctx)
-        })?;
         if let Some(some) = self.value.r#cancellation_reason.as_ref() {
             self.with_context(some, |ctx| state.serialize_entry("cancellationReason", ctx))?;
         }

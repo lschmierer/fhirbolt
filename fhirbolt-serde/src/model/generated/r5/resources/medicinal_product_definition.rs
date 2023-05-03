@@ -33,10 +33,11 @@ impl serde::ser::Serialize for SerializationContext<&MedicinalProductDefinitionC
         }
         if self.value.r#contact.id.as_deref() == Some("$invalid") {
             return missing_field_error("contact");
+        } else {
+            self.with_context(&self.value.r#contact, |ctx| {
+                state.serialize_entry("contact", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#contact, |ctx| {
-            state.serialize_entry("contact", ctx)
-        })?;
         state.end()
     }
 }
@@ -287,12 +288,14 @@ impl serde::ser::Serialize for SerializationContext<&MedicinalProductDefinitionN
             }
         } else if self.value.r#part.id.as_deref() == Some("$invalid") {
             return missing_field_error("part");
+        } else {
+            self.with_context(&self.value.r#part, |ctx| state.serialize_entry("part", ctx))?;
         }
-        self.with_context(&self.value.r#part, |ctx| state.serialize_entry("part", ctx))?;
         if self.value.r#type.id.as_deref() == Some("$invalid") {
             return missing_field_error("type");
+        } else {
+            self.with_context(&self.value.r#type, |ctx| state.serialize_entry("type", ctx))?;
         }
-        self.with_context(&self.value.r#type, |ctx| state.serialize_entry("type", ctx))?;
         state.end()
     }
 }
@@ -556,19 +559,21 @@ impl serde::ser::Serialize for SerializationContext<&MedicinalProductDefinitionN
         }
         if self.value.r#country.id.as_deref() == Some("$invalid") {
             return missing_field_error("country");
+        } else {
+            self.with_context(&self.value.r#country, |ctx| {
+                state.serialize_entry("country", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#country, |ctx| {
-            state.serialize_entry("country", ctx)
-        })?;
         if let Some(some) = self.value.r#jurisdiction.as_ref() {
             self.with_context(some, |ctx| state.serialize_entry("jurisdiction", ctx))?;
         }
         if self.value.r#language.id.as_deref() == Some("$invalid") {
             return missing_field_error("language");
+        } else {
+            self.with_context(&self.value.r#language, |ctx| {
+                state.serialize_entry("language", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#language, |ctx| {
-            state.serialize_entry("language", ctx)
-        })?;
         state.end()
     }
 }
@@ -850,10 +855,11 @@ impl serde::ser::Serialize for SerializationContext<&MedicinalProductDefinitionN
             }
         } else if self.value.r#product_name.id.as_deref() == Some("$invalid") {
             return missing_field_error("productName");
+        } else {
+            self.with_context(&self.value.r#product_name, |ctx| {
+                state.serialize_entry("productName", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#product_name, |ctx| {
-            state.serialize_entry("productName", ctx)
-        })?;
         if let Some(some) = self.value.r#type.as_ref() {
             self.with_context(some, |ctx| state.serialize_entry("type", ctx))?;
         }
@@ -1172,10 +1178,11 @@ impl serde::ser::Serialize for SerializationContext<&MedicinalProductDefinitionC
         }
         if self.value.r#product.id.as_deref() == Some("$invalid") {
             return missing_field_error("product");
+        } else {
+            self.with_context(&self.value.r#product, |ctx| {
+                state.serialize_entry("product", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#product, |ctx| {
-            state.serialize_entry("product", ctx)
-        })?;
         if let Some(some) = self.value.r#type.as_ref() {
             self.with_context(some, |ctx| state.serialize_entry("type", ctx))?;
         }
@@ -1712,8 +1719,9 @@ impl serde::ser::Serialize for SerializationContext<&MedicinalProductDefinitionC
         }
         if self.value.r#type.id.as_deref() == Some("$invalid") {
             return missing_field_error("type");
+        } else {
+            self.with_context(&self.value.r#type, |ctx| state.serialize_entry("type", ctx))?;
         }
-        self.with_context(&self.value.r#type, |ctx| state.serialize_entry("type", ctx))?;
         {
             use fhirbolt_model::r5::resources::MedicinalProductDefinitionCharacteristicValue as _Enum;
             if let Some(some) = self.value.r#value.as_ref() {

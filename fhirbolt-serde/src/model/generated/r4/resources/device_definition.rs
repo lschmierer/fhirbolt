@@ -49,10 +49,11 @@ impl serde::ser::Serialize for SerializationContext<&DeviceDefinitionUdiDeviceId
             }
         } else if self.value.r#device_identifier.id.as_deref() == Some("$invalid") {
             return missing_field_error("deviceIdentifier");
+        } else {
+            self.with_context(&self.value.r#device_identifier, |ctx| {
+                state.serialize_entry("deviceIdentifier", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#device_identifier, |ctx| {
-            state.serialize_entry("deviceIdentifier", ctx)
-        })?;
         if self.output_json {
             if self.value.r#issuer.id.as_deref() == Some("$invalid") {
                 return missing_field_error("issuer");
@@ -72,10 +73,11 @@ impl serde::ser::Serialize for SerializationContext<&DeviceDefinitionUdiDeviceId
             }
         } else if self.value.r#issuer.id.as_deref() == Some("$invalid") {
             return missing_field_error("issuer");
+        } else {
+            self.with_context(&self.value.r#issuer, |ctx| {
+                state.serialize_entry("issuer", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#issuer, |ctx| {
-            state.serialize_entry("issuer", ctx)
-        })?;
         if self.output_json {
             if self.value.r#jurisdiction.id.as_deref() == Some("$invalid") {
                 return missing_field_error("jurisdiction");
@@ -97,10 +99,11 @@ impl serde::ser::Serialize for SerializationContext<&DeviceDefinitionUdiDeviceId
             }
         } else if self.value.r#jurisdiction.id.as_deref() == Some("$invalid") {
             return missing_field_error("jurisdiction");
+        } else {
+            self.with_context(&self.value.r#jurisdiction, |ctx| {
+                state.serialize_entry("jurisdiction", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#jurisdiction, |ctx| {
-            state.serialize_entry("jurisdiction", ctx)
-        })?;
         state.end()
     }
 }
@@ -474,8 +477,9 @@ impl serde::ser::Serialize for SerializationContext<&DeviceDefinitionDeviceName>
             }
         } else if self.value.r#name.id.as_deref() == Some("$invalid") {
             return missing_field_error("name");
+        } else {
+            self.with_context(&self.value.r#name, |ctx| state.serialize_entry("name", ctx))?;
         }
-        self.with_context(&self.value.r#name, |ctx| state.serialize_entry("name", ctx))?;
         if self.output_json {
             if self.value.r#type.id.as_deref() == Some("$invalid") {
                 return missing_field_error("type");
@@ -495,8 +499,9 @@ impl serde::ser::Serialize for SerializationContext<&DeviceDefinitionDeviceName>
             }
         } else if self.value.r#type.id.as_deref() == Some("$invalid") {
             return missing_field_error("type");
+        } else {
+            self.with_context(&self.value.r#type, |ctx| state.serialize_entry("type", ctx))?;
         }
-        self.with_context(&self.value.r#type, |ctx| state.serialize_entry("type", ctx))?;
         state.end()
     }
 }
@@ -803,10 +808,11 @@ impl serde::ser::Serialize for SerializationContext<&DeviceDefinitionSpecializat
             }
         } else if self.value.r#system_type.id.as_deref() == Some("$invalid") {
             return missing_field_error("systemType");
+        } else {
+            self.with_context(&self.value.r#system_type, |ctx| {
+                state.serialize_entry("systemType", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#system_type, |ctx| {
-            state.serialize_entry("systemType", ctx)
-        })?;
         if self.output_json {
             if let Some(some) = self.value.r#version.as_ref() {
                 if let Some(some) = some.value.as_ref().map(Ok) {
@@ -1120,8 +1126,9 @@ impl serde::ser::Serialize for SerializationContext<&DeviceDefinitionCapability>
         }
         if self.value.r#type.id.as_deref() == Some("$invalid") {
             return missing_field_error("type");
+        } else {
+            self.with_context(&self.value.r#type, |ctx| state.serialize_entry("type", ctx))?;
         }
-        self.with_context(&self.value.r#type, |ctx| state.serialize_entry("type", ctx))?;
         if !self.value.r#description.is_empty() {
             self.with_context(&self.value.r#description, |ctx| {
                 state.serialize_entry("description", ctx)
@@ -1371,8 +1378,9 @@ impl serde::ser::Serialize for SerializationContext<&DeviceDefinitionProperty> {
         }
         if self.value.r#type.id.as_deref() == Some("$invalid") {
             return missing_field_error("type");
+        } else {
+            self.with_context(&self.value.r#type, |ctx| state.serialize_entry("type", ctx))?;
         }
-        self.with_context(&self.value.r#type, |ctx| state.serialize_entry("type", ctx))?;
         if !self.value.r#value_quantity.is_empty() {
             self.with_context(&self.value.r#value_quantity, |ctx| {
                 state.serialize_entry("valueQuantity", ctx)
@@ -1650,10 +1658,11 @@ impl serde::ser::Serialize for SerializationContext<&DeviceDefinitionMaterial> {
         }
         if self.value.r#substance.id.as_deref() == Some("$invalid") {
             return missing_field_error("substance");
+        } else {
+            self.with_context(&self.value.r#substance, |ctx| {
+                state.serialize_entry("substance", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#substance, |ctx| {
-            state.serialize_entry("substance", ctx)
-        })?;
         if self.output_json {
             if let Some(some) = self.value.r#alternate.as_ref() {
                 if let Some(some) = some.value.as_ref().map(Ok) {

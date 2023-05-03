@@ -68,10 +68,11 @@ impl serde::ser::Serialize for SerializationContext<&SubscriptionFilterBy> {
             }
         } else if self.value.r#filter_parameter.id.as_deref() == Some("$invalid") {
             return missing_field_error("filterParameter");
+        } else {
+            self.with_context(&self.value.r#filter_parameter, |ctx| {
+                state.serialize_entry("filterParameter", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#filter_parameter, |ctx| {
-            state.serialize_entry("filterParameter", ctx)
-        })?;
         if self.output_json {
             if let Some(some) = self.value.r#comparator.as_ref() {
                 if let Some(some) = some.value.as_ref().map(Ok) {
@@ -129,10 +130,11 @@ impl serde::ser::Serialize for SerializationContext<&SubscriptionFilterBy> {
             }
         } else if self.value.r#value.id.as_deref() == Some("$invalid") {
             return missing_field_error("value");
+        } else {
+            self.with_context(&self.value.r#value, |ctx| {
+                state.serialize_entry("value", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#value, |ctx| {
-            state.serialize_entry("value", ctx)
-        })?;
         state.end()
     }
 }
@@ -574,8 +576,9 @@ impl serde::ser::Serialize for SerializationContext<&SubscriptionParameter> {
             }
         } else if self.value.r#name.id.as_deref() == Some("$invalid") {
             return missing_field_error("name");
+        } else {
+            self.with_context(&self.value.r#name, |ctx| state.serialize_entry("name", ctx))?;
         }
-        self.with_context(&self.value.r#name, |ctx| state.serialize_entry("name", ctx))?;
         if self.output_json {
             if self.value.r#value.id.as_deref() == Some("$invalid") {
                 return missing_field_error("value");
@@ -595,10 +598,11 @@ impl serde::ser::Serialize for SerializationContext<&SubscriptionParameter> {
             }
         } else if self.value.r#value.id.as_deref() == Some("$invalid") {
             return missing_field_error("value");
+        } else {
+            self.with_context(&self.value.r#value, |ctx| {
+                state.serialize_entry("value", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#value, |ctx| {
-            state.serialize_entry("value", ctx)
-        })?;
         state.end()
     }
 }
@@ -978,10 +982,11 @@ impl serde::ser::Serialize for SerializationContext<&Subscription> {
             }
         } else if self.value.r#status.id.as_deref() == Some("$invalid") {
             return missing_field_error("status");
+        } else {
+            self.with_context(&self.value.r#status, |ctx| {
+                state.serialize_entry("status", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#status, |ctx| {
-            state.serialize_entry("status", ctx)
-        })?;
         if self.output_json {
             if self.value.r#topic.id.as_deref() == Some("$invalid") {
                 return missing_field_error("topic");
@@ -1001,10 +1006,11 @@ impl serde::ser::Serialize for SerializationContext<&Subscription> {
             }
         } else if self.value.r#topic.id.as_deref() == Some("$invalid") {
             return missing_field_error("topic");
+        } else {
+            self.with_context(&self.value.r#topic, |ctx| {
+                state.serialize_entry("topic", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#topic, |ctx| {
-            state.serialize_entry("topic", ctx)
-        })?;
         if !self.value.r#contact.is_empty() {
             self.with_context(&self.value.r#contact, |ctx| {
                 state.serialize_entry("contact", ctx)
@@ -1058,10 +1064,11 @@ impl serde::ser::Serialize for SerializationContext<&Subscription> {
         }
         if self.value.r#channel_type.id.as_deref() == Some("$invalid") {
             return missing_field_error("channelType");
+        } else {
+            self.with_context(&self.value.r#channel_type, |ctx| {
+                state.serialize_entry("channelType", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#channel_type, |ctx| {
-            state.serialize_entry("channelType", ctx)
-        })?;
         if self.output_json {
             if let Some(some) = self.value.r#endpoint.as_ref() {
                 if let Some(some) = some.value.as_ref().map(Ok) {

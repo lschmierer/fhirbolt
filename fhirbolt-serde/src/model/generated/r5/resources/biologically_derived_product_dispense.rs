@@ -33,10 +33,11 @@ impl serde::ser::Serialize for SerializationContext<&BiologicallyDerivedProductD
         }
         if self.value.r#actor.id.as_deref() == Some("$invalid") {
             return missing_field_error("actor");
+        } else {
+            self.with_context(&self.value.r#actor, |ctx| {
+                state.serialize_entry("actor", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#actor, |ctx| {
-            state.serialize_entry("actor", ctx)
-        })?;
         state.end()
     }
 }
@@ -363,10 +364,11 @@ impl serde::ser::Serialize for SerializationContext<&BiologicallyDerivedProductD
             }
         } else if self.value.r#status.id.as_deref() == Some("$invalid") {
             return missing_field_error("status");
+        } else {
+            self.with_context(&self.value.r#status, |ctx| {
+                state.serialize_entry("status", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#status, |ctx| {
-            state.serialize_entry("status", ctx)
-        })?;
         if let Some(some) = self.value.r#origin_relationship_type.as_ref() {
             self.with_context(some, |ctx| {
                 state.serialize_entry("originRelationshipType", ctx)
@@ -374,16 +376,18 @@ impl serde::ser::Serialize for SerializationContext<&BiologicallyDerivedProductD
         }
         if self.value.r#product.id.as_deref() == Some("$invalid") {
             return missing_field_error("product");
+        } else {
+            self.with_context(&self.value.r#product, |ctx| {
+                state.serialize_entry("product", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#product, |ctx| {
-            state.serialize_entry("product", ctx)
-        })?;
         if self.value.r#patient.id.as_deref() == Some("$invalid") {
             return missing_field_error("patient");
+        } else {
+            self.with_context(&self.value.r#patient, |ctx| {
+                state.serialize_entry("patient", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#patient, |ctx| {
-            state.serialize_entry("patient", ctx)
-        })?;
         if let Some(some) = self.value.r#match_status.as_ref() {
             self.with_context(some, |ctx| state.serialize_entry("matchStatus", ctx))?;
         }

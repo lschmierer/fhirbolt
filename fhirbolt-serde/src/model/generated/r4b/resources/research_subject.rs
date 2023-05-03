@@ -105,25 +105,28 @@ impl serde::ser::Serialize for SerializationContext<&ResearchSubject> {
             }
         } else if self.value.r#status.id.as_deref() == Some("$invalid") {
             return missing_field_error("status");
+        } else {
+            self.with_context(&self.value.r#status, |ctx| {
+                state.serialize_entry("status", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#status, |ctx| {
-            state.serialize_entry("status", ctx)
-        })?;
         if let Some(some) = self.value.r#period.as_ref() {
             self.with_context(some, |ctx| state.serialize_entry("period", ctx))?;
         }
         if self.value.r#study.id.as_deref() == Some("$invalid") {
             return missing_field_error("study");
+        } else {
+            self.with_context(&self.value.r#study, |ctx| {
+                state.serialize_entry("study", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#study, |ctx| {
-            state.serialize_entry("study", ctx)
-        })?;
         if self.value.r#individual.id.as_deref() == Some("$invalid") {
             return missing_field_error("individual");
+        } else {
+            self.with_context(&self.value.r#individual, |ctx| {
+                state.serialize_entry("individual", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#individual, |ctx| {
-            state.serialize_entry("individual", ctx)
-        })?;
         if self.output_json {
             if let Some(some) = self.value.r#assigned_arm.as_ref() {
                 if let Some(some) = some.value.as_ref().map(Ok) {

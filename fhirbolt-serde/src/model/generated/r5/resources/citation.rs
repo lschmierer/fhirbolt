@@ -50,8 +50,9 @@ impl serde::ser::Serialize for SerializationContext<&CitationSummary> {
             }
         } else if self.value.r#text.id.as_deref() == Some("$invalid") {
             return missing_field_error("text");
+        } else {
+            self.with_context(&self.value.r#text, |ctx| state.serialize_entry("text", ctx))?;
         }
-        self.with_context(&self.value.r#text, |ctx| state.serialize_entry("text", ctx))?;
         state.end()
     }
 }
@@ -539,10 +540,11 @@ impl serde::ser::Serialize for SerializationContext<&CitationStatusDate> {
         }
         if self.value.r#activity.id.as_deref() == Some("$invalid") {
             return missing_field_error("activity");
+        } else {
+            self.with_context(&self.value.r#activity, |ctx| {
+                state.serialize_entry("activity", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#activity, |ctx| {
-            state.serialize_entry("activity", ctx)
-        })?;
         if self.output_json {
             if let Some(some) = self.value.r#actual.as_ref() {
                 if let Some(some) = some.value.as_ref().map(Ok) {
@@ -564,10 +566,11 @@ impl serde::ser::Serialize for SerializationContext<&CitationStatusDate> {
         }
         if self.value.r#period.id.as_deref() == Some("$invalid") {
             return missing_field_error("period");
+        } else {
+            self.with_context(&self.value.r#period, |ctx| {
+                state.serialize_entry("period", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#period, |ctx| {
-            state.serialize_entry("period", ctx)
-        })?;
         state.end()
     }
 }
@@ -861,10 +864,11 @@ impl serde::ser::Serialize for SerializationContext<&CitationCitedArtifactVersio
             }
         } else if self.value.r#value.id.as_deref() == Some("$invalid") {
             return missing_field_error("value");
+        } else {
+            self.with_context(&self.value.r#value, |ctx| {
+                state.serialize_entry("value", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#value, |ctx| {
-            state.serialize_entry("value", ctx)
-        })?;
         if let Some(some) = self.value.r#base_citation.as_ref() {
             self.with_context(some, |ctx| state.serialize_entry("baseCitation", ctx))?;
         }
@@ -1133,10 +1137,11 @@ impl serde::ser::Serialize for SerializationContext<&CitationCitedArtifactStatus
         }
         if self.value.r#activity.id.as_deref() == Some("$invalid") {
             return missing_field_error("activity");
+        } else {
+            self.with_context(&self.value.r#activity, |ctx| {
+                state.serialize_entry("activity", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#activity, |ctx| {
-            state.serialize_entry("activity", ctx)
-        })?;
         if self.output_json {
             if let Some(some) = self.value.r#actual.as_ref() {
                 if let Some(some) = some.value.as_ref().map(Ok) {
@@ -1158,10 +1163,11 @@ impl serde::ser::Serialize for SerializationContext<&CitationCitedArtifactStatus
         }
         if self.value.r#period.id.as_deref() == Some("$invalid") {
             return missing_field_error("period");
+        } else {
+            self.with_context(&self.value.r#period, |ctx| {
+                state.serialize_entry("period", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#period, |ctx| {
-            state.serialize_entry("period", ctx)
-        })?;
         state.end()
     }
 }
@@ -1471,8 +1477,9 @@ impl serde::ser::Serialize for SerializationContext<&CitationCitedArtifactTitle>
             }
         } else if self.value.r#text.id.as_deref() == Some("$invalid") {
             return missing_field_error("text");
+        } else {
+            self.with_context(&self.value.r#text, |ctx| state.serialize_entry("text", ctx))?;
         }
-        self.with_context(&self.value.r#text, |ctx| state.serialize_entry("text", ctx))?;
         state.end()
     }
 }
@@ -1780,8 +1787,9 @@ impl serde::ser::Serialize for SerializationContext<&CitationCitedArtifactAbstra
             }
         } else if self.value.r#text.id.as_deref() == Some("$invalid") {
             return missing_field_error("text");
+        } else {
+            self.with_context(&self.value.r#text, |ctx| state.serialize_entry("text", ctx))?;
         }
-        self.with_context(&self.value.r#text, |ctx| state.serialize_entry("text", ctx))?;
         if self.output_json {
             if let Some(some) = self.value.r#copyright.as_ref() {
                 if let Some(some) = some.value.as_ref().map(Ok) {
@@ -2433,8 +2441,9 @@ impl serde::ser::Serialize for SerializationContext<&CitationCitedArtifactRelate
             }
         } else if self.value.r#type.id.as_deref() == Some("$invalid") {
             return missing_field_error("type");
+        } else {
+            self.with_context(&self.value.r#type, |ctx| state.serialize_entry("type", ctx))?;
         }
-        self.with_context(&self.value.r#type, |ctx| state.serialize_entry("type", ctx))?;
         if !self.value.r#classifier.is_empty() {
             self.with_context(&self.value.r#classifier, |ctx| {
                 state.serialize_entry("classifier", ctx)
@@ -4987,8 +4996,9 @@ impl serde::ser::Serialize
         }
         if self.value.r#type.id.as_deref() == Some("$invalid") {
             return missing_field_error("type");
+        } else {
+            self.with_context(&self.value.r#type, |ctx| state.serialize_entry("type", ctx))?;
         }
-        self.with_context(&self.value.r#type, |ctx| state.serialize_entry("type", ctx))?;
         if self.output_json {
             if let Some(some) = self.value.r#time.as_ref() {
                 if let Some(some) = some.value.as_ref().map(Ok) {
@@ -5288,10 +5298,11 @@ impl serde::ser::Serialize for SerializationContext<&CitationCitedArtifactContri
         }
         if self.value.r#contributor.id.as_deref() == Some("$invalid") {
             return missing_field_error("contributor");
+        } else {
+            self.with_context(&self.value.r#contributor, |ctx| {
+                state.serialize_entry("contributor", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#contributor, |ctx| {
-            state.serialize_entry("contributor", ctx)
-        })?;
         if self.output_json {
             if let Some(some) = self.value.r#forename_initials.as_ref() {
                 if let Some(some) = some.value.as_ref().map(Ok) {
@@ -5853,10 +5864,11 @@ impl serde::ser::Serialize for SerializationContext<&CitationCitedArtifactContri
             }
         } else if self.value.r#value.id.as_deref() == Some("$invalid") {
             return missing_field_error("value");
+        } else {
+            self.with_context(&self.value.r#value, |ctx| {
+                state.serialize_entry("value", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#value, |ctx| {
-            state.serialize_entry("value", ctx)
-        })?;
         state.end()
     }
 }
@@ -7281,10 +7293,11 @@ impl serde::ser::Serialize for SerializationContext<&Citation> {
             }
         } else if self.value.r#status.id.as_deref() == Some("$invalid") {
             return missing_field_error("status");
+        } else {
+            self.with_context(&self.value.r#status, |ctx| {
+                state.serialize_entry("status", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#status, |ctx| {
-            state.serialize_entry("status", ctx)
-        })?;
         if self.output_json {
             if let Some(some) = self.value.r#experimental.as_ref() {
                 if let Some(some) = some.value.as_ref().map(Ok) {

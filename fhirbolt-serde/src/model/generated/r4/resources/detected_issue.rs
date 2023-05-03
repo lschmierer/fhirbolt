@@ -275,10 +275,11 @@ impl serde::ser::Serialize for SerializationContext<&DetectedIssueMitigation> {
         }
         if self.value.r#action.id.as_deref() == Some("$invalid") {
             return missing_field_error("action");
+        } else {
+            self.with_context(&self.value.r#action, |ctx| {
+                state.serialize_entry("action", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#action, |ctx| {
-            state.serialize_entry("action", ctx)
-        })?;
         if self.output_json {
             if let Some(some) = self.value.r#date.as_ref() {
                 if let Some(some) = some.value.as_ref().map(Ok) {
@@ -651,10 +652,11 @@ impl serde::ser::Serialize for SerializationContext<&DetectedIssue> {
             }
         } else if self.value.r#status.id.as_deref() == Some("$invalid") {
             return missing_field_error("status");
+        } else {
+            self.with_context(&self.value.r#status, |ctx| {
+                state.serialize_entry("status", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#status, |ctx| {
-            state.serialize_entry("status", ctx)
-        })?;
         if let Some(some) = self.value.r#code.as_ref() {
             self.with_context(some, |ctx| state.serialize_entry("code", ctx))?;
         }

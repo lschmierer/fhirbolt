@@ -30,10 +30,11 @@ impl serde::ser::Serialize for SerializationContext<&RelatedPersonCommunication>
         }
         if self.value.r#language.id.as_deref() == Some("$invalid") {
             return missing_field_error("language");
+        } else {
+            self.with_context(&self.value.r#language, |ctx| {
+                state.serialize_entry("language", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#language, |ctx| {
-            state.serialize_entry("language", ctx)
-        })?;
         if self.output_json {
             if let Some(some) = self.value.r#preferred.as_ref() {
                 if let Some(some) = some.value.as_ref().map(Ok) {
@@ -394,10 +395,11 @@ impl serde::ser::Serialize for SerializationContext<&RelatedPerson> {
         }
         if self.value.r#patient.id.as_deref() == Some("$invalid") {
             return missing_field_error("patient");
+        } else {
+            self.with_context(&self.value.r#patient, |ctx| {
+                state.serialize_entry("patient", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#patient, |ctx| {
-            state.serialize_entry("patient", ctx)
-        })?;
         if !self.value.r#relationship.is_empty() {
             self.with_context(&self.value.r#relationship, |ctx| {
                 state.serialize_entry("relationship", ctx)

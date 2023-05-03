@@ -33,10 +33,11 @@ impl serde::ser::Serialize for SerializationContext<&DeviceDispensePerformer> {
         }
         if self.value.r#actor.id.as_deref() == Some("$invalid") {
             return missing_field_error("actor");
+        } else {
+            self.with_context(&self.value.r#actor, |ctx| {
+                state.serialize_entry("actor", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#actor, |ctx| {
-            state.serialize_entry("actor", ctx)
-        })?;
         state.end()
     }
 }
@@ -349,10 +350,11 @@ impl serde::ser::Serialize for SerializationContext<&DeviceDispense> {
             }
         } else if self.value.r#status.id.as_deref() == Some("$invalid") {
             return missing_field_error("status");
+        } else {
+            self.with_context(&self.value.r#status, |ctx| {
+                state.serialize_entry("status", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#status, |ctx| {
-            state.serialize_entry("status", ctx)
-        })?;
         if let Some(some) = self.value.r#status_reason.as_ref() {
             self.with_context(some, |ctx| state.serialize_entry("statusReason", ctx))?;
         }
@@ -363,16 +365,18 @@ impl serde::ser::Serialize for SerializationContext<&DeviceDispense> {
         }
         if self.value.r#device.id.as_deref() == Some("$invalid") {
             return missing_field_error("device");
+        } else {
+            self.with_context(&self.value.r#device, |ctx| {
+                state.serialize_entry("device", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#device, |ctx| {
-            state.serialize_entry("device", ctx)
-        })?;
         if self.value.r#subject.id.as_deref() == Some("$invalid") {
             return missing_field_error("subject");
+        } else {
+            self.with_context(&self.value.r#subject, |ctx| {
+                state.serialize_entry("subject", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#subject, |ctx| {
-            state.serialize_entry("subject", ctx)
-        })?;
         if let Some(some) = self.value.r#receiver.as_ref() {
             self.with_context(some, |ctx| state.serialize_entry("receiver", ctx))?;
         }

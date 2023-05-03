@@ -30,8 +30,9 @@ impl serde::ser::Serialize for SerializationContext<&MedicationStatementAdherenc
         }
         if self.value.r#code.id.as_deref() == Some("$invalid") {
             return missing_field_error("code");
+        } else {
+            self.with_context(&self.value.r#code, |ctx| state.serialize_entry("code", ctx))?;
         }
-        self.with_context(&self.value.r#code, |ctx| state.serialize_entry("code", ctx))?;
         if let Some(some) = self.value.r#reason.as_ref() {
             self.with_context(some, |ctx| state.serialize_entry("reason", ctx))?;
         }
@@ -347,10 +348,11 @@ impl serde::ser::Serialize for SerializationContext<&MedicationStatement> {
             }
         } else if self.value.r#status.id.as_deref() == Some("$invalid") {
             return missing_field_error("status");
+        } else {
+            self.with_context(&self.value.r#status, |ctx| {
+                state.serialize_entry("status", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#status, |ctx| {
-            state.serialize_entry("status", ctx)
-        })?;
         if !self.value.r#category.is_empty() {
             self.with_context(&self.value.r#category, |ctx| {
                 state.serialize_entry("category", ctx)
@@ -358,16 +360,18 @@ impl serde::ser::Serialize for SerializationContext<&MedicationStatement> {
         }
         if self.value.r#medication.id.as_deref() == Some("$invalid") {
             return missing_field_error("medication");
+        } else {
+            self.with_context(&self.value.r#medication, |ctx| {
+                state.serialize_entry("medication", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#medication, |ctx| {
-            state.serialize_entry("medication", ctx)
-        })?;
         if self.value.r#subject.id.as_deref() == Some("$invalid") {
             return missing_field_error("subject");
+        } else {
+            self.with_context(&self.value.r#subject, |ctx| {
+                state.serialize_entry("subject", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#subject, |ctx| {
-            state.serialize_entry("subject", ctx)
-        })?;
         if let Some(some) = self.value.r#encounter.as_ref() {
             self.with_context(some, |ctx| state.serialize_entry("encounter", ctx))?;
         }

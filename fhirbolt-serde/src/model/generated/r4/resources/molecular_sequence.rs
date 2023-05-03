@@ -2253,8 +2253,9 @@ impl serde::ser::Serialize for SerializationContext<&MolecularSequenceQuality> {
             }
         } else if self.value.r#type.id.as_deref() == Some("$invalid") {
             return missing_field_error("type");
+        } else {
+            self.with_context(&self.value.r#type, |ctx| state.serialize_entry("type", ctx))?;
         }
-        self.with_context(&self.value.r#type, |ctx| state.serialize_entry("type", ctx))?;
         if let Some(some) = self.value.r#standard_sequence.as_ref() {
             self.with_context(some, |ctx| state.serialize_entry("standardSequence", ctx))?;
         }
@@ -3215,8 +3216,9 @@ impl serde::ser::Serialize for SerializationContext<&MolecularSequenceRepository
             }
         } else if self.value.r#type.id.as_deref() == Some("$invalid") {
             return missing_field_error("type");
+        } else {
+            self.with_context(&self.value.r#type, |ctx| state.serialize_entry("type", ctx))?;
         }
-        self.with_context(&self.value.r#type, |ctx| state.serialize_entry("type", ctx))?;
         if self.output_json {
             if let Some(some) = self.value.r#url.as_ref() {
                 if let Some(some) = some.value.as_ref().map(Ok) {
@@ -4880,10 +4882,11 @@ impl serde::ser::Serialize for SerializationContext<&MolecularSequence> {
             }
         } else if self.value.r#coordinate_system.id.as_deref() == Some("$invalid") {
             return missing_field_error("coordinateSystem");
+        } else {
+            self.with_context(&self.value.r#coordinate_system, |ctx| {
+                state.serialize_entry("coordinateSystem", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#coordinate_system, |ctx| {
-            state.serialize_entry("coordinateSystem", ctx)
-        })?;
         if let Some(some) = self.value.r#patient.as_ref() {
             self.with_context(some, |ctx| state.serialize_entry("patient", ctx))?;
         }

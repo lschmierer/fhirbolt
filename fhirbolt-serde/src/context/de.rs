@@ -37,8 +37,7 @@ pub struct DeserializationContext<V> {
     current_element_stack: Vec<CurrentElement>,
 }
 
-#[derive(Clone, Copy, PartialEq)]
-#[derive(Default)]
+#[derive(Clone, Copy, PartialEq, Default)]
 pub enum CurrentElement {
     Id,
     // ExampleScenario.instance has a "resourceType" field which requires special handling
@@ -54,8 +53,6 @@ pub enum CurrentElement {
     #[default]
     Other,
 }
-
-
 
 impl<V> DeserializationContext<V> {
     fn new(config: DeserializationConfig, from_json: bool) -> Self {

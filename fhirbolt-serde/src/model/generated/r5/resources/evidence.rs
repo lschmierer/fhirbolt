@@ -52,10 +52,11 @@ impl serde::ser::Serialize for SerializationContext<&EvidenceVariableDefinition>
         }
         if self.value.r#variable_role.id.as_deref() == Some("$invalid") {
             return missing_field_error("variableRole");
+        } else {
+            self.with_context(&self.value.r#variable_role, |ctx| {
+                state.serialize_entry("variableRole", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#variable_role, |ctx| {
-            state.serialize_entry("variableRole", ctx)
-        })?;
         if let Some(some) = self.value.r#observed.as_ref() {
             self.with_context(some, |ctx| state.serialize_entry("observed", ctx))?;
         }
@@ -1322,10 +1323,11 @@ impl serde::ser::Serialize for SerializationContext<&EvidenceStatisticModelChara
         }
         if self.value.r#variable_definition.id.as_deref() == Some("$invalid") {
             return missing_field_error("variableDefinition");
+        } else {
+            self.with_context(&self.value.r#variable_definition, |ctx| {
+                state.serialize_entry("variableDefinition", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#variable_definition, |ctx| {
-            state.serialize_entry("variableDefinition", ctx)
-        })?;
         if self.output_json {
             if let Some(some) = self.value.r#handling.as_ref() {
                 if let Some(some) = some.value.as_ref().map(Ok) {
@@ -1710,8 +1712,9 @@ impl serde::ser::Serialize for SerializationContext<&EvidenceStatisticModelChara
         }
         if self.value.r#code.id.as_deref() == Some("$invalid") {
             return missing_field_error("code");
+        } else {
+            self.with_context(&self.value.r#code, |ctx| state.serialize_entry("code", ctx))?;
         }
-        self.with_context(&self.value.r#code, |ctx| state.serialize_entry("code", ctx))?;
         if let Some(some) = self.value.r#value.as_ref() {
             self.with_context(some, |ctx| state.serialize_entry("value", ctx))?;
         }
@@ -3173,10 +3176,11 @@ impl serde::ser::Serialize for SerializationContext<&Evidence> {
             }
         } else if self.value.r#status.id.as_deref() == Some("$invalid") {
             return missing_field_error("status");
+        } else {
+            self.with_context(&self.value.r#status, |ctx| {
+                state.serialize_entry("status", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#status, |ctx| {
-            state.serialize_entry("status", ctx)
-        })?;
         if self.output_json {
             if let Some(some) = self.value.r#experimental.as_ref() {
                 if let Some(some) = some.value.as_ref().map(Ok) {

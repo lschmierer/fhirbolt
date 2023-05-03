@@ -30,8 +30,9 @@ impl serde::ser::Serialize for SerializationContext<&CompositionAttester> {
         }
         if self.value.r#mode.id.as_deref() == Some("$invalid") {
             return missing_field_error("mode");
+        } else {
+            self.with_context(&self.value.r#mode, |ctx| state.serialize_entry("mode", ctx))?;
         }
-        self.with_context(&self.value.r#mode, |ctx| state.serialize_entry("mode", ctx))?;
         if self.output_json {
             if let Some(some) = self.value.r#time.as_ref() {
                 if let Some(some) = some.value.as_ref().map(Ok) {
@@ -1095,14 +1096,16 @@ impl serde::ser::Serialize for SerializationContext<&Composition> {
             }
         } else if self.value.r#status.id.as_deref() == Some("$invalid") {
             return missing_field_error("status");
+        } else {
+            self.with_context(&self.value.r#status, |ctx| {
+                state.serialize_entry("status", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#status, |ctx| {
-            state.serialize_entry("status", ctx)
-        })?;
         if self.value.r#type.id.as_deref() == Some("$invalid") {
             return missing_field_error("type");
+        } else {
+            self.with_context(&self.value.r#type, |ctx| state.serialize_entry("type", ctx))?;
         }
-        self.with_context(&self.value.r#type, |ctx| state.serialize_entry("type", ctx))?;
         if !self.value.r#category.is_empty() {
             self.with_context(&self.value.r#category, |ctx| {
                 state.serialize_entry("category", ctx)
@@ -1135,8 +1138,9 @@ impl serde::ser::Serialize for SerializationContext<&Composition> {
             }
         } else if self.value.r#date.id.as_deref() == Some("$invalid") {
             return missing_field_error("date");
+        } else {
+            self.with_context(&self.value.r#date, |ctx| state.serialize_entry("date", ctx))?;
         }
-        self.with_context(&self.value.r#date, |ctx| state.serialize_entry("date", ctx))?;
         if !self.value.r#use_context.is_empty() {
             self.with_context(&self.value.r#use_context, |ctx| {
                 state.serialize_entry("useContext", ctx)
@@ -1185,10 +1189,11 @@ impl serde::ser::Serialize for SerializationContext<&Composition> {
             }
         } else if self.value.r#title.id.as_deref() == Some("$invalid") {
             return missing_field_error("title");
+        } else {
+            self.with_context(&self.value.r#title, |ctx| {
+                state.serialize_entry("title", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#title, |ctx| {
-            state.serialize_entry("title", ctx)
-        })?;
         if !self.value.r#note.is_empty() {
             self.with_context(&self.value.r#note, |ctx| state.serialize_entry("note", ctx))?;
         }

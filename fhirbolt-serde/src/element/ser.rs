@@ -755,9 +755,7 @@ impl<const R: FhirRelease> ser::SerializeStruct for SerializeNumber<R> {
     {
         if key == NUMBER_TOKEN {
             self.0 = Some(Value::Primitive(Primitive::Decimal(
-                value
-                    .serialize(NumberValueEmitter)
-                    .map_err(Error::custom)?,
+                value.serialize(NumberValueEmitter).map_err(Error::custom)?,
             )));
             Ok(())
         } else {

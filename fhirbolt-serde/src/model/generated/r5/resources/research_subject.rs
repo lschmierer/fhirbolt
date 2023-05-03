@@ -493,10 +493,11 @@ impl serde::ser::Serialize for SerializationContext<&ResearchSubject> {
             }
         } else if self.value.r#status.id.as_deref() == Some("$invalid") {
             return missing_field_error("status");
+        } else {
+            self.with_context(&self.value.r#status, |ctx| {
+                state.serialize_entry("status", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#status, |ctx| {
-            state.serialize_entry("status", ctx)
-        })?;
         if !self.value.r#progress.is_empty() {
             self.with_context(&self.value.r#progress, |ctx| {
                 state.serialize_entry("progress", ctx)
@@ -507,16 +508,18 @@ impl serde::ser::Serialize for SerializationContext<&ResearchSubject> {
         }
         if self.value.r#study.id.as_deref() == Some("$invalid") {
             return missing_field_error("study");
+        } else {
+            self.with_context(&self.value.r#study, |ctx| {
+                state.serialize_entry("study", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#study, |ctx| {
-            state.serialize_entry("study", ctx)
-        })?;
         if self.value.r#subject.id.as_deref() == Some("$invalid") {
             return missing_field_error("subject");
+        } else {
+            self.with_context(&self.value.r#subject, |ctx| {
+                state.serialize_entry("subject", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#subject, |ctx| {
-            state.serialize_entry("subject", ctx)
-        })?;
         if self.output_json {
             if let Some(some) = self.value.r#assigned_comparison_group.as_ref() {
                 if let Some(some) = some.value.as_ref().map(Ok) {

@@ -219,10 +219,11 @@ impl serde::ser::Serialize for SerializationContext<&ResearchDefinition> {
             }
         } else if self.value.r#status.id.as_deref() == Some("$invalid") {
             return missing_field_error("status");
+        } else {
+            self.with_context(&self.value.r#status, |ctx| {
+                state.serialize_entry("status", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#status, |ctx| {
-            state.serialize_entry("status", ctx)
-        })?;
         if self.output_json {
             if let Some(some) = self.value.r#experimental.as_ref() {
                 if let Some(some) = some.value.as_ref().map(Ok) {
@@ -550,10 +551,11 @@ impl serde::ser::Serialize for SerializationContext<&ResearchDefinition> {
         }
         if self.value.r#population.id.as_deref() == Some("$invalid") {
             return missing_field_error("population");
+        } else {
+            self.with_context(&self.value.r#population, |ctx| {
+                state.serialize_entry("population", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#population, |ctx| {
-            state.serialize_entry("population", ctx)
-        })?;
         if let Some(some) = self.value.r#exposure.as_ref() {
             self.with_context(some, |ctx| state.serialize_entry("exposure", ctx))?;
         }

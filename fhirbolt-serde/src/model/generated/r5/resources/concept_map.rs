@@ -47,8 +47,9 @@ impl serde::ser::Serialize for SerializationContext<&ConceptMapProperty> {
             }
         } else if self.value.r#code.id.as_deref() == Some("$invalid") {
             return missing_field_error("code");
+        } else {
+            self.with_context(&self.value.r#code, |ctx| state.serialize_entry("code", ctx))?;
         }
-        self.with_context(&self.value.r#code, |ctx| state.serialize_entry("code", ctx))?;
         if self.output_json {
             if let Some(some) = self.value.r#uri.as_ref() {
                 if let Some(some) = some.value.as_ref().map(Ok) {
@@ -106,8 +107,9 @@ impl serde::ser::Serialize for SerializationContext<&ConceptMapProperty> {
             }
         } else if self.value.r#type.id.as_deref() == Some("$invalid") {
             return missing_field_error("type");
+        } else {
+            self.with_context(&self.value.r#type, |ctx| state.serialize_entry("type", ctx))?;
         }
-        self.with_context(&self.value.r#type, |ctx| state.serialize_entry("type", ctx))?;
         if self.output_json {
             if let Some(some) = self.value.r#system.as_ref() {
                 if let Some(some) = some.value.as_ref().map(Ok) {
@@ -553,8 +555,9 @@ impl serde::ser::Serialize for SerializationContext<&ConceptMapAdditionalAttribu
             }
         } else if self.value.r#code.id.as_deref() == Some("$invalid") {
             return missing_field_error("code");
+        } else {
+            self.with_context(&self.value.r#code, |ctx| state.serialize_entry("code", ctx))?;
         }
-        self.with_context(&self.value.r#code, |ctx| state.serialize_entry("code", ctx))?;
         if self.output_json {
             if let Some(some) = self.value.r#uri.as_ref() {
                 if let Some(some) = some.value.as_ref().map(Ok) {
@@ -612,8 +615,9 @@ impl serde::ser::Serialize for SerializationContext<&ConceptMapAdditionalAttribu
             }
         } else if self.value.r#type.id.as_deref() == Some("$invalid") {
             return missing_field_error("type");
+        } else {
+            self.with_context(&self.value.r#type, |ctx| state.serialize_entry("type", ctx))?;
         }
-        self.with_context(&self.value.r#type, |ctx| state.serialize_entry("type", ctx))?;
         state.end()
     }
 }
@@ -1009,8 +1013,9 @@ impl serde::ser::Serialize for SerializationContext<&ConceptMapGroupElementTarge
             }
         } else if self.value.r#code.id.as_deref() == Some("$invalid") {
             return missing_field_error("code");
+        } else {
+            self.with_context(&self.value.r#code, |ctx| state.serialize_entry("code", ctx))?;
         }
-        self.with_context(&self.value.r#code, |ctx| state.serialize_entry("code", ctx))?;
         {
             use fhirbolt_model::r5::resources::ConceptMapGroupElementTargetPropertyValue as _Enum;
             match self.value.r#value {
@@ -1777,10 +1782,11 @@ impl serde::ser::Serialize for SerializationContext<&ConceptMapGroupElementTarge
             }
         } else if self.value.r#attribute.id.as_deref() == Some("$invalid") {
             return missing_field_error("attribute");
+        } else {
+            self.with_context(&self.value.r#attribute, |ctx| {
+                state.serialize_entry("attribute", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#attribute, |ctx| {
-            state.serialize_entry("attribute", ctx)
-        })?;
         {
             use fhirbolt_model::r5::resources::ConceptMapGroupElementTargetDependsOnValue as _Enum;
             if let Some(some) = self.value.r#value.as_ref() {
@@ -2452,10 +2458,11 @@ impl serde::ser::Serialize for SerializationContext<&ConceptMapGroupElementTarge
             }
         } else if self.value.r#relationship.id.as_deref() == Some("$invalid") {
             return missing_field_error("relationship");
+        } else {
+            self.with_context(&self.value.r#relationship, |ctx| {
+                state.serialize_entry("relationship", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#relationship, |ctx| {
-            state.serialize_entry("relationship", ctx)
-        })?;
         if self.output_json {
             if let Some(some) = self.value.r#comment.as_ref() {
                 if let Some(some) = some.value.as_ref().map(Ok) {
@@ -3454,8 +3461,9 @@ impl serde::ser::Serialize for SerializationContext<&ConceptMapGroupUnmapped> {
             }
         } else if self.value.r#mode.id.as_deref() == Some("$invalid") {
             return missing_field_error("mode");
+        } else {
+            self.with_context(&self.value.r#mode, |ctx| state.serialize_entry("mode", ctx))?;
         }
-        self.with_context(&self.value.r#mode, |ctx| state.serialize_entry("mode", ctx))?;
         if self.output_json {
             if let Some(some) = self.value.r#code.as_ref() {
                 if let Some(some) = some.value.as_ref().map(Ok) {
@@ -4550,10 +4558,11 @@ impl serde::ser::Serialize for SerializationContext<&ConceptMap> {
             }
         } else if self.value.r#status.id.as_deref() == Some("$invalid") {
             return missing_field_error("status");
+        } else {
+            self.with_context(&self.value.r#status, |ctx| {
+                state.serialize_entry("status", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#status, |ctx| {
-            state.serialize_entry("status", ctx)
-        })?;
         if self.output_json {
             if let Some(some) = self.value.r#experimental.as_ref() {
                 if let Some(some) = some.value.as_ref().map(Ok) {

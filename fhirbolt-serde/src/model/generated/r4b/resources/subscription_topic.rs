@@ -595,10 +595,11 @@ impl serde::ser::Serialize for SerializationContext<&SubscriptionTopicResourceTr
             }
         } else if self.value.r#resource.id.as_deref() == Some("$invalid") {
             return missing_field_error("resource");
+        } else {
+            self.with_context(&self.value.r#resource, |ctx| {
+                state.serialize_entry("resource", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#resource, |ctx| {
-            state.serialize_entry("resource", ctx)
-        })?;
         if self.output_json {
             if !self.value.r#supported_interaction.is_empty() {
                 let values = self
@@ -1117,10 +1118,11 @@ impl serde::ser::Serialize for SerializationContext<&SubscriptionTopicEventTrigg
         }
         if self.value.r#event.id.as_deref() == Some("$invalid") {
             return missing_field_error("event");
+        } else {
+            self.with_context(&self.value.r#event, |ctx| {
+                state.serialize_entry("event", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#event, |ctx| {
-            state.serialize_entry("event", ctx)
-        })?;
         if self.output_json {
             if self.value.r#resource.id.as_deref() == Some("$invalid") {
                 return missing_field_error("resource");
@@ -1140,10 +1142,11 @@ impl serde::ser::Serialize for SerializationContext<&SubscriptionTopicEventTrigg
             }
         } else if self.value.r#resource.id.as_deref() == Some("$invalid") {
             return missing_field_error("resource");
+        } else {
+            self.with_context(&self.value.r#resource, |ctx| {
+                state.serialize_entry("resource", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#resource, |ctx| {
-            state.serialize_entry("resource", ctx)
-        })?;
         state.end()
     }
 }
@@ -1513,10 +1516,11 @@ impl serde::ser::Serialize for SerializationContext<&SubscriptionTopicCanFilterB
             }
         } else if self.value.r#filter_parameter.id.as_deref() == Some("$invalid") {
             return missing_field_error("filterParameter");
+        } else {
+            self.with_context(&self.value.r#filter_parameter, |ctx| {
+                state.serialize_entry("filterParameter", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#filter_parameter, |ctx| {
-            state.serialize_entry("filterParameter", ctx)
-        })?;
         if self.output_json {
             if let Some(some) = self.value.r#filter_definition.as_ref() {
                 if let Some(some) = some.value.as_ref().map(Ok) {
@@ -2060,10 +2064,11 @@ impl serde::ser::Serialize for SerializationContext<&SubscriptionTopicNotificati
             }
         } else if self.value.r#resource.id.as_deref() == Some("$invalid") {
             return missing_field_error("resource");
+        } else {
+            self.with_context(&self.value.r#resource, |ctx| {
+                state.serialize_entry("resource", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#resource, |ctx| {
-            state.serialize_entry("resource", ctx)
-        })?;
         if self.output_json {
             if !self.value.r#include.is_empty() {
                 let values = self
@@ -2617,8 +2622,9 @@ impl serde::ser::Serialize for SerializationContext<&SubscriptionTopic> {
             }
         } else if self.value.r#url.id.as_deref() == Some("$invalid") {
             return missing_field_error("url");
+        } else {
+            self.with_context(&self.value.r#url, |ctx| state.serialize_entry("url", ctx))?;
         }
-        self.with_context(&self.value.r#url, |ctx| state.serialize_entry("url", ctx))?;
         if !self.value.r#identifier.is_empty() {
             self.with_context(&self.value.r#identifier, |ctx| {
                 state.serialize_entry("identifier", ctx)
@@ -2725,10 +2731,11 @@ impl serde::ser::Serialize for SerializationContext<&SubscriptionTopic> {
             }
         } else if self.value.r#status.id.as_deref() == Some("$invalid") {
             return missing_field_error("status");
+        } else {
+            self.with_context(&self.value.r#status, |ctx| {
+                state.serialize_entry("status", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#status, |ctx| {
-            state.serialize_entry("status", ctx)
-        })?;
         if self.output_json {
             if let Some(some) = self.value.r#experimental.as_ref() {
                 if let Some(some) = some.value.as_ref().map(Ok) {

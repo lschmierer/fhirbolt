@@ -30,10 +30,11 @@ impl serde::ser::Serialize for SerializationContext<&InventoryItemName> {
         }
         if self.value.r#name_type.id.as_deref() == Some("$invalid") {
             return missing_field_error("nameType");
+        } else {
+            self.with_context(&self.value.r#name_type, |ctx| {
+                state.serialize_entry("nameType", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#name_type, |ctx| {
-            state.serialize_entry("nameType", ctx)
-        })?;
         if self.output_json {
             if self.value.r#language.id.as_deref() == Some("$invalid") {
                 return missing_field_error("language");
@@ -53,10 +54,11 @@ impl serde::ser::Serialize for SerializationContext<&InventoryItemName> {
             }
         } else if self.value.r#language.id.as_deref() == Some("$invalid") {
             return missing_field_error("language");
+        } else {
+            self.with_context(&self.value.r#language, |ctx| {
+                state.serialize_entry("language", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#language, |ctx| {
-            state.serialize_entry("language", ctx)
-        })?;
         if self.output_json {
             if self.value.r#name.id.as_deref() == Some("$invalid") {
                 return missing_field_error("name");
@@ -76,8 +78,9 @@ impl serde::ser::Serialize for SerializationContext<&InventoryItemName> {
             }
         } else if self.value.r#name.id.as_deref() == Some("$invalid") {
             return missing_field_error("name");
+        } else {
+            self.with_context(&self.value.r#name, |ctx| state.serialize_entry("name", ctx))?;
         }
-        self.with_context(&self.value.r#name, |ctx| state.serialize_entry("name", ctx))?;
         state.end()
     }
 }
@@ -386,14 +389,16 @@ impl serde::ser::Serialize for SerializationContext<&InventoryItemResponsibleOrg
         }
         if self.value.r#role.id.as_deref() == Some("$invalid") {
             return missing_field_error("role");
+        } else {
+            self.with_context(&self.value.r#role, |ctx| state.serialize_entry("role", ctx))?;
         }
-        self.with_context(&self.value.r#role, |ctx| state.serialize_entry("role", ctx))?;
         if self.value.r#organization.id.as_deref() == Some("$invalid") {
             return missing_field_error("organization");
+        } else {
+            self.with_context(&self.value.r#organization, |ctx| {
+                state.serialize_entry("organization", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#organization, |ctx| {
-            state.serialize_entry("organization", ctx)
-        })?;
         state.end()
     }
 }
@@ -961,22 +966,25 @@ impl serde::ser::Serialize for SerializationContext<&InventoryItemAssociation> {
         }
         if self.value.r#association_type.id.as_deref() == Some("$invalid") {
             return missing_field_error("associationType");
+        } else {
+            self.with_context(&self.value.r#association_type, |ctx| {
+                state.serialize_entry("associationType", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#association_type, |ctx| {
-            state.serialize_entry("associationType", ctx)
-        })?;
         if self.value.r#related_item.id.as_deref() == Some("$invalid") {
             return missing_field_error("relatedItem");
+        } else {
+            self.with_context(&self.value.r#related_item, |ctx| {
+                state.serialize_entry("relatedItem", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#related_item, |ctx| {
-            state.serialize_entry("relatedItem", ctx)
-        })?;
         if self.value.r#quantity.id.as_deref() == Some("$invalid") {
             return missing_field_error("quantity");
+        } else {
+            self.with_context(&self.value.r#quantity, |ctx| {
+                state.serialize_entry("quantity", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#quantity, |ctx| {
-            state.serialize_entry("quantity", ctx)
-        })?;
         state.end()
     }
 }
@@ -1243,10 +1251,11 @@ impl serde::ser::Serialize for SerializationContext<&InventoryItemCharacteristic
         }
         if self.value.r#characteristic_type.id.as_deref() == Some("$invalid") {
             return missing_field_error("characteristicType");
+        } else {
+            self.with_context(&self.value.r#characteristic_type, |ctx| {
+                state.serialize_entry("characteristicType", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#characteristic_type, |ctx| {
-            state.serialize_entry("characteristicType", ctx)
-        })?;
         {
             use fhirbolt_model::r5::resources::InventoryItemCharacteristicValue as _Enum;
             match self.value.r#value {
@@ -2536,10 +2545,11 @@ impl serde::ser::Serialize for SerializationContext<&InventoryItem> {
             }
         } else if self.value.r#status.id.as_deref() == Some("$invalid") {
             return missing_field_error("status");
+        } else {
+            self.with_context(&self.value.r#status, |ctx| {
+                state.serialize_entry("status", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#status, |ctx| {
-            state.serialize_entry("status", ctx)
-        })?;
         if !self.value.r#category.is_empty() {
             self.with_context(&self.value.r#category, |ctx| {
                 state.serialize_entry("category", ctx)

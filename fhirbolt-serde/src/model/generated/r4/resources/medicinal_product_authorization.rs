@@ -365,8 +365,9 @@ impl serde::ser::Serialize for SerializationContext<&MedicinalProductAuthorizati
         }
         if self.value.r#type.id.as_deref() == Some("$invalid") {
             return missing_field_error("type");
+        } else {
+            self.with_context(&self.value.r#type, |ctx| state.serialize_entry("type", ctx))?;
         }
-        self.with_context(&self.value.r#type, |ctx| state.serialize_entry("type", ctx))?;
         {
             use fhirbolt_model::r4::resources::MedicinalProductAuthorizationProcedureDate as _Enum;
             if let Some(some) = self.value.r#date.as_ref() {

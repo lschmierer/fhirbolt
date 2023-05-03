@@ -88,10 +88,11 @@ impl serde::ser::Serialize for SerializationContext<&AppointmentResponse> {
         }
         if self.value.r#appointment.id.as_deref() == Some("$invalid") {
             return missing_field_error("appointment");
+        } else {
+            self.with_context(&self.value.r#appointment, |ctx| {
+                state.serialize_entry("appointment", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#appointment, |ctx| {
-            state.serialize_entry("appointment", ctx)
-        })?;
         if self.output_json {
             if let Some(some) = self.value.r#start.as_ref() {
                 if let Some(some) = some.value.as_ref().map(Ok) {
@@ -159,10 +160,11 @@ impl serde::ser::Serialize for SerializationContext<&AppointmentResponse> {
             }
         } else if self.value.r#participant_status.id.as_deref() == Some("$invalid") {
             return missing_field_error("participantStatus");
+        } else {
+            self.with_context(&self.value.r#participant_status, |ctx| {
+                state.serialize_entry("participantStatus", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#participant_status, |ctx| {
-            state.serialize_entry("participantStatus", ctx)
-        })?;
         if self.output_json {
             if let Some(some) = self.value.r#comment.as_ref() {
                 if let Some(some) = some.value.as_ref().map(Ok) {

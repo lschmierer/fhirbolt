@@ -947,10 +947,11 @@ impl serde::ser::Serialize for SerializationContext<&VerificationResultValidator
         }
         if self.value.r#organization.id.as_deref() == Some("$invalid") {
             return missing_field_error("organization");
+        } else {
+            self.with_context(&self.value.r#organization, |ctx| {
+                state.serialize_entry("organization", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#organization, |ctx| {
-            state.serialize_entry("organization", ctx)
-        })?;
         if self.output_json {
             if let Some(some) = self.value.r#identity_certificate.as_ref() {
                 if let Some(some) = some.value.as_ref().map(Ok) {
@@ -1392,10 +1393,11 @@ impl serde::ser::Serialize for SerializationContext<&VerificationResult> {
             }
         } else if self.value.r#status.id.as_deref() == Some("$invalid") {
             return missing_field_error("status");
+        } else {
+            self.with_context(&self.value.r#status, |ctx| {
+                state.serialize_entry("status", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#status, |ctx| {
-            state.serialize_entry("status", ctx)
-        })?;
         if self.output_json {
             if let Some(some) = self.value.r#status_date.as_ref() {
                 if let Some(some) = some.value.as_ref().map(Ok) {

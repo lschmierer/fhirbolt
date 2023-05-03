@@ -30,8 +30,9 @@ impl serde::ser::Serialize for SerializationContext<&DeviceUsageAdherence> {
         }
         if self.value.r#code.id.as_deref() == Some("$invalid") {
             return missing_field_error("code");
+        } else {
+            self.with_context(&self.value.r#code, |ctx| state.serialize_entry("code", ctx))?;
         }
-        self.with_context(&self.value.r#code, |ctx| state.serialize_entry("code", ctx))?;
         if !self.value.r#reason.is_empty() {
             self.with_context(&self.value.r#reason, |ctx| {
                 state.serialize_entry("reason", ctx)
@@ -352,10 +353,11 @@ impl serde::ser::Serialize for SerializationContext<&DeviceUsage> {
             }
         } else if self.value.r#status.id.as_deref() == Some("$invalid") {
             return missing_field_error("status");
+        } else {
+            self.with_context(&self.value.r#status, |ctx| {
+                state.serialize_entry("status", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#status, |ctx| {
-            state.serialize_entry("status", ctx)
-        })?;
         if !self.value.r#category.is_empty() {
             self.with_context(&self.value.r#category, |ctx| {
                 state.serialize_entry("category", ctx)
@@ -363,10 +365,11 @@ impl serde::ser::Serialize for SerializationContext<&DeviceUsage> {
         }
         if self.value.r#patient.id.as_deref() == Some("$invalid") {
             return missing_field_error("patient");
+        } else {
+            self.with_context(&self.value.r#patient, |ctx| {
+                state.serialize_entry("patient", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#patient, |ctx| {
-            state.serialize_entry("patient", ctx)
-        })?;
         if !self.value.r#derived_from.is_empty() {
             self.with_context(&self.value.r#derived_from, |ctx| {
                 state.serialize_entry("derivedFrom", ctx)
@@ -445,10 +448,11 @@ impl serde::ser::Serialize for SerializationContext<&DeviceUsage> {
         }
         if self.value.r#device.id.as_deref() == Some("$invalid") {
             return missing_field_error("device");
+        } else {
+            self.with_context(&self.value.r#device, |ctx| {
+                state.serialize_entry("device", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#device, |ctx| {
-            state.serialize_entry("device", ctx)
-        })?;
         if !self.value.r#reason.is_empty() {
             self.with_context(&self.value.r#reason, |ctx| {
                 state.serialize_entry("reason", ctx)

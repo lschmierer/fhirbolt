@@ -294,16 +294,18 @@ impl serde::ser::Serialize for SerializationContext<&PermissionRuleDataResource>
             }
         } else if self.value.r#meaning.id.as_deref() == Some("$invalid") {
             return missing_field_error("meaning");
+        } else {
+            self.with_context(&self.value.r#meaning, |ctx| {
+                state.serialize_entry("meaning", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#meaning, |ctx| {
-            state.serialize_entry("meaning", ctx)
-        })?;
         if self.value.r#reference.id.as_deref() == Some("$invalid") {
             return missing_field_error("reference");
+        } else {
+            self.with_context(&self.value.r#reference, |ctx| {
+                state.serialize_entry("reference", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#reference, |ctx| {
-            state.serialize_entry("reference", ctx)
-        })?;
         state.end()
     }
 }
@@ -1553,10 +1555,11 @@ impl serde::ser::Serialize for SerializationContext<&Permission> {
             }
         } else if self.value.r#status.id.as_deref() == Some("$invalid") {
             return missing_field_error("status");
+        } else {
+            self.with_context(&self.value.r#status, |ctx| {
+                state.serialize_entry("status", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#status, |ctx| {
-            state.serialize_entry("status", ctx)
-        })?;
         if let Some(some) = self.value.r#asserter.as_ref() {
             self.with_context(some, |ctx| state.serialize_entry("asserter", ctx))?;
         }
@@ -1627,10 +1630,11 @@ impl serde::ser::Serialize for SerializationContext<&Permission> {
             }
         } else if self.value.r#combining.id.as_deref() == Some("$invalid") {
             return missing_field_error("combining");
+        } else {
+            self.with_context(&self.value.r#combining, |ctx| {
+                state.serialize_entry("combining", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#combining, |ctx| {
-            state.serialize_entry("combining", ctx)
-        })?;
         if !self.value.r#rule.is_empty() {
             self.with_context(&self.value.r#rule, |ctx| state.serialize_entry("rule", ctx))?;
         }

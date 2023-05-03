@@ -384,8 +384,9 @@ impl serde::ser::Serialize for SerializationContext<&BiologicallyDerivedProductP
         }
         if self.value.r#type.id.as_deref() == Some("$invalid") {
             return missing_field_error("type");
+        } else {
+            self.with_context(&self.value.r#type, |ctx| state.serialize_entry("type", ctx))?;
         }
-        self.with_context(&self.value.r#type, |ctx| state.serialize_entry("type", ctx))?;
         {
             use fhirbolt_model::r5::resources::BiologicallyDerivedProductPropertyValue as _Enum;
             match self.value.r#value {

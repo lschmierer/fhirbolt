@@ -32,8 +32,9 @@ impl serde::ser::Serialize
         }
         if self.value.r#code.id.as_deref() == Some("$invalid") {
             return missing_field_error("code");
+        } else {
+            self.with_context(&self.value.r#code, |ctx| state.serialize_entry("code", ctx))?;
         }
-        self.with_context(&self.value.r#code, |ctx| state.serialize_entry("code", ctx))?;
         if self.output_json {
             if self.value.r#value.id.as_deref() == Some("$invalid") {
                 return missing_field_error("value");
@@ -53,10 +54,11 @@ impl serde::ser::Serialize
             }
         } else if self.value.r#value.id.as_deref() == Some("$invalid") {
             return missing_field_error("value");
+        } else {
+            self.with_context(&self.value.r#value, |ctx| {
+                state.serialize_entry("value", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#value, |ctx| {
-            state.serialize_entry("value", ctx)
-        })?;
         state.end()
     }
 }
@@ -344,10 +346,11 @@ impl serde::ser::Serialize for SerializationContext<&ImmunizationRecommendationR
         }
         if self.value.r#forecast_status.id.as_deref() == Some("$invalid") {
             return missing_field_error("forecastStatus");
+        } else {
+            self.with_context(&self.value.r#forecast_status, |ctx| {
+                state.serialize_entry("forecastStatus", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#forecast_status, |ctx| {
-            state.serialize_entry("forecastStatus", ctx)
-        })?;
         if !self.value.r#forecast_reason.is_empty() {
             self.with_context(&self.value.r#forecast_reason, |ctx| {
                 state.serialize_entry("forecastReason", ctx)
@@ -1312,10 +1315,11 @@ impl serde::ser::Serialize for SerializationContext<&ImmunizationRecommendation>
         }
         if self.value.r#patient.id.as_deref() == Some("$invalid") {
             return missing_field_error("patient");
+        } else {
+            self.with_context(&self.value.r#patient, |ctx| {
+                state.serialize_entry("patient", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#patient, |ctx| {
-            state.serialize_entry("patient", ctx)
-        })?;
         if self.output_json {
             if self.value.r#date.id.as_deref() == Some("$invalid") {
                 return missing_field_error("date");
@@ -1335,8 +1339,9 @@ impl serde::ser::Serialize for SerializationContext<&ImmunizationRecommendation>
             }
         } else if self.value.r#date.id.as_deref() == Some("$invalid") {
             return missing_field_error("date");
+        } else {
+            self.with_context(&self.value.r#date, |ctx| state.serialize_entry("date", ctx))?;
         }
-        self.with_context(&self.value.r#date, |ctx| state.serialize_entry("date", ctx))?;
         if let Some(some) = self.value.r#authority.as_ref() {
             self.with_context(some, |ctx| state.serialize_entry("authority", ctx))?;
         }

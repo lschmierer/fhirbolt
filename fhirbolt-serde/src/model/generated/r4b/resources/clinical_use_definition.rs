@@ -32,16 +32,18 @@ impl serde::ser::Serialize
         }
         if self.value.r#relationship_type.id.as_deref() == Some("$invalid") {
             return missing_field_error("relationshipType");
+        } else {
+            self.with_context(&self.value.r#relationship_type, |ctx| {
+                state.serialize_entry("relationshipType", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#relationship_type, |ctx| {
-            state.serialize_entry("relationshipType", ctx)
-        })?;
         if self.value.r#therapy.id.as_deref() == Some("$invalid") {
             return missing_field_error("therapy");
+        } else {
+            self.with_context(&self.value.r#therapy, |ctx| {
+                state.serialize_entry("therapy", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#therapy, |ctx| {
-            state.serialize_entry("therapy", ctx)
-        })?;
         state.end()
     }
 }
@@ -2295,8 +2297,9 @@ impl serde::ser::Serialize for SerializationContext<&ClinicalUseDefinition> {
             }
         } else if self.value.r#type.id.as_deref() == Some("$invalid") {
             return missing_field_error("type");
+        } else {
+            self.with_context(&self.value.r#type, |ctx| state.serialize_entry("type", ctx))?;
         }
-        self.with_context(&self.value.r#type, |ctx| state.serialize_entry("type", ctx))?;
         if !self.value.r#category.is_empty() {
             self.with_context(&self.value.r#category, |ctx| {
                 state.serialize_entry("category", ctx)

@@ -659,10 +659,11 @@ impl serde::ser::Serialize for SerializationContext<&BodyStructureIncludedStruct
         }
         if self.value.r#structure.id.as_deref() == Some("$invalid") {
             return missing_field_error("structure");
+        } else {
+            self.with_context(&self.value.r#structure, |ctx| {
+                state.serialize_entry("structure", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#structure, |ctx| {
-            state.serialize_entry("structure", ctx)
-        })?;
         if let Some(some) = self.value.r#laterality.as_ref() {
             self.with_context(some, |ctx| state.serialize_entry("laterality", ctx))?;
         }
@@ -1106,10 +1107,11 @@ impl serde::ser::Serialize for SerializationContext<&BodyStructure> {
         }
         if self.value.r#patient.id.as_deref() == Some("$invalid") {
             return missing_field_error("patient");
+        } else {
+            self.with_context(&self.value.r#patient, |ctx| {
+                state.serialize_entry("patient", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#patient, |ctx| {
-            state.serialize_entry("patient", ctx)
-        })?;
         state.end()
     }
 }

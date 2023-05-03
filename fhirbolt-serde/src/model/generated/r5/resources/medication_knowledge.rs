@@ -32,8 +32,9 @@ impl serde::ser::Serialize
         }
         if self.value.r#type.id.as_deref() == Some("$invalid") {
             return missing_field_error("type");
+        } else {
+            self.with_context(&self.value.r#type, |ctx| state.serialize_entry("type", ctx))?;
         }
-        self.with_context(&self.value.r#type, |ctx| state.serialize_entry("type", ctx))?;
         if !self.value.r#reference.is_empty() {
             self.with_context(&self.value.r#reference, |ctx| {
                 state.serialize_entry("reference", ctx)
@@ -525,8 +526,9 @@ impl serde::ser::Serialize for SerializationContext<&MedicationKnowledgeCost> {
         }
         if self.value.r#type.id.as_deref() == Some("$invalid") {
             return missing_field_error("type");
+        } else {
+            self.with_context(&self.value.r#type, |ctx| state.serialize_entry("type", ctx))?;
         }
-        self.with_context(&self.value.r#type, |ctx| state.serialize_entry("type", ctx))?;
         if self.output_json {
             if let Some(some) = self.value.r#source.as_ref() {
                 if let Some(some) = some.value.as_ref().map(Ok) {
@@ -1162,8 +1164,9 @@ impl serde::ser::Serialize
         }
         if self.value.r#type.id.as_deref() == Some("$invalid") {
             return missing_field_error("type");
+        } else {
+            self.with_context(&self.value.r#type, |ctx| state.serialize_entry("type", ctx))?;
         }
-        self.with_context(&self.value.r#type, |ctx| state.serialize_entry("type", ctx))?;
         if !self.value.r#dosage.is_empty() {
             self.with_context(&self.value.r#dosage, |ctx| {
                 state.serialize_entry("dosage", ctx)
@@ -1435,8 +1438,9 @@ impl serde::ser::Serialize
         }
         if self.value.r#type.id.as_deref() == Some("$invalid") {
             return missing_field_error("type");
+        } else {
+            self.with_context(&self.value.r#type, |ctx| state.serialize_entry("type", ctx))?;
         }
-        self.with_context(&self.value.r#type, |ctx| state.serialize_entry("type", ctx))?;
         {
             use fhirbolt_model::r5::resources::MedicationKnowledgeIndicationGuidelineDosingGuidelinePatientCharacteristicValue as _Enum;
             if let Some(some) = self.value.r#value.as_ref() {
@@ -2330,8 +2334,9 @@ impl serde::ser::Serialize for SerializationContext<&MedicationKnowledgeMedicine
         }
         if self.value.r#type.id.as_deref() == Some("$invalid") {
             return missing_field_error("type");
+        } else {
+            self.with_context(&self.value.r#type, |ctx| state.serialize_entry("type", ctx))?;
         }
-        self.with_context(&self.value.r#type, |ctx| state.serialize_entry("type", ctx))?;
         {
             use fhirbolt_model::r5::resources::MedicationKnowledgeMedicineClassificationSource as _Enum;
             if let Some(some) = self.value.r#source.as_ref() {
@@ -3012,8 +3017,9 @@ impl serde::ser::Serialize
         }
         if self.value.r#type.id.as_deref() == Some("$invalid") {
             return missing_field_error("type");
+        } else {
+            self.with_context(&self.value.r#type, |ctx| state.serialize_entry("type", ctx))?;
         }
-        self.with_context(&self.value.r#type, |ctx| state.serialize_entry("type", ctx))?;
         {
             use fhirbolt_model::r5::resources::MedicationKnowledgeStorageGuidelineEnvironmentalSettingValue as _Enum;
             match self.value.r#value {
@@ -3655,8 +3661,9 @@ impl serde::ser::Serialize for SerializationContext<&MedicationKnowledgeRegulato
         }
         if self.value.r#type.id.as_deref() == Some("$invalid") {
             return missing_field_error("type");
+        } else {
+            self.with_context(&self.value.r#type, |ctx| state.serialize_entry("type", ctx))?;
         }
-        self.with_context(&self.value.r#type, |ctx| state.serialize_entry("type", ctx))?;
         if self.output_json {
             if self.value.r#allowed.id.as_deref() == Some("$invalid") {
                 return missing_field_error("allowed");
@@ -3676,10 +3683,11 @@ impl serde::ser::Serialize for SerializationContext<&MedicationKnowledgeRegulato
             }
         } else if self.value.r#allowed.id.as_deref() == Some("$invalid") {
             return missing_field_error("allowed");
+        } else {
+            self.with_context(&self.value.r#allowed, |ctx| {
+                state.serialize_entry("allowed", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#allowed, |ctx| {
-            state.serialize_entry("allowed", ctx)
-        })?;
         state.end()
     }
 }
@@ -3953,10 +3961,11 @@ impl serde::ser::Serialize for SerializationContext<&MedicationKnowledgeRegulato
         }
         if self.value.r#quantity.id.as_deref() == Some("$invalid") {
             return missing_field_error("quantity");
+        } else {
+            self.with_context(&self.value.r#quantity, |ctx| {
+                state.serialize_entry("quantity", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#quantity, |ctx| {
-            state.serialize_entry("quantity", ctx)
-        })?;
         if let Some(some) = self.value.r#period.as_ref() {
             self.with_context(some, |ctx| state.serialize_entry("period", ctx))?;
         }
@@ -4203,10 +4212,11 @@ impl serde::ser::Serialize for SerializationContext<&MedicationKnowledgeRegulato
         }
         if self.value.r#regulatory_authority.id.as_deref() == Some("$invalid") {
             return missing_field_error("regulatoryAuthority");
+        } else {
+            self.with_context(&self.value.r#regulatory_authority, |ctx| {
+                state.serialize_entry("regulatoryAuthority", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#regulatory_authority, |ctx| {
-            state.serialize_entry("regulatoryAuthority", ctx)
-        })?;
         if !self.value.r#substitution.is_empty() {
             self.with_context(&self.value.r#substitution, |ctx| {
                 state.serialize_entry("substitution", ctx)
@@ -4507,8 +4517,9 @@ impl serde::ser::Serialize for SerializationContext<&MedicationKnowledgeDefiniti
         }
         if self.value.r#item.id.as_deref() == Some("$invalid") {
             return missing_field_error("item");
+        } else {
+            self.with_context(&self.value.r#item, |ctx| state.serialize_entry("item", ctx))?;
         }
-        self.with_context(&self.value.r#item, |ctx| state.serialize_entry("item", ctx))?;
         if let Some(some) = self.value.r#type.as_ref() {
             self.with_context(some, |ctx| state.serialize_entry("type", ctx))?;
         }

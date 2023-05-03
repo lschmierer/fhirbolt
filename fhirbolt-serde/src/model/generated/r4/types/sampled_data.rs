@@ -25,10 +25,11 @@ impl serde::ser::Serialize for SerializationContext<&SampledData> {
         }
         if self.value.r#origin.id.as_deref() == Some("$invalid") {
             return missing_field_error("origin");
+        } else {
+            self.with_context(&self.value.r#origin, |ctx| {
+                state.serialize_entry("origin", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#origin, |ctx| {
-            state.serialize_entry("origin", ctx)
-        })?;
         if self.output_json {
             if self.value.r#period.id.as_deref() == Some("$invalid") {
                 return missing_field_error("period");
@@ -51,10 +52,11 @@ impl serde::ser::Serialize for SerializationContext<&SampledData> {
             }
         } else if self.value.r#period.id.as_deref() == Some("$invalid") {
             return missing_field_error("period");
+        } else {
+            self.with_context(&self.value.r#period, |ctx| {
+                state.serialize_entry("period", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#period, |ctx| {
-            state.serialize_entry("period", ctx)
-        })?;
         if self.output_json {
             if let Some(some) = self.value.r#factor.as_ref() {
                 if let Some(some) = some.value.as_ref().map(|v| {
@@ -141,10 +143,11 @@ impl serde::ser::Serialize for SerializationContext<&SampledData> {
             }
         } else if self.value.r#dimensions.id.as_deref() == Some("$invalid") {
             return missing_field_error("dimensions");
+        } else {
+            self.with_context(&self.value.r#dimensions, |ctx| {
+                state.serialize_entry("dimensions", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#dimensions, |ctx| {
-            state.serialize_entry("dimensions", ctx)
-        })?;
         if self.output_json {
             if let Some(some) = self.value.r#data.as_ref() {
                 if let Some(some) = some.value.as_ref().map(Ok) {

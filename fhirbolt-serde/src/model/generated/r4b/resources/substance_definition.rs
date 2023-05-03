@@ -559,8 +559,9 @@ impl serde::ser::Serialize for SerializationContext<&SubstanceDefinitionProperty
         }
         if self.value.r#type.id.as_deref() == Some("$invalid") {
             return missing_field_error("type");
+        } else {
+            self.with_context(&self.value.r#type, |ctx| state.serialize_entry("type", ctx))?;
         }
-        self.with_context(&self.value.r#type, |ctx| state.serialize_entry("type", ctx))?;
         {
             use fhirbolt_model::r4b::resources::SubstanceDefinitionPropertyValue as _Enum;
             if let Some(some) = self.value.r#value.as_ref() {
@@ -1017,10 +1018,11 @@ impl serde::ser::Serialize for SerializationContext<&SubstanceDefinitionMolecula
         }
         if self.value.r#amount.id.as_deref() == Some("$invalid") {
             return missing_field_error("amount");
+        } else {
+            self.with_context(&self.value.r#amount, |ctx| {
+                state.serialize_entry("amount", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#amount, |ctx| {
-            state.serialize_entry("amount", ctx)
-        })?;
         state.end()
     }
 }
@@ -2753,8 +2755,9 @@ impl serde::ser::Serialize for SerializationContext<&SubstanceDefinitionName> {
             }
         } else if self.value.r#name.id.as_deref() == Some("$invalid") {
             return missing_field_error("name");
+        } else {
+            self.with_context(&self.value.r#name, |ctx| state.serialize_entry("name", ctx))?;
         }
-        self.with_context(&self.value.r#name, |ctx| state.serialize_entry("name", ctx))?;
         if let Some(some) = self.value.r#type.as_ref() {
             self.with_context(some, |ctx| state.serialize_entry("type", ctx))?;
         }
@@ -3309,8 +3312,9 @@ impl serde::ser::Serialize for SerializationContext<&SubstanceDefinitionRelation
         }
         if self.value.r#type.id.as_deref() == Some("$invalid") {
             return missing_field_error("type");
+        } else {
+            self.with_context(&self.value.r#type, |ctx| state.serialize_entry("type", ctx))?;
         }
-        self.with_context(&self.value.r#type, |ctx| state.serialize_entry("type", ctx))?;
         if self.output_json {
             if let Some(some) = self.value.r#is_defining.as_ref() {
                 if let Some(some) = some.value.as_ref().map(Ok) {

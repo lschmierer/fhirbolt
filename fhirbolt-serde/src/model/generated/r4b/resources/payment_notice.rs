@@ -105,10 +105,11 @@ impl serde::ser::Serialize for SerializationContext<&PaymentNotice> {
             }
         } else if self.value.r#status.id.as_deref() == Some("$invalid") {
             return missing_field_error("status");
+        } else {
+            self.with_context(&self.value.r#status, |ctx| {
+                state.serialize_entry("status", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#status, |ctx| {
-            state.serialize_entry("status", ctx)
-        })?;
         if let Some(some) = self.value.r#request.as_ref() {
             self.with_context(some, |ctx| state.serialize_entry("request", ctx))?;
         }
@@ -134,19 +135,21 @@ impl serde::ser::Serialize for SerializationContext<&PaymentNotice> {
             }
         } else if self.value.r#created.id.as_deref() == Some("$invalid") {
             return missing_field_error("created");
+        } else {
+            self.with_context(&self.value.r#created, |ctx| {
+                state.serialize_entry("created", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#created, |ctx| {
-            state.serialize_entry("created", ctx)
-        })?;
         if let Some(some) = self.value.r#provider.as_ref() {
             self.with_context(some, |ctx| state.serialize_entry("provider", ctx))?;
         }
         if self.value.r#payment.id.as_deref() == Some("$invalid") {
             return missing_field_error("payment");
+        } else {
+            self.with_context(&self.value.r#payment, |ctx| {
+                state.serialize_entry("payment", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#payment, |ctx| {
-            state.serialize_entry("payment", ctx)
-        })?;
         if self.output_json {
             if let Some(some) = self.value.r#payment_date.as_ref() {
                 if let Some(some) = some.value.as_ref().map(Ok) {
@@ -171,16 +174,18 @@ impl serde::ser::Serialize for SerializationContext<&PaymentNotice> {
         }
         if self.value.r#recipient.id.as_deref() == Some("$invalid") {
             return missing_field_error("recipient");
+        } else {
+            self.with_context(&self.value.r#recipient, |ctx| {
+                state.serialize_entry("recipient", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#recipient, |ctx| {
-            state.serialize_entry("recipient", ctx)
-        })?;
         if self.value.r#amount.id.as_deref() == Some("$invalid") {
             return missing_field_error("amount");
+        } else {
+            self.with_context(&self.value.r#amount, |ctx| {
+                state.serialize_entry("amount", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#amount, |ctx| {
-            state.serialize_entry("amount", ctx)
-        })?;
         if let Some(some) = self.value.r#payment_status.as_ref() {
             self.with_context(some, |ctx| state.serialize_entry("paymentStatus", ctx))?;
         }

@@ -45,8 +45,9 @@ impl serde::ser::Serialize for SerializationContext<&GraphDefinitionLinkTargetCo
             }
         } else if self.value.r#use.id.as_deref() == Some("$invalid") {
             return missing_field_error("use");
+        } else {
+            self.with_context(&self.value.r#use, |ctx| state.serialize_entry("use", ctx))?;
         }
-        self.with_context(&self.value.r#use, |ctx| state.serialize_entry("use", ctx))?;
         if self.output_json {
             if self.value.r#code.id.as_deref() == Some("$invalid") {
                 return missing_field_error("code");
@@ -66,8 +67,9 @@ impl serde::ser::Serialize for SerializationContext<&GraphDefinitionLinkTargetCo
             }
         } else if self.value.r#code.id.as_deref() == Some("$invalid") {
             return missing_field_error("code");
+        } else {
+            self.with_context(&self.value.r#code, |ctx| state.serialize_entry("code", ctx))?;
         }
-        self.with_context(&self.value.r#code, |ctx| state.serialize_entry("code", ctx))?;
         if self.output_json {
             if self.value.r#rule.id.as_deref() == Some("$invalid") {
                 return missing_field_error("rule");
@@ -87,8 +89,9 @@ impl serde::ser::Serialize for SerializationContext<&GraphDefinitionLinkTargetCo
             }
         } else if self.value.r#rule.id.as_deref() == Some("$invalid") {
             return missing_field_error("rule");
+        } else {
+            self.with_context(&self.value.r#rule, |ctx| state.serialize_entry("rule", ctx))?;
         }
-        self.with_context(&self.value.r#rule, |ctx| state.serialize_entry("rule", ctx))?;
         if self.output_json {
             if let Some(some) = self.value.r#expression.as_ref() {
                 if let Some(some) = some.value.as_ref().map(Ok) {
@@ -569,8 +572,9 @@ impl serde::ser::Serialize for SerializationContext<&GraphDefinitionLinkTarget> 
             }
         } else if self.value.r#type.id.as_deref() == Some("$invalid") {
             return missing_field_error("type");
+        } else {
+            self.with_context(&self.value.r#type, |ctx| state.serialize_entry("type", ctx))?;
         }
-        self.with_context(&self.value.r#type, |ctx| state.serialize_entry("type", ctx))?;
         if self.output_json {
             if let Some(some) = self.value.r#params.as_ref() {
                 if let Some(some) = some.value.as_ref().map(Ok) {
@@ -1625,8 +1629,9 @@ impl serde::ser::Serialize for SerializationContext<&GraphDefinition> {
             }
         } else if self.value.r#name.id.as_deref() == Some("$invalid") {
             return missing_field_error("name");
+        } else {
+            self.with_context(&self.value.r#name, |ctx| state.serialize_entry("name", ctx))?;
         }
-        self.with_context(&self.value.r#name, |ctx| state.serialize_entry("name", ctx))?;
         if self.output_json {
             if self.value.r#status.id.as_deref() == Some("$invalid") {
                 return missing_field_error("status");
@@ -1646,10 +1651,11 @@ impl serde::ser::Serialize for SerializationContext<&GraphDefinition> {
             }
         } else if self.value.r#status.id.as_deref() == Some("$invalid") {
             return missing_field_error("status");
+        } else {
+            self.with_context(&self.value.r#status, |ctx| {
+                state.serialize_entry("status", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#status, |ctx| {
-            state.serialize_entry("status", ctx)
-        })?;
         if self.output_json {
             if let Some(some) = self.value.r#experimental.as_ref() {
                 if let Some(some) = some.value.as_ref().map(Ok) {
@@ -1779,10 +1785,11 @@ impl serde::ser::Serialize for SerializationContext<&GraphDefinition> {
             }
         } else if self.value.r#start.id.as_deref() == Some("$invalid") {
             return missing_field_error("start");
+        } else {
+            self.with_context(&self.value.r#start, |ctx| {
+                state.serialize_entry("start", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#start, |ctx| {
-            state.serialize_entry("start", ctx)
-        })?;
         if self.output_json {
             if let Some(some) = self.value.r#profile.as_ref() {
                 if let Some(some) = some.value.as_ref().map(Ok) {

@@ -407,10 +407,11 @@ impl serde::ser::Serialize for SerializationContext<&PatientCommunication> {
         }
         if self.value.r#language.id.as_deref() == Some("$invalid") {
             return missing_field_error("language");
+        } else {
+            self.with_context(&self.value.r#language, |ctx| {
+                state.serialize_entry("language", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#language, |ctx| {
-            state.serialize_entry("language", ctx)
-        })?;
         if self.output_json {
             if let Some(some) = self.value.r#preferred.as_ref() {
                 if let Some(some) = some.value.as_ref().map(Ok) {
@@ -692,10 +693,11 @@ impl serde::ser::Serialize for SerializationContext<&PatientLink> {
         }
         if self.value.r#other.id.as_deref() == Some("$invalid") {
             return missing_field_error("other");
+        } else {
+            self.with_context(&self.value.r#other, |ctx| {
+                state.serialize_entry("other", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#other, |ctx| {
-            state.serialize_entry("other", ctx)
-        })?;
         if self.output_json {
             if self.value.r#type.id.as_deref() == Some("$invalid") {
                 return missing_field_error("type");
@@ -715,8 +717,9 @@ impl serde::ser::Serialize for SerializationContext<&PatientLink> {
             }
         } else if self.value.r#type.id.as_deref() == Some("$invalid") {
             return missing_field_error("type");
+        } else {
+            self.with_context(&self.value.r#type, |ctx| state.serialize_entry("type", ctx))?;
         }
-        self.with_context(&self.value.r#type, |ctx| state.serialize_entry("type", ctx))?;
         state.end()
     }
 }

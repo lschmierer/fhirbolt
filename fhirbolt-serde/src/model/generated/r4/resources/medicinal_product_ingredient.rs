@@ -35,10 +35,11 @@ impl serde::ser::Serialize
         }
         if self.value.r#strength.id.as_deref() == Some("$invalid") {
             return missing_field_error("strength");
+        } else {
+            self.with_context(&self.value.r#strength, |ctx| {
+                state.serialize_entry("strength", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#strength, |ctx| {
-            state.serialize_entry("strength", ctx)
-        })?;
         if let Some(some) = self.value.r#strength_low_limit.as_ref() {
             self.with_context(some, |ctx| state.serialize_entry("strengthLowLimit", ctx))?;
         }
@@ -423,10 +424,11 @@ impl serde::ser::Serialize
         }
         if self.value.r#presentation.id.as_deref() == Some("$invalid") {
             return missing_field_error("presentation");
+        } else {
+            self.with_context(&self.value.r#presentation, |ctx| {
+                state.serialize_entry("presentation", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#presentation, |ctx| {
-            state.serialize_entry("presentation", ctx)
-        })?;
         if let Some(some) = self.value.r#presentation_low_limit.as_ref() {
             self.with_context(some, |ctx| {
                 state.serialize_entry("presentationLowLimit", ctx)
@@ -847,14 +849,16 @@ impl serde::ser::Serialize for SerializationContext<&MedicinalProductIngredientS
         }
         if self.value.r#code.id.as_deref() == Some("$invalid") {
             return missing_field_error("code");
+        } else {
+            self.with_context(&self.value.r#code, |ctx| state.serialize_entry("code", ctx))?;
         }
-        self.with_context(&self.value.r#code, |ctx| state.serialize_entry("code", ctx))?;
         if self.value.r#group.id.as_deref() == Some("$invalid") {
             return missing_field_error("group");
+        } else {
+            self.with_context(&self.value.r#group, |ctx| {
+                state.serialize_entry("group", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#group, |ctx| {
-            state.serialize_entry("group", ctx)
-        })?;
         if let Some(some) = self.value.r#confidentiality.as_ref() {
             self.with_context(some, |ctx| state.serialize_entry("confidentiality", ctx))?;
         }
@@ -1147,8 +1151,9 @@ impl serde::ser::Serialize for SerializationContext<&MedicinalProductIngredientS
         }
         if self.value.r#code.id.as_deref() == Some("$invalid") {
             return missing_field_error("code");
+        } else {
+            self.with_context(&self.value.r#code, |ctx| state.serialize_entry("code", ctx))?;
         }
-        self.with_context(&self.value.r#code, |ctx| state.serialize_entry("code", ctx))?;
         if !self.value.r#strength.is_empty() {
             self.with_context(&self.value.r#strength, |ctx| {
                 state.serialize_entry("strength", ctx)
@@ -1448,8 +1453,9 @@ impl serde::ser::Serialize for SerializationContext<&MedicinalProductIngredient>
         }
         if self.value.r#role.id.as_deref() == Some("$invalid") {
             return missing_field_error("role");
+        } else {
+            self.with_context(&self.value.r#role, |ctx| state.serialize_entry("role", ctx))?;
         }
-        self.with_context(&self.value.r#role, |ctx| state.serialize_entry("role", ctx))?;
         if self.output_json {
             if let Some(some) = self.value.r#allergenic_indicator.as_ref() {
                 if let Some(some) = some.value.as_ref().map(Ok) {

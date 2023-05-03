@@ -2326,10 +2326,11 @@ impl serde::ser::Serialize for SerializationContext<&NutritionOrder> {
             }
         } else if self.value.r#status.id.as_deref() == Some("$invalid") {
             return missing_field_error("status");
+        } else {
+            self.with_context(&self.value.r#status, |ctx| {
+                state.serialize_entry("status", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#status, |ctx| {
-            state.serialize_entry("status", ctx)
-        })?;
         if self.output_json {
             if self.value.r#intent.id.as_deref() == Some("$invalid") {
                 return missing_field_error("intent");
@@ -2349,16 +2350,18 @@ impl serde::ser::Serialize for SerializationContext<&NutritionOrder> {
             }
         } else if self.value.r#intent.id.as_deref() == Some("$invalid") {
             return missing_field_error("intent");
+        } else {
+            self.with_context(&self.value.r#intent, |ctx| {
+                state.serialize_entry("intent", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#intent, |ctx| {
-            state.serialize_entry("intent", ctx)
-        })?;
         if self.value.r#patient.id.as_deref() == Some("$invalid") {
             return missing_field_error("patient");
+        } else {
+            self.with_context(&self.value.r#patient, |ctx| {
+                state.serialize_entry("patient", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#patient, |ctx| {
-            state.serialize_entry("patient", ctx)
-        })?;
         if let Some(some) = self.value.r#encounter.as_ref() {
             self.with_context(some, |ctx| state.serialize_entry("encounter", ctx))?;
         }
@@ -2381,10 +2384,11 @@ impl serde::ser::Serialize for SerializationContext<&NutritionOrder> {
             }
         } else if self.value.r#date_time.id.as_deref() == Some("$invalid") {
             return missing_field_error("dateTime");
+        } else {
+            self.with_context(&self.value.r#date_time, |ctx| {
+                state.serialize_entry("dateTime", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#date_time, |ctx| {
-            state.serialize_entry("dateTime", ctx)
-        })?;
         if let Some(some) = self.value.r#orderer.as_ref() {
             self.with_context(some, |ctx| state.serialize_entry("orderer", ctx))?;
         }
