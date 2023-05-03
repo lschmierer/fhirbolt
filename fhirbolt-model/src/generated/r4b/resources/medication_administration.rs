@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-03 by fhirbolt-codegen v0.7.0
 #[doc = "Identifies the medication that was administered. This is either a link to a resource representing the details of the medication or a simple attribute carrying a code that identifies the medication from a known list of medications."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum MedicationAdministrationMedication {
@@ -37,6 +37,7 @@ pub struct MedicationAdministrationPerformer {
     #[doc = "Indicates who or what performed the medication administration."]
     pub r#actor: Box<super::super::types::Reference>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for MedicationAdministrationPerformer {
     fn default() -> Self {
         Self {
@@ -44,11 +45,10 @@ impl Default for MedicationAdministrationPerformer {
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
             r#function: Default::default(),
-            r#actor: {
-                let mut default: Box<super::super::types::Reference> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#actor: Box::new(super::super::types::Reference {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
         }
     }
 }
@@ -74,6 +74,7 @@ pub struct MedicationAdministrationDosage {
     #[doc = "Identifies the speed with which the medication was or will be introduced into the patient.  Typically, the rate for an infusion e.g. 100 ml per 1 hour or 100 ml/hr.  May also be expressed as a rate per unit of time, e.g. 500 ml per 2 hours.  Other examples:  200 mcg/min or 200 mcg/1 minute; 1 liter/8 hours."]
     pub r#rate: Option<MedicationAdministrationDosageRate>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for MedicationAdministrationDosage {
     fn default() -> Self {
         Self {
@@ -147,6 +148,7 @@ pub struct MedicationAdministration {
     #[doc = "A summary of the events of interest that have occurred, such as when the administration was verified."]
     pub r#event_history: Vec<super::super::types::Reference>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for MedicationAdministration {
     fn default() -> Self {
         Self {
@@ -161,19 +163,17 @@ impl Default for MedicationAdministration {
             r#identifier: Default::default(),
             r#instantiates: Default::default(),
             r#part_of: Default::default(),
-            r#status: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#status: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#status_reason: Default::default(),
             r#category: Default::default(),
             r#medication: Default::default(),
-            r#subject: {
-                let mut default: Box<super::super::types::Reference> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#subject: Box::new(super::super::types::Reference {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
             r#context: Default::default(),
             r#supporting_information: Default::default(),
             r#effective: Default::default(),

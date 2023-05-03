@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-03 by fhirbolt-codegen v0.7.0
 #[doc = "Entries in this list."]
 #[derive(Debug, Clone, PartialEq)]
 pub struct ListEntry {
@@ -17,6 +17,7 @@ pub struct ListEntry {
     #[doc = "A reference to the actual resource from which data was derived."]
     pub r#item: Box<super::super::types::Reference>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for ListEntry {
     fn default() -> Self {
         Self {
@@ -26,11 +27,10 @@ impl Default for ListEntry {
             r#flag: Default::default(),
             r#deleted: Default::default(),
             r#date: Default::default(),
-            r#item: {
-                let mut default: Box<super::super::types::Reference> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#item: Box::new(super::super::types::Reference {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
         }
     }
 }
@@ -80,6 +80,7 @@ pub struct List {
     #[doc = "If the list is empty, why the list is empty."]
     pub r#empty_reason: Option<Box<super::super::types::CodeableConcept>>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for List {
     fn default() -> Self {
         Self {
@@ -92,15 +93,13 @@ impl Default for List {
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
             r#identifier: Default::default(),
-            r#status: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#status: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
-            r#mode: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#mode: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#title: Default::default(),
             r#code: Default::default(),

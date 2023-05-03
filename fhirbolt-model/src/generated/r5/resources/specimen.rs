@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-03 by fhirbolt-codegen v0.7.0
 #[doc = "Time when specimen was collected from subject - the physiologically relevant time."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum SpecimenCollectionCollected {
@@ -37,21 +37,20 @@ pub struct SpecimenFeature {
     #[doc = "Description of the feature of the specimen."]
     pub r#description: super::super::types::String,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for SpecimenFeature {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#type: {
-                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
-            r#description: {
-                let mut default: super::super::types::String = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#type: Box::new(super::super::types::CodeableConcept {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
+            r#description: super::super::types::String {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
         }
     }
@@ -84,6 +83,7 @@ pub struct SpecimenCollection {
     #[doc = "Abstinence or reduction from some or all food, drink, or both, for a period of time prior to sample collection."]
     pub r#fasting_status: Option<SpecimenCollectionFastingStatus>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for SpecimenCollection {
     fn default() -> Self {
         Self {
@@ -120,6 +120,7 @@ pub struct SpecimenProcessing {
     #[doc = "A record of the time or period when the specimen processing occurred.  For example the time of sample fixation or the period of time the sample was in formalin."]
     pub r#time: Option<SpecimenProcessingTime>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for SpecimenProcessing {
     fn default() -> Self {
         Self {
@@ -149,17 +150,17 @@ pub struct SpecimenContainer {
     #[doc = "The quantity of specimen in the container; may be volume, dimensions, or other appropriate measurements, depending on the specimen type."]
     pub r#specimen_quantity: Option<Box<super::super::types::Quantity>>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for SpecimenContainer {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#device: {
-                let mut default: Box<super::super::types::Reference> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#device: Box::new(super::super::types::Reference {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
             r#location: Default::default(),
             r#specimen_quantity: Default::default(),
         }
@@ -217,6 +218,7 @@ pub struct Specimen {
     #[doc = "To communicate any details or issues about the specimen or during the specimen collection. (for example: broken vial, sent with patient, frozen)."]
     pub r#note: Vec<super::super::types::Annotation>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for Specimen {
     fn default() -> Self {
         Self {

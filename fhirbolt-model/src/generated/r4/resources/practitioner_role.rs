@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-03 by fhirbolt-codegen v0.7.0
 #[doc = "A collection of times the practitioner is available or performing this role at the location and/or healthcareservice."]
 #[derive(Debug, Clone, PartialEq)]
 pub struct PractitionerRoleAvailableTime {
@@ -17,6 +17,7 @@ pub struct PractitionerRoleAvailableTime {
     #[doc = "The closing time of day. Note: If the AllDay flag is set, then this time is ignored."]
     pub r#available_end_time: Option<super::super::types::Time>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for PractitionerRoleAvailableTime {
     fn default() -> Self {
         Self {
@@ -44,16 +45,16 @@ pub struct PractitionerRoleNotAvailable {
     #[doc = "Service is not available (seasonally or for a public holiday) from this date."]
     pub r#during: Option<Box<super::super::types::Period>>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for PractitionerRoleNotAvailable {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#description: {
-                let mut default: super::super::types::String = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#description: super::super::types::String {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#during: Default::default(),
         }
@@ -107,6 +108,7 @@ pub struct PractitionerRole {
     #[doc = "Technical endpoints providing access to services operated for the practitioner with this role."]
     pub r#endpoint: Vec<super::super::types::Reference>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for PractitionerRole {
     fn default() -> Self {
         Self {

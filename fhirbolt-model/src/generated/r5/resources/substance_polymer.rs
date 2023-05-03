@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-03 by fhirbolt-codegen v0.7.0
 #[doc = "The starting materials - monomer(s) used in the synthesis of the polymer."]
 #[derive(Debug, Clone, PartialEq)]
 pub struct SubstancePolymerMonomerSetStartingMaterial {
@@ -17,6 +17,7 @@ pub struct SubstancePolymerMonomerSetStartingMaterial {
     #[doc = "A percentage."]
     pub r#amount: Option<Box<super::super::types::Quantity>>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for SubstancePolymerMonomerSetStartingMaterial {
     fn default() -> Self {
         Self {
@@ -44,6 +45,7 @@ pub struct SubstancePolymerMonomerSet {
     #[doc = "The starting materials - monomer(s) used in the synthesis of the polymer."]
     pub r#starting_material: Vec<SubstancePolymerMonomerSetStartingMaterial>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for SubstancePolymerMonomerSet {
     fn default() -> Self {
         Self {
@@ -73,6 +75,7 @@ pub struct SubstancePolymerRepeatRepeatUnitDegreeOfPolymerisation {
     #[doc = "A high expected limit of the amount."]
     pub r#high: Option<super::super::types::Integer>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for SubstancePolymerRepeatRepeatUnitDegreeOfPolymerisation {
     fn default() -> Self {
         Self {
@@ -104,6 +107,7 @@ pub struct SubstancePolymerRepeatRepeatUnitStructuralRepresentation {
     #[doc = "An attached file with the structural representation."]
     pub r#attachment: Option<Box<super::super::types::Attachment>>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for SubstancePolymerRepeatRepeatUnitStructuralRepresentation {
     fn default() -> Self {
         Self {
@@ -137,6 +141,7 @@ pub struct SubstancePolymerRepeatRepeatUnit {
     #[doc = "A graphical structure for this SRU."]
     pub r#structural_representation: Vec<SubstancePolymerRepeatRepeatUnitStructuralRepresentation>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for SubstancePolymerRepeatRepeatUnit {
     fn default() -> Self {
         Self {
@@ -167,6 +172,7 @@ pub struct SubstancePolymerRepeat {
     #[doc = "An SRU - Structural Repeat Unit."]
     pub r#repeat_unit: Vec<SubstancePolymerRepeatRepeatUnit>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for SubstancePolymerRepeat {
     fn default() -> Self {
         Self {
@@ -213,6 +219,7 @@ pub struct SubstancePolymer {
     #[doc = "Specifies and quantifies the repeated units and their configuration."]
     pub r#repeat: Vec<SubstancePolymerRepeat>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for SubstancePolymer {
     fn default() -> Self {
         Self {

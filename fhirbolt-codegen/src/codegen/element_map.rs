@@ -49,5 +49,5 @@ fn generate_map_entry(key: &str, set: &LinkedHashSet<String>) -> TokenStream {
 }
 
 fn entry_name(path: &str) -> String {
-    path.to_uppercase().replace(".", "_")
+    path.to_uppercase().replace('.', "_")
 }

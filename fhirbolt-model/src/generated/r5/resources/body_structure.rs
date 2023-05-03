@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-03 by fhirbolt-codegen v0.7.0
 #[doc = "The distance in centimeters a certain observation is made from a body landmark."]
 #[derive(Debug, Clone, PartialEq)]
 pub struct BodyStructureIncludedStructureBodyLandmarkOrientationDistanceFromLandmark {
@@ -13,6 +13,7 @@ pub struct BodyStructureIncludedStructureBodyLandmarkOrientationDistanceFromLand
     #[doc = "The measured distance (e.g., in cm) from a body landmark."]
     pub r#value: Vec<super::super::types::Quantity>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for BodyStructureIncludedStructureBodyLandmarkOrientationDistanceFromLandmark {
     fn default() -> Self {
         Self {
@@ -43,6 +44,7 @@ pub struct BodyStructureIncludedStructureBodyLandmarkOrientation {
     #[doc = "The surface area a body location is in relation to a landmark."]
     pub r#surface_orientation: Vec<super::super::types::CodeableConcept>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for BodyStructureIncludedStructureBodyLandmarkOrientation {
     fn default() -> Self {
         Self {
@@ -76,17 +78,17 @@ pub struct BodyStructureIncludedStructure {
     #[doc = "Code that represents the included structure qualifier."]
     pub r#qualifier: Vec<super::super::types::CodeableConcept>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for BodyStructureIncludedStructure {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#structure: {
-                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#structure: Box::new(super::super::types::CodeableConcept {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
             r#laterality: Default::default(),
             r#body_landmark_orientation: Default::default(),
             r#spatial_reference: Default::default(),
@@ -130,6 +132,7 @@ pub struct BodyStructure {
     #[doc = "The person to which the body site belongs."]
     pub r#patient: Box<super::super::types::Reference>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for BodyStructure {
     fn default() -> Self {
         Self {
@@ -148,11 +151,10 @@ impl Default for BodyStructure {
             r#excluded_structure: Default::default(),
             r#description: Default::default(),
             r#image: Default::default(),
-            r#patient: {
-                let mut default: Box<super::super::types::Reference> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#patient: Box::new(super::super::types::Reference {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
         }
     }
 }

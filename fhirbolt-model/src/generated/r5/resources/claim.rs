@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-03 by fhirbolt-codegen v0.7.0
 #[doc = "A date or period in the past or future indicating when the event occurred or is expectd to occur."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum ClaimEventWhen {
@@ -84,6 +84,7 @@ pub struct ClaimRelated {
     #[doc = "An alternate organizational reference to the case or file to which this particular claim pertains."]
     pub r#reference: Option<Box<super::super::types::Identifier>>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for ClaimRelated {
     fn default() -> Self {
         Self {
@@ -110,17 +111,17 @@ pub struct ClaimPayee {
     #[doc = "Reference to the individual or organization to whom any payment will be made."]
     pub r#party: Option<Box<super::super::types::Reference>>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for ClaimPayee {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#type: {
-                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#type: Box::new(super::super::types::CodeableConcept {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
             r#party: Default::default(),
         }
     }
@@ -139,17 +140,17 @@ pub struct ClaimEvent {
     #[doc = "A date or period in the past or future indicating when the event occurred or is expectd to occur."]
     pub r#when: ClaimEventWhen,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for ClaimEvent {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#type: {
-                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#type: Box::new(super::super::types::CodeableConcept {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
             r#when: Default::default(),
         }
     }
@@ -174,22 +175,21 @@ pub struct ClaimCareTeam {
     #[doc = "The specialization of the practitioner or provider which is applicable for this service."]
     pub r#specialty: Option<Box<super::super::types::CodeableConcept>>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for ClaimCareTeam {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#sequence: {
-                let mut default: super::super::types::PositiveInt = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#sequence: super::super::types::PositiveInt {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
-            r#provider: {
-                let mut default: Box<super::super::types::Reference> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#provider: Box::new(super::super::types::Reference {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
             r#responsible: Default::default(),
             r#role: Default::default(),
             r#specialty: Default::default(),
@@ -218,22 +218,21 @@ pub struct ClaimSupportingInfo {
     #[doc = "Provides the reason in the situation where a reason code is required in addition to the content."]
     pub r#reason: Option<Box<super::super::types::CodeableConcept>>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for ClaimSupportingInfo {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#sequence: {
-                let mut default: super::super::types::PositiveInt = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#sequence: super::super::types::PositiveInt {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
-            r#category: {
-                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#category: Box::new(super::super::types::CodeableConcept {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
             r#code: Default::default(),
             r#timing: Default::default(),
             r#value: Default::default(),
@@ -259,16 +258,16 @@ pub struct ClaimDiagnosis {
     #[doc = "Indication of whether the diagnosis was present on admission to a facility."]
     pub r#on_admission: Option<Box<super::super::types::CodeableConcept>>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for ClaimDiagnosis {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#sequence: {
-                let mut default: super::super::types::PositiveInt = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#sequence: super::super::types::PositiveInt {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#diagnosis: Default::default(),
             r#type: Default::default(),
@@ -296,16 +295,16 @@ pub struct ClaimProcedure {
     #[doc = "Unique Device Identifiers associated with this line item."]
     pub r#udi: Vec<super::super::types::Reference>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for ClaimProcedure {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#sequence: {
-                let mut default: super::super::types::PositiveInt = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#sequence: super::super::types::PositiveInt {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#type: Default::default(),
             r#date: Default::default(),
@@ -338,28 +337,26 @@ pub struct ClaimInsurance {
     #[doc = "The result of the adjudication of the line items for the Coverage specified in this insurance."]
     pub r#claim_response: Option<Box<super::super::types::Reference>>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for ClaimInsurance {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#sequence: {
-                let mut default: super::super::types::PositiveInt = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#sequence: super::super::types::PositiveInt {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
-            r#focal: {
-                let mut default: super::super::types::Boolean = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#focal: super::super::types::Boolean {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#identifier: Default::default(),
-            r#coverage: {
-                let mut default: Box<super::super::types::Reference> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#coverage: Box::new(super::super::types::Reference {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
             r#business_arrangement: Default::default(),
             r#pre_auth_ref: Default::default(),
             r#claim_response: Default::default(),
@@ -382,16 +379,16 @@ pub struct ClaimAccident {
     #[doc = "The physical location of the accident event."]
     pub r#location: Option<ClaimAccidentLocation>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for ClaimAccident {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#date: {
-                let mut default: super::super::types::Date = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#date: super::super::types::Date {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#type: Default::default(),
             r#location: Default::default(),
@@ -412,6 +409,7 @@ pub struct ClaimItemBodySite {
     #[doc = "A region or surface of the bodySite, e.g. limb region or tooth surface(s)."]
     pub r#sub_site: Vec<super::super::types::CodeableConcept>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for ClaimItemBodySite {
     fn default() -> Self {
         Self {
@@ -463,16 +461,16 @@ pub struct ClaimItemDetailSubDetail {
     #[doc = "Unique Device Identifiers associated with this line item."]
     pub r#udi: Vec<super::super::types::Reference>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for ClaimItemDetailSubDetail {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#sequence: {
-                let mut default: super::super::types::PositiveInt = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#sequence: super::super::types::PositiveInt {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#trace_number: Default::default(),
             r#revenue: Default::default(),
@@ -533,16 +531,16 @@ pub struct ClaimItemDetail {
     #[doc = "A claim detail line. Either a simple (a product or service) or a 'group' of sub-details which are simple items."]
     pub r#sub_detail: Vec<ClaimItemDetailSubDetail>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for ClaimItemDetail {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#sequence: {
-                let mut default: super::super::types::PositiveInt = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#sequence: super::super::types::PositiveInt {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#trace_number: Default::default(),
             r#revenue: Default::default(),
@@ -622,16 +620,16 @@ pub struct ClaimItem {
     #[doc = "A claim detail line. Either a simple (a product or service) or a 'group' of sub-details which are simple items."]
     pub r#detail: Vec<ClaimItemDetail>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for ClaimItem {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#sequence: {
-                let mut default: super::super::types::PositiveInt = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#sequence: super::super::types::PositiveInt {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#trace_number: Default::default(),
             r#care_team_sequence: Default::default(),
@@ -744,6 +742,7 @@ pub struct Claim {
     #[doc = "The total value of the all the items in the claim."]
     pub r#total: Option<Box<super::super::types::Money>>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for Claim {
     fn default() -> Self {
         Self {
@@ -757,32 +756,27 @@ impl Default for Claim {
             r#modifier_extension: Default::default(),
             r#identifier: Default::default(),
             r#trace_number: Default::default(),
-            r#status: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#status: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
-            r#type: {
-                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#type: Box::new(super::super::types::CodeableConcept {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
             r#sub_type: Default::default(),
-            r#use: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#use: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
-            r#patient: {
-                let mut default: Box<super::super::types::Reference> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#patient: Box::new(super::super::types::Reference {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
             r#billable_period: Default::default(),
-            r#created: {
-                let mut default: super::super::types::DateTime = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#created: super::super::types::DateTime {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#enterer: Default::default(),
             r#insurer: Default::default(),

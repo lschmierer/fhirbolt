@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-03 by fhirbolt-codegen v0.7.0
 #[doc = "Date/time(s) or duration when the charged service was applied."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum ChargeItemOccurrence {
@@ -30,6 +30,7 @@ pub struct ChargeItemPerformer {
     #[doc = "The device, practitioner, etc. who performed or participated in the service."]
     pub r#actor: Box<super::super::types::Reference>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for ChargeItemPerformer {
     fn default() -> Self {
         Self {
@@ -37,11 +38,10 @@ impl Default for ChargeItemPerformer {
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
             r#function: Default::default(),
-            r#actor: {
-                let mut default: Box<super::super::types::Reference> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#actor: Box::new(super::super::types::Reference {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
         }
     }
 }
@@ -117,6 +117,7 @@ pub struct ChargeItem {
     #[doc = "Further information supporting this charge."]
     pub r#supporting_information: Vec<super::super::types::Reference>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for ChargeItem {
     fn default() -> Self {
         Self {
@@ -131,22 +132,19 @@ impl Default for ChargeItem {
             r#identifier: Default::default(),
             r#definition_uri: Default::default(),
             r#definition_canonical: Default::default(),
-            r#status: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#status: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#part_of: Default::default(),
-            r#code: {
-                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
-            r#subject: {
-                let mut default: Box<super::super::types::Reference> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#code: Box::new(super::super::types::CodeableConcept {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
+            r#subject: Box::new(super::super::types::Reference {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
             r#context: Default::default(),
             r#occurrence: Default::default(),
             r#performer: Default::default(),

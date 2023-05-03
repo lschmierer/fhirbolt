@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-03 by fhirbolt-codegen v0.7.0
 #[doc = "Date vaccine administered or was to be administered."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum ImmunizationOccurrence {
@@ -37,6 +37,7 @@ pub struct ImmunizationPerformer {
     #[doc = "The practitioner or organization who performed the action."]
     pub r#actor: Box<super::super::types::Reference>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for ImmunizationPerformer {
     fn default() -> Self {
         Self {
@@ -44,11 +45,10 @@ impl Default for ImmunizationPerformer {
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
             r#function: Default::default(),
-            r#actor: {
-                let mut default: Box<super::super::types::Reference> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#actor: Box::new(super::super::types::Reference {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
         }
     }
 }
@@ -70,6 +70,7 @@ pub struct ImmunizationEducation {
     #[doc = "Date the educational material was given to the patient."]
     pub r#presentation_date: Option<super::super::types::DateTime>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for ImmunizationEducation {
     fn default() -> Self {
         Self {
@@ -99,6 +100,7 @@ pub struct ImmunizationReaction {
     #[doc = "Self-reported indicator."]
     pub r#reported: Option<super::super::types::Boolean>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for ImmunizationReaction {
     fn default() -> Self {
         Self {
@@ -131,6 +133,7 @@ pub struct ImmunizationProtocolApplied {
     #[doc = "The recommended number of doses to achieve immunity."]
     pub r#series_doses: Option<ImmunizationProtocolAppliedSeriesDoses>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for ImmunizationProtocolApplied {
     fn default() -> Self {
         Self {
@@ -221,6 +224,7 @@ pub struct Immunization {
     #[doc = "The protocol (set of recommendations) being followed by the provider who administered the dose."]
     pub r#protocol_applied: Vec<ImmunizationProtocolApplied>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for Immunization {
     fn default() -> Self {
         Self {
@@ -233,22 +237,19 @@ impl Default for Immunization {
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
             r#identifier: Default::default(),
-            r#status: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#status: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#status_reason: Default::default(),
-            r#vaccine_code: {
-                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
-            r#patient: {
-                let mut default: Box<super::super::types::Reference> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#vaccine_code: Box::new(super::super::types::CodeableConcept {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
+            r#patient: Box::new(super::super::types::Reference {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
             r#encounter: Default::default(),
             r#occurrence: Default::default(),
             r#recorded: Default::default(),

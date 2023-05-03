@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-03 by fhirbolt-codegen v0.7.0
 #[doc = "Todo."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum SubstanceReferenceInformationTargetAmount {
@@ -24,6 +24,7 @@ pub struct SubstanceReferenceInformationGene {
     #[doc = "Todo."]
     pub r#source: Vec<super::super::types::Reference>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for SubstanceReferenceInformationGene {
     fn default() -> Self {
         Self {
@@ -52,6 +53,7 @@ pub struct SubstanceReferenceInformationGeneElement {
     #[doc = "Todo."]
     pub r#source: Vec<super::super::types::Reference>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for SubstanceReferenceInformationGeneElement {
     fn default() -> Self {
         Self {
@@ -82,6 +84,7 @@ pub struct SubstanceReferenceInformationClassification {
     #[doc = "Todo."]
     pub r#source: Vec<super::super::types::Reference>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for SubstanceReferenceInformationClassification {
     fn default() -> Self {
         Self {
@@ -121,6 +124,7 @@ pub struct SubstanceReferenceInformationTarget {
     #[doc = "Todo."]
     pub r#source: Vec<super::super::types::Reference>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for SubstanceReferenceInformationTarget {
     fn default() -> Self {
         Self {
@@ -168,6 +172,7 @@ pub struct SubstanceReferenceInformation {
     #[doc = "Todo."]
     pub r#target: Vec<SubstanceReferenceInformationTarget>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for SubstanceReferenceInformation {
     fn default() -> Self {
         Self {

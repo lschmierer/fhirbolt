@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-03 by fhirbolt-codegen v0.7.0
 #[doc = "Does this service have specific eligibility requirements that need to be met in order to use the service?"]
 #[derive(Debug, Clone, PartialEq)]
 pub struct HealthcareServiceEligibility {
@@ -13,6 +13,7 @@ pub struct HealthcareServiceEligibility {
     #[doc = "Describes the eligibility conditions for the service."]
     pub r#comment: Option<super::super::types::Markdown>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for HealthcareServiceEligibility {
     fn default() -> Self {
         Self {
@@ -90,6 +91,7 @@ pub struct HealthcareService {
     #[doc = "Technical endpoints providing access to services operated for the specific healthcare services defined at this resource."]
     pub r#endpoint: Vec<super::super::types::Reference>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for HealthcareService {
     fn default() -> Self {
         Self {

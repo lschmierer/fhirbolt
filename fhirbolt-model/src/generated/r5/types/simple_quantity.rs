@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-03 by fhirbolt-codegen v0.7.0
 #[doc = "A fixed quantity (no comparator)"]
 #[derive(Debug, Clone, PartialEq)]
 pub struct SimpleQuantity {
@@ -15,6 +15,7 @@ pub struct SimpleQuantity {
     #[doc = "A computer processable form of the unit in some unit representation system."]
     pub r#code: Option<super::super::types::Code>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for SimpleQuantity {
     fn default() -> Self {
         Self {

@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-03 by fhirbolt-codegen v0.7.0
 #[doc = "Reference Type: A reference from one resource to another."]
 #[derive(Debug, Clone, PartialEq)]
 pub struct Reference {
@@ -15,6 +15,7 @@ pub struct Reference {
     #[doc = "Plain text narrative that identifies the resource in addition to the resource reference."]
     pub r#display: Option<super::super::types::String>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for Reference {
     fn default() -> Self {
         Self {

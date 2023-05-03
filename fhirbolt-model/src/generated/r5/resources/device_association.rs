@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-03 by fhirbolt-codegen v0.7.0
 #[doc = "The details about the device when it is in use to describe its operation."]
 #[derive(Debug, Clone, PartialEq)]
 pub struct DeviceAssociationOperation {
@@ -15,17 +15,17 @@ pub struct DeviceAssociationOperation {
     #[doc = "Begin and end dates and times for the device's operation."]
     pub r#period: Option<Box<super::super::types::Period>>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for DeviceAssociationOperation {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#status: {
-                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#status: Box::new(super::super::types::CodeableConcept {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
             r#operator: Default::default(),
             r#period: Default::default(),
         }
@@ -69,6 +69,7 @@ pub struct DeviceAssociation {
     #[doc = "The details about the device when it is in use to describe its operation."]
     pub r#operation: Vec<DeviceAssociationOperation>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for DeviceAssociation {
     fn default() -> Self {
         Self {
@@ -81,17 +82,15 @@ impl Default for DeviceAssociation {
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
             r#identifier: Default::default(),
-            r#device: {
-                let mut default: Box<super::super::types::Reference> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#device: Box::new(super::super::types::Reference {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
             r#category: Default::default(),
-            r#status: {
-                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#status: Box::new(super::super::types::CodeableConcept {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
             r#status_reason: Default::default(),
             r#subject: Default::default(),
             r#body_structure: Default::default(),

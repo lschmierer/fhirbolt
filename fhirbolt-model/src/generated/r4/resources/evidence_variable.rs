@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-03 by fhirbolt-codegen v0.7.0
 #[doc = "Define members of the evidence element using Codes (such as condition, medication, or observation), Expressions ( using an expression language such as FHIRPath or CQL) or DataRequirements (such as Diabetes diagnosis onset in the last year)."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum EvidenceVariableCharacteristicDefinition {
@@ -45,6 +45,7 @@ pub struct EvidenceVariableCharacteristic {
     #[doc = "Indicates how elements are aggregated within the study effective period."]
     pub r#group_measure: Option<super::super::types::Code>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for EvidenceVariableCharacteristic {
     fn default() -> Self {
         Self {
@@ -135,6 +136,7 @@ pub struct EvidenceVariable {
     #[doc = "A characteristic that defines the members of the evidence element. Multiple characteristics are applied with \"and\" semantics."]
     pub r#characteristic: Vec<EvidenceVariableCharacteristic>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for EvidenceVariable {
     fn default() -> Self {
         Self {
@@ -153,10 +155,9 @@ impl Default for EvidenceVariable {
             r#title: Default::default(),
             r#short_title: Default::default(),
             r#subtitle: Default::default(),
-            r#status: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#status: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#date: Default::default(),
             r#publisher: Default::default(),

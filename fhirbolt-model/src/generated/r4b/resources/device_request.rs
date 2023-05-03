@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-03 by fhirbolt-codegen v0.7.0
 #[doc = "The details of the device to be used."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum DeviceRequestCode {
@@ -40,6 +40,7 @@ pub struct DeviceRequestParameter {
     #[doc = "The value of the device detail."]
     pub r#value: Option<DeviceRequestParameterValue>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for DeviceRequestParameter {
     fn default() -> Self {
         Self {
@@ -119,6 +120,7 @@ pub struct DeviceRequest {
     #[doc = "Key events in the history of the request."]
     pub r#relevant_history: Vec<super::super::types::Reference>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for DeviceRequest {
     fn default() -> Self {
         Self {
@@ -137,19 +139,17 @@ impl Default for DeviceRequest {
             r#prior_request: Default::default(),
             r#group_identifier: Default::default(),
             r#status: Default::default(),
-            r#intent: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#intent: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#priority: Default::default(),
             r#code: Default::default(),
             r#parameter: Default::default(),
-            r#subject: {
-                let mut default: Box<super::super::types::Reference> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#subject: Box::new(super::super::types::Reference {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
             r#encounter: Default::default(),
             r#occurrence: Default::default(),
             r#authored_on: Default::default(),

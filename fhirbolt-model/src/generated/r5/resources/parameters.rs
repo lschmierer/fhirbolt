@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-03 by fhirbolt-codegen v0.7.0
 #[doc = "Conveys the content if the parameter is a data type."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum ParametersParameterValue {
@@ -77,16 +77,16 @@ pub struct ParametersParameter {
     #[doc = "A named part of a multi-part parameter."]
     pub r#part: Vec<ParametersParameter>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for ParametersParameter {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#name: {
-                let mut default: super::super::types::String = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#name: super::super::types::String {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#value: Default::default(),
             r#resource: Default::default(),
@@ -108,6 +108,7 @@ pub struct Parameters {
     #[doc = "A parameter passed to or received from the operation."]
     pub r#parameter: Vec<ParametersParameter>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for Parameters {
     fn default() -> Self {
         Self {

@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-03 by fhirbolt-codegen v0.7.0
 #[doc = "How often the device was used."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum DeviceUseStatementTiming {
@@ -54,6 +54,7 @@ pub struct DeviceUseStatement {
     #[doc = "Details about the device statement that were not represented at all or sufficiently in one of the attributes provided in a class. These may include for example a comment, an instruction, or a note associated with the statement."]
     pub r#note: Vec<super::super::types::Annotation>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for DeviceUseStatement {
     fn default() -> Self {
         Self {
@@ -67,25 +68,22 @@ impl Default for DeviceUseStatement {
             r#modifier_extension: Default::default(),
             r#identifier: Default::default(),
             r#based_on: Default::default(),
-            r#status: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#status: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
-            r#subject: {
-                let mut default: Box<super::super::types::Reference> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#subject: Box::new(super::super::types::Reference {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
             r#derived_from: Default::default(),
             r#timing: Default::default(),
             r#recorded_on: Default::default(),
             r#source: Default::default(),
-            r#device: {
-                let mut default: Box<super::super::types::Reference> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#device: Box::new(super::super::types::Reference {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
             r#reason_code: Default::default(),
             r#reason_reference: Default::default(),
             r#body_site: Default::default(),

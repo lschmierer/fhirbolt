@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-03 by fhirbolt-codegen v0.7.0
 #[doc = "Expressions that describe applicability criteria for the billing code."]
 #[derive(Debug, Clone, PartialEq)]
 pub struct ChargeItemDefinitionApplicability {
@@ -15,6 +15,7 @@ pub struct ChargeItemDefinitionApplicability {
     #[doc = "An expression that returns true or false, indicating whether the condition is satisfied. When using FHIRPath expressions, the %context environment variable must be replaced at runtime with the ChargeItem resource to which this definition is applied."]
     pub r#expression: Option<super::super::types::String>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for ChargeItemDefinitionApplicability {
     fn default() -> Self {
         Self {
@@ -45,16 +46,16 @@ pub struct ChargeItemDefinitionPropertyGroupPriceComponent {
     #[doc = "The amount calculated for this component."]
     pub r#amount: Option<Box<super::super::types::Money>>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for ChargeItemDefinitionPropertyGroupPriceComponent {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#type: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#type: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#code: Default::default(),
             r#factor: Default::default(),
@@ -76,6 +77,7 @@ pub struct ChargeItemDefinitionPropertyGroup {
     #[doc = "The price for a ChargeItem may be calculated as a base price with surcharges/deductions that apply in certain conditions. A ChargeItemDefinition resource that defines the prices, factors and conditions that apply to a billing code is currently under development. The priceComponent element can be used to offer transparency to the recipient of the Invoice of how the prices have been calculated."]
     pub r#price_component: Vec<ChargeItemDefinitionPropertyGroupPriceComponent>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for ChargeItemDefinitionPropertyGroup {
     fn default() -> Self {
         Self {
@@ -153,6 +155,7 @@ pub struct ChargeItemDefinition {
     #[doc = "Group of properties which are applicable under the same conditions. If no applicability rules are established for the group, then all properties always apply."]
     pub r#property_group: Vec<ChargeItemDefinitionPropertyGroup>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for ChargeItemDefinition {
     fn default() -> Self {
         Self {
@@ -164,10 +167,9 @@ impl Default for ChargeItemDefinition {
             r#contained: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#url: {
-                let mut default: super::super::types::Uri = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#url: super::super::types::Uri {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#identifier: Default::default(),
             r#version: Default::default(),
@@ -175,10 +177,9 @@ impl Default for ChargeItemDefinition {
             r#derived_from_uri: Default::default(),
             r#part_of: Default::default(),
             r#replaces: Default::default(),
-            r#status: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#status: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#experimental: Default::default(),
             r#date: Default::default(),

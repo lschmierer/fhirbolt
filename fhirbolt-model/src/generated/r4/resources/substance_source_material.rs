@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-03 by fhirbolt-codegen v0.7.0
 #[doc = "Many complex materials are fractions of parts of plants, animals, or minerals. Fraction elements are often necessary to define both Substances and Specified Group 1 Substances. For substances derived from Plants, fraction information will be captured at the Substance information level ( . Oils, Juices and Exudates). Additional information for Extracts, such as extraction solvent composition, will be captured at the Specified Substance Group 1 information level. For plasma-derived products fraction information will be captured at the Substance and the Specified Substance Group 1 levels."]
 #[derive(Debug, Clone, PartialEq)]
 pub struct SubstanceSourceMaterialFractionDescription {
@@ -13,6 +13,7 @@ pub struct SubstanceSourceMaterialFractionDescription {
     #[doc = "The specific type of the material constituting the component. For Herbal preparations the particulars of the extracts (liquid/dry) is described in Specified Substance Group 1."]
     pub r#material_type: Option<Box<super::super::types::CodeableConcept>>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for SubstanceSourceMaterialFractionDescription {
     fn default() -> Self {
         Self {
@@ -38,6 +39,7 @@ pub struct SubstanceSourceMaterialOrganismAuthor {
     #[doc = "The author of an organism species shall be specified. The author year of an organism shall also be specified when applicable; refers to the year in which the first author(s) published the infraspecific plant/animal name (of any rank)."]
     pub r#author_description: Option<super::super::types::String>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for SubstanceSourceMaterialOrganismAuthor {
     fn default() -> Self {
         Self {
@@ -69,6 +71,7 @@ pub struct SubstanceSourceMaterialOrganismHybrid {
     #[doc = "The hybrid type of an organism shall be specified."]
     pub r#hybrid_type: Option<Box<super::super::types::CodeableConcept>>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for SubstanceSourceMaterialOrganismHybrid {
     fn default() -> Self {
         Self {
@@ -101,6 +104,7 @@ pub struct SubstanceSourceMaterialOrganismOrganismGeneral {
     #[doc = "The order of an organism shall be specified,."]
     pub r#order: Option<Box<super::super::types::CodeableConcept>>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for SubstanceSourceMaterialOrganismOrganismGeneral {
     fn default() -> Self {
         Self {
@@ -140,6 +144,7 @@ pub struct SubstanceSourceMaterialOrganism {
     #[doc = "4.9.13.7.1 Kingdom (Conditional)."]
     pub r#organism_general: Option<SubstanceSourceMaterialOrganismOrganismGeneral>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for SubstanceSourceMaterialOrganism {
     fn default() -> Self {
         Self {
@@ -171,6 +176,7 @@ pub struct SubstanceSourceMaterialPartDescription {
     #[doc = "The detailed anatomic location when the part can be extracted from different anatomical locations of the organism. Multiple alternative locations may apply."]
     pub r#part_location: Option<Box<super::super::types::CodeableConcept>>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for SubstanceSourceMaterialPartDescription {
     fn default() -> Self {
         Self {
@@ -228,6 +234,7 @@ pub struct SubstanceSourceMaterial {
     #[doc = "To do."]
     pub r#part_description: Vec<SubstanceSourceMaterialPartDescription>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for SubstanceSourceMaterial {
     fn default() -> Self {
         Self {

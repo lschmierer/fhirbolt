@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-03 by fhirbolt-codegen v0.7.0
 #[doc = "The intended subjects for the ResearchElementDefinition. If this element is not provided, a Patient subject is assumed, but the subject of the ResearchElementDefinition can be anything."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum ResearchElementDefinitionSubject {
@@ -72,6 +72,7 @@ pub struct ResearchElementDefinitionCharacteristic {
     #[doc = "Indicates how elements are aggregated within the study effective period."]
     pub r#participant_effective_group_measure: Option<super::super::types::Code>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for ResearchElementDefinitionCharacteristic {
     fn default() -> Self {
         Self {
@@ -179,6 +180,7 @@ pub struct ResearchElementDefinition {
     #[doc = "A characteristic that defines the members of the research element. Multiple characteristics are applied with \"and\" semantics."]
     pub r#characteristic: Vec<ResearchElementDefinitionCharacteristic>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for ResearchElementDefinition {
     fn default() -> Self {
         Self {
@@ -197,10 +199,9 @@ impl Default for ResearchElementDefinition {
             r#title: Default::default(),
             r#short_title: Default::default(),
             r#subtitle: Default::default(),
-            r#status: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#status: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#experimental: Default::default(),
             r#subject: Default::default(),
@@ -224,10 +225,9 @@ impl Default for ResearchElementDefinition {
             r#endorser: Default::default(),
             r#related_artifact: Default::default(),
             r#library: Default::default(),
-            r#type: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#type: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#variable_type: Default::default(),
             r#characteristic: Default::default(),

@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-03 by fhirbolt-codegen v0.7.0
 #[doc = "The absolute geographic location of the Location, expressed using the WGS84 datum (This is the same co-ordinate system used in KML)."]
 #[derive(Debug, Clone, PartialEq)]
 pub struct LocationPosition {
@@ -15,21 +15,20 @@ pub struct LocationPosition {
     #[doc = "Altitude. The value domain and the interpretation are the same as for the text of the altitude element in KML (see notes below)."]
     pub r#altitude: Option<super::super::types::Decimal>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for LocationPosition {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#longitude: {
-                let mut default: super::super::types::Decimal = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#longitude: super::super::types::Decimal {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
-            r#latitude: {
-                let mut default: super::super::types::Decimal = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#latitude: super::super::types::Decimal {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#altitude: Default::default(),
         }
@@ -53,6 +52,7 @@ pub struct LocationHoursOfOperation {
     #[doc = "Time that the Location closes."]
     pub r#closing_time: Option<super::super::types::Time>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for LocationHoursOfOperation {
     fn default() -> Self {
         Self {
@@ -120,6 +120,7 @@ pub struct Location {
     #[doc = "Technical endpoints providing access to services operated for the location."]
     pub r#endpoint: Vec<super::super::types::Reference>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for Location {
     fn default() -> Self {
         Self {

@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-03 by fhirbolt-codegen v0.7.0
 #[doc = "When the member is generally available within this care team."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum CareTeamParticipantCoverage {
@@ -25,6 +25,7 @@ pub struct CareTeamParticipant {
     #[doc = "When the member is generally available within this care team."]
     pub r#coverage: Option<CareTeamParticipantCoverage>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for CareTeamParticipant {
     fn default() -> Self {
         Self {
@@ -80,6 +81,7 @@ pub struct CareTeam {
     #[doc = "Comments made about the CareTeam."]
     pub r#note: Vec<super::super::types::Annotation>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for CareTeam {
     fn default() -> Self {
         Self {

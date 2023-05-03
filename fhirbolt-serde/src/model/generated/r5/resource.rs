@@ -1,496 +1,270 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
-impl crate::Resource for fhirbolt_model::r5::Resource {
+// Generated on 2023-05-03 by fhirbolt-codegen v0.7.0
+use crate::{DeserializationContext, SerializationContext};
+use fhirbolt_model::r5::Resource;
+impl crate::Resource for Resource {
     const FHIR_RELEASE: fhirbolt_shared::FhirRelease = fhirbolt_shared::FhirReleases::R5;
 }
-impl serde::ser::Serialize
-    for crate::context::ser::SerializationContext<&fhirbolt_model::r5::Resource>
-{
+impl serde::ser::Serialize for SerializationContext<&Resource> {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
         S: serde::ser::Serializer,
     {
         match self.value {
-            fhirbolt_model::r5::Resource::Account(r) => {
+            Resource::Account(r) => self.with_context(r, |ctx| ctx.serialize(serializer)),
+            Resource::ActivityDefinition(r) => {
                 self.with_context(r, |ctx| ctx.serialize(serializer))
             }
-            fhirbolt_model::r5::Resource::ActivityDefinition(r) => {
+            Resource::ActorDefinition(r) => self.with_context(r, |ctx| ctx.serialize(serializer)),
+            Resource::AdministrableProductDefinition(r) => {
                 self.with_context(r, |ctx| ctx.serialize(serializer))
             }
-            fhirbolt_model::r5::Resource::ActorDefinition(r) => {
+            Resource::AdverseEvent(r) => self.with_context(r, |ctx| ctx.serialize(serializer)),
+            Resource::AllergyIntolerance(r) => {
                 self.with_context(r, |ctx| ctx.serialize(serializer))
             }
-            fhirbolt_model::r5::Resource::AdministrableProductDefinition(r) => {
+            Resource::Appointment(r) => self.with_context(r, |ctx| ctx.serialize(serializer)),
+            Resource::AppointmentResponse(r) => {
                 self.with_context(r, |ctx| ctx.serialize(serializer))
             }
-            fhirbolt_model::r5::Resource::AdverseEvent(r) => {
+            Resource::ArtifactAssessment(r) => {
                 self.with_context(r, |ctx| ctx.serialize(serializer))
             }
-            fhirbolt_model::r5::Resource::AllergyIntolerance(r) => {
+            Resource::AuditEvent(r) => self.with_context(r, |ctx| ctx.serialize(serializer)),
+            Resource::Basic(r) => self.with_context(r, |ctx| ctx.serialize(serializer)),
+            Resource::Binary(r) => self.with_context(r, |ctx| ctx.serialize(serializer)),
+            Resource::BiologicallyDerivedProduct(r) => {
                 self.with_context(r, |ctx| ctx.serialize(serializer))
             }
-            fhirbolt_model::r5::Resource::Appointment(r) => {
+            Resource::BiologicallyDerivedProductDispense(r) => {
                 self.with_context(r, |ctx| ctx.serialize(serializer))
             }
-            fhirbolt_model::r5::Resource::AppointmentResponse(r) => {
+            Resource::BodyStructure(r) => self.with_context(r, |ctx| ctx.serialize(serializer)),
+            Resource::Bundle(r) => self.with_context(r, |ctx| ctx.serialize(serializer)),
+            Resource::CapabilityStatement(r) => {
                 self.with_context(r, |ctx| ctx.serialize(serializer))
             }
-            fhirbolt_model::r5::Resource::ArtifactAssessment(r) => {
+            Resource::CarePlan(r) => self.with_context(r, |ctx| ctx.serialize(serializer)),
+            Resource::CareTeam(r) => self.with_context(r, |ctx| ctx.serialize(serializer)),
+            Resource::ChargeItem(r) => self.with_context(r, |ctx| ctx.serialize(serializer)),
+            Resource::ChargeItemDefinition(r) => {
                 self.with_context(r, |ctx| ctx.serialize(serializer))
             }
-            fhirbolt_model::r5::Resource::AuditEvent(r) => {
+            Resource::Citation(r) => self.with_context(r, |ctx| ctx.serialize(serializer)),
+            Resource::Claim(r) => self.with_context(r, |ctx| ctx.serialize(serializer)),
+            Resource::ClaimResponse(r) => self.with_context(r, |ctx| ctx.serialize(serializer)),
+            Resource::ClinicalImpression(r) => {
                 self.with_context(r, |ctx| ctx.serialize(serializer))
             }
-            fhirbolt_model::r5::Resource::Basic(r) => {
+            Resource::ClinicalUseDefinition(r) => {
                 self.with_context(r, |ctx| ctx.serialize(serializer))
             }
-            fhirbolt_model::r5::Resource::Binary(r) => {
+            Resource::CodeSystem(r) => self.with_context(r, |ctx| ctx.serialize(serializer)),
+            Resource::Communication(r) => self.with_context(r, |ctx| ctx.serialize(serializer)),
+            Resource::CommunicationRequest(r) => {
                 self.with_context(r, |ctx| ctx.serialize(serializer))
             }
-            fhirbolt_model::r5::Resource::BiologicallyDerivedProduct(r) => {
+            Resource::CompartmentDefinition(r) => {
                 self.with_context(r, |ctx| ctx.serialize(serializer))
             }
-            fhirbolt_model::r5::Resource::BiologicallyDerivedProductDispense(r) => {
+            Resource::Composition(r) => self.with_context(r, |ctx| ctx.serialize(serializer)),
+            Resource::ConceptMap(r) => self.with_context(r, |ctx| ctx.serialize(serializer)),
+            Resource::Condition(r) => self.with_context(r, |ctx| ctx.serialize(serializer)),
+            Resource::ConditionDefinition(r) => {
                 self.with_context(r, |ctx| ctx.serialize(serializer))
             }
-            fhirbolt_model::r5::Resource::BodyStructure(r) => {
+            Resource::Consent(r) => self.with_context(r, |ctx| ctx.serialize(serializer)),
+            Resource::Contract(r) => self.with_context(r, |ctx| ctx.serialize(serializer)),
+            Resource::Coverage(r) => self.with_context(r, |ctx| ctx.serialize(serializer)),
+            Resource::CoverageEligibilityRequest(r) => {
                 self.with_context(r, |ctx| ctx.serialize(serializer))
             }
-            fhirbolt_model::r5::Resource::Bundle(r) => {
+            Resource::CoverageEligibilityResponse(r) => {
                 self.with_context(r, |ctx| ctx.serialize(serializer))
             }
-            fhirbolt_model::r5::Resource::CapabilityStatement(r) => {
+            Resource::DetectedIssue(r) => self.with_context(r, |ctx| ctx.serialize(serializer)),
+            Resource::Device(r) => self.with_context(r, |ctx| ctx.serialize(serializer)),
+            Resource::DeviceAssociation(r) => self.with_context(r, |ctx| ctx.serialize(serializer)),
+            Resource::DeviceDefinition(r) => self.with_context(r, |ctx| ctx.serialize(serializer)),
+            Resource::DeviceDispense(r) => self.with_context(r, |ctx| ctx.serialize(serializer)),
+            Resource::DeviceMetric(r) => self.with_context(r, |ctx| ctx.serialize(serializer)),
+            Resource::DeviceRequest(r) => self.with_context(r, |ctx| ctx.serialize(serializer)),
+            Resource::DeviceUsage(r) => self.with_context(r, |ctx| ctx.serialize(serializer)),
+            Resource::DiagnosticReport(r) => self.with_context(r, |ctx| ctx.serialize(serializer)),
+            Resource::DocumentReference(r) => self.with_context(r, |ctx| ctx.serialize(serializer)),
+            Resource::Encounter(r) => self.with_context(r, |ctx| ctx.serialize(serializer)),
+            Resource::EncounterHistory(r) => self.with_context(r, |ctx| ctx.serialize(serializer)),
+            Resource::Endpoint(r) => self.with_context(r, |ctx| ctx.serialize(serializer)),
+            Resource::EnrollmentRequest(r) => self.with_context(r, |ctx| ctx.serialize(serializer)),
+            Resource::EnrollmentResponse(r) => {
                 self.with_context(r, |ctx| ctx.serialize(serializer))
             }
-            fhirbolt_model::r5::Resource::CarePlan(r) => {
+            Resource::EpisodeOfCare(r) => self.with_context(r, |ctx| ctx.serialize(serializer)),
+            Resource::EventDefinition(r) => self.with_context(r, |ctx| ctx.serialize(serializer)),
+            Resource::Evidence(r) => self.with_context(r, |ctx| ctx.serialize(serializer)),
+            Resource::EvidenceReport(r) => self.with_context(r, |ctx| ctx.serialize(serializer)),
+            Resource::EvidenceVariable(r) => self.with_context(r, |ctx| ctx.serialize(serializer)),
+            Resource::ExampleScenario(r) => self.with_context(r, |ctx| ctx.serialize(serializer)),
+            Resource::ExplanationOfBenefit(r) => {
                 self.with_context(r, |ctx| ctx.serialize(serializer))
             }
-            fhirbolt_model::r5::Resource::CareTeam(r) => {
+            Resource::FamilyMemberHistory(r) => {
                 self.with_context(r, |ctx| ctx.serialize(serializer))
             }
-            fhirbolt_model::r5::Resource::ChargeItem(r) => {
+            Resource::Flag(r) => self.with_context(r, |ctx| ctx.serialize(serializer)),
+            Resource::FormularyItem(r) => self.with_context(r, |ctx| ctx.serialize(serializer)),
+            Resource::GenomicStudy(r) => self.with_context(r, |ctx| ctx.serialize(serializer)),
+            Resource::Goal(r) => self.with_context(r, |ctx| ctx.serialize(serializer)),
+            Resource::GraphDefinition(r) => self.with_context(r, |ctx| ctx.serialize(serializer)),
+            Resource::Group(r) => self.with_context(r, |ctx| ctx.serialize(serializer)),
+            Resource::GuidanceResponse(r) => self.with_context(r, |ctx| ctx.serialize(serializer)),
+            Resource::HealthcareService(r) => self.with_context(r, |ctx| ctx.serialize(serializer)),
+            Resource::ImagingSelection(r) => self.with_context(r, |ctx| ctx.serialize(serializer)),
+            Resource::ImagingStudy(r) => self.with_context(r, |ctx| ctx.serialize(serializer)),
+            Resource::Immunization(r) => self.with_context(r, |ctx| ctx.serialize(serializer)),
+            Resource::ImmunizationEvaluation(r) => {
                 self.with_context(r, |ctx| ctx.serialize(serializer))
             }
-            fhirbolt_model::r5::Resource::ChargeItemDefinition(r) => {
+            Resource::ImmunizationRecommendation(r) => {
                 self.with_context(r, |ctx| ctx.serialize(serializer))
             }
-            fhirbolt_model::r5::Resource::Citation(r) => {
+            Resource::ImplementationGuide(r) => {
                 self.with_context(r, |ctx| ctx.serialize(serializer))
             }
-            fhirbolt_model::r5::Resource::Claim(r) => {
+            Resource::Ingredient(r) => self.with_context(r, |ctx| ctx.serialize(serializer)),
+            Resource::InsurancePlan(r) => self.with_context(r, |ctx| ctx.serialize(serializer)),
+            Resource::InventoryItem(r) => self.with_context(r, |ctx| ctx.serialize(serializer)),
+            Resource::InventoryReport(r) => self.with_context(r, |ctx| ctx.serialize(serializer)),
+            Resource::Invoice(r) => self.with_context(r, |ctx| ctx.serialize(serializer)),
+            Resource::Library(r) => self.with_context(r, |ctx| ctx.serialize(serializer)),
+            Resource::Linkage(r) => self.with_context(r, |ctx| ctx.serialize(serializer)),
+            Resource::List(r) => self.with_context(r, |ctx| ctx.serialize(serializer)),
+            Resource::Location(r) => self.with_context(r, |ctx| ctx.serialize(serializer)),
+            Resource::ManufacturedItemDefinition(r) => {
                 self.with_context(r, |ctx| ctx.serialize(serializer))
             }
-            fhirbolt_model::r5::Resource::ClaimResponse(r) => {
+            Resource::Measure(r) => self.with_context(r, |ctx| ctx.serialize(serializer)),
+            Resource::MeasureReport(r) => self.with_context(r, |ctx| ctx.serialize(serializer)),
+            Resource::Medication(r) => self.with_context(r, |ctx| ctx.serialize(serializer)),
+            Resource::MedicationAdministration(r) => {
                 self.with_context(r, |ctx| ctx.serialize(serializer))
             }
-            fhirbolt_model::r5::Resource::ClinicalImpression(r) => {
+            Resource::MedicationDispense(r) => {
                 self.with_context(r, |ctx| ctx.serialize(serializer))
             }
-            fhirbolt_model::r5::Resource::ClinicalUseDefinition(r) => {
+            Resource::MedicationKnowledge(r) => {
                 self.with_context(r, |ctx| ctx.serialize(serializer))
             }
-            fhirbolt_model::r5::Resource::CodeSystem(r) => {
+            Resource::MedicationRequest(r) => self.with_context(r, |ctx| ctx.serialize(serializer)),
+            Resource::MedicationStatement(r) => {
                 self.with_context(r, |ctx| ctx.serialize(serializer))
             }
-            fhirbolt_model::r5::Resource::Communication(r) => {
+            Resource::MedicinalProductDefinition(r) => {
                 self.with_context(r, |ctx| ctx.serialize(serializer))
             }
-            fhirbolt_model::r5::Resource::CommunicationRequest(r) => {
+            Resource::MessageDefinition(r) => self.with_context(r, |ctx| ctx.serialize(serializer)),
+            Resource::MessageHeader(r) => self.with_context(r, |ctx| ctx.serialize(serializer)),
+            Resource::MolecularSequence(r) => self.with_context(r, |ctx| ctx.serialize(serializer)),
+            Resource::NamingSystem(r) => self.with_context(r, |ctx| ctx.serialize(serializer)),
+            Resource::NutritionIntake(r) => self.with_context(r, |ctx| ctx.serialize(serializer)),
+            Resource::NutritionOrder(r) => self.with_context(r, |ctx| ctx.serialize(serializer)),
+            Resource::NutritionProduct(r) => self.with_context(r, |ctx| ctx.serialize(serializer)),
+            Resource::Observation(r) => self.with_context(r, |ctx| ctx.serialize(serializer)),
+            Resource::ObservationDefinition(r) => {
                 self.with_context(r, |ctx| ctx.serialize(serializer))
             }
-            fhirbolt_model::r5::Resource::CompartmentDefinition(r) => {
+            Resource::OperationDefinition(r) => {
                 self.with_context(r, |ctx| ctx.serialize(serializer))
             }
-            fhirbolt_model::r5::Resource::Composition(r) => {
+            Resource::OperationOutcome(r) => self.with_context(r, |ctx| ctx.serialize(serializer)),
+            Resource::Organization(r) => self.with_context(r, |ctx| ctx.serialize(serializer)),
+            Resource::OrganizationAffiliation(r) => {
                 self.with_context(r, |ctx| ctx.serialize(serializer))
             }
-            fhirbolt_model::r5::Resource::ConceptMap(r) => {
+            Resource::PackagedProductDefinition(r) => {
                 self.with_context(r, |ctx| ctx.serialize(serializer))
             }
-            fhirbolt_model::r5::Resource::Condition(r) => {
+            Resource::Parameters(r) => self.with_context(r, |ctx| ctx.serialize(serializer)),
+            Resource::Patient(r) => self.with_context(r, |ctx| ctx.serialize(serializer)),
+            Resource::PaymentNotice(r) => self.with_context(r, |ctx| ctx.serialize(serializer)),
+            Resource::PaymentReconciliation(r) => {
                 self.with_context(r, |ctx| ctx.serialize(serializer))
             }
-            fhirbolt_model::r5::Resource::ConditionDefinition(r) => {
+            Resource::Permission(r) => self.with_context(r, |ctx| ctx.serialize(serializer)),
+            Resource::Person(r) => self.with_context(r, |ctx| ctx.serialize(serializer)),
+            Resource::PlanDefinition(r) => self.with_context(r, |ctx| ctx.serialize(serializer)),
+            Resource::Practitioner(r) => self.with_context(r, |ctx| ctx.serialize(serializer)),
+            Resource::PractitionerRole(r) => self.with_context(r, |ctx| ctx.serialize(serializer)),
+            Resource::Procedure(r) => self.with_context(r, |ctx| ctx.serialize(serializer)),
+            Resource::Provenance(r) => self.with_context(r, |ctx| ctx.serialize(serializer)),
+            Resource::Questionnaire(r) => self.with_context(r, |ctx| ctx.serialize(serializer)),
+            Resource::QuestionnaireResponse(r) => {
                 self.with_context(r, |ctx| ctx.serialize(serializer))
             }
-            fhirbolt_model::r5::Resource::Consent(r) => {
+            Resource::RegulatedAuthorization(r) => {
                 self.with_context(r, |ctx| ctx.serialize(serializer))
             }
-            fhirbolt_model::r5::Resource::Contract(r) => {
+            Resource::RelatedPerson(r) => self.with_context(r, |ctx| ctx.serialize(serializer)),
+            Resource::RequestOrchestration(r) => {
                 self.with_context(r, |ctx| ctx.serialize(serializer))
             }
-            fhirbolt_model::r5::Resource::Coverage(r) => {
+            Resource::Requirements(r) => self.with_context(r, |ctx| ctx.serialize(serializer)),
+            Resource::ResearchStudy(r) => self.with_context(r, |ctx| ctx.serialize(serializer)),
+            Resource::ResearchSubject(r) => self.with_context(r, |ctx| ctx.serialize(serializer)),
+            Resource::RiskAssessment(r) => self.with_context(r, |ctx| ctx.serialize(serializer)),
+            Resource::Schedule(r) => self.with_context(r, |ctx| ctx.serialize(serializer)),
+            Resource::SearchParameter(r) => self.with_context(r, |ctx| ctx.serialize(serializer)),
+            Resource::ServiceRequest(r) => self.with_context(r, |ctx| ctx.serialize(serializer)),
+            Resource::Slot(r) => self.with_context(r, |ctx| ctx.serialize(serializer)),
+            Resource::Specimen(r) => self.with_context(r, |ctx| ctx.serialize(serializer)),
+            Resource::SpecimenDefinition(r) => {
                 self.with_context(r, |ctx| ctx.serialize(serializer))
             }
-            fhirbolt_model::r5::Resource::CoverageEligibilityRequest(r) => {
+            Resource::StructureDefinition(r) => {
                 self.with_context(r, |ctx| ctx.serialize(serializer))
             }
-            fhirbolt_model::r5::Resource::CoverageEligibilityResponse(r) => {
+            Resource::StructureMap(r) => self.with_context(r, |ctx| ctx.serialize(serializer)),
+            Resource::Subscription(r) => self.with_context(r, |ctx| ctx.serialize(serializer)),
+            Resource::SubscriptionStatus(r) => {
                 self.with_context(r, |ctx| ctx.serialize(serializer))
             }
-            fhirbolt_model::r5::Resource::DetectedIssue(r) => {
+            Resource::SubscriptionTopic(r) => self.with_context(r, |ctx| ctx.serialize(serializer)),
+            Resource::Substance(r) => self.with_context(r, |ctx| ctx.serialize(serializer)),
+            Resource::SubstanceDefinition(r) => {
                 self.with_context(r, |ctx| ctx.serialize(serializer))
             }
-            fhirbolt_model::r5::Resource::Device(r) => {
+            Resource::SubstanceNucleicAcid(r) => {
                 self.with_context(r, |ctx| ctx.serialize(serializer))
             }
-            fhirbolt_model::r5::Resource::DeviceAssociation(r) => {
+            Resource::SubstancePolymer(r) => self.with_context(r, |ctx| ctx.serialize(serializer)),
+            Resource::SubstanceProtein(r) => self.with_context(r, |ctx| ctx.serialize(serializer)),
+            Resource::SubstanceReferenceInformation(r) => {
                 self.with_context(r, |ctx| ctx.serialize(serializer))
             }
-            fhirbolt_model::r5::Resource::DeviceDefinition(r) => {
+            Resource::SubstanceSourceMaterial(r) => {
                 self.with_context(r, |ctx| ctx.serialize(serializer))
             }
-            fhirbolt_model::r5::Resource::DeviceDispense(r) => {
+            Resource::SupplyDelivery(r) => self.with_context(r, |ctx| ctx.serialize(serializer)),
+            Resource::SupplyRequest(r) => self.with_context(r, |ctx| ctx.serialize(serializer)),
+            Resource::Task(r) => self.with_context(r, |ctx| ctx.serialize(serializer)),
+            Resource::TerminologyCapabilities(r) => {
                 self.with_context(r, |ctx| ctx.serialize(serializer))
             }
-            fhirbolt_model::r5::Resource::DeviceMetric(r) => {
+            Resource::TestPlan(r) => self.with_context(r, |ctx| ctx.serialize(serializer)),
+            Resource::TestReport(r) => self.with_context(r, |ctx| ctx.serialize(serializer)),
+            Resource::TestScript(r) => self.with_context(r, |ctx| ctx.serialize(serializer)),
+            Resource::Transport(r) => self.with_context(r, |ctx| ctx.serialize(serializer)),
+            Resource::ValueSet(r) => self.with_context(r, |ctx| ctx.serialize(serializer)),
+            Resource::VerificationResult(r) => {
                 self.with_context(r, |ctx| ctx.serialize(serializer))
             }
-            fhirbolt_model::r5::Resource::DeviceRequest(r) => {
-                self.with_context(r, |ctx| ctx.serialize(serializer))
-            }
-            fhirbolt_model::r5::Resource::DeviceUsage(r) => {
-                self.with_context(r, |ctx| ctx.serialize(serializer))
-            }
-            fhirbolt_model::r5::Resource::DiagnosticReport(r) => {
-                self.with_context(r, |ctx| ctx.serialize(serializer))
-            }
-            fhirbolt_model::r5::Resource::DocumentReference(r) => {
-                self.with_context(r, |ctx| ctx.serialize(serializer))
-            }
-            fhirbolt_model::r5::Resource::Encounter(r) => {
-                self.with_context(r, |ctx| ctx.serialize(serializer))
-            }
-            fhirbolt_model::r5::Resource::EncounterHistory(r) => {
-                self.with_context(r, |ctx| ctx.serialize(serializer))
-            }
-            fhirbolt_model::r5::Resource::Endpoint(r) => {
-                self.with_context(r, |ctx| ctx.serialize(serializer))
-            }
-            fhirbolt_model::r5::Resource::EnrollmentRequest(r) => {
-                self.with_context(r, |ctx| ctx.serialize(serializer))
-            }
-            fhirbolt_model::r5::Resource::EnrollmentResponse(r) => {
-                self.with_context(r, |ctx| ctx.serialize(serializer))
-            }
-            fhirbolt_model::r5::Resource::EpisodeOfCare(r) => {
-                self.with_context(r, |ctx| ctx.serialize(serializer))
-            }
-            fhirbolt_model::r5::Resource::EventDefinition(r) => {
-                self.with_context(r, |ctx| ctx.serialize(serializer))
-            }
-            fhirbolt_model::r5::Resource::Evidence(r) => {
-                self.with_context(r, |ctx| ctx.serialize(serializer))
-            }
-            fhirbolt_model::r5::Resource::EvidenceReport(r) => {
-                self.with_context(r, |ctx| ctx.serialize(serializer))
-            }
-            fhirbolt_model::r5::Resource::EvidenceVariable(r) => {
-                self.with_context(r, |ctx| ctx.serialize(serializer))
-            }
-            fhirbolt_model::r5::Resource::ExampleScenario(r) => {
-                self.with_context(r, |ctx| ctx.serialize(serializer))
-            }
-            fhirbolt_model::r5::Resource::ExplanationOfBenefit(r) => {
-                self.with_context(r, |ctx| ctx.serialize(serializer))
-            }
-            fhirbolt_model::r5::Resource::FamilyMemberHistory(r) => {
-                self.with_context(r, |ctx| ctx.serialize(serializer))
-            }
-            fhirbolt_model::r5::Resource::Flag(r) => {
-                self.with_context(r, |ctx| ctx.serialize(serializer))
-            }
-            fhirbolt_model::r5::Resource::FormularyItem(r) => {
-                self.with_context(r, |ctx| ctx.serialize(serializer))
-            }
-            fhirbolt_model::r5::Resource::GenomicStudy(r) => {
-                self.with_context(r, |ctx| ctx.serialize(serializer))
-            }
-            fhirbolt_model::r5::Resource::Goal(r) => {
-                self.with_context(r, |ctx| ctx.serialize(serializer))
-            }
-            fhirbolt_model::r5::Resource::GraphDefinition(r) => {
-                self.with_context(r, |ctx| ctx.serialize(serializer))
-            }
-            fhirbolt_model::r5::Resource::Group(r) => {
-                self.with_context(r, |ctx| ctx.serialize(serializer))
-            }
-            fhirbolt_model::r5::Resource::GuidanceResponse(r) => {
-                self.with_context(r, |ctx| ctx.serialize(serializer))
-            }
-            fhirbolt_model::r5::Resource::HealthcareService(r) => {
-                self.with_context(r, |ctx| ctx.serialize(serializer))
-            }
-            fhirbolt_model::r5::Resource::ImagingSelection(r) => {
-                self.with_context(r, |ctx| ctx.serialize(serializer))
-            }
-            fhirbolt_model::r5::Resource::ImagingStudy(r) => {
-                self.with_context(r, |ctx| ctx.serialize(serializer))
-            }
-            fhirbolt_model::r5::Resource::Immunization(r) => {
-                self.with_context(r, |ctx| ctx.serialize(serializer))
-            }
-            fhirbolt_model::r5::Resource::ImmunizationEvaluation(r) => {
-                self.with_context(r, |ctx| ctx.serialize(serializer))
-            }
-            fhirbolt_model::r5::Resource::ImmunizationRecommendation(r) => {
-                self.with_context(r, |ctx| ctx.serialize(serializer))
-            }
-            fhirbolt_model::r5::Resource::ImplementationGuide(r) => {
-                self.with_context(r, |ctx| ctx.serialize(serializer))
-            }
-            fhirbolt_model::r5::Resource::Ingredient(r) => {
-                self.with_context(r, |ctx| ctx.serialize(serializer))
-            }
-            fhirbolt_model::r5::Resource::InsurancePlan(r) => {
-                self.with_context(r, |ctx| ctx.serialize(serializer))
-            }
-            fhirbolt_model::r5::Resource::InventoryItem(r) => {
-                self.with_context(r, |ctx| ctx.serialize(serializer))
-            }
-            fhirbolt_model::r5::Resource::InventoryReport(r) => {
-                self.with_context(r, |ctx| ctx.serialize(serializer))
-            }
-            fhirbolt_model::r5::Resource::Invoice(r) => {
-                self.with_context(r, |ctx| ctx.serialize(serializer))
-            }
-            fhirbolt_model::r5::Resource::Library(r) => {
-                self.with_context(r, |ctx| ctx.serialize(serializer))
-            }
-            fhirbolt_model::r5::Resource::Linkage(r) => {
-                self.with_context(r, |ctx| ctx.serialize(serializer))
-            }
-            fhirbolt_model::r5::Resource::List(r) => {
-                self.with_context(r, |ctx| ctx.serialize(serializer))
-            }
-            fhirbolt_model::r5::Resource::Location(r) => {
-                self.with_context(r, |ctx| ctx.serialize(serializer))
-            }
-            fhirbolt_model::r5::Resource::ManufacturedItemDefinition(r) => {
-                self.with_context(r, |ctx| ctx.serialize(serializer))
-            }
-            fhirbolt_model::r5::Resource::Measure(r) => {
-                self.with_context(r, |ctx| ctx.serialize(serializer))
-            }
-            fhirbolt_model::r5::Resource::MeasureReport(r) => {
-                self.with_context(r, |ctx| ctx.serialize(serializer))
-            }
-            fhirbolt_model::r5::Resource::Medication(r) => {
-                self.with_context(r, |ctx| ctx.serialize(serializer))
-            }
-            fhirbolt_model::r5::Resource::MedicationAdministration(r) => {
-                self.with_context(r, |ctx| ctx.serialize(serializer))
-            }
-            fhirbolt_model::r5::Resource::MedicationDispense(r) => {
-                self.with_context(r, |ctx| ctx.serialize(serializer))
-            }
-            fhirbolt_model::r5::Resource::MedicationKnowledge(r) => {
-                self.with_context(r, |ctx| ctx.serialize(serializer))
-            }
-            fhirbolt_model::r5::Resource::MedicationRequest(r) => {
-                self.with_context(r, |ctx| ctx.serialize(serializer))
-            }
-            fhirbolt_model::r5::Resource::MedicationStatement(r) => {
-                self.with_context(r, |ctx| ctx.serialize(serializer))
-            }
-            fhirbolt_model::r5::Resource::MedicinalProductDefinition(r) => {
-                self.with_context(r, |ctx| ctx.serialize(serializer))
-            }
-            fhirbolt_model::r5::Resource::MessageDefinition(r) => {
-                self.with_context(r, |ctx| ctx.serialize(serializer))
-            }
-            fhirbolt_model::r5::Resource::MessageHeader(r) => {
-                self.with_context(r, |ctx| ctx.serialize(serializer))
-            }
-            fhirbolt_model::r5::Resource::MolecularSequence(r) => {
-                self.with_context(r, |ctx| ctx.serialize(serializer))
-            }
-            fhirbolt_model::r5::Resource::NamingSystem(r) => {
-                self.with_context(r, |ctx| ctx.serialize(serializer))
-            }
-            fhirbolt_model::r5::Resource::NutritionIntake(r) => {
-                self.with_context(r, |ctx| ctx.serialize(serializer))
-            }
-            fhirbolt_model::r5::Resource::NutritionOrder(r) => {
-                self.with_context(r, |ctx| ctx.serialize(serializer))
-            }
-            fhirbolt_model::r5::Resource::NutritionProduct(r) => {
-                self.with_context(r, |ctx| ctx.serialize(serializer))
-            }
-            fhirbolt_model::r5::Resource::Observation(r) => {
-                self.with_context(r, |ctx| ctx.serialize(serializer))
-            }
-            fhirbolt_model::r5::Resource::ObservationDefinition(r) => {
-                self.with_context(r, |ctx| ctx.serialize(serializer))
-            }
-            fhirbolt_model::r5::Resource::OperationDefinition(r) => {
-                self.with_context(r, |ctx| ctx.serialize(serializer))
-            }
-            fhirbolt_model::r5::Resource::OperationOutcome(r) => {
-                self.with_context(r, |ctx| ctx.serialize(serializer))
-            }
-            fhirbolt_model::r5::Resource::Organization(r) => {
-                self.with_context(r, |ctx| ctx.serialize(serializer))
-            }
-            fhirbolt_model::r5::Resource::OrganizationAffiliation(r) => {
-                self.with_context(r, |ctx| ctx.serialize(serializer))
-            }
-            fhirbolt_model::r5::Resource::PackagedProductDefinition(r) => {
-                self.with_context(r, |ctx| ctx.serialize(serializer))
-            }
-            fhirbolt_model::r5::Resource::Parameters(r) => {
-                self.with_context(r, |ctx| ctx.serialize(serializer))
-            }
-            fhirbolt_model::r5::Resource::Patient(r) => {
-                self.with_context(r, |ctx| ctx.serialize(serializer))
-            }
-            fhirbolt_model::r5::Resource::PaymentNotice(r) => {
-                self.with_context(r, |ctx| ctx.serialize(serializer))
-            }
-            fhirbolt_model::r5::Resource::PaymentReconciliation(r) => {
-                self.with_context(r, |ctx| ctx.serialize(serializer))
-            }
-            fhirbolt_model::r5::Resource::Permission(r) => {
-                self.with_context(r, |ctx| ctx.serialize(serializer))
-            }
-            fhirbolt_model::r5::Resource::Person(r) => {
-                self.with_context(r, |ctx| ctx.serialize(serializer))
-            }
-            fhirbolt_model::r5::Resource::PlanDefinition(r) => {
-                self.with_context(r, |ctx| ctx.serialize(serializer))
-            }
-            fhirbolt_model::r5::Resource::Practitioner(r) => {
-                self.with_context(r, |ctx| ctx.serialize(serializer))
-            }
-            fhirbolt_model::r5::Resource::PractitionerRole(r) => {
-                self.with_context(r, |ctx| ctx.serialize(serializer))
-            }
-            fhirbolt_model::r5::Resource::Procedure(r) => {
-                self.with_context(r, |ctx| ctx.serialize(serializer))
-            }
-            fhirbolt_model::r5::Resource::Provenance(r) => {
-                self.with_context(r, |ctx| ctx.serialize(serializer))
-            }
-            fhirbolt_model::r5::Resource::Questionnaire(r) => {
-                self.with_context(r, |ctx| ctx.serialize(serializer))
-            }
-            fhirbolt_model::r5::Resource::QuestionnaireResponse(r) => {
-                self.with_context(r, |ctx| ctx.serialize(serializer))
-            }
-            fhirbolt_model::r5::Resource::RegulatedAuthorization(r) => {
-                self.with_context(r, |ctx| ctx.serialize(serializer))
-            }
-            fhirbolt_model::r5::Resource::RelatedPerson(r) => {
-                self.with_context(r, |ctx| ctx.serialize(serializer))
-            }
-            fhirbolt_model::r5::Resource::RequestOrchestration(r) => {
-                self.with_context(r, |ctx| ctx.serialize(serializer))
-            }
-            fhirbolt_model::r5::Resource::Requirements(r) => {
-                self.with_context(r, |ctx| ctx.serialize(serializer))
-            }
-            fhirbolt_model::r5::Resource::ResearchStudy(r) => {
-                self.with_context(r, |ctx| ctx.serialize(serializer))
-            }
-            fhirbolt_model::r5::Resource::ResearchSubject(r) => {
-                self.with_context(r, |ctx| ctx.serialize(serializer))
-            }
-            fhirbolt_model::r5::Resource::RiskAssessment(r) => {
-                self.with_context(r, |ctx| ctx.serialize(serializer))
-            }
-            fhirbolt_model::r5::Resource::Schedule(r) => {
-                self.with_context(r, |ctx| ctx.serialize(serializer))
-            }
-            fhirbolt_model::r5::Resource::SearchParameter(r) => {
-                self.with_context(r, |ctx| ctx.serialize(serializer))
-            }
-            fhirbolt_model::r5::Resource::ServiceRequest(r) => {
-                self.with_context(r, |ctx| ctx.serialize(serializer))
-            }
-            fhirbolt_model::r5::Resource::Slot(r) => {
-                self.with_context(r, |ctx| ctx.serialize(serializer))
-            }
-            fhirbolt_model::r5::Resource::Specimen(r) => {
-                self.with_context(r, |ctx| ctx.serialize(serializer))
-            }
-            fhirbolt_model::r5::Resource::SpecimenDefinition(r) => {
-                self.with_context(r, |ctx| ctx.serialize(serializer))
-            }
-            fhirbolt_model::r5::Resource::StructureDefinition(r) => {
-                self.with_context(r, |ctx| ctx.serialize(serializer))
-            }
-            fhirbolt_model::r5::Resource::StructureMap(r) => {
-                self.with_context(r, |ctx| ctx.serialize(serializer))
-            }
-            fhirbolt_model::r5::Resource::Subscription(r) => {
-                self.with_context(r, |ctx| ctx.serialize(serializer))
-            }
-            fhirbolt_model::r5::Resource::SubscriptionStatus(r) => {
-                self.with_context(r, |ctx| ctx.serialize(serializer))
-            }
-            fhirbolt_model::r5::Resource::SubscriptionTopic(r) => {
-                self.with_context(r, |ctx| ctx.serialize(serializer))
-            }
-            fhirbolt_model::r5::Resource::Substance(r) => {
-                self.with_context(r, |ctx| ctx.serialize(serializer))
-            }
-            fhirbolt_model::r5::Resource::SubstanceDefinition(r) => {
-                self.with_context(r, |ctx| ctx.serialize(serializer))
-            }
-            fhirbolt_model::r5::Resource::SubstanceNucleicAcid(r) => {
-                self.with_context(r, |ctx| ctx.serialize(serializer))
-            }
-            fhirbolt_model::r5::Resource::SubstancePolymer(r) => {
-                self.with_context(r, |ctx| ctx.serialize(serializer))
-            }
-            fhirbolt_model::r5::Resource::SubstanceProtein(r) => {
-                self.with_context(r, |ctx| ctx.serialize(serializer))
-            }
-            fhirbolt_model::r5::Resource::SubstanceReferenceInformation(r) => {
-                self.with_context(r, |ctx| ctx.serialize(serializer))
-            }
-            fhirbolt_model::r5::Resource::SubstanceSourceMaterial(r) => {
-                self.with_context(r, |ctx| ctx.serialize(serializer))
-            }
-            fhirbolt_model::r5::Resource::SupplyDelivery(r) => {
-                self.with_context(r, |ctx| ctx.serialize(serializer))
-            }
-            fhirbolt_model::r5::Resource::SupplyRequest(r) => {
-                self.with_context(r, |ctx| ctx.serialize(serializer))
-            }
-            fhirbolt_model::r5::Resource::Task(r) => {
-                self.with_context(r, |ctx| ctx.serialize(serializer))
-            }
-            fhirbolt_model::r5::Resource::TerminologyCapabilities(r) => {
-                self.with_context(r, |ctx| ctx.serialize(serializer))
-            }
-            fhirbolt_model::r5::Resource::TestPlan(r) => {
-                self.with_context(r, |ctx| ctx.serialize(serializer))
-            }
-            fhirbolt_model::r5::Resource::TestReport(r) => {
-                self.with_context(r, |ctx| ctx.serialize(serializer))
-            }
-            fhirbolt_model::r5::Resource::TestScript(r) => {
-                self.with_context(r, |ctx| ctx.serialize(serializer))
-            }
-            fhirbolt_model::r5::Resource::Transport(r) => {
-                self.with_context(r, |ctx| ctx.serialize(serializer))
-            }
-            fhirbolt_model::r5::Resource::ValueSet(r) => {
-                self.with_context(r, |ctx| ctx.serialize(serializer))
-            }
-            fhirbolt_model::r5::Resource::VerificationResult(r) => {
-                self.with_context(r, |ctx| ctx.serialize(serializer))
-            }
-            fhirbolt_model::r5::Resource::VisionPrescription(r) => {
+            Resource::VisionPrescription(r) => {
                 self.with_context(r, |ctx| ctx.serialize(serializer))
             }
             _ => Err(serde::ser::Error::custom("invalid resource")),
         }
     }
 }
-impl serde::ser::Serialize
-    for crate::context::ser::SerializationContext<&Vec<fhirbolt_model::r5::Resource>>
-{
+impl serde::ser::Serialize for SerializationContext<&Vec<Resource>> {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
         S: serde::ser::Serializer,
@@ -503,10 +277,8 @@ impl serde::ser::Serialize
         seq_serializer.end()
     }
 }
-impl<'de> serde::de::DeserializeSeed<'de>
-    for crate::context::de::DeserializationContext<fhirbolt_model::r5::Resource>
-{
-    type Value = fhirbolt_model::r5::Resource;
+impl<'de> serde::de::DeserializeSeed<'de> for DeserializationContext<Resource> {
+    type Value = Resource;
     fn deserialize<D>(mut self, deserializer: D) -> Result<Self::Value, D::Error>
     where
         D: serde::de::Deserializer<'de>,
@@ -514,10 +286,8 @@ impl<'de> serde::de::DeserializeSeed<'de>
         (&mut self).deserialize(deserializer)
     }
 }
-impl<'de> serde::de::DeserializeSeed<'de>
-    for &mut crate::context::de::DeserializationContext<fhirbolt_model::r5::Resource>
-{
-    type Value = fhirbolt_model::r5::Resource;
+impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Resource> {
+    type Value = Resource;
     fn deserialize<D>(self, deserializer: D) -> Result<Self::Value, D::Error>
     where
         D: serde::de::Deserializer<'de>,
@@ -535,1381 +305,1582 @@ impl<'de> serde::de::DeserializeSeed<'de>
             match resource_type.as_str() {
                 "Account" => {
                     let deserializer = crate::element::de::Deserializer(element);
-                    let context = self.transmute::<Box<fhirbolt_model::r5::resources::Account>>();
-                    context
+                    let _context: &mut DeserializationContext<
+                        Box<fhirbolt_model::r5::resources::Account>,
+                    > = self.transmute();
+                    _context
                         .deserialize(deserializer)
-                        .map(fhirbolt_model::r5::Resource::Account)
+                        .map(Resource::Account)
                         .map_err(serde::de::Error::custom)
                 }
                 "ActivityDefinition" => {
                     let deserializer = crate::element::de::Deserializer(element);
-                    let context =
-                        self.transmute::<Box<fhirbolt_model::r5::resources::ActivityDefinition>>();
-                    context
+                    let _context: &mut DeserializationContext<
+                        Box<fhirbolt_model::r5::resources::ActivityDefinition>,
+                    > = self.transmute();
+                    _context
                         .deserialize(deserializer)
-                        .map(fhirbolt_model::r5::Resource::ActivityDefinition)
+                        .map(Resource::ActivityDefinition)
                         .map_err(serde::de::Error::custom)
                 }
                 "ActorDefinition" => {
                     let deserializer = crate::element::de::Deserializer(element);
-                    let context =
-                        self.transmute::<Box<fhirbolt_model::r5::resources::ActorDefinition>>();
-                    context
+                    let _context: &mut DeserializationContext<
+                        Box<fhirbolt_model::r5::resources::ActorDefinition>,
+                    > = self.transmute();
+                    _context
                         .deserialize(deserializer)
-                        .map(fhirbolt_model::r5::Resource::ActorDefinition)
+                        .map(Resource::ActorDefinition)
                         .map_err(serde::de::Error::custom)
                 }
                 "AdministrableProductDefinition" => {
                     let deserializer = crate::element::de::Deserializer(element);
-                    let context = self . transmute :: < Box < fhirbolt_model :: r5 :: resources :: AdministrableProductDefinition >> () ;
-                    context
+                    let _context: &mut DeserializationContext<
+                        Box<fhirbolt_model::r5::resources::AdministrableProductDefinition>,
+                    > = self.transmute();
+                    _context
                         .deserialize(deserializer)
-                        .map(fhirbolt_model::r5::Resource::AdministrableProductDefinition)
+                        .map(Resource::AdministrableProductDefinition)
                         .map_err(serde::de::Error::custom)
                 }
                 "AdverseEvent" => {
                     let deserializer = crate::element::de::Deserializer(element);
-                    let context =
-                        self.transmute::<Box<fhirbolt_model::r5::resources::AdverseEvent>>();
-                    context
+                    let _context: &mut DeserializationContext<
+                        Box<fhirbolt_model::r5::resources::AdverseEvent>,
+                    > = self.transmute();
+                    _context
                         .deserialize(deserializer)
-                        .map(fhirbolt_model::r5::Resource::AdverseEvent)
+                        .map(Resource::AdverseEvent)
                         .map_err(serde::de::Error::custom)
                 }
                 "AllergyIntolerance" => {
                     let deserializer = crate::element::de::Deserializer(element);
-                    let context =
-                        self.transmute::<Box<fhirbolt_model::r5::resources::AllergyIntolerance>>();
-                    context
+                    let _context: &mut DeserializationContext<
+                        Box<fhirbolt_model::r5::resources::AllergyIntolerance>,
+                    > = self.transmute();
+                    _context
                         .deserialize(deserializer)
-                        .map(fhirbolt_model::r5::Resource::AllergyIntolerance)
+                        .map(Resource::AllergyIntolerance)
                         .map_err(serde::de::Error::custom)
                 }
                 "Appointment" => {
                     let deserializer = crate::element::de::Deserializer(element);
-                    let context =
-                        self.transmute::<Box<fhirbolt_model::r5::resources::Appointment>>();
-                    context
+                    let _context: &mut DeserializationContext<
+                        Box<fhirbolt_model::r5::resources::Appointment>,
+                    > = self.transmute();
+                    _context
                         .deserialize(deserializer)
-                        .map(fhirbolt_model::r5::Resource::Appointment)
+                        .map(Resource::Appointment)
                         .map_err(serde::de::Error::custom)
                 }
                 "AppointmentResponse" => {
                     let deserializer = crate::element::de::Deserializer(element);
-                    let context =
-                        self.transmute::<Box<fhirbolt_model::r5::resources::AppointmentResponse>>();
-                    context
+                    let _context: &mut DeserializationContext<
+                        Box<fhirbolt_model::r5::resources::AppointmentResponse>,
+                    > = self.transmute();
+                    _context
                         .deserialize(deserializer)
-                        .map(fhirbolt_model::r5::Resource::AppointmentResponse)
+                        .map(Resource::AppointmentResponse)
                         .map_err(serde::de::Error::custom)
                 }
                 "ArtifactAssessment" => {
                     let deserializer = crate::element::de::Deserializer(element);
-                    let context =
-                        self.transmute::<Box<fhirbolt_model::r5::resources::ArtifactAssessment>>();
-                    context
+                    let _context: &mut DeserializationContext<
+                        Box<fhirbolt_model::r5::resources::ArtifactAssessment>,
+                    > = self.transmute();
+                    _context
                         .deserialize(deserializer)
-                        .map(fhirbolt_model::r5::Resource::ArtifactAssessment)
+                        .map(Resource::ArtifactAssessment)
                         .map_err(serde::de::Error::custom)
                 }
                 "AuditEvent" => {
                     let deserializer = crate::element::de::Deserializer(element);
-                    let context =
-                        self.transmute::<Box<fhirbolt_model::r5::resources::AuditEvent>>();
-                    context
+                    let _context: &mut DeserializationContext<
+                        Box<fhirbolt_model::r5::resources::AuditEvent>,
+                    > = self.transmute();
+                    _context
                         .deserialize(deserializer)
-                        .map(fhirbolt_model::r5::Resource::AuditEvent)
+                        .map(Resource::AuditEvent)
                         .map_err(serde::de::Error::custom)
                 }
                 "Basic" => {
                     let deserializer = crate::element::de::Deserializer(element);
-                    let context = self.transmute::<Box<fhirbolt_model::r5::resources::Basic>>();
-                    context
+                    let _context: &mut DeserializationContext<
+                        Box<fhirbolt_model::r5::resources::Basic>,
+                    > = self.transmute();
+                    _context
                         .deserialize(deserializer)
-                        .map(fhirbolt_model::r5::Resource::Basic)
+                        .map(Resource::Basic)
                         .map_err(serde::de::Error::custom)
                 }
                 "Binary" => {
                     let deserializer = crate::element::de::Deserializer(element);
-                    let context = self.transmute::<Box<fhirbolt_model::r5::resources::Binary>>();
-                    context
+                    let _context: &mut DeserializationContext<
+                        Box<fhirbolt_model::r5::resources::Binary>,
+                    > = self.transmute();
+                    _context
                         .deserialize(deserializer)
-                        .map(fhirbolt_model::r5::Resource::Binary)
+                        .map(Resource::Binary)
                         .map_err(serde::de::Error::custom)
                 }
                 "BiologicallyDerivedProduct" => {
                     let deserializer = crate::element::de::Deserializer(element);
-                    let context = self . transmute :: < Box < fhirbolt_model :: r5 :: resources :: BiologicallyDerivedProduct >> () ;
-                    context
+                    let _context: &mut DeserializationContext<
+                        Box<fhirbolt_model::r5::resources::BiologicallyDerivedProduct>,
+                    > = self.transmute();
+                    _context
                         .deserialize(deserializer)
-                        .map(fhirbolt_model::r5::Resource::BiologicallyDerivedProduct)
+                        .map(Resource::BiologicallyDerivedProduct)
                         .map_err(serde::de::Error::custom)
                 }
                 "BiologicallyDerivedProductDispense" => {
                     let deserializer = crate::element::de::Deserializer(element);
-                    let context = self . transmute :: < Box < fhirbolt_model :: r5 :: resources :: BiologicallyDerivedProductDispense >> () ;
-                    context
+                    let _context: &mut DeserializationContext<
+                        Box<fhirbolt_model::r5::resources::BiologicallyDerivedProductDispense>,
+                    > = self.transmute();
+                    _context
                         .deserialize(deserializer)
-                        .map(fhirbolt_model::r5::Resource::BiologicallyDerivedProductDispense)
+                        .map(Resource::BiologicallyDerivedProductDispense)
                         .map_err(serde::de::Error::custom)
                 }
                 "BodyStructure" => {
                     let deserializer = crate::element::de::Deserializer(element);
-                    let context =
-                        self.transmute::<Box<fhirbolt_model::r5::resources::BodyStructure>>();
-                    context
+                    let _context: &mut DeserializationContext<
+                        Box<fhirbolt_model::r5::resources::BodyStructure>,
+                    > = self.transmute();
+                    _context
                         .deserialize(deserializer)
-                        .map(fhirbolt_model::r5::Resource::BodyStructure)
+                        .map(Resource::BodyStructure)
                         .map_err(serde::de::Error::custom)
                 }
                 "Bundle" => {
                     let deserializer = crate::element::de::Deserializer(element);
-                    let context = self.transmute::<Box<fhirbolt_model::r5::resources::Bundle>>();
-                    context
+                    let _context: &mut DeserializationContext<
+                        Box<fhirbolt_model::r5::resources::Bundle>,
+                    > = self.transmute();
+                    _context
                         .deserialize(deserializer)
-                        .map(fhirbolt_model::r5::Resource::Bundle)
+                        .map(Resource::Bundle)
                         .map_err(serde::de::Error::custom)
                 }
                 "CapabilityStatement" => {
                     let deserializer = crate::element::de::Deserializer(element);
-                    let context =
-                        self.transmute::<Box<fhirbolt_model::r5::resources::CapabilityStatement>>();
-                    context
+                    let _context: &mut DeserializationContext<
+                        Box<fhirbolt_model::r5::resources::CapabilityStatement>,
+                    > = self.transmute();
+                    _context
                         .deserialize(deserializer)
-                        .map(fhirbolt_model::r5::Resource::CapabilityStatement)
+                        .map(Resource::CapabilityStatement)
                         .map_err(serde::de::Error::custom)
                 }
                 "CarePlan" => {
                     let deserializer = crate::element::de::Deserializer(element);
-                    let context = self.transmute::<Box<fhirbolt_model::r5::resources::CarePlan>>();
-                    context
+                    let _context: &mut DeserializationContext<
+                        Box<fhirbolt_model::r5::resources::CarePlan>,
+                    > = self.transmute();
+                    _context
                         .deserialize(deserializer)
-                        .map(fhirbolt_model::r5::Resource::CarePlan)
+                        .map(Resource::CarePlan)
                         .map_err(serde::de::Error::custom)
                 }
                 "CareTeam" => {
                     let deserializer = crate::element::de::Deserializer(element);
-                    let context = self.transmute::<Box<fhirbolt_model::r5::resources::CareTeam>>();
-                    context
+                    let _context: &mut DeserializationContext<
+                        Box<fhirbolt_model::r5::resources::CareTeam>,
+                    > = self.transmute();
+                    _context
                         .deserialize(deserializer)
-                        .map(fhirbolt_model::r5::Resource::CareTeam)
+                        .map(Resource::CareTeam)
                         .map_err(serde::de::Error::custom)
                 }
                 "ChargeItem" => {
                     let deserializer = crate::element::de::Deserializer(element);
-                    let context =
-                        self.transmute::<Box<fhirbolt_model::r5::resources::ChargeItem>>();
-                    context
+                    let _context: &mut DeserializationContext<
+                        Box<fhirbolt_model::r5::resources::ChargeItem>,
+                    > = self.transmute();
+                    _context
                         .deserialize(deserializer)
-                        .map(fhirbolt_model::r5::Resource::ChargeItem)
+                        .map(Resource::ChargeItem)
                         .map_err(serde::de::Error::custom)
                 }
                 "ChargeItemDefinition" => {
                     let deserializer = crate::element::de::Deserializer(element);
-                    let context = self
-                        .transmute::<Box<fhirbolt_model::r5::resources::ChargeItemDefinition>>();
-                    context
+                    let _context: &mut DeserializationContext<
+                        Box<fhirbolt_model::r5::resources::ChargeItemDefinition>,
+                    > = self.transmute();
+                    _context
                         .deserialize(deserializer)
-                        .map(fhirbolt_model::r5::Resource::ChargeItemDefinition)
+                        .map(Resource::ChargeItemDefinition)
                         .map_err(serde::de::Error::custom)
                 }
                 "Citation" => {
                     let deserializer = crate::element::de::Deserializer(element);
-                    let context = self.transmute::<Box<fhirbolt_model::r5::resources::Citation>>();
-                    context
+                    let _context: &mut DeserializationContext<
+                        Box<fhirbolt_model::r5::resources::Citation>,
+                    > = self.transmute();
+                    _context
                         .deserialize(deserializer)
-                        .map(fhirbolt_model::r5::Resource::Citation)
+                        .map(Resource::Citation)
                         .map_err(serde::de::Error::custom)
                 }
                 "Claim" => {
                     let deserializer = crate::element::de::Deserializer(element);
-                    let context = self.transmute::<Box<fhirbolt_model::r5::resources::Claim>>();
-                    context
+                    let _context: &mut DeserializationContext<
+                        Box<fhirbolt_model::r5::resources::Claim>,
+                    > = self.transmute();
+                    _context
                         .deserialize(deserializer)
-                        .map(fhirbolt_model::r5::Resource::Claim)
+                        .map(Resource::Claim)
                         .map_err(serde::de::Error::custom)
                 }
                 "ClaimResponse" => {
                     let deserializer = crate::element::de::Deserializer(element);
-                    let context =
-                        self.transmute::<Box<fhirbolt_model::r5::resources::ClaimResponse>>();
-                    context
+                    let _context: &mut DeserializationContext<
+                        Box<fhirbolt_model::r5::resources::ClaimResponse>,
+                    > = self.transmute();
+                    _context
                         .deserialize(deserializer)
-                        .map(fhirbolt_model::r5::Resource::ClaimResponse)
+                        .map(Resource::ClaimResponse)
                         .map_err(serde::de::Error::custom)
                 }
                 "ClinicalImpression" => {
                     let deserializer = crate::element::de::Deserializer(element);
-                    let context =
-                        self.transmute::<Box<fhirbolt_model::r5::resources::ClinicalImpression>>();
-                    context
+                    let _context: &mut DeserializationContext<
+                        Box<fhirbolt_model::r5::resources::ClinicalImpression>,
+                    > = self.transmute();
+                    _context
                         .deserialize(deserializer)
-                        .map(fhirbolt_model::r5::Resource::ClinicalImpression)
+                        .map(Resource::ClinicalImpression)
                         .map_err(serde::de::Error::custom)
                 }
                 "ClinicalUseDefinition" => {
                     let deserializer = crate::element::de::Deserializer(element);
-                    let context = self
-                        .transmute::<Box<fhirbolt_model::r5::resources::ClinicalUseDefinition>>();
-                    context
+                    let _context: &mut DeserializationContext<
+                        Box<fhirbolt_model::r5::resources::ClinicalUseDefinition>,
+                    > = self.transmute();
+                    _context
                         .deserialize(deserializer)
-                        .map(fhirbolt_model::r5::Resource::ClinicalUseDefinition)
+                        .map(Resource::ClinicalUseDefinition)
                         .map_err(serde::de::Error::custom)
                 }
                 "CodeSystem" => {
                     let deserializer = crate::element::de::Deserializer(element);
-                    let context =
-                        self.transmute::<Box<fhirbolt_model::r5::resources::CodeSystem>>();
-                    context
+                    let _context: &mut DeserializationContext<
+                        Box<fhirbolt_model::r5::resources::CodeSystem>,
+                    > = self.transmute();
+                    _context
                         .deserialize(deserializer)
-                        .map(fhirbolt_model::r5::Resource::CodeSystem)
+                        .map(Resource::CodeSystem)
                         .map_err(serde::de::Error::custom)
                 }
                 "Communication" => {
                     let deserializer = crate::element::de::Deserializer(element);
-                    let context =
-                        self.transmute::<Box<fhirbolt_model::r5::resources::Communication>>();
-                    context
+                    let _context: &mut DeserializationContext<
+                        Box<fhirbolt_model::r5::resources::Communication>,
+                    > = self.transmute();
+                    _context
                         .deserialize(deserializer)
-                        .map(fhirbolt_model::r5::Resource::Communication)
+                        .map(Resource::Communication)
                         .map_err(serde::de::Error::custom)
                 }
                 "CommunicationRequest" => {
                     let deserializer = crate::element::de::Deserializer(element);
-                    let context = self
-                        .transmute::<Box<fhirbolt_model::r5::resources::CommunicationRequest>>();
-                    context
+                    let _context: &mut DeserializationContext<
+                        Box<fhirbolt_model::r5::resources::CommunicationRequest>,
+                    > = self.transmute();
+                    _context
                         .deserialize(deserializer)
-                        .map(fhirbolt_model::r5::Resource::CommunicationRequest)
+                        .map(Resource::CommunicationRequest)
                         .map_err(serde::de::Error::custom)
                 }
                 "CompartmentDefinition" => {
                     let deserializer = crate::element::de::Deserializer(element);
-                    let context = self
-                        .transmute::<Box<fhirbolt_model::r5::resources::CompartmentDefinition>>();
-                    context
+                    let _context: &mut DeserializationContext<
+                        Box<fhirbolt_model::r5::resources::CompartmentDefinition>,
+                    > = self.transmute();
+                    _context
                         .deserialize(deserializer)
-                        .map(fhirbolt_model::r5::Resource::CompartmentDefinition)
+                        .map(Resource::CompartmentDefinition)
                         .map_err(serde::de::Error::custom)
                 }
                 "Composition" => {
                     let deserializer = crate::element::de::Deserializer(element);
-                    let context =
-                        self.transmute::<Box<fhirbolt_model::r5::resources::Composition>>();
-                    context
+                    let _context: &mut DeserializationContext<
+                        Box<fhirbolt_model::r5::resources::Composition>,
+                    > = self.transmute();
+                    _context
                         .deserialize(deserializer)
-                        .map(fhirbolt_model::r5::Resource::Composition)
+                        .map(Resource::Composition)
                         .map_err(serde::de::Error::custom)
                 }
                 "ConceptMap" => {
                     let deserializer = crate::element::de::Deserializer(element);
-                    let context =
-                        self.transmute::<Box<fhirbolt_model::r5::resources::ConceptMap>>();
-                    context
+                    let _context: &mut DeserializationContext<
+                        Box<fhirbolt_model::r5::resources::ConceptMap>,
+                    > = self.transmute();
+                    _context
                         .deserialize(deserializer)
-                        .map(fhirbolt_model::r5::Resource::ConceptMap)
+                        .map(Resource::ConceptMap)
                         .map_err(serde::de::Error::custom)
                 }
                 "Condition" => {
                     let deserializer = crate::element::de::Deserializer(element);
-                    let context = self.transmute::<Box<fhirbolt_model::r5::resources::Condition>>();
-                    context
+                    let _context: &mut DeserializationContext<
+                        Box<fhirbolt_model::r5::resources::Condition>,
+                    > = self.transmute();
+                    _context
                         .deserialize(deserializer)
-                        .map(fhirbolt_model::r5::Resource::Condition)
+                        .map(Resource::Condition)
                         .map_err(serde::de::Error::custom)
                 }
                 "ConditionDefinition" => {
                     let deserializer = crate::element::de::Deserializer(element);
-                    let context =
-                        self.transmute::<Box<fhirbolt_model::r5::resources::ConditionDefinition>>();
-                    context
+                    let _context: &mut DeserializationContext<
+                        Box<fhirbolt_model::r5::resources::ConditionDefinition>,
+                    > = self.transmute();
+                    _context
                         .deserialize(deserializer)
-                        .map(fhirbolt_model::r5::Resource::ConditionDefinition)
+                        .map(Resource::ConditionDefinition)
                         .map_err(serde::de::Error::custom)
                 }
                 "Consent" => {
                     let deserializer = crate::element::de::Deserializer(element);
-                    let context = self.transmute::<Box<fhirbolt_model::r5::resources::Consent>>();
-                    context
+                    let _context: &mut DeserializationContext<
+                        Box<fhirbolt_model::r5::resources::Consent>,
+                    > = self.transmute();
+                    _context
                         .deserialize(deserializer)
-                        .map(fhirbolt_model::r5::Resource::Consent)
+                        .map(Resource::Consent)
                         .map_err(serde::de::Error::custom)
                 }
                 "Contract" => {
                     let deserializer = crate::element::de::Deserializer(element);
-                    let context = self.transmute::<Box<fhirbolt_model::r5::resources::Contract>>();
-                    context
+                    let _context: &mut DeserializationContext<
+                        Box<fhirbolt_model::r5::resources::Contract>,
+                    > = self.transmute();
+                    _context
                         .deserialize(deserializer)
-                        .map(fhirbolt_model::r5::Resource::Contract)
+                        .map(Resource::Contract)
                         .map_err(serde::de::Error::custom)
                 }
                 "Coverage" => {
                     let deserializer = crate::element::de::Deserializer(element);
-                    let context = self.transmute::<Box<fhirbolt_model::r5::resources::Coverage>>();
-                    context
+                    let _context: &mut DeserializationContext<
+                        Box<fhirbolt_model::r5::resources::Coverage>,
+                    > = self.transmute();
+                    _context
                         .deserialize(deserializer)
-                        .map(fhirbolt_model::r5::Resource::Coverage)
+                        .map(Resource::Coverage)
                         .map_err(serde::de::Error::custom)
                 }
                 "CoverageEligibilityRequest" => {
                     let deserializer = crate::element::de::Deserializer(element);
-                    let context = self . transmute :: < Box < fhirbolt_model :: r5 :: resources :: CoverageEligibilityRequest >> () ;
-                    context
+                    let _context: &mut DeserializationContext<
+                        Box<fhirbolt_model::r5::resources::CoverageEligibilityRequest>,
+                    > = self.transmute();
+                    _context
                         .deserialize(deserializer)
-                        .map(fhirbolt_model::r5::Resource::CoverageEligibilityRequest)
+                        .map(Resource::CoverageEligibilityRequest)
                         .map_err(serde::de::Error::custom)
                 }
                 "CoverageEligibilityResponse" => {
                     let deserializer = crate::element::de::Deserializer(element);
-                    let context = self . transmute :: < Box < fhirbolt_model :: r5 :: resources :: CoverageEligibilityResponse >> () ;
-                    context
+                    let _context: &mut DeserializationContext<
+                        Box<fhirbolt_model::r5::resources::CoverageEligibilityResponse>,
+                    > = self.transmute();
+                    _context
                         .deserialize(deserializer)
-                        .map(fhirbolt_model::r5::Resource::CoverageEligibilityResponse)
+                        .map(Resource::CoverageEligibilityResponse)
                         .map_err(serde::de::Error::custom)
                 }
                 "DetectedIssue" => {
                     let deserializer = crate::element::de::Deserializer(element);
-                    let context =
-                        self.transmute::<Box<fhirbolt_model::r5::resources::DetectedIssue>>();
-                    context
+                    let _context: &mut DeserializationContext<
+                        Box<fhirbolt_model::r5::resources::DetectedIssue>,
+                    > = self.transmute();
+                    _context
                         .deserialize(deserializer)
-                        .map(fhirbolt_model::r5::Resource::DetectedIssue)
+                        .map(Resource::DetectedIssue)
                         .map_err(serde::de::Error::custom)
                 }
                 "Device" => {
                     let deserializer = crate::element::de::Deserializer(element);
-                    let context = self.transmute::<Box<fhirbolt_model::r5::resources::Device>>();
-                    context
+                    let _context: &mut DeserializationContext<
+                        Box<fhirbolt_model::r5::resources::Device>,
+                    > = self.transmute();
+                    _context
                         .deserialize(deserializer)
-                        .map(fhirbolt_model::r5::Resource::Device)
+                        .map(Resource::Device)
                         .map_err(serde::de::Error::custom)
                 }
                 "DeviceAssociation" => {
                     let deserializer = crate::element::de::Deserializer(element);
-                    let context =
-                        self.transmute::<Box<fhirbolt_model::r5::resources::DeviceAssociation>>();
-                    context
+                    let _context: &mut DeserializationContext<
+                        Box<fhirbolt_model::r5::resources::DeviceAssociation>,
+                    > = self.transmute();
+                    _context
                         .deserialize(deserializer)
-                        .map(fhirbolt_model::r5::Resource::DeviceAssociation)
+                        .map(Resource::DeviceAssociation)
                         .map_err(serde::de::Error::custom)
                 }
                 "DeviceDefinition" => {
                     let deserializer = crate::element::de::Deserializer(element);
-                    let context =
-                        self.transmute::<Box<fhirbolt_model::r5::resources::DeviceDefinition>>();
-                    context
+                    let _context: &mut DeserializationContext<
+                        Box<fhirbolt_model::r5::resources::DeviceDefinition>,
+                    > = self.transmute();
+                    _context
                         .deserialize(deserializer)
-                        .map(fhirbolt_model::r5::Resource::DeviceDefinition)
+                        .map(Resource::DeviceDefinition)
                         .map_err(serde::de::Error::custom)
                 }
                 "DeviceDispense" => {
                     let deserializer = crate::element::de::Deserializer(element);
-                    let context =
-                        self.transmute::<Box<fhirbolt_model::r5::resources::DeviceDispense>>();
-                    context
+                    let _context: &mut DeserializationContext<
+                        Box<fhirbolt_model::r5::resources::DeviceDispense>,
+                    > = self.transmute();
+                    _context
                         .deserialize(deserializer)
-                        .map(fhirbolt_model::r5::Resource::DeviceDispense)
+                        .map(Resource::DeviceDispense)
                         .map_err(serde::de::Error::custom)
                 }
                 "DeviceMetric" => {
                     let deserializer = crate::element::de::Deserializer(element);
-                    let context =
-                        self.transmute::<Box<fhirbolt_model::r5::resources::DeviceMetric>>();
-                    context
+                    let _context: &mut DeserializationContext<
+                        Box<fhirbolt_model::r5::resources::DeviceMetric>,
+                    > = self.transmute();
+                    _context
                         .deserialize(deserializer)
-                        .map(fhirbolt_model::r5::Resource::DeviceMetric)
+                        .map(Resource::DeviceMetric)
                         .map_err(serde::de::Error::custom)
                 }
                 "DeviceRequest" => {
                     let deserializer = crate::element::de::Deserializer(element);
-                    let context =
-                        self.transmute::<Box<fhirbolt_model::r5::resources::DeviceRequest>>();
-                    context
+                    let _context: &mut DeserializationContext<
+                        Box<fhirbolt_model::r5::resources::DeviceRequest>,
+                    > = self.transmute();
+                    _context
                         .deserialize(deserializer)
-                        .map(fhirbolt_model::r5::Resource::DeviceRequest)
+                        .map(Resource::DeviceRequest)
                         .map_err(serde::de::Error::custom)
                 }
                 "DeviceUsage" => {
                     let deserializer = crate::element::de::Deserializer(element);
-                    let context =
-                        self.transmute::<Box<fhirbolt_model::r5::resources::DeviceUsage>>();
-                    context
+                    let _context: &mut DeserializationContext<
+                        Box<fhirbolt_model::r5::resources::DeviceUsage>,
+                    > = self.transmute();
+                    _context
                         .deserialize(deserializer)
-                        .map(fhirbolt_model::r5::Resource::DeviceUsage)
+                        .map(Resource::DeviceUsage)
                         .map_err(serde::de::Error::custom)
                 }
                 "DiagnosticReport" => {
                     let deserializer = crate::element::de::Deserializer(element);
-                    let context =
-                        self.transmute::<Box<fhirbolt_model::r5::resources::DiagnosticReport>>();
-                    context
+                    let _context: &mut DeserializationContext<
+                        Box<fhirbolt_model::r5::resources::DiagnosticReport>,
+                    > = self.transmute();
+                    _context
                         .deserialize(deserializer)
-                        .map(fhirbolt_model::r5::Resource::DiagnosticReport)
+                        .map(Resource::DiagnosticReport)
                         .map_err(serde::de::Error::custom)
                 }
                 "DocumentReference" => {
                     let deserializer = crate::element::de::Deserializer(element);
-                    let context =
-                        self.transmute::<Box<fhirbolt_model::r5::resources::DocumentReference>>();
-                    context
+                    let _context: &mut DeserializationContext<
+                        Box<fhirbolt_model::r5::resources::DocumentReference>,
+                    > = self.transmute();
+                    _context
                         .deserialize(deserializer)
-                        .map(fhirbolt_model::r5::Resource::DocumentReference)
+                        .map(Resource::DocumentReference)
                         .map_err(serde::de::Error::custom)
                 }
                 "Encounter" => {
                     let deserializer = crate::element::de::Deserializer(element);
-                    let context = self.transmute::<Box<fhirbolt_model::r5::resources::Encounter>>();
-                    context
+                    let _context: &mut DeserializationContext<
+                        Box<fhirbolt_model::r5::resources::Encounter>,
+                    > = self.transmute();
+                    _context
                         .deserialize(deserializer)
-                        .map(fhirbolt_model::r5::Resource::Encounter)
+                        .map(Resource::Encounter)
                         .map_err(serde::de::Error::custom)
                 }
                 "EncounterHistory" => {
                     let deserializer = crate::element::de::Deserializer(element);
-                    let context =
-                        self.transmute::<Box<fhirbolt_model::r5::resources::EncounterHistory>>();
-                    context
+                    let _context: &mut DeserializationContext<
+                        Box<fhirbolt_model::r5::resources::EncounterHistory>,
+                    > = self.transmute();
+                    _context
                         .deserialize(deserializer)
-                        .map(fhirbolt_model::r5::Resource::EncounterHistory)
+                        .map(Resource::EncounterHistory)
                         .map_err(serde::de::Error::custom)
                 }
                 "Endpoint" => {
                     let deserializer = crate::element::de::Deserializer(element);
-                    let context = self.transmute::<Box<fhirbolt_model::r5::resources::Endpoint>>();
-                    context
+                    let _context: &mut DeserializationContext<
+                        Box<fhirbolt_model::r5::resources::Endpoint>,
+                    > = self.transmute();
+                    _context
                         .deserialize(deserializer)
-                        .map(fhirbolt_model::r5::Resource::Endpoint)
+                        .map(Resource::Endpoint)
                         .map_err(serde::de::Error::custom)
                 }
                 "EnrollmentRequest" => {
                     let deserializer = crate::element::de::Deserializer(element);
-                    let context =
-                        self.transmute::<Box<fhirbolt_model::r5::resources::EnrollmentRequest>>();
-                    context
+                    let _context: &mut DeserializationContext<
+                        Box<fhirbolt_model::r5::resources::EnrollmentRequest>,
+                    > = self.transmute();
+                    _context
                         .deserialize(deserializer)
-                        .map(fhirbolt_model::r5::Resource::EnrollmentRequest)
+                        .map(Resource::EnrollmentRequest)
                         .map_err(serde::de::Error::custom)
                 }
                 "EnrollmentResponse" => {
                     let deserializer = crate::element::de::Deserializer(element);
-                    let context =
-                        self.transmute::<Box<fhirbolt_model::r5::resources::EnrollmentResponse>>();
-                    context
+                    let _context: &mut DeserializationContext<
+                        Box<fhirbolt_model::r5::resources::EnrollmentResponse>,
+                    > = self.transmute();
+                    _context
                         .deserialize(deserializer)
-                        .map(fhirbolt_model::r5::Resource::EnrollmentResponse)
+                        .map(Resource::EnrollmentResponse)
                         .map_err(serde::de::Error::custom)
                 }
                 "EpisodeOfCare" => {
                     let deserializer = crate::element::de::Deserializer(element);
-                    let context =
-                        self.transmute::<Box<fhirbolt_model::r5::resources::EpisodeOfCare>>();
-                    context
+                    let _context: &mut DeserializationContext<
+                        Box<fhirbolt_model::r5::resources::EpisodeOfCare>,
+                    > = self.transmute();
+                    _context
                         .deserialize(deserializer)
-                        .map(fhirbolt_model::r5::Resource::EpisodeOfCare)
+                        .map(Resource::EpisodeOfCare)
                         .map_err(serde::de::Error::custom)
                 }
                 "EventDefinition" => {
                     let deserializer = crate::element::de::Deserializer(element);
-                    let context =
-                        self.transmute::<Box<fhirbolt_model::r5::resources::EventDefinition>>();
-                    context
+                    let _context: &mut DeserializationContext<
+                        Box<fhirbolt_model::r5::resources::EventDefinition>,
+                    > = self.transmute();
+                    _context
                         .deserialize(deserializer)
-                        .map(fhirbolt_model::r5::Resource::EventDefinition)
+                        .map(Resource::EventDefinition)
                         .map_err(serde::de::Error::custom)
                 }
                 "Evidence" => {
                     let deserializer = crate::element::de::Deserializer(element);
-                    let context = self.transmute::<Box<fhirbolt_model::r5::resources::Evidence>>();
-                    context
+                    let _context: &mut DeserializationContext<
+                        Box<fhirbolt_model::r5::resources::Evidence>,
+                    > = self.transmute();
+                    _context
                         .deserialize(deserializer)
-                        .map(fhirbolt_model::r5::Resource::Evidence)
+                        .map(Resource::Evidence)
                         .map_err(serde::de::Error::custom)
                 }
                 "EvidenceReport" => {
                     let deserializer = crate::element::de::Deserializer(element);
-                    let context =
-                        self.transmute::<Box<fhirbolt_model::r5::resources::EvidenceReport>>();
-                    context
+                    let _context: &mut DeserializationContext<
+                        Box<fhirbolt_model::r5::resources::EvidenceReport>,
+                    > = self.transmute();
+                    _context
                         .deserialize(deserializer)
-                        .map(fhirbolt_model::r5::Resource::EvidenceReport)
+                        .map(Resource::EvidenceReport)
                         .map_err(serde::de::Error::custom)
                 }
                 "EvidenceVariable" => {
                     let deserializer = crate::element::de::Deserializer(element);
-                    let context =
-                        self.transmute::<Box<fhirbolt_model::r5::resources::EvidenceVariable>>();
-                    context
+                    let _context: &mut DeserializationContext<
+                        Box<fhirbolt_model::r5::resources::EvidenceVariable>,
+                    > = self.transmute();
+                    _context
                         .deserialize(deserializer)
-                        .map(fhirbolt_model::r5::Resource::EvidenceVariable)
+                        .map(Resource::EvidenceVariable)
                         .map_err(serde::de::Error::custom)
                 }
                 "ExampleScenario" => {
                     let deserializer = crate::element::de::Deserializer(element);
-                    let context =
-                        self.transmute::<Box<fhirbolt_model::r5::resources::ExampleScenario>>();
-                    context
+                    let _context: &mut DeserializationContext<
+                        Box<fhirbolt_model::r5::resources::ExampleScenario>,
+                    > = self.transmute();
+                    _context
                         .deserialize(deserializer)
-                        .map(fhirbolt_model::r5::Resource::ExampleScenario)
+                        .map(Resource::ExampleScenario)
                         .map_err(serde::de::Error::custom)
                 }
                 "ExplanationOfBenefit" => {
                     let deserializer = crate::element::de::Deserializer(element);
-                    let context = self
-                        .transmute::<Box<fhirbolt_model::r5::resources::ExplanationOfBenefit>>();
-                    context
+                    let _context: &mut DeserializationContext<
+                        Box<fhirbolt_model::r5::resources::ExplanationOfBenefit>,
+                    > = self.transmute();
+                    _context
                         .deserialize(deserializer)
-                        .map(fhirbolt_model::r5::Resource::ExplanationOfBenefit)
+                        .map(Resource::ExplanationOfBenefit)
                         .map_err(serde::de::Error::custom)
                 }
                 "FamilyMemberHistory" => {
                     let deserializer = crate::element::de::Deserializer(element);
-                    let context =
-                        self.transmute::<Box<fhirbolt_model::r5::resources::FamilyMemberHistory>>();
-                    context
+                    let _context: &mut DeserializationContext<
+                        Box<fhirbolt_model::r5::resources::FamilyMemberHistory>,
+                    > = self.transmute();
+                    _context
                         .deserialize(deserializer)
-                        .map(fhirbolt_model::r5::Resource::FamilyMemberHistory)
+                        .map(Resource::FamilyMemberHistory)
                         .map_err(serde::de::Error::custom)
                 }
                 "Flag" => {
                     let deserializer = crate::element::de::Deserializer(element);
-                    let context = self.transmute::<Box<fhirbolt_model::r5::resources::Flag>>();
-                    context
+                    let _context: &mut DeserializationContext<
+                        Box<fhirbolt_model::r5::resources::Flag>,
+                    > = self.transmute();
+                    _context
                         .deserialize(deserializer)
-                        .map(fhirbolt_model::r5::Resource::Flag)
+                        .map(Resource::Flag)
                         .map_err(serde::de::Error::custom)
                 }
                 "FormularyItem" => {
                     let deserializer = crate::element::de::Deserializer(element);
-                    let context =
-                        self.transmute::<Box<fhirbolt_model::r5::resources::FormularyItem>>();
-                    context
+                    let _context: &mut DeserializationContext<
+                        Box<fhirbolt_model::r5::resources::FormularyItem>,
+                    > = self.transmute();
+                    _context
                         .deserialize(deserializer)
-                        .map(fhirbolt_model::r5::Resource::FormularyItem)
+                        .map(Resource::FormularyItem)
                         .map_err(serde::de::Error::custom)
                 }
                 "GenomicStudy" => {
                     let deserializer = crate::element::de::Deserializer(element);
-                    let context =
-                        self.transmute::<Box<fhirbolt_model::r5::resources::GenomicStudy>>();
-                    context
+                    let _context: &mut DeserializationContext<
+                        Box<fhirbolt_model::r5::resources::GenomicStudy>,
+                    > = self.transmute();
+                    _context
                         .deserialize(deserializer)
-                        .map(fhirbolt_model::r5::Resource::GenomicStudy)
+                        .map(Resource::GenomicStudy)
                         .map_err(serde::de::Error::custom)
                 }
                 "Goal" => {
                     let deserializer = crate::element::de::Deserializer(element);
-                    let context = self.transmute::<Box<fhirbolt_model::r5::resources::Goal>>();
-                    context
+                    let _context: &mut DeserializationContext<
+                        Box<fhirbolt_model::r5::resources::Goal>,
+                    > = self.transmute();
+                    _context
                         .deserialize(deserializer)
-                        .map(fhirbolt_model::r5::Resource::Goal)
+                        .map(Resource::Goal)
                         .map_err(serde::de::Error::custom)
                 }
                 "GraphDefinition" => {
                     let deserializer = crate::element::de::Deserializer(element);
-                    let context =
-                        self.transmute::<Box<fhirbolt_model::r5::resources::GraphDefinition>>();
-                    context
+                    let _context: &mut DeserializationContext<
+                        Box<fhirbolt_model::r5::resources::GraphDefinition>,
+                    > = self.transmute();
+                    _context
                         .deserialize(deserializer)
-                        .map(fhirbolt_model::r5::Resource::GraphDefinition)
+                        .map(Resource::GraphDefinition)
                         .map_err(serde::de::Error::custom)
                 }
                 "Group" => {
                     let deserializer = crate::element::de::Deserializer(element);
-                    let context = self.transmute::<Box<fhirbolt_model::r5::resources::Group>>();
-                    context
+                    let _context: &mut DeserializationContext<
+                        Box<fhirbolt_model::r5::resources::Group>,
+                    > = self.transmute();
+                    _context
                         .deserialize(deserializer)
-                        .map(fhirbolt_model::r5::Resource::Group)
+                        .map(Resource::Group)
                         .map_err(serde::de::Error::custom)
                 }
                 "GuidanceResponse" => {
                     let deserializer = crate::element::de::Deserializer(element);
-                    let context =
-                        self.transmute::<Box<fhirbolt_model::r5::resources::GuidanceResponse>>();
-                    context
+                    let _context: &mut DeserializationContext<
+                        Box<fhirbolt_model::r5::resources::GuidanceResponse>,
+                    > = self.transmute();
+                    _context
                         .deserialize(deserializer)
-                        .map(fhirbolt_model::r5::Resource::GuidanceResponse)
+                        .map(Resource::GuidanceResponse)
                         .map_err(serde::de::Error::custom)
                 }
                 "HealthcareService" => {
                     let deserializer = crate::element::de::Deserializer(element);
-                    let context =
-                        self.transmute::<Box<fhirbolt_model::r5::resources::HealthcareService>>();
-                    context
+                    let _context: &mut DeserializationContext<
+                        Box<fhirbolt_model::r5::resources::HealthcareService>,
+                    > = self.transmute();
+                    _context
                         .deserialize(deserializer)
-                        .map(fhirbolt_model::r5::Resource::HealthcareService)
+                        .map(Resource::HealthcareService)
                         .map_err(serde::de::Error::custom)
                 }
                 "ImagingSelection" => {
                     let deserializer = crate::element::de::Deserializer(element);
-                    let context =
-                        self.transmute::<Box<fhirbolt_model::r5::resources::ImagingSelection>>();
-                    context
+                    let _context: &mut DeserializationContext<
+                        Box<fhirbolt_model::r5::resources::ImagingSelection>,
+                    > = self.transmute();
+                    _context
                         .deserialize(deserializer)
-                        .map(fhirbolt_model::r5::Resource::ImagingSelection)
+                        .map(Resource::ImagingSelection)
                         .map_err(serde::de::Error::custom)
                 }
                 "ImagingStudy" => {
                     let deserializer = crate::element::de::Deserializer(element);
-                    let context =
-                        self.transmute::<Box<fhirbolt_model::r5::resources::ImagingStudy>>();
-                    context
+                    let _context: &mut DeserializationContext<
+                        Box<fhirbolt_model::r5::resources::ImagingStudy>,
+                    > = self.transmute();
+                    _context
                         .deserialize(deserializer)
-                        .map(fhirbolt_model::r5::Resource::ImagingStudy)
+                        .map(Resource::ImagingStudy)
                         .map_err(serde::de::Error::custom)
                 }
                 "Immunization" => {
                     let deserializer = crate::element::de::Deserializer(element);
-                    let context =
-                        self.transmute::<Box<fhirbolt_model::r5::resources::Immunization>>();
-                    context
+                    let _context: &mut DeserializationContext<
+                        Box<fhirbolt_model::r5::resources::Immunization>,
+                    > = self.transmute();
+                    _context
                         .deserialize(deserializer)
-                        .map(fhirbolt_model::r5::Resource::Immunization)
+                        .map(Resource::Immunization)
                         .map_err(serde::de::Error::custom)
                 }
                 "ImmunizationEvaluation" => {
                     let deserializer = crate::element::de::Deserializer(element);
-                    let context = self
-                        .transmute::<Box<fhirbolt_model::r5::resources::ImmunizationEvaluation>>();
-                    context
+                    let _context: &mut DeserializationContext<
+                        Box<fhirbolt_model::r5::resources::ImmunizationEvaluation>,
+                    > = self.transmute();
+                    _context
                         .deserialize(deserializer)
-                        .map(fhirbolt_model::r5::Resource::ImmunizationEvaluation)
+                        .map(Resource::ImmunizationEvaluation)
                         .map_err(serde::de::Error::custom)
                 }
                 "ImmunizationRecommendation" => {
                     let deserializer = crate::element::de::Deserializer(element);
-                    let context = self . transmute :: < Box < fhirbolt_model :: r5 :: resources :: ImmunizationRecommendation >> () ;
-                    context
+                    let _context: &mut DeserializationContext<
+                        Box<fhirbolt_model::r5::resources::ImmunizationRecommendation>,
+                    > = self.transmute();
+                    _context
                         .deserialize(deserializer)
-                        .map(fhirbolt_model::r5::Resource::ImmunizationRecommendation)
+                        .map(Resource::ImmunizationRecommendation)
                         .map_err(serde::de::Error::custom)
                 }
                 "ImplementationGuide" => {
                     let deserializer = crate::element::de::Deserializer(element);
-                    let context =
-                        self.transmute::<Box<fhirbolt_model::r5::resources::ImplementationGuide>>();
-                    context
+                    let _context: &mut DeserializationContext<
+                        Box<fhirbolt_model::r5::resources::ImplementationGuide>,
+                    > = self.transmute();
+                    _context
                         .deserialize(deserializer)
-                        .map(fhirbolt_model::r5::Resource::ImplementationGuide)
+                        .map(Resource::ImplementationGuide)
                         .map_err(serde::de::Error::custom)
                 }
                 "Ingredient" => {
                     let deserializer = crate::element::de::Deserializer(element);
-                    let context =
-                        self.transmute::<Box<fhirbolt_model::r5::resources::Ingredient>>();
-                    context
+                    let _context: &mut DeserializationContext<
+                        Box<fhirbolt_model::r5::resources::Ingredient>,
+                    > = self.transmute();
+                    _context
                         .deserialize(deserializer)
-                        .map(fhirbolt_model::r5::Resource::Ingredient)
+                        .map(Resource::Ingredient)
                         .map_err(serde::de::Error::custom)
                 }
                 "InsurancePlan" => {
                     let deserializer = crate::element::de::Deserializer(element);
-                    let context =
-                        self.transmute::<Box<fhirbolt_model::r5::resources::InsurancePlan>>();
-                    context
+                    let _context: &mut DeserializationContext<
+                        Box<fhirbolt_model::r5::resources::InsurancePlan>,
+                    > = self.transmute();
+                    _context
                         .deserialize(deserializer)
-                        .map(fhirbolt_model::r5::Resource::InsurancePlan)
+                        .map(Resource::InsurancePlan)
                         .map_err(serde::de::Error::custom)
                 }
                 "InventoryItem" => {
                     let deserializer = crate::element::de::Deserializer(element);
-                    let context =
-                        self.transmute::<Box<fhirbolt_model::r5::resources::InventoryItem>>();
-                    context
+                    let _context: &mut DeserializationContext<
+                        Box<fhirbolt_model::r5::resources::InventoryItem>,
+                    > = self.transmute();
+                    _context
                         .deserialize(deserializer)
-                        .map(fhirbolt_model::r5::Resource::InventoryItem)
+                        .map(Resource::InventoryItem)
                         .map_err(serde::de::Error::custom)
                 }
                 "InventoryReport" => {
                     let deserializer = crate::element::de::Deserializer(element);
-                    let context =
-                        self.transmute::<Box<fhirbolt_model::r5::resources::InventoryReport>>();
-                    context
+                    let _context: &mut DeserializationContext<
+                        Box<fhirbolt_model::r5::resources::InventoryReport>,
+                    > = self.transmute();
+                    _context
                         .deserialize(deserializer)
-                        .map(fhirbolt_model::r5::Resource::InventoryReport)
+                        .map(Resource::InventoryReport)
                         .map_err(serde::de::Error::custom)
                 }
                 "Invoice" => {
                     let deserializer = crate::element::de::Deserializer(element);
-                    let context = self.transmute::<Box<fhirbolt_model::r5::resources::Invoice>>();
-                    context
+                    let _context: &mut DeserializationContext<
+                        Box<fhirbolt_model::r5::resources::Invoice>,
+                    > = self.transmute();
+                    _context
                         .deserialize(deserializer)
-                        .map(fhirbolt_model::r5::Resource::Invoice)
+                        .map(Resource::Invoice)
                         .map_err(serde::de::Error::custom)
                 }
                 "Library" => {
                     let deserializer = crate::element::de::Deserializer(element);
-                    let context = self.transmute::<Box<fhirbolt_model::r5::resources::Library>>();
-                    context
+                    let _context: &mut DeserializationContext<
+                        Box<fhirbolt_model::r5::resources::Library>,
+                    > = self.transmute();
+                    _context
                         .deserialize(deserializer)
-                        .map(fhirbolt_model::r5::Resource::Library)
+                        .map(Resource::Library)
                         .map_err(serde::de::Error::custom)
                 }
                 "Linkage" => {
                     let deserializer = crate::element::de::Deserializer(element);
-                    let context = self.transmute::<Box<fhirbolt_model::r5::resources::Linkage>>();
-                    context
+                    let _context: &mut DeserializationContext<
+                        Box<fhirbolt_model::r5::resources::Linkage>,
+                    > = self.transmute();
+                    _context
                         .deserialize(deserializer)
-                        .map(fhirbolt_model::r5::Resource::Linkage)
+                        .map(Resource::Linkage)
                         .map_err(serde::de::Error::custom)
                 }
                 "List" => {
                     let deserializer = crate::element::de::Deserializer(element);
-                    let context = self.transmute::<Box<fhirbolt_model::r5::resources::List>>();
-                    context
+                    let _context: &mut DeserializationContext<
+                        Box<fhirbolt_model::r5::resources::List>,
+                    > = self.transmute();
+                    _context
                         .deserialize(deserializer)
-                        .map(fhirbolt_model::r5::Resource::List)
+                        .map(Resource::List)
                         .map_err(serde::de::Error::custom)
                 }
                 "Location" => {
                     let deserializer = crate::element::de::Deserializer(element);
-                    let context = self.transmute::<Box<fhirbolt_model::r5::resources::Location>>();
-                    context
+                    let _context: &mut DeserializationContext<
+                        Box<fhirbolt_model::r5::resources::Location>,
+                    > = self.transmute();
+                    _context
                         .deserialize(deserializer)
-                        .map(fhirbolt_model::r5::Resource::Location)
+                        .map(Resource::Location)
                         .map_err(serde::de::Error::custom)
                 }
                 "ManufacturedItemDefinition" => {
                     let deserializer = crate::element::de::Deserializer(element);
-                    let context = self . transmute :: < Box < fhirbolt_model :: r5 :: resources :: ManufacturedItemDefinition >> () ;
-                    context
+                    let _context: &mut DeserializationContext<
+                        Box<fhirbolt_model::r5::resources::ManufacturedItemDefinition>,
+                    > = self.transmute();
+                    _context
                         .deserialize(deserializer)
-                        .map(fhirbolt_model::r5::Resource::ManufacturedItemDefinition)
+                        .map(Resource::ManufacturedItemDefinition)
                         .map_err(serde::de::Error::custom)
                 }
                 "Measure" => {
                     let deserializer = crate::element::de::Deserializer(element);
-                    let context = self.transmute::<Box<fhirbolt_model::r5::resources::Measure>>();
-                    context
+                    let _context: &mut DeserializationContext<
+                        Box<fhirbolt_model::r5::resources::Measure>,
+                    > = self.transmute();
+                    _context
                         .deserialize(deserializer)
-                        .map(fhirbolt_model::r5::Resource::Measure)
+                        .map(Resource::Measure)
                         .map_err(serde::de::Error::custom)
                 }
                 "MeasureReport" => {
                     let deserializer = crate::element::de::Deserializer(element);
-                    let context =
-                        self.transmute::<Box<fhirbolt_model::r5::resources::MeasureReport>>();
-                    context
+                    let _context: &mut DeserializationContext<
+                        Box<fhirbolt_model::r5::resources::MeasureReport>,
+                    > = self.transmute();
+                    _context
                         .deserialize(deserializer)
-                        .map(fhirbolt_model::r5::Resource::MeasureReport)
+                        .map(Resource::MeasureReport)
                         .map_err(serde::de::Error::custom)
                 }
                 "Medication" => {
                     let deserializer = crate::element::de::Deserializer(element);
-                    let context =
-                        self.transmute::<Box<fhirbolt_model::r5::resources::Medication>>();
-                    context
+                    let _context: &mut DeserializationContext<
+                        Box<fhirbolt_model::r5::resources::Medication>,
+                    > = self.transmute();
+                    _context
                         .deserialize(deserializer)
-                        .map(fhirbolt_model::r5::Resource::Medication)
+                        .map(Resource::Medication)
                         .map_err(serde::de::Error::custom)
                 }
                 "MedicationAdministration" => {
                     let deserializer = crate::element::de::Deserializer(element);
-                    let context = self
-                        .transmute::<Box<fhirbolt_model::r5::resources::MedicationAdministration>>(
-                        );
-                    context
+                    let _context: &mut DeserializationContext<
+                        Box<fhirbolt_model::r5::resources::MedicationAdministration>,
+                    > = self.transmute();
+                    _context
                         .deserialize(deserializer)
-                        .map(fhirbolt_model::r5::Resource::MedicationAdministration)
+                        .map(Resource::MedicationAdministration)
                         .map_err(serde::de::Error::custom)
                 }
                 "MedicationDispense" => {
                     let deserializer = crate::element::de::Deserializer(element);
-                    let context =
-                        self.transmute::<Box<fhirbolt_model::r5::resources::MedicationDispense>>();
-                    context
+                    let _context: &mut DeserializationContext<
+                        Box<fhirbolt_model::r5::resources::MedicationDispense>,
+                    > = self.transmute();
+                    _context
                         .deserialize(deserializer)
-                        .map(fhirbolt_model::r5::Resource::MedicationDispense)
+                        .map(Resource::MedicationDispense)
                         .map_err(serde::de::Error::custom)
                 }
                 "MedicationKnowledge" => {
                     let deserializer = crate::element::de::Deserializer(element);
-                    let context =
-                        self.transmute::<Box<fhirbolt_model::r5::resources::MedicationKnowledge>>();
-                    context
+                    let _context: &mut DeserializationContext<
+                        Box<fhirbolt_model::r5::resources::MedicationKnowledge>,
+                    > = self.transmute();
+                    _context
                         .deserialize(deserializer)
-                        .map(fhirbolt_model::r5::Resource::MedicationKnowledge)
+                        .map(Resource::MedicationKnowledge)
                         .map_err(serde::de::Error::custom)
                 }
                 "MedicationRequest" => {
                     let deserializer = crate::element::de::Deserializer(element);
-                    let context =
-                        self.transmute::<Box<fhirbolt_model::r5::resources::MedicationRequest>>();
-                    context
+                    let _context: &mut DeserializationContext<
+                        Box<fhirbolt_model::r5::resources::MedicationRequest>,
+                    > = self.transmute();
+                    _context
                         .deserialize(deserializer)
-                        .map(fhirbolt_model::r5::Resource::MedicationRequest)
+                        .map(Resource::MedicationRequest)
                         .map_err(serde::de::Error::custom)
                 }
                 "MedicationStatement" => {
                     let deserializer = crate::element::de::Deserializer(element);
-                    let context =
-                        self.transmute::<Box<fhirbolt_model::r5::resources::MedicationStatement>>();
-                    context
+                    let _context: &mut DeserializationContext<
+                        Box<fhirbolt_model::r5::resources::MedicationStatement>,
+                    > = self.transmute();
+                    _context
                         .deserialize(deserializer)
-                        .map(fhirbolt_model::r5::Resource::MedicationStatement)
+                        .map(Resource::MedicationStatement)
                         .map_err(serde::de::Error::custom)
                 }
                 "MedicinalProductDefinition" => {
                     let deserializer = crate::element::de::Deserializer(element);
-                    let context = self . transmute :: < Box < fhirbolt_model :: r5 :: resources :: MedicinalProductDefinition >> () ;
-                    context
+                    let _context: &mut DeserializationContext<
+                        Box<fhirbolt_model::r5::resources::MedicinalProductDefinition>,
+                    > = self.transmute();
+                    _context
                         .deserialize(deserializer)
-                        .map(fhirbolt_model::r5::Resource::MedicinalProductDefinition)
+                        .map(Resource::MedicinalProductDefinition)
                         .map_err(serde::de::Error::custom)
                 }
                 "MessageDefinition" => {
                     let deserializer = crate::element::de::Deserializer(element);
-                    let context =
-                        self.transmute::<Box<fhirbolt_model::r5::resources::MessageDefinition>>();
-                    context
+                    let _context: &mut DeserializationContext<
+                        Box<fhirbolt_model::r5::resources::MessageDefinition>,
+                    > = self.transmute();
+                    _context
                         .deserialize(deserializer)
-                        .map(fhirbolt_model::r5::Resource::MessageDefinition)
+                        .map(Resource::MessageDefinition)
                         .map_err(serde::de::Error::custom)
                 }
                 "MessageHeader" => {
                     let deserializer = crate::element::de::Deserializer(element);
-                    let context =
-                        self.transmute::<Box<fhirbolt_model::r5::resources::MessageHeader>>();
-                    context
+                    let _context: &mut DeserializationContext<
+                        Box<fhirbolt_model::r5::resources::MessageHeader>,
+                    > = self.transmute();
+                    _context
                         .deserialize(deserializer)
-                        .map(fhirbolt_model::r5::Resource::MessageHeader)
+                        .map(Resource::MessageHeader)
                         .map_err(serde::de::Error::custom)
                 }
                 "MolecularSequence" => {
                     let deserializer = crate::element::de::Deserializer(element);
-                    let context =
-                        self.transmute::<Box<fhirbolt_model::r5::resources::MolecularSequence>>();
-                    context
+                    let _context: &mut DeserializationContext<
+                        Box<fhirbolt_model::r5::resources::MolecularSequence>,
+                    > = self.transmute();
+                    _context
                         .deserialize(deserializer)
-                        .map(fhirbolt_model::r5::Resource::MolecularSequence)
+                        .map(Resource::MolecularSequence)
                         .map_err(serde::de::Error::custom)
                 }
                 "NamingSystem" => {
                     let deserializer = crate::element::de::Deserializer(element);
-                    let context =
-                        self.transmute::<Box<fhirbolt_model::r5::resources::NamingSystem>>();
-                    context
+                    let _context: &mut DeserializationContext<
+                        Box<fhirbolt_model::r5::resources::NamingSystem>,
+                    > = self.transmute();
+                    _context
                         .deserialize(deserializer)
-                        .map(fhirbolt_model::r5::Resource::NamingSystem)
+                        .map(Resource::NamingSystem)
                         .map_err(serde::de::Error::custom)
                 }
                 "NutritionIntake" => {
                     let deserializer = crate::element::de::Deserializer(element);
-                    let context =
-                        self.transmute::<Box<fhirbolt_model::r5::resources::NutritionIntake>>();
-                    context
+                    let _context: &mut DeserializationContext<
+                        Box<fhirbolt_model::r5::resources::NutritionIntake>,
+                    > = self.transmute();
+                    _context
                         .deserialize(deserializer)
-                        .map(fhirbolt_model::r5::Resource::NutritionIntake)
+                        .map(Resource::NutritionIntake)
                         .map_err(serde::de::Error::custom)
                 }
                 "NutritionOrder" => {
                     let deserializer = crate::element::de::Deserializer(element);
-                    let context =
-                        self.transmute::<Box<fhirbolt_model::r5::resources::NutritionOrder>>();
-                    context
+                    let _context: &mut DeserializationContext<
+                        Box<fhirbolt_model::r5::resources::NutritionOrder>,
+                    > = self.transmute();
+                    _context
                         .deserialize(deserializer)
-                        .map(fhirbolt_model::r5::Resource::NutritionOrder)
+                        .map(Resource::NutritionOrder)
                         .map_err(serde::de::Error::custom)
                 }
                 "NutritionProduct" => {
                     let deserializer = crate::element::de::Deserializer(element);
-                    let context =
-                        self.transmute::<Box<fhirbolt_model::r5::resources::NutritionProduct>>();
-                    context
+                    let _context: &mut DeserializationContext<
+                        Box<fhirbolt_model::r5::resources::NutritionProduct>,
+                    > = self.transmute();
+                    _context
                         .deserialize(deserializer)
-                        .map(fhirbolt_model::r5::Resource::NutritionProduct)
+                        .map(Resource::NutritionProduct)
                         .map_err(serde::de::Error::custom)
                 }
                 "Observation" => {
                     let deserializer = crate::element::de::Deserializer(element);
-                    let context =
-                        self.transmute::<Box<fhirbolt_model::r5::resources::Observation>>();
-                    context
+                    let _context: &mut DeserializationContext<
+                        Box<fhirbolt_model::r5::resources::Observation>,
+                    > = self.transmute();
+                    _context
                         .deserialize(deserializer)
-                        .map(fhirbolt_model::r5::Resource::Observation)
+                        .map(Resource::Observation)
                         .map_err(serde::de::Error::custom)
                 }
                 "ObservationDefinition" => {
                     let deserializer = crate::element::de::Deserializer(element);
-                    let context = self
-                        .transmute::<Box<fhirbolt_model::r5::resources::ObservationDefinition>>();
-                    context
+                    let _context: &mut DeserializationContext<
+                        Box<fhirbolt_model::r5::resources::ObservationDefinition>,
+                    > = self.transmute();
+                    _context
                         .deserialize(deserializer)
-                        .map(fhirbolt_model::r5::Resource::ObservationDefinition)
+                        .map(Resource::ObservationDefinition)
                         .map_err(serde::de::Error::custom)
                 }
                 "OperationDefinition" => {
                     let deserializer = crate::element::de::Deserializer(element);
-                    let context =
-                        self.transmute::<Box<fhirbolt_model::r5::resources::OperationDefinition>>();
-                    context
+                    let _context: &mut DeserializationContext<
+                        Box<fhirbolt_model::r5::resources::OperationDefinition>,
+                    > = self.transmute();
+                    _context
                         .deserialize(deserializer)
-                        .map(fhirbolt_model::r5::Resource::OperationDefinition)
+                        .map(Resource::OperationDefinition)
                         .map_err(serde::de::Error::custom)
                 }
                 "OperationOutcome" => {
                     let deserializer = crate::element::de::Deserializer(element);
-                    let context =
-                        self.transmute::<Box<fhirbolt_model::r5::resources::OperationOutcome>>();
-                    context
+                    let _context: &mut DeserializationContext<
+                        Box<fhirbolt_model::r5::resources::OperationOutcome>,
+                    > = self.transmute();
+                    _context
                         .deserialize(deserializer)
-                        .map(fhirbolt_model::r5::Resource::OperationOutcome)
+                        .map(Resource::OperationOutcome)
                         .map_err(serde::de::Error::custom)
                 }
                 "Organization" => {
                     let deserializer = crate::element::de::Deserializer(element);
-                    let context =
-                        self.transmute::<Box<fhirbolt_model::r5::resources::Organization>>();
-                    context
+                    let _context: &mut DeserializationContext<
+                        Box<fhirbolt_model::r5::resources::Organization>,
+                    > = self.transmute();
+                    _context
                         .deserialize(deserializer)
-                        .map(fhirbolt_model::r5::Resource::Organization)
+                        .map(Resource::Organization)
                         .map_err(serde::de::Error::custom)
                 }
                 "OrganizationAffiliation" => {
                     let deserializer = crate::element::de::Deserializer(element);
-                    let context = self
-                        .transmute::<Box<fhirbolt_model::r5::resources::OrganizationAffiliation>>();
-                    context
+                    let _context: &mut DeserializationContext<
+                        Box<fhirbolt_model::r5::resources::OrganizationAffiliation>,
+                    > = self.transmute();
+                    _context
                         .deserialize(deserializer)
-                        .map(fhirbolt_model::r5::Resource::OrganizationAffiliation)
+                        .map(Resource::OrganizationAffiliation)
                         .map_err(serde::de::Error::custom)
                 }
                 "PackagedProductDefinition" => {
                     let deserializer = crate::element::de::Deserializer(element);
-                    let context = self
-                        .transmute::<Box<fhirbolt_model::r5::resources::PackagedProductDefinition>>(
-                        );
-                    context
+                    let _context: &mut DeserializationContext<
+                        Box<fhirbolt_model::r5::resources::PackagedProductDefinition>,
+                    > = self.transmute();
+                    _context
                         .deserialize(deserializer)
-                        .map(fhirbolt_model::r5::Resource::PackagedProductDefinition)
+                        .map(Resource::PackagedProductDefinition)
                         .map_err(serde::de::Error::custom)
                 }
                 "Parameters" => {
                     let deserializer = crate::element::de::Deserializer(element);
-                    let context =
-                        self.transmute::<Box<fhirbolt_model::r5::resources::Parameters>>();
-                    context
+                    let _context: &mut DeserializationContext<
+                        Box<fhirbolt_model::r5::resources::Parameters>,
+                    > = self.transmute();
+                    _context
                         .deserialize(deserializer)
-                        .map(fhirbolt_model::r5::Resource::Parameters)
+                        .map(Resource::Parameters)
                         .map_err(serde::de::Error::custom)
                 }
                 "Patient" => {
                     let deserializer = crate::element::de::Deserializer(element);
-                    let context = self.transmute::<Box<fhirbolt_model::r5::resources::Patient>>();
-                    context
+                    let _context: &mut DeserializationContext<
+                        Box<fhirbolt_model::r5::resources::Patient>,
+                    > = self.transmute();
+                    _context
                         .deserialize(deserializer)
-                        .map(fhirbolt_model::r5::Resource::Patient)
+                        .map(Resource::Patient)
                         .map_err(serde::de::Error::custom)
                 }
                 "PaymentNotice" => {
                     let deserializer = crate::element::de::Deserializer(element);
-                    let context =
-                        self.transmute::<Box<fhirbolt_model::r5::resources::PaymentNotice>>();
-                    context
+                    let _context: &mut DeserializationContext<
+                        Box<fhirbolt_model::r5::resources::PaymentNotice>,
+                    > = self.transmute();
+                    _context
                         .deserialize(deserializer)
-                        .map(fhirbolt_model::r5::Resource::PaymentNotice)
+                        .map(Resource::PaymentNotice)
                         .map_err(serde::de::Error::custom)
                 }
                 "PaymentReconciliation" => {
                     let deserializer = crate::element::de::Deserializer(element);
-                    let context = self
-                        .transmute::<Box<fhirbolt_model::r5::resources::PaymentReconciliation>>();
-                    context
+                    let _context: &mut DeserializationContext<
+                        Box<fhirbolt_model::r5::resources::PaymentReconciliation>,
+                    > = self.transmute();
+                    _context
                         .deserialize(deserializer)
-                        .map(fhirbolt_model::r5::Resource::PaymentReconciliation)
+                        .map(Resource::PaymentReconciliation)
                         .map_err(serde::de::Error::custom)
                 }
                 "Permission" => {
                     let deserializer = crate::element::de::Deserializer(element);
-                    let context =
-                        self.transmute::<Box<fhirbolt_model::r5::resources::Permission>>();
-                    context
+                    let _context: &mut DeserializationContext<
+                        Box<fhirbolt_model::r5::resources::Permission>,
+                    > = self.transmute();
+                    _context
                         .deserialize(deserializer)
-                        .map(fhirbolt_model::r5::Resource::Permission)
+                        .map(Resource::Permission)
                         .map_err(serde::de::Error::custom)
                 }
                 "Person" => {
                     let deserializer = crate::element::de::Deserializer(element);
-                    let context = self.transmute::<Box<fhirbolt_model::r5::resources::Person>>();
-                    context
+                    let _context: &mut DeserializationContext<
+                        Box<fhirbolt_model::r5::resources::Person>,
+                    > = self.transmute();
+                    _context
                         .deserialize(deserializer)
-                        .map(fhirbolt_model::r5::Resource::Person)
+                        .map(Resource::Person)
                         .map_err(serde::de::Error::custom)
                 }
                 "PlanDefinition" => {
                     let deserializer = crate::element::de::Deserializer(element);
-                    let context =
-                        self.transmute::<Box<fhirbolt_model::r5::resources::PlanDefinition>>();
-                    context
+                    let _context: &mut DeserializationContext<
+                        Box<fhirbolt_model::r5::resources::PlanDefinition>,
+                    > = self.transmute();
+                    _context
                         .deserialize(deserializer)
-                        .map(fhirbolt_model::r5::Resource::PlanDefinition)
+                        .map(Resource::PlanDefinition)
                         .map_err(serde::de::Error::custom)
                 }
                 "Practitioner" => {
                     let deserializer = crate::element::de::Deserializer(element);
-                    let context =
-                        self.transmute::<Box<fhirbolt_model::r5::resources::Practitioner>>();
-                    context
+                    let _context: &mut DeserializationContext<
+                        Box<fhirbolt_model::r5::resources::Practitioner>,
+                    > = self.transmute();
+                    _context
                         .deserialize(deserializer)
-                        .map(fhirbolt_model::r5::Resource::Practitioner)
+                        .map(Resource::Practitioner)
                         .map_err(serde::de::Error::custom)
                 }
                 "PractitionerRole" => {
                     let deserializer = crate::element::de::Deserializer(element);
-                    let context =
-                        self.transmute::<Box<fhirbolt_model::r5::resources::PractitionerRole>>();
-                    context
+                    let _context: &mut DeserializationContext<
+                        Box<fhirbolt_model::r5::resources::PractitionerRole>,
+                    > = self.transmute();
+                    _context
                         .deserialize(deserializer)
-                        .map(fhirbolt_model::r5::Resource::PractitionerRole)
+                        .map(Resource::PractitionerRole)
                         .map_err(serde::de::Error::custom)
                 }
                 "Procedure" => {
                     let deserializer = crate::element::de::Deserializer(element);
-                    let context = self.transmute::<Box<fhirbolt_model::r5::resources::Procedure>>();
-                    context
+                    let _context: &mut DeserializationContext<
+                        Box<fhirbolt_model::r5::resources::Procedure>,
+                    > = self.transmute();
+                    _context
                         .deserialize(deserializer)
-                        .map(fhirbolt_model::r5::Resource::Procedure)
+                        .map(Resource::Procedure)
                         .map_err(serde::de::Error::custom)
                 }
                 "Provenance" => {
                     let deserializer = crate::element::de::Deserializer(element);
-                    let context =
-                        self.transmute::<Box<fhirbolt_model::r5::resources::Provenance>>();
-                    context
+                    let _context: &mut DeserializationContext<
+                        Box<fhirbolt_model::r5::resources::Provenance>,
+                    > = self.transmute();
+                    _context
                         .deserialize(deserializer)
-                        .map(fhirbolt_model::r5::Resource::Provenance)
+                        .map(Resource::Provenance)
                         .map_err(serde::de::Error::custom)
                 }
                 "Questionnaire" => {
                     let deserializer = crate::element::de::Deserializer(element);
-                    let context =
-                        self.transmute::<Box<fhirbolt_model::r5::resources::Questionnaire>>();
-                    context
+                    let _context: &mut DeserializationContext<
+                        Box<fhirbolt_model::r5::resources::Questionnaire>,
+                    > = self.transmute();
+                    _context
                         .deserialize(deserializer)
-                        .map(fhirbolt_model::r5::Resource::Questionnaire)
+                        .map(Resource::Questionnaire)
                         .map_err(serde::de::Error::custom)
                 }
                 "QuestionnaireResponse" => {
                     let deserializer = crate::element::de::Deserializer(element);
-                    let context = self
-                        .transmute::<Box<fhirbolt_model::r5::resources::QuestionnaireResponse>>();
-                    context
+                    let _context: &mut DeserializationContext<
+                        Box<fhirbolt_model::r5::resources::QuestionnaireResponse>,
+                    > = self.transmute();
+                    _context
                         .deserialize(deserializer)
-                        .map(fhirbolt_model::r5::Resource::QuestionnaireResponse)
+                        .map(Resource::QuestionnaireResponse)
                         .map_err(serde::de::Error::custom)
                 }
                 "RegulatedAuthorization" => {
                     let deserializer = crate::element::de::Deserializer(element);
-                    let context = self
-                        .transmute::<Box<fhirbolt_model::r5::resources::RegulatedAuthorization>>();
-                    context
+                    let _context: &mut DeserializationContext<
+                        Box<fhirbolt_model::r5::resources::RegulatedAuthorization>,
+                    > = self.transmute();
+                    _context
                         .deserialize(deserializer)
-                        .map(fhirbolt_model::r5::Resource::RegulatedAuthorization)
+                        .map(Resource::RegulatedAuthorization)
                         .map_err(serde::de::Error::custom)
                 }
                 "RelatedPerson" => {
                     let deserializer = crate::element::de::Deserializer(element);
-                    let context =
-                        self.transmute::<Box<fhirbolt_model::r5::resources::RelatedPerson>>();
-                    context
+                    let _context: &mut DeserializationContext<
+                        Box<fhirbolt_model::r5::resources::RelatedPerson>,
+                    > = self.transmute();
+                    _context
                         .deserialize(deserializer)
-                        .map(fhirbolt_model::r5::Resource::RelatedPerson)
+                        .map(Resource::RelatedPerson)
                         .map_err(serde::de::Error::custom)
                 }
                 "RequestOrchestration" => {
                     let deserializer = crate::element::de::Deserializer(element);
-                    let context = self
-                        .transmute::<Box<fhirbolt_model::r5::resources::RequestOrchestration>>();
-                    context
+                    let _context: &mut DeserializationContext<
+                        Box<fhirbolt_model::r5::resources::RequestOrchestration>,
+                    > = self.transmute();
+                    _context
                         .deserialize(deserializer)
-                        .map(fhirbolt_model::r5::Resource::RequestOrchestration)
+                        .map(Resource::RequestOrchestration)
                         .map_err(serde::de::Error::custom)
                 }
                 "Requirements" => {
                     let deserializer = crate::element::de::Deserializer(element);
-                    let context =
-                        self.transmute::<Box<fhirbolt_model::r5::resources::Requirements>>();
-                    context
+                    let _context: &mut DeserializationContext<
+                        Box<fhirbolt_model::r5::resources::Requirements>,
+                    > = self.transmute();
+                    _context
                         .deserialize(deserializer)
-                        .map(fhirbolt_model::r5::Resource::Requirements)
+                        .map(Resource::Requirements)
                         .map_err(serde::de::Error::custom)
                 }
                 "ResearchStudy" => {
                     let deserializer = crate::element::de::Deserializer(element);
-                    let context =
-                        self.transmute::<Box<fhirbolt_model::r5::resources::ResearchStudy>>();
-                    context
+                    let _context: &mut DeserializationContext<
+                        Box<fhirbolt_model::r5::resources::ResearchStudy>,
+                    > = self.transmute();
+                    _context
                         .deserialize(deserializer)
-                        .map(fhirbolt_model::r5::Resource::ResearchStudy)
+                        .map(Resource::ResearchStudy)
                         .map_err(serde::de::Error::custom)
                 }
                 "ResearchSubject" => {
                     let deserializer = crate::element::de::Deserializer(element);
-                    let context =
-                        self.transmute::<Box<fhirbolt_model::r5::resources::ResearchSubject>>();
-                    context
+                    let _context: &mut DeserializationContext<
+                        Box<fhirbolt_model::r5::resources::ResearchSubject>,
+                    > = self.transmute();
+                    _context
                         .deserialize(deserializer)
-                        .map(fhirbolt_model::r5::Resource::ResearchSubject)
+                        .map(Resource::ResearchSubject)
                         .map_err(serde::de::Error::custom)
                 }
                 "RiskAssessment" => {
                     let deserializer = crate::element::de::Deserializer(element);
-                    let context =
-                        self.transmute::<Box<fhirbolt_model::r5::resources::RiskAssessment>>();
-                    context
+                    let _context: &mut DeserializationContext<
+                        Box<fhirbolt_model::r5::resources::RiskAssessment>,
+                    > = self.transmute();
+                    _context
                         .deserialize(deserializer)
-                        .map(fhirbolt_model::r5::Resource::RiskAssessment)
+                        .map(Resource::RiskAssessment)
                         .map_err(serde::de::Error::custom)
                 }
                 "Schedule" => {
                     let deserializer = crate::element::de::Deserializer(element);
-                    let context = self.transmute::<Box<fhirbolt_model::r5::resources::Schedule>>();
-                    context
+                    let _context: &mut DeserializationContext<
+                        Box<fhirbolt_model::r5::resources::Schedule>,
+                    > = self.transmute();
+                    _context
                         .deserialize(deserializer)
-                        .map(fhirbolt_model::r5::Resource::Schedule)
+                        .map(Resource::Schedule)
                         .map_err(serde::de::Error::custom)
                 }
                 "SearchParameter" => {
                     let deserializer = crate::element::de::Deserializer(element);
-                    let context =
-                        self.transmute::<Box<fhirbolt_model::r5::resources::SearchParameter>>();
-                    context
+                    let _context: &mut DeserializationContext<
+                        Box<fhirbolt_model::r5::resources::SearchParameter>,
+                    > = self.transmute();
+                    _context
                         .deserialize(deserializer)
-                        .map(fhirbolt_model::r5::Resource::SearchParameter)
+                        .map(Resource::SearchParameter)
                         .map_err(serde::de::Error::custom)
                 }
                 "ServiceRequest" => {
                     let deserializer = crate::element::de::Deserializer(element);
-                    let context =
-                        self.transmute::<Box<fhirbolt_model::r5::resources::ServiceRequest>>();
-                    context
+                    let _context: &mut DeserializationContext<
+                        Box<fhirbolt_model::r5::resources::ServiceRequest>,
+                    > = self.transmute();
+                    _context
                         .deserialize(deserializer)
-                        .map(fhirbolt_model::r5::Resource::ServiceRequest)
+                        .map(Resource::ServiceRequest)
                         .map_err(serde::de::Error::custom)
                 }
                 "Slot" => {
                     let deserializer = crate::element::de::Deserializer(element);
-                    let context = self.transmute::<Box<fhirbolt_model::r5::resources::Slot>>();
-                    context
+                    let _context: &mut DeserializationContext<
+                        Box<fhirbolt_model::r5::resources::Slot>,
+                    > = self.transmute();
+                    _context
                         .deserialize(deserializer)
-                        .map(fhirbolt_model::r5::Resource::Slot)
+                        .map(Resource::Slot)
                         .map_err(serde::de::Error::custom)
                 }
                 "Specimen" => {
                     let deserializer = crate::element::de::Deserializer(element);
-                    let context = self.transmute::<Box<fhirbolt_model::r5::resources::Specimen>>();
-                    context
+                    let _context: &mut DeserializationContext<
+                        Box<fhirbolt_model::r5::resources::Specimen>,
+                    > = self.transmute();
+                    _context
                         .deserialize(deserializer)
-                        .map(fhirbolt_model::r5::Resource::Specimen)
+                        .map(Resource::Specimen)
                         .map_err(serde::de::Error::custom)
                 }
                 "SpecimenDefinition" => {
                     let deserializer = crate::element::de::Deserializer(element);
-                    let context =
-                        self.transmute::<Box<fhirbolt_model::r5::resources::SpecimenDefinition>>();
-                    context
+                    let _context: &mut DeserializationContext<
+                        Box<fhirbolt_model::r5::resources::SpecimenDefinition>,
+                    > = self.transmute();
+                    _context
                         .deserialize(deserializer)
-                        .map(fhirbolt_model::r5::Resource::SpecimenDefinition)
+                        .map(Resource::SpecimenDefinition)
                         .map_err(serde::de::Error::custom)
                 }
                 "StructureDefinition" => {
                     let deserializer = crate::element::de::Deserializer(element);
-                    let context =
-                        self.transmute::<Box<fhirbolt_model::r5::resources::StructureDefinition>>();
-                    context
+                    let _context: &mut DeserializationContext<
+                        Box<fhirbolt_model::r5::resources::StructureDefinition>,
+                    > = self.transmute();
+                    _context
                         .deserialize(deserializer)
-                        .map(fhirbolt_model::r5::Resource::StructureDefinition)
+                        .map(Resource::StructureDefinition)
                         .map_err(serde::de::Error::custom)
                 }
                 "StructureMap" => {
                     let deserializer = crate::element::de::Deserializer(element);
-                    let context =
-                        self.transmute::<Box<fhirbolt_model::r5::resources::StructureMap>>();
-                    context
+                    let _context: &mut DeserializationContext<
+                        Box<fhirbolt_model::r5::resources::StructureMap>,
+                    > = self.transmute();
+                    _context
                         .deserialize(deserializer)
-                        .map(fhirbolt_model::r5::Resource::StructureMap)
+                        .map(Resource::StructureMap)
                         .map_err(serde::de::Error::custom)
                 }
                 "Subscription" => {
                     let deserializer = crate::element::de::Deserializer(element);
-                    let context =
-                        self.transmute::<Box<fhirbolt_model::r5::resources::Subscription>>();
-                    context
+                    let _context: &mut DeserializationContext<
+                        Box<fhirbolt_model::r5::resources::Subscription>,
+                    > = self.transmute();
+                    _context
                         .deserialize(deserializer)
-                        .map(fhirbolt_model::r5::Resource::Subscription)
+                        .map(Resource::Subscription)
                         .map_err(serde::de::Error::custom)
                 }
                 "SubscriptionStatus" => {
                     let deserializer = crate::element::de::Deserializer(element);
-                    let context =
-                        self.transmute::<Box<fhirbolt_model::r5::resources::SubscriptionStatus>>();
-                    context
+                    let _context: &mut DeserializationContext<
+                        Box<fhirbolt_model::r5::resources::SubscriptionStatus>,
+                    > = self.transmute();
+                    _context
                         .deserialize(deserializer)
-                        .map(fhirbolt_model::r5::Resource::SubscriptionStatus)
+                        .map(Resource::SubscriptionStatus)
                         .map_err(serde::de::Error::custom)
                 }
                 "SubscriptionTopic" => {
                     let deserializer = crate::element::de::Deserializer(element);
-                    let context =
-                        self.transmute::<Box<fhirbolt_model::r5::resources::SubscriptionTopic>>();
-                    context
+                    let _context: &mut DeserializationContext<
+                        Box<fhirbolt_model::r5::resources::SubscriptionTopic>,
+                    > = self.transmute();
+                    _context
                         .deserialize(deserializer)
-                        .map(fhirbolt_model::r5::Resource::SubscriptionTopic)
+                        .map(Resource::SubscriptionTopic)
                         .map_err(serde::de::Error::custom)
                 }
                 "Substance" => {
                     let deserializer = crate::element::de::Deserializer(element);
-                    let context = self.transmute::<Box<fhirbolt_model::r5::resources::Substance>>();
-                    context
+                    let _context: &mut DeserializationContext<
+                        Box<fhirbolt_model::r5::resources::Substance>,
+                    > = self.transmute();
+                    _context
                         .deserialize(deserializer)
-                        .map(fhirbolt_model::r5::Resource::Substance)
+                        .map(Resource::Substance)
                         .map_err(serde::de::Error::custom)
                 }
                 "SubstanceDefinition" => {
                     let deserializer = crate::element::de::Deserializer(element);
-                    let context =
-                        self.transmute::<Box<fhirbolt_model::r5::resources::SubstanceDefinition>>();
-                    context
+                    let _context: &mut DeserializationContext<
+                        Box<fhirbolt_model::r5::resources::SubstanceDefinition>,
+                    > = self.transmute();
+                    _context
                         .deserialize(deserializer)
-                        .map(fhirbolt_model::r5::Resource::SubstanceDefinition)
+                        .map(Resource::SubstanceDefinition)
                         .map_err(serde::de::Error::custom)
                 }
                 "SubstanceNucleicAcid" => {
                     let deserializer = crate::element::de::Deserializer(element);
-                    let context = self
-                        .transmute::<Box<fhirbolt_model::r5::resources::SubstanceNucleicAcid>>();
-                    context
+                    let _context: &mut DeserializationContext<
+                        Box<fhirbolt_model::r5::resources::SubstanceNucleicAcid>,
+                    > = self.transmute();
+                    _context
                         .deserialize(deserializer)
-                        .map(fhirbolt_model::r5::Resource::SubstanceNucleicAcid)
+                        .map(Resource::SubstanceNucleicAcid)
                         .map_err(serde::de::Error::custom)
                 }
                 "SubstancePolymer" => {
                     let deserializer = crate::element::de::Deserializer(element);
-                    let context =
-                        self.transmute::<Box<fhirbolt_model::r5::resources::SubstancePolymer>>();
-                    context
+                    let _context: &mut DeserializationContext<
+                        Box<fhirbolt_model::r5::resources::SubstancePolymer>,
+                    > = self.transmute();
+                    _context
                         .deserialize(deserializer)
-                        .map(fhirbolt_model::r5::Resource::SubstancePolymer)
+                        .map(Resource::SubstancePolymer)
                         .map_err(serde::de::Error::custom)
                 }
                 "SubstanceProtein" => {
                     let deserializer = crate::element::de::Deserializer(element);
-                    let context =
-                        self.transmute::<Box<fhirbolt_model::r5::resources::SubstanceProtein>>();
-                    context
+                    let _context: &mut DeserializationContext<
+                        Box<fhirbolt_model::r5::resources::SubstanceProtein>,
+                    > = self.transmute();
+                    _context
                         .deserialize(deserializer)
-                        .map(fhirbolt_model::r5::Resource::SubstanceProtein)
+                        .map(Resource::SubstanceProtein)
                         .map_err(serde::de::Error::custom)
                 }
                 "SubstanceReferenceInformation" => {
                     let deserializer = crate::element::de::Deserializer(element);
-                    let context = self . transmute :: < Box < fhirbolt_model :: r5 :: resources :: SubstanceReferenceInformation >> () ;
-                    context
+                    let _context: &mut DeserializationContext<
+                        Box<fhirbolt_model::r5::resources::SubstanceReferenceInformation>,
+                    > = self.transmute();
+                    _context
                         .deserialize(deserializer)
-                        .map(fhirbolt_model::r5::Resource::SubstanceReferenceInformation)
+                        .map(Resource::SubstanceReferenceInformation)
                         .map_err(serde::de::Error::custom)
                 }
                 "SubstanceSourceMaterial" => {
                     let deserializer = crate::element::de::Deserializer(element);
-                    let context = self
-                        .transmute::<Box<fhirbolt_model::r5::resources::SubstanceSourceMaterial>>();
-                    context
+                    let _context: &mut DeserializationContext<
+                        Box<fhirbolt_model::r5::resources::SubstanceSourceMaterial>,
+                    > = self.transmute();
+                    _context
                         .deserialize(deserializer)
-                        .map(fhirbolt_model::r5::Resource::SubstanceSourceMaterial)
+                        .map(Resource::SubstanceSourceMaterial)
                         .map_err(serde::de::Error::custom)
                 }
                 "SupplyDelivery" => {
                     let deserializer = crate::element::de::Deserializer(element);
-                    let context =
-                        self.transmute::<Box<fhirbolt_model::r5::resources::SupplyDelivery>>();
-                    context
+                    let _context: &mut DeserializationContext<
+                        Box<fhirbolt_model::r5::resources::SupplyDelivery>,
+                    > = self.transmute();
+                    _context
                         .deserialize(deserializer)
-                        .map(fhirbolt_model::r5::Resource::SupplyDelivery)
+                        .map(Resource::SupplyDelivery)
                         .map_err(serde::de::Error::custom)
                 }
                 "SupplyRequest" => {
                     let deserializer = crate::element::de::Deserializer(element);
-                    let context =
-                        self.transmute::<Box<fhirbolt_model::r5::resources::SupplyRequest>>();
-                    context
+                    let _context: &mut DeserializationContext<
+                        Box<fhirbolt_model::r5::resources::SupplyRequest>,
+                    > = self.transmute();
+                    _context
                         .deserialize(deserializer)
-                        .map(fhirbolt_model::r5::Resource::SupplyRequest)
+                        .map(Resource::SupplyRequest)
                         .map_err(serde::de::Error::custom)
                 }
                 "Task" => {
                     let deserializer = crate::element::de::Deserializer(element);
-                    let context = self.transmute::<Box<fhirbolt_model::r5::resources::Task>>();
-                    context
+                    let _context: &mut DeserializationContext<
+                        Box<fhirbolt_model::r5::resources::Task>,
+                    > = self.transmute();
+                    _context
                         .deserialize(deserializer)
-                        .map(fhirbolt_model::r5::Resource::Task)
+                        .map(Resource::Task)
                         .map_err(serde::de::Error::custom)
                 }
                 "TerminologyCapabilities" => {
                     let deserializer = crate::element::de::Deserializer(element);
-                    let context = self
-                        .transmute::<Box<fhirbolt_model::r5::resources::TerminologyCapabilities>>();
-                    context
+                    let _context: &mut DeserializationContext<
+                        Box<fhirbolt_model::r5::resources::TerminologyCapabilities>,
+                    > = self.transmute();
+                    _context
                         .deserialize(deserializer)
-                        .map(fhirbolt_model::r5::Resource::TerminologyCapabilities)
+                        .map(Resource::TerminologyCapabilities)
                         .map_err(serde::de::Error::custom)
                 }
                 "TestPlan" => {
                     let deserializer = crate::element::de::Deserializer(element);
-                    let context = self.transmute::<Box<fhirbolt_model::r5::resources::TestPlan>>();
-                    context
+                    let _context: &mut DeserializationContext<
+                        Box<fhirbolt_model::r5::resources::TestPlan>,
+                    > = self.transmute();
+                    _context
                         .deserialize(deserializer)
-                        .map(fhirbolt_model::r5::Resource::TestPlan)
+                        .map(Resource::TestPlan)
                         .map_err(serde::de::Error::custom)
                 }
                 "TestReport" => {
                     let deserializer = crate::element::de::Deserializer(element);
-                    let context =
-                        self.transmute::<Box<fhirbolt_model::r5::resources::TestReport>>();
-                    context
+                    let _context: &mut DeserializationContext<
+                        Box<fhirbolt_model::r5::resources::TestReport>,
+                    > = self.transmute();
+                    _context
                         .deserialize(deserializer)
-                        .map(fhirbolt_model::r5::Resource::TestReport)
+                        .map(Resource::TestReport)
                         .map_err(serde::de::Error::custom)
                 }
                 "TestScript" => {
                     let deserializer = crate::element::de::Deserializer(element);
-                    let context =
-                        self.transmute::<Box<fhirbolt_model::r5::resources::TestScript>>();
-                    context
+                    let _context: &mut DeserializationContext<
+                        Box<fhirbolt_model::r5::resources::TestScript>,
+                    > = self.transmute();
+                    _context
                         .deserialize(deserializer)
-                        .map(fhirbolt_model::r5::Resource::TestScript)
+                        .map(Resource::TestScript)
                         .map_err(serde::de::Error::custom)
                 }
                 "Transport" => {
                     let deserializer = crate::element::de::Deserializer(element);
-                    let context = self.transmute::<Box<fhirbolt_model::r5::resources::Transport>>();
-                    context
+                    let _context: &mut DeserializationContext<
+                        Box<fhirbolt_model::r5::resources::Transport>,
+                    > = self.transmute();
+                    _context
                         .deserialize(deserializer)
-                        .map(fhirbolt_model::r5::Resource::Transport)
+                        .map(Resource::Transport)
                         .map_err(serde::de::Error::custom)
                 }
                 "ValueSet" => {
                     let deserializer = crate::element::de::Deserializer(element);
-                    let context = self.transmute::<Box<fhirbolt_model::r5::resources::ValueSet>>();
-                    context
+                    let _context: &mut DeserializationContext<
+                        Box<fhirbolt_model::r5::resources::ValueSet>,
+                    > = self.transmute();
+                    _context
                         .deserialize(deserializer)
-                        .map(fhirbolt_model::r5::Resource::ValueSet)
+                        .map(Resource::ValueSet)
                         .map_err(serde::de::Error::custom)
                 }
                 "VerificationResult" => {
                     let deserializer = crate::element::de::Deserializer(element);
-                    let context =
-                        self.transmute::<Box<fhirbolt_model::r5::resources::VerificationResult>>();
-                    context
+                    let _context: &mut DeserializationContext<
+                        Box<fhirbolt_model::r5::resources::VerificationResult>,
+                    > = self.transmute();
+                    _context
                         .deserialize(deserializer)
-                        .map(fhirbolt_model::r5::Resource::VerificationResult)
+                        .map(Resource::VerificationResult)
                         .map_err(serde::de::Error::custom)
                 }
                 "VisionPrescription" => {
                     let deserializer = crate::element::de::Deserializer(element);
-                    let context =
-                        self.transmute::<Box<fhirbolt_model::r5::resources::VisionPrescription>>();
-                    context
+                    let _context: &mut DeserializationContext<
+                        Box<fhirbolt_model::r5::resources::VisionPrescription>,
+                    > = self.transmute();
+                    _context
                         .deserialize(deserializer)
-                        .map(fhirbolt_model::r5::Resource::VisionPrescription)
+                        .map(Resource::VisionPrescription)
                         .map_err(serde::de::Error::custom)
                 }
                 _ => Err(serde::de::Error::invalid_type(
@@ -1925,19 +1896,15 @@ impl<'de> serde::de::DeserializeSeed<'de>
         }
     }
 }
-impl<'de> serde::de::DeserializeSeed<'de>
-    for &mut crate::context::de::DeserializationContext<Vec<fhirbolt_model::r5::Resource>>
-{
-    type Value = Vec<fhirbolt_model::r5::Resource>;
+impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Vec<Resource>> {
+    type Value = Vec<Resource>;
     fn deserialize<D>(self, deserializer: D) -> Result<Self::Value, D::Error>
     where
         D: serde::de::Deserializer<'de>,
     {
-        struct Visitor<'a>(
-            &'a mut crate::context::de::DeserializationContext<Vec<fhirbolt_model::r5::Resource>>,
-        );
+        struct Visitor<'a>(&'a mut DeserializationContext<Vec<Resource>>);
         impl<'de> serde::de::Visitor<'de> for Visitor<'_> {
-            type Value = Vec<fhirbolt_model::r5::Resource>;
+            type Value = Vec<Resource>;
             fn expecting(&self, formatter: &mut std::fmt::Formatter) -> std::fmt::Result {
                 formatter.write_str("a sequence of resources")
             }
@@ -1946,9 +1913,7 @@ impl<'de> serde::de::DeserializeSeed<'de>
                 A: serde::de::SeqAccess<'de>,
             {
                 let mut values = Vec::new();
-                while let Some(value) =
-                    seq.next_element_seed(self.0.transmute::<fhirbolt_model::r5::Resource>())?
-                {
+                while let Some(value) = seq.next_element_seed(self.0.transmute::<Resource>())? {
                     values.push(value);
                 }
                 Ok(values)

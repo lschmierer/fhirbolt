@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-03 by fhirbolt-codegen v0.7.0
 #[doc = "Describes the calibrations that have been performed or that are required to be performed."]
 #[derive(Debug, Clone, PartialEq)]
 pub struct DeviceMetricCalibration {
@@ -15,6 +15,7 @@ pub struct DeviceMetricCalibration {
     #[doc = "Describes the time last calibration has been performed."]
     pub r#time: Option<super::super::types::Instant>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for DeviceMetricCalibration {
     fn default() -> Self {
         Self {
@@ -67,6 +68,7 @@ pub struct DeviceMetric {
     #[doc = "Describes the calibrations that have been performed or that are required to be performed."]
     pub r#calibration: Vec<DeviceMetricCalibration>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for DeviceMetric {
     fn default() -> Self {
         Self {
@@ -79,20 +81,18 @@ impl Default for DeviceMetric {
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
             r#identifier: Default::default(),
-            r#type: {
-                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#type: Box::new(super::super::types::CodeableConcept {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
             r#unit: Default::default(),
             r#source: Default::default(),
             r#parent: Default::default(),
             r#operational_status: Default::default(),
             r#color: Default::default(),
-            r#category: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#category: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#measurement_period: Default::default(),
             r#calibration: Default::default(),

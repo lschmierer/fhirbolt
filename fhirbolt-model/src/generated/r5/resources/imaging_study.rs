@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-03 by fhirbolt-codegen v0.7.0
 #[doc = "Indicates who or what performed the series and how they were involved."]
 #[derive(Debug, Clone, PartialEq)]
 pub struct ImagingStudySeriesPerformer {
@@ -13,6 +13,7 @@ pub struct ImagingStudySeriesPerformer {
     #[doc = "Indicates who or what performed the series."]
     pub r#actor: Box<super::super::types::Reference>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for ImagingStudySeriesPerformer {
     fn default() -> Self {
         Self {
@@ -20,11 +21,10 @@ impl Default for ImagingStudySeriesPerformer {
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
             r#function: Default::default(),
-            r#actor: {
-                let mut default: Box<super::super::types::Reference> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#actor: Box::new(super::super::types::Reference {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
         }
     }
 }
@@ -46,22 +46,21 @@ pub struct ImagingStudySeriesInstance {
     #[doc = "The description of the instance."]
     pub r#title: Option<super::super::types::String>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for ImagingStudySeriesInstance {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#uid: {
-                let mut default: super::super::types::Id = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#uid: super::super::types::Id {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
-            r#sop_class: {
-                let mut default: Box<super::super::types::Coding> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#sop_class: Box::new(super::super::types::Coding {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
             r#number: Default::default(),
             r#title: Default::default(),
         }
@@ -101,23 +100,22 @@ pub struct ImagingStudySeries {
     #[doc = "A single SOP instance within the series, e.g. an image, or presentation state."]
     pub r#instance: Vec<ImagingStudySeriesInstance>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for ImagingStudySeries {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#uid: {
-                let mut default: super::super::types::Id = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#uid: super::super::types::Id {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#number: Default::default(),
-            r#modality: {
-                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#modality: Box::new(super::super::types::CodeableConcept {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
             r#description: Default::default(),
             r#number_of_instances: Default::default(),
             r#endpoint: Default::default(),
@@ -186,6 +184,7 @@ pub struct ImagingStudy {
     #[doc = "Each study has one or more series of images or other content."]
     pub r#series: Vec<ImagingStudySeries>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for ImagingStudy {
     fn default() -> Self {
         Self {
@@ -198,17 +197,15 @@ impl Default for ImagingStudy {
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
             r#identifier: Default::default(),
-            r#status: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#status: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#modality: Default::default(),
-            r#subject: {
-                let mut default: Box<super::super::types::Reference> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#subject: Box::new(super::super::types::Reference {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
             r#encounter: Default::default(),
             r#started: Default::default(),
             r#based_on: Default::default(),

@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-03 by fhirbolt-codegen v0.7.0
 #[doc = "The history of statuses that the EpisodeOfCare has been through (without requiring processing the history of the resource)."]
 #[derive(Debug, Clone, PartialEq)]
 pub struct EpisodeOfCareStatusHistory {
@@ -13,22 +13,21 @@ pub struct EpisodeOfCareStatusHistory {
     #[doc = "The period during this EpisodeOfCare that the specific status applied."]
     pub r#period: Box<super::super::types::Period>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for EpisodeOfCareStatusHistory {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#status: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#status: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
-            r#period: {
-                let mut default: Box<super::super::types::Period> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#period: Box::new(super::super::types::Period {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
         }
     }
 }
@@ -48,17 +47,17 @@ pub struct EpisodeOfCareDiagnosis {
     #[doc = "Ranking of the diagnosis (for each role type)."]
     pub r#rank: Option<super::super::types::PositiveInt>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for EpisodeOfCareDiagnosis {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#condition: {
-                let mut default: Box<super::super::types::Reference> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#condition: Box::new(super::super::types::Reference {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
             r#role: Default::default(),
             r#rank: Default::default(),
         }
@@ -108,6 +107,7 @@ pub struct EpisodeOfCare {
     #[doc = "The set of accounts that may be used for billing for this EpisodeOfCare."]
     pub r#account: Vec<super::super::types::Reference>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for EpisodeOfCare {
     fn default() -> Self {
         Self {
@@ -120,19 +120,17 @@ impl Default for EpisodeOfCare {
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
             r#identifier: Default::default(),
-            r#status: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#status: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#status_history: Default::default(),
             r#type: Default::default(),
             r#diagnosis: Default::default(),
-            r#patient: {
-                let mut default: Box<super::super::types::Reference> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#patient: Box::new(super::super::types::Reference {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
             r#managing_organization: Default::default(),
             r#period: Default::default(),
             r#referral_request: Default::default(),

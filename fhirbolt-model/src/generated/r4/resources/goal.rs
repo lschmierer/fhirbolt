@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-03 by fhirbolt-codegen v0.7.0
 #[doc = "The date or event after which the goal should begin being pursued."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum GoalStart {
@@ -44,6 +44,7 @@ pub struct GoalTarget {
     #[doc = "Indicates either the date or the duration after start by which the goal should be met."]
     pub r#due: Option<GoalTargetDue>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for GoalTarget {
     fn default() -> Self {
         Self {
@@ -108,6 +109,7 @@ pub struct Goal {
     #[doc = "Details of what's changed (or not changed)."]
     pub r#outcome_reference: Vec<super::super::types::Reference>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for Goal {
     fn default() -> Self {
         Self {
@@ -120,24 +122,21 @@ impl Default for Goal {
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
             r#identifier: Default::default(),
-            r#lifecycle_status: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#lifecycle_status: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#achievement_status: Default::default(),
             r#category: Default::default(),
             r#priority: Default::default(),
-            r#description: {
-                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
-            r#subject: {
-                let mut default: Box<super::super::types::Reference> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#description: Box::new(super::super::types::CodeableConcept {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
+            r#subject: Box::new(super::super::types::Reference {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
             r#start: Default::default(),
             r#target: Default::default(),
             r#status_date: Default::default(),

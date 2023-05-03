@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-03 by fhirbolt-codegen v0.7.0
 #[doc = "Nominal position in a series."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum ImmunizationEvaluationDoseNumber {
@@ -61,6 +61,7 @@ pub struct ImmunizationEvaluation {
     #[doc = "The recommended number of doses to achieve immunity."]
     pub r#series_doses: Option<ImmunizationEvaluationSeriesDoses>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for ImmunizationEvaluation {
     fn default() -> Self {
         Self {
@@ -73,33 +74,28 @@ impl Default for ImmunizationEvaluation {
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
             r#identifier: Default::default(),
-            r#status: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#status: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
-            r#patient: {
-                let mut default: Box<super::super::types::Reference> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#patient: Box::new(super::super::types::Reference {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
             r#date: Default::default(),
             r#authority: Default::default(),
-            r#target_disease: {
-                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
-            r#immunization_event: {
-                let mut default: Box<super::super::types::Reference> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
-            r#dose_status: {
-                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#target_disease: Box::new(super::super::types::CodeableConcept {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
+            r#immunization_event: Box::new(super::super::types::Reference {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
+            r#dose_status: Box::new(super::super::types::CodeableConcept {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
             r#dose_status_reason: Default::default(),
             r#description: Default::default(),
             r#series: Default::default(),

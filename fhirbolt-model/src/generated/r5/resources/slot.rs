@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-03 by fhirbolt-codegen v0.7.0
 #[doc = "A slot of time on a schedule that may be available for booking appointments."]
 #[derive(Debug, Clone, PartialEq)]
 pub struct Slot {
@@ -41,6 +41,7 @@ pub struct Slot {
     #[doc = "Comments on the slot to describe any extended information. Such as custom constraints on the slot."]
     pub r#comment: Option<super::super::types::String>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for Slot {
     fn default() -> Self {
         Self {
@@ -57,25 +58,21 @@ impl Default for Slot {
             r#service_type: Default::default(),
             r#specialty: Default::default(),
             r#appointment_type: Default::default(),
-            r#schedule: {
-                let mut default: Box<super::super::types::Reference> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#schedule: Box::new(super::super::types::Reference {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
+            r#status: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
-            r#status: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#start: super::super::types::Instant {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
-            r#start: {
-                let mut default: super::super::types::Instant = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
-            r#end: {
-                let mut default: super::super::types::Instant = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#end: super::super::types::Instant {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#overbooked: Default::default(),
             r#comment: Default::default(),

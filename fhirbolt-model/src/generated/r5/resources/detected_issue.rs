@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-03 by fhirbolt-codegen v0.7.0
 #[doc = "The date or period when the detected issue was initially identified."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum DetectedIssueIdentified {
@@ -21,6 +21,7 @@ pub struct DetectedIssueEvidence {
     #[doc = "Links to resources that constitute evidence for the detected issue such as a GuidanceResponse or MeasureReport."]
     pub r#detail: Vec<super::super::types::Reference>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for DetectedIssueEvidence {
     fn default() -> Self {
         Self {
@@ -50,17 +51,17 @@ pub struct DetectedIssueMitigation {
     #[doc = "Clinicians may add additional notes or justifications about the mitigation action. For example, patient can have this drug because they have had it before without any issues. Multiple justifications may be provided."]
     pub r#note: Vec<super::super::types::Annotation>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for DetectedIssueMitigation {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#action: {
-                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#action: Box::new(super::super::types::CodeableConcept {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
             r#date: Default::default(),
             r#author: Default::default(),
             r#note: Default::default(),
@@ -115,6 +116,7 @@ pub struct DetectedIssue {
     #[doc = "Indicates an action that has been taken or is committed to reduce or eliminate the likelihood of the risk identified by the detected issue from manifesting.  Can also reflect an observation of known mitigating factors that may reduce/eliminate the need for any action."]
     pub r#mitigation: Vec<DetectedIssueMitigation>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for DetectedIssue {
     fn default() -> Self {
         Self {
@@ -127,10 +129,9 @@ impl Default for DetectedIssue {
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
             r#identifier: Default::default(),
-            r#status: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#status: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#category: Default::default(),
             r#code: Default::default(),

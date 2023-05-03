@@ -52,7 +52,7 @@ where
             && key == "resourceType"
         {
             if let Value::Primitive(Primitive::String(s)) = value {
-                current_path.push(&s);
+                current_path.push(s);
                 is_resource = true;
             }
         } else {
@@ -61,7 +61,7 @@ where
                 validate_field_is_valid::<D>(current_path, key)?;
             }
 
-            current_path.push(&key);
+            current_path.push(key);
 
             resolve_value_types::<D, R>(value, deserialization_mode, current_path)?;
 
@@ -176,7 +176,7 @@ where
         }
         Primitive::String(s) => {
             Ok(Primitive::Bool(s.parse().map_err(|_| {
-                de::Error::invalid_value(Unexpected::Other(&s), &expected)
+                de::Error::invalid_value(Unexpected::Other(s), &expected)
             })?))
         }
     }
@@ -189,7 +189,7 @@ where
     let expected = "an integer";
     match primitive {
         Primitive::Bool(b) => Err(de::Error::invalid_type(Unexpected::Bool(*b), &expected)),
-        Primitive::Integer(i) => Ok(Primitive::Integer(*i as i32)),
+        Primitive::Integer(i) => Ok(Primitive::Integer(*i)),
         Primitive::Integer64(i) => Ok(Primitive::Integer(*i as i32)),
         Primitive::Decimal(s) => {
             return Err(de::Error::invalid_type(
@@ -199,7 +199,7 @@ where
         }
         Primitive::String(s) => {
             Ok(Primitive::Integer(s.parse().map_err(|_| {
-                de::Error::invalid_value(Unexpected::Other(&s), &expected)
+                de::Error::invalid_value(Unexpected::Other(s), &expected)
             })?))
         }
     }
@@ -222,7 +222,7 @@ where
         }
         Primitive::String(s) => {
             Ok(Primitive::Integer64(s.parse().map_err(|_| {
-                de::Error::invalid_value(Unexpected::Other(&s), &expected)
+                de::Error::invalid_value(Unexpected::Other(s), &expected)
             })?))
         }
     }
@@ -266,7 +266,7 @@ where
     }
 }
 
-impl<'a, 'de, const R: FhirRelease> DeserializeSeed<'de>
+impl<'de, const R: FhirRelease> DeserializeSeed<'de>
     for &mut DeserializationContext<InternalElement<R>>
 {
     type Value = InternalElement<R>;
@@ -427,8 +427,8 @@ impl<'a, 'de, const R: FhirRelease> Visitor<'de> for ValueVisitor<'a, R> {
         let mut element = Element::default();
 
         while let Some(key) = map_access.next_key::<String>()? {
-            let key = if key.starts_with("_") {
-                key[1..].into()
+            let key = if let Some(stripped) = key.strip_prefix('_') {
+                stripped.into()
             } else {
                 key
             };

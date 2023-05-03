@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-03 by fhirbolt-codegen v0.7.0
 #[doc = "The linkages between sugar residues will also be captured."]
 #[derive(Debug, Clone, PartialEq)]
 pub struct SubstanceNucleicAcidSubunitLinkage {
@@ -17,6 +17,7 @@ pub struct SubstanceNucleicAcidSubunitLinkage {
     #[doc = "Residues shall be captured as described in 5.3.6.8.3."]
     pub r#residue_site: Option<super::super::types::String>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for SubstanceNucleicAcidSubunitLinkage {
     fn default() -> Self {
         Self {
@@ -46,6 +47,7 @@ pub struct SubstanceNucleicAcidSubunitSugar {
     #[doc = "The residues that contain a given sugar will be captured. The order of given residues will be captured in the 5‘-3‘direction consistent with the base sequences listed above."]
     pub r#residue_site: Option<super::super::types::String>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for SubstanceNucleicAcidSubunitSugar {
     fn default() -> Self {
         Self {
@@ -84,6 +86,7 @@ pub struct SubstanceNucleicAcidSubunit {
     #[doc = "5.3.6.8.1 Sugar ID (Mandatory)."]
     pub r#sugar: Vec<SubstanceNucleicAcidSubunitSugar>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for SubstanceNucleicAcidSubunit {
     fn default() -> Self {
         Self {
@@ -131,6 +134,7 @@ pub struct SubstanceNucleicAcid {
     #[doc = "Subunits are listed in order of decreasing length; sequences of the same length will be ordered by molecular weight; subunits that have identical sequences will be repeated multiple times."]
     pub r#subunit: Vec<SubstanceNucleicAcidSubunit>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for SubstanceNucleicAcid {
     fn default() -> Self {
         Self {

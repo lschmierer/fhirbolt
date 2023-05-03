@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-03 by fhirbolt-codegen v0.7.0
 #[doc = "The actual ingredient - either a substance (simple ingredient) or another medication of a medication."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum MedicationIngredientItem {
@@ -23,6 +23,7 @@ pub struct MedicationIngredient {
     #[doc = "Specifies how many (or how much) of the items there are in this Medication.  For example, 250 mg per tablet.  This is expressed as a ratio where the numerator is 250mg and the denominator is 1 tablet."]
     pub r#strength: Option<Box<super::super::types::Ratio>>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for MedicationIngredient {
     fn default() -> Self {
         Self {
@@ -49,6 +50,7 @@ pub struct MedicationBatch {
     #[doc = "When this specific batch of product will expire."]
     pub r#expiration_date: Option<super::super::types::DateTime>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for MedicationBatch {
     fn default() -> Self {
         Self {
@@ -96,6 +98,7 @@ pub struct Medication {
     #[doc = "Information that only applies to packages (not products)."]
     pub r#batch: Option<MedicationBatch>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for Medication {
     fn default() -> Self {
         Self {

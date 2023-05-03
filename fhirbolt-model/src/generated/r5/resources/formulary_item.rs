@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-03 by fhirbolt-codegen v0.7.0
 #[doc = "This resource describes a product or service that is available through a program and includes the conditions and constraints of availability.  All of the information in this resource is specific to the inclusion of the item in the formulary and is not inherent to the item itself."]
 #[derive(Debug, Clone, PartialEq)]
 pub struct FormularyItem {
@@ -25,6 +25,7 @@ pub struct FormularyItem {
     #[doc = "The validity about the information of the formulary item and not of the underlying product or service itself."]
     pub r#status: Option<super::super::types::Code>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for FormularyItem {
     fn default() -> Self {
         Self {

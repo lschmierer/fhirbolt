@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-03 by fhirbolt-codegen v0.7.0
 #[doc = "An identifier, CodeableConcept or canonical reference to the guidance that was requested."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum GuidanceResponseModule {
@@ -58,6 +58,7 @@ pub struct GuidanceResponse {
     #[doc = "If the evaluation could not be completed due to lack of information, or additional information would potentially result in a more accurate response, this element will a description of the data required in order to proceed with the evaluation. A subsequent request to the service should include this data."]
     pub r#data_requirement: Vec<super::super::types::DataRequirement>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for GuidanceResponse {
     fn default() -> Self {
         Self {
@@ -72,10 +73,9 @@ impl Default for GuidanceResponse {
             r#request_identifier: Default::default(),
             r#identifier: Default::default(),
             r#module: Default::default(),
-            r#status: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#status: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#subject: Default::default(),
             r#encounter: Default::default(),

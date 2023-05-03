@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-03 by fhirbolt-codegen v0.7.0
 #[doc = "The date (and possibly time) the risk assessment was performed."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum RiskAssessmentOccurrence {
@@ -45,6 +45,7 @@ pub struct RiskAssessmentPrediction {
     #[doc = "Additional information explaining the basis for the prediction."]
     pub r#rationale: Option<super::super::types::String>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for RiskAssessmentPrediction {
     fn default() -> Self {
         Self {
@@ -114,6 +115,7 @@ pub struct RiskAssessment {
     #[doc = "Additional comments about the risk assessment."]
     pub r#note: Vec<super::super::types::Annotation>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for RiskAssessment {
     fn default() -> Self {
         Self {
@@ -128,18 +130,16 @@ impl Default for RiskAssessment {
             r#identifier: Default::default(),
             r#based_on: Default::default(),
             r#parent: Default::default(),
-            r#status: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#status: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#method: Default::default(),
             r#code: Default::default(),
-            r#subject: {
-                let mut default: Box<super::super::types::Reference> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#subject: Box::new(super::super::types::Reference {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
             r#encounter: Default::default(),
             r#occurrence: Default::default(),
             r#condition: Default::default(),

@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-03 by fhirbolt-codegen v0.7.0
 #[doc = "The rate of administration of formula via a feeding pump, e.g. 60 mL per hour, according to the specified schedule."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum NutritionOrderEnteralFormulaAdministrationRate {
@@ -21,6 +21,7 @@ pub struct NutritionOrderOralDietNutrient {
     #[doc = "The quantity of the specified nutrient to include in diet."]
     pub r#amount: Option<Box<super::super::types::Quantity>>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for NutritionOrderOralDietNutrient {
     fn default() -> Self {
         Self {
@@ -46,6 +47,7 @@ pub struct NutritionOrderOralDietTexture {
     #[doc = "The food type(s) (e.g. meats, all foods)  that the texture modification applies to.  This could be all foods types."]
     pub r#food_type: Option<Box<super::super::types::CodeableConcept>>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for NutritionOrderOralDietTexture {
     fn default() -> Self {
         Self {
@@ -79,6 +81,7 @@ pub struct NutritionOrderOralDiet {
     #[doc = "Free text or additional instructions or information pertaining to the oral diet."]
     pub r#instruction: Option<super::super::types::String>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for NutritionOrderOralDiet {
     fn default() -> Self {
         Self {
@@ -114,6 +117,7 @@ pub struct NutritionOrderSupplement {
     #[doc = "Free text or additional instructions or information pertaining to the oral supplement."]
     pub r#instruction: Option<super::super::types::String>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for NutritionOrderSupplement {
     fn default() -> Self {
         Self {
@@ -144,6 +148,7 @@ pub struct NutritionOrderEnteralFormulaAdministration {
     #[doc = "The rate of administration of formula via a feeding pump, e.g. 60 mL per hour, according to the specified schedule."]
     pub r#rate: Option<NutritionOrderEnteralFormulaAdministrationRate>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for NutritionOrderEnteralFormulaAdministration {
     fn default() -> Self {
         Self {
@@ -184,6 +189,7 @@ pub struct NutritionOrderEnteralFormula {
     #[doc = "Free text formula administration, feeding instructions or additional instructions or information."]
     pub r#administration_instruction: Option<super::super::types::String>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for NutritionOrderEnteralFormula {
     fn default() -> Self {
         Self {
@@ -256,6 +262,7 @@ pub struct NutritionOrder {
     #[doc = "Comments made about the {{title}} by the requester, performer, subject or other participants."]
     pub r#note: Vec<super::super::types::Annotation>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for NutritionOrder {
     fn default() -> Self {
         Self {
@@ -271,26 +278,22 @@ impl Default for NutritionOrder {
             r#instantiates_canonical: Default::default(),
             r#instantiates_uri: Default::default(),
             r#instantiates: Default::default(),
-            r#status: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#status: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
-            r#intent: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#intent: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
-            r#patient: {
-                let mut default: Box<super::super::types::Reference> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#patient: Box::new(super::super::types::Reference {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
             r#encounter: Default::default(),
-            r#date_time: {
-                let mut default: super::super::types::DateTime = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#date_time: super::super::types::DateTime {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#orderer: Default::default(),
             r#allergy_intolerance: Default::default(),

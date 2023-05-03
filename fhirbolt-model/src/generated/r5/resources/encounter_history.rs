@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-03 by fhirbolt-codegen v0.7.0
 #[doc = "The location of the patient at this point in the encounter, the multiple cardinality permits de-normalizing the levels of the location hierarchy, such as site/ward/room/bed."]
 #[derive(Debug, Clone, PartialEq)]
 pub struct EncounterHistoryLocation {
@@ -13,17 +13,17 @@ pub struct EncounterHistoryLocation {
     #[doc = "This will be used to specify the required levels (bed/ward/room/etc.) desired to be recorded to simplify either messaging or query."]
     pub r#form: Option<Box<super::super::types::CodeableConcept>>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for EncounterHistoryLocation {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#location: {
-                let mut default: Box<super::super::types::Reference> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#location: Box::new(super::super::types::Reference {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
             r#form: Default::default(),
         }
     }
@@ -74,6 +74,7 @@ pub struct EncounterHistory {
     #[doc = "The location of the patient at this point in the encounter, the multiple cardinality permits de-normalizing the levels of the location hierarchy, such as site/ward/room/bed."]
     pub r#location: Vec<EncounterHistoryLocation>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for EncounterHistory {
     fn default() -> Self {
         Self {
@@ -87,16 +88,14 @@ impl Default for EncounterHistory {
             r#modifier_extension: Default::default(),
             r#encounter: Default::default(),
             r#identifier: Default::default(),
-            r#status: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#status: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
-            r#class: {
-                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#class: Box::new(super::super::types::CodeableConcept {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
             r#type: Default::default(),
             r#service_type: Default::default(),
             r#subject: Default::default(),

@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-03 by fhirbolt-codegen v0.7.0
 #[doc = "The communicated content (or for multi-part communications, one portion of the communication)."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum CommunicationRequestPayloadContent {
@@ -28,6 +28,7 @@ pub struct CommunicationRequestPayload {
     #[doc = "The communicated content (or for multi-part communications, one portion of the communication)."]
     pub r#content: CommunicationRequestPayloadContent,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for CommunicationRequestPayload {
     fn default() -> Self {
         Self {
@@ -102,6 +103,7 @@ pub struct CommunicationRequest {
     #[doc = "Comments made about the request by the requester, sender, recipient, subject or other participants."]
     pub r#note: Vec<super::super::types::Annotation>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for CommunicationRequest {
     fn default() -> Self {
         Self {
@@ -117,16 +119,14 @@ impl Default for CommunicationRequest {
             r#based_on: Default::default(),
             r#replaces: Default::default(),
             r#group_identifier: Default::default(),
-            r#status: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#status: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#status_reason: Default::default(),
-            r#intent: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#intent: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#category: Default::default(),
             r#priority: Default::default(),

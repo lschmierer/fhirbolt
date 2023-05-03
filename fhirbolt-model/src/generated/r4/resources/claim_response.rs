@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-03 by fhirbolt-codegen v0.7.0
 #[doc = "The date or dates when the service or product was supplied, performed or completed."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum ClaimResponseAddItemServiced {
@@ -34,17 +34,17 @@ pub struct ClaimResponseItemAdjudication {
     #[doc = "A non-monetary value associated with the category. Mutually exclusive to the amount element above."]
     pub r#value: Option<super::super::types::Decimal>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for ClaimResponseItemAdjudication {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#category: {
-                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#category: Box::new(super::super::types::CodeableConcept {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
             r#reason: Default::default(),
             r#amount: Default::default(),
             r#value: Default::default(),
@@ -67,16 +67,16 @@ pub struct ClaimResponseItemDetailSubDetail {
     #[doc = "The adjudication results."]
     pub r#adjudication: Vec<ClaimResponseItemAdjudication>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for ClaimResponseItemDetailSubDetail {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#sub_detail_sequence: {
-                let mut default: super::super::types::PositiveInt = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#sub_detail_sequence: super::super::types::PositiveInt {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#note_number: Default::default(),
             r#adjudication: Default::default(),
@@ -101,16 +101,16 @@ pub struct ClaimResponseItemDetail {
     #[doc = "A sub-detail adjudication of a simple product or service."]
     pub r#sub_detail: Vec<ClaimResponseItemDetailSubDetail>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for ClaimResponseItemDetail {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#detail_sequence: {
-                let mut default: super::super::types::PositiveInt = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#detail_sequence: super::super::types::PositiveInt {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#note_number: Default::default(),
             r#adjudication: Default::default(),
@@ -136,16 +136,16 @@ pub struct ClaimResponseItem {
     #[doc = "A claim detail. Either a simple (a product or service) or a 'group' of sub-details which are simple items."]
     pub r#detail: Vec<ClaimResponseItemDetail>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for ClaimResponseItem {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#item_sequence: {
-                let mut default: super::super::types::PositiveInt = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#item_sequence: super::super::types::PositiveInt {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#note_number: Default::default(),
             r#adjudication: Default::default(),
@@ -179,17 +179,17 @@ pub struct ClaimResponseAddItemDetailSubDetail {
     #[doc = "The adjudication results."]
     pub r#adjudication: Vec<ClaimResponseItemAdjudication>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for ClaimResponseAddItemDetailSubDetail {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#product_or_service: {
-                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#product_or_service: Box::new(super::super::types::CodeableConcept {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
             r#modifier: Default::default(),
             r#quantity: Default::default(),
             r#unit_price: Default::default(),
@@ -228,17 +228,17 @@ pub struct ClaimResponseAddItemDetail {
     #[doc = "The third-tier service adjudications for payor added services."]
     pub r#sub_detail: Vec<ClaimResponseAddItemDetailSubDetail>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for ClaimResponseAddItemDetail {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#product_or_service: {
-                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#product_or_service: Box::new(super::super::types::CodeableConcept {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
             r#modifier: Default::default(),
             r#quantity: Default::default(),
             r#unit_price: Default::default(),
@@ -296,6 +296,7 @@ pub struct ClaimResponseAddItem {
     #[doc = "The second-tier service adjudications for payor added services."]
     pub r#detail: Vec<ClaimResponseAddItemDetail>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for ClaimResponseAddItem {
     fn default() -> Self {
         Self {
@@ -306,11 +307,10 @@ impl Default for ClaimResponseAddItem {
             r#detail_sequence: Default::default(),
             r#subdetail_sequence: Default::default(),
             r#provider: Default::default(),
-            r#product_or_service: {
-                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#product_or_service: Box::new(super::super::types::CodeableConcept {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
             r#modifier: Default::default(),
             r#program_code: Default::default(),
             r#serviced: Default::default(),
@@ -341,22 +341,21 @@ pub struct ClaimResponseTotal {
     #[doc = "Monetary total amount associated with the category."]
     pub r#amount: Box<super::super::types::Money>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for ClaimResponseTotal {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#category: {
-                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
-            r#amount: {
-                let mut default: Box<super::super::types::Money> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#category: Box::new(super::super::types::CodeableConcept {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
+            r#amount: Box::new(super::super::types::Money {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
         }
     }
 }
@@ -382,25 +381,24 @@ pub struct ClaimResponsePayment {
     #[doc = "Issuer's unique identifier for the payment instrument."]
     pub r#identifier: Option<Box<super::super::types::Identifier>>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for ClaimResponsePayment {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#type: {
-                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#type: Box::new(super::super::types::CodeableConcept {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
             r#adjustment: Default::default(),
             r#adjustment_reason: Default::default(),
             r#date: Default::default(),
-            r#amount: {
-                let mut default: Box<super::super::types::Money> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#amount: Box::new(super::super::types::Money {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
             r#identifier: Default::default(),
         }
     }
@@ -423,6 +421,7 @@ pub struct ClaimResponseProcessNote {
     #[doc = "A code to define the language used in the text of the note."]
     pub r#language: Option<Box<super::super::types::CodeableConcept>>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for ClaimResponseProcessNote {
     fn default() -> Self {
         Self {
@@ -431,10 +430,9 @@ impl Default for ClaimResponseProcessNote {
             r#modifier_extension: Default::default(),
             r#number: Default::default(),
             r#type: Default::default(),
-            r#text: {
-                let mut default: super::super::types::String = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#text: super::super::types::String {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#language: Default::default(),
         }
@@ -460,27 +458,25 @@ pub struct ClaimResponseInsurance {
     #[doc = "The result of the adjudication of the line items for the Coverage specified in this insurance."]
     pub r#claim_response: Option<Box<super::super::types::Reference>>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for ClaimResponseInsurance {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#sequence: {
-                let mut default: super::super::types::PositiveInt = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#sequence: super::super::types::PositiveInt {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
-            r#focal: {
-                let mut default: super::super::types::Boolean = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#focal: super::super::types::Boolean {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
-            r#coverage: {
-                let mut default: Box<super::super::types::Reference> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#coverage: Box::new(super::super::types::Reference {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
             r#business_arrangement: Default::default(),
             r#claim_response: Default::default(),
         }
@@ -504,6 +500,7 @@ pub struct ClaimResponseError {
     #[doc = "An error code, from a specified code system, which details why the claim could not be adjudicated."]
     pub r#code: Box<super::super::types::CodeableConcept>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for ClaimResponseError {
     fn default() -> Self {
         Self {
@@ -513,11 +510,10 @@ impl Default for ClaimResponseError {
             r#item_sequence: Default::default(),
             r#detail_sequence: Default::default(),
             r#sub_detail_sequence: Default::default(),
-            r#code: {
-                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#code: Box::new(super::super::types::CodeableConcept {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
         }
     }
 }
@@ -595,6 +591,7 @@ pub struct ClaimResponse {
     #[doc = "Errors encountered during the processing of the adjudication."]
     pub r#error: Vec<ClaimResponseError>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for ClaimResponse {
     fn default() -> Self {
         Self {
@@ -607,43 +604,36 @@ impl Default for ClaimResponse {
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
             r#identifier: Default::default(),
-            r#status: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#status: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
-            r#type: {
-                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#type: Box::new(super::super::types::CodeableConcept {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
             r#sub_type: Default::default(),
-            r#use: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#use: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
-            r#patient: {
-                let mut default: Box<super::super::types::Reference> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#patient: Box::new(super::super::types::Reference {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
+            r#created: super::super::types::DateTime {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
-            r#created: {
-                let mut default: super::super::types::DateTime = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
-            r#insurer: {
-                let mut default: Box<super::super::types::Reference> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#insurer: Box::new(super::super::types::Reference {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
             r#requestor: Default::default(),
             r#request: Default::default(),
-            r#outcome: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#outcome: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#disposition: Default::default(),
             r#pre_auth_ref: Default::default(),

@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-03 by fhirbolt-codegen v0.7.0
 #[doc = "Used for example, to point to a substance, or to a device used to administer a medication."]
 #[derive(Debug, Clone, PartialEq)]
 pub struct CatalogEntryRelatedEntry {
@@ -13,22 +13,21 @@ pub struct CatalogEntryRelatedEntry {
     #[doc = "The reference to the related item."]
     pub r#item: Box<super::super::types::Reference>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for CatalogEntryRelatedEntry {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#relationtype: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#relationtype: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
-            r#item: {
-                let mut default: Box<super::super::types::Reference> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#item: Box::new(super::super::types::Reference {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
         }
     }
 }
@@ -78,6 +77,7 @@ pub struct CatalogEntry {
     #[doc = "Used for example, to point to a substance, or to a device used to administer a medication."]
     pub r#related_entry: Vec<CatalogEntryRelatedEntry>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for CatalogEntry {
     fn default() -> Self {
         Self {
@@ -91,16 +91,14 @@ impl Default for CatalogEntry {
             r#modifier_extension: Default::default(),
             r#identifier: Default::default(),
             r#type: Default::default(),
-            r#orderable: {
-                let mut default: super::super::types::Boolean = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#orderable: super::super::types::Boolean {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
-            r#referenced_item: {
-                let mut default: Box<super::super::types::Reference> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#referenced_item: Box::new(super::super::types::Reference {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
             r#additional_identifier: Default::default(),
             r#classification: Default::default(),
             r#status: Default::default(),

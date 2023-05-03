@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-03 by fhirbolt-codegen v0.7.0
 #[doc = "positiveInt type: An integer with a value that is positive (e.g. >0)"]
 #[derive(Debug, Clone, PartialEq)]
 pub struct PositiveInt {
@@ -9,6 +9,7 @@ pub struct PositiveInt {
     #[doc = "Primitive value for positiveInt"]
     pub r#value: Option<u32>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for PositiveInt {
     fn default() -> Self {
         Self {

@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-03 by fhirbolt-codegen v0.7.0
 #[doc = "uri Type: String of characters used to identify a name or a resource"]
 #[derive(Debug, Clone, PartialEq)]
 pub struct Uri {
@@ -9,6 +9,7 @@ pub struct Uri {
     #[doc = "The actual value"]
     pub r#value: Option<std::string::String>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for Uri {
     fn default() -> Self {
         Self {

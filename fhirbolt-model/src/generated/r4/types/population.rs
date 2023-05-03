@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-03 by fhirbolt-codegen v0.7.0
 #[doc = "The age of the specific population."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum PopulationAge {
@@ -25,6 +25,7 @@ pub struct Population {
     #[doc = "The existing physiological conditions of the specific population to which this applies."]
     pub r#physiological_condition: Option<Box<super::super::types::CodeableConcept>>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for Population {
     fn default() -> Self {
         Self {

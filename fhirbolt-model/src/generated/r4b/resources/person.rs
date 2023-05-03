@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-03 by fhirbolt-codegen v0.7.0
 #[doc = "Link to a resource that concerns the same actual person."]
 #[derive(Debug, Clone, PartialEq)]
 pub struct PersonLink {
@@ -13,17 +13,17 @@ pub struct PersonLink {
     #[doc = "Level of assurance that this link is associated with the target resource."]
     pub r#assurance: Option<super::super::types::Code>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for PersonLink {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#target: {
-                let mut default: Box<super::super::types::Reference> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#target: Box::new(super::super::types::Reference {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
             r#assurance: Default::default(),
         }
     }
@@ -68,6 +68,7 @@ pub struct Person {
     #[doc = "Link to a resource that concerns the same actual person."]
     pub r#link: Vec<PersonLink>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for Person {
     fn default() -> Self {
         Self {

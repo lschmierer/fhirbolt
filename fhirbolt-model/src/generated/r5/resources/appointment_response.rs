@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-03 by fhirbolt-codegen v0.7.0
 #[doc = "A reply to an appointment request for a patient and/or practitioner(s), such as a confirmation or rejection."]
 #[derive(Debug, Clone, PartialEq)]
 pub struct AppointmentResponse {
@@ -43,6 +43,7 @@ pub struct AppointmentResponse {
     #[doc = "The recurrence ID (sequence number) of the specific appointment when responding to a recurring request."]
     pub r#recurrence_id: Option<super::super::types::PositiveInt>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for AppointmentResponse {
     fn default() -> Self {
         Self {
@@ -55,20 +56,18 @@ impl Default for AppointmentResponse {
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
             r#identifier: Default::default(),
-            r#appointment: {
-                let mut default: Box<super::super::types::Reference> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#appointment: Box::new(super::super::types::Reference {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
             r#proposed_new_time: Default::default(),
             r#start: Default::default(),
             r#end: Default::default(),
             r#participant_type: Default::default(),
             r#actor: Default::default(),
-            r#participant_status: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#participant_status: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#comment: Default::default(),
             r#recurring: Default::default(),

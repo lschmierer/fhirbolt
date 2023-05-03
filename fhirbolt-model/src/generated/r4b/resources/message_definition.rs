@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-03 by fhirbolt-codegen v0.7.0
 #[doc = "Event code or link to the EventDefinition."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum MessageDefinitionEvent {
@@ -25,22 +25,21 @@ pub struct MessageDefinitionFocus {
     #[doc = "Identifies the maximum number of resources of this type that must be pointed to by a message in order for it to be valid against this MessageDefinition."]
     pub r#max: Option<super::super::types::String>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for MessageDefinitionFocus {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#code: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#code: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#profile: Default::default(),
-            r#min: {
-                let mut default: super::super::types::UnsignedInt = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#min: super::super::types::UnsignedInt {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#max: Default::default(),
         }
@@ -60,16 +59,16 @@ pub struct MessageDefinitionAllowedResponse {
     #[doc = "Provides a description of the circumstances in which this response should be used (as opposed to one of the alternative responses)."]
     pub r#situation: Option<super::super::types::Markdown>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for MessageDefinitionAllowedResponse {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#message: {
-                let mut default: super::super::types::Canonical = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#message: super::super::types::Canonical {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#situation: Default::default(),
         }
@@ -143,6 +142,7 @@ pub struct MessageDefinition {
     #[doc = "Canonical reference to a GraphDefinition. If a URL is provided, it is the canonical reference to a [GraphDefinition](https://hl7.org/FHIR/graphdefinition.html)) that it controls what resources are to be added to the bundle when building the document. The GraphDefinition can also specify profiles that apply to the various resources."]
     pub r#graph: Vec<super::super::types::Canonical>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for MessageDefinition {
     fn default() -> Self {
         Self {
@@ -160,16 +160,14 @@ impl Default for MessageDefinition {
             r#name: Default::default(),
             r#title: Default::default(),
             r#replaces: Default::default(),
-            r#status: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#status: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#experimental: Default::default(),
-            r#date: {
-                let mut default: super::super::types::DateTime = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#date: super::super::types::DateTime {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#publisher: Default::default(),
             r#contact: Default::default(),

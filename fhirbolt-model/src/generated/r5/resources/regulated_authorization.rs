@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-03 by fhirbolt-codegen v0.7.0
 #[doc = "Relevant date for this case."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum RegulatedAuthorizationCaseDate {
@@ -27,6 +27,7 @@ pub struct RegulatedAuthorizationCase {
     #[doc = "A regulatory submission from an organization to a regulator, as part of an assessing case. Multiple applications may occur over time, with more or different information to support or modify the submission or the authorization. The applications can be considered as steps within the longer running case or procedure for this authorization process."]
     pub r#application: Vec<RegulatedAuthorizationCase>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for RegulatedAuthorizationCase {
     fn default() -> Self {
         Self {
@@ -91,6 +92,7 @@ pub struct RegulatedAuthorization {
     #[doc = "The case or regulatory procedure for granting or amending a regulated authorization. An authorization is granted in response to submissions/applications by those seeking authorization. A case is the administrative process that deals with the application(s) that relate to this and assesses them. Note: This area is subject to ongoing review and the workgroup is seeking implementer feedback on its use (see link at bottom of page)."]
     pub r#case: Option<RegulatedAuthorizationCase>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for RegulatedAuthorization {
     fn default() -> Self {
         Self {

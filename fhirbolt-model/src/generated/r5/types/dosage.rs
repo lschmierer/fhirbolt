@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-03 by fhirbolt-codegen v0.7.0
 #[doc = "Amount of medication per dose."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum DosageDoseAndRateDose {
@@ -30,6 +30,7 @@ pub struct DosageDoseAndRate {
     #[doc = "Amount of medication per unit of time."]
     pub r#rate: Option<DosageDoseAndRateRate>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for DosageDoseAndRate {
     fn default() -> Self {
         Self {
@@ -79,6 +80,7 @@ pub struct Dosage {
     #[doc = "Upper limit on medication per lifetime of the patient."]
     pub r#max_dose_per_lifetime: Option<Box<super::super::types::Quantity>>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for Dosage {
     fn default() -> Self {
         Self {

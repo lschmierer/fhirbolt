@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-03 by fhirbolt-codegen v0.7.0
 #[doc = "Narrows the range of legal concerns to focus on the achievement of specific contractual objectives."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum ContractTopic {
@@ -104,24 +104,23 @@ pub struct ContractContentDefinition {
     #[doc = "A copyright statement relating to Contract precursor content. Copyright statements are generally legal restrictions on the use and publishing of the Contract precursor content."]
     pub r#copyright: Option<super::super::types::Markdown>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for ContractContentDefinition {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#type: {
-                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#type: Box::new(super::super::types::CodeableConcept {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
             r#sub_type: Default::default(),
             r#publisher: Default::default(),
             r#publication_date: Default::default(),
-            r#publication_status: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#publication_status: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#copyright: Default::default(),
         }
@@ -145,6 +144,7 @@ pub struct ContractTermSecurityLabel {
     #[doc = "Security label privacy tag that species the manner in which term and/or term elements are to be protected."]
     pub r#control: Vec<super::super::types::Coding>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for ContractTermSecurityLabel {
     fn default() -> Self {
         Self {
@@ -152,11 +152,10 @@ impl Default for ContractTermSecurityLabel {
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
             r#number: Default::default(),
-            r#classification: {
-                let mut default: Box<super::super::types::Coding> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#classification: Box::new(super::super::types::Coding {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
             r#category: Default::default(),
             r#control: Default::default(),
         }
@@ -176,6 +175,7 @@ pub struct ContractTermOfferParty {
     #[doc = "How the party participates in the offer."]
     pub r#role: Box<super::super::types::CodeableConcept>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for ContractTermOfferParty {
     fn default() -> Self {
         Self {
@@ -183,11 +183,10 @@ impl Default for ContractTermOfferParty {
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
             r#reference: Default::default(),
-            r#role: {
-                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#role: Box::new(super::super::types::CodeableConcept {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
         }
     }
 }
@@ -203,6 +202,7 @@ pub struct ContractTermOfferAnswer {
     #[doc = "Response to an offer clause or question text,  which enables selection of values to be agreed to, e.g., the period of participation, the date of occupancy of a rental, warrently duration, or whether biospecimen may be used for further research."]
     pub r#value: ContractTermOfferAnswerValue,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for ContractTermOfferAnswer {
     fn default() -> Self {
         Self {
@@ -243,6 +243,7 @@ pub struct ContractTermOffer {
     #[doc = "Security labels that protects the offer."]
     pub r#security_label_number: Vec<super::super::types::UnsignedInt>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for ContractTermOffer {
     fn default() -> Self {
         Self {
@@ -278,6 +279,7 @@ pub struct ContractTermAssetContext {
     #[doc = "Context description."]
     pub r#text: Option<super::super::types::String>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for ContractTermAssetContext {
     fn default() -> Self {
         Self {
@@ -328,6 +330,7 @@ pub struct ContractTermAssetValuedItem {
     #[doc = "A set of security labels that define which terms are controlled by this condition."]
     pub r#security_label_number: Vec<super::super::types::UnsignedInt>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for ContractTermAssetValuedItem {
     fn default() -> Self {
         Self {
@@ -391,6 +394,7 @@ pub struct ContractTermAsset {
     #[doc = "Contract Valued Item List."]
     pub r#valued_item: Vec<ContractTermAssetValuedItem>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for ContractTermAsset {
     fn default() -> Self {
         Self {
@@ -429,6 +433,7 @@ pub struct ContractTermActionSubject {
     #[doc = "Role type of agent assigned roles in this Contract."]
     pub r#role: Option<Box<super::super::types::CodeableConcept>>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for ContractTermActionSubject {
     fn default() -> Self {
         Self {
@@ -492,6 +497,7 @@ pub struct ContractTermAction {
     #[doc = "Security labels that protects the action."]
     pub r#security_label_number: Vec<super::super::types::UnsignedInt>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for ContractTermAction {
     fn default() -> Self {
         Self {
@@ -499,23 +505,20 @@ impl Default for ContractTermAction {
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
             r#do_not_perform: Default::default(),
-            r#type: {
-                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#type: Box::new(super::super::types::CodeableConcept {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
             r#subject: Default::default(),
-            r#intent: {
-                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#intent: Box::new(super::super::types::CodeableConcept {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
             r#link_id: Default::default(),
-            r#status: {
-                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#status: Box::new(super::super::types::CodeableConcept {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
             r#context: Default::default(),
             r#context_link_id: Default::default(),
             r#occurrence: Default::default(),
@@ -568,6 +571,7 @@ pub struct ContractTerm {
     #[doc = "Nested group of Contract Provisions."]
     pub r#group: Vec<ContractTerm>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for ContractTerm {
     fn default() -> Self {
         Self {
@@ -582,10 +586,9 @@ impl Default for ContractTerm {
             r#sub_type: Default::default(),
             r#text: Default::default(),
             r#security_label: Default::default(),
-            r#offer: {
-                let mut default: ContractTermOffer = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#offer: ContractTermOffer {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#asset: Default::default(),
             r#action: Default::default(),
@@ -609,22 +612,21 @@ pub struct ContractSigner {
     #[doc = "Legally binding Contract DSIG signature contents in Base64."]
     pub r#signature: Vec<super::super::types::Signature>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for ContractSigner {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#type: {
-                let mut default: Box<super::super::types::Coding> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
-            r#party: {
-                let mut default: Box<super::super::types::Reference> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#type: Box::new(super::super::types::Coding {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
+            r#party: Box::new(super::super::types::Reference {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
             r#signature: Default::default(),
         }
     }
@@ -641,6 +643,7 @@ pub struct ContractFriendly {
     #[doc = "Human readable rendering of this Contract in a format and representation intended to enhance comprehension and ensure understandability."]
     pub r#content: ContractFriendlyContent,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for ContractFriendly {
     fn default() -> Self {
         Self {
@@ -663,6 +666,7 @@ pub struct ContractLegal {
     #[doc = "Contract legal text in human renderable form."]
     pub r#content: ContractLegalContent,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for ContractLegal {
     fn default() -> Self {
         Self {
@@ -685,6 +689,7 @@ pub struct ContractRule {
     #[doc = "Computable Contract conveyed using a policy rule language (e.g. XACML, DKAL, SecPal)."]
     pub r#content: ContractRuleContent,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for ContractRule {
     fn default() -> Self {
         Self {
@@ -781,6 +786,7 @@ pub struct Contract {
     #[doc = "Legally binding Contract: This is the signed and legally recognized representation of the Contract, which is considered the \"source of truth\" and which would be the basis for legal action related to enforcement of this Contract."]
     pub r#legally_binding: Option<ContractLegallyBinding>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for Contract {
     fn default() -> Self {
         Self {

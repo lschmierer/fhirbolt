@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-03 by fhirbolt-codegen v0.7.0
 #[doc = "Time of product collection."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum BiologicallyDerivedProductCollectionCollected {
@@ -39,6 +39,7 @@ pub struct BiologicallyDerivedProductCollection {
     #[doc = "Time of product collection."]
     pub r#collected: Option<BiologicallyDerivedProductCollectionCollected>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for BiologicallyDerivedProductCollection {
     fn default() -> Self {
         Self {
@@ -69,6 +70,7 @@ pub struct BiologicallyDerivedProductProcessing {
     #[doc = "Time of processing."]
     pub r#time: Option<BiologicallyDerivedProductProcessingTime>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for BiologicallyDerivedProductProcessing {
     fn default() -> Self {
         Self {
@@ -96,6 +98,7 @@ pub struct BiologicallyDerivedProductManipulation {
     #[doc = "Time of manipulation."]
     pub r#time: Option<BiologicallyDerivedProductManipulationTime>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for BiologicallyDerivedProductManipulation {
     fn default() -> Self {
         Self {
@@ -125,6 +128,7 @@ pub struct BiologicallyDerivedProductStorage {
     #[doc = "Storage timeperiod."]
     pub r#duration: Option<Box<super::super::types::Period>>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for BiologicallyDerivedProductStorage {
     fn default() -> Self {
         Self {
@@ -180,6 +184,7 @@ pub struct BiologicallyDerivedProduct {
     #[doc = "Product storage."]
     pub r#storage: Vec<BiologicallyDerivedProductStorage>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for BiologicallyDerivedProduct {
     fn default() -> Self {
         Self {

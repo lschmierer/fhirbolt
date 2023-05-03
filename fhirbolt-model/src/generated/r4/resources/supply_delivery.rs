@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-03 by fhirbolt-codegen v0.7.0
 #[doc = "Identifies the medication, substance or device being dispensed. This is either a link to a resource representing the details of the item or a code that identifies the item from a known list."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum SupplyDeliverySuppliedItemItem {
@@ -30,6 +30,7 @@ pub struct SupplyDeliverySuppliedItem {
     #[doc = "Identifies the medication, substance or device being dispensed. This is either a link to a resource representing the details of the item or a code that identifies the item from a known list."]
     pub r#item: Option<SupplyDeliverySuppliedItemItem>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for SupplyDeliverySuppliedItem {
     fn default() -> Self {
         Self {
@@ -83,6 +84,7 @@ pub struct SupplyDelivery {
     #[doc = "Identifies the person who picked up the Supply."]
     pub r#receiver: Vec<super::super::types::Reference>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for SupplyDelivery {
     fn default() -> Self {
         Self {

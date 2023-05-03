@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-03 by fhirbolt-codegen v0.7.0
 #[doc = "The intended subjects for the measure. If this element is not provided, a Patient subject is assumed, but the subject of the measure can be anything."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum MeasureSubject {
@@ -23,6 +23,7 @@ pub struct MeasureGroupPopulation {
     #[doc = "An expression that specifies the criteria for the population, typically the name of an expression in a library."]
     pub r#criteria: Box<super::super::types::Expression>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for MeasureGroupPopulation {
     fn default() -> Self {
         Self {
@@ -31,11 +32,10 @@ impl Default for MeasureGroupPopulation {
             r#modifier_extension: Default::default(),
             r#code: Default::default(),
             r#description: Default::default(),
-            r#criteria: {
-                let mut default: Box<super::super::types::Expression> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#criteria: Box::new(super::super::types::Expression {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
         }
     }
 }
@@ -55,6 +55,7 @@ pub struct MeasureGroupStratifierComponent {
     #[doc = "An expression that specifies the criteria for this component of the stratifier. This is typically the name of an expression defined within a referenced library, but it may also be a path to a stratifier element."]
     pub r#criteria: Box<super::super::types::Expression>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for MeasureGroupStratifierComponent {
     fn default() -> Self {
         Self {
@@ -63,11 +64,10 @@ impl Default for MeasureGroupStratifierComponent {
             r#modifier_extension: Default::default(),
             r#code: Default::default(),
             r#description: Default::default(),
-            r#criteria: {
-                let mut default: Box<super::super::types::Expression> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#criteria: Box::new(super::super::types::Expression {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
         }
     }
 }
@@ -89,6 +89,7 @@ pub struct MeasureGroupStratifier {
     #[doc = "A component of the stratifier criteria for the measure report, specified as either the name of a valid CQL expression defined within a referenced library or a valid FHIR Resource Path."]
     pub r#component: Vec<MeasureGroupStratifierComponent>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for MeasureGroupStratifier {
     fn default() -> Self {
         Self {
@@ -120,6 +121,7 @@ pub struct MeasureGroup {
     #[doc = "The stratifier criteria for the measure report, specified as either the name of a valid CQL expression defined within a referenced library or a valid FHIR Resource Path."]
     pub r#stratifier: Vec<MeasureGroupStratifier>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for MeasureGroup {
     fn default() -> Self {
         Self {
@@ -151,6 +153,7 @@ pub struct MeasureSupplementalData {
     #[doc = "The criteria for the supplemental data. This is typically the name of a valid expression defined within a referenced library, but it may also be a path to a specific data element. The criteria defines the data to be returned for this element."]
     pub r#criteria: Box<super::super::types::Expression>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for MeasureSupplementalData {
     fn default() -> Self {
         Self {
@@ -160,11 +163,10 @@ impl Default for MeasureSupplementalData {
             r#code: Default::default(),
             r#usage: Default::default(),
             r#description: Default::default(),
-            r#criteria: {
-                let mut default: Box<super::super::types::Expression> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#criteria: Box::new(super::super::types::Expression {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
         }
     }
 }
@@ -270,6 +272,7 @@ pub struct Measure {
     #[doc = "The supplemental data criteria for the measure report, specified as either the name of a valid CQL expression within a referenced library, or a valid FHIR Resource Path."]
     pub r#supplemental_data: Vec<MeasureSupplementalData>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for Measure {
     fn default() -> Self {
         Self {
@@ -287,10 +290,9 @@ impl Default for Measure {
             r#name: Default::default(),
             r#title: Default::default(),
             r#subtitle: Default::default(),
-            r#status: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#status: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#experimental: Default::default(),
             r#subject: Default::default(),

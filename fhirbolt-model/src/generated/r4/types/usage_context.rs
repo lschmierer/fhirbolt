@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-03 by fhirbolt-codegen v0.7.0
 #[doc = "A value that defines the context specified in this context of use. The interpretation of the value is defined by the code."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum UsageContextValue {
@@ -21,16 +21,16 @@ pub struct UsageContext {
     #[doc = "A value that defines the context specified in this context of use. The interpretation of the value is defined by the code."]
     pub r#value: UsageContextValue,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for UsageContext {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
-            r#code: {
-                let mut default: Box<super::super::types::Coding> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#code: Box::new(super::super::types::Coding {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
             r#value: Default::default(),
         }
     }

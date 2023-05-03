@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-03 by fhirbolt-codegen v0.7.0
 #[doc = "Strength expressed in terms of a reference substance."]
 #[derive(Debug, Clone, PartialEq)]
 pub struct MedicinalProductIngredientSpecifiedSubstanceStrengthReferenceStrength {
@@ -19,6 +19,7 @@ pub struct MedicinalProductIngredientSpecifiedSubstanceStrengthReferenceStrength
     #[doc = "The country or countries for which the strength range applies."]
     pub r#country: Vec<super::super::types::CodeableConcept>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for MedicinalProductIngredientSpecifiedSubstanceStrengthReferenceStrength {
     fn default() -> Self {
         Self {
@@ -26,11 +27,10 @@ impl Default for MedicinalProductIngredientSpecifiedSubstanceStrengthReferenceSt
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
             r#substance: Default::default(),
-            r#strength: {
-                let mut default: Box<super::super::types::Ratio> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#strength: Box::new(super::super::types::Ratio {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
             r#strength_low_limit: Default::default(),
             r#measurement_point: Default::default(),
             r#country: Default::default(),
@@ -62,17 +62,17 @@ pub struct MedicinalProductIngredientSpecifiedSubstanceStrength {
     pub r#reference_strength:
         Vec<MedicinalProductIngredientSpecifiedSubstanceStrengthReferenceStrength>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for MedicinalProductIngredientSpecifiedSubstanceStrength {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#presentation: {
-                let mut default: Box<super::super::types::Ratio> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#presentation: Box::new(super::super::types::Ratio {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
             r#presentation_low_limit: Default::default(),
             r#concentration: Default::default(),
             r#concentration_low_limit: Default::default(),
@@ -100,22 +100,21 @@ pub struct MedicinalProductIngredientSpecifiedSubstance {
     #[doc = "Quantity of the substance or specified substance present in the manufactured item or pharmaceutical product."]
     pub r#strength: Vec<MedicinalProductIngredientSpecifiedSubstanceStrength>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for MedicinalProductIngredientSpecifiedSubstance {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#code: {
-                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
-            r#group: {
-                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#code: Box::new(super::super::types::CodeableConcept {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
+            r#group: Box::new(super::super::types::CodeableConcept {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
             r#confidentiality: Default::default(),
             r#strength: Default::default(),
         }
@@ -135,17 +134,17 @@ pub struct MedicinalProductIngredientSubstance {
     #[doc = "Quantity of the substance or specified substance present in the manufactured item or pharmaceutical product."]
     pub r#strength: Vec<MedicinalProductIngredientSpecifiedSubstanceStrength>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for MedicinalProductIngredientSubstance {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#code: {
-                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#code: Box::new(super::super::types::CodeableConcept {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
             r#strength: Default::default(),
         }
     }
@@ -182,6 +181,7 @@ pub struct MedicinalProductIngredient {
     #[doc = "The ingredient substance."]
     pub r#substance: Option<MedicinalProductIngredientSubstance>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for MedicinalProductIngredient {
     fn default() -> Self {
         Self {
@@ -194,11 +194,10 @@ impl Default for MedicinalProductIngredient {
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
             r#identifier: Default::default(),
-            r#role: {
-                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#role: Box::new(super::super::types::CodeableConcept {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
             r#allergenic_indicator: Default::default(),
             r#manufacturer: Default::default(),
             r#specified_substance: Default::default(),

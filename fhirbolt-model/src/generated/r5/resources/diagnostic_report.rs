@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-03 by fhirbolt-codegen v0.7.0
 #[doc = "The time or time-period the observed values are related to. When the subject of the report is a patient, this is usually either the time of the procedure or of specimen collection(s), but very often the source of the date/time is not known, only the date/time itself."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum DiagnosticReportEffective {
@@ -21,22 +21,21 @@ pub struct DiagnosticReportSupportingInfo {
     #[doc = "The reference for the supporting information in the diagnostic report."]
     pub r#reference: Box<super::super::types::Reference>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for DiagnosticReportSupportingInfo {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#type: {
-                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
-            r#reference: {
-                let mut default: Box<super::super::types::Reference> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#type: Box::new(super::super::types::CodeableConcept {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
+            r#reference: Box::new(super::super::types::Reference {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
         }
     }
 }
@@ -54,6 +53,7 @@ pub struct DiagnosticReportMedia {
     #[doc = "Reference to the image or data source."]
     pub r#link: Box<super::super::types::Reference>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for DiagnosticReportMedia {
     fn default() -> Self {
         Self {
@@ -61,11 +61,10 @@ impl Default for DiagnosticReportMedia {
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
             r#comment: Default::default(),
-            r#link: {
-                let mut default: Box<super::super::types::Reference> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#link: Box::new(super::super::types::Reference {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
         }
     }
 }
@@ -131,6 +130,7 @@ pub struct DiagnosticReport {
     #[doc = "Rich text representation of the entire result as issued by the diagnostic service. Multiple formats are allowed but they SHALL be semantically equivalent."]
     pub r#presented_form: Vec<super::super::types::Attachment>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for DiagnosticReport {
     fn default() -> Self {
         Self {
@@ -144,17 +144,15 @@ impl Default for DiagnosticReport {
             r#modifier_extension: Default::default(),
             r#identifier: Default::default(),
             r#based_on: Default::default(),
-            r#status: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#status: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#category: Default::default(),
-            r#code: {
-                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#code: Box::new(super::super::types::CodeableConcept {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
             r#subject: Default::default(),
             r#encounter: Default::default(),
             r#effective: Default::default(),

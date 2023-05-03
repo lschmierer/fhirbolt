@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-03 by fhirbolt-codegen v0.7.0
 #[doc = "An amount of service being requested which can be a quantity ( for example $1,500 home modification), a ratio ( for example, 20 half day visits per month), or a range (2.0 to 1.8 Gy per fraction)."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum ServiceRequestQuantity {
@@ -111,6 +111,7 @@ pub struct ServiceRequest {
     #[doc = "Key events in the history of the request."]
     pub r#relevant_history: Vec<super::super::types::Reference>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for ServiceRequest {
     fn default() -> Self {
         Self {
@@ -128,15 +129,13 @@ impl Default for ServiceRequest {
             r#based_on: Default::default(),
             r#replaces: Default::default(),
             r#requisition: Default::default(),
-            r#status: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#status: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
-            r#intent: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#intent: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#category: Default::default(),
             r#priority: Default::default(),
@@ -144,11 +143,10 @@ impl Default for ServiceRequest {
             r#code: Default::default(),
             r#order_detail: Default::default(),
             r#quantity: Default::default(),
-            r#subject: {
-                let mut default: Box<super::super::types::Reference> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#subject: Box::new(super::super::types::Reference {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
             r#encounter: Default::default(),
             r#occurrence: Default::default(),
             r#as_needed: Default::default(),

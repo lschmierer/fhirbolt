@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-03 by fhirbolt-codegen v0.7.0
 #[doc = "Date/time(s) range of services included in this invoice."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum InvoicePeriod {
@@ -37,6 +37,7 @@ pub struct InvoiceParticipant {
     #[doc = "The device, practitioner, etc. who performed or participated in the service."]
     pub r#actor: Box<super::super::types::Reference>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for InvoiceParticipant {
     fn default() -> Self {
         Self {
@@ -44,11 +45,10 @@ impl Default for InvoiceParticipant {
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
             r#role: Default::default(),
-            r#actor: {
-                let mut default: Box<super::super::types::Reference> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#actor: Box::new(super::super::types::Reference {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
         }
     }
 }
@@ -70,6 +70,7 @@ pub struct InvoiceLineItem {
     #[doc = "The price for a ChargeItem may be calculated as a base price with surcharges/deductions that apply in certain conditions. A ChargeItemDefinition resource that defines the prices, factors and conditions that apply to a billing code is currently under development. The priceComponent element can be used to offer transparency to the recipient of the Invoice as to how the prices have been calculated."]
     pub r#price_component: Vec<super::super::types::MonetaryComponent>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for InvoiceLineItem {
     fn default() -> Self {
         Self {
@@ -139,6 +140,7 @@ pub struct Invoice {
     #[doc = "Comments made about the invoice by the issuer, subject, or other participants."]
     pub r#note: Vec<super::super::types::Annotation>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for Invoice {
     fn default() -> Self {
         Self {
@@ -151,10 +153,9 @@ impl Default for Invoice {
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
             r#identifier: Default::default(),
-            r#status: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#status: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#cancelled_reason: Default::default(),
             r#type: Default::default(),

@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-03 by fhirbolt-codegen v0.7.0
 #[doc = "Contact for the organization for a certain purpose."]
 #[derive(Debug, Clone, PartialEq)]
 pub struct OrganizationContact {
@@ -17,6 +17,7 @@ pub struct OrganizationContact {
     #[doc = "Visiting or postal addresses for the contact."]
     pub r#address: Option<Box<super::super::types::Address>>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for OrganizationContact {
     fn default() -> Self {
         Self {
@@ -70,6 +71,7 @@ pub struct Organization {
     #[doc = "Technical endpoints providing access to services operated for the organization."]
     pub r#endpoint: Vec<super::super::types::Reference>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for Organization {
     fn default() -> Self {
         Self {

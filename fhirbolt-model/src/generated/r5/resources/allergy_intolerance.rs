@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-03 by fhirbolt-codegen v0.7.0
 #[doc = "Estimated or actual date,  date-time, or age when allergy or intolerance was identified."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum AllergyIntoleranceOnset {
@@ -24,6 +24,7 @@ pub struct AllergyIntoleranceParticipant {
     #[doc = "Indicates who or what participated in the activities related to the allergy or intolerance."]
     pub r#actor: Box<super::super::types::Reference>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for AllergyIntoleranceParticipant {
     fn default() -> Self {
         Self {
@@ -31,11 +32,10 @@ impl Default for AllergyIntoleranceParticipant {
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
             r#function: Default::default(),
-            r#actor: {
-                let mut default: Box<super::super::types::Reference> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#actor: Box::new(super::super::types::Reference {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
         }
     }
 }
@@ -63,6 +63,7 @@ pub struct AllergyIntoleranceReaction {
     #[doc = "Additional text about the adverse reaction event not captured in other fields."]
     pub r#note: Vec<super::super::types::Annotation>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for AllergyIntoleranceReaction {
     fn default() -> Self {
         Self {
@@ -129,6 +130,7 @@ pub struct AllergyIntolerance {
     #[doc = "Details about each adverse reaction event linked to exposure to the identified substance."]
     pub r#reaction: Vec<AllergyIntoleranceReaction>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for AllergyIntolerance {
     fn default() -> Self {
         Self {
@@ -147,11 +149,10 @@ impl Default for AllergyIntolerance {
             r#category: Default::default(),
             r#criticality: Default::default(),
             r#code: Default::default(),
-            r#patient: {
-                let mut default: Box<super::super::types::Reference> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#patient: Box::new(super::super::types::Reference {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
             r#encounter: Default::default(),
             r#onset: Default::default(),
             r#recorded_date: Default::default(),

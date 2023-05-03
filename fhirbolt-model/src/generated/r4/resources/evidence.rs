@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-03 by fhirbolt-codegen v0.7.0
 #[doc = "The Evidence resource describes the conditional state (population and any exposures being compared within the population) and outcome (if specified) that the knowledge (evidence, assertion, recommendation) is about."]
 #[derive(Debug, Clone, PartialEq)]
 pub struct Evidence {
@@ -75,6 +75,7 @@ pub struct Evidence {
     #[doc = "A reference to a EvidenceVariable resomece that defines the outcome for the research."]
     pub r#outcome: Vec<super::super::types::Reference>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for Evidence {
     fn default() -> Self {
         Self {
@@ -93,10 +94,9 @@ impl Default for Evidence {
             r#title: Default::default(),
             r#short_title: Default::default(),
             r#subtitle: Default::default(),
-            r#status: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#status: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#date: Default::default(),
             r#publisher: Default::default(),
@@ -115,11 +115,10 @@ impl Default for Evidence {
             r#reviewer: Default::default(),
             r#endorser: Default::default(),
             r#related_artifact: Default::default(),
-            r#exposure_background: {
-                let mut default: Box<super::super::types::Reference> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#exposure_background: Box::new(super::super::types::Reference {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
             r#exposure_variant: Default::default(),
             r#outcome: Default::default(),
         }

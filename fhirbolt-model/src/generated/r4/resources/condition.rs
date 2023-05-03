@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-03 by fhirbolt-codegen v0.7.0
 #[doc = "Estimated or actual date or date-time  the condition began, in the opinion of the clinician."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum ConditionOnset {
@@ -37,6 +37,7 @@ pub struct ConditionStage {
     #[doc = "The kind of staging, such as pathological or clinical staging."]
     pub r#type: Option<Box<super::super::types::CodeableConcept>>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for ConditionStage {
     fn default() -> Self {
         Self {
@@ -63,6 +64,7 @@ pub struct ConditionEvidence {
     #[doc = "Links to other relevant information, including pathology reports."]
     pub r#detail: Vec<super::super::types::Reference>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for ConditionEvidence {
     fn default() -> Self {
         Self {
@@ -128,6 +130,7 @@ pub struct Condition {
     #[doc = "Additional information about the Condition. This is a general notes/comments entry  for description of the Condition, its diagnosis and prognosis."]
     pub r#note: Vec<super::super::types::Annotation>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for Condition {
     fn default() -> Self {
         Self {
@@ -146,11 +149,10 @@ impl Default for Condition {
             r#severity: Default::default(),
             r#code: Default::default(),
             r#body_site: Default::default(),
-            r#subject: {
-                let mut default: Box<super::super::types::Reference> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#subject: Box::new(super::super::types::Reference {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
             r#encounter: Default::default(),
             r#onset: Default::default(),
             r#abatement: Default::default(),

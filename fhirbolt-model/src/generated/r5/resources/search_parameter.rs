@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-03 by fhirbolt-codegen v0.7.0
 #[doc = "Indicates the mechanism used to compare versions to determine which is more current."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum SearchParameterVersionAlgorithm {
@@ -21,21 +21,20 @@ pub struct SearchParameterComponent {
     #[doc = "A sub-expression that defines how to extract values for this component from the output of the main SearchParameter.expression."]
     pub r#expression: super::super::types::String,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for SearchParameterComponent {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#definition: {
-                let mut default: super::super::types::Canonical = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#definition: super::super::types::Canonical {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
-            r#expression: {
-                let mut default: super::super::types::String = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#expression: super::super::types::String {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
         }
     }
@@ -122,6 +121,7 @@ pub struct SearchParameter {
     #[doc = "Used to define the parts of a composite search parameter."]
     pub r#component: Vec<SearchParameterComponent>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for SearchParameter {
     fn default() -> Self {
         Self {
@@ -133,50 +133,44 @@ impl Default for SearchParameter {
             r#contained: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#url: {
-                let mut default: super::super::types::Uri = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#url: super::super::types::Uri {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#identifier: Default::default(),
             r#version: Default::default(),
             r#version_algorithm: Default::default(),
-            r#name: {
-                let mut default: super::super::types::String = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#name: super::super::types::String {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#title: Default::default(),
             r#derived_from: Default::default(),
-            r#status: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#status: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#experimental: Default::default(),
             r#date: Default::default(),
             r#publisher: Default::default(),
             r#contact: Default::default(),
-            r#description: {
-                let mut default: super::super::types::Markdown = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#description: super::super::types::Markdown {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#use_context: Default::default(),
             r#jurisdiction: Default::default(),
             r#purpose: Default::default(),
             r#copyright: Default::default(),
             r#copyright_label: Default::default(),
-            r#code: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#code: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#base: Default::default(),
-            r#type: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#type: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#expression: Default::default(),
             r#processing_mode: Default::default(),

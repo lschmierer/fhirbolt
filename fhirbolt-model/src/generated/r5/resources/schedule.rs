@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-03 by fhirbolt-codegen v0.7.0
 #[doc = "A container for slots of time that may be available for booking appointments."]
 #[derive(Debug, Clone, PartialEq)]
 pub struct Schedule {
@@ -37,6 +37,7 @@ pub struct Schedule {
     #[doc = "Comments on the availability to describe any extended information. Such as custom constraints on the slots that may be associated."]
     pub r#comment: Option<super::super::types::Markdown>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for Schedule {
     fn default() -> Self {
         Self {

@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-03 by fhirbolt-codegen v0.7.0
 #[doc = "Timing or duration information, that may be associated with use with the indicated condition e.g. Adult patients suffering from myocardial infarction (from a few days until less than 35 days), ischaemic stroke (from 7 days until less than 6 months)."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum ClinicalUseDefinitionIndicationDuration {
@@ -29,22 +29,21 @@ pub struct ClinicalUseDefinitionContraindicationOtherTherapy {
     #[doc = "Reference to a specific medication (active substance, medicinal product or class of products) as part of an indication or contraindication."]
     pub r#therapy: Box<super::super::types::CodeableReference>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for ClinicalUseDefinitionContraindicationOtherTherapy {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#relationship_type: {
-                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
-            r#therapy: {
-                let mut default: Box<super::super::types::CodeableReference> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#relationship_type: Box::new(super::super::types::CodeableConcept {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
+            r#therapy: Box::new(super::super::types::CodeableReference {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
         }
     }
 }
@@ -68,6 +67,7 @@ pub struct ClinicalUseDefinitionContraindication {
     #[doc = "Information about the use of the medicinal product in relation to other therapies described as part of the contraindication."]
     pub r#other_therapy: Vec<ClinicalUseDefinitionContraindicationOtherTherapy>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for ClinicalUseDefinitionContraindication {
     fn default() -> Self {
         Self {
@@ -106,6 +106,7 @@ pub struct ClinicalUseDefinitionIndication {
     #[doc = "Information about the use of the medicinal product in relation to other therapies described as part of the indication."]
     pub r#other_therapy: Vec<ClinicalUseDefinitionContraindicationOtherTherapy>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for ClinicalUseDefinitionIndication {
     fn default() -> Self {
         Self {
@@ -134,6 +135,7 @@ pub struct ClinicalUseDefinitionInteractionInteractant {
     #[doc = "The specific medication, food or laboratory test that interacts."]
     pub r#item: ClinicalUseDefinitionInteractionInteractantItem,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for ClinicalUseDefinitionInteractionInteractant {
     fn default() -> Self {
         Self {
@@ -164,6 +166,7 @@ pub struct ClinicalUseDefinitionInteraction {
     #[doc = "Actions for managing the interaction."]
     pub r#management: Vec<super::super::types::CodeableConcept>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for ClinicalUseDefinitionInteraction {
     fn default() -> Self {
         Self {
@@ -194,6 +197,7 @@ pub struct ClinicalUseDefinitionUndesirableEffect {
     #[doc = "How often the effect is seen."]
     pub r#frequency_of_occurrence: Option<Box<super::super::types::CodeableConcept>>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for ClinicalUseDefinitionUndesirableEffect {
     fn default() -> Self {
         Self {
@@ -220,6 +224,7 @@ pub struct ClinicalUseDefinitionWarning {
     #[doc = "A coded or unformatted textual definition of this warning."]
     pub r#code: Option<Box<super::super::types::CodeableConcept>>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for ClinicalUseDefinitionWarning {
     fn default() -> Self {
         Self {
@@ -273,6 +278,7 @@ pub struct ClinicalUseDefinition {
     #[doc = "A critical piece of information about environmental, health or physical risks or hazards that serve as caution to the user. For example 'Do not operate heavy machinery', 'May cause drowsiness', or 'Get medical advice/attention if you feel unwell'."]
     pub r#warning: Option<ClinicalUseDefinitionWarning>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for ClinicalUseDefinition {
     fn default() -> Self {
         Self {
@@ -285,10 +291,9 @@ impl Default for ClinicalUseDefinition {
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
             r#identifier: Default::default(),
-            r#type: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#type: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#category: Default::default(),
             r#subject: Default::default(),

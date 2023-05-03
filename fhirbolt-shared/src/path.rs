@@ -251,24 +251,23 @@ impl ElementPath {
             type_path = content_reference;
         }
 
-        element_map(self.fhir_release).get(&type_path).copied()
+        element_map(self.fhir_release).get(type_path).copied()
     }
 
     #[inline]
     pub fn position_of_child(&self, child: &str) -> usize {
         if child == "resourceType"
             // on R4 ExampleScenario.instance contains a field named "resourceType"
-            && !self.current_type_path().path.starts_with(&"ExampleScenario.instance")
+            && !self.current_type_path().path.starts_with("ExampleScenario.instance")
             // on R5 Consent.provision contains a field named "resourceType"
-            && !self.current_type_path().path.starts_with(&"Consent.provision")
+            && !self.current_type_path().path.starts_with("Consent.provision")
             // on R5 Subscription.filterBy contains a field named "resourceType"
-            && !self.current_type_path().path.starts_with(&"Subscription.filterBy")
+            && !self.current_type_path().path.starts_with("Subscription.filterBy")
         {
             0
         } else {
             self.children()
-                .map(|set| set.get_index(child))
-                .flatten()
+                .and_then(|set| set.get_index(child))
                 .map(|i| i + 1)
                 // move unknown to the end
                 .unwrap_or(usize::MAX)
@@ -300,7 +299,7 @@ impl ElementPath {
         type_hints(self.fhir_release)
             .type_paths
             .get(&current_type_path.path)
-            .map(|t| *t)
+            .copied()
     }
 
     fn in_contained_resource(&self) -> bool {
@@ -347,11 +346,11 @@ impl TypePath {
     }
 
     fn parent(&self) -> Option<&str> {
-        self.path.rsplit_once(".").map(|s| s.0)
+        self.path.rsplit_once('.').map(|s| s.0)
     }
 
     fn split(&self) -> impl Iterator<Item = &str> {
-        self.path.split(".")
+        self.path.split('.')
     }
 
     fn len(&self) -> usize {
@@ -375,13 +374,13 @@ impl TypePath {
         }
 
         if !self.path.is_empty() {
-            self.path.push_str(".");
+            self.path.push('.');
         }
-        self.path.push_str(&element);
+        self.path.push_str(element);
     }
 
     fn pop(&mut self) {
-        self.path.truncate(self.path.rfind(".").unwrap_or(0));
+        self.path.truncate(self.path.rfind('.').unwrap_or(0));
 
         if self
             .content_reference_replacement_stack

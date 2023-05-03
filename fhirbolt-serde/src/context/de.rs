@@ -38,6 +38,7 @@ pub struct DeserializationContext<V> {
 }
 
 #[derive(Clone, Copy, PartialEq)]
+#[derive(Default)]
 pub enum CurrentElement {
     Id,
     // ExampleScenario.instance has a "resourceType" field which requires special handling
@@ -50,14 +51,11 @@ pub enum CurrentElement {
     Extension,
     // Extension.url can not have extensions
     ExtensionUrl,
+    #[default]
     Other,
 }
 
-impl Default for CurrentElement {
-    fn default() -> Self {
-        CurrentElement::Other
-    }
-}
+
 
 impl<V> DeserializationContext<V> {
     fn new(config: DeserializationConfig, from_json: bool) -> Self {
@@ -77,7 +75,7 @@ impl<V> DeserializationContext<V> {
     pub(crate) fn clone<F>(&self) -> DeserializationContext<F> {
         DeserializationContext {
             _phantom: PhantomData,
-            config: self.config.clone(),
+            config: self.config,
             from_json: self.from_json,
             current_element_stack: self.current_element_stack.clone(),
         }

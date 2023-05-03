@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-03 by fhirbolt-codegen v0.7.0
 #[doc = "Describe the undesirable effects of the medicinal product."]
 #[derive(Debug, Clone, PartialEq)]
 pub struct MedicinalProductUndesirableEffect {
@@ -29,6 +29,7 @@ pub struct MedicinalProductUndesirableEffect {
     #[doc = "The population group to which this applies."]
     pub r#population: Vec<super::super::types::Population>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for MedicinalProductUndesirableEffect {
     fn default() -> Self {
         Self {

@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-03 by fhirbolt-codegen v0.7.0
 #[doc = "List of participants involved in the appointment."]
 #[derive(Debug, Clone, PartialEq)]
 pub struct AppointmentParticipant {
@@ -19,6 +19,7 @@ pub struct AppointmentParticipant {
     #[doc = "Participation period of the actor."]
     pub r#period: Option<Box<super::super::types::Period>>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for AppointmentParticipant {
     fn default() -> Self {
         Self {
@@ -28,10 +29,9 @@ impl Default for AppointmentParticipant {
             r#type: Default::default(),
             r#actor: Default::default(),
             r#required: Default::default(),
-            r#status: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#status: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#period: Default::default(),
         }
@@ -101,6 +101,7 @@ pub struct Appointment {
     #[doc = "A set of date ranges (potentially including times) that the appointment is preferred to be scheduled within.\n\nThe duration (usually in minutes) could also be provided to indicate the length of the appointment to fill and populate the start/end times for the actual allocated time. However, in other situations the duration may be calculated by the scheduling system."]
     pub r#requested_period: Vec<super::super::types::Period>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for Appointment {
     fn default() -> Self {
         Self {
@@ -113,10 +114,9 @@ impl Default for Appointment {
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
             r#identifier: Default::default(),
-            r#status: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#status: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#cancelation_reason: Default::default(),
             r#service_category: Default::default(),

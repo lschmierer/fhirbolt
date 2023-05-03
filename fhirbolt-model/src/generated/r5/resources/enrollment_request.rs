@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-03 by fhirbolt-codegen v0.7.0
 #[doc = "This resource provides the insurance enrollment details to the insurer regarding a specified coverage."]
 #[derive(Debug, Clone, PartialEq)]
 pub struct EnrollmentRequest {
@@ -33,6 +33,7 @@ pub struct EnrollmentRequest {
     #[doc = "Reference to the program or plan identification, underwriter or payor."]
     pub r#coverage: Option<Box<super::super::types::Reference>>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for EnrollmentRequest {
     fn default() -> Self {
         Self {

@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-03 by fhirbolt-codegen v0.7.0
 #[doc = "Indicates who or what performed an action."]
 #[derive(Debug, Clone, PartialEq)]
 pub struct BiologicallyDerivedProductDispensePerformer {
@@ -13,6 +13,7 @@ pub struct BiologicallyDerivedProductDispensePerformer {
     #[doc = "Identifies the person responsible for the action."]
     pub r#actor: Box<super::super::types::Reference>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for BiologicallyDerivedProductDispensePerformer {
     fn default() -> Self {
         Self {
@@ -20,11 +21,10 @@ impl Default for BiologicallyDerivedProductDispensePerformer {
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
             r#function: Default::default(),
-            r#actor: {
-                let mut default: Box<super::super::types::Reference> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#actor: Box::new(super::super::types::Reference {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
         }
     }
 }
@@ -80,6 +80,7 @@ pub struct BiologicallyDerivedProductDispense {
     #[doc = "Specific instructions for use."]
     pub r#usage_instruction: Option<super::super::types::String>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for BiologicallyDerivedProductDispense {
     fn default() -> Self {
         Self {
@@ -94,22 +95,19 @@ impl Default for BiologicallyDerivedProductDispense {
             r#identifier: Default::default(),
             r#based_on: Default::default(),
             r#part_of: Default::default(),
-            r#status: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#status: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#origin_relationship_type: Default::default(),
-            r#product: {
-                let mut default: Box<super::super::types::Reference> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
-            r#patient: {
-                let mut default: Box<super::super::types::Reference> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#product: Box::new(super::super::types::Reference {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
+            r#patient: Box::new(super::super::types::Reference {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
             r#match_status: Default::default(),
             r#performer: Default::default(),
             r#location: Default::default(),

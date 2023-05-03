@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-03 by fhirbolt-codegen v0.7.0
 #[doc = "Indicates the mechanism used to compare versions to determine which is more current."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum ActorDefinitionVersionAlgorithm {
@@ -71,6 +71,7 @@ pub struct ActorDefinition {
     #[doc = "A url that identifies the definition of this actor in another IG (which IG must be listed in the dependencies). This actor inherits all the obligations etc. as defined in the other IG."]
     pub r#derived_from: Vec<super::super::types::Canonical>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for ActorDefinition {
     fn default() -> Self {
         Self {
@@ -88,10 +89,9 @@ impl Default for ActorDefinition {
             r#version_algorithm: Default::default(),
             r#name: Default::default(),
             r#title: Default::default(),
-            r#status: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#status: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#experimental: Default::default(),
             r#date: Default::default(),
@@ -103,10 +103,9 @@ impl Default for ActorDefinition {
             r#purpose: Default::default(),
             r#copyright: Default::default(),
             r#copyright_label: Default::default(),
-            r#type: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#type: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#documentation: Default::default(),
             r#reference: Default::default(),

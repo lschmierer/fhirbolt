@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-03 by fhirbolt-codegen v0.7.0
 #[doc = "The value of the input parameter as a basic type."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum TaskInputValue {
@@ -133,6 +133,7 @@ pub struct TaskPerformer {
     #[doc = "The actor or entity who performed the task."]
     pub r#actor: Box<super::super::types::Reference>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for TaskPerformer {
     fn default() -> Self {
         Self {
@@ -140,11 +141,10 @@ impl Default for TaskPerformer {
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
             r#function: Default::default(),
-            r#actor: {
-                let mut default: Box<super::super::types::Reference> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#actor: Box::new(super::super::types::Reference {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
         }
     }
 }
@@ -164,6 +164,7 @@ pub struct TaskRestriction {
     #[doc = "For requests that are targeted to more than one potential recipient/target, to identify who is fulfillment is sought for."]
     pub r#recipient: Vec<super::super::types::Reference>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for TaskRestriction {
     fn default() -> Self {
         Self {
@@ -190,17 +191,17 @@ pub struct TaskInput {
     #[doc = "The value of the input parameter as a basic type."]
     pub r#value: TaskInputValue,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for TaskInput {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#type: {
-                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#type: Box::new(super::super::types::CodeableConcept {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
             r#value: Default::default(),
         }
     }
@@ -219,17 +220,17 @@ pub struct TaskOutput {
     #[doc = "The value of the Output parameter as a basic type."]
     pub r#value: TaskOutputValue,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for TaskOutput {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#type: {
-                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#type: Box::new(super::super::types::CodeableConcept {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
             r#value: Default::default(),
         }
     }
@@ -320,6 +321,7 @@ pub struct Task {
     #[doc = "Outputs produced by the Task."]
     pub r#output: Vec<TaskOutput>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for Task {
     fn default() -> Self {
         Self {
@@ -337,17 +339,15 @@ impl Default for Task {
             r#based_on: Default::default(),
             r#group_identifier: Default::default(),
             r#part_of: Default::default(),
-            r#status: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#status: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#status_reason: Default::default(),
             r#business_status: Default::default(),
-            r#intent: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#intent: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#priority: Default::default(),
             r#do_not_perform: Default::default(),

@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-03 by fhirbolt-codegen v0.7.0
 #[doc = "This subclause refers to the description of each subunit constituting the SubstanceProtein. A subunit is a linear sequence of amino acids linked through peptide bonds. The Subunit information shall be provided when the finished SubstanceProtein is a complex of multiple sequences; subunits are not used to delineate domains within a single sequence. Subunits are listed in order of decreasing length; sequences of the same length will be ordered by decreasing molecular weight; subunits that have identical sequences will be repeated multiple times."]
 #[derive(Debug, Clone, PartialEq)]
 pub struct SubstanceProteinSubunit {
@@ -25,6 +25,7 @@ pub struct SubstanceProteinSubunit {
     #[doc = "The modification at the C-terminal shall be specified."]
     pub r#c_terminal_modification: Option<super::super::types::String>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for SubstanceProteinSubunit {
     fn default() -> Self {
         Self {
@@ -70,6 +71,7 @@ pub struct SubstanceProtein {
     #[doc = "This subclause refers to the description of each subunit constituting the SubstanceProtein. A subunit is a linear sequence of amino acids linked through peptide bonds. The Subunit information shall be provided when the finished SubstanceProtein is a complex of multiple sequences; subunits are not used to delineate domains within a single sequence. Subunits are listed in order of decreasing length; sequences of the same length will be ordered by decreasing molecular weight; subunits that have identical sequences will be repeated multiple times."]
     pub r#subunit: Vec<SubstanceProteinSubunit>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for SubstanceProtein {
     fn default() -> Self {
         Self {

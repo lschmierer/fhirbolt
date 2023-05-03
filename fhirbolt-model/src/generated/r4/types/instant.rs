@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-03 by fhirbolt-codegen v0.7.0
 #[doc = "Base StructureDefinition for instant Type: An instant in time - known at least to the second"]
 #[derive(Debug, Clone, PartialEq)]
 pub struct Instant {
@@ -9,6 +9,7 @@ pub struct Instant {
     #[doc = "The actual value"]
     pub r#value: Option<std::string::String>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for Instant {
     fn default() -> Self {
         Self {

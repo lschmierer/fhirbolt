@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-03 by fhirbolt-codegen v0.7.0
 #[doc = "Base StructureDefinition for CodeableReference Type: A reference to a resource (by instance), or instead, a reference to a concept defined in a terminology or ontology (by class).\n\nThis is a common pattern in record keeping - a reference may be made to a specific condition, observation, plan, or definition, or a reference may be made to a general concept defined in a knowledge base somewhere."]
 #[derive(Debug, Clone, PartialEq)]
 pub struct CodeableReference {
@@ -11,6 +11,7 @@ pub struct CodeableReference {
     #[doc = "A reference to a resource the provides exact details about the information being referenced."]
     pub r#reference: Option<Box<super::super::types::Reference>>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for CodeableReference {
     fn default() -> Self {
         Self {

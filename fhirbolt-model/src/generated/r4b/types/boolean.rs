@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-03 by fhirbolt-codegen v0.7.0
 #[doc = "Base StructureDefinition for boolean Type: Value of \"true\" or \"false\""]
 #[derive(Debug, Clone, PartialEq)]
 pub struct Boolean {
@@ -9,6 +9,7 @@ pub struct Boolean {
     #[doc = "The actual value"]
     pub r#value: Option<bool>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for Boolean {
     fn default() -> Self {
         Self {

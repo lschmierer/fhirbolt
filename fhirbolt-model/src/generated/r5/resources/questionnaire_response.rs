@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-03 by fhirbolt-codegen v0.7.0
 #[doc = "The answer (or one of the answers) provided by the respondent to the question."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum QuestionnaireResponseItemAnswerValue {
@@ -31,6 +31,7 @@ pub struct QuestionnaireResponseItemAnswer {
     #[doc = "Nested groups and/or questions found within this particular answer."]
     pub r#item: Vec<QuestionnaireResponseItem>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for QuestionnaireResponseItemAnswer {
     fn default() -> Self {
         Self {
@@ -62,16 +63,16 @@ pub struct QuestionnaireResponseItem {
     #[doc = "Sub-questions, sub-groups or display items nested beneath a group."]
     pub r#item: Vec<QuestionnaireResponseItem>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for QuestionnaireResponseItem {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#link_id: {
-                let mut default: super::super::types::String = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#link_id: super::super::types::String {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#definition: Default::default(),
             r#text: Default::default(),
@@ -122,6 +123,7 @@ pub struct QuestionnaireResponse {
     #[doc = "A group or question item from the original questionnaire for which answers are provided."]
     pub r#item: Vec<QuestionnaireResponseItem>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for QuestionnaireResponse {
     fn default() -> Self {
         Self {
@@ -136,15 +138,13 @@ impl Default for QuestionnaireResponse {
             r#identifier: Default::default(),
             r#based_on: Default::default(),
             r#part_of: Default::default(),
-            r#questionnaire: {
-                let mut default: super::super::types::Canonical = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#questionnaire: super::super::types::Canonical {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
-            r#status: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#status: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#subject: Default::default(),
             r#encounter: Default::default(),

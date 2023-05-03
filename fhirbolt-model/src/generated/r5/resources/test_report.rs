@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-03 by fhirbolt-codegen v0.7.0
 #[doc = "Link or reference providing traceability to the testing requirement for this test."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum TestReportSetupActionAssertRequirementLink {
@@ -23,21 +23,20 @@ pub struct TestReportParticipant {
     #[doc = "The display name of the participant."]
     pub r#display: Option<super::super::types::String>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for TestReportParticipant {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#type: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#type: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
-            r#uri: {
-                let mut default: super::super::types::Uri = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#uri: super::super::types::Uri {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#display: Default::default(),
         }
@@ -59,16 +58,16 @@ pub struct TestReportSetupActionOperation {
     #[doc = "A link to further details on the result."]
     pub r#detail: Option<super::super::types::Uri>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for TestReportSetupActionOperation {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#result: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#result: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#message: Default::default(),
             r#detail: Default::default(),
@@ -87,6 +86,7 @@ pub struct TestReportSetupActionAssertRequirement {
     #[doc = "Link or reference providing traceability to the testing requirement for this test."]
     pub r#link: Option<TestReportSetupActionAssertRequirementLink>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for TestReportSetupActionAssertRequirement {
     fn default() -> Self {
         Self {
@@ -115,16 +115,16 @@ pub struct TestReportSetupActionAssert {
     #[doc = "Links or references providing traceability to the testing requirements for this assert."]
     pub r#requirement: Vec<TestReportSetupActionAssertRequirement>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for TestReportSetupActionAssert {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#result: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#result: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#message: Default::default(),
             r#detail: Default::default(),
@@ -146,6 +146,7 @@ pub struct TestReportSetupAction {
     #[doc = "The results of the assertion performed on the previous operations."]
     pub r#assert: Option<TestReportSetupActionAssert>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for TestReportSetupAction {
     fn default() -> Self {
         Self {
@@ -169,6 +170,7 @@ pub struct TestReportSetup {
     #[doc = "Action would contain either an operation or an assertion."]
     pub r#action: Vec<TestReportSetupAction>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for TestReportSetup {
     fn default() -> Self {
         Self {
@@ -193,6 +195,7 @@ pub struct TestReportTestAction {
     #[doc = "The results of the assertion performed on the previous operations."]
     pub r#assert: Option<TestReportSetupActionAssert>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for TestReportTestAction {
     fn default() -> Self {
         Self {
@@ -220,6 +223,7 @@ pub struct TestReportTest {
     #[doc = "Action would contain either an operation or an assertion."]
     pub r#action: Vec<TestReportTestAction>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for TestReportTest {
     fn default() -> Self {
         Self {
@@ -244,16 +248,16 @@ pub struct TestReportTeardownAction {
     #[doc = "An operation would involve a REST request to a server."]
     pub r#operation: TestReportSetupActionOperation,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for TestReportTeardownAction {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#operation: {
-                let mut default: TestReportSetupActionOperation = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#operation: TestReportSetupActionOperation {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
         }
     }
@@ -270,6 +274,7 @@ pub struct TestReportTeardown {
     #[doc = "The teardown action will only contain an operation."]
     pub r#action: Vec<TestReportTeardownAction>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for TestReportTeardown {
     fn default() -> Self {
         Self {
@@ -324,6 +329,7 @@ pub struct TestReport {
     #[doc = "The results of the series of operations required to clean up after all the tests were executed (successfully or otherwise)."]
     pub r#teardown: Option<TestReportTeardown>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for TestReport {
     fn default() -> Self {
         Self {
@@ -337,20 +343,17 @@ impl Default for TestReport {
             r#modifier_extension: Default::default(),
             r#identifier: Default::default(),
             r#name: Default::default(),
-            r#status: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#status: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
-            r#test_script: {
-                let mut default: super::super::types::Canonical = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#test_script: super::super::types::Canonical {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
-            r#result: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#result: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#score: Default::default(),
             r#tester: Default::default(),

@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-03 by fhirbolt-codegen v0.7.0
 #[doc = "The  value of the extra detail."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum AuditEventEntityDetailValue {
@@ -21,6 +21,7 @@ pub struct AuditEventAgentNetwork {
     #[doc = "An identifier for the type of network access point that originated the audit event."]
     pub r#type: Option<super::super::types::Code>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for AuditEventAgentNetwork {
     fn default() -> Self {
         Self {
@@ -64,6 +65,7 @@ pub struct AuditEventAgent {
     #[doc = "The reason (purpose of use), specific to this agent, that was used during the event being recorded."]
     pub r#purpose_of_use: Vec<super::super::types::CodeableConcept>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for AuditEventAgent {
     fn default() -> Self {
         Self {
@@ -75,10 +77,9 @@ impl Default for AuditEventAgent {
             r#who: Default::default(),
             r#alt_id: Default::default(),
             r#name: Default::default(),
-            r#requestor: {
-                let mut default: super::super::types::Boolean = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#requestor: super::super::types::Boolean {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#location: Default::default(),
             r#policy: Default::default(),
@@ -104,6 +105,7 @@ pub struct AuditEventSource {
     #[doc = "Code specifying the type of source where event originated."]
     pub r#type: Vec<super::super::types::Coding>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for AuditEventSource {
     fn default() -> Self {
         Self {
@@ -111,11 +113,10 @@ impl Default for AuditEventSource {
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
             r#site: Default::default(),
-            r#observer: {
-                let mut default: Box<super::super::types::Reference> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#observer: Box::new(super::super::types::Reference {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
             r#type: Default::default(),
         }
     }
@@ -134,16 +135,16 @@ pub struct AuditEventEntityDetail {
     #[doc = "The  value of the extra detail."]
     pub r#value: AuditEventEntityDetailValue,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for AuditEventEntityDetail {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#type: {
-                let mut default: super::super::types::String = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#type: super::super::types::String {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#value: Default::default(),
         }
@@ -177,6 +178,7 @@ pub struct AuditEventEntity {
     #[doc = "Tagged value pairs for conveying additional information about the entity."]
     pub r#detail: Vec<AuditEventEntityDetail>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for AuditEventEntity {
     fn default() -> Self {
         Self {
@@ -237,6 +239,7 @@ pub struct AuditEvent {
     #[doc = "Specific instances of data or objects that have been accessed."]
     pub r#entity: Vec<AuditEventEntity>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for AuditEvent {
     fn default() -> Self {
         Self {
@@ -248,27 +251,24 @@ impl Default for AuditEvent {
             r#contained: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#type: {
-                let mut default: Box<super::super::types::Coding> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#type: Box::new(super::super::types::Coding {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
             r#subtype: Default::default(),
             r#action: Default::default(),
             r#period: Default::default(),
-            r#recorded: {
-                let mut default: super::super::types::Instant = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#recorded: super::super::types::Instant {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#outcome: Default::default(),
             r#outcome_desc: Default::default(),
             r#purpose_of_event: Default::default(),
             r#agent: Default::default(),
-            r#source: {
-                let mut default: AuditEventSource = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#source: AuditEventSource {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#entity: Default::default(),
         }

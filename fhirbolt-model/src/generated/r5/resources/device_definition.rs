@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-03 by fhirbolt-codegen v0.7.0
 #[doc = "The value of the property specified by the associated property.type code."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum DeviceDefinitionPropertyValue {
@@ -26,21 +26,20 @@ pub struct DeviceDefinitionUdiDeviceIdentifierMarketDistribution {
     #[doc = "National state or territory to which the marketDistribution recers, typically where the device is commercialized."]
     pub r#sub_jurisdiction: super::super::types::Uri,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for DeviceDefinitionUdiDeviceIdentifierMarketDistribution {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#market_period: {
-                let mut default: Box<super::super::types::Period> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
-            r#sub_jurisdiction: {
-                let mut default: super::super::types::Uri = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#market_period: Box::new(super::super::types::Period {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
+            r#sub_jurisdiction: super::super::types::Uri {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
         }
     }
@@ -63,26 +62,24 @@ pub struct DeviceDefinitionUdiDeviceIdentifier {
     #[doc = "Indicates where and when the device is available on the market."]
     pub r#market_distribution: Vec<DeviceDefinitionUdiDeviceIdentifierMarketDistribution>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for DeviceDefinitionUdiDeviceIdentifier {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#device_identifier: {
-                let mut default: super::super::types::String = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#device_identifier: super::super::types::String {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
-            r#issuer: {
-                let mut default: super::super::types::Uri = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#issuer: super::super::types::Uri {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
-            r#jurisdiction: {
-                let mut default: super::super::types::Uri = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#jurisdiction: super::super::types::Uri {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#market_distribution: Default::default(),
         }
@@ -106,31 +103,28 @@ pub struct DeviceDefinitionRegulatoryIdentifier {
     #[doc = "The jurisdiction to which the deviceIdentifier applies."]
     pub r#jurisdiction: super::super::types::Uri,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for DeviceDefinitionRegulatoryIdentifier {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#type: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#type: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
-            r#device_identifier: {
-                let mut default: super::super::types::String = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#device_identifier: super::super::types::String {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
-            r#issuer: {
-                let mut default: super::super::types::Uri = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#issuer: super::super::types::Uri {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
-            r#jurisdiction: {
-                let mut default: super::super::types::Uri = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#jurisdiction: super::super::types::Uri {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
         }
     }
@@ -149,21 +143,20 @@ pub struct DeviceDefinitionDeviceName {
     #[doc = "The type of deviceName.\nRegisteredName | UserFriendlyName | PatientReportedName."]
     pub r#type: super::super::types::Code,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for DeviceDefinitionDeviceName {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#name: {
-                let mut default: super::super::types::String = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#name: super::super::types::String {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
-            r#type: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#type: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
         }
     }
@@ -182,17 +175,17 @@ pub struct DeviceDefinitionClassification {
     #[doc = "Further information qualifying this classification of the device model."]
     pub r#justification: Vec<super::super::types::RelatedArtifact>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for DeviceDefinitionClassification {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#type: {
-                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#type: Box::new(super::super::types::CodeableConcept {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
             r#justification: Default::default(),
         }
     }
@@ -215,6 +208,7 @@ pub struct DeviceDefinitionConformsTo {
     #[doc = "Standard, regulation, certification, or guidance website, document, or other publication, or similar, supporting the conformance."]
     pub r#source: Vec<super::super::types::RelatedArtifact>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for DeviceDefinitionConformsTo {
     fn default() -> Self {
         Self {
@@ -222,11 +216,10 @@ impl Default for DeviceDefinitionConformsTo {
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
             r#category: Default::default(),
-            r#specification: {
-                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#specification: Box::new(super::super::types::CodeableConcept {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
             r#version: Default::default(),
             r#source: Default::default(),
         }
@@ -246,17 +239,17 @@ pub struct DeviceDefinitionHasPart {
     #[doc = "Number of instances of the component device in the current device."]
     pub r#count: Option<super::super::types::Integer>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for DeviceDefinitionHasPart {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#reference: {
-                let mut default: Box<super::super::types::Reference> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#reference: Box::new(super::super::types::Reference {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
             r#count: Default::default(),
         }
     }
@@ -275,6 +268,7 @@ pub struct DeviceDefinitionPackagingDistributor {
     #[doc = "Distributor as an Organization resource."]
     pub r#organization_reference: Vec<super::super::types::Reference>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for DeviceDefinitionPackagingDistributor {
     fn default() -> Self {
         Self {
@@ -308,6 +302,7 @@ pub struct DeviceDefinitionPackaging {
     #[doc = "Allows packages within packages."]
     pub r#packaging: Vec<DeviceDefinitionPackaging>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for DeviceDefinitionPackaging {
     fn default() -> Self {
         Self {
@@ -339,6 +334,7 @@ pub struct DeviceDefinitionVersion {
     #[doc = "The version text."]
     pub r#value: super::super::types::String,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for DeviceDefinitionVersion {
     fn default() -> Self {
         Self {
@@ -347,10 +343,9 @@ impl Default for DeviceDefinitionVersion {
             r#modifier_extension: Default::default(),
             r#type: Default::default(),
             r#component: Default::default(),
-            r#value: {
-                let mut default: super::super::types::String = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#value: super::super::types::String {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
         }
     }
@@ -369,17 +364,17 @@ pub struct DeviceDefinitionProperty {
     #[doc = "The value of the property specified by the associated property.type code."]
     pub r#value: DeviceDefinitionPropertyValue,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for DeviceDefinitionProperty {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#type: {
-                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#type: Box::new(super::super::types::CodeableConcept {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
             r#value: Default::default(),
         }
     }
@@ -398,22 +393,21 @@ pub struct DeviceDefinitionLink {
     #[doc = "A reference to the linked device."]
     pub r#related_device: Box<super::super::types::CodeableReference>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for DeviceDefinitionLink {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#relation: {
-                let mut default: Box<super::super::types::Coding> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
-            r#related_device: {
-                let mut default: Box<super::super::types::CodeableReference> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#relation: Box::new(super::super::types::Coding {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
+            r#related_device: Box::new(super::super::types::CodeableReference {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
         }
     }
 }
@@ -433,17 +427,17 @@ pub struct DeviceDefinitionMaterial {
     #[doc = "Whether the substance is a known or suspected allergen."]
     pub r#allergenic_indicator: Option<super::super::types::Boolean>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for DeviceDefinitionMaterial {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#substance: {
-                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#substance: Box::new(super::super::types::CodeableConcept {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
             r#alternate: Default::default(),
             r#allergenic_indicator: Default::default(),
         }
@@ -473,6 +467,7 @@ pub struct DeviceDefinitionGuideline {
     #[doc = "A description of the general purpose or medical use of the device or its function."]
     pub r#intended_use: Option<super::super::types::String>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for DeviceDefinitionGuideline {
     fn default() -> Self {
         Self {
@@ -505,23 +500,22 @@ pub struct DeviceDefinitionCorrectiveAction {
     #[doc = "Start and end dates of the  corrective action."]
     pub r#period: Box<super::super::types::Period>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for DeviceDefinitionCorrectiveAction {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#recall: {
-                let mut default: super::super::types::Boolean = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#recall: super::super::types::Boolean {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#scope: Default::default(),
-            r#period: {
-                let mut default: Box<super::super::types::Period> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#period: Box::new(super::super::types::Period {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
         }
     }
 }
@@ -543,22 +537,21 @@ pub struct DeviceDefinitionChargeItem {
     #[doc = "The context to which this charge item applies."]
     pub r#use_context: Vec<super::super::types::UsageContext>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for DeviceDefinitionChargeItem {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#charge_item_code: {
-                let mut default: Box<super::super::types::CodeableReference> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
-            r#count: {
-                let mut default: Box<super::super::types::Quantity> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#charge_item_code: Box::new(super::super::types::CodeableReference {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
+            r#count: Box::new(super::super::types::Quantity {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
             r#effective_period: Default::default(),
             r#use_context: Default::default(),
         }
@@ -636,6 +629,7 @@ pub struct DeviceDefinition {
     #[doc = "Billing code or reference associated with the device."]
     pub r#charge_item: Vec<DeviceDefinitionChargeItem>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for DeviceDefinition {
     fn default() -> Self {
         Self {

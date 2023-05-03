@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-03 by fhirbolt-codegen v0.7.0
 #[doc = "Indicates the mechanism used to compare versions to determine which is more current."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum ExampleScenarioVersionAlgorithm {
@@ -33,26 +33,24 @@ pub struct ExampleScenarioActor {
     #[doc = "An explanation of who/what the actor is and its role in the scenario."]
     pub r#description: Option<super::super::types::Markdown>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for ExampleScenarioActor {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#key: {
-                let mut default: super::super::types::String = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#key: super::super::types::String {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
-            r#type: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#type: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
-            r#title: {
-                let mut default: super::super::types::String = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#title: super::super::types::String {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#description: Default::default(),
         }
@@ -76,21 +74,20 @@ pub struct ExampleScenarioInstanceVersion {
     #[doc = "Points to an instance (typically an example) that shows the data that would flow at this point in the scenario."]
     pub r#content: Option<Box<super::super::types::Reference>>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for ExampleScenarioInstanceVersion {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#key: {
-                let mut default: super::super::types::String = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#key: super::super::types::String {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
-            r#title: {
-                let mut default: super::super::types::String = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#title: super::super::types::String {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#description: Default::default(),
             r#content: Default::default(),
@@ -111,16 +108,16 @@ pub struct ExampleScenarioInstanceContainedInstance {
     #[doc = "A reference to the key of a specific version of an instance in this instance."]
     pub r#version_reference: Option<super::super::types::String>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for ExampleScenarioInstanceContainedInstance {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#instance_reference: {
-                let mut default: super::super::types::String = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#instance_reference: super::super::types::String {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#version_reference: Default::default(),
         }
@@ -154,28 +151,26 @@ pub struct ExampleScenarioInstance {
     #[doc = "References to other instances that can be found within this instance (e.g. the observations contained in a bundle)."]
     pub r#contained_instance: Vec<ExampleScenarioInstanceContainedInstance>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for ExampleScenarioInstance {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#key: {
-                let mut default: super::super::types::String = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#key: super::super::types::String {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
-            r#structure_type: {
-                let mut default: Box<super::super::types::Coding> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#structure_type: Box::new(super::super::types::Coding {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
             r#structure_version: Default::default(),
             r#structure_profile: Default::default(),
-            r#title: {
-                let mut default: super::super::types::String = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#title: super::super::types::String {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#description: Default::default(),
             r#content: Default::default(),
@@ -212,6 +207,7 @@ pub struct ExampleScenarioProcessStepOperation {
     #[doc = "A reference to the instance that is transmitted from receiver to requester as part of the operation's synchronous response (if any)."]
     pub r#response: Option<ExampleScenarioInstanceContainedInstance>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for ExampleScenarioProcessStepOperation {
     fn default() -> Self {
         Self {
@@ -219,10 +215,9 @@ impl Default for ExampleScenarioProcessStepOperation {
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
             r#type: Default::default(),
-            r#title: {
-                let mut default: super::super::types::String = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#title: super::super::types::String {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#initiator: Default::default(),
             r#receiver: Default::default(),
@@ -250,16 +245,16 @@ pub struct ExampleScenarioProcessStepAlternative {
     #[doc = "Indicates the operation, sub-process or scenario that happens if the alternative option is selected."]
     pub r#step: Vec<ExampleScenarioProcessStep>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for ExampleScenarioProcessStepAlternative {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#title: {
-                let mut default: super::super::types::String = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#title: super::super::types::String {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#description: Default::default(),
             r#step: Default::default(),
@@ -288,6 +283,7 @@ pub struct ExampleScenarioProcessStep {
     #[doc = "If true, indicates that, following this step, there is a pause in the flow and the subsequent step will occur at some later time (triggered by some event)."]
     pub r#pause: Option<super::super::types::Boolean>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for ExampleScenarioProcessStep {
     fn default() -> Self {
         Self {
@@ -323,16 +319,16 @@ pub struct ExampleScenarioProcess {
     #[doc = "A significant action that occurs as part of the process."]
     pub r#step: Vec<ExampleScenarioProcessStep>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for ExampleScenarioProcess {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#title: {
-                let mut default: super::super::types::String = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#title: super::super::types::String {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#description: Default::default(),
             r#pre_conditions: Default::default(),
@@ -401,6 +397,7 @@ pub struct ExampleScenario {
     #[doc = "A group of operations that represents a significant step within a scenario."]
     pub r#process: Vec<ExampleScenarioProcess>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for ExampleScenario {
     fn default() -> Self {
         Self {
@@ -418,10 +415,9 @@ impl Default for ExampleScenario {
             r#version_algorithm: Default::default(),
             r#name: Default::default(),
             r#title: Default::default(),
-            r#status: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#status: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#experimental: Default::default(),
             r#date: Default::default(),

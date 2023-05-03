@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-03 by fhirbolt-codegen v0.7.0
 #[doc = "Software that is covered by this capability statement.  It is used when the capability statement describes the capabilities of a particular software version, independent of an installation."]
 #[derive(Debug, Clone, PartialEq)]
 pub struct CapabilityStatementSoftware {
@@ -15,16 +15,16 @@ pub struct CapabilityStatementSoftware {
     #[doc = "Date this version of the software was released."]
     pub r#release_date: Option<super::super::types::DateTime>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for CapabilityStatementSoftware {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#name: {
-                let mut default: super::super::types::String = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#name: super::super::types::String {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#version: Default::default(),
             r#release_date: Default::default(),
@@ -47,16 +47,16 @@ pub struct CapabilityStatementImplementation {
     #[doc = "The organization responsible for the management of the instance and oversight of the data on the server at the specified URL."]
     pub r#custodian: Option<Box<super::super::types::Reference>>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for CapabilityStatementImplementation {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#description: {
-                let mut default: super::super::types::String = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#description: super::super::types::String {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#url: Default::default(),
             r#custodian: Default::default(),
@@ -79,6 +79,7 @@ pub struct CapabilityStatementRestSecurity {
     #[doc = "General description of how security works."]
     pub r#description: Option<super::super::types::Markdown>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for CapabilityStatementRestSecurity {
     fn default() -> Self {
         Self {
@@ -105,16 +106,16 @@ pub struct CapabilityStatementRestResourceInteraction {
     #[doc = "Guidance specific to the implementation of this operation, such as 'delete is a logical delete' or 'updates are only allowed with version id' or 'creates permitted from pre-authorized certificates only'."]
     pub r#documentation: Option<super::super::types::Markdown>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for CapabilityStatementRestResourceInteraction {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#code: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#code: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#documentation: Default::default(),
         }
@@ -138,22 +139,21 @@ pub struct CapabilityStatementRestResourceSearchParam {
     #[doc = "This allows documentation of any distinct behaviors about how the search parameter is used.  For example, text matching algorithms."]
     pub r#documentation: Option<super::super::types::Markdown>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for CapabilityStatementRestResourceSearchParam {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#name: {
-                let mut default: super::super::types::String = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#name: super::super::types::String {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#definition: Default::default(),
-            r#type: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#type: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#documentation: Default::default(),
         }
@@ -175,21 +175,20 @@ pub struct CapabilityStatementRestResourceOperation {
     #[doc = "Documentation that describes anything special about the operation behavior, possibly detailing different behavior for system, type and instance-level invocation of the operation."]
     pub r#documentation: Option<super::super::types::Markdown>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for CapabilityStatementRestResourceOperation {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#name: {
-                let mut default: super::super::types::String = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#name: super::super::types::String {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
-            r#definition: {
-                let mut default: super::super::types::Canonical = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#definition: super::super::types::Canonical {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#documentation: Default::default(),
         }
@@ -239,16 +238,16 @@ pub struct CapabilityStatementRestResource {
     #[doc = "Definition of an operation or a named query together with its parameters and their meaning and type. Consult the definition of the operation for details about how to invoke the operation, and the parameters."]
     pub r#operation: Vec<CapabilityStatementRestResourceOperation>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for CapabilityStatementRestResource {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#type: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#type: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#profile: Default::default(),
             r#supported_profile: Default::default(),
@@ -283,16 +282,16 @@ pub struct CapabilityStatementRestInteraction {
     #[doc = "Guidance specific to the implementation of this operation, such as limitations on the kind of transactions allowed, or information about system wide search is implemented."]
     pub r#documentation: Option<super::super::types::Markdown>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for CapabilityStatementRestInteraction {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#code: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#code: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#documentation: Default::default(),
         }
@@ -324,16 +323,16 @@ pub struct CapabilityStatementRest {
     #[doc = "An absolute URI which is a reference to the definition of a compartment that the system supports. The reference is to a CompartmentDefinition resource by its canonical URL ."]
     pub r#compartment: Vec<super::super::types::Canonical>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for CapabilityStatementRest {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#mode: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#mode: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#documentation: Default::default(),
             r#security: Default::default(),
@@ -359,21 +358,20 @@ pub struct CapabilityStatementMessagingEndpoint {
     #[doc = "The network address of the endpoint. For solutions that do not use network addresses for routing, it can be just an identifier."]
     pub r#address: super::super::types::Url,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for CapabilityStatementMessagingEndpoint {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#protocol: {
-                let mut default: Box<super::super::types::Coding> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
-            r#address: {
-                let mut default: super::super::types::Url = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#protocol: Box::new(super::super::types::Coding {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
+            r#address: super::super::types::Url {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
         }
     }
@@ -392,21 +390,20 @@ pub struct CapabilityStatementMessagingSupportedMessage {
     #[doc = "Points to a message definition that identifies the messaging event, message structure, allowed responses, etc."]
     pub r#definition: super::super::types::Canonical,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for CapabilityStatementMessagingSupportedMessage {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#mode: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#mode: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
-            r#definition: {
-                let mut default: super::super::types::Canonical = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#definition: super::super::types::Canonical {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
         }
     }
@@ -429,6 +426,7 @@ pub struct CapabilityStatementMessaging {
     #[doc = "References to message definitions for messages this system can send or receive."]
     pub r#supported_message: Vec<CapabilityStatementMessagingSupportedMessage>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for CapabilityStatementMessaging {
     fn default() -> Self {
         Self {
@@ -458,22 +456,21 @@ pub struct CapabilityStatementDocument {
     #[doc = "A profile on the document Bundle that constrains which resources are present, and their contents."]
     pub r#profile: super::super::types::Canonical,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for CapabilityStatementDocument {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#mode: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#mode: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#documentation: Default::default(),
-            r#profile: {
-                let mut default: super::super::types::Canonical = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#profile: super::super::types::Canonical {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
         }
     }
@@ -550,6 +547,7 @@ pub struct CapabilityStatement {
     #[doc = "A document definition."]
     pub r#document: Vec<CapabilityStatementDocument>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for CapabilityStatement {
     fn default() -> Self {
         Self {
@@ -565,16 +563,14 @@ impl Default for CapabilityStatement {
             r#version: Default::default(),
             r#name: Default::default(),
             r#title: Default::default(),
-            r#status: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#status: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#experimental: Default::default(),
-            r#date: {
-                let mut default: super::super::types::DateTime = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#date: super::super::types::DateTime {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#publisher: Default::default(),
             r#contact: Default::default(),
@@ -583,19 +579,17 @@ impl Default for CapabilityStatement {
             r#jurisdiction: Default::default(),
             r#purpose: Default::default(),
             r#copyright: Default::default(),
-            r#kind: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#kind: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#instantiates: Default::default(),
             r#imports: Default::default(),
             r#software: Default::default(),
             r#implementation: Default::default(),
-            r#fhir_version: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#fhir_version: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#format: Default::default(),
             r#patch_format: Default::default(),

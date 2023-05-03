@@ -82,7 +82,7 @@ pub use error::{Error, Result};
 /// # Errors
 /// The conversion can fail if the structure of the input does not match the FHIR resource `T`.
 /// This behavior can be modified by passing a [`DeserializationConfig`](crate::DeserializationConfig).
-pub fn from_element<'a, const R: FhirRelease, T>(
+pub fn from_element<const R: FhirRelease, T>(
     element: Element<R>,
     config: Option<DeserializationConfig>,
 ) -> Result<T>

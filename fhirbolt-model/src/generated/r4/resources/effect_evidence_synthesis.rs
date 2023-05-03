@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-03 by fhirbolt-codegen v0.7.0
 #[doc = "A description of the size of the sample involved in the synthesis."]
 #[derive(Debug, Clone, PartialEq)]
 pub struct EffectEvidenceSynthesisSampleSize {
@@ -15,6 +15,7 @@ pub struct EffectEvidenceSynthesisSampleSize {
     #[doc = "Number of participants included in this evidence synthesis."]
     pub r#number_of_participants: Option<super::super::types::Integer>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for EffectEvidenceSynthesisSampleSize {
     fn default() -> Self {
         Self {
@@ -45,6 +46,7 @@ pub struct EffectEvidenceSynthesisResultsByExposure {
     #[doc = "Reference to a RiskEvidenceSynthesis resource."]
     pub r#risk_evidence_synthesis: Box<super::super::types::Reference>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for EffectEvidenceSynthesisResultsByExposure {
     fn default() -> Self {
         Self {
@@ -54,11 +56,10 @@ impl Default for EffectEvidenceSynthesisResultsByExposure {
             r#description: Default::default(),
             r#exposure_state: Default::default(),
             r#variant_state: Default::default(),
-            r#risk_evidence_synthesis: {
-                let mut default: Box<super::super::types::Reference> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#risk_evidence_synthesis: Box::new(super::super::types::Reference {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
         }
     }
 }
@@ -80,6 +81,7 @@ pub struct EffectEvidenceSynthesisEffectEstimatePrecisionEstimate {
     #[doc = "Upper bound of confidence interval."]
     pub r#to: Option<super::super::types::Decimal>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for EffectEvidenceSynthesisEffectEstimatePrecisionEstimate {
     fn default() -> Self {
         Self {
@@ -115,6 +117,7 @@ pub struct EffectEvidenceSynthesisEffectEstimate {
     #[doc = "A description of the precision of the estimate for the effect."]
     pub r#precision_estimate: Vec<EffectEvidenceSynthesisEffectEstimatePrecisionEstimate>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for EffectEvidenceSynthesisEffectEstimate {
     fn default() -> Self {
         Self {
@@ -146,6 +149,7 @@ pub struct EffectEvidenceSynthesisCertaintyCertaintySubcomponent {
     #[doc = "A human-readable string to clarify or explain concepts about the resource."]
     pub r#note: Vec<super::super::types::Annotation>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for EffectEvidenceSynthesisCertaintyCertaintySubcomponent {
     fn default() -> Self {
         Self {
@@ -174,6 +178,7 @@ pub struct EffectEvidenceSynthesisCertainty {
     #[doc = "A description of a component of the overall certainty."]
     pub r#certainty_subcomponent: Vec<EffectEvidenceSynthesisCertaintyCertaintySubcomponent>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for EffectEvidenceSynthesisCertainty {
     fn default() -> Self {
         Self {
@@ -272,6 +277,7 @@ pub struct EffectEvidenceSynthesis {
     #[doc = "A description of the certainty of the effect estimate."]
     pub r#certainty: Vec<EffectEvidenceSynthesisCertainty>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for EffectEvidenceSynthesis {
     fn default() -> Self {
         Self {
@@ -288,10 +294,9 @@ impl Default for EffectEvidenceSynthesis {
             r#version: Default::default(),
             r#name: Default::default(),
             r#title: Default::default(),
-            r#status: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#status: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#date: Default::default(),
             r#publisher: Default::default(),
@@ -312,26 +317,22 @@ impl Default for EffectEvidenceSynthesis {
             r#related_artifact: Default::default(),
             r#synthesis_type: Default::default(),
             r#study_type: Default::default(),
-            r#population: {
-                let mut default: Box<super::super::types::Reference> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
-            r#exposure: {
-                let mut default: Box<super::super::types::Reference> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
-            r#exposure_alternative: {
-                let mut default: Box<super::super::types::Reference> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
-            r#outcome: {
-                let mut default: Box<super::super::types::Reference> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#population: Box::new(super::super::types::Reference {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
+            r#exposure: Box::new(super::super::types::Reference {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
+            r#exposure_alternative: Box::new(super::super::types::Reference {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
+            r#outcome: Box::new(super::super::types::Reference {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
             r#sample_size: Default::default(),
             r#results_by_exposure: Default::default(),
             r#effect_estimate: Default::default(),

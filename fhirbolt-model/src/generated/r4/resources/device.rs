@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-03 by fhirbolt-codegen v0.7.0
 #[doc = "Unique device identifier (UDI) assigned to device label or package.  Note that the Device may include multiple udiCarriers as it either may include just the udiCarrier for the jurisdiction it is sold, or for multiple jurisdictions it could have been sold."]
 #[derive(Debug, Clone, PartialEq)]
 pub struct DeviceUdiCarrier {
@@ -21,6 +21,7 @@ pub struct DeviceUdiCarrier {
     #[doc = "A coded entry to indicate how the data was entered."]
     pub r#entry_type: Option<super::super::types::Code>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for DeviceUdiCarrier {
     fn default() -> Self {
         Self {
@@ -50,21 +51,20 @@ pub struct DeviceDeviceName {
     #[doc = "The type of deviceName.\nUDILabelName | UserFriendlyName | PatientReportedName | ManufactureDeviceName | ModelName."]
     pub r#type: super::super::types::Code,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for DeviceDeviceName {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#name: {
-                let mut default: super::super::types::String = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#name: super::super::types::String {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
-            r#type: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#type: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
         }
     }
@@ -83,17 +83,17 @@ pub struct DeviceSpecialization {
     #[doc = "The version of the standard that is used to operate and communicate."]
     pub r#version: Option<super::super::types::String>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for DeviceSpecialization {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#system_type: {
-                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#system_type: Box::new(super::super::types::CodeableConcept {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
             r#version: Default::default(),
         }
     }
@@ -114,6 +114,7 @@ pub struct DeviceVersion {
     #[doc = "The version text."]
     pub r#value: super::super::types::String,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for DeviceVersion {
     fn default() -> Self {
         Self {
@@ -122,10 +123,9 @@ impl Default for DeviceVersion {
             r#modifier_extension: Default::default(),
             r#type: Default::default(),
             r#component: Default::default(),
-            r#value: {
-                let mut default: super::super::types::String = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#value: super::super::types::String {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
         }
     }
@@ -146,17 +146,17 @@ pub struct DeviceProperty {
     #[doc = "Property value as a code, e.g., NTP4 (synced to NTP)."]
     pub r#value_code: Vec<super::super::types::CodeableConcept>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for DeviceProperty {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#type: {
-                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#type: Box::new(super::super::types::CodeableConcept {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
             r#value_quantity: Default::default(),
             r#value_code: Default::default(),
         }
@@ -234,6 +234,7 @@ pub struct Device {
     #[doc = "The parent device."]
     pub r#parent: Option<Box<super::super::types::Reference>>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for Device {
     fn default() -> Self {
         Self {

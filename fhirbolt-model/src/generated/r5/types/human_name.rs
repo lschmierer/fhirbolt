@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-03 by fhirbolt-codegen v0.7.0
 #[doc = "HumanName Type: A name, normally of a human, that can be used for other living entities (e.g. animals but not organizations) that have been assigned names by a human and may need the use of name parts or the need for usage information.\n\nNeed to be able to record names, along with notes about their use."]
 #[derive(Debug, Clone, PartialEq)]
 pub struct HumanName {
@@ -21,6 +21,7 @@ pub struct HumanName {
     #[doc = "Indicates the period of time when this name was valid for the named person."]
     pub r#period: Option<Box<super::super::types::Period>>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for HumanName {
     fn default() -> Self {
         Self {

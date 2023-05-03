@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-03 by fhirbolt-codegen v0.7.0
 #[doc = "A series of links that provide context to this bundle."]
 #[derive(Debug, Clone, PartialEq)]
 pub struct BundleLink {
@@ -13,21 +13,20 @@ pub struct BundleLink {
     #[doc = "The reference details for the link."]
     pub r#url: super::super::types::Uri,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for BundleLink {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#relation: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#relation: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
-            r#url: {
-                let mut default: super::super::types::Uri = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#url: super::super::types::Uri {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
         }
     }
@@ -46,6 +45,7 @@ pub struct BundleEntrySearch {
     #[doc = "When searching, the server's search ranking score for the entry."]
     pub r#score: Option<super::super::types::Decimal>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for BundleEntrySearch {
     fn default() -> Self {
         Self {
@@ -79,21 +79,20 @@ pub struct BundleEntryRequest {
     #[doc = "Instruct the server not to perform the create if a specified resource already exists. For further information, see the API documentation for [\"Conditional Create\"](<http.html>#ccreate). This is just the query portion of the URL - what follows the \"?\" (not including the \"?\")."]
     pub r#if_none_exist: Option<super::super::types::String>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for BundleEntryRequest {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#method: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#method: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
-            r#url: {
-                let mut default: super::super::types::Uri = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#url: super::super::types::Uri {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#if_none_match: Default::default(),
             r#if_modified_since: Default::default(),
@@ -122,16 +121,16 @@ pub struct BundleEntryResponse {
     #[doc = "An OperationOutcome containing hints and warnings produced as part of processing this entry in a batch or transaction."]
     pub r#outcome: Option<super::super::Resource>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for BundleEntryResponse {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#status: {
-                let mut default: super::super::types::String = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#status: super::super::types::String {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#location: Default::default(),
             r#etag: Default::default(),
@@ -162,6 +161,7 @@ pub struct BundleEntry {
     #[doc = "Indicates the results of processing the corresponding 'request' entry in the batch or transaction being responded to or what the results of an operation where when returning history."]
     pub r#response: Option<BundleEntryResponse>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for BundleEntry {
     fn default() -> Self {
         Self {
@@ -205,6 +205,7 @@ pub struct Bundle {
     #[doc = "Captures issues and warnings that relate to the construction of the Bundle and the content within it."]
     pub r#issues: Option<super::super::Resource>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for Bundle {
     fn default() -> Self {
         Self {
@@ -213,10 +214,9 @@ impl Default for Bundle {
             r#implicit_rules: Default::default(),
             r#language: Default::default(),
             r#identifier: Default::default(),
-            r#type: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#type: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#timestamp: Default::default(),
             r#total: Default::default(),

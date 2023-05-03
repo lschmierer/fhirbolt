@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-03 by fhirbolt-codegen v0.7.0
 #[doc = "Time of product collection."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum BiologicallyDerivedProductCollectionCollected {
@@ -38,6 +38,7 @@ pub struct BiologicallyDerivedProductCollection {
     #[doc = "Time of product collection."]
     pub r#collected: Option<BiologicallyDerivedProductCollectionCollected>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for BiologicallyDerivedProductCollection {
     fn default() -> Self {
         Self {
@@ -64,17 +65,17 @@ pub struct BiologicallyDerivedProductProperty {
     #[doc = "Property values."]
     pub r#value: BiologicallyDerivedProductPropertyValue,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for BiologicallyDerivedProductProperty {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#type: {
-                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#type: Box::new(super::super::types::CodeableConcept {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
             r#value: Default::default(),
         }
     }
@@ -125,6 +126,7 @@ pub struct BiologicallyDerivedProduct {
     #[doc = "A property that is specific to this BiologicallyDerviedProduct instance."]
     pub r#property: Vec<BiologicallyDerivedProductProperty>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for BiologicallyDerivedProduct {
     fn default() -> Self {
         Self {

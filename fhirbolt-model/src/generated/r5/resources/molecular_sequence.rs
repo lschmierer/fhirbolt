@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-03 by fhirbolt-codegen v0.7.0
 #[doc = "The reference sequence that represents the starting sequence."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum MolecularSequenceRelativeStartingSequenceSequence {
@@ -32,6 +32,7 @@ pub struct MolecularSequenceRelativeStartingSequence {
     #[doc = "An absolute reference to a strand. The Watson strand is the strand whose 5'-end is on the short arm of the chromosome, and the Crick strand as the one whose 5'-end is on the long arm."]
     pub r#strand: Option<super::super::types::Code>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for MolecularSequenceRelativeStartingSequence {
     fn default() -> Self {
         Self {
@@ -66,6 +67,7 @@ pub struct MolecularSequenceRelativeEdit {
     #[doc = "Allele in the starting sequence. Nucleotide(s)/amino acids from start position of sequence to stop position of sequence on the positive (+) strand of the starting sequence. When the sequence  type is DNA, it should be the sequence on the positive (+) strand. This will lay in the range between variant.start and variant.end."]
     pub r#replaced_sequence: Option<super::super::types::String>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for MolecularSequenceRelativeEdit {
     fn default() -> Self {
         Self {
@@ -99,17 +101,17 @@ pub struct MolecularSequenceRelative {
     #[doc = "Changes in sequence from the starting sequence."]
     pub r#edit: Vec<MolecularSequenceRelativeEdit>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for MolecularSequenceRelative {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#coordinate_system: {
-                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#coordinate_system: Box::new(super::super::types::CodeableConcept {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
             r#ordinal_position: Default::default(),
             r#sequence_range: Default::default(),
             r#starting_sequence: Default::default(),
@@ -157,6 +159,7 @@ pub struct MolecularSequence {
     #[doc = "A sequence defined relative to another sequence."]
     pub r#relative: Vec<MolecularSequenceRelative>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for MolecularSequence {
     fn default() -> Self {
         Self {

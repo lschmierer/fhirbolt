@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-03 by fhirbolt-codegen v0.7.0
 #[doc = "Indicates if the practitioner is deceased or not."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum PractitionerDeceased {
@@ -25,6 +25,7 @@ pub struct PractitionerQualification {
     #[doc = "Organization that regulates and issues the qualification."]
     pub r#issuer: Option<Box<super::super::types::Reference>>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for PractitionerQualification {
     fn default() -> Self {
         Self {
@@ -32,11 +33,10 @@ impl Default for PractitionerQualification {
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
             r#identifier: Default::default(),
-            r#code: {
-                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#code: Box::new(super::super::types::CodeableConcept {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
             r#period: Default::default(),
             r#issuer: Default::default(),
         }
@@ -56,17 +56,17 @@ pub struct PractitionerCommunication {
     #[doc = "Indicates whether or not the person prefers this language (over other languages he masters up a certain level)."]
     pub r#preferred: Option<super::super::types::Boolean>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for PractitionerCommunication {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#language: {
-                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#language: Box::new(super::super::types::CodeableConcept {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
             r#preferred: Default::default(),
         }
     }
@@ -113,6 +113,7 @@ pub struct Practitioner {
     #[doc = "A language which may be used to communicate with the practitioner, often for correspondence/administrative purposes.\r\rThe `PractitionerRole.communication` property should be used for publishing the languages that a practitioner is able to communicate with patients (on a per Organization/Role basis)."]
     pub r#communication: Vec<PractitionerCommunication>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for Practitioner {
     fn default() -> Self {
         Self {

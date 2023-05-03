@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-03 by fhirbolt-codegen v0.7.0
 #[doc = "The value of the parameter."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum ValueSetExpansionParameterValue {
@@ -28,6 +28,7 @@ pub struct ValueSetComposeIncludeConceptDesignation {
     #[doc = "The text value for this designation."]
     pub r#value: super::super::types::String,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for ValueSetComposeIncludeConceptDesignation {
     fn default() -> Self {
         Self {
@@ -36,10 +37,9 @@ impl Default for ValueSetComposeIncludeConceptDesignation {
             r#modifier_extension: Default::default(),
             r#language: Default::default(),
             r#use: Default::default(),
-            r#value: {
-                let mut default: super::super::types::String = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#value: super::super::types::String {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
         }
     }
@@ -60,16 +60,16 @@ pub struct ValueSetComposeIncludeConcept {
     #[doc = "Additional representations for this concept when used in this value set - other languages, aliases, specialized purposes, used for particular purposes, etc."]
     pub r#designation: Vec<ValueSetComposeIncludeConceptDesignation>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for ValueSetComposeIncludeConcept {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#code: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#code: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#display: Default::default(),
             r#designation: Default::default(),
@@ -92,26 +92,24 @@ pub struct ValueSetComposeIncludeFilter {
     #[doc = "The match value may be either a code defined by the system, or a string value, which is a regex match on the literal string of the property value  (if the filter represents a property defined in CodeSystem) or of the system filter value (if the filter represents a filter defined in CodeSystem) when the operation is 'regex', or one of the values (true and false), when the operation is 'exists'."]
     pub r#value: super::super::types::String,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for ValueSetComposeIncludeFilter {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#property: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#property: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
-            r#op: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#op: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
-            r#value: {
-                let mut default: super::super::types::String = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#value: super::super::types::String {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
         }
     }
@@ -136,6 +134,7 @@ pub struct ValueSetComposeInclude {
     #[doc = "Selects the concepts found in this value set (based on its value set definition). This is an absolute URI that is a reference to ValueSet.url.  If multiple value sets are specified this includes the union of the contents of all of the referenced value sets."]
     pub r#value_set: Vec<super::super::types::Canonical>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for ValueSetComposeInclude {
     fn default() -> Self {
         Self {
@@ -168,6 +167,7 @@ pub struct ValueSetCompose {
     #[doc = "Exclude one or more codes from the value set based on code system filters and/or other value sets."]
     pub r#exclude: Vec<ValueSetComposeInclude>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for ValueSetCompose {
     fn default() -> Self {
         Self {
@@ -195,16 +195,16 @@ pub struct ValueSetExpansionParameter {
     #[doc = "The value of the parameter."]
     pub r#value: Option<ValueSetExpansionParameterValue>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for ValueSetExpansionParameter {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#name: {
-                let mut default: super::super::types::String = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#name: super::super::types::String {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#value: Default::default(),
         }
@@ -236,6 +236,7 @@ pub struct ValueSetExpansionContains {
     #[doc = "Other codes and entries contained under this entry in the hierarchy."]
     pub r#contains: Vec<ValueSetExpansionContains>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for ValueSetExpansionContains {
     fn default() -> Self {
         Self {
@@ -275,6 +276,7 @@ pub struct ValueSetExpansion {
     #[doc = "The codes that are contained in the value set expansion."]
     pub r#contains: Vec<ValueSetExpansionContains>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for ValueSetExpansion {
     fn default() -> Self {
         Self {
@@ -282,10 +284,9 @@ impl Default for ValueSetExpansion {
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
             r#identifier: Default::default(),
-            r#timestamp: {
-                let mut default: super::super::types::DateTime = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#timestamp: super::super::types::DateTime {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#total: Default::default(),
             r#offset: Default::default(),
@@ -350,6 +351,7 @@ pub struct ValueSet {
     #[doc = "A value set can also be \"expanded\", where the value set is turned into a simple collection of enumerated codes. This element holds the expansion, if it has been performed."]
     pub r#expansion: Option<ValueSetExpansion>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for ValueSet {
     fn default() -> Self {
         Self {
@@ -366,10 +368,9 @@ impl Default for ValueSet {
             r#version: Default::default(),
             r#name: Default::default(),
             r#title: Default::default(),
-            r#status: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#status: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#experimental: Default::default(),
             r#date: Default::default(),

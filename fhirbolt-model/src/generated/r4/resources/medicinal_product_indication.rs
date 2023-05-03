@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-03 by fhirbolt-codegen v0.7.0
 #[doc = "Reference to a specific medication (active substance, medicinal product or class of products) as part of an indication or contraindication."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum MedicinalProductIndicationOtherTherapyMedication {
@@ -21,17 +21,17 @@ pub struct MedicinalProductIndicationOtherTherapy {
     #[doc = "Reference to a specific medication (active substance, medicinal product or class of products) as part of an indication or contraindication."]
     pub r#medication: MedicinalProductIndicationOtherTherapyMedication,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for MedicinalProductIndicationOtherTherapy {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#therapy_relationship_type: {
-                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#therapy_relationship_type: Box::new(super::super::types::CodeableConcept {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
             r#medication: Default::default(),
         }
     }
@@ -74,6 +74,7 @@ pub struct MedicinalProductIndication {
     #[doc = "The population group to which this applies."]
     pub r#population: Vec<super::super::types::Population>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for MedicinalProductIndication {
     fn default() -> Self {
         Self {

@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-03 by fhirbolt-codegen v0.7.0
 #[doc = "A value for the characteristic."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum AdministrableProductDefinitionPropertyValue {
@@ -28,17 +28,17 @@ pub struct AdministrableProductDefinitionProperty {
     #[doc = "The status of characteristic e.g. assigned or pending."]
     pub r#status: Option<Box<super::super::types::CodeableConcept>>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for AdministrableProductDefinitionProperty {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#type: {
-                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#type: Box::new(super::super::types::CodeableConcept {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
             r#value: Default::default(),
             r#status: Default::default(),
         }
@@ -60,22 +60,21 @@ pub struct AdministrableProductDefinitionRouteOfAdministrationTargetSpeciesWithd
     #[doc = "Extra information about the withdrawal period."]
     pub r#supporting_information: Option<super::super::types::String>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for AdministrableProductDefinitionRouteOfAdministrationTargetSpeciesWithdrawalPeriod {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#tissue: {
-                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
-            r#value: {
-                let mut default: Box<super::super::types::Quantity> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#tissue: Box::new(super::super::types::CodeableConcept {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
+            r#value: Box::new(super::super::types::Quantity {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
             r#supporting_information: Default::default(),
         }
     }
@@ -95,17 +94,17 @@ pub struct AdministrableProductDefinitionRouteOfAdministrationTargetSpecies {
     pub r#withdrawal_period:
         Vec<AdministrableProductDefinitionRouteOfAdministrationTargetSpeciesWithdrawalPeriod>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for AdministrableProductDefinitionRouteOfAdministrationTargetSpecies {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#code: {
-                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#code: Box::new(super::super::types::CodeableConcept {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
             r#withdrawal_period: Default::default(),
         }
     }
@@ -134,17 +133,17 @@ pub struct AdministrableProductDefinitionRouteOfAdministration {
     #[doc = "A species for which this route applies."]
     pub r#target_species: Vec<AdministrableProductDefinitionRouteOfAdministrationTargetSpecies>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for AdministrableProductDefinitionRouteOfAdministration {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#code: {
-                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#code: Box::new(super::super::types::CodeableConcept {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
             r#first_dose: Default::default(),
             r#max_single_dose: Default::default(),
             r#max_dose_per_day: Default::default(),
@@ -196,6 +195,7 @@ pub struct AdministrableProductDefinition {
     #[doc = "The path by which the product is taken into or makes contact with the body. In some regions this is referred to as the licenced or approved route. RouteOfAdministration cannot be used when the 'formOf' product already uses MedicinalProductDefinition.route (and vice versa)."]
     pub r#route_of_administration: Vec<AdministrableProductDefinitionRouteOfAdministration>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for AdministrableProductDefinition {
     fn default() -> Self {
         Self {
@@ -208,10 +208,9 @@ impl Default for AdministrableProductDefinition {
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
             r#identifier: Default::default(),
-            r#status: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#status: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#form_of: Default::default(),
             r#administrable_dose_form: Default::default(),

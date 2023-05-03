@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-03 by fhirbolt-codegen v0.7.0
 #[doc = "RelatedArtifact Type: Related artifacts such as additional documentation, justification, or bibliographic references.\n\nKnowledge resources must be able to provide enough information for consumers of the content (and/or interventions or results produced by the content) to be able to determine and understand the justification for and evidence in support of the content."]
 #[derive(Debug, Clone, PartialEq)]
 pub struct RelatedArtifact {
@@ -27,15 +27,15 @@ pub struct RelatedArtifact {
     #[doc = "The date of publication of the artifact being referred to."]
     pub r#publication_date: Option<super::super::types::Date>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for RelatedArtifact {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
-            r#type: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#type: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#classifier: Default::default(),
             r#label: Default::default(),

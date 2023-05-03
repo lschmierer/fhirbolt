@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-03 by fhirbolt-codegen v0.7.0
 #[doc = "Indicates the mechanism used to compare versions to determine which is more current."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum ImplementationGuideVersionAlgorithm {
@@ -34,16 +34,16 @@ pub struct ImplementationGuideDependsOn {
     #[doc = "A description explaining the nature of the dependency on the listed IG."]
     pub r#reason: Option<super::super::types::Markdown>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for ImplementationGuideDependsOn {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#uri: {
-                let mut default: super::super::types::Canonical = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#uri: super::super::types::Canonical {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#package_id: Default::default(),
             r#version: Default::default(),
@@ -65,21 +65,20 @@ pub struct ImplementationGuideGlobal {
     #[doc = "A reference to the profile that all instances must conform to."]
     pub r#profile: super::super::types::Canonical,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for ImplementationGuideGlobal {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#type: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#type: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
-            r#profile: {
-                let mut default: super::super::types::Canonical = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#profile: super::super::types::Canonical {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
         }
     }
@@ -98,16 +97,16 @@ pub struct ImplementationGuideDefinitionGrouping {
     #[doc = "Human readable text describing the package."]
     pub r#description: Option<super::super::types::Markdown>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for ImplementationGuideDefinitionGrouping {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#name: {
-                let mut default: super::super::types::String = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#name: super::super::types::String {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#description: Default::default(),
         }
@@ -137,17 +136,17 @@ pub struct ImplementationGuideDefinitionResource {
     #[doc = "Reference to the id of the grouping this resource appears in."]
     pub r#grouping_id: Option<super::super::types::Id>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for ImplementationGuideDefinitionResource {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#reference: {
-                let mut default: Box<super::super::types::Reference> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#reference: Box::new(super::super::types::Reference {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
             r#fhir_version: Default::default(),
             r#name: Default::default(),
             r#description: Default::default(),
@@ -177,6 +176,7 @@ pub struct ImplementationGuideDefinitionPage {
     #[doc = "Nested Pages/Sections under this page."]
     pub r#page: Vec<ImplementationGuideDefinitionPage>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for ImplementationGuideDefinitionPage {
     fn default() -> Self {
         Self {
@@ -184,20 +184,17 @@ impl Default for ImplementationGuideDefinitionPage {
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
             r#source: Default::default(),
-            r#name: {
-                let mut default: super::super::types::Url = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#name: super::super::types::Url {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
-            r#title: {
-                let mut default: super::super::types::String = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#title: super::super::types::String {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
-            r#generation: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#generation: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#page: Default::default(),
         }
@@ -217,21 +214,20 @@ pub struct ImplementationGuideDefinitionParameter {
     #[doc = "Value for named type."]
     pub r#value: super::super::types::String,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for ImplementationGuideDefinitionParameter {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#code: {
-                let mut default: Box<super::super::types::Coding> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
-            r#value: {
-                let mut default: super::super::types::String = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#code: Box::new(super::super::types::Coding {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
+            r#value: super::super::types::String {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
         }
     }
@@ -252,21 +248,20 @@ pub struct ImplementationGuideDefinitionTemplate {
     #[doc = "The scope in which the template applies."]
     pub r#scope: Option<super::super::types::String>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for ImplementationGuideDefinitionTemplate {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#code: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#code: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
-            r#source: {
-                let mut default: super::super::types::String = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#source: super::super::types::String {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#scope: Default::default(),
         }
@@ -292,6 +287,7 @@ pub struct ImplementationGuideDefinition {
     #[doc = "A template for building resources."]
     pub r#template: Vec<ImplementationGuideDefinitionTemplate>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for ImplementationGuideDefinition {
     fn default() -> Self {
         Self {
@@ -324,17 +320,17 @@ pub struct ImplementationGuideManifestResource {
     #[doc = "The relative path for primary page for this resource within the IG."]
     pub r#relative_path: Option<super::super::types::Url>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for ImplementationGuideManifestResource {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#reference: {
-                let mut default: Box<super::super::types::Reference> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#reference: Box::new(super::super::types::Reference {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
             r#is_example: Default::default(),
             r#profile: Default::default(),
             r#relative_path: Default::default(),
@@ -357,16 +353,16 @@ pub struct ImplementationGuideManifestPage {
     #[doc = "The name of an anchor available on the page."]
     pub r#anchor: Vec<super::super::types::String>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for ImplementationGuideManifestPage {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#name: {
-                let mut default: super::super::types::String = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#name: super::super::types::String {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#title: Default::default(),
             r#anchor: Default::default(),
@@ -393,6 +389,7 @@ pub struct ImplementationGuideManifest {
     #[doc = "Indicates the relative path of an additional non-page, non-image file that is part of the IG - e.g. zip, jar and similar files that could be the target of a hyperlink in a derived IG."]
     pub r#other: Vec<super::super::types::String>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for ImplementationGuideManifest {
     fn default() -> Self {
         Self {
@@ -475,6 +472,7 @@ pub struct ImplementationGuide {
     #[doc = "Information about an assembled implementation guide, created by the publication tooling."]
     pub r#manifest: Option<ImplementationGuideManifest>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for ImplementationGuide {
     fn default() -> Self {
         Self {
@@ -486,24 +484,21 @@ impl Default for ImplementationGuide {
             r#contained: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#url: {
-                let mut default: super::super::types::Uri = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#url: super::super::types::Uri {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#identifier: Default::default(),
             r#version: Default::default(),
             r#version_algorithm: Default::default(),
-            r#name: {
-                let mut default: super::super::types::String = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#name: super::super::types::String {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#title: Default::default(),
-            r#status: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#status: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#experimental: Default::default(),
             r#date: Default::default(),
@@ -515,10 +510,9 @@ impl Default for ImplementationGuide {
             r#purpose: Default::default(),
             r#copyright: Default::default(),
             r#copyright_label: Default::default(),
-            r#package_id: {
-                let mut default: super::super::types::Id = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#package_id: super::super::types::Id {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#license: Default::default(),
             r#fhir_version: Default::default(),

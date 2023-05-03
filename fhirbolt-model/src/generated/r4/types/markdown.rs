@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-03 by fhirbolt-codegen v0.7.0
 #[doc = "Base StructureDefinition for markdown type: A string that may contain Github Flavored Markdown syntax for optional processing by a mark down presentation engine"]
 #[derive(Debug, Clone, PartialEq)]
 pub struct Markdown {
@@ -9,6 +9,7 @@ pub struct Markdown {
     #[doc = "Primitive value for markdown"]
     pub r#value: Option<std::string::String>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for Markdown {
     fn default() -> Self {
         Self {

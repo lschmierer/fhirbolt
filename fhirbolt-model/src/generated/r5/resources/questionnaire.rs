@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-03 by fhirbolt-codegen v0.7.0
 #[doc = "Indicates the mechanism used to compare versions to determine which is more current."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum QuestionnaireVersionAlgorithm {
@@ -69,21 +69,20 @@ pub struct QuestionnaireItemEnableWhen {
     #[doc = "A value that the referenced question is tested using the specified operator in order for the item to be enabled.  If there are multiple answers, a match on any of the answers suffices.  If different behavior is desired (all must match, at least 2 must match, etc.), consider using the enableWhenExpression extension."]
     pub r#answer: QuestionnaireItemEnableWhenAnswer,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for QuestionnaireItemEnableWhen {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#question: {
-                let mut default: super::super::types::String = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#question: super::super::types::String {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
-            r#operator: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#operator: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#answer: Default::default(),
         }
@@ -103,6 +102,7 @@ pub struct QuestionnaireItemAnswerOption {
     #[doc = "Indicates whether the answer value is selected when the list of possible answers is initially shown."]
     pub r#initial_selected: Option<super::super::types::Boolean>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for QuestionnaireItemAnswerOption {
     fn default() -> Self {
         Self {
@@ -126,6 +126,7 @@ pub struct QuestionnaireItemInitial {
     #[doc = "The actual value to for an initial answer."]
     pub r#value: QuestionnaireItemInitialValue,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for QuestionnaireItemInitial {
     fn default() -> Self {
         Self {
@@ -182,25 +183,24 @@ pub struct QuestionnaireItem {
     #[doc = "Text, questions and other groups to be nested beneath a question or group."]
     pub r#item: Vec<QuestionnaireItem>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for QuestionnaireItem {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#link_id: {
-                let mut default: super::super::types::String = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#link_id: super::super::types::String {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#definition: Default::default(),
             r#code: Default::default(),
             r#prefix: Default::default(),
             r#text: Default::default(),
-            r#type: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#type: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#enable_when: Default::default(),
             r#enable_behavior: Default::default(),
@@ -285,6 +285,7 @@ pub struct Questionnaire {
     #[doc = "A particular question, question grouping or display text that is part of the questionnaire."]
     pub r#item: Vec<QuestionnaireItem>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for Questionnaire {
     fn default() -> Self {
         Self {
@@ -303,10 +304,9 @@ impl Default for Questionnaire {
             r#name: Default::default(),
             r#title: Default::default(),
             r#derived_from: Default::default(),
-            r#status: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#status: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#experimental: Default::default(),
             r#subject_type: Default::default(),

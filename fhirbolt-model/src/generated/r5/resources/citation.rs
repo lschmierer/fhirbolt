@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-03 by fhirbolt-codegen v0.7.0
 #[doc = "Indicates the mechanism used to compare versions to determine which is more current."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum CitationVersionAlgorithm {
@@ -21,6 +21,7 @@ pub struct CitationSummary {
     #[doc = "The human-readable display of the citation summary."]
     pub r#text: super::super::types::Markdown,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for CitationSummary {
     fn default() -> Self {
         Self {
@@ -28,10 +29,9 @@ impl Default for CitationSummary {
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
             r#style: Default::default(),
-            r#text: {
-                let mut default: super::super::types::Markdown = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#text: super::super::types::Markdown {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
         }
     }
@@ -50,6 +50,7 @@ pub struct CitationClassification {
     #[doc = "The specific classification value."]
     pub r#classifier: Vec<super::super::types::CodeableConcept>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for CitationClassification {
     fn default() -> Self {
         Self {
@@ -77,23 +78,22 @@ pub struct CitationStatusDate {
     #[doc = "When the status started and/or ended."]
     pub r#period: Box<super::super::types::Period>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for CitationStatusDate {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#activity: {
-                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#activity: Box::new(super::super::types::CodeableConcept {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
             r#actual: Default::default(),
-            r#period: {
-                let mut default: Box<super::super::types::Period> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#period: Box::new(super::super::types::Period {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
         }
     }
 }
@@ -111,16 +111,16 @@ pub struct CitationCitedArtifactVersion {
     #[doc = "Citation for the main version of the cited artifact."]
     pub r#base_citation: Option<Box<super::super::types::Reference>>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for CitationCitedArtifactVersion {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#value: {
-                let mut default: super::super::types::String = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#value: super::super::types::String {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#base_citation: Default::default(),
         }
@@ -142,23 +142,22 @@ pub struct CitationCitedArtifactStatusDate {
     #[doc = "When the status started and/or ended."]
     pub r#period: Box<super::super::types::Period>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for CitationCitedArtifactStatusDate {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#activity: {
-                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#activity: Box::new(super::super::types::CodeableConcept {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
             r#actual: Default::default(),
-            r#period: {
-                let mut default: Box<super::super::types::Period> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#period: Box::new(super::super::types::Period {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
         }
     }
 }
@@ -178,6 +177,7 @@ pub struct CitationCitedArtifactTitle {
     #[doc = "The title of the article or artifact."]
     pub r#text: super::super::types::Markdown,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for CitationCitedArtifactTitle {
     fn default() -> Self {
         Self {
@@ -186,10 +186,9 @@ impl Default for CitationCitedArtifactTitle {
             r#modifier_extension: Default::default(),
             r#type: Default::default(),
             r#language: Default::default(),
-            r#text: {
-                let mut default: super::super::types::Markdown = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#text: super::super::types::Markdown {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
         }
     }
@@ -212,6 +211,7 @@ pub struct CitationCitedArtifactAbstract {
     #[doc = "Copyright notice for the abstract."]
     pub r#copyright: Option<super::super::types::Markdown>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for CitationCitedArtifactAbstract {
     fn default() -> Self {
         Self {
@@ -220,10 +220,9 @@ impl Default for CitationCitedArtifactAbstract {
             r#modifier_extension: Default::default(),
             r#type: Default::default(),
             r#language: Default::default(),
-            r#text: {
-                let mut default: super::super::types::Markdown = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#text: super::super::types::Markdown {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#copyright: Default::default(),
         }
@@ -245,6 +244,7 @@ pub struct CitationCitedArtifactPart {
     #[doc = "The citation for the full article or artifact."]
     pub r#base_citation: Option<Box<super::super::types::Reference>>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for CitationCitedArtifactPart {
     fn default() -> Self {
         Self {
@@ -283,16 +283,16 @@ pub struct CitationCitedArtifactRelatesTo {
     #[doc = "The related artifact, if the artifact is not a canonical resource, or a resource reference to a canonical resource."]
     pub r#resource_reference: Option<Box<super::super::types::Reference>>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for CitationCitedArtifactRelatesTo {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#type: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#type: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#classifier: Default::default(),
             r#label: Default::default(),
@@ -324,6 +324,7 @@ pub struct CitationCitedArtifactPublicationFormPublishedIn {
     #[doc = "Geographic location of the publisher."]
     pub r#publisher_location: Option<super::super::types::String>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for CitationCitedArtifactPublicationFormPublishedIn {
     fn default() -> Self {
         Self {
@@ -378,6 +379,7 @@ pub struct CitationCitedArtifactPublicationForm {
     #[doc = "Copyright notice for the full article or artifact."]
     pub r#copyright: Option<super::super::types::Markdown>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for CitationCitedArtifactPublicationForm {
     fn default() -> Self {
         Self {
@@ -416,6 +418,7 @@ pub struct CitationCitedArtifactWebLocation {
     #[doc = "The specific URL."]
     pub r#url: Option<super::super::types::Uri>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for CitationCitedArtifactWebLocation {
     fn default() -> Self {
         Self {
@@ -443,6 +446,7 @@ pub struct CitationCitedArtifactClassification {
     #[doc = "Complex or externally created classification."]
     pub r#artifact_assessment: Vec<super::super::types::Reference>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for CitationCitedArtifactClassification {
     fn default() -> Self {
         Self {
@@ -469,17 +473,17 @@ pub struct CitationCitedArtifactContributorshipEntryContributionInstance {
     #[doc = "The time that the contribution was made."]
     pub r#time: Option<super::super::types::DateTime>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for CitationCitedArtifactContributorshipEntryContributionInstance {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#type: {
-                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#type: Box::new(super::super::types::CodeableConcept {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
             r#time: Default::default(),
         }
     }
@@ -510,17 +514,17 @@ pub struct CitationCitedArtifactContributorshipEntry {
     #[doc = "Provides a numerical ranking to represent the degree of contributorship relative to other contributors, such as 1 for first author and 2 for second author."]
     pub r#ranking_order: Option<super::super::types::PositiveInt>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for CitationCitedArtifactContributorshipEntry {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#contributor: {
-                let mut default: Box<super::super::types::Reference> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#contributor: Box::new(super::super::types::Reference {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
             r#forename_initials: Default::default(),
             r#affiliation: Default::default(),
             r#contribution_type: Default::default(),
@@ -549,6 +553,7 @@ pub struct CitationCitedArtifactContributorshipSummary {
     #[doc = "The display string for the author list, contributor list, or contributorship statement."]
     pub r#value: super::super::types::Markdown,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for CitationCitedArtifactContributorshipSummary {
     fn default() -> Self {
         Self {
@@ -558,10 +563,9 @@ impl Default for CitationCitedArtifactContributorshipSummary {
             r#type: Default::default(),
             r#style: Default::default(),
             r#source: Default::default(),
-            r#value: {
-                let mut default: super::super::types::Markdown = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#value: super::super::types::Markdown {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
         }
     }
@@ -582,6 +586,7 @@ pub struct CitationCitedArtifactContributorship {
     #[doc = "Used to record a display of the author/contributor list without separate data element for each list member."]
     pub r#summary: Vec<CitationCitedArtifactContributorshipSummary>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for CitationCitedArtifactContributorship {
     fn default() -> Self {
         Self {
@@ -634,6 +639,7 @@ pub struct CitationCitedArtifact {
     #[doc = "Any additional information or content for the article or artifact."]
     pub r#note: Vec<super::super::types::Annotation>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for CitationCitedArtifact {
     fn default() -> Self {
         Self {
@@ -740,6 +746,7 @@ pub struct Citation {
     #[doc = "The article or artifact being described."]
     pub r#cited_artifact: Option<CitationCitedArtifact>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for Citation {
     fn default() -> Self {
         Self {
@@ -757,10 +764,9 @@ impl Default for Citation {
             r#version_algorithm: Default::default(),
             r#name: Default::default(),
             r#title: Default::default(),
-            r#status: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#status: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#experimental: Default::default(),
             r#date: Default::default(),

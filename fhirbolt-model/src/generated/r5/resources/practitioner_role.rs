@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-03 by fhirbolt-codegen v0.7.0
 #[doc = "A specific set of Roles/Locations/specialties/services that a practitioner may perform, or has performed at an organization during a period of time.\n\nNeed to track services that a healthcare provider is able to provide at an organization's location, and the services that they can perform there."]
 #[derive(Debug, Clone, PartialEq)]
 pub struct PractitionerRole {
@@ -47,6 +47,7 @@ pub struct PractitionerRole {
     #[doc = " Technical endpoints providing access to services operated for the practitioner with this role. Commonly used for locating scheduling services, or identifying where to send referrals electronically."]
     pub r#endpoint: Vec<super::super::types::Reference>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for PractitionerRole {
     fn default() -> Self {
         Self {

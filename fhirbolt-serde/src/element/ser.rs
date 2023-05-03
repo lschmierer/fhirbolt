@@ -123,7 +123,7 @@ impl<const R: FhirRelease> Serialize for SerializationContext<&Element<R>> {
         };
 
         for (key, value) in values {
-            self.unwrap_current_path_mut().push(&key);
+            self.unwrap_current_path_mut().push(key);
 
             if self.output_json && self.unwrap_current_path().current_element_is_primitive() {
                 match value {
@@ -333,12 +333,12 @@ impl<const R: FhirRelease> ser::Serializer for Serializer<R> {
 
     #[inline]
     fn serialize_i32(self, v: i32) -> Result<Self::Ok, Self::Error> {
-        Ok(Value::Primitive(Primitive::Integer(v.into())))
+        Ok(Value::Primitive(Primitive::Integer(v)))
     }
 
     #[inline]
     fn serialize_i64(self, v: i64) -> Result<Self::Ok, Self::Error> {
-        Ok(Value::Primitive(Primitive::Integer64(v.into())))
+        Ok(Value::Primitive(Primitive::Integer64(v)))
     }
 
     #[inline]
@@ -757,7 +757,7 @@ impl<const R: FhirRelease> ser::SerializeStruct for SerializeNumber<R> {
             self.0 = Some(Value::Primitive(Primitive::Decimal(
                 value
                     .serialize(NumberValueEmitter)
-                    .map_err(|err| Error::custom(err))?,
+                    .map_err(Error::custom)?,
             )));
             Ok(())
         } else {

@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-03 by fhirbolt-codegen v0.7.0
 #[doc = "Related identifiers or resources associated with the DocumentManifest."]
 #[derive(Debug, Clone, PartialEq)]
 pub struct DocumentManifestRelated {
@@ -13,6 +13,7 @@ pub struct DocumentManifestRelated {
     #[doc = "Related Resource to this DocumentManifest. For example, Order, ServiceRequest,  Procedure, EligibilityRequest, etc."]
     pub r#ref: Option<Box<super::super::types::Reference>>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for DocumentManifestRelated {
     fn default() -> Self {
         Self {
@@ -68,6 +69,7 @@ pub struct DocumentManifest {
     #[doc = "Related identifiers or resources associated with the DocumentManifest."]
     pub r#related: Vec<DocumentManifestRelated>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for DocumentManifest {
     fn default() -> Self {
         Self {
@@ -81,10 +83,9 @@ impl Default for DocumentManifest {
             r#modifier_extension: Default::default(),
             r#master_identifier: Default::default(),
             r#identifier: Default::default(),
-            r#status: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#status: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#type: Default::default(),
             r#subject: Default::default(),

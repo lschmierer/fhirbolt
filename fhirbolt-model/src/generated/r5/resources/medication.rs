@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-03 by fhirbolt-codegen v0.7.0
 #[doc = "Specifies how many (or how much) of the items there are in this Medication.  For example, 250 mg per tablet.  This is expressed as a ratio where the numerator is 250mg and the denominator is 1 tablet but can also be expressed a quantity when the denominator is assumed to be 1 tablet."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum MedicationIngredientStrength {
@@ -24,17 +24,17 @@ pub struct MedicationIngredient {
     #[doc = "Specifies how many (or how much) of the items there are in this Medication.  For example, 250 mg per tablet.  This is expressed as a ratio where the numerator is 250mg and the denominator is 1 tablet but can also be expressed a quantity when the denominator is assumed to be 1 tablet."]
     pub r#strength: Option<MedicationIngredientStrength>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for MedicationIngredient {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#item: {
-                let mut default: Box<super::super::types::CodeableReference> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#item: Box::new(super::super::types::CodeableReference {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
             r#is_active: Default::default(),
             r#strength: Default::default(),
         }
@@ -54,6 +54,7 @@ pub struct MedicationBatch {
     #[doc = "When this specific batch of product will expire."]
     pub r#expiration_date: Option<super::super::types::DateTime>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for MedicationBatch {
     fn default() -> Self {
         Self {
@@ -103,6 +104,7 @@ pub struct Medication {
     #[doc = "A reference to a knowledge resource that provides more information about this medication."]
     pub r#definition: Option<Box<super::super::types::Reference>>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for Medication {
     fn default() -> Self {
         Self {

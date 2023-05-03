@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-03 by fhirbolt-codegen v0.7.0
 #[doc = "Base StructureDefinition for xhtml Type"]
 #[derive(Debug, Clone, PartialEq)]
 pub struct Xhtml {
@@ -7,6 +7,7 @@ pub struct Xhtml {
     #[doc = "Actual xhtml"]
     pub r#value: std::string::String,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for Xhtml {
     fn default() -> Self {
         Self {

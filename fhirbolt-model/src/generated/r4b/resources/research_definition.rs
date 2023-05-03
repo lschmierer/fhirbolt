@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-03 by fhirbolt-codegen v0.7.0
 #[doc = "The intended subjects for the ResearchDefinition. If this element is not provided, a Patient subject is assumed, but the subject of the ResearchDefinition can be anything."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum ResearchDefinitionSubject {
@@ -95,6 +95,7 @@ pub struct ResearchDefinition {
     #[doc = "A reference to a ResearchElementDefinition resomece that defines the outcome for the research."]
     pub r#outcome: Option<Box<super::super::types::Reference>>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for ResearchDefinition {
     fn default() -> Self {
         Self {
@@ -113,10 +114,9 @@ impl Default for ResearchDefinition {
             r#title: Default::default(),
             r#short_title: Default::default(),
             r#subtitle: Default::default(),
-            r#status: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#status: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#experimental: Default::default(),
             r#subject: Default::default(),
@@ -140,11 +140,10 @@ impl Default for ResearchDefinition {
             r#endorser: Default::default(),
             r#related_artifact: Default::default(),
             r#library: Default::default(),
-            r#population: {
-                let mut default: Box<super::super::types::Reference> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#population: Box::new(super::super::types::Reference {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
             r#exposure: Default::default(),
             r#exposure_alternative: Default::default(),
             r#outcome: Default::default(),

@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-03 by fhirbolt-codegen v0.7.0
 #[doc = "Indicates the mechanism used to compare versions to determine which is more current."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum OperationDefinitionVersionAlgorithm {
@@ -21,21 +21,20 @@ pub struct OperationDefinitionParameterBinding {
     #[doc = "Points to the value set or external definition (e.g. implicit value set) that identifies the set of codes to be used."]
     pub r#value_set: super::super::types::Canonical,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for OperationDefinitionParameterBinding {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#strength: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#strength: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
-            r#value_set: {
-                let mut default: super::super::types::Canonical = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#value_set: super::super::types::Canonical {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
         }
     }
@@ -54,16 +53,16 @@ pub struct OperationDefinitionParameterReferencedFrom {
     #[doc = "The id of the element in the referencing resource that is expected to resolve to this resource."]
     pub r#source_id: Option<super::super::types::String>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for OperationDefinitionParameterReferencedFrom {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#source: {
-                let mut default: super::super::types::String = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#source: super::super::types::String {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#source_id: Default::default(),
         }
@@ -105,32 +104,29 @@ pub struct OperationDefinitionParameter {
     #[doc = "The parts of a nested Parameter."]
     pub r#part: Vec<OperationDefinitionParameter>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for OperationDefinitionParameter {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#name: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#name: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
-            r#use: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#use: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#scope: Default::default(),
-            r#min: {
-                let mut default: super::super::types::Integer = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#min: super::super::types::Integer {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
-            r#max: {
-                let mut default: super::super::types::String = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#max: super::super::types::String {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#documentation: Default::default(),
             r#type: Default::default(),
@@ -157,6 +153,7 @@ pub struct OperationDefinitionOverload {
     #[doc = "Comments to go on overload."]
     pub r#comment: Option<super::super::types::String>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for OperationDefinitionOverload {
     fn default() -> Self {
         Self {
@@ -248,6 +245,7 @@ pub struct OperationDefinition {
     #[doc = "Defines an appropriate combination of parameters to use when invoking this operation, to help code generators when generating overloaded parameter sets for this operation."]
     pub r#overload: Vec<OperationDefinitionOverload>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for OperationDefinition {
     fn default() -> Self {
         Self {
@@ -263,21 +261,18 @@ impl Default for OperationDefinition {
             r#identifier: Default::default(),
             r#version: Default::default(),
             r#version_algorithm: Default::default(),
-            r#name: {
-                let mut default: super::super::types::String = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#name: super::super::types::String {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#title: Default::default(),
-            r#status: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#status: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
-            r#kind: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#kind: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#experimental: Default::default(),
             r#date: Default::default(),
@@ -290,28 +285,24 @@ impl Default for OperationDefinition {
             r#copyright: Default::default(),
             r#copyright_label: Default::default(),
             r#affects_state: Default::default(),
-            r#code: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#code: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#comment: Default::default(),
             r#base: Default::default(),
             r#resource: Default::default(),
-            r#system: {
-                let mut default: super::super::types::Boolean = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#system: super::super::types::Boolean {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
-            r#type: {
-                let mut default: super::super::types::Boolean = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#type: super::super::types::Boolean {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
-            r#instance: {
-                let mut default: super::super::types::Boolean = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#instance: super::super::types::Boolean {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#input_profile: Default::default(),
             r#output_profile: Default::default(),

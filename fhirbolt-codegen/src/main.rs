@@ -27,7 +27,7 @@ fn tmp_dir(fhir_release: &str) -> PathBuf {
         .join("target")
         .join("tmp")
         .join("fhirbolt")
-        .join(format!("{}", fhir_release.to_lowercase()));
+        .join(fhir_release.to_lowercase());
 
     if !dir.exists() {
         fs::create_dir_all(&dir).unwrap();
@@ -60,9 +60,9 @@ fn download_fhir_definitions(fhir_release: &str) -> PathBuf {
         println!("Downloading {} FHIR definitions...", fhir_release);
         let bytes = reqwest::blocking::get(definitions_json_download_url)
             .and_then(|r| r.bytes())
-            .expect(&format!("Error downloading {} definitions", fhir_release));
+            .unwrap_or_else(|_| panic!("Error downloading {} definitions", fhir_release));
         fs::write(&definitions_json_zip, bytes)
-            .expect(&format!("Error writing \"{:?}\"", definitions_json_zip));
+            .unwrap_or_else(|_| panic!("Error writing \"{:?}\"", definitions_json_zip));
         println!("Download successful!");
     }
 
@@ -78,7 +78,7 @@ fn open_zip_archive(zip_path: &Path) -> ZipArchive<File> {
 fn read_file_from_zip_archive(zip_archive: &mut ZipArchive<File>, name: &str) -> String {
     println!("Reading '{}' from zip archive...", name);
 
-    let name = if zip_archive.file_names().find(|n| *n == name).is_some() {
+    let name = if zip_archive.file_names().any(|n| n == name) {
         name.to_owned()
     } else {
         format!("definitions.json/{}", name)
@@ -147,7 +147,7 @@ fn write_source_files(target: &str, fhir_release: &str, kind: &str, source_files
 
     let mut mod_names = vec![];
     for SourceFile { name, source } in source_files {
-        write_source_file(target, fhir_release, kind, &name, source);
+        write_source_file(target, fhir_release, kind, name, source);
         mod_names.push(name.as_str());
     }
     write_source_mod_file(target, fhir_release, kind, &mod_names);
@@ -161,12 +161,12 @@ fn write_source_file(
     tokens: &TokenStream,
 ) {
     let file_path = output_source_file(target, fhir_release, kind, name);
-    let mut file =
-        File::create(&file_path).expect(&format!("Error creating output file '{:?}'", file_path));
+    let mut file = File::create(&file_path)
+        .unwrap_or_else(|_| panic!("Error creating output file '{:?}'", file_path));
 
-    write!(
+    writeln!(
         file,
-        "// Generated on {} by fhirbolt-codegen v{}\n",
+        "// Generated on {} by fhirbolt-codegen v{}",
         OffsetDateTime::now_utc().date(),
         env!("CARGO_PKG_VERSION")
     )
@@ -192,20 +192,20 @@ fn write_root_mod_file(path: &str, feature_gate: bool) {
 
 fn write_model_release_mod_file(fhir_release: &str) {
     let mut file =
-        File::create(&output_release_dir(MODEL_OUTPUT_DIRECTORY, fhir_release).join("mod.rs"))
+        File::create(output_release_dir(MODEL_OUTPUT_DIRECTORY, fhir_release).join("mod.rs"))
             .unwrap();
 
     writeln!(file, "pub mod types;").unwrap();
     writeln!(file, "pub mod resources;").unwrap();
-    writeln!(file, "").unwrap();
+    writeln!(file).unwrap();
     writeln!(file, "mod resource;").unwrap();
-    writeln!(file, "").unwrap();
+    writeln!(file).unwrap();
     writeln!(file, "pub use resource::*;").unwrap();
 }
 
 fn write_serde_release_mod_file(fhir_release: &str) {
     let mut file =
-        File::create(&output_release_dir(SERDE_OUTPUT_DIRECTORY, fhir_release).join("mod.rs"))
+        File::create(output_release_dir(SERDE_OUTPUT_DIRECTORY, fhir_release).join("mod.rs"))
             .unwrap();
 
     writeln!(file, "mod types;").unwrap();
@@ -220,12 +220,12 @@ fn write_source_mod_file(target: &str, fhir_release: &str, kind: &str, types: &[
 
     for r#type in types {
         let mod_name = r#type;
-        write!(file, "mod {};\n", mod_name).unwrap();
+        writeln!(file, "mod {};", mod_name).unwrap();
     }
 
     for r#type in types {
         let mod_name = r#type;
-        write!(file, "pub use {}::*;\n", mod_name).unwrap();
+        writeln!(file, "pub use {}::*;", mod_name).unwrap();
     }
 }
 
@@ -235,12 +235,12 @@ fn type_hints_output_source_file(fhir_release: &str) -> PathBuf {
 
 fn write_type_hints_source_file(fhir_release: &str, tokens: &TokenStream) {
     let file_path = type_hints_output_source_file(fhir_release);
-    let mut file =
-        File::create(&file_path).expect(&format!("Error creating output file '{:?}'", file_path));
+    let mut file = File::create(&file_path)
+        .unwrap_or_else(|_| panic!("Error creating output file '{:?}'", file_path));
 
-    write!(
+    writeln!(
         file,
-        "// Generated on {} by fhirbolt-codegen v{}\n",
+        "// Generated on {} by fhirbolt-codegen v{}",
         OffsetDateTime::now_utc().date(),
         env!("CARGO_PKG_VERSION")
     )
@@ -254,12 +254,12 @@ fn element_map_output_source_file(fhir_release: &str) -> PathBuf {
 
 fn write_element_map_source_file(fhir_release: &str, tokens: &TokenStream) {
     let file_path = element_map_output_source_file(fhir_release);
-    let mut file =
-        File::create(&file_path).expect(&format!("Error creating output file '{:?}'", file_path));
+    let mut file = File::create(&file_path)
+        .unwrap_or_else(|_| panic!("Error creating output file '{:?}'", file_path));
 
-    write!(
+    writeln!(
         file,
-        "// Generated on {} by fhirbolt-codegen v{}\n",
+        "// Generated on {} by fhirbolt-codegen v{}",
         OffsetDateTime::now_utc().date(),
         env!("CARGO_PKG_VERSION")
     )
@@ -341,10 +341,10 @@ fn main() {
 
     for fhir_release in BUILD_FHIR_RELEASES {
         println!("Generating FHIR {}...", fhir_release);
-        write_model_release_mod_file(*fhir_release);
-        write_serde_release_mod_file(*fhir_release);
+        write_model_release_mod_file(fhir_release);
+        write_serde_release_mod_file(fhir_release);
 
-        let zip_file = download_fhir_definitions(*fhir_release);
+        let zip_file = download_fhir_definitions(fhir_release);
         let mut zip_archive = open_zip_archive(&zip_file);
 
         let types_json = read_types_from_zip_archive(&mut zip_archive);
@@ -353,7 +353,7 @@ fn main() {
         let resources_json = read_resources_from_zip_archive(&mut zip_archive);
         let resources_bundle = parse_bundle(&resources_json);
 
-        generate_and_write(*fhir_release, &types_bundle, &resources_bundle);
+        generate_and_write(fhir_release, &types_bundle, &resources_bundle);
 
         println!("FHIR {} generated succesfully!", fhir_release);
     }

@@ -169,17 +169,13 @@ impl<W: Write> Serializer<W> {
                 .postponed_children
                 .push(popped_state);
             self.current_state_mut().in_extension = false;
+        } else if popped_state.was_written {
+            self.write_end()?;
+        } else if popped_state.is_empty_element() {
+            self.write_empty(popped_state)?;
         } else {
-            if popped_state.was_written {
-                self.write_end()?;
-            } else {
-                if popped_state.is_empty_element() {
-                    self.write_empty(popped_state)?;
-                } else {
-                    self.write_popped_element_start(popped_state)?;
-                    self.write_end()?;
-                }
-            }
+            self.write_popped_element_start(popped_state)?;
+            self.write_end()?;
         }
 
         // nested resources are contained within another element which has to be popped as well

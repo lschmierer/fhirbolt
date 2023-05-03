@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-03 by fhirbolt-codegen v0.7.0
 #[doc = "Display of or reference to the bibliographic citation of the comment, classifier, or rating."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum ArtifactAssessmentCiteAs {
@@ -46,6 +46,7 @@ pub struct ArtifactAssessmentContent {
     #[doc = "If the informationType is container, the components of the content."]
     pub r#component: Vec<ArtifactAssessmentContent>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for ArtifactAssessmentContent {
     fn default() -> Self {
         Self {
@@ -107,6 +108,7 @@ pub struct ArtifactAssessment {
     #[doc = "Indicates the disposition of the responsible party to the comment or change request."]
     pub r#disposition: Option<super::super::types::Code>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for ArtifactAssessment {
     fn default() -> Self {
         Self {

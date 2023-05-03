@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-03 by fhirbolt-codegen v0.7.0
 #[doc = "The set of payloads that are provided/available at this endpoint."]
 #[derive(Debug, Clone, PartialEq)]
 pub struct EndpointPayload {
@@ -13,6 +13,7 @@ pub struct EndpointPayload {
     #[doc = "The mime type to send the payload in - e.g. application/fhir+xml, application/fhir+json. If the mime type is not specified, then the sender could send any content (including no content depending on the connectionType)."]
     pub r#mime_type: Vec<super::super::types::Code>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for EndpointPayload {
     fn default() -> Self {
         Self {
@@ -68,6 +69,7 @@ pub struct Endpoint {
     #[doc = "Additional headers / information to send as part of the notification."]
     pub r#header: Vec<super::super::types::String>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for Endpoint {
     fn default() -> Self {
         Self {
@@ -80,10 +82,9 @@ impl Default for Endpoint {
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
             r#identifier: Default::default(),
-            r#status: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#status: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#connection_type: Default::default(),
             r#name: Default::default(),
@@ -93,10 +94,9 @@ impl Default for Endpoint {
             r#contact: Default::default(),
             r#period: Default::default(),
             r#payload: Default::default(),
-            r#address: {
-                let mut default: super::super::types::Url = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#address: super::super::types::Url {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#header: Default::default(),
         }

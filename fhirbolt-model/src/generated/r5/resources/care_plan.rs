@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-03 by fhirbolt-codegen v0.7.0
 #[doc = "Identifies an action that has occurred or is a planned action to occur as part of the plan. For example, a medication to be used, lab tests to perform, self-monitoring that has occurred, education etc."]
 #[derive(Debug, Clone, PartialEq)]
 pub struct CarePlanActivity {
@@ -15,6 +15,7 @@ pub struct CarePlanActivity {
     #[doc = "The details of the proposed activity represented in a specific resource."]
     pub r#planned_activity_reference: Option<Box<super::super::types::Reference>>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for CarePlanActivity {
     fn default() -> Self {
         Self {
@@ -93,6 +94,7 @@ pub struct CarePlan {
     #[doc = "General notes about the care plan not covered elsewhere."]
     pub r#note: Vec<super::super::types::Annotation>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for CarePlan {
     fn default() -> Self {
         Self {
@@ -110,24 +112,21 @@ impl Default for CarePlan {
             r#based_on: Default::default(),
             r#replaces: Default::default(),
             r#part_of: Default::default(),
-            r#status: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#status: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
-            r#intent: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#intent: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#category: Default::default(),
             r#title: Default::default(),
             r#description: Default::default(),
-            r#subject: {
-                let mut default: Box<super::super::types::Reference> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#subject: Box::new(super::super::types::Reference {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
             r#encounter: Default::default(),
             r#period: Default::default(),
             r#created: Default::default(),

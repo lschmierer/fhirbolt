@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-03 by fhirbolt-codegen v0.7.0
 #[doc = "A value for the characteristic."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum ManufacturedItemDefinitionPropertyValue {
@@ -24,17 +24,17 @@ pub struct ManufacturedItemDefinitionProperty {
     #[doc = "A value for the characteristic."]
     pub r#value: Option<ManufacturedItemDefinitionPropertyValue>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for ManufacturedItemDefinitionProperty {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#type: {
-                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#type: Box::new(super::super::types::CodeableConcept {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
             r#value: Default::default(),
         }
     }
@@ -73,6 +73,7 @@ pub struct ManufacturedItemDefinition {
     #[doc = "General characteristics of this item."]
     pub r#property: Vec<ManufacturedItemDefinitionProperty>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for ManufacturedItemDefinition {
     fn default() -> Self {
         Self {
@@ -85,16 +86,14 @@ impl Default for ManufacturedItemDefinition {
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
             r#identifier: Default::default(),
-            r#status: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#status: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
-            r#manufactured_dose_form: {
-                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#manufactured_dose_form: Box::new(super::super::types::CodeableConcept {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
             r#unit_of_presentation: Default::default(),
             r#manufacturer: Default::default(),
             r#ingredient: Default::default(),

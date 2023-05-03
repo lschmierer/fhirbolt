@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-03 by fhirbolt-codegen v0.7.0
 #[doc = "The date (and perhaps time) when the adverse event occurred."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum AdverseEventOccurrence {
@@ -62,6 +62,7 @@ pub struct AdverseEventParticipant {
     #[doc = "Indicates who or what participated in the event."]
     pub r#actor: Box<super::super::types::Reference>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for AdverseEventParticipant {
     fn default() -> Self {
         Self {
@@ -69,11 +70,10 @@ impl Default for AdverseEventParticipant {
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
             r#function: Default::default(),
-            r#actor: {
-                let mut default: Box<super::super::types::Reference> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#actor: Box::new(super::super::types::Reference {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
         }
     }
 }
@@ -93,6 +93,7 @@ pub struct AdverseEventSuspectEntityCausality {
     #[doc = "The author of the information on the possible cause of the event."]
     pub r#author: Option<Box<super::super::types::Reference>>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for AdverseEventSuspectEntityCausality {
     fn default() -> Self {
         Self {
@@ -119,6 +120,7 @@ pub struct AdverseEventSuspectEntity {
     #[doc = "Information on the possible cause of the event."]
     pub r#causality: Option<AdverseEventSuspectEntityCausality>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for AdverseEventSuspectEntity {
     fn default() -> Self {
         Self {
@@ -142,6 +144,7 @@ pub struct AdverseEventContributingFactor {
     #[doc = "The item that is suspected to have increased the probability or severity of the adverse event."]
     pub r#item: AdverseEventContributingFactorItem,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for AdverseEventContributingFactor {
     fn default() -> Self {
         Self {
@@ -164,6 +167,7 @@ pub struct AdverseEventPreventiveAction {
     #[doc = "The action that contributed to avoiding the adverse event."]
     pub r#item: AdverseEventPreventiveActionItem,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for AdverseEventPreventiveAction {
     fn default() -> Self {
         Self {
@@ -186,6 +190,7 @@ pub struct AdverseEventMitigatingAction {
     #[doc = "The ameliorating action taken after the adverse event occured in order to reduce the extent of harm."]
     pub r#item: AdverseEventMitigatingActionItem,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for AdverseEventMitigatingAction {
     fn default() -> Self {
         Self {
@@ -208,6 +213,7 @@ pub struct AdverseEventSupportingInfo {
     #[doc = "Relevant past history for the subject. In a clinical care context, an example being a patient had an adverse event following a pencillin administration and the patient had a previously documented penicillin allergy. In a clinical trials context, an example is a bunion or rash that was present prior to the study. Additionally, the supporting item can be a document that is relevant to this instance of the adverse event that is not part of the subject's medical history. For example, a clinical note, staff list, or material safety data sheet (MSDS).  Supporting information is not a contributing factor, preventive action, or mitigating action."]
     pub r#item: AdverseEventSupportingInfoItem,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for AdverseEventSupportingInfo {
     fn default() -> Self {
         Self {
@@ -286,6 +292,7 @@ pub struct AdverseEvent {
     #[doc = "Comments made about the adverse event by the performer, subject or other participants."]
     pub r#note: Vec<super::super::types::Annotation>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for AdverseEvent {
     fn default() -> Self {
         Self {
@@ -298,23 +305,20 @@ impl Default for AdverseEvent {
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
             r#identifier: Default::default(),
-            r#status: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#status: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
-            r#actuality: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#actuality: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#category: Default::default(),
             r#code: Default::default(),
-            r#subject: {
-                let mut default: Box<super::super::types::Reference> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#subject: Box::new(super::super::types::Reference {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
             r#encounter: Default::default(),
             r#occurrence: Default::default(),
             r#detected: Default::default(),

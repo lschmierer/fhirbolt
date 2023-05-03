@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-03 by fhirbolt-codegen v0.7.0
 #[doc = "Record details about an anatomical structure.  This resource may be used when a coded concept does not provide the necessary detail needed for the use case."]
 #[derive(Debug, Clone, PartialEq)]
 pub struct BodyStructure {
@@ -35,6 +35,7 @@ pub struct BodyStructure {
     #[doc = "The person to which the body site belongs."]
     pub r#patient: Box<super::super::types::Reference>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for BodyStructure {
     fn default() -> Self {
         Self {
@@ -53,11 +54,10 @@ impl Default for BodyStructure {
             r#location_qualifier: Default::default(),
             r#description: Default::default(),
             r#image: Default::default(),
-            r#patient: {
-                let mut default: Box<super::super::types::Reference> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#patient: Box::new(super::super::types::Reference {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
         }
     }
 }

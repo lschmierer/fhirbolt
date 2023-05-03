@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-03 by fhirbolt-codegen v0.7.0
 #[doc = "Base StructureDefinition for oid type: An OID represented as a URI"]
 #[derive(Debug, Clone, PartialEq)]
 pub struct Oid {
@@ -9,6 +9,7 @@ pub struct Oid {
     #[doc = "Primitive value for oid"]
     pub r#value: Option<std::string::String>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for Oid {
     fn default() -> Self {
         Self {

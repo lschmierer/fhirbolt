@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-03 by fhirbolt-codegen v0.7.0
 #[doc = "The analysis event or other GenomicStudy that generated this input file."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum GenomicStudyAnalysisInputGeneratedBy {
@@ -23,6 +23,7 @@ pub struct GenomicStudyAnalysisInput {
     #[doc = "The analysis event or other GenomicStudy that generated this input file."]
     pub r#generated_by: Option<GenomicStudyAnalysisInputGeneratedBy>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for GenomicStudyAnalysisInput {
     fn default() -> Self {
         Self {
@@ -49,6 +50,7 @@ pub struct GenomicStudyAnalysisOutput {
     #[doc = "Type of output data, e.g., VCF, MAF, or BAM."]
     pub r#type: Option<Box<super::super::types::CodeableConcept>>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for GenomicStudyAnalysisOutput {
     fn default() -> Self {
         Self {
@@ -74,6 +76,7 @@ pub struct GenomicStudyAnalysisPerformer {
     #[doc = "Role of the actor for this analysis."]
     pub r#role: Option<Box<super::super::types::CodeableConcept>>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for GenomicStudyAnalysisPerformer {
     fn default() -> Self {
         Self {
@@ -99,6 +102,7 @@ pub struct GenomicStudyAnalysisDevice {
     #[doc = "Specific function for the device used for the analysis."]
     pub r#function: Option<Box<super::super::types::CodeableConcept>>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for GenomicStudyAnalysisDevice {
     fn default() -> Self {
         Self {
@@ -156,6 +160,7 @@ pub struct GenomicStudyAnalysis {
     #[doc = "Devices used for the analysis (e.g., instruments, software), with settings and parameters."]
     pub r#device: Vec<GenomicStudyAnalysisDevice>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for GenomicStudyAnalysis {
     fn default() -> Self {
         Self {
@@ -233,6 +238,7 @@ pub struct GenomicStudy {
     #[doc = "The details about a specific analysis that was performed in this GenomicStudy."]
     pub r#analysis: Vec<GenomicStudyAnalysis>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for GenomicStudy {
     fn default() -> Self {
         Self {
@@ -245,17 +251,15 @@ impl Default for GenomicStudy {
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
             r#identifier: Default::default(),
-            r#status: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#status: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#type: Default::default(),
-            r#subject: {
-                let mut default: Box<super::super::types::Reference> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#subject: Box::new(super::super::types::Reference {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
             r#encounter: Default::default(),
             r#start_date: Default::default(),
             r#based_on: Default::default(),

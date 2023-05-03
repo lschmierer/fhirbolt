@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-03 by fhirbolt-codegen v0.7.0
 #[doc = "A value to use if there is no existing value in the source object."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum StructureMapGroupRuleSourceDefaultValue {
@@ -84,21 +84,20 @@ pub struct StructureMapStructure {
     #[doc = "Documentation that describes how the structure is used in the mapping."]
     pub r#documentation: Option<super::super::types::String>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for StructureMapStructure {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#url: {
-                let mut default: super::super::types::Canonical = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#url: super::super::types::Canonical {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
-            r#mode: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#mode: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#alias: Default::default(),
             r#documentation: Default::default(),
@@ -123,22 +122,21 @@ pub struct StructureMapGroupInput {
     #[doc = "Documentation for this instance of data."]
     pub r#documentation: Option<super::super::types::String>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for StructureMapGroupInput {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#name: {
-                let mut default: super::super::types::Id = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#name: super::super::types::Id {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#type: Default::default(),
-            r#mode: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#mode: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#documentation: Default::default(),
         }
@@ -176,16 +174,16 @@ pub struct StructureMapGroupRuleSource {
     #[doc = "A FHIRPath expression which specifies a message to put in the transform log when content matching the source rule is found."]
     pub r#log_message: Option<super::super::types::String>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for StructureMapGroupRuleSource {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#context: {
-                let mut default: super::super::types::Id = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#context: super::super::types::Id {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#min: Default::default(),
             r#max: Default::default(),
@@ -212,6 +210,7 @@ pub struct StructureMapGroupRuleTargetParameter {
     #[doc = "Parameter value - variable or literal."]
     pub r#value: StructureMapGroupRuleTargetParameterValue,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for StructureMapGroupRuleTargetParameter {
     fn default() -> Self {
         Self {
@@ -248,6 +247,7 @@ pub struct StructureMapGroupRuleTarget {
     #[doc = "Parameters to the transform."]
     pub r#parameter: Vec<StructureMapGroupRuleTargetParameter>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for StructureMapGroupRuleTarget {
     fn default() -> Self {
         Self {
@@ -279,16 +279,16 @@ pub struct StructureMapGroupRuleDependent {
     #[doc = "Variable to pass to the rule or group."]
     pub r#variable: Vec<super::super::types::String>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for StructureMapGroupRuleDependent {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#name: {
-                let mut default: super::super::types::Id = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#name: super::super::types::Id {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#variable: Default::default(),
         }
@@ -316,16 +316,16 @@ pub struct StructureMapGroupRule {
     #[doc = "Documentation for this instance of data."]
     pub r#documentation: Option<super::super::types::String>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for StructureMapGroupRule {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#name: {
-                let mut default: super::super::types::Id = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#name: super::super::types::Id {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#source: Default::default(),
             r#target: Default::default(),
@@ -357,22 +357,21 @@ pub struct StructureMapGroup {
     #[doc = "Transform Rule from source to target."]
     pub r#rule: Vec<StructureMapGroupRule>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for StructureMapGroup {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#name: {
-                let mut default: super::super::types::Id = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#name: super::super::types::Id {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#extends: Default::default(),
-            r#type_mode: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#type_mode: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#documentation: Default::default(),
             r#input: Default::default(),
@@ -436,6 +435,7 @@ pub struct StructureMap {
     #[doc = "Organizes the mapping into manageable chunks for human review/ease of maintenance."]
     pub r#group: Vec<StructureMapGroup>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for StructureMap {
     fn default() -> Self {
         Self {
@@ -447,23 +447,20 @@ impl Default for StructureMap {
             r#contained: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#url: {
-                let mut default: super::super::types::Uri = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#url: super::super::types::Uri {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#identifier: Default::default(),
             r#version: Default::default(),
-            r#name: {
-                let mut default: super::super::types::String = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#name: super::super::types::String {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#title: Default::default(),
-            r#status: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#status: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#experimental: Default::default(),
             r#date: Default::default(),

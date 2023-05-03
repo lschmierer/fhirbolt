@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-03 by fhirbolt-codegen v0.7.0
 #[doc = "Date of procedure."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum MedicinalProductAuthorizationProcedureDate {
@@ -27,6 +27,7 @@ pub struct MedicinalProductAuthorizationJurisdictionalAuthorization {
     #[doc = "The start and expected end date of the authorization."]
     pub r#validity_period: Option<Box<super::super::types::Period>>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for MedicinalProductAuthorizationJurisdictionalAuthorization {
     fn default() -> Self {
         Self {
@@ -59,6 +60,7 @@ pub struct MedicinalProductAuthorizationProcedure {
     #[doc = "Applcations submitted to obtain a marketing authorization."]
     pub r#application: Vec<MedicinalProductAuthorizationProcedure>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for MedicinalProductAuthorizationProcedure {
     fn default() -> Self {
         Self {
@@ -66,11 +68,10 @@ impl Default for MedicinalProductAuthorizationProcedure {
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
             r#identifier: Default::default(),
-            r#type: {
-                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#type: Box::new(super::super::types::CodeableConcept {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
             r#date: Default::default(),
             r#application: Default::default(),
         }
@@ -129,6 +130,7 @@ pub struct MedicinalProductAuthorization {
     #[doc = "The regulatory procedure for granting or amending a marketing authorization."]
     pub r#procedure: Option<MedicinalProductAuthorizationProcedure>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for MedicinalProductAuthorization {
     fn default() -> Self {
         Self {

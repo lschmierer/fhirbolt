@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-03 by fhirbolt-codegen v0.7.0
 #[doc = "The interval of time during which it is being asserted that the patient is/was consuming the food or fluid."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum NutritionIntakeOccurrence {
@@ -39,22 +39,21 @@ pub struct NutritionIntakeConsumedItem {
     #[doc = "Document the reason the food or fluid was not consumed, such as refused, held, etc."]
     pub r#not_consumed_reason: Option<Box<super::super::types::CodeableConcept>>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for NutritionIntakeConsumedItem {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#type: {
-                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
-            r#nutrition_product: {
-                let mut default: Box<super::super::types::CodeableReference> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#type: Box::new(super::super::types::CodeableConcept {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
+            r#nutrition_product: Box::new(super::super::types::CodeableReference {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
             r#schedule: Default::default(),
             r#amount: Default::default(),
             r#rate: Default::default(),
@@ -77,22 +76,21 @@ pub struct NutritionIntakeIngredientLabel {
     #[doc = "Total amount of nutrient consumed."]
     pub r#amount: Box<super::super::types::Quantity>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for NutritionIntakeIngredientLabel {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#nutrient: {
-                let mut default: Box<super::super::types::CodeableReference> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
-            r#amount: {
-                let mut default: Box<super::super::types::Quantity> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#nutrient: Box::new(super::super::types::CodeableReference {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
+            r#amount: Box::new(super::super::types::Quantity {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
         }
     }
 }
@@ -110,6 +108,7 @@ pub struct NutritionIntakePerformer {
     #[doc = "Who performed the intake."]
     pub r#actor: Box<super::super::types::Reference>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for NutritionIntakePerformer {
     fn default() -> Self {
         Self {
@@ -117,11 +116,10 @@ impl Default for NutritionIntakePerformer {
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
             r#function: Default::default(),
-            r#actor: {
-                let mut default: Box<super::super::types::Reference> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#actor: Box::new(super::super::types::Reference {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
         }
     }
 }
@@ -185,6 +183,7 @@ pub struct NutritionIntake {
     #[doc = "Provides extra information about the Nutrition Intake that is not conveyed by the other attributes."]
     pub r#note: Vec<super::super::types::Annotation>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for NutritionIntake {
     fn default() -> Self {
         Self {
@@ -201,18 +200,16 @@ impl Default for NutritionIntake {
             r#instantiates_uri: Default::default(),
             r#based_on: Default::default(),
             r#part_of: Default::default(),
-            r#status: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#status: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#status_reason: Default::default(),
             r#code: Default::default(),
-            r#subject: {
-                let mut default: Box<super::super::types::Reference> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#subject: Box::new(super::super::types::Reference {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
             r#encounter: Default::default(),
             r#occurrence: Default::default(),
             r#recorded: Default::default(),

@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-03 by fhirbolt-codegen v0.7.0
 #[doc = "Identifies which record considered as the reference to the same real-world occurrence as well as how the items should be evaluated within the collection of linked items."]
 #[derive(Debug, Clone, PartialEq)]
 pub struct LinkageItem {
@@ -13,22 +13,21 @@ pub struct LinkageItem {
     #[doc = "The resource instance being linked as part of the group."]
     pub r#resource: Box<super::super::types::Reference>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for LinkageItem {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#type: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#type: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
-            r#resource: {
-                let mut default: Box<super::super::types::Reference> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#resource: Box::new(super::super::types::Reference {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
         }
     }
 }
@@ -58,6 +57,7 @@ pub struct Linkage {
     #[doc = "Identifies which record considered as the reference to the same real-world occurrence as well as how the items should be evaluated within the collection of linked items."]
     pub r#item: Vec<LinkageItem>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for Linkage {
     fn default() -> Self {
         Self {

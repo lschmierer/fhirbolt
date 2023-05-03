@@ -11,11 +11,11 @@ pub trait SerializeResource: Resource {
     where
         Self: 'a;
 
-    fn serialization_context<'a>(
-        &'a self,
+    fn serialization_context(
+        &self,
         config: SerializationConfig,
         output_json: bool,
-    ) -> Self::Context<'a>;
+    ) -> Self::Context<'_>;
 }
 
 impl<T> SerializeResource for T
@@ -27,11 +27,11 @@ where
     where
         Self: 'a;
 
-    fn serialization_context<'a>(
-        &'a self,
+    fn serialization_context(
+        &self,
         config: SerializationConfig,
         output_json: bool,
-    ) -> Self::Context<'a> {
+    ) -> Self::Context<'_> {
         SerializationContext::new(self, config, output_json, T::FHIR_RELEASE)
     }
 }

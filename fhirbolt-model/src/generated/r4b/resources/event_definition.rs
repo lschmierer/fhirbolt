@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-03 by fhirbolt-codegen v0.7.0
 #[doc = "A code or group definition that describes the intended subject of the event definition."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum EventDefinitionSubject {
@@ -83,6 +83,7 @@ pub struct EventDefinition {
     #[doc = "The trigger element defines when the event occurs. If more than one trigger condition is specified, the event fires whenever any one of the trigger conditions is met."]
     pub r#trigger: Vec<super::super::types::TriggerDefinition>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for EventDefinition {
     fn default() -> Self {
         Self {
@@ -100,10 +101,9 @@ impl Default for EventDefinition {
             r#name: Default::default(),
             r#title: Default::default(),
             r#subtitle: Default::default(),
-            r#status: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#status: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#experimental: Default::default(),
             r#subject: Default::default(),

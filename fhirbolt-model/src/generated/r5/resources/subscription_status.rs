@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-03 by fhirbolt-codegen v0.7.0
 #[doc = "Detailed information about events relevant to this subscription notification."]
 #[derive(Debug, Clone, PartialEq)]
 pub struct SubscriptionStatusNotificationEvent {
@@ -17,16 +17,16 @@ pub struct SubscriptionStatusNotificationEvent {
     #[doc = "Additional context information for this event. Generally, this will contain references to additional resources included with the event (e.g., the Patient relevant to an Encounter), however it MAY refer to non-FHIR objects."]
     pub r#additional_context: Vec<super::super::types::Reference>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for SubscriptionStatusNotificationEvent {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#event_number: {
-                let mut default: super::super::types::Integer64 = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#event_number: super::super::types::Integer64 {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#timestamp: Default::default(),
             r#focus: Default::default(),
@@ -68,6 +68,7 @@ pub struct SubscriptionStatus {
     #[doc = "A record of errors that occurred when the server processed a notification."]
     pub r#error: Vec<super::super::types::CodeableConcept>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for SubscriptionStatus {
     fn default() -> Self {
         Self {
@@ -80,18 +81,16 @@ impl Default for SubscriptionStatus {
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
             r#status: Default::default(),
-            r#type: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#type: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#events_since_subscription_start: Default::default(),
             r#notification_event: Default::default(),
-            r#subscription: {
-                let mut default: Box<super::super::types::Reference> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#subscription: Box::new(super::super::types::Reference {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
             r#topic: Default::default(),
             r#error: Default::default(),
         }

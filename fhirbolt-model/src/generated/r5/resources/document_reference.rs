@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-03 by fhirbolt-codegen v0.7.0
 #[doc = "Code|uri|canonical."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum DocumentReferenceContentProfileValue {
@@ -24,17 +24,17 @@ pub struct DocumentReferenceAttester {
     #[doc = "Who attested the document in the specified way."]
     pub r#party: Option<Box<super::super::types::Reference>>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for DocumentReferenceAttester {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#mode: {
-                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#mode: Box::new(super::super::types::CodeableConcept {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
             r#time: Default::default(),
             r#party: Default::default(),
         }
@@ -54,22 +54,21 @@ pub struct DocumentReferenceRelatesTo {
     #[doc = "The target document of this relationship."]
     pub r#target: Box<super::super::types::Reference>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for DocumentReferenceRelatesTo {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#code: {
-                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
-            r#target: {
-                let mut default: Box<super::super::types::Reference> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#code: Box::new(super::super::types::CodeableConcept {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
+            r#target: Box::new(super::super::types::Reference {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
         }
     }
 }
@@ -85,6 +84,7 @@ pub struct DocumentReferenceContentProfile {
     #[doc = "Code|uri|canonical."]
     pub r#value: DocumentReferenceContentProfileValue,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for DocumentReferenceContentProfile {
     fn default() -> Self {
         Self {
@@ -109,17 +109,17 @@ pub struct DocumentReferenceContent {
     #[doc = "An identifier of the document constraints, encoding, structure, and template that the document conforms to beyond the base format indicated in the mimeType."]
     pub r#profile: Vec<DocumentReferenceContentProfile>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for DocumentReferenceContent {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#attachment: {
-                let mut default: Box<super::super::types::Attachment> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#attachment: Box::new(super::super::types::Attachment {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
             r#profile: Default::default(),
         }
     }
@@ -190,6 +190,7 @@ pub struct DocumentReference {
     #[doc = "The document and format referenced.  If there are multiple content element repetitions, these must all represent the same document in different format, or attachment metadata."]
     pub r#content: Vec<DocumentReferenceContent>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for DocumentReference {
     fn default() -> Self {
         Self {
@@ -204,10 +205,9 @@ impl Default for DocumentReference {
             r#identifier: Default::default(),
             r#version: Default::default(),
             r#based_on: Default::default(),
-            r#status: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#status: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#doc_status: Default::default(),
             r#modality: Default::default(),

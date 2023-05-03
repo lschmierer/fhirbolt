@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-03 by fhirbolt-codegen v0.7.0
 #[doc = "Nominal position of the recommended dose in a series (e.g. dose 2 is the next recommended dose)."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum ImmunizationRecommendationRecommendationDoseNumber {
@@ -29,21 +29,20 @@ pub struct ImmunizationRecommendationRecommendationDateCriterion {
     #[doc = "The date whose meaning is specified by dateCriterion.code."]
     pub r#value: super::super::types::DateTime,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for ImmunizationRecommendationRecommendationDateCriterion {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#code: {
-                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
-            r#value: {
-                let mut default: super::super::types::DateTime = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#code: Box::new(super::super::types::CodeableConcept {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
+            r#value: super::super::types::DateTime {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
         }
     }
@@ -82,6 +81,7 @@ pub struct ImmunizationRecommendationRecommendation {
     #[doc = "Patient Information that supports the status and recommendation.  This includes patient observations, adverse reactions and allergy/intolerance information."]
     pub r#supporting_patient_information: Vec<super::super::types::Reference>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for ImmunizationRecommendationRecommendation {
     fn default() -> Self {
         Self {
@@ -91,11 +91,10 @@ impl Default for ImmunizationRecommendationRecommendation {
             r#vaccine_code: Default::default(),
             r#target_disease: Default::default(),
             r#contraindicated_vaccine_code: Default::default(),
-            r#forecast_status: {
-                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#forecast_status: Box::new(super::super::types::CodeableConcept {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
             r#forecast_reason: Default::default(),
             r#date_criterion: Default::default(),
             r#description: Default::default(),
@@ -137,6 +136,7 @@ pub struct ImmunizationRecommendation {
     #[doc = "Vaccine administration recommendations."]
     pub r#recommendation: Vec<ImmunizationRecommendationRecommendation>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for ImmunizationRecommendation {
     fn default() -> Self {
         Self {
@@ -149,15 +149,13 @@ impl Default for ImmunizationRecommendation {
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
             r#identifier: Default::default(),
-            r#patient: {
-                let mut default: Box<super::super::types::Reference> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
-            r#date: {
-                let mut default: super::super::types::DateTime = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#patient: Box::new(super::super::types::Reference {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
+            r#date: super::super::types::DateTime {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#authority: Default::default(),
             r#recommendation: Default::default(),

@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-03 by fhirbolt-codegen v0.7.0
 #[doc = "The value of this property."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum CodeSystemConceptPropertyValue {
@@ -30,23 +30,22 @@ pub struct CodeSystemFilter {
     #[doc = "A description of what the value for the filter should be."]
     pub r#value: super::super::types::String,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for CodeSystemFilter {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#code: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#code: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#description: Default::default(),
             r#operator: Default::default(),
-            r#value: {
-                let mut default: super::super::types::String = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#value: super::super::types::String {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
         }
     }
@@ -69,23 +68,22 @@ pub struct CodeSystemProperty {
     #[doc = "The type of the property value. Properties of type \"code\" contain a code defined by the code system (e.g. a reference to another defined concept)."]
     pub r#type: super::super::types::Code,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for CodeSystemProperty {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#code: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#code: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#uri: Default::default(),
             r#description: Default::default(),
-            r#type: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#type: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
         }
     }
@@ -106,6 +104,7 @@ pub struct CodeSystemConceptDesignation {
     #[doc = "The text value for this designation."]
     pub r#value: super::super::types::String,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for CodeSystemConceptDesignation {
     fn default() -> Self {
         Self {
@@ -114,10 +113,9 @@ impl Default for CodeSystemConceptDesignation {
             r#modifier_extension: Default::default(),
             r#language: Default::default(),
             r#use: Default::default(),
-            r#value: {
-                let mut default: super::super::types::String = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#value: super::super::types::String {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
         }
     }
@@ -136,16 +134,16 @@ pub struct CodeSystemConceptProperty {
     #[doc = "The value of this property."]
     pub r#value: CodeSystemConceptPropertyValue,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for CodeSystemConceptProperty {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#code: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#code: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#value: Default::default(),
         }
@@ -173,16 +171,16 @@ pub struct CodeSystemConcept {
     #[doc = "Defines children of a concept to produce a hierarchy of concepts. The nature of the relationships is variable (is-a/contains/categorizes) - see hierarchyMeaning."]
     pub r#concept: Vec<CodeSystemConcept>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for CodeSystemConcept {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#code: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#code: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#display: Default::default(),
             r#definition: Default::default(),
@@ -264,6 +262,7 @@ pub struct CodeSystem {
     #[doc = "Concepts that are in the code system. The concept definitions are inherently hierarchical, but the definitions must be consulted to determine what the meanings of the hierarchical relationships are."]
     pub r#concept: Vec<CodeSystemConcept>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for CodeSystem {
     fn default() -> Self {
         Self {
@@ -280,10 +279,9 @@ impl Default for CodeSystem {
             r#version: Default::default(),
             r#name: Default::default(),
             r#title: Default::default(),
-            r#status: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#status: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#experimental: Default::default(),
             r#date: Default::default(),
@@ -299,10 +297,9 @@ impl Default for CodeSystem {
             r#hierarchy_meaning: Default::default(),
             r#compositional: Default::default(),
             r#version_needed: Default::default(),
-            r#content: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#content: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#supplements: Default::default(),
             r#count: Default::default(),

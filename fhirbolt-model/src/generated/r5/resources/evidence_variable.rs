@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-03 by fhirbolt-codegen v0.7.0
 #[doc = "Indicates the mechanism used to compare versions to determine which is more current."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum EvidenceVariableVersionAlgorithm {
@@ -74,17 +74,17 @@ pub struct EvidenceVariableCharacteristicDefinitionByTypeAndValue {
     #[doc = "Defines the reference point for comparison when valueQuantity or valueRange is not compared to zero."]
     pub r#offset: Option<Box<super::super::types::CodeableConcept>>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for EvidenceVariableCharacteristicDefinitionByTypeAndValue {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#type: {
-                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#type: Box::new(super::super::types::CodeableConcept {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
             r#method: Default::default(),
             r#device: Default::default(),
             r#value: Default::default(),
@@ -108,16 +108,16 @@ pub struct EvidenceVariableCharacteristicDefinitionByCombination {
     #[doc = "A defining factor of the characteristic."]
     pub r#characteristic: Vec<EvidenceVariableCharacteristic>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for EvidenceVariableCharacteristicDefinitionByCombination {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#code: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#code: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#threshold: Default::default(),
             r#characteristic: Default::default(),
@@ -144,6 +144,7 @@ pub struct EvidenceVariableCharacteristicTimeFromEvent {
     #[doc = "Used to express the observation within a period before and/or after the event."]
     pub r#range: Option<Box<super::super::types::Range>>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for EvidenceVariableCharacteristicTimeFromEvent {
     fn default() -> Self {
         Self {
@@ -197,6 +198,7 @@ pub struct EvidenceVariableCharacteristic {
     #[doc = "Timing in which the characteristic is determined."]
     pub r#time_from_event: Vec<EvidenceVariableCharacteristicTimeFromEvent>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for EvidenceVariableCharacteristic {
     fn default() -> Self {
         Self {
@@ -234,6 +236,7 @@ pub struct EvidenceVariableCategory {
     #[doc = "Definition of the grouping."]
     pub r#value: Option<EvidenceVariableCategoryValue>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for EvidenceVariableCategory {
     fn default() -> Self {
         Self {
@@ -325,6 +328,7 @@ pub struct EvidenceVariable {
     #[doc = "A grouping for ordinal or polychotomous variables."]
     pub r#category: Vec<EvidenceVariableCategory>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for EvidenceVariable {
     fn default() -> Self {
         Self {
@@ -343,10 +347,9 @@ impl Default for EvidenceVariable {
             r#name: Default::default(),
             r#title: Default::default(),
             r#short_title: Default::default(),
-            r#status: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#status: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#experimental: Default::default(),
             r#date: Default::default(),

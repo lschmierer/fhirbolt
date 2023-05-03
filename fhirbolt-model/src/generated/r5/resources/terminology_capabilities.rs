@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-03 by fhirbolt-codegen v0.7.0
 #[doc = "Indicates the mechanism used to compare versions to determine which is more current."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum TerminologyCapabilitiesVersionAlgorithm {
@@ -21,16 +21,16 @@ pub struct TerminologyCapabilitiesSoftware {
     #[doc = "The version identifier for the software covered by this statement."]
     pub r#version: Option<super::super::types::String>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for TerminologyCapabilitiesSoftware {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#name: {
-                let mut default: super::super::types::String = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#name: super::super::types::String {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#version: Default::default(),
         }
@@ -50,16 +50,16 @@ pub struct TerminologyCapabilitiesImplementation {
     #[doc = "An absolute base URL for the implementation."]
     pub r#url: Option<super::super::types::Url>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for TerminologyCapabilitiesImplementation {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#description: {
-                let mut default: super::super::types::String = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#description: super::super::types::String {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#url: Default::default(),
         }
@@ -79,16 +79,16 @@ pub struct TerminologyCapabilitiesCodeSystemVersionFilter {
     #[doc = "Operations supported for the property."]
     pub r#op: Vec<super::super::types::Code>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for TerminologyCapabilitiesCodeSystemVersionFilter {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#code: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#code: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#op: Default::default(),
         }
@@ -116,6 +116,7 @@ pub struct TerminologyCapabilitiesCodeSystemVersion {
     #[doc = "Properties supported for $lookup."]
     pub r#property: Vec<super::super::types::Code>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for TerminologyCapabilitiesCodeSystemVersion {
     fn default() -> Self {
         Self {
@@ -149,6 +150,7 @@ pub struct TerminologyCapabilitiesCodeSystem {
     #[doc = "True if subsumption is supported for this version of the code system."]
     pub r#subsumption: Option<super::super::types::Boolean>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for TerminologyCapabilitiesCodeSystem {
     fn default() -> Self {
         Self {
@@ -157,10 +159,9 @@ impl Default for TerminologyCapabilitiesCodeSystem {
             r#modifier_extension: Default::default(),
             r#uri: Default::default(),
             r#version: Default::default(),
-            r#content: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#content: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#subsumption: Default::default(),
         }
@@ -180,16 +181,16 @@ pub struct TerminologyCapabilitiesExpansionParameter {
     #[doc = "Description of support for parameter."]
     pub r#documentation: Option<super::super::types::String>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for TerminologyCapabilitiesExpansionParameter {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#name: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#name: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#documentation: Default::default(),
         }
@@ -215,6 +216,7 @@ pub struct TerminologyCapabilitiesExpansion {
     #[doc = "Documentation about text searching works."]
     pub r#text_filter: Option<super::super::types::Markdown>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for TerminologyCapabilitiesExpansion {
     fn default() -> Self {
         Self {
@@ -241,16 +243,16 @@ pub struct TerminologyCapabilitiesValidateCode {
     #[doc = "Whether translations are validated."]
     pub r#translations: super::super::types::Boolean,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for TerminologyCapabilitiesValidateCode {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#translations: {
-                let mut default: super::super::types::Boolean = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#translations: super::super::types::Boolean {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
         }
     }
@@ -267,16 +269,16 @@ pub struct TerminologyCapabilitiesTranslation {
     #[doc = "Whether the client must identify the map."]
     pub r#needs_map: super::super::types::Boolean,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for TerminologyCapabilitiesTranslation {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#needs_map: {
-                let mut default: super::super::types::Boolean = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#needs_map: super::super::types::Boolean {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
         }
     }
@@ -293,6 +295,7 @@ pub struct TerminologyCapabilitiesClosure {
     #[doc = "If cross-system closure is supported."]
     pub r#translation: Option<super::super::types::Boolean>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for TerminologyCapabilitiesClosure {
     fn default() -> Self {
         Self {
@@ -377,6 +380,7 @@ pub struct TerminologyCapabilities {
     #[doc = "Whether the $closure operation is supported."]
     pub r#closure: Option<TerminologyCapabilitiesClosure>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for TerminologyCapabilities {
     fn default() -> Self {
         Self {
@@ -394,16 +398,14 @@ impl Default for TerminologyCapabilities {
             r#version_algorithm: Default::default(),
             r#name: Default::default(),
             r#title: Default::default(),
-            r#status: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#status: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#experimental: Default::default(),
-            r#date: {
-                let mut default: super::super::types::DateTime = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#date: super::super::types::DateTime {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#publisher: Default::default(),
             r#contact: Default::default(),
@@ -413,10 +415,9 @@ impl Default for TerminologyCapabilities {
             r#purpose: Default::default(),
             r#copyright: Default::default(),
             r#copyright_label: Default::default(),
-            r#kind: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#kind: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#software: Default::default(),
             r#implementation: Default::default(),

@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-03 by fhirbolt-codegen v0.7.0
 #[doc = "Base StructureDefinition for uuid type: A UUID, represented as a URI"]
 #[derive(Debug, Clone, PartialEq)]
 pub struct Uuid {
@@ -9,6 +9,7 @@ pub struct Uuid {
     #[doc = "Primitive value for uuid"]
     pub r#value: Option<std::string::String>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for Uuid {
     fn default() -> Self {
         Self {

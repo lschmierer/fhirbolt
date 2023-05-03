@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-03 by fhirbolt-codegen v0.7.0
 #[doc = "Identifies all people and organizations who are expected to be involved in the care team."]
 #[derive(Debug, Clone, PartialEq)]
 pub struct CareTeamParticipant {
@@ -17,6 +17,7 @@ pub struct CareTeamParticipant {
     #[doc = "Indicates when the specific member or organization did (or is intended to) come into effect and end."]
     pub r#period: Option<Box<super::super::types::Period>>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for CareTeamParticipant {
     fn default() -> Self {
         Self {
@@ -76,6 +77,7 @@ pub struct CareTeam {
     #[doc = "Comments made about the CareTeam."]
     pub r#note: Vec<super::super::types::Annotation>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for CareTeam {
     fn default() -> Self {
         Self {

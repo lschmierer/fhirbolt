@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-03 by fhirbolt-codegen v0.7.0
 #[doc = "The point in time or period over which the subject was assessed."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum ClinicalImpressionEffective {
@@ -21,17 +21,17 @@ pub struct ClinicalImpressionInvestigation {
     #[doc = "A record of a specific investigation that was undertaken."]
     pub r#item: Vec<super::super::types::Reference>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for ClinicalImpressionInvestigation {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#code: {
-                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#code: Box::new(super::super::types::CodeableConcept {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
             r#item: Default::default(),
         }
     }
@@ -52,6 +52,7 @@ pub struct ClinicalImpressionFinding {
     #[doc = "Which investigations support finding or diagnosis."]
     pub r#basis: Option<super::super::types::String>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for ClinicalImpressionFinding {
     fn default() -> Self {
         Self {
@@ -124,6 +125,7 @@ pub struct ClinicalImpression {
     #[doc = "Commentary about the impression, typically recorded after the impression itself was made, though supplemental notes by the original author could also appear."]
     pub r#note: Vec<super::super::types::Annotation>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for ClinicalImpression {
     fn default() -> Self {
         Self {
@@ -136,19 +138,17 @@ impl Default for ClinicalImpression {
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
             r#identifier: Default::default(),
-            r#status: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#status: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#status_reason: Default::default(),
             r#code: Default::default(),
             r#description: Default::default(),
-            r#subject: {
-                let mut default: Box<super::super::types::Reference> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#subject: Box::new(super::super::types::Reference {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
             r#encounter: Default::default(),
             r#effective: Default::default(),
             r#date: Default::default(),

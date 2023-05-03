@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-03 by fhirbolt-codegen v0.7.0
 #[doc = "Defines an affiliation/assotiation/relationship between 2 distinct oganizations, that is not a part-of relationship/sub-division relationship.\n\nNeed to define relationships between organizations that are not sub-divisions of the same organization (part-of relationships)."]
 #[derive(Debug, Clone, PartialEq)]
 pub struct OrganizationAffiliation {
@@ -43,6 +43,7 @@ pub struct OrganizationAffiliation {
     #[doc = "Technical endpoints providing access to services operated for this role."]
     pub r#endpoint: Vec<super::super::types::Reference>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for OrganizationAffiliation {
     fn default() -> Self {
         Self {

@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-03 by fhirbolt-codegen v0.7.0
 #[doc = "The value of the device detail."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum SupplyRequestParameterValue {
@@ -32,6 +32,7 @@ pub struct SupplyRequestParameter {
     #[doc = "The value of the device detail."]
     pub r#value: Option<SupplyRequestParameterValue>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for SupplyRequestParameter {
     fn default() -> Self {
         Self {
@@ -95,6 +96,7 @@ pub struct SupplyRequest {
     #[doc = "Where the supply is destined to go."]
     pub r#deliver_to: Option<Box<super::super::types::Reference>>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for SupplyRequest {
     fn default() -> Self {
         Self {
@@ -112,16 +114,14 @@ impl Default for SupplyRequest {
             r#category: Default::default(),
             r#priority: Default::default(),
             r#deliver_for: Default::default(),
-            r#item: {
-                let mut default: Box<super::super::types::CodeableReference> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
-            r#quantity: {
-                let mut default: Box<super::super::types::Quantity> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#item: Box::new(super::super::types::CodeableReference {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
+            r#quantity: Box::new(super::super::types::Quantity {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
             r#parameter: Default::default(),
             r#occurrence: Default::default(),
             r#authored_on: Default::default(),

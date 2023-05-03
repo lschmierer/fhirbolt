@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-03 by fhirbolt-codegen v0.7.0
 #[doc = "Relationships that this document has with other document references that already exist."]
 #[derive(Debug, Clone, PartialEq)]
 pub struct DocumentReferenceRelatesTo {
@@ -13,22 +13,21 @@ pub struct DocumentReferenceRelatesTo {
     #[doc = "The target document of this relationship."]
     pub r#target: Box<super::super::types::Reference>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for DocumentReferenceRelatesTo {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#code: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#code: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
-            r#target: {
-                let mut default: Box<super::super::types::Reference> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#target: Box::new(super::super::types::Reference {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
         }
     }
 }
@@ -46,17 +45,17 @@ pub struct DocumentReferenceContent {
     #[doc = "An identifier of the document encoding, structure, and template that the document conforms to beyond the base format indicated in the mimeType."]
     pub r#format: Option<Box<super::super::types::Coding>>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for DocumentReferenceContent {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#attachment: {
-                let mut default: Box<super::super::types::Attachment> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#attachment: Box::new(super::super::types::Attachment {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
             r#format: Default::default(),
         }
     }
@@ -85,6 +84,7 @@ pub struct DocumentReferenceContext {
     #[doc = "Related identifiers or resources associated with the DocumentReference."]
     pub r#related: Vec<super::super::types::Reference>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for DocumentReferenceContext {
     fn default() -> Self {
         Self {
@@ -153,6 +153,7 @@ pub struct DocumentReference {
     #[doc = "The clinical context in which the document was prepared."]
     pub r#context: Option<DocumentReferenceContext>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for DocumentReference {
     fn default() -> Self {
         Self {
@@ -166,10 +167,9 @@ impl Default for DocumentReference {
             r#modifier_extension: Default::default(),
             r#master_identifier: Default::default(),
             r#identifier: Default::default(),
-            r#status: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#status: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#doc_status: Default::default(),
             r#type: Default::default(),

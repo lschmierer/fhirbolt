@@ -1,7 +1,7 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
-impl serde::ser::Serialize
-    for crate::context::ser::SerializationContext<&fhirbolt_model::r4b::types::Population>
-{
+// Generated on 2023-05-03 by fhirbolt-codegen v0.7.0
+use crate::{DeserializationContext, SerializationContext};
+use fhirbolt_model::r4b::types::Population;
+impl serde::ser::Serialize for SerializationContext<&Population> {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
         S: serde::ser::Serializer,
@@ -28,18 +28,19 @@ impl serde::ser::Serialize
                 state.serialize_entry("modifierExtension", ctx)
             })?;
         }
-        if let Some(some) = self.value.r#age.as_ref() {
-            match some {
-                fhirbolt_model::r4b::types::PopulationAge::Range(ref value) => {
-                    self.with_context(value, |ctx| state.serialize_entry("ageRange", ctx))?;
-                }
-                fhirbolt_model::r4b::types::PopulationAge::CodeableConcept(ref value) => {
-                    self.with_context(value, |ctx| {
-                        state.serialize_entry("ageCodeableConcept", ctx)
-                    })?;
-                }
-                fhirbolt_model::r4b::types::PopulationAge::Invalid => {
-                    return Err(serde::ser::Error::custom("age is invalid"))
+        {
+            use fhirbolt_model::r4b::types::PopulationAge as _Enum;
+            if let Some(some) = self.value.r#age.as_ref() {
+                match some {
+                    _Enum::Range(ref value) => {
+                        self.with_context(value, |ctx| state.serialize_entry("ageRange", ctx))?;
+                    }
+                    _Enum::CodeableConcept(ref value) => {
+                        self.with_context(value, |ctx| {
+                            state.serialize_entry("ageCodeableConcept", ctx)
+                        })?;
+                    }
+                    _Enum::Invalid => return Err(serde::ser::Error::custom("age is invalid")),
                 }
             }
         }
@@ -57,9 +58,7 @@ impl serde::ser::Serialize
         state.end()
     }
 }
-impl serde::ser::Serialize
-    for crate::context::ser::SerializationContext<&Box<fhirbolt_model::r4b::types::Population>>
-{
+impl serde::ser::Serialize for SerializationContext<&Box<Population>> {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
         S: serde::ser::Serializer,
@@ -67,9 +66,7 @@ impl serde::ser::Serialize
         self.with_context(self.value.as_ref(), |ctx| ctx.serialize(serializer))
     }
 }
-impl serde::ser::Serialize
-    for crate::context::ser::SerializationContext<&Vec<fhirbolt_model::r4b::types::Population>>
-{
+impl serde::ser::Serialize for SerializationContext<&Vec<Population>> {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
         S: serde::ser::Serializer,
@@ -82,28 +79,19 @@ impl serde::ser::Serialize
         seq_serializer.end()
     }
 }
-impl<'de> serde::de::DeserializeSeed<'de>
-    for &mut crate::context::de::DeserializationContext<fhirbolt_model::r4b::types::Population>
-{
-    type Value = fhirbolt_model::r4b::types::Population;
+impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Population> {
+    type Value = Population;
     fn deserialize<D>(self, deserializer: D) -> Result<Self::Value, D::Error>
     where
         D: serde::de::Deserializer<'de>,
     {
-        struct Visitor<'a>(
-            &'a mut crate::context::de::DeserializationContext<
-                fhirbolt_model::r4b::types::Population,
-            >,
-        );
+        struct Visitor<'a>(&'a mut DeserializationContext<Population>);
         impl<'de> serde::de::Visitor<'de> for Visitor<'_> {
-            type Value = fhirbolt_model::r4b::types::Population;
+            type Value = Population;
             fn expecting(&self, formatter: &mut std::fmt::Formatter) -> std::fmt::Result {
                 formatter.write_str("Population")
             }
-            fn visit_map<V>(
-                self,
-                mut map_access: V,
-            ) -> Result<fhirbolt_model::r4b::types::Population, V::Error>
+            fn visit_map<V>(self, mut map_access: V) -> Result<Population, V::Error>
             where
                 V: serde::de::MapAccess<'de>,
             {
@@ -166,12 +154,16 @@ impl<'de> serde::de::DeserializeSeed<'de>
                                 if r#extension.is_some() {
                                     return Err(serde::de::Error::duplicate_field("extension"));
                                 }
-                                r#extension = Some (map_access . next_value_seed (self . 0 . transmute :: < Vec < fhirbolt_model :: r4b :: types :: Extension >> ()) ?) ;
+                                let _context: &mut DeserializationContext<
+                                    Vec<fhirbolt_model::r4b::types::Extension>,
+                                > = self.0.transmute();
+                                r#extension = Some(map_access.next_value_seed(&mut *_context)?);
                             } else {
                                 let vec = r#extension.get_or_insert(Default::default());
-                                vec.push(map_access.next_value_seed(
-                                    self.0.transmute::<fhirbolt_model::r4b::types::Extension>(),
-                                )?);
+                                let _context: &mut DeserializationContext<
+                                    fhirbolt_model::r4b::types::Extension,
+                                > = self.0.transmute();
+                                vec.push(map_access.next_value_seed(&mut *_context)?);
                             }
                         }
                         Field::ModifierExtension => {
@@ -181,43 +173,60 @@ impl<'de> serde::de::DeserializeSeed<'de>
                                         "modifierExtension",
                                     ));
                                 }
-                                r#modifier_extension = Some (map_access . next_value_seed (self . 0 . transmute :: < Vec < fhirbolt_model :: r4b :: types :: Extension >> ()) ?) ;
+                                let _context: &mut DeserializationContext<
+                                    Vec<fhirbolt_model::r4b::types::Extension>,
+                                > = self.0.transmute();
+                                r#modifier_extension =
+                                    Some(map_access.next_value_seed(&mut *_context)?);
                             } else {
                                 let vec = r#modifier_extension.get_or_insert(Default::default());
-                                vec.push(map_access.next_value_seed(
-                                    self.0.transmute::<fhirbolt_model::r4b::types::Extension>(),
-                                )?);
+                                let _context: &mut DeserializationContext<
+                                    fhirbolt_model::r4b::types::Extension,
+                                > = self.0.transmute();
+                                vec.push(map_access.next_value_seed(&mut *_context)?);
                             }
                         }
                         Field::AgeRange => {
+                            use fhirbolt_model::r4b::types::PopulationAge as _Enum;
                             if r#age.is_some() {
                                 return Err(serde::de::Error::duplicate_field("ageRange"));
                             }
-                            r#age = Some(fhirbolt_model::r4b::types::PopulationAge::Range(
-                                map_access.next_value_seed(
-                                    self.0.transmute::<Box<fhirbolt_model::r4b::types::Range>>(),
-                                )?,
-                            ));
+                            let _context: &mut DeserializationContext<
+                                Box<fhirbolt_model::r4b::types::Range>,
+                            > = self.0.transmute();
+                            r#age = Some(_Enum::Range(map_access.next_value_seed(&mut *_context)?));
                         }
                         Field::AgeCodeableConcept => {
+                            use fhirbolt_model::r4b::types::PopulationAge as _Enum;
                             if r#age.is_some() {
                                 return Err(serde::de::Error::duplicate_field(
                                     "ageCodeableConcept",
                                 ));
                             }
-                            r#age = Some (fhirbolt_model :: r4b :: types :: PopulationAge :: CodeableConcept (map_access . next_value_seed (self . 0 . transmute :: < Box < fhirbolt_model :: r4b :: types :: CodeableConcept > > ()) ?)) ;
+                            let _context: &mut DeserializationContext<
+                                Box<fhirbolt_model::r4b::types::CodeableConcept>,
+                            > = self.0.transmute();
+                            r#age = Some(_Enum::CodeableConcept(
+                                map_access.next_value_seed(&mut *_context)?,
+                            ));
                         }
                         Field::Gender => {
                             if r#gender.is_some() {
                                 return Err(serde::de::Error::duplicate_field("gender"));
                             }
-                            r#gender = Some (map_access . next_value_seed (self . 0 . transmute :: < Box < fhirbolt_model :: r4b :: types :: CodeableConcept > > ()) ?) ;
+                            let _context: &mut DeserializationContext<
+                                Box<fhirbolt_model::r4b::types::CodeableConcept>,
+                            > = self.0.transmute();
+                            r#gender = Some(map_access.next_value_seed(&mut *_context)?);
                         }
                         Field::Race => {
                             if r#race.is_some() {
                                 return Err(serde::de::Error::duplicate_field("race"));
                             }
-                            r#race = Some (map_access . next_value_seed (self . 0 . transmute :: < Box < fhirbolt_model :: r4b :: types :: CodeableConcept > > ()) ?) ;
+                            let _context: &mut DeserializationContext<
+                                Box<fhirbolt_model::r4b::types::CodeableConcept>,
+                            > = self.0.transmute();
+                            r#race = Some(map_access.next_value_seed(&mut *_context)?);
                         }
                         Field::PhysiologicalCondition => {
                             if r#physiological_condition.is_some() {
@@ -225,7 +234,11 @@ impl<'de> serde::de::DeserializeSeed<'de>
                                     "physiologicalCondition",
                                 ));
                             }
-                            r#physiological_condition = Some (map_access . next_value_seed (self . 0 . transmute :: < Box < fhirbolt_model :: r4b :: types :: CodeableConcept > > ()) ?) ;
+                            let _context: &mut DeserializationContext<
+                                Box<fhirbolt_model::r4b::types::CodeableConcept>,
+                            > = self.0.transmute();
+                            r#physiological_condition =
+                                Some(map_access.next_value_seed(&mut *_context)?);
                         }
                         Field::Unknown(key) => {
                             if self.0.config.mode == crate::context::de::DeserializationMode::Strict
@@ -235,7 +248,7 @@ impl<'de> serde::de::DeserializeSeed<'de>
                         }
                     }
                 }
-                Ok(fhirbolt_model::r4b::types::Population {
+                Ok(Population {
                     r#id,
                     r#extension: r#extension.unwrap_or(vec![]),
                     r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
@@ -249,34 +262,26 @@ impl<'de> serde::de::DeserializeSeed<'de>
         deserializer.deserialize_map(Visitor(self))
     }
 }
-impl<'de> serde::de::DeserializeSeed<'de>
-    for &mut crate::context::de::DeserializationContext<Box<fhirbolt_model::r4b::types::Population>>
-{
-    type Value = Box<fhirbolt_model::r4b::types::Population>;
+impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Box<Population>> {
+    type Value = Box<Population>;
     fn deserialize<D>(self, deserializer: D) -> Result<Self::Value, D::Error>
     where
         D: serde::de::Deserializer<'de>,
     {
-        self.transmute::<fhirbolt_model::r4b::types::Population>()
+        self.transmute::<Population>()
             .deserialize(deserializer)
             .map(Box::new)
     }
 }
-impl<'de> serde::de::DeserializeSeed<'de>
-    for &mut crate::context::de::DeserializationContext<Vec<fhirbolt_model::r4b::types::Population>>
-{
-    type Value = Vec<fhirbolt_model::r4b::types::Population>;
+impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Vec<Population>> {
+    type Value = Vec<Population>;
     fn deserialize<D>(self, deserializer: D) -> Result<Self::Value, D::Error>
     where
         D: serde::de::Deserializer<'de>,
     {
-        struct Visitor<'a>(
-            &'a mut crate::context::de::DeserializationContext<
-                Vec<fhirbolt_model::r4b::types::Population>,
-            >,
-        );
+        struct Visitor<'a>(&'a mut DeserializationContext<Vec<Population>>);
         impl<'de> serde::de::Visitor<'de> for Visitor<'_> {
-            type Value = Vec<fhirbolt_model::r4b::types::Population>;
+            type Value = Vec<Population>;
             fn expecting(&self, formatter: &mut std::fmt::Formatter) -> std::fmt::Result {
                 formatter.write_str("a sequence")
             }
@@ -285,9 +290,8 @@ impl<'de> serde::de::DeserializeSeed<'de>
                 A: serde::de::SeqAccess<'de>,
             {
                 let mut values = Vec::new();
-                while let Some(value) = seq.next_element_seed(
-                    self.0.transmute::<fhirbolt_model::r4b::types::Population>(),
-                )? {
+                let _context: &mut DeserializationContext<Population> = self.0.transmute();
+                while let Some(value) = seq.next_element_seed(&mut *_context)? {
                     values.push(value);
                 }
                 Ok(values)

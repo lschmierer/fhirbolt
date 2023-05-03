@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-03 by fhirbolt-codegen v0.7.0
 #[doc = "Indicates a value for the order detail."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum ServiceRequestOrderDetailParameterValue {
@@ -60,17 +60,17 @@ pub struct ServiceRequestOrderDetailParameter {
     #[doc = "Indicates a value for the order detail."]
     pub r#value: ServiceRequestOrderDetailParameterValue,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for ServiceRequestOrderDetailParameter {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#code: {
-                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#code: Box::new(super::super::types::CodeableConcept {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
             r#value: Default::default(),
         }
     }
@@ -89,6 +89,7 @@ pub struct ServiceRequestOrderDetail {
     #[doc = "The parameter details for the service being requested."]
     pub r#parameter: Vec<ServiceRequestOrderDetailParameter>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for ServiceRequestOrderDetail {
     fn default() -> Self {
         Self {
@@ -112,6 +113,7 @@ pub struct ServiceRequestPatientInstruction {
     #[doc = "Instructions in terms that are understood by the patient or consumer."]
     pub r#instruction: Option<ServiceRequestPatientInstructionInstruction>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for ServiceRequestPatientInstruction {
     fn default() -> Self {
         Self {
@@ -208,6 +210,7 @@ pub struct ServiceRequest {
     #[doc = "Key events in the history of the request."]
     pub r#relevant_history: Vec<super::super::types::Reference>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for ServiceRequest {
     fn default() -> Self {
         Self {
@@ -225,15 +228,13 @@ impl Default for ServiceRequest {
             r#based_on: Default::default(),
             r#replaces: Default::default(),
             r#requisition: Default::default(),
-            r#status: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#status: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
-            r#intent: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#intent: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#category: Default::default(),
             r#priority: Default::default(),
@@ -241,11 +242,10 @@ impl Default for ServiceRequest {
             r#code: Default::default(),
             r#order_detail: Default::default(),
             r#quantity: Default::default(),
-            r#subject: {
-                let mut default: Box<super::super::types::Reference> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#subject: Box::new(super::super::types::Reference {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
             r#focus: Default::default(),
             r#encounter: Default::default(),
             r#occurrence: Default::default(),

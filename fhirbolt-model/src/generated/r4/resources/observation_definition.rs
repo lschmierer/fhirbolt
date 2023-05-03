@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-03 by fhirbolt-codegen v0.7.0
 #[doc = "Characteristics for quantitative results of this observation."]
 #[derive(Debug, Clone, PartialEq)]
 pub struct ObservationDefinitionQuantitativeDetails {
@@ -17,6 +17,7 @@ pub struct ObservationDefinitionQuantitativeDetails {
     #[doc = "Number of digits after decimal separator when the results of such observations are of type Quantity."]
     pub r#decimal_precision: Option<super::super::types::Integer>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for ObservationDefinitionQuantitativeDetails {
     fn default() -> Self {
         Self {
@@ -56,6 +57,7 @@ pub struct ObservationDefinitionQualifiedInterval {
     #[doc = "Text based condition for which the reference range is valid."]
     pub r#condition: Option<super::super::types::String>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for ObservationDefinitionQualifiedInterval {
     fn default() -> Self {
         Self {
@@ -119,6 +121,7 @@ pub struct ObservationDefinition {
     #[doc = "The set of critical coded results for the observation conforming to this ObservationDefinition."]
     pub r#critical_coded_value_set: Option<Box<super::super::types::Reference>>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for ObservationDefinition {
     fn default() -> Self {
         Self {
@@ -131,11 +134,10 @@ impl Default for ObservationDefinition {
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
             r#category: Default::default(),
-            r#code: {
-                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#code: Box::new(super::super::types::CodeableConcept {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
             r#identifier: Default::default(),
             r#permitted_data_type: Default::default(),
             r#multiple_results_allowed: Default::default(),

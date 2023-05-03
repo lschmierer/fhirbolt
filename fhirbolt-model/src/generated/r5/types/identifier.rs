@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-03 by fhirbolt-codegen v0.7.0
 #[doc = "Identifier Type: An identifier - identifies some entity uniquely and unambiguously. Typically this is used for business identifiers.\n\nNeed to be able to identify things with confidence and be sure that the identification is not subject to misinterpretation."]
 #[derive(Debug, Clone, PartialEq)]
 pub struct Identifier {
@@ -19,6 +19,7 @@ pub struct Identifier {
     #[doc = "Organization that issued/manages the identifier."]
     pub r#assigner: Option<Box<super::super::types::Reference>>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for Identifier {
     fn default() -> Self {
         Self {

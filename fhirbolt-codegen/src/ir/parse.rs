@@ -43,7 +43,7 @@ const RESOURCE_COMMON_FIELDS: &[&str] = &[
 ];
 const COMMON_SEQUENCE_FIELDS: &[&str] = &["extension", "modifierExtension"];
 
-pub fn parse_modules<'a>(
+pub fn parse_modules(
     bundle: &Bundle,
     type_hint_collector: &mut TypeHints,
     element_map_collector: &mut ElementMap,
@@ -98,6 +98,7 @@ fn flatten_bundle(bundle: &Bundle) -> impl Iterator<Item = &StructureDefinition>
     })
 }
 
+#[allow(clippy::too_many_arguments)]
 fn parse_struct(
     module_collector: &mut RustFhirModule,
     type_hint_collector: &mut TypeHints,
@@ -144,7 +145,7 @@ fn parse_fields(
         .filter(|e| e.path != element_path_strip_prefix)
     {
         let stripped_path = element_definition.path[element_path_strip_prefix.len() + 1..]
-            .split(".")
+            .split('.')
             .next()
             .unwrap();
 
@@ -167,7 +168,7 @@ fn parse_fields(
                     element_map_collector,
                     &type_name,
                     None,
-                    &element_definitions,
+                    element_definitions,
                     &element_definitions[0].path,
                     element_definitions[0].definition.clone().unwrap(),
                 );
@@ -178,7 +179,7 @@ fn parse_fields(
                 type_hint_collector,
                 element_map_collector,
                 struct_name,
-                &element_definitions[0],
+                element_definitions[0],
                 element_path_strip_prefix,
                 element_definitions[0].definition.clone().unwrap(),
                 is_resource,
@@ -187,6 +188,7 @@ fn parse_fields(
         .collect()
 }
 
+#[allow(clippy::too_many_arguments)]
 fn parse_field(
     module_collector: &mut RustFhirModule,
     type_hint_collector: &mut TypeHints,
@@ -200,8 +202,8 @@ fn parse_field(
     let field_name = &element_definition.path[element_path_strip_prefix.len() + 1..];
 
     let (field_name, polymorph) = {
-        if field_name.ends_with("[x]") {
-            (&field_name[..field_name.len() - 3], true)
+        if let Some(stripped) = field_name.strip_suffix("[x]") {
+            (stripped, true)
         } else {
             (field_name, false)
         }
@@ -287,7 +289,7 @@ fn parse_field(
     }
 }
 
-fn create_value_enum<'a>(
+fn create_value_enum(
     module_collector: &mut RustFhirModule,
     type_hint_collector: &mut TypeHints,
     element_map_collector: &mut ElementMap,
@@ -307,12 +309,12 @@ fn create_value_enum<'a>(
                 may_contain_primitive = true;
             }
 
-            let variant_name = t.rsplit(".").next().unwrap().to_rust_type_casing();
+            let variant_name = t.rsplit('.').next().unwrap().to_rust_type_casing();
             let variant_path = path.replace("[x]", &variant_name);
 
             collect_type_hint(type_hint_collector, &variant_path, t, false);
 
-            let (parent, element) = variant_path.rsplit_once(".").unwrap();
+            let (parent, element) = variant_path.rsplit_once('.').unwrap();
             collect_element_map(element_map_collector, parent, element);
 
             RustFhirEnumVariant {
@@ -334,7 +336,7 @@ fn create_value_enum<'a>(
 
 fn match_field_type(path: &str, code: &str, force_box: bool) -> RustFhirFieldType {
     // type like http://hl7.org/fhirpath/System.String
-    match code.rsplit("/").next().unwrap() {
+    match code.rsplit('/').next().unwrap() {
         "System.Boolean" => RustFhirFieldType {
             name: "bool".into(),
             r#box: false,
@@ -393,13 +395,13 @@ fn match_field_type(path: &str, code: &str, force_box: bool) -> RustFhirFieldTyp
 
 fn map_content_reference(content_reference: &str) -> String {
     content_reference[1..]
-        .split(".")
+        .split('.')
         .map(|s| s.to_rust_type_casing())
         .collect::<String>()
 }
 
 fn collect_type_hint_multiple(type_hint_collector: &mut TypeHints, path: &str, is_resource: bool) {
-    if !should_collect_path_to_type_hints(&path, is_resource) {
+    if !should_collect_path_to_type_hints(path, is_resource) {
         return;
     }
 
@@ -412,7 +414,7 @@ fn collect_type_hint(
     type_code: &str,
     is_resource: bool,
 ) {
-    if type_code.contains(".") {
+    if type_code.contains('.') {
         return;
     }
 
@@ -460,7 +462,7 @@ fn collect_type_hint(
 }
 
 fn should_collect_path_to_type_hints(path: &str, is_resource: bool) -> bool {
-    let path_split: Vec<_> = path.split(".").map(|s| s.to_owned()).collect();
+    let path_split: Vec<_> = path.split('.').map(|s| s.to_owned()).collect();
 
     // common resource fields are handled separately
     if is_resource
@@ -479,7 +481,7 @@ fn should_collect_path_to_type_hints(path: &str, is_resource: bool) -> bool {
         return false;
     }
 
-    return true;
+    true
 }
 
 fn collect_type_hint_content_reference(

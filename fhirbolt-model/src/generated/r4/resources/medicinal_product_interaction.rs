@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-03 by fhirbolt-codegen v0.7.0
 #[doc = "The specific medication, food or laboratory test that interacts."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum MedicinalProductInteractionInteractantItem {
@@ -19,6 +19,7 @@ pub struct MedicinalProductInteractionInteractant {
     #[doc = "The specific medication, food or laboratory test that interacts."]
     pub r#item: MedicinalProductInteractionInteractantItem,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for MedicinalProductInteractionInteractant {
     fn default() -> Self {
         Self {
@@ -63,6 +64,7 @@ pub struct MedicinalProductInteraction {
     #[doc = "Actions for managing the interaction."]
     pub r#management: Option<Box<super::super::types::CodeableConcept>>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for MedicinalProductInteraction {
     fn default() -> Self {
         Self {

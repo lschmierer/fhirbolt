@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-03 by fhirbolt-codegen v0.7.0
 #[doc = "Indicates if the individual is deceased or not."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum PatientDeceased {
@@ -39,6 +39,7 @@ pub struct PatientContact {
     #[doc = "The period during which this contact person or organization is valid to be contacted relating to this patient."]
     pub r#period: Option<Box<super::super::types::Period>>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for PatientContact {
     fn default() -> Self {
         Self {
@@ -69,17 +70,17 @@ pub struct PatientCommunication {
     #[doc = "Indicates whether or not the patient prefers this language (over other languages he masters up a certain level)."]
     pub r#preferred: Option<super::super::types::Boolean>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for PatientCommunication {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#language: {
-                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#language: Box::new(super::super::types::CodeableConcept {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
             r#preferred: Default::default(),
         }
     }
@@ -98,21 +99,20 @@ pub struct PatientLink {
     #[doc = "The type of link between this patient resource and another patient resource."]
     pub r#type: super::super::types::Code,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for PatientLink {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#other: {
-                let mut default: Box<super::super::types::Reference> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
-            r#type: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#other: Box::new(super::super::types::Reference {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
+            r#type: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
         }
     }
@@ -169,6 +169,7 @@ pub struct Patient {
     #[doc = "Link to another patient resource that concerns the same actual patient."]
     pub r#link: Vec<PatientLink>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for Patient {
     fn default() -> Self {
         Self {

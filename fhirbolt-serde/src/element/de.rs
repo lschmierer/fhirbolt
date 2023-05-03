@@ -20,7 +20,7 @@ use crate::{
     element::internal::de::InternalElement,
 };
 
-impl<'a, 'de, const R: FhirRelease> DeserializeSeed<'de> for DeserializationContext<Element<R>> {
+impl<'de, const R: FhirRelease> DeserializeSeed<'de> for DeserializationContext<Element<R>> {
     type Value = Element<R>;
 
     #[inline]

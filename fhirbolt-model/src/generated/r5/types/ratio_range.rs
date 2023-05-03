@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-03 by fhirbolt-codegen v0.7.0
 #[doc = "RatioRange Type: A range of ratios expressed as a low and high numerator and a denominator.\n\nNeed to be able to specify ranges of ratios."]
 #[derive(Debug, Clone, PartialEq)]
 pub struct RatioRange {
@@ -13,6 +13,7 @@ pub struct RatioRange {
     #[doc = "The value of the denominator."]
     pub r#denominator: Option<Box<super::super::types::Quantity>>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for RatioRange {
     fn default() -> Self {
         Self {

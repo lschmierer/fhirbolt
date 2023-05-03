@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-03 by fhirbolt-codegen v0.7.0
 #[doc = "Either a duration for the length of the timing schedule, a range of possible length, or outer bounds for start and/or end limits of the timing schedule."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum TimingRepeatBounds {
@@ -46,6 +46,7 @@ pub struct TimingRepeat {
     #[doc = "The number of minutes from the event. If the event code does not indicate whether the minutes is before or after the event, then the offset is assumed to be after the event."]
     pub r#offset: Option<super::super::types::UnsignedInt>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for TimingRepeat {
     fn default() -> Self {
         Self {
@@ -85,6 +86,7 @@ pub struct Timing {
     #[doc = "A code for the timing schedule (or just text in code.text). Some codes such as BID are ubiquitous, but many institutions define their own additional codes. If a code is provided, the code is understood to be a complete statement of whatever is specified in the structured timing data, and either the code or the data may be used to interpret the Timing, with the exception that .repeat.bounds still applies over the code (and is not contained in the code)."]
     pub r#code: Option<Box<super::super::types::CodeableConcept>>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for Timing {
     fn default() -> Self {
         Self {

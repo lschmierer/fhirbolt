@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-03 by fhirbolt-codegen v0.7.0
 #[doc = " Identifies the claim line item, encounter or other sub-element being paid. Note payment may be partial, that is not match the then outstanding balance or amount incurred."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum PaymentReconciliationAllocationTargetItem {
@@ -44,6 +44,7 @@ pub struct PaymentReconciliationAllocation {
     #[doc = "The monetary amount allocated from the total payment to the payable."]
     pub r#amount: Option<Box<super::super::types::Money>>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for PaymentReconciliationAllocation {
     fn default() -> Self {
         Self {
@@ -80,6 +81,7 @@ pub struct PaymentReconciliationProcessNote {
     #[doc = "The explanation or description associated with the processing."]
     pub r#text: Option<super::super::types::String>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for PaymentReconciliationProcessNote {
     fn default() -> Self {
         Self {
@@ -169,6 +171,7 @@ pub struct PaymentReconciliation {
     #[doc = "A note that describes or explains the processing in a human readable form."]
     pub r#process_note: Vec<PaymentReconciliationProcessNote>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for PaymentReconciliation {
     fn default() -> Self {
         Self {
@@ -181,22 +184,19 @@ impl Default for PaymentReconciliation {
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
             r#identifier: Default::default(),
-            r#type: {
-                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
-            r#status: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#type: Box::new(super::super::types::CodeableConcept {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
+            r#status: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#kind: Default::default(),
             r#period: Default::default(),
-            r#created: {
-                let mut default: super::super::types::DateTime = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#created: super::super::types::DateTime {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#enterer: Default::default(),
             r#issuer_type: Default::default(),
@@ -205,10 +205,9 @@ impl Default for PaymentReconciliation {
             r#requestor: Default::default(),
             r#outcome: Default::default(),
             r#disposition: Default::default(),
-            r#date: {
-                let mut default: super::super::types::Date = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#date: super::super::types::Date {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#location: Default::default(),
             r#method: Default::default(),
@@ -220,11 +219,10 @@ impl Default for PaymentReconciliation {
             r#authorization: Default::default(),
             r#tendered_amount: Default::default(),
             r#returned_amount: Default::default(),
-            r#amount: {
-                let mut default: Box<super::super::types::Money> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#amount: Box::new(super::super::types::Money {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
             r#payment_identifier: Default::default(),
             r#allocation: Default::default(),
             r#form_code: Default::default(),

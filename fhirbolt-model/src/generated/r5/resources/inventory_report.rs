@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-03 by fhirbolt-codegen v0.7.0
 #[doc = "The item or items in this listing."]
 #[derive(Debug, Clone, PartialEq)]
 pub struct InventoryReportInventoryListingItem {
@@ -15,6 +15,7 @@ pub struct InventoryReportInventoryListingItem {
     #[doc = "The code or reference to the item type."]
     pub r#item: Box<super::super::types::CodeableReference>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for InventoryReportInventoryListingItem {
     fn default() -> Self {
         Self {
@@ -22,16 +23,14 @@ impl Default for InventoryReportInventoryListingItem {
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
             r#category: Default::default(),
-            r#quantity: {
-                let mut default: Box<super::super::types::Quantity> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
-            r#item: {
-                let mut default: Box<super::super::types::CodeableReference> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#quantity: Box::new(super::super::types::Quantity {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
+            r#item: Box::new(super::super::types::CodeableReference {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
         }
     }
 }
@@ -53,6 +52,7 @@ pub struct InventoryReportInventoryListing {
     #[doc = "The item or items in this listing."]
     pub r#item: Vec<InventoryReportInventoryListingItem>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for InventoryReportInventoryListing {
     fn default() -> Self {
         Self {
@@ -106,6 +106,7 @@ pub struct InventoryReport {
     #[doc = "A note associated with the InventoryReport."]
     pub r#note: Vec<super::super::types::Annotation>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for InventoryReport {
     fn default() -> Self {
         Self {
@@ -118,22 +119,19 @@ impl Default for InventoryReport {
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
             r#identifier: Default::default(),
-            r#status: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#status: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
-            r#count_type: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#count_type: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#operation_type: Default::default(),
             r#operation_type_reason: Default::default(),
-            r#reported_date_time: {
-                let mut default: super::super::types::DateTime = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#reported_date_time: super::super::types::DateTime {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#reporter: Default::default(),
             r#reporting_period: Default::default(),

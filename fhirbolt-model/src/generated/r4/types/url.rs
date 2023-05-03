@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-03 by fhirbolt-codegen v0.7.0
 #[doc = "Base StructureDefinition for url type: A URI that is a literal reference"]
 #[derive(Debug, Clone, PartialEq)]
 pub struct Url {
@@ -9,6 +9,7 @@ pub struct Url {
     #[doc = "Primitive value for url"]
     pub r#value: Option<std::string::String>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for Url {
     fn default() -> Self {
         Self {

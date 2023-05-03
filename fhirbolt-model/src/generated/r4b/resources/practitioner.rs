@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-03 by fhirbolt-codegen v0.7.0
 #[doc = "The official certifications, training, and licenses that authorize or otherwise pertain to the provision of care by the practitioner.  For example, a medical license issued by a medical board authorizing the practitioner to practice medicine within a certian locality."]
 #[derive(Debug, Clone, PartialEq)]
 pub struct PractitionerQualification {
@@ -17,6 +17,7 @@ pub struct PractitionerQualification {
     #[doc = "Organization that regulates and issues the qualification."]
     pub r#issuer: Option<Box<super::super::types::Reference>>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for PractitionerQualification {
     fn default() -> Self {
         Self {
@@ -24,11 +25,10 @@ impl Default for PractitionerQualification {
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
             r#identifier: Default::default(),
-            r#code: {
-                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#code: Box::new(super::super::types::CodeableConcept {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
             r#period: Default::default(),
             r#issuer: Default::default(),
         }
@@ -74,6 +74,7 @@ pub struct Practitioner {
     #[doc = "A language the practitioner can use in patient communication."]
     pub r#communication: Vec<super::super::types::CodeableConcept>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for Practitioner {
     fn default() -> Self {
         Self {

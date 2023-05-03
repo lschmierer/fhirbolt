@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-03 by fhirbolt-codegen v0.7.0
 #[doc = "A communicated content (or for multi-part communications, one portion of the communication)."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum CommunicationPayloadContent {
@@ -20,6 +20,7 @@ pub struct CommunicationPayload {
     #[doc = "A communicated content (or for multi-part communications, one portion of the communication)."]
     pub r#content: CommunicationPayloadContent,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for CommunicationPayload {
     fn default() -> Self {
         Self {
@@ -96,6 +97,7 @@ pub struct Communication {
     #[doc = "Additional notes or commentary about the communication by the sender, receiver or other interested parties."]
     pub r#note: Vec<super::super::types::Annotation>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for Communication {
     fn default() -> Self {
         Self {
@@ -113,10 +115,9 @@ impl Default for Communication {
             r#based_on: Default::default(),
             r#part_of: Default::default(),
             r#in_response_to: Default::default(),
-            r#status: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#status: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#status_reason: Default::default(),
             r#category: Default::default(),

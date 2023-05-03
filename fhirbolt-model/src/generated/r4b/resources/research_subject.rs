@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-03 by fhirbolt-codegen v0.7.0
 #[doc = "A physical entity which is the primary unit of operational and/or administrative interest in a study."]
 #[derive(Debug, Clone, PartialEq)]
 pub struct ResearchSubject {
@@ -35,6 +35,7 @@ pub struct ResearchSubject {
     #[doc = "A record of the patient's informed agreement to participate in the study."]
     pub r#consent: Option<Box<super::super::types::Reference>>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for ResearchSubject {
     fn default() -> Self {
         Self {
@@ -47,22 +48,19 @@ impl Default for ResearchSubject {
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
             r#identifier: Default::default(),
-            r#status: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#status: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#period: Default::default(),
-            r#study: {
-                let mut default: Box<super::super::types::Reference> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
-            r#individual: {
-                let mut default: Box<super::super::types::Reference> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#study: Box::new(super::super::types::Reference {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
+            r#individual: Box::new(super::super::types::Reference {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
             r#assigned_arm: Default::default(),
             r#actual_arm: Default::default(),
             r#consent: Default::default(),

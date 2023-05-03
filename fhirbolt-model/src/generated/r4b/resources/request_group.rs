@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-03 by fhirbolt-codegen v0.7.0
 #[doc = "A duration or range of durations to apply to the relationship. For example, 30-60 minutes before."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum RequestGroupActionRelatedActionOffset {
@@ -33,16 +33,16 @@ pub struct RequestGroupActionCondition {
     #[doc = "An expression that returns true or false, indicating whether or not the condition is satisfied."]
     pub r#expression: Option<Box<super::super::types::Expression>>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for RequestGroupActionCondition {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#kind: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#kind: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#expression: Default::default(),
         }
@@ -64,21 +64,20 @@ pub struct RequestGroupActionRelatedAction {
     #[doc = "A duration or range of durations to apply to the relationship. For example, 30-60 minutes before."]
     pub r#offset: Option<RequestGroupActionRelatedActionOffset>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for RequestGroupActionRelatedAction {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#action_id: {
-                let mut default: super::super::types::Id = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#action_id: super::super::types::Id {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
-            r#relationship: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#relationship: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#offset: Default::default(),
         }
@@ -132,6 +131,7 @@ pub struct RequestGroupAction {
     #[doc = "Sub actions."]
     pub r#action: Vec<RequestGroupAction>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for RequestGroupAction {
     fn default() -> Self {
         Self {
@@ -216,6 +216,7 @@ pub struct RequestGroup {
     #[doc = "The actions, if any, produced by the evaluation of the artifact."]
     pub r#action: Vec<RequestGroupAction>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for RequestGroup {
     fn default() -> Self {
         Self {
@@ -233,15 +234,13 @@ impl Default for RequestGroup {
             r#based_on: Default::default(),
             r#replaces: Default::default(),
             r#group_identifier: Default::default(),
-            r#status: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#status: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
-            r#intent: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#intent: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#priority: Default::default(),
             r#code: Default::default(),

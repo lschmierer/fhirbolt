@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-03 by fhirbolt-codegen v0.7.0
 #[doc = "A resource that represents the data of a single raw artifact as digital content accessible in its native format.  A Binary resource can contain any content, whether text, image, pdf, zip archive, etc.\n\nThere are situations where it is useful or required to handle pure binary content using the same framework as other resources."]
 #[derive(Debug, Clone, PartialEq)]
 pub struct Binary {
@@ -17,6 +17,7 @@ pub struct Binary {
     #[doc = "The actual content, base64 encoded."]
     pub r#data: Option<super::super::types::Base64Binary>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for Binary {
     fn default() -> Self {
         Self {
@@ -24,10 +25,9 @@ impl Default for Binary {
             r#meta: Default::default(),
             r#implicit_rules: Default::default(),
             r#language: Default::default(),
-            r#content_type: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#content_type: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#security_context: Default::default(),
             r#data: Default::default(),

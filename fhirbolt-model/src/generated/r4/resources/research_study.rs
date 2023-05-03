@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-03 by fhirbolt-codegen v0.7.0
 #[doc = "Describes an expected sequence of events for one of the participants of a study.  E.g. Exposure to drug A, wash-out, exposure to drug B, wash-out, follow-up."]
 #[derive(Debug, Clone, PartialEq)]
 pub struct ResearchStudyArm {
@@ -15,16 +15,16 @@ pub struct ResearchStudyArm {
     #[doc = "A succinct description of the path through the study that would be followed by a subject adhering to this arm."]
     pub r#description: Option<super::super::types::String>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for ResearchStudyArm {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#name: {
-                let mut default: super::super::types::String = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#name: super::super::types::String {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#type: Default::default(),
             r#description: Default::default(),
@@ -45,6 +45,7 @@ pub struct ResearchStudyObjective {
     #[doc = "The kind of study objective."]
     pub r#type: Option<Box<super::super::types::CodeableConcept>>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for ResearchStudyObjective {
     fn default() -> Self {
         Self {
@@ -124,6 +125,7 @@ pub struct ResearchStudy {
     #[doc = "A goal that the study is aiming to achieve in terms of a scientific question to be answered by the analysis of data collected during the study."]
     pub r#objective: Vec<ResearchStudyObjective>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for ResearchStudy {
     fn default() -> Self {
         Self {
@@ -139,10 +141,9 @@ impl Default for ResearchStudy {
             r#title: Default::default(),
             r#protocol: Default::default(),
             r#part_of: Default::default(),
-            r#status: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#status: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#primary_purpose_type: Default::default(),
             r#phase: Default::default(),

@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-03 by fhirbolt-codegen v0.7.0
 #[doc = "The value of the trait that holds (or does not hold - see 'exclude') for members of the group."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum GroupCharacteristicValue {
@@ -28,22 +28,21 @@ pub struct GroupCharacteristic {
     #[doc = "The period over which the characteristic is tested; e.g. the patient had an operation during the month of June."]
     pub r#period: Option<Box<super::super::types::Period>>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for GroupCharacteristic {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#code: {
-                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#code: Box::new(super::super::types::CodeableConcept {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
             r#value: Default::default(),
-            r#exclude: {
-                let mut default: super::super::types::Boolean = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#exclude: super::super::types::Boolean {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#period: Default::default(),
         }
@@ -65,17 +64,17 @@ pub struct GroupMember {
     #[doc = "A flag to indicate that the member is no longer in the group, but previously may have been a member."]
     pub r#inactive: Option<super::super::types::Boolean>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for GroupMember {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#entity: {
-                let mut default: Box<super::super::types::Reference> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#entity: Box::new(super::super::types::Reference {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
             r#period: Default::default(),
             r#inactive: Default::default(),
         }
@@ -123,6 +122,7 @@ pub struct Group {
     #[doc = "Identifies the resource instances that are members of the group."]
     pub r#member: Vec<GroupMember>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for Group {
     fn default() -> Self {
         Self {
@@ -136,15 +136,13 @@ impl Default for Group {
             r#modifier_extension: Default::default(),
             r#identifier: Default::default(),
             r#active: Default::default(),
-            r#type: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#type: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
-            r#membership: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#membership: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#code: Default::default(),
             r#name: Default::default(),

@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-03 by fhirbolt-codegen v0.7.0
 #[doc = "A sequence that is used as a reference to describe variants that are present in a sequence analyzed."]
 #[derive(Debug, Clone, PartialEq)]
 pub struct MolecularSequenceReferenceSeq {
@@ -27,6 +27,7 @@ pub struct MolecularSequenceReferenceSeq {
     #[doc = "End position of the window on the reference sequence. If the coordinate system is 0-based then end is exclusive and does not include the last position. If the coordinate system is 1-base, then end is inclusive and includes the last position."]
     pub r#window_end: Option<super::super::types::Integer>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for MolecularSequenceReferenceSeq {
     fn default() -> Self {
         Self {
@@ -67,6 +68,7 @@ pub struct MolecularSequenceVariant {
     #[doc = "A pointer to an Observation containing variant information."]
     pub r#variant_pointer: Option<Box<super::super::types::Reference>>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for MolecularSequenceVariant {
     fn default() -> Self {
         Self {
@@ -106,6 +108,7 @@ pub struct MolecularSequenceQualityRoc {
     #[doc = "Calculated fScore if the GQ score threshold was set to \"score\" field value."]
     pub r#f_measure: Vec<super::super::types::Decimal>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for MolecularSequenceQualityRoc {
     fn default() -> Self {
         Self {
@@ -162,16 +165,16 @@ pub struct MolecularSequenceQuality {
     #[doc = "Receiver Operator Characteristic (ROC) Curve  to give sensitivity/specificity tradeoff."]
     pub r#roc: Option<MolecularSequenceQualityRoc>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for MolecularSequenceQuality {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#type: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#type: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#standard_sequence: Default::default(),
             r#start: Default::default(),
@@ -212,16 +215,16 @@ pub struct MolecularSequenceRepository {
     #[doc = "Id of the read in this external repository."]
     pub r#readset_id: Option<super::super::types::String>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for MolecularSequenceRepository {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#type: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#type: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#url: Default::default(),
             r#name: Default::default(),
@@ -245,6 +248,7 @@ pub struct MolecularSequenceStructureVariantOuter {
     #[doc = "Structural variant outer end. If the coordinate system is 0-based then end is exclusive and does not include the last position. If the coordinate system is 1-base, then end is inclusive and includes the last position."]
     pub r#end: Option<super::super::types::Integer>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for MolecularSequenceStructureVariantOuter {
     fn default() -> Self {
         Self {
@@ -270,6 +274,7 @@ pub struct MolecularSequenceStructureVariantInner {
     #[doc = "Structural variant inner end. If the coordinate system is 0-based then end is exclusive and does not include the last position. If the coordinate system is 1-base, then end is inclusive and includes the last position."]
     pub r#end: Option<super::super::types::Integer>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for MolecularSequenceStructureVariantInner {
     fn default() -> Self {
         Self {
@@ -301,6 +306,7 @@ pub struct MolecularSequenceStructureVariant {
     #[doc = "Structural variant inner."]
     pub r#inner: Option<MolecularSequenceStructureVariantInner>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for MolecularSequenceStructureVariant {
     fn default() -> Self {
         Self {
@@ -367,6 +373,7 @@ pub struct MolecularSequence {
     #[doc = "Information about chromosome structure variation."]
     pub r#structure_variant: Vec<MolecularSequenceStructureVariant>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for MolecularSequence {
     fn default() -> Self {
         Self {
@@ -380,10 +387,9 @@ impl Default for MolecularSequence {
             r#modifier_extension: Default::default(),
             r#identifier: Default::default(),
             r#type: Default::default(),
-            r#coordinate_system: {
-                let mut default: super::super::types::Integer = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#coordinate_system: super::super::types::Integer {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#patient: Default::default(),
             r#specimen: Default::default(),
