@@ -10,7 +10,7 @@ env:
   CARGO_TERM_COLOR: always
 
 jobs:
-  build:
+  build_codegen:
     runs-on: ubuntu-latest
     
     steps:
@@ -19,22 +19,43 @@ jobs:
         with:
           shared-key: "rust-cache"
       - name: Build
-        run: cargo build --release --verbose
-  
-  test_serde_json_r4:
-    needs: build
-    runs-on: ubuntu-latest
+        run: cargo build -p fhirbolt-codegen --release --verbose
 
+  build_r4:
+    runs-on: ubuntu-latest
+    
     steps:
       - uses: actions/checkout@v3
       - uses: Swatinem/rust-cache@v2
         with:
           shared-key: "rust-cache"
-      - name: Run tests
-        run: cargo test -p tests --test test_serde_json --features r4 --release --verbose
-  
+      - name: Build
+        run: cargo build -p fhirbolt --features r4 --release --verbose
+
+  build_r4b:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - uses: actions/checkout@v3
+      - uses: Swatinem/rust-cache@v2
+        with:
+          shared-key: "rust-cache"
+      - name: Build
+        run: cargo build -p fhirbolt --features r4b --release --verbose
+
+  build_r5:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - uses: actions/checkout@v3
+      - uses: Swatinem/rust-cache@v2
+        with:
+          shared-key: "rust-cache"
+      - name: Build
+        run: cargo build -p fhirbolt --features r5 --release --verbose
+
   unit_tests:
-    needs: build
+    needs: [build_codegen, build_r4, build_r4b, build_r5]
     runs-on: ubuntu-latest
 
     steps:
@@ -46,7 +67,7 @@ jobs:
         run: cargo test --lib
   
   doc_tests:
-    needs: build
+    needs: [build_codegen, build_r4, build_r4b, build_r5]
     runs-on: ubuntu-latest
 
     steps:
@@ -57,8 +78,20 @@ jobs:
       - name: Run tests
         run: cargo test --doc
   
+  test_serde_json_r4:
+    needs: build_r4
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - uses: Swatinem/rust-cache@v2
+        with:
+          shared-key: "rust-cache"
+      - name: Run tests
+        run: cargo test -p tests --test test_serde_json --features r4 --release --verbose
+  
   test_serde_xml_r4:
-    needs: build
+    needs: build_r4
     runs-on: ubuntu-latest
 
     steps:
@@ -70,7 +103,7 @@ jobs:
         run: cargo test -p tests --test test_serde_xml --features r4 --release --verbose
   
   test_serde_json_r4b:
-    needs: build
+    needs: build_r4b
     runs-on: ubuntu-latest
 
     steps:
@@ -82,7 +115,7 @@ jobs:
         run: cargo test -p tests --test test_serde_json --features r4b --release --verbose
   
   test_serde_xml_r4b:
-    needs: build
+    needs: build_r4b
     runs-on: ubuntu-latest
 
     steps:
@@ -94,7 +127,7 @@ jobs:
         run: cargo test -p tests --test test_serde_xml --features r4b --release --verbose
   
   test_serde_json_r5:
-    needs: build
+    needs: build_r5
     runs-on: ubuntu-latest
 
     steps:
@@ -106,7 +139,7 @@ jobs:
         run: cargo test -p tests --test test_serde_json --features r5 --release --verbose
   
   test_serde_xml_r5:
-    needs: build
+    needs: build_r5
     runs-on: ubuntu-latest
 
     steps:
@@ -118,7 +151,7 @@ jobs:
         run: cargo test -p tests --test test_serde_xml --features r5 --release --verbose
 
   benchmark:
-    needs: build
+    needs: [build_codegen, build_r4, build_r4b, build_r5]
     runs-on: ubuntu-latest
 
     steps:
