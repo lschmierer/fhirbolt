@@ -14,7 +14,7 @@ use test_utils::{
     shuffle,
 };
 
-fn test_serde_xml<'a, T, const R: FhirRelease>(mode: DeserializationMode)
+fn test_serde_xml<T, const R: FhirRelease>(mode: DeserializationMode)
 where
     T: DeserializeResourceOwned + SerializeResource,
 {
@@ -22,14 +22,12 @@ where
 
     let mut buffer = Vec::new();
 
-    while let Some(mut file) = examples_iter.next() {
+    while let Some(mut file) = examples_iter.next_example() {
         match R {
-            FhirReleases::R4B => {
-                if mode != DeserializationMode::Lax {
-                    // missing status
-                    if file.name() == "valuesets.xml" {
-                        continue;
-                    }
+            FhirReleases::R4B if mode != DeserializationMode::Lax => {
+                // missing status
+                if file.name() == "valuesets.xml" {
+                    continue;
                 }
             }
             _ => (),
@@ -44,7 +42,7 @@ where
             shuffle::shuffle_element(fhirbolt::xml::from_slice(&buffer, None).unwrap());
 
         let mut element_buffer = Vec::new();
-        _ = fhirbolt::xml::to_writer(&mut element_buffer, &element, None).unwrap();
+        fhirbolt::xml::to_writer(&mut element_buffer, &element, None).unwrap();
 
         assert_xml_eq(
             &element_buffer,

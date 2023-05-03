@@ -36,7 +36,7 @@ fn main() {
         println!("parsing `{}`...", path.display());
 
         let message_str = fs::read_to_string(&path)
-            .expect(&format!("Error reading message `{}`", path.display()));
+            .unwrap_or_else(|_| panic!("Error reading message `{}`", path.display()));
 
         let message = hl7v2::parse(&message_str)
             .map_err(|err| format!("Error: {}", err))
@@ -69,7 +69,7 @@ fn main() {
 
     println!("saving `bundle.json`...");
 
-    fs::create_dir_all(&OUT_FOLDER).expect("Error: creating output direcotry");
+    fs::create_dir_all(OUT_FOLDER).expect("Error: creating output direcotry");
     fs::write(PathBuf::from(OUT_FOLDER).join("bundle.json"), json_bundle)
         .expect("Error: writing `bundle.json`");
 

@@ -84,13 +84,12 @@ fn map_telecoms(home_fields: &RepeatedField, work_fields: &RepeatedField) -> Vec
 
     home_telecoms_iter
         .chain(work_telecoms_iter)
-        .flat_map(|f| f)
+        .flatten()
         .collect()
 }
 
 fn map_telecom(telecom_field: &Field, r#use: &str) -> Option<ContactPoint> {
-    if let Some(number_string) = telecom_field.component(1).first_sub().to_fhir_string() {
-        Some(ContactPoint {
+    telecom_field.component(1).first_sub().to_fhir_string().map(|number_string| ContactPoint {
             system: Some(Code {
                 value: Some("phone".into()),
                 ..Default::default()
@@ -102,9 +101,6 @@ fn map_telecom(telecom_field: &Field, r#use: &str) -> Option<ContactPoint> {
             }),
             ..Default::default()
         })
-    } else {
-        None
-    }
 }
 
 fn map_gender(pid_segment: Option<&Segment>) -> Option<Code> {

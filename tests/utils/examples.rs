@@ -52,7 +52,7 @@ pub struct ExamplesIterator {
 }
 
 impl ExamplesIterator {
-    pub fn next(&mut self) -> Option<ZipFile> {
+    pub fn next_example(&mut self) -> Option<ZipFile> {
         if self.index < self.archive.len() {
             let index = self.index;
 
@@ -76,7 +76,7 @@ pub fn examples(fhir_release: FhirRelease, json_or_xml: JsonOrXml) -> ExamplesIt
     let archive = ZipArchive::new(zip_file).unwrap();
 
     ExamplesIterator {
-        archive: archive,
+        archive,
         index: if fhir_release == FhirReleases::R4B {
             1
         } else {
@@ -101,8 +101,8 @@ fn download_fhir_examples(fhir_release: FhirRelease, json_or_xml: JsonOrXml) -> 
 
         let bytes = reqwest::blocking::get(download_url)
             .and_then(|r| r.bytes())
-            .expect(&format!("Error downloading {} examples", fhir_release));
-        fs::write(&zip_path, bytes).expect(&format!("Error writing \"{:?}\"", zip_path));
+            .unwrap_or_else(|_| panic!("Error downloading {} examples", fhir_release));
+        fs::write(&zip_path, bytes).unwrap_or_else(|_| panic!("Error writing \"{:?}\"", zip_path));
 
         println!(" Download complete!");
     }
