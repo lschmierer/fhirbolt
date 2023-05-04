@@ -17,8 +17,20 @@ jobs:
       - name: Build
         run: cargo build -p fhirbolt --features r4 --release --verbose
 
-  bench_serde:
+  build_bench_serde:
     needs: build_r4
+    runs-on: ubuntu-latest
+    
+    steps:
+      - uses: actions/checkout@v3
+      - uses: Swatinem/rust-cache@v2
+        with:
+          shared-key: "rust-cache"
+      - name: Build
+        run: cargo build --bench bench_serde --release --verbose
+
+  bench_serde:
+    needs: build_bench_serde
     runs-on: ubuntu-latest
 
     steps:
