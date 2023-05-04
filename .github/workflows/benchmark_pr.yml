@@ -6,8 +6,8 @@ env:
   CARGO_TERM_COLOR: always
 
 jobs:
-  build_r4:
-    runs-on: ubuntu-latest
+  build:
+    runs-on: macos-latest
     
     steps:
       - uses: actions/checkout@v3
@@ -15,23 +15,11 @@ jobs:
         with:
           shared-key: "rust-cache"
       - name: Build
-        run: cargo build -p fhirbolt --features r4 --release --verbose
-
-  build_bench_serde:
-    needs: build_r4
-    runs-on: ubuntu-latest
-    
-    steps:
-      - uses: actions/checkout@v3
-      - uses: Swatinem/rust-cache@v2
-        with:
-          shared-key: "rust-cache"
-      - name: Build
-        run: cargo build --bench bench_serde --release --verbose --jobs 1
+        run: cargo build --all-features --release --verbose
 
   bench_serde:
-    needs: build_bench_serde
-    runs-on: ubuntu-latest
+    needs: build
+    runs-on: macos-latest
 
     steps:
       - uses: actions/checkout@v3

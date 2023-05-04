@@ -10,8 +10,8 @@ env:
   CARGO_TERM_COLOR: always
 
 jobs:
-  build_codegen:
-    runs-on: ubuntu-latest
+  build:
+    runs-on: macos-latest
     
     steps:
       - uses: actions/checkout@v3
@@ -19,44 +19,10 @@ jobs:
         with:
           shared-key: "rust-cache"
       - name: Build
-        run: cargo build -p fhirbolt-codegen --release --verbose
-
-  build_r4:
-    runs-on: ubuntu-latest
-    
-    steps:
-      - uses: actions/checkout@v3
-      - uses: Swatinem/rust-cache@v2
-        with:
-          shared-key: "rust-cache"
-      - name: Build
-        run: cargo build -p fhirbolt --features r4 --release --verbose
-
-  build_r4b:
-    runs-on: ubuntu-latest
-    
-    steps:
-      - uses: actions/checkout@v3
-      - uses: Swatinem/rust-cache@v2
-        with:
-          shared-key: "rust-cache"
-      - name: Build
-        run: cargo build -p fhirbolt --features r4b --release --verbose
-
-  build_r5:
-    runs-on: ubuntu-latest
-    
-    steps:
-      - uses: actions/checkout@v3
-      - uses: Swatinem/rust-cache@v2
-        with:
-          shared-key: "rust-cache"
-      - name: Build
-        run: cargo build -p fhirbolt --features r5 --release --verbose
+        run: cargo build --all-features --release --verbose
 
   clippy_check:
-    needs: [build_codegen, build_r4, build_r4b, build_r5]
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
 
     steps:
       - uses: actions/checkout@v3
@@ -70,8 +36,8 @@ jobs:
           args: --all-features
 
   unit_tests:
-    needs: [build_codegen, build_r4, build_r4b, build_r5]
-    runs-on: ubuntu-latest
+    needs: build
+    runs-on: macos-latest
 
     steps:
       - uses: actions/checkout@v3
@@ -82,8 +48,8 @@ jobs:
         run: cargo test --lib
   
   doc_tests:
-    needs: [build_codegen, build_r4, build_r4b, build_r5]
-    runs-on: ubuntu-latest
+    needs: build
+    runs-on: macos-latest
 
     steps:
       - uses: actions/checkout@v3
@@ -94,8 +60,8 @@ jobs:
         run: cargo test --doc
   
   test_serde_json_r4:
-    needs: build_r4
-    runs-on: ubuntu-latest
+    needs: build
+    runs-on: macos-latest
 
     steps:
       - uses: actions/checkout@v3
@@ -106,8 +72,8 @@ jobs:
         run: cargo test -p tests --test test_serde_json --features r4 --release --verbose
   
   test_serde_xml_r4:
-    needs: build_r4
-    runs-on: ubuntu-latest
+    needs: build
+    runs-on: macos-latest
 
     steps:
       - uses: actions/checkout@v3
@@ -118,8 +84,8 @@ jobs:
         run: cargo test -p tests --test test_serde_xml --features r4 --release --verbose
   
   test_serde_json_r4b:
-    needs: build_r4b
-    runs-on: ubuntu-latest
+    needs: build
+    runs-on: macos-latest
 
     steps:
       - uses: actions/checkout@v3
@@ -130,8 +96,8 @@ jobs:
         run: cargo test -p tests --test test_serde_json --features r4b --release --verbose
   
   test_serde_xml_r4b:
-    needs: build_r4b
-    runs-on: ubuntu-latest
+    needs: build
+    runs-on: macos-latest
 
     steps:
       - uses: actions/checkout@v3
@@ -142,8 +108,8 @@ jobs:
         run: cargo test -p tests --test test_serde_xml --features r4b --release --verbose
   
   test_serde_json_r5:
-    needs: build_r5
-    runs-on: ubuntu-latest
+    needs: build
+    runs-on: macos-latest
 
     steps:
       - uses: actions/checkout@v3
@@ -154,8 +120,8 @@ jobs:
         run: cargo test -p tests --test test_serde_json --features r5 --release --verbose
   
   test_serde_xml_r5:
-    needs: build_r5
-    runs-on: ubuntu-latest
+    needs: build
+    runs-on: macos-latest
 
     steps:
       - uses: actions/checkout@v3
@@ -166,8 +132,8 @@ jobs:
         run: cargo test -p tests --test test_serde_xml --features r5 --release --verbose
 
   benchmark:
-    needs: [build_codegen, build_r4, build_r4b, build_r5]
-    runs-on: ubuntu-latest
+    needs: build
+    runs-on: macos-latest
 
     steps:
       - uses: actions/checkout@v3
