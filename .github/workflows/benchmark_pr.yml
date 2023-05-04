@@ -6,8 +6,21 @@ env:
   CARGO_TERM_COLOR: always
 
 jobs:
-  benchmark:
+  build_r4:
     runs-on: ubuntu-latest
+    
+    steps:
+      - uses: actions/checkout@v3
+      - uses: Swatinem/rust-cache@v2
+        with:
+          shared-key: "rust-cache"
+      - name: Build
+        run: cargo build -p fhirbolt --features r4 --release --verbose
+
+  bench_serde:
+    needs: build_r4
+    runs-on: ubuntu-latest
+
     steps:
       - uses: actions/checkout@v3
       - uses: Swatinem/rust-cache@v2
@@ -15,6 +28,6 @@ jobs:
           shared-key: "rust-cache"
       - uses: boa-dev/criterion-compare-action@v3
         with:
-          branchName: ${{ github.base_ref }}
           benchName: bench_serde
+          branchName: ${{ github.base_ref }}
           token: ${{ secrets.GITHUB_TOKEN }}
