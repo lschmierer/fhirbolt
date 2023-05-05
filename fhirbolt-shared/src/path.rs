@@ -1,3 +1,5 @@
+//! Module to track paths in the FHIR data model.
+
 use std::mem;
 
 use crate::{
@@ -40,10 +42,13 @@ impl FirstLetterUppercase for &str {
     }
 }
 
+/// ElementPath is aware of the FHIR data model and tracks its position in the tree.
+///
+/// It can be used to query type information of its current path.
 #[derive(Debug, Clone)]
 pub struct ElementPath {
     fhir_release: FhirRelease,
-    type_stack: Vec<TypePath>,
+    type_stack: TypeStack,
 }
 
 impl ElementPath {
@@ -51,13 +56,13 @@ impl ElementPath {
     pub fn new(fhir_release: FhirRelease) -> ElementPath {
         ElementPath {
             fhir_release,
-            type_stack: vec![TypePath::empty(fhir_release)],
+            type_stack: TypeStack::new(fhir_release),
         }
     }
 
     #[inline]
     pub fn is_empty(&self) -> bool {
-        self.type_stack.len() == 1 && self.type_stack[0].len() == 0
+        self.type_stack.is_empty()
     }
 
     #[inline]
@@ -74,32 +79,47 @@ impl ElementPath {
     pub fn current_element_is_primitive(&self) -> bool {
         let current_type_path = self.current_type_path();
 
-        self.current_element_is_boolean()
-        || self.current_element_is_integer64()
-        || self.current_element_is_integer()
+        let common_resource_primitive = current_type_path.len() == 2
+            && current_type_path
+                .split()
+                .last()
+                .map(|s| RESOURCE_COMMON_PRIMITIVE_FIELDS.contains(&s))
+                .unwrap_or(false);
+
+        common_resource_primitive
+            || self.current_element_is_boolean()
+            || self.current_element_is_integer64()
+            || self.current_element_is_integer()
             || self.current_element_is_unsigned_integer()
             || self.current_element_is_positive_integer()
             || self.current_element_is_decimal()
             || type_hints(self.fhir_release)
-            .other_primitives_paths
-            .contains(&self.current_type_path().path)
-
-            // check if field of resource
-            || (current_type_path.len() == 2
-            && RESOURCE_COMMON_PRIMITIVE_FIELDS.contains(&current_type_path.split().last().unwrap()))
+                .other_primitives_paths
+                .contains(&self.current_type_path().path)
     }
 
     #[inline]
     pub fn current_element_is_sequence(&self) -> bool {
         let current_type_path = self.current_type_path();
 
-        current_type_path.split()
+        let is_common_sequence_field = current_type_path
+            .split()
             .last()
             .map(|p| COMMON_SEQUENCE_FIELDS.contains(&p))
-            .unwrap_or(false)
-            // Resource.contained
-            || current_type_path.len() == 2 && current_type_path.split().last().unwrap() == "contained"
-            || type_hints(self.fhir_release)
+            .unwrap_or(false);
+
+        if is_common_sequence_field {
+            return true;
+        }
+
+        let is_contained =
+            current_type_path.len() == 2 && current_type_path.split().last() == Some("contained");
+
+        if is_contained {
+            return true;
+        }
+
+        type_hints(self.fhir_release)
             .array_paths
             .contains(&current_type_path.path)
     }
@@ -220,16 +240,16 @@ impl ElementPath {
                 type_path.push(element);
                 self.type_stack.push(type_path);
             }
-            None => self.type_stack.last_mut().unwrap().push(element),
+            None => self.type_stack.last_mut().push(element),
         }
     }
 
     #[inline]
     pub fn pop(&mut self) {
-        self.type_stack.last_mut().unwrap().pop();
+        self.type_stack.last_mut().pop();
 
         if self.type_stack.len() > 1
-            && self.type_stack.last().unwrap().len() <= 1
+            && self.type_stack.last().len() <= 1
             && !self.in_contained_resource()
         {
             self.type_stack.pop();
@@ -275,7 +295,7 @@ impl ElementPath {
     }
 
     fn current_type_path(&self) -> &TypePath {
-        self.type_stack.last().unwrap()
+        self.type_stack.last()
     }
 
     fn resolve_current_type(&self) -> Option<&str> {
@@ -303,15 +323,85 @@ impl ElementPath {
     }
 
     fn in_contained_resource(&self) -> bool {
-        let second_last_type_path = &self.type_stack[self.type_stack.len() - 2];
+        let path_was_just_replaced = self.current_type_path().len() == 1;
 
-        self.current_type_path().len() == 1
-            && self.type_stack.len() >= 2
-            && (second_last_type_path.split().last().unwrap() == "contained"
-                || type_hints(self.fhir_release)
-                    .type_paths
-                    .get(&second_last_type_path.path)
-                    == Some(&"Resource"))
+        if !path_was_just_replaced {
+            return false;
+        }
+
+        let previous_type_path = if let Some(previous) = self.type_stack.second_last() {
+            previous
+        } else {
+            return false;
+        };
+
+        let in_contained_field = previous_type_path.split().last() == Some("contained");
+
+        if in_contained_field {
+            return true;
+        }
+
+        let in_resource = type_hints(self.fhir_release)
+            .type_paths
+            .get(&previous_type_path.path)
+            == Some(&"Resource");
+
+        return in_resource;
+    }
+}
+
+#[derive(Debug, Clone)]
+struct TypeStack {
+    root: TypePath,
+    stack: Vec<TypePath>,
+}
+
+impl TypeStack {
+    fn new(fhir_release: FhirRelease) -> TypeStack {
+        TypeStack {
+            root: TypePath::empty(fhir_release),
+            stack: vec![],
+        }
+    }
+
+    fn push(&mut self, value: TypePath) {
+        self.stack.push(value)
+    }
+
+    fn pop(&mut self) {
+        self.stack.pop();
+    }
+
+    fn is_empty(&self) -> bool {
+        self.stack.is_empty() && self.root.is_empty()
+    }
+
+    fn len(&self) -> usize {
+        self.stack.len() + 1
+    }
+
+    fn last(&self) -> &TypePath {
+        if let Some(last) = self.stack.last() {
+            last
+        } else {
+            &self.root
+        }
+    }
+
+    fn last_mut(&mut self) -> &mut TypePath {
+        if let Some(last) = self.stack.last_mut() {
+            last
+        } else {
+            &mut self.root
+        }
+    }
+
+    fn second_last(&self) -> Option<&TypePath> {
+        match self.stack.as_slice() {
+            [_] => Some(&self.root),
+            [.., second_last, _] => Some(second_last),
+            _ => None,
+        }
     }
 }
 
@@ -353,6 +443,10 @@ impl TypePath {
         self.path.split('.')
     }
 
+    fn is_empty(&self) -> bool {
+        self.len() == 0
+    }
+
     fn len(&self) -> usize {
         if self.path.is_empty() {
             0
@@ -382,17 +476,15 @@ impl TypePath {
     fn pop(&mut self) {
         self.path.truncate(self.path.rfind('.').unwrap_or(0));
 
-        if self
-            .content_reference_replacement_stack
-            .last()
-            .map(|r| r.content_reference)
-            == Some(&self.path)
-        {
-            self.path = self
-                .content_reference_replacement_stack
-                .pop()
-                .unwrap()
-                .replaced
-        }
+        let last_replacement = match self.content_reference_replacement_stack.last_mut() {
+            Some(last_replacement) => last_replacement,
+            None => return,
+        };
+
+        if last_replacement.content_reference == self.path {
+            self.path = mem::take(&mut last_replacement.replaced);
+
+            self.content_reference_replacement_stack.pop();
+        };
     }
 }
