@@ -1,4 +1,4 @@
-// Generated on 2023-05-03 by fhirbolt-codegen v0.7.0
+// Generated on 2023-05-05 by fhirbolt-codegen v0.8.0
 #[doc = "Unique device identifier (UDI) assigned to device label or package.  Note that the Device may include multiple udiCarriers as it either may include just the udiCarrier for the jurisdiction it is sold, or for multiple jurisdictions it could have been sold."]
 #[derive(Debug, Clone, PartialEq)]
 pub struct DeviceUdiCarrier {
@@ -166,7 +166,7 @@ impl Default for DeviceProperty {
 #[derive(Debug, Clone, PartialEq)]
 pub struct Device {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
-    pub r#id: Option<std::string::String>,
+    pub r#id: Option<Box<super::super::types::Id>>,
     #[doc = "The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content might not always be associated with version changes to the resource."]
     pub r#meta: Option<Box<super::super::types::Meta>>,
     #[doc = "A reference to a set of rules that were followed when the resource was constructed, and which must be understood when processing the content. Often, this is a reference to an implementation guide that defines the special rules along with other profiles etc."]

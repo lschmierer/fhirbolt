@@ -1,4 +1,4 @@
-// Generated on 2023-05-03 by fhirbolt-codegen v0.7.0
+// Generated on 2023-05-05 by fhirbolt-codegen v0.8.0
 #[doc = "Enum representing all possible FHIR resources."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum Resource {
@@ -298,7 +298,7 @@ pub enum Resource {
     Invalid,
 }
 impl Resource {
-    pub fn id(&self) -> Option<&str> {
+    pub fn id(&self) -> Option<&crate::r4::types::Id> {
         match self {
             Resource::Account(r) => r.id.as_deref(),
             Resource::ActivityDefinition(r) => r.id.as_deref(),

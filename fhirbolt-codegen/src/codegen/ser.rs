@@ -29,6 +29,7 @@ pub fn implement_serialize(
             enums,
             r#struct.is_primitive,
             r#struct.struct_name == "Extension",
+            r#struct.resource_name.is_some(),
             r#struct.struct_name == "Decimal",
             namespace,
         )
@@ -142,6 +143,7 @@ fn serialize_field(
     enums: &[RustFhirEnum],
     in_primitive: bool,
     in_extension: bool,
+    in_resource: bool,
     is_decimal: bool,
     namespace: &TokenStream,
 ) -> TokenStream {
@@ -149,7 +151,7 @@ fn serialize_field(
         serialize_enum(field, enums, namespace)
     } else if in_primitive && field.name == "value"
         || in_extension && field.name == "url"
-        || field.name == "id"
+        || !in_resource && field.name == "id"
     {
         serialize_primitive_value(field, is_decimal)
     } else if field.r#type.contains_primitive {

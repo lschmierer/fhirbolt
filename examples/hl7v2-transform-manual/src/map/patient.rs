@@ -89,7 +89,11 @@ fn map_telecoms(home_fields: &RepeatedField, work_fields: &RepeatedField) -> Vec
 }
 
 fn map_telecom(telecom_field: &Field, r#use: &str) -> Option<ContactPoint> {
-    telecom_field.component(1).first_sub().to_fhir_string().map(|number_string| ContactPoint {
+    telecom_field
+        .component(1)
+        .first_sub()
+        .to_fhir_string()
+        .map(|number_string| ContactPoint {
             system: Some(Code {
                 value: Some("phone".into()),
                 ..Default::default()

@@ -1,4 +1,4 @@
-// Generated on 2023-05-03 by fhirbolt-codegen v0.7.0
+// Generated on 2023-05-05 by fhirbolt-codegen v0.8.0
 use crate::{DeserializationContext, SerializationContext};
 use fhirbolt_model::r4b::types::Id;
 impl serde::ser::Serialize for SerializationContext<&Id> {

@@ -63,6 +63,7 @@ pub fn implement_deserialze(
             enums,
             r#struct.is_primitive,
             r#struct.struct_name == "Extension",
+            r#struct.resource_name.is_some(),
             namespace,
             base_namespace,
         )
@@ -456,6 +457,7 @@ fn deserialize_field(
     enums: &[RustFhirEnum],
     in_primitive: bool,
     in_extension: bool,
+    in_resource: bool,
     namespace: &TokenStream,
     base_namespace: &TokenStream,
 ) -> TokenStream {
@@ -463,7 +465,7 @@ fn deserialize_field(
         deserialize_enum(field, enums, namespace, base_namespace)
     } else if in_primitive && field.name == "value"
         || in_extension && field.name == "url"
-        || field.name == "id"
+        || !in_resource && field.name == "id"
     {
         deserialize_primitive_value(field)
     } else if field.r#type.contains_primitive {

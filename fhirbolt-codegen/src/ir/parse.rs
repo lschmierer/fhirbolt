@@ -238,7 +238,13 @@ fn parse_field(
     } else {
         collect_element_map(element_map_collector, element_path_strip_prefix, field_name);
 
-        if let Some(types) = element_definition.r#type.as_ref() {
+        if is_resource && field_name == "id" {
+            RustFhirFieldType {
+                name: "types::Id".to_string(),
+                r#box: true,
+                contains_primitive: true,
+            }
+        } else if let Some(types) = element_definition.r#type.as_ref() {
             let code = &types.first().unwrap().code;
             if code == "BackboneElement" || code == "Element" {
                 RustFhirFieldType {

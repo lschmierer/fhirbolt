@@ -8,7 +8,7 @@ use crate::{
     FhirRelease, FhirReleases,
 };
 
-const RESOURCE_COMMON_PRIMITIVE_FIELDS: &[&str] = &["id", "implicitRules", "language"];
+const RESOURCE_COMMON_PRIMITIVE_FIELDS: &[&str] = &["implicitRules", "language"];
 const COMMON_SEQUENCE_FIELDS: &[&str] = &["extension", "modifierExtension"];
 
 fn type_hints(fhir_release: FhirRelease) -> &'static TypeHints {
@@ -79,14 +79,21 @@ impl ElementPath {
     pub fn current_element_is_primitive(&self) -> bool {
         let current_type_path = self.current_type_path();
 
-        let common_resource_primitive = current_type_path.len() == 2
-            && current_type_path
-                .split()
-                .last()
-                .map(|s| RESOURCE_COMMON_PRIMITIVE_FIELDS.contains(&s))
-                .unwrap_or(false);
+        let is_id = current_type_path.split().last() == Some("id");
+        if is_id {
+            return true;
+        }
 
-        common_resource_primitive
+        let in_resource = current_type_path.len() == 2
+            && current_type_path.path.as_str().is_first_letter_uppercase();
+
+        let is_common_resource_primitive = in_resource
+            && match current_type_path.split().last() {
+                Some(s) => RESOURCE_COMMON_PRIMITIVE_FIELDS.contains(&s),
+                None => false,
+            };
+
+        is_common_resource_primitive
             || self.current_element_is_boolean()
             || self.current_element_is_integer64()
             || self.current_element_is_integer()

@@ -506,6 +506,23 @@ impl<'a, 'de, const R: FhirRelease> Visitor<'de> for ValueVisitor<'a, R> {
             }
         }
 
+        fn embed_string_in_element<const R: FhirRelease>(value: &mut Value<R>) {
+            if let Value::Primitive(Primitive::String(s)) = value {
+                let mut id_element = Element::default();
+                id_element.insert(
+                    "value".into(),
+                    Value::Primitive(Primitive::String(mem::take(s))),
+                );
+                *value = Value::Element(id_element);
+            }
+        }
+
+        if element.contains_key("resourceType") {
+            if let Some(id) = element.get_mut("id") {
+                embed_string_in_element(id)
+            }
+        }
+
         Ok(Value::Element(element))
     }
 

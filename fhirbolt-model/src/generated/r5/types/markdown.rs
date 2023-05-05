@@ -1,4 +1,4 @@
-// Generated on 2023-05-03 by fhirbolt-codegen v0.7.0
+// Generated on 2023-05-05 by fhirbolt-codegen v0.8.0
 #[doc = "markdown type: A string that may contain Github Flavored Markdown syntax for optional processing by a mark down presentation engine"]
 #[derive(Debug, Clone, PartialEq)]
 pub struct Markdown {

@@ -113,7 +113,7 @@ pub fn generate_resource_enum(resource_modules: &[RustFhirModule], release: &str
             }
 
             impl Resource {
-                pub fn id(&self) -> Option<&str> {
+                pub fn id(&self) -> Option<&crate::#release_ident_module::types::Id> {
                     match self {
                         #(
                             #match_id

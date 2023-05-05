@@ -1,4 +1,4 @@
-// Generated on 2023-05-03 by fhirbolt-codegen v0.7.0
+// Generated on 2023-05-05 by fhirbolt-codegen v0.8.0
 #[doc = "Amount of medication per dose."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum DosageDoseAndRateDose {

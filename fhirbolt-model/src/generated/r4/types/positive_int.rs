@@ -1,4 +1,4 @@
-// Generated on 2023-05-03 by fhirbolt-codegen v0.7.0
+// Generated on 2023-05-05 by fhirbolt-codegen v0.8.0
 #[doc = "Base StructureDefinition for positiveInt type: An integer with a value that is positive (e.g. >0)"]
 #[derive(Debug, Clone, PartialEq)]
 pub struct PositiveInt {

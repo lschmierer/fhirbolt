@@ -1,4 +1,4 @@
-// Generated on 2023-05-03 by fhirbolt-codegen v0.7.0
+// Generated on 2023-05-05 by fhirbolt-codegen v0.8.0
 #[doc = "The timing of the event (if this is a periodic trigger)."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum TriggerDefinitionTiming {
