@@ -12,12 +12,11 @@ use serde::{
 
 use fhirbolt_shared::{path::ElementPath, FhirRelease};
 
-pub use crate::xml::read::{IoRead, Read, SliceRead, StrRead};
-
 use crate::{
     xml::{
         error::{Error, Result},
         event::{Element, Event},
+        read::{IoRead, Read, SliceRead, StrRead},
     },
     DeserializationConfig, DeserializeResource, DeserializeResourceOwned,
 };
@@ -319,12 +318,6 @@ impl<'de, 'a, R: Read> de::MapAccess<'de> for ElementAccess<'a, R> {
                         _ = self.de.next_event()?;
 
                         self.next_key_seed(seed)
-                    } else if self.element.is_resource() && e.name == "id" {
-                        self.element.id = e.value.take();
-                        _ = self.de.next_event()?;
-
-                        seed.deserialize(CowStrDeserializer::new("id".into()))
-                            .map(Some)
                     } else {
                         seed.deserialize(CowStrDeserializer::new(e.name.clone()))
                             .map(Some)
@@ -360,5 +353,74 @@ impl<'de, 'a, R: Read> de::MapAccess<'de> for ElementAccess<'a, R> {
         } else {
             seed.deserialize(&mut ElementDeserializer::new(self.de))
         }
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use std::collections::VecDeque;
+
+    use serde::de::DeserializeSeed;
+
+    use fhirbolt_element::{Element, FhirReleases, Primitive, Value};
+
+    use crate::{
+        xml::{
+            de::Deserializer,
+            error::Result,
+            event::{self, Event},
+            read::Read,
+        },
+        DeserializeResource,
+    };
+
+    impl Read for VecDeque<Event> {
+        fn next_event(&mut self) -> Result<Event> {
+            if let Some(event) = self.pop_front() {
+                Ok(event)
+            } else {
+                Ok(Event::Eof)
+            }
+        }
+    }
+
+    fn mock_deserializer(events: Vec<Event>) -> Deserializer<VecDeque<Event>> {
+        Deserializer::new(VecDeque::from(events), FhirReleases::R4).unwrap()
+    }
+
+    #[test]
+    fn test_resource_id() {
+        let mut de = mock_deserializer(vec![
+            Event::ElementStart(event::Element {
+                name: "Observation".into(),
+                ..Default::default()
+            }),
+            Event::ElementStart(event::Element {
+                name: "id".into(),
+                value: Some("test_id".into()),
+                ..Default::default()
+            }),
+            Event::ElementEnd,
+            Event::ElementEnd,
+        ]);
+
+        assert_eq!(
+            Element::<{ FhirReleases::R4 }>::deserialization_context(Default::default(), false)
+                .deserialize(&mut de)
+                .unwrap(),
+            Element::from([
+                (
+                    "resourceType".into(),
+                    Value::Primitive(Primitive::String("Observation".into()))
+                ),
+                (
+                    "id".into(),
+                    Value::Element(Element::from([(
+                        "value".into(),
+                        Value::Primitive(Primitive::String("test_id".into()))
+                    )]))
+                )
+            ])
+        );
     }
 }

@@ -82,6 +82,14 @@ impl<const R: FhirRelease> DerefMut for Element<R> {
     }
 }
 
+impl<const R: FhirRelease, const N: usize> From<[(String, Value<R>); N]> for Element<R> {
+    fn from(arr: [(String, Value<R>); N]) -> Self {
+        Element {
+            map: indexmap::IndexMap::from(arr),
+        }
+    }
+}
+
 impl<const R: FhirRelease> FromIterator<(String, Value<R>)> for Element<R> {
     #[inline]
     fn from_iter<I: IntoIterator<Item = (String, Value<R>)>>(iter: I) -> Self {
