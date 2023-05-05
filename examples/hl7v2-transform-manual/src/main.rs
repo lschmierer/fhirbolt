@@ -90,7 +90,9 @@ fn build_bundle(resources: Vec<Resource>) -> Bundle {
                     value: Some(format!(
                         "{}/{}",
                         BASE_URL,
-                        r.id().expect("Error: resource is missing an id")
+                        r.id()
+                            .and_then(|i| i.value.as_ref())
+                            .expect("Error: resource is missing an id")
                     )),
                     ..Default::default()
                 }),
