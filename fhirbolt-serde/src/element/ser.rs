@@ -92,7 +92,7 @@ impl<const R: FhirRelease> Serialize for SerializationContext<&Element<R>> {
 
         let mut is_resource = false;
         if let Some(Value::Primitive(Primitive::String(r))) = self.value.get("resourceType") {
-            self.unwrap_current_path_mut().push(r);
+            self.current_path_mut().push(r);
             is_resource = true;
         }
 
@@ -115,7 +115,7 @@ impl<const R: FhirRelease> Serialize for SerializationContext<&Element<R>> {
         let values = if !self.output_json || self.config.sort_json {
             let mut values = self.value.iter().collect::<Vec<_>>();
 
-            values.sort_unstable_by_key(|(k, _v)| self.unwrap_current_path().position_of_child(k));
+            values.sort_unstable_by_key(|(k, _v)| self.current_path().position_of_child(k));
 
             MaybeSorted::Sorted(values.into_iter())
         } else {
@@ -123,9 +123,9 @@ impl<const R: FhirRelease> Serialize for SerializationContext<&Element<R>> {
         };
 
         for (key, value) in values {
-            self.unwrap_current_path_mut().push(key);
+            self.current_path_mut().push(key);
 
-            if self.output_json && self.unwrap_current_path().current_element_is_primitive() {
+            if self.output_json && self.current_path().current_element_is_primitive() {
                 match value {
                     Value::Element(element) => {
                         if let Some(v) = element.get("value") {
@@ -174,11 +174,11 @@ impl<const R: FhirRelease> Serialize for SerializationContext<&Element<R>> {
                 self.with_context(value, |ctx| map.serialize_entry(key, &ctx))?;
             }
 
-            self.unwrap_current_path_mut().pop();
+            self.current_path_mut().pop();
         }
 
         if is_resource {
-            self.unwrap_current_path_mut().pop();
+            self.current_path_mut().pop();
         }
 
         map.end()
@@ -255,13 +255,13 @@ impl<const R: FhirRelease> Serialize for SerializationContext<&PrimitiveElement<
         }
 
         if !self.value.extension.is_empty() {
-            self.unwrap_current_path_mut().push("extension");
+            self.current_path_mut().push("extension");
 
             let elements = self.value.extension.iter().collect::<Vec<_>>();
 
             self.with_context(elements, |ctx| map.serialize_entry("extension", &ctx))?;
 
-            self.unwrap_current_path_mut().pop();
+            self.current_path_mut().pop();
         }
 
         map.end()

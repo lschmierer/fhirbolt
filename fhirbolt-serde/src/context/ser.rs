@@ -38,6 +38,7 @@ where
 
 /// Context for serialization.
 #[derive(Default)]
+#[repr(C)] // important for safe transmutes
 pub struct SerializationContext<V> {
     pub(crate) value: V,
     // Serialization config
@@ -58,11 +59,11 @@ impl<V> SerializationContext<V> {
         }
     }
 
-    pub(crate) fn unwrap_current_path(&self) -> Ref<ElementPath> {
+    pub(crate) fn current_path(&self) -> Ref<ElementPath> {
         Ref::map(self.current_path.borrow(), |p| p.as_ref().unwrap())
     }
 
-    pub(crate) fn unwrap_current_path_mut(&self) -> RefMut<ElementPath> {
+    pub(crate) fn current_path_mut(&self) -> RefMut<ElementPath> {
         RefMut::map(self.current_path.borrow_mut(), |p| p.as_mut().unwrap())
     }
 
@@ -76,10 +77,13 @@ impl<V> SerializationContext<V> {
             output_json: self.output_json,
             current_path: RefCell::new(self.current_path.borrow_mut().take()),
         };
+
         let result = with_fn(&context);
+
         self.current_path
             .borrow_mut()
             .replace(context.current_path.borrow_mut().take().unwrap());
+
         result
     }
 }
