@@ -69,15 +69,6 @@ impl<V> DeserializationContext<V> {
         unsafe { mem::transmute(self) }
     }
 
-    pub(crate) fn clone<F>(&self) -> DeserializationContext<F> {
-        DeserializationContext {
-            _phantom: PhantomData,
-            config: self.config,
-            from_json: self.from_json,
-            current_element_stack: self.current_element_stack.clone(),
-        }
-    }
-
     pub(crate) fn current_element(&self) -> CurrentElement {
         self.current_element_stack
             .last()

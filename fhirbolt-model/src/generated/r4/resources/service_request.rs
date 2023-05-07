@@ -1,4 +1,4 @@
-// Generated on 2023-05-05 by fhirbolt-codegen v0.8.0
+// Generated on 2023-05-07 by fhirbolt-codegen v0.8.0
 #[doc = "An amount of service being requested which can be a quantity ( for example $1,500 home modification), a ratio ( for example, 20 half day visits per month), or a range (2.0 to 1.8 Gy per fraction)."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum ServiceRequestQuantity {

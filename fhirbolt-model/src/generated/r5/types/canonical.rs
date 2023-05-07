@@ -1,4 +1,4 @@
-// Generated on 2023-05-05 by fhirbolt-codegen v0.8.0
+// Generated on 2023-05-07 by fhirbolt-codegen v0.8.0
 #[doc = "canonical type: A URI that is a reference to a canonical URL on a FHIR resource"]
 #[derive(Debug, Clone, PartialEq)]
 pub struct Canonical {

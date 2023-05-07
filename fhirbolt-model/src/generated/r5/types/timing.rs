@@ -1,4 +1,4 @@
-// Generated on 2023-05-05 by fhirbolt-codegen v0.8.0
+// Generated on 2023-05-07 by fhirbolt-codegen v0.8.0
 #[doc = "Either a duration for the length of the timing schedule, a range of possible length, or outer bounds for start and/or end limits of the timing schedule."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum TimingRepeatBounds {

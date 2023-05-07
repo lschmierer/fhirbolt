@@ -1,4 +1,4 @@
-// Generated on 2023-05-05 by fhirbolt-codegen v0.8.0
+// Generated on 2023-05-07 by fhirbolt-codegen v0.8.0
 #[doc = "Base StructureDefinition for instant Type: An instant in time - known at least to the second"]
 #[derive(Debug, Clone, PartialEq)]
 pub struct Instant {

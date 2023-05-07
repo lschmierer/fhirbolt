@@ -1,4 +1,4 @@
-// Generated on 2023-05-05 by fhirbolt-codegen v0.8.0
+// Generated on 2023-05-07 by fhirbolt-codegen v0.8.0
 #[doc = "Information on the possible cause of the event."]
 #[derive(Debug, Clone, PartialEq)]
 pub struct AdverseEventSuspectEntityCausality {

@@ -248,8 +248,8 @@ pub fn implement_deserialze_resource_enum(
             where
                 D: serde::de::Deserializer<'de>,
             {
-                let mut element_context = self.clone::<crate::element::internal::de::InternalElement<{ fhirbolt_shared::FhirReleases::#release_ident }>>();
-                let element = element_context.deserialize(deserializer)?;
+                let _context = self.transmute::<crate::element::internal::de::InternalElement<{ fhirbolt_shared::FhirReleases::#release_ident }>>();
+                let element = _context.deserialize(deserializer)?;
 
                 self.from_json = false;
 

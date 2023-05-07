@@ -1,4 +1,4 @@
-// Generated on 2023-05-05 by fhirbolt-codegen v0.8.0
+// Generated on 2023-05-07 by fhirbolt-codegen v0.8.0
 #[doc = "A specific set of Roles/Locations/specialties/services that a practitioner may perform, or has performed at an organization during a period of time.\n\nNeed to track services that a healthcare provider is able to provide at an organization's location, and the services that they can perform there."]
 #[derive(Debug, Clone, PartialEq)]
 pub struct PractitionerRole {

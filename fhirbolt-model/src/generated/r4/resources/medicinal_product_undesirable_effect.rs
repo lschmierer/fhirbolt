@@ -1,4 +1,4 @@
-// Generated on 2023-05-05 by fhirbolt-codegen v0.8.0
+// Generated on 2023-05-07 by fhirbolt-codegen v0.8.0
 #[doc = "Describe the undesirable effects of the medicinal product."]
 #[derive(Debug, Clone, PartialEq)]
 pub struct MedicinalProductUndesirableEffect {

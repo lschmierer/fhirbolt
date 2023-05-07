@@ -1,4 +1,4 @@
-// Generated on 2023-05-05 by fhirbolt-codegen v0.8.0
+// Generated on 2023-05-07 by fhirbolt-codegen v0.8.0
 use crate::{DeserializationContext, SerializationContext};
 use fhirbolt_model::r4::Resource;
 impl crate::Resource for Resource {
@@ -286,11 +286,11 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Resour
     where
         D: serde::de::Deserializer<'de>,
     {
-        let mut element_context =
-            self.clone::<crate::element::internal::de::InternalElement<
+        let _context =
+            self.transmute::<crate::element::internal::de::InternalElement<
                 { fhirbolt_shared::FhirReleases::R4 },
             >>();
-        let element = element_context.deserialize(deserializer)?;
+        let element = _context.deserialize(deserializer)?;
         self.from_json = false;
         if let Some(fhirbolt_element::Value::Primitive(fhirbolt_element::Primitive::String(
             resource_type,

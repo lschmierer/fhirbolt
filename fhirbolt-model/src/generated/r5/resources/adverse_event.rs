@@ -1,4 +1,4 @@
-// Generated on 2023-05-05 by fhirbolt-codegen v0.8.0
+// Generated on 2023-05-07 by fhirbolt-codegen v0.8.0
 #[doc = "The date (and perhaps time) when the adverse event occurred."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum AdverseEventOccurrence {

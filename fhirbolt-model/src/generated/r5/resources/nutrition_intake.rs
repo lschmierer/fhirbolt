@@ -1,4 +1,4 @@
-// Generated on 2023-05-05 by fhirbolt-codegen v0.8.0
+// Generated on 2023-05-07 by fhirbolt-codegen v0.8.0
 #[doc = "The interval of time during which it is being asserted that the patient is/was consuming the food or fluid."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum NutritionIntakeOccurrence {
