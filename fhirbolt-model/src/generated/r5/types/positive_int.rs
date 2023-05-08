@@ -1,4 +1,4 @@
-// Generated on 2023-05-07 by fhirbolt-codegen v0.8.0
+// Generated on 2023-05-08 by fhirbolt-codegen v0.8.0
 #[doc = "positiveInt type: An integer with a value that is positive (e.g. >0)"]
 #[derive(Debug, Clone, PartialEq)]
 pub struct PositiveInt {

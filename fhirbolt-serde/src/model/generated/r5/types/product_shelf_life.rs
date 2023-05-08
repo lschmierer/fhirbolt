@@ -1,4 +1,4 @@
-// Generated on 2023-05-07 by fhirbolt-codegen v0.8.0
+// Generated on 2023-05-08 by fhirbolt-codegen v0.8.0
 use crate::{DeserializationContext, SerializationContext};
 use fhirbolt_model::r5::types::ProductShelfLife;
 impl serde::ser::Serialize for SerializationContext<&ProductShelfLife> {
@@ -41,7 +41,7 @@ impl serde::ser::Serialize for SerializationContext<&ProductShelfLife> {
                         })?;
                     }
                     _Enum::String(ref value) => {
-                        if self.output_json {
+                        if self.output == crate::context::Format::Json {
                             if let Some(some) = value.value.as_ref().map(Ok) {
                                 state.serialize_entry("periodString", &some?)?;
                             }
@@ -163,7 +163,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Produc
                             r#id = Some(map_access.next_value()?);
                         }
                         Field::Extension => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 if r#extension.is_some() {
                                     return Err(serde::de::Error::duplicate_field("extension"));
                                 }
@@ -180,7 +180,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Produc
                             }
                         }
                         Field::ModifierExtension => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 if r#modifier_extension.is_some() {
                                     return Err(serde::de::Error::duplicate_field(
                                         "modifierExtension",
@@ -221,7 +221,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Produc
                         }
                         Field::PeriodString => {
                             use fhirbolt_model::r5::types::ProductShelfLifePeriod as _Enum;
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let r#enum =
                                     r#period.get_or_insert(_Enum::String(Default::default()));
                                 if let _Enum::String(variant) = r#enum {
@@ -248,7 +248,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Produc
                         }
                         Field::PeriodStringPrimitiveElement => {
                             use fhirbolt_model::r5::types::ProductShelfLifePeriod as _Enum;
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let r#enum =
                                     r#period.get_or_insert(_Enum::String(Default::default()));
                                 if let _Enum::String(variant) = r#enum {
@@ -273,7 +273,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Produc
                             }
                         }
                         Field::SpecialPrecautionsForStorage => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 if r#special_precautions_for_storage.is_some() {
                                     return Err(serde::de::Error::duplicate_field(
                                         "specialPrecautionsForStorage",

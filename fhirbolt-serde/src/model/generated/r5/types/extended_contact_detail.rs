@@ -1,4 +1,4 @@
-// Generated on 2023-05-07 by fhirbolt-codegen v0.8.0
+// Generated on 2023-05-08 by fhirbolt-codegen v0.8.0
 use crate::{DeserializationContext, SerializationContext};
 use fhirbolt_model::r5::types::ExtendedContactDetail;
 impl serde::ser::Serialize for SerializationContext<&ExtendedContactDetail> {
@@ -136,7 +136,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Extend
                             r#id = Some(map_access.next_value()?);
                         }
                         Field::Extension => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 if r#extension.is_some() {
                                     return Err(serde::de::Error::duplicate_field("extension"));
                                 }
@@ -162,7 +162,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Extend
                             r#purpose = Some(map_access.next_value_seed(&mut *_context)?);
                         }
                         Field::Name => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 if r#name.is_some() {
                                     return Err(serde::de::Error::duplicate_field("name"));
                                 }
@@ -179,7 +179,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Extend
                             }
                         }
                         Field::Telecom => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 if r#telecom.is_some() {
                                     return Err(serde::de::Error::duplicate_field("telecom"));
                                 }

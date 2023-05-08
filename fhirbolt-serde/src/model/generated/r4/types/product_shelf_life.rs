@@ -1,4 +1,4 @@
-// Generated on 2023-05-07 by fhirbolt-codegen v0.8.0
+// Generated on 2023-05-08 by fhirbolt-codegen v0.8.0
 use crate::{DeserializationContext, SerializationContext};
 use fhirbolt_model::r4::types::ProductShelfLife;
 impl serde::ser::Serialize for SerializationContext<&ProductShelfLife> {
@@ -140,7 +140,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Produc
                             r#id = Some(map_access.next_value()?);
                         }
                         Field::Extension => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 if r#extension.is_some() {
                                     return Err(serde::de::Error::duplicate_field("extension"));
                                 }
@@ -157,7 +157,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Produc
                             }
                         }
                         Field::ModifierExtension => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 if r#modifier_extension.is_some() {
                                     return Err(serde::de::Error::duplicate_field(
                                         "modifierExtension",
@@ -204,7 +204,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Produc
                             r#period = Some(map_access.next_value_seed(&mut *_context)?);
                         }
                         Field::SpecialPrecautionsForStorage => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 if r#special_precautions_for_storage.is_some() {
                                     return Err(serde::de::Error::duplicate_field(
                                         "specialPrecautionsForStorage",

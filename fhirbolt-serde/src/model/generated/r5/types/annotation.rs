@@ -1,4 +1,4 @@
-// Generated on 2023-05-07 by fhirbolt-codegen v0.8.0
+// Generated on 2023-05-08 by fhirbolt-codegen v0.8.0
 use crate::{DeserializationContext, SerializationContext};
 use fhirbolt_model::r5::types::Annotation;
 impl serde::ser::Serialize for SerializationContext<&Annotation> {
@@ -33,7 +33,7 @@ impl serde::ser::Serialize for SerializationContext<&Annotation> {
                         })?;
                     }
                     _Enum::String(ref value) => {
-                        if self.output_json {
+                        if self.output == crate::context::Format::Json {
                             if let Some(some) = value.value.as_ref().map(Ok) {
                                 state.serialize_entry("authorString", &some?)?;
                             }
@@ -57,7 +57,7 @@ impl serde::ser::Serialize for SerializationContext<&Annotation> {
                 }
             }
         }
-        if self.output_json {
+        if self.output == crate::context::Format::Json {
             if let Some(some) = self.value.r#time.as_ref() {
                 if let Some(some) = some.value.as_ref().map(Ok) {
                     state.serialize_entry("time", &some?)?;
@@ -76,7 +76,7 @@ impl serde::ser::Serialize for SerializationContext<&Annotation> {
         } else if let Some(some) = self.value.r#time.as_ref() {
             self.with_context(some, |ctx| state.serialize_entry("time", ctx))?;
         }
-        if self.output_json {
+        if self.output == crate::context::Format::Json {
             if self.value.r#text.id.as_deref() == Some("$invalid") {
                 return missing_field_error("text");
             }
@@ -188,7 +188,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Annota
                             r#id = Some(map_access.next_value()?);
                         }
                         Field::Extension => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 if r#extension.is_some() {
                                     return Err(serde::de::Error::duplicate_field("extension"));
                                 }
@@ -218,7 +218,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Annota
                         }
                         Field::AuthorString => {
                             use fhirbolt_model::r5::types::AnnotationAuthor as _Enum;
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let r#enum =
                                     r#author.get_or_insert(_Enum::String(Default::default()));
                                 if let _Enum::String(variant) = r#enum {
@@ -245,7 +245,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Annota
                         }
                         Field::AuthorStringPrimitiveElement => {
                             use fhirbolt_model::r5::types::AnnotationAuthor as _Enum;
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let r#enum =
                                     r#author.get_or_insert(_Enum::String(Default::default()));
                                 if let _Enum::String(variant) = r#enum {
@@ -270,7 +270,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Annota
                             }
                         }
                         Field::Time => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let some = r#time.get_or_insert(Default::default());
                                 if some.value.is_some() {
                                     return Err(serde::de::Error::duplicate_field("time"));
@@ -287,7 +287,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Annota
                             }
                         }
                         Field::TimePrimitiveElement => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let some = r#time.get_or_insert(Default::default());
                                 if some.id.is_some() || !some.extension.is_empty() {
                                     return Err(serde::de::Error::duplicate_field("_time"));
@@ -304,7 +304,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Annota
                             }
                         }
                         Field::Text => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let some = r#text.get_or_insert(Default::default());
                                 if some.value.is_some() {
                                     return Err(serde::de::Error::duplicate_field("text"));
@@ -321,7 +321,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Annota
                             }
                         }
                         Field::TextPrimitiveElement => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let some = r#text.get_or_insert(Default::default());
                                 if some.id.is_some() || !some.extension.is_empty() {
                                     return Err(serde::de::Error::duplicate_field("_text"));

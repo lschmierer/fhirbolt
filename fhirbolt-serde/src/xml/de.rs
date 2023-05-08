@@ -13,6 +13,7 @@ use serde::{
 use fhirbolt_shared::{path::ElementPath, FhirRelease};
 
 use crate::{
+    context::Format,
     xml::{
         error::{Error, Result},
         event::{Element, Event},
@@ -29,7 +30,7 @@ where
     R: Read,
     T: DeserializeResource<'de>,
 {
-    T::deserialization_context(config.unwrap_or(Default::default()), false).deserialize(de)
+    T::deserialization_context(config.unwrap_or(Default::default()), Format::Xml).deserialize(de)
 }
 
 /// Deserialize an instance of resource type `T` directly from an IO stream of XML (e.g. coming from network).

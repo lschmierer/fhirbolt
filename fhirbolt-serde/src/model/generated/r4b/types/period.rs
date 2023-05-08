@@ -1,4 +1,4 @@
-// Generated on 2023-05-07 by fhirbolt-codegen v0.8.0
+// Generated on 2023-05-08 by fhirbolt-codegen v0.8.0
 use crate::{DeserializationContext, SerializationContext};
 use fhirbolt_model::r4b::types::Period;
 impl serde::ser::Serialize for SerializationContext<&Period> {
@@ -23,7 +23,7 @@ impl serde::ser::Serialize for SerializationContext<&Period> {
                 state.serialize_entry("extension", ctx)
             })?;
         }
-        if self.output_json {
+        if self.output == crate::context::Format::Json {
             if let Some(some) = self.value.r#start.as_ref() {
                 if let Some(some) = some.value.as_ref().map(Ok) {
                     state.serialize_entry("start", &some?)?;
@@ -42,7 +42,7 @@ impl serde::ser::Serialize for SerializationContext<&Period> {
         } else if let Some(some) = self.value.r#start.as_ref() {
             self.with_context(some, |ctx| state.serialize_entry("start", ctx))?;
         }
-        if self.output_json {
+        if self.output == crate::context::Format::Json {
             if let Some(some) = self.value.r#end.as_ref() {
                 if let Some(some) = some.value.as_ref().map(Ok) {
                     state.serialize_entry("end", &some?)?;
@@ -137,7 +137,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Period
                             r#id = Some(map_access.next_value()?);
                         }
                         Field::Extension => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 if r#extension.is_some() {
                                     return Err(serde::de::Error::duplicate_field("extension"));
                                 }
@@ -154,7 +154,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Period
                             }
                         }
                         Field::Start => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let some = r#start.get_or_insert(Default::default());
                                 if some.value.is_some() {
                                     return Err(serde::de::Error::duplicate_field("start"));
@@ -171,7 +171,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Period
                             }
                         }
                         Field::StartPrimitiveElement => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let some = r#start.get_or_insert(Default::default());
                                 if some.id.is_some() || !some.extension.is_empty() {
                                     return Err(serde::de::Error::duplicate_field("_start"));
@@ -188,7 +188,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Period
                             }
                         }
                         Field::End => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let some = r#end.get_or_insert(Default::default());
                                 if some.value.is_some() {
                                     return Err(serde::de::Error::duplicate_field("end"));
@@ -205,7 +205,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Period
                             }
                         }
                         Field::EndPrimitiveElement => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let some = r#end.get_or_insert(Default::default());
                                 if some.id.is_some() || !some.extension.is_empty() {
                                     return Err(serde::de::Error::duplicate_field("_end"));

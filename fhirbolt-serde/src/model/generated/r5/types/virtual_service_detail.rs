@@ -1,4 +1,4 @@
-// Generated on 2023-05-07 by fhirbolt-codegen v0.8.0
+// Generated on 2023-05-08 by fhirbolt-codegen v0.8.0
 use crate::{DeserializationContext, SerializationContext};
 use fhirbolt_model::r5::types::VirtualServiceDetail;
 impl serde::ser::Serialize for SerializationContext<&VirtualServiceDetail> {
@@ -31,7 +31,7 @@ impl serde::ser::Serialize for SerializationContext<&VirtualServiceDetail> {
             if let Some(some) = self.value.r#address.as_ref() {
                 match some {
                     _Enum::Url(ref value) => {
-                        if self.output_json {
+                        if self.output == crate::context::Format::Json {
                             if let Some(some) = value.value.as_ref().map(Ok) {
                                 state.serialize_entry("addressUrl", &some?)?;
                             }
@@ -52,7 +52,7 @@ impl serde::ser::Serialize for SerializationContext<&VirtualServiceDetail> {
                         }
                     }
                     _Enum::String(ref value) => {
-                        if self.output_json {
+                        if self.output == crate::context::Format::Json {
                             if let Some(some) = value.value.as_ref().map(Ok) {
                                 state.serialize_entry("addressString", &some?)?;
                             }
@@ -86,7 +86,7 @@ impl serde::ser::Serialize for SerializationContext<&VirtualServiceDetail> {
                 }
             }
         }
-        if self.output_json {
+        if self.output == crate::context::Format::Json {
             if !self.value.r#additional_info.is_empty() {
                 let values = self
                     .value
@@ -130,7 +130,7 @@ impl serde::ser::Serialize for SerializationContext<&VirtualServiceDetail> {
                 state.serialize_entry("additionalInfo", ctx)
             })?;
         }
-        if self.output_json {
+        if self.output == crate::context::Format::Json {
             if let Some(some) = self.value.r#max_participants.as_ref() {
                 if let Some(some) = some.value.as_ref().map(Ok) {
                     state.serialize_entry("maxParticipants", &some?)?;
@@ -149,7 +149,7 @@ impl serde::ser::Serialize for SerializationContext<&VirtualServiceDetail> {
         } else if let Some(some) = self.value.r#max_participants.as_ref() {
             self.with_context(some, |ctx| state.serialize_entry("maxParticipants", ctx))?;
         }
-        if self.output_json {
+        if self.output == crate::context::Format::Json {
             if let Some(some) = self.value.r#session_key.as_ref() {
                 if let Some(some) = some.value.as_ref().map(Ok) {
                     state.serialize_entry("sessionKey", &some?)?;
@@ -277,7 +277,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Virtua
                             r#id = Some(map_access.next_value()?);
                         }
                         Field::Extension => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 if r#extension.is_some() {
                                     return Err(serde::de::Error::duplicate_field("extension"));
                                 }
@@ -304,7 +304,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Virtua
                         }
                         Field::AddressUrl => {
                             use fhirbolt_model::r5::types::VirtualServiceDetailAddress as _Enum;
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let r#enum =
                                     r#address.get_or_insert(_Enum::Url(Default::default()));
                                 if let _Enum::Url(variant) = r#enum {
@@ -330,7 +330,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Virtua
                         }
                         Field::AddressUrlPrimitiveElement => {
                             use fhirbolt_model::r5::types::VirtualServiceDetailAddress as _Enum;
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let r#enum =
                                     r#address.get_or_insert(_Enum::Url(Default::default()));
                                 if let _Enum::Url(variant) = r#enum {
@@ -356,7 +356,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Virtua
                         }
                         Field::AddressString => {
                             use fhirbolt_model::r5::types::VirtualServiceDetailAddress as _Enum;
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let r#enum =
                                     r#address.get_or_insert(_Enum::String(Default::default()));
                                 if let _Enum::String(variant) = r#enum {
@@ -383,7 +383,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Virtua
                         }
                         Field::AddressStringPrimitiveElement => {
                             use fhirbolt_model::r5::types::VirtualServiceDetailAddress as _Enum;
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let r#enum =
                                     r#address.get_or_insert(_Enum::String(Default::default()));
                                 if let _Enum::String(variant) = r#enum {
@@ -436,7 +436,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Virtua
                             ));
                         }
                         Field::AdditionalInfo => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let values: Vec<Option<_>> = map_access.next_value()?;
                                 let vec = r#additional_info.get_or_insert(
                                     std::iter::repeat(Default::default())
@@ -468,7 +468,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Virtua
                             }
                         }
                         Field::AdditionalInfoPrimitiveElement => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 use super::super::serde_helpers::PrimitiveElementOwned;
                                 let _context: &mut DeserializationContext<
                                     Vec<Option<PrimitiveElementOwned>>,
@@ -505,7 +505,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Virtua
                             }
                         }
                         Field::MaxParticipants => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let some = r#max_participants.get_or_insert(Default::default());
                                 if some.value.is_some() {
                                     return Err(serde::de::Error::duplicate_field(
@@ -527,7 +527,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Virtua
                             }
                         }
                         Field::MaxParticipantsPrimitiveElement => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let some = r#max_participants.get_or_insert(Default::default());
                                 if some.id.is_some() || !some.extension.is_empty() {
                                     return Err(serde::de::Error::duplicate_field(
@@ -546,7 +546,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Virtua
                             }
                         }
                         Field::SessionKey => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let some = r#session_key.get_or_insert(Default::default());
                                 if some.value.is_some() {
                                     return Err(serde::de::Error::duplicate_field("sessionKey"));
@@ -563,7 +563,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Virtua
                             }
                         }
                         Field::SessionKeyPrimitiveElement => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let some = r#session_key.get_or_insert(Default::default());
                                 if some.id.is_some() || !some.extension.is_empty() {
                                     return Err(serde::de::Error::duplicate_field("_sessionKey"));

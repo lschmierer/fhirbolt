@@ -6,8 +6,8 @@ pub mod json;
 pub mod xml;
 
 mod context;
+mod decimal;
 mod model;
-mod number;
 
 use std::fmt::Debug;
 

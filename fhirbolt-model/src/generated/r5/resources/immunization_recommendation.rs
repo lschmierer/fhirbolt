@@ -1,4 +1,4 @@
-// Generated on 2023-05-07 by fhirbolt-codegen v0.8.0
+// Generated on 2023-05-08 by fhirbolt-codegen v0.8.0
 #[doc = "Vaccine date recommendations.  For example, earliest date to administer, latest date to administer, etc."]
 #[derive(Debug, Clone, PartialEq)]
 pub struct ImmunizationRecommendationRecommendationDateCriterion {

@@ -234,7 +234,7 @@ fn serialize_enum_variant(
 
     let serialize_tokens = if variant.r#type.contains_primitive {
         quote! {
-            if self.output_json {
+            if self.output == crate::context::Format::Json {
                 if let Some(some) = value.value.as_ref().map(#map_intermediate_type_tokens) {
                     state.serialize_entry(#fhir_name, &some?)?;
                 }
@@ -273,10 +273,19 @@ fn serialize_primitive_value(field: &RustFhirStructField, is_decimal: bool) -> T
     if is_decimal && field.name == "value" {
         quote! {
             if let Some(value) = self.value.value.as_ref() {
-                let _value = value
-                    .parse::<serde_json::Number>()
-                    .map_err(|_| serde::ser::Error::custom("error serializing decimal"))?;
-                state.serialize_entry("value", &_value)?;
+                if self.output == crate::context::Format::Json {
+                    let _value = value
+                        .parse::<serde_json::Number>()
+                        .map_err(|_| serde::ser::Error::custom("error serializing decimal"))?;
+                    state.serialize_entry("value", &_value)?;
+                } else if self.output == crate::context::Format::InternalElement {
+                    let _value = crate::decimal::Decimal {
+                        d: value,
+                    };
+                    state.serialize_entry("value", &_value)?;
+                } else {
+                    state.serialize_entry("value", value)?;
+                }
             }
         }
     } else if field.optional {
@@ -294,12 +303,12 @@ fn serialize_primitive_value(field: &RustFhirStructField, is_decimal: bool) -> T
 
 fn serialize_primitive(field: &RustFhirStructField) -> TokenStream {
     let serialize_json_tokens = serialize_primitive_json(field);
-    let serialize_xml_tokens = serialize_element(field);
+    let serialize_element_tokens = serialize_element(field);
 
     quote! {
-        if self.output_json {
+        if self.output == crate::context::Format::Json {
             #serialize_json_tokens
-        } else #serialize_xml_tokens
+        } else #serialize_element_tokens
     }
 }
 

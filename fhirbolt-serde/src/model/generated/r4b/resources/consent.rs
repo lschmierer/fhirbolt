@@ -1,4 +1,4 @@
-// Generated on 2023-05-07 by fhirbolt-codegen v0.8.0
+// Generated on 2023-05-08 by fhirbolt-codegen v0.8.0
 use crate::{DeserializationContext, SerializationContext};
 use fhirbolt_model::r4b::resources::ConsentPolicy;
 impl serde::ser::Serialize for SerializationContext<&ConsentPolicy> {
@@ -28,7 +28,7 @@ impl serde::ser::Serialize for SerializationContext<&ConsentPolicy> {
                 state.serialize_entry("modifierExtension", ctx)
             })?;
         }
-        if self.output_json {
+        if self.output == crate::context::Format::Json {
             if let Some(some) = self.value.r#authority.as_ref() {
                 if let Some(some) = some.value.as_ref().map(Ok) {
                     state.serialize_entry("authority", &some?)?;
@@ -47,7 +47,7 @@ impl serde::ser::Serialize for SerializationContext<&ConsentPolicy> {
         } else if let Some(some) = self.value.r#authority.as_ref() {
             self.with_context(some, |ctx| state.serialize_entry("authority", ctx))?;
         }
-        if self.output_json {
+        if self.output == crate::context::Format::Json {
             if let Some(some) = self.value.r#uri.as_ref() {
                 if let Some(some) = some.value.as_ref().map(Ok) {
                     state.serialize_entry("uri", &some?)?;
@@ -146,7 +146,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Consen
                             r#id = Some(map_access.next_value()?);
                         }
                         Field::Extension => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 if r#extension.is_some() {
                                     return Err(serde::de::Error::duplicate_field("extension"));
                                 }
@@ -163,7 +163,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Consen
                             }
                         }
                         Field::ModifierExtension => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 if r#modifier_extension.is_some() {
                                     return Err(serde::de::Error::duplicate_field(
                                         "modifierExtension",
@@ -183,7 +183,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Consen
                             }
                         }
                         Field::Authority => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let some = r#authority.get_or_insert(Default::default());
                                 if some.value.is_some() {
                                     return Err(serde::de::Error::duplicate_field("authority"));
@@ -200,7 +200,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Consen
                             }
                         }
                         Field::AuthorityPrimitiveElement => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let some = r#authority.get_or_insert(Default::default());
                                 if some.id.is_some() || !some.extension.is_empty() {
                                     return Err(serde::de::Error::duplicate_field("_authority"));
@@ -217,7 +217,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Consen
                             }
                         }
                         Field::Uri => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let some = r#uri.get_or_insert(Default::default());
                                 if some.value.is_some() {
                                     return Err(serde::de::Error::duplicate_field("uri"));
@@ -234,7 +234,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Consen
                             }
                         }
                         Field::UriPrimitiveElement => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let some = r#uri.get_or_insert(Default::default());
                                 if some.id.is_some() || !some.extension.is_empty() {
                                     return Err(serde::de::Error::duplicate_field("_uri"));
@@ -336,7 +336,7 @@ impl serde::ser::Serialize for SerializationContext<&ConsentVerification> {
                 state.serialize_entry("modifierExtension", ctx)
             })?;
         }
-        if self.output_json {
+        if self.output == crate::context::Format::Json {
             if self.value.r#verified.id.as_deref() == Some("$invalid") {
                 return missing_field_error("verified");
             }
@@ -363,7 +363,7 @@ impl serde::ser::Serialize for SerializationContext<&ConsentVerification> {
         if let Some(some) = self.value.r#verified_with.as_ref() {
             self.with_context(some, |ctx| state.serialize_entry("verifiedWith", ctx))?;
         }
-        if self.output_json {
+        if self.output == crate::context::Format::Json {
             if let Some(some) = self.value.r#verification_date.as_ref() {
                 if let Some(some) = some.value.as_ref().map(Ok) {
                     state.serialize_entry("verificationDate", &some?)?;
@@ -472,7 +472,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Consen
                             r#id = Some(map_access.next_value()?);
                         }
                         Field::Extension => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 if r#extension.is_some() {
                                     return Err(serde::de::Error::duplicate_field("extension"));
                                 }
@@ -489,7 +489,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Consen
                             }
                         }
                         Field::ModifierExtension => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 if r#modifier_extension.is_some() {
                                     return Err(serde::de::Error::duplicate_field(
                                         "modifierExtension",
@@ -509,7 +509,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Consen
                             }
                         }
                         Field::Verified => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let some = r#verified.get_or_insert(Default::default());
                                 if some.value.is_some() {
                                     return Err(serde::de::Error::duplicate_field("verified"));
@@ -526,7 +526,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Consen
                             }
                         }
                         Field::VerifiedPrimitiveElement => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let some = r#verified.get_or_insert(Default::default());
                                 if some.id.is_some() || !some.extension.is_empty() {
                                     return Err(serde::de::Error::duplicate_field("_verified"));
@@ -552,7 +552,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Consen
                             r#verified_with = Some(map_access.next_value_seed(&mut *_context)?);
                         }
                         Field::VerificationDate => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let some = r#verification_date.get_or_insert(Default::default());
                                 if some.value.is_some() {
                                     return Err(serde::de::Error::duplicate_field(
@@ -574,7 +574,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Consen
                             }
                         }
                         Field::VerificationDatePrimitiveElement => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let some = r#verification_date.get_or_insert(Default::default());
                                 if some.id.is_some() || !some.extension.is_empty() {
                                     return Err(serde::de::Error::duplicate_field(
@@ -777,7 +777,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Consen
                             r#id = Some(map_access.next_value()?);
                         }
                         Field::Extension => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 if r#extension.is_some() {
                                     return Err(serde::de::Error::duplicate_field("extension"));
                                 }
@@ -794,7 +794,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Consen
                             }
                         }
                         Field::ModifierExtension => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 if r#modifier_extension.is_some() {
                                     return Err(serde::de::Error::duplicate_field(
                                         "modifierExtension",
@@ -932,7 +932,7 @@ impl serde::ser::Serialize for SerializationContext<&ConsentProvisionData> {
                 state.serialize_entry("modifierExtension", ctx)
             })?;
         }
-        if self.output_json {
+        if self.output == crate::context::Format::Json {
             if self.value.r#meaning.id.as_deref() == Some("$invalid") {
                 return missing_field_error("meaning");
             }
@@ -1047,7 +1047,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Consen
                             r#id = Some(map_access.next_value()?);
                         }
                         Field::Extension => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 if r#extension.is_some() {
                                     return Err(serde::de::Error::duplicate_field("extension"));
                                 }
@@ -1064,7 +1064,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Consen
                             }
                         }
                         Field::ModifierExtension => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 if r#modifier_extension.is_some() {
                                     return Err(serde::de::Error::duplicate_field(
                                         "modifierExtension",
@@ -1084,7 +1084,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Consen
                             }
                         }
                         Field::Meaning => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let some = r#meaning.get_or_insert(Default::default());
                                 if some.value.is_some() {
                                     return Err(serde::de::Error::duplicate_field("meaning"));
@@ -1101,7 +1101,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Consen
                             }
                         }
                         Field::MeaningPrimitiveElement => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let some = r#meaning.get_or_insert(Default::default());
                                 if some.id.is_some() || !some.extension.is_empty() {
                                     return Err(serde::de::Error::duplicate_field("_meaning"));
@@ -1228,7 +1228,7 @@ impl serde::ser::Serialize for SerializationContext<&ConsentProvision> {
                 state.serialize_entry("modifierExtension", ctx)
             })?;
         }
-        if self.output_json {
+        if self.output == crate::context::Format::Json {
             if let Some(some) = self.value.r#type.as_ref() {
                 if let Some(some) = some.value.as_ref().map(Ok) {
                     state.serialize_entry("type", &some?)?;
@@ -1413,7 +1413,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Consen
                             r#id = Some(map_access.next_value()?);
                         }
                         Field::Extension => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 if r#extension.is_some() {
                                     return Err(serde::de::Error::duplicate_field("extension"));
                                 }
@@ -1430,7 +1430,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Consen
                             }
                         }
                         Field::ModifierExtension => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 if r#modifier_extension.is_some() {
                                     return Err(serde::de::Error::duplicate_field(
                                         "modifierExtension",
@@ -1450,7 +1450,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Consen
                             }
                         }
                         Field::Type => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let some = r#type.get_or_insert(Default::default());
                                 if some.value.is_some() {
                                     return Err(serde::de::Error::duplicate_field("type"));
@@ -1467,7 +1467,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Consen
                             }
                         }
                         Field::TypePrimitiveElement => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let some = r#type.get_or_insert(Default::default());
                                 if some.id.is_some() || !some.extension.is_empty() {
                                     return Err(serde::de::Error::duplicate_field("_type"));
@@ -1493,7 +1493,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Consen
                             r#period = Some(map_access.next_value_seed(&mut *_context)?);
                         }
                         Field::Actor => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 if r#actor.is_some() {
                                     return Err(serde::de::Error::duplicate_field("actor"));
                                 }
@@ -1510,7 +1510,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Consen
                             }
                         }
                         Field::Action => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 if r#action.is_some() {
                                     return Err(serde::de::Error::duplicate_field("action"));
                                 }
@@ -1527,7 +1527,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Consen
                             }
                         }
                         Field::SecurityLabel => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 if r#security_label.is_some() {
                                     return Err(serde::de::Error::duplicate_field("securityLabel"));
                                 }
@@ -1545,7 +1545,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Consen
                             }
                         }
                         Field::Purpose => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 if r#purpose.is_some() {
                                     return Err(serde::de::Error::duplicate_field("purpose"));
                                 }
@@ -1562,7 +1562,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Consen
                             }
                         }
                         Field::Class => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 if r#class.is_some() {
                                     return Err(serde::de::Error::duplicate_field("class"));
                                 }
@@ -1579,7 +1579,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Consen
                             }
                         }
                         Field::Code => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 if r#code.is_some() {
                                     return Err(serde::de::Error::duplicate_field("code"));
                                 }
@@ -1605,7 +1605,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Consen
                             r#data_period = Some(map_access.next_value_seed(&mut *_context)?);
                         }
                         Field::Data => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 if r#data.is_some() {
                                     return Err(serde::de::Error::duplicate_field("data"));
                                 }
@@ -1622,7 +1622,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Consen
                             }
                         }
                         Field::Provision => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 if r#provision.is_some() {
                                     return Err(serde::de::Error::duplicate_field("provision"));
                                 }
@@ -1724,7 +1724,7 @@ impl serde::ser::Serialize for SerializationContext<&Consent> {
         }
         let mut state = serializer.serialize_map(None)?;
         state.serialize_entry("resourceType", "Consent")?;
-        if self.output_json {
+        if self.output == crate::context::Format::Json {
             if let Some(some) = self.value.r#id.as_ref() {
                 if let Some(some) = some.value.as_ref().map(Ok) {
                     state.serialize_entry("id", &some?)?;
@@ -1744,7 +1744,7 @@ impl serde::ser::Serialize for SerializationContext<&Consent> {
         if let Some(some) = self.value.r#meta.as_ref() {
             self.with_context(some, |ctx| state.serialize_entry("meta", ctx))?;
         }
-        if self.output_json {
+        if self.output == crate::context::Format::Json {
             if let Some(some) = self.value.r#implicit_rules.as_ref() {
                 if let Some(some) = some.value.as_ref().map(Ok) {
                     state.serialize_entry("implicitRules", &some?)?;
@@ -1763,7 +1763,7 @@ impl serde::ser::Serialize for SerializationContext<&Consent> {
         } else if let Some(some) = self.value.r#implicit_rules.as_ref() {
             self.with_context(some, |ctx| state.serialize_entry("implicitRules", ctx))?;
         }
-        if self.output_json {
+        if self.output == crate::context::Format::Json {
             if let Some(some) = self.value.r#language.as_ref() {
                 if let Some(some) = some.value.as_ref().map(Ok) {
                     state.serialize_entry("language", &some?)?;
@@ -1805,7 +1805,7 @@ impl serde::ser::Serialize for SerializationContext<&Consent> {
                 state.serialize_entry("identifier", ctx)
             })?;
         }
-        if self.output_json {
+        if self.output == crate::context::Format::Json {
             if self.value.r#status.id.as_deref() == Some("$invalid") {
                 return missing_field_error("status");
             }
@@ -1844,7 +1844,7 @@ impl serde::ser::Serialize for SerializationContext<&Consent> {
         if let Some(some) = self.value.r#patient.as_ref() {
             self.with_context(some, |ctx| state.serialize_entry("patient", ctx))?;
         }
-        if self.output_json {
+        if self.output == crate::context::Format::Json {
             if let Some(some) = self.value.r#date_time.as_ref() {
                 if let Some(some) = some.value.as_ref().map(Ok) {
                     state.serialize_entry("dateTime", &some?)?;
@@ -2084,7 +2084,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Consen
                             }
                         }
                         Field::Id => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let some = r#id.get_or_insert(Default::default());
                                 if some.value.is_some() {
                                     return Err(serde::de::Error::duplicate_field("id"));
@@ -2101,7 +2101,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Consen
                             }
                         }
                         Field::IdPrimitiveElement => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let some = r#id.get_or_insert(Default::default());
                                 if some.id.is_some() || !some.extension.is_empty() {
                                     return Err(serde::de::Error::duplicate_field("_id"));
@@ -2127,7 +2127,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Consen
                             r#meta = Some(map_access.next_value_seed(&mut *_context)?);
                         }
                         Field::ImplicitRules => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let some = r#implicit_rules.get_or_insert(Default::default());
                                 if some.value.is_some() {
                                     return Err(serde::de::Error::duplicate_field("implicitRules"));
@@ -2145,7 +2145,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Consen
                             }
                         }
                         Field::ImplicitRulesPrimitiveElement => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let some = r#implicit_rules.get_or_insert(Default::default());
                                 if some.id.is_some() || !some.extension.is_empty() {
                                     return Err(serde::de::Error::duplicate_field(
@@ -2164,7 +2164,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Consen
                             }
                         }
                         Field::Language => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let some = r#language.get_or_insert(Default::default());
                                 if some.value.is_some() {
                                     return Err(serde::de::Error::duplicate_field("language"));
@@ -2181,7 +2181,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Consen
                             }
                         }
                         Field::LanguagePrimitiveElement => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let some = r#language.get_or_insert(Default::default());
                                 if some.id.is_some() || !some.extension.is_empty() {
                                     return Err(serde::de::Error::duplicate_field("_language"));
@@ -2207,7 +2207,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Consen
                             r#text = Some(map_access.next_value_seed(&mut *_context)?);
                         }
                         Field::Contained => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 if r#contained.is_some() {
                                     return Err(serde::de::Error::duplicate_field("contained"));
                                 }
@@ -2224,7 +2224,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Consen
                             }
                         }
                         Field::Extension => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 if r#extension.is_some() {
                                     return Err(serde::de::Error::duplicate_field("extension"));
                                 }
@@ -2241,7 +2241,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Consen
                             }
                         }
                         Field::ModifierExtension => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 if r#modifier_extension.is_some() {
                                     return Err(serde::de::Error::duplicate_field(
                                         "modifierExtension",
@@ -2261,7 +2261,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Consen
                             }
                         }
                         Field::Identifier => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 if r#identifier.is_some() {
                                     return Err(serde::de::Error::duplicate_field("identifier"));
                                 }
@@ -2278,7 +2278,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Consen
                             }
                         }
                         Field::Status => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let some = r#status.get_or_insert(Default::default());
                                 if some.value.is_some() {
                                     return Err(serde::de::Error::duplicate_field("status"));
@@ -2295,7 +2295,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Consen
                             }
                         }
                         Field::StatusPrimitiveElement => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let some = r#status.get_or_insert(Default::default());
                                 if some.id.is_some() || !some.extension.is_empty() {
                                     return Err(serde::de::Error::duplicate_field("_status"));
@@ -2321,7 +2321,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Consen
                             r#scope = Some(map_access.next_value_seed(&mut *_context)?);
                         }
                         Field::Category => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 if r#category.is_some() {
                                     return Err(serde::de::Error::duplicate_field("category"));
                                 }
@@ -2347,7 +2347,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Consen
                             r#patient = Some(map_access.next_value_seed(&mut *_context)?);
                         }
                         Field::DateTime => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let some = r#date_time.get_or_insert(Default::default());
                                 if some.value.is_some() {
                                     return Err(serde::de::Error::duplicate_field("dateTime"));
@@ -2364,7 +2364,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Consen
                             }
                         }
                         Field::DateTimePrimitiveElement => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let some = r#date_time.get_or_insert(Default::default());
                                 if some.id.is_some() || !some.extension.is_empty() {
                                     return Err(serde::de::Error::duplicate_field("_dateTime"));
@@ -2381,7 +2381,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Consen
                             }
                         }
                         Field::Performer => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 if r#performer.is_some() {
                                     return Err(serde::de::Error::duplicate_field("performer"));
                                 }
@@ -2398,7 +2398,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Consen
                             }
                         }
                         Field::Organization => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 if r#organization.is_some() {
                                     return Err(serde::de::Error::duplicate_field("organization"));
                                 }
@@ -2439,7 +2439,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Consen
                             ));
                         }
                         Field::Policy => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 if r#policy.is_some() {
                                     return Err(serde::de::Error::duplicate_field("policy"));
                                 }
@@ -2465,7 +2465,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Consen
                             r#policy_rule = Some(map_access.next_value_seed(&mut *_context)?);
                         }
                         Field::Verification => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 if r#verification.is_some() {
                                     return Err(serde::de::Error::duplicate_field("verification"));
                                 }

@@ -1,4 +1,4 @@
-// Generated on 2023-05-07 by fhirbolt-codegen v0.8.0
+// Generated on 2023-05-08 by fhirbolt-codegen v0.8.0
 use crate::{DeserializationContext, SerializationContext};
 use fhirbolt_model::r4::types::TriggerDefinition;
 impl serde::ser::Serialize for SerializationContext<&TriggerDefinition> {
@@ -23,7 +23,7 @@ impl serde::ser::Serialize for SerializationContext<&TriggerDefinition> {
                 state.serialize_entry("extension", ctx)
             })?;
         }
-        if self.output_json {
+        if self.output == crate::context::Format::Json {
             if self.value.r#type.id.as_deref() == Some("$invalid") {
                 return missing_field_error("type");
             }
@@ -45,7 +45,7 @@ impl serde::ser::Serialize for SerializationContext<&TriggerDefinition> {
         } else {
             self.with_context(&self.value.r#type, |ctx| state.serialize_entry("type", ctx))?;
         }
-        if self.output_json {
+        if self.output == crate::context::Format::Json {
             if let Some(some) = self.value.r#name.as_ref() {
                 if let Some(some) = some.value.as_ref().map(Ok) {
                     state.serialize_entry("name", &some?)?;
@@ -77,7 +77,7 @@ impl serde::ser::Serialize for SerializationContext<&TriggerDefinition> {
                         })?;
                     }
                     _Enum::Date(ref value) => {
-                        if self.output_json {
+                        if self.output == crate::context::Format::Json {
                             if let Some(some) = value.value.as_ref().map(Ok) {
                                 state.serialize_entry("timingDate", &some?)?;
                             }
@@ -98,7 +98,7 @@ impl serde::ser::Serialize for SerializationContext<&TriggerDefinition> {
                         }
                     }
                     _Enum::DateTime(ref value) => {
-                        if self.output_json {
+                        if self.output == crate::context::Format::Json {
                             if let Some(some) = value.value.as_ref().map(Ok) {
                                 state.serialize_entry("timingDateTime", &some?)?;
                             }
@@ -234,7 +234,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Trigge
                             r#id = Some(map_access.next_value()?);
                         }
                         Field::Extension => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 if r#extension.is_some() {
                                     return Err(serde::de::Error::duplicate_field("extension"));
                                 }
@@ -251,7 +251,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Trigge
                             }
                         }
                         Field::Type => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let some = r#type.get_or_insert(Default::default());
                                 if some.value.is_some() {
                                     return Err(serde::de::Error::duplicate_field("type"));
@@ -268,7 +268,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Trigge
                             }
                         }
                         Field::TypePrimitiveElement => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let some = r#type.get_or_insert(Default::default());
                                 if some.id.is_some() || !some.extension.is_empty() {
                                     return Err(serde::de::Error::duplicate_field("_type"));
@@ -285,7 +285,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Trigge
                             }
                         }
                         Field::Name => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let some = r#name.get_or_insert(Default::default());
                                 if some.value.is_some() {
                                     return Err(serde::de::Error::duplicate_field("name"));
@@ -302,7 +302,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Trigge
                             }
                         }
                         Field::NamePrimitiveElement => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let some = r#name.get_or_insert(Default::default());
                                 if some.id.is_some() || !some.extension.is_empty() {
                                     return Err(serde::de::Error::duplicate_field("_name"));
@@ -343,7 +343,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Trigge
                         }
                         Field::TimingDate => {
                             use fhirbolt_model::r4::types::TriggerDefinitionTiming as _Enum;
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let r#enum =
                                     r#timing.get_or_insert(_Enum::Date(Default::default()));
                                 if let _Enum::Date(variant) = r#enum {
@@ -369,7 +369,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Trigge
                         }
                         Field::TimingDatePrimitiveElement => {
                             use fhirbolt_model::r4::types::TriggerDefinitionTiming as _Enum;
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let r#enum =
                                     r#timing.get_or_insert(_Enum::Date(Default::default()));
                                 if let _Enum::Date(variant) = r#enum {
@@ -395,7 +395,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Trigge
                         }
                         Field::TimingDateTime => {
                             use fhirbolt_model::r4::types::TriggerDefinitionTiming as _Enum;
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let r#enum =
                                     r#timing.get_or_insert(_Enum::DateTime(Default::default()));
                                 if let _Enum::DateTime(variant) = r#enum {
@@ -424,7 +424,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Trigge
                         }
                         Field::TimingDateTimePrimitiveElement => {
                             use fhirbolt_model::r4::types::TriggerDefinitionTiming as _Enum;
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let r#enum =
                                     r#timing.get_or_insert(_Enum::DateTime(Default::default()));
                                 if let _Enum::DateTime(variant) = r#enum {
@@ -449,7 +449,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Trigge
                             }
                         }
                         Field::Data => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 if r#data.is_some() {
                                     return Err(serde::de::Error::duplicate_field("data"));
                                 }

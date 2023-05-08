@@ -1,4 +1,4 @@
-// Generated on 2023-05-07 by fhirbolt-codegen v0.8.0
+// Generated on 2023-05-08 by fhirbolt-codegen v0.8.0
 #[doc = "An amount of money. With regard to precision, see [Decimal Precision](datatypes.html#precision)"]
 #[derive(Debug, Clone, PartialEq)]
 pub struct MoneyQuantity {

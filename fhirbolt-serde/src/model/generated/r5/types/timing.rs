@@ -1,4 +1,4 @@
-// Generated on 2023-05-07 by fhirbolt-codegen v0.8.0
+// Generated on 2023-05-08 by fhirbolt-codegen v0.8.0
 use crate::{DeserializationContext, SerializationContext};
 use fhirbolt_model::r5::types::TimingRepeat;
 impl serde::ser::Serialize for SerializationContext<&TimingRepeat> {
@@ -42,7 +42,7 @@ impl serde::ser::Serialize for SerializationContext<&TimingRepeat> {
                 }
             }
         }
-        if self.output_json {
+        if self.output == crate::context::Format::Json {
             if let Some(some) = self.value.r#count.as_ref() {
                 if let Some(some) = some.value.as_ref().map(Ok) {
                     state.serialize_entry("count", &some?)?;
@@ -61,7 +61,7 @@ impl serde::ser::Serialize for SerializationContext<&TimingRepeat> {
         } else if let Some(some) = self.value.r#count.as_ref() {
             self.with_context(some, |ctx| state.serialize_entry("count", ctx))?;
         }
-        if self.output_json {
+        if self.output == crate::context::Format::Json {
             if let Some(some) = self.value.r#count_max.as_ref() {
                 if let Some(some) = some.value.as_ref().map(Ok) {
                     state.serialize_entry("countMax", &some?)?;
@@ -80,7 +80,7 @@ impl serde::ser::Serialize for SerializationContext<&TimingRepeat> {
         } else if let Some(some) = self.value.r#count_max.as_ref() {
             self.with_context(some, |ctx| state.serialize_entry("countMax", ctx))?;
         }
-        if self.output_json {
+        if self.output == crate::context::Format::Json {
             if let Some(some) = self.value.r#duration.as_ref() {
                 if let Some(some) = some.value.as_ref().map(|v| {
                     v.parse::<serde_json::Number>()
@@ -102,7 +102,7 @@ impl serde::ser::Serialize for SerializationContext<&TimingRepeat> {
         } else if let Some(some) = self.value.r#duration.as_ref() {
             self.with_context(some, |ctx| state.serialize_entry("duration", ctx))?;
         }
-        if self.output_json {
+        if self.output == crate::context::Format::Json {
             if let Some(some) = self.value.r#duration_max.as_ref() {
                 if let Some(some) = some.value.as_ref().map(|v| {
                     v.parse::<serde_json::Number>()
@@ -124,7 +124,7 @@ impl serde::ser::Serialize for SerializationContext<&TimingRepeat> {
         } else if let Some(some) = self.value.r#duration_max.as_ref() {
             self.with_context(some, |ctx| state.serialize_entry("durationMax", ctx))?;
         }
-        if self.output_json {
+        if self.output == crate::context::Format::Json {
             if let Some(some) = self.value.r#duration_unit.as_ref() {
                 if let Some(some) = some.value.as_ref().map(Ok) {
                     state.serialize_entry("durationUnit", &some?)?;
@@ -143,7 +143,7 @@ impl serde::ser::Serialize for SerializationContext<&TimingRepeat> {
         } else if let Some(some) = self.value.r#duration_unit.as_ref() {
             self.with_context(some, |ctx| state.serialize_entry("durationUnit", ctx))?;
         }
-        if self.output_json {
+        if self.output == crate::context::Format::Json {
             if let Some(some) = self.value.r#frequency.as_ref() {
                 if let Some(some) = some.value.as_ref().map(Ok) {
                     state.serialize_entry("frequency", &some?)?;
@@ -162,7 +162,7 @@ impl serde::ser::Serialize for SerializationContext<&TimingRepeat> {
         } else if let Some(some) = self.value.r#frequency.as_ref() {
             self.with_context(some, |ctx| state.serialize_entry("frequency", ctx))?;
         }
-        if self.output_json {
+        if self.output == crate::context::Format::Json {
             if let Some(some) = self.value.r#frequency_max.as_ref() {
                 if let Some(some) = some.value.as_ref().map(Ok) {
                     state.serialize_entry("frequencyMax", &some?)?;
@@ -181,7 +181,7 @@ impl serde::ser::Serialize for SerializationContext<&TimingRepeat> {
         } else if let Some(some) = self.value.r#frequency_max.as_ref() {
             self.with_context(some, |ctx| state.serialize_entry("frequencyMax", ctx))?;
         }
-        if self.output_json {
+        if self.output == crate::context::Format::Json {
             if let Some(some) = self.value.r#period.as_ref() {
                 if let Some(some) = some.value.as_ref().map(|v| {
                     v.parse::<serde_json::Number>()
@@ -203,7 +203,7 @@ impl serde::ser::Serialize for SerializationContext<&TimingRepeat> {
         } else if let Some(some) = self.value.r#period.as_ref() {
             self.with_context(some, |ctx| state.serialize_entry("period", ctx))?;
         }
-        if self.output_json {
+        if self.output == crate::context::Format::Json {
             if let Some(some) = self.value.r#period_max.as_ref() {
                 if let Some(some) = some.value.as_ref().map(|v| {
                     v.parse::<serde_json::Number>()
@@ -225,7 +225,7 @@ impl serde::ser::Serialize for SerializationContext<&TimingRepeat> {
         } else if let Some(some) = self.value.r#period_max.as_ref() {
             self.with_context(some, |ctx| state.serialize_entry("periodMax", ctx))?;
         }
-        if self.output_json {
+        if self.output == crate::context::Format::Json {
             if let Some(some) = self.value.r#period_unit.as_ref() {
                 if let Some(some) = some.value.as_ref().map(Ok) {
                     state.serialize_entry("periodUnit", &some?)?;
@@ -244,7 +244,7 @@ impl serde::ser::Serialize for SerializationContext<&TimingRepeat> {
         } else if let Some(some) = self.value.r#period_unit.as_ref() {
             self.with_context(some, |ctx| state.serialize_entry("periodUnit", ctx))?;
         }
-        if self.output_json {
+        if self.output == crate::context::Format::Json {
             if !self.value.r#day_of_week.is_empty() {
                 let values = self
                     .value
@@ -288,7 +288,7 @@ impl serde::ser::Serialize for SerializationContext<&TimingRepeat> {
                 state.serialize_entry("dayOfWeek", ctx)
             })?;
         }
-        if self.output_json {
+        if self.output == crate::context::Format::Json {
             if !self.value.r#time_of_day.is_empty() {
                 let values = self
                     .value
@@ -332,7 +332,7 @@ impl serde::ser::Serialize for SerializationContext<&TimingRepeat> {
                 state.serialize_entry("timeOfDay", ctx)
             })?;
         }
-        if self.output_json {
+        if self.output == crate::context::Format::Json {
             if !self.value.r#when.is_empty() {
                 let values = self
                     .value
@@ -374,7 +374,7 @@ impl serde::ser::Serialize for SerializationContext<&TimingRepeat> {
         } else if !self.value.r#when.is_empty() {
             self.with_context(&self.value.r#when, |ctx| state.serialize_entry("when", ctx))?;
         }
-        if self.output_json {
+        if self.output == crate::context::Format::Json {
             if let Some(some) = self.value.r#offset.as_ref() {
                 if let Some(some) = some.value.as_ref().map(Ok) {
                     state.serialize_entry("offset", &some?)?;
@@ -556,7 +556,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Timing
                             r#id = Some(map_access.next_value()?);
                         }
                         Field::Extension => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 if r#extension.is_some() {
                                     return Err(serde::de::Error::duplicate_field("extension"));
                                 }
@@ -606,7 +606,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Timing
                                 Some(_Enum::Period(map_access.next_value_seed(&mut *_context)?));
                         }
                         Field::Count => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let some = r#count.get_or_insert(Default::default());
                                 if some.value.is_some() {
                                     return Err(serde::de::Error::duplicate_field("count"));
@@ -623,7 +623,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Timing
                             }
                         }
                         Field::CountPrimitiveElement => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let some = r#count.get_or_insert(Default::default());
                                 if some.id.is_some() || !some.extension.is_empty() {
                                     return Err(serde::de::Error::duplicate_field("_count"));
@@ -640,7 +640,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Timing
                             }
                         }
                         Field::CountMax => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let some = r#count_max.get_or_insert(Default::default());
                                 if some.value.is_some() {
                                     return Err(serde::de::Error::duplicate_field("countMax"));
@@ -657,7 +657,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Timing
                             }
                         }
                         Field::CountMaxPrimitiveElement => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let some = r#count_max.get_or_insert(Default::default());
                                 if some.id.is_some() || !some.extension.is_empty() {
                                     return Err(serde::de::Error::duplicate_field("_countMax"));
@@ -674,7 +674,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Timing
                             }
                         }
                         Field::Duration => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let some = r#duration.get_or_insert(Default::default());
                                 if some.value.is_some() {
                                     return Err(serde::de::Error::duplicate_field("duration"));
@@ -691,7 +691,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Timing
                             }
                         }
                         Field::DurationPrimitiveElement => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let some = r#duration.get_or_insert(Default::default());
                                 if some.id.is_some() || !some.extension.is_empty() {
                                     return Err(serde::de::Error::duplicate_field("_duration"));
@@ -708,7 +708,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Timing
                             }
                         }
                         Field::DurationMax => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let some = r#duration_max.get_or_insert(Default::default());
                                 if some.value.is_some() {
                                     return Err(serde::de::Error::duplicate_field("durationMax"));
@@ -725,7 +725,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Timing
                             }
                         }
                         Field::DurationMaxPrimitiveElement => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let some = r#duration_max.get_or_insert(Default::default());
                                 if some.id.is_some() || !some.extension.is_empty() {
                                     return Err(serde::de::Error::duplicate_field("_durationMax"));
@@ -742,7 +742,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Timing
                             }
                         }
                         Field::DurationUnit => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let some = r#duration_unit.get_or_insert(Default::default());
                                 if some.value.is_some() {
                                     return Err(serde::de::Error::duplicate_field("durationUnit"));
@@ -759,7 +759,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Timing
                             }
                         }
                         Field::DurationUnitPrimitiveElement => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let some = r#duration_unit.get_or_insert(Default::default());
                                 if some.id.is_some() || !some.extension.is_empty() {
                                     return Err(serde::de::Error::duplicate_field("_durationUnit"));
@@ -776,7 +776,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Timing
                             }
                         }
                         Field::Frequency => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let some = r#frequency.get_or_insert(Default::default());
                                 if some.value.is_some() {
                                     return Err(serde::de::Error::duplicate_field("frequency"));
@@ -793,7 +793,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Timing
                             }
                         }
                         Field::FrequencyPrimitiveElement => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let some = r#frequency.get_or_insert(Default::default());
                                 if some.id.is_some() || !some.extension.is_empty() {
                                     return Err(serde::de::Error::duplicate_field("_frequency"));
@@ -810,7 +810,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Timing
                             }
                         }
                         Field::FrequencyMax => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let some = r#frequency_max.get_or_insert(Default::default());
                                 if some.value.is_some() {
                                     return Err(serde::de::Error::duplicate_field("frequencyMax"));
@@ -827,7 +827,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Timing
                             }
                         }
                         Field::FrequencyMaxPrimitiveElement => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let some = r#frequency_max.get_or_insert(Default::default());
                                 if some.id.is_some() || !some.extension.is_empty() {
                                     return Err(serde::de::Error::duplicate_field("_frequencyMax"));
@@ -844,7 +844,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Timing
                             }
                         }
                         Field::Period => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let some = r#period.get_or_insert(Default::default());
                                 if some.value.is_some() {
                                     return Err(serde::de::Error::duplicate_field("period"));
@@ -861,7 +861,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Timing
                             }
                         }
                         Field::PeriodPrimitiveElement => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let some = r#period.get_or_insert(Default::default());
                                 if some.id.is_some() || !some.extension.is_empty() {
                                     return Err(serde::de::Error::duplicate_field("_period"));
@@ -878,7 +878,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Timing
                             }
                         }
                         Field::PeriodMax => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let some = r#period_max.get_or_insert(Default::default());
                                 if some.value.is_some() {
                                     return Err(serde::de::Error::duplicate_field("periodMax"));
@@ -895,7 +895,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Timing
                             }
                         }
                         Field::PeriodMaxPrimitiveElement => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let some = r#period_max.get_or_insert(Default::default());
                                 if some.id.is_some() || !some.extension.is_empty() {
                                     return Err(serde::de::Error::duplicate_field("_periodMax"));
@@ -912,7 +912,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Timing
                             }
                         }
                         Field::PeriodUnit => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let some = r#period_unit.get_or_insert(Default::default());
                                 if some.value.is_some() {
                                     return Err(serde::de::Error::duplicate_field("periodUnit"));
@@ -929,7 +929,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Timing
                             }
                         }
                         Field::PeriodUnitPrimitiveElement => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let some = r#period_unit.get_or_insert(Default::default());
                                 if some.id.is_some() || !some.extension.is_empty() {
                                     return Err(serde::de::Error::duplicate_field("_periodUnit"));
@@ -946,7 +946,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Timing
                             }
                         }
                         Field::DayOfWeek => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let values: Vec<Option<_>> = map_access.next_value()?;
                                 let vec = r#day_of_week.get_or_insert(
                                     std::iter::repeat(Default::default())
@@ -976,7 +976,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Timing
                             }
                         }
                         Field::DayOfWeekPrimitiveElement => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 use super::super::serde_helpers::PrimitiveElementOwned;
                                 let _context: &mut DeserializationContext<
                                     Vec<Option<PrimitiveElementOwned>>,
@@ -1011,7 +1011,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Timing
                             }
                         }
                         Field::TimeOfDay => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let values: Vec<Option<_>> = map_access.next_value()?;
                                 let vec = r#time_of_day.get_or_insert(
                                     std::iter::repeat(Default::default())
@@ -1041,7 +1041,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Timing
                             }
                         }
                         Field::TimeOfDayPrimitiveElement => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 use super::super::serde_helpers::PrimitiveElementOwned;
                                 let _context: &mut DeserializationContext<
                                     Vec<Option<PrimitiveElementOwned>>,
@@ -1076,7 +1076,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Timing
                             }
                         }
                         Field::When => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let values: Vec<Option<_>> = map_access.next_value()?;
                                 let vec = r#when.get_or_insert(
                                     std::iter::repeat(Default::default())
@@ -1106,7 +1106,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Timing
                             }
                         }
                         Field::WhenPrimitiveElement => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 use super::super::serde_helpers::PrimitiveElementOwned;
                                 let _context: &mut DeserializationContext<
                                     Vec<Option<PrimitiveElementOwned>>,
@@ -1141,7 +1141,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Timing
                             }
                         }
                         Field::Offset => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let some = r#offset.get_or_insert(Default::default());
                                 if some.value.is_some() {
                                     return Err(serde::de::Error::duplicate_field("offset"));
@@ -1158,7 +1158,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Timing
                             }
                         }
                         Field::OffsetPrimitiveElement => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let some = r#offset.get_or_insert(Default::default());
                                 if some.id.is_some() || !some.extension.is_empty() {
                                     return Err(serde::de::Error::duplicate_field("_offset"));
@@ -1272,7 +1272,7 @@ impl serde::ser::Serialize for SerializationContext<&Timing> {
                 state.serialize_entry("modifierExtension", ctx)
             })?;
         }
-        if self.output_json {
+        if self.output == crate::context::Format::Json {
             if !self.value.r#event.is_empty() {
                 let values = self
                     .value
@@ -1410,7 +1410,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Timing
                             r#id = Some(map_access.next_value()?);
                         }
                         Field::Extension => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 if r#extension.is_some() {
                                     return Err(serde::de::Error::duplicate_field("extension"));
                                 }
@@ -1427,7 +1427,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Timing
                             }
                         }
                         Field::ModifierExtension => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 if r#modifier_extension.is_some() {
                                     return Err(serde::de::Error::duplicate_field(
                                         "modifierExtension",
@@ -1447,7 +1447,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Timing
                             }
                         }
                         Field::Event => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let values: Vec<Option<_>> = map_access.next_value()?;
                                 let vec = r#event.get_or_insert(
                                     std::iter::repeat(Default::default())
@@ -1477,7 +1477,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Timing
                             }
                         }
                         Field::EventPrimitiveElement => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 use super::super::serde_helpers::PrimitiveElementOwned;
                                 let _context: &mut DeserializationContext<
                                     Vec<Option<PrimitiveElementOwned>>,

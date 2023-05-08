@@ -1,4 +1,4 @@
-// Generated on 2023-05-07 by fhirbolt-codegen v0.8.0
+// Generated on 2023-05-08 by fhirbolt-codegen v0.8.0
 use crate::{DeserializationContext, SerializationContext};
 use fhirbolt_model::r5::resources::TransportRestriction;
 impl serde::ser::Serialize for SerializationContext<&TransportRestriction> {
@@ -28,7 +28,7 @@ impl serde::ser::Serialize for SerializationContext<&TransportRestriction> {
                 state.serialize_entry("modifierExtension", ctx)
             })?;
         }
-        if self.output_json {
+        if self.output == crate::context::Format::Json {
             if let Some(some) = self.value.r#repetitions.as_ref() {
                 if let Some(some) = some.value.as_ref().map(Ok) {
                     state.serialize_entry("repetitions", &some?)?;
@@ -143,7 +143,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Transp
                             r#id = Some(map_access.next_value()?);
                         }
                         Field::Extension => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 if r#extension.is_some() {
                                     return Err(serde::de::Error::duplicate_field("extension"));
                                 }
@@ -160,7 +160,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Transp
                             }
                         }
                         Field::ModifierExtension => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 if r#modifier_extension.is_some() {
                                     return Err(serde::de::Error::duplicate_field(
                                         "modifierExtension",
@@ -180,7 +180,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Transp
                             }
                         }
                         Field::Repetitions => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let some = r#repetitions.get_or_insert(Default::default());
                                 if some.value.is_some() {
                                     return Err(serde::de::Error::duplicate_field("repetitions"));
@@ -197,7 +197,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Transp
                             }
                         }
                         Field::RepetitionsPrimitiveElement => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let some = r#repetitions.get_or_insert(Default::default());
                                 if some.id.is_some() || !some.extension.is_empty() {
                                     return Err(serde::de::Error::duplicate_field("_repetitions"));
@@ -223,7 +223,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Transp
                             r#period = Some(map_access.next_value_seed(&mut *_context)?);
                         }
                         Field::Recipient => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 if r#recipient.is_some() {
                                     return Err(serde::de::Error::duplicate_field("recipient"));
                                 }
@@ -340,7 +340,7 @@ impl serde::ser::Serialize for SerializationContext<&TransportInput> {
             use fhirbolt_model::r5::resources::TransportInputValue as _Enum;
             match self.value.r#value {
                 _Enum::Base64Binary(ref value) => {
-                    if self.output_json {
+                    if self.output == crate::context::Format::Json {
                         if let Some(some) = value.value.as_ref().map(Ok) {
                             state.serialize_entry("valueBase64Binary", &some?)?;
                         }
@@ -361,7 +361,7 @@ impl serde::ser::Serialize for SerializationContext<&TransportInput> {
                     }
                 }
                 _Enum::Boolean(ref value) => {
-                    if self.output_json {
+                    if self.output == crate::context::Format::Json {
                         if let Some(some) = value.value.as_ref().map(Ok) {
                             state.serialize_entry("valueBoolean", &some?)?;
                         }
@@ -380,7 +380,7 @@ impl serde::ser::Serialize for SerializationContext<&TransportInput> {
                     }
                 }
                 _Enum::Canonical(ref value) => {
-                    if self.output_json {
+                    if self.output == crate::context::Format::Json {
                         if let Some(some) = value.value.as_ref().map(Ok) {
                             state.serialize_entry("valueCanonical", &some?)?;
                         }
@@ -401,7 +401,7 @@ impl serde::ser::Serialize for SerializationContext<&TransportInput> {
                     }
                 }
                 _Enum::Code(ref value) => {
-                    if self.output_json {
+                    if self.output == crate::context::Format::Json {
                         if let Some(some) = value.value.as_ref().map(Ok) {
                             state.serialize_entry("valueCode", &some?)?;
                         }
@@ -420,7 +420,7 @@ impl serde::ser::Serialize for SerializationContext<&TransportInput> {
                     }
                 }
                 _Enum::Date(ref value) => {
-                    if self.output_json {
+                    if self.output == crate::context::Format::Json {
                         if let Some(some) = value.value.as_ref().map(Ok) {
                             state.serialize_entry("valueDate", &some?)?;
                         }
@@ -439,7 +439,7 @@ impl serde::ser::Serialize for SerializationContext<&TransportInput> {
                     }
                 }
                 _Enum::DateTime(ref value) => {
-                    if self.output_json {
+                    if self.output == crate::context::Format::Json {
                         if let Some(some) = value.value.as_ref().map(Ok) {
                             state.serialize_entry("valueDateTime", &some?)?;
                         }
@@ -460,7 +460,7 @@ impl serde::ser::Serialize for SerializationContext<&TransportInput> {
                     }
                 }
                 _Enum::Decimal(ref value) => {
-                    if self.output_json {
+                    if self.output == crate::context::Format::Json {
                         if let Some(some) = value.value.as_ref().map(|v| {
                             v.parse::<serde_json::Number>()
                                 .map_err(|_| serde::ser::Error::custom("error serializing decimal"))
@@ -482,7 +482,7 @@ impl serde::ser::Serialize for SerializationContext<&TransportInput> {
                     }
                 }
                 _Enum::Id(ref value) => {
-                    if self.output_json {
+                    if self.output == crate::context::Format::Json {
                         if let Some(some) = value.value.as_ref().map(Ok) {
                             state.serialize_entry("valueId", &some?)?;
                         }
@@ -501,7 +501,7 @@ impl serde::ser::Serialize for SerializationContext<&TransportInput> {
                     }
                 }
                 _Enum::Instant(ref value) => {
-                    if self.output_json {
+                    if self.output == crate::context::Format::Json {
                         if let Some(some) = value.value.as_ref().map(Ok) {
                             state.serialize_entry("valueInstant", &some?)?;
                         }
@@ -520,7 +520,7 @@ impl serde::ser::Serialize for SerializationContext<&TransportInput> {
                     }
                 }
                 _Enum::Integer(ref value) => {
-                    if self.output_json {
+                    if self.output == crate::context::Format::Json {
                         if let Some(some) = value.value.as_ref().map(Ok) {
                             state.serialize_entry("valueInteger", &some?)?;
                         }
@@ -539,7 +539,7 @@ impl serde::ser::Serialize for SerializationContext<&TransportInput> {
                     }
                 }
                 _Enum::Integer64(ref value) => {
-                    if self.output_json {
+                    if self.output == crate::context::Format::Json {
                         if let Some(some) = value.value.as_ref().map(|v| Ok(v.to_string())) {
                             state.serialize_entry("valueInteger64", &some?)?;
                         }
@@ -560,7 +560,7 @@ impl serde::ser::Serialize for SerializationContext<&TransportInput> {
                     }
                 }
                 _Enum::Markdown(ref value) => {
-                    if self.output_json {
+                    if self.output == crate::context::Format::Json {
                         if let Some(some) = value.value.as_ref().map(Ok) {
                             state.serialize_entry("valueMarkdown", &some?)?;
                         }
@@ -581,7 +581,7 @@ impl serde::ser::Serialize for SerializationContext<&TransportInput> {
                     }
                 }
                 _Enum::Oid(ref value) => {
-                    if self.output_json {
+                    if self.output == crate::context::Format::Json {
                         if let Some(some) = value.value.as_ref().map(Ok) {
                             state.serialize_entry("valueOid", &some?)?;
                         }
@@ -600,7 +600,7 @@ impl serde::ser::Serialize for SerializationContext<&TransportInput> {
                     }
                 }
                 _Enum::PositiveInt(ref value) => {
-                    if self.output_json {
+                    if self.output == crate::context::Format::Json {
                         if let Some(some) = value.value.as_ref().map(Ok) {
                             state.serialize_entry("valuePositiveInt", &some?)?;
                         }
@@ -621,7 +621,7 @@ impl serde::ser::Serialize for SerializationContext<&TransportInput> {
                     }
                 }
                 _Enum::String(ref value) => {
-                    if self.output_json {
+                    if self.output == crate::context::Format::Json {
                         if let Some(some) = value.value.as_ref().map(Ok) {
                             state.serialize_entry("valueString", &some?)?;
                         }
@@ -640,7 +640,7 @@ impl serde::ser::Serialize for SerializationContext<&TransportInput> {
                     }
                 }
                 _Enum::Time(ref value) => {
-                    if self.output_json {
+                    if self.output == crate::context::Format::Json {
                         if let Some(some) = value.value.as_ref().map(Ok) {
                             state.serialize_entry("valueTime", &some?)?;
                         }
@@ -659,7 +659,7 @@ impl serde::ser::Serialize for SerializationContext<&TransportInput> {
                     }
                 }
                 _Enum::UnsignedInt(ref value) => {
-                    if self.output_json {
+                    if self.output == crate::context::Format::Json {
                         if let Some(some) = value.value.as_ref().map(Ok) {
                             state.serialize_entry("valueUnsignedInt", &some?)?;
                         }
@@ -680,7 +680,7 @@ impl serde::ser::Serialize for SerializationContext<&TransportInput> {
                     }
                 }
                 _Enum::Uri(ref value) => {
-                    if self.output_json {
+                    if self.output == crate::context::Format::Json {
                         if let Some(some) = value.value.as_ref().map(Ok) {
                             state.serialize_entry("valueUri", &some?)?;
                         }
@@ -699,7 +699,7 @@ impl serde::ser::Serialize for SerializationContext<&TransportInput> {
                     }
                 }
                 _Enum::Url(ref value) => {
-                    if self.output_json {
+                    if self.output == crate::context::Format::Json {
                         if let Some(some) = value.value.as_ref().map(Ok) {
                             state.serialize_entry("valueUrl", &some?)?;
                         }
@@ -718,7 +718,7 @@ impl serde::ser::Serialize for SerializationContext<&TransportInput> {
                     }
                 }
                 _Enum::Uuid(ref value) => {
-                    if self.output_json {
+                    if self.output == crate::context::Format::Json {
                         if let Some(some) = value.value.as_ref().map(Ok) {
                             state.serialize_entry("valueUuid", &some?)?;
                         }
@@ -1146,7 +1146,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Transp
                             r#id = Some(map_access.next_value()?);
                         }
                         Field::Extension => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 if r#extension.is_some() {
                                     return Err(serde::de::Error::duplicate_field("extension"));
                                 }
@@ -1163,7 +1163,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Transp
                             }
                         }
                         Field::ModifierExtension => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 if r#modifier_extension.is_some() {
                                     return Err(serde::de::Error::duplicate_field(
                                         "modifierExtension",
@@ -1193,7 +1193,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Transp
                         }
                         Field::ValueBase64Binary => {
                             use fhirbolt_model::r5::resources::TransportInputValue as _Enum;
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let r#enum =
                                     r#value.get_or_insert(_Enum::Base64Binary(Default::default()));
                                 if let _Enum::Base64Binary(variant) = r#enum {
@@ -1222,7 +1222,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Transp
                         }
                         Field::ValueBase64BinaryPrimitiveElement => {
                             use fhirbolt_model::r5::resources::TransportInputValue as _Enum;
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let r#enum =
                                     r#value.get_or_insert(_Enum::Base64Binary(Default::default()));
                                 if let _Enum::Base64Binary(variant) = r#enum {
@@ -1248,7 +1248,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Transp
                         }
                         Field::ValueBoolean => {
                             use fhirbolt_model::r5::resources::TransportInputValue as _Enum;
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let r#enum =
                                     r#value.get_or_insert(_Enum::Boolean(Default::default()));
                                 if let _Enum::Boolean(variant) = r#enum {
@@ -1275,7 +1275,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Transp
                         }
                         Field::ValueBooleanPrimitiveElement => {
                             use fhirbolt_model::r5::resources::TransportInputValue as _Enum;
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let r#enum =
                                     r#value.get_or_insert(_Enum::Boolean(Default::default()));
                                 if let _Enum::Boolean(variant) = r#enum {
@@ -1301,7 +1301,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Transp
                         }
                         Field::ValueCanonical => {
                             use fhirbolt_model::r5::resources::TransportInputValue as _Enum;
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let r#enum =
                                     r#value.get_or_insert(_Enum::Canonical(Default::default()));
                                 if let _Enum::Canonical(variant) = r#enum {
@@ -1330,7 +1330,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Transp
                         }
                         Field::ValueCanonicalPrimitiveElement => {
                             use fhirbolt_model::r5::resources::TransportInputValue as _Enum;
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let r#enum =
                                     r#value.get_or_insert(_Enum::Canonical(Default::default()));
                                 if let _Enum::Canonical(variant) = r#enum {
@@ -1356,7 +1356,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Transp
                         }
                         Field::ValueCode => {
                             use fhirbolt_model::r5::resources::TransportInputValue as _Enum;
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let r#enum = r#value.get_or_insert(_Enum::Code(Default::default()));
                                 if let _Enum::Code(variant) = r#enum {
                                     if variant.value.is_some() {
@@ -1379,7 +1379,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Transp
                         }
                         Field::ValueCodePrimitiveElement => {
                             use fhirbolt_model::r5::resources::TransportInputValue as _Enum;
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let r#enum = r#value.get_or_insert(_Enum::Code(Default::default()));
                                 if let _Enum::Code(variant) = r#enum {
                                     if variant.id.is_some() || !variant.extension.is_empty() {
@@ -1404,7 +1404,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Transp
                         }
                         Field::ValueDate => {
                             use fhirbolt_model::r5::resources::TransportInputValue as _Enum;
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let r#enum = r#value.get_or_insert(_Enum::Date(Default::default()));
                                 if let _Enum::Date(variant) = r#enum {
                                     if variant.value.is_some() {
@@ -1427,7 +1427,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Transp
                         }
                         Field::ValueDatePrimitiveElement => {
                             use fhirbolt_model::r5::resources::TransportInputValue as _Enum;
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let r#enum = r#value.get_or_insert(_Enum::Date(Default::default()));
                                 if let _Enum::Date(variant) = r#enum {
                                     if variant.id.is_some() || !variant.extension.is_empty() {
@@ -1452,7 +1452,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Transp
                         }
                         Field::ValueDateTime => {
                             use fhirbolt_model::r5::resources::TransportInputValue as _Enum;
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let r#enum =
                                     r#value.get_or_insert(_Enum::DateTime(Default::default()));
                                 if let _Enum::DateTime(variant) = r#enum {
@@ -1479,7 +1479,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Transp
                         }
                         Field::ValueDateTimePrimitiveElement => {
                             use fhirbolt_model::r5::resources::TransportInputValue as _Enum;
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let r#enum =
                                     r#value.get_or_insert(_Enum::DateTime(Default::default()));
                                 if let _Enum::DateTime(variant) = r#enum {
@@ -1505,7 +1505,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Transp
                         }
                         Field::ValueDecimal => {
                             use fhirbolt_model::r5::resources::TransportInputValue as _Enum;
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let r#enum =
                                     r#value.get_or_insert(_Enum::Decimal(Default::default()));
                                 if let _Enum::Decimal(variant) = r#enum {
@@ -1533,7 +1533,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Transp
                         }
                         Field::ValueDecimalPrimitiveElement => {
                             use fhirbolt_model::r5::resources::TransportInputValue as _Enum;
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let r#enum =
                                     r#value.get_or_insert(_Enum::Decimal(Default::default()));
                                 if let _Enum::Decimal(variant) = r#enum {
@@ -1559,7 +1559,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Transp
                         }
                         Field::ValueId => {
                             use fhirbolt_model::r5::resources::TransportInputValue as _Enum;
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let r#enum = r#value.get_or_insert(_Enum::Id(Default::default()));
                                 if let _Enum::Id(variant) = r#enum {
                                     if variant.value.is_some() {
@@ -1582,7 +1582,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Transp
                         }
                         Field::ValueIdPrimitiveElement => {
                             use fhirbolt_model::r5::resources::TransportInputValue as _Enum;
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let r#enum = r#value.get_or_insert(_Enum::Id(Default::default()));
                                 if let _Enum::Id(variant) = r#enum {
                                     if variant.id.is_some() || !variant.extension.is_empty() {
@@ -1605,7 +1605,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Transp
                         }
                         Field::ValueInstant => {
                             use fhirbolt_model::r5::resources::TransportInputValue as _Enum;
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let r#enum =
                                     r#value.get_or_insert(_Enum::Instant(Default::default()));
                                 if let _Enum::Instant(variant) = r#enum {
@@ -1632,7 +1632,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Transp
                         }
                         Field::ValueInstantPrimitiveElement => {
                             use fhirbolt_model::r5::resources::TransportInputValue as _Enum;
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let r#enum =
                                     r#value.get_or_insert(_Enum::Instant(Default::default()));
                                 if let _Enum::Instant(variant) = r#enum {
@@ -1658,7 +1658,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Transp
                         }
                         Field::ValueInteger => {
                             use fhirbolt_model::r5::resources::TransportInputValue as _Enum;
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let r#enum =
                                     r#value.get_or_insert(_Enum::Integer(Default::default()));
                                 if let _Enum::Integer(variant) = r#enum {
@@ -1685,7 +1685,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Transp
                         }
                         Field::ValueIntegerPrimitiveElement => {
                             use fhirbolt_model::r5::resources::TransportInputValue as _Enum;
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let r#enum =
                                     r#value.get_or_insert(_Enum::Integer(Default::default()));
                                 if let _Enum::Integer(variant) = r#enum {
@@ -1711,7 +1711,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Transp
                         }
                         Field::ValueInteger64 => {
                             use fhirbolt_model::r5::resources::TransportInputValue as _Enum;
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let r#enum =
                                     r#value.get_or_insert(_Enum::Integer64(Default::default()));
                                 if let _Enum::Integer64(variant) = r#enum {
@@ -1740,7 +1740,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Transp
                         }
                         Field::ValueInteger64PrimitiveElement => {
                             use fhirbolt_model::r5::resources::TransportInputValue as _Enum;
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let r#enum =
                                     r#value.get_or_insert(_Enum::Integer64(Default::default()));
                                 if let _Enum::Integer64(variant) = r#enum {
@@ -1766,7 +1766,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Transp
                         }
                         Field::ValueMarkdown => {
                             use fhirbolt_model::r5::resources::TransportInputValue as _Enum;
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let r#enum =
                                     r#value.get_or_insert(_Enum::Markdown(Default::default()));
                                 if let _Enum::Markdown(variant) = r#enum {
@@ -1793,7 +1793,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Transp
                         }
                         Field::ValueMarkdownPrimitiveElement => {
                             use fhirbolt_model::r5::resources::TransportInputValue as _Enum;
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let r#enum =
                                     r#value.get_or_insert(_Enum::Markdown(Default::default()));
                                 if let _Enum::Markdown(variant) = r#enum {
@@ -1819,7 +1819,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Transp
                         }
                         Field::ValueOid => {
                             use fhirbolt_model::r5::resources::TransportInputValue as _Enum;
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let r#enum = r#value.get_or_insert(_Enum::Oid(Default::default()));
                                 if let _Enum::Oid(variant) = r#enum {
                                     if variant.value.is_some() {
@@ -1842,7 +1842,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Transp
                         }
                         Field::ValueOidPrimitiveElement => {
                             use fhirbolt_model::r5::resources::TransportInputValue as _Enum;
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let r#enum = r#value.get_or_insert(_Enum::Oid(Default::default()));
                                 if let _Enum::Oid(variant) = r#enum {
                                     if variant.id.is_some() || !variant.extension.is_empty() {
@@ -1865,7 +1865,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Transp
                         }
                         Field::ValuePositiveInt => {
                             use fhirbolt_model::r5::resources::TransportInputValue as _Enum;
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let r#enum =
                                     r#value.get_or_insert(_Enum::PositiveInt(Default::default()));
                                 if let _Enum::PositiveInt(variant) = r#enum {
@@ -1894,7 +1894,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Transp
                         }
                         Field::ValuePositiveIntPrimitiveElement => {
                             use fhirbolt_model::r5::resources::TransportInputValue as _Enum;
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let r#enum =
                                     r#value.get_or_insert(_Enum::PositiveInt(Default::default()));
                                 if let _Enum::PositiveInt(variant) = r#enum {
@@ -1920,7 +1920,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Transp
                         }
                         Field::ValueString => {
                             use fhirbolt_model::r5::resources::TransportInputValue as _Enum;
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let r#enum =
                                     r#value.get_or_insert(_Enum::String(Default::default()));
                                 if let _Enum::String(variant) = r#enum {
@@ -1947,7 +1947,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Transp
                         }
                         Field::ValueStringPrimitiveElement => {
                             use fhirbolt_model::r5::resources::TransportInputValue as _Enum;
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let r#enum =
                                     r#value.get_or_insert(_Enum::String(Default::default()));
                                 if let _Enum::String(variant) = r#enum {
@@ -1973,7 +1973,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Transp
                         }
                         Field::ValueTime => {
                             use fhirbolt_model::r5::resources::TransportInputValue as _Enum;
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let r#enum = r#value.get_or_insert(_Enum::Time(Default::default()));
                                 if let _Enum::Time(variant) = r#enum {
                                     if variant.value.is_some() {
@@ -1996,7 +1996,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Transp
                         }
                         Field::ValueTimePrimitiveElement => {
                             use fhirbolt_model::r5::resources::TransportInputValue as _Enum;
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let r#enum = r#value.get_or_insert(_Enum::Time(Default::default()));
                                 if let _Enum::Time(variant) = r#enum {
                                     if variant.id.is_some() || !variant.extension.is_empty() {
@@ -2021,7 +2021,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Transp
                         }
                         Field::ValueUnsignedInt => {
                             use fhirbolt_model::r5::resources::TransportInputValue as _Enum;
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let r#enum =
                                     r#value.get_or_insert(_Enum::UnsignedInt(Default::default()));
                                 if let _Enum::UnsignedInt(variant) = r#enum {
@@ -2050,7 +2050,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Transp
                         }
                         Field::ValueUnsignedIntPrimitiveElement => {
                             use fhirbolt_model::r5::resources::TransportInputValue as _Enum;
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let r#enum =
                                     r#value.get_or_insert(_Enum::UnsignedInt(Default::default()));
                                 if let _Enum::UnsignedInt(variant) = r#enum {
@@ -2076,7 +2076,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Transp
                         }
                         Field::ValueUri => {
                             use fhirbolt_model::r5::resources::TransportInputValue as _Enum;
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let r#enum = r#value.get_or_insert(_Enum::Uri(Default::default()));
                                 if let _Enum::Uri(variant) = r#enum {
                                     if variant.value.is_some() {
@@ -2099,7 +2099,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Transp
                         }
                         Field::ValueUriPrimitiveElement => {
                             use fhirbolt_model::r5::resources::TransportInputValue as _Enum;
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let r#enum = r#value.get_or_insert(_Enum::Uri(Default::default()));
                                 if let _Enum::Uri(variant) = r#enum {
                                     if variant.id.is_some() || !variant.extension.is_empty() {
@@ -2122,7 +2122,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Transp
                         }
                         Field::ValueUrl => {
                             use fhirbolt_model::r5::resources::TransportInputValue as _Enum;
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let r#enum = r#value.get_or_insert(_Enum::Url(Default::default()));
                                 if let _Enum::Url(variant) = r#enum {
                                     if variant.value.is_some() {
@@ -2145,7 +2145,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Transp
                         }
                         Field::ValueUrlPrimitiveElement => {
                             use fhirbolt_model::r5::resources::TransportInputValue as _Enum;
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let r#enum = r#value.get_or_insert(_Enum::Url(Default::default()));
                                 if let _Enum::Url(variant) = r#enum {
                                     if variant.id.is_some() || !variant.extension.is_empty() {
@@ -2168,7 +2168,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Transp
                         }
                         Field::ValueUuid => {
                             use fhirbolt_model::r5::resources::TransportInputValue as _Enum;
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let r#enum = r#value.get_or_insert(_Enum::Uuid(Default::default()));
                                 if let _Enum::Uuid(variant) = r#enum {
                                     if variant.value.is_some() {
@@ -2191,7 +2191,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Transp
                         }
                         Field::ValueUuidPrimitiveElement => {
                             use fhirbolt_model::r5::resources::TransportInputValue as _Enum;
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let r#enum = r#value.get_or_insert(_Enum::Uuid(Default::default()));
                                 if let _Enum::Uuid(variant) = r#enum {
                                     if variant.id.is_some() || !variant.extension.is_empty() {
@@ -2726,7 +2726,7 @@ impl serde::ser::Serialize for SerializationContext<&TransportOutput> {
             use fhirbolt_model::r5::resources::TransportOutputValue as _Enum;
             match self.value.r#value {
                 _Enum::Base64Binary(ref value) => {
-                    if self.output_json {
+                    if self.output == crate::context::Format::Json {
                         if let Some(some) = value.value.as_ref().map(Ok) {
                             state.serialize_entry("valueBase64Binary", &some?)?;
                         }
@@ -2747,7 +2747,7 @@ impl serde::ser::Serialize for SerializationContext<&TransportOutput> {
                     }
                 }
                 _Enum::Boolean(ref value) => {
-                    if self.output_json {
+                    if self.output == crate::context::Format::Json {
                         if let Some(some) = value.value.as_ref().map(Ok) {
                             state.serialize_entry("valueBoolean", &some?)?;
                         }
@@ -2766,7 +2766,7 @@ impl serde::ser::Serialize for SerializationContext<&TransportOutput> {
                     }
                 }
                 _Enum::Canonical(ref value) => {
-                    if self.output_json {
+                    if self.output == crate::context::Format::Json {
                         if let Some(some) = value.value.as_ref().map(Ok) {
                             state.serialize_entry("valueCanonical", &some?)?;
                         }
@@ -2787,7 +2787,7 @@ impl serde::ser::Serialize for SerializationContext<&TransportOutput> {
                     }
                 }
                 _Enum::Code(ref value) => {
-                    if self.output_json {
+                    if self.output == crate::context::Format::Json {
                         if let Some(some) = value.value.as_ref().map(Ok) {
                             state.serialize_entry("valueCode", &some?)?;
                         }
@@ -2806,7 +2806,7 @@ impl serde::ser::Serialize for SerializationContext<&TransportOutput> {
                     }
                 }
                 _Enum::Date(ref value) => {
-                    if self.output_json {
+                    if self.output == crate::context::Format::Json {
                         if let Some(some) = value.value.as_ref().map(Ok) {
                             state.serialize_entry("valueDate", &some?)?;
                         }
@@ -2825,7 +2825,7 @@ impl serde::ser::Serialize for SerializationContext<&TransportOutput> {
                     }
                 }
                 _Enum::DateTime(ref value) => {
-                    if self.output_json {
+                    if self.output == crate::context::Format::Json {
                         if let Some(some) = value.value.as_ref().map(Ok) {
                             state.serialize_entry("valueDateTime", &some?)?;
                         }
@@ -2846,7 +2846,7 @@ impl serde::ser::Serialize for SerializationContext<&TransportOutput> {
                     }
                 }
                 _Enum::Decimal(ref value) => {
-                    if self.output_json {
+                    if self.output == crate::context::Format::Json {
                         if let Some(some) = value.value.as_ref().map(|v| {
                             v.parse::<serde_json::Number>()
                                 .map_err(|_| serde::ser::Error::custom("error serializing decimal"))
@@ -2868,7 +2868,7 @@ impl serde::ser::Serialize for SerializationContext<&TransportOutput> {
                     }
                 }
                 _Enum::Id(ref value) => {
-                    if self.output_json {
+                    if self.output == crate::context::Format::Json {
                         if let Some(some) = value.value.as_ref().map(Ok) {
                             state.serialize_entry("valueId", &some?)?;
                         }
@@ -2887,7 +2887,7 @@ impl serde::ser::Serialize for SerializationContext<&TransportOutput> {
                     }
                 }
                 _Enum::Instant(ref value) => {
-                    if self.output_json {
+                    if self.output == crate::context::Format::Json {
                         if let Some(some) = value.value.as_ref().map(Ok) {
                             state.serialize_entry("valueInstant", &some?)?;
                         }
@@ -2906,7 +2906,7 @@ impl serde::ser::Serialize for SerializationContext<&TransportOutput> {
                     }
                 }
                 _Enum::Integer(ref value) => {
-                    if self.output_json {
+                    if self.output == crate::context::Format::Json {
                         if let Some(some) = value.value.as_ref().map(Ok) {
                             state.serialize_entry("valueInteger", &some?)?;
                         }
@@ -2925,7 +2925,7 @@ impl serde::ser::Serialize for SerializationContext<&TransportOutput> {
                     }
                 }
                 _Enum::Integer64(ref value) => {
-                    if self.output_json {
+                    if self.output == crate::context::Format::Json {
                         if let Some(some) = value.value.as_ref().map(|v| Ok(v.to_string())) {
                             state.serialize_entry("valueInteger64", &some?)?;
                         }
@@ -2946,7 +2946,7 @@ impl serde::ser::Serialize for SerializationContext<&TransportOutput> {
                     }
                 }
                 _Enum::Markdown(ref value) => {
-                    if self.output_json {
+                    if self.output == crate::context::Format::Json {
                         if let Some(some) = value.value.as_ref().map(Ok) {
                             state.serialize_entry("valueMarkdown", &some?)?;
                         }
@@ -2967,7 +2967,7 @@ impl serde::ser::Serialize for SerializationContext<&TransportOutput> {
                     }
                 }
                 _Enum::Oid(ref value) => {
-                    if self.output_json {
+                    if self.output == crate::context::Format::Json {
                         if let Some(some) = value.value.as_ref().map(Ok) {
                             state.serialize_entry("valueOid", &some?)?;
                         }
@@ -2986,7 +2986,7 @@ impl serde::ser::Serialize for SerializationContext<&TransportOutput> {
                     }
                 }
                 _Enum::PositiveInt(ref value) => {
-                    if self.output_json {
+                    if self.output == crate::context::Format::Json {
                         if let Some(some) = value.value.as_ref().map(Ok) {
                             state.serialize_entry("valuePositiveInt", &some?)?;
                         }
@@ -3007,7 +3007,7 @@ impl serde::ser::Serialize for SerializationContext<&TransportOutput> {
                     }
                 }
                 _Enum::String(ref value) => {
-                    if self.output_json {
+                    if self.output == crate::context::Format::Json {
                         if let Some(some) = value.value.as_ref().map(Ok) {
                             state.serialize_entry("valueString", &some?)?;
                         }
@@ -3026,7 +3026,7 @@ impl serde::ser::Serialize for SerializationContext<&TransportOutput> {
                     }
                 }
                 _Enum::Time(ref value) => {
-                    if self.output_json {
+                    if self.output == crate::context::Format::Json {
                         if let Some(some) = value.value.as_ref().map(Ok) {
                             state.serialize_entry("valueTime", &some?)?;
                         }
@@ -3045,7 +3045,7 @@ impl serde::ser::Serialize for SerializationContext<&TransportOutput> {
                     }
                 }
                 _Enum::UnsignedInt(ref value) => {
-                    if self.output_json {
+                    if self.output == crate::context::Format::Json {
                         if let Some(some) = value.value.as_ref().map(Ok) {
                             state.serialize_entry("valueUnsignedInt", &some?)?;
                         }
@@ -3066,7 +3066,7 @@ impl serde::ser::Serialize for SerializationContext<&TransportOutput> {
                     }
                 }
                 _Enum::Uri(ref value) => {
-                    if self.output_json {
+                    if self.output == crate::context::Format::Json {
                         if let Some(some) = value.value.as_ref().map(Ok) {
                             state.serialize_entry("valueUri", &some?)?;
                         }
@@ -3085,7 +3085,7 @@ impl serde::ser::Serialize for SerializationContext<&TransportOutput> {
                     }
                 }
                 _Enum::Url(ref value) => {
-                    if self.output_json {
+                    if self.output == crate::context::Format::Json {
                         if let Some(some) = value.value.as_ref().map(Ok) {
                             state.serialize_entry("valueUrl", &some?)?;
                         }
@@ -3104,7 +3104,7 @@ impl serde::ser::Serialize for SerializationContext<&TransportOutput> {
                     }
                 }
                 _Enum::Uuid(ref value) => {
-                    if self.output_json {
+                    if self.output == crate::context::Format::Json {
                         if let Some(some) = value.value.as_ref().map(Ok) {
                             state.serialize_entry("valueUuid", &some?)?;
                         }
@@ -3532,7 +3532,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Transp
                             r#id = Some(map_access.next_value()?);
                         }
                         Field::Extension => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 if r#extension.is_some() {
                                     return Err(serde::de::Error::duplicate_field("extension"));
                                 }
@@ -3549,7 +3549,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Transp
                             }
                         }
                         Field::ModifierExtension => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 if r#modifier_extension.is_some() {
                                     return Err(serde::de::Error::duplicate_field(
                                         "modifierExtension",
@@ -3579,7 +3579,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Transp
                         }
                         Field::ValueBase64Binary => {
                             use fhirbolt_model::r5::resources::TransportOutputValue as _Enum;
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let r#enum =
                                     r#value.get_or_insert(_Enum::Base64Binary(Default::default()));
                                 if let _Enum::Base64Binary(variant) = r#enum {
@@ -3608,7 +3608,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Transp
                         }
                         Field::ValueBase64BinaryPrimitiveElement => {
                             use fhirbolt_model::r5::resources::TransportOutputValue as _Enum;
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let r#enum =
                                     r#value.get_or_insert(_Enum::Base64Binary(Default::default()));
                                 if let _Enum::Base64Binary(variant) = r#enum {
@@ -3634,7 +3634,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Transp
                         }
                         Field::ValueBoolean => {
                             use fhirbolt_model::r5::resources::TransportOutputValue as _Enum;
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let r#enum =
                                     r#value.get_or_insert(_Enum::Boolean(Default::default()));
                                 if let _Enum::Boolean(variant) = r#enum {
@@ -3661,7 +3661,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Transp
                         }
                         Field::ValueBooleanPrimitiveElement => {
                             use fhirbolt_model::r5::resources::TransportOutputValue as _Enum;
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let r#enum =
                                     r#value.get_or_insert(_Enum::Boolean(Default::default()));
                                 if let _Enum::Boolean(variant) = r#enum {
@@ -3687,7 +3687,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Transp
                         }
                         Field::ValueCanonical => {
                             use fhirbolt_model::r5::resources::TransportOutputValue as _Enum;
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let r#enum =
                                     r#value.get_or_insert(_Enum::Canonical(Default::default()));
                                 if let _Enum::Canonical(variant) = r#enum {
@@ -3716,7 +3716,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Transp
                         }
                         Field::ValueCanonicalPrimitiveElement => {
                             use fhirbolt_model::r5::resources::TransportOutputValue as _Enum;
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let r#enum =
                                     r#value.get_or_insert(_Enum::Canonical(Default::default()));
                                 if let _Enum::Canonical(variant) = r#enum {
@@ -3742,7 +3742,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Transp
                         }
                         Field::ValueCode => {
                             use fhirbolt_model::r5::resources::TransportOutputValue as _Enum;
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let r#enum = r#value.get_or_insert(_Enum::Code(Default::default()));
                                 if let _Enum::Code(variant) = r#enum {
                                     if variant.value.is_some() {
@@ -3765,7 +3765,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Transp
                         }
                         Field::ValueCodePrimitiveElement => {
                             use fhirbolt_model::r5::resources::TransportOutputValue as _Enum;
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let r#enum = r#value.get_or_insert(_Enum::Code(Default::default()));
                                 if let _Enum::Code(variant) = r#enum {
                                     if variant.id.is_some() || !variant.extension.is_empty() {
@@ -3790,7 +3790,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Transp
                         }
                         Field::ValueDate => {
                             use fhirbolt_model::r5::resources::TransportOutputValue as _Enum;
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let r#enum = r#value.get_or_insert(_Enum::Date(Default::default()));
                                 if let _Enum::Date(variant) = r#enum {
                                     if variant.value.is_some() {
@@ -3813,7 +3813,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Transp
                         }
                         Field::ValueDatePrimitiveElement => {
                             use fhirbolt_model::r5::resources::TransportOutputValue as _Enum;
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let r#enum = r#value.get_or_insert(_Enum::Date(Default::default()));
                                 if let _Enum::Date(variant) = r#enum {
                                     if variant.id.is_some() || !variant.extension.is_empty() {
@@ -3838,7 +3838,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Transp
                         }
                         Field::ValueDateTime => {
                             use fhirbolt_model::r5::resources::TransportOutputValue as _Enum;
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let r#enum =
                                     r#value.get_or_insert(_Enum::DateTime(Default::default()));
                                 if let _Enum::DateTime(variant) = r#enum {
@@ -3865,7 +3865,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Transp
                         }
                         Field::ValueDateTimePrimitiveElement => {
                             use fhirbolt_model::r5::resources::TransportOutputValue as _Enum;
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let r#enum =
                                     r#value.get_or_insert(_Enum::DateTime(Default::default()));
                                 if let _Enum::DateTime(variant) = r#enum {
@@ -3891,7 +3891,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Transp
                         }
                         Field::ValueDecimal => {
                             use fhirbolt_model::r5::resources::TransportOutputValue as _Enum;
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let r#enum =
                                     r#value.get_or_insert(_Enum::Decimal(Default::default()));
                                 if let _Enum::Decimal(variant) = r#enum {
@@ -3919,7 +3919,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Transp
                         }
                         Field::ValueDecimalPrimitiveElement => {
                             use fhirbolt_model::r5::resources::TransportOutputValue as _Enum;
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let r#enum =
                                     r#value.get_or_insert(_Enum::Decimal(Default::default()));
                                 if let _Enum::Decimal(variant) = r#enum {
@@ -3945,7 +3945,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Transp
                         }
                         Field::ValueId => {
                             use fhirbolt_model::r5::resources::TransportOutputValue as _Enum;
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let r#enum = r#value.get_or_insert(_Enum::Id(Default::default()));
                                 if let _Enum::Id(variant) = r#enum {
                                     if variant.value.is_some() {
@@ -3968,7 +3968,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Transp
                         }
                         Field::ValueIdPrimitiveElement => {
                             use fhirbolt_model::r5::resources::TransportOutputValue as _Enum;
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let r#enum = r#value.get_or_insert(_Enum::Id(Default::default()));
                                 if let _Enum::Id(variant) = r#enum {
                                     if variant.id.is_some() || !variant.extension.is_empty() {
@@ -3991,7 +3991,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Transp
                         }
                         Field::ValueInstant => {
                             use fhirbolt_model::r5::resources::TransportOutputValue as _Enum;
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let r#enum =
                                     r#value.get_or_insert(_Enum::Instant(Default::default()));
                                 if let _Enum::Instant(variant) = r#enum {
@@ -4018,7 +4018,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Transp
                         }
                         Field::ValueInstantPrimitiveElement => {
                             use fhirbolt_model::r5::resources::TransportOutputValue as _Enum;
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let r#enum =
                                     r#value.get_or_insert(_Enum::Instant(Default::default()));
                                 if let _Enum::Instant(variant) = r#enum {
@@ -4044,7 +4044,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Transp
                         }
                         Field::ValueInteger => {
                             use fhirbolt_model::r5::resources::TransportOutputValue as _Enum;
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let r#enum =
                                     r#value.get_or_insert(_Enum::Integer(Default::default()));
                                 if let _Enum::Integer(variant) = r#enum {
@@ -4071,7 +4071,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Transp
                         }
                         Field::ValueIntegerPrimitiveElement => {
                             use fhirbolt_model::r5::resources::TransportOutputValue as _Enum;
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let r#enum =
                                     r#value.get_or_insert(_Enum::Integer(Default::default()));
                                 if let _Enum::Integer(variant) = r#enum {
@@ -4097,7 +4097,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Transp
                         }
                         Field::ValueInteger64 => {
                             use fhirbolt_model::r5::resources::TransportOutputValue as _Enum;
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let r#enum =
                                     r#value.get_or_insert(_Enum::Integer64(Default::default()));
                                 if let _Enum::Integer64(variant) = r#enum {
@@ -4126,7 +4126,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Transp
                         }
                         Field::ValueInteger64PrimitiveElement => {
                             use fhirbolt_model::r5::resources::TransportOutputValue as _Enum;
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let r#enum =
                                     r#value.get_or_insert(_Enum::Integer64(Default::default()));
                                 if let _Enum::Integer64(variant) = r#enum {
@@ -4152,7 +4152,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Transp
                         }
                         Field::ValueMarkdown => {
                             use fhirbolt_model::r5::resources::TransportOutputValue as _Enum;
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let r#enum =
                                     r#value.get_or_insert(_Enum::Markdown(Default::default()));
                                 if let _Enum::Markdown(variant) = r#enum {
@@ -4179,7 +4179,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Transp
                         }
                         Field::ValueMarkdownPrimitiveElement => {
                             use fhirbolt_model::r5::resources::TransportOutputValue as _Enum;
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let r#enum =
                                     r#value.get_or_insert(_Enum::Markdown(Default::default()));
                                 if let _Enum::Markdown(variant) = r#enum {
@@ -4205,7 +4205,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Transp
                         }
                         Field::ValueOid => {
                             use fhirbolt_model::r5::resources::TransportOutputValue as _Enum;
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let r#enum = r#value.get_or_insert(_Enum::Oid(Default::default()));
                                 if let _Enum::Oid(variant) = r#enum {
                                     if variant.value.is_some() {
@@ -4228,7 +4228,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Transp
                         }
                         Field::ValueOidPrimitiveElement => {
                             use fhirbolt_model::r5::resources::TransportOutputValue as _Enum;
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let r#enum = r#value.get_or_insert(_Enum::Oid(Default::default()));
                                 if let _Enum::Oid(variant) = r#enum {
                                     if variant.id.is_some() || !variant.extension.is_empty() {
@@ -4251,7 +4251,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Transp
                         }
                         Field::ValuePositiveInt => {
                             use fhirbolt_model::r5::resources::TransportOutputValue as _Enum;
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let r#enum =
                                     r#value.get_or_insert(_Enum::PositiveInt(Default::default()));
                                 if let _Enum::PositiveInt(variant) = r#enum {
@@ -4280,7 +4280,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Transp
                         }
                         Field::ValuePositiveIntPrimitiveElement => {
                             use fhirbolt_model::r5::resources::TransportOutputValue as _Enum;
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let r#enum =
                                     r#value.get_or_insert(_Enum::PositiveInt(Default::default()));
                                 if let _Enum::PositiveInt(variant) = r#enum {
@@ -4306,7 +4306,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Transp
                         }
                         Field::ValueString => {
                             use fhirbolt_model::r5::resources::TransportOutputValue as _Enum;
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let r#enum =
                                     r#value.get_or_insert(_Enum::String(Default::default()));
                                 if let _Enum::String(variant) = r#enum {
@@ -4333,7 +4333,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Transp
                         }
                         Field::ValueStringPrimitiveElement => {
                             use fhirbolt_model::r5::resources::TransportOutputValue as _Enum;
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let r#enum =
                                     r#value.get_or_insert(_Enum::String(Default::default()));
                                 if let _Enum::String(variant) = r#enum {
@@ -4359,7 +4359,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Transp
                         }
                         Field::ValueTime => {
                             use fhirbolt_model::r5::resources::TransportOutputValue as _Enum;
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let r#enum = r#value.get_or_insert(_Enum::Time(Default::default()));
                                 if let _Enum::Time(variant) = r#enum {
                                     if variant.value.is_some() {
@@ -4382,7 +4382,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Transp
                         }
                         Field::ValueTimePrimitiveElement => {
                             use fhirbolt_model::r5::resources::TransportOutputValue as _Enum;
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let r#enum = r#value.get_or_insert(_Enum::Time(Default::default()));
                                 if let _Enum::Time(variant) = r#enum {
                                     if variant.id.is_some() || !variant.extension.is_empty() {
@@ -4407,7 +4407,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Transp
                         }
                         Field::ValueUnsignedInt => {
                             use fhirbolt_model::r5::resources::TransportOutputValue as _Enum;
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let r#enum =
                                     r#value.get_or_insert(_Enum::UnsignedInt(Default::default()));
                                 if let _Enum::UnsignedInt(variant) = r#enum {
@@ -4436,7 +4436,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Transp
                         }
                         Field::ValueUnsignedIntPrimitiveElement => {
                             use fhirbolt_model::r5::resources::TransportOutputValue as _Enum;
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let r#enum =
                                     r#value.get_or_insert(_Enum::UnsignedInt(Default::default()));
                                 if let _Enum::UnsignedInt(variant) = r#enum {
@@ -4462,7 +4462,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Transp
                         }
                         Field::ValueUri => {
                             use fhirbolt_model::r5::resources::TransportOutputValue as _Enum;
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let r#enum = r#value.get_or_insert(_Enum::Uri(Default::default()));
                                 if let _Enum::Uri(variant) = r#enum {
                                     if variant.value.is_some() {
@@ -4485,7 +4485,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Transp
                         }
                         Field::ValueUriPrimitiveElement => {
                             use fhirbolt_model::r5::resources::TransportOutputValue as _Enum;
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let r#enum = r#value.get_or_insert(_Enum::Uri(Default::default()));
                                 if let _Enum::Uri(variant) = r#enum {
                                     if variant.id.is_some() || !variant.extension.is_empty() {
@@ -4508,7 +4508,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Transp
                         }
                         Field::ValueUrl => {
                             use fhirbolt_model::r5::resources::TransportOutputValue as _Enum;
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let r#enum = r#value.get_or_insert(_Enum::Url(Default::default()));
                                 if let _Enum::Url(variant) = r#enum {
                                     if variant.value.is_some() {
@@ -4531,7 +4531,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Transp
                         }
                         Field::ValueUrlPrimitiveElement => {
                             use fhirbolt_model::r5::resources::TransportOutputValue as _Enum;
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let r#enum = r#value.get_or_insert(_Enum::Url(Default::default()));
                                 if let _Enum::Url(variant) = r#enum {
                                     if variant.id.is_some() || !variant.extension.is_empty() {
@@ -4554,7 +4554,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Transp
                         }
                         Field::ValueUuid => {
                             use fhirbolt_model::r5::resources::TransportOutputValue as _Enum;
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let r#enum = r#value.get_or_insert(_Enum::Uuid(Default::default()));
                                 if let _Enum::Uuid(variant) = r#enum {
                                     if variant.value.is_some() {
@@ -4577,7 +4577,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Transp
                         }
                         Field::ValueUuidPrimitiveElement => {
                             use fhirbolt_model::r5::resources::TransportOutputValue as _Enum;
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let r#enum = r#value.get_or_insert(_Enum::Uuid(Default::default()));
                                 if let _Enum::Uuid(variant) = r#enum {
                                     if variant.id.is_some() || !variant.extension.is_empty() {
@@ -5094,7 +5094,7 @@ impl serde::ser::Serialize for SerializationContext<&Transport> {
         }
         let mut state = serializer.serialize_map(None)?;
         state.serialize_entry("resourceType", "Transport")?;
-        if self.output_json {
+        if self.output == crate::context::Format::Json {
             if let Some(some) = self.value.r#id.as_ref() {
                 if let Some(some) = some.value.as_ref().map(Ok) {
                     state.serialize_entry("id", &some?)?;
@@ -5114,7 +5114,7 @@ impl serde::ser::Serialize for SerializationContext<&Transport> {
         if let Some(some) = self.value.r#meta.as_ref() {
             self.with_context(some, |ctx| state.serialize_entry("meta", ctx))?;
         }
-        if self.output_json {
+        if self.output == crate::context::Format::Json {
             if let Some(some) = self.value.r#implicit_rules.as_ref() {
                 if let Some(some) = some.value.as_ref().map(Ok) {
                     state.serialize_entry("implicitRules", &some?)?;
@@ -5133,7 +5133,7 @@ impl serde::ser::Serialize for SerializationContext<&Transport> {
         } else if let Some(some) = self.value.r#implicit_rules.as_ref() {
             self.with_context(some, |ctx| state.serialize_entry("implicitRules", ctx))?;
         }
-        if self.output_json {
+        if self.output == crate::context::Format::Json {
             if let Some(some) = self.value.r#language.as_ref() {
                 if let Some(some) = some.value.as_ref().map(Ok) {
                     state.serialize_entry("language", &some?)?;
@@ -5175,7 +5175,7 @@ impl serde::ser::Serialize for SerializationContext<&Transport> {
                 state.serialize_entry("identifier", ctx)
             })?;
         }
-        if self.output_json {
+        if self.output == crate::context::Format::Json {
             if let Some(some) = self.value.r#instantiates_canonical.as_ref() {
                 if let Some(some) = some.value.as_ref().map(Ok) {
                     state.serialize_entry("instantiatesCanonical", &some?)?;
@@ -5196,7 +5196,7 @@ impl serde::ser::Serialize for SerializationContext<&Transport> {
                 state.serialize_entry("instantiatesCanonical", ctx)
             })?;
         }
-        if self.output_json {
+        if self.output == crate::context::Format::Json {
             if let Some(some) = self.value.r#instantiates_uri.as_ref() {
                 if let Some(some) = some.value.as_ref().map(Ok) {
                     state.serialize_entry("instantiatesUri", &some?)?;
@@ -5228,7 +5228,7 @@ impl serde::ser::Serialize for SerializationContext<&Transport> {
                 state.serialize_entry("partOf", ctx)
             })?;
         }
-        if self.output_json {
+        if self.output == crate::context::Format::Json {
             if let Some(some) = self.value.r#status.as_ref() {
                 if let Some(some) = some.value.as_ref().map(Ok) {
                     state.serialize_entry("status", &some?)?;
@@ -5250,7 +5250,7 @@ impl serde::ser::Serialize for SerializationContext<&Transport> {
         if let Some(some) = self.value.r#status_reason.as_ref() {
             self.with_context(some, |ctx| state.serialize_entry("statusReason", ctx))?;
         }
-        if self.output_json {
+        if self.output == crate::context::Format::Json {
             if self.value.r#intent.id.as_deref() == Some("$invalid") {
                 return missing_field_error("intent");
             }
@@ -5274,7 +5274,7 @@ impl serde::ser::Serialize for SerializationContext<&Transport> {
                 state.serialize_entry("intent", ctx)
             })?;
         }
-        if self.output_json {
+        if self.output == crate::context::Format::Json {
             if let Some(some) = self.value.r#priority.as_ref() {
                 if let Some(some) = some.value.as_ref().map(Ok) {
                     state.serialize_entry("priority", &some?)?;
@@ -5296,7 +5296,7 @@ impl serde::ser::Serialize for SerializationContext<&Transport> {
         if let Some(some) = self.value.r#code.as_ref() {
             self.with_context(some, |ctx| state.serialize_entry("code", ctx))?;
         }
-        if self.output_json {
+        if self.output == crate::context::Format::Json {
             if let Some(some) = self.value.r#description.as_ref() {
                 if let Some(some) = some.value.as_ref().map(Ok) {
                     state.serialize_entry("description", &some?)?;
@@ -5324,7 +5324,7 @@ impl serde::ser::Serialize for SerializationContext<&Transport> {
         if let Some(some) = self.value.r#encounter.as_ref() {
             self.with_context(some, |ctx| state.serialize_entry("encounter", ctx))?;
         }
-        if self.output_json {
+        if self.output == crate::context::Format::Json {
             if let Some(some) = self.value.r#completion_time.as_ref() {
                 if let Some(some) = some.value.as_ref().map(Ok) {
                     state.serialize_entry("completionTime", &some?)?;
@@ -5343,7 +5343,7 @@ impl serde::ser::Serialize for SerializationContext<&Transport> {
         } else if let Some(some) = self.value.r#completion_time.as_ref() {
             self.with_context(some, |ctx| state.serialize_entry("completionTime", ctx))?;
         }
-        if self.output_json {
+        if self.output == crate::context::Format::Json {
             if let Some(some) = self.value.r#authored_on.as_ref() {
                 if let Some(some) = some.value.as_ref().map(Ok) {
                     state.serialize_entry("authoredOn", &some?)?;
@@ -5362,7 +5362,7 @@ impl serde::ser::Serialize for SerializationContext<&Transport> {
         } else if let Some(some) = self.value.r#authored_on.as_ref() {
             self.with_context(some, |ctx| state.serialize_entry("authoredOn", ctx))?;
         }
-        if self.output_json {
+        if self.output == crate::context::Format::Json {
             if let Some(some) = self.value.r#last_modified.as_ref() {
                 if let Some(some) = some.value.as_ref().map(Ok) {
                     state.serialize_entry("lastModified", &some?)?;
@@ -5710,7 +5710,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Transp
                             }
                         }
                         Field::Id => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let some = r#id.get_or_insert(Default::default());
                                 if some.value.is_some() {
                                     return Err(serde::de::Error::duplicate_field("id"));
@@ -5727,7 +5727,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Transp
                             }
                         }
                         Field::IdPrimitiveElement => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let some = r#id.get_or_insert(Default::default());
                                 if some.id.is_some() || !some.extension.is_empty() {
                                     return Err(serde::de::Error::duplicate_field("_id"));
@@ -5753,7 +5753,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Transp
                             r#meta = Some(map_access.next_value_seed(&mut *_context)?);
                         }
                         Field::ImplicitRules => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let some = r#implicit_rules.get_or_insert(Default::default());
                                 if some.value.is_some() {
                                     return Err(serde::de::Error::duplicate_field("implicitRules"));
@@ -5771,7 +5771,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Transp
                             }
                         }
                         Field::ImplicitRulesPrimitiveElement => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let some = r#implicit_rules.get_or_insert(Default::default());
                                 if some.id.is_some() || !some.extension.is_empty() {
                                     return Err(serde::de::Error::duplicate_field(
@@ -5790,7 +5790,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Transp
                             }
                         }
                         Field::Language => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let some = r#language.get_or_insert(Default::default());
                                 if some.value.is_some() {
                                     return Err(serde::de::Error::duplicate_field("language"));
@@ -5807,7 +5807,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Transp
                             }
                         }
                         Field::LanguagePrimitiveElement => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let some = r#language.get_or_insert(Default::default());
                                 if some.id.is_some() || !some.extension.is_empty() {
                                     return Err(serde::de::Error::duplicate_field("_language"));
@@ -5833,7 +5833,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Transp
                             r#text = Some(map_access.next_value_seed(&mut *_context)?);
                         }
                         Field::Contained => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 if r#contained.is_some() {
                                     return Err(serde::de::Error::duplicate_field("contained"));
                                 }
@@ -5850,7 +5850,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Transp
                             }
                         }
                         Field::Extension => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 if r#extension.is_some() {
                                     return Err(serde::de::Error::duplicate_field("extension"));
                                 }
@@ -5867,7 +5867,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Transp
                             }
                         }
                         Field::ModifierExtension => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 if r#modifier_extension.is_some() {
                                     return Err(serde::de::Error::duplicate_field(
                                         "modifierExtension",
@@ -5887,7 +5887,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Transp
                             }
                         }
                         Field::Identifier => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 if r#identifier.is_some() {
                                     return Err(serde::de::Error::duplicate_field("identifier"));
                                 }
@@ -5904,7 +5904,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Transp
                             }
                         }
                         Field::InstantiatesCanonical => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let some =
                                     r#instantiates_canonical.get_or_insert(Default::default());
                                 if some.value.is_some() {
@@ -5927,7 +5927,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Transp
                             }
                         }
                         Field::InstantiatesCanonicalPrimitiveElement => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let some =
                                     r#instantiates_canonical.get_or_insert(Default::default());
                                 if some.id.is_some() || !some.extension.is_empty() {
@@ -5947,7 +5947,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Transp
                             }
                         }
                         Field::InstantiatesUri => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let some = r#instantiates_uri.get_or_insert(Default::default());
                                 if some.value.is_some() {
                                     return Err(serde::de::Error::duplicate_field(
@@ -5969,7 +5969,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Transp
                             }
                         }
                         Field::InstantiatesUriPrimitiveElement => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let some = r#instantiates_uri.get_or_insert(Default::default());
                                 if some.id.is_some() || !some.extension.is_empty() {
                                     return Err(serde::de::Error::duplicate_field(
@@ -5988,7 +5988,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Transp
                             }
                         }
                         Field::BasedOn => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 if r#based_on.is_some() {
                                     return Err(serde::de::Error::duplicate_field("basedOn"));
                                 }
@@ -6014,7 +6014,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Transp
                             r#group_identifier = Some(map_access.next_value_seed(&mut *_context)?);
                         }
                         Field::PartOf => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 if r#part_of.is_some() {
                                     return Err(serde::de::Error::duplicate_field("partOf"));
                                 }
@@ -6031,7 +6031,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Transp
                             }
                         }
                         Field::Status => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let some = r#status.get_or_insert(Default::default());
                                 if some.value.is_some() {
                                     return Err(serde::de::Error::duplicate_field("status"));
@@ -6048,7 +6048,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Transp
                             }
                         }
                         Field::StatusPrimitiveElement => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let some = r#status.get_or_insert(Default::default());
                                 if some.id.is_some() || !some.extension.is_empty() {
                                     return Err(serde::de::Error::duplicate_field("_status"));
@@ -6074,7 +6074,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Transp
                             r#status_reason = Some(map_access.next_value_seed(&mut *_context)?);
                         }
                         Field::Intent => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let some = r#intent.get_or_insert(Default::default());
                                 if some.value.is_some() {
                                     return Err(serde::de::Error::duplicate_field("intent"));
@@ -6091,7 +6091,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Transp
                             }
                         }
                         Field::IntentPrimitiveElement => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let some = r#intent.get_or_insert(Default::default());
                                 if some.id.is_some() || !some.extension.is_empty() {
                                     return Err(serde::de::Error::duplicate_field("_intent"));
@@ -6108,7 +6108,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Transp
                             }
                         }
                         Field::Priority => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let some = r#priority.get_or_insert(Default::default());
                                 if some.value.is_some() {
                                     return Err(serde::de::Error::duplicate_field("priority"));
@@ -6125,7 +6125,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Transp
                             }
                         }
                         Field::PriorityPrimitiveElement => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let some = r#priority.get_or_insert(Default::default());
                                 if some.id.is_some() || !some.extension.is_empty() {
                                     return Err(serde::de::Error::duplicate_field("_priority"));
@@ -6151,7 +6151,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Transp
                             r#code = Some(map_access.next_value_seed(&mut *_context)?);
                         }
                         Field::Description => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let some = r#description.get_or_insert(Default::default());
                                 if some.value.is_some() {
                                     return Err(serde::de::Error::duplicate_field("description"));
@@ -6168,7 +6168,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Transp
                             }
                         }
                         Field::DescriptionPrimitiveElement => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let some = r#description.get_or_insert(Default::default());
                                 if some.id.is_some() || !some.extension.is_empty() {
                                     return Err(serde::de::Error::duplicate_field("_description"));
@@ -6212,7 +6212,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Transp
                             r#encounter = Some(map_access.next_value_seed(&mut *_context)?);
                         }
                         Field::CompletionTime => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let some = r#completion_time.get_or_insert(Default::default());
                                 if some.value.is_some() {
                                     return Err(serde::de::Error::duplicate_field(
@@ -6234,7 +6234,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Transp
                             }
                         }
                         Field::CompletionTimePrimitiveElement => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let some = r#completion_time.get_or_insert(Default::default());
                                 if some.id.is_some() || !some.extension.is_empty() {
                                     return Err(serde::de::Error::duplicate_field(
@@ -6253,7 +6253,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Transp
                             }
                         }
                         Field::AuthoredOn => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let some = r#authored_on.get_or_insert(Default::default());
                                 if some.value.is_some() {
                                     return Err(serde::de::Error::duplicate_field("authoredOn"));
@@ -6270,7 +6270,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Transp
                             }
                         }
                         Field::AuthoredOnPrimitiveElement => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let some = r#authored_on.get_or_insert(Default::default());
                                 if some.id.is_some() || !some.extension.is_empty() {
                                     return Err(serde::de::Error::duplicate_field("_authoredOn"));
@@ -6287,7 +6287,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Transp
                             }
                         }
                         Field::LastModified => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let some = r#last_modified.get_or_insert(Default::default());
                                 if some.value.is_some() {
                                     return Err(serde::de::Error::duplicate_field("lastModified"));
@@ -6304,7 +6304,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Transp
                             }
                         }
                         Field::LastModifiedPrimitiveElement => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let some = r#last_modified.get_or_insert(Default::default());
                                 if some.id.is_some() || !some.extension.is_empty() {
                                     return Err(serde::de::Error::duplicate_field("_lastModified"));
@@ -6330,7 +6330,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Transp
                             r#requester = Some(map_access.next_value_seed(&mut *_context)?);
                         }
                         Field::PerformerType => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 if r#performer_type.is_some() {
                                     return Err(serde::de::Error::duplicate_field("performerType"));
                                 }
@@ -6366,7 +6366,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Transp
                             r#location = Some(map_access.next_value_seed(&mut *_context)?);
                         }
                         Field::Insurance => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 if r#insurance.is_some() {
                                     return Err(serde::de::Error::duplicate_field("insurance"));
                                 }
@@ -6383,7 +6383,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Transp
                             }
                         }
                         Field::Note => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 if r#note.is_some() {
                                     return Err(serde::de::Error::duplicate_field("note"));
                                 }
@@ -6400,7 +6400,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Transp
                             }
                         }
                         Field::RelevantHistory => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 if r#relevant_history.is_some() {
                                     return Err(serde::de::Error::duplicate_field(
                                         "relevantHistory",
@@ -6429,7 +6429,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Transp
                             r#restriction = Some(map_access.next_value_seed(&mut *_context)?);
                         }
                         Field::Input => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 if r#input.is_some() {
                                     return Err(serde::de::Error::duplicate_field("input"));
                                 }
@@ -6446,7 +6446,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Transp
                             }
                         }
                         Field::Output => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 if r#output.is_some() {
                                     return Err(serde::de::Error::duplicate_field("output"));
                                 }

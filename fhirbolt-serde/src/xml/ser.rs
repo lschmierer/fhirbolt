@@ -9,8 +9,8 @@ use std::{
 use serde::ser::{self, Impossible, Serialize};
 
 use crate::{
-    context::ser::SerializationConfig,
-    number::{NumberValueEmitter, NUMBER_TOKEN},
+    context::{ser::SerializationConfig, Format},
+    decimal,
     xml::{
         error::{Error, Result},
         event::{Element, Event},
@@ -26,7 +26,7 @@ where
     T: SerializeResource,
 {
     value
-        .serialization_context(config.unwrap_or(Default::default()), false)
+        .serialization_context(config.unwrap_or(Default::default()), Format::Xml)
         .serialize(&mut Serializer::new(writer))
 }
 
@@ -307,7 +307,7 @@ impl<'a, W: Write> ser::Serializer for &'a mut Serializer<W> {
     type SerializeTupleStruct = Impossible<(), Error>;
     type SerializeTupleVariant = Impossible<(), Error>;
     type SerializeMap = Self;
-    type SerializeStruct = Self;
+    type SerializeStruct = SerializeDecimal<'a, W>;
     type SerializeStructVariant = Impossible<(), Error>;
 
     #[inline]
@@ -467,8 +467,8 @@ impl<'a, W: Write> ser::Serializer for &'a mut Serializer<W> {
 
     #[inline]
     fn serialize_struct(self, _name: &'static str, _len: usize) -> Result<Self::SerializeStruct> {
-        // serde_json Number is the only struct that cann occur
-        Ok(self)
+        // Decimal is the only struct that cann occur
+        Ok(SerializeDecimal(self))
     }
 
     fn serialize_struct_variant(
@@ -527,7 +527,9 @@ impl<'a, W: Write> ser::SerializeMap for &'a mut Serializer<W> {
     }
 }
 
-impl<'a, W: Write> ser::SerializeStruct for &'a mut Serializer<W> {
+pub struct SerializeDecimal<'a, W: Write>(&'a mut Serializer<W>);
+
+impl<'a, W: Write> ser::SerializeStruct for SerializeDecimal<'a, W> {
     type Ok = ();
     type Error = Error;
 
@@ -536,10 +538,10 @@ impl<'a, W: Write> ser::SerializeStruct for &'a mut Serializer<W> {
     where
         T: ?Sized + Serialize,
     {
-        if key == NUMBER_TOKEN {
-            self.put(
+        if key == decimal::TOKEN {
+            self.0.put(
                 value
-                    .serialize(NumberValueEmitter)
+                    .serialize(decimal::DecimalStrEmitter::<Self::Error>::new())
                     .map_err(|err| Error::Message(err.to_string()))?,
             )
         } else {

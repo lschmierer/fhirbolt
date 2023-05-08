@@ -1,4 +1,4 @@
-// Generated on 2023-05-07 by fhirbolt-codegen v0.8.0
+// Generated on 2023-05-08 by fhirbolt-codegen v0.8.0
 use crate::{DeserializationContext, SerializationContext};
 use fhirbolt_model::r4::types::MarketingStatus;
 impl serde::ser::Serialize for SerializationContext<&MarketingStatus> {
@@ -52,7 +52,7 @@ impl serde::ser::Serialize for SerializationContext<&MarketingStatus> {
                 state.serialize_entry("dateRange", ctx)
             })?;
         }
-        if self.output_json {
+        if self.output == crate::context::Format::Json {
             if let Some(some) = self.value.r#restore_date.as_ref() {
                 if let Some(some) = some.value.as_ref().map(Ok) {
                     state.serialize_entry("restoreDate", &some?)?;
@@ -168,7 +168,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Market
                             r#id = Some(map_access.next_value()?);
                         }
                         Field::Extension => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 if r#extension.is_some() {
                                     return Err(serde::de::Error::duplicate_field("extension"));
                                 }
@@ -185,7 +185,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Market
                             }
                         }
                         Field::ModifierExtension => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 if r#modifier_extension.is_some() {
                                     return Err(serde::de::Error::duplicate_field(
                                         "modifierExtension",
@@ -241,7 +241,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Market
                             r#date_range = Some(map_access.next_value_seed(&mut *_context)?);
                         }
                         Field::RestoreDate => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let some = r#restore_date.get_or_insert(Default::default());
                                 if some.value.is_some() {
                                     return Err(serde::de::Error::duplicate_field("restoreDate"));
@@ -258,7 +258,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Market
                             }
                         }
                         Field::RestoreDatePrimitiveElement => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let some = r#restore_date.get_or_insert(Default::default());
                                 if some.id.is_some() || !some.extension.is_empty() {
                                     return Err(serde::de::Error::duplicate_field("_restoreDate"));

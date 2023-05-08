@@ -1,4 +1,4 @@
-// Generated on 2023-05-07 by fhirbolt-codegen v0.8.0
+// Generated on 2023-05-08 by fhirbolt-codegen v0.8.0
 use crate::{DeserializationContext, SerializationContext};
 use fhirbolt_model::r5::types::AvailabilityAvailableTime;
 impl serde::ser::Serialize for SerializationContext<&AvailabilityAvailableTime> {
@@ -23,7 +23,7 @@ impl serde::ser::Serialize for SerializationContext<&AvailabilityAvailableTime> 
                 state.serialize_entry("extension", ctx)
             })?;
         }
-        if self.output_json {
+        if self.output == crate::context::Format::Json {
             if !self.value.r#days_of_week.is_empty() {
                 let values = self
                     .value
@@ -67,7 +67,7 @@ impl serde::ser::Serialize for SerializationContext<&AvailabilityAvailableTime> 
                 state.serialize_entry("daysOfWeek", ctx)
             })?;
         }
-        if self.output_json {
+        if self.output == crate::context::Format::Json {
             if let Some(some) = self.value.r#all_day.as_ref() {
                 if let Some(some) = some.value.as_ref().map(Ok) {
                     state.serialize_entry("allDay", &some?)?;
@@ -86,7 +86,7 @@ impl serde::ser::Serialize for SerializationContext<&AvailabilityAvailableTime> 
         } else if let Some(some) = self.value.r#all_day.as_ref() {
             self.with_context(some, |ctx| state.serialize_entry("allDay", ctx))?;
         }
-        if self.output_json {
+        if self.output == crate::context::Format::Json {
             if let Some(some) = self.value.r#available_start_time.as_ref() {
                 if let Some(some) = some.value.as_ref().map(Ok) {
                     state.serialize_entry("availableStartTime", &some?)?;
@@ -105,7 +105,7 @@ impl serde::ser::Serialize for SerializationContext<&AvailabilityAvailableTime> 
         } else if let Some(some) = self.value.r#available_start_time.as_ref() {
             self.with_context(some, |ctx| state.serialize_entry("availableStartTime", ctx))?;
         }
-        if self.output_json {
+        if self.output == crate::context::Format::Json {
             if let Some(some) = self.value.r#available_end_time.as_ref() {
                 if let Some(some) = some.value.as_ref().map(Ok) {
                     state.serialize_entry("availableEndTime", &some?)?;
@@ -219,7 +219,7 @@ impl<'de> serde::de::DeserializeSeed<'de>
                             r#id = Some(map_access.next_value()?);
                         }
                         Field::Extension => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 if r#extension.is_some() {
                                     return Err(serde::de::Error::duplicate_field("extension"));
                                 }
@@ -236,7 +236,7 @@ impl<'de> serde::de::DeserializeSeed<'de>
                             }
                         }
                         Field::DaysOfWeek => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let values: Vec<Option<_>> = map_access.next_value()?;
                                 let vec = r#days_of_week.get_or_insert(
                                     std::iter::repeat(Default::default())
@@ -266,7 +266,7 @@ impl<'de> serde::de::DeserializeSeed<'de>
                             }
                         }
                         Field::DaysOfWeekPrimitiveElement => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 use super::super::serde_helpers::PrimitiveElementOwned;
                                 let _context: &mut DeserializationContext<
                                     Vec<Option<PrimitiveElementOwned>>,
@@ -301,7 +301,7 @@ impl<'de> serde::de::DeserializeSeed<'de>
                             }
                         }
                         Field::AllDay => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let some = r#all_day.get_or_insert(Default::default());
                                 if some.value.is_some() {
                                     return Err(serde::de::Error::duplicate_field("allDay"));
@@ -318,7 +318,7 @@ impl<'de> serde::de::DeserializeSeed<'de>
                             }
                         }
                         Field::AllDayPrimitiveElement => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let some = r#all_day.get_or_insert(Default::default());
                                 if some.id.is_some() || !some.extension.is_empty() {
                                     return Err(serde::de::Error::duplicate_field("_allDay"));
@@ -335,7 +335,7 @@ impl<'de> serde::de::DeserializeSeed<'de>
                             }
                         }
                         Field::AvailableStartTime => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let some = r#available_start_time.get_or_insert(Default::default());
                                 if some.value.is_some() {
                                     return Err(serde::de::Error::duplicate_field(
@@ -357,7 +357,7 @@ impl<'de> serde::de::DeserializeSeed<'de>
                             }
                         }
                         Field::AvailableStartTimePrimitiveElement => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let some = r#available_start_time.get_or_insert(Default::default());
                                 if some.id.is_some() || !some.extension.is_empty() {
                                     return Err(serde::de::Error::duplicate_field(
@@ -376,7 +376,7 @@ impl<'de> serde::de::DeserializeSeed<'de>
                             }
                         }
                         Field::AvailableEndTime => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let some = r#available_end_time.get_or_insert(Default::default());
                                 if some.value.is_some() {
                                     return Err(serde::de::Error::duplicate_field(
@@ -398,7 +398,7 @@ impl<'de> serde::de::DeserializeSeed<'de>
                             }
                         }
                         Field::AvailableEndTimePrimitiveElement => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let some = r#available_end_time.get_or_insert(Default::default());
                                 if some.id.is_some() || !some.extension.is_empty() {
                                     return Err(serde::de::Error::duplicate_field(
@@ -503,7 +503,7 @@ impl serde::ser::Serialize for SerializationContext<&AvailabilityNotAvailableTim
                 state.serialize_entry("extension", ctx)
             })?;
         }
-        if self.output_json {
+        if self.output == crate::context::Format::Json {
             if let Some(some) = self.value.r#description.as_ref() {
                 if let Some(some) = some.value.as_ref().map(Ok) {
                     state.serialize_entry("description", &some?)?;
@@ -604,7 +604,7 @@ impl<'de> serde::de::DeserializeSeed<'de>
                             r#id = Some(map_access.next_value()?);
                         }
                         Field::Extension => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 if r#extension.is_some() {
                                     return Err(serde::de::Error::duplicate_field("extension"));
                                 }
@@ -621,7 +621,7 @@ impl<'de> serde::de::DeserializeSeed<'de>
                             }
                         }
                         Field::Description => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let some = r#description.get_or_insert(Default::default());
                                 if some.value.is_some() {
                                     return Err(serde::de::Error::duplicate_field("description"));
@@ -638,7 +638,7 @@ impl<'de> serde::de::DeserializeSeed<'de>
                             }
                         }
                         Field::DescriptionPrimitiveElement => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let some = r#description.get_or_insert(Default::default());
                                 if some.id.is_some() || !some.extension.is_empty() {
                                     return Err(serde::de::Error::duplicate_field("_description"));
@@ -834,7 +834,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Availa
                             r#id = Some(map_access.next_value()?);
                         }
                         Field::Extension => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 if r#extension.is_some() {
                                     return Err(serde::de::Error::duplicate_field("extension"));
                                 }
@@ -851,7 +851,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Availa
                             }
                         }
                         Field::AvailableTime => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 if r#available_time.is_some() {
                                     return Err(serde::de::Error::duplicate_field("availableTime"));
                                 }
@@ -869,7 +869,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Availa
                             }
                         }
                         Field::NotAvailableTime => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 if r#not_available_time.is_some() {
                                     return Err(serde::de::Error::duplicate_field(
                                         "notAvailableTime",

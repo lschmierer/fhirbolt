@@ -1,4 +1,4 @@
-// Generated on 2023-05-07 by fhirbolt-codegen v0.8.0
+// Generated on 2023-05-08 by fhirbolt-codegen v0.8.0
 use crate::{DeserializationContext, SerializationContext};
 use fhirbolt_model::r4b::types::ProdCharacteristic;
 impl serde::ser::Serialize for SerializationContext<&ProdCharacteristic> {
@@ -46,7 +46,7 @@ impl serde::ser::Serialize for SerializationContext<&ProdCharacteristic> {
         if let Some(some) = self.value.r#external_diameter.as_ref() {
             self.with_context(some, |ctx| state.serialize_entry("externalDiameter", ctx))?;
         }
-        if self.output_json {
+        if self.output == crate::context::Format::Json {
             if let Some(some) = self.value.r#shape.as_ref() {
                 if let Some(some) = some.value.as_ref().map(Ok) {
                     state.serialize_entry("shape", &some?)?;
@@ -65,7 +65,7 @@ impl serde::ser::Serialize for SerializationContext<&ProdCharacteristic> {
         } else if let Some(some) = self.value.r#shape.as_ref() {
             self.with_context(some, |ctx| state.serialize_entry("shape", ctx))?;
         }
-        if self.output_json {
+        if self.output == crate::context::Format::Json {
             if !self.value.r#color.is_empty() {
                 let values = self
                     .value
@@ -109,7 +109,7 @@ impl serde::ser::Serialize for SerializationContext<&ProdCharacteristic> {
                 state.serialize_entry("color", ctx)
             })?;
         }
-        if self.output_json {
+        if self.output == crate::context::Format::Json {
             if !self.value.r#imprint.is_empty() {
                 let values = self
                     .value
@@ -286,7 +286,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<ProdCh
                             r#id = Some(map_access.next_value()?);
                         }
                         Field::Extension => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 if r#extension.is_some() {
                                     return Err(serde::de::Error::duplicate_field("extension"));
                                 }
@@ -303,7 +303,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<ProdCh
                             }
                         }
                         Field::ModifierExtension => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 if r#modifier_extension.is_some() {
                                     return Err(serde::de::Error::duplicate_field(
                                         "modifierExtension",
@@ -377,7 +377,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<ProdCh
                             r#external_diameter = Some(map_access.next_value_seed(&mut *_context)?);
                         }
                         Field::Shape => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let some = r#shape.get_or_insert(Default::default());
                                 if some.value.is_some() {
                                     return Err(serde::de::Error::duplicate_field("shape"));
@@ -394,7 +394,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<ProdCh
                             }
                         }
                         Field::ShapePrimitiveElement => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let some = r#shape.get_or_insert(Default::default());
                                 if some.id.is_some() || !some.extension.is_empty() {
                                     return Err(serde::de::Error::duplicate_field("_shape"));
@@ -411,7 +411,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<ProdCh
                             }
                         }
                         Field::Color => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let values: Vec<Option<_>> = map_access.next_value()?;
                                 let vec = r#color.get_or_insert(
                                     std::iter::repeat(Default::default())
@@ -441,7 +441,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<ProdCh
                             }
                         }
                         Field::ColorPrimitiveElement => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 use super::super::serde_helpers::PrimitiveElementOwned;
                                 let _context: &mut DeserializationContext<
                                     Vec<Option<PrimitiveElementOwned>>,
@@ -476,7 +476,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<ProdCh
                             }
                         }
                         Field::Imprint => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let values: Vec<Option<_>> = map_access.next_value()?;
                                 let vec = r#imprint.get_or_insert(
                                     std::iter::repeat(Default::default())
@@ -506,7 +506,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<ProdCh
                             }
                         }
                         Field::ImprintPrimitiveElement => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 use super::super::serde_helpers::PrimitiveElementOwned;
                                 let _context: &mut DeserializationContext<
                                     Vec<Option<PrimitiveElementOwned>>,
@@ -541,7 +541,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<ProdCh
                             }
                         }
                         Field::Image => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 if r#image.is_some() {
                                     return Err(serde::de::Error::duplicate_field("image"));
                                 }

@@ -1,4 +1,4 @@
-// Generated on 2023-05-07 by fhirbolt-codegen v0.8.0
+// Generated on 2023-05-08 by fhirbolt-codegen v0.8.0
 #[doc = "Base StructureDefinition for base64Binary Type: A stream of bytes"]
 #[derive(Debug, Clone, PartialEq)]
 pub struct Base64Binary {

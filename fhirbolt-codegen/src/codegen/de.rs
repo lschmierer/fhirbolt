@@ -251,7 +251,7 @@ pub fn implement_deserialze_resource_enum(
                 let _context = self.transmute::<crate::element::internal::de::InternalElement<{ fhirbolt_shared::FhirReleases::#release_ident }>>();
                 let element = _context.deserialize(deserializer)?;
 
-                self.from_json = false;
+                self.from = crate::context::Format::InternalElement;
 
                 if let Some(
                     fhirbolt_element::Value::Primitive(
@@ -535,7 +535,7 @@ fn deserialize_enum_variant(
             Field::#field_enum_type_name => {
                 use #namespace::#enum_ident as _Enum;
 
-                if self.0.from_json {
+                if self.0.from == crate::context::Format::Json {
                     let r#enum = #field_name_ident.get_or_insert(_Enum::#variant_ident(Default::default()));
 
                     if let _Enum::#variant_ident(variant) = r#enum {
@@ -558,7 +558,7 @@ fn deserialize_enum_variant(
             Field::#field_enum_type_primitive_element_name => {
                 use #namespace::#enum_ident as _Enum;
 
-                if self.0.from_json {
+                if self.0.from == crate::context::Format::Json {
                     let r#enum = #field_name_ident.get_or_insert(_Enum::#variant_ident(Default::default()));
 
                     if let _Enum::#variant_ident(variant) = r#enum {
@@ -679,7 +679,7 @@ fn deserialize_primitive(
     if field.multiple {
         quote! {
             Field::#field_enum_type_name => {
-                if self.0.from_json {
+                if self.0.from == crate::context::Format::Json {
                     let values: Vec<Option<#intermediate_type_tokens>> = map_access.next_value()?;
 
                     let vec = #field_name_ident.get_or_insert(std::iter::repeat(Default::default()).take(values.len()).collect::<Vec<_>>());
@@ -702,7 +702,7 @@ fn deserialize_primitive(
                 }
             },
             Field::#field_enum_type_primitive_element_name => {
-                if self.0.from_json {
+                if self.0.from == crate::context::Format::Json {
                     use super::super::serde_helpers::PrimitiveElementOwned;
 
                     let _context: &mut DeserializationContext<Vec<Option<PrimitiveElementOwned>>> = self.0.transmute();
@@ -747,7 +747,7 @@ fn deserialize_primitive(
 
         quote! {
             Field::#field_enum_type_name => {
-                if self.0.from_json {
+                if self.0.from == crate::context::Format::Json {
                     let some = #field_name_ident.get_or_insert(Default::default());
 
                     #deserialize_value_tokens
@@ -761,7 +761,7 @@ fn deserialize_primitive(
                 }
             },
             Field::#field_enum_type_primitive_element_name => {
-                if self.0.from_json {
+                if self.0.from == crate::context::Format::Json {
                     let some = #field_name_ident.get_or_insert(Default::default());
 
                     if some.id.is_some() #check_extension_is_empty_tokens {
@@ -798,7 +798,7 @@ fn deserialize_element(
     if field.multiple {
         quote! {
             Field::#field_enum_type_name => {
-                if self.0.from_json {
+                if self.0.from == crate::context::Format::Json {
                     if #field_name_ident.is_some() {
                         return Err(serde::de::Error::duplicate_field(#fhir_name));
                     }

@@ -2,12 +2,12 @@ use std::{marker::PhantomData, mem};
 
 use serde::de::DeserializeSeed;
 
-use crate::Resource;
+use crate::{context::Format, Resource};
 
 pub trait DeserializeResource<'de>: Resource {
     type Context: DeserializeSeed<'de, Value = Self>;
 
-    fn deserialization_context(config: DeserializationConfig, from_json: bool) -> Self::Context;
+    fn deserialization_context(config: DeserializationConfig, from: Format) -> Self::Context;
 }
 
 impl<'de, T> DeserializeResource<'de> for T
@@ -17,8 +17,8 @@ where
 {
     type Context = DeserializationContext<Self>;
 
-    fn deserialization_context(config: DeserializationConfig, from_json: bool) -> Self::Context {
-        DeserializationContext::new(config, from_json)
+    fn deserialization_context(config: DeserializationConfig, from: Format) -> Self::Context {
+        DeserializationContext::new(config, from)
     }
 }
 
@@ -32,7 +32,7 @@ pub struct DeserializationContext<V> {
     /// Deserialization config
     pub(crate) config: DeserializationConfig,
     /// The JSON data model differs from the FHIR data model
-    pub(crate) from_json: bool,
+    pub(crate) from: Format,
     // Used by the element model to keep track of its state in the element tree
     current_element_stack: Vec<CurrentElement>,
 }
@@ -55,11 +55,11 @@ pub enum CurrentElement {
 }
 
 impl<V> DeserializationContext<V> {
-    fn new(config: DeserializationConfig, from_json: bool) -> Self {
+    fn new(config: DeserializationConfig, from: Format) -> Self {
         DeserializationContext {
             _phantom: PhantomData,
             config,
-            from_json,
+            from,
             current_element_stack: vec![],
         }
     }

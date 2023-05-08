@@ -1,4 +1,4 @@
-// Generated on 2023-05-07 by fhirbolt-codegen v0.8.0
+// Generated on 2023-05-08 by fhirbolt-codegen v0.8.0
 #[doc = "When the member is generally available within this care team."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum CareTeamParticipantCoverage {

@@ -1,4 +1,4 @@
-// Generated on 2023-05-07 by fhirbolt-codegen v0.8.0
+// Generated on 2023-05-08 by fhirbolt-codegen v0.8.0
 use crate::{DeserializationContext, SerializationContext};
 use fhirbolt_model::r5::types::Decimal;
 impl serde::ser::Serialize for SerializationContext<&Decimal> {
@@ -24,10 +24,17 @@ impl serde::ser::Serialize for SerializationContext<&Decimal> {
             })?;
         }
         if let Some(value) = self.value.value.as_ref() {
-            let _value = value
-                .parse::<serde_json::Number>()
-                .map_err(|_| serde::ser::Error::custom("error serializing decimal"))?;
-            state.serialize_entry("value", &_value)?;
+            if self.output == crate::context::Format::Json {
+                let _value = value
+                    .parse::<serde_json::Number>()
+                    .map_err(|_| serde::ser::Error::custom("error serializing decimal"))?;
+                state.serialize_entry("value", &_value)?;
+            } else if self.output == crate::context::Format::InternalElement {
+                let _value = crate::decimal::Decimal { d: value };
+                state.serialize_entry("value", &_value)?;
+            } else {
+                state.serialize_entry("value", value)?;
+            }
         }
         state.end()
     }
@@ -95,7 +102,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Decima
                             r#id = Some(map_access.next_value()?);
                         }
                         Field::Extension => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 if r#extension.is_some() {
                                     return Err(serde::de::Error::duplicate_field("extension"));
                                 }

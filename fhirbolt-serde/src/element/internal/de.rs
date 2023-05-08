@@ -9,7 +9,10 @@ use fhirbolt_element::{Element, Primitive, Value};
 use fhirbolt_shared::{path::ElementPath, FhirRelease};
 
 use crate::{
-    context::de::{CurrentElement, DeserializationContext},
+    context::{
+        de::{CurrentElement, DeserializationContext},
+        Format,
+    },
     element::{self, Deserializer},
     DeserializationMode,
 };
@@ -323,6 +326,29 @@ fn merge_sequences<const R: FhirRelease>(
 
 struct ValueVisitor<'a, const R: FhirRelease>(&'a mut DeserializationContext<Value<R>>);
 
+impl<'a, const R: FhirRelease> ValueVisitor<'a, R> {
+    fn map_serde_json_value<E>(&mut self, value: serde_json::Value) -> Result<Value<R>, E>
+    where
+        E: de::Error,
+    {
+        match value {
+            serde_json::Value::Number(n) => {
+                let mut decimal_element = Element::default();
+                decimal_element.insert(
+                    "value".into(),
+                    Value::Primitive(Primitive::String(n.to_string())),
+                );
+                Ok(Value::Element(decimal_element))
+            }
+            serde_json_value => self
+                .0
+                .transmute::<Value<R>>()
+                .deserialize(serde_json_value)
+                .map_err(de::Error::custom),
+        }
+    }
+}
+
 impl<'a, 'de, const R: FhirRelease> Visitor<'de> for ValueVisitor<'a, R> {
     type Value = Value<R>;
 
@@ -335,7 +361,7 @@ impl<'a, 'de, const R: FhirRelease> Visitor<'de> for ValueVisitor<'a, R> {
     where
         E: de::Error,
     {
-        if self.0.from_json {
+        if self.0.from == Format::Json {
             let mut element = Element::default();
             element.insert("value".into(), Value::Primitive(Primitive::Bool(v)));
             Ok(Value::Element(element))
@@ -349,7 +375,7 @@ impl<'a, 'de, const R: FhirRelease> Visitor<'de> for ValueVisitor<'a, R> {
     where
         E: de::Error,
     {
-        if self.0.from_json {
+        if self.0.from == Format::Json {
             let mut element = Element::default();
             element.insert(
                 "value".into(),
@@ -366,7 +392,7 @@ impl<'a, 'de, const R: FhirRelease> Visitor<'de> for ValueVisitor<'a, R> {
     where
         E: de::Error,
     {
-        if self.0.from_json {
+        if self.0.from == Format::Json {
             let mut element = Element::default();
             element.insert("value".into(), Value::Primitive(Primitive::Integer64(v)));
             Ok(Value::Element(element))
@@ -380,7 +406,7 @@ impl<'a, 'de, const R: FhirRelease> Visitor<'de> for ValueVisitor<'a, R> {
     where
         E: de::Error,
     {
-        if self.0.from_json {
+        if self.0.from == Format::Json {
             let mut element = Element::default();
             element.insert(
                 "value".into(),
@@ -397,7 +423,7 @@ impl<'a, 'de, const R: FhirRelease> Visitor<'de> for ValueVisitor<'a, R> {
     where
         E: de::Error,
     {
-        if self.0.from_json {
+        if self.0.from == Format::Json {
             if self.0.current_element() == CurrentElement::Id
                 || self.0.current_element() == CurrentElement::ExtensionUrl
             {
@@ -420,7 +446,7 @@ impl<'a, 'de, const R: FhirRelease> Visitor<'de> for ValueVisitor<'a, R> {
         self.visit_string(v.to_string())
     }
 
-    fn visit_map<V>(self, mut map_access: V) -> Result<Self::Value, V::Error>
+    fn visit_map<V>(mut self, mut map_access: V) -> Result<Self::Value, V::Error>
     where
         V: MapAccess<'de>,
     {
@@ -458,23 +484,9 @@ impl<'a, 'de, const R: FhirRelease> Visitor<'de> for ValueVisitor<'a, R> {
                     _ => CurrentElement::Other,
                 });
 
-                let value = if self.0.from_json {
+                let value = if self.0.from == Format::Json {
                     let serde_json_value: serde_json::Value = map_access.next_value()?;
-                    match serde_json_value {
-                        serde_json::Value::Number(n) => {
-                            let mut decimal_element = Element::default();
-                            decimal_element.insert(
-                                "value".into(),
-                                Value::Primitive(Primitive::String(n.to_string())),
-                            );
-                            Value::Element(decimal_element)
-                        }
-                        serde_json_value => self
-                            .0
-                            .transmute::<Value<R>>()
-                            .deserialize(serde_json_value)
-                            .map_err(de::Error::custom)?,
-                    }
+                    self.map_serde_json_value(serde_json_value)?
                 } else {
                     map_access.next_value_seed(self.0.transmute::<Value<R>>())?
                 };
@@ -484,7 +496,7 @@ impl<'a, 'de, const R: FhirRelease> Visitor<'de> for ValueVisitor<'a, R> {
                     key,
                     match (existing, value) {
                         (Some(Value::Element(mut e)), Value::Element(n)) => {
-                            if self.0.from_json {
+                            if self.0.from == Format::Json {
                                 e.extend(n);
                                 Value::Element(e)
                             } else {
@@ -526,32 +538,17 @@ impl<'a, 'de, const R: FhirRelease> Visitor<'de> for ValueVisitor<'a, R> {
         Ok(Value::Element(element))
     }
 
-    fn visit_seq<V>(self, mut seq_access: V) -> Result<Self::Value, V::Error>
+    fn visit_seq<V>(mut self, mut seq_access: V) -> Result<Self::Value, V::Error>
     where
         V: SeqAccess<'de>,
     {
         let mut elements = Vec::new();
 
-        while let Some(value) = if self.0.from_json {
+        while let Some(value) = if self.0.from == Format::Json {
             let serde_json_value: Option<Option<serde_json::Value>> = seq_access.next_element()?;
-            match serde_json_value {
-                Some(Some(serde_json::Value::Number(n))) => {
-                    let mut decimal_element = Element::default();
-                    decimal_element.insert(
-                        "value".into(),
-                        Value::Primitive(Primitive::String(n.to_string())),
-                    );
-                    Some(Some(Value::Element(decimal_element)))
-                }
-                Some(Some(serde_json_value)) => Some(Some(
-                    self.0
-                        .transmute::<Value<R>>()
-                        .deserialize(serde_json_value)
-                        .map_err(de::Error::custom)?,
-                )),
-                Some(None) => Some(None),
-                None => None,
-            }
+            serde_json_value
+                .map(|v| v.map(|v| self.map_serde_json_value(v)).transpose())
+                .transpose()?
         } else {
             seq_access.next_element_seed(self.0.transmute::<Option<Value<R>>>())?
         } {

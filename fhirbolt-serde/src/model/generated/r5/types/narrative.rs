@@ -1,4 +1,4 @@
-// Generated on 2023-05-07 by fhirbolt-codegen v0.8.0
+// Generated on 2023-05-08 by fhirbolt-codegen v0.8.0
 use crate::{DeserializationContext, SerializationContext};
 use fhirbolt_model::r5::types::Narrative;
 impl serde::ser::Serialize for SerializationContext<&Narrative> {
@@ -23,7 +23,7 @@ impl serde::ser::Serialize for SerializationContext<&Narrative> {
                 state.serialize_entry("extension", ctx)
             })?;
         }
-        if self.output_json {
+        if self.output == crate::context::Format::Json {
             if self.value.r#status.id.as_deref() == Some("$invalid") {
                 return missing_field_error("status");
             }
@@ -47,7 +47,7 @@ impl serde::ser::Serialize for SerializationContext<&Narrative> {
                 state.serialize_entry("status", ctx)
             })?;
         }
-        if self.output_json {
+        if self.output == crate::context::Format::Json {
             if self.value.r#div.id.as_deref() == Some("$invalid") {
                 return missing_field_error("div");
             }
@@ -141,7 +141,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Narrat
                             r#id = Some(map_access.next_value()?);
                         }
                         Field::Extension => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 if r#extension.is_some() {
                                     return Err(serde::de::Error::duplicate_field("extension"));
                                 }
@@ -158,7 +158,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Narrat
                             }
                         }
                         Field::Status => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let some = r#status.get_or_insert(Default::default());
                                 if some.value.is_some() {
                                     return Err(serde::de::Error::duplicate_field("status"));
@@ -175,7 +175,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Narrat
                             }
                         }
                         Field::StatusPrimitiveElement => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let some = r#status.get_or_insert(Default::default());
                                 if some.id.is_some() || !some.extension.is_empty() {
                                     return Err(serde::de::Error::duplicate_field("_status"));
@@ -192,7 +192,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Narrat
                             }
                         }
                         Field::Div => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let some = r#div.get_or_insert(Default::default());
                                 if !some.value.is_empty() {
                                     return Err(serde::de::Error::duplicate_field("div"));
@@ -209,7 +209,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Narrat
                             }
                         }
                         Field::DivPrimitiveElement => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let some = r#div.get_or_insert(Default::default());
                                 if some.id.is_some() {
                                     return Err(serde::de::Error::duplicate_field("_div"));

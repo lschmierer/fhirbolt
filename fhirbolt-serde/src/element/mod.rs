@@ -34,8 +34,9 @@ use fhirbolt_shared::FhirRelease;
 use serde::{de::DeserializeSeed, Serialize};
 
 use crate::{
-    element::de::Deserializer, element::ser::Serializer, DeserializationConfig,
-    DeserializeResourceOwned, Resource, SerializeResource,
+    context::Format,
+    element::{de::Deserializer, ser::Serializer},
+    DeserializationConfig, DeserializeResourceOwned, Resource, SerializeResource,
 };
 
 pub mod de;
@@ -89,8 +90,11 @@ pub fn from_element<const R: FhirRelease, T>(
 where
     T: DeserializeResourceOwned,
 {
-    T::deserialization_context(config.unwrap_or(Default::default()), false)
-        .deserialize(Deserializer(element))
+    T::deserialization_context(
+        config.unwrap_or(Default::default()),
+        Format::InternalElement,
+    )
+    .deserialize(Deserializer(element))
 }
 
 /// Convert the given resource as an element.
@@ -99,7 +103,7 @@ where
     T: SerializeResource,
 {
     match resource
-        .serialization_context(Default::default(), false)
+        .serialization_context(Default::default(), Format::InternalElement)
         .serialize(Serializer)?
     {
         Value::Element(e) => Ok(e),

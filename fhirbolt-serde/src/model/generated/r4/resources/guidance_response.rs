@@ -1,4 +1,4 @@
-// Generated on 2023-05-07 by fhirbolt-codegen v0.8.0
+// Generated on 2023-05-08 by fhirbolt-codegen v0.8.0
 use crate::{DeserializationContext, SerializationContext};
 use fhirbolt_model::r4::resources::GuidanceResponse;
 impl crate::Resource for GuidanceResponse {
@@ -19,7 +19,7 @@ impl serde::ser::Serialize for SerializationContext<&GuidanceResponse> {
         }
         let mut state = serializer.serialize_map(None)?;
         state.serialize_entry("resourceType", "GuidanceResponse")?;
-        if self.output_json {
+        if self.output == crate::context::Format::Json {
             if let Some(some) = self.value.r#id.as_ref() {
                 if let Some(some) = some.value.as_ref().map(Ok) {
                     state.serialize_entry("id", &some?)?;
@@ -39,7 +39,7 @@ impl serde::ser::Serialize for SerializationContext<&GuidanceResponse> {
         if let Some(some) = self.value.r#meta.as_ref() {
             self.with_context(some, |ctx| state.serialize_entry("meta", ctx))?;
         }
-        if self.output_json {
+        if self.output == crate::context::Format::Json {
             if let Some(some) = self.value.r#implicit_rules.as_ref() {
                 if let Some(some) = some.value.as_ref().map(Ok) {
                     state.serialize_entry("implicitRules", &some?)?;
@@ -58,7 +58,7 @@ impl serde::ser::Serialize for SerializationContext<&GuidanceResponse> {
         } else if let Some(some) = self.value.r#implicit_rules.as_ref() {
             self.with_context(some, |ctx| state.serialize_entry("implicitRules", ctx))?;
         }
-        if self.output_json {
+        if self.output == crate::context::Format::Json {
             if let Some(some) = self.value.r#language.as_ref() {
                 if let Some(some) = some.value.as_ref().map(Ok) {
                     state.serialize_entry("language", &some?)?;
@@ -107,7 +107,7 @@ impl serde::ser::Serialize for SerializationContext<&GuidanceResponse> {
             use fhirbolt_model::r4::resources::GuidanceResponseModule as _Enum;
             match self.value.r#module {
                 _Enum::Uri(ref value) => {
-                    if self.output_json {
+                    if self.output == crate::context::Format::Json {
                         if let Some(some) = value.value.as_ref().map(Ok) {
                             state.serialize_entry("moduleUri", &some?)?;
                         }
@@ -126,7 +126,7 @@ impl serde::ser::Serialize for SerializationContext<&GuidanceResponse> {
                     }
                 }
                 _Enum::Canonical(ref value) => {
-                    if self.output_json {
+                    if self.output == crate::context::Format::Json {
                         if let Some(some) = value.value.as_ref().map(Ok) {
                             state.serialize_entry("moduleCanonical", &some?)?;
                         }
@@ -156,7 +156,7 @@ impl serde::ser::Serialize for SerializationContext<&GuidanceResponse> {
                 }
             }
         }
-        if self.output_json {
+        if self.output == crate::context::Format::Json {
             if self.value.r#status.id.as_deref() == Some("$invalid") {
                 return missing_field_error("status");
             }
@@ -186,7 +186,7 @@ impl serde::ser::Serialize for SerializationContext<&GuidanceResponse> {
         if let Some(some) = self.value.r#encounter.as_ref() {
             self.with_context(some, |ctx| state.serialize_entry("encounter", ctx))?;
         }
-        if self.output_json {
+        if self.output == crate::context::Format::Json {
             if let Some(some) = self.value.r#occurrence_date_time.as_ref() {
                 if let Some(some) = some.value.as_ref().map(Ok) {
                     state.serialize_entry("occurrenceDateTime", &some?)?;
@@ -433,7 +433,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Guidan
                             }
                         }
                         Field::Id => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let some = r#id.get_or_insert(Default::default());
                                 if some.value.is_some() {
                                     return Err(serde::de::Error::duplicate_field("id"));
@@ -450,7 +450,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Guidan
                             }
                         }
                         Field::IdPrimitiveElement => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let some = r#id.get_or_insert(Default::default());
                                 if some.id.is_some() || !some.extension.is_empty() {
                                     return Err(serde::de::Error::duplicate_field("_id"));
@@ -476,7 +476,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Guidan
                             r#meta = Some(map_access.next_value_seed(&mut *_context)?);
                         }
                         Field::ImplicitRules => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let some = r#implicit_rules.get_or_insert(Default::default());
                                 if some.value.is_some() {
                                     return Err(serde::de::Error::duplicate_field("implicitRules"));
@@ -494,7 +494,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Guidan
                             }
                         }
                         Field::ImplicitRulesPrimitiveElement => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let some = r#implicit_rules.get_or_insert(Default::default());
                                 if some.id.is_some() || !some.extension.is_empty() {
                                     return Err(serde::de::Error::duplicate_field(
@@ -513,7 +513,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Guidan
                             }
                         }
                         Field::Language => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let some = r#language.get_or_insert(Default::default());
                                 if some.value.is_some() {
                                     return Err(serde::de::Error::duplicate_field("language"));
@@ -530,7 +530,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Guidan
                             }
                         }
                         Field::LanguagePrimitiveElement => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let some = r#language.get_or_insert(Default::default());
                                 if some.id.is_some() || !some.extension.is_empty() {
                                     return Err(serde::de::Error::duplicate_field("_language"));
@@ -556,7 +556,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Guidan
                             r#text = Some(map_access.next_value_seed(&mut *_context)?);
                         }
                         Field::Contained => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 if r#contained.is_some() {
                                     return Err(serde::de::Error::duplicate_field("contained"));
                                 }
@@ -573,7 +573,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Guidan
                             }
                         }
                         Field::Extension => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 if r#extension.is_some() {
                                     return Err(serde::de::Error::duplicate_field("extension"));
                                 }
@@ -590,7 +590,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Guidan
                             }
                         }
                         Field::ModifierExtension => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 if r#modifier_extension.is_some() {
                                     return Err(serde::de::Error::duplicate_field(
                                         "modifierExtension",
@@ -620,7 +620,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Guidan
                                 Some(map_access.next_value_seed(&mut *_context)?);
                         }
                         Field::Identifier => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 if r#identifier.is_some() {
                                     return Err(serde::de::Error::duplicate_field("identifier"));
                                 }
@@ -638,7 +638,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Guidan
                         }
                         Field::ModuleUri => {
                             use fhirbolt_model::r4::resources::GuidanceResponseModule as _Enum;
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let r#enum = r#module.get_or_insert(_Enum::Uri(Default::default()));
                                 if let _Enum::Uri(variant) = r#enum {
                                     if variant.value.is_some() {
@@ -661,7 +661,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Guidan
                         }
                         Field::ModuleUriPrimitiveElement => {
                             use fhirbolt_model::r4::resources::GuidanceResponseModule as _Enum;
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let r#enum = r#module.get_or_insert(_Enum::Uri(Default::default()));
                                 if let _Enum::Uri(variant) = r#enum {
                                     if variant.id.is_some() || !variant.extension.is_empty() {
@@ -686,7 +686,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Guidan
                         }
                         Field::ModuleCanonical => {
                             use fhirbolt_model::r4::resources::GuidanceResponseModule as _Enum;
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let r#enum =
                                     r#module.get_or_insert(_Enum::Canonical(Default::default()));
                                 if let _Enum::Canonical(variant) = r#enum {
@@ -715,7 +715,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Guidan
                         }
                         Field::ModuleCanonicalPrimitiveElement => {
                             use fhirbolt_model::r4::resources::GuidanceResponseModule as _Enum;
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let r#enum =
                                     r#module.get_or_insert(_Enum::Canonical(Default::default()));
                                 if let _Enum::Canonical(variant) = r#enum {
@@ -754,7 +754,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Guidan
                             ));
                         }
                         Field::Status => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let some = r#status.get_or_insert(Default::default());
                                 if some.value.is_some() {
                                     return Err(serde::de::Error::duplicate_field("status"));
@@ -771,7 +771,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Guidan
                             }
                         }
                         Field::StatusPrimitiveElement => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let some = r#status.get_or_insert(Default::default());
                                 if some.id.is_some() || !some.extension.is_empty() {
                                     return Err(serde::de::Error::duplicate_field("_status"));
@@ -806,7 +806,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Guidan
                             r#encounter = Some(map_access.next_value_seed(&mut *_context)?);
                         }
                         Field::OccurrenceDateTime => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let some = r#occurrence_date_time.get_or_insert(Default::default());
                                 if some.value.is_some() {
                                     return Err(serde::de::Error::duplicate_field(
@@ -828,7 +828,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Guidan
                             }
                         }
                         Field::OccurrenceDateTimePrimitiveElement => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let some = r#occurrence_date_time.get_or_insert(Default::default());
                                 if some.id.is_some() || !some.extension.is_empty() {
                                     return Err(serde::de::Error::duplicate_field(
@@ -856,7 +856,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Guidan
                             r#performer = Some(map_access.next_value_seed(&mut *_context)?);
                         }
                         Field::ReasonCode => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 if r#reason_code.is_some() {
                                     return Err(serde::de::Error::duplicate_field("reasonCode"));
                                 }
@@ -873,7 +873,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Guidan
                             }
                         }
                         Field::ReasonReference => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 if r#reason_reference.is_some() {
                                     return Err(serde::de::Error::duplicate_field(
                                         "reasonReference",
@@ -893,7 +893,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Guidan
                             }
                         }
                         Field::Note => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 if r#note.is_some() {
                                     return Err(serde::de::Error::duplicate_field("note"));
                                 }
@@ -910,7 +910,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Guidan
                             }
                         }
                         Field::EvaluationMessage => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 if r#evaluation_message.is_some() {
                                     return Err(serde::de::Error::duplicate_field(
                                         "evaluationMessage",
@@ -948,7 +948,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Guidan
                             r#result = Some(map_access.next_value_seed(&mut *_context)?);
                         }
                         Field::DataRequirement => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 if r#data_requirement.is_some() {
                                     return Err(serde::de::Error::duplicate_field(
                                         "dataRequirement",

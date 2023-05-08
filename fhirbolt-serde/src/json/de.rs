@@ -5,7 +5,10 @@ use std::io;
 use serde::de::DeserializeSeed;
 use serde_json::Deserializer;
 
-use crate::{json::Result, DeserializationConfig, DeserializeResource, DeserializeResourceOwned};
+use crate::{
+    context::Format, json::Result, DeserializationConfig, DeserializeResource,
+    DeserializeResourceOwned,
+};
 
 fn from_deserializer<'de, R, T>(
     de: &mut Deserializer<R>,
@@ -15,7 +18,7 @@ where
     R: serde_json::de::Read<'de>,
     T: DeserializeResource<'de>,
 {
-    T::deserialization_context(config.unwrap_or(Default::default()), true).deserialize(de)
+    T::deserialization_context(config.unwrap_or(Default::default()), Format::Json).deserialize(de)
 }
 
 /// Deserialize an instance of resource type `T` directly from an IO stream of JSON (e.g. coming from network).
@@ -154,5 +157,6 @@ pub fn from_json_value<T>(
 where
     T: DeserializeResourceOwned,
 {
-    T::deserialization_context(config.unwrap_or(Default::default()), true).deserialize(value)
+    T::deserialization_context(config.unwrap_or(Default::default()), Format::Json)
+        .deserialize(value)
 }

@@ -1,4 +1,4 @@
-// Generated on 2023-05-07 by fhirbolt-codegen v0.8.0
+// Generated on 2023-05-08 by fhirbolt-codegen v0.8.0
 #[doc = "The details of the device to be used."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum DeviceRequestCode {

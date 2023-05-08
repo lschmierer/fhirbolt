@@ -1,4 +1,4 @@
-// Generated on 2023-05-07 by fhirbolt-codegen v0.8.0
+// Generated on 2023-05-08 by fhirbolt-codegen v0.8.0
 use crate::{DeserializationContext, SerializationContext};
 use fhirbolt_model::r4b::Resource;
 impl crate::Resource for Resource {
@@ -272,7 +272,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Resour
                 { fhirbolt_shared::FhirReleases::R4B },
             >>();
         let element = _context.deserialize(deserializer)?;
-        self.from_json = false;
+        self.from = crate::context::Format::InternalElement;
         if let Some(fhirbolt_element::Value::Primitive(fhirbolt_element::Primitive::String(
             resource_type,
         ))) = element.0.get("resourceType")

@@ -1,4 +1,4 @@
-// Generated on 2023-05-07 by fhirbolt-codegen v0.8.0
+// Generated on 2023-05-08 by fhirbolt-codegen v0.8.0
 use crate::{DeserializationContext, SerializationContext};
 use fhirbolt_model::r4b::types::SampledData;
 impl serde::ser::Serialize for SerializationContext<&SampledData> {
@@ -30,7 +30,7 @@ impl serde::ser::Serialize for SerializationContext<&SampledData> {
                 state.serialize_entry("origin", ctx)
             })?;
         }
-        if self.output_json {
+        if self.output == crate::context::Format::Json {
             if self.value.r#period.id.as_deref() == Some("$invalid") {
                 return missing_field_error("period");
             }
@@ -57,7 +57,7 @@ impl serde::ser::Serialize for SerializationContext<&SampledData> {
                 state.serialize_entry("period", ctx)
             })?;
         }
-        if self.output_json {
+        if self.output == crate::context::Format::Json {
             if let Some(some) = self.value.r#factor.as_ref() {
                 if let Some(some) = some.value.as_ref().map(|v| {
                     v.parse::<serde_json::Number>()
@@ -79,7 +79,7 @@ impl serde::ser::Serialize for SerializationContext<&SampledData> {
         } else if let Some(some) = self.value.r#factor.as_ref() {
             self.with_context(some, |ctx| state.serialize_entry("factor", ctx))?;
         }
-        if self.output_json {
+        if self.output == crate::context::Format::Json {
             if let Some(some) = self.value.r#lower_limit.as_ref() {
                 if let Some(some) = some.value.as_ref().map(|v| {
                     v.parse::<serde_json::Number>()
@@ -101,7 +101,7 @@ impl serde::ser::Serialize for SerializationContext<&SampledData> {
         } else if let Some(some) = self.value.r#lower_limit.as_ref() {
             self.with_context(some, |ctx| state.serialize_entry("lowerLimit", ctx))?;
         }
-        if self.output_json {
+        if self.output == crate::context::Format::Json {
             if let Some(some) = self.value.r#upper_limit.as_ref() {
                 if let Some(some) = some.value.as_ref().map(|v| {
                     v.parse::<serde_json::Number>()
@@ -123,7 +123,7 @@ impl serde::ser::Serialize for SerializationContext<&SampledData> {
         } else if let Some(some) = self.value.r#upper_limit.as_ref() {
             self.with_context(some, |ctx| state.serialize_entry("upperLimit", ctx))?;
         }
-        if self.output_json {
+        if self.output == crate::context::Format::Json {
             if self.value.r#dimensions.id.as_deref() == Some("$invalid") {
                 return missing_field_error("dimensions");
             }
@@ -148,7 +148,7 @@ impl serde::ser::Serialize for SerializationContext<&SampledData> {
                 state.serialize_entry("dimensions", ctx)
             })?;
         }
-        if self.output_json {
+        if self.output == crate::context::Format::Json {
             if let Some(some) = self.value.r#data.as_ref() {
                 if let Some(some) = some.value.as_ref().map(Ok) {
                     state.serialize_entry("data", &some?)?;
@@ -276,7 +276,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Sample
                             r#id = Some(map_access.next_value()?);
                         }
                         Field::Extension => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 if r#extension.is_some() {
                                     return Err(serde::de::Error::duplicate_field("extension"));
                                 }
@@ -302,7 +302,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Sample
                             r#origin = Some(map_access.next_value_seed(&mut *_context)?);
                         }
                         Field::Period => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let some = r#period.get_or_insert(Default::default());
                                 if some.value.is_some() {
                                     return Err(serde::de::Error::duplicate_field("period"));
@@ -319,7 +319,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Sample
                             }
                         }
                         Field::PeriodPrimitiveElement => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let some = r#period.get_or_insert(Default::default());
                                 if some.id.is_some() || !some.extension.is_empty() {
                                     return Err(serde::de::Error::duplicate_field("_period"));
@@ -336,7 +336,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Sample
                             }
                         }
                         Field::Factor => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let some = r#factor.get_or_insert(Default::default());
                                 if some.value.is_some() {
                                     return Err(serde::de::Error::duplicate_field("factor"));
@@ -353,7 +353,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Sample
                             }
                         }
                         Field::FactorPrimitiveElement => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let some = r#factor.get_or_insert(Default::default());
                                 if some.id.is_some() || !some.extension.is_empty() {
                                     return Err(serde::de::Error::duplicate_field("_factor"));
@@ -370,7 +370,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Sample
                             }
                         }
                         Field::LowerLimit => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let some = r#lower_limit.get_or_insert(Default::default());
                                 if some.value.is_some() {
                                     return Err(serde::de::Error::duplicate_field("lowerLimit"));
@@ -387,7 +387,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Sample
                             }
                         }
                         Field::LowerLimitPrimitiveElement => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let some = r#lower_limit.get_or_insert(Default::default());
                                 if some.id.is_some() || !some.extension.is_empty() {
                                     return Err(serde::de::Error::duplicate_field("_lowerLimit"));
@@ -404,7 +404,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Sample
                             }
                         }
                         Field::UpperLimit => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let some = r#upper_limit.get_or_insert(Default::default());
                                 if some.value.is_some() {
                                     return Err(serde::de::Error::duplicate_field("upperLimit"));
@@ -421,7 +421,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Sample
                             }
                         }
                         Field::UpperLimitPrimitiveElement => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let some = r#upper_limit.get_or_insert(Default::default());
                                 if some.id.is_some() || !some.extension.is_empty() {
                                     return Err(serde::de::Error::duplicate_field("_upperLimit"));
@@ -438,7 +438,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Sample
                             }
                         }
                         Field::Dimensions => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let some = r#dimensions.get_or_insert(Default::default());
                                 if some.value.is_some() {
                                     return Err(serde::de::Error::duplicate_field("dimensions"));
@@ -455,7 +455,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Sample
                             }
                         }
                         Field::DimensionsPrimitiveElement => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let some = r#dimensions.get_or_insert(Default::default());
                                 if some.id.is_some() || !some.extension.is_empty() {
                                     return Err(serde::de::Error::duplicate_field("_dimensions"));
@@ -472,7 +472,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Sample
                             }
                         }
                         Field::Data => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let some = r#data.get_or_insert(Default::default());
                                 if some.value.is_some() {
                                     return Err(serde::de::Error::duplicate_field("data"));
@@ -489,7 +489,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Sample
                             }
                         }
                         Field::DataPrimitiveElement => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let some = r#data.get_or_insert(Default::default());
                                 if some.id.is_some() || !some.extension.is_empty() {
                                     return Err(serde::de::Error::duplicate_field("_data"));

@@ -1,4 +1,4 @@
-// Generated on 2023-05-07 by fhirbolt-codegen v0.8.0
+// Generated on 2023-05-08 by fhirbolt-codegen v0.8.0
 use crate::{DeserializationContext, SerializationContext};
 use fhirbolt_model::r4b::resources::CatalogEntryRelatedEntry;
 impl serde::ser::Serialize for SerializationContext<&CatalogEntryRelatedEntry> {
@@ -28,7 +28,7 @@ impl serde::ser::Serialize for SerializationContext<&CatalogEntryRelatedEntry> {
                 state.serialize_entry("modifierExtension", ctx)
             })?;
         }
-        if self.output_json {
+        if self.output == crate::context::Format::Json {
             if self.value.r#relationtype.id.as_deref() == Some("$invalid") {
                 return missing_field_error("relationtype");
             }
@@ -145,7 +145,7 @@ impl<'de> serde::de::DeserializeSeed<'de>
                             r#id = Some(map_access.next_value()?);
                         }
                         Field::Extension => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 if r#extension.is_some() {
                                     return Err(serde::de::Error::duplicate_field("extension"));
                                 }
@@ -162,7 +162,7 @@ impl<'de> serde::de::DeserializeSeed<'de>
                             }
                         }
                         Field::ModifierExtension => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 if r#modifier_extension.is_some() {
                                     return Err(serde::de::Error::duplicate_field(
                                         "modifierExtension",
@@ -182,7 +182,7 @@ impl<'de> serde::de::DeserializeSeed<'de>
                             }
                         }
                         Field::Relationtype => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let some = r#relationtype.get_or_insert(Default::default());
                                 if some.value.is_some() {
                                     return Err(serde::de::Error::duplicate_field("relationtype"));
@@ -199,7 +199,7 @@ impl<'de> serde::de::DeserializeSeed<'de>
                             }
                         }
                         Field::RelationtypePrimitiveElement => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let some = r#relationtype.get_or_insert(Default::default());
                                 if some.id.is_some() || !some.extension.is_empty() {
                                     return Err(serde::de::Error::duplicate_field("_relationtype"));
@@ -316,7 +316,7 @@ impl serde::ser::Serialize for SerializationContext<&CatalogEntry> {
         }
         let mut state = serializer.serialize_map(None)?;
         state.serialize_entry("resourceType", "CatalogEntry")?;
-        if self.output_json {
+        if self.output == crate::context::Format::Json {
             if let Some(some) = self.value.r#id.as_ref() {
                 if let Some(some) = some.value.as_ref().map(Ok) {
                     state.serialize_entry("id", &some?)?;
@@ -336,7 +336,7 @@ impl serde::ser::Serialize for SerializationContext<&CatalogEntry> {
         if let Some(some) = self.value.r#meta.as_ref() {
             self.with_context(some, |ctx| state.serialize_entry("meta", ctx))?;
         }
-        if self.output_json {
+        if self.output == crate::context::Format::Json {
             if let Some(some) = self.value.r#implicit_rules.as_ref() {
                 if let Some(some) = some.value.as_ref().map(Ok) {
                     state.serialize_entry("implicitRules", &some?)?;
@@ -355,7 +355,7 @@ impl serde::ser::Serialize for SerializationContext<&CatalogEntry> {
         } else if let Some(some) = self.value.r#implicit_rules.as_ref() {
             self.with_context(some, |ctx| state.serialize_entry("implicitRules", ctx))?;
         }
-        if self.output_json {
+        if self.output == crate::context::Format::Json {
             if let Some(some) = self.value.r#language.as_ref() {
                 if let Some(some) = some.value.as_ref().map(Ok) {
                     state.serialize_entry("language", &some?)?;
@@ -400,7 +400,7 @@ impl serde::ser::Serialize for SerializationContext<&CatalogEntry> {
         if let Some(some) = self.value.r#type.as_ref() {
             self.with_context(some, |ctx| state.serialize_entry("type", ctx))?;
         }
-        if self.output_json {
+        if self.output == crate::context::Format::Json {
             if self.value.r#orderable.id.as_deref() == Some("$invalid") {
                 return missing_field_error("orderable");
             }
@@ -441,7 +441,7 @@ impl serde::ser::Serialize for SerializationContext<&CatalogEntry> {
                 state.serialize_entry("classification", ctx)
             })?;
         }
-        if self.output_json {
+        if self.output == crate::context::Format::Json {
             if let Some(some) = self.value.r#status.as_ref() {
                 if let Some(some) = some.value.as_ref().map(Ok) {
                     state.serialize_entry("status", &some?)?;
@@ -463,7 +463,7 @@ impl serde::ser::Serialize for SerializationContext<&CatalogEntry> {
         if let Some(some) = self.value.r#validity_period.as_ref() {
             self.with_context(some, |ctx| state.serialize_entry("validityPeriod", ctx))?;
         }
-        if self.output_json {
+        if self.output == crate::context::Format::Json {
             if let Some(some) = self.value.r#valid_to.as_ref() {
                 if let Some(some) = some.value.as_ref().map(Ok) {
                     state.serialize_entry("validTo", &some?)?;
@@ -482,7 +482,7 @@ impl serde::ser::Serialize for SerializationContext<&CatalogEntry> {
         } else if let Some(some) = self.value.r#valid_to.as_ref() {
             self.with_context(some, |ctx| state.serialize_entry("validTo", ctx))?;
         }
-        if self.output_json {
+        if self.output == crate::context::Format::Json {
             if let Some(some) = self.value.r#last_updated.as_ref() {
                 if let Some(some) = some.value.as_ref().map(Ok) {
                     state.serialize_entry("lastUpdated", &some?)?;
@@ -700,7 +700,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Catalo
                             }
                         }
                         Field::Id => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let some = r#id.get_or_insert(Default::default());
                                 if some.value.is_some() {
                                     return Err(serde::de::Error::duplicate_field("id"));
@@ -717,7 +717,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Catalo
                             }
                         }
                         Field::IdPrimitiveElement => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let some = r#id.get_or_insert(Default::default());
                                 if some.id.is_some() || !some.extension.is_empty() {
                                     return Err(serde::de::Error::duplicate_field("_id"));
@@ -743,7 +743,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Catalo
                             r#meta = Some(map_access.next_value_seed(&mut *_context)?);
                         }
                         Field::ImplicitRules => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let some = r#implicit_rules.get_or_insert(Default::default());
                                 if some.value.is_some() {
                                     return Err(serde::de::Error::duplicate_field("implicitRules"));
@@ -761,7 +761,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Catalo
                             }
                         }
                         Field::ImplicitRulesPrimitiveElement => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let some = r#implicit_rules.get_or_insert(Default::default());
                                 if some.id.is_some() || !some.extension.is_empty() {
                                     return Err(serde::de::Error::duplicate_field(
@@ -780,7 +780,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Catalo
                             }
                         }
                         Field::Language => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let some = r#language.get_or_insert(Default::default());
                                 if some.value.is_some() {
                                     return Err(serde::de::Error::duplicate_field("language"));
@@ -797,7 +797,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Catalo
                             }
                         }
                         Field::LanguagePrimitiveElement => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let some = r#language.get_or_insert(Default::default());
                                 if some.id.is_some() || !some.extension.is_empty() {
                                     return Err(serde::de::Error::duplicate_field("_language"));
@@ -823,7 +823,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Catalo
                             r#text = Some(map_access.next_value_seed(&mut *_context)?);
                         }
                         Field::Contained => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 if r#contained.is_some() {
                                     return Err(serde::de::Error::duplicate_field("contained"));
                                 }
@@ -840,7 +840,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Catalo
                             }
                         }
                         Field::Extension => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 if r#extension.is_some() {
                                     return Err(serde::de::Error::duplicate_field("extension"));
                                 }
@@ -857,7 +857,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Catalo
                             }
                         }
                         Field::ModifierExtension => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 if r#modifier_extension.is_some() {
                                     return Err(serde::de::Error::duplicate_field(
                                         "modifierExtension",
@@ -877,7 +877,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Catalo
                             }
                         }
                         Field::Identifier => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 if r#identifier.is_some() {
                                     return Err(serde::de::Error::duplicate_field("identifier"));
                                 }
@@ -903,7 +903,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Catalo
                             r#type = Some(map_access.next_value_seed(&mut *_context)?);
                         }
                         Field::Orderable => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let some = r#orderable.get_or_insert(Default::default());
                                 if some.value.is_some() {
                                     return Err(serde::de::Error::duplicate_field("orderable"));
@@ -920,7 +920,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Catalo
                             }
                         }
                         Field::OrderablePrimitiveElement => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let some = r#orderable.get_or_insert(Default::default());
                                 if some.id.is_some() || !some.extension.is_empty() {
                                     return Err(serde::de::Error::duplicate_field("_orderable"));
@@ -946,7 +946,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Catalo
                             r#referenced_item = Some(map_access.next_value_seed(&mut *_context)?);
                         }
                         Field::AdditionalIdentifier => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 if r#additional_identifier.is_some() {
                                     return Err(serde::de::Error::duplicate_field(
                                         "additionalIdentifier",
@@ -966,7 +966,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Catalo
                             }
                         }
                         Field::Classification => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 if r#classification.is_some() {
                                     return Err(serde::de::Error::duplicate_field(
                                         "classification",
@@ -986,7 +986,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Catalo
                             }
                         }
                         Field::Status => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let some = r#status.get_or_insert(Default::default());
                                 if some.value.is_some() {
                                     return Err(serde::de::Error::duplicate_field("status"));
@@ -1003,7 +1003,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Catalo
                             }
                         }
                         Field::StatusPrimitiveElement => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let some = r#status.get_or_insert(Default::default());
                                 if some.id.is_some() || !some.extension.is_empty() {
                                     return Err(serde::de::Error::duplicate_field("_status"));
@@ -1029,7 +1029,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Catalo
                             r#validity_period = Some(map_access.next_value_seed(&mut *_context)?);
                         }
                         Field::ValidTo => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let some = r#valid_to.get_or_insert(Default::default());
                                 if some.value.is_some() {
                                     return Err(serde::de::Error::duplicate_field("validTo"));
@@ -1046,7 +1046,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Catalo
                             }
                         }
                         Field::ValidToPrimitiveElement => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let some = r#valid_to.get_or_insert(Default::default());
                                 if some.id.is_some() || !some.extension.is_empty() {
                                     return Err(serde::de::Error::duplicate_field("_validTo"));
@@ -1063,7 +1063,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Catalo
                             }
                         }
                         Field::LastUpdated => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let some = r#last_updated.get_or_insert(Default::default());
                                 if some.value.is_some() {
                                     return Err(serde::de::Error::duplicate_field("lastUpdated"));
@@ -1080,7 +1080,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Catalo
                             }
                         }
                         Field::LastUpdatedPrimitiveElement => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let some = r#last_updated.get_or_insert(Default::default());
                                 if some.id.is_some() || !some.extension.is_empty() {
                                     return Err(serde::de::Error::duplicate_field("_lastUpdated"));
@@ -1097,7 +1097,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Catalo
                             }
                         }
                         Field::AdditionalCharacteristic => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 if r#additional_characteristic.is_some() {
                                     return Err(serde::de::Error::duplicate_field(
                                         "additionalCharacteristic",
@@ -1118,7 +1118,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Catalo
                             }
                         }
                         Field::AdditionalClassification => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 if r#additional_classification.is_some() {
                                     return Err(serde::de::Error::duplicate_field(
                                         "additionalClassification",
@@ -1139,7 +1139,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Catalo
                             }
                         }
                         Field::RelatedEntry => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 if r#related_entry.is_some() {
                                     return Err(serde::de::Error::duplicate_field("relatedEntry"));
                                 }

@@ -1,4 +1,4 @@
-// Generated on 2023-05-07 by fhirbolt-codegen v0.8.0
+// Generated on 2023-05-08 by fhirbolt-codegen v0.8.0
 use crate::{DeserializationContext, SerializationContext};
 use fhirbolt_model::r5::types::CodeableConcept;
 impl serde::ser::Serialize for SerializationContext<&CodeableConcept> {
@@ -28,7 +28,7 @@ impl serde::ser::Serialize for SerializationContext<&CodeableConcept> {
                 state.serialize_entry("coding", ctx)
             })?;
         }
-        if self.output_json {
+        if self.output == crate::context::Format::Json {
             if let Some(some) = self.value.r#text.as_ref() {
                 if let Some(some) = some.value.as_ref().map(Ok) {
                     state.serialize_entry("text", &some?)?;
@@ -121,7 +121,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Codeab
                             r#id = Some(map_access.next_value()?);
                         }
                         Field::Extension => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 if r#extension.is_some() {
                                     return Err(serde::de::Error::duplicate_field("extension"));
                                 }
@@ -138,7 +138,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Codeab
                             }
                         }
                         Field::Coding => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 if r#coding.is_some() {
                                     return Err(serde::de::Error::duplicate_field("coding"));
                                 }
@@ -155,7 +155,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Codeab
                             }
                         }
                         Field::Text => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let some = r#text.get_or_insert(Default::default());
                                 if some.value.is_some() {
                                     return Err(serde::de::Error::duplicate_field("text"));
@@ -172,7 +172,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Codeab
                             }
                         }
                         Field::TextPrimitiveElement => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let some = r#text.get_or_insert(Default::default());
                                 if some.id.is_some() || !some.extension.is_empty() {
                                     return Err(serde::de::Error::duplicate_field("_text"));
