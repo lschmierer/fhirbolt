@@ -122,7 +122,21 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Decima
                             if r#value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("value"));
                             }
-                            r#value = Some(map_access.next_value()?);
+                            #[derive(serde :: Deserialize)]
+                            #[serde(untagged)]
+                            enum Decimal {
+                                String(String),
+                                U64(u64),
+                                I64(i64),
+                                F64(f64),
+                            }
+                            let _value: Decimal = map_access.next_value()?;
+                            r#value = match _value {
+                                Decimal::String(s) => Some(s),
+                                Decimal::U64(u) => Some(u.to_string()),
+                                Decimal::I64(i) => Some(i.to_string()),
+                                Decimal::F64(f) => Some(f.to_string()),
+                            };
                         }
                         Field::Unknown(key) => {
                             if self.0.config.mode == crate::context::de::DeserializationMode::Strict

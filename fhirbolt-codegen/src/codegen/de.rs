@@ -64,6 +64,7 @@ pub fn implement_deserialze(
             r#struct.is_primitive,
             r#struct.struct_name == "Extension",
             r#struct.resource_name.is_some(),
+            r#struct.struct_name == "Decimal",
             namespace,
             base_namespace,
         )
@@ -458,6 +459,7 @@ fn deserialize_field(
     in_primitive: bool,
     in_extension: bool,
     in_resource: bool,
+    is_decimal: bool,
     namespace: &TokenStream,
     base_namespace: &TokenStream,
 ) -> TokenStream {
@@ -467,7 +469,7 @@ fn deserialize_field(
         || in_extension && field.name == "url"
         || !in_resource && field.name == "id"
     {
-        deserialize_primitive_value(field)
+        deserialize_primitive_value(field, is_decimal)
     } else if field.r#type.contains_primitive {
         deserialize_primitive(field, namespace, base_namespace)
     } else {
@@ -596,14 +598,39 @@ fn deserialize_enum_variant(
     }
 }
 
-fn deserialize_primitive_value(field: &RustFhirStructField) -> TokenStream {
+fn deserialize_primitive_value(field: &RustFhirStructField, is_decimal: bool) -> TokenStream {
     let fhir_name = &field.fhir_name;
     let field_name_ident = format_ident!("r#{}", field.name);
     let field_type_ident: TokenStream = field.r#type.name.parse().unwrap();
 
     let field_enum_type_name = format_ident!("{}", field.fhir_name.to_rust_type_casing());
 
-    if field.r#type.name == "std::string::String" {
+    if is_decimal && field.name == "value" {
+        quote! {
+            Field::#field_enum_type_name => {
+                if #field_name_ident.is_some() {
+                    return Err(serde::de::Error::duplicate_field(#fhir_name));
+                }
+
+                #[derive(serde::Deserialize)]
+                #[serde(untagged)]
+                enum Decimal{
+                    String(String),
+                    U64(u64),
+                    I64(i64),
+                    F64(f64),
+                }
+
+                let _value: Decimal = map_access.next_value()?;
+                #field_name_ident = match _value {
+                    Decimal::String(s) => Some(s),
+                    Decimal::U64(u) => Some(u.to_string()),
+                    Decimal::I64(i) => Some(i.to_string()),
+                    Decimal::F64(f) => Some(f.to_string()),
+                };
+            },
+        }
+    } else if field.r#type.name == "std::string::String" {
         quote! {
             Field::#field_enum_type_name => {
                 if #field_name_ident.is_some() {

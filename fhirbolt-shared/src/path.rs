@@ -353,7 +353,7 @@ impl ElementPath {
             .get(&previous_type_path.path)
             == Some(&"Resource");
 
-        return in_resource;
+        in_resource
     }
 }
 

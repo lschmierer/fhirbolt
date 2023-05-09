@@ -17,7 +17,8 @@ use crate::{
     DeserializationMode,
 };
 
-pub const PRIMITIVE_CHILDREN: &[&str] = &["id", "extension", "value"];
+const SERDE_JSON_NUMBER_TOKEN: &str = "$serde_json::private::Number";
+const PRIMITIVE_CHILDREN: &[&str] = &["id", "extension", "value"];
 
 #[derive(Default, Debug)]
 pub struct InternalElement<const R: FhirRelease>(pub Element<R>);
@@ -326,29 +327,6 @@ fn merge_sequences<const R: FhirRelease>(
 
 struct ValueVisitor<'a, const R: FhirRelease>(&'a mut DeserializationContext<Value<R>>);
 
-impl<'a, const R: FhirRelease> ValueVisitor<'a, R> {
-    fn map_serde_json_value<E>(&mut self, value: serde_json::Value) -> Result<Value<R>, E>
-    where
-        E: de::Error,
-    {
-        match value {
-            serde_json::Value::Number(n) => {
-                let mut decimal_element = Element::default();
-                decimal_element.insert(
-                    "value".into(),
-                    Value::Primitive(Primitive::String(n.to_string())),
-                );
-                Ok(Value::Element(decimal_element))
-            }
-            serde_json_value => self
-                .0
-                .transmute::<Value<R>>()
-                .deserialize(serde_json_value)
-                .map_err(de::Error::custom),
-        }
-    }
-}
-
 impl<'a, 'de, const R: FhirRelease> Visitor<'de> for ValueVisitor<'a, R> {
     type Value = Value<R>;
 
@@ -407,10 +385,13 @@ impl<'a, 'de, const R: FhirRelease> Visitor<'de> for ValueVisitor<'a, R> {
         E: de::Error,
     {
         if self.0.from == Format::Json {
+            let number = serde_json::Number::from_f64(v)
+                .ok_or_else(|| de::Error::custom("not a JSON number"))?;
+
             let mut element = Element::default();
             element.insert(
                 "value".into(),
-                Value::Primitive(Primitive::Decimal(v.to_string())),
+                Value::Primitive(Primitive::Decimal(number.to_string())),
             );
             Ok(Value::Element(element))
         } else {
@@ -446,13 +427,23 @@ impl<'a, 'de, const R: FhirRelease> Visitor<'de> for ValueVisitor<'a, R> {
         self.visit_string(v.to_string())
     }
 
-    fn visit_map<V>(mut self, mut map_access: V) -> Result<Self::Value, V::Error>
+    fn visit_map<V>(self, mut map_access: V) -> Result<Self::Value, V::Error>
     where
         V: MapAccess<'de>,
     {
         let mut element = Element::default();
 
         while let Some(key) = map_access.next_key::<String>()? {
+            if key == SERDE_JSON_NUMBER_TOKEN {
+                let mut element = Element::default();
+                element.insert(
+                    "value".into(),
+                    Value::Primitive(Primitive::Decimal(map_access.next_value()?)),
+                );
+
+                return Ok(Value::Element(element));
+            }
+
             let key = if let Some(stripped) = key.strip_prefix('_') {
                 stripped.into()
             } else {
@@ -484,14 +475,9 @@ impl<'a, 'de, const R: FhirRelease> Visitor<'de> for ValueVisitor<'a, R> {
                     _ => CurrentElement::Other,
                 });
 
-                let value = if self.0.from == Format::Json {
-                    let serde_json_value: serde_json::Value = map_access.next_value()?;
-                    self.map_serde_json_value(serde_json_value)?
-                } else {
-                    map_access.next_value_seed(self.0.transmute::<Value<R>>())?
-                };
-
+                let value = map_access.next_value_seed(self.0.transmute::<Value<R>>())?;
                 let existing = element.remove(&key);
+
                 element.insert(
                     key,
                     match (existing, value) {
@@ -538,20 +524,15 @@ impl<'a, 'de, const R: FhirRelease> Visitor<'de> for ValueVisitor<'a, R> {
         Ok(Value::Element(element))
     }
 
-    fn visit_seq<V>(mut self, mut seq_access: V) -> Result<Self::Value, V::Error>
+    fn visit_seq<V>(self, mut seq_access: V) -> Result<Self::Value, V::Error>
     where
         V: SeqAccess<'de>,
     {
         let mut elements = Vec::new();
 
-        while let Some(value) = if self.0.from == Format::Json {
-            let serde_json_value: Option<Option<serde_json::Value>> = seq_access.next_element()?;
-            serde_json_value
-                .map(|v| v.map(|v| self.map_serde_json_value(v)).transpose())
-                .transpose()?
-        } else {
+        while let Some(value) =
             seq_access.next_element_seed(self.0.transmute::<Option<Value<R>>>())?
-        } {
+        {
             match value {
                 Some(Value::Element(e)) => elements.push(e),
                 Some(Value::Sequence(_)) => {
