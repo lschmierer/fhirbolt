@@ -340,9 +340,9 @@ impl<'a, 'de, const R: FhirRelease> Visitor<'de> for ValueVisitor<'a, R> {
         E: de::Error,
     {
         if self.0.from == Format::Json {
-            let mut element = Element::default();
-            element.insert("value".into(), Value::Primitive(Primitive::Bool(v)));
-            Ok(Value::Element(element))
+            Ok(Value::Element(Element! {
+                "value" => Value::Primitive(Primitive::Bool(v)),
+            }))
         } else {
             Ok(Value::Primitive(Primitive::Bool(v)))
         }
@@ -354,12 +354,9 @@ impl<'a, 'de, const R: FhirRelease> Visitor<'de> for ValueVisitor<'a, R> {
         E: de::Error,
     {
         if self.0.from == Format::Json {
-            let mut element = Element::default();
-            element.insert(
-                "value".into(),
-                Value::Primitive(Primitive::Integer64(v as i64)),
-            );
-            Ok(Value::Element(element))
+            Ok(Value::Element(Element! {
+                "value" =>  Value::Primitive(Primitive::Integer64(v as i64)),
+            }))
         } else {
             Ok(Value::Primitive(Primitive::Integer64(v as i64)))
         }
@@ -371,9 +368,9 @@ impl<'a, 'de, const R: FhirRelease> Visitor<'de> for ValueVisitor<'a, R> {
         E: de::Error,
     {
         if self.0.from == Format::Json {
-            let mut element = Element::default();
-            element.insert("value".into(), Value::Primitive(Primitive::Integer64(v)));
-            Ok(Value::Element(element))
+            Ok(Value::Element(Element! {
+                "value" =>  Value::Primitive(Primitive::Integer64(v)),
+            }))
         } else {
             Ok(Value::Primitive(Primitive::Integer64(v)))
         }
@@ -388,12 +385,9 @@ impl<'a, 'de, const R: FhirRelease> Visitor<'de> for ValueVisitor<'a, R> {
             let number = serde_json::Number::from_f64(v)
                 .ok_or_else(|| de::Error::custom("not a JSON number"))?;
 
-            let mut element = Element::default();
-            element.insert(
-                "value".into(),
-                Value::Primitive(Primitive::Decimal(number.to_string())),
-            );
-            Ok(Value::Element(element))
+            Ok(Value::Element(Element! {
+                "value" =>  Value::Primitive(Primitive::Decimal(number.to_string())),
+            }))
         } else {
             Ok(Value::Primitive(Primitive::Decimal(v.to_string())))
         }
@@ -410,9 +404,9 @@ impl<'a, 'de, const R: FhirRelease> Visitor<'de> for ValueVisitor<'a, R> {
             {
                 Ok(Value::Primitive(Primitive::String(v)))
             } else {
-                let mut element = Element::default();
-                element.insert("value".into(), Value::Primitive(Primitive::String(v)));
-                Ok(Value::Element(element))
+                Ok(Value::Element(Element! {
+                    "value" =>  Value::Primitive(Primitive::String(v)),
+                }))
             }
         } else {
             Ok(Value::Primitive(Primitive::String(v)))
@@ -435,13 +429,9 @@ impl<'a, 'de, const R: FhirRelease> Visitor<'de> for ValueVisitor<'a, R> {
 
         while let Some(key) = map_access.next_key::<String>()? {
             if key == SERDE_JSON_NUMBER_TOKEN {
-                let mut element = Element::default();
-                element.insert(
-                    "value".into(),
-                    Value::Primitive(Primitive::Decimal(map_access.next_value()?)),
-                );
-
-                return Ok(Value::Element(element));
+                return Ok(Value::Element(Element! {
+                    "value" =>  Value::Primitive(Primitive::Decimal(map_access.next_value()?)),
+                }));
             }
 
             let key = if let Some(stripped) = key.strip_prefix('_') {
@@ -506,12 +496,9 @@ impl<'a, 'de, const R: FhirRelease> Visitor<'de> for ValueVisitor<'a, R> {
 
         fn embed_string_in_element<const R: FhirRelease>(value: &mut Value<R>) {
             if let Value::Primitive(Primitive::String(s)) = value {
-                let mut id_element = Element::default();
-                id_element.insert(
-                    "value".into(),
-                    Value::Primitive(Primitive::String(mem::take(s))),
-                );
-                *value = Value::Element(id_element);
+                *value = Value::Element(Element! {
+                    "value" =>  Value::Primitive(Primitive::String(mem::take(s))),
+                });
             }
         }
 

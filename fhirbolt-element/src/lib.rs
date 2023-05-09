@@ -24,6 +24,25 @@ use std::{
 
 pub use fhirbolt_shared::{FhirRelease, FhirReleases};
 
+/// Macro for creating [`Element`].
+///
+/// # Examples
+///
+/// ```rust
+/// use fhirbolt::FhirReleases;
+/// use fhirbolt::element::{Element, Value, Primitive};
+///
+/// let element: Element<{ FhirReleases::R4 }> = Element! {
+///     "value" => Value::Primitive(Primitive::String("123".into())),
+/// };
+/// ```
+#[macro_export]
+macro_rules! Element {
+    {$($k: expr => $v: expr),* $(,)?} => {
+        fhirbolt_element::Element::from([$(($k, $v),)*])
+    };
+}
+
 /// Generic element in a FHIR resource.
 ///
 /// As deserialization differs slightly between FHIR releases,
@@ -87,6 +106,12 @@ impl<const R: FhirRelease, const N: usize> From<[(String, Value<R>); N]> for Ele
         Element {
             map: indexmap::IndexMap::from(arr),
         }
+    }
+}
+
+impl<const R: FhirRelease, const N: usize> From<[(&str, Value<R>); N]> for Element<R> {
+    fn from(arr: [(&str, Value<R>); N]) -> Self {
+        Element::from_iter(arr.map(|(k, v)| (k.into(), v)))
     }
 }
 

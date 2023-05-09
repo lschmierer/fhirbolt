@@ -366,6 +366,7 @@ mod tests {
     use fhirbolt_element::{Element, FhirReleases, Primitive, Value};
 
     use crate::{
+        context::Format,
         xml::{
             de::Deserializer,
             error::Result,
@@ -406,22 +407,18 @@ mod tests {
         ]);
 
         assert_eq!(
-            Element::<{ FhirReleases::R4 }>::deserialization_context(Default::default(), false)
-                .deserialize(&mut de)
-                .unwrap(),
-            Element::from([
-                (
-                    "resourceType".into(),
-                    Value::Primitive(Primitive::String("Observation".into()))
-                ),
-                (
-                    "id".into(),
-                    Value::Element(Element::from([(
-                        "value".into(),
-                        Value::Primitive(Primitive::String("test_id".into()))
-                    )]))
-                )
-            ])
+            Element::<{ FhirReleases::R4 }>::deserialization_context(
+                Default::default(),
+                Format::Xml
+            )
+            .deserialize(&mut de)
+            .unwrap(),
+            Element! {
+                "resourceType" => Value::Primitive(Primitive::String("Observation".into())),
+                "id" => Value::Element(Element! {
+                    "value" => Value::Primitive(Primitive::String("test_id".into())),
+                })
+            }
         );
     }
 }
