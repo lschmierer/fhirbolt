@@ -1,4 +1,4 @@
-// Generated on 2023-05-08 by fhirbolt-codegen v0.8.0
+// Generated on 2023-05-14 by fhirbolt-codegen v0.8.0
 pub struct PrimitiveElement<'a> {
     pub id: Option<&'a std::string::String>,
     pub extension: &'a Vec<fhirbolt_model::r4::types::Extension>,

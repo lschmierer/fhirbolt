@@ -1,4 +1,4 @@
-// Generated on 2023-05-08 by fhirbolt-codegen v0.8.0
+// Generated on 2023-05-14 by fhirbolt-codegen v0.8.0
 #[doc = "Indicates if this record was captured as a secondary 'reported' record rather than as an original primary source-of-truth record.  It may also indicate the source of the report."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum MedicationRequestReported {

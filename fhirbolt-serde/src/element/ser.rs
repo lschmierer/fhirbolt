@@ -1,9 +1,9 @@
 //! Serialize FHIR resources as generic element.
 
-use std::{str::FromStr, vec};
+use std::str::FromStr;
 
 use serde::{
-    ser::{self, Error, Impossible, SerializeMap, SerializeSeq, SerializeStruct},
+    ser::{self, Impossible, SerializeMap, SerializeSeq, SerializeStruct},
     Serialize,
 };
 
@@ -14,6 +14,8 @@ use crate::{
     context::{ser::SerializationContext, Format},
     decimal,
     element::error,
+    element::sort,
+    utils::{EitherIter, StrSerializer},
 };
 
 impl<const R: FhirRelease> Serialize for SerializationContext<&Value<R>> {
@@ -38,7 +40,7 @@ impl<const R: FhirRelease> Serialize for SerializationContext<&Value<R>> {
                 Primitive::Decimal(s) => {
                     if self.output == Format::Json {
                         serde_json::Number::from_str(s)
-                            .map_err(|_| Error::custom(format!("invalid decimal: \"{}\"", s)))?
+                            .map_err(|_| ser::Error::custom(format!("invalid decimal: \"{}\"", s)))?
                             .serialize(serializer)
                     } else {
                         serializer.serialize_str(s)
@@ -82,6 +84,16 @@ impl<const R: FhirRelease> Serialize for SerializationContext<Option<&Value<R>>>
     }
 }
 
+impl<const R: FhirRelease> SerializationContext<&Element<R>> {
+    fn values_sorted<'a>(&'a self) -> impl Iterator<Item = (&'a String, &'a Value<R>)> {
+        if self.output == Format::Xml || self.config.always_sort {
+            EitherIter::Left(sort::element_sorted(self.value, &self.current_path()))
+        } else {
+            EitherIter::Right(self.value.iter())
+        }
+    }
+}
+
 impl<const R: FhirRelease> Serialize for SerializationContext<&Element<R>> {
     #[inline]
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
@@ -96,33 +108,7 @@ impl<const R: FhirRelease> Serialize for SerializationContext<&Element<R>> {
             is_resource = true;
         }
 
-        enum MaybeSorted<'a, const R: FhirRelease> {
-            Sorted(vec::IntoIter<(&'a String, &'a Value<R>)>),
-            Unsorted(indexmap::map::Iter<'a, String, Value<R>>),
-        }
-
-        impl<'a, const R: FhirRelease> Iterator for MaybeSorted<'a, R> {
-            type Item = (&'a String, &'a Value<R>);
-
-            fn next(&mut self) -> Option<Self::Item> {
-                match self {
-                    MaybeSorted::Sorted(i) => i.next(),
-                    MaybeSorted::Unsorted(i) => i.next(),
-                }
-            }
-        }
-
-        let values = if self.output == Format::Xml || self.config.always_sort {
-            let mut values = self.value.iter().collect::<Vec<_>>();
-
-            values.sort_unstable_by_key(|(k, _v)| self.current_path().position_of_child(k));
-
-            MaybeSorted::Sorted(values.into_iter())
-        } else {
-            MaybeSorted::Unsorted(self.value.iter())
-        };
-
-        for (key, value) in values {
+        for (key, value) in self.values_sorted() {
             self.current_path_mut().push(key);
 
             if self.output == Format::Json && self.current_path().current_element_is_primitive() {
@@ -210,7 +196,7 @@ pub struct PrimitiveElement<'a, const R: FhirRelease> {
 impl<'a, const R: FhirRelease> PrimitiveElement<'a, R> {
     fn from_element<E>(value: &'a Element<R>) -> Result<PrimitiveElement<'a, R>, E>
     where
-        E: Error,
+        E: ser::Error,
     {
         Ok(PrimitiveElement {
             id: value
@@ -385,12 +371,12 @@ impl<const R: FhirRelease> ser::Serializer for Serializer<R> {
 
     #[inline]
     fn serialize_bytes(self, _v: &[u8]) -> Result<Self::Ok, Self::Error> {
-        Err(Error::custom("bytes not supported"))
+        Err(ser::Error::custom("bytes not supported"))
     }
 
     #[inline]
     fn serialize_none(self) -> Result<Self::Ok, Self::Error> {
-        Err(Error::custom("options not supported"))
+        Err(ser::Error::custom("options not supported"))
     }
 
     #[inline]
@@ -398,17 +384,17 @@ impl<const R: FhirRelease> ser::Serializer for Serializer<R> {
     where
         T: Serialize,
     {
-        Err(Error::custom("options not supported"))
+        Err(ser::Error::custom("options not supported"))
     }
 
     #[inline]
     fn serialize_unit(self) -> Result<Self::Ok, Self::Error> {
-        Err(Error::custom("unit not supported"))
+        Err(ser::Error::custom("unit not supported"))
     }
 
     #[inline]
     fn serialize_unit_struct(self, _name: &'static str) -> Result<Self::Ok, Self::Error> {
-        Err(Error::custom("unit structs not supported"))
+        Err(ser::Error::custom("unit structs not supported"))
     }
 
     #[inline]
@@ -418,7 +404,7 @@ impl<const R: FhirRelease> ser::Serializer for Serializer<R> {
         _variant_index: u32,
         _variant: &'static str,
     ) -> Result<Self::Ok, Self::Error> {
-        Err(Error::custom("units not supported"))
+        Err(ser::Error::custom("units not supported"))
     }
 
     #[inline]
@@ -430,7 +416,7 @@ impl<const R: FhirRelease> ser::Serializer for Serializer<R> {
     where
         T: Serialize,
     {
-        Err(Error::custom("newtype structs not supported"))
+        Err(ser::Error::custom("newtype structs not supported"))
     }
 
     #[inline]
@@ -444,7 +430,7 @@ impl<const R: FhirRelease> ser::Serializer for Serializer<R> {
     where
         T: Serialize,
     {
-        Err(Error::custom("newtype variants not supported"))
+        Err(ser::Error::custom("newtype variants not supported"))
     }
 
     #[inline]
@@ -454,7 +440,7 @@ impl<const R: FhirRelease> ser::Serializer for Serializer<R> {
 
     #[inline]
     fn serialize_tuple(self, _len: usize) -> Result<Self::SerializeTuple, Self::Error> {
-        Err(Error::custom("tuples not supported"))
+        Err(ser::Error::custom("tuples not supported"))
     }
 
     #[inline]
@@ -463,7 +449,7 @@ impl<const R: FhirRelease> ser::Serializer for Serializer<R> {
         _name: &'static str,
         _len: usize,
     ) -> Result<Self::SerializeTupleStruct, Self::Error> {
-        Err(Error::custom("tuple structs not supported"))
+        Err(ser::Error::custom("tuple structs not supported"))
     }
 
     #[inline]
@@ -474,7 +460,7 @@ impl<const R: FhirRelease> ser::Serializer for Serializer<R> {
         _variant: &'static str,
         _len: usize,
     ) -> Result<Self::SerializeTupleVariant, Self::Error> {
-        Err(Error::custom("tuple variants not supported"))
+        Err(ser::Error::custom("tuple variants not supported"))
     }
 
     #[inline]
@@ -492,7 +478,7 @@ impl<const R: FhirRelease> ser::Serializer for Serializer<R> {
         _len: usize,
     ) -> Result<Self::SerializeStruct, Self::Error> {
         // Decimal is the only struct that cann occur
-        Ok(SerializeDecimal(None))
+        Ok(SerializeDecimal::new())
     }
 
     #[inline]
@@ -503,7 +489,7 @@ impl<const R: FhirRelease> ser::Serializer for Serializer<R> {
         _variant: &'static str,
         _len: usize,
     ) -> Result<Self::SerializeStructVariant, Self::Error> {
-        Err(Error::custom("struct variants not supported"))
+        Err(ser::Error::custom("struct variants not supported"))
     }
 }
 
@@ -522,7 +508,7 @@ impl<const R: FhirRelease> ser::SerializeSeq for SerializeSequence<R> {
     {
         match value.serialize(Serializer)? {
             Value::Element(e) => self.vec.push(e),
-            _ => return Err(Error::custom("sequence can only contain elements")),
+            _ => return Err(ser::Error::custom("sequence can only contain elements")),
         }
         Ok(())
     }
@@ -547,7 +533,7 @@ impl<const R: FhirRelease> ser::SerializeMap for SerializeElement<R> {
     where
         T: ?Sized + Serialize,
     {
-        self.next_key = Some(key.serialize(MapKeySerializer)?);
+        self.next_key = Some(key.serialize(StrSerializer::new())?);
         Ok(())
     }
 
@@ -566,190 +552,17 @@ impl<const R: FhirRelease> ser::SerializeMap for SerializeElement<R> {
     }
 }
 
-fn key_must_be_a_string() -> error::Error {
-    error::Error::custom("key must be a string")
+pub struct SerializeDecimal<const R: FhirRelease> {
+    inner: decimal::SerializeDecimal<error::Error>,
 }
 
-struct MapKeySerializer;
-
-impl serde::Serializer for MapKeySerializer {
-    type Ok = String;
-    type Error = error::Error;
-
-    type SerializeSeq = Impossible<String, Self::Error>;
-    type SerializeTuple = Impossible<String, Self::Error>;
-    type SerializeTupleStruct = Impossible<String, Self::Error>;
-    type SerializeTupleVariant = Impossible<String, Self::Error>;
-    type SerializeMap = Impossible<String, Self::Error>;
-    type SerializeStruct = Impossible<String, Self::Error>;
-    type SerializeStructVariant = Impossible<String, Self::Error>;
-
-    #[inline]
-    fn serialize_unit_variant(
-        self,
-        _name: &'static str,
-        _variant_index: u32,
-        _variant: &'static str,
-    ) -> error::Result<String> {
-        Err(key_must_be_a_string())
-    }
-
-    #[inline]
-    fn serialize_newtype_struct<T>(self, _name: &'static str, _value: &T) -> error::Result<String>
-    where
-        T: ?Sized + Serialize,
-    {
-        Err(key_must_be_a_string())
-    }
-
-    fn serialize_bool(self, _value: bool) -> error::Result<String> {
-        Err(key_must_be_a_string())
-    }
-
-    #[inline]
-    fn serialize_i8(self, _value: i8) -> error::Result<String> {
-        Err(key_must_be_a_string())
-    }
-
-    #[inline]
-    fn serialize_i16(self, _value: i16) -> error::Result<String> {
-        Err(key_must_be_a_string())
-    }
-
-    #[inline]
-    fn serialize_i32(self, _value: i32) -> error::Result<String> {
-        Err(key_must_be_a_string())
-    }
-
-    #[inline]
-    fn serialize_i64(self, _value: i64) -> error::Result<String> {
-        Err(key_must_be_a_string())
-    }
-
-    #[inline]
-    fn serialize_u8(self, _value: u8) -> error::Result<String> {
-        Err(key_must_be_a_string())
-    }
-
-    #[inline]
-    fn serialize_u16(self, _value: u16) -> error::Result<String> {
-        Err(key_must_be_a_string())
-    }
-
-    #[inline]
-    fn serialize_u32(self, _value: u32) -> error::Result<String> {
-        Err(key_must_be_a_string())
-    }
-
-    #[inline]
-    fn serialize_u64(self, _value: u64) -> error::Result<String> {
-        Err(key_must_be_a_string())
-    }
-
-    fn serialize_f32(self, _value: f32) -> error::Result<String> {
-        Err(key_must_be_a_string())
-    }
-
-    fn serialize_f64(self, _value: f64) -> error::Result<String> {
-        Err(key_must_be_a_string())
-    }
-
-    fn serialize_char(self, value: char) -> error::Result<String> {
-        let mut s = String::new();
-        s.push(value);
-        Ok(s)
-    }
-
-    #[inline]
-    fn serialize_str(self, value: &str) -> error::Result<String> {
-        Ok(value.to_string())
-    }
-
-    fn serialize_bytes(self, _value: &[u8]) -> error::Result<String> {
-        Err(key_must_be_a_string())
-    }
-
-    fn serialize_unit(self) -> error::Result<String> {
-        Err(key_must_be_a_string())
-    }
-
-    fn serialize_unit_struct(self, _name: &'static str) -> error::Result<String> {
-        Err(key_must_be_a_string())
-    }
-
-    fn serialize_newtype_variant<T>(
-        self,
-        _name: &'static str,
-        _variant_index: u32,
-        _variant: &'static str,
-        _value: &T,
-    ) -> error::Result<String>
-    where
-        T: ?Sized + Serialize,
-    {
-        Err(key_must_be_a_string())
-    }
-
-    fn serialize_none(self) -> error::Result<String> {
-        Err(key_must_be_a_string())
-    }
-
-    fn serialize_some<T>(self, _value: &T) -> error::Result<String>
-    where
-        T: ?Sized + Serialize,
-    {
-        Err(key_must_be_a_string())
-    }
-
-    fn serialize_seq(self, _len: Option<usize>) -> error::Result<Self::SerializeSeq> {
-        Err(key_must_be_a_string())
-    }
-
-    fn serialize_tuple(self, _len: usize) -> error::Result<Self::SerializeTuple> {
-        Err(key_must_be_a_string())
-    }
-
-    fn serialize_tuple_struct(
-        self,
-        _name: &'static str,
-        _len: usize,
-    ) -> error::Result<Self::SerializeTupleStruct> {
-        Err(key_must_be_a_string())
-    }
-
-    fn serialize_tuple_variant(
-        self,
-        _name: &'static str,
-        _variant_index: u32,
-        _variant: &'static str,
-        _len: usize,
-    ) -> error::Result<Self::SerializeTupleVariant> {
-        Err(key_must_be_a_string())
-    }
-
-    fn serialize_map(self, _len: Option<usize>) -> error::Result<Self::SerializeMap> {
-        Err(key_must_be_a_string())
-    }
-
-    fn serialize_struct(
-        self,
-        _name: &'static str,
-        _len: usize,
-    ) -> error::Result<Self::SerializeStruct> {
-        Err(key_must_be_a_string())
-    }
-
-    fn serialize_struct_variant(
-        self,
-        _name: &'static str,
-        _variant_index: u32,
-        _variant: &'static str,
-        _len: usize,
-    ) -> error::Result<Self::SerializeStructVariant> {
-        Err(key_must_be_a_string())
+impl<const R: FhirRelease> SerializeDecimal<R> {
+    fn new() -> Self {
+        SerializeDecimal {
+            inner: decimal::SerializeDecimal::new(),
+        }
     }
 }
-pub struct SerializeDecimal<const R: FhirRelease>(Option<Value<R>>);
 
 impl<const R: FhirRelease> SerializeStruct for SerializeDecimal<R> {
     type Ok = Value<R>;
@@ -760,23 +573,10 @@ impl<const R: FhirRelease> SerializeStruct for SerializeDecimal<R> {
     where
         T: ?Sized + Serialize,
     {
-        if key == decimal::TOKEN {
-            self.0 = Some(Value::Primitive(Primitive::Decimal(
-                value
-                    .serialize(decimal::DecimalStrEmitter::<Self::Error>::new())
-                    .map_err(Error::custom)?,
-            )));
-            Ok(())
-        } else {
-            Err(Error::custom("expected decimal"))
-        }
+        self.inner.serialize_field(key, value)
     }
 
     fn end(self) -> Result<Value<R>, Self::Error> {
-        if let Some(value) = self.0 {
-            Ok(value)
-        } else {
-            Err(Error::custom("expected decimal"))
-        }
+        Ok(Value::Primitive(Primitive::Decimal(self.inner.end()?)))
     }
 }

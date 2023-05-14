@@ -1,4 +1,4 @@
-// Generated on 2023-05-08 by fhirbolt-codegen v0.8.0
+// Generated on 2023-05-14 by fhirbolt-codegen v0.8.0
 #[doc = "Date/time(s) range of services included in this invoice."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum InvoicePeriod {

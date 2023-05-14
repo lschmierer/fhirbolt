@@ -1,4 +1,4 @@
-// Generated on 2023-05-08 by fhirbolt-codegen v0.8.0
+// Generated on 2023-05-14 by fhirbolt-codegen v0.8.0
 #[doc = "This resource describes a product or service that is available through a program and includes the conditions and constraints of availability.  All of the information in this resource is specific to the inclusion of the item in the formulary and is not inherent to the item itself."]
 #[derive(Debug, Clone, PartialEq)]
 pub struct FormularyItem {

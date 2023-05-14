@@ -1,4 +1,4 @@
-// Generated on 2023-05-08 by fhirbolt-codegen v0.8.0
+// Generated on 2023-05-14 by fhirbolt-codegen v0.8.0
 #[doc = "Narrative Type: A human-readable summary of the resource conveying the essential clinical and business information for the resource."]
 #[derive(Debug, Clone, PartialEq)]
 pub struct Narrative {

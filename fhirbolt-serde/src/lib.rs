@@ -8,6 +8,7 @@ pub mod xml;
 mod context;
 mod decimal;
 mod model;
+mod utils;
 
 use std::fmt::Debug;
 

@@ -24,15 +24,63 @@ fn invalid_number<E: Error>() -> E {
     E::custom("invalid decimal")
 }
 
-pub struct DecimalStrEmitter<E: Error>(PhantomData<E>);
+pub struct SerializeDecimal<E: Error> {
+    _phantom: PhantomData<E>,
+    decimal: Option<String>,
+}
 
-impl<E: Error> DecimalStrEmitter<E> {
+impl<E: Error> SerializeDecimal<E> {
     pub fn new() -> Self {
-        DecimalStrEmitter(PhantomData)
+        SerializeDecimal {
+            _phantom: PhantomData,
+            decimal: None,
+        }
     }
 }
 
-impl<E: Error> serde::ser::Serializer for DecimalStrEmitter<E> {
+impl<E: Error> SerializeStruct for SerializeDecimal<E> {
+    type Ok = String;
+    type Error = E;
+
+    #[inline]
+    fn serialize_field<T>(&mut self, key: &'static str, value: &T) -> Result<(), Self::Error>
+    where
+        T: ?Sized + Serialize,
+    {
+        if key == TOKEN {
+            self.decimal = Some(
+                value
+                    .serialize(DecimalStrEmitter::<Self::Error>::new())
+                    .map_err(Error::custom)?,
+            );
+            Ok(())
+        } else {
+            Err(Error::custom("expected decimal"))
+        }
+    }
+
+    fn end(self) -> Result<String, Self::Error> {
+        if let Some(value) = self.decimal {
+            Ok(value)
+        } else {
+            Err(Error::custom("expected decimal"))
+        }
+    }
+}
+
+struct DecimalStrEmitter<E: Error> {
+    _phantom: PhantomData<E>,
+}
+
+impl<E: Error> DecimalStrEmitter<E> {
+    pub fn new() -> Self {
+        DecimalStrEmitter {
+            _phantom: PhantomData,
+        }
+    }
+}
+
+impl<E: Error> Serializer for DecimalStrEmitter<E> {
     type Ok = String;
     type Error = E;
 

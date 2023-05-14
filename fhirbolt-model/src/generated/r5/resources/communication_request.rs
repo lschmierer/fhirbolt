@@ -1,4 +1,4 @@
-// Generated on 2023-05-08 by fhirbolt-codegen v0.8.0
+// Generated on 2023-05-14 by fhirbolt-codegen v0.8.0
 #[doc = "The communicated content (or for multi-part communications, one portion of the communication)."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum CommunicationRequestPayloadContent {

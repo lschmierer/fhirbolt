@@ -46,6 +46,8 @@ pub mod error;
 
 pub(crate) mod internal;
 
+mod sort;
+
 impl<const R: FhirRelease> Resource for Element<R> {
     const FHIR_RELEASE: FhirRelease = R;
 }

@@ -1,4 +1,4 @@
-// Generated on 2023-05-08 by fhirbolt-codegen v0.8.0
+// Generated on 2023-05-14 by fhirbolt-codegen v0.8.0
 #[doc = "Link to a resource that concerns the same actual person."]
 #[derive(Debug, Clone, PartialEq)]
 pub struct PersonLink {

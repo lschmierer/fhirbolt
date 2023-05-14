@@ -41,7 +41,7 @@ pub struct RustFhirStruct {
     pub doc_comment: String,
 }
 
-#[derive(Debug)]
+#[derive(Debug, Clone)]
 pub struct RustFhirStructField {
     pub name: String,
     pub fhir_name: String,
@@ -65,7 +65,7 @@ pub struct RustFhirEnumVariant {
     pub r#type: RustFhirFieldType,
 }
 
-#[derive(Debug)]
+#[derive(Debug, Clone)]
 pub struct RustFhirFieldType {
     pub name: String,
     pub r#box: bool,

@@ -23,7 +23,29 @@ pub fn implement_serialize(
             quote!()
         };
 
-    let serialized_fields_tokens = r#struct.fields.iter().map(|f| {
+    let mut fields = r#struct.fields.clone();
+
+    // make sure that id, url and value are serialized first
+    // these are serialized as XML attributes, the opening tag can thus be writtern earlier
+    // and nested state can be avoided in the XML serializer
+    if r#struct.is_primitive {
+        fields.sort_by_key(|f| match f.name.as_str() {
+            "id" => 0,
+            "value" => 1,
+            _ => 2,
+        });
+    }
+
+    if r#struct.struct_name == "Extension" {
+        fields.sort_by_key(|f| match f.name.as_str() {
+            "id" => 0,
+            "url" => 1,
+            "value" => 2,
+            _ => 3,
+        });
+    }
+
+    let serialized_fields_tokens = fields.iter().map(|f| {
         serialize_field(
             f,
             enums,

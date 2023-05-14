@@ -1,4 +1,4 @@
-// Generated on 2023-05-08 by fhirbolt-codegen v0.8.0
+// Generated on 2023-05-14 by fhirbolt-codegen v0.8.0
 use crate::{DeserializationContext, SerializationContext};
 use fhirbolt_model::r5::types::Extension;
 impl serde::ser::Serialize for SerializationContext<&Extension> {
@@ -17,11 +17,6 @@ impl serde::ser::Serialize for SerializationContext<&Extension> {
         let mut state = serializer.serialize_map(None)?;
         if let Some(value) = self.value.r#id.as_ref() {
             state.serialize_entry("id", value)?;
-        }
-        if !self.value.r#extension.is_empty() {
-            self.with_context(&self.value.r#extension, |ctx| {
-                state.serialize_entry("extension", ctx)
-            })?;
         }
         state.serialize_entry("url", &self.value.r#url)?;
         {
@@ -595,6 +590,11 @@ impl serde::ser::Serialize for SerializationContext<&Extension> {
                     _Enum::Invalid => return Err(serde::ser::Error::custom("value is invalid")),
                 }
             }
+        }
+        if !self.value.r#extension.is_empty() {
+            self.with_context(&self.value.r#extension, |ctx| {
+                state.serialize_entry("extension", ctx)
+            })?;
         }
         state.end()
     }

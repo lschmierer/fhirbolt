@@ -1,4 +1,4 @@
-// Generated on 2023-05-08 by fhirbolt-codegen v0.8.0
+// Generated on 2023-05-14 by fhirbolt-codegen v0.8.0
 #[doc = "The value of the property specified by the associated property.type code."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum DevicePropertyValue {

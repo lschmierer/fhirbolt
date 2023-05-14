@@ -1,4 +1,4 @@
-// Generated on 2023-05-08 by fhirbolt-codegen v0.8.0
+// Generated on 2023-05-14 by fhirbolt-codegen v0.8.0
 #[doc = "The populations that make up the population group, one for each type of population appropriate for the measure."]
 #[derive(Debug, Clone, PartialEq)]
 pub struct MeasureReportGroupPopulation {

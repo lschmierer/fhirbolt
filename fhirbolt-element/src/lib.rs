@@ -48,16 +48,30 @@ macro_rules! Element {
 /// As deserialization differs slightly between FHIR releases,
 /// `Element` is generic over a FHIR release.
 ///
+/// It is recommended to use the `Element!` macro for creating
+/// new element.
+///
 /// # Example
+/// ## With macro
+/// ```rust
+/// use fhirbolt::FhirReleases;
+/// use fhirbolt::element::{Element, Value, Primitive};
+///
+/// let element: Element<{ FhirReleases::R4 }> = Element! {
+///     "value" => Value::Primitive(Primitive::String("123".into())),
+/// };
 /// ```
+///
+/// ## Without macro
+/// ```rust
 /// use fhirbolt::FhirReleases;
 /// use fhirbolt::element::{Element, Value, Primitive};
 ///
 /// let mut element = Element::<{ FhirReleases:: R4B }>::new();
 /// element.insert(
-///     "resourceType".to_string(),
+///     "value".to_string(),
 ///     Value::Primitive(
-///         Primitive::String("Observation".to_string())
+///         Primitive::String("123".to_string())
 ///     )
 /// );
 /// // ...

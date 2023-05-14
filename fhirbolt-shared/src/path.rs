@@ -76,6 +76,11 @@ impl ElementPath {
     }
 
     #[inline]
+    pub fn current_element_is_extension(&self) -> bool {
+        self.resolve_current_type() == Some("Extension")
+    }
+
+    #[inline]
     pub fn current_element_is_primitive(&self) -> bool {
         let current_type_path = self.current_type_path();
 
