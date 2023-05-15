@@ -85,11 +85,11 @@ impl<const R: FhirRelease> Serialize for SerializationContext<Option<&Value<R>>>
 }
 
 impl<const R: FhirRelease> SerializationContext<&Element<R>> {
-    fn values_sorted<'a>(&'a self) -> impl Iterator<Item = (&'a String, &'a Value<R>)> {
+    fn values_sorted<'a>(&'a self) -> impl Iterator<Item = (&'a str, &'a Value<R>)> {
         if self.output == Format::Xml || self.config.always_sort {
             EitherIter::Left(sort::element_sorted(self.value, &self.current_path()))
         } else {
-            EitherIter::Right(self.value.iter())
+            EitherIter::Right(self.value.iter().map(|(k, v)| (k.as_str(), v)))
         }
     }
 }
