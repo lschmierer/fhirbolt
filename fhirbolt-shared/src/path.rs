@@ -77,11 +77,10 @@ impl ElementPath {
 
     #[inline]
     pub fn current_element_is_extension(&self) -> bool {
-        match self.current_type_path().last_split() {
-            Some("extension") => true,
-            Some("modifierExtension") => true,
-            _ => false,
-        }
+        matches!(
+            self.current_type_path().last_split(),
+            Some("extension") | Some("modifierExtension")
+        )
     }
 
     #[inline]
@@ -97,14 +96,13 @@ impl ElementPath {
             return true;
         }
 
-        if self.parent_element_is_resource() {
-            if current_type_path
+        if self.parent_element_is_resource()
+            && current_type_path
                 .last_split()
                 .map(|s| RESOURCE_COMMON_PRIMITIVE_FIELDS.contains(&s))
                 .unwrap_or(false)
-            {
-                return true;
-            }
+        {
+            return true;
         }
 
         type_hints(self.fhir_release)

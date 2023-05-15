@@ -453,6 +453,7 @@ fn field_struct_assign_var(field: &RustFhirStructField) -> TokenStream {
     }
 }
 
+#[allow(clippy::too_many_arguments)]
 fn deserialize_field(
     field: &RustFhirStructField,
     enums: &[RustFhirEnum],
