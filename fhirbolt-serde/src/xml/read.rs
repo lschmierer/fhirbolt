@@ -1,4 +1,13 @@
-use std::{io, str};
+use std::{
+    io::{self, BufReader},
+    str,
+};
+
+use quick_xml::{
+    events::{BytesDecl, BytesEnd, BytesStart, Event as QuickXmlEvent},
+    name::{LocalName, Namespace, QName, ResolveResult},
+    reader::NsReader,
+};
 
 use crate::xml::{
     consts::{FHIR_NAMESPACE, VALID_XML_STANDALONE, XHTML_NAMESPACE, XML_ENCODING, XML_VERSION},
@@ -6,185 +15,128 @@ use crate::xml::{
     event::{Element, Event},
 };
 
+fn resolve_local_name<'n, R>(
+    reader: &NsReader<R>,
+    name: QName<'n>,
+    expected_namespace: &str,
+) -> Result<LocalName<'n>> {
+    let (namespace, local_name) = reader.resolve_element(name);
+
+    if namespace != ResolveResult::Bound(Namespace(expected_namespace.as_bytes())) {
+        return Err(Error::InvalidXmlNamespace(
+            match namespace {
+                ResolveResult::Unbound => None,
+                ResolveResult::Bound(n) => Some(str::from_utf8(n.into_inner()).unwrap().to_owned()),
+                ResolveResult::Unknown(n) => Some(String::from_utf8(n).unwrap()),
+            },
+            expected_namespace.to_string(),
+        ));
+    }
+
+    Ok(local_name)
+}
+
 #[derive(Default)]
 struct QuickXmlEventMapper {
-    scratch_div_element: Option<Element>,
+    in_div_element: Option<Element>,
     nested_div_count: usize,
 }
 
 impl QuickXmlEventMapper {
     fn map_event<R>(
         &mut self,
-        reader: &mut quick_xml::NsReader<R>,
-        event: quick_xml::events::Event,
+        reader: &mut NsReader<R>,
+        event: QuickXmlEvent,
     ) -> Result<Option<Event>> {
         match event {
-            quick_xml::events::Event::Decl(decl) => {
-                if let Ok(v) = decl.version() {
-                    if v != XML_VERSION.as_bytes() {
-                        return Err(Error::InvalidXmlVersion(Some(
-                            str::from_utf8(&v)?.to_owned(),
-                        )));
-                    }
+            QuickXmlEvent::Decl(decl) => self.map_decl(decl),
+            QuickXmlEvent::Start(start) => {
+                if self.in_div() {
+                    self.map_start_in_div(reader, start)
+                } else if self.should_enter_div(reader, &start)? {
+                    self.map_start_enter_div(reader, start)
                 } else {
-                    return Err(Error::InvalidXmlVersion(None));
-                }
-
-                if let Some(Ok(e)) = decl.encoding() {
-                    if e != XML_ENCODING.as_bytes() {
-                        return Err(Error::InvalidXmlEncoding(str::from_utf8(&e)?.to_owned()));
-                    }
-                }
-
-                if let Some(Ok(e)) = decl.standalone() {
-                    if e != VALID_XML_STANDALONE.as_bytes() {
-                        return Err(Error::InvalidXmlStandalone(str::from_utf8(&e)?.to_owned()));
-                    }
-                }
-
-                Ok(None)
-            }
-            quick_xml::events::Event::Start(start) => {
-                let (namespace, local_name) = reader.resolve_element(start.name());
-
-                if self.scratch_div_element.is_some() {
-                    if start.name().as_ref() == b"div" {
-                        self.nested_div_count += 1;
-                    }
-
-                    self.push_to_scratch_div(&format!("<{}>", str::from_utf8(&start)?));
-
-                    Ok(None)
-                } else if local_name.as_ref() == b"div" {
-                    let mut div_element = self.map_bytes_start(
-                        reader,
-                        &start,
-                        local_name,
-                        namespace,
-                        XHTML_NAMESPACE,
-                    )?;
-
-                    div_element.value =
-                        Some("<div xmlns=\"http://www.w3.org/1999/xhtml\">".to_string());
-
-                    self.scratch_div_element = Some(div_element);
-                    self.nested_div_count = 1;
-
-                    Ok(None)
-                } else {
-                    let element = self.map_bytes_start(
-                        reader,
-                        &start,
-                        local_name,
-                        namespace,
-                        FHIR_NAMESPACE,
-                    )?;
-
+                    let element = self.map_start_element(reader, start, FHIR_NAMESPACE)?;
                     Ok(Some(Event::ElementStart(element)))
                 }
             }
-            quick_xml::events::Event::End(end) => {
-                if self.scratch_div_element.is_some() {
-                    if end.name().as_ref() == b"div" && self.nested_div_count > 0 {
-                        self.nested_div_count -= 1;
-                    }
-
-                    if end.name().as_ref() == b"div" && self.nested_div_count == 0 {
-                        Ok(self
-                            .scratch_div_element
-                            .take()
-                            .map(|mut div_element| {
-                                div_element.value.as_mut().unwrap().push_str("</div>");
-                                div_element
-                            })
-                            .map(Event::EmptyElement))
-                    } else {
-                        self.push_to_scratch_div(&format!("</{}>", str::from_utf8(&end)?));
-
-                        Ok(None)
-                    }
+            QuickXmlEvent::End(end) => {
+                if self.in_div() {
+                    self.map_end_in_div(reader, end)
                 } else {
                     Ok(Some(Event::ElementEnd))
                 }
             }
-            quick_xml::events::Event::Empty(start) => {
-                let (namespace, local_name) = reader.resolve_element(start.name());
-
-                if self.scratch_div_element.is_some() {
-                    self.push_to_scratch_div(&format!("<{}/>", str::from_utf8(&start)?));
-
-                    Ok(None)
+            QuickXmlEvent::Empty(start) => {
+                if self.in_div() {
+                    self.map_empty_in_div(reader, start)
                 } else {
-                    let element = self.map_bytes_start(
-                        reader,
-                        &start,
-                        local_name,
-                        namespace,
-                        FHIR_NAMESPACE,
-                    )?;
-
+                    let element = self.map_start_element(reader, start, FHIR_NAMESPACE)?;
                     Ok(Some(Event::EmptyElement(element)))
                 }
             }
-            quick_xml::events::Event::Text(text) => {
-                if self.scratch_div_element.is_some() {
-                    self.push_to_scratch_div(str::from_utf8(&text)?);
-
+            QuickXmlEvent::Text(text) => {
+                if self.in_div() {
+                    self.push_to_div(str::from_utf8(&text)?);
                     Ok(None)
                 } else {
-                    Err(Error::InvalidXmlEvent("text"))
+                    Err(Error::InvalidXmlEvent("text outside of div"))
                 }
             }
-            quick_xml::events::Event::Comment(_) => Ok(None),
-            quick_xml::events::Event::Eof => Ok(Some(Event::Eof)),
-            quick_xml::events::Event::CData(_) => Err(Error::InvalidXmlEvent("CData")),
-            quick_xml::events::Event::PI(_) => {
-                Err(Error::InvalidXmlEvent("processing instruction"))
-            }
-            quick_xml::events::Event::DocType(_) => Err(Error::InvalidXmlEvent("Doctype")),
+            QuickXmlEvent::Comment(_) => Ok(None),
+            QuickXmlEvent::Eof => Ok(Some(Event::Eof)),
+            QuickXmlEvent::CData(_) => Err(Error::InvalidXmlEvent("CData")),
+            QuickXmlEvent::PI(_) => Err(Error::InvalidXmlEvent("processing instruction")),
+            QuickXmlEvent::DocType(_) => Err(Error::InvalidXmlEvent("Doctype")),
         }
     }
 
-    fn push_to_scratch_div(&mut self, text: &str) {
-        if let Some(div) = self.scratch_div_element.as_mut() {
-            let xhtml = div.value.get_or_insert(String::new());
-            xhtml.push_str(text);
+    fn map_decl(&self, decl: BytesDecl) -> Result<Option<Event>> {
+        let version = decl.version()?;
+        if decl.version()? != XML_VERSION.as_bytes() {
+            return Err(Error::InvalidXmlVersion(
+                str::from_utf8(&version)?.to_owned(),
+            ));
         }
+
+        let encoding = decl
+            .encoding()
+            .transpose()?
+            .unwrap_or(XML_ENCODING.as_bytes().into());
+        if encoding != XML_ENCODING.as_bytes() {
+            return Err(Error::InvalidXmlEncoding(
+                str::from_utf8(&encoding)?.to_owned(),
+            ));
+        }
+
+        let standalone = decl
+            .standalone()
+            .transpose()?
+            .unwrap_or(VALID_XML_STANDALONE.as_bytes().into());
+        if standalone != VALID_XML_STANDALONE.as_bytes() {
+            return Err(Error::InvalidXmlStandalone(
+                str::from_utf8(&standalone)?.to_owned(),
+            ));
+        }
+
+        Ok(None)
     }
 
-    fn map_bytes_start<R>(
+    fn map_start_element<R>(
         &mut self,
-        reader: &quick_xml::NsReader<R>,
-        start: &quick_xml::events::BytesStart,
-        local_name: quick_xml::name::LocalName,
-        namespace: quick_xml::name::ResolveResult,
+        reader: &NsReader<R>,
+        start: BytesStart,
         expected_namespace: &str,
     ) -> Result<Element> {
-        if namespace
-            != quick_xml::name::ResolveResult::Bound(quick_xml::name::Namespace(
-                expected_namespace.as_bytes(),
-            ))
-        {
-            return Err(Error::InvalidXmlNamespace(expected_namespace.to_string()));
-        }
+        let local_name = resolve_local_name(reader, start.name(), expected_namespace)?;
 
         let mut element = Element::new(str::from_utf8(local_name.as_ref())?.to_owned());
 
         for attr in start.attributes() {
             let attr = attr?;
+            let attr_local_name = resolve_local_name(reader, attr.key, expected_namespace)?;
 
-            let (namespace, local_name) = reader.resolve_attribute(attr.key);
-
-            if namespace
-                != quick_xml::name::ResolveResult::Bound(quick_xml::name::Namespace(
-                    expected_namespace.as_bytes(),
-                ))
-                && namespace != quick_xml::name::ResolveResult::Unbound
-            {
-                return Err(Error::InvalidXmlNamespace(expected_namespace.to_string()));
-            }
-
-            match local_name.as_ref() {
+            match attr_local_name.as_ref() {
                 b"id" => element.id = Some(attr.unescape_value()?.to_string()),
                 b"url" => element.url = Some(attr.unescape_value()?.to_string()),
                 b"value" => element.value = Some(attr.unescape_value()?.to_string()),
@@ -194,6 +146,94 @@ impl QuickXmlEventMapper {
 
         Ok(element)
     }
+
+    fn map_start_in_div<R>(
+        &mut self,
+        reader: &NsReader<R>,
+        start: BytesStart,
+    ) -> Result<Option<Event>> {
+        let local_name = resolve_local_name(reader, start.name(), XHTML_NAMESPACE)?;
+
+        if local_name.as_ref() == b"div" {
+            self.nested_div_count += 1;
+        }
+
+        self.push_to_div(&format!("<{}>", str::from_utf8(&start)?));
+
+        Ok(None)
+    }
+
+    fn map_start_enter_div<R>(
+        &mut self,
+        reader: &NsReader<R>,
+        start: BytesStart,
+    ) -> Result<Option<Event>> {
+        let mut div_element = self.map_start_element(reader, start, XHTML_NAMESPACE)?;
+        div_element.value = Some("<div xmlns=\"http://www.w3.org/1999/xhtml\">".to_string());
+
+        self.in_div_element = Some(div_element);
+        self.nested_div_count = 1;
+
+        Ok(None)
+    }
+
+    fn map_empty_in_div<R>(
+        &mut self,
+        reader: &NsReader<R>,
+        start: BytesStart,
+    ) -> Result<Option<Event>> {
+        // this checks if namespace is correct
+        let _ = resolve_local_name(reader, start.name(), XHTML_NAMESPACE)?;
+
+        self.push_to_div(&format!("<{}/>", str::from_utf8(&start)?));
+
+        Ok(None)
+    }
+
+    fn map_end_in_div<R>(&mut self, reader: &NsReader<R>, end: BytesEnd) -> Result<Option<Event>> {
+        let local_name = resolve_local_name(reader, end.name(), XHTML_NAMESPACE)?;
+
+        if local_name.as_ref() == b"div" {
+            self.nested_div_count -= 1;
+
+            if self.nested_div_count == 0 {
+                return self.map_end_leave_div();
+            }
+        }
+
+        self.push_to_div(&format!("</{}>", str::from_utf8(local_name.as_ref())?));
+        Ok(None)
+    }
+
+    fn map_end_leave_div(&mut self) -> Result<Option<Event>> {
+        Ok(self
+            .in_div_element
+            .take()
+            .map(|mut div_element| {
+                div_element.value.as_mut().unwrap().push_str("</div>");
+                div_element
+            })
+            .map(Event::EmptyElement))
+    }
+
+    fn push_to_div(&mut self, text: &str) {
+        if let Some(div) = self.in_div_element.as_mut() {
+            let xhtml = div.value.get_or_insert(String::new());
+            xhtml.push_str(text);
+        }
+    }
+
+    fn should_enter_div<R>(&self, reader: &NsReader<R>, start: &BytesStart) -> Result<bool> {
+        // we doent use resolve_local_name because we dont care about namespace at this point
+        // namespace is checked later
+        let (_, local_name) = reader.resolve_element(start.name());
+
+        Ok(local_name.as_ref() == b"div")
+    }
+
+    fn in_div(&self) -> bool {
+        self.in_div_element.is_some()
+    }
 }
 
 /// Trait for iterating over XML input.
@@ -202,14 +242,14 @@ pub trait Read {
 }
 
 pub struct IoRead<R: io::Read> {
-    reader: quick_xml::NsReader<io::BufReader<R>>,
+    reader: NsReader<BufReader<R>>,
     buf: Vec<u8>,
     mapper: QuickXmlEventMapper,
 }
 
 impl<R: io::Read> IoRead<R> {
     pub fn new(reader: R) -> Self {
-        let mut reader = quick_xml::NsReader::from_reader(io::BufReader::new(reader));
+        let mut reader = NsReader::from_reader(BufReader::new(reader));
         reader.trim_text(true);
 
         IoRead {
@@ -236,13 +276,13 @@ impl<R: io::Read> Read for IoRead<R> {
 }
 
 pub struct SliceRead<'a> {
-    reader: quick_xml::NsReader<&'a [u8]>,
+    reader: NsReader<&'a [u8]>,
     mapper: QuickXmlEventMapper,
 }
 
 impl<'a> SliceRead<'a> {
     pub fn new(slice: &'a [u8]) -> Self {
-        let mut reader = quick_xml::NsReader::from_reader(slice);
+        let mut reader = NsReader::from_reader(slice);
         reader.trim_text(true);
 
         SliceRead {
@@ -280,5 +320,116 @@ impl<'a> StrRead<'a> {
 impl<'a> Read for StrRead<'a> {
     fn next_event(&mut self) -> Result<Event> {
         self.read.next_event()
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_xml_decl() {
+        let xml = r#"<?xml version="1.0"?><root xmlns="http://hl7.org/fhir"></root>"#;
+        let mut reader = StrRead::new(xml);
+
+        let event = reader.next_event().unwrap();
+        assert_eq!(event, Event::ElementStart(Element::new("root".to_string())));
+    }
+
+    #[test]
+    fn test_invalid_xml_version() {
+        let xml = r#"<?xml version="1.1"?><root></root>"#;
+        let mut reader = StrRead::new(xml);
+
+        let error = reader.next_event().unwrap_err();
+        assert_eq!(
+            error.to_string(),
+            Error::InvalidXmlVersion("1.1".into()).to_string()
+        );
+    }
+
+    #[test]
+    fn test_invalid_xml_encoding() {
+        let xml = r#"<?xml version="1.0" encoding="ISO-8859-1"?><root></root>"#;
+        let mut reader = StrRead::new(xml);
+
+        let error = reader.next_event().unwrap_err();
+        assert_eq!(
+            error.to_string(),
+            Error::InvalidXmlEncoding("ISO-8859-1".to_string()).to_string()
+        );
+    }
+
+    #[test]
+    fn test_invalid_xml_standalone() {
+        let xml = r#"<?xml version="1.0" standalone="yes"?><root></root>"#;
+        let mut reader = StrRead::new(xml);
+
+        let error = reader.next_event().unwrap_err();
+        assert_eq!(
+            error.to_string(),
+            Error::InvalidXmlStandalone("yes".into()).to_string()
+        );
+    }
+
+    #[test]
+    fn test_empty_element() {
+        let xml = r#"<?xml version="1.0"?><root xmlns="http://hl7.org/fhir"><empty_element id="1" url="https://example.com"/></root>"#;
+        let mut reader = StrRead::new(xml);
+
+        let event = reader.next_event().unwrap();
+        assert_eq!(event, Event::ElementStart(Element::new("root".to_string())));
+
+        let mut element = Element::new("empty_element".to_string());
+        element.id = Some("1".to_string());
+        element.url = Some("https://example.com".to_string());
+
+        let event = reader.next_event().unwrap();
+        assert_eq!(event, Event::EmptyElement(element));
+    }
+
+    #[test]
+    fn test_start_and_end_element() {
+        let xml = r#"<?xml version="1.0"?><root xmlns="http://hl7.org/fhir"><element id="1" url="https://example.com">text</element></root>"#;
+        let mut reader = StrRead::new(xml);
+
+        let event = reader.next_event().unwrap();
+        assert_eq!(event, Event::ElementStart(Element::new("root".to_string())));
+
+        let mut element = Element::new("element".to_string());
+        element.id = Some("1".to_string());
+        element.url = Some("https://example.com".to_string());
+        let event = reader.next_event().unwrap();
+        assert_eq!(event, Event::ElementStart(element));
+    }
+
+    #[test]
+    fn test_nested_div() {
+        let xml = r#"<?xml version="1.0"?><root xmlns="http://hl7.org/fhir"><div xmlns="http://www.w3.org/1999/xhtml"><div></div></div></root>"#;
+        let mut reader = StrRead::new(xml);
+
+        let event = reader.next_event().unwrap();
+        assert_eq!(event, Event::ElementStart(Element::new("root".to_string())));
+
+        let mut element = Element::new("div".to_string());
+        element.value =
+            Some("<div xmlns=\"http://www.w3.org/1999/xhtml\"><div></div></div>".to_string());
+        let event = reader.next_event().unwrap();
+        assert_eq!(event, Event::EmptyElement(element));
+    }
+
+    #[test]
+    fn test_invalid_xml_event_text_outside_if_div() {
+        let xml = r#"<?xml version="1.0"?><root xmlns="http://hl7.org/fhir">text</root>"#;
+        let mut reader = StrRead::new(xml);
+
+        let event = reader.next_event().unwrap();
+        assert_eq!(event, Event::ElementStart(Element::new("root".to_string())));
+
+        let error = reader.next_event().unwrap_err();
+        assert_eq!(
+            error.to_string(),
+            Error::InvalidXmlEvent("text outside of div").to_string()
+        );
     }
 }

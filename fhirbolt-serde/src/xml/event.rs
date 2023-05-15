@@ -1,6 +1,6 @@
 use std::borrow::Cow;
 
-#[derive(Debug)]
+#[derive(Debug, PartialEq)]
 pub enum Event {
     ElementStart(Element),
     ElementEnd,
@@ -9,7 +9,7 @@ pub enum Event {
     Eof,
 }
 
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, PartialEq, Clone)]
 pub struct Element {
     pub name: Cow<'static, str>,
     pub id: Option<String>,

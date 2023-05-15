@@ -368,13 +368,14 @@ mod tests {
     use crate::{
         context::Format,
         xml::{
-            de::Deserializer,
             error::Result,
             event::{self, Event},
             read::Read,
         },
         DeserializeResource,
     };
+
+    use super::*;
 
     impl Read for VecDeque<Event> {
         fn next_event(&mut self) -> Result<Event> {
@@ -397,12 +398,11 @@ mod tests {
                 name: "Observation".into(),
                 ..Default::default()
             }),
-            Event::ElementStart(event::Element {
+            Event::EmptyElement(event::Element {
                 name: "id".into(),
                 value: Some("test_id".into()),
                 ..Default::default()
             }),
-            Event::ElementEnd,
             Event::ElementEnd,
         ]);
 
@@ -418,6 +418,99 @@ mod tests {
                 "id" => Value::Element(Element! {
                     "value" => Value::Primitive(Primitive::String("test_id".into())),
                 })
+            }
+        );
+    }
+
+    #[test]
+    fn test_element_id() {
+        let mut de = mock_deserializer(vec![
+            Event::ElementStart(event::Element {
+                name: "Observation".into(),
+                ..Default::default()
+            }),
+            Event::EmptyElement(event::Element {
+                name: "valueString".into(),
+                id: Some("test_id".into()),
+                ..Default::default()
+            }),
+            Event::ElementEnd,
+        ]);
+
+        assert_eq!(
+            Element::<{ FhirReleases::R4 }>::deserialization_context(
+                Default::default(),
+                Format::Xml
+            )
+            .deserialize(&mut de)
+            .unwrap(),
+            Element! {
+                "resourceType" => Value::Primitive(Primitive::String("Observation".into())),
+                "valueString" => Value::Element(Element! {
+                    "id" => Value::Primitive(Primitive::String("test_id".into())),
+                })
+            }
+        );
+    }
+
+    #[test]
+    fn test_element_value() {
+        let mut de = mock_deserializer(vec![
+            Event::ElementStart(event::Element {
+                name: "Observation".into(),
+                ..Default::default()
+            }),
+            Event::EmptyElement(event::Element {
+                name: "valueString".into(),
+                value: Some("test_value".into()),
+                ..Default::default()
+            }),
+            Event::ElementEnd,
+        ]);
+
+        assert_eq!(
+            Element::<{ FhirReleases::R4 }>::deserialization_context(
+                Default::default(),
+                Format::Xml
+            )
+            .deserialize(&mut de)
+            .unwrap(),
+            Element! {
+                "resourceType" => Value::Primitive(Primitive::String("Observation".into())),
+                "valueString" => Value::Element(Element! {
+                    "value" => Value::Primitive(Primitive::String("test_value".into())),
+                })
+            }
+        );
+    }
+
+    #[test]
+    fn test_extension_url() {
+        let mut de = mock_deserializer(vec![
+            Event::ElementStart(event::Element {
+                name: "Observation".into(),
+                ..Default::default()
+            }),
+            Event::EmptyElement(event::Element {
+                name: "extension".into(),
+                url: Some("test_url".into()),
+                ..Default::default()
+            }),
+            Event::ElementEnd,
+        ]);
+
+        assert_eq!(
+            Element::<{ FhirReleases::R4 }>::deserialization_context(
+                Default::default(),
+                Format::Xml
+            )
+            .deserialize(&mut de)
+            .unwrap(),
+            Element! {
+                "resourceType" => Value::Primitive(Primitive::String("Observation".into())),
+                "extension" => Value::Sequence(vec![Element! {
+                    "url" => Value::Primitive(Primitive::String("test_url".into())),
+                }])
             }
         );
     }

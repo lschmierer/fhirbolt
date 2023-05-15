@@ -11,7 +11,7 @@ use crate::{
     xml::{
         error::{Error, Result},
         event::{Element, Event},
-        write::{self, IoWrite, Write},
+        write::{IoWrite, Write},
     },
     SerializeResource,
 };
@@ -24,7 +24,7 @@ where
 {
     value
         .serialization_context(config.unwrap_or(Default::default()), Format::Xml)
-        .serialize(&mut Serializer::new(writer))
+        .serialize(&mut Serializer::new(IoWrite::new(writer)))
 }
 
 /// Serialize the given resource as a XML byte vector.
@@ -63,16 +63,14 @@ pub struct Serializer<W: Write> {
     element: Option<Element>,
 }
 
-impl<W: io::Write> Serializer<IoWrite<W>> {
+impl<W: Write> Serializer<W> {
     pub fn new(writer: W) -> Self {
         Serializer {
-            writer: write::IoWrite::new(writer),
+            writer,
             element: None,
         }
     }
-}
 
-impl<W: Write> Serializer<W> {
     fn write_start(&mut self, element: Element) -> Result<()> {
         self.writer.write_event(Event::ElementStart(element))
     }
@@ -670,5 +668,163 @@ impl<'a, W: Write> SerializeStruct for SerializeDecimal<'a, W> {
         self.ser.serialize_attribute("value", self.inner.end()?)?;
 
         Ok(None)
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use serde::ser::Serialize;
+
+    use fhirbolt_element::{Element, FhirReleases, Primitive, Value};
+
+    use crate::{
+        context::Format,
+        xml::{
+            error::Result,
+            event::{self, Event},
+            write::Write,
+        },
+        SerializeResource,
+    };
+
+    use super::*;
+
+    impl Write for &mut Vec<Event> {
+        fn write_event(&mut self, event: Event) -> Result<()> {
+            self.push(event);
+            Ok(())
+        }
+    }
+
+    #[test]
+    fn test_resource_id() {
+        let mut events = vec![];
+        let mut ser = Serializer::new(&mut events);
+
+        let element: Element<{ FhirReleases::R4 }> = Element! {
+            "resourceType" => Value::Primitive(Primitive::String("Observation".into())),
+            "id" => Value::Element(Element! {
+                "value" => Value::Primitive(Primitive::String("test_id".into())),
+            })
+        };
+        element
+            .serialization_context(Default::default(), Format::Xml)
+            .serialize(&mut ser)
+            .unwrap();
+
+        assert_eq!(
+            events,
+            [
+                Event::ElementStart(event::Element {
+                    name: "Observation".into(),
+                    ..Default::default()
+                }),
+                Event::EmptyElement(event::Element {
+                    name: "id".into(),
+                    value: Some("test_id".into()),
+                    ..Default::default()
+                }),
+                Event::ElementEnd,
+            ]
+        );
+    }
+
+    #[test]
+    fn test_element_id() {
+        let mut events = vec![];
+        let mut ser = Serializer::new(&mut events);
+
+        let element: Element<{ FhirReleases::R4 }> = Element! {
+            "resourceType" => Value::Primitive(Primitive::String("Observation".into())),
+            "valueString" => Value::Element(Element! {
+                "id" => Value::Primitive(Primitive::String("test_id".into())),
+            })
+        };
+        element
+            .serialization_context(Default::default(), Format::Xml)
+            .serialize(&mut ser)
+            .unwrap();
+
+        assert_eq!(
+            events,
+            [
+                Event::ElementStart(event::Element {
+                    name: "Observation".into(),
+                    ..Default::default()
+                }),
+                Event::EmptyElement(event::Element {
+                    name: "valueString".into(),
+                    id: Some("test_id".into()),
+                    ..Default::default()
+                }),
+                Event::ElementEnd,
+            ]
+        );
+    }
+
+    #[test]
+    fn test_element_value() {
+        let mut events = vec![];
+        let mut ser = Serializer::new(&mut events);
+
+        let element: Element<{ FhirReleases::R4 }> = Element! {
+            "resourceType" => Value::Primitive(Primitive::String("Observation".into())),
+            "valueString" => Value::Element(Element! {
+                "value" => Value::Primitive(Primitive::String("test_value".into())),
+            })
+        };
+        element
+            .serialization_context(Default::default(), Format::Xml)
+            .serialize(&mut ser)
+            .unwrap();
+
+        assert_eq!(
+            events,
+            [
+                Event::ElementStart(event::Element {
+                    name: "Observation".into(),
+                    ..Default::default()
+                }),
+                Event::EmptyElement(event::Element {
+                    name: "valueString".into(),
+                    value: Some("test_value".into()),
+                    ..Default::default()
+                }),
+                Event::ElementEnd,
+            ]
+        );
+    }
+
+    #[test]
+    fn test_element_url() {
+        let mut events = vec![];
+        let mut ser = Serializer::new(&mut events);
+
+        let element: Element<{ FhirReleases::R4 }> = Element! {
+            "resourceType" => Value::Primitive(Primitive::String("Observation".into())),
+            "extension" => Value::Sequence(vec![Element! {
+                "url" => Value::Primitive(Primitive::String("test_url".into())),
+            }])
+        };
+        element
+            .serialization_context(Default::default(), Format::Xml)
+            .serialize(&mut ser)
+            .unwrap();
+
+        assert_eq!(
+            events,
+            [
+                Event::ElementStart(event::Element {
+                    name: "Observation".into(),
+                    ..Default::default()
+                }),
+                Event::EmptyElement(event::Element {
+                    name: "extension".into(),
+                    url: Some("test_url".into()),
+                    ..Default::default()
+                }),
+                Event::ElementEnd,
+            ]
+        );
     }
 }
