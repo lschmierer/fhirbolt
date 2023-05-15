@@ -15,7 +15,7 @@ use crate::xml::{
     event::{Element, Event},
 };
 
-fn resolve_local_name<'n, R>(
+fn resolve_element<'n, R>(
     reader: &NsReader<R>,
     name: QName<'n>,
     expected_namespace: &str,
@@ -34,6 +34,27 @@ fn resolve_local_name<'n, R>(
     }
 
     Ok(local_name)
+}
+
+fn resolve_attribute<'n, R>(
+    reader: &NsReader<R>,
+    name: QName<'n>,
+    expected_namespace: &str,
+) -> Result<LocalName<'n>> {
+    let (namespace, local_name) = reader.resolve_attribute(name);
+
+    match namespace {
+        ResolveResult::Unbound => Ok(local_name),
+        ResolveResult::Bound(n) if n == Namespace(expected_namespace.as_bytes()) => Ok(local_name),
+        ResolveResult::Bound(n) => Err(Error::InvalidXmlNamespace(
+            Some(str::from_utf8(n.into_inner()).unwrap().to_owned()),
+            expected_namespace.to_string(),
+        )),
+        ResolveResult::Unknown(n) => Err(Error::InvalidXmlNamespace(
+            Some(String::from_utf8(n).unwrap()),
+            expected_namespace.to_string(),
+        )),
+    }
 }
 
 #[derive(Default)]
@@ -128,13 +149,13 @@ impl QuickXmlEventMapper {
         start: BytesStart,
         expected_namespace: &str,
     ) -> Result<Element> {
-        let local_name = resolve_local_name(reader, start.name(), expected_namespace)?;
+        let local_name = resolve_element(reader, start.name(), expected_namespace)?;
 
         let mut element = Element::new(str::from_utf8(local_name.as_ref())?.to_owned());
 
         for attr in start.attributes() {
             let attr = attr?;
-            let attr_local_name = resolve_local_name(reader, attr.key, expected_namespace)?;
+            let attr_local_name = resolve_attribute(reader, attr.key, expected_namespace)?;
 
             match attr_local_name.as_ref() {
                 b"id" => element.id = Some(attr.unescape_value()?.to_string()),
@@ -152,7 +173,7 @@ impl QuickXmlEventMapper {
         reader: &NsReader<R>,
         start: BytesStart,
     ) -> Result<Option<Event>> {
-        let local_name = resolve_local_name(reader, start.name(), XHTML_NAMESPACE)?;
+        let local_name = resolve_element(reader, start.name(), XHTML_NAMESPACE)?;
 
         if local_name.as_ref() == b"div" {
             self.nested_div_count += 1;
@@ -169,7 +190,7 @@ impl QuickXmlEventMapper {
         start: BytesStart,
     ) -> Result<Option<Event>> {
         let mut div_element = self.map_start_element(reader, start, XHTML_NAMESPACE)?;
-        div_element.value = Some("<div xmlns=\"http://www.w3.org/1999/xhtml\">".to_string());
+        div_element.value = Some("<div xmlns=\"http://www.w3.org/1999/xhtml\">".into());
 
         self.in_div_element = Some(div_element);
         self.nested_div_count = 1;
@@ -183,7 +204,10 @@ impl QuickXmlEventMapper {
         start: BytesStart,
     ) -> Result<Option<Event>> {
         // this checks if namespace is correct
-        let _ = resolve_local_name(reader, start.name(), XHTML_NAMESPACE)?;
+        let _ = resolve_element(reader, start.name(), XHTML_NAMESPACE)?;
+        for attr in start.attributes() {
+            let _ = resolve_attribute(reader, attr?.key, XHTML_NAMESPACE)?;
+        }
 
         self.push_to_div(&format!("<{}/>", str::from_utf8(&start)?));
 
@@ -191,7 +215,7 @@ impl QuickXmlEventMapper {
     }
 
     fn map_end_in_div<R>(&mut self, reader: &NsReader<R>, end: BytesEnd) -> Result<Option<Event>> {
-        let local_name = resolve_local_name(reader, end.name(), XHTML_NAMESPACE)?;
+        let local_name = resolve_element(reader, end.name(), XHTML_NAMESPACE)?;
 
         if local_name.as_ref() == b"div" {
             self.nested_div_count -= 1;
