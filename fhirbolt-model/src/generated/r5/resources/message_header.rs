@@ -1,4 +1,4 @@
-// Generated on 2023-05-14 by fhirbolt-codegen v0.8.0
+// Generated on 2023-05-15 by fhirbolt-codegen v0.8.0
 #[doc = "Code that identifies the event this message represents and connects it with its definition. Events defined as part of the FHIR specification are defined by the implementation.  Alternatively a canonical uri to the EventDefinition."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum MessageHeaderEvent {

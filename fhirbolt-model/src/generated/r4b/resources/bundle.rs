@@ -1,4 +1,4 @@
-// Generated on 2023-05-14 by fhirbolt-codegen v0.8.0
+// Generated on 2023-05-15 by fhirbolt-codegen v0.8.0
 #[doc = "A series of links that provide context to this bundle."]
 #[derive(Debug, Clone, PartialEq)]
 pub struct BundleLink {

@@ -1,4 +1,4 @@
-// Generated on 2023-05-14 by fhirbolt-codegen v0.8.0
+// Generated on 2023-05-15 by fhirbolt-codegen v0.8.0
 #[doc = "Base StructureDefinition for ProductShelfLife Type: The shelf-life and storage information for a medicinal product item or container can be described using this class."]
 #[derive(Debug, Clone, PartialEq)]
 pub struct ProductShelfLife {

@@ -1,4 +1,4 @@
-// Generated on 2023-05-14 by fhirbolt-codegen v0.8.0
+// Generated on 2023-05-15 by fhirbolt-codegen v0.8.0
 #[doc = "A reply to an appointment request for a patient and/or practitioner(s), such as a confirmation or rejection."]
 #[derive(Debug, Clone, PartialEq)]
 pub struct AppointmentResponse {

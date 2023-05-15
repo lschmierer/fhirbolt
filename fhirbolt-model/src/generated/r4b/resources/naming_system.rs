@@ -1,4 +1,4 @@
-// Generated on 2023-05-14 by fhirbolt-codegen v0.8.0
+// Generated on 2023-05-15 by fhirbolt-codegen v0.8.0
 #[doc = "Indicates how the system may be identified when referenced in electronic exchange."]
 #[derive(Debug, Clone, PartialEq)]
 pub struct NamingSystemUniqueId {

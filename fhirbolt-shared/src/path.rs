@@ -67,7 +67,7 @@ impl ElementPath {
 
     #[inline]
     pub fn current_element(&self) -> Option<&str> {
-        self.current_type_path().split().last()
+        self.current_type_path().last_split()
     }
 
     #[inline]
@@ -77,37 +77,39 @@ impl ElementPath {
 
     #[inline]
     pub fn current_element_is_extension(&self) -> bool {
-        self.resolve_current_type() == Some("Extension")
+        match self.current_type_path().last_split() {
+            Some("extension") => true,
+            Some("modifierExtension") => true,
+            _ => false,
+        }
     }
 
     #[inline]
     pub fn current_element_is_primitive(&self) -> bool {
+        if self.in_resource() {
+            return false;
+        }
+
         let current_type_path = self.current_type_path();
 
-        let is_id = current_type_path.split().last() == Some("id");
+        let is_id = current_type_path.last_split() == Some("id");
         if is_id {
             return true;
         }
 
-        let in_resource = current_type_path.len() == 2
-            && current_type_path.path.as_str().is_first_letter_uppercase();
+        if self.parent_element_is_resource() {
+            if current_type_path
+                .last_split()
+                .map(|s| RESOURCE_COMMON_PRIMITIVE_FIELDS.contains(&s))
+                .unwrap_or(false)
+            {
+                return true;
+            }
+        }
 
-        let is_common_resource_primitive = in_resource
-            && match current_type_path.split().last() {
-                Some(s) => RESOURCE_COMMON_PRIMITIVE_FIELDS.contains(&s),
-                None => false,
-            };
-
-        is_common_resource_primitive
-            || self.current_element_is_boolean()
-            || self.current_element_is_integer64()
-            || self.current_element_is_integer()
-            || self.current_element_is_unsigned_integer()
-            || self.current_element_is_positive_integer()
-            || self.current_element_is_decimal()
-            || type_hints(self.fhir_release)
-                .other_primitives_paths
-                .contains(&self.current_type_path().path)
+        type_hints(self.fhir_release)
+            .all_primitives_paths
+            .contains(&self.current_type_path().path)
     }
 
     #[inline]
@@ -115,8 +117,7 @@ impl ElementPath {
         let current_type_path = self.current_type_path();
 
         let is_common_sequence_field = current_type_path
-            .split()
-            .last()
+            .last_split()
             .map(|p| COMMON_SEQUENCE_FIELDS.contains(&p))
             .unwrap_or(false);
 
@@ -125,7 +126,7 @@ impl ElementPath {
         }
 
         let is_contained =
-            current_type_path.len() == 2 && current_type_path.split().last() == Some("contained");
+            current_type_path.len() == 2 && current_type_path.last_split() == Some("contained");
 
         if is_contained {
             return true;
@@ -176,6 +177,15 @@ impl ElementPath {
         type_hints(self.fhir_release)
             .decimal_paths
             .contains(&self.current_type_path().path)
+    }
+
+    #[inline]
+    pub fn parent_element_is_resource(&self) -> bool {
+        if let Some(path) = self.current_type_path().parent() {
+            path.is_first_letter_uppercase() && !path.contains('.')
+        } else {
+            false
+        }
     }
 
     #[inline]
@@ -234,11 +244,6 @@ impl ElementPath {
         } else {
             false
         }
-    }
-
-    #[inline]
-    pub fn currently_in_extension(&self) -> bool {
-        self.current_type_path().path.starts_with("Extension")
     }
 
     #[inline]
@@ -311,16 +316,14 @@ impl ElementPath {
     }
 
     fn resolve_current_type(&self) -> Option<&str> {
-        let current_type_path = self.current_type_path();
-
-        match current_type_path.split().last() {
-            Some("extension") => return Some("Extension"),
-            Some("modifierExtension") => return Some("Extension"),
-            _ => (),
+        if self.current_element_is_extension() {
+            return Some("Extension");
         }
 
+        let current_type_path = self.current_type_path();
+
         if current_type_path.len() == 2 {
-            match current_type_path.split().last() {
+            match current_type_path.last_split() {
                 Some("meta") => return Some("Meta"),
                 Some("text") => return Some("Narrative"),
                 Some("contained") => return Some("Resource"),
@@ -334,10 +337,14 @@ impl ElementPath {
             .copied()
     }
 
-    fn in_contained_resource(&self) -> bool {
-        let path_was_just_replaced = self.current_type_path().len() == 1;
+    fn in_resource(&self) -> bool {
+        let current_type_path = self.current_type_path();
 
-        if !path_was_just_replaced {
+        current_type_path.len() == 1 && current_type_path.path.as_str().is_first_letter_uppercase()
+    }
+
+    fn in_contained_resource(&self) -> bool {
+        if !self.in_resource() {
             return false;
         }
 
@@ -347,18 +354,16 @@ impl ElementPath {
             return false;
         };
 
-        let in_contained_field = previous_type_path.split().last() == Some("contained");
+        let in_contained_field = previous_type_path.last_split() == Some("contained");
 
         if in_contained_field {
             return true;
         }
 
-        let in_resource = type_hints(self.fhir_release)
+        type_hints(self.fhir_release)
             .type_paths
             .get(&previous_type_path.path)
-            == Some(&"Resource");
-
-        in_resource
+            == Some(&"Resource")
     }
 }
 
@@ -451,8 +456,8 @@ impl TypePath {
         self.path.rsplit_once('.').map(|s| s.0)
     }
 
-    fn split(&self) -> impl Iterator<Item = &str> {
-        self.path.split('.')
+    fn last_split(&self) -> Option<&str> {
+        self.path.rsplit_once('.').map(|s| s.1)
     }
 
     fn is_empty(&self) -> bool {

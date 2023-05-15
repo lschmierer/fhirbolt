@@ -1,4 +1,4 @@
-// Generated on 2023-05-14 by fhirbolt-codegen v0.8.0
+// Generated on 2023-05-15 by fhirbolt-codegen v0.8.0
 use crate::{DeserializationContext, SerializationContext};
 use fhirbolt_model::r5::types::Uuid;
 impl serde::ser::Serialize for SerializationContext<&Uuid> {

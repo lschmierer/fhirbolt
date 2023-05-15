@@ -1,4 +1,4 @@
-// Generated on 2023-05-14 by fhirbolt-codegen v0.8.0
+// Generated on 2023-05-15 by fhirbolt-codegen v0.8.0
 #[doc = "Coding Type: A reference to a code defined by a terminology system.\n\nReferences to codes are very common in healthcare models."]
 #[derive(Debug, Clone, PartialEq)]
 pub struct Coding {

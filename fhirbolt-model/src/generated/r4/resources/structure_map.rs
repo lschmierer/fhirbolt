@@ -1,4 +1,4 @@
-// Generated on 2023-05-14 by fhirbolt-codegen v0.8.0
+// Generated on 2023-05-15 by fhirbolt-codegen v0.8.0
 #[doc = "A value to use if there is no existing value in the source object."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum StructureMapGroupRuleSourceDefaultValue {

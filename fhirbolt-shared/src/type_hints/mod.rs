@@ -11,6 +11,6 @@ pub struct TypeHints {
     pub unsigned_integer_paths: phf::Set<&'static str>,
     pub positive_integer_paths: phf::Set<&'static str>,
     pub decimal_paths: phf::Set<&'static str>,
-    pub other_primitives_paths: phf::Set<&'static str>,
+    pub all_primitives_paths: phf::Set<&'static str>,
     pub content_reference_paths: phf::Map<&'static str, &'static str>,
 }

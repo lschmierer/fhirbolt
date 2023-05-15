@@ -428,42 +428,42 @@ fn collect_type_hint(
         return;
     }
 
-    match type_code {
-        "boolean" => {
-            type_hint_collector.boolean_paths.insert(path.to_string());
-        }
-        "integer" => {
-            type_hint_collector.integer_paths.insert(path.to_string());
-        }
-        "integer64" => {
-            type_hint_collector.integer64_paths.insert(path.to_string());
-        }
-        "unsignedInt" => {
-            type_hint_collector
-                .unsigned_integer_paths
-                .insert(path.to_string());
-        }
-        "positiveInt" => {
-            type_hint_collector
-                .positive_integer_paths
-                .insert(path.to_string());
-        }
-        "decimal" => {
-            type_hint_collector
-                .decimal_integer_paths
-                .insert(path.to_string());
-        }
-        code => {
-            if PRIMITIVES.contains(&code) {
-                type_hint_collector
-                    .other_primitives_paths
-                    .insert(path.to_string());
-            } else {
-                type_hint_collector
-                    .type_paths
-                    .insert(path.to_string(), type_code.to_string());
+    if PRIMITIVES.contains(&type_code) {
+        type_hint_collector
+            .all_primitives_paths
+            .insert(path.to_string());
+
+        match type_code {
+            "boolean" => {
+                type_hint_collector.boolean_paths.insert(path.to_string());
             }
+            "integer" => {
+                type_hint_collector.integer_paths.insert(path.to_string());
+            }
+            "integer64" => {
+                type_hint_collector.integer64_paths.insert(path.to_string());
+            }
+            "unsignedInt" => {
+                type_hint_collector
+                    .unsigned_integer_paths
+                    .insert(path.to_string());
+            }
+            "positiveInt" => {
+                type_hint_collector
+                    .positive_integer_paths
+                    .insert(path.to_string());
+            }
+            "decimal" => {
+                type_hint_collector
+                    .decimal_integer_paths
+                    .insert(path.to_string());
+            }
+            _ => (),
         }
+    } else {
+        type_hint_collector
+            .type_paths
+            .insert(path.to_string(), type_code.to_string());
     }
 }
 

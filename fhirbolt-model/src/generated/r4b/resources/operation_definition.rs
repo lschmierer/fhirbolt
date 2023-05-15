@@ -1,4 +1,4 @@
-// Generated on 2023-05-14 by fhirbolt-codegen v0.8.0
+// Generated on 2023-05-15 by fhirbolt-codegen v0.8.0
 #[doc = "Binds to a value set if this parameter is coded (code, Coding, CodeableConcept)."]
 #[derive(Debug, Clone, PartialEq)]
 pub struct OperationDefinitionParameterBinding {

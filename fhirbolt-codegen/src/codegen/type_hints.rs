@@ -14,7 +14,7 @@ pub fn generate_type_hints(type_hints: &TypeHints) -> TokenStream {
     let type_hints_unsigned_integer_paths_tokens = generate_set(&type_hints.unsigned_integer_paths);
     let type_hints_positive_integer_paths_tokens = generate_set(&type_hints.positive_integer_paths);
     let type_hints_decimal_paths_tokens = generate_set(&type_hints.decimal_integer_paths);
-    let type_hints_other_primitives_paths_tokens = generate_set(&type_hints.other_primitives_paths);
+    let type_hints_all_primitives_paths_tokens = generate_set(&type_hints.all_primitives_paths);
     let content_references_paths_tokens = generate_map(&type_hints.content_reference_paths);
 
     quote! {
@@ -29,7 +29,7 @@ pub fn generate_type_hints(type_hints: &TypeHints) -> TokenStream {
             unsigned_integer_paths: #type_hints_unsigned_integer_paths_tokens,
             positive_integer_paths: #type_hints_positive_integer_paths_tokens,
             decimal_paths: #type_hints_decimal_paths_tokens,
-            other_primitives_paths: #type_hints_other_primitives_paths_tokens,
+            all_primitives_paths: #type_hints_all_primitives_paths_tokens,
             content_reference_paths: #content_references_paths_tokens
         };
     }

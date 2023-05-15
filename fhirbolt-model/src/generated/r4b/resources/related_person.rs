@@ -1,4 +1,4 @@
-// Generated on 2023-05-14 by fhirbolt-codegen v0.8.0
+// Generated on 2023-05-15 by fhirbolt-codegen v0.8.0
 #[doc = "A language which may be used to communicate with about the patient's health."]
 #[derive(Debug, Clone, PartialEq)]
 pub struct RelatedPersonCommunication {

@@ -93,7 +93,7 @@ where
     if current_path.current_element_is_primitive() {
         if !PRIMITIVE_CHILDREN.contains(&field) {
             return Err(de::Error::custom(format_args!(
-                "unknown field `{}`, expected one of {:?}",
+                "unknown field `{}`, expected one of primitive children {:?}",
                 field, PRIMITIVE_CHILDREN
             )));
         }

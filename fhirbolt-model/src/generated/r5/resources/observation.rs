@@ -1,4 +1,4 @@
-// Generated on 2023-05-14 by fhirbolt-codegen v0.8.0
+// Generated on 2023-05-15 by fhirbolt-codegen v0.8.0
 #[doc = "The reference to a FHIR ObservationDefinition resource that provides the definition that is adhered to in whole or in part by this Observation instance."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum ObservationInstantiates {

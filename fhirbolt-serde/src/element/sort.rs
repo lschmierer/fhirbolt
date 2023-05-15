@@ -15,6 +15,7 @@ pub fn element_sorted<'a, const R: FhirRelease>(
             "id" => 0,
             "url" => 1,
             "value" => 2,
+            "extension" => 3,
             _ => usize::MAX,
         });
     } else {
