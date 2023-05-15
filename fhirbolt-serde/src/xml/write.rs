@@ -71,7 +71,7 @@ pub struct IoWrite<W: io::Write> {
     writer: Writer<W>,
     decl_written: bool,
     fhir_namespace_written: bool,
-    open_element_stack: Vec<Cow<'static, str>>,
+    open_element_stack: Vec<String>,
 }
 
 impl<W: io::Write> IoWrite<W> {
@@ -112,7 +112,7 @@ impl<W: io::Write> IoWrite<W> {
     }
 
     fn write_start(&mut self, element: Element, empty: bool) -> Result<()> {
-        let mut start = BytesStart::new(element.name.clone());
+        let mut start = BytesStart::new(element.name.as_str());
 
         if !self.fhir_namespace_written {
             push_attribute(&mut start, b"xmlns", Some(FHIR_NAMESPACE));

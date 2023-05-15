@@ -1,5 +1,3 @@
-use std::borrow::Cow;
-
 #[derive(Debug, PartialEq)]
 pub enum Event {
     ElementStart(Element),
@@ -11,16 +9,16 @@ pub enum Event {
 
 #[derive(Default, Debug, PartialEq, Clone)]
 pub struct Element {
-    pub name: Cow<'static, str>,
+    pub name: String,
     pub id: Option<String>,
     pub url: Option<String>,
     pub value: Option<String>,
 }
 
 impl Element {
-    pub fn new<S: Into<Cow<'static, str>>>(name: S) -> Element {
+    pub fn new(name: String) -> Element {
         Element {
-            name: name.into(),
+            name,
             id: None,
             url: None,
             value: None,

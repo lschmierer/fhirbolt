@@ -6,7 +6,11 @@ use std::{
 };
 
 use serde::{
-    de::{self, value::CowStrDeserializer, DeserializeSeed, Visitor},
+    de::{
+        self,
+        value::{StrDeserializer, StringDeserializer},
+        DeserializeSeed, Visitor,
+    },
     forward_to_deserialize_any,
 };
 
@@ -258,12 +262,12 @@ struct ElementAccess<'a, R: Read> {
     de: &'a mut Deserializer<R>,
     element: Element,
     is_empty: bool,
-    write_resource_type: bool,
+    write_resource_type: Option<String>,
 }
 
 impl<'a, R: Read> ElementAccess<'a, R> {
     fn new(de: &'a mut Deserializer<R>) -> Result<Self> {
-        let (element, is_empty) = match de.next_event()? {
+        let (mut element, is_empty) = match de.next_event()? {
             Event::EmptyElement(e) | Event::Div(e) => (e, true),
             Event::ElementStart(e) => (e, false),
             Event::ElementEnd => {
@@ -280,7 +284,11 @@ impl<'a, R: Read> ElementAccess<'a, R> {
             }
         };
 
-        let write_resource_type = element.is_resource();
+        let write_resource_type = if element.is_resource() {
+            Some(mem::take(&mut element.name))
+        } else {
+            None
+        };
 
         Ok(ElementAccess {
             de,
@@ -298,29 +306,27 @@ impl<'de, 'a, R: Read> de::MapAccess<'de> for ElementAccess<'a, R> {
     where
         K: DeserializeSeed<'de>,
     {
-        if self.write_resource_type {
-            seed.deserialize(CowStrDeserializer::new("resourceType".into()))
+        if self.write_resource_type.is_some() {
+            seed.deserialize(StrDeserializer::new("resourceType"))
                 .map(Some)
         } else if self.element.id.is_some() {
-            seed.deserialize(CowStrDeserializer::new("id".into()))
-                .map(Some)
+            seed.deserialize(StrDeserializer::new("id")).map(Some)
         } else if self.element.url.is_some() {
-            seed.deserialize(CowStrDeserializer::new("url".into()))
-                .map(Some)
+            seed.deserialize(StrDeserializer::new("url")).map(Some)
         } else if self.element.value.is_some() {
-            seed.deserialize(CowStrDeserializer::new("value".into()))
-                .map(Some)
+            seed.deserialize(StrDeserializer::new("value")).map(Some)
         } else if !self.is_empty {
             match self.de.peek() {
                 Event::ElementStart(e) | Event::EmptyElement(e) | Event::Div(e) => {
                     if e.is_resource() {
+                        self.write_resource_type = Some(mem::take(&mut e.name));
+
                         self.element = mem::take(e);
-                        self.write_resource_type = true;
                         _ = self.de.next_event()?;
 
                         self.next_key_seed(seed)
                     } else {
-                        seed.deserialize(CowStrDeserializer::new(e.name.clone()))
+                        seed.deserialize(StringDeserializer::new(mem::take(&mut e.name)))
                             .map(Some)
                     }
                 }
@@ -343,14 +349,14 @@ impl<'de, 'a, R: Read> de::MapAccess<'de> for ElementAccess<'a, R> {
     where
         V: DeserializeSeed<'de>,
     {
-        if mem::replace(&mut self.write_resource_type, false) {
-            seed.deserialize(CowStrDeserializer::new(self.element.name.clone()))
+        if let Some(resource_type) = self.write_resource_type.take() {
+            seed.deserialize(StringDeserializer::new(resource_type))
         } else if let Some(id) = self.element.id.take() {
-            seed.deserialize(CowStrDeserializer::new(id.into()))
+            seed.deserialize(StringDeserializer::new(id))
         } else if let Some(url) = self.element.url.take() {
-            seed.deserialize(CowStrDeserializer::new(url.into()))
+            seed.deserialize(StringDeserializer::new(url))
         } else if let Some(value) = self.element.value.take() {
-            seed.deserialize(CowStrDeserializer::new(value.into()))
+            seed.deserialize(StringDeserializer::new(value))
         } else {
             seed.deserialize(&mut ElementDeserializer::new(self.de))
         }
