@@ -187,7 +187,7 @@ mod tests {
     fn test_write_start() {
         let mut io_write = IoWrite::new(Cursor::new(Vec::new()));
         let element = Element {
-            name: Cow::Borrowed("test"),
+            name: "test".into(),
             id: None,
             url: None,
             value: None,
@@ -207,7 +207,7 @@ mod tests {
     fn test_write_end() {
         let mut io_write = IoWrite::new(Cursor::new(Vec::new()));
         let element = Element {
-            name: Cow::Borrowed("test"),
+            name: "test".into(),
             id: None,
             url: None,
             value: None,
@@ -225,7 +225,7 @@ mod tests {
     fn test_empty_element() {
         let mut io_write = IoWrite::new(Cursor::new(Vec::new()));
         let element = Element {
-            name: Cow::Borrowed("test"),
+            name: "test".into(),
             id: None,
             url: None,
             value: None,
@@ -243,7 +243,7 @@ mod tests {
     fn test_div_element() {
         let mut io_write = IoWrite::new(Cursor::new(Vec::new()));
         let element = Element {
-            name: Cow::Borrowed("div"),
+            name: "div".into(),
             id: None,
             url: None,
             value: Some("<div>Hello World!</div>".into()),

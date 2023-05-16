@@ -317,7 +317,7 @@ impl<'a, W: Write> SerializeMap for SerializeTopLevelResource<'a, W> {
 
         if key == "resourceType" {
             self.ser.write_start(Element {
-                name: value.serialize(StrSerializer::<Error>::new())?.into(),
+                name: value.serialize(StrSerializer::<Error>::new())?,
                 id: None,
                 url: None,
                 value: None,
