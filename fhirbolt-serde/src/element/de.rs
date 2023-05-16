@@ -1,6 +1,6 @@
 //! Deserialize FHIR resources as generic element.
 
-use std::{result, vec};
+use std::vec;
 
 use serde::{
     de::{

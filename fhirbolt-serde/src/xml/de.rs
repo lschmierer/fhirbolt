@@ -47,14 +47,14 @@ where
 /// use fhirbolt::model::r4b::Resource;
 ///
 /// // The type of `s` is `&str`
-/// let s = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>
-/// <Observation xmlns=\"http://hl7.org/fhir\">
-///     <status value=\"final\"/>
+/// let s = r#"<?xml version="1.0" encoding="UTF-8"?>
+/// <Observation xmlns="http://hl7.org/fhir">
+///     <status value="final"/>
 ///     <code>
-///         <text value=\"some code\"/>
+///         <text value="some code"/>
 ///     </code>
-///     <valueString value=\"some value\"/>
-/// </Observation>";
+///     <valueString value="some value"/>
+/// </Observation>"#;
 ///
 /// // `s.as_bytes()` returns `&[u8]` which implements `std::io::Read`
 /// let r: Resource = fhirbolt::xml::from_reader(s.as_bytes(), None).unwrap();
@@ -83,15 +83,15 @@ where
 /// // (like e.g. `fhirbolt::model::r4b::resources::Observation`).
 /// use fhirbolt::model::r4b::Resource;
 ///
-/// // The type of `s` is `&[u8]`
-/// let b = b"<?xml version=\"1.0\" encoding=\"UTF-8\"?>
-/// <Observation xmlns=\"http://hl7.org/fhir\">
-///     <status value=\"final\"/>
+/// // The type of `b` is `&[u8]`
+/// let b = br#"<?xml version="1.0" encoding="UTF-8"?>
+/// <Observation xmlns="http://hl7.org/fhir">
+///     <status value="final"/>
 ///     <code>
-///         <text value=\"some code\"/>
+///         <text value="some code"/>
 ///     </code>
-///     <valueString value=\"some value\"/>
-/// </Observation>";
+///     <valueString value="some value"/>
+/// </Observation>"#;
 ///
 /// let r: Resource = fhirbolt::xml::from_slice(b, None).unwrap();
 /// println!("{:?}", r);
@@ -117,14 +117,14 @@ where
 /// use fhirbolt::model::r4b::Resource;
 ///
 /// // The type of `s` is `&str`
-/// let s = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>
-/// <Observation xmlns=\"http://hl7.org/fhir\">
-///     <status value=\"final\"/>
+/// let s = r#"<?xml version="1.0" encoding="UTF-8"?>
+/// <Observation xmlns="http://hl7.org/fhir">
+///     <status value="final"/>
 ///     <code>
-///         <text value=\"some code\"/>
+///         <text value="some code"/>
 ///     </code>
-///     <valueString value=\"some value\"/>
-/// </Observation>";
+///     <valueString value="some value"/>
+/// </Observation>"#;
 ///
 /// let r: Resource = fhirbolt::xml::from_str(s, None).unwrap();
 /// println!("{:?}", r);

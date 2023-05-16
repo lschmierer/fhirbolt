@@ -11,14 +11,14 @@
 //! use fhirbolt::serde::{DeserializationConfig, DeserializationMode};
 //!
 //! // The type of `s` is `&str`
-//! let s = "{
-//!     \"resourceType\": \"Observation\",
-//!     \"status\": \"final\",
-//!     \"code\": {
-//!         \"text\": \"some code\"
+//! let s = r#"{
+//!     "resourceType": "Observation",
+//!     "status": "final",
+//!     "code": {
+//!         "text": "some code"
 //!     },
-//!     \"valueString\": \"some value\"
-//! }";
+//!     "valueString": "some value"
+//! }"#;
 //!
 //! let e: Element<{ FhirReleases::R4B }> =  fhirbolt::json::from_str(s, None).unwrap();
 //! let r: Resource = fhirbolt::element::from_element(e, None).unwrap();
@@ -67,14 +67,14 @@ pub use error::{Error, Result};
 /// use fhirbolt::serde::{DeserializationConfig, DeserializationMode};
 ///
 /// // The type of `s` is `&str`
-/// let s = "{
-///     \"resourceType\": \"Observation\",
-///     \"status\": \"final\",
-///     \"code\": {
-///         \"text\": \"some code\"
+/// let s = r#"{
+///     "resourceType": "Observation",
+///     "status": "final",
+///     "code": {
+///         "text": "some code"
 ///     },
-///     \"valueString\": \"some value\"
-/// }";
+///     "valueString": "some value"
+/// }"#;
 ///
 /// let e: Element<{ FhirReleases::R4B }> =  fhirbolt::json::from_str(s, None).unwrap();
 /// let r: Resource = fhirbolt::element::from_element(e, None).unwrap();

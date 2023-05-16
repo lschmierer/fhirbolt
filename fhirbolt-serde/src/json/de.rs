@@ -31,14 +31,14 @@ where
 /// use fhirbolt::model::r4b::Resource;
 ///
 /// // The type of `s` is `&str`
-/// let s = "{
-///     \"resourceType\": \"Observation\",
-///     \"status\": \"final\",
-///     \"code\": {
-///         \"text\": \"some code\"
+/// let s = r#"{
+///     "resourceType": "Observation",
+///     "status": "final",
+///     "code": {
+///         "text": "some code"
 ///     },
-///     \"valueString\": \"some value\"
-/// }";
+///     "valueString": "some value"
+/// }"#;
 ///
 /// // `s.as_bytes()` returns `&[u8]` which implements `std::io::Read`
 /// let r: Resource = fhirbolt::json::from_reader(s.as_bytes(), None).unwrap();
@@ -66,14 +66,14 @@ where
 /// use fhirbolt::model::r4b::Resource;
 ///
 /// // The type of `b` is `&[u8]`
-/// let b = b"{
-///     \"resourceType\": \"Observation\",
-///     \"status\": \"final\",
-///     \"code\": {
-///         \"text\": \"some code\"
+/// let b = br#"{
+///     "resourceType": "Observation",
+///     "status": "final",
+///     "code": {
+///         "text": "some code"
 ///     },
-///     \"valueString\": \"some value\"
-/// }";
+///     "valueString": "some value"
+/// }"#;
 ///
 /// let r: Resource = fhirbolt::json::from_slice(b, None).unwrap();
 /// println!("{:?}", r);
@@ -99,14 +99,14 @@ where
 /// use fhirbolt::model::r4b::Resource;
 ///
 /// // The type of `s` is `&str`
-/// let s = "{
-///     \"resourceType\": \"Observation\",
-///     \"status\": \"final\",
-///     \"code\": {
-///         \"text\": \"some code\"
+/// let s = r#"{
+///     "resourceType": "Observation",
+///     "status": "final",
+///     "code": {
+///         "text": "some code"
 ///     },
-///     \"valueString\": \"some value\"
-/// }";
+///     "valueString": "some value"
+/// }"#;
 ///
 /// let r: Resource = fhirbolt::json::from_str(s, None).unwrap();
 /// println!("{:?}", r);
@@ -132,14 +132,14 @@ where
 /// use fhirbolt::model::r4b::Resource;
 ///
 /// // The type of `s` is `&str`
-/// let s = "{
-///     \"resourceType\": \"Observation\",
-///     \"status\": \"final\",
-///     \"code\": {
-///         \"text\": \"some code\"
+/// let s = r#"{
+///     "resourceType": "Observation",
+///     "status": "final",
+///     "code": {
+///         "text": "some code"
 ///     },
-///     \"valueString\": \"some value\"
-/// }";
+///     "valueString": "some value"
+/// }"#;
 ///
 /// let v: serde_json::Value = serde_json::from_str(s).unwrap();
 ///
