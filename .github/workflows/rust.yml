@@ -54,31 +54,19 @@ jobs:
       - name: Build
         run: cargo build -p fhirbolt --features r5 --release --verbose
 
-  clippy_check:
+  clippy:
     runs-on: macos-latest
 
     steps:
       - uses: actions/checkout@v3
-      - run: rustup component add clippy
       - uses: Swatinem/rust-cache@v2
         with:
           shared-key: "rust-cache"
-      - name: Run clippy
-        run: cargo clippy --all-features -- -D warnings
-
-  clippy_annotations:
-    runs-on: macos-latest
-
-    steps:
-      - uses: actions/checkout@v3
-      - run: rustup component add clippy
-      - uses: Swatinem/rust-cache@v2
+      - uses: giraffate/clippy-action@v1
         with:
-          shared-key: "rust-cache"
-      - uses: actions-rs/clippy-check@v1
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          args: --all-features
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          clippy_flags: --all-features -- -D warnings
+          fail_on_error: true
 
   unit_tests:
     needs: [build_codegen, build_r4, build_r4b, build_r5]
