@@ -27,5 +27,8 @@ fhirbolt-element = {  version = "0.3.0", path = "../fhirbolt-element" }
 fhirbolt-shared = {  version = "0.3.0", path = "../fhirbolt-shared" }
 
 [dev-dependencies]
+assert-json-diff = "2.0"
+tests = { path = "../tests" }
+
 # used by doc-tests
 fhirbolt = { path = "../fhirbolt", features = ["r4b"] }

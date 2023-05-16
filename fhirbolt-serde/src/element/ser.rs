@@ -3,7 +3,7 @@
 use std::str::FromStr;
 
 use serde::{
-    ser::{self, Impossible, SerializeMap, SerializeSeq, SerializeStruct},
+    ser::{self, Error, Impossible, SerializeMap, SerializeSeq, SerializeStruct},
     Serialize,
 };
 
@@ -40,7 +40,7 @@ impl<const R: FhirRelease> Serialize for SerializationContext<&Value<R>> {
                 Primitive::Decimal(s) => {
                     if self.output == Format::Json {
                         serde_json::Number::from_str(s)
-                            .map_err(|_| ser::Error::custom(format!("invalid decimal: \"{}\"", s)))?
+                            .map_err(|_| Error::custom(format!("invalid decimal: \"{}\"", s)))?
                             .serialize(serializer)
                     } else {
                         serializer.serialize_str(s)
@@ -92,6 +92,62 @@ impl<const R: FhirRelease> SerializationContext<&Element<R>> {
             EitherIter::Right(self.value.iter().map(|(k, v)| (k.as_str(), v)))
         }
     }
+
+    fn serialize_primitive_value_json<M>(
+        &self,
+        serialize_map: &mut M,
+        key: &str,
+        value: &Value<R>,
+    ) -> Result<(), M::Error>
+    where
+        M: SerializeMap,
+    {
+        match value {
+            Value::Element(element) => {
+                if let Some(v) = element.get("value") {
+                    self.with_context(v, |ctx| serialize_map.serialize_entry(key, &ctx))?;
+                }
+
+                let primitive_element = PrimitiveElement::from_element(element)?;
+
+                if primitive_element.id.is_some() || !primitive_element.extension.is_empty() {
+                    self.with_context(&primitive_element, |ctx| {
+                        serialize_map.serialize_entry(&format!("_{}", key), &ctx)
+                    })?;
+                }
+            }
+            Value::Sequence(sequence) => {
+                let values = sequence.iter().map(|e| e.get("value")).collect::<Vec<_>>();
+
+                if values.iter().any(|e| e.is_some()) {
+                    self.with_context(values, |ctx| serialize_map.serialize_entry(key, &ctx))?
+                }
+
+                let elements = sequence
+                    .iter()
+                    .map(|e| {
+                        PrimitiveElement::from_element(e).map(|v| {
+                            if v.id.is_some() || !v.extension.is_empty() {
+                                Some(v)
+                            } else {
+                                None
+                            }
+                        })
+                    })
+                    .collect::<Result<Vec<_>, _>>()?;
+
+                if elements.iter().any(|e| e.is_some()) {
+                    self.with_context(
+                        elements.iter().map(|e| e.as_ref()).collect::<Vec<_>>(),
+                        |ctx| serialize_map.serialize_entry(&format!("_{}", key), &ctx),
+                    )?
+                }
+            }
+            _ => self.with_context(value, |ctx| serialize_map.serialize_entry(key, &ctx))?,
+        }
+
+        Ok(())
+    }
 }
 
 impl<const R: FhirRelease> Serialize for SerializationContext<&Element<R>> {
@@ -112,50 +168,7 @@ impl<const R: FhirRelease> Serialize for SerializationContext<&Element<R>> {
             self.current_path_mut().push(key);
 
             if self.output == Format::Json && self.current_path().current_element_is_primitive() {
-                match value {
-                    Value::Element(element) => {
-                        if let Some(v) = element.get("value") {
-                            self.with_context(v, |ctx| map.serialize_entry(key, &ctx))?;
-                        }
-
-                        let primitive_element = PrimitiveElement::from_element(element)?;
-
-                        if primitive_element.id.is_some() || !primitive_element.extension.is_empty()
-                        {
-                            self.with_context(&primitive_element, |ctx| {
-                                map.serialize_entry(&format!("_{}", key), &ctx)
-                            })?;
-                        }
-                    }
-                    Value::Sequence(sequence) => {
-                        let values = sequence.iter().map(|e| e.get("value")).collect::<Vec<_>>();
-
-                        if values.iter().any(|e| e.is_some()) {
-                            self.with_context(values, |ctx| map.serialize_entry(key, &ctx))?
-                        }
-
-                        let elements = sequence
-                            .iter()
-                            .map(|e| {
-                                PrimitiveElement::from_element(e).map(|v| {
-                                    if v.id.is_some() || !v.extension.is_empty() {
-                                        Some(v)
-                                    } else {
-                                        None
-                                    }
-                                })
-                            })
-                            .collect::<Result<Vec<_>, _>>()?;
-
-                        if elements.iter().any(|e| e.is_some()) {
-                            self.with_context(
-                                elements.iter().map(|e| e.as_ref()).collect::<Vec<_>>(),
-                                |ctx| map.serialize_entry(&format!("_{}", key), &ctx),
-                            )?
-                        }
-                    }
-                    _ => self.with_context(value, |ctx| map.serialize_entry(key, &ctx))?,
-                }
+                self.serialize_primitive_value_json(&mut map, key, value)?;
             } else {
                 self.with_context(value, |ctx| map.serialize_entry(key, &ctx))?;
             }
@@ -196,31 +209,32 @@ pub struct PrimitiveElement<'a, const R: FhirRelease> {
 impl<'a, const R: FhirRelease> PrimitiveElement<'a, R> {
     fn from_element<E>(value: &'a Element<R>) -> Result<PrimitiveElement<'a, R>, E>
     where
-        E: ser::Error,
+        E: Error,
     {
-        Ok(PrimitiveElement {
-            id: value
-                .get("id")
-                .map(|v| {
-                    if let Value::Primitive(Primitive::String(s)) = v {
-                        Ok(s.as_str())
-                    } else {
-                        Err(E::custom(format!("invalid primitive value: {:?}", v)))
-                    }
-                })
-                .transpose()?,
-            extension: value
-                .get("extension")
-                .map(|v| {
-                    if let Value::Sequence(s) = v {
-                        Ok(s.as_slice())
-                    } else {
-                        Err(E::custom(format!("invalid extension: {:?}", v)))
-                    }
-                })
-                .transpose()?
-                .unwrap_or(&[]),
-        })
+        let id = value
+            .get("id")
+            .map(|v| {
+                if let Value::Primitive(Primitive::String(s)) = v {
+                    Ok(s.as_str())
+                } else {
+                    Err(E::custom(format!("invalid primitive value: {:?}", v)))
+                }
+            })
+            .transpose()?;
+
+        let extension = value
+            .get("extension")
+            .map(|v| {
+                if let Value::Sequence(s) = v {
+                    Ok(s.as_slice())
+                } else {
+                    Err(E::custom(format!("invalid extension: {:?}", v)))
+                }
+            })
+            .transpose()?
+            .unwrap_or(&[]);
+
+        Ok(PrimitiveElement { id, extension })
     }
 }
 
@@ -371,12 +385,12 @@ impl<const R: FhirRelease> ser::Serializer for Serializer<R> {
 
     #[inline]
     fn serialize_bytes(self, _v: &[u8]) -> Result<Self::Ok, Self::Error> {
-        Err(ser::Error::custom("bytes not supported"))
+        Err(Error::custom("bytes not supported"))
     }
 
     #[inline]
     fn serialize_none(self) -> Result<Self::Ok, Self::Error> {
-        Err(ser::Error::custom("options not supported"))
+        Err(Error::custom("options not supported"))
     }
 
     #[inline]
@@ -384,17 +398,17 @@ impl<const R: FhirRelease> ser::Serializer for Serializer<R> {
     where
         T: Serialize,
     {
-        Err(ser::Error::custom("options not supported"))
+        Err(Error::custom("options not supported"))
     }
 
     #[inline]
     fn serialize_unit(self) -> Result<Self::Ok, Self::Error> {
-        Err(ser::Error::custom("unit not supported"))
+        Err(Error::custom("unit not supported"))
     }
 
     #[inline]
     fn serialize_unit_struct(self, _name: &'static str) -> Result<Self::Ok, Self::Error> {
-        Err(ser::Error::custom("unit structs not supported"))
+        Err(Error::custom("unit structs not supported"))
     }
 
     #[inline]
@@ -404,7 +418,7 @@ impl<const R: FhirRelease> ser::Serializer for Serializer<R> {
         _variant_index: u32,
         _variant: &'static str,
     ) -> Result<Self::Ok, Self::Error> {
-        Err(ser::Error::custom("units not supported"))
+        Err(Error::custom("units not supported"))
     }
 
     #[inline]
@@ -416,7 +430,7 @@ impl<const R: FhirRelease> ser::Serializer for Serializer<R> {
     where
         T: Serialize,
     {
-        Err(ser::Error::custom("newtype structs not supported"))
+        Err(Error::custom("newtype structs not supported"))
     }
 
     #[inline]
@@ -430,7 +444,7 @@ impl<const R: FhirRelease> ser::Serializer for Serializer<R> {
     where
         T: Serialize,
     {
-        Err(ser::Error::custom("newtype variants not supported"))
+        Err(Error::custom("newtype variants not supported"))
     }
 
     #[inline]
@@ -440,7 +454,7 @@ impl<const R: FhirRelease> ser::Serializer for Serializer<R> {
 
     #[inline]
     fn serialize_tuple(self, _len: usize) -> Result<Self::SerializeTuple, Self::Error> {
-        Err(ser::Error::custom("tuples not supported"))
+        Err(Error::custom("tuples not supported"))
     }
 
     #[inline]
@@ -449,7 +463,7 @@ impl<const R: FhirRelease> ser::Serializer for Serializer<R> {
         _name: &'static str,
         _len: usize,
     ) -> Result<Self::SerializeTupleStruct, Self::Error> {
-        Err(ser::Error::custom("tuple structs not supported"))
+        Err(Error::custom("tuple structs not supported"))
     }
 
     #[inline]
@@ -460,7 +474,7 @@ impl<const R: FhirRelease> ser::Serializer for Serializer<R> {
         _variant: &'static str,
         _len: usize,
     ) -> Result<Self::SerializeTupleVariant, Self::Error> {
-        Err(ser::Error::custom("tuple variants not supported"))
+        Err(Error::custom("tuple variants not supported"))
     }
 
     #[inline]
@@ -489,7 +503,7 @@ impl<const R: FhirRelease> ser::Serializer for Serializer<R> {
         _variant: &'static str,
         _len: usize,
     ) -> Result<Self::SerializeStructVariant, Self::Error> {
-        Err(ser::Error::custom("struct variants not supported"))
+        Err(Error::custom("struct variants not supported"))
     }
 }
 
@@ -508,7 +522,7 @@ impl<const R: FhirRelease> ser::SerializeSeq for SerializeSequence<R> {
     {
         match value.serialize(Serializer)? {
             Value::Element(e) => self.vec.push(e),
-            _ => return Err(ser::Error::custom("sequence can only contain elements")),
+            _ => return Err(Error::custom("sequence can only contain elements")),
         }
         Ok(())
     }

@@ -1,7 +1,7 @@
 use std::{iter, mem, vec};
 
 use serde::{
-    de::{self, DeserializeSeed, MapAccess, SeqAccess, Unexpected, Visitor},
+    de::{self, DeserializeSeed, Error, MapAccess, SeqAccess, Unexpected, Visitor},
     forward_to_deserialize_any,
 };
 
@@ -92,7 +92,7 @@ where
 {
     if current_path.current_element_is_primitive() {
         if !PRIMITIVE_CHILDREN.contains(&field) {
-            return Err(de::Error::custom(format_args!(
+            return Err(Error::custom(format_args!(
                 "unknown field `{}`, expected one of primitive children {:?}",
                 field, PRIMITIVE_CHILDREN
             )));
@@ -102,13 +102,13 @@ where
 
         if !fields.map(|s| s.contains(field)).unwrap_or(false) {
             if let Some(expected_fields) = fields {
-                return Err(de::Error::custom(format_args!(
+                return Err(Error::custom(format_args!(
                     "unknown field `{}`, expected one of {:?}",
                     field,
                     &expected_fields.iter().collect::<Vec<_>>()
                 )));
             } else {
-                return Err(de::Error::custom(format_args!(
+                return Err(Error::custom(format_args!(
                     "unknown field `{}`, there are no fields",
                     field
                 )));
@@ -164,23 +164,23 @@ where
     let expected = "a boolean";
     match primitive {
         Primitive::Bool(b) => Ok(Primitive::Bool(*b)),
-        Primitive::Integer(i) => Err(de::Error::invalid_type(
+        Primitive::Integer(i) => Err(Error::invalid_type(
             Unexpected::Signed((*i).into()),
             &expected,
         )),
-        Primitive::Integer64(i) => Err(de::Error::invalid_type(
+        Primitive::Integer64(i) => Err(Error::invalid_type(
             Unexpected::Other(&format!("integer `{}`", i)),
             &expected,
         )),
         Primitive::Decimal(s) => {
-            return Err(de::Error::invalid_type(
+            return Err(Error::invalid_type(
                 Unexpected::Other(&format!("decimal `{}`", s)),
                 &expected,
             ))
         }
         Primitive::String(s) => {
             Ok(Primitive::Bool(s.parse().map_err(|_| {
-                de::Error::invalid_value(Unexpected::Other(s), &expected)
+                Error::invalid_value(Unexpected::Other(s), &expected)
             })?))
         }
     }
@@ -192,18 +192,18 @@ where
 {
     let expected = "an integer";
     match primitive {
-        Primitive::Bool(b) => Err(de::Error::invalid_type(Unexpected::Bool(*b), &expected)),
+        Primitive::Bool(b) => Err(Error::invalid_type(Unexpected::Bool(*b), &expected)),
         Primitive::Integer(i) => Ok(Primitive::Integer(*i)),
         Primitive::Integer64(i) => Ok(Primitive::Integer(*i as i32)),
         Primitive::Decimal(s) => {
-            return Err(de::Error::invalid_type(
+            return Err(Error::invalid_type(
                 Unexpected::Other(&format!("decimal `{}`", s)),
                 &expected,
             ))
         }
         Primitive::String(s) => {
             Ok(Primitive::Integer(s.parse().map_err(|_| {
-                de::Error::invalid_value(Unexpected::Other(s), &expected)
+                Error::invalid_value(Unexpected::Other(s), &expected)
             })?))
         }
     }
@@ -215,18 +215,18 @@ where
 {
     let expected = "an integer64";
     match primitive {
-        Primitive::Bool(b) => Err(de::Error::invalid_type(Unexpected::Bool(*b), &expected)),
+        Primitive::Bool(b) => Err(Error::invalid_type(Unexpected::Bool(*b), &expected)),
         Primitive::Integer(i) => Ok(Primitive::Integer64((*i).into())),
         Primitive::Integer64(i) => Ok(Primitive::Integer64(*i)),
         Primitive::Decimal(s) => {
-            return Err(de::Error::invalid_type(
+            return Err(Error::invalid_type(
                 Unexpected::Other(&format!("decimal `{}`", s)),
                 &expected,
             ))
         }
         Primitive::String(s) => {
             Ok(Primitive::Integer64(s.parse().map_err(|_| {
-                de::Error::invalid_value(Unexpected::Other(s), &expected)
+                Error::invalid_value(Unexpected::Other(s), &expected)
             })?))
         }
     }
@@ -238,7 +238,7 @@ where
 {
     let expected = "a decimal";
     match primitive {
-        Primitive::Bool(b) => Err(de::Error::invalid_type(Unexpected::Bool(*b), &expected)),
+        Primitive::Bool(b) => Err(Error::invalid_type(Unexpected::Bool(*b), &expected)),
         Primitive::Integer(i) => Ok(Primitive::Decimal(i.to_string())),
         Primitive::Integer64(i) => Ok(Primitive::Decimal(i.to_string())),
         Primitive::Decimal(s) | Primitive::String(s) => Ok(Primitive::Decimal(mem::take(s))),
@@ -251,17 +251,17 @@ where
 {
     let expected = "a string";
     match primitive {
-        Primitive::Bool(b) => Err(de::Error::invalid_type(Unexpected::Bool(*b), &expected)),
-        Primitive::Integer(i) => Err(de::Error::invalid_type(
+        Primitive::Bool(b) => Err(Error::invalid_type(Unexpected::Bool(*b), &expected)),
+        Primitive::Integer(i) => Err(Error::invalid_type(
             Unexpected::Signed((*i).into()),
             &expected,
         )),
-        Primitive::Integer64(i) => Err(de::Error::invalid_type(
+        Primitive::Integer64(i) => Err(Error::invalid_type(
             Unexpected::Other(&format!("integer `{}`", i)),
             &expected,
         )),
         Primitive::Decimal(s) => {
-            return Err(de::Error::invalid_type(
+            return Err(Error::invalid_type(
                 Unexpected::Other(&format!("decimal `{}`", s)),
                 &expected,
             ))
@@ -282,8 +282,8 @@ impl<'de, const R: FhirRelease> DeserializeSeed<'de>
     {
         match deserializer.deserialize_any(ValueVisitor(self.transmute()))? {
             Value::Element(e) => Ok(InternalElement(e)),
-            Value::Sequence(_) => Err(de::Error::invalid_type(Unexpected::Seq, &"an element")),
-            Value::Primitive(_) => Err(de::Error::invalid_type(
+            Value::Sequence(_) => Err(Error::invalid_type(Unexpected::Seq, &"an element")),
+            Value::Primitive(_) => Err(Error::invalid_type(
                 Unexpected::Other("primitive"),
                 &"an element",
             )),
@@ -337,7 +337,7 @@ impl<'a, 'de, const R: FhirRelease> Visitor<'de> for ValueVisitor<'a, R> {
     #[inline]
     fn visit_bool<E>(self, v: bool) -> Result<Self::Value, E>
     where
-        E: de::Error,
+        E: Error,
     {
         if self.0.from == Format::Json {
             Ok(Value::Element(Element! {
@@ -351,7 +351,7 @@ impl<'a, 'de, const R: FhirRelease> Visitor<'de> for ValueVisitor<'a, R> {
     #[inline]
     fn visit_u64<E>(self, v: u64) -> Result<Self::Value, E>
     where
-        E: de::Error,
+        E: Error,
     {
         if self.0.from == Format::Json {
             Ok(Value::Element(Element! {
@@ -365,7 +365,7 @@ impl<'a, 'de, const R: FhirRelease> Visitor<'de> for ValueVisitor<'a, R> {
     #[inline]
     fn visit_i64<E>(self, v: i64) -> Result<Self::Value, E>
     where
-        E: de::Error,
+        E: Error,
     {
         if self.0.from == Format::Json {
             Ok(Value::Element(Element! {
@@ -379,11 +379,11 @@ impl<'a, 'de, const R: FhirRelease> Visitor<'de> for ValueVisitor<'a, R> {
     #[inline]
     fn visit_f64<E>(self, v: f64) -> Result<Self::Value, E>
     where
-        E: de::Error,
+        E: Error,
     {
         if self.0.from == Format::Json {
             let number = serde_json::Number::from_f64(v)
-                .ok_or_else(|| de::Error::custom("not a JSON number"))?;
+                .ok_or_else(|| Error::custom("not a JSON number"))?;
 
             Ok(Value::Element(Element! {
                 "value" =>  Value::Primitive(Primitive::Decimal(number.to_string())),
@@ -396,7 +396,7 @@ impl<'a, 'de, const R: FhirRelease> Visitor<'de> for ValueVisitor<'a, R> {
     #[inline]
     fn visit_string<E>(self, v: String) -> Result<Self::Value, E>
     where
-        E: de::Error,
+        E: Error,
     {
         if self.0.from == Format::Json {
             if self.0.current_element() == CurrentElement::Id
@@ -416,7 +416,7 @@ impl<'a, 'de, const R: FhirRelease> Visitor<'de> for ValueVisitor<'a, R> {
     #[inline]
     fn visit_str<E>(self, v: &str) -> Result<Self::Value, E>
     where
-        E: de::Error,
+        E: Error,
     {
         self.visit_string(v.to_string())
     }
@@ -468,27 +468,26 @@ impl<'a, 'de, const R: FhirRelease> Visitor<'de> for ValueVisitor<'a, R> {
                 let value = map_access.next_value_seed(self.0.transmute::<Value<R>>())?;
                 let existing = element.remove(&key);
 
-                element.insert(
-                    key,
-                    match (existing, value) {
-                        (Some(Value::Element(mut e)), Value::Element(n)) => {
-                            if self.0.from == Format::Json {
-                                e.extend(n);
-                                Value::Element(e)
-                            } else {
-                                Value::Sequence(vec![e, n])
-                            }
+                let matched_value = match (existing, value) {
+                    (Some(Value::Element(mut e)), Value::Element(n)) => {
+                        if self.0.from == Format::Json {
+                            e.extend(n);
+                            Value::Element(e)
+                        } else {
+                            Value::Sequence(vec![e, n])
                         }
-                        (Some(Value::Sequence(ev)), Value::Sequence(nv)) => {
-                            Value::Sequence(merge_sequences(ev, nv))
-                        }
-                        (Some(Value::Sequence(mut es)), Value::Element(n)) => {
-                            es.push(n);
-                            Value::Sequence(es)
-                        }
-                        (_e, v) => v,
-                    },
-                );
+                    }
+                    (Some(Value::Sequence(ev)), Value::Sequence(nv)) => {
+                        Value::Sequence(merge_sequences(ev, nv))
+                    }
+                    (Some(Value::Sequence(mut es)), Value::Element(n)) => {
+                        es.push(n);
+                        Value::Sequence(es)
+                    }
+                    (_e, v) => v,
+                };
+
+                element.insert(key, matched_value);
 
                 self.0.pop_current_element();
             }
@@ -523,16 +522,10 @@ impl<'a, 'de, const R: FhirRelease> Visitor<'de> for ValueVisitor<'a, R> {
             match value {
                 Some(Value::Element(e)) => elements.push(e),
                 Some(Value::Sequence(_)) => {
-                    return Err(de::Error::invalid_type(
-                        Unexpected::Seq,
-                        &"a sequence element",
-                    ))
+                    return Err(Error::invalid_type(Unexpected::Seq, &"a sequence element"))
                 }
                 Some(Value::Primitive(_)) => {
-                    return Err(de::Error::invalid_type(
-                        Unexpected::Seq,
-                        &"a sequence element",
-                    ))
+                    return Err(Error::invalid_type(Unexpected::Seq, &"a sequence element"))
                 }
                 None => elements.push(Default::default()),
             }
@@ -591,7 +584,7 @@ impl<'a, 'de, const R: FhirRelease> Visitor<'de> for SeqElementVisitor<'a, R> {
     #[inline]
     fn visit_none<E>(self) -> Result<Self::Value, E>
     where
-        E: de::Error,
+        E: Error,
     {
         Ok(None)
     }

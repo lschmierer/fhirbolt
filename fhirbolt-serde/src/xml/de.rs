@@ -448,18 +448,28 @@ mod tests {
                 name: "Observation".into(),
                 ..Default::default()
             }),
-            Event::EmptyElement(event::Element {
+            Event::ElementStart(event::Element {
                 name: "identifier".into(),
+                ..Default::default()
+            }),
+            Event::EmptyElement(event::Element {
+                name: "value".into(),
                 value: Some("123".into()),
                 ..Default::default()
             }),
             Event::ElementEnd,
             Event::ElementEnd,
-            Event::EmptyElement(event::Element {
+            Event::ElementEnd,
+            Event::ElementStart(event::Element {
                 name: "identifier".into(),
+                ..Default::default()
+            }),
+            Event::EmptyElement(event::Element {
+                name: "value".into(),
                 value: Some("123".into()),
                 ..Default::default()
             }),
+            Event::ElementEnd,
             Event::ElementEnd,
         ]);
 
@@ -475,11 +485,11 @@ mod tests {
                 "contained" =>  Value::Sequence(vec![Element! {
                     "resourceType" => Value::Primitive(Primitive::String("Observation".into())),
                     "identifier" => Value::Sequence(vec![Element! {
-                        "value" => Value::Primitive(Primitive::String("123".into())),
+                        "value" => Value::Element(Element! { "value" => Value::Primitive(Primitive::String("123".into())) }),
                     }])
                 }]),
                 "identifier" => Value::Sequence(vec![Element! {
-                    "value" => Value::Primitive(Primitive::String("123".into())),
+                    "value" => Value::Element(Element! { "value" => Value::Primitive(Primitive::String("123".into())) }),
                 }])
             }
         );

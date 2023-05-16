@@ -6,7 +6,7 @@ use serde::{
     de::{
         self,
         value::{StrDeserializer, StringDeserializer},
-        DeserializeSeed, MapAccess, Unexpected, Visitor,
+        DeserializeSeed, Error, MapAccess, Unexpected, Visitor,
     },
     forward_to_deserialize_any,
 };
@@ -15,16 +15,14 @@ use fhirbolt_element::{Element, Primitive, Value};
 use fhirbolt_shared::{path::ElementPath, FhirRelease};
 
 use crate::{
-    context::de::DeserializationContext,
-    element::error::{Error, Result},
-    element::internal::de::InternalElement,
+    context::de::DeserializationContext, element::error, element::internal::de::InternalElement,
 };
 
 impl<'de, const R: FhirRelease> DeserializeSeed<'de> for DeserializationContext<Element<R>> {
     type Value = Element<R>;
 
     #[inline]
-    fn deserialize<D>(mut self, deserializer: D) -> result::Result<Self::Value, D::Error>
+    fn deserialize<D>(mut self, deserializer: D) -> Result<Self::Value, D::Error>
     where
         D: de::Deserializer<'de>,
     {
@@ -37,10 +35,10 @@ impl<'de, const R: FhirRelease> DeserializeSeed<'de> for DeserializationContext<
 pub struct Deserializer<T>(pub T);
 
 impl<'de, const R: FhirRelease> de::Deserializer<'de> for Deserializer<Element<R>> {
-    type Error = Error;
+    type Error = error::Error;
 
     #[inline]
-    fn deserialize_any<V>(self, visitor: V) -> Result<V::Value>
+    fn deserialize_any<V>(self, visitor: V) -> error::Result<V::Value>
     where
         V: Visitor<'de>,
     {
@@ -55,16 +53,16 @@ impl<'de, const R: FhirRelease> de::Deserializer<'de> for Deserializer<Element<R
 }
 
 impl<'de, const R: FhirRelease> de::Deserializer<'de> for Deserializer<Value<R>> {
-    type Error = Error;
+    type Error = error::Error;
 
     #[inline]
-    fn deserialize_any<V>(self, visitor: V) -> Result<V::Value>
+    fn deserialize_any<V>(self, visitor: V) -> error::Result<V::Value>
     where
         V: Visitor<'de>,
     {
         match self.0 {
             Value::Element(e) => visitor.visit_map(ElementAccess::new(e)),
-            Value::Sequence(_) => Err(de::Error::invalid_type(
+            Value::Sequence(_) => Err(Error::invalid_type(
                 Unexpected::Seq,
                 &"an element or primitive",
             )),
@@ -123,9 +121,9 @@ impl<const R: FhirRelease> ElementAccess<R> {
 }
 
 impl<'de, const R: FhirRelease> MapAccess<'de> for ElementAccess<R> {
-    type Error = Error;
+    type Error = error::Error;
 
-    fn next_key_seed<K>(&mut self, seed: K) -> Result<Option<K::Value>>
+    fn next_key_seed<K>(&mut self, seed: K) -> error::Result<Option<K::Value>>
     where
         K: DeserializeSeed<'de>,
     {
@@ -157,7 +155,7 @@ impl<'de, const R: FhirRelease> MapAccess<'de> for ElementAccess<R> {
         }
     }
 
-    fn next_value_seed<V>(&mut self, seed: V) -> Result<V::Value>
+    fn next_value_seed<V>(&mut self, seed: V) -> error::Result<V::Value>
     where
         V: DeserializeSeed<'de>,
     {
