@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-15 by fhirbolt-codegen v0.8.0
 #[doc = "Value of extension - must be one of a constrained set of the data types (see [Extensibility](https://hl7.org/FHIR/extensibility.html)) for a list)."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum ExtensionValue {
@@ -67,6 +67,7 @@ pub struct Extension {
     #[doc = "Value of extension - must be one of a constrained set of the data types (see [Extensibility](https://hl7.org/FHIR/extensibility.html)) for a list)."]
     pub r#value: Option<ExtensionValue>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for Extension {
     fn default() -> Self {
         Self {

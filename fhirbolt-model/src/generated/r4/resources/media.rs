@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-15 by fhirbolt-codegen v0.8.0
 #[doc = "The date and time(s) at which the media was collected."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum MediaCreated {
@@ -11,7 +11,7 @@ pub enum MediaCreated {
 #[derive(Debug, Clone, PartialEq)]
 pub struct Media {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
-    pub r#id: Option<std::string::String>,
+    pub r#id: Option<Box<super::super::types::Id>>,
     #[doc = "The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content might not always be associated with version changes to the resource."]
     pub r#meta: Option<Box<super::super::types::Meta>>,
     #[doc = "A reference to a set of rules that were followed when the resource was constructed, and which must be understood when processing the content. Often, this is a reference to an implementation guide that defines the special rules along with other profiles etc."]
@@ -71,6 +71,7 @@ pub struct Media {
     #[doc = "Comments made about the media by the performer, subject or other participants."]
     pub r#note: Vec<super::super::types::Annotation>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for Media {
     fn default() -> Self {
         Self {
@@ -85,10 +86,9 @@ impl Default for Media {
             r#identifier: Default::default(),
             r#based_on: Default::default(),
             r#part_of: Default::default(),
-            r#status: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#status: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#type: Default::default(),
             r#modality: Default::default(),
@@ -106,11 +106,10 @@ impl Default for Media {
             r#width: Default::default(),
             r#frames: Default::default(),
             r#duration: Default::default(),
-            r#content: {
-                let mut default: Box<super::super::types::Attachment> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#content: Box::new(super::super::types::Attachment {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
             r#note: Default::default(),
         }
     }

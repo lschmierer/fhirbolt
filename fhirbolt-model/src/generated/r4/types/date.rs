@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-15 by fhirbolt-codegen v0.8.0
 #[doc = "Base StructureDefinition for date Type: A date or partial date (e.g. just year or year + month). There is no time zone. The format is a union of the schema types gYear, gYearMonth and date.  Dates SHALL be valid dates."]
 #[derive(Debug, Clone, PartialEq)]
 pub struct Date {
@@ -9,6 +9,7 @@ pub struct Date {
     #[doc = "The actual value"]
     pub r#value: Option<std::string::String>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for Date {
     fn default() -> Self {
         Self {

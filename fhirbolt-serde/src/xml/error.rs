@@ -2,7 +2,7 @@
 
 use std::{
     fmt::{self, Display},
-    num, str,
+    str,
 };
 
 use serde::{de, ser};
@@ -19,18 +19,18 @@ pub type Result<T> = std::result::Result<T, Error>;
 pub enum Error {
     /// Generic error message.
     Message(String),
-    /// Generic error reading or writing XML.
+    /// Error reading or writing XML.
     InvalidXml(quick_xml::Error),
     /// Invalid XML attribute.
     InvalidXmlAttribute(quick_xml::AttrError),
     /// Invalid XML version.
-    InvalidXmlVersion(Option<String>),
+    InvalidXmlVersion(String),
     /// Invalid XML encoding.
     InvalidXmlEncoding(String),
     /// Invalid XML standalone.
     InvalidXmlStandalone(String),
     /// Invalid XML namespace.
-    InvalidXmlNamespace(String),
+    InvalidXmlNamespace(Option<String>, String),
     /// Unsupported XML event.
     InvalidXmlEvent(&'static str),
     /// Unexpected Fhir event.
@@ -40,12 +40,6 @@ pub enum Error {
     },
     /// Error reading UTF8.
     Utf8Error(str::Utf8Error),
-    /// Error parsing integer.
-    ParseIntError(num::ParseIntError),
-    /// Error parsing boolean.
-    ParseBoolError(str::ParseBoolError),
-    /// Unexpected end of file.
-    Eof,
 }
 
 impl ser::Error for Error {
@@ -66,11 +60,8 @@ impl Display for Error {
             Error::Message(msg) => write!(f, "{}", msg),
             Error::InvalidXml(e) => write!(f, "{}", e),
             Error::InvalidXmlAttribute(e) => write!(f, "{}", e),
-            Error::InvalidXmlVersion(Some(v)) => {
+            Error::InvalidXmlVersion(v) => {
                 write!(f, "invalid XML version '{}' (expected '1.0')", v)
-            }
-            Error::InvalidXmlVersion(None) => {
-                write!(f, "invalid XML version (expected '1.0')")
             }
             Error::InvalidXmlEncoding(e) => {
                 write!(f, "invalid XML encoding '{}' (expected 'UTF-8')", e)
@@ -78,8 +69,11 @@ impl Display for Error {
             Error::InvalidXmlStandalone(s) => {
                 write!(f, "invalid XML standalone '{}' (expected 'no')", s)
             }
-            Error::InvalidXmlNamespace(ns) => {
-                write!(f, "invalid XML namespace (expected '{}')", ns)
+            Error::InvalidXmlNamespace(None, expected) => {
+                write!(f, "invalid XML unbound namespace (expected '{}')", expected)
+            }
+            Error::InvalidXmlNamespace(Some(ns), expected) => {
+                write!(f, "invalid XML namespace {} (expected '{}')", ns, expected)
             }
             Error::InvalidXmlEvent(e) => write!(f, "invalid XML event: {}", e),
             Error::InvalidFhirEvent { found, expected } => {
@@ -90,11 +84,6 @@ impl Display for Error {
                 )
             }
             Error::Utf8Error(e) => write!(f, "{}", e),
-            Error::ParseIntError(e) => write!(f, "{}", e),
-            Error::ParseBoolError(e) => write!(f, "{}", e),
-            Error::Eof => {
-                write!(f, "end of file")
-            }
         }
     }
 }
@@ -116,17 +105,5 @@ impl From<quick_xml::AttrError> for Error {
 impl From<str::Utf8Error> for Error {
     fn from(e: str::Utf8Error) -> Self {
         Self::Utf8Error(e)
-    }
-}
-
-impl From<num::ParseIntError> for Error {
-    fn from(e: num::ParseIntError) -> Self {
-        Self::ParseIntError(e)
-    }
-}
-
-impl From<str::ParseBoolError> for Error {
-    fn from(e: str::ParseBoolError) -> Self {
-        Self::ParseBoolError(e)
     }
 }

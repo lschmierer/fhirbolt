@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-15 by fhirbolt-codegen v0.8.0
 #[doc = "The value of the attribute."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum InventoryItemCharacteristicValue {
@@ -34,26 +34,24 @@ pub struct InventoryItemName {
     #[doc = "The name or designation that the item is given."]
     pub r#name: super::super::types::String,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for InventoryItemName {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#name_type: {
-                let mut default: Box<super::super::types::Coding> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#name_type: Box::new(super::super::types::Coding {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
+            r#language: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
-            r#language: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
-            r#name: {
-                let mut default: super::super::types::String = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#name: super::super::types::String {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
         }
     }
@@ -72,22 +70,21 @@ pub struct InventoryItemResponsibleOrganization {
     #[doc = "An organization that has an association with the item, e.g. manufacturer, distributor, responsible, etc."]
     pub r#organization: Box<super::super::types::Reference>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for InventoryItemResponsibleOrganization {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#role: {
-                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
-            r#organization: {
-                let mut default: Box<super::super::types::Reference> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#role: Box::new(super::super::types::CodeableConcept {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
+            r#organization: Box::new(super::super::types::Reference {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
         }
     }
 }
@@ -105,6 +102,7 @@ pub struct InventoryItemDescription {
     #[doc = "Textual description of the item."]
     pub r#description: Option<super::super::types::String>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for InventoryItemDescription {
     fn default() -> Self {
         Self {
@@ -132,27 +130,25 @@ pub struct InventoryItemAssociation {
     #[doc = "The quantity of the related product in this product - Numerator is the quantity of the related product. Denominator is the quantity of the present product. For example a value of 20 means that this product contains 20 units of the related product; a value of 1:20 means the inverse - that the contained product contains 20 units of the present product."]
     pub r#quantity: Box<super::super::types::Ratio>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for InventoryItemAssociation {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#association_type: {
-                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
-            r#related_item: {
-                let mut default: Box<super::super::types::Reference> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
-            r#quantity: {
-                let mut default: Box<super::super::types::Ratio> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#association_type: Box::new(super::super::types::CodeableConcept {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
+            r#related_item: Box::new(super::super::types::Reference {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
+            r#quantity: Box::new(super::super::types::Ratio {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
         }
     }
 }
@@ -170,17 +166,17 @@ pub struct InventoryItemCharacteristic {
     #[doc = "The value of the attribute."]
     pub r#value: InventoryItemCharacteristicValue,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for InventoryItemCharacteristic {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#characteristic_type: {
-                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#characteristic_type: Box::new(super::super::types::CodeableConcept {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
             r#value: Default::default(),
         }
     }
@@ -205,6 +201,7 @@ pub struct InventoryItemInstance {
     #[doc = "The location that the item is associated with."]
     pub r#location: Option<Box<super::super::types::Reference>>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for InventoryItemInstance {
     fn default() -> Self {
         Self {
@@ -223,7 +220,7 @@ impl Default for InventoryItemInstance {
 #[derive(Debug, Clone, PartialEq)]
 pub struct InventoryItem {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
-    pub r#id: Option<std::string::String>,
+    pub r#id: Option<Box<super::super::types::Id>>,
     #[doc = "The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content might not always be associated with version changes to the resource."]
     pub r#meta: Option<Box<super::super::types::Meta>>,
     #[doc = "A reference to a set of rules that were followed when the resource was constructed, and which must be understood when processing the content. Often, this is a reference to an implementation guide that defines the special rules along with other profiles etc."]
@@ -267,6 +264,7 @@ pub struct InventoryItem {
     #[doc = "Link to a product resource used in clinical workflows."]
     pub r#product_reference: Option<Box<super::super::types::Reference>>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for InventoryItem {
     fn default() -> Self {
         Self {
@@ -279,10 +277,9 @@ impl Default for InventoryItem {
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
             r#identifier: Default::default(),
-            r#status: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#status: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#category: Default::default(),
             r#code: Default::default(),

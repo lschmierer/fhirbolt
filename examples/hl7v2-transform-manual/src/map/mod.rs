@@ -55,14 +55,13 @@ fn map_identifier(fields: &RepeatedField) -> Vec<Identifier> {
     fields
         .iter()
         .flat_map(|f| {
-            if let Some(id) = f.component(1).first_sub().to_fhir_string() {
-                Some(Identifier {
+            f.component(1)
+                .first_sub()
+                .to_fhir_string()
+                .map(|id| Identifier {
                     value: Some(id),
                     ..Default::default()
                 })
-            } else {
-                None
-            }
         })
         .collect()
 }

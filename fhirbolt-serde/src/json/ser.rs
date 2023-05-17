@@ -5,7 +5,11 @@ use std::io;
 use serde::ser::Serialize;
 use serde_json::Serializer;
 
-use crate::{context::ser::SerializationConfig, json::Result, SerializeResource};
+use crate::{
+    context::{ser::SerializationConfig, Format},
+    json::Result,
+    SerializeResource,
+};
 
 /// Serialize the given resource as JSON into the IO stream.
 pub fn to_writer<W, T>(writer: W, value: &T, config: Option<SerializationConfig>) -> Result<()>
@@ -14,7 +18,7 @@ where
     T: SerializeResource,
 {
     value
-        .serialization_context(config.unwrap_or(Default::default()), true)
+        .serialization_context(config.unwrap_or(Default::default()), Format::Json)
         .serialize(&mut Serializer::new(writer))
 }
 
@@ -29,7 +33,7 @@ where
     T: SerializeResource,
 {
     value
-        .serialization_context(config.unwrap_or(Default::default()), true)
+        .serialization_context(config.unwrap_or(Default::default()), Format::Json)
         .serialize(&mut Serializer::pretty(writer))
 }
 
@@ -85,6 +89,6 @@ where
     T: SerializeResource,
 {
     value
-        .serialization_context(config.unwrap_or(Default::default()), true)
+        .serialization_context(config.unwrap_or(Default::default()), Format::Json)
         .serialize(serde_json::value::Serializer)
 }

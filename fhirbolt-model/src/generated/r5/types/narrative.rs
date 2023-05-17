@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-15 by fhirbolt-codegen v0.8.0
 #[doc = "Narrative Type: A human-readable summary of the resource conveying the essential clinical and business information for the resource."]
 #[derive(Debug, Clone, PartialEq)]
 pub struct Narrative {
@@ -11,20 +11,19 @@ pub struct Narrative {
     #[doc = "The actual narrative content, a stripped down version of XHTML."]
     pub r#div: super::super::types::Xhtml,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for Narrative {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
-            r#status: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#status: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
-            r#div: {
-                let mut default: super::super::types::Xhtml = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#div: super::super::types::Xhtml {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
         }
     }

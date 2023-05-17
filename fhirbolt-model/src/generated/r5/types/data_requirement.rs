@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-15 by fhirbolt-codegen v0.8.0
 #[doc = "The intended subjects of the data requirement. If this element is not provided, a Patient subject is assumed."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum DataRequirementSubject {
@@ -41,6 +41,7 @@ pub struct DataRequirementCodeFilter {
     #[doc = "The codes for the code filter. If values are given, the filter will return only those data items for which the code-valued attribute specified by the path has a value that is one of the specified codes. If codes are specified in addition to a value set, the filter returns items matching a code in the value set or one of the specified codes."]
     pub r#code: Vec<super::super::types::Coding>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for DataRequirementCodeFilter {
     fn default() -> Self {
         Self {
@@ -67,6 +68,7 @@ pub struct DataRequirementDateFilter {
     #[doc = "The value of the filter. If period is specified, the filter will return only those data items that fall within the bounds determined by the Period, inclusive of the period boundaries. If dateTime is specified, the filter will return only those data items that are equal to the specified dateTime. If a Duration is specified, the filter will return only those data items that fall within Duration before now."]
     pub r#value: Option<DataRequirementDateFilterValue>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for DataRequirementDateFilter {
     fn default() -> Self {
         Self {
@@ -94,6 +96,7 @@ pub struct DataRequirementValueFilter {
     #[doc = "The value of the filter."]
     pub r#value: Option<DataRequirementValueFilterValue>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for DataRequirementValueFilter {
     fn default() -> Self {
         Self {
@@ -118,20 +121,19 @@ pub struct DataRequirementSort {
     #[doc = "The direction of the sort, ascending or descending."]
     pub r#direction: super::super::types::Code,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for DataRequirementSort {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
-            r#path: {
-                let mut default: super::super::types::String = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#path: super::super::types::String {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
-            r#direction: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#direction: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
         }
     }
@@ -162,15 +164,15 @@ pub struct DataRequirement {
     #[doc = "Specifies the order of the results to be returned."]
     pub r#sort: Vec<DataRequirementSort>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for DataRequirement {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
-            r#type: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#type: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#profile: Default::default(),
             r#subject: Default::default(),

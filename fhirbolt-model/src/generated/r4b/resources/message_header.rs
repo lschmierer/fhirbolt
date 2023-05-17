@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-15 by fhirbolt-codegen v0.8.0
 #[doc = "Code that identifies the event this message represents and connects it with its definition. Events defined as part of the FHIR specification have the system value \"<http://terminology.hl7.org/CodeSystem/message>-events\".  Alternatively uri to the EventDefinition."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum MessageHeaderEvent {
@@ -25,6 +25,7 @@ pub struct MessageHeaderDestination {
     #[doc = "Allows data conveyed by a message to be addressed to a particular person or department when routing to a specific application isn't sufficient."]
     pub r#receiver: Option<Box<super::super::types::Reference>>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for MessageHeaderDestination {
     fn default() -> Self {
         Self {
@@ -33,10 +34,9 @@ impl Default for MessageHeaderDestination {
             r#modifier_extension: Default::default(),
             r#name: Default::default(),
             r#target: Default::default(),
-            r#endpoint: {
-                let mut default: super::super::types::Url = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#endpoint: super::super::types::Url {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#receiver: Default::default(),
         }
@@ -62,6 +62,7 @@ pub struct MessageHeaderSource {
     #[doc = "Identifies the routing target to send acknowledgements to."]
     pub r#endpoint: super::super::types::Url,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for MessageHeaderSource {
     fn default() -> Self {
         Self {
@@ -72,10 +73,9 @@ impl Default for MessageHeaderSource {
             r#software: Default::default(),
             r#version: Default::default(),
             r#contact: Default::default(),
-            r#endpoint: {
-                let mut default: super::super::types::Url = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#endpoint: super::super::types::Url {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
         }
     }
@@ -96,21 +96,20 @@ pub struct MessageHeaderResponse {
     #[doc = "Full details of any issues found in the message."]
     pub r#details: Option<Box<super::super::types::Reference>>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for MessageHeaderResponse {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#identifier: {
-                let mut default: super::super::types::Id = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#identifier: super::super::types::Id {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
-            r#code: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#code: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#details: Default::default(),
         }
@@ -120,7 +119,7 @@ impl Default for MessageHeaderResponse {
 #[derive(Debug, Clone, PartialEq)]
 pub struct MessageHeader {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
-    pub r#id: Option<std::string::String>,
+    pub r#id: Option<Box<super::super::types::Id>>,
     #[doc = "The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content might not always be associated with version changes to the resource."]
     pub r#meta: Option<Box<super::super::types::Meta>>,
     #[doc = "A reference to a set of rules that were followed when the resource was constructed, and which must be understood when processing the content. Often, this is a reference to an implementation guide that defines the special rules along with other profiles etc."]
@@ -158,6 +157,7 @@ pub struct MessageHeader {
     #[doc = "Permanent link to the MessageDefinition for this message."]
     pub r#definition: Option<super::super::types::Canonical>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for MessageHeader {
     fn default() -> Self {
         Self {
@@ -174,10 +174,9 @@ impl Default for MessageHeader {
             r#sender: Default::default(),
             r#enterer: Default::default(),
             r#author: Default::default(),
-            r#source: {
-                let mut default: MessageHeaderSource = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#source: MessageHeaderSource {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#responsible: Default::default(),
             r#reason: Default::default(),

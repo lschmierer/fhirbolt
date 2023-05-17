@@ -6,18 +6,22 @@ use std::{
 };
 
 use serde::{
-    de::{self, value::CowStrDeserializer, DeserializeSeed, Visitor},
+    de::{
+        self,
+        value::{StrDeserializer, StringDeserializer},
+        DeserializeSeed, Visitor,
+    },
     forward_to_deserialize_any,
 };
 
 use fhirbolt_shared::{path::ElementPath, FhirRelease};
 
-pub use crate::xml::read::{IoRead, Read, SliceRead, StrRead};
-
 use crate::{
+    context::Format,
     xml::{
         error::{Error, Result},
         event::{Element, Event},
+        read::{IoRead, Read, SliceRead, StrRead},
     },
     DeserializationConfig, DeserializeResource, DeserializeResourceOwned,
 };
@@ -30,7 +34,7 @@ where
     R: Read,
     T: DeserializeResource<'de>,
 {
-    T::deserialization_context(config.unwrap_or(Default::default()), false).deserialize(de)
+    T::deserialization_context(config.unwrap_or(Default::default()), Format::Xml).deserialize(de)
 }
 
 /// Deserialize an instance of resource type `T` directly from an IO stream of XML (e.g. coming from network).
@@ -43,14 +47,14 @@ where
 /// use fhirbolt::model::r4b::Resource;
 ///
 /// // The type of `s` is `&str`
-/// let s = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>
-/// <Observation xmlns=\"http://hl7.org/fhir\">
-///     <status value=\"final\"/>
+/// let s = r#"<?xml version="1.0" encoding="UTF-8"?>
+/// <Observation xmlns="http://hl7.org/fhir">
+///     <status value="final"/>
 ///     <code>
-///         <text value=\"some code\"/>
+///         <text value="some code"/>
 ///     </code>
-///     <valueString value=\"some value\"/>
-/// </Observation>";
+///     <valueString value="some value"/>
+/// </Observation>"#;
 ///
 /// // `s.as_bytes()` returns `&[u8]` which implements `std::io::Read`
 /// let r: Resource = fhirbolt::xml::from_reader(s.as_bytes(), None).unwrap();
@@ -79,15 +83,15 @@ where
 /// // (like e.g. `fhirbolt::model::r4b::resources::Observation`).
 /// use fhirbolt::model::r4b::Resource;
 ///
-/// // The type of `s` is `&[u8]`
-/// let b = b"<?xml version=\"1.0\" encoding=\"UTF-8\"?>
-/// <Observation xmlns=\"http://hl7.org/fhir\">
-///     <status value=\"final\"/>
+/// // The type of `b` is `&[u8]`
+/// let b = br#"<?xml version="1.0" encoding="UTF-8"?>
+/// <Observation xmlns="http://hl7.org/fhir">
+///     <status value="final"/>
 ///     <code>
-///         <text value=\"some code\"/>
+///         <text value="some code"/>
 ///     </code>
-///     <valueString value=\"some value\"/>
-/// </Observation>";
+///     <valueString value="some value"/>
+/// </Observation>"#;
 ///
 /// let r: Resource = fhirbolt::xml::from_slice(b, None).unwrap();
 /// println!("{:?}", r);
@@ -113,14 +117,14 @@ where
 /// use fhirbolt::model::r4b::Resource;
 ///
 /// // The type of `s` is `&str`
-/// let s = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>
-/// <Observation xmlns=\"http://hl7.org/fhir\">
-///     <status value=\"final\"/>
+/// let s = r#"<?xml version="1.0" encoding="UTF-8"?>
+/// <Observation xmlns="http://hl7.org/fhir">
+///     <status value="final"/>
 ///     <code>
-///         <text value=\"some code\"/>
+///         <text value="some code"/>
 ///     </code>
-///     <valueString value=\"some value\"/>
-/// </Observation>";
+///     <valueString value="some value"/>
+/// </Observation>"#;
 ///
 /// let r: Resource = fhirbolt::xml::from_str(s, None).unwrap();
 /// println!("{:?}", r);
@@ -258,12 +262,13 @@ struct ElementAccess<'a, R: Read> {
     de: &'a mut Deserializer<R>,
     element: Element,
     is_empty: bool,
-    write_resource_type: bool,
+    is_resource: bool,
+    write_resource_type: Option<String>,
 }
 
 impl<'a, R: Read> ElementAccess<'a, R> {
     fn new(de: &'a mut Deserializer<R>) -> Result<Self> {
-        let (element, is_empty) = match de.next_event()? {
+        let (mut element, is_empty) = match de.next_event()? {
             Event::EmptyElement(e) | Event::Div(e) => (e, true),
             Event::ElementStart(e) => (e, false),
             Event::ElementEnd => {
@@ -280,12 +285,18 @@ impl<'a, R: Read> ElementAccess<'a, R> {
             }
         };
 
-        let write_resource_type = element.is_resource();
+        let is_resource = element.is_resource();
+        let write_resource_type = if is_resource {
+            Some(mem::take(&mut element.name))
+        } else {
+            None
+        };
 
         Ok(ElementAccess {
             de,
             element,
             is_empty,
+            is_resource,
             write_resource_type,
         })
     }
@@ -298,42 +309,36 @@ impl<'de, 'a, R: Read> de::MapAccess<'de> for ElementAccess<'a, R> {
     where
         K: DeserializeSeed<'de>,
     {
-        if self.write_resource_type {
-            seed.deserialize(CowStrDeserializer::new("resourceType".into()))
+        if self.write_resource_type.is_some() {
+            seed.deserialize(StrDeserializer::new("resourceType"))
                 .map(Some)
         } else if self.element.id.is_some() {
-            seed.deserialize(CowStrDeserializer::new("id".into()))
-                .map(Some)
+            seed.deserialize(StrDeserializer::new("id")).map(Some)
         } else if self.element.url.is_some() {
-            seed.deserialize(CowStrDeserializer::new("url".into()))
-                .map(Some)
+            seed.deserialize(StrDeserializer::new("url")).map(Some)
         } else if self.element.value.is_some() {
-            seed.deserialize(CowStrDeserializer::new("value".into()))
-                .map(Some)
+            seed.deserialize(StrDeserializer::new("value")).map(Some)
         } else if !self.is_empty {
             match self.de.peek() {
                 Event::ElementStart(e) | Event::EmptyElement(e) | Event::Div(e) => {
                     if e.is_resource() {
                         self.element = mem::take(e);
-                        self.write_resource_type = true;
+
+                        self.is_resource = true;
+                        self.write_resource_type = Some(mem::take(&mut self.element.name));
+
                         _ = self.de.next_event()?;
 
                         self.next_key_seed(seed)
-                    } else if self.element.is_resource() && e.name == "id" {
-                        self.element.id = e.value.take();
-                        _ = self.de.next_event()?;
-
-                        seed.deserialize(CowStrDeserializer::new("id".into()))
-                            .map(Some)
                     } else {
-                        seed.deserialize(CowStrDeserializer::new(e.name.clone()))
+                        seed.deserialize(StringDeserializer::new(mem::take(&mut e.name)))
                             .map(Some)
                     }
                 }
                 _ => {
                     _ = self.de.next_event()?;
 
-                    if self.element.is_resource() {
+                    if self.is_resource {
                         _ = self.de.next_event()?;
                     }
 
@@ -349,16 +354,237 @@ impl<'de, 'a, R: Read> de::MapAccess<'de> for ElementAccess<'a, R> {
     where
         V: DeserializeSeed<'de>,
     {
-        if mem::replace(&mut self.write_resource_type, false) {
-            seed.deserialize(CowStrDeserializer::new(self.element.name.clone()))
+        if let Some(resource_type) = self.write_resource_type.take() {
+            seed.deserialize(StringDeserializer::new(resource_type))
         } else if let Some(id) = self.element.id.take() {
-            seed.deserialize(CowStrDeserializer::new(id.into()))
+            seed.deserialize(StringDeserializer::new(id))
         } else if let Some(url) = self.element.url.take() {
-            seed.deserialize(CowStrDeserializer::new(url.into()))
+            seed.deserialize(StringDeserializer::new(url))
         } else if let Some(value) = self.element.value.take() {
-            seed.deserialize(CowStrDeserializer::new(value.into()))
+            seed.deserialize(StringDeserializer::new(value))
         } else {
             seed.deserialize(&mut ElementDeserializer::new(self.de))
         }
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use std::collections::VecDeque;
+
+    use serde::de::DeserializeSeed;
+
+    use fhirbolt_element::{Element, FhirReleases, Primitive, Value};
+
+    use crate::{
+        context::Format,
+        xml::{
+            error::Result,
+            event::{self, Event},
+            read::Read,
+        },
+        DeserializeResource,
+    };
+
+    use super::*;
+
+    impl Read for VecDeque<Event> {
+        fn next_event(&mut self) -> Result<Event> {
+            if let Some(event) = self.pop_front() {
+                Ok(event)
+            } else {
+                Ok(Event::Eof)
+            }
+        }
+    }
+
+    fn mock_deserializer(events: Vec<Event>) -> Deserializer<VecDeque<Event>> {
+        Deserializer::new(VecDeque::from(events), FhirReleases::R4).unwrap()
+    }
+
+    #[test]
+    fn test_resource_id() {
+        let mut de = mock_deserializer(vec![
+            Event::ElementStart(event::Element {
+                name: "Observation".into(),
+                ..Default::default()
+            }),
+            Event::EmptyElement(event::Element {
+                name: "id".into(),
+                value: Some("test_id".into()),
+                ..Default::default()
+            }),
+            Event::ElementEnd,
+        ]);
+
+        assert_eq!(
+            Element::<{ FhirReleases::R4 }>::deserialization_context(
+                Default::default(),
+                Format::Xml
+            )
+            .deserialize(&mut de)
+            .unwrap(),
+            Element! {
+                "resourceType" => Value::Primitive(Primitive::String("Observation".into())),
+                "id" => Value::Element(Element! {
+                    "value" => Value::Primitive(Primitive::String("test_id".into())),
+                })
+            }
+        );
+    }
+
+    #[test]
+    fn test_resource_contained() {
+        let mut de = mock_deserializer(vec![
+            Event::ElementStart(event::Element {
+                name: "Observation".into(),
+                ..Default::default()
+            }),
+            Event::ElementStart(event::Element {
+                name: "contained".into(),
+                ..Default::default()
+            }),
+            Event::ElementStart(event::Element {
+                name: "Observation".into(),
+                ..Default::default()
+            }),
+            Event::ElementStart(event::Element {
+                name: "identifier".into(),
+                ..Default::default()
+            }),
+            Event::EmptyElement(event::Element {
+                name: "value".into(),
+                value: Some("123".into()),
+                ..Default::default()
+            }),
+            Event::ElementEnd,
+            Event::ElementEnd,
+            Event::ElementEnd,
+            Event::ElementStart(event::Element {
+                name: "identifier".into(),
+                ..Default::default()
+            }),
+            Event::EmptyElement(event::Element {
+                name: "value".into(),
+                value: Some("123".into()),
+                ..Default::default()
+            }),
+            Event::ElementEnd,
+            Event::ElementEnd,
+        ]);
+
+        assert_eq!(
+            Element::<{ FhirReleases::R4 }>::deserialization_context(
+                Default::default(),
+                Format::Xml
+            )
+            .deserialize(&mut de)
+            .unwrap(),
+            Element! {
+                "resourceType" => Value::Primitive(Primitive::String("Observation".into())),
+                "contained" =>  Value::Sequence(vec![Element! {
+                    "resourceType" => Value::Primitive(Primitive::String("Observation".into())),
+                    "identifier" => Value::Sequence(vec![Element! {
+                        "value" => Value::Element(Element! { "value" => Value::Primitive(Primitive::String("123".into())) }),
+                    }])
+                }]),
+                "identifier" => Value::Sequence(vec![Element! {
+                    "value" => Value::Element(Element! { "value" => Value::Primitive(Primitive::String("123".into())) }),
+                }])
+            }
+        );
+    }
+
+    #[test]
+    fn test_element_id() {
+        let mut de = mock_deserializer(vec![
+            Event::ElementStart(event::Element {
+                name: "Observation".into(),
+                ..Default::default()
+            }),
+            Event::EmptyElement(event::Element {
+                name: "valueString".into(),
+                id: Some("test_id".into()),
+                ..Default::default()
+            }),
+            Event::ElementEnd,
+        ]);
+
+        assert_eq!(
+            Element::<{ FhirReleases::R4 }>::deserialization_context(
+                Default::default(),
+                Format::Xml
+            )
+            .deserialize(&mut de)
+            .unwrap(),
+            Element! {
+                "resourceType" => Value::Primitive(Primitive::String("Observation".into())),
+                "valueString" => Value::Element(Element! {
+                    "id" => Value::Primitive(Primitive::String("test_id".into())),
+                })
+            }
+        );
+    }
+
+    #[test]
+    fn test_element_value() {
+        let mut de = mock_deserializer(vec![
+            Event::ElementStart(event::Element {
+                name: "Observation".into(),
+                ..Default::default()
+            }),
+            Event::EmptyElement(event::Element {
+                name: "valueString".into(),
+                value: Some("test_value".into()),
+                ..Default::default()
+            }),
+            Event::ElementEnd,
+        ]);
+
+        assert_eq!(
+            Element::<{ FhirReleases::R4 }>::deserialization_context(
+                Default::default(),
+                Format::Xml
+            )
+            .deserialize(&mut de)
+            .unwrap(),
+            Element! {
+                "resourceType" => Value::Primitive(Primitive::String("Observation".into())),
+                "valueString" => Value::Element(Element! {
+                    "value" => Value::Primitive(Primitive::String("test_value".into())),
+                })
+            }
+        );
+    }
+
+    #[test]
+    fn test_extension_url() {
+        let mut de = mock_deserializer(vec![
+            Event::ElementStart(event::Element {
+                name: "Observation".into(),
+                ..Default::default()
+            }),
+            Event::EmptyElement(event::Element {
+                name: "extension".into(),
+                url: Some("test_url".into()),
+                ..Default::default()
+            }),
+            Event::ElementEnd,
+        ]);
+
+        assert_eq!(
+            Element::<{ FhirReleases::R4 }>::deserialization_context(
+                Default::default(),
+                Format::Xml
+            )
+            .deserialize(&mut de)
+            .unwrap(),
+            Element! {
+                "resourceType" => Value::Primitive(Primitive::String("Observation".into())),
+                "extension" => Value::Sequence(vec![Element! {
+                    "url" => Value::Primitive(Primitive::String("test_url".into())),
+                }])
+            }
+        );
     }
 }

@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-15 by fhirbolt-codegen v0.8.0
 #[doc = "Base StructureDefinition for Coding Type: A reference to a code defined by a terminology system.\n\nReferences to codes are very common in healthcare models."]
 #[derive(Debug, Clone, PartialEq)]
 pub struct Coding {
@@ -17,6 +17,7 @@ pub struct Coding {
     #[doc = "Indicates that this coding was chosen by a user directly - e.g. off a pick list of available items (codes or displays)."]
     pub r#user_selected: Option<super::super::types::Boolean>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for Coding {
     fn default() -> Self {
         Self {

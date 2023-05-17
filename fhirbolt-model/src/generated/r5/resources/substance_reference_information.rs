@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-15 by fhirbolt-codegen v0.8.0
 #[doc = "Todo."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum SubstanceReferenceInformationTargetAmount {
@@ -24,6 +24,7 @@ pub struct SubstanceReferenceInformationGene {
     #[doc = "Todo."]
     pub r#source: Vec<super::super::types::Reference>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for SubstanceReferenceInformationGene {
     fn default() -> Self {
         Self {
@@ -52,6 +53,7 @@ pub struct SubstanceReferenceInformationGeneElement {
     #[doc = "Todo."]
     pub r#source: Vec<super::super::types::Reference>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for SubstanceReferenceInformationGeneElement {
     fn default() -> Self {
         Self {
@@ -90,6 +92,7 @@ pub struct SubstanceReferenceInformationTarget {
     #[doc = "Todo."]
     pub r#source: Vec<super::super::types::Reference>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for SubstanceReferenceInformationTarget {
     fn default() -> Self {
         Self {
@@ -111,7 +114,7 @@ impl Default for SubstanceReferenceInformationTarget {
 #[derive(Debug, Clone, PartialEq)]
 pub struct SubstanceReferenceInformation {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
-    pub r#id: Option<std::string::String>,
+    pub r#id: Option<Box<super::super::types::Id>>,
     #[doc = "The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content might not always be associated with version changes to the resource."]
     pub r#meta: Option<Box<super::super::types::Meta>>,
     #[doc = "A reference to a set of rules that were followed when the resource was constructed, and which must be understood when processing the content. Often, this is a reference to an implementation guide that defines the special rules along with other profiles etc."]
@@ -135,6 +138,7 @@ pub struct SubstanceReferenceInformation {
     #[doc = "Todo."]
     pub r#target: Vec<SubstanceReferenceInformationTarget>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for SubstanceReferenceInformation {
     fn default() -> Self {
         Self {

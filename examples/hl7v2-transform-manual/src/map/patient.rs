@@ -1,6 +1,6 @@
 use fhirbolt::model::r5::{
     resources::{Patient, PatientCommunication, PatientContact, PatientDeceased},
-    types::{Address, Boolean, Code, CodeableConcept, ContactPoint, HumanName},
+    types::{Address, Boolean, Code, CodeableConcept, ContactPoint, HumanName, Id},
 };
 
 use crate::hl7v2::{
@@ -32,7 +32,10 @@ pub fn map_patient(message: &Message, id: &str) -> Patient {
     let pid_segment = message.segments_by_id("PID").next();
 
     Patient {
-        id: Some(id.into()),
+        id: Some(Box::new(Id {
+            value: Some(id.into()),
+            ..Default::default()
+        })),
         identifier: map_identifier(pid_segment.repeated(3)),
         name: map_name(pid_segment.repeated(5)),
         telecom: map_telecoms(pid_segment.repeated(13), pid_segment.repeated(14)),
@@ -84,13 +87,16 @@ fn map_telecoms(home_fields: &RepeatedField, work_fields: &RepeatedField) -> Vec
 
     home_telecoms_iter
         .chain(work_telecoms_iter)
-        .flat_map(|f| f)
+        .flatten()
         .collect()
 }
 
 fn map_telecom(telecom_field: &Field, r#use: &str) -> Option<ContactPoint> {
-    if let Some(number_string) = telecom_field.component(1).first_sub().to_fhir_string() {
-        Some(ContactPoint {
+    telecom_field
+        .component(1)
+        .first_sub()
+        .to_fhir_string()
+        .map(|number_string| ContactPoint {
             system: Some(Code {
                 value: Some("phone".into()),
                 ..Default::default()
@@ -102,9 +108,6 @@ fn map_telecom(telecom_field: &Field, r#use: &str) -> Option<ContactPoint> {
             }),
             ..Default::default()
         })
-    } else {
-        None
-    }
 }
 
 fn map_gender(pid_segment: Option<&Segment>) -> Option<Code> {

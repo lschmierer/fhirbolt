@@ -1,9 +1,9 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-15 by fhirbolt-codegen v0.8.0
 #[doc = "The Evidence resource describes the conditional state (population and any exposures being compared within the population) and outcome (if specified) that the knowledge (evidence, assertion, recommendation) is about."]
 #[derive(Debug, Clone, PartialEq)]
 pub struct Evidence {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
-    pub r#id: Option<std::string::String>,
+    pub r#id: Option<Box<super::super::types::Id>>,
     #[doc = "The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content might not always be associated with version changes to the resource."]
     pub r#meta: Option<Box<super::super::types::Meta>>,
     #[doc = "A reference to a set of rules that were followed when the resource was constructed, and which must be understood when processing the content. Often, this is a reference to an implementation guide that defines the special rules along with other profiles etc."]
@@ -75,6 +75,7 @@ pub struct Evidence {
     #[doc = "A reference to a EvidenceVariable resomece that defines the outcome for the research."]
     pub r#outcome: Vec<super::super::types::Reference>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for Evidence {
     fn default() -> Self {
         Self {
@@ -93,10 +94,9 @@ impl Default for Evidence {
             r#title: Default::default(),
             r#short_title: Default::default(),
             r#subtitle: Default::default(),
-            r#status: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#status: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#date: Default::default(),
             r#publisher: Default::default(),
@@ -115,11 +115,10 @@ impl Default for Evidence {
             r#reviewer: Default::default(),
             r#endorser: Default::default(),
             r#related_artifact: Default::default(),
-            r#exposure_background: {
-                let mut default: Box<super::super::types::Reference> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#exposure_background: Box::new(super::super::types::Reference {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
             r#exposure_variant: Default::default(),
             r#outcome: Default::default(),
         }

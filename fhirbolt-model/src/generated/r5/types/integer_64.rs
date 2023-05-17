@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-15 by fhirbolt-codegen v0.8.0
 #[doc = "integer64 Type: A very large whole number"]
 #[derive(Debug, Clone, PartialEq)]
 pub struct Integer64 {
@@ -9,6 +9,7 @@ pub struct Integer64 {
     #[doc = "The actual value"]
     pub r#value: Option<i64>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for Integer64 {
     fn default() -> Self {
         Self {

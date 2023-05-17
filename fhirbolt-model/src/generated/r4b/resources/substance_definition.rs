@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-15 by fhirbolt-codegen v0.8.0
 #[doc = "Quantitative value for this moiety."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum SubstanceDefinitionMoietyAmount {
@@ -61,6 +61,7 @@ pub struct SubstanceDefinitionMoiety {
     #[doc = "The measurement type of the quantitative value. In capturing the actual relative amounts of substances or molecular fragments it may be necessary to indicate whether the amount refers to, for example, a mole ratio or weight ratio."]
     pub r#measurement_type: Option<Box<super::super::types::CodeableConcept>>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for SubstanceDefinitionMoiety {
     fn default() -> Self {
         Self {
@@ -92,17 +93,17 @@ pub struct SubstanceDefinitionProperty {
     #[doc = "A value for the property."]
     pub r#value: Option<SubstanceDefinitionPropertyValue>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for SubstanceDefinitionProperty {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#type: {
-                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#type: Box::new(super::super::types::CodeableConcept {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
             r#value: Default::default(),
         }
     }
@@ -123,6 +124,7 @@ pub struct SubstanceDefinitionMolecularWeight {
     #[doc = "Used to capture quantitative values for a variety of elements. If only limits are given, the arithmetic mean would be the average. If only a single definite value for a given element is given, it would be captured in this field."]
     pub r#amount: Box<super::super::types::Quantity>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for SubstanceDefinitionMolecularWeight {
     fn default() -> Self {
         Self {
@@ -131,11 +133,10 @@ impl Default for SubstanceDefinitionMolecularWeight {
             r#modifier_extension: Default::default(),
             r#method: Default::default(),
             r#type: Default::default(),
-            r#amount: {
-                let mut default: Box<super::super::types::Quantity> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#amount: Box::new(super::super::types::Quantity {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
         }
     }
 }
@@ -157,6 +158,7 @@ pub struct SubstanceDefinitionStructureRepresentation {
     #[doc = "An attached file with the structural representation or characterization e.g. a molecular structure graphic of the substance, a JCAMP or AnIML file."]
     pub r#document: Option<Box<super::super::types::Reference>>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for SubstanceDefinitionStructureRepresentation {
     fn default() -> Self {
         Self {
@@ -196,6 +198,7 @@ pub struct SubstanceDefinitionStructure {
     #[doc = "A depiction of the structure or characterization of the substance."]
     pub r#representation: Vec<SubstanceDefinitionStructureRepresentation>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for SubstanceDefinitionStructure {
     fn default() -> Self {
         Self {
@@ -233,6 +236,7 @@ pub struct SubstanceDefinitionCode {
     #[doc = "Supporting literature."]
     pub r#source: Vec<super::super::types::Reference>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for SubstanceDefinitionCode {
     fn default() -> Self {
         Self {
@@ -263,6 +267,7 @@ pub struct SubstanceDefinitionNameOfficial {
     #[doc = "Date of the official name change."]
     pub r#date: Option<super::super::types::DateTime>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for SubstanceDefinitionNameOfficial {
     fn default() -> Self {
         Self {
@@ -307,16 +312,16 @@ pub struct SubstanceDefinitionName {
     #[doc = "Supporting literature."]
     pub r#source: Vec<super::super::types::Reference>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for SubstanceDefinitionName {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#name: {
-                let mut default: super::super::types::String = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#name: super::super::types::String {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#type: Default::default(),
             r#status: Default::default(),
@@ -355,6 +360,7 @@ pub struct SubstanceDefinitionRelationship {
     #[doc = "Supporting literature."]
     pub r#source: Vec<super::super::types::Reference>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for SubstanceDefinitionRelationship {
     fn default() -> Self {
         Self {
@@ -362,11 +368,10 @@ impl Default for SubstanceDefinitionRelationship {
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
             r#substance_definition: Default::default(),
-            r#type: {
-                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#type: Box::new(super::super::types::CodeableConcept {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
             r#is_defining: Default::default(),
             r#amount: Default::default(),
             r#ratio_high_limit_amount: Default::default(),
@@ -395,6 +400,7 @@ pub struct SubstanceDefinitionSourceMaterial {
     #[doc = "The country or countries where the material is harvested."]
     pub r#country_of_origin: Vec<super::super::types::CodeableConcept>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for SubstanceDefinitionSourceMaterial {
     fn default() -> Self {
         Self {
@@ -413,7 +419,7 @@ impl Default for SubstanceDefinitionSourceMaterial {
 #[derive(Debug, Clone, PartialEq)]
 pub struct SubstanceDefinition {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
-    pub r#id: Option<std::string::String>,
+    pub r#id: Option<Box<super::super::types::Id>>,
     #[doc = "The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content might not always be associated with version changes to the resource."]
     pub r#meta: Option<Box<super::super::types::Meta>>,
     #[doc = "A reference to a set of rules that were followed when the resource was constructed, and which must be understood when processing the content. Often, this is a reference to an implementation guide that defines the special rules along with other profiles etc."]
@@ -467,6 +473,7 @@ pub struct SubstanceDefinition {
     #[doc = "Material or taxonomic/anatomical source for the substance."]
     pub r#source_material: Option<SubstanceDefinitionSourceMaterial>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for SubstanceDefinition {
     fn default() -> Self {
         Self {

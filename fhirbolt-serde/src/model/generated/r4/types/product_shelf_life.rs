@@ -1,7 +1,7 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
-impl serde::ser::Serialize
-    for crate::context::ser::SerializationContext<&fhirbolt_model::r4::types::ProductShelfLife>
-{
+// Generated on 2023-05-15 by fhirbolt-codegen v0.8.0
+use crate::{DeserializationContext, SerializationContext};
+use fhirbolt_model::r4::types::ProductShelfLife;
+impl serde::ser::Serialize for SerializationContext<&ProductShelfLife> {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
         S: serde::ser::Serializer,
@@ -33,14 +33,16 @@ impl serde::ser::Serialize
         }
         if self.value.r#type.id.as_deref() == Some("$invalid") {
             return missing_field_error("type");
+        } else {
+            self.with_context(&self.value.r#type, |ctx| state.serialize_entry("type", ctx))?;
         }
-        self.with_context(&self.value.r#type, |ctx| state.serialize_entry("type", ctx))?;
         if self.value.r#period.id.as_deref() == Some("$invalid") {
             return missing_field_error("period");
+        } else {
+            self.with_context(&self.value.r#period, |ctx| {
+                state.serialize_entry("period", ctx)
+            })?;
         }
-        self.with_context(&self.value.r#period, |ctx| {
-            state.serialize_entry("period", ctx)
-        })?;
         if !self.value.r#special_precautions_for_storage.is_empty() {
             self.with_context(&self.value.r#special_precautions_for_storage, |ctx| {
                 state.serialize_entry("specialPrecautionsForStorage", ctx)
@@ -49,9 +51,7 @@ impl serde::ser::Serialize
         state.end()
     }
 }
-impl serde::ser::Serialize
-    for crate::context::ser::SerializationContext<&Box<fhirbolt_model::r4::types::ProductShelfLife>>
-{
+impl serde::ser::Serialize for SerializationContext<&Box<ProductShelfLife>> {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
         S: serde::ser::Serializer,
@@ -59,9 +59,7 @@ impl serde::ser::Serialize
         self.with_context(self.value.as_ref(), |ctx| ctx.serialize(serializer))
     }
 }
-impl serde::ser::Serialize
-    for crate::context::ser::SerializationContext<&Vec<fhirbolt_model::r4::types::ProductShelfLife>>
-{
+impl serde::ser::Serialize for SerializationContext<&Vec<ProductShelfLife>> {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
         S: serde::ser::Serializer,
@@ -74,28 +72,19 @@ impl serde::ser::Serialize
         seq_serializer.end()
     }
 }
-impl<'de> serde::de::DeserializeSeed<'de>
-    for &mut crate::context::de::DeserializationContext<fhirbolt_model::r4::types::ProductShelfLife>
-{
-    type Value = fhirbolt_model::r4::types::ProductShelfLife;
+impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<ProductShelfLife> {
+    type Value = ProductShelfLife;
     fn deserialize<D>(self, deserializer: D) -> Result<Self::Value, D::Error>
     where
         D: serde::de::Deserializer<'de>,
     {
-        struct Visitor<'a>(
-            &'a mut crate::context::de::DeserializationContext<
-                fhirbolt_model::r4::types::ProductShelfLife,
-            >,
-        );
+        struct Visitor<'a>(&'a mut DeserializationContext<ProductShelfLife>);
         impl<'de> serde::de::Visitor<'de> for Visitor<'_> {
-            type Value = fhirbolt_model::r4::types::ProductShelfLife;
+            type Value = ProductShelfLife;
             fn expecting(&self, formatter: &mut std::fmt::Formatter) -> std::fmt::Result {
                 formatter.write_str("ProductShelfLife")
             }
-            fn visit_map<V>(
-                self,
-                mut map_access: V,
-            ) -> Result<fhirbolt_model::r4::types::ProductShelfLife, V::Error>
+            fn visit_map<V>(self, mut map_access: V) -> Result<ProductShelfLife, V::Error>
             where
                 V: serde::de::MapAccess<'de>,
             {
@@ -151,85 +140,88 @@ impl<'de> serde::de::DeserializeSeed<'de>
                             r#id = Some(map_access.next_value()?);
                         }
                         Field::Extension => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 if r#extension.is_some() {
                                     return Err(serde::de::Error::duplicate_field("extension"));
                                 }
-                                r#extension = Some(
-                                    map_access.next_value_seed(
-                                        self.0
-                                            .transmute::<Vec<fhirbolt_model::r4::types::Extension>>(
-                                            ),
-                                    )?,
-                                );
+                                let _context: &mut DeserializationContext<
+                                    Vec<fhirbolt_model::r4::types::Extension>,
+                                > = self.0.transmute();
+                                r#extension = Some(map_access.next_value_seed(&mut *_context)?);
                             } else {
                                 let vec = r#extension.get_or_insert(Default::default());
-                                vec.push(map_access.next_value_seed(
-                                    self.0.transmute::<fhirbolt_model::r4::types::Extension>(),
-                                )?);
+                                let _context: &mut DeserializationContext<
+                                    fhirbolt_model::r4::types::Extension,
+                                > = self.0.transmute();
+                                vec.push(map_access.next_value_seed(&mut *_context)?);
                             }
                         }
                         Field::ModifierExtension => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 if r#modifier_extension.is_some() {
                                     return Err(serde::de::Error::duplicate_field(
                                         "modifierExtension",
                                     ));
                                 }
-                                r#modifier_extension = Some(
-                                    map_access.next_value_seed(
-                                        self.0
-                                            .transmute::<Vec<fhirbolt_model::r4::types::Extension>>(
-                                            ),
-                                    )?,
-                                );
+                                let _context: &mut DeserializationContext<
+                                    Vec<fhirbolt_model::r4::types::Extension>,
+                                > = self.0.transmute();
+                                r#modifier_extension =
+                                    Some(map_access.next_value_seed(&mut *_context)?);
                             } else {
                                 let vec = r#modifier_extension.get_or_insert(Default::default());
-                                vec.push(map_access.next_value_seed(
-                                    self.0.transmute::<fhirbolt_model::r4::types::Extension>(),
-                                )?);
+                                let _context: &mut DeserializationContext<
+                                    fhirbolt_model::r4::types::Extension,
+                                > = self.0.transmute();
+                                vec.push(map_access.next_value_seed(&mut *_context)?);
                             }
                         }
                         Field::Identifier => {
                             if r#identifier.is_some() {
                                 return Err(serde::de::Error::duplicate_field("identifier"));
                             }
-                            r#identifier = Some(
-                                map_access.next_value_seed(
-                                    self.0
-                                        .transmute::<Box<fhirbolt_model::r4::types::Identifier>>(),
-                                )?,
-                            );
+                            let _context: &mut DeserializationContext<
+                                Box<fhirbolt_model::r4::types::Identifier>,
+                            > = self.0.transmute();
+                            r#identifier = Some(map_access.next_value_seed(&mut *_context)?);
                         }
                         Field::Type => {
                             if r#type.is_some() {
                                 return Err(serde::de::Error::duplicate_field("type"));
                             }
-                            r#type = Some (map_access . next_value_seed (self . 0 . transmute :: < Box < fhirbolt_model :: r4 :: types :: CodeableConcept > > ()) ?) ;
+                            let _context: &mut DeserializationContext<
+                                Box<fhirbolt_model::r4::types::CodeableConcept>,
+                            > = self.0.transmute();
+                            r#type = Some(map_access.next_value_seed(&mut *_context)?);
                         }
                         Field::Period => {
                             if r#period.is_some() {
                                 return Err(serde::de::Error::duplicate_field("period"));
                             }
-                            r#period = Some(
-                                map_access.next_value_seed(
-                                    self.0
-                                        .transmute::<Box<fhirbolt_model::r4::types::Quantity>>(),
-                                )?,
-                            );
+                            let _context: &mut DeserializationContext<
+                                Box<fhirbolt_model::r4::types::Quantity>,
+                            > = self.0.transmute();
+                            r#period = Some(map_access.next_value_seed(&mut *_context)?);
                         }
                         Field::SpecialPrecautionsForStorage => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 if r#special_precautions_for_storage.is_some() {
                                     return Err(serde::de::Error::duplicate_field(
                                         "specialPrecautionsForStorage",
                                     ));
                                 }
-                                r#special_precautions_for_storage = Some (map_access . next_value_seed (self . 0 . transmute :: < Vec < fhirbolt_model :: r4 :: types :: CodeableConcept >> ()) ?) ;
+                                let _context: &mut DeserializationContext<
+                                    Vec<fhirbolt_model::r4::types::CodeableConcept>,
+                                > = self.0.transmute();
+                                r#special_precautions_for_storage =
+                                    Some(map_access.next_value_seed(&mut *_context)?);
                             } else {
                                 let vec = r#special_precautions_for_storage
                                     .get_or_insert(Default::default());
-                                vec . push (map_access . next_value_seed (self . 0 . transmute :: < fhirbolt_model :: r4 :: types :: CodeableConcept > ()) ?) ;
+                                let _context: &mut DeserializationContext<
+                                    fhirbolt_model::r4::types::CodeableConcept,
+                                > = self.0.transmute();
+                                vec.push(map_access.next_value_seed(&mut *_context)?);
                             }
                         }
                         Field::Unknown(key) => {
@@ -240,7 +232,7 @@ impl<'de> serde::de::DeserializeSeed<'de>
                         }
                     }
                 }
-                Ok(fhirbolt_model::r4::types::ProductShelfLife {
+                Ok(ProductShelfLife {
                     r#id,
                     r#extension: r#extension.unwrap_or(vec![]),
                     r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
@@ -264,38 +256,26 @@ impl<'de> serde::de::DeserializeSeed<'de>
         deserializer.deserialize_map(Visitor(self))
     }
 }
-impl<'de> serde::de::DeserializeSeed<'de>
-    for &mut crate::context::de::DeserializationContext<
-        Box<fhirbolt_model::r4::types::ProductShelfLife>,
-    >
-{
-    type Value = Box<fhirbolt_model::r4::types::ProductShelfLife>;
+impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Box<ProductShelfLife>> {
+    type Value = Box<ProductShelfLife>;
     fn deserialize<D>(self, deserializer: D) -> Result<Self::Value, D::Error>
     where
         D: serde::de::Deserializer<'de>,
     {
-        self.transmute::<fhirbolt_model::r4::types::ProductShelfLife>()
+        self.transmute::<ProductShelfLife>()
             .deserialize(deserializer)
             .map(Box::new)
     }
 }
-impl<'de> serde::de::DeserializeSeed<'de>
-    for &mut crate::context::de::DeserializationContext<
-        Vec<fhirbolt_model::r4::types::ProductShelfLife>,
-    >
-{
-    type Value = Vec<fhirbolt_model::r4::types::ProductShelfLife>;
+impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Vec<ProductShelfLife>> {
+    type Value = Vec<ProductShelfLife>;
     fn deserialize<D>(self, deserializer: D) -> Result<Self::Value, D::Error>
     where
         D: serde::de::Deserializer<'de>,
     {
-        struct Visitor<'a>(
-            &'a mut crate::context::de::DeserializationContext<
-                Vec<fhirbolt_model::r4::types::ProductShelfLife>,
-            >,
-        );
+        struct Visitor<'a>(&'a mut DeserializationContext<Vec<ProductShelfLife>>);
         impl<'de> serde::de::Visitor<'de> for Visitor<'_> {
-            type Value = Vec<fhirbolt_model::r4::types::ProductShelfLife>;
+            type Value = Vec<ProductShelfLife>;
             fn expecting(&self, formatter: &mut std::fmt::Formatter) -> std::fmt::Result {
                 formatter.write_str("a sequence")
             }
@@ -304,10 +284,8 @@ impl<'de> serde::de::DeserializeSeed<'de>
                 A: serde::de::SeqAccess<'de>,
             {
                 let mut values = Vec::new();
-                while let Some(value) = seq.next_element_seed(
-                    self.0
-                        .transmute::<fhirbolt_model::r4::types::ProductShelfLife>(),
-                )? {
+                let _context: &mut DeserializationContext<ProductShelfLife> = self.0.transmute();
+                while let Some(value) = seq.next_element_seed(&mut *_context)? {
                     values.push(value);
                 }
                 Ok(values)

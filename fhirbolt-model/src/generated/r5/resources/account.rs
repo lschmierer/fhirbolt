@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-15 by fhirbolt-codegen v0.8.0
 #[doc = "The party(s) that are responsible for covering the payment of this account, and what order should they be applied to the account."]
 #[derive(Debug, Clone, PartialEq)]
 pub struct AccountCoverage {
@@ -13,17 +13,17 @@ pub struct AccountCoverage {
     #[doc = "The priority of the coverage in the context of this account."]
     pub r#priority: Option<super::super::types::PositiveInt>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for AccountCoverage {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#coverage: {
-                let mut default: Box<super::super::types::Reference> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#coverage: Box::new(super::super::types::Reference {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
             r#priority: Default::default(),
         }
     }
@@ -44,17 +44,17 @@ pub struct AccountGuarantor {
     #[doc = "The timeframe during which the guarantor accepts responsibility for the account."]
     pub r#period: Option<Box<super::super::types::Period>>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for AccountGuarantor {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#party: {
-                let mut default: Box<super::super::types::Reference> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#party: Box::new(super::super::types::Reference {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
             r#on_hold: Default::default(),
             r#period: Default::default(),
         }
@@ -82,6 +82,7 @@ pub struct AccountDiagnosis {
     #[doc = "The package code can be used to group diagnoses that may be priced or delivered as a single product. Such as DRGs."]
     pub r#package_code: Vec<super::super::types::CodeableConcept>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for AccountDiagnosis {
     fn default() -> Self {
         Self {
@@ -89,11 +90,10 @@ impl Default for AccountDiagnosis {
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
             r#sequence: Default::default(),
-            r#condition: {
-                let mut default: Box<super::super::types::CodeableReference> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#condition: Box::new(super::super::types::CodeableReference {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
             r#date_of_diagnosis: Default::default(),
             r#type: Default::default(),
             r#on_admission: Default::default(),
@@ -123,6 +123,7 @@ pub struct AccountProcedure {
     #[doc = "Any devices that were associated with the procedure relevant to the account."]
     pub r#device: Vec<super::super::types::Reference>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for AccountProcedure {
     fn default() -> Self {
         Self {
@@ -130,11 +131,10 @@ impl Default for AccountProcedure {
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
             r#sequence: Default::default(),
-            r#code: {
-                let mut default: Box<super::super::types::CodeableReference> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#code: Box::new(super::super::types::CodeableReference {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
             r#date_of_service: Default::default(),
             r#type: Default::default(),
             r#package_code: Default::default(),
@@ -156,6 +156,7 @@ pub struct AccountRelatedAccount {
     #[doc = "Reference to an associated Account."]
     pub r#account: Box<super::super::types::Reference>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for AccountRelatedAccount {
     fn default() -> Self {
         Self {
@@ -163,11 +164,10 @@ impl Default for AccountRelatedAccount {
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
             r#relationship: Default::default(),
-            r#account: {
-                let mut default: Box<super::super::types::Reference> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#account: Box::new(super::super::types::Reference {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
         }
     }
 }
@@ -189,6 +189,7 @@ pub struct AccountBalance {
     #[doc = "The actual balance value calculated for the age defined in the term property."]
     pub r#amount: Box<super::super::types::Money>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for AccountBalance {
     fn default() -> Self {
         Self {
@@ -198,11 +199,10 @@ impl Default for AccountBalance {
             r#aggregate: Default::default(),
             r#term: Default::default(),
             r#estimate: Default::default(),
-            r#amount: {
-                let mut default: Box<super::super::types::Money> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#amount: Box::new(super::super::types::Money {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
         }
     }
 }
@@ -210,7 +210,7 @@ impl Default for AccountBalance {
 #[derive(Debug, Clone, PartialEq)]
 pub struct Account {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
-    pub r#id: Option<std::string::String>,
+    pub r#id: Option<Box<super::super::types::Id>>,
     #[doc = "The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content might not always be associated with version changes to the resource."]
     pub r#meta: Option<Box<super::super::types::Meta>>,
     #[doc = "A reference to a set of rules that were followed when the resource was constructed, and which must be understood when processing the content. Often, this is a reference to an implementation guide that defines the special rules along with other profiles etc."]
@@ -260,6 +260,7 @@ pub struct Account {
     #[doc = "Time the balance amount was calculated."]
     pub r#calculated_at: Option<super::super::types::Instant>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for Account {
     fn default() -> Self {
         Self {
@@ -272,10 +273,9 @@ impl Default for Account {
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
             r#identifier: Default::default(),
-            r#status: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#status: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#billing_status: Default::default(),
             r#type: Default::default(),

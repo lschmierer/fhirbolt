@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-15 by fhirbolt-codegen v0.8.0
 #[doc = "Information on the possible cause of the event."]
 #[derive(Debug, Clone, PartialEq)]
 pub struct AdverseEventSuspectEntityCausality {
@@ -17,6 +17,7 @@ pub struct AdverseEventSuspectEntityCausality {
     #[doc = "ProbabilityScale | Bayesian | Checklist."]
     pub r#method: Option<Box<super::super::types::CodeableConcept>>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for AdverseEventSuspectEntityCausality {
     fn default() -> Self {
         Self {
@@ -44,17 +45,17 @@ pub struct AdverseEventSuspectEntity {
     #[doc = "Information on the possible cause of the event."]
     pub r#causality: Vec<AdverseEventSuspectEntityCausality>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for AdverseEventSuspectEntity {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#instance: {
-                let mut default: Box<super::super::types::Reference> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#instance: Box::new(super::super::types::Reference {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
             r#causality: Default::default(),
         }
     }
@@ -63,7 +64,7 @@ impl Default for AdverseEventSuspectEntity {
 #[derive(Debug, Clone, PartialEq)]
 pub struct AdverseEvent {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
-    pub r#id: Option<std::string::String>,
+    pub r#id: Option<Box<super::super::types::Id>>,
     #[doc = "The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content might not always be associated with version changes to the resource."]
     pub r#meta: Option<Box<super::super::types::Meta>>,
     #[doc = "A reference to a set of rules that were followed when the resource was constructed, and which must be understood when processing the content. Often, this is a reference to an implementation guide that defines the special rules along with other profiles etc."]
@@ -119,6 +120,7 @@ pub struct AdverseEvent {
     #[doc = "AdverseEvent.study."]
     pub r#study: Vec<super::super::types::Reference>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for AdverseEvent {
     fn default() -> Self {
         Self {
@@ -131,18 +133,16 @@ impl Default for AdverseEvent {
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
             r#identifier: Default::default(),
-            r#actuality: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#actuality: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#category: Default::default(),
             r#event: Default::default(),
-            r#subject: {
-                let mut default: Box<super::super::types::Reference> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#subject: Box::new(super::super::types::Reference {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
             r#encounter: Default::default(),
             r#date: Default::default(),
             r#detected: Default::default(),

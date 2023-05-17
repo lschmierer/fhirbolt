@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-15 by fhirbolt-codegen v0.8.0
 #[doc = "Indicates whether the Medication is only taken when needed within a specific dosing schedule (Boolean option), or it indicates the precondition for taking the Medication (CodeableConcept)."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum DosageAsNeeded {
@@ -38,6 +38,7 @@ pub struct DosageDoseAndRate {
     #[doc = "Amount of medication per unit of time."]
     pub r#rate: Option<DosageDoseAndRateRate>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for DosageDoseAndRate {
     fn default() -> Self {
         Self {
@@ -85,6 +86,7 @@ pub struct Dosage {
     #[doc = "Upper limit on medication per lifetime of the patient."]
     pub r#max_dose_per_lifetime: Option<Box<super::super::types::Quantity>>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for Dosage {
     fn default() -> Self {
         Self {

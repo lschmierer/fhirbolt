@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-15 by fhirbolt-codegen v0.8.0
 #[doc = "A Reference or URL used to uniquely identify the policy the organization will enforce for this Consent. This Reference or URL should be specific to the version of the policy and should be dereferencable to a computable policy of some form."]
 #[derive(Debug, Clone, PartialEq)]
 pub struct ConsentPolicyBasis {
@@ -13,6 +13,7 @@ pub struct ConsentPolicyBasis {
     #[doc = "A URL that links to a computable version of the policy the organization will enforce for this Consent."]
     pub r#url: Option<super::super::types::Url>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for ConsentPolicyBasis {
     fn default() -> Self {
         Self {
@@ -44,16 +45,16 @@ pub struct ConsentVerification {
     #[doc = "Date(s) verification was collected."]
     pub r#verification_date: Vec<super::super::types::DateTime>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for ConsentVerification {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#verified: {
-                let mut default: super::super::types::Boolean = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#verified: super::super::types::Boolean {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#verification_type: Default::default(),
             r#verified_by: Default::default(),
@@ -76,6 +77,7 @@ pub struct ConsentProvisionActor {
     #[doc = "The resource that identifies the actor. To identify actors by type, use group to identify a set of actors by some property they share (e.g. 'admitting officers')."]
     pub r#reference: Option<Box<super::super::types::Reference>>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for ConsentProvisionActor {
     fn default() -> Self {
         Self {
@@ -101,22 +103,21 @@ pub struct ConsentProvisionData {
     #[doc = "A reference to a specific resource that defines which resources are covered by this consent."]
     pub r#reference: Box<super::super::types::Reference>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for ConsentProvisionData {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#meaning: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#meaning: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
-            r#reference: {
-                let mut default: Box<super::super::types::Reference> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#reference: Box::new(super::super::types::Reference {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
         }
     }
 }
@@ -154,6 +155,7 @@ pub struct ConsentProvision {
     #[doc = "Provisions which provide exceptions to the base provision or subprovisions."]
     pub r#provision: Vec<ConsentProvision>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for ConsentProvision {
     fn default() -> Self {
         Self {
@@ -179,7 +181,7 @@ impl Default for ConsentProvision {
 #[derive(Debug, Clone, PartialEq)]
 pub struct Consent {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
-    pub r#id: Option<std::string::String>,
+    pub r#id: Option<Box<super::super::types::Id>>,
     #[doc = "The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content might not always be associated with version changes to the resource."]
     pub r#meta: Option<Box<super::super::types::Meta>>,
     #[doc = "A reference to a set of rules that were followed when the resource was constructed, and which must be understood when processing the content. Often, this is a reference to an implementation guide that defines the special rules along with other profiles etc."]
@@ -231,6 +233,7 @@ pub struct Consent {
     #[doc = "An exception to the base policy of this consent. An exception can be an addition or removal of access permissions."]
     pub r#provision: Vec<ConsentProvision>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for Consent {
     fn default() -> Self {
         Self {
@@ -243,10 +246,9 @@ impl Default for Consent {
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
             r#identifier: Default::default(),
-            r#status: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#status: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#category: Default::default(),
             r#subject: Default::default(),

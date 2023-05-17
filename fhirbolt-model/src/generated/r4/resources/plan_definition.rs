@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-15 by fhirbolt-codegen v0.8.0
 #[doc = "A code or group definition that describes the intended subject of the plan definition."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum PlanDefinitionSubject {
@@ -68,6 +68,7 @@ pub struct PlanDefinitionGoalTarget {
     #[doc = "Indicates the timeframe after the start of the goal in which the goal should be met."]
     pub r#due: Option<Box<super::super::types::Duration>>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for PlanDefinitionGoalTarget {
     fn default() -> Self {
         Self {
@@ -104,6 +105,7 @@ pub struct PlanDefinitionGoal {
     #[doc = "Indicates what should be done and within what timeframe."]
     pub r#target: Vec<PlanDefinitionGoalTarget>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for PlanDefinitionGoal {
     fn default() -> Self {
         Self {
@@ -111,11 +113,10 @@ impl Default for PlanDefinitionGoal {
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
             r#category: Default::default(),
-            r#description: {
-                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#description: Box::new(super::super::types::CodeableConcept {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
             r#priority: Default::default(),
             r#start: Default::default(),
             r#addresses: Default::default(),
@@ -138,16 +139,16 @@ pub struct PlanDefinitionActionCondition {
     #[doc = "An expression that returns true or false, indicating whether the condition is satisfied."]
     pub r#expression: Option<Box<super::super::types::Expression>>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for PlanDefinitionActionCondition {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#kind: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#kind: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#expression: Default::default(),
         }
@@ -169,21 +170,20 @@ pub struct PlanDefinitionActionRelatedAction {
     #[doc = "A duration or range of durations to apply to the relationship. For example, 30-60 minutes before."]
     pub r#offset: Option<PlanDefinitionActionRelatedActionOffset>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for PlanDefinitionActionRelatedAction {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#action_id: {
-                let mut default: super::super::types::Id = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#action_id: super::super::types::Id {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
-            r#relationship: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#relationship: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#offset: Default::default(),
         }
@@ -203,16 +203,16 @@ pub struct PlanDefinitionActionParticipant {
     #[doc = "The role the participant should play in performing the described action."]
     pub r#role: Option<Box<super::super::types::CodeableConcept>>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for PlanDefinitionActionParticipant {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#type: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#type: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#role: Default::default(),
         }
@@ -232,6 +232,7 @@ pub struct PlanDefinitionActionDynamicValue {
     #[doc = "An expression specifying the value of the customized element."]
     pub r#expression: Option<Box<super::super::types::Expression>>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for PlanDefinitionActionDynamicValue {
     fn default() -> Self {
         Self {
@@ -307,6 +308,7 @@ pub struct PlanDefinitionAction {
     #[doc = "Sub actions that are contained within the action. The behavior of this action determines the functionality of the sub-actions. For example, a selection behavior of at-most-one indicates that of the sub-actions, at most one may be chosen as part of realizing the action definition."]
     pub r#action: Vec<PlanDefinitionAction>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for PlanDefinitionAction {
     fn default() -> Self {
         Self {
@@ -347,7 +349,7 @@ impl Default for PlanDefinitionAction {
 #[derive(Debug, Clone, PartialEq)]
 pub struct PlanDefinition {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
-    pub r#id: Option<std::string::String>,
+    pub r#id: Option<Box<super::super::types::Id>>,
     #[doc = "The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content might not always be associated with version changes to the resource."]
     pub r#meta: Option<Box<super::super::types::Meta>>,
     #[doc = "A reference to a set of rules that were followed when the resource was constructed, and which must be understood when processing the content. Often, this is a reference to an implementation guide that defines the special rules along with other profiles etc."]
@@ -425,6 +427,7 @@ pub struct PlanDefinition {
     #[doc = "An action or group of actions to be taken as part of the plan."]
     pub r#action: Vec<PlanDefinitionAction>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for PlanDefinition {
     fn default() -> Self {
         Self {
@@ -443,10 +446,9 @@ impl Default for PlanDefinition {
             r#title: Default::default(),
             r#subtitle: Default::default(),
             r#type: Default::default(),
-            r#status: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#status: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#experimental: Default::default(),
             r#subject: Default::default(),

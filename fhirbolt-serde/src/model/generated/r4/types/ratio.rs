@@ -1,7 +1,7 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
-impl serde::ser::Serialize
-    for crate::context::ser::SerializationContext<&fhirbolt_model::r4::types::Ratio>
-{
+// Generated on 2023-05-15 by fhirbolt-codegen v0.8.0
+use crate::{DeserializationContext, SerializationContext};
+use fhirbolt_model::r4::types::Ratio;
+impl serde::ser::Serialize for SerializationContext<&Ratio> {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
         S: serde::ser::Serializer,
@@ -32,9 +32,7 @@ impl serde::ser::Serialize
         state.end()
     }
 }
-impl serde::ser::Serialize
-    for crate::context::ser::SerializationContext<&Box<fhirbolt_model::r4::types::Ratio>>
-{
+impl serde::ser::Serialize for SerializationContext<&Box<Ratio>> {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
         S: serde::ser::Serializer,
@@ -42,9 +40,7 @@ impl serde::ser::Serialize
         self.with_context(self.value.as_ref(), |ctx| ctx.serialize(serializer))
     }
 }
-impl serde::ser::Serialize
-    for crate::context::ser::SerializationContext<&Vec<fhirbolt_model::r4::types::Ratio>>
-{
+impl serde::ser::Serialize for SerializationContext<&Vec<Ratio>> {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
         S: serde::ser::Serializer,
@@ -57,26 +53,19 @@ impl serde::ser::Serialize
         seq_serializer.end()
     }
 }
-impl<'de> serde::de::DeserializeSeed<'de>
-    for &mut crate::context::de::DeserializationContext<fhirbolt_model::r4::types::Ratio>
-{
-    type Value = fhirbolt_model::r4::types::Ratio;
+impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Ratio> {
+    type Value = Ratio;
     fn deserialize<D>(self, deserializer: D) -> Result<Self::Value, D::Error>
     where
         D: serde::de::Deserializer<'de>,
     {
-        struct Visitor<'a>(
-            &'a mut crate::context::de::DeserializationContext<fhirbolt_model::r4::types::Ratio>,
-        );
+        struct Visitor<'a>(&'a mut DeserializationContext<Ratio>);
         impl<'de> serde::de::Visitor<'de> for Visitor<'_> {
-            type Value = fhirbolt_model::r4::types::Ratio;
+            type Value = Ratio;
             fn expecting(&self, formatter: &mut std::fmt::Formatter) -> std::fmt::Result {
                 formatter.write_str("Ratio")
             }
-            fn visit_map<V>(
-                self,
-                mut map_access: V,
-            ) -> Result<fhirbolt_model::r4::types::Ratio, V::Error>
+            fn visit_map<V>(self, mut map_access: V) -> Result<Ratio, V::Error>
             where
                 V: serde::de::MapAccess<'de>,
             {
@@ -112,45 +101,39 @@ impl<'de> serde::de::DeserializeSeed<'de>
                             r#id = Some(map_access.next_value()?);
                         }
                         Field::Extension => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 if r#extension.is_some() {
                                     return Err(serde::de::Error::duplicate_field("extension"));
                                 }
-                                r#extension = Some(
-                                    map_access.next_value_seed(
-                                        self.0
-                                            .transmute::<Vec<fhirbolt_model::r4::types::Extension>>(
-                                            ),
-                                    )?,
-                                );
+                                let _context: &mut DeserializationContext<
+                                    Vec<fhirbolt_model::r4::types::Extension>,
+                                > = self.0.transmute();
+                                r#extension = Some(map_access.next_value_seed(&mut *_context)?);
                             } else {
                                 let vec = r#extension.get_or_insert(Default::default());
-                                vec.push(map_access.next_value_seed(
-                                    self.0.transmute::<fhirbolt_model::r4::types::Extension>(),
-                                )?);
+                                let _context: &mut DeserializationContext<
+                                    fhirbolt_model::r4::types::Extension,
+                                > = self.0.transmute();
+                                vec.push(map_access.next_value_seed(&mut *_context)?);
                             }
                         }
                         Field::Numerator => {
                             if r#numerator.is_some() {
                                 return Err(serde::de::Error::duplicate_field("numerator"));
                             }
-                            r#numerator = Some(
-                                map_access.next_value_seed(
-                                    self.0
-                                        .transmute::<Box<fhirbolt_model::r4::types::Quantity>>(),
-                                )?,
-                            );
+                            let _context: &mut DeserializationContext<
+                                Box<fhirbolt_model::r4::types::Quantity>,
+                            > = self.0.transmute();
+                            r#numerator = Some(map_access.next_value_seed(&mut *_context)?);
                         }
                         Field::Denominator => {
                             if r#denominator.is_some() {
                                 return Err(serde::de::Error::duplicate_field("denominator"));
                             }
-                            r#denominator = Some(
-                                map_access.next_value_seed(
-                                    self.0
-                                        .transmute::<Box<fhirbolt_model::r4::types::Quantity>>(),
-                                )?,
-                            );
+                            let _context: &mut DeserializationContext<
+                                Box<fhirbolt_model::r4::types::Quantity>,
+                            > = self.0.transmute();
+                            r#denominator = Some(map_access.next_value_seed(&mut *_context)?);
                         }
                         Field::Unknown(key) => {
                             if self.0.config.mode == crate::context::de::DeserializationMode::Strict
@@ -160,7 +143,7 @@ impl<'de> serde::de::DeserializeSeed<'de>
                         }
                     }
                 }
-                Ok(fhirbolt_model::r4::types::Ratio {
+                Ok(Ratio {
                     r#id,
                     r#extension: r#extension.unwrap_or(vec![]),
                     r#numerator,
@@ -171,34 +154,26 @@ impl<'de> serde::de::DeserializeSeed<'de>
         deserializer.deserialize_map(Visitor(self))
     }
 }
-impl<'de> serde::de::DeserializeSeed<'de>
-    for &mut crate::context::de::DeserializationContext<Box<fhirbolt_model::r4::types::Ratio>>
-{
-    type Value = Box<fhirbolt_model::r4::types::Ratio>;
+impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Box<Ratio>> {
+    type Value = Box<Ratio>;
     fn deserialize<D>(self, deserializer: D) -> Result<Self::Value, D::Error>
     where
         D: serde::de::Deserializer<'de>,
     {
-        self.transmute::<fhirbolt_model::r4::types::Ratio>()
+        self.transmute::<Ratio>()
             .deserialize(deserializer)
             .map(Box::new)
     }
 }
-impl<'de> serde::de::DeserializeSeed<'de>
-    for &mut crate::context::de::DeserializationContext<Vec<fhirbolt_model::r4::types::Ratio>>
-{
-    type Value = Vec<fhirbolt_model::r4::types::Ratio>;
+impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Vec<Ratio>> {
+    type Value = Vec<Ratio>;
     fn deserialize<D>(self, deserializer: D) -> Result<Self::Value, D::Error>
     where
         D: serde::de::Deserializer<'de>,
     {
-        struct Visitor<'a>(
-            &'a mut crate::context::de::DeserializationContext<
-                Vec<fhirbolt_model::r4::types::Ratio>,
-            >,
-        );
+        struct Visitor<'a>(&'a mut DeserializationContext<Vec<Ratio>>);
         impl<'de> serde::de::Visitor<'de> for Visitor<'_> {
-            type Value = Vec<fhirbolt_model::r4::types::Ratio>;
+            type Value = Vec<Ratio>;
             fn expecting(&self, formatter: &mut std::fmt::Formatter) -> std::fmt::Result {
                 formatter.write_str("a sequence")
             }
@@ -207,9 +182,8 @@ impl<'de> serde::de::DeserializeSeed<'de>
                 A: serde::de::SeqAccess<'de>,
             {
                 let mut values = Vec::new();
-                while let Some(value) =
-                    seq.next_element_seed(self.0.transmute::<fhirbolt_model::r4::types::Ratio>())?
-                {
+                let _context: &mut DeserializationContext<Ratio> = self.0.transmute();
+                while let Some(value) = seq.next_element_seed(&mut *_context)? {
                     values.push(value);
                 }
                 Ok(values)

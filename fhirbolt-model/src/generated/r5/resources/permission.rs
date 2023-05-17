@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-15 by fhirbolt-codegen v0.8.0
 #[doc = "The asserted justification for using the data."]
 #[derive(Debug, Clone, PartialEq)]
 pub struct PermissionJustification {
@@ -13,6 +13,7 @@ pub struct PermissionJustification {
     #[doc = "Justifing rational."]
     pub r#evidence: Vec<super::super::types::Reference>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for PermissionJustification {
     fn default() -> Self {
         Self {
@@ -38,22 +39,21 @@ pub struct PermissionRuleDataResource {
     #[doc = "A reference to a specific resource that defines which resources are covered by this consent."]
     pub r#reference: Box<super::super::types::Reference>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for PermissionRuleDataResource {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#meaning: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#meaning: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
-            r#reference: {
-                let mut default: Box<super::super::types::Reference> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#reference: Box::new(super::super::types::Reference {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
         }
     }
 }
@@ -75,6 +75,7 @@ pub struct PermissionRuleData {
     #[doc = "Used when other data selection elements are insufficient."]
     pub r#expression: Option<Box<super::super::types::Expression>>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for PermissionRuleData {
     fn default() -> Self {
         Self {
@@ -104,6 +105,7 @@ pub struct PermissionRuleActivity {
     #[doc = "The purpose for which the permission is given."]
     pub r#purpose: Vec<super::super::types::CodeableConcept>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for PermissionRuleActivity {
     fn default() -> Self {
         Self {
@@ -134,6 +136,7 @@ pub struct PermissionRule {
     #[doc = "What limits apply to the use of the data."]
     pub r#limit: Vec<super::super::types::CodeableConcept>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for PermissionRule {
     fn default() -> Self {
         Self {
@@ -151,7 +154,7 @@ impl Default for PermissionRule {
 #[derive(Debug, Clone, PartialEq)]
 pub struct Permission {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
-    pub r#id: Option<std::string::String>,
+    pub r#id: Option<Box<super::super::types::Id>>,
     #[doc = "The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content might not always be associated with version changes to the resource."]
     pub r#meta: Option<Box<super::super::types::Meta>>,
     #[doc = "A reference to a set of rules that were followed when the resource was constructed, and which must be understood when processing the content. Often, this is a reference to an implementation guide that defines the special rules along with other profiles etc."]
@@ -181,6 +184,7 @@ pub struct Permission {
     #[doc = "A set of rules."]
     pub r#rule: Vec<PermissionRule>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for Permission {
     fn default() -> Self {
         Self {
@@ -192,19 +196,17 @@ impl Default for Permission {
             r#contained: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#status: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#status: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#asserter: Default::default(),
             r#date: Default::default(),
             r#validity: Default::default(),
             r#justification: Default::default(),
-            r#combining: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#combining: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#rule: Default::default(),
         }

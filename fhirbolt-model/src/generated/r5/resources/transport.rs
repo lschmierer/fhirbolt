@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-15 by fhirbolt-codegen v0.8.0
 #[doc = "The value of the input parameter as a basic type."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum TransportInputValue {
@@ -135,6 +135,7 @@ pub struct TransportRestriction {
     #[doc = "For requests that are targeted to more than one potential recipient/target, to identify who is fulfillment is sought for."]
     pub r#recipient: Vec<super::super::types::Reference>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for TransportRestriction {
     fn default() -> Self {
         Self {
@@ -161,17 +162,17 @@ pub struct TransportInput {
     #[doc = "The value of the input parameter as a basic type."]
     pub r#value: TransportInputValue,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for TransportInput {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#type: {
-                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#type: Box::new(super::super::types::CodeableConcept {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
             r#value: Default::default(),
         }
     }
@@ -190,17 +191,17 @@ pub struct TransportOutput {
     #[doc = "The value of the Output parameter as a basic type."]
     pub r#value: TransportOutputValue,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for TransportOutput {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#type: {
-                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#type: Box::new(super::super::types::CodeableConcept {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
             r#value: Default::default(),
         }
     }
@@ -209,7 +210,7 @@ impl Default for TransportOutput {
 #[derive(Debug, Clone, PartialEq)]
 pub struct Transport {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
-    pub r#id: Option<std::string::String>,
+    pub r#id: Option<Box<super::super::types::Id>>,
     #[doc = "The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content might not always be associated with version changes to the resource."]
     pub r#meta: Option<Box<super::super::types::Meta>>,
     #[doc = "A reference to a set of rules that were followed when the resource was constructed, and which must be understood when processing the content. Often, this is a reference to an implementation guide that defines the special rules along with other profiles etc."]
@@ -289,6 +290,7 @@ pub struct Transport {
     #[doc = "The transport event prior to this one."]
     pub r#history: Option<Box<super::super::types::Reference>>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for Transport {
     fn default() -> Self {
         Self {
@@ -308,10 +310,9 @@ impl Default for Transport {
             r#part_of: Default::default(),
             r#status: Default::default(),
             r#status_reason: Default::default(),
-            r#intent: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#intent: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#priority: Default::default(),
             r#code: Default::default(),
@@ -332,16 +333,14 @@ impl Default for Transport {
             r#restriction: Default::default(),
             r#input: Default::default(),
             r#output: Default::default(),
-            r#requested_location: {
-                let mut default: Box<super::super::types::Reference> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
-            r#current_location: {
-                let mut default: Box<super::super::types::Reference> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#requested_location: Box::new(super::super::types::Reference {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
+            r#current_location: Box::new(super::super::types::Reference {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
             r#reason: Default::default(),
             r#history: Default::default(),
         }

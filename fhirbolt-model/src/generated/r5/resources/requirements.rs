@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-15 by fhirbolt-codegen v0.8.0
 #[doc = "Indicates the mechanism used to compare versions to determine which is more current."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum RequirementsVersionAlgorithm {
@@ -37,24 +37,23 @@ pub struct RequirementsStatement {
     #[doc = "Who asked for this statement to be a requirement. By default, it's assumed that the publisher knows who it is if it matters."]
     pub r#source: Vec<super::super::types::Reference>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for RequirementsStatement {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#key: {
-                let mut default: super::super::types::Id = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#key: super::super::types::Id {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#label: Default::default(),
             r#conformance: Default::default(),
             r#conditionality: Default::default(),
-            r#requirement: {
-                let mut default: super::super::types::Markdown = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#requirement: super::super::types::Markdown {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#derived_from: Default::default(),
             r#parent: Default::default(),
@@ -68,7 +67,7 @@ impl Default for RequirementsStatement {
 #[derive(Debug, Clone, PartialEq)]
 pub struct Requirements {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
-    pub r#id: Option<std::string::String>,
+    pub r#id: Option<Box<super::super::types::Id>>,
     #[doc = "The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content might not always be associated with version changes to the resource."]
     pub r#meta: Option<Box<super::super::types::Meta>>,
     #[doc = "A reference to a set of rules that were followed when the resource was constructed, and which must be understood when processing the content. Often, this is a reference to an implementation guide that defines the special rules along with other profiles etc."]
@@ -126,6 +125,7 @@ pub struct Requirements {
     #[doc = "The actual statement of requirement, in markdown format."]
     pub r#statement: Vec<RequirementsStatement>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for Requirements {
     fn default() -> Self {
         Self {
@@ -143,10 +143,9 @@ impl Default for Requirements {
             r#version_algorithm: Default::default(),
             r#name: Default::default(),
             r#title: Default::default(),
-            r#status: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#status: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#experimental: Default::default(),
             r#date: Default::default(),

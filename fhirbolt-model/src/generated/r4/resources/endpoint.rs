@@ -1,9 +1,9 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-15 by fhirbolt-codegen v0.8.0
 #[doc = "The technical details of an endpoint that can be used for electronic services, such as for web services providing XDS.b or a REST endpoint for another FHIR server. This may include any security context information."]
 #[derive(Debug, Clone, PartialEq)]
 pub struct Endpoint {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
-    pub r#id: Option<std::string::String>,
+    pub r#id: Option<Box<super::super::types::Id>>,
     #[doc = "The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content might not always be associated with version changes to the resource."]
     pub r#meta: Option<Box<super::super::types::Meta>>,
     #[doc = "A reference to a set of rules that were followed when the resource was constructed, and which must be understood when processing the content. Often, this is a reference to an implementation guide that defines the special rules along with other profiles etc."]
@@ -41,6 +41,7 @@ pub struct Endpoint {
     #[doc = "Additional headers / information to send as part of the notification."]
     pub r#header: Vec<super::super::types::String>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for Endpoint {
     fn default() -> Self {
         Self {
@@ -53,26 +54,23 @@ impl Default for Endpoint {
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
             r#identifier: Default::default(),
-            r#status: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#status: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
-            r#connection_type: {
-                let mut default: Box<super::super::types::Coding> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#connection_type: Box::new(super::super::types::Coding {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
             r#name: Default::default(),
             r#managing_organization: Default::default(),
             r#contact: Default::default(),
             r#period: Default::default(),
             r#payload_type: Default::default(),
             r#payload_mime_type: Default::default(),
-            r#address: {
-                let mut default: super::super::types::Url = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#address: super::super::types::Url {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#header: Default::default(),
         }

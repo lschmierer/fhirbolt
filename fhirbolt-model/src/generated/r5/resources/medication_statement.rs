@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-15 by fhirbolt-codegen v0.8.0
 #[doc = "The interval of time during which it is being asserted that the patient is/was/will be taking the medication (or was not taking, when the MedicationStatement.adherence element is Not Taking)."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum MedicationStatementEffective {
@@ -22,17 +22,17 @@ pub struct MedicationStatementAdherence {
     #[doc = "Captures the reason for the current use or adherence of a medication."]
     pub r#reason: Option<Box<super::super::types::CodeableConcept>>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for MedicationStatementAdherence {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#code: {
-                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#code: Box::new(super::super::types::CodeableConcept {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
             r#reason: Default::default(),
         }
     }
@@ -41,7 +41,7 @@ impl Default for MedicationStatementAdherence {
 #[derive(Debug, Clone, PartialEq)]
 pub struct MedicationStatement {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
-    pub r#id: Option<std::string::String>,
+    pub r#id: Option<Box<super::super::types::Id>>,
     #[doc = "The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content might not always be associated with version changes to the resource."]
     pub r#meta: Option<Box<super::super::types::Meta>>,
     #[doc = "A reference to a set of rules that were followed when the resource was constructed, and which must be understood when processing the content. Often, this is a reference to an implementation guide that defines the special rules along with other profiles etc."]
@@ -91,6 +91,7 @@ pub struct MedicationStatement {
     #[doc = "Indicates whether the medication is or is not being consumed or administered."]
     pub r#adherence: Option<MedicationStatementAdherence>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for MedicationStatement {
     fn default() -> Self {
         Self {
@@ -104,22 +105,19 @@ impl Default for MedicationStatement {
             r#modifier_extension: Default::default(),
             r#identifier: Default::default(),
             r#part_of: Default::default(),
-            r#status: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#status: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#category: Default::default(),
-            r#medication: {
-                let mut default: Box<super::super::types::CodeableReference> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
-            r#subject: {
-                let mut default: Box<super::super::types::Reference> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#medication: Box::new(super::super::types::CodeableReference {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
+            r#subject: Box::new(super::super::types::Reference {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
             r#encounter: Default::default(),
             r#effective: Default::default(),
             r#date_asserted: Default::default(),

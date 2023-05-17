@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-15 by fhirbolt-codegen v0.8.0
 #[doc = "Indicates the mechanism used to compare versions to determine which is more current."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum TestScriptVersionAlgorithm {
@@ -31,22 +31,21 @@ pub struct TestScriptOrigin {
     #[doc = "The explicit url path of the origin server used in this test script."]
     pub r#url: Option<super::super::types::Url>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for TestScriptOrigin {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#index: {
-                let mut default: super::super::types::Integer = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#index: super::super::types::Integer {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
-            r#profile: {
-                let mut default: Box<super::super::types::Coding> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#profile: Box::new(super::super::types::Coding {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
             r#url: Default::default(),
         }
     }
@@ -67,22 +66,21 @@ pub struct TestScriptDestination {
     #[doc = "The explicit url path of the destination server used in this test script."]
     pub r#url: Option<super::super::types::Url>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for TestScriptDestination {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#index: {
-                let mut default: super::super::types::Integer = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#index: super::super::types::Integer {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
-            r#profile: {
-                let mut default: Box<super::super::types::Coding> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#profile: Box::new(super::super::types::Coding {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
             r#url: Default::default(),
         }
     }
@@ -101,16 +99,16 @@ pub struct TestScriptMetadataLink {
     #[doc = "Short description of the link."]
     pub r#description: Option<super::super::types::String>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for TestScriptMetadataLink {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#url: {
-                let mut default: super::super::types::Uri = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#url: super::super::types::Uri {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#description: Default::default(),
         }
@@ -140,30 +138,28 @@ pub struct TestScriptMetadataCapability {
     #[doc = "Minimum capabilities required of server for test script to execute successfully.   If server does not meet at a minimum the referenced capability statement, then all tests in this script are skipped."]
     pub r#capabilities: super::super::types::Canonical,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for TestScriptMetadataCapability {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#required: {
-                let mut default: super::super::types::Boolean = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#required: super::super::types::Boolean {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
-            r#validated: {
-                let mut default: super::super::types::Boolean = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#validated: super::super::types::Boolean {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#description: Default::default(),
             r#origin: Default::default(),
             r#destination: Default::default(),
             r#link: Default::default(),
-            r#capabilities: {
-                let mut default: super::super::types::Canonical = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#capabilities: super::super::types::Canonical {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
         }
     }
@@ -182,6 +178,7 @@ pub struct TestScriptMetadata {
     #[doc = "Capabilities that must exist and are assumed to function correctly on the FHIR server being tested."]
     pub r#capability: Vec<TestScriptMetadataCapability>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for TestScriptMetadata {
     fn default() -> Self {
         Self {
@@ -209,16 +206,16 @@ pub struct TestScriptScope {
     #[doc = "The phase of testing for this artifact: unit - development / implementation phase, integration - internal system to system phase, production - live system to system phase (Note, this may involve pii/phi data)."]
     pub r#phase: Option<Box<super::super::types::CodeableConcept>>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for TestScriptScope {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#artifact: {
-                let mut default: super::super::types::Canonical = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#artifact: super::super::types::Canonical {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#conformance: Default::default(),
             r#phase: Default::default(),
@@ -241,21 +238,20 @@ pub struct TestScriptFixture {
     #[doc = "Reference to the resource (containing the contents of the resource needed for operations). This is allowed to be a Parameters resource."]
     pub r#resource: Option<Box<super::super::types::Reference>>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for TestScriptFixture {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#autocreate: {
-                let mut default: super::super::types::Boolean = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#autocreate: super::super::types::Boolean {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
-            r#autodelete: {
-                let mut default: super::super::types::Boolean = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#autodelete: super::super::types::Boolean {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#resource: Default::default(),
         }
@@ -287,16 +283,16 @@ pub struct TestScriptVariable {
     #[doc = "Fixture to evaluate the XPath/JSONPath expression or the headerField  against within this variable."]
     pub r#source_id: Option<super::super::types::Id>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for TestScriptVariable {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#name: {
-                let mut default: super::super::types::String = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#name: super::super::types::String {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#default_value: Default::default(),
             r#description: Default::default(),
@@ -322,21 +318,20 @@ pub struct TestScriptSetupActionOperationRequestHeader {
     #[doc = "The value of the header e.g. \"application/fhir+xml\"."]
     pub r#value: super::super::types::String,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for TestScriptSetupActionOperationRequestHeader {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#field: {
-                let mut default: super::super::types::String = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#field: super::super::types::String {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
-            r#value: {
-                let mut default: super::super::types::String = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#value: super::super::types::String {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
         }
     }
@@ -385,6 +380,7 @@ pub struct TestScriptSetupActionOperation {
     #[doc = "Complete request URL."]
     pub r#url: Option<super::super::types::String>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for TestScriptSetupActionOperation {
     fn default() -> Self {
         Self {
@@ -398,10 +394,9 @@ impl Default for TestScriptSetupActionOperation {
             r#accept: Default::default(),
             r#content_type: Default::default(),
             r#destination: Default::default(),
-            r#encode_request_url: {
-                let mut default: super::super::types::Boolean = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#encode_request_url: super::super::types::Boolean {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#method: Default::default(),
             r#origin: Default::default(),
@@ -427,6 +422,7 @@ pub struct TestScriptSetupActionAssertRequirement {
     #[doc = "Link or reference providing traceability to the testing requirement for this test."]
     pub r#link: Option<TestScriptSetupActionAssertRequirementLink>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for TestScriptSetupActionAssertRequirement {
     fn default() -> Self {
         Self {
@@ -497,6 +493,7 @@ pub struct TestScriptSetupActionAssert {
     #[doc = "Links or references providing traceability to the testing requirements for this assert."]
     pub r#requirement: Vec<TestScriptSetupActionAssertRequirement>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for TestScriptSetupActionAssert {
     fn default() -> Self {
         Self {
@@ -523,17 +520,15 @@ impl Default for TestScriptSetupActionAssert {
             r#response: Default::default(),
             r#response_code: Default::default(),
             r#source_id: Default::default(),
-            r#stop_test_on_fail: {
-                let mut default: super::super::types::Boolean = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#stop_test_on_fail: super::super::types::Boolean {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#validate_profile_id: Default::default(),
             r#value: Default::default(),
-            r#warning_only: {
-                let mut default: super::super::types::Boolean = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#warning_only: super::super::types::Boolean {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#requirement: Default::default(),
         }
@@ -553,6 +548,7 @@ pub struct TestScriptSetupAction {
     #[doc = "Evaluates the results of previous operations to determine if the server under test behaves appropriately."]
     pub r#assert: Option<TestScriptSetupActionAssert>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for TestScriptSetupAction {
     fn default() -> Self {
         Self {
@@ -576,6 +572,7 @@ pub struct TestScriptSetup {
     #[doc = "Action would contain either an operation or an assertion."]
     pub r#action: Vec<TestScriptSetupAction>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for TestScriptSetup {
     fn default() -> Self {
         Self {
@@ -600,6 +597,7 @@ pub struct TestScriptTestAction {
     #[doc = "Evaluates the results of previous operations to determine if the server under test behaves appropriately."]
     pub r#assert: Option<TestScriptSetupActionAssert>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for TestScriptTestAction {
     fn default() -> Self {
         Self {
@@ -627,6 +625,7 @@ pub struct TestScriptTest {
     #[doc = "Action would contain either an operation or an assertion."]
     pub r#action: Vec<TestScriptTestAction>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for TestScriptTest {
     fn default() -> Self {
         Self {
@@ -651,16 +650,16 @@ pub struct TestScriptTeardownAction {
     #[doc = "An operation would involve a REST request to a server."]
     pub r#operation: TestScriptSetupActionOperation,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for TestScriptTeardownAction {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#operation: {
-                let mut default: TestScriptSetupActionOperation = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#operation: TestScriptSetupActionOperation {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
         }
     }
@@ -677,6 +676,7 @@ pub struct TestScriptTeardown {
     #[doc = "The teardown action will only contain an operation."]
     pub r#action: Vec<TestScriptTeardownAction>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for TestScriptTeardown {
     fn default() -> Self {
         Self {
@@ -691,7 +691,7 @@ impl Default for TestScriptTeardown {
 #[derive(Debug, Clone, PartialEq)]
 pub struct TestScript {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
-    pub r#id: Option<std::string::String>,
+    pub r#id: Option<Box<super::super::types::Id>>,
     #[doc = "The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content might not always be associated with version changes to the resource."]
     pub r#meta: Option<Box<super::super::types::Meta>>,
     #[doc = "A reference to a set of rules that were followed when the resource was constructed, and which must be understood when processing the content. Often, this is a reference to an implementation guide that defines the special rules along with other profiles etc."]
@@ -761,6 +761,7 @@ pub struct TestScript {
     #[doc = "A series of operations required to clean up after all the tests are executed (successfully or otherwise)."]
     pub r#teardown: Option<TestScriptTeardown>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for TestScript {
     fn default() -> Self {
         Self {
@@ -776,16 +777,14 @@ impl Default for TestScript {
             r#identifier: Default::default(),
             r#version: Default::default(),
             r#version_algorithm: Default::default(),
-            r#name: {
-                let mut default: super::super::types::String = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#name: super::super::types::String {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#title: Default::default(),
-            r#status: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#status: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#experimental: Default::default(),
             r#date: Default::default(),

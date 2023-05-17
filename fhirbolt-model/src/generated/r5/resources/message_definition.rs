@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-15 by fhirbolt-codegen v0.8.0
 #[doc = "Indicates the mechanism used to compare versions to determine which is more current."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum MessageDefinitionVersionAlgorithm {
@@ -33,22 +33,21 @@ pub struct MessageDefinitionFocus {
     #[doc = "Identifies the maximum number of resources of this type that must be pointed to by a message in order for it to be valid against this MessageDefinition."]
     pub r#max: Option<super::super::types::String>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for MessageDefinitionFocus {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#code: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#code: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#profile: Default::default(),
-            r#min: {
-                let mut default: super::super::types::UnsignedInt = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#min: super::super::types::UnsignedInt {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#max: Default::default(),
         }
@@ -68,16 +67,16 @@ pub struct MessageDefinitionAllowedResponse {
     #[doc = "Provides a description of the circumstances in which this response should be used (as opposed to one of the alternative responses)."]
     pub r#situation: Option<super::super::types::Markdown>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for MessageDefinitionAllowedResponse {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#message: {
-                let mut default: super::super::types::Canonical = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#message: super::super::types::Canonical {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#situation: Default::default(),
         }
@@ -87,7 +86,7 @@ impl Default for MessageDefinitionAllowedResponse {
 #[derive(Debug, Clone, PartialEq)]
 pub struct MessageDefinition {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
-    pub r#id: Option<std::string::String>,
+    pub r#id: Option<Box<super::super::types::Id>>,
     #[doc = "The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content might not always be associated with version changes to the resource."]
     pub r#meta: Option<Box<super::super::types::Meta>>,
     #[doc = "A reference to a set of rules that were followed when the resource was constructed, and which must be understood when processing the content. Often, this is a reference to an implementation guide that defines the special rules along with other profiles etc."]
@@ -155,6 +154,7 @@ pub struct MessageDefinition {
     #[doc = "Graph is Canonical reference to a GraphDefinition. If a URL is provided, it is the canonical reference to a GraphDefinition that it controls what additional resources are to be added to the Bundle when building the message. The GraphDefinition can also specify profiles that apply to the various resources."]
     pub r#graph: Option<super::super::types::Canonical>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for MessageDefinition {
     fn default() -> Self {
         Self {
@@ -173,16 +173,14 @@ impl Default for MessageDefinition {
             r#name: Default::default(),
             r#title: Default::default(),
             r#replaces: Default::default(),
-            r#status: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#status: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#experimental: Default::default(),
-            r#date: {
-                let mut default: super::super::types::DateTime = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#date: super::super::types::DateTime {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#publisher: Default::default(),
             r#contact: Default::default(),

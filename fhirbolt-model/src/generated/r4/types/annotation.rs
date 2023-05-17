@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-15 by fhirbolt-codegen v0.8.0
 #[doc = "The individual responsible for making the annotation."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum AnnotationAuthor {
@@ -21,6 +21,7 @@ pub struct Annotation {
     #[doc = "The text of the annotation in markdown format."]
     pub r#text: super::super::types::Markdown,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for Annotation {
     fn default() -> Self {
         Self {
@@ -28,10 +29,9 @@ impl Default for Annotation {
             r#extension: Default::default(),
             r#author: Default::default(),
             r#time: Default::default(),
-            r#text: {
-                let mut default: super::super::types::Markdown = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#text: super::super::types::Markdown {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
         }
     }

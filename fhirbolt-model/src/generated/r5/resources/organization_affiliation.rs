@@ -1,9 +1,9 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-15 by fhirbolt-codegen v0.8.0
 #[doc = "Defines an affiliation/assotiation/relationship between 2 distinct organizations, that is not a part-of relationship/sub-division relationship.\n\nNeed to define relationships between organizations that are not sub-divisions of the same organization (part-of relationships)."]
 #[derive(Debug, Clone, PartialEq)]
 pub struct OrganizationAffiliation {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
-    pub r#id: Option<std::string::String>,
+    pub r#id: Option<Box<super::super::types::Id>>,
     #[doc = "The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content might not always be associated with version changes to the resource."]
     pub r#meta: Option<Box<super::super::types::Meta>>,
     #[doc = "A reference to a set of rules that were followed when the resource was constructed, and which must be understood when processing the content. Often, this is a reference to an implementation guide that defines the special rules along with other profiles etc."]
@@ -43,6 +43,7 @@ pub struct OrganizationAffiliation {
     #[doc = "Technical endpoints providing access to services operated for this role."]
     pub r#endpoint: Vec<super::super::types::Reference>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for OrganizationAffiliation {
     fn default() -> Self {
         Self {

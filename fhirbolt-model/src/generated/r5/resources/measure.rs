@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-15 by fhirbolt-codegen v0.8.0
 #[doc = "Indicates the mechanism used to compare versions to determine which is more current."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum MeasureVersionAlgorithm {
@@ -37,6 +37,7 @@ pub struct MeasureTerm {
     #[doc = "Provides a definition for the term as used within the measure."]
     pub r#definition: Option<super::super::types::Markdown>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for MeasureTerm {
     fn default() -> Self {
         Self {
@@ -72,6 +73,7 @@ pub struct MeasureGroupPopulation {
     #[doc = "Specifies which method should be used to aggregate measure observation values. For most scoring types, this is implied by scoring (e.g. a proportion measure counts members of the populations). For continuous variables, however, this information must be specified to ensure correct calculation."]
     pub r#aggregate_method: Option<Box<super::super::types::CodeableConcept>>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for MeasureGroupPopulation {
     fn default() -> Self {
         Self {
@@ -108,6 +110,7 @@ pub struct MeasureGroupStratifierComponent {
     #[doc = "A Group resource that defines this population as a set of characteristics."]
     pub r#group_definition: Option<Box<super::super::types::Reference>>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for MeasureGroupStratifierComponent {
     fn default() -> Self {
         Self {
@@ -144,6 +147,7 @@ pub struct MeasureGroupStratifier {
     #[doc = "A component of the stratifier criteria for the measure report, specified as either the name of a valid CQL expression defined within a referenced library or a valid FHIR Resource Path."]
     pub r#component: Vec<MeasureGroupStratifierComponent>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for MeasureGroupStratifier {
     fn default() -> Self {
         Self {
@@ -195,6 +199,7 @@ pub struct MeasureGroup {
     #[doc = "The stratifier criteria for the measure report, specified as either the name of a valid CQL expression defined within a referenced library or a valid FHIR Resource Path."]
     pub r#stratifier: Vec<MeasureGroupStratifier>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for MeasureGroup {
     fn default() -> Self {
         Self {
@@ -237,6 +242,7 @@ pub struct MeasureSupplementalData {
     #[doc = "The criteria for the supplemental data. This is typically the name of a valid expression defined within a referenced library, but it may also be a path to a specific data element. The criteria defines the data to be returned for this element."]
     pub r#criteria: Box<super::super::types::Expression>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for MeasureSupplementalData {
     fn default() -> Self {
         Self {
@@ -247,11 +253,10 @@ impl Default for MeasureSupplementalData {
             r#code: Default::default(),
             r#usage: Default::default(),
             r#description: Default::default(),
-            r#criteria: {
-                let mut default: Box<super::super::types::Expression> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#criteria: Box::new(super::super::types::Expression {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
         }
     }
 }
@@ -259,7 +264,7 @@ impl Default for MeasureSupplementalData {
 #[derive(Debug, Clone, PartialEq)]
 pub struct Measure {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
-    pub r#id: Option<std::string::String>,
+    pub r#id: Option<Box<super::super::types::Id>>,
     #[doc = "The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content might not always be associated with version changes to the resource."]
     pub r#meta: Option<Box<super::super::types::Meta>>,
     #[doc = "A reference to a set of rules that were followed when the resource was constructed, and which must be understood when processing the content. Often, this is a reference to an implementation guide that defines the special rules along with other profiles etc."]
@@ -365,6 +370,7 @@ pub struct Measure {
     #[doc = "The supplemental data criteria for the measure report, specified as either the name of a valid CQL expression within a referenced library, or a valid FHIR Resource Path."]
     pub r#supplemental_data: Vec<MeasureSupplementalData>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for Measure {
     fn default() -> Self {
         Self {
@@ -383,10 +389,9 @@ impl Default for Measure {
             r#name: Default::default(),
             r#title: Default::default(),
             r#subtitle: Default::default(),
-            r#status: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#status: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#experimental: Default::default(),
             r#subject: Default::default(),

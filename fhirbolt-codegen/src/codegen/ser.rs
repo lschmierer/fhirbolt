@@ -23,12 +23,35 @@ pub fn implement_serialize(
             quote!()
         };
 
-    let serialized_fields_tokens = r#struct.fields.iter().map(|f| {
+    let mut fields = r#struct.fields.clone();
+
+    // make sure that id, url and value are serialized first
+    // these are serialized as XML attributes, the opening tag can thus be writtern earlier
+    // and nested state can be avoided in the XML serializer
+    if r#struct.is_primitive {
+        fields.sort_by_key(|f| match f.name.as_str() {
+            "id" => 0,
+            "value" => 1,
+            _ => 2,
+        });
+    }
+
+    if r#struct.struct_name == "Extension" {
+        fields.sort_by_key(|f| match f.name.as_str() {
+            "id" => 0,
+            "url" => 1,
+            "value" => 2,
+            _ => 3,
+        });
+    }
+
+    let serialized_fields_tokens = fields.iter().map(|f| {
         serialize_field(
             f,
             enums,
             r#struct.is_primitive,
             r#struct.struct_name == "Extension",
+            r#struct.resource_name.is_some(),
             r#struct.struct_name == "Decimal",
             namespace,
         )
@@ -37,7 +60,7 @@ pub fn implement_serialize(
     let path = &r#struct.path;
 
     quote! {
-        impl serde::ser::Serialize for crate::context::ser::SerializationContext<&#namespace::#struct_name_ident> {
+        impl serde::ser::Serialize for SerializationContext<&#struct_name_ident> {
             fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
             where
                 S: serde::ser::Serializer,
@@ -60,7 +83,7 @@ pub fn implement_serialize(
             }
         }
 
-        impl serde::ser::Serialize for crate::context::ser::SerializationContext<&Box<#namespace::#struct_name_ident>> {
+        impl serde::ser::Serialize for SerializationContext<&Box<#struct_name_ident>> {
             fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
             where
                 S: serde::ser::Serializer,
@@ -69,7 +92,7 @@ pub fn implement_serialize(
             }
         }
 
-        impl serde::ser::Serialize for crate::context::ser::SerializationContext<&Vec<#namespace::#struct_name_ident>> {
+        impl serde::ser::Serialize for SerializationContext<&Vec<#struct_name_ident>> {
             fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
             where
                 S: serde::ser::Serializer,
@@ -90,22 +113,19 @@ pub fn implement_serialize(
     }
 }
 
-pub fn implement_serialize_resource_enum(
-    resource_modules: &[RustFhirModule],
-    namespace: &TokenStream,
-) -> TokenStream {
+pub fn implement_serialize_resource_enum(resource_modules: &[RustFhirModule]) -> TokenStream {
     let match_resource_type = resource_modules.iter().map(|r| {
         let ident = format_ident!("{}", r.resource_name.as_ref().unwrap());
 
         quote! {
-            #namespace::Resource::#ident(r) => {
+            Resource::#ident(r) => {
                 self.with_context(r, |ctx| ctx.serialize(serializer))
             },
         }
     });
 
     quote! {
-        impl serde::ser::Serialize for crate::context::ser::SerializationContext<&#namespace::Resource> {
+        impl serde::ser::Serialize for SerializationContext<&Resource> {
             fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
             where
                 S: serde::ser::Serializer,
@@ -119,7 +139,7 @@ pub fn implement_serialize_resource_enum(
             }
         }
 
-        impl serde::ser::Serialize for crate::context::ser::SerializationContext<&Vec<#namespace::Resource>> {
+        impl serde::ser::Serialize for SerializationContext<&Vec<Resource>> {
             fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
             where
                 S: serde::ser::Serializer,
@@ -145,22 +165,21 @@ fn serialize_field(
     enums: &[RustFhirEnum],
     in_primitive: bool,
     in_extension: bool,
+    in_resource: bool,
     is_decimal: bool,
     namespace: &TokenStream,
 ) -> TokenStream {
     if field.polymorph {
         serialize_enum(field, enums, namespace)
+    } else if in_primitive && field.name == "value"
+        || in_extension && field.name == "url"
+        || !in_resource && field.name == "id"
+    {
+        serialize_primitive_value(field, is_decimal)
+    } else if field.r#type.contains_primitive {
+        serialize_primitive(field)
     } else {
-        if in_primitive && field.name == "value"
-            || in_extension && field.name == "url"
-            || field.name == "id"
-        {
-            serialize_primitive_value(field, is_decimal)
-        } else if field.r#type.contains_primitive {
-            serialize_primitive(field)
-        } else {
-            serialize_element(field)
-        }
+        serialize_element(field)
     }
 }
 
@@ -177,32 +196,41 @@ fn serialize_enum(
     let enum_variants_tokens = r#enum
         .variants
         .iter()
-        .map(|v| serialize_enum_variant(field, r#enum, v, namespace));
+        .map(|v| serialize_enum_variant(field, v));
 
     let value_invalid_error_message = format!("{} is invalid", field.name);
     let value_required_error_message = format!("{} is a required field", field.name);
 
     if field.optional {
         quote! {
-            if let Some(some) = self.value.#field_name_ident.as_ref() {
-                match some {
-                    #(
-                        #enum_variants_tokens
-                    )*
-                    #namespace::#enum_ident::Invalid => {
-                        return Err(serde::ser::Error::custom(#value_invalid_error_message))
+            {
+                // we alias the enum because rustfmt has issues with very long names like e.g. MedicationKnowledgeAdministrationGuidelinesPatientCharacteristicsCharacteristic
+                use #namespace::#enum_ident as _Enum;
+
+                if let Some(some) = self.value.#field_name_ident.as_ref() {
+                    match some {
+                        #(
+                            #enum_variants_tokens
+                        )*
+                        _Enum::Invalid => {
+                            return Err(serde::ser::Error::custom(#value_invalid_error_message))
+                        }
                     }
                 }
             }
         }
     } else {
         quote! {
-            match self.value.#field_name_ident {
-                #(
-                    #enum_variants_tokens
-                )*
-                #namespace::#enum_ident::Invalid => {
-                    return Err(serde::ser::Error::custom(#value_required_error_message))
+            {
+                use #namespace::#enum_ident as _Enum;
+
+                match self.value.#field_name_ident {
+                    #(
+                        #enum_variants_tokens
+                    )*
+                    _Enum::Invalid => {
+                        return Err(serde::ser::Error::custom(#value_required_error_message))
+                    }
                 }
             }
         }
@@ -211,34 +239,32 @@ fn serialize_enum(
 
 fn serialize_enum_variant(
     field: &RustFhirStructField,
-    r#enum: &RustFhirEnum,
     variant: &RustFhirEnumVariant,
-    namespace: &TokenStream,
 ) -> TokenStream {
-    let enum_ident = format_ident!("{}", r#enum.name);
     let variant_ident = format_ident!("{}", variant.name);
 
     let fhir_name = format!("{}{}", field.fhir_name, variant.name);
     let fhir_primitive_element_name = format!("_{}", fhir_name);
 
     let map_intermediate_type_tokens: TokenStream = if variant.r#type.name == DECIMAL_TYPE {
-        quote! { some.parse::<serde_json::Number>().map_err(|_| serde::ser::Error::custom("error serializing decimal")) }
+        quote! { |v| v.parse::<serde_json::Number>().map_err(|_| serde::ser::Error::custom("error serializing decimal")) }
     } else if variant.r#type.name == INTEGER64_TYPE {
-        quote! { Ok(some.to_string()) }
+        quote! { |v| Ok(v.to_string()) }
     } else {
-        quote! { Ok(some) }
+        quote! { Ok }
     };
 
     let serialize_tokens = if variant.r#type.contains_primitive {
         quote! {
-            if self.output_json {
-                if let Some(some) = value.value.as_ref() {
-                    let some = #map_intermediate_type_tokens?;
-                    state.serialize_entry(#fhir_name, &some)?;
+            if self.output == crate::context::Format::Json {
+                if let Some(some) = value.value.as_ref().map(#map_intermediate_type_tokens) {
+                    state.serialize_entry(#fhir_name, &some?)?;
                 }
 
                 if value.id.is_some() || !value.extension.is_empty() {
-                    let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                    use super::super::serde_helpers::PrimitiveElement;
+
+                    let primitive_element = PrimitiveElement {
                         id: value.id.as_ref(),
                         extension: &value.extension,
                     };
@@ -256,7 +282,7 @@ fn serialize_enum_variant(
     };
 
     quote! {
-        #namespace::#enum_ident::#variant_ident(ref value) => {
+        _Enum::#variant_ident(ref value) => {
             #serialize_tokens
         },
     }
@@ -269,10 +295,19 @@ fn serialize_primitive_value(field: &RustFhirStructField, is_decimal: bool) -> T
     if is_decimal && field.name == "value" {
         quote! {
             if let Some(value) = self.value.value.as_ref() {
-                let _value = value
-                    .parse::<serde_json::Number>()
-                    .map_err(|_| serde::ser::Error::custom("error serializing decimal"))?;
-                state.serialize_entry("value", &_value)?;
+                if self.output == crate::context::Format::Json {
+                    let _value = value
+                        .parse::<serde_json::Number>()
+                        .map_err(|_| serde::ser::Error::custom("error serializing decimal"))?;
+                    state.serialize_entry("value", &_value)?;
+                } else if self.output == crate::context::Format::InternalElement {
+                    let _value = crate::decimal::Decimal {
+                        d: value,
+                    };
+                    state.serialize_entry("value", &_value)?;
+                } else {
+                    state.serialize_entry("value", value)?;
+                }
             }
         }
     } else if field.optional {
@@ -290,14 +325,12 @@ fn serialize_primitive_value(field: &RustFhirStructField, is_decimal: bool) -> T
 
 fn serialize_primitive(field: &RustFhirStructField) -> TokenStream {
     let serialize_json_tokens = serialize_primitive_json(field);
-    let serialize_xml_tokens = serialize_element(field);
+    let serialize_element_tokens = serialize_element(field);
 
     quote! {
-        if self.output_json {
+        if self.output == crate::context::Format::Json {
             #serialize_json_tokens
-        } else {
-            #serialize_xml_tokens
-        }
+        } else #serialize_element_tokens
     }
 }
 
@@ -308,11 +341,11 @@ fn serialize_primitive_json(field: &RustFhirStructField) -> TokenStream {
     let primitive_element_name = format!("_{}", fhir_name);
 
     let map_intermediate_type_tokens: TokenStream = if field.r#type.name == DECIMAL_TYPE {
-        quote! { some.parse::<serde_json::Number>().map_err(|_| serde::ser::Error::custom("error serializing decimal")) }
+        quote! { |v| v.parse::<serde_json::Number>().map_err(|_| serde::ser::Error::custom("error serializing decimal")) }
     } else if field.r#type.name == INTEGER64_TYPE {
-        quote! { Ok(some.to_string()) }
+        quote! { |v| Ok(v.to_string()) }
     } else {
-        quote! { Ok(some) }
+        quote! { Ok }
     };
 
     let (check_extension_is_empty_tokens, extension_reference_tokens) = if field.fhir_name != "div"
@@ -331,7 +364,7 @@ fn serialize_primitive_json(field: &RustFhirStructField) -> TokenStream {
                 let values = self.value.#field_name_ident
                     .iter()
                     .map(|v| &v.value)
-                    .map(|v| v.as_ref().map(|some| #map_intermediate_type_tokens).transpose())
+                    .map(|v| v.as_ref().map(#map_intermediate_type_tokens).transpose())
                     .collect::<Result<Vec<_>, _>>()?;
 
                 if values.iter().any(|v| v.is_some()) {
@@ -343,10 +376,12 @@ fn serialize_primitive_json(field: &RustFhirStructField) -> TokenStream {
                     .any(|e| e.id.is_some() || !e.extension.is_empty());
 
                 if requires_elements {
+                    use super::super::serde_helpers::PrimitiveElement;
+
                     let primitive_elements: Vec<_> = self.value.#field_name_ident
                         .iter()
                         .map(|e| if e.id.is_some() || !e.extension.is_empty() {
-                                Some(super::super::serde_helpers::PrimitiveElement {
+                                Some(PrimitiveElement {
                                     id: e.id.as_ref(),
                                     extension: &e.extension,
                                 })
@@ -362,13 +397,14 @@ fn serialize_primitive_json(field: &RustFhirStructField) -> TokenStream {
     } else if field.optional {
         quote! {
             if let Some(some) = self.value.#field_name_ident.as_ref() {
-                if let Some(some) = some.value.as_ref() {
-                    let some = #map_intermediate_type_tokens?;
-                    state.serialize_entry(#fhir_name, &some)?;
+                if let Some(some) = some.value.as_ref().map(#map_intermediate_type_tokens) {
+                    state.serialize_entry(#fhir_name, &some?)?;
                 }
 
                 if some.id.is_some() || !some.extension.is_empty() {
-                    let primitive_element  = super::super::serde_helpers::PrimitiveElement {
+                    use super::super::serde_helpers::PrimitiveElement;
+
+                    let primitive_element  = PrimitiveElement {
                         id: some.id.as_ref(),
                         extension: &some.extension,
                     };
@@ -385,9 +421,8 @@ fn serialize_primitive_json(field: &RustFhirStructField) -> TokenStream {
                 state.serialize_entry(#fhir_name, &self.value.#field_name_ident.value)?;
             },
             _ => quote! {
-                if let Some(some) = self.value.#field_name_ident.value.as_ref() {
-                    let some = #map_intermediate_type_tokens?;
-                    state.serialize_entry(#fhir_name, &some)?;
+                if let Some(some) = self.value.#field_name_ident.value.as_ref().map(#map_intermediate_type_tokens) {
+                    state.serialize_entry(#fhir_name, &some?)?;
                 }
             },
         };
@@ -399,7 +434,9 @@ fn serialize_primitive_json(field: &RustFhirStructField) -> TokenStream {
             #serialize_value_tokens
 
             if self.value.#field_name_ident.id.is_some() #check_extension_is_empty_tokens {
-                let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                use super::super::serde_helpers::PrimitiveElement;
+
+                let primitive_element = PrimitiveElement {
                     id: self.value.#field_name_ident.id.as_ref(),
                     extension: #extension_reference_tokens,
                 };
@@ -430,9 +467,9 @@ fn serialize_element(field: &RustFhirStructField) -> TokenStream {
         quote! {
             if self.value.#field_name_ident.id.as_deref() == Some("$invalid") {
                 return missing_field_error(#fhir_name)
+            } else {
+                self.with_context(&self.value.#field_name_ident, |ctx| state.serialize_entry(#fhir_name, ctx))?;
             }
-
-            self.with_context(&self.value.#field_name_ident, |ctx| state.serialize_entry(#fhir_name, ctx))?;
         }
     }
 }

@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-15 by fhirbolt-codegen v0.8.0
 #[doc = "Actor participating in the resource."]
 #[derive(Debug, Clone, PartialEq)]
 pub struct ExampleScenarioActor {
@@ -17,21 +17,20 @@ pub struct ExampleScenarioActor {
     #[doc = "The description of the actor."]
     pub r#description: Option<super::super::types::Markdown>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for ExampleScenarioActor {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#actor_id: {
-                let mut default: super::super::types::String = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#actor_id: super::super::types::String {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
-            r#type: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#type: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#name: Default::default(),
             r#description: Default::default(),
@@ -52,21 +51,20 @@ pub struct ExampleScenarioInstanceVersion {
     #[doc = "The description of the resource version."]
     pub r#description: super::super::types::Markdown,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for ExampleScenarioInstanceVersion {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#version_id: {
-                let mut default: super::super::types::String = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#version_id: super::super::types::String {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
-            r#description: {
-                let mut default: super::super::types::Markdown = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#description: super::super::types::Markdown {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
         }
     }
@@ -85,16 +83,16 @@ pub struct ExampleScenarioInstanceContainedInstance {
     #[doc = "A specific version of a resource contained in the instance."]
     pub r#version_id: Option<super::super::types::String>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for ExampleScenarioInstanceContainedInstance {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#resource_id: {
-                let mut default: super::super::types::String = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#resource_id: super::super::types::String {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#version_id: Default::default(),
         }
@@ -122,21 +120,20 @@ pub struct ExampleScenarioInstance {
     #[doc = "Resources contained in the instance (e.g. the observations contained in a bundle)."]
     pub r#contained_instance: Vec<ExampleScenarioInstanceContainedInstance>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for ExampleScenarioInstance {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#resource_id: {
-                let mut default: super::super::types::String = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#resource_id: super::super::types::String {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
-            r#resource_type: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#resource_type: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#name: Default::default(),
             r#description: Default::default(),
@@ -175,16 +172,16 @@ pub struct ExampleScenarioProcessStepOperation {
     #[doc = "Each resource instance used by the responder."]
     pub r#response: Option<ExampleScenarioInstanceContainedInstance>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for ExampleScenarioProcessStepOperation {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#number: {
-                let mut default: super::super::types::String = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#number: super::super::types::String {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#type: Default::default(),
             r#name: Default::default(),
@@ -214,16 +211,16 @@ pub struct ExampleScenarioProcessStepAlternative {
     #[doc = "What happens in each alternative option."]
     pub r#step: Vec<ExampleScenarioProcessStep>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for ExampleScenarioProcessStepAlternative {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#title: {
-                let mut default: super::super::types::String = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#title: super::super::types::String {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#description: Default::default(),
             r#step: Default::default(),
@@ -248,6 +245,7 @@ pub struct ExampleScenarioProcessStep {
     #[doc = "Indicates an alternative step that can be taken instead of the operations on the base step in exceptional/atypical circumstances."]
     pub r#alternative: Vec<ExampleScenarioProcessStepAlternative>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for ExampleScenarioProcessStep {
     fn default() -> Self {
         Self {
@@ -281,16 +279,16 @@ pub struct ExampleScenarioProcess {
     #[doc = "Each step of the process."]
     pub r#step: Vec<ExampleScenarioProcessStep>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for ExampleScenarioProcess {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#title: {
-                let mut default: super::super::types::String = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#title: super::super::types::String {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#description: Default::default(),
             r#pre_conditions: Default::default(),
@@ -303,7 +301,7 @@ impl Default for ExampleScenarioProcess {
 #[derive(Debug, Clone, PartialEq)]
 pub struct ExampleScenario {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
-    pub r#id: Option<std::string::String>,
+    pub r#id: Option<Box<super::super::types::Id>>,
     #[doc = "The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content might not always be associated with version changes to the resource."]
     pub r#meta: Option<Box<super::super::types::Meta>>,
     #[doc = "A reference to a set of rules that were followed when the resource was constructed, and which must be understood when processing the content. Often, this is a reference to an implementation guide that defines the special rules along with other profiles etc."]
@@ -353,6 +351,7 @@ pub struct ExampleScenario {
     #[doc = "Another nested workflow."]
     pub r#workflow: Vec<super::super::types::Canonical>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for ExampleScenario {
     fn default() -> Self {
         Self {
@@ -368,10 +367,9 @@ impl Default for ExampleScenario {
             r#identifier: Default::default(),
             r#version: Default::default(),
             r#name: Default::default(),
-            r#status: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#status: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#experimental: Default::default(),
             r#date: Default::default(),

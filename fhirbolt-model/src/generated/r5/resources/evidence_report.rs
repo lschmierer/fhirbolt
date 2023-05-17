@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-15 by fhirbolt-codegen v0.8.0
 #[doc = "Citation Resource or display of suggested citation for this report."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum EvidenceReportCiteAs {
@@ -36,17 +36,17 @@ pub struct EvidenceReportSubjectCharacteristic {
     #[doc = "Timeframe for the characteristic."]
     pub r#period: Option<Box<super::super::types::Period>>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for EvidenceReportSubjectCharacteristic {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#code: {
-                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#code: Box::new(super::super::types::CodeableConcept {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
             r#value: Default::default(),
             r#exclude: Default::default(),
             r#period: Default::default(),
@@ -67,6 +67,7 @@ pub struct EvidenceReportSubject {
     #[doc = "Used for general notes and annotations not coded elsewhere."]
     pub r#note: Vec<super::super::types::Annotation>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for EvidenceReportSubject {
     fn default() -> Self {
         Self {
@@ -96,6 +97,7 @@ pub struct EvidenceReportRelatesToTarget {
     #[doc = "Target of the relationship Resource reference."]
     pub r#resource: Option<Box<super::super::types::Reference>>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for EvidenceReportRelatesToTarget {
     fn default() -> Self {
         Self {
@@ -123,21 +125,20 @@ pub struct EvidenceReportRelatesTo {
     #[doc = "The target composition/document of this relationship."]
     pub r#target: EvidenceReportRelatesToTarget,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for EvidenceReportRelatesTo {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#code: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#code: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
-            r#target: {
-                let mut default: EvidenceReportRelatesToTarget = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#target: EvidenceReportRelatesToTarget {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
         }
     }
@@ -176,6 +177,7 @@ pub struct EvidenceReportSection {
     #[doc = "A nested sub-section within this section."]
     pub r#section: Vec<EvidenceReportSection>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for EvidenceReportSection {
     fn default() -> Self {
         Self {
@@ -201,7 +203,7 @@ impl Default for EvidenceReportSection {
 #[derive(Debug, Clone, PartialEq)]
 pub struct EvidenceReport {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
-    pub r#id: Option<std::string::String>,
+    pub r#id: Option<Box<super::super::types::Id>>,
     #[doc = "The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content might not always be associated with version changes to the resource."]
     pub r#meta: Option<Box<super::super::types::Meta>>,
     #[doc = "A reference to a set of rules that were followed when the resource was constructed, and which must be understood when processing the content. Often, this is a reference to an implementation guide that defines the special rules along with other profiles etc."]
@@ -253,6 +255,7 @@ pub struct EvidenceReport {
     #[doc = "The root of the sections that make up the composition."]
     pub r#section: Vec<EvidenceReportSection>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for EvidenceReport {
     fn default() -> Self {
         Self {
@@ -265,10 +268,9 @@ impl Default for EvidenceReport {
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
             r#url: Default::default(),
-            r#status: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#status: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#use_context: Default::default(),
             r#identifier: Default::default(),
@@ -277,10 +279,9 @@ impl Default for EvidenceReport {
             r#type: Default::default(),
             r#note: Default::default(),
             r#related_artifact: Default::default(),
-            r#subject: {
-                let mut default: EvidenceReportSubject = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#subject: EvidenceReportSubject {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#publisher: Default::default(),
             r#contact: Default::default(),

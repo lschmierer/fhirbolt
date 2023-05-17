@@ -1,9 +1,9 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-15 by fhirbolt-codegen v0.8.0
 #[doc = "A slot of time on a schedule that may be available for booking appointments."]
 #[derive(Debug, Clone, PartialEq)]
 pub struct Slot {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
-    pub r#id: Option<std::string::String>,
+    pub r#id: Option<Box<super::super::types::Id>>,
     #[doc = "The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content might not always be associated with version changes to the resource."]
     pub r#meta: Option<Box<super::super::types::Meta>>,
     #[doc = "A reference to a set of rules that were followed when the resource was constructed, and which must be understood when processing the content. Often, this is a reference to an implementation guide that defines the special rules along with other profiles etc."]
@@ -41,6 +41,7 @@ pub struct Slot {
     #[doc = "Comments on the slot to describe any extended information. Such as custom constraints on the slot."]
     pub r#comment: Option<super::super::types::String>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for Slot {
     fn default() -> Self {
         Self {
@@ -57,25 +58,21 @@ impl Default for Slot {
             r#service_type: Default::default(),
             r#specialty: Default::default(),
             r#appointment_type: Default::default(),
-            r#schedule: {
-                let mut default: Box<super::super::types::Reference> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#schedule: Box::new(super::super::types::Reference {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
+            r#status: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
-            r#status: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#start: super::super::types::Instant {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
-            r#start: {
-                let mut default: super::super::types::Instant = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
-            r#end: {
-                let mut default: super::super::types::Instant = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#end: super::super::types::Instant {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#overbooked: Default::default(),
             r#comment: Default::default(),

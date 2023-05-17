@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-15 by fhirbolt-codegen v0.8.0
 #[doc = "Information about the primary source(s) involved in validation."]
 #[derive(Debug, Clone, PartialEq)]
 pub struct VerificationResultPrimarySource {
@@ -23,6 +23,7 @@ pub struct VerificationResultPrimarySource {
     #[doc = "Type of alerts/updates the primary source can send (specific requested changes; any changes; as defined by source)."]
     pub r#push_type_available: Vec<super::super::types::CodeableConcept>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for VerificationResultPrimarySource {
     fn default() -> Self {
         Self {
@@ -65,6 +66,7 @@ pub struct VerificationResultAttestation {
     #[doc = "Signed assertion by the attestation source that they have attested to the information."]
     pub r#source_signature: Option<Box<super::super::types::Signature>>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for VerificationResultAttestation {
     fn default() -> Self {
         Self {
@@ -98,17 +100,17 @@ pub struct VerificationResultValidator {
     #[doc = "Signed assertion by the validator that they have validated the information."]
     pub r#attestation_signature: Option<Box<super::super::types::Signature>>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for VerificationResultValidator {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#organization: {
-                let mut default: Box<super::super::types::Reference> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#organization: Box::new(super::super::types::Reference {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
             r#identity_certificate: Default::default(),
             r#attestation_signature: Default::default(),
         }
@@ -118,7 +120,7 @@ impl Default for VerificationResultValidator {
 #[derive(Debug, Clone, PartialEq)]
 pub struct VerificationResult {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
-    pub r#id: Option<std::string::String>,
+    pub r#id: Option<Box<super::super::types::Id>>,
     #[doc = "The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content might not always be associated with version changes to the resource."]
     pub r#meta: Option<Box<super::super::types::Meta>>,
     #[doc = "A reference to a set of rules that were followed when the resource was constructed, and which must be understood when processing the content. Often, this is a reference to an implementation guide that defines the special rules along with other profiles etc."]
@@ -162,6 +164,7 @@ pub struct VerificationResult {
     #[doc = "Information about the entity validating information."]
     pub r#validator: Vec<VerificationResultValidator>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for VerificationResult {
     fn default() -> Self {
         Self {
@@ -176,10 +179,9 @@ impl Default for VerificationResult {
             r#target: Default::default(),
             r#target_location: Default::default(),
             r#need: Default::default(),
-            r#status: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#status: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#status_date: Default::default(),
             r#validation_type: Default::default(),

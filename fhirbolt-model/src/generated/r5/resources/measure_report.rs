@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-15 by fhirbolt-codegen v0.8.0
 #[doc = "The measure score for this population group, calculated as appropriate for the measure type and scoring method, and based on the contents of the populations defined in the group."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum MeasureReportGroupMeasureScore {
@@ -67,6 +67,7 @@ pub struct MeasureReportGroupPopulation {
     #[doc = "Optional Group identifying the individuals that make up the population."]
     pub r#subjects: Option<Box<super::super::types::Reference>>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for MeasureReportGroupPopulation {
     fn default() -> Self {
         Self {
@@ -98,6 +99,7 @@ pub struct MeasureReportGroupStratifierStratumComponent {
     #[doc = "The stratum component value."]
     pub r#value: MeasureReportGroupStratifierStratumComponentValue,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for MeasureReportGroupStratifierStratumComponent {
     fn default() -> Self {
         Self {
@@ -105,11 +107,10 @@ impl Default for MeasureReportGroupStratifierStratumComponent {
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
             r#link_id: Default::default(),
-            r#code: {
-                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#code: Box::new(super::super::types::CodeableConcept {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
             r#value: Default::default(),
         }
     }
@@ -136,6 +137,7 @@ pub struct MeasureReportGroupStratifierStratumPopulation {
     #[doc = "Optional Group identifying the individuals that make up the population."]
     pub r#subjects: Option<Box<super::super::types::Reference>>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for MeasureReportGroupStratifierStratumPopulation {
     fn default() -> Self {
         Self {
@@ -169,6 +171,7 @@ pub struct MeasureReportGroupStratifierStratum {
     #[doc = "The measure score for this stratum, calculated as appropriate for the measure type and scoring method, and based on only the members of this stratum."]
     pub r#measure_score: Option<MeasureReportGroupStratifierStratumMeasureScore>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for MeasureReportGroupStratifierStratum {
     fn default() -> Self {
         Self {
@@ -198,6 +201,7 @@ pub struct MeasureReportGroupStratifier {
     #[doc = "This element contains the results for a single stratum within the stratifier. For example, when stratifying on administrative gender, there will be four strata, one for each possible gender value."]
     pub r#stratum: Vec<MeasureReportGroupStratifierStratum>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for MeasureReportGroupStratifier {
     fn default() -> Self {
         Self {
@@ -232,6 +236,7 @@ pub struct MeasureReportGroup {
     #[doc = "When a measure includes multiple stratifiers, there will be a stratifier group for each stratifier defined by the measure."]
     pub r#stratifier: Vec<MeasureReportGroupStratifier>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for MeasureReportGroup {
     fn default() -> Self {
         Self {
@@ -251,7 +256,7 @@ impl Default for MeasureReportGroup {
 #[derive(Debug, Clone, PartialEq)]
 pub struct MeasureReport {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
-    pub r#id: Option<std::string::String>,
+    pub r#id: Option<Box<super::super::types::Id>>,
     #[doc = "The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content might not always be associated with version changes to the resource."]
     pub r#meta: Option<Box<super::super::types::Meta>>,
     #[doc = "A reference to a set of rules that were followed when the resource was constructed, and which must be understood when processing the content. Often, this is a reference to an implementation guide that defines the special rules along with other profiles etc."]
@@ -301,6 +306,7 @@ pub struct MeasureReport {
     #[doc = "Evaluated resources are used to capture what data was involved in the calculation of a measure. This usage is only allowed for individual reports to ensure that the size of the MeasureReport resource is bounded."]
     pub r#evaluated_resource: Vec<super::super::types::Reference>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for MeasureReport {
     fn default() -> Self {
         Self {
@@ -313,15 +319,13 @@ impl Default for MeasureReport {
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
             r#identifier: Default::default(),
-            r#status: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#status: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
-            r#type: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#type: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#data_update_type: Default::default(),
             r#measure: Default::default(),
@@ -330,11 +334,10 @@ impl Default for MeasureReport {
             r#reporter: Default::default(),
             r#reporting_vendor: Default::default(),
             r#location: Default::default(),
-            r#period: {
-                let mut default: Box<super::super::types::Period> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#period: Box::new(super::super::types::Period {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
             r#input_parameters: Default::default(),
             r#scoring: Default::default(),
             r#improvement_notation: Default::default(),

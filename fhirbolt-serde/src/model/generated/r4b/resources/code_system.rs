@@ -1,7 +1,7 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
-impl serde::ser::Serialize
-    for crate::context::ser::SerializationContext<&fhirbolt_model::r4b::resources::CodeSystemFilter>
-{
+// Generated on 2023-05-15 by fhirbolt-codegen v0.8.0
+use crate::{DeserializationContext, SerializationContext};
+use fhirbolt_model::r4b::resources::CodeSystemFilter;
+impl serde::ser::Serialize for SerializationContext<&CodeSystemFilter> {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
         S: serde::ser::Serializer,
@@ -28,16 +28,16 @@ impl serde::ser::Serialize
                 state.serialize_entry("modifierExtension", ctx)
             })?;
         }
-        if self.output_json {
+        if self.output == crate::context::Format::Json {
             if self.value.r#code.id.as_deref() == Some("$invalid") {
                 return missing_field_error("code");
             }
-            if let Some(some) = self.value.r#code.value.as_ref() {
-                let some = Ok(some)?;
-                state.serialize_entry("code", &some)?;
+            if let Some(some) = self.value.r#code.value.as_ref().map(Ok) {
+                state.serialize_entry("code", &some?)?;
             }
             if self.value.r#code.id.is_some() || !self.value.r#code.extension.is_empty() {
-                let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                use super::super::serde_helpers::PrimitiveElement;
+                let primitive_element = PrimitiveElement {
                     id: self.value.r#code.id.as_ref(),
                     extension: &self.value.r#code.extension,
                 };
@@ -45,20 +45,19 @@ impl serde::ser::Serialize
                     state.serialize_entry("_code", ctx)
                 })?;
             }
+        } else if self.value.r#code.id.as_deref() == Some("$invalid") {
+            return missing_field_error("code");
         } else {
-            if self.value.r#code.id.as_deref() == Some("$invalid") {
-                return missing_field_error("code");
-            }
             self.with_context(&self.value.r#code, |ctx| state.serialize_entry("code", ctx))?;
         }
-        if self.output_json {
+        if self.output == crate::context::Format::Json {
             if let Some(some) = self.value.r#description.as_ref() {
-                if let Some(some) = some.value.as_ref() {
-                    let some = Ok(some)?;
-                    state.serialize_entry("description", &some)?;
+                if let Some(some) = some.value.as_ref().map(Ok) {
+                    state.serialize_entry("description", &some?)?;
                 }
                 if some.id.is_some() || !some.extension.is_empty() {
-                    let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                    use super::super::serde_helpers::PrimitiveElement;
+                    let primitive_element = PrimitiveElement {
                         id: some.id.as_ref(),
                         extension: &some.extension,
                     };
@@ -67,19 +66,17 @@ impl serde::ser::Serialize
                     })?;
                 }
             }
-        } else {
-            if let Some(some) = self.value.r#description.as_ref() {
-                self.with_context(some, |ctx| state.serialize_entry("description", ctx))?;
-            }
+        } else if let Some(some) = self.value.r#description.as_ref() {
+            self.with_context(some, |ctx| state.serialize_entry("description", ctx))?;
         }
-        if self.output_json {
+        if self.output == crate::context::Format::Json {
             if !self.value.r#operator.is_empty() {
                 let values = self
                     .value
                     .r#operator
                     .iter()
                     .map(|v| &v.value)
-                    .map(|v| v.as_ref().map(|some| Ok(some)).transpose())
+                    .map(|v| v.as_ref().map(Ok).transpose())
                     .collect::<Result<Vec<_>, _>>()?;
                 if values.iter().any(|v| v.is_some()) {
                     state.serialize_entry("operator", &values)?;
@@ -90,13 +87,14 @@ impl serde::ser::Serialize
                     .iter()
                     .any(|e| e.id.is_some() || !e.extension.is_empty());
                 if requires_elements {
+                    use super::super::serde_helpers::PrimitiveElement;
                     let primitive_elements: Vec<_> = self
                         .value
                         .r#operator
                         .iter()
                         .map(|e| {
                             if e.id.is_some() || !e.extension.is_empty() {
-                                Some(super::super::serde_helpers::PrimitiveElement {
+                                Some(PrimitiveElement {
                                     id: e.id.as_ref(),
                                     extension: &e.extension,
                                 })
@@ -110,23 +108,21 @@ impl serde::ser::Serialize
                     })?;
                 }
             }
-        } else {
-            if !self.value.r#operator.is_empty() {
-                self.with_context(&self.value.r#operator, |ctx| {
-                    state.serialize_entry("operator", ctx)
-                })?;
-            }
+        } else if !self.value.r#operator.is_empty() {
+            self.with_context(&self.value.r#operator, |ctx| {
+                state.serialize_entry("operator", ctx)
+            })?;
         }
-        if self.output_json {
+        if self.output == crate::context::Format::Json {
             if self.value.r#value.id.as_deref() == Some("$invalid") {
                 return missing_field_error("value");
             }
-            if let Some(some) = self.value.r#value.value.as_ref() {
-                let some = Ok(some)?;
-                state.serialize_entry("value", &some)?;
+            if let Some(some) = self.value.r#value.value.as_ref().map(Ok) {
+                state.serialize_entry("value", &some?)?;
             }
             if self.value.r#value.id.is_some() || !self.value.r#value.extension.is_empty() {
-                let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                use super::super::serde_helpers::PrimitiveElement;
+                let primitive_element = PrimitiveElement {
                     id: self.value.r#value.id.as_ref(),
                     extension: &self.value.r#value.extension,
                 };
@@ -134,10 +130,9 @@ impl serde::ser::Serialize
                     state.serialize_entry("_value", ctx)
                 })?;
             }
+        } else if self.value.r#value.id.as_deref() == Some("$invalid") {
+            return missing_field_error("value");
         } else {
-            if self.value.r#value.id.as_deref() == Some("$invalid") {
-                return missing_field_error("value");
-            }
             self.with_context(&self.value.r#value, |ctx| {
                 state.serialize_entry("value", ctx)
             })?;
@@ -145,11 +140,7 @@ impl serde::ser::Serialize
         state.end()
     }
 }
-impl serde::ser::Serialize
-    for crate::context::ser::SerializationContext<
-        &Box<fhirbolt_model::r4b::resources::CodeSystemFilter>,
-    >
-{
+impl serde::ser::Serialize for SerializationContext<&Box<CodeSystemFilter>> {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
         S: serde::ser::Serializer,
@@ -157,11 +148,7 @@ impl serde::ser::Serialize
         self.with_context(self.value.as_ref(), |ctx| ctx.serialize(serializer))
     }
 }
-impl serde::ser::Serialize
-    for crate::context::ser::SerializationContext<
-        &Vec<fhirbolt_model::r4b::resources::CodeSystemFilter>,
-    >
-{
+impl serde::ser::Serialize for SerializationContext<&Vec<CodeSystemFilter>> {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
         S: serde::ser::Serializer,
@@ -174,30 +161,19 @@ impl serde::ser::Serialize
         seq_serializer.end()
     }
 }
-impl<'de> serde::de::DeserializeSeed<'de>
-    for &mut crate::context::de::DeserializationContext<
-        fhirbolt_model::r4b::resources::CodeSystemFilter,
-    >
-{
-    type Value = fhirbolt_model::r4b::resources::CodeSystemFilter;
+impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<CodeSystemFilter> {
+    type Value = CodeSystemFilter;
     fn deserialize<D>(self, deserializer: D) -> Result<Self::Value, D::Error>
     where
         D: serde::de::Deserializer<'de>,
     {
-        struct Visitor<'a>(
-            &'a mut crate::context::de::DeserializationContext<
-                fhirbolt_model::r4b::resources::CodeSystemFilter,
-            >,
-        );
+        struct Visitor<'a>(&'a mut DeserializationContext<CodeSystemFilter>);
         impl<'de> serde::de::Visitor<'de> for Visitor<'_> {
-            type Value = fhirbolt_model::r4b::resources::CodeSystemFilter;
+            type Value = CodeSystemFilter;
             fn expecting(&self, formatter: &mut std::fmt::Formatter) -> std::fmt::Result {
                 formatter.write_str("CodeSystemFilter")
             }
-            fn visit_map<V>(
-                self,
-                mut map_access: V,
-            ) -> Result<fhirbolt_model::r4b::resources::CodeSystemFilter, V::Error>
+            fn visit_map<V>(self, mut map_access: V) -> Result<CodeSystemFilter, V::Error>
             where
                 V: serde::de::MapAccess<'de>,
             {
@@ -259,57 +235,70 @@ impl<'de> serde::de::DeserializeSeed<'de>
                             r#id = Some(map_access.next_value()?);
                         }
                         Field::Extension => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 if r#extension.is_some() {
                                     return Err(serde::de::Error::duplicate_field("extension"));
                                 }
-                                r#extension = Some (map_access . next_value_seed (self . 0 . transmute :: < Vec < fhirbolt_model :: r4b :: types :: Extension >> ()) ?) ;
+                                let _context: &mut DeserializationContext<
+                                    Vec<fhirbolt_model::r4b::types::Extension>,
+                                > = self.0.transmute();
+                                r#extension = Some(map_access.next_value_seed(&mut *_context)?);
                             } else {
                                 let vec = r#extension.get_or_insert(Default::default());
-                                vec.push(map_access.next_value_seed(
-                                    self.0.transmute::<fhirbolt_model::r4b::types::Extension>(),
-                                )?);
+                                let _context: &mut DeserializationContext<
+                                    fhirbolt_model::r4b::types::Extension,
+                                > = self.0.transmute();
+                                vec.push(map_access.next_value_seed(&mut *_context)?);
                             }
                         }
                         Field::ModifierExtension => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 if r#modifier_extension.is_some() {
                                     return Err(serde::de::Error::duplicate_field(
                                         "modifierExtension",
                                     ));
                                 }
-                                r#modifier_extension = Some (map_access . next_value_seed (self . 0 . transmute :: < Vec < fhirbolt_model :: r4b :: types :: Extension >> ()) ?) ;
+                                let _context: &mut DeserializationContext<
+                                    Vec<fhirbolt_model::r4b::types::Extension>,
+                                > = self.0.transmute();
+                                r#modifier_extension =
+                                    Some(map_access.next_value_seed(&mut *_context)?);
                             } else {
                                 let vec = r#modifier_extension.get_or_insert(Default::default());
-                                vec.push(map_access.next_value_seed(
-                                    self.0.transmute::<fhirbolt_model::r4b::types::Extension>(),
-                                )?);
+                                let _context: &mut DeserializationContext<
+                                    fhirbolt_model::r4b::types::Extension,
+                                > = self.0.transmute();
+                                vec.push(map_access.next_value_seed(&mut *_context)?);
                             }
                         }
                         Field::Code => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let some = r#code.get_or_insert(Default::default());
                                 if some.value.is_some() {
                                     return Err(serde::de::Error::duplicate_field("code"));
                                 }
-                                let value: _ = map_access.next_value()?;
-                                some.value = Some(value);
+                                some.value = Some(map_access.next_value()?);
                             } else {
                                 if r#code.is_some() {
                                     return Err(serde::de::Error::duplicate_field("code"));
                                 }
-                                r#code = Some(map_access.next_value_seed(
-                                    self.0.transmute::<fhirbolt_model::r4b::types::Code>(),
-                                )?);
+                                let _context: &mut DeserializationContext<
+                                    fhirbolt_model::r4b::types::Code,
+                                > = self.0.transmute();
+                                r#code = Some(map_access.next_value_seed(&mut *_context)?);
                             }
                         }
                         Field::CodePrimitiveElement => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let some = r#code.get_or_insert(Default::default());
                                 if some.id.is_some() || !some.extension.is_empty() {
                                     return Err(serde::de::Error::duplicate_field("_code"));
                                 }
-                                let super :: super :: serde_helpers :: PrimitiveElementOwned { id , extension } = map_access . next_value_seed (self . 0 . transmute :: < super :: super :: serde_helpers :: PrimitiveElementOwned > ()) ? ;
+                                use super::super::serde_helpers::PrimitiveElementOwned;
+                                let _context: &mut DeserializationContext<PrimitiveElementOwned> =
+                                    self.0.transmute();
+                                let PrimitiveElementOwned { id, extension } =
+                                    map_access.next_value_seed(&mut *_context)?;
                                 some.id = id;
                                 some.extension = extension;
                             } else {
@@ -317,29 +306,33 @@ impl<'de> serde::de::DeserializeSeed<'de>
                             }
                         }
                         Field::Description => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let some = r#description.get_or_insert(Default::default());
                                 if some.value.is_some() {
                                     return Err(serde::de::Error::duplicate_field("description"));
                                 }
-                                let value: _ = map_access.next_value()?;
-                                some.value = Some(value);
+                                some.value = Some(map_access.next_value()?);
                             } else {
                                 if r#description.is_some() {
                                     return Err(serde::de::Error::duplicate_field("description"));
                                 }
-                                r#description = Some(map_access.next_value_seed(
-                                    self.0.transmute::<fhirbolt_model::r4b::types::String>(),
-                                )?);
+                                let _context: &mut DeserializationContext<
+                                    fhirbolt_model::r4b::types::String,
+                                > = self.0.transmute();
+                                r#description = Some(map_access.next_value_seed(&mut *_context)?);
                             }
                         }
                         Field::DescriptionPrimitiveElement => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let some = r#description.get_or_insert(Default::default());
                                 if some.id.is_some() || !some.extension.is_empty() {
                                     return Err(serde::de::Error::duplicate_field("_description"));
                                 }
-                                let super :: super :: serde_helpers :: PrimitiveElementOwned { id , extension } = map_access . next_value_seed (self . 0 . transmute :: < super :: super :: serde_helpers :: PrimitiveElementOwned > ()) ? ;
+                                use super::super::serde_helpers::PrimitiveElementOwned;
+                                let _context: &mut DeserializationContext<PrimitiveElementOwned> =
+                                    self.0.transmute();
+                                let PrimitiveElementOwned { id, extension } =
+                                    map_access.next_value_seed(&mut *_context)?;
                                 some.id = id;
                                 some.extension = extension;
                             } else {
@@ -347,7 +340,7 @@ impl<'de> serde::de::DeserializeSeed<'de>
                             }
                         }
                         Field::Operator => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let values: Vec<Option<_>> = map_access.next_value()?;
                                 let vec = r#operator.get_or_insert(
                                     std::iter::repeat(Default::default())
@@ -370,20 +363,20 @@ impl<'de> serde::de::DeserializeSeed<'de>
                                 }
                             } else {
                                 let vec = r#operator.get_or_insert(Default::default());
-                                vec.push(map_access.next_value_seed(
-                                    self.0.transmute::<fhirbolt_model::r4b::types::Code>(),
-                                )?);
+                                let _context: &mut DeserializationContext<
+                                    fhirbolt_model::r4b::types::Code,
+                                > = self.0.transmute();
+                                vec.push(map_access.next_value_seed(&mut *_context)?);
                             }
                         }
                         Field::OperatorPrimitiveElement => {
-                            if self.0.from_json {
-                                let elements: Vec<
-                                    Option<super::super::serde_helpers::PrimitiveElementOwned>,
-                                > =
-                                    map_access.next_value_seed(self.0.transmute::<Vec<
-                                        Option<super::super::serde_helpers::PrimitiveElementOwned>,
-                                    >>(
-                                    ))?;
+                            if self.0.from == crate::context::Format::Json {
+                                use super::super::serde_helpers::PrimitiveElementOwned;
+                                let _context: &mut DeserializationContext<
+                                    Vec<Option<PrimitiveElementOwned>>,
+                                > = self.0.transmute();
+                                let elements: Vec<Option<PrimitiveElementOwned>> =
+                                    map_access.next_value_seed(&mut *_context)?;
                                 let vec = r#operator.get_or_insert(
                                     std::iter::repeat(Default::default())
                                         .take(elements.len())
@@ -412,29 +405,33 @@ impl<'de> serde::de::DeserializeSeed<'de>
                             }
                         }
                         Field::Value => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let some = r#value.get_or_insert(Default::default());
                                 if some.value.is_some() {
                                     return Err(serde::de::Error::duplicate_field("value"));
                                 }
-                                let value: _ = map_access.next_value()?;
-                                some.value = Some(value);
+                                some.value = Some(map_access.next_value()?);
                             } else {
                                 if r#value.is_some() {
                                     return Err(serde::de::Error::duplicate_field("value"));
                                 }
-                                r#value = Some(map_access.next_value_seed(
-                                    self.0.transmute::<fhirbolt_model::r4b::types::String>(),
-                                )?);
+                                let _context: &mut DeserializationContext<
+                                    fhirbolt_model::r4b::types::String,
+                                > = self.0.transmute();
+                                r#value = Some(map_access.next_value_seed(&mut *_context)?);
                             }
                         }
                         Field::ValuePrimitiveElement => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let some = r#value.get_or_insert(Default::default());
                                 if some.id.is_some() || !some.extension.is_empty() {
                                     return Err(serde::de::Error::duplicate_field("_value"));
                                 }
-                                let super :: super :: serde_helpers :: PrimitiveElementOwned { id , extension } = map_access . next_value_seed (self . 0 . transmute :: < super :: super :: serde_helpers :: PrimitiveElementOwned > ()) ? ;
+                                use super::super::serde_helpers::PrimitiveElementOwned;
+                                let _context: &mut DeserializationContext<PrimitiveElementOwned> =
+                                    self.0.transmute();
+                                let PrimitiveElementOwned { id, extension } =
+                                    map_access.next_value_seed(&mut *_context)?;
                                 some.id = id;
                                 some.extension = extension;
                             } else {
@@ -449,7 +446,7 @@ impl<'de> serde::de::DeserializeSeed<'de>
                         }
                     }
                 }
-                Ok(fhirbolt_model::r4b::resources::CodeSystemFilter {
+                Ok(CodeSystemFilter {
                     r#id,
                     r#extension: r#extension.unwrap_or(vec![]),
                     r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
@@ -471,38 +468,26 @@ impl<'de> serde::de::DeserializeSeed<'de>
         deserializer.deserialize_map(Visitor(self))
     }
 }
-impl<'de> serde::de::DeserializeSeed<'de>
-    for &mut crate::context::de::DeserializationContext<
-        Box<fhirbolt_model::r4b::resources::CodeSystemFilter>,
-    >
-{
-    type Value = Box<fhirbolt_model::r4b::resources::CodeSystemFilter>;
+impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Box<CodeSystemFilter>> {
+    type Value = Box<CodeSystemFilter>;
     fn deserialize<D>(self, deserializer: D) -> Result<Self::Value, D::Error>
     where
         D: serde::de::Deserializer<'de>,
     {
-        self.transmute::<fhirbolt_model::r4b::resources::CodeSystemFilter>()
+        self.transmute::<CodeSystemFilter>()
             .deserialize(deserializer)
             .map(Box::new)
     }
 }
-impl<'de> serde::de::DeserializeSeed<'de>
-    for &mut crate::context::de::DeserializationContext<
-        Vec<fhirbolt_model::r4b::resources::CodeSystemFilter>,
-    >
-{
-    type Value = Vec<fhirbolt_model::r4b::resources::CodeSystemFilter>;
+impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Vec<CodeSystemFilter>> {
+    type Value = Vec<CodeSystemFilter>;
     fn deserialize<D>(self, deserializer: D) -> Result<Self::Value, D::Error>
     where
         D: serde::de::Deserializer<'de>,
     {
-        struct Visitor<'a>(
-            &'a mut crate::context::de::DeserializationContext<
-                Vec<fhirbolt_model::r4b::resources::CodeSystemFilter>,
-            >,
-        );
+        struct Visitor<'a>(&'a mut DeserializationContext<Vec<CodeSystemFilter>>);
         impl<'de> serde::de::Visitor<'de> for Visitor<'_> {
-            type Value = Vec<fhirbolt_model::r4b::resources::CodeSystemFilter>;
+            type Value = Vec<CodeSystemFilter>;
             fn expecting(&self, formatter: &mut std::fmt::Formatter) -> std::fmt::Result {
                 formatter.write_str("a sequence")
             }
@@ -511,10 +496,8 @@ impl<'de> serde::de::DeserializeSeed<'de>
                 A: serde::de::SeqAccess<'de>,
             {
                 let mut values = Vec::new();
-                while let Some(value) = seq.next_element_seed(
-                    self.0
-                        .transmute::<fhirbolt_model::r4b::resources::CodeSystemFilter>(),
-                )? {
+                let _context: &mut DeserializationContext<CodeSystemFilter> = self.0.transmute();
+                while let Some(value) = seq.next_element_seed(&mut *_context)? {
                     values.push(value);
                 }
                 Ok(values)
@@ -523,11 +506,8 @@ impl<'de> serde::de::DeserializeSeed<'de>
         deserializer.deserialize_seq(Visitor(self))
     }
 }
-impl serde::ser::Serialize
-    for crate::context::ser::SerializationContext<
-        &fhirbolt_model::r4b::resources::CodeSystemProperty,
-    >
-{
+use fhirbolt_model::r4b::resources::CodeSystemProperty;
+impl serde::ser::Serialize for SerializationContext<&CodeSystemProperty> {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
         S: serde::ser::Serializer,
@@ -554,16 +534,16 @@ impl serde::ser::Serialize
                 state.serialize_entry("modifierExtension", ctx)
             })?;
         }
-        if self.output_json {
+        if self.output == crate::context::Format::Json {
             if self.value.r#code.id.as_deref() == Some("$invalid") {
                 return missing_field_error("code");
             }
-            if let Some(some) = self.value.r#code.value.as_ref() {
-                let some = Ok(some)?;
-                state.serialize_entry("code", &some)?;
+            if let Some(some) = self.value.r#code.value.as_ref().map(Ok) {
+                state.serialize_entry("code", &some?)?;
             }
             if self.value.r#code.id.is_some() || !self.value.r#code.extension.is_empty() {
-                let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                use super::super::serde_helpers::PrimitiveElement;
+                let primitive_element = PrimitiveElement {
                     id: self.value.r#code.id.as_ref(),
                     extension: &self.value.r#code.extension,
                 };
@@ -571,20 +551,19 @@ impl serde::ser::Serialize
                     state.serialize_entry("_code", ctx)
                 })?;
             }
+        } else if self.value.r#code.id.as_deref() == Some("$invalid") {
+            return missing_field_error("code");
         } else {
-            if self.value.r#code.id.as_deref() == Some("$invalid") {
-                return missing_field_error("code");
-            }
             self.with_context(&self.value.r#code, |ctx| state.serialize_entry("code", ctx))?;
         }
-        if self.output_json {
+        if self.output == crate::context::Format::Json {
             if let Some(some) = self.value.r#uri.as_ref() {
-                if let Some(some) = some.value.as_ref() {
-                    let some = Ok(some)?;
-                    state.serialize_entry("uri", &some)?;
+                if let Some(some) = some.value.as_ref().map(Ok) {
+                    state.serialize_entry("uri", &some?)?;
                 }
                 if some.id.is_some() || !some.extension.is_empty() {
-                    let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                    use super::super::serde_helpers::PrimitiveElement;
+                    let primitive_element = PrimitiveElement {
                         id: some.id.as_ref(),
                         extension: &some.extension,
                     };
@@ -593,19 +572,17 @@ impl serde::ser::Serialize
                     })?;
                 }
             }
-        } else {
-            if let Some(some) = self.value.r#uri.as_ref() {
-                self.with_context(some, |ctx| state.serialize_entry("uri", ctx))?;
-            }
+        } else if let Some(some) = self.value.r#uri.as_ref() {
+            self.with_context(some, |ctx| state.serialize_entry("uri", ctx))?;
         }
-        if self.output_json {
+        if self.output == crate::context::Format::Json {
             if let Some(some) = self.value.r#description.as_ref() {
-                if let Some(some) = some.value.as_ref() {
-                    let some = Ok(some)?;
-                    state.serialize_entry("description", &some)?;
+                if let Some(some) = some.value.as_ref().map(Ok) {
+                    state.serialize_entry("description", &some?)?;
                 }
                 if some.id.is_some() || !some.extension.is_empty() {
-                    let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                    use super::super::serde_helpers::PrimitiveElement;
+                    let primitive_element = PrimitiveElement {
                         id: some.id.as_ref(),
                         extension: &some.extension,
                     };
@@ -614,21 +591,19 @@ impl serde::ser::Serialize
                     })?;
                 }
             }
-        } else {
-            if let Some(some) = self.value.r#description.as_ref() {
-                self.with_context(some, |ctx| state.serialize_entry("description", ctx))?;
-            }
+        } else if let Some(some) = self.value.r#description.as_ref() {
+            self.with_context(some, |ctx| state.serialize_entry("description", ctx))?;
         }
-        if self.output_json {
+        if self.output == crate::context::Format::Json {
             if self.value.r#type.id.as_deref() == Some("$invalid") {
                 return missing_field_error("type");
             }
-            if let Some(some) = self.value.r#type.value.as_ref() {
-                let some = Ok(some)?;
-                state.serialize_entry("type", &some)?;
+            if let Some(some) = self.value.r#type.value.as_ref().map(Ok) {
+                state.serialize_entry("type", &some?)?;
             }
             if self.value.r#type.id.is_some() || !self.value.r#type.extension.is_empty() {
-                let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                use super::super::serde_helpers::PrimitiveElement;
+                let primitive_element = PrimitiveElement {
                     id: self.value.r#type.id.as_ref(),
                     extension: &self.value.r#type.extension,
                 };
@@ -636,20 +611,15 @@ impl serde::ser::Serialize
                     state.serialize_entry("_type", ctx)
                 })?;
             }
+        } else if self.value.r#type.id.as_deref() == Some("$invalid") {
+            return missing_field_error("type");
         } else {
-            if self.value.r#type.id.as_deref() == Some("$invalid") {
-                return missing_field_error("type");
-            }
             self.with_context(&self.value.r#type, |ctx| state.serialize_entry("type", ctx))?;
         }
         state.end()
     }
 }
-impl serde::ser::Serialize
-    for crate::context::ser::SerializationContext<
-        &Box<fhirbolt_model::r4b::resources::CodeSystemProperty>,
-    >
-{
+impl serde::ser::Serialize for SerializationContext<&Box<CodeSystemProperty>> {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
         S: serde::ser::Serializer,
@@ -657,11 +627,7 @@ impl serde::ser::Serialize
         self.with_context(self.value.as_ref(), |ctx| ctx.serialize(serializer))
     }
 }
-impl serde::ser::Serialize
-    for crate::context::ser::SerializationContext<
-        &Vec<fhirbolt_model::r4b::resources::CodeSystemProperty>,
-    >
-{
+impl serde::ser::Serialize for SerializationContext<&Vec<CodeSystemProperty>> {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
         S: serde::ser::Serializer,
@@ -674,30 +640,19 @@ impl serde::ser::Serialize
         seq_serializer.end()
     }
 }
-impl<'de> serde::de::DeserializeSeed<'de>
-    for &mut crate::context::de::DeserializationContext<
-        fhirbolt_model::r4b::resources::CodeSystemProperty,
-    >
-{
-    type Value = fhirbolt_model::r4b::resources::CodeSystemProperty;
+impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<CodeSystemProperty> {
+    type Value = CodeSystemProperty;
     fn deserialize<D>(self, deserializer: D) -> Result<Self::Value, D::Error>
     where
         D: serde::de::Deserializer<'de>,
     {
-        struct Visitor<'a>(
-            &'a mut crate::context::de::DeserializationContext<
-                fhirbolt_model::r4b::resources::CodeSystemProperty,
-            >,
-        );
+        struct Visitor<'a>(&'a mut DeserializationContext<CodeSystemProperty>);
         impl<'de> serde::de::Visitor<'de> for Visitor<'_> {
-            type Value = fhirbolt_model::r4b::resources::CodeSystemProperty;
+            type Value = CodeSystemProperty;
             fn expecting(&self, formatter: &mut std::fmt::Formatter) -> std::fmt::Result {
                 formatter.write_str("CodeSystemProperty")
             }
-            fn visit_map<V>(
-                self,
-                mut map_access: V,
-            ) -> Result<fhirbolt_model::r4b::resources::CodeSystemProperty, V::Error>
+            fn visit_map<V>(self, mut map_access: V) -> Result<CodeSystemProperty, V::Error>
             where
                 V: serde::de::MapAccess<'de>,
             {
@@ -759,57 +714,70 @@ impl<'de> serde::de::DeserializeSeed<'de>
                             r#id = Some(map_access.next_value()?);
                         }
                         Field::Extension => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 if r#extension.is_some() {
                                     return Err(serde::de::Error::duplicate_field("extension"));
                                 }
-                                r#extension = Some (map_access . next_value_seed (self . 0 . transmute :: < Vec < fhirbolt_model :: r4b :: types :: Extension >> ()) ?) ;
+                                let _context: &mut DeserializationContext<
+                                    Vec<fhirbolt_model::r4b::types::Extension>,
+                                > = self.0.transmute();
+                                r#extension = Some(map_access.next_value_seed(&mut *_context)?);
                             } else {
                                 let vec = r#extension.get_or_insert(Default::default());
-                                vec.push(map_access.next_value_seed(
-                                    self.0.transmute::<fhirbolt_model::r4b::types::Extension>(),
-                                )?);
+                                let _context: &mut DeserializationContext<
+                                    fhirbolt_model::r4b::types::Extension,
+                                > = self.0.transmute();
+                                vec.push(map_access.next_value_seed(&mut *_context)?);
                             }
                         }
                         Field::ModifierExtension => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 if r#modifier_extension.is_some() {
                                     return Err(serde::de::Error::duplicate_field(
                                         "modifierExtension",
                                     ));
                                 }
-                                r#modifier_extension = Some (map_access . next_value_seed (self . 0 . transmute :: < Vec < fhirbolt_model :: r4b :: types :: Extension >> ()) ?) ;
+                                let _context: &mut DeserializationContext<
+                                    Vec<fhirbolt_model::r4b::types::Extension>,
+                                > = self.0.transmute();
+                                r#modifier_extension =
+                                    Some(map_access.next_value_seed(&mut *_context)?);
                             } else {
                                 let vec = r#modifier_extension.get_or_insert(Default::default());
-                                vec.push(map_access.next_value_seed(
-                                    self.0.transmute::<fhirbolt_model::r4b::types::Extension>(),
-                                )?);
+                                let _context: &mut DeserializationContext<
+                                    fhirbolt_model::r4b::types::Extension,
+                                > = self.0.transmute();
+                                vec.push(map_access.next_value_seed(&mut *_context)?);
                             }
                         }
                         Field::Code => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let some = r#code.get_or_insert(Default::default());
                                 if some.value.is_some() {
                                     return Err(serde::de::Error::duplicate_field("code"));
                                 }
-                                let value: _ = map_access.next_value()?;
-                                some.value = Some(value);
+                                some.value = Some(map_access.next_value()?);
                             } else {
                                 if r#code.is_some() {
                                     return Err(serde::de::Error::duplicate_field("code"));
                                 }
-                                r#code = Some(map_access.next_value_seed(
-                                    self.0.transmute::<fhirbolt_model::r4b::types::Code>(),
-                                )?);
+                                let _context: &mut DeserializationContext<
+                                    fhirbolt_model::r4b::types::Code,
+                                > = self.0.transmute();
+                                r#code = Some(map_access.next_value_seed(&mut *_context)?);
                             }
                         }
                         Field::CodePrimitiveElement => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let some = r#code.get_or_insert(Default::default());
                                 if some.id.is_some() || !some.extension.is_empty() {
                                     return Err(serde::de::Error::duplicate_field("_code"));
                                 }
-                                let super :: super :: serde_helpers :: PrimitiveElementOwned { id , extension } = map_access . next_value_seed (self . 0 . transmute :: < super :: super :: serde_helpers :: PrimitiveElementOwned > ()) ? ;
+                                use super::super::serde_helpers::PrimitiveElementOwned;
+                                let _context: &mut DeserializationContext<PrimitiveElementOwned> =
+                                    self.0.transmute();
+                                let PrimitiveElementOwned { id, extension } =
+                                    map_access.next_value_seed(&mut *_context)?;
                                 some.id = id;
                                 some.extension = extension;
                             } else {
@@ -817,29 +785,33 @@ impl<'de> serde::de::DeserializeSeed<'de>
                             }
                         }
                         Field::Uri => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let some = r#uri.get_or_insert(Default::default());
                                 if some.value.is_some() {
                                     return Err(serde::de::Error::duplicate_field("uri"));
                                 }
-                                let value: _ = map_access.next_value()?;
-                                some.value = Some(value);
+                                some.value = Some(map_access.next_value()?);
                             } else {
                                 if r#uri.is_some() {
                                     return Err(serde::de::Error::duplicate_field("uri"));
                                 }
-                                r#uri = Some(map_access.next_value_seed(
-                                    self.0.transmute::<fhirbolt_model::r4b::types::Uri>(),
-                                )?);
+                                let _context: &mut DeserializationContext<
+                                    fhirbolt_model::r4b::types::Uri,
+                                > = self.0.transmute();
+                                r#uri = Some(map_access.next_value_seed(&mut *_context)?);
                             }
                         }
                         Field::UriPrimitiveElement => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let some = r#uri.get_or_insert(Default::default());
                                 if some.id.is_some() || !some.extension.is_empty() {
                                     return Err(serde::de::Error::duplicate_field("_uri"));
                                 }
-                                let super :: super :: serde_helpers :: PrimitiveElementOwned { id , extension } = map_access . next_value_seed (self . 0 . transmute :: < super :: super :: serde_helpers :: PrimitiveElementOwned > ()) ? ;
+                                use super::super::serde_helpers::PrimitiveElementOwned;
+                                let _context: &mut DeserializationContext<PrimitiveElementOwned> =
+                                    self.0.transmute();
+                                let PrimitiveElementOwned { id, extension } =
+                                    map_access.next_value_seed(&mut *_context)?;
                                 some.id = id;
                                 some.extension = extension;
                             } else {
@@ -847,29 +819,33 @@ impl<'de> serde::de::DeserializeSeed<'de>
                             }
                         }
                         Field::Description => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let some = r#description.get_or_insert(Default::default());
                                 if some.value.is_some() {
                                     return Err(serde::de::Error::duplicate_field("description"));
                                 }
-                                let value: _ = map_access.next_value()?;
-                                some.value = Some(value);
+                                some.value = Some(map_access.next_value()?);
                             } else {
                                 if r#description.is_some() {
                                     return Err(serde::de::Error::duplicate_field("description"));
                                 }
-                                r#description = Some(map_access.next_value_seed(
-                                    self.0.transmute::<fhirbolt_model::r4b::types::String>(),
-                                )?);
+                                let _context: &mut DeserializationContext<
+                                    fhirbolt_model::r4b::types::String,
+                                > = self.0.transmute();
+                                r#description = Some(map_access.next_value_seed(&mut *_context)?);
                             }
                         }
                         Field::DescriptionPrimitiveElement => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let some = r#description.get_or_insert(Default::default());
                                 if some.id.is_some() || !some.extension.is_empty() {
                                     return Err(serde::de::Error::duplicate_field("_description"));
                                 }
-                                let super :: super :: serde_helpers :: PrimitiveElementOwned { id , extension } = map_access . next_value_seed (self . 0 . transmute :: < super :: super :: serde_helpers :: PrimitiveElementOwned > ()) ? ;
+                                use super::super::serde_helpers::PrimitiveElementOwned;
+                                let _context: &mut DeserializationContext<PrimitiveElementOwned> =
+                                    self.0.transmute();
+                                let PrimitiveElementOwned { id, extension } =
+                                    map_access.next_value_seed(&mut *_context)?;
                                 some.id = id;
                                 some.extension = extension;
                             } else {
@@ -877,29 +853,33 @@ impl<'de> serde::de::DeserializeSeed<'de>
                             }
                         }
                         Field::Type => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let some = r#type.get_or_insert(Default::default());
                                 if some.value.is_some() {
                                     return Err(serde::de::Error::duplicate_field("type"));
                                 }
-                                let value: _ = map_access.next_value()?;
-                                some.value = Some(value);
+                                some.value = Some(map_access.next_value()?);
                             } else {
                                 if r#type.is_some() {
                                     return Err(serde::de::Error::duplicate_field("type"));
                                 }
-                                r#type = Some(map_access.next_value_seed(
-                                    self.0.transmute::<fhirbolt_model::r4b::types::Code>(),
-                                )?);
+                                let _context: &mut DeserializationContext<
+                                    fhirbolt_model::r4b::types::Code,
+                                > = self.0.transmute();
+                                r#type = Some(map_access.next_value_seed(&mut *_context)?);
                             }
                         }
                         Field::TypePrimitiveElement => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let some = r#type.get_or_insert(Default::default());
                                 if some.id.is_some() || !some.extension.is_empty() {
                                     return Err(serde::de::Error::duplicate_field("_type"));
                                 }
-                                let super :: super :: serde_helpers :: PrimitiveElementOwned { id , extension } = map_access . next_value_seed (self . 0 . transmute :: < super :: super :: serde_helpers :: PrimitiveElementOwned > ()) ? ;
+                                use super::super::serde_helpers::PrimitiveElementOwned;
+                                let _context: &mut DeserializationContext<PrimitiveElementOwned> =
+                                    self.0.transmute();
+                                let PrimitiveElementOwned { id, extension } =
+                                    map_access.next_value_seed(&mut *_context)?;
                                 some.id = id;
                                 some.extension = extension;
                             } else {
@@ -914,7 +894,7 @@ impl<'de> serde::de::DeserializeSeed<'de>
                         }
                     }
                 }
-                Ok(fhirbolt_model::r4b::resources::CodeSystemProperty {
+                Ok(CodeSystemProperty {
                     r#id,
                     r#extension: r#extension.unwrap_or(vec![]),
                     r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
@@ -936,38 +916,26 @@ impl<'de> serde::de::DeserializeSeed<'de>
         deserializer.deserialize_map(Visitor(self))
     }
 }
-impl<'de> serde::de::DeserializeSeed<'de>
-    for &mut crate::context::de::DeserializationContext<
-        Box<fhirbolt_model::r4b::resources::CodeSystemProperty>,
-    >
-{
-    type Value = Box<fhirbolt_model::r4b::resources::CodeSystemProperty>;
+impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Box<CodeSystemProperty>> {
+    type Value = Box<CodeSystemProperty>;
     fn deserialize<D>(self, deserializer: D) -> Result<Self::Value, D::Error>
     where
         D: serde::de::Deserializer<'de>,
     {
-        self.transmute::<fhirbolt_model::r4b::resources::CodeSystemProperty>()
+        self.transmute::<CodeSystemProperty>()
             .deserialize(deserializer)
             .map(Box::new)
     }
 }
-impl<'de> serde::de::DeserializeSeed<'de>
-    for &mut crate::context::de::DeserializationContext<
-        Vec<fhirbolt_model::r4b::resources::CodeSystemProperty>,
-    >
-{
-    type Value = Vec<fhirbolt_model::r4b::resources::CodeSystemProperty>;
+impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Vec<CodeSystemProperty>> {
+    type Value = Vec<CodeSystemProperty>;
     fn deserialize<D>(self, deserializer: D) -> Result<Self::Value, D::Error>
     where
         D: serde::de::Deserializer<'de>,
     {
-        struct Visitor<'a>(
-            &'a mut crate::context::de::DeserializationContext<
-                Vec<fhirbolt_model::r4b::resources::CodeSystemProperty>,
-            >,
-        );
+        struct Visitor<'a>(&'a mut DeserializationContext<Vec<CodeSystemProperty>>);
         impl<'de> serde::de::Visitor<'de> for Visitor<'_> {
-            type Value = Vec<fhirbolt_model::r4b::resources::CodeSystemProperty>;
+            type Value = Vec<CodeSystemProperty>;
             fn expecting(&self, formatter: &mut std::fmt::Formatter) -> std::fmt::Result {
                 formatter.write_str("a sequence")
             }
@@ -976,10 +944,8 @@ impl<'de> serde::de::DeserializeSeed<'de>
                 A: serde::de::SeqAccess<'de>,
             {
                 let mut values = Vec::new();
-                while let Some(value) = seq.next_element_seed(
-                    self.0
-                        .transmute::<fhirbolt_model::r4b::resources::CodeSystemProperty>(),
-                )? {
+                let _context: &mut DeserializationContext<CodeSystemProperty> = self.0.transmute();
+                while let Some(value) = seq.next_element_seed(&mut *_context)? {
                     values.push(value);
                 }
                 Ok(values)
@@ -988,11 +954,8 @@ impl<'de> serde::de::DeserializeSeed<'de>
         deserializer.deserialize_seq(Visitor(self))
     }
 }
-impl serde::ser::Serialize
-    for crate::context::ser::SerializationContext<
-        &fhirbolt_model::r4b::resources::CodeSystemConceptDesignation,
-    >
-{
+use fhirbolt_model::r4b::resources::CodeSystemConceptDesignation;
+impl serde::ser::Serialize for SerializationContext<&CodeSystemConceptDesignation> {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
         S: serde::ser::Serializer,
@@ -1019,14 +982,14 @@ impl serde::ser::Serialize
                 state.serialize_entry("modifierExtension", ctx)
             })?;
         }
-        if self.output_json {
+        if self.output == crate::context::Format::Json {
             if let Some(some) = self.value.r#language.as_ref() {
-                if let Some(some) = some.value.as_ref() {
-                    let some = Ok(some)?;
-                    state.serialize_entry("language", &some)?;
+                if let Some(some) = some.value.as_ref().map(Ok) {
+                    state.serialize_entry("language", &some?)?;
                 }
                 if some.id.is_some() || !some.extension.is_empty() {
-                    let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                    use super::super::serde_helpers::PrimitiveElement;
+                    let primitive_element = PrimitiveElement {
                         id: some.id.as_ref(),
                         extension: &some.extension,
                     };
@@ -1035,24 +998,22 @@ impl serde::ser::Serialize
                     })?;
                 }
             }
-        } else {
-            if let Some(some) = self.value.r#language.as_ref() {
-                self.with_context(some, |ctx| state.serialize_entry("language", ctx))?;
-            }
+        } else if let Some(some) = self.value.r#language.as_ref() {
+            self.with_context(some, |ctx| state.serialize_entry("language", ctx))?;
         }
         if let Some(some) = self.value.r#use.as_ref() {
             self.with_context(some, |ctx| state.serialize_entry("use", ctx))?;
         }
-        if self.output_json {
+        if self.output == crate::context::Format::Json {
             if self.value.r#value.id.as_deref() == Some("$invalid") {
                 return missing_field_error("value");
             }
-            if let Some(some) = self.value.r#value.value.as_ref() {
-                let some = Ok(some)?;
-                state.serialize_entry("value", &some)?;
+            if let Some(some) = self.value.r#value.value.as_ref().map(Ok) {
+                state.serialize_entry("value", &some?)?;
             }
             if self.value.r#value.id.is_some() || !self.value.r#value.extension.is_empty() {
-                let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                use super::super::serde_helpers::PrimitiveElement;
+                let primitive_element = PrimitiveElement {
                     id: self.value.r#value.id.as_ref(),
                     extension: &self.value.r#value.extension,
                 };
@@ -1060,10 +1021,9 @@ impl serde::ser::Serialize
                     state.serialize_entry("_value", ctx)
                 })?;
             }
+        } else if self.value.r#value.id.as_deref() == Some("$invalid") {
+            return missing_field_error("value");
         } else {
-            if self.value.r#value.id.as_deref() == Some("$invalid") {
-                return missing_field_error("value");
-            }
             self.with_context(&self.value.r#value, |ctx| {
                 state.serialize_entry("value", ctx)
             })?;
@@ -1071,11 +1031,7 @@ impl serde::ser::Serialize
         state.end()
     }
 }
-impl serde::ser::Serialize
-    for crate::context::ser::SerializationContext<
-        &Box<fhirbolt_model::r4b::resources::CodeSystemConceptDesignation>,
-    >
-{
+impl serde::ser::Serialize for SerializationContext<&Box<CodeSystemConceptDesignation>> {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
         S: serde::ser::Serializer,
@@ -1083,11 +1039,7 @@ impl serde::ser::Serialize
         self.with_context(self.value.as_ref(), |ctx| ctx.serialize(serializer))
     }
 }
-impl serde::ser::Serialize
-    for crate::context::ser::SerializationContext<
-        &Vec<fhirbolt_model::r4b::resources::CodeSystemConceptDesignation>,
-    >
-{
+impl serde::ser::Serialize for SerializationContext<&Vec<CodeSystemConceptDesignation>> {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
         S: serde::ser::Serializer,
@@ -1101,29 +1053,23 @@ impl serde::ser::Serialize
     }
 }
 impl<'de> serde::de::DeserializeSeed<'de>
-    for &mut crate::context::de::DeserializationContext<
-        fhirbolt_model::r4b::resources::CodeSystemConceptDesignation,
-    >
+    for &mut DeserializationContext<CodeSystemConceptDesignation>
 {
-    type Value = fhirbolt_model::r4b::resources::CodeSystemConceptDesignation;
+    type Value = CodeSystemConceptDesignation;
     fn deserialize<D>(self, deserializer: D) -> Result<Self::Value, D::Error>
     where
         D: serde::de::Deserializer<'de>,
     {
-        struct Visitor<'a>(
-            &'a mut crate::context::de::DeserializationContext<
-                fhirbolt_model::r4b::resources::CodeSystemConceptDesignation,
-            >,
-        );
+        struct Visitor<'a>(&'a mut DeserializationContext<CodeSystemConceptDesignation>);
         impl<'de> serde::de::Visitor<'de> for Visitor<'_> {
-            type Value = fhirbolt_model::r4b::resources::CodeSystemConceptDesignation;
+            type Value = CodeSystemConceptDesignation;
             fn expecting(&self, formatter: &mut std::fmt::Formatter) -> std::fmt::Result {
                 formatter.write_str("CodeSystemConceptDesignation")
             }
             fn visit_map<V>(
                 self,
                 mut map_access: V,
-            ) -> Result<fhirbolt_model::r4b::resources::CodeSystemConceptDesignation, V::Error>
+            ) -> Result<CodeSystemConceptDesignation, V::Error>
             where
                 V: serde::de::MapAccess<'de>,
             {
@@ -1177,57 +1123,70 @@ impl<'de> serde::de::DeserializeSeed<'de>
                             r#id = Some(map_access.next_value()?);
                         }
                         Field::Extension => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 if r#extension.is_some() {
                                     return Err(serde::de::Error::duplicate_field("extension"));
                                 }
-                                r#extension = Some (map_access . next_value_seed (self . 0 . transmute :: < Vec < fhirbolt_model :: r4b :: types :: Extension >> ()) ?) ;
+                                let _context: &mut DeserializationContext<
+                                    Vec<fhirbolt_model::r4b::types::Extension>,
+                                > = self.0.transmute();
+                                r#extension = Some(map_access.next_value_seed(&mut *_context)?);
                             } else {
                                 let vec = r#extension.get_or_insert(Default::default());
-                                vec.push(map_access.next_value_seed(
-                                    self.0.transmute::<fhirbolt_model::r4b::types::Extension>(),
-                                )?);
+                                let _context: &mut DeserializationContext<
+                                    fhirbolt_model::r4b::types::Extension,
+                                > = self.0.transmute();
+                                vec.push(map_access.next_value_seed(&mut *_context)?);
                             }
                         }
                         Field::ModifierExtension => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 if r#modifier_extension.is_some() {
                                     return Err(serde::de::Error::duplicate_field(
                                         "modifierExtension",
                                     ));
                                 }
-                                r#modifier_extension = Some (map_access . next_value_seed (self . 0 . transmute :: < Vec < fhirbolt_model :: r4b :: types :: Extension >> ()) ?) ;
+                                let _context: &mut DeserializationContext<
+                                    Vec<fhirbolt_model::r4b::types::Extension>,
+                                > = self.0.transmute();
+                                r#modifier_extension =
+                                    Some(map_access.next_value_seed(&mut *_context)?);
                             } else {
                                 let vec = r#modifier_extension.get_or_insert(Default::default());
-                                vec.push(map_access.next_value_seed(
-                                    self.0.transmute::<fhirbolt_model::r4b::types::Extension>(),
-                                )?);
+                                let _context: &mut DeserializationContext<
+                                    fhirbolt_model::r4b::types::Extension,
+                                > = self.0.transmute();
+                                vec.push(map_access.next_value_seed(&mut *_context)?);
                             }
                         }
                         Field::Language => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let some = r#language.get_or_insert(Default::default());
                                 if some.value.is_some() {
                                     return Err(serde::de::Error::duplicate_field("language"));
                                 }
-                                let value: _ = map_access.next_value()?;
-                                some.value = Some(value);
+                                some.value = Some(map_access.next_value()?);
                             } else {
                                 if r#language.is_some() {
                                     return Err(serde::de::Error::duplicate_field("language"));
                                 }
-                                r#language = Some(map_access.next_value_seed(
-                                    self.0.transmute::<fhirbolt_model::r4b::types::Code>(),
-                                )?);
+                                let _context: &mut DeserializationContext<
+                                    fhirbolt_model::r4b::types::Code,
+                                > = self.0.transmute();
+                                r#language = Some(map_access.next_value_seed(&mut *_context)?);
                             }
                         }
                         Field::LanguagePrimitiveElement => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let some = r#language.get_or_insert(Default::default());
                                 if some.id.is_some() || !some.extension.is_empty() {
                                     return Err(serde::de::Error::duplicate_field("_language"));
                                 }
-                                let super :: super :: serde_helpers :: PrimitiveElementOwned { id , extension } = map_access . next_value_seed (self . 0 . transmute :: < super :: super :: serde_helpers :: PrimitiveElementOwned > ()) ? ;
+                                use super::super::serde_helpers::PrimitiveElementOwned;
+                                let _context: &mut DeserializationContext<PrimitiveElementOwned> =
+                                    self.0.transmute();
+                                let PrimitiveElementOwned { id, extension } =
+                                    map_access.next_value_seed(&mut *_context)?;
                                 some.id = id;
                                 some.extension = extension;
                             } else {
@@ -1238,37 +1197,39 @@ impl<'de> serde::de::DeserializeSeed<'de>
                             if r#use.is_some() {
                                 return Err(serde::de::Error::duplicate_field("use"));
                             }
-                            r#use = Some(
-                                map_access.next_value_seed(
-                                    self.0
-                                        .transmute::<Box<fhirbolt_model::r4b::types::Coding>>(),
-                                )?,
-                            );
+                            let _context: &mut DeserializationContext<
+                                Box<fhirbolt_model::r4b::types::Coding>,
+                            > = self.0.transmute();
+                            r#use = Some(map_access.next_value_seed(&mut *_context)?);
                         }
                         Field::Value => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let some = r#value.get_or_insert(Default::default());
                                 if some.value.is_some() {
                                     return Err(serde::de::Error::duplicate_field("value"));
                                 }
-                                let value: _ = map_access.next_value()?;
-                                some.value = Some(value);
+                                some.value = Some(map_access.next_value()?);
                             } else {
                                 if r#value.is_some() {
                                     return Err(serde::de::Error::duplicate_field("value"));
                                 }
-                                r#value = Some(map_access.next_value_seed(
-                                    self.0.transmute::<fhirbolt_model::r4b::types::String>(),
-                                )?);
+                                let _context: &mut DeserializationContext<
+                                    fhirbolt_model::r4b::types::String,
+                                > = self.0.transmute();
+                                r#value = Some(map_access.next_value_seed(&mut *_context)?);
                             }
                         }
                         Field::ValuePrimitiveElement => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let some = r#value.get_or_insert(Default::default());
                                 if some.id.is_some() || !some.extension.is_empty() {
                                     return Err(serde::de::Error::duplicate_field("_value"));
                                 }
-                                let super :: super :: serde_helpers :: PrimitiveElementOwned { id , extension } = map_access . next_value_seed (self . 0 . transmute :: < super :: super :: serde_helpers :: PrimitiveElementOwned > ()) ? ;
+                                use super::super::serde_helpers::PrimitiveElementOwned;
+                                let _context: &mut DeserializationContext<PrimitiveElementOwned> =
+                                    self.0.transmute();
+                                let PrimitiveElementOwned { id, extension } =
+                                    map_access.next_value_seed(&mut *_context)?;
                                 some.id = id;
                                 some.extension = extension;
                             } else {
@@ -1283,59 +1244,47 @@ impl<'de> serde::de::DeserializeSeed<'de>
                         }
                     }
                 }
-                Ok(
-                    fhirbolt_model::r4b::resources::CodeSystemConceptDesignation {
-                        r#id,
-                        r#extension: r#extension.unwrap_or(vec![]),
-                        r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
-                        r#language,
-                        r#use,
-                        r#value: if self.0.config.mode
-                            == crate::context::de::DeserializationMode::Lax
-                        {
-                            r#value.unwrap_or(Default::default())
-                        } else {
-                            r#value.ok_or(serde::de::Error::missing_field("value"))?
-                        },
+                Ok(CodeSystemConceptDesignation {
+                    r#id,
+                    r#extension: r#extension.unwrap_or(vec![]),
+                    r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
+                    r#language,
+                    r#use,
+                    r#value: if self.0.config.mode == crate::context::de::DeserializationMode::Lax {
+                        r#value.unwrap_or(Default::default())
+                    } else {
+                        r#value.ok_or(serde::de::Error::missing_field("value"))?
                     },
-                )
+                })
             }
         }
         deserializer.deserialize_map(Visitor(self))
     }
 }
 impl<'de> serde::de::DeserializeSeed<'de>
-    for &mut crate::context::de::DeserializationContext<
-        Box<fhirbolt_model::r4b::resources::CodeSystemConceptDesignation>,
-    >
+    for &mut DeserializationContext<Box<CodeSystemConceptDesignation>>
 {
-    type Value = Box<fhirbolt_model::r4b::resources::CodeSystemConceptDesignation>;
+    type Value = Box<CodeSystemConceptDesignation>;
     fn deserialize<D>(self, deserializer: D) -> Result<Self::Value, D::Error>
     where
         D: serde::de::Deserializer<'de>,
     {
-        self.transmute::<fhirbolt_model::r4b::resources::CodeSystemConceptDesignation>()
+        self.transmute::<CodeSystemConceptDesignation>()
             .deserialize(deserializer)
             .map(Box::new)
     }
 }
 impl<'de> serde::de::DeserializeSeed<'de>
-    for &mut crate::context::de::DeserializationContext<
-        Vec<fhirbolt_model::r4b::resources::CodeSystemConceptDesignation>,
-    >
+    for &mut DeserializationContext<Vec<CodeSystemConceptDesignation>>
 {
-    type Value = Vec<fhirbolt_model::r4b::resources::CodeSystemConceptDesignation>;
+    type Value = Vec<CodeSystemConceptDesignation>;
     fn deserialize<D>(self, deserializer: D) -> Result<Self::Value, D::Error>
     where
         D: serde::de::Deserializer<'de>,
     {
-        struct Visitor<'a>(
-            &'a mut crate::context::de::DeserializationContext<
-                Vec<fhirbolt_model::r4b::resources::CodeSystemConceptDesignation>,
-            >,
-        );
+        struct Visitor<'a>(&'a mut DeserializationContext<Vec<CodeSystemConceptDesignation>>);
         impl<'de> serde::de::Visitor<'de> for Visitor<'_> {
-            type Value = Vec<fhirbolt_model::r4b::resources::CodeSystemConceptDesignation>;
+            type Value = Vec<CodeSystemConceptDesignation>;
             fn expecting(&self, formatter: &mut std::fmt::Formatter) -> std::fmt::Result {
                 formatter.write_str("a sequence")
             }
@@ -1344,11 +1293,9 @@ impl<'de> serde::de::DeserializeSeed<'de>
                 A: serde::de::SeqAccess<'de>,
             {
                 let mut values = Vec::new();
-                while let Some(value) = seq.next_element_seed(
-                    self.0
-                        .transmute::<fhirbolt_model::r4b::resources::CodeSystemConceptDesignation>(
-                        ),
-                )? {
+                let _context: &mut DeserializationContext<CodeSystemConceptDesignation> =
+                    self.0.transmute();
+                while let Some(value) = seq.next_element_seed(&mut *_context)? {
                     values.push(value);
                 }
                 Ok(values)
@@ -1357,11 +1304,8 @@ impl<'de> serde::de::DeserializeSeed<'de>
         deserializer.deserialize_seq(Visitor(self))
     }
 }
-impl serde::ser::Serialize
-    for crate::context::ser::SerializationContext<
-        &fhirbolt_model::r4b::resources::CodeSystemConceptProperty,
-    >
-{
+use fhirbolt_model::r4b::resources::CodeSystemConceptProperty;
+impl serde::ser::Serialize for SerializationContext<&CodeSystemConceptProperty> {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
         S: serde::ser::Serializer,
@@ -1388,16 +1332,16 @@ impl serde::ser::Serialize
                 state.serialize_entry("modifierExtension", ctx)
             })?;
         }
-        if self.output_json {
+        if self.output == crate::context::Format::Json {
             if self.value.r#code.id.as_deref() == Some("$invalid") {
                 return missing_field_error("code");
             }
-            if let Some(some) = self.value.r#code.value.as_ref() {
-                let some = Ok(some)?;
-                state.serialize_entry("code", &some)?;
+            if let Some(some) = self.value.r#code.value.as_ref().map(Ok) {
+                state.serialize_entry("code", &some?)?;
             }
             if self.value.r#code.id.is_some() || !self.value.r#code.extension.is_empty() {
-                let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                use super::super::serde_helpers::PrimitiveElement;
+                let primitive_element = PrimitiveElement {
                     id: self.value.r#code.id.as_ref(),
                     extension: &self.value.r#code.extension,
                 };
@@ -1405,144 +1349,145 @@ impl serde::ser::Serialize
                     state.serialize_entry("_code", ctx)
                 })?;
             }
+        } else if self.value.r#code.id.as_deref() == Some("$invalid") {
+            return missing_field_error("code");
         } else {
-            if self.value.r#code.id.as_deref() == Some("$invalid") {
-                return missing_field_error("code");
-            }
             self.with_context(&self.value.r#code, |ctx| state.serialize_entry("code", ctx))?;
         }
-        match self.value.r#value {
-            fhirbolt_model::r4b::resources::CodeSystemConceptPropertyValue::Code(ref value) => {
-                if self.output_json {
-                    if let Some(some) = value.value.as_ref() {
-                        let some = Ok(some)?;
-                        state.serialize_entry("valueCode", &some)?;
+        {
+            use fhirbolt_model::r4b::resources::CodeSystemConceptPropertyValue as _Enum;
+            match self.value.r#value {
+                _Enum::Code(ref value) => {
+                    if self.output == crate::context::Format::Json {
+                        if let Some(some) = value.value.as_ref().map(Ok) {
+                            state.serialize_entry("valueCode", &some?)?;
+                        }
+                        if value.id.is_some() || !value.extension.is_empty() {
+                            use super::super::serde_helpers::PrimitiveElement;
+                            let primitive_element = PrimitiveElement {
+                                id: value.id.as_ref(),
+                                extension: &value.extension,
+                            };
+                            self.with_context(&primitive_element, |ctx| {
+                                state.serialize_entry("_valueCode", ctx)
+                            })?;
+                        }
+                    } else {
+                        self.with_context(value, |ctx| state.serialize_entry("valueCode", ctx))?;
                     }
-                    if value.id.is_some() || !value.extension.is_empty() {
-                        let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                            id: value.id.as_ref(),
-                            extension: &value.extension,
-                        };
-                        self.with_context(&primitive_element, |ctx| {
-                            state.serialize_entry("_valueCode", ctx)
+                }
+                _Enum::Coding(ref value) => {
+                    self.with_context(value, |ctx| state.serialize_entry("valueCoding", ctx))?;
+                }
+                _Enum::String(ref value) => {
+                    if self.output == crate::context::Format::Json {
+                        if let Some(some) = value.value.as_ref().map(Ok) {
+                            state.serialize_entry("valueString", &some?)?;
+                        }
+                        if value.id.is_some() || !value.extension.is_empty() {
+                            use super::super::serde_helpers::PrimitiveElement;
+                            let primitive_element = PrimitiveElement {
+                                id: value.id.as_ref(),
+                                extension: &value.extension,
+                            };
+                            self.with_context(&primitive_element, |ctx| {
+                                state.serialize_entry("_valueString", ctx)
+                            })?;
+                        }
+                    } else {
+                        self.with_context(value, |ctx| state.serialize_entry("valueString", ctx))?;
+                    }
+                }
+                _Enum::Integer(ref value) => {
+                    if self.output == crate::context::Format::Json {
+                        if let Some(some) = value.value.as_ref().map(Ok) {
+                            state.serialize_entry("valueInteger", &some?)?;
+                        }
+                        if value.id.is_some() || !value.extension.is_empty() {
+                            use super::super::serde_helpers::PrimitiveElement;
+                            let primitive_element = PrimitiveElement {
+                                id: value.id.as_ref(),
+                                extension: &value.extension,
+                            };
+                            self.with_context(&primitive_element, |ctx| {
+                                state.serialize_entry("_valueInteger", ctx)
+                            })?;
+                        }
+                    } else {
+                        self.with_context(value, |ctx| state.serialize_entry("valueInteger", ctx))?;
+                    }
+                }
+                _Enum::Boolean(ref value) => {
+                    if self.output == crate::context::Format::Json {
+                        if let Some(some) = value.value.as_ref().map(Ok) {
+                            state.serialize_entry("valueBoolean", &some?)?;
+                        }
+                        if value.id.is_some() || !value.extension.is_empty() {
+                            use super::super::serde_helpers::PrimitiveElement;
+                            let primitive_element = PrimitiveElement {
+                                id: value.id.as_ref(),
+                                extension: &value.extension,
+                            };
+                            self.with_context(&primitive_element, |ctx| {
+                                state.serialize_entry("_valueBoolean", ctx)
+                            })?;
+                        }
+                    } else {
+                        self.with_context(value, |ctx| state.serialize_entry("valueBoolean", ctx))?;
+                    }
+                }
+                _Enum::DateTime(ref value) => {
+                    if self.output == crate::context::Format::Json {
+                        if let Some(some) = value.value.as_ref().map(Ok) {
+                            state.serialize_entry("valueDateTime", &some?)?;
+                        }
+                        if value.id.is_some() || !value.extension.is_empty() {
+                            use super::super::serde_helpers::PrimitiveElement;
+                            let primitive_element = PrimitiveElement {
+                                id: value.id.as_ref(),
+                                extension: &value.extension,
+                            };
+                            self.with_context(&primitive_element, |ctx| {
+                                state.serialize_entry("_valueDateTime", ctx)
+                            })?;
+                        }
+                    } else {
+                        self.with_context(value, |ctx| {
+                            state.serialize_entry("valueDateTime", ctx)
                         })?;
                     }
-                } else {
-                    self.with_context(value, |ctx| state.serialize_entry("valueCode", ctx))?;
                 }
-            }
-            fhirbolt_model::r4b::resources::CodeSystemConceptPropertyValue::Coding(ref value) => {
-                self.with_context(value, |ctx| state.serialize_entry("valueCoding", ctx))?;
-            }
-            fhirbolt_model::r4b::resources::CodeSystemConceptPropertyValue::String(ref value) => {
-                if self.output_json {
-                    if let Some(some) = value.value.as_ref() {
-                        let some = Ok(some)?;
-                        state.serialize_entry("valueString", &some)?;
+                _Enum::Decimal(ref value) => {
+                    if self.output == crate::context::Format::Json {
+                        if let Some(some) = value.value.as_ref().map(|v| {
+                            v.parse::<serde_json::Number>()
+                                .map_err(|_| serde::ser::Error::custom("error serializing decimal"))
+                        }) {
+                            state.serialize_entry("valueDecimal", &some?)?;
+                        }
+                        if value.id.is_some() || !value.extension.is_empty() {
+                            use super::super::serde_helpers::PrimitiveElement;
+                            let primitive_element = PrimitiveElement {
+                                id: value.id.as_ref(),
+                                extension: &value.extension,
+                            };
+                            self.with_context(&primitive_element, |ctx| {
+                                state.serialize_entry("_valueDecimal", ctx)
+                            })?;
+                        }
+                    } else {
+                        self.with_context(value, |ctx| state.serialize_entry("valueDecimal", ctx))?;
                     }
-                    if value.id.is_some() || !value.extension.is_empty() {
-                        let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                            id: value.id.as_ref(),
-                            extension: &value.extension,
-                        };
-                        self.with_context(&primitive_element, |ctx| {
-                            state.serialize_entry("_valueString", ctx)
-                        })?;
-                    }
-                } else {
-                    self.with_context(value, |ctx| state.serialize_entry("valueString", ctx))?;
                 }
-            }
-            fhirbolt_model::r4b::resources::CodeSystemConceptPropertyValue::Integer(ref value) => {
-                if self.output_json {
-                    if let Some(some) = value.value.as_ref() {
-                        let some = Ok(some)?;
-                        state.serialize_entry("valueInteger", &some)?;
-                    }
-                    if value.id.is_some() || !value.extension.is_empty() {
-                        let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                            id: value.id.as_ref(),
-                            extension: &value.extension,
-                        };
-                        self.with_context(&primitive_element, |ctx| {
-                            state.serialize_entry("_valueInteger", ctx)
-                        })?;
-                    }
-                } else {
-                    self.with_context(value, |ctx| state.serialize_entry("valueInteger", ctx))?;
+                _Enum::Invalid => {
+                    return Err(serde::ser::Error::custom("value is a required field"))
                 }
-            }
-            fhirbolt_model::r4b::resources::CodeSystemConceptPropertyValue::Boolean(ref value) => {
-                if self.output_json {
-                    if let Some(some) = value.value.as_ref() {
-                        let some = Ok(some)?;
-                        state.serialize_entry("valueBoolean", &some)?;
-                    }
-                    if value.id.is_some() || !value.extension.is_empty() {
-                        let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                            id: value.id.as_ref(),
-                            extension: &value.extension,
-                        };
-                        self.with_context(&primitive_element, |ctx| {
-                            state.serialize_entry("_valueBoolean", ctx)
-                        })?;
-                    }
-                } else {
-                    self.with_context(value, |ctx| state.serialize_entry("valueBoolean", ctx))?;
-                }
-            }
-            fhirbolt_model::r4b::resources::CodeSystemConceptPropertyValue::DateTime(ref value) => {
-                if self.output_json {
-                    if let Some(some) = value.value.as_ref() {
-                        let some = Ok(some)?;
-                        state.serialize_entry("valueDateTime", &some)?;
-                    }
-                    if value.id.is_some() || !value.extension.is_empty() {
-                        let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                            id: value.id.as_ref(),
-                            extension: &value.extension,
-                        };
-                        self.with_context(&primitive_element, |ctx| {
-                            state.serialize_entry("_valueDateTime", ctx)
-                        })?;
-                    }
-                } else {
-                    self.with_context(value, |ctx| state.serialize_entry("valueDateTime", ctx))?;
-                }
-            }
-            fhirbolt_model::r4b::resources::CodeSystemConceptPropertyValue::Decimal(ref value) => {
-                if self.output_json {
-                    if let Some(some) = value.value.as_ref() {
-                        let some = some
-                            .parse::<serde_json::Number>()
-                            .map_err(|_| serde::ser::Error::custom("error serializing decimal"))?;
-                        state.serialize_entry("valueDecimal", &some)?;
-                    }
-                    if value.id.is_some() || !value.extension.is_empty() {
-                        let primitive_element = super::super::serde_helpers::PrimitiveElement {
-                            id: value.id.as_ref(),
-                            extension: &value.extension,
-                        };
-                        self.with_context(&primitive_element, |ctx| {
-                            state.serialize_entry("_valueDecimal", ctx)
-                        })?;
-                    }
-                } else {
-                    self.with_context(value, |ctx| state.serialize_entry("valueDecimal", ctx))?;
-                }
-            }
-            fhirbolt_model::r4b::resources::CodeSystemConceptPropertyValue::Invalid => {
-                return Err(serde::ser::Error::custom("value is a required field"))
             }
         }
         state.end()
     }
 }
-impl serde::ser::Serialize
-    for crate::context::ser::SerializationContext<
-        &Box<fhirbolt_model::r4b::resources::CodeSystemConceptProperty>,
-    >
-{
+impl serde::ser::Serialize for SerializationContext<&Box<CodeSystemConceptProperty>> {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
         S: serde::ser::Serializer,
@@ -1550,11 +1495,7 @@ impl serde::ser::Serialize
         self.with_context(self.value.as_ref(), |ctx| ctx.serialize(serializer))
     }
 }
-impl serde::ser::Serialize
-    for crate::context::ser::SerializationContext<
-        &Vec<fhirbolt_model::r4b::resources::CodeSystemConceptProperty>,
-    >
-{
+impl serde::ser::Serialize for SerializationContext<&Vec<CodeSystemConceptProperty>> {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
         S: serde::ser::Serializer,
@@ -1568,29 +1509,20 @@ impl serde::ser::Serialize
     }
 }
 impl<'de> serde::de::DeserializeSeed<'de>
-    for &mut crate::context::de::DeserializationContext<
-        fhirbolt_model::r4b::resources::CodeSystemConceptProperty,
-    >
+    for &mut DeserializationContext<CodeSystemConceptProperty>
 {
-    type Value = fhirbolt_model::r4b::resources::CodeSystemConceptProperty;
+    type Value = CodeSystemConceptProperty;
     fn deserialize<D>(self, deserializer: D) -> Result<Self::Value, D::Error>
     where
         D: serde::de::Deserializer<'de>,
     {
-        struct Visitor<'a>(
-            &'a mut crate::context::de::DeserializationContext<
-                fhirbolt_model::r4b::resources::CodeSystemConceptProperty,
-            >,
-        );
+        struct Visitor<'a>(&'a mut DeserializationContext<CodeSystemConceptProperty>);
         impl<'de> serde::de::Visitor<'de> for Visitor<'_> {
-            type Value = fhirbolt_model::r4b::resources::CodeSystemConceptProperty;
+            type Value = CodeSystemConceptProperty;
             fn expecting(&self, formatter: &mut std::fmt::Formatter) -> std::fmt::Result {
                 formatter.write_str("CodeSystemConceptProperty")
             }
-            fn visit_map<V>(
-                self,
-                mut map_access: V,
-            ) -> Result<fhirbolt_model::r4b::resources::CodeSystemConceptProperty, V::Error>
+            fn visit_map<V>(self, mut map_access: V) -> Result<CodeSystemConceptProperty, V::Error>
             where
                 V: serde::de::MapAccess<'de>,
             {
@@ -1670,57 +1602,70 @@ impl<'de> serde::de::DeserializeSeed<'de>
                             r#id = Some(map_access.next_value()?);
                         }
                         Field::Extension => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 if r#extension.is_some() {
                                     return Err(serde::de::Error::duplicate_field("extension"));
                                 }
-                                r#extension = Some (map_access . next_value_seed (self . 0 . transmute :: < Vec < fhirbolt_model :: r4b :: types :: Extension >> ()) ?) ;
+                                let _context: &mut DeserializationContext<
+                                    Vec<fhirbolt_model::r4b::types::Extension>,
+                                > = self.0.transmute();
+                                r#extension = Some(map_access.next_value_seed(&mut *_context)?);
                             } else {
                                 let vec = r#extension.get_or_insert(Default::default());
-                                vec.push(map_access.next_value_seed(
-                                    self.0.transmute::<fhirbolt_model::r4b::types::Extension>(),
-                                )?);
+                                let _context: &mut DeserializationContext<
+                                    fhirbolt_model::r4b::types::Extension,
+                                > = self.0.transmute();
+                                vec.push(map_access.next_value_seed(&mut *_context)?);
                             }
                         }
                         Field::ModifierExtension => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 if r#modifier_extension.is_some() {
                                     return Err(serde::de::Error::duplicate_field(
                                         "modifierExtension",
                                     ));
                                 }
-                                r#modifier_extension = Some (map_access . next_value_seed (self . 0 . transmute :: < Vec < fhirbolt_model :: r4b :: types :: Extension >> ()) ?) ;
+                                let _context: &mut DeserializationContext<
+                                    Vec<fhirbolt_model::r4b::types::Extension>,
+                                > = self.0.transmute();
+                                r#modifier_extension =
+                                    Some(map_access.next_value_seed(&mut *_context)?);
                             } else {
                                 let vec = r#modifier_extension.get_or_insert(Default::default());
-                                vec.push(map_access.next_value_seed(
-                                    self.0.transmute::<fhirbolt_model::r4b::types::Extension>(),
-                                )?);
+                                let _context: &mut DeserializationContext<
+                                    fhirbolt_model::r4b::types::Extension,
+                                > = self.0.transmute();
+                                vec.push(map_access.next_value_seed(&mut *_context)?);
                             }
                         }
                         Field::Code => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let some = r#code.get_or_insert(Default::default());
                                 if some.value.is_some() {
                                     return Err(serde::de::Error::duplicate_field("code"));
                                 }
-                                let value: _ = map_access.next_value()?;
-                                some.value = Some(value);
+                                some.value = Some(map_access.next_value()?);
                             } else {
                                 if r#code.is_some() {
                                     return Err(serde::de::Error::duplicate_field("code"));
                                 }
-                                r#code = Some(map_access.next_value_seed(
-                                    self.0.transmute::<fhirbolt_model::r4b::types::Code>(),
-                                )?);
+                                let _context: &mut DeserializationContext<
+                                    fhirbolt_model::r4b::types::Code,
+                                > = self.0.transmute();
+                                r#code = Some(map_access.next_value_seed(&mut *_context)?);
                             }
                         }
                         Field::CodePrimitiveElement => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let some = r#code.get_or_insert(Default::default());
                                 if some.id.is_some() || !some.extension.is_empty() {
                                     return Err(serde::de::Error::duplicate_field("_code"));
                                 }
-                                let super :: super :: serde_helpers :: PrimitiveElementOwned { id , extension } = map_access . next_value_seed (self . 0 . transmute :: < super :: super :: serde_helpers :: PrimitiveElementOwned > ()) ? ;
+                                use super::super::serde_helpers::PrimitiveElementOwned;
+                                let _context: &mut DeserializationContext<PrimitiveElementOwned> =
+                                    self.0.transmute();
+                                let PrimitiveElementOwned { id, extension } =
+                                    map_access.next_value_seed(&mut *_context)?;
                                 some.id = id;
                                 some.extension = extension;
                             } else {
@@ -1728,121 +1673,326 @@ impl<'de> serde::de::DeserializeSeed<'de>
                             }
                         }
                         Field::ValueCode => {
-                            if self.0.from_json {
-                                let r#enum = r#value . get_or_insert (fhirbolt_model :: r4b :: resources :: CodeSystemConceptPropertyValue :: Code (Default :: default ())) ;
-                                if let fhirbolt_model :: r4b :: resources :: CodeSystemConceptPropertyValue :: Code (variant) = r#enum { if variant . value . is_some () { return Err (serde :: de :: Error :: duplicate_field ("valueCode")) ; } let value : _ = map_access . next_value () ? ; variant . value = Some (value) ; } else { return Err (serde :: de :: Error :: duplicate_field ("value[x]")) ; }
+                            use fhirbolt_model::r4b::resources::CodeSystemConceptPropertyValue as _Enum;
+                            if self.0.from == crate::context::Format::Json {
+                                let r#enum = r#value.get_or_insert(_Enum::Code(Default::default()));
+                                if let _Enum::Code(variant) = r#enum {
+                                    if variant.value.is_some() {
+                                        return Err(serde::de::Error::duplicate_field("valueCode"));
+                                    }
+                                    variant.value = Some(map_access.next_value()?)
+                                } else {
+                                    return Err(serde::de::Error::duplicate_field("value[x]"));
+                                }
                             } else {
                                 if r#value.is_some() {
                                     return Err(serde::de::Error::duplicate_field("valueCode"));
                                 }
-                                r#value = Some (fhirbolt_model :: r4b :: resources :: CodeSystemConceptPropertyValue :: Code (map_access . next_value_seed (self . 0 . transmute :: < Box < fhirbolt_model :: r4b :: types :: Code > > ()) ?)) ;
+                                let _context: &mut DeserializationContext<
+                                    Box<fhirbolt_model::r4b::types::Code>,
+                                > = self.0.transmute();
+                                r#value =
+                                    Some(_Enum::Code(map_access.next_value_seed(&mut *_context)?));
                             }
                         }
                         Field::ValueCodePrimitiveElement => {
-                            if self.0.from_json {
-                                let r#enum = r#value . get_or_insert (fhirbolt_model :: r4b :: resources :: CodeSystemConceptPropertyValue :: Code (Default :: default ())) ;
-                                if let fhirbolt_model :: r4b :: resources :: CodeSystemConceptPropertyValue :: Code (variant) = r#enum { if variant . id . is_some () || ! variant . extension . is_empty () { return Err (serde :: de :: Error :: duplicate_field ("_valueCode")) ; } let super :: super :: serde_helpers :: PrimitiveElementOwned { id , extension } = map_access . next_value_seed (self . 0 . transmute :: < super :: super :: serde_helpers :: PrimitiveElementOwned > ()) ? ; variant . id = id ; variant . extension = extension ; } else { return Err (serde :: de :: Error :: duplicate_field ("_value[x]")) ; }
+                            use fhirbolt_model::r4b::resources::CodeSystemConceptPropertyValue as _Enum;
+                            if self.0.from == crate::context::Format::Json {
+                                let r#enum = r#value.get_or_insert(_Enum::Code(Default::default()));
+                                if let _Enum::Code(variant) = r#enum {
+                                    if variant.id.is_some() || !variant.extension.is_empty() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "_valueCode",
+                                        ));
+                                    }
+                                    use super::super::serde_helpers::PrimitiveElementOwned;
+                                    let _context: &mut DeserializationContext<
+                                        PrimitiveElementOwned,
+                                    > = self.0.transmute();
+                                    let PrimitiveElementOwned { id, extension } =
+                                        map_access.next_value_seed(&mut *_context)?;
+                                    variant.id = id;
+                                    variant.extension = extension;
+                                } else {
+                                    return Err(serde::de::Error::duplicate_field("_value[x]"));
+                                }
                             } else {
                                 return unknown_field_error("valueCode");
                             }
                         }
                         Field::ValueCoding => {
+                            use fhirbolt_model::r4b::resources::CodeSystemConceptPropertyValue as _Enum;
                             if r#value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("valueCoding"));
                             }
-                            r#value = Some (fhirbolt_model :: r4b :: resources :: CodeSystemConceptPropertyValue :: Coding (map_access . next_value_seed (self . 0 . transmute :: < Box < fhirbolt_model :: r4b :: types :: Coding > > ()) ?)) ;
+                            let _context: &mut DeserializationContext<
+                                Box<fhirbolt_model::r4b::types::Coding>,
+                            > = self.0.transmute();
+                            r#value =
+                                Some(_Enum::Coding(map_access.next_value_seed(&mut *_context)?));
                         }
                         Field::ValueString => {
-                            if self.0.from_json {
-                                let r#enum = r#value . get_or_insert (fhirbolt_model :: r4b :: resources :: CodeSystemConceptPropertyValue :: String (Default :: default ())) ;
-                                if let fhirbolt_model :: r4b :: resources :: CodeSystemConceptPropertyValue :: String (variant) = r#enum { if variant . value . is_some () { return Err (serde :: de :: Error :: duplicate_field ("valueString")) ; } let value : _ = map_access . next_value () ? ; variant . value = Some (value) ; } else { return Err (serde :: de :: Error :: duplicate_field ("value[x]")) ; }
+                            use fhirbolt_model::r4b::resources::CodeSystemConceptPropertyValue as _Enum;
+                            if self.0.from == crate::context::Format::Json {
+                                let r#enum =
+                                    r#value.get_or_insert(_Enum::String(Default::default()));
+                                if let _Enum::String(variant) = r#enum {
+                                    if variant.value.is_some() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "valueString",
+                                        ));
+                                    }
+                                    variant.value = Some(map_access.next_value()?)
+                                } else {
+                                    return Err(serde::de::Error::duplicate_field("value[x]"));
+                                }
                             } else {
                                 if r#value.is_some() {
                                     return Err(serde::de::Error::duplicate_field("valueString"));
                                 }
-                                r#value = Some (fhirbolt_model :: r4b :: resources :: CodeSystemConceptPropertyValue :: String (map_access . next_value_seed (self . 0 . transmute :: < Box < fhirbolt_model :: r4b :: types :: String > > ()) ?)) ;
+                                let _context: &mut DeserializationContext<
+                                    Box<fhirbolt_model::r4b::types::String>,
+                                > = self.0.transmute();
+                                r#value = Some(_Enum::String(
+                                    map_access.next_value_seed(&mut *_context)?,
+                                ));
                             }
                         }
                         Field::ValueStringPrimitiveElement => {
-                            if self.0.from_json {
-                                let r#enum = r#value . get_or_insert (fhirbolt_model :: r4b :: resources :: CodeSystemConceptPropertyValue :: String (Default :: default ())) ;
-                                if let fhirbolt_model :: r4b :: resources :: CodeSystemConceptPropertyValue :: String (variant) = r#enum { if variant . id . is_some () || ! variant . extension . is_empty () { return Err (serde :: de :: Error :: duplicate_field ("_valueString")) ; } let super :: super :: serde_helpers :: PrimitiveElementOwned { id , extension } = map_access . next_value_seed (self . 0 . transmute :: < super :: super :: serde_helpers :: PrimitiveElementOwned > ()) ? ; variant . id = id ; variant . extension = extension ; } else { return Err (serde :: de :: Error :: duplicate_field ("_value[x]")) ; }
+                            use fhirbolt_model::r4b::resources::CodeSystemConceptPropertyValue as _Enum;
+                            if self.0.from == crate::context::Format::Json {
+                                let r#enum =
+                                    r#value.get_or_insert(_Enum::String(Default::default()));
+                                if let _Enum::String(variant) = r#enum {
+                                    if variant.id.is_some() || !variant.extension.is_empty() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "_valueString",
+                                        ));
+                                    }
+                                    use super::super::serde_helpers::PrimitiveElementOwned;
+                                    let _context: &mut DeserializationContext<
+                                        PrimitiveElementOwned,
+                                    > = self.0.transmute();
+                                    let PrimitiveElementOwned { id, extension } =
+                                        map_access.next_value_seed(&mut *_context)?;
+                                    variant.id = id;
+                                    variant.extension = extension;
+                                } else {
+                                    return Err(serde::de::Error::duplicate_field("_value[x]"));
+                                }
                             } else {
                                 return unknown_field_error("valueString");
                             }
                         }
                         Field::ValueInteger => {
-                            if self.0.from_json {
-                                let r#enum = r#value . get_or_insert (fhirbolt_model :: r4b :: resources :: CodeSystemConceptPropertyValue :: Integer (Default :: default ())) ;
-                                if let fhirbolt_model :: r4b :: resources :: CodeSystemConceptPropertyValue :: Integer (variant) = r#enum { if variant . value . is_some () { return Err (serde :: de :: Error :: duplicate_field ("valueInteger")) ; } let value : _ = map_access . next_value () ? ; variant . value = Some (value) ; } else { return Err (serde :: de :: Error :: duplicate_field ("value[x]")) ; }
+                            use fhirbolt_model::r4b::resources::CodeSystemConceptPropertyValue as _Enum;
+                            if self.0.from == crate::context::Format::Json {
+                                let r#enum =
+                                    r#value.get_or_insert(_Enum::Integer(Default::default()));
+                                if let _Enum::Integer(variant) = r#enum {
+                                    if variant.value.is_some() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "valueInteger",
+                                        ));
+                                    }
+                                    variant.value = Some(map_access.next_value()?)
+                                } else {
+                                    return Err(serde::de::Error::duplicate_field("value[x]"));
+                                }
                             } else {
                                 if r#value.is_some() {
                                     return Err(serde::de::Error::duplicate_field("valueInteger"));
                                 }
-                                r#value = Some (fhirbolt_model :: r4b :: resources :: CodeSystemConceptPropertyValue :: Integer (map_access . next_value_seed (self . 0 . transmute :: < Box < fhirbolt_model :: r4b :: types :: Integer > > ()) ?)) ;
+                                let _context: &mut DeserializationContext<
+                                    Box<fhirbolt_model::r4b::types::Integer>,
+                                > = self.0.transmute();
+                                r#value = Some(_Enum::Integer(
+                                    map_access.next_value_seed(&mut *_context)?,
+                                ));
                             }
                         }
                         Field::ValueIntegerPrimitiveElement => {
-                            if self.0.from_json {
-                                let r#enum = r#value . get_or_insert (fhirbolt_model :: r4b :: resources :: CodeSystemConceptPropertyValue :: Integer (Default :: default ())) ;
-                                if let fhirbolt_model :: r4b :: resources :: CodeSystemConceptPropertyValue :: Integer (variant) = r#enum { if variant . id . is_some () || ! variant . extension . is_empty () { return Err (serde :: de :: Error :: duplicate_field ("_valueInteger")) ; } let super :: super :: serde_helpers :: PrimitiveElementOwned { id , extension } = map_access . next_value_seed (self . 0 . transmute :: < super :: super :: serde_helpers :: PrimitiveElementOwned > ()) ? ; variant . id = id ; variant . extension = extension ; } else { return Err (serde :: de :: Error :: duplicate_field ("_value[x]")) ; }
+                            use fhirbolt_model::r4b::resources::CodeSystemConceptPropertyValue as _Enum;
+                            if self.0.from == crate::context::Format::Json {
+                                let r#enum =
+                                    r#value.get_or_insert(_Enum::Integer(Default::default()));
+                                if let _Enum::Integer(variant) = r#enum {
+                                    if variant.id.is_some() || !variant.extension.is_empty() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "_valueInteger",
+                                        ));
+                                    }
+                                    use super::super::serde_helpers::PrimitiveElementOwned;
+                                    let _context: &mut DeserializationContext<
+                                        PrimitiveElementOwned,
+                                    > = self.0.transmute();
+                                    let PrimitiveElementOwned { id, extension } =
+                                        map_access.next_value_seed(&mut *_context)?;
+                                    variant.id = id;
+                                    variant.extension = extension;
+                                } else {
+                                    return Err(serde::de::Error::duplicate_field("_value[x]"));
+                                }
                             } else {
                                 return unknown_field_error("valueInteger");
                             }
                         }
                         Field::ValueBoolean => {
-                            if self.0.from_json {
-                                let r#enum = r#value . get_or_insert (fhirbolt_model :: r4b :: resources :: CodeSystemConceptPropertyValue :: Boolean (Default :: default ())) ;
-                                if let fhirbolt_model :: r4b :: resources :: CodeSystemConceptPropertyValue :: Boolean (variant) = r#enum { if variant . value . is_some () { return Err (serde :: de :: Error :: duplicate_field ("valueBoolean")) ; } let value : _ = map_access . next_value () ? ; variant . value = Some (value) ; } else { return Err (serde :: de :: Error :: duplicate_field ("value[x]")) ; }
+                            use fhirbolt_model::r4b::resources::CodeSystemConceptPropertyValue as _Enum;
+                            if self.0.from == crate::context::Format::Json {
+                                let r#enum =
+                                    r#value.get_or_insert(_Enum::Boolean(Default::default()));
+                                if let _Enum::Boolean(variant) = r#enum {
+                                    if variant.value.is_some() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "valueBoolean",
+                                        ));
+                                    }
+                                    variant.value = Some(map_access.next_value()?)
+                                } else {
+                                    return Err(serde::de::Error::duplicate_field("value[x]"));
+                                }
                             } else {
                                 if r#value.is_some() {
                                     return Err(serde::de::Error::duplicate_field("valueBoolean"));
                                 }
-                                r#value = Some (fhirbolt_model :: r4b :: resources :: CodeSystemConceptPropertyValue :: Boolean (map_access . next_value_seed (self . 0 . transmute :: < Box < fhirbolt_model :: r4b :: types :: Boolean > > ()) ?)) ;
+                                let _context: &mut DeserializationContext<
+                                    Box<fhirbolt_model::r4b::types::Boolean>,
+                                > = self.0.transmute();
+                                r#value = Some(_Enum::Boolean(
+                                    map_access.next_value_seed(&mut *_context)?,
+                                ));
                             }
                         }
                         Field::ValueBooleanPrimitiveElement => {
-                            if self.0.from_json {
-                                let r#enum = r#value . get_or_insert (fhirbolt_model :: r4b :: resources :: CodeSystemConceptPropertyValue :: Boolean (Default :: default ())) ;
-                                if let fhirbolt_model :: r4b :: resources :: CodeSystemConceptPropertyValue :: Boolean (variant) = r#enum { if variant . id . is_some () || ! variant . extension . is_empty () { return Err (serde :: de :: Error :: duplicate_field ("_valueBoolean")) ; } let super :: super :: serde_helpers :: PrimitiveElementOwned { id , extension } = map_access . next_value_seed (self . 0 . transmute :: < super :: super :: serde_helpers :: PrimitiveElementOwned > ()) ? ; variant . id = id ; variant . extension = extension ; } else { return Err (serde :: de :: Error :: duplicate_field ("_value[x]")) ; }
+                            use fhirbolt_model::r4b::resources::CodeSystemConceptPropertyValue as _Enum;
+                            if self.0.from == crate::context::Format::Json {
+                                let r#enum =
+                                    r#value.get_or_insert(_Enum::Boolean(Default::default()));
+                                if let _Enum::Boolean(variant) = r#enum {
+                                    if variant.id.is_some() || !variant.extension.is_empty() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "_valueBoolean",
+                                        ));
+                                    }
+                                    use super::super::serde_helpers::PrimitiveElementOwned;
+                                    let _context: &mut DeserializationContext<
+                                        PrimitiveElementOwned,
+                                    > = self.0.transmute();
+                                    let PrimitiveElementOwned { id, extension } =
+                                        map_access.next_value_seed(&mut *_context)?;
+                                    variant.id = id;
+                                    variant.extension = extension;
+                                } else {
+                                    return Err(serde::de::Error::duplicate_field("_value[x]"));
+                                }
                             } else {
                                 return unknown_field_error("valueBoolean");
                             }
                         }
                         Field::ValueDateTime => {
-                            if self.0.from_json {
-                                let r#enum = r#value . get_or_insert (fhirbolt_model :: r4b :: resources :: CodeSystemConceptPropertyValue :: DateTime (Default :: default ())) ;
-                                if let fhirbolt_model :: r4b :: resources :: CodeSystemConceptPropertyValue :: DateTime (variant) = r#enum { if variant . value . is_some () { return Err (serde :: de :: Error :: duplicate_field ("valueDateTime")) ; } let value : _ = map_access . next_value () ? ; variant . value = Some (value) ; } else { return Err (serde :: de :: Error :: duplicate_field ("value[x]")) ; }
+                            use fhirbolt_model::r4b::resources::CodeSystemConceptPropertyValue as _Enum;
+                            if self.0.from == crate::context::Format::Json {
+                                let r#enum =
+                                    r#value.get_or_insert(_Enum::DateTime(Default::default()));
+                                if let _Enum::DateTime(variant) = r#enum {
+                                    if variant.value.is_some() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "valueDateTime",
+                                        ));
+                                    }
+                                    variant.value = Some(map_access.next_value()?)
+                                } else {
+                                    return Err(serde::de::Error::duplicate_field("value[x]"));
+                                }
                             } else {
                                 if r#value.is_some() {
                                     return Err(serde::de::Error::duplicate_field("valueDateTime"));
                                 }
-                                r#value = Some (fhirbolt_model :: r4b :: resources :: CodeSystemConceptPropertyValue :: DateTime (map_access . next_value_seed (self . 0 . transmute :: < Box < fhirbolt_model :: r4b :: types :: DateTime > > ()) ?)) ;
+                                let _context: &mut DeserializationContext<
+                                    Box<fhirbolt_model::r4b::types::DateTime>,
+                                > = self.0.transmute();
+                                r#value = Some(_Enum::DateTime(
+                                    map_access.next_value_seed(&mut *_context)?,
+                                ));
                             }
                         }
                         Field::ValueDateTimePrimitiveElement => {
-                            if self.0.from_json {
-                                let r#enum = r#value . get_or_insert (fhirbolt_model :: r4b :: resources :: CodeSystemConceptPropertyValue :: DateTime (Default :: default ())) ;
-                                if let fhirbolt_model :: r4b :: resources :: CodeSystemConceptPropertyValue :: DateTime (variant) = r#enum { if variant . id . is_some () || ! variant . extension . is_empty () { return Err (serde :: de :: Error :: duplicate_field ("_valueDateTime")) ; } let super :: super :: serde_helpers :: PrimitiveElementOwned { id , extension } = map_access . next_value_seed (self . 0 . transmute :: < super :: super :: serde_helpers :: PrimitiveElementOwned > ()) ? ; variant . id = id ; variant . extension = extension ; } else { return Err (serde :: de :: Error :: duplicate_field ("_value[x]")) ; }
+                            use fhirbolt_model::r4b::resources::CodeSystemConceptPropertyValue as _Enum;
+                            if self.0.from == crate::context::Format::Json {
+                                let r#enum =
+                                    r#value.get_or_insert(_Enum::DateTime(Default::default()));
+                                if let _Enum::DateTime(variant) = r#enum {
+                                    if variant.id.is_some() || !variant.extension.is_empty() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "_valueDateTime",
+                                        ));
+                                    }
+                                    use super::super::serde_helpers::PrimitiveElementOwned;
+                                    let _context: &mut DeserializationContext<
+                                        PrimitiveElementOwned,
+                                    > = self.0.transmute();
+                                    let PrimitiveElementOwned { id, extension } =
+                                        map_access.next_value_seed(&mut *_context)?;
+                                    variant.id = id;
+                                    variant.extension = extension;
+                                } else {
+                                    return Err(serde::de::Error::duplicate_field("_value[x]"));
+                                }
                             } else {
                                 return unknown_field_error("valueDateTime");
                             }
                         }
                         Field::ValueDecimal => {
-                            if self.0.from_json {
-                                let r#enum = r#value . get_or_insert (fhirbolt_model :: r4b :: resources :: CodeSystemConceptPropertyValue :: Decimal (Default :: default ())) ;
-                                if let fhirbolt_model :: r4b :: resources :: CodeSystemConceptPropertyValue :: Decimal (variant) = r#enum { if variant . value . is_some () { return Err (serde :: de :: Error :: duplicate_field ("valueDecimal")) ; } let value : serde_json :: Number = map_access . next_value () ? ; variant . value = Some (format ! ("{}" , value)) ; } else { return Err (serde :: de :: Error :: duplicate_field ("value[x]")) ; }
+                            use fhirbolt_model::r4b::resources::CodeSystemConceptPropertyValue as _Enum;
+                            if self.0.from == crate::context::Format::Json {
+                                let r#enum =
+                                    r#value.get_or_insert(_Enum::Decimal(Default::default()));
+                                if let _Enum::Decimal(variant) = r#enum {
+                                    if variant.value.is_some() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "valueDecimal",
+                                        ));
+                                    }
+                                    let value: serde_json::Number = map_access.next_value()?;
+                                    variant.value = Some(format!("{}", value));
+                                } else {
+                                    return Err(serde::de::Error::duplicate_field("value[x]"));
+                                }
                             } else {
                                 if r#value.is_some() {
                                     return Err(serde::de::Error::duplicate_field("valueDecimal"));
                                 }
-                                r#value = Some (fhirbolt_model :: r4b :: resources :: CodeSystemConceptPropertyValue :: Decimal (map_access . next_value_seed (self . 0 . transmute :: < Box < fhirbolt_model :: r4b :: types :: Decimal > > ()) ?)) ;
+                                let _context: &mut DeserializationContext<
+                                    Box<fhirbolt_model::r4b::types::Decimal>,
+                                > = self.0.transmute();
+                                r#value = Some(_Enum::Decimal(
+                                    map_access.next_value_seed(&mut *_context)?,
+                                ));
                             }
                         }
                         Field::ValueDecimalPrimitiveElement => {
-                            if self.0.from_json {
-                                let r#enum = r#value . get_or_insert (fhirbolt_model :: r4b :: resources :: CodeSystemConceptPropertyValue :: Decimal (Default :: default ())) ;
-                                if let fhirbolt_model :: r4b :: resources :: CodeSystemConceptPropertyValue :: Decimal (variant) = r#enum { if variant . id . is_some () || ! variant . extension . is_empty () { return Err (serde :: de :: Error :: duplicate_field ("_valueDecimal")) ; } let super :: super :: serde_helpers :: PrimitiveElementOwned { id , extension } = map_access . next_value_seed (self . 0 . transmute :: < super :: super :: serde_helpers :: PrimitiveElementOwned > ()) ? ; variant . id = id ; variant . extension = extension ; } else { return Err (serde :: de :: Error :: duplicate_field ("_value[x]")) ; }
+                            use fhirbolt_model::r4b::resources::CodeSystemConceptPropertyValue as _Enum;
+                            if self.0.from == crate::context::Format::Json {
+                                let r#enum =
+                                    r#value.get_or_insert(_Enum::Decimal(Default::default()));
+                                if let _Enum::Decimal(variant) = r#enum {
+                                    if variant.id.is_some() || !variant.extension.is_empty() {
+                                        return Err(serde::de::Error::duplicate_field(
+                                            "_valueDecimal",
+                                        ));
+                                    }
+                                    use super::super::serde_helpers::PrimitiveElementOwned;
+                                    let _context: &mut DeserializationContext<
+                                        PrimitiveElementOwned,
+                                    > = self.0.transmute();
+                                    let PrimitiveElementOwned { id, extension } =
+                                        map_access.next_value_seed(&mut *_context)?;
+                                    variant.id = id;
+                                    variant.extension = extension;
+                                } else {
+                                    return Err(serde::de::Error::duplicate_field("_value[x]"));
+                                }
                             } else {
                                 return unknown_field_error("valueDecimal");
                             }
@@ -1855,7 +2005,7 @@ impl<'de> serde::de::DeserializeSeed<'de>
                         }
                     }
                 }
-                Ok(fhirbolt_model::r4b::resources::CodeSystemConceptProperty {
+                Ok(CodeSystemConceptProperty {
                     r#id,
                     r#extension: r#extension.unwrap_or(vec![]),
                     r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
@@ -1876,37 +2026,29 @@ impl<'de> serde::de::DeserializeSeed<'de>
     }
 }
 impl<'de> serde::de::DeserializeSeed<'de>
-    for &mut crate::context::de::DeserializationContext<
-        Box<fhirbolt_model::r4b::resources::CodeSystemConceptProperty>,
-    >
+    for &mut DeserializationContext<Box<CodeSystemConceptProperty>>
 {
-    type Value = Box<fhirbolt_model::r4b::resources::CodeSystemConceptProperty>;
+    type Value = Box<CodeSystemConceptProperty>;
     fn deserialize<D>(self, deserializer: D) -> Result<Self::Value, D::Error>
     where
         D: serde::de::Deserializer<'de>,
     {
-        self.transmute::<fhirbolt_model::r4b::resources::CodeSystemConceptProperty>()
+        self.transmute::<CodeSystemConceptProperty>()
             .deserialize(deserializer)
             .map(Box::new)
     }
 }
 impl<'de> serde::de::DeserializeSeed<'de>
-    for &mut crate::context::de::DeserializationContext<
-        Vec<fhirbolt_model::r4b::resources::CodeSystemConceptProperty>,
-    >
+    for &mut DeserializationContext<Vec<CodeSystemConceptProperty>>
 {
-    type Value = Vec<fhirbolt_model::r4b::resources::CodeSystemConceptProperty>;
+    type Value = Vec<CodeSystemConceptProperty>;
     fn deserialize<D>(self, deserializer: D) -> Result<Self::Value, D::Error>
     where
         D: serde::de::Deserializer<'de>,
     {
-        struct Visitor<'a>(
-            &'a mut crate::context::de::DeserializationContext<
-                Vec<fhirbolt_model::r4b::resources::CodeSystemConceptProperty>,
-            >,
-        );
+        struct Visitor<'a>(&'a mut DeserializationContext<Vec<CodeSystemConceptProperty>>);
         impl<'de> serde::de::Visitor<'de> for Visitor<'_> {
-            type Value = Vec<fhirbolt_model::r4b::resources::CodeSystemConceptProperty>;
+            type Value = Vec<CodeSystemConceptProperty>;
             fn expecting(&self, formatter: &mut std::fmt::Formatter) -> std::fmt::Result {
                 formatter.write_str("a sequence")
             }
@@ -1915,10 +2057,9 @@ impl<'de> serde::de::DeserializeSeed<'de>
                 A: serde::de::SeqAccess<'de>,
             {
                 let mut values = Vec::new();
-                while let Some(value) = seq.next_element_seed(
-                    self.0
-                        .transmute::<fhirbolt_model::r4b::resources::CodeSystemConceptProperty>(),
-                )? {
+                let _context: &mut DeserializationContext<CodeSystemConceptProperty> =
+                    self.0.transmute();
+                while let Some(value) = seq.next_element_seed(&mut *_context)? {
                     values.push(value);
                 }
                 Ok(values)
@@ -1927,11 +2068,8 @@ impl<'de> serde::de::DeserializeSeed<'de>
         deserializer.deserialize_seq(Visitor(self))
     }
 }
-impl serde::ser::Serialize
-    for crate::context::ser::SerializationContext<
-        &fhirbolt_model::r4b::resources::CodeSystemConcept,
-    >
-{
+use fhirbolt_model::r4b::resources::CodeSystemConcept;
+impl serde::ser::Serialize for SerializationContext<&CodeSystemConcept> {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
         S: serde::ser::Serializer,
@@ -1958,16 +2096,16 @@ impl serde::ser::Serialize
                 state.serialize_entry("modifierExtension", ctx)
             })?;
         }
-        if self.output_json {
+        if self.output == crate::context::Format::Json {
             if self.value.r#code.id.as_deref() == Some("$invalid") {
                 return missing_field_error("code");
             }
-            if let Some(some) = self.value.r#code.value.as_ref() {
-                let some = Ok(some)?;
-                state.serialize_entry("code", &some)?;
+            if let Some(some) = self.value.r#code.value.as_ref().map(Ok) {
+                state.serialize_entry("code", &some?)?;
             }
             if self.value.r#code.id.is_some() || !self.value.r#code.extension.is_empty() {
-                let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                use super::super::serde_helpers::PrimitiveElement;
+                let primitive_element = PrimitiveElement {
                     id: self.value.r#code.id.as_ref(),
                     extension: &self.value.r#code.extension,
                 };
@@ -1975,20 +2113,19 @@ impl serde::ser::Serialize
                     state.serialize_entry("_code", ctx)
                 })?;
             }
+        } else if self.value.r#code.id.as_deref() == Some("$invalid") {
+            return missing_field_error("code");
         } else {
-            if self.value.r#code.id.as_deref() == Some("$invalid") {
-                return missing_field_error("code");
-            }
             self.with_context(&self.value.r#code, |ctx| state.serialize_entry("code", ctx))?;
         }
-        if self.output_json {
+        if self.output == crate::context::Format::Json {
             if let Some(some) = self.value.r#display.as_ref() {
-                if let Some(some) = some.value.as_ref() {
-                    let some = Ok(some)?;
-                    state.serialize_entry("display", &some)?;
+                if let Some(some) = some.value.as_ref().map(Ok) {
+                    state.serialize_entry("display", &some?)?;
                 }
                 if some.id.is_some() || !some.extension.is_empty() {
-                    let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                    use super::super::serde_helpers::PrimitiveElement;
+                    let primitive_element = PrimitiveElement {
                         id: some.id.as_ref(),
                         extension: &some.extension,
                     };
@@ -1997,19 +2134,17 @@ impl serde::ser::Serialize
                     })?;
                 }
             }
-        } else {
-            if let Some(some) = self.value.r#display.as_ref() {
-                self.with_context(some, |ctx| state.serialize_entry("display", ctx))?;
-            }
+        } else if let Some(some) = self.value.r#display.as_ref() {
+            self.with_context(some, |ctx| state.serialize_entry("display", ctx))?;
         }
-        if self.output_json {
+        if self.output == crate::context::Format::Json {
             if let Some(some) = self.value.r#definition.as_ref() {
-                if let Some(some) = some.value.as_ref() {
-                    let some = Ok(some)?;
-                    state.serialize_entry("definition", &some)?;
+                if let Some(some) = some.value.as_ref().map(Ok) {
+                    state.serialize_entry("definition", &some?)?;
                 }
                 if some.id.is_some() || !some.extension.is_empty() {
-                    let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                    use super::super::serde_helpers::PrimitiveElement;
+                    let primitive_element = PrimitiveElement {
                         id: some.id.as_ref(),
                         extension: &some.extension,
                     };
@@ -2018,10 +2153,8 @@ impl serde::ser::Serialize
                     })?;
                 }
             }
-        } else {
-            if let Some(some) = self.value.r#definition.as_ref() {
-                self.with_context(some, |ctx| state.serialize_entry("definition", ctx))?;
-            }
+        } else if let Some(some) = self.value.r#definition.as_ref() {
+            self.with_context(some, |ctx| state.serialize_entry("definition", ctx))?;
         }
         if !self.value.r#designation.is_empty() {
             self.with_context(&self.value.r#designation, |ctx| {
@@ -2041,11 +2174,7 @@ impl serde::ser::Serialize
         state.end()
     }
 }
-impl serde::ser::Serialize
-    for crate::context::ser::SerializationContext<
-        &Box<fhirbolt_model::r4b::resources::CodeSystemConcept>,
-    >
-{
+impl serde::ser::Serialize for SerializationContext<&Box<CodeSystemConcept>> {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
         S: serde::ser::Serializer,
@@ -2053,11 +2182,7 @@ impl serde::ser::Serialize
         self.with_context(self.value.as_ref(), |ctx| ctx.serialize(serializer))
     }
 }
-impl serde::ser::Serialize
-    for crate::context::ser::SerializationContext<
-        &Vec<fhirbolt_model::r4b::resources::CodeSystemConcept>,
-    >
-{
+impl serde::ser::Serialize for SerializationContext<&Vec<CodeSystemConcept>> {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
         S: serde::ser::Serializer,
@@ -2070,30 +2195,19 @@ impl serde::ser::Serialize
         seq_serializer.end()
     }
 }
-impl<'de> serde::de::DeserializeSeed<'de>
-    for &mut crate::context::de::DeserializationContext<
-        fhirbolt_model::r4b::resources::CodeSystemConcept,
-    >
-{
-    type Value = fhirbolt_model::r4b::resources::CodeSystemConcept;
+impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<CodeSystemConcept> {
+    type Value = CodeSystemConcept;
     fn deserialize<D>(self, deserializer: D) -> Result<Self::Value, D::Error>
     where
         D: serde::de::Deserializer<'de>,
     {
-        struct Visitor<'a>(
-            &'a mut crate::context::de::DeserializationContext<
-                fhirbolt_model::r4b::resources::CodeSystemConcept,
-            >,
-        );
+        struct Visitor<'a>(&'a mut DeserializationContext<CodeSystemConcept>);
         impl<'de> serde::de::Visitor<'de> for Visitor<'_> {
-            type Value = fhirbolt_model::r4b::resources::CodeSystemConcept;
+            type Value = CodeSystemConcept;
             fn expecting(&self, formatter: &mut std::fmt::Formatter) -> std::fmt::Result {
                 formatter.write_str("CodeSystemConcept")
             }
-            fn visit_map<V>(
-                self,
-                mut map_access: V,
-            ) -> Result<fhirbolt_model::r4b::resources::CodeSystemConcept, V::Error>
+            fn visit_map<V>(self, mut map_access: V) -> Result<CodeSystemConcept, V::Error>
             where
                 V: serde::de::MapAccess<'de>,
             {
@@ -2166,57 +2280,70 @@ impl<'de> serde::de::DeserializeSeed<'de>
                             r#id = Some(map_access.next_value()?);
                         }
                         Field::Extension => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 if r#extension.is_some() {
                                     return Err(serde::de::Error::duplicate_field("extension"));
                                 }
-                                r#extension = Some (map_access . next_value_seed (self . 0 . transmute :: < Vec < fhirbolt_model :: r4b :: types :: Extension >> ()) ?) ;
+                                let _context: &mut DeserializationContext<
+                                    Vec<fhirbolt_model::r4b::types::Extension>,
+                                > = self.0.transmute();
+                                r#extension = Some(map_access.next_value_seed(&mut *_context)?);
                             } else {
                                 let vec = r#extension.get_or_insert(Default::default());
-                                vec.push(map_access.next_value_seed(
-                                    self.0.transmute::<fhirbolt_model::r4b::types::Extension>(),
-                                )?);
+                                let _context: &mut DeserializationContext<
+                                    fhirbolt_model::r4b::types::Extension,
+                                > = self.0.transmute();
+                                vec.push(map_access.next_value_seed(&mut *_context)?);
                             }
                         }
                         Field::ModifierExtension => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 if r#modifier_extension.is_some() {
                                     return Err(serde::de::Error::duplicate_field(
                                         "modifierExtension",
                                     ));
                                 }
-                                r#modifier_extension = Some (map_access . next_value_seed (self . 0 . transmute :: < Vec < fhirbolt_model :: r4b :: types :: Extension >> ()) ?) ;
+                                let _context: &mut DeserializationContext<
+                                    Vec<fhirbolt_model::r4b::types::Extension>,
+                                > = self.0.transmute();
+                                r#modifier_extension =
+                                    Some(map_access.next_value_seed(&mut *_context)?);
                             } else {
                                 let vec = r#modifier_extension.get_or_insert(Default::default());
-                                vec.push(map_access.next_value_seed(
-                                    self.0.transmute::<fhirbolt_model::r4b::types::Extension>(),
-                                )?);
+                                let _context: &mut DeserializationContext<
+                                    fhirbolt_model::r4b::types::Extension,
+                                > = self.0.transmute();
+                                vec.push(map_access.next_value_seed(&mut *_context)?);
                             }
                         }
                         Field::Code => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let some = r#code.get_or_insert(Default::default());
                                 if some.value.is_some() {
                                     return Err(serde::de::Error::duplicate_field("code"));
                                 }
-                                let value: _ = map_access.next_value()?;
-                                some.value = Some(value);
+                                some.value = Some(map_access.next_value()?);
                             } else {
                                 if r#code.is_some() {
                                     return Err(serde::de::Error::duplicate_field("code"));
                                 }
-                                r#code = Some(map_access.next_value_seed(
-                                    self.0.transmute::<fhirbolt_model::r4b::types::Code>(),
-                                )?);
+                                let _context: &mut DeserializationContext<
+                                    fhirbolt_model::r4b::types::Code,
+                                > = self.0.transmute();
+                                r#code = Some(map_access.next_value_seed(&mut *_context)?);
                             }
                         }
                         Field::CodePrimitiveElement => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let some = r#code.get_or_insert(Default::default());
                                 if some.id.is_some() || !some.extension.is_empty() {
                                     return Err(serde::de::Error::duplicate_field("_code"));
                                 }
-                                let super :: super :: serde_helpers :: PrimitiveElementOwned { id , extension } = map_access . next_value_seed (self . 0 . transmute :: < super :: super :: serde_helpers :: PrimitiveElementOwned > ()) ? ;
+                                use super::super::serde_helpers::PrimitiveElementOwned;
+                                let _context: &mut DeserializationContext<PrimitiveElementOwned> =
+                                    self.0.transmute();
+                                let PrimitiveElementOwned { id, extension } =
+                                    map_access.next_value_seed(&mut *_context)?;
                                 some.id = id;
                                 some.extension = extension;
                             } else {
@@ -2224,29 +2351,33 @@ impl<'de> serde::de::DeserializeSeed<'de>
                             }
                         }
                         Field::Display => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let some = r#display.get_or_insert(Default::default());
                                 if some.value.is_some() {
                                     return Err(serde::de::Error::duplicate_field("display"));
                                 }
-                                let value: _ = map_access.next_value()?;
-                                some.value = Some(value);
+                                some.value = Some(map_access.next_value()?);
                             } else {
                                 if r#display.is_some() {
                                     return Err(serde::de::Error::duplicate_field("display"));
                                 }
-                                r#display = Some(map_access.next_value_seed(
-                                    self.0.transmute::<fhirbolt_model::r4b::types::String>(),
-                                )?);
+                                let _context: &mut DeserializationContext<
+                                    fhirbolt_model::r4b::types::String,
+                                > = self.0.transmute();
+                                r#display = Some(map_access.next_value_seed(&mut *_context)?);
                             }
                         }
                         Field::DisplayPrimitiveElement => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let some = r#display.get_or_insert(Default::default());
                                 if some.id.is_some() || !some.extension.is_empty() {
                                     return Err(serde::de::Error::duplicate_field("_display"));
                                 }
-                                let super :: super :: serde_helpers :: PrimitiveElementOwned { id , extension } = map_access . next_value_seed (self . 0 . transmute :: < super :: super :: serde_helpers :: PrimitiveElementOwned > ()) ? ;
+                                use super::super::serde_helpers::PrimitiveElementOwned;
+                                let _context: &mut DeserializationContext<PrimitiveElementOwned> =
+                                    self.0.transmute();
+                                let PrimitiveElementOwned { id, extension } =
+                                    map_access.next_value_seed(&mut *_context)?;
                                 some.id = id;
                                 some.extension = extension;
                             } else {
@@ -2254,29 +2385,33 @@ impl<'de> serde::de::DeserializeSeed<'de>
                             }
                         }
                         Field::Definition => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let some = r#definition.get_or_insert(Default::default());
                                 if some.value.is_some() {
                                     return Err(serde::de::Error::duplicate_field("definition"));
                                 }
-                                let value: _ = map_access.next_value()?;
-                                some.value = Some(value);
+                                some.value = Some(map_access.next_value()?);
                             } else {
                                 if r#definition.is_some() {
                                     return Err(serde::de::Error::duplicate_field("definition"));
                                 }
-                                r#definition = Some(map_access.next_value_seed(
-                                    self.0.transmute::<fhirbolt_model::r4b::types::String>(),
-                                )?);
+                                let _context: &mut DeserializationContext<
+                                    fhirbolt_model::r4b::types::String,
+                                > = self.0.transmute();
+                                r#definition = Some(map_access.next_value_seed(&mut *_context)?);
                             }
                         }
                         Field::DefinitionPrimitiveElement => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let some = r#definition.get_or_insert(Default::default());
                                 if some.id.is_some() || !some.extension.is_empty() {
                                     return Err(serde::de::Error::duplicate_field("_definition"));
                                 }
-                                let super :: super :: serde_helpers :: PrimitiveElementOwned { id , extension } = map_access . next_value_seed (self . 0 . transmute :: < super :: super :: serde_helpers :: PrimitiveElementOwned > ()) ? ;
+                                use super::super::serde_helpers::PrimitiveElementOwned;
+                                let _context: &mut DeserializationContext<PrimitiveElementOwned> =
+                                    self.0.transmute();
+                                let PrimitiveElementOwned { id, extension } =
+                                    map_access.next_value_seed(&mut *_context)?;
                                 some.id = id;
                                 some.extension = extension;
                             } else {
@@ -2284,47 +2419,52 @@ impl<'de> serde::de::DeserializeSeed<'de>
                             }
                         }
                         Field::Designation => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 if r#designation.is_some() {
                                     return Err(serde::de::Error::duplicate_field("designation"));
                                 }
-                                r#designation = Some (map_access . next_value_seed (self . 0 . transmute :: < Vec < fhirbolt_model :: r4b :: resources :: CodeSystemConceptDesignation >> ()) ?) ;
+                                let _context : & mut DeserializationContext < Vec < fhirbolt_model :: r4b :: resources :: CodeSystemConceptDesignation >> = self . 0 . transmute () ;
+                                r#designation = Some(map_access.next_value_seed(&mut *_context)?);
                             } else {
                                 let vec = r#designation.get_or_insert(Default::default());
-                                vec . push (map_access . next_value_seed (self . 0 . transmute :: < fhirbolt_model :: r4b :: resources :: CodeSystemConceptDesignation > ()) ?) ;
+                                let _context: &mut DeserializationContext<
+                                    fhirbolt_model::r4b::resources::CodeSystemConceptDesignation,
+                                > = self.0.transmute();
+                                vec.push(map_access.next_value_seed(&mut *_context)?);
                             }
                         }
                         Field::Property => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 if r#property.is_some() {
                                     return Err(serde::de::Error::duplicate_field("property"));
                                 }
-                                r#property =
-                                    Some(map_access.next_value_seed(self.0.transmute::<Vec<
-                                        fhirbolt_model::r4b::resources::CodeSystemConceptProperty,
-                                    >>(
-                                    ))?);
+                                let _context: &mut DeserializationContext<
+                                    Vec<fhirbolt_model::r4b::resources::CodeSystemConceptProperty>,
+                                > = self.0.transmute();
+                                r#property = Some(map_access.next_value_seed(&mut *_context)?);
                             } else {
                                 let vec = r#property.get_or_insert(Default::default());
-                                vec . push (map_access . next_value_seed (self . 0 . transmute :: < fhirbolt_model :: r4b :: resources :: CodeSystemConceptProperty > ()) ?) ;
+                                let _context: &mut DeserializationContext<
+                                    fhirbolt_model::r4b::resources::CodeSystemConceptProperty,
+                                > = self.0.transmute();
+                                vec.push(map_access.next_value_seed(&mut *_context)?);
                             }
                         }
                         Field::Concept => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 if r#concept.is_some() {
                                     return Err(serde::de::Error::duplicate_field("concept"));
                                 }
-                                r#concept =
-                                    Some(
-                                        map_access.next_value_seed(
-                                            self.0.transmute::<Vec<
-                                                fhirbolt_model::r4b::resources::CodeSystemConcept,
-                                            >>(),
-                                        )?,
-                                    );
+                                let _context: &mut DeserializationContext<
+                                    Vec<fhirbolt_model::r4b::resources::CodeSystemConcept>,
+                                > = self.0.transmute();
+                                r#concept = Some(map_access.next_value_seed(&mut *_context)?);
                             } else {
                                 let vec = r#concept.get_or_insert(Default::default());
-                                vec . push (map_access . next_value_seed (self . 0 . transmute :: < fhirbolt_model :: r4b :: resources :: CodeSystemConcept > ()) ?) ;
+                                let _context: &mut DeserializationContext<
+                                    fhirbolt_model::r4b::resources::CodeSystemConcept,
+                                > = self.0.transmute();
+                                vec.push(map_access.next_value_seed(&mut *_context)?);
                             }
                         }
                         Field::Unknown(key) => {
@@ -2335,7 +2475,7 @@ impl<'de> serde::de::DeserializeSeed<'de>
                         }
                     }
                 }
-                Ok(fhirbolt_model::r4b::resources::CodeSystemConcept {
+                Ok(CodeSystemConcept {
                     r#id,
                     r#extension: r#extension.unwrap_or(vec![]),
                     r#modifier_extension: r#modifier_extension.unwrap_or(vec![]),
@@ -2355,38 +2495,26 @@ impl<'de> serde::de::DeserializeSeed<'de>
         deserializer.deserialize_map(Visitor(self))
     }
 }
-impl<'de> serde::de::DeserializeSeed<'de>
-    for &mut crate::context::de::DeserializationContext<
-        Box<fhirbolt_model::r4b::resources::CodeSystemConcept>,
-    >
-{
-    type Value = Box<fhirbolt_model::r4b::resources::CodeSystemConcept>;
+impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Box<CodeSystemConcept>> {
+    type Value = Box<CodeSystemConcept>;
     fn deserialize<D>(self, deserializer: D) -> Result<Self::Value, D::Error>
     where
         D: serde::de::Deserializer<'de>,
     {
-        self.transmute::<fhirbolt_model::r4b::resources::CodeSystemConcept>()
+        self.transmute::<CodeSystemConcept>()
             .deserialize(deserializer)
             .map(Box::new)
     }
 }
-impl<'de> serde::de::DeserializeSeed<'de>
-    for &mut crate::context::de::DeserializationContext<
-        Vec<fhirbolt_model::r4b::resources::CodeSystemConcept>,
-    >
-{
-    type Value = Vec<fhirbolt_model::r4b::resources::CodeSystemConcept>;
+impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Vec<CodeSystemConcept>> {
+    type Value = Vec<CodeSystemConcept>;
     fn deserialize<D>(self, deserializer: D) -> Result<Self::Value, D::Error>
     where
         D: serde::de::Deserializer<'de>,
     {
-        struct Visitor<'a>(
-            &'a mut crate::context::de::DeserializationContext<
-                Vec<fhirbolt_model::r4b::resources::CodeSystemConcept>,
-            >,
-        );
+        struct Visitor<'a>(&'a mut DeserializationContext<Vec<CodeSystemConcept>>);
         impl<'de> serde::de::Visitor<'de> for Visitor<'_> {
-            type Value = Vec<fhirbolt_model::r4b::resources::CodeSystemConcept>;
+            type Value = Vec<CodeSystemConcept>;
             fn expecting(&self, formatter: &mut std::fmt::Formatter) -> std::fmt::Result {
                 formatter.write_str("a sequence")
             }
@@ -2395,10 +2523,8 @@ impl<'de> serde::de::DeserializeSeed<'de>
                 A: serde::de::SeqAccess<'de>,
             {
                 let mut values = Vec::new();
-                while let Some(value) = seq.next_element_seed(
-                    self.0
-                        .transmute::<fhirbolt_model::r4b::resources::CodeSystemConcept>(),
-                )? {
+                let _context: &mut DeserializationContext<CodeSystemConcept> = self.0.transmute();
+                while let Some(value) = seq.next_element_seed(&mut *_context)? {
                     values.push(value);
                 }
                 Ok(values)
@@ -2407,12 +2533,11 @@ impl<'de> serde::de::DeserializeSeed<'de>
         deserializer.deserialize_seq(Visitor(self))
     }
 }
-impl crate::Resource for fhirbolt_model::r4b::resources::CodeSystem {
+use fhirbolt_model::r4b::resources::CodeSystem;
+impl crate::Resource for CodeSystem {
     const FHIR_RELEASE: fhirbolt_shared::FhirRelease = fhirbolt_shared::FhirReleases::R4B;
 }
-impl serde::ser::Serialize
-    for crate::context::ser::SerializationContext<&fhirbolt_model::r4b::resources::CodeSystem>
-{
+impl serde::ser::Serialize for SerializationContext<&CodeSystem> {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
         S: serde::ser::Serializer,
@@ -2427,20 +2552,34 @@ impl serde::ser::Serialize
         }
         let mut state = serializer.serialize_map(None)?;
         state.serialize_entry("resourceType", "CodeSystem")?;
-        if let Some(value) = self.value.r#id.as_ref() {
-            state.serialize_entry("id", value)?;
+        if self.output == crate::context::Format::Json {
+            if let Some(some) = self.value.r#id.as_ref() {
+                if let Some(some) = some.value.as_ref().map(Ok) {
+                    state.serialize_entry("id", &some?)?;
+                }
+                if some.id.is_some() || !some.extension.is_empty() {
+                    use super::super::serde_helpers::PrimitiveElement;
+                    let primitive_element = PrimitiveElement {
+                        id: some.id.as_ref(),
+                        extension: &some.extension,
+                    };
+                    self.with_context(&primitive_element, |ctx| state.serialize_entry("_id", ctx))?;
+                }
+            }
+        } else if let Some(some) = self.value.r#id.as_ref() {
+            self.with_context(some, |ctx| state.serialize_entry("id", ctx))?;
         }
         if let Some(some) = self.value.r#meta.as_ref() {
             self.with_context(some, |ctx| state.serialize_entry("meta", ctx))?;
         }
-        if self.output_json {
+        if self.output == crate::context::Format::Json {
             if let Some(some) = self.value.r#implicit_rules.as_ref() {
-                if let Some(some) = some.value.as_ref() {
-                    let some = Ok(some)?;
-                    state.serialize_entry("implicitRules", &some)?;
+                if let Some(some) = some.value.as_ref().map(Ok) {
+                    state.serialize_entry("implicitRules", &some?)?;
                 }
                 if some.id.is_some() || !some.extension.is_empty() {
-                    let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                    use super::super::serde_helpers::PrimitiveElement;
+                    let primitive_element = PrimitiveElement {
                         id: some.id.as_ref(),
                         extension: &some.extension,
                     };
@@ -2449,19 +2588,17 @@ impl serde::ser::Serialize
                     })?;
                 }
             }
-        } else {
-            if let Some(some) = self.value.r#implicit_rules.as_ref() {
-                self.with_context(some, |ctx| state.serialize_entry("implicitRules", ctx))?;
-            }
+        } else if let Some(some) = self.value.r#implicit_rules.as_ref() {
+            self.with_context(some, |ctx| state.serialize_entry("implicitRules", ctx))?;
         }
-        if self.output_json {
+        if self.output == crate::context::Format::Json {
             if let Some(some) = self.value.r#language.as_ref() {
-                if let Some(some) = some.value.as_ref() {
-                    let some = Ok(some)?;
-                    state.serialize_entry("language", &some)?;
+                if let Some(some) = some.value.as_ref().map(Ok) {
+                    state.serialize_entry("language", &some?)?;
                 }
                 if some.id.is_some() || !some.extension.is_empty() {
-                    let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                    use super::super::serde_helpers::PrimitiveElement;
+                    let primitive_element = PrimitiveElement {
                         id: some.id.as_ref(),
                         extension: &some.extension,
                     };
@@ -2470,10 +2607,8 @@ impl serde::ser::Serialize
                     })?;
                 }
             }
-        } else {
-            if let Some(some) = self.value.r#language.as_ref() {
-                self.with_context(some, |ctx| state.serialize_entry("language", ctx))?;
-            }
+        } else if let Some(some) = self.value.r#language.as_ref() {
+            self.with_context(some, |ctx| state.serialize_entry("language", ctx))?;
         }
         if let Some(some) = self.value.r#text.as_ref() {
             self.with_context(some, |ctx| state.serialize_entry("text", ctx))?;
@@ -2493,14 +2628,14 @@ impl serde::ser::Serialize
                 state.serialize_entry("modifierExtension", ctx)
             })?;
         }
-        if self.output_json {
+        if self.output == crate::context::Format::Json {
             if let Some(some) = self.value.r#url.as_ref() {
-                if let Some(some) = some.value.as_ref() {
-                    let some = Ok(some)?;
-                    state.serialize_entry("url", &some)?;
+                if let Some(some) = some.value.as_ref().map(Ok) {
+                    state.serialize_entry("url", &some?)?;
                 }
                 if some.id.is_some() || !some.extension.is_empty() {
-                    let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                    use super::super::serde_helpers::PrimitiveElement;
+                    let primitive_element = PrimitiveElement {
                         id: some.id.as_ref(),
                         extension: &some.extension,
                     };
@@ -2509,24 +2644,22 @@ impl serde::ser::Serialize
                     })?;
                 }
             }
-        } else {
-            if let Some(some) = self.value.r#url.as_ref() {
-                self.with_context(some, |ctx| state.serialize_entry("url", ctx))?;
-            }
+        } else if let Some(some) = self.value.r#url.as_ref() {
+            self.with_context(some, |ctx| state.serialize_entry("url", ctx))?;
         }
         if !self.value.r#identifier.is_empty() {
             self.with_context(&self.value.r#identifier, |ctx| {
                 state.serialize_entry("identifier", ctx)
             })?;
         }
-        if self.output_json {
+        if self.output == crate::context::Format::Json {
             if let Some(some) = self.value.r#version.as_ref() {
-                if let Some(some) = some.value.as_ref() {
-                    let some = Ok(some)?;
-                    state.serialize_entry("version", &some)?;
+                if let Some(some) = some.value.as_ref().map(Ok) {
+                    state.serialize_entry("version", &some?)?;
                 }
                 if some.id.is_some() || !some.extension.is_empty() {
-                    let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                    use super::super::serde_helpers::PrimitiveElement;
+                    let primitive_element = PrimitiveElement {
                         id: some.id.as_ref(),
                         extension: &some.extension,
                     };
@@ -2535,19 +2668,17 @@ impl serde::ser::Serialize
                     })?;
                 }
             }
-        } else {
-            if let Some(some) = self.value.r#version.as_ref() {
-                self.with_context(some, |ctx| state.serialize_entry("version", ctx))?;
-            }
+        } else if let Some(some) = self.value.r#version.as_ref() {
+            self.with_context(some, |ctx| state.serialize_entry("version", ctx))?;
         }
-        if self.output_json {
+        if self.output == crate::context::Format::Json {
             if let Some(some) = self.value.r#name.as_ref() {
-                if let Some(some) = some.value.as_ref() {
-                    let some = Ok(some)?;
-                    state.serialize_entry("name", &some)?;
+                if let Some(some) = some.value.as_ref().map(Ok) {
+                    state.serialize_entry("name", &some?)?;
                 }
                 if some.id.is_some() || !some.extension.is_empty() {
-                    let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                    use super::super::serde_helpers::PrimitiveElement;
+                    let primitive_element = PrimitiveElement {
                         id: some.id.as_ref(),
                         extension: &some.extension,
                     };
@@ -2556,19 +2687,17 @@ impl serde::ser::Serialize
                     })?;
                 }
             }
-        } else {
-            if let Some(some) = self.value.r#name.as_ref() {
-                self.with_context(some, |ctx| state.serialize_entry("name", ctx))?;
-            }
+        } else if let Some(some) = self.value.r#name.as_ref() {
+            self.with_context(some, |ctx| state.serialize_entry("name", ctx))?;
         }
-        if self.output_json {
+        if self.output == crate::context::Format::Json {
             if let Some(some) = self.value.r#title.as_ref() {
-                if let Some(some) = some.value.as_ref() {
-                    let some = Ok(some)?;
-                    state.serialize_entry("title", &some)?;
+                if let Some(some) = some.value.as_ref().map(Ok) {
+                    state.serialize_entry("title", &some?)?;
                 }
                 if some.id.is_some() || !some.extension.is_empty() {
-                    let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                    use super::super::serde_helpers::PrimitiveElement;
+                    let primitive_element = PrimitiveElement {
                         id: some.id.as_ref(),
                         extension: &some.extension,
                     };
@@ -2577,21 +2706,19 @@ impl serde::ser::Serialize
                     })?;
                 }
             }
-        } else {
-            if let Some(some) = self.value.r#title.as_ref() {
-                self.with_context(some, |ctx| state.serialize_entry("title", ctx))?;
-            }
+        } else if let Some(some) = self.value.r#title.as_ref() {
+            self.with_context(some, |ctx| state.serialize_entry("title", ctx))?;
         }
-        if self.output_json {
+        if self.output == crate::context::Format::Json {
             if self.value.r#status.id.as_deref() == Some("$invalid") {
                 return missing_field_error("status");
             }
-            if let Some(some) = self.value.r#status.value.as_ref() {
-                let some = Ok(some)?;
-                state.serialize_entry("status", &some)?;
+            if let Some(some) = self.value.r#status.value.as_ref().map(Ok) {
+                state.serialize_entry("status", &some?)?;
             }
             if self.value.r#status.id.is_some() || !self.value.r#status.extension.is_empty() {
-                let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                use super::super::serde_helpers::PrimitiveElement;
+                let primitive_element = PrimitiveElement {
                     id: self.value.r#status.id.as_ref(),
                     extension: &self.value.r#status.extension,
                 };
@@ -2599,22 +2726,21 @@ impl serde::ser::Serialize
                     state.serialize_entry("_status", ctx)
                 })?;
             }
+        } else if self.value.r#status.id.as_deref() == Some("$invalid") {
+            return missing_field_error("status");
         } else {
-            if self.value.r#status.id.as_deref() == Some("$invalid") {
-                return missing_field_error("status");
-            }
             self.with_context(&self.value.r#status, |ctx| {
                 state.serialize_entry("status", ctx)
             })?;
         }
-        if self.output_json {
+        if self.output == crate::context::Format::Json {
             if let Some(some) = self.value.r#experimental.as_ref() {
-                if let Some(some) = some.value.as_ref() {
-                    let some = Ok(some)?;
-                    state.serialize_entry("experimental", &some)?;
+                if let Some(some) = some.value.as_ref().map(Ok) {
+                    state.serialize_entry("experimental", &some?)?;
                 }
                 if some.id.is_some() || !some.extension.is_empty() {
-                    let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                    use super::super::serde_helpers::PrimitiveElement;
+                    let primitive_element = PrimitiveElement {
                         id: some.id.as_ref(),
                         extension: &some.extension,
                     };
@@ -2623,19 +2749,17 @@ impl serde::ser::Serialize
                     })?;
                 }
             }
-        } else {
-            if let Some(some) = self.value.r#experimental.as_ref() {
-                self.with_context(some, |ctx| state.serialize_entry("experimental", ctx))?;
-            }
+        } else if let Some(some) = self.value.r#experimental.as_ref() {
+            self.with_context(some, |ctx| state.serialize_entry("experimental", ctx))?;
         }
-        if self.output_json {
+        if self.output == crate::context::Format::Json {
             if let Some(some) = self.value.r#date.as_ref() {
-                if let Some(some) = some.value.as_ref() {
-                    let some = Ok(some)?;
-                    state.serialize_entry("date", &some)?;
+                if let Some(some) = some.value.as_ref().map(Ok) {
+                    state.serialize_entry("date", &some?)?;
                 }
                 if some.id.is_some() || !some.extension.is_empty() {
-                    let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                    use super::super::serde_helpers::PrimitiveElement;
+                    let primitive_element = PrimitiveElement {
                         id: some.id.as_ref(),
                         extension: &some.extension,
                     };
@@ -2644,19 +2768,17 @@ impl serde::ser::Serialize
                     })?;
                 }
             }
-        } else {
-            if let Some(some) = self.value.r#date.as_ref() {
-                self.with_context(some, |ctx| state.serialize_entry("date", ctx))?;
-            }
+        } else if let Some(some) = self.value.r#date.as_ref() {
+            self.with_context(some, |ctx| state.serialize_entry("date", ctx))?;
         }
-        if self.output_json {
+        if self.output == crate::context::Format::Json {
             if let Some(some) = self.value.r#publisher.as_ref() {
-                if let Some(some) = some.value.as_ref() {
-                    let some = Ok(some)?;
-                    state.serialize_entry("publisher", &some)?;
+                if let Some(some) = some.value.as_ref().map(Ok) {
+                    state.serialize_entry("publisher", &some?)?;
                 }
                 if some.id.is_some() || !some.extension.is_empty() {
-                    let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                    use super::super::serde_helpers::PrimitiveElement;
+                    let primitive_element = PrimitiveElement {
                         id: some.id.as_ref(),
                         extension: &some.extension,
                     };
@@ -2665,24 +2787,22 @@ impl serde::ser::Serialize
                     })?;
                 }
             }
-        } else {
-            if let Some(some) = self.value.r#publisher.as_ref() {
-                self.with_context(some, |ctx| state.serialize_entry("publisher", ctx))?;
-            }
+        } else if let Some(some) = self.value.r#publisher.as_ref() {
+            self.with_context(some, |ctx| state.serialize_entry("publisher", ctx))?;
         }
         if !self.value.r#contact.is_empty() {
             self.with_context(&self.value.r#contact, |ctx| {
                 state.serialize_entry("contact", ctx)
             })?;
         }
-        if self.output_json {
+        if self.output == crate::context::Format::Json {
             if let Some(some) = self.value.r#description.as_ref() {
-                if let Some(some) = some.value.as_ref() {
-                    let some = Ok(some)?;
-                    state.serialize_entry("description", &some)?;
+                if let Some(some) = some.value.as_ref().map(Ok) {
+                    state.serialize_entry("description", &some?)?;
                 }
                 if some.id.is_some() || !some.extension.is_empty() {
-                    let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                    use super::super::serde_helpers::PrimitiveElement;
+                    let primitive_element = PrimitiveElement {
                         id: some.id.as_ref(),
                         extension: &some.extension,
                     };
@@ -2691,10 +2811,8 @@ impl serde::ser::Serialize
                     })?;
                 }
             }
-        } else {
-            if let Some(some) = self.value.r#description.as_ref() {
-                self.with_context(some, |ctx| state.serialize_entry("description", ctx))?;
-            }
+        } else if let Some(some) = self.value.r#description.as_ref() {
+            self.with_context(some, |ctx| state.serialize_entry("description", ctx))?;
         }
         if !self.value.r#use_context.is_empty() {
             self.with_context(&self.value.r#use_context, |ctx| {
@@ -2706,14 +2824,14 @@ impl serde::ser::Serialize
                 state.serialize_entry("jurisdiction", ctx)
             })?;
         }
-        if self.output_json {
+        if self.output == crate::context::Format::Json {
             if let Some(some) = self.value.r#purpose.as_ref() {
-                if let Some(some) = some.value.as_ref() {
-                    let some = Ok(some)?;
-                    state.serialize_entry("purpose", &some)?;
+                if let Some(some) = some.value.as_ref().map(Ok) {
+                    state.serialize_entry("purpose", &some?)?;
                 }
                 if some.id.is_some() || !some.extension.is_empty() {
-                    let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                    use super::super::serde_helpers::PrimitiveElement;
+                    let primitive_element = PrimitiveElement {
                         id: some.id.as_ref(),
                         extension: &some.extension,
                     };
@@ -2722,19 +2840,17 @@ impl serde::ser::Serialize
                     })?;
                 }
             }
-        } else {
-            if let Some(some) = self.value.r#purpose.as_ref() {
-                self.with_context(some, |ctx| state.serialize_entry("purpose", ctx))?;
-            }
+        } else if let Some(some) = self.value.r#purpose.as_ref() {
+            self.with_context(some, |ctx| state.serialize_entry("purpose", ctx))?;
         }
-        if self.output_json {
+        if self.output == crate::context::Format::Json {
             if let Some(some) = self.value.r#copyright.as_ref() {
-                if let Some(some) = some.value.as_ref() {
-                    let some = Ok(some)?;
-                    state.serialize_entry("copyright", &some)?;
+                if let Some(some) = some.value.as_ref().map(Ok) {
+                    state.serialize_entry("copyright", &some?)?;
                 }
                 if some.id.is_some() || !some.extension.is_empty() {
-                    let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                    use super::super::serde_helpers::PrimitiveElement;
+                    let primitive_element = PrimitiveElement {
                         id: some.id.as_ref(),
                         extension: &some.extension,
                     };
@@ -2743,19 +2859,17 @@ impl serde::ser::Serialize
                     })?;
                 }
             }
-        } else {
-            if let Some(some) = self.value.r#copyright.as_ref() {
-                self.with_context(some, |ctx| state.serialize_entry("copyright", ctx))?;
-            }
+        } else if let Some(some) = self.value.r#copyright.as_ref() {
+            self.with_context(some, |ctx| state.serialize_entry("copyright", ctx))?;
         }
-        if self.output_json {
+        if self.output == crate::context::Format::Json {
             if let Some(some) = self.value.r#case_sensitive.as_ref() {
-                if let Some(some) = some.value.as_ref() {
-                    let some = Ok(some)?;
-                    state.serialize_entry("caseSensitive", &some)?;
+                if let Some(some) = some.value.as_ref().map(Ok) {
+                    state.serialize_entry("caseSensitive", &some?)?;
                 }
                 if some.id.is_some() || !some.extension.is_empty() {
-                    let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                    use super::super::serde_helpers::PrimitiveElement;
+                    let primitive_element = PrimitiveElement {
                         id: some.id.as_ref(),
                         extension: &some.extension,
                     };
@@ -2764,19 +2878,17 @@ impl serde::ser::Serialize
                     })?;
                 }
             }
-        } else {
-            if let Some(some) = self.value.r#case_sensitive.as_ref() {
-                self.with_context(some, |ctx| state.serialize_entry("caseSensitive", ctx))?;
-            }
+        } else if let Some(some) = self.value.r#case_sensitive.as_ref() {
+            self.with_context(some, |ctx| state.serialize_entry("caseSensitive", ctx))?;
         }
-        if self.output_json {
+        if self.output == crate::context::Format::Json {
             if let Some(some) = self.value.r#value_set.as_ref() {
-                if let Some(some) = some.value.as_ref() {
-                    let some = Ok(some)?;
-                    state.serialize_entry("valueSet", &some)?;
+                if let Some(some) = some.value.as_ref().map(Ok) {
+                    state.serialize_entry("valueSet", &some?)?;
                 }
                 if some.id.is_some() || !some.extension.is_empty() {
-                    let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                    use super::super::serde_helpers::PrimitiveElement;
+                    let primitive_element = PrimitiveElement {
                         id: some.id.as_ref(),
                         extension: &some.extension,
                     };
@@ -2785,19 +2897,17 @@ impl serde::ser::Serialize
                     })?;
                 }
             }
-        } else {
-            if let Some(some) = self.value.r#value_set.as_ref() {
-                self.with_context(some, |ctx| state.serialize_entry("valueSet", ctx))?;
-            }
+        } else if let Some(some) = self.value.r#value_set.as_ref() {
+            self.with_context(some, |ctx| state.serialize_entry("valueSet", ctx))?;
         }
-        if self.output_json {
+        if self.output == crate::context::Format::Json {
             if let Some(some) = self.value.r#hierarchy_meaning.as_ref() {
-                if let Some(some) = some.value.as_ref() {
-                    let some = Ok(some)?;
-                    state.serialize_entry("hierarchyMeaning", &some)?;
+                if let Some(some) = some.value.as_ref().map(Ok) {
+                    state.serialize_entry("hierarchyMeaning", &some?)?;
                 }
                 if some.id.is_some() || !some.extension.is_empty() {
-                    let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                    use super::super::serde_helpers::PrimitiveElement;
+                    let primitive_element = PrimitiveElement {
                         id: some.id.as_ref(),
                         extension: &some.extension,
                     };
@@ -2806,19 +2916,17 @@ impl serde::ser::Serialize
                     })?;
                 }
             }
-        } else {
-            if let Some(some) = self.value.r#hierarchy_meaning.as_ref() {
-                self.with_context(some, |ctx| state.serialize_entry("hierarchyMeaning", ctx))?;
-            }
+        } else if let Some(some) = self.value.r#hierarchy_meaning.as_ref() {
+            self.with_context(some, |ctx| state.serialize_entry("hierarchyMeaning", ctx))?;
         }
-        if self.output_json {
+        if self.output == crate::context::Format::Json {
             if let Some(some) = self.value.r#compositional.as_ref() {
-                if let Some(some) = some.value.as_ref() {
-                    let some = Ok(some)?;
-                    state.serialize_entry("compositional", &some)?;
+                if let Some(some) = some.value.as_ref().map(Ok) {
+                    state.serialize_entry("compositional", &some?)?;
                 }
                 if some.id.is_some() || !some.extension.is_empty() {
-                    let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                    use super::super::serde_helpers::PrimitiveElement;
+                    let primitive_element = PrimitiveElement {
                         id: some.id.as_ref(),
                         extension: &some.extension,
                     };
@@ -2827,19 +2935,17 @@ impl serde::ser::Serialize
                     })?;
                 }
             }
-        } else {
-            if let Some(some) = self.value.r#compositional.as_ref() {
-                self.with_context(some, |ctx| state.serialize_entry("compositional", ctx))?;
-            }
+        } else if let Some(some) = self.value.r#compositional.as_ref() {
+            self.with_context(some, |ctx| state.serialize_entry("compositional", ctx))?;
         }
-        if self.output_json {
+        if self.output == crate::context::Format::Json {
             if let Some(some) = self.value.r#version_needed.as_ref() {
-                if let Some(some) = some.value.as_ref() {
-                    let some = Ok(some)?;
-                    state.serialize_entry("versionNeeded", &some)?;
+                if let Some(some) = some.value.as_ref().map(Ok) {
+                    state.serialize_entry("versionNeeded", &some?)?;
                 }
                 if some.id.is_some() || !some.extension.is_empty() {
-                    let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                    use super::super::serde_helpers::PrimitiveElement;
+                    let primitive_element = PrimitiveElement {
                         id: some.id.as_ref(),
                         extension: &some.extension,
                     };
@@ -2848,21 +2954,19 @@ impl serde::ser::Serialize
                     })?;
                 }
             }
-        } else {
-            if let Some(some) = self.value.r#version_needed.as_ref() {
-                self.with_context(some, |ctx| state.serialize_entry("versionNeeded", ctx))?;
-            }
+        } else if let Some(some) = self.value.r#version_needed.as_ref() {
+            self.with_context(some, |ctx| state.serialize_entry("versionNeeded", ctx))?;
         }
-        if self.output_json {
+        if self.output == crate::context::Format::Json {
             if self.value.r#content.id.as_deref() == Some("$invalid") {
                 return missing_field_error("content");
             }
-            if let Some(some) = self.value.r#content.value.as_ref() {
-                let some = Ok(some)?;
-                state.serialize_entry("content", &some)?;
+            if let Some(some) = self.value.r#content.value.as_ref().map(Ok) {
+                state.serialize_entry("content", &some?)?;
             }
             if self.value.r#content.id.is_some() || !self.value.r#content.extension.is_empty() {
-                let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                use super::super::serde_helpers::PrimitiveElement;
+                let primitive_element = PrimitiveElement {
                     id: self.value.r#content.id.as_ref(),
                     extension: &self.value.r#content.extension,
                 };
@@ -2870,22 +2974,21 @@ impl serde::ser::Serialize
                     state.serialize_entry("_content", ctx)
                 })?;
             }
+        } else if self.value.r#content.id.as_deref() == Some("$invalid") {
+            return missing_field_error("content");
         } else {
-            if self.value.r#content.id.as_deref() == Some("$invalid") {
-                return missing_field_error("content");
-            }
             self.with_context(&self.value.r#content, |ctx| {
                 state.serialize_entry("content", ctx)
             })?;
         }
-        if self.output_json {
+        if self.output == crate::context::Format::Json {
             if let Some(some) = self.value.r#supplements.as_ref() {
-                if let Some(some) = some.value.as_ref() {
-                    let some = Ok(some)?;
-                    state.serialize_entry("supplements", &some)?;
+                if let Some(some) = some.value.as_ref().map(Ok) {
+                    state.serialize_entry("supplements", &some?)?;
                 }
                 if some.id.is_some() || !some.extension.is_empty() {
-                    let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                    use super::super::serde_helpers::PrimitiveElement;
+                    let primitive_element = PrimitiveElement {
                         id: some.id.as_ref(),
                         extension: &some.extension,
                     };
@@ -2894,19 +2997,17 @@ impl serde::ser::Serialize
                     })?;
                 }
             }
-        } else {
-            if let Some(some) = self.value.r#supplements.as_ref() {
-                self.with_context(some, |ctx| state.serialize_entry("supplements", ctx))?;
-            }
+        } else if let Some(some) = self.value.r#supplements.as_ref() {
+            self.with_context(some, |ctx| state.serialize_entry("supplements", ctx))?;
         }
-        if self.output_json {
+        if self.output == crate::context::Format::Json {
             if let Some(some) = self.value.r#count.as_ref() {
-                if let Some(some) = some.value.as_ref() {
-                    let some = Ok(some)?;
-                    state.serialize_entry("count", &some)?;
+                if let Some(some) = some.value.as_ref().map(Ok) {
+                    state.serialize_entry("count", &some?)?;
                 }
                 if some.id.is_some() || !some.extension.is_empty() {
-                    let primitive_element = super::super::serde_helpers::PrimitiveElement {
+                    use super::super::serde_helpers::PrimitiveElement;
+                    let primitive_element = PrimitiveElement {
                         id: some.id.as_ref(),
                         extension: &some.extension,
                     };
@@ -2915,10 +3016,8 @@ impl serde::ser::Serialize
                     })?;
                 }
             }
-        } else {
-            if let Some(some) = self.value.r#count.as_ref() {
-                self.with_context(some, |ctx| state.serialize_entry("count", ctx))?;
-            }
+        } else if let Some(some) = self.value.r#count.as_ref() {
+            self.with_context(some, |ctx| state.serialize_entry("count", ctx))?;
         }
         if !self.value.r#filter.is_empty() {
             self.with_context(&self.value.r#filter, |ctx| {
@@ -2938,9 +3037,7 @@ impl serde::ser::Serialize
         state.end()
     }
 }
-impl serde::ser::Serialize
-    for crate::context::ser::SerializationContext<&Box<fhirbolt_model::r4b::resources::CodeSystem>>
-{
+impl serde::ser::Serialize for SerializationContext<&Box<CodeSystem>> {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
         S: serde::ser::Serializer,
@@ -2948,9 +3045,7 @@ impl serde::ser::Serialize
         self.with_context(self.value.as_ref(), |ctx| ctx.serialize(serializer))
     }
 }
-impl serde::ser::Serialize
-    for crate::context::ser::SerializationContext<&Vec<fhirbolt_model::r4b::resources::CodeSystem>>
-{
+impl serde::ser::Serialize for SerializationContext<&Vec<CodeSystem>> {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
         S: serde::ser::Serializer,
@@ -2963,10 +3058,8 @@ impl serde::ser::Serialize
         seq_serializer.end()
     }
 }
-impl<'de> serde::de::DeserializeSeed<'de>
-    for crate::context::de::DeserializationContext<fhirbolt_model::r4b::resources::CodeSystem>
-{
-    type Value = fhirbolt_model::r4b::resources::CodeSystem;
+impl<'de> serde::de::DeserializeSeed<'de> for DeserializationContext<CodeSystem> {
+    type Value = CodeSystem;
     fn deserialize<D>(mut self, deserializer: D) -> Result<Self::Value, D::Error>
     where
         D: serde::de::Deserializer<'de>,
@@ -2974,28 +3067,19 @@ impl<'de> serde::de::DeserializeSeed<'de>
         (&mut self).deserialize(deserializer)
     }
 }
-impl<'de> serde::de::DeserializeSeed<'de>
-    for &mut crate::context::de::DeserializationContext<fhirbolt_model::r4b::resources::CodeSystem>
-{
-    type Value = fhirbolt_model::r4b::resources::CodeSystem;
+impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<CodeSystem> {
+    type Value = CodeSystem;
     fn deserialize<D>(self, deserializer: D) -> Result<Self::Value, D::Error>
     where
         D: serde::de::Deserializer<'de>,
     {
-        struct Visitor<'a>(
-            &'a mut crate::context::de::DeserializationContext<
-                fhirbolt_model::r4b::resources::CodeSystem,
-            >,
-        );
+        struct Visitor<'a>(&'a mut DeserializationContext<CodeSystem>);
         impl<'de> serde::de::Visitor<'de> for Visitor<'_> {
-            type Value = fhirbolt_model::r4b::resources::CodeSystem;
+            type Value = CodeSystem;
             fn expecting(&self, formatter: &mut std::fmt::Formatter) -> std::fmt::Result {
                 formatter.write_str("CodeSystem")
             }
-            fn visit_map<V>(
-                self,
-                mut map_access: V,
-            ) -> Result<fhirbolt_model::r4b::resources::CodeSystem, V::Error>
+            fn visit_map<V>(self, mut map_access: V) -> Result<CodeSystem, V::Error>
             where
                 V: serde::de::MapAccess<'de>,
             {
@@ -3006,6 +3090,8 @@ impl<'de> serde::de::DeserializeSeed<'de>
                     ResourceType,
                     #[serde(rename = "id")]
                     Id,
+                    #[serde(rename = "_id")]
+                    IdPrimitiveElement,
                     #[serde(rename = "meta")]
                     Meta,
                     #[serde(rename = "implicitRules")]
@@ -3157,7 +3243,7 @@ impl<'de> serde::de::DeserializeSeed<'de>
                         ],
                     ))
                 }
-                let mut r#id: Option<std::string::String> = None;
+                let mut r#id: Option<Box<fhirbolt_model::r4b::types::Id>> = None;
                 let mut r#meta: Option<Box<fhirbolt_model::r4b::types::Meta>> = None;
                 let mut r#implicit_rules: Option<fhirbolt_model::r4b::types::Uri> = None;
                 let mut r#language: Option<fhirbolt_model::r4b::types::Code> = None;
@@ -3209,45 +3295,79 @@ impl<'de> serde::de::DeserializeSeed<'de>
                             }
                         }
                         Field::Id => {
-                            if r#id.is_some() {
-                                return Err(serde::de::Error::duplicate_field("id"));
+                            if self.0.from == crate::context::Format::Json {
+                                let some = r#id.get_or_insert(Default::default());
+                                if some.value.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("id"));
+                                }
+                                some.value = Some(map_access.next_value()?);
+                            } else {
+                                if r#id.is_some() {
+                                    return Err(serde::de::Error::duplicate_field("id"));
+                                }
+                                let _context: &mut DeserializationContext<
+                                    Box<fhirbolt_model::r4b::types::Id>,
+                                > = self.0.transmute();
+                                r#id = Some(map_access.next_value_seed(&mut *_context)?);
                             }
-                            r#id = Some(map_access.next_value()?);
+                        }
+                        Field::IdPrimitiveElement => {
+                            if self.0.from == crate::context::Format::Json {
+                                let some = r#id.get_or_insert(Default::default());
+                                if some.id.is_some() || !some.extension.is_empty() {
+                                    return Err(serde::de::Error::duplicate_field("_id"));
+                                }
+                                use super::super::serde_helpers::PrimitiveElementOwned;
+                                let _context: &mut DeserializationContext<PrimitiveElementOwned> =
+                                    self.0.transmute();
+                                let PrimitiveElementOwned { id, extension } =
+                                    map_access.next_value_seed(&mut *_context)?;
+                                some.id = id;
+                                some.extension = extension;
+                            } else {
+                                return unknown_field_error("id");
+                            }
                         }
                         Field::Meta => {
                             if r#meta.is_some() {
                                 return Err(serde::de::Error::duplicate_field("meta"));
                             }
-                            r#meta = Some(map_access.next_value_seed(
-                                self.0.transmute::<Box<fhirbolt_model::r4b::types::Meta>>(),
-                            )?);
+                            let _context: &mut DeserializationContext<
+                                Box<fhirbolt_model::r4b::types::Meta>,
+                            > = self.0.transmute();
+                            r#meta = Some(map_access.next_value_seed(&mut *_context)?);
                         }
                         Field::ImplicitRules => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let some = r#implicit_rules.get_or_insert(Default::default());
                                 if some.value.is_some() {
                                     return Err(serde::de::Error::duplicate_field("implicitRules"));
                                 }
-                                let value: _ = map_access.next_value()?;
-                                some.value = Some(value);
+                                some.value = Some(map_access.next_value()?);
                             } else {
                                 if r#implicit_rules.is_some() {
                                     return Err(serde::de::Error::duplicate_field("implicitRules"));
                                 }
-                                r#implicit_rules = Some(map_access.next_value_seed(
-                                    self.0.transmute::<fhirbolt_model::r4b::types::Uri>(),
-                                )?);
+                                let _context: &mut DeserializationContext<
+                                    fhirbolt_model::r4b::types::Uri,
+                                > = self.0.transmute();
+                                r#implicit_rules =
+                                    Some(map_access.next_value_seed(&mut *_context)?);
                             }
                         }
                         Field::ImplicitRulesPrimitiveElement => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let some = r#implicit_rules.get_or_insert(Default::default());
                                 if some.id.is_some() || !some.extension.is_empty() {
                                     return Err(serde::de::Error::duplicate_field(
                                         "_implicitRules",
                                     ));
                                 }
-                                let super :: super :: serde_helpers :: PrimitiveElementOwned { id , extension } = map_access . next_value_seed (self . 0 . transmute :: < super :: super :: serde_helpers :: PrimitiveElementOwned > ()) ? ;
+                                use super::super::serde_helpers::PrimitiveElementOwned;
+                                let _context: &mut DeserializationContext<PrimitiveElementOwned> =
+                                    self.0.transmute();
+                                let PrimitiveElementOwned { id, extension } =
+                                    map_access.next_value_seed(&mut *_context)?;
                                 some.id = id;
                                 some.extension = extension;
                             } else {
@@ -3255,29 +3375,33 @@ impl<'de> serde::de::DeserializeSeed<'de>
                             }
                         }
                         Field::Language => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let some = r#language.get_or_insert(Default::default());
                                 if some.value.is_some() {
                                     return Err(serde::de::Error::duplicate_field("language"));
                                 }
-                                let value: _ = map_access.next_value()?;
-                                some.value = Some(value);
+                                some.value = Some(map_access.next_value()?);
                             } else {
                                 if r#language.is_some() {
                                     return Err(serde::de::Error::duplicate_field("language"));
                                 }
-                                r#language = Some(map_access.next_value_seed(
-                                    self.0.transmute::<fhirbolt_model::r4b::types::Code>(),
-                                )?);
+                                let _context: &mut DeserializationContext<
+                                    fhirbolt_model::r4b::types::Code,
+                                > = self.0.transmute();
+                                r#language = Some(map_access.next_value_seed(&mut *_context)?);
                             }
                         }
                         Field::LanguagePrimitiveElement => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let some = r#language.get_or_insert(Default::default());
                                 if some.id.is_some() || !some.extension.is_empty() {
                                     return Err(serde::de::Error::duplicate_field("_language"));
                                 }
-                                let super :: super :: serde_helpers :: PrimitiveElementOwned { id , extension } = map_access . next_value_seed (self . 0 . transmute :: < super :: super :: serde_helpers :: PrimitiveElementOwned > ()) ? ;
+                                use super::super::serde_helpers::PrimitiveElementOwned;
+                                let _context: &mut DeserializationContext<PrimitiveElementOwned> =
+                                    self.0.transmute();
+                                let PrimitiveElementOwned { id, extension } =
+                                    map_access.next_value_seed(&mut *_context)?;
                                 some.id = id;
                                 some.extension = extension;
                             } else {
@@ -3288,80 +3412,93 @@ impl<'de> serde::de::DeserializeSeed<'de>
                             if r#text.is_some() {
                                 return Err(serde::de::Error::duplicate_field("text"));
                             }
-                            r#text = Some(
-                                map_access.next_value_seed(
-                                    self.0
-                                        .transmute::<Box<fhirbolt_model::r4b::types::Narrative>>(),
-                                )?,
-                            );
+                            let _context: &mut DeserializationContext<
+                                Box<fhirbolt_model::r4b::types::Narrative>,
+                            > = self.0.transmute();
+                            r#text = Some(map_access.next_value_seed(&mut *_context)?);
                         }
                         Field::Contained => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 if r#contained.is_some() {
                                     return Err(serde::de::Error::duplicate_field("contained"));
                                 }
-                                r#contained = Some(map_access.next_value_seed(
-                                    self.0.transmute::<Vec<fhirbolt_model::r4b::Resource>>(),
-                                )?);
+                                let _context: &mut DeserializationContext<
+                                    Vec<fhirbolt_model::r4b::Resource>,
+                                > = self.0.transmute();
+                                r#contained = Some(map_access.next_value_seed(&mut *_context)?);
                             } else {
                                 let vec = r#contained.get_or_insert(Default::default());
-                                vec.push(map_access.next_value_seed(
-                                    self.0.transmute::<fhirbolt_model::r4b::Resource>(),
-                                )?);
+                                let _context: &mut DeserializationContext<
+                                    fhirbolt_model::r4b::Resource,
+                                > = self.0.transmute();
+                                vec.push(map_access.next_value_seed(&mut *_context)?);
                             }
                         }
                         Field::Extension => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 if r#extension.is_some() {
                                     return Err(serde::de::Error::duplicate_field("extension"));
                                 }
-                                r#extension = Some (map_access . next_value_seed (self . 0 . transmute :: < Vec < fhirbolt_model :: r4b :: types :: Extension >> ()) ?) ;
+                                let _context: &mut DeserializationContext<
+                                    Vec<fhirbolt_model::r4b::types::Extension>,
+                                > = self.0.transmute();
+                                r#extension = Some(map_access.next_value_seed(&mut *_context)?);
                             } else {
                                 let vec = r#extension.get_or_insert(Default::default());
-                                vec.push(map_access.next_value_seed(
-                                    self.0.transmute::<fhirbolt_model::r4b::types::Extension>(),
-                                )?);
+                                let _context: &mut DeserializationContext<
+                                    fhirbolt_model::r4b::types::Extension,
+                                > = self.0.transmute();
+                                vec.push(map_access.next_value_seed(&mut *_context)?);
                             }
                         }
                         Field::ModifierExtension => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 if r#modifier_extension.is_some() {
                                     return Err(serde::de::Error::duplicate_field(
                                         "modifierExtension",
                                     ));
                                 }
-                                r#modifier_extension = Some (map_access . next_value_seed (self . 0 . transmute :: < Vec < fhirbolt_model :: r4b :: types :: Extension >> ()) ?) ;
+                                let _context: &mut DeserializationContext<
+                                    Vec<fhirbolt_model::r4b::types::Extension>,
+                                > = self.0.transmute();
+                                r#modifier_extension =
+                                    Some(map_access.next_value_seed(&mut *_context)?);
                             } else {
                                 let vec = r#modifier_extension.get_or_insert(Default::default());
-                                vec.push(map_access.next_value_seed(
-                                    self.0.transmute::<fhirbolt_model::r4b::types::Extension>(),
-                                )?);
+                                let _context: &mut DeserializationContext<
+                                    fhirbolt_model::r4b::types::Extension,
+                                > = self.0.transmute();
+                                vec.push(map_access.next_value_seed(&mut *_context)?);
                             }
                         }
                         Field::Url => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let some = r#url.get_or_insert(Default::default());
                                 if some.value.is_some() {
                                     return Err(serde::de::Error::duplicate_field("url"));
                                 }
-                                let value: _ = map_access.next_value()?;
-                                some.value = Some(value);
+                                some.value = Some(map_access.next_value()?);
                             } else {
                                 if r#url.is_some() {
                                     return Err(serde::de::Error::duplicate_field("url"));
                                 }
-                                r#url = Some(map_access.next_value_seed(
-                                    self.0.transmute::<fhirbolt_model::r4b::types::Uri>(),
-                                )?);
+                                let _context: &mut DeserializationContext<
+                                    fhirbolt_model::r4b::types::Uri,
+                                > = self.0.transmute();
+                                r#url = Some(map_access.next_value_seed(&mut *_context)?);
                             }
                         }
                         Field::UrlPrimitiveElement => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let some = r#url.get_or_insert(Default::default());
                                 if some.id.is_some() || !some.extension.is_empty() {
                                     return Err(serde::de::Error::duplicate_field("_url"));
                                 }
-                                let super :: super :: serde_helpers :: PrimitiveElementOwned { id , extension } = map_access . next_value_seed (self . 0 . transmute :: < super :: super :: serde_helpers :: PrimitiveElementOwned > ()) ? ;
+                                use super::super::serde_helpers::PrimitiveElementOwned;
+                                let _context: &mut DeserializationContext<PrimitiveElementOwned> =
+                                    self.0.transmute();
+                                let PrimitiveElementOwned { id, extension } =
+                                    map_access.next_value_seed(&mut *_context)?;
                                 some.id = id;
                                 some.extension = extension;
                             } else {
@@ -3369,42 +3506,50 @@ impl<'de> serde::de::DeserializeSeed<'de>
                             }
                         }
                         Field::Identifier => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 if r#identifier.is_some() {
                                     return Err(serde::de::Error::duplicate_field("identifier"));
                                 }
-                                r#identifier = Some (map_access . next_value_seed (self . 0 . transmute :: < Vec < fhirbolt_model :: r4b :: types :: Identifier >> ()) ?) ;
+                                let _context: &mut DeserializationContext<
+                                    Vec<fhirbolt_model::r4b::types::Identifier>,
+                                > = self.0.transmute();
+                                r#identifier = Some(map_access.next_value_seed(&mut *_context)?);
                             } else {
                                 let vec = r#identifier.get_or_insert(Default::default());
-                                vec.push(map_access.next_value_seed(
-                                    self.0.transmute::<fhirbolt_model::r4b::types::Identifier>(),
-                                )?);
+                                let _context: &mut DeserializationContext<
+                                    fhirbolt_model::r4b::types::Identifier,
+                                > = self.0.transmute();
+                                vec.push(map_access.next_value_seed(&mut *_context)?);
                             }
                         }
                         Field::Version => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let some = r#version.get_or_insert(Default::default());
                                 if some.value.is_some() {
                                     return Err(serde::de::Error::duplicate_field("version"));
                                 }
-                                let value: _ = map_access.next_value()?;
-                                some.value = Some(value);
+                                some.value = Some(map_access.next_value()?);
                             } else {
                                 if r#version.is_some() {
                                     return Err(serde::de::Error::duplicate_field("version"));
                                 }
-                                r#version = Some(map_access.next_value_seed(
-                                    self.0.transmute::<fhirbolt_model::r4b::types::String>(),
-                                )?);
+                                let _context: &mut DeserializationContext<
+                                    fhirbolt_model::r4b::types::String,
+                                > = self.0.transmute();
+                                r#version = Some(map_access.next_value_seed(&mut *_context)?);
                             }
                         }
                         Field::VersionPrimitiveElement => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let some = r#version.get_or_insert(Default::default());
                                 if some.id.is_some() || !some.extension.is_empty() {
                                     return Err(serde::de::Error::duplicate_field("_version"));
                                 }
-                                let super :: super :: serde_helpers :: PrimitiveElementOwned { id , extension } = map_access . next_value_seed (self . 0 . transmute :: < super :: super :: serde_helpers :: PrimitiveElementOwned > ()) ? ;
+                                use super::super::serde_helpers::PrimitiveElementOwned;
+                                let _context: &mut DeserializationContext<PrimitiveElementOwned> =
+                                    self.0.transmute();
+                                let PrimitiveElementOwned { id, extension } =
+                                    map_access.next_value_seed(&mut *_context)?;
                                 some.id = id;
                                 some.extension = extension;
                             } else {
@@ -3412,29 +3557,33 @@ impl<'de> serde::de::DeserializeSeed<'de>
                             }
                         }
                         Field::Name => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let some = r#name.get_or_insert(Default::default());
                                 if some.value.is_some() {
                                     return Err(serde::de::Error::duplicate_field("name"));
                                 }
-                                let value: _ = map_access.next_value()?;
-                                some.value = Some(value);
+                                some.value = Some(map_access.next_value()?);
                             } else {
                                 if r#name.is_some() {
                                     return Err(serde::de::Error::duplicate_field("name"));
                                 }
-                                r#name = Some(map_access.next_value_seed(
-                                    self.0.transmute::<fhirbolt_model::r4b::types::String>(),
-                                )?);
+                                let _context: &mut DeserializationContext<
+                                    fhirbolt_model::r4b::types::String,
+                                > = self.0.transmute();
+                                r#name = Some(map_access.next_value_seed(&mut *_context)?);
                             }
                         }
                         Field::NamePrimitiveElement => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let some = r#name.get_or_insert(Default::default());
                                 if some.id.is_some() || !some.extension.is_empty() {
                                     return Err(serde::de::Error::duplicate_field("_name"));
                                 }
-                                let super :: super :: serde_helpers :: PrimitiveElementOwned { id , extension } = map_access . next_value_seed (self . 0 . transmute :: < super :: super :: serde_helpers :: PrimitiveElementOwned > ()) ? ;
+                                use super::super::serde_helpers::PrimitiveElementOwned;
+                                let _context: &mut DeserializationContext<PrimitiveElementOwned> =
+                                    self.0.transmute();
+                                let PrimitiveElementOwned { id, extension } =
+                                    map_access.next_value_seed(&mut *_context)?;
                                 some.id = id;
                                 some.extension = extension;
                             } else {
@@ -3442,29 +3591,33 @@ impl<'de> serde::de::DeserializeSeed<'de>
                             }
                         }
                         Field::Title => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let some = r#title.get_or_insert(Default::default());
                                 if some.value.is_some() {
                                     return Err(serde::de::Error::duplicate_field("title"));
                                 }
-                                let value: _ = map_access.next_value()?;
-                                some.value = Some(value);
+                                some.value = Some(map_access.next_value()?);
                             } else {
                                 if r#title.is_some() {
                                     return Err(serde::de::Error::duplicate_field("title"));
                                 }
-                                r#title = Some(map_access.next_value_seed(
-                                    self.0.transmute::<fhirbolt_model::r4b::types::String>(),
-                                )?);
+                                let _context: &mut DeserializationContext<
+                                    fhirbolt_model::r4b::types::String,
+                                > = self.0.transmute();
+                                r#title = Some(map_access.next_value_seed(&mut *_context)?);
                             }
                         }
                         Field::TitlePrimitiveElement => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let some = r#title.get_or_insert(Default::default());
                                 if some.id.is_some() || !some.extension.is_empty() {
                                     return Err(serde::de::Error::duplicate_field("_title"));
                                 }
-                                let super :: super :: serde_helpers :: PrimitiveElementOwned { id , extension } = map_access . next_value_seed (self . 0 . transmute :: < super :: super :: serde_helpers :: PrimitiveElementOwned > ()) ? ;
+                                use super::super::serde_helpers::PrimitiveElementOwned;
+                                let _context: &mut DeserializationContext<PrimitiveElementOwned> =
+                                    self.0.transmute();
+                                let PrimitiveElementOwned { id, extension } =
+                                    map_access.next_value_seed(&mut *_context)?;
                                 some.id = id;
                                 some.extension = extension;
                             } else {
@@ -3472,29 +3625,33 @@ impl<'de> serde::de::DeserializeSeed<'de>
                             }
                         }
                         Field::Status => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let some = r#status.get_or_insert(Default::default());
                                 if some.value.is_some() {
                                     return Err(serde::de::Error::duplicate_field("status"));
                                 }
-                                let value: _ = map_access.next_value()?;
-                                some.value = Some(value);
+                                some.value = Some(map_access.next_value()?);
                             } else {
                                 if r#status.is_some() {
                                     return Err(serde::de::Error::duplicate_field("status"));
                                 }
-                                r#status = Some(map_access.next_value_seed(
-                                    self.0.transmute::<fhirbolt_model::r4b::types::Code>(),
-                                )?);
+                                let _context: &mut DeserializationContext<
+                                    fhirbolt_model::r4b::types::Code,
+                                > = self.0.transmute();
+                                r#status = Some(map_access.next_value_seed(&mut *_context)?);
                             }
                         }
                         Field::StatusPrimitiveElement => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let some = r#status.get_or_insert(Default::default());
                                 if some.id.is_some() || !some.extension.is_empty() {
                                     return Err(serde::de::Error::duplicate_field("_status"));
                                 }
-                                let super :: super :: serde_helpers :: PrimitiveElementOwned { id , extension } = map_access . next_value_seed (self . 0 . transmute :: < super :: super :: serde_helpers :: PrimitiveElementOwned > ()) ? ;
+                                use super::super::serde_helpers::PrimitiveElementOwned;
+                                let _context: &mut DeserializationContext<PrimitiveElementOwned> =
+                                    self.0.transmute();
+                                let PrimitiveElementOwned { id, extension } =
+                                    map_access.next_value_seed(&mut *_context)?;
                                 some.id = id;
                                 some.extension = extension;
                             } else {
@@ -3502,29 +3659,33 @@ impl<'de> serde::de::DeserializeSeed<'de>
                             }
                         }
                         Field::Experimental => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let some = r#experimental.get_or_insert(Default::default());
                                 if some.value.is_some() {
                                     return Err(serde::de::Error::duplicate_field("experimental"));
                                 }
-                                let value: _ = map_access.next_value()?;
-                                some.value = Some(value);
+                                some.value = Some(map_access.next_value()?);
                             } else {
                                 if r#experimental.is_some() {
                                     return Err(serde::de::Error::duplicate_field("experimental"));
                                 }
-                                r#experimental = Some(map_access.next_value_seed(
-                                    self.0.transmute::<fhirbolt_model::r4b::types::Boolean>(),
-                                )?);
+                                let _context: &mut DeserializationContext<
+                                    fhirbolt_model::r4b::types::Boolean,
+                                > = self.0.transmute();
+                                r#experimental = Some(map_access.next_value_seed(&mut *_context)?);
                             }
                         }
                         Field::ExperimentalPrimitiveElement => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let some = r#experimental.get_or_insert(Default::default());
                                 if some.id.is_some() || !some.extension.is_empty() {
                                     return Err(serde::de::Error::duplicate_field("_experimental"));
                                 }
-                                let super :: super :: serde_helpers :: PrimitiveElementOwned { id , extension } = map_access . next_value_seed (self . 0 . transmute :: < super :: super :: serde_helpers :: PrimitiveElementOwned > ()) ? ;
+                                use super::super::serde_helpers::PrimitiveElementOwned;
+                                let _context: &mut DeserializationContext<PrimitiveElementOwned> =
+                                    self.0.transmute();
+                                let PrimitiveElementOwned { id, extension } =
+                                    map_access.next_value_seed(&mut *_context)?;
                                 some.id = id;
                                 some.extension = extension;
                             } else {
@@ -3532,29 +3693,33 @@ impl<'de> serde::de::DeserializeSeed<'de>
                             }
                         }
                         Field::Date => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let some = r#date.get_or_insert(Default::default());
                                 if some.value.is_some() {
                                     return Err(serde::de::Error::duplicate_field("date"));
                                 }
-                                let value: _ = map_access.next_value()?;
-                                some.value = Some(value);
+                                some.value = Some(map_access.next_value()?);
                             } else {
                                 if r#date.is_some() {
                                     return Err(serde::de::Error::duplicate_field("date"));
                                 }
-                                r#date = Some(map_access.next_value_seed(
-                                    self.0.transmute::<fhirbolt_model::r4b::types::DateTime>(),
-                                )?);
+                                let _context: &mut DeserializationContext<
+                                    fhirbolt_model::r4b::types::DateTime,
+                                > = self.0.transmute();
+                                r#date = Some(map_access.next_value_seed(&mut *_context)?);
                             }
                         }
                         Field::DatePrimitiveElement => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let some = r#date.get_or_insert(Default::default());
                                 if some.id.is_some() || !some.extension.is_empty() {
                                     return Err(serde::de::Error::duplicate_field("_date"));
                                 }
-                                let super :: super :: serde_helpers :: PrimitiveElementOwned { id , extension } = map_access . next_value_seed (self . 0 . transmute :: < super :: super :: serde_helpers :: PrimitiveElementOwned > ()) ? ;
+                                use super::super::serde_helpers::PrimitiveElementOwned;
+                                let _context: &mut DeserializationContext<PrimitiveElementOwned> =
+                                    self.0.transmute();
+                                let PrimitiveElementOwned { id, extension } =
+                                    map_access.next_value_seed(&mut *_context)?;
                                 some.id = id;
                                 some.extension = extension;
                             } else {
@@ -3562,29 +3727,33 @@ impl<'de> serde::de::DeserializeSeed<'de>
                             }
                         }
                         Field::Publisher => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let some = r#publisher.get_or_insert(Default::default());
                                 if some.value.is_some() {
                                     return Err(serde::de::Error::duplicate_field("publisher"));
                                 }
-                                let value: _ = map_access.next_value()?;
-                                some.value = Some(value);
+                                some.value = Some(map_access.next_value()?);
                             } else {
                                 if r#publisher.is_some() {
                                     return Err(serde::de::Error::duplicate_field("publisher"));
                                 }
-                                r#publisher = Some(map_access.next_value_seed(
-                                    self.0.transmute::<fhirbolt_model::r4b::types::String>(),
-                                )?);
+                                let _context: &mut DeserializationContext<
+                                    fhirbolt_model::r4b::types::String,
+                                > = self.0.transmute();
+                                r#publisher = Some(map_access.next_value_seed(&mut *_context)?);
                             }
                         }
                         Field::PublisherPrimitiveElement => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let some = r#publisher.get_or_insert(Default::default());
                                 if some.id.is_some() || !some.extension.is_empty() {
                                     return Err(serde::de::Error::duplicate_field("_publisher"));
                                 }
-                                let super :: super :: serde_helpers :: PrimitiveElementOwned { id , extension } = map_access . next_value_seed (self . 0 . transmute :: < super :: super :: serde_helpers :: PrimitiveElementOwned > ()) ? ;
+                                use super::super::serde_helpers::PrimitiveElementOwned;
+                                let _context: &mut DeserializationContext<PrimitiveElementOwned> =
+                                    self.0.transmute();
+                                let PrimitiveElementOwned { id, extension } =
+                                    map_access.next_value_seed(&mut *_context)?;
                                 some.id = id;
                                 some.extension = extension;
                             } else {
@@ -3592,46 +3761,50 @@ impl<'de> serde::de::DeserializeSeed<'de>
                             }
                         }
                         Field::Contact => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 if r#contact.is_some() {
                                     return Err(serde::de::Error::duplicate_field("contact"));
                                 }
-                                r#contact = Some (map_access . next_value_seed (self . 0 . transmute :: < Vec < fhirbolt_model :: r4b :: types :: ContactDetail >> ()) ?) ;
+                                let _context: &mut DeserializationContext<
+                                    Vec<fhirbolt_model::r4b::types::ContactDetail>,
+                                > = self.0.transmute();
+                                r#contact = Some(map_access.next_value_seed(&mut *_context)?);
                             } else {
                                 let vec = r#contact.get_or_insert(Default::default());
-                                vec.push(
-                                    map_access.next_value_seed(
-                                        self.0
-                                            .transmute::<fhirbolt_model::r4b::types::ContactDetail>(
-                                            ),
-                                    )?,
-                                );
+                                let _context: &mut DeserializationContext<
+                                    fhirbolt_model::r4b::types::ContactDetail,
+                                > = self.0.transmute();
+                                vec.push(map_access.next_value_seed(&mut *_context)?);
                             }
                         }
                         Field::Description => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let some = r#description.get_or_insert(Default::default());
                                 if some.value.is_some() {
                                     return Err(serde::de::Error::duplicate_field("description"));
                                 }
-                                let value: _ = map_access.next_value()?;
-                                some.value = Some(value);
+                                some.value = Some(map_access.next_value()?);
                             } else {
                                 if r#description.is_some() {
                                     return Err(serde::de::Error::duplicate_field("description"));
                                 }
-                                r#description = Some(map_access.next_value_seed(
-                                    self.0.transmute::<fhirbolt_model::r4b::types::Markdown>(),
-                                )?);
+                                let _context: &mut DeserializationContext<
+                                    fhirbolt_model::r4b::types::Markdown,
+                                > = self.0.transmute();
+                                r#description = Some(map_access.next_value_seed(&mut *_context)?);
                             }
                         }
                         Field::DescriptionPrimitiveElement => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let some = r#description.get_or_insert(Default::default());
                                 if some.id.is_some() || !some.extension.is_empty() {
                                     return Err(serde::de::Error::duplicate_field("_description"));
                                 }
-                                let super :: super :: serde_helpers :: PrimitiveElementOwned { id , extension } = map_access . next_value_seed (self . 0 . transmute :: < super :: super :: serde_helpers :: PrimitiveElementOwned > ()) ? ;
+                                use super::super::serde_helpers::PrimitiveElementOwned;
+                                let _context: &mut DeserializationContext<PrimitiveElementOwned> =
+                                    self.0.transmute();
+                                let PrimitiveElementOwned { id, extension } =
+                                    map_access.next_value_seed(&mut *_context)?;
                                 some.id = id;
                                 some.extension = extension;
                             } else {
@@ -3639,57 +3812,67 @@ impl<'de> serde::de::DeserializeSeed<'de>
                             }
                         }
                         Field::UseContext => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 if r#use_context.is_some() {
                                     return Err(serde::de::Error::duplicate_field("useContext"));
                                 }
-                                r#use_context = Some (map_access . next_value_seed (self . 0 . transmute :: < Vec < fhirbolt_model :: r4b :: types :: UsageContext >> ()) ?) ;
+                                let _context: &mut DeserializationContext<
+                                    Vec<fhirbolt_model::r4b::types::UsageContext>,
+                                > = self.0.transmute();
+                                r#use_context = Some(map_access.next_value_seed(&mut *_context)?);
                             } else {
                                 let vec = r#use_context.get_or_insert(Default::default());
-                                vec.push(
-                                    map_access.next_value_seed(
-                                        self.0
-                                            .transmute::<fhirbolt_model::r4b::types::UsageContext>(
-                                            ),
-                                    )?,
-                                );
+                                let _context: &mut DeserializationContext<
+                                    fhirbolt_model::r4b::types::UsageContext,
+                                > = self.0.transmute();
+                                vec.push(map_access.next_value_seed(&mut *_context)?);
                             }
                         }
                         Field::Jurisdiction => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 if r#jurisdiction.is_some() {
                                     return Err(serde::de::Error::duplicate_field("jurisdiction"));
                                 }
-                                r#jurisdiction = Some (map_access . next_value_seed (self . 0 . transmute :: < Vec < fhirbolt_model :: r4b :: types :: CodeableConcept >> ()) ?) ;
+                                let _context: &mut DeserializationContext<
+                                    Vec<fhirbolt_model::r4b::types::CodeableConcept>,
+                                > = self.0.transmute();
+                                r#jurisdiction = Some(map_access.next_value_seed(&mut *_context)?);
                             } else {
                                 let vec = r#jurisdiction.get_or_insert(Default::default());
-                                vec . push (map_access . next_value_seed (self . 0 . transmute :: < fhirbolt_model :: r4b :: types :: CodeableConcept > ()) ?) ;
+                                let _context: &mut DeserializationContext<
+                                    fhirbolt_model::r4b::types::CodeableConcept,
+                                > = self.0.transmute();
+                                vec.push(map_access.next_value_seed(&mut *_context)?);
                             }
                         }
                         Field::Purpose => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let some = r#purpose.get_or_insert(Default::default());
                                 if some.value.is_some() {
                                     return Err(serde::de::Error::duplicate_field("purpose"));
                                 }
-                                let value: _ = map_access.next_value()?;
-                                some.value = Some(value);
+                                some.value = Some(map_access.next_value()?);
                             } else {
                                 if r#purpose.is_some() {
                                     return Err(serde::de::Error::duplicate_field("purpose"));
                                 }
-                                r#purpose = Some(map_access.next_value_seed(
-                                    self.0.transmute::<fhirbolt_model::r4b::types::Markdown>(),
-                                )?);
+                                let _context: &mut DeserializationContext<
+                                    fhirbolt_model::r4b::types::Markdown,
+                                > = self.0.transmute();
+                                r#purpose = Some(map_access.next_value_seed(&mut *_context)?);
                             }
                         }
                         Field::PurposePrimitiveElement => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let some = r#purpose.get_or_insert(Default::default());
                                 if some.id.is_some() || !some.extension.is_empty() {
                                     return Err(serde::de::Error::duplicate_field("_purpose"));
                                 }
-                                let super :: super :: serde_helpers :: PrimitiveElementOwned { id , extension } = map_access . next_value_seed (self . 0 . transmute :: < super :: super :: serde_helpers :: PrimitiveElementOwned > ()) ? ;
+                                use super::super::serde_helpers::PrimitiveElementOwned;
+                                let _context: &mut DeserializationContext<PrimitiveElementOwned> =
+                                    self.0.transmute();
+                                let PrimitiveElementOwned { id, extension } =
+                                    map_access.next_value_seed(&mut *_context)?;
                                 some.id = id;
                                 some.extension = extension;
                             } else {
@@ -3697,29 +3880,33 @@ impl<'de> serde::de::DeserializeSeed<'de>
                             }
                         }
                         Field::Copyright => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let some = r#copyright.get_or_insert(Default::default());
                                 if some.value.is_some() {
                                     return Err(serde::de::Error::duplicate_field("copyright"));
                                 }
-                                let value: _ = map_access.next_value()?;
-                                some.value = Some(value);
+                                some.value = Some(map_access.next_value()?);
                             } else {
                                 if r#copyright.is_some() {
                                     return Err(serde::de::Error::duplicate_field("copyright"));
                                 }
-                                r#copyright = Some(map_access.next_value_seed(
-                                    self.0.transmute::<fhirbolt_model::r4b::types::Markdown>(),
-                                )?);
+                                let _context: &mut DeserializationContext<
+                                    fhirbolt_model::r4b::types::Markdown,
+                                > = self.0.transmute();
+                                r#copyright = Some(map_access.next_value_seed(&mut *_context)?);
                             }
                         }
                         Field::CopyrightPrimitiveElement => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let some = r#copyright.get_or_insert(Default::default());
                                 if some.id.is_some() || !some.extension.is_empty() {
                                     return Err(serde::de::Error::duplicate_field("_copyright"));
                                 }
-                                let super :: super :: serde_helpers :: PrimitiveElementOwned { id , extension } = map_access . next_value_seed (self . 0 . transmute :: < super :: super :: serde_helpers :: PrimitiveElementOwned > ()) ? ;
+                                use super::super::serde_helpers::PrimitiveElementOwned;
+                                let _context: &mut DeserializationContext<PrimitiveElementOwned> =
+                                    self.0.transmute();
+                                let PrimitiveElementOwned { id, extension } =
+                                    map_access.next_value_seed(&mut *_context)?;
                                 some.id = id;
                                 some.extension = extension;
                             } else {
@@ -3727,31 +3914,36 @@ impl<'de> serde::de::DeserializeSeed<'de>
                             }
                         }
                         Field::CaseSensitive => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let some = r#case_sensitive.get_or_insert(Default::default());
                                 if some.value.is_some() {
                                     return Err(serde::de::Error::duplicate_field("caseSensitive"));
                                 }
-                                let value: _ = map_access.next_value()?;
-                                some.value = Some(value);
+                                some.value = Some(map_access.next_value()?);
                             } else {
                                 if r#case_sensitive.is_some() {
                                     return Err(serde::de::Error::duplicate_field("caseSensitive"));
                                 }
-                                r#case_sensitive = Some(map_access.next_value_seed(
-                                    self.0.transmute::<fhirbolt_model::r4b::types::Boolean>(),
-                                )?);
+                                let _context: &mut DeserializationContext<
+                                    fhirbolt_model::r4b::types::Boolean,
+                                > = self.0.transmute();
+                                r#case_sensitive =
+                                    Some(map_access.next_value_seed(&mut *_context)?);
                             }
                         }
                         Field::CaseSensitivePrimitiveElement => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let some = r#case_sensitive.get_or_insert(Default::default());
                                 if some.id.is_some() || !some.extension.is_empty() {
                                     return Err(serde::de::Error::duplicate_field(
                                         "_caseSensitive",
                                     ));
                                 }
-                                let super :: super :: serde_helpers :: PrimitiveElementOwned { id , extension } = map_access . next_value_seed (self . 0 . transmute :: < super :: super :: serde_helpers :: PrimitiveElementOwned > ()) ? ;
+                                use super::super::serde_helpers::PrimitiveElementOwned;
+                                let _context: &mut DeserializationContext<PrimitiveElementOwned> =
+                                    self.0.transmute();
+                                let PrimitiveElementOwned { id, extension } =
+                                    map_access.next_value_seed(&mut *_context)?;
                                 some.id = id;
                                 some.extension = extension;
                             } else {
@@ -3759,29 +3951,33 @@ impl<'de> serde::de::DeserializeSeed<'de>
                             }
                         }
                         Field::ValueSet => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let some = r#value_set.get_or_insert(Default::default());
                                 if some.value.is_some() {
                                     return Err(serde::de::Error::duplicate_field("valueSet"));
                                 }
-                                let value: _ = map_access.next_value()?;
-                                some.value = Some(value);
+                                some.value = Some(map_access.next_value()?);
                             } else {
                                 if r#value_set.is_some() {
                                     return Err(serde::de::Error::duplicate_field("valueSet"));
                                 }
-                                r#value_set = Some(map_access.next_value_seed(
-                                    self.0.transmute::<fhirbolt_model::r4b::types::Canonical>(),
-                                )?);
+                                let _context: &mut DeserializationContext<
+                                    fhirbolt_model::r4b::types::Canonical,
+                                > = self.0.transmute();
+                                r#value_set = Some(map_access.next_value_seed(&mut *_context)?);
                             }
                         }
                         Field::ValueSetPrimitiveElement => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let some = r#value_set.get_or_insert(Default::default());
                                 if some.id.is_some() || !some.extension.is_empty() {
                                     return Err(serde::de::Error::duplicate_field("_valueSet"));
                                 }
-                                let super :: super :: serde_helpers :: PrimitiveElementOwned { id , extension } = map_access . next_value_seed (self . 0 . transmute :: < super :: super :: serde_helpers :: PrimitiveElementOwned > ()) ? ;
+                                use super::super::serde_helpers::PrimitiveElementOwned;
+                                let _context: &mut DeserializationContext<PrimitiveElementOwned> =
+                                    self.0.transmute();
+                                let PrimitiveElementOwned { id, extension } =
+                                    map_access.next_value_seed(&mut *_context)?;
                                 some.id = id;
                                 some.extension = extension;
                             } else {
@@ -3789,35 +3985,40 @@ impl<'de> serde::de::DeserializeSeed<'de>
                             }
                         }
                         Field::HierarchyMeaning => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let some = r#hierarchy_meaning.get_or_insert(Default::default());
                                 if some.value.is_some() {
                                     return Err(serde::de::Error::duplicate_field(
                                         "hierarchyMeaning",
                                     ));
                                 }
-                                let value: _ = map_access.next_value()?;
-                                some.value = Some(value);
+                                some.value = Some(map_access.next_value()?);
                             } else {
                                 if r#hierarchy_meaning.is_some() {
                                     return Err(serde::de::Error::duplicate_field(
                                         "hierarchyMeaning",
                                     ));
                                 }
-                                r#hierarchy_meaning = Some(map_access.next_value_seed(
-                                    self.0.transmute::<fhirbolt_model::r4b::types::Code>(),
-                                )?);
+                                let _context: &mut DeserializationContext<
+                                    fhirbolt_model::r4b::types::Code,
+                                > = self.0.transmute();
+                                r#hierarchy_meaning =
+                                    Some(map_access.next_value_seed(&mut *_context)?);
                             }
                         }
                         Field::HierarchyMeaningPrimitiveElement => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let some = r#hierarchy_meaning.get_or_insert(Default::default());
                                 if some.id.is_some() || !some.extension.is_empty() {
                                     return Err(serde::de::Error::duplicate_field(
                                         "_hierarchyMeaning",
                                     ));
                                 }
-                                let super :: super :: serde_helpers :: PrimitiveElementOwned { id , extension } = map_access . next_value_seed (self . 0 . transmute :: < super :: super :: serde_helpers :: PrimitiveElementOwned > ()) ? ;
+                                use super::super::serde_helpers::PrimitiveElementOwned;
+                                let _context: &mut DeserializationContext<PrimitiveElementOwned> =
+                                    self.0.transmute();
+                                let PrimitiveElementOwned { id, extension } =
+                                    map_access.next_value_seed(&mut *_context)?;
                                 some.id = id;
                                 some.extension = extension;
                             } else {
@@ -3825,31 +4026,35 @@ impl<'de> serde::de::DeserializeSeed<'de>
                             }
                         }
                         Field::Compositional => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let some = r#compositional.get_or_insert(Default::default());
                                 if some.value.is_some() {
                                     return Err(serde::de::Error::duplicate_field("compositional"));
                                 }
-                                let value: _ = map_access.next_value()?;
-                                some.value = Some(value);
+                                some.value = Some(map_access.next_value()?);
                             } else {
                                 if r#compositional.is_some() {
                                     return Err(serde::de::Error::duplicate_field("compositional"));
                                 }
-                                r#compositional = Some(map_access.next_value_seed(
-                                    self.0.transmute::<fhirbolt_model::r4b::types::Boolean>(),
-                                )?);
+                                let _context: &mut DeserializationContext<
+                                    fhirbolt_model::r4b::types::Boolean,
+                                > = self.0.transmute();
+                                r#compositional = Some(map_access.next_value_seed(&mut *_context)?);
                             }
                         }
                         Field::CompositionalPrimitiveElement => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let some = r#compositional.get_or_insert(Default::default());
                                 if some.id.is_some() || !some.extension.is_empty() {
                                     return Err(serde::de::Error::duplicate_field(
                                         "_compositional",
                                     ));
                                 }
-                                let super :: super :: serde_helpers :: PrimitiveElementOwned { id , extension } = map_access . next_value_seed (self . 0 . transmute :: < super :: super :: serde_helpers :: PrimitiveElementOwned > ()) ? ;
+                                use super::super::serde_helpers::PrimitiveElementOwned;
+                                let _context: &mut DeserializationContext<PrimitiveElementOwned> =
+                                    self.0.transmute();
+                                let PrimitiveElementOwned { id, extension } =
+                                    map_access.next_value_seed(&mut *_context)?;
                                 some.id = id;
                                 some.extension = extension;
                             } else {
@@ -3857,31 +4062,36 @@ impl<'de> serde::de::DeserializeSeed<'de>
                             }
                         }
                         Field::VersionNeeded => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let some = r#version_needed.get_or_insert(Default::default());
                                 if some.value.is_some() {
                                     return Err(serde::de::Error::duplicate_field("versionNeeded"));
                                 }
-                                let value: _ = map_access.next_value()?;
-                                some.value = Some(value);
+                                some.value = Some(map_access.next_value()?);
                             } else {
                                 if r#version_needed.is_some() {
                                     return Err(serde::de::Error::duplicate_field("versionNeeded"));
                                 }
-                                r#version_needed = Some(map_access.next_value_seed(
-                                    self.0.transmute::<fhirbolt_model::r4b::types::Boolean>(),
-                                )?);
+                                let _context: &mut DeserializationContext<
+                                    fhirbolt_model::r4b::types::Boolean,
+                                > = self.0.transmute();
+                                r#version_needed =
+                                    Some(map_access.next_value_seed(&mut *_context)?);
                             }
                         }
                         Field::VersionNeededPrimitiveElement => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let some = r#version_needed.get_or_insert(Default::default());
                                 if some.id.is_some() || !some.extension.is_empty() {
                                     return Err(serde::de::Error::duplicate_field(
                                         "_versionNeeded",
                                     ));
                                 }
-                                let super :: super :: serde_helpers :: PrimitiveElementOwned { id , extension } = map_access . next_value_seed (self . 0 . transmute :: < super :: super :: serde_helpers :: PrimitiveElementOwned > ()) ? ;
+                                use super::super::serde_helpers::PrimitiveElementOwned;
+                                let _context: &mut DeserializationContext<PrimitiveElementOwned> =
+                                    self.0.transmute();
+                                let PrimitiveElementOwned { id, extension } =
+                                    map_access.next_value_seed(&mut *_context)?;
                                 some.id = id;
                                 some.extension = extension;
                             } else {
@@ -3889,29 +4099,33 @@ impl<'de> serde::de::DeserializeSeed<'de>
                             }
                         }
                         Field::Content => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let some = r#content.get_or_insert(Default::default());
                                 if some.value.is_some() {
                                     return Err(serde::de::Error::duplicate_field("content"));
                                 }
-                                let value: _ = map_access.next_value()?;
-                                some.value = Some(value);
+                                some.value = Some(map_access.next_value()?);
                             } else {
                                 if r#content.is_some() {
                                     return Err(serde::de::Error::duplicate_field("content"));
                                 }
-                                r#content = Some(map_access.next_value_seed(
-                                    self.0.transmute::<fhirbolt_model::r4b::types::Code>(),
-                                )?);
+                                let _context: &mut DeserializationContext<
+                                    fhirbolt_model::r4b::types::Code,
+                                > = self.0.transmute();
+                                r#content = Some(map_access.next_value_seed(&mut *_context)?);
                             }
                         }
                         Field::ContentPrimitiveElement => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let some = r#content.get_or_insert(Default::default());
                                 if some.id.is_some() || !some.extension.is_empty() {
                                     return Err(serde::de::Error::duplicate_field("_content"));
                                 }
-                                let super :: super :: serde_helpers :: PrimitiveElementOwned { id , extension } = map_access . next_value_seed (self . 0 . transmute :: < super :: super :: serde_helpers :: PrimitiveElementOwned > ()) ? ;
+                                use super::super::serde_helpers::PrimitiveElementOwned;
+                                let _context: &mut DeserializationContext<PrimitiveElementOwned> =
+                                    self.0.transmute();
+                                let PrimitiveElementOwned { id, extension } =
+                                    map_access.next_value_seed(&mut *_context)?;
                                 some.id = id;
                                 some.extension = extension;
                             } else {
@@ -3919,29 +4133,33 @@ impl<'de> serde::de::DeserializeSeed<'de>
                             }
                         }
                         Field::Supplements => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let some = r#supplements.get_or_insert(Default::default());
                                 if some.value.is_some() {
                                     return Err(serde::de::Error::duplicate_field("supplements"));
                                 }
-                                let value: _ = map_access.next_value()?;
-                                some.value = Some(value);
+                                some.value = Some(map_access.next_value()?);
                             } else {
                                 if r#supplements.is_some() {
                                     return Err(serde::de::Error::duplicate_field("supplements"));
                                 }
-                                r#supplements = Some(map_access.next_value_seed(
-                                    self.0.transmute::<fhirbolt_model::r4b::types::Canonical>(),
-                                )?);
+                                let _context: &mut DeserializationContext<
+                                    fhirbolt_model::r4b::types::Canonical,
+                                > = self.0.transmute();
+                                r#supplements = Some(map_access.next_value_seed(&mut *_context)?);
                             }
                         }
                         Field::SupplementsPrimitiveElement => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let some = r#supplements.get_or_insert(Default::default());
                                 if some.id.is_some() || !some.extension.is_empty() {
                                     return Err(serde::de::Error::duplicate_field("_supplements"));
                                 }
-                                let super :: super :: serde_helpers :: PrimitiveElementOwned { id , extension } = map_access . next_value_seed (self . 0 . transmute :: < super :: super :: serde_helpers :: PrimitiveElementOwned > ()) ? ;
+                                use super::super::serde_helpers::PrimitiveElementOwned;
+                                let _context: &mut DeserializationContext<PrimitiveElementOwned> =
+                                    self.0.transmute();
+                                let PrimitiveElementOwned { id, extension } =
+                                    map_access.next_value_seed(&mut *_context)?;
                                 some.id = id;
                                 some.extension = extension;
                             } else {
@@ -3949,32 +4167,33 @@ impl<'de> serde::de::DeserializeSeed<'de>
                             }
                         }
                         Field::Count => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let some = r#count.get_or_insert(Default::default());
                                 if some.value.is_some() {
                                     return Err(serde::de::Error::duplicate_field("count"));
                                 }
-                                let value: _ = map_access.next_value()?;
-                                some.value = Some(value);
+                                some.value = Some(map_access.next_value()?);
                             } else {
                                 if r#count.is_some() {
                                     return Err(serde::de::Error::duplicate_field("count"));
                                 }
-                                r#count = Some(
-                                    map_access.next_value_seed(
-                                        self.0
-                                            .transmute::<fhirbolt_model::r4b::types::UnsignedInt>(),
-                                    )?,
-                                );
+                                let _context: &mut DeserializationContext<
+                                    fhirbolt_model::r4b::types::UnsignedInt,
+                                > = self.0.transmute();
+                                r#count = Some(map_access.next_value_seed(&mut *_context)?);
                             }
                         }
                         Field::CountPrimitiveElement => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 let some = r#count.get_or_insert(Default::default());
                                 if some.id.is_some() || !some.extension.is_empty() {
                                     return Err(serde::de::Error::duplicate_field("_count"));
                                 }
-                                let super :: super :: serde_helpers :: PrimitiveElementOwned { id , extension } = map_access . next_value_seed (self . 0 . transmute :: < super :: super :: serde_helpers :: PrimitiveElementOwned > ()) ? ;
+                                use super::super::serde_helpers::PrimitiveElementOwned;
+                                let _context: &mut DeserializationContext<PrimitiveElementOwned> =
+                                    self.0.transmute();
+                                let PrimitiveElementOwned { id, extension } =
+                                    map_access.next_value_seed(&mut *_context)?;
                                 some.id = id;
                                 some.extension = extension;
                             } else {
@@ -3982,57 +4201,54 @@ impl<'de> serde::de::DeserializeSeed<'de>
                             }
                         }
                         Field::Filter => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 if r#filter.is_some() {
                                     return Err(serde::de::Error::duplicate_field("filter"));
                                 }
-                                r#filter =
-                                    Some(
-                                        map_access.next_value_seed(
-                                            self.0.transmute::<Vec<
-                                                fhirbolt_model::r4b::resources::CodeSystemFilter,
-                                            >>(),
-                                        )?,
-                                    );
+                                let _context: &mut DeserializationContext<
+                                    Vec<fhirbolt_model::r4b::resources::CodeSystemFilter>,
+                                > = self.0.transmute();
+                                r#filter = Some(map_access.next_value_seed(&mut *_context)?);
                             } else {
                                 let vec = r#filter.get_or_insert(Default::default());
-                                vec . push (map_access . next_value_seed (self . 0 . transmute :: < fhirbolt_model :: r4b :: resources :: CodeSystemFilter > ()) ?) ;
+                                let _context: &mut DeserializationContext<
+                                    fhirbolt_model::r4b::resources::CodeSystemFilter,
+                                > = self.0.transmute();
+                                vec.push(map_access.next_value_seed(&mut *_context)?);
                             }
                         }
                         Field::Property => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 if r#property.is_some() {
                                     return Err(serde::de::Error::duplicate_field("property"));
                                 }
-                                r#property =
-                                    Some(
-                                        map_access.next_value_seed(
-                                            self.0.transmute::<Vec<
-                                                fhirbolt_model::r4b::resources::CodeSystemProperty,
-                                            >>(),
-                                        )?,
-                                    );
+                                let _context: &mut DeserializationContext<
+                                    Vec<fhirbolt_model::r4b::resources::CodeSystemProperty>,
+                                > = self.0.transmute();
+                                r#property = Some(map_access.next_value_seed(&mut *_context)?);
                             } else {
                                 let vec = r#property.get_or_insert(Default::default());
-                                vec . push (map_access . next_value_seed (self . 0 . transmute :: < fhirbolt_model :: r4b :: resources :: CodeSystemProperty > ()) ?) ;
+                                let _context: &mut DeserializationContext<
+                                    fhirbolt_model::r4b::resources::CodeSystemProperty,
+                                > = self.0.transmute();
+                                vec.push(map_access.next_value_seed(&mut *_context)?);
                             }
                         }
                         Field::Concept => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 if r#concept.is_some() {
                                     return Err(serde::de::Error::duplicate_field("concept"));
                                 }
-                                r#concept =
-                                    Some(
-                                        map_access.next_value_seed(
-                                            self.0.transmute::<Vec<
-                                                fhirbolt_model::r4b::resources::CodeSystemConcept,
-                                            >>(),
-                                        )?,
-                                    );
+                                let _context: &mut DeserializationContext<
+                                    Vec<fhirbolt_model::r4b::resources::CodeSystemConcept>,
+                                > = self.0.transmute();
+                                r#concept = Some(map_access.next_value_seed(&mut *_context)?);
                             } else {
                                 let vec = r#concept.get_or_insert(Default::default());
-                                vec . push (map_access . next_value_seed (self . 0 . transmute :: < fhirbolt_model :: r4b :: resources :: CodeSystemConcept > ()) ?) ;
+                                let _context: &mut DeserializationContext<
+                                    fhirbolt_model::r4b::resources::CodeSystemConcept,
+                                > = self.0.transmute();
+                                vec.push(map_access.next_value_seed(&mut *_context)?);
                             }
                         }
                         Field::Unknown(key) => {
@@ -4043,7 +4259,7 @@ impl<'de> serde::de::DeserializeSeed<'de>
                         }
                     }
                 }
-                Ok(fhirbolt_model::r4b::resources::CodeSystem {
+                Ok(CodeSystem {
                     r#id,
                     r#meta,
                     r#implicit_rules,
@@ -4094,38 +4310,26 @@ impl<'de> serde::de::DeserializeSeed<'de>
         deserializer.deserialize_map(Visitor(self))
     }
 }
-impl<'de> serde::de::DeserializeSeed<'de>
-    for &mut crate::context::de::DeserializationContext<
-        Box<fhirbolt_model::r4b::resources::CodeSystem>,
-    >
-{
-    type Value = Box<fhirbolt_model::r4b::resources::CodeSystem>;
+impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Box<CodeSystem>> {
+    type Value = Box<CodeSystem>;
     fn deserialize<D>(self, deserializer: D) -> Result<Self::Value, D::Error>
     where
         D: serde::de::Deserializer<'de>,
     {
-        self.transmute::<fhirbolt_model::r4b::resources::CodeSystem>()
+        self.transmute::<CodeSystem>()
             .deserialize(deserializer)
             .map(Box::new)
     }
 }
-impl<'de> serde::de::DeserializeSeed<'de>
-    for &mut crate::context::de::DeserializationContext<
-        Vec<fhirbolt_model::r4b::resources::CodeSystem>,
-    >
-{
-    type Value = Vec<fhirbolt_model::r4b::resources::CodeSystem>;
+impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Vec<CodeSystem>> {
+    type Value = Vec<CodeSystem>;
     fn deserialize<D>(self, deserializer: D) -> Result<Self::Value, D::Error>
     where
         D: serde::de::Deserializer<'de>,
     {
-        struct Visitor<'a>(
-            &'a mut crate::context::de::DeserializationContext<
-                Vec<fhirbolt_model::r4b::resources::CodeSystem>,
-            >,
-        );
+        struct Visitor<'a>(&'a mut DeserializationContext<Vec<CodeSystem>>);
         impl<'de> serde::de::Visitor<'de> for Visitor<'_> {
-            type Value = Vec<fhirbolt_model::r4b::resources::CodeSystem>;
+            type Value = Vec<CodeSystem>;
             fn expecting(&self, formatter: &mut std::fmt::Formatter) -> std::fmt::Result {
                 formatter.write_str("a sequence")
             }
@@ -4134,10 +4338,8 @@ impl<'de> serde::de::DeserializeSeed<'de>
                 A: serde::de::SeqAccess<'de>,
             {
                 let mut values = Vec::new();
-                while let Some(value) = seq.next_element_seed(
-                    self.0
-                        .transmute::<fhirbolt_model::r4b::resources::CodeSystem>(),
-                )? {
+                let _context: &mut DeserializationContext<CodeSystem> = self.0.transmute();
+                while let Some(value) = seq.next_element_seed(&mut *_context)? {
                     values.push(value);
                 }
                 Ok(values)

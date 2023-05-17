@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-15 by fhirbolt-codegen v0.8.0
 #[doc = "An amount of service being requested which can be a quantity ( for example $1,500 home modification), a ratio ( for example, 20 half day visits per month), or a range (2.0 to 1.8 Gy per fraction)."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum ServiceRequestQuantity {
@@ -29,7 +29,7 @@ pub enum ServiceRequestAsNeeded {
 #[derive(Debug, Clone, PartialEq)]
 pub struct ServiceRequest {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
-    pub r#id: Option<std::string::String>,
+    pub r#id: Option<Box<super::super::types::Id>>,
     #[doc = "The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content might not always be associated with version changes to the resource."]
     pub r#meta: Option<Box<super::super::types::Meta>>,
     #[doc = "A reference to a set of rules that were followed when the resource was constructed, and which must be understood when processing the content. Often, this is a reference to an implementation guide that defines the special rules along with other profiles etc."]
@@ -111,6 +111,7 @@ pub struct ServiceRequest {
     #[doc = "Key events in the history of the request."]
     pub r#relevant_history: Vec<super::super::types::Reference>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for ServiceRequest {
     fn default() -> Self {
         Self {
@@ -128,15 +129,13 @@ impl Default for ServiceRequest {
             r#based_on: Default::default(),
             r#replaces: Default::default(),
             r#requisition: Default::default(),
-            r#status: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#status: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
-            r#intent: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#intent: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#category: Default::default(),
             r#priority: Default::default(),
@@ -144,11 +143,10 @@ impl Default for ServiceRequest {
             r#code: Default::default(),
             r#order_detail: Default::default(),
             r#quantity: Default::default(),
-            r#subject: {
-                let mut default: Box<super::super::types::Reference> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#subject: Box::new(super::super::types::Reference {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
             r#encounter: Default::default(),
             r#occurrence: Default::default(),
             r#as_needed: Default::default(),

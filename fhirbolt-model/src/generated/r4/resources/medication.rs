@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-15 by fhirbolt-codegen v0.8.0
 #[doc = "The actual ingredient - either a substance (simple ingredient) or another medication of a medication."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum MedicationIngredientItem {
@@ -23,6 +23,7 @@ pub struct MedicationIngredient {
     #[doc = "Specifies how many (or how much) of the items there are in this Medication.  For example, 250 mg per tablet.  This is expressed as a ratio where the numerator is 250mg and the denominator is 1 tablet."]
     pub r#strength: Option<Box<super::super::types::Ratio>>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for MedicationIngredient {
     fn default() -> Self {
         Self {
@@ -49,6 +50,7 @@ pub struct MedicationBatch {
     #[doc = "When this specific batch of product will expire."]
     pub r#expiration_date: Option<super::super::types::DateTime>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for MedicationBatch {
     fn default() -> Self {
         Self {
@@ -64,7 +66,7 @@ impl Default for MedicationBatch {
 #[derive(Debug, Clone, PartialEq)]
 pub struct Medication {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
-    pub r#id: Option<std::string::String>,
+    pub r#id: Option<Box<super::super::types::Id>>,
     #[doc = "The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content might not always be associated with version changes to the resource."]
     pub r#meta: Option<Box<super::super::types::Meta>>,
     #[doc = "A reference to a set of rules that were followed when the resource was constructed, and which must be understood when processing the content. Often, this is a reference to an implementation guide that defines the special rules along with other profiles etc."]
@@ -96,6 +98,7 @@ pub struct Medication {
     #[doc = "Information that only applies to packages (not products)."]
     pub r#batch: Option<MedicationBatch>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for Medication {
     fn default() -> Self {
         Self {

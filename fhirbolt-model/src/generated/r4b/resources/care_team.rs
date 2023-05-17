@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-15 by fhirbolt-codegen v0.8.0
 #[doc = "Identifies all people and organizations who are expected to be involved in the care team."]
 #[derive(Debug, Clone, PartialEq)]
 pub struct CareTeamParticipant {
@@ -17,6 +17,7 @@ pub struct CareTeamParticipant {
     #[doc = "Indicates when the specific member or organization did (or is intended to) come into effect and end."]
     pub r#period: Option<Box<super::super::types::Period>>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for CareTeamParticipant {
     fn default() -> Self {
         Self {
@@ -34,7 +35,7 @@ impl Default for CareTeamParticipant {
 #[derive(Debug, Clone, PartialEq)]
 pub struct CareTeam {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
-    pub r#id: Option<std::string::String>,
+    pub r#id: Option<Box<super::super::types::Id>>,
     #[doc = "The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content might not always be associated with version changes to the resource."]
     pub r#meta: Option<Box<super::super::types::Meta>>,
     #[doc = "A reference to a set of rules that were followed when the resource was constructed, and which must be understood when processing the content. Often, this is a reference to an implementation guide that defines the special rules along with other profiles etc."]
@@ -76,6 +77,7 @@ pub struct CareTeam {
     #[doc = "Comments made about the CareTeam."]
     pub r#note: Vec<super::super::types::Annotation>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for CareTeam {
     fn default() -> Self {
         Self {

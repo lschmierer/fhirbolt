@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-15 by fhirbolt-codegen v0.8.0
 #[doc = "How often the device was used."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum DeviceUsageTiming {
@@ -22,17 +22,17 @@ pub struct DeviceUsageAdherence {
     #[doc = "Reason for adherence type."]
     pub r#reason: Vec<super::super::types::CodeableConcept>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for DeviceUsageAdherence {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#code: {
-                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#code: Box::new(super::super::types::CodeableConcept {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
             r#reason: Default::default(),
         }
     }
@@ -41,7 +41,7 @@ impl Default for DeviceUsageAdherence {
 #[derive(Debug, Clone, PartialEq)]
 pub struct DeviceUsage {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
-    pub r#id: Option<std::string::String>,
+    pub r#id: Option<Box<super::super::types::Id>>,
     #[doc = "The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content might not always be associated with version changes to the resource."]
     pub r#meta: Option<Box<super::super::types::Meta>>,
     #[doc = "A reference to a set of rules that were followed when the resource was constructed, and which must be understood when processing the content. Often, this is a reference to an implementation guide that defines the special rules along with other profiles etc."]
@@ -91,6 +91,7 @@ pub struct DeviceUsage {
     #[doc = "Details about the device statement that were not represented at all or sufficiently in one of the attributes provided in a class. These may include for example a comment, an instruction, or a note associated with the statement."]
     pub r#note: Vec<super::super::types::Annotation>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for DeviceUsage {
     fn default() -> Self {
         Self {
@@ -104,17 +105,15 @@ impl Default for DeviceUsage {
             r#modifier_extension: Default::default(),
             r#identifier: Default::default(),
             r#based_on: Default::default(),
-            r#status: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#status: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#category: Default::default(),
-            r#patient: {
-                let mut default: Box<super::super::types::Reference> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#patient: Box::new(super::super::types::Reference {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
             r#derived_from: Default::default(),
             r#context: Default::default(),
             r#timing: Default::default(),
@@ -123,11 +122,10 @@ impl Default for DeviceUsage {
             r#usage_reason: Default::default(),
             r#adherence: Default::default(),
             r#information_source: Default::default(),
-            r#device: {
-                let mut default: Box<super::super::types::CodeableReference> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#device: Box::new(super::super::types::CodeableReference {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
             r#reason: Default::default(),
             r#body_site: Default::default(),
             r#note: Default::default(),

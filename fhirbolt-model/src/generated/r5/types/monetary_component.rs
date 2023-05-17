@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-15 by fhirbolt-codegen v0.8.0
 #[doc = "MonetaryComponent Type: Availability data for an {item}."]
 #[derive(Debug, Clone, PartialEq)]
 pub struct MonetaryComponent {
@@ -15,15 +15,15 @@ pub struct MonetaryComponent {
     #[doc = "Explicit value amount to be used."]
     pub r#amount: Option<Box<super::super::types::Money>>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for MonetaryComponent {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
-            r#type: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#type: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#code: Default::default(),
             r#factor: Default::default(),

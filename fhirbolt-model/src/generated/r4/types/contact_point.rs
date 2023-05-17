@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-15 by fhirbolt-codegen v0.8.0
 #[doc = "Base StructureDefinition for ContactPoint Type: Details for all kinds of technology mediated contact points for a person or organization, including telephone, email, etc.\n\nNeed to track phone, fax, mobile, sms numbers, email addresses, twitter tags, etc."]
 #[derive(Debug, Clone, PartialEq)]
 pub struct ContactPoint {
@@ -17,6 +17,7 @@ pub struct ContactPoint {
     #[doc = "Time period when the contact point was/is in use."]
     pub r#period: Option<Box<super::super::types::Period>>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for ContactPoint {
     fn default() -> Self {
         Self {

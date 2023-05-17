@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-15 by fhirbolt-codegen v0.8.0
 #[doc = "The contact for the health insurance product for a certain purpose."]
 #[derive(Debug, Clone, PartialEq)]
 pub struct InsurancePlanContact {
@@ -17,6 +17,7 @@ pub struct InsurancePlanContact {
     #[doc = "Visiting or postal addresses for the contact."]
     pub r#address: Option<Box<super::super::types::Address>>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for InsurancePlanContact {
     fn default() -> Self {
         Self {
@@ -44,6 +45,7 @@ pub struct InsurancePlanCoverageBenefitLimit {
     #[doc = "The specific limit on the benefit."]
     pub r#code: Option<Box<super::super::types::CodeableConcept>>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for InsurancePlanCoverageBenefitLimit {
     fn default() -> Self {
         Self {
@@ -71,17 +73,17 @@ pub struct InsurancePlanCoverageBenefit {
     #[doc = "The specific limits on the benefit."]
     pub r#limit: Vec<InsurancePlanCoverageBenefitLimit>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for InsurancePlanCoverageBenefit {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#type: {
-                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#type: Box::new(super::super::types::CodeableConcept {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
             r#requirement: Default::default(),
             r#limit: Default::default(),
         }
@@ -103,17 +105,17 @@ pub struct InsurancePlanCoverage {
     #[doc = "Specific benefits under this type of coverage."]
     pub r#benefit: Vec<InsurancePlanCoverageBenefit>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for InsurancePlanCoverage {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#type: {
-                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#type: Box::new(super::super::types::CodeableConcept {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
             r#network: Default::default(),
             r#benefit: Default::default(),
         }
@@ -137,6 +139,7 @@ pub struct InsurancePlanPlanGeneralCost {
     #[doc = "Additional information about the general costs associated with this plan."]
     pub r#comment: Option<super::super::types::String>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for InsurancePlanPlanGeneralCost {
     fn default() -> Self {
         Self {
@@ -168,17 +171,17 @@ pub struct InsurancePlanPlanSpecificCostBenefitCost {
     #[doc = "The actual cost value. (some of the costs may be represented as percentages rather than currency, e.g. 10% coinsurance)."]
     pub r#value: Option<Box<super::super::types::Quantity>>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for InsurancePlanPlanSpecificCostBenefitCost {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#type: {
-                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#type: Box::new(super::super::types::CodeableConcept {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
             r#applicability: Default::default(),
             r#qualifiers: Default::default(),
             r#value: Default::default(),
@@ -199,17 +202,17 @@ pub struct InsurancePlanPlanSpecificCostBenefit {
     #[doc = "List of the costs associated with a specific benefit."]
     pub r#cost: Vec<InsurancePlanPlanSpecificCostBenefitCost>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for InsurancePlanPlanSpecificCostBenefit {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#type: {
-                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#type: Box::new(super::super::types::CodeableConcept {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
             r#cost: Default::default(),
         }
     }
@@ -228,17 +231,17 @@ pub struct InsurancePlanPlanSpecificCost {
     #[doc = "List of the specific benefits under this category of benefit."]
     pub r#benefit: Vec<InsurancePlanPlanSpecificCostBenefit>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for InsurancePlanPlanSpecificCost {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#category: {
-                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#category: Box::new(super::super::types::CodeableConcept {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
             r#benefit: Default::default(),
         }
     }
@@ -265,6 +268,7 @@ pub struct InsurancePlanPlan {
     #[doc = "Costs associated with the coverage provided by the product."]
     pub r#specific_cost: Vec<InsurancePlanPlanSpecificCost>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for InsurancePlanPlan {
     fn default() -> Self {
         Self {
@@ -284,7 +288,7 @@ impl Default for InsurancePlanPlan {
 #[derive(Debug, Clone, PartialEq)]
 pub struct InsurancePlan {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
-    pub r#id: Option<std::string::String>,
+    pub r#id: Option<Box<super::super::types::Id>>,
     #[doc = "The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content might not always be associated with version changes to the resource."]
     pub r#meta: Option<Box<super::super::types::Meta>>,
     #[doc = "A reference to a set of rules that were followed when the resource was constructed, and which must be understood when processing the content. Often, this is a reference to an implementation guide that defines the special rules along with other profiles etc."]
@@ -328,6 +332,7 @@ pub struct InsurancePlan {
     #[doc = "Details about an insurance plan."]
     pub r#plan: Vec<InsurancePlanPlan>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for InsurancePlan {
     fn default() -> Self {
         Self {

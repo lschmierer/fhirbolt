@@ -5,9 +5,10 @@ use crate::ir::{RustFhirStruct, RustFhirStructField};
 
 pub fn implement_default(r#struct: &RustFhirStruct) -> TokenStream {
     let name_ident = format_ident!("{}", r#struct.struct_name);
-    let fields_tokens = r#struct.fields.iter().map(|f| generate_field(f));
+    let fields_tokens = r#struct.fields.iter().map(generate_field);
 
     quote! {
+        #[allow(clippy::derivable_impls)]
         impl Default for #name_ident {
             fn default() -> Self {
                 Self {
@@ -37,18 +38,21 @@ fn generate_field(field: &RustFhirStructField) -> TokenStream {
             || field.r#type.name.starts_with("resources"))
         {
             type_tokens
-        } else if field.r#type.r#box {
-            quote! { Box<super::super::#type_tokens> }
         } else {
             quote! { super::super::#type_tokens }
         };
 
-        quote! {
-            {
-                let mut default: #type_tokens = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+        let default_tokens = quote! {
+            #type_tokens {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             }
+        };
+
+        if field.r#type.r#box {
+            quote! { Box::new(#default_tokens) }
+        } else {
+            default_tokens
         }
     } else {
         quote! { Default::default() }

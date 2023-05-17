@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-15 by fhirbolt-codegen v0.8.0
 #[doc = "Relevant date for this case."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum RegulatedAuthorizationCaseDate {
@@ -27,6 +27,7 @@ pub struct RegulatedAuthorizationCase {
     #[doc = "A regulatory submission from an organization to a regulator, as part of an assessing case. Multiple applications may occur over time, with more or different information to support or modify the submission or the authorization. The applications can be considered as steps within the longer running case or procedure for this authorization process."]
     pub r#application: Vec<RegulatedAuthorizationCase>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for RegulatedAuthorizationCase {
     fn default() -> Self {
         Self {
@@ -45,7 +46,7 @@ impl Default for RegulatedAuthorizationCase {
 #[derive(Debug, Clone, PartialEq)]
 pub struct RegulatedAuthorization {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
-    pub r#id: Option<std::string::String>,
+    pub r#id: Option<Box<super::super::types::Id>>,
     #[doc = "The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content might not always be associated with version changes to the resource."]
     pub r#meta: Option<Box<super::super::types::Meta>>,
     #[doc = "A reference to a set of rules that were followed when the resource was constructed, and which must be understood when processing the content. Often, this is a reference to an implementation guide that defines the special rules along with other profiles etc."]
@@ -91,6 +92,7 @@ pub struct RegulatedAuthorization {
     #[doc = "The case or regulatory procedure for granting or amending a regulated authorization. An authorization is granted in response to submissions/applications by those seeking authorization. A case is the administrative process that deals with the application(s) that relate to this and assesses them. Note: This area is subject to ongoing review and the workgroup is seeking implementer feedback on its use (see link at bottom of page)."]
     pub r#case: Option<RegulatedAuthorizationCase>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for RegulatedAuthorization {
     fn default() -> Self {
         Self {

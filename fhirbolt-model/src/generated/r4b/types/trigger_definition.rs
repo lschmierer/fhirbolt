@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-15 by fhirbolt-codegen v0.8.0
 #[doc = "The timing of the event (if this is a periodic trigger)."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum TriggerDefinitionTiming {
@@ -27,15 +27,15 @@ pub struct TriggerDefinition {
     #[doc = "A boolean-valued expression that is evaluated in the context of the container of the trigger definition and returns whether or not the trigger fires."]
     pub r#condition: Option<Box<super::super::types::Expression>>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for TriggerDefinition {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
-            r#type: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#type: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#name: Default::default(),
             r#timing: Default::default(),

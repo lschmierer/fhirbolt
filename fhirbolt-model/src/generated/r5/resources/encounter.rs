@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-15 by fhirbolt-codegen v0.8.0
 #[doc = "The list of people responsible for providing the service."]
 #[derive(Debug, Clone, PartialEq)]
 pub struct EncounterParticipant {
@@ -15,6 +15,7 @@ pub struct EncounterParticipant {
     #[doc = "Person involved in the encounter, the patient/group is also included here to indicate that the patient was actually participating in the encounter. Not including the patient here covers use cases such as a case meeting between practitioners about a patient - non contact times."]
     pub r#actor: Option<Box<super::super::types::Reference>>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for EncounterParticipant {
     fn default() -> Self {
         Self {
@@ -41,6 +42,7 @@ pub struct EncounterReason {
     #[doc = "Reason the encounter takes place, expressed as a code or a reference to another resource. For admissions, this can be used for a coded admission diagnosis."]
     pub r#value: Vec<super::super::types::CodeableReference>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for EncounterReason {
     fn default() -> Self {
         Self {
@@ -66,6 +68,7 @@ pub struct EncounterDiagnosis {
     #[doc = "Role that this diagnosis has within the encounter (e.g. admission, billing, discharge …)."]
     pub r#use: Vec<super::super::types::CodeableConcept>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for EncounterDiagnosis {
     fn default() -> Self {
         Self {
@@ -99,6 +102,7 @@ pub struct EncounterAdmission {
     #[doc = "Category or kind of location after discharge."]
     pub r#discharge_disposition: Option<Box<super::super::types::CodeableConcept>>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for EncounterAdmission {
     fn default() -> Self {
         Self {
@@ -132,17 +136,17 @@ pub struct EncounterLocation {
     #[doc = "Time period during which the patient was present at the location."]
     pub r#period: Option<Box<super::super::types::Period>>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for EncounterLocation {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#location: {
-                let mut default: Box<super::super::types::Reference> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#location: Box::new(super::super::types::Reference {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
             r#status: Default::default(),
             r#form: Default::default(),
             r#period: Default::default(),
@@ -153,7 +157,7 @@ impl Default for EncounterLocation {
 #[derive(Debug, Clone, PartialEq)]
 pub struct Encounter {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
-    pub r#id: Option<std::string::String>,
+    pub r#id: Option<Box<super::super::types::Id>>,
     #[doc = "The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content might not always be associated with version changes to the resource."]
     pub r#meta: Option<Box<super::super::types::Meta>>,
     #[doc = "A reference to a set of rules that were followed when the resource was constructed, and which must be understood when processing the content. Often, this is a reference to an implementation guide that defines the special rules along with other profiles etc."]
@@ -225,6 +229,7 @@ pub struct Encounter {
     #[doc = "List of locations where  the patient has been during this encounter."]
     pub r#location: Vec<EncounterLocation>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for Encounter {
     fn default() -> Self {
         Self {
@@ -237,10 +242,9 @@ impl Default for Encounter {
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
             r#identifier: Default::default(),
-            r#status: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#status: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#class: Default::default(),
             r#priority: Default::default(),

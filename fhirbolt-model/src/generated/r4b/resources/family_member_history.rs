@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-15 by fhirbolt-codegen v0.8.0
 #[doc = "The actual or approximate date of birth of the relative."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum FamilyMemberHistoryBorn {
@@ -58,17 +58,17 @@ pub struct FamilyMemberHistoryCondition {
     #[doc = "An area where general notes can be placed about this specific condition."]
     pub r#note: Vec<super::super::types::Annotation>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for FamilyMemberHistoryCondition {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#code: {
-                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#code: Box::new(super::super::types::CodeableConcept {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
             r#outcome: Default::default(),
             r#contributed_to_death: Default::default(),
             r#onset: Default::default(),
@@ -80,7 +80,7 @@ impl Default for FamilyMemberHistoryCondition {
 #[derive(Debug, Clone, PartialEq)]
 pub struct FamilyMemberHistory {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
-    pub r#id: Option<std::string::String>,
+    pub r#id: Option<Box<super::super::types::Id>>,
     #[doc = "The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content might not always be associated with version changes to the resource."]
     pub r#meta: Option<Box<super::super::types::Meta>>,
     #[doc = "A reference to a set of rules that were followed when the resource was constructed, and which must be understood when processing the content. Often, this is a reference to an implementation guide that defines the special rules along with other profiles etc."]
@@ -132,6 +132,7 @@ pub struct FamilyMemberHistory {
     #[doc = "The significant Conditions (or condition) that the family member had. This is a repeating section to allow a system to represent more than one condition per resource, though there is nothing stopping multiple resources - one per condition."]
     pub r#condition: Vec<FamilyMemberHistoryCondition>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for FamilyMemberHistory {
     fn default() -> Self {
         Self {
@@ -146,24 +147,21 @@ impl Default for FamilyMemberHistory {
             r#identifier: Default::default(),
             r#instantiates_canonical: Default::default(),
             r#instantiates_uri: Default::default(),
-            r#status: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#status: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#data_absent_reason: Default::default(),
-            r#patient: {
-                let mut default: Box<super::super::types::Reference> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#patient: Box::new(super::super::types::Reference {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
             r#date: Default::default(),
             r#name: Default::default(),
-            r#relationship: {
-                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#relationship: Box::new(super::super::types::CodeableConcept {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
             r#sex: Default::default(),
             r#born: Default::default(),
             r#age: Default::default(),

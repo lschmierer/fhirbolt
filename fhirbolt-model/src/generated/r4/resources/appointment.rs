@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-15 by fhirbolt-codegen v0.8.0
 #[doc = "List of participants involved in the appointment."]
 #[derive(Debug, Clone, PartialEq)]
 pub struct AppointmentParticipant {
@@ -19,6 +19,7 @@ pub struct AppointmentParticipant {
     #[doc = "Participation period of the actor."]
     pub r#period: Option<Box<super::super::types::Period>>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for AppointmentParticipant {
     fn default() -> Self {
         Self {
@@ -28,10 +29,9 @@ impl Default for AppointmentParticipant {
             r#type: Default::default(),
             r#actor: Default::default(),
             r#required: Default::default(),
-            r#status: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#status: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#period: Default::default(),
         }
@@ -41,7 +41,7 @@ impl Default for AppointmentParticipant {
 #[derive(Debug, Clone, PartialEq)]
 pub struct Appointment {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
-    pub r#id: Option<std::string::String>,
+    pub r#id: Option<Box<super::super::types::Id>>,
     #[doc = "The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content might not always be associated with version changes to the resource."]
     pub r#meta: Option<Box<super::super::types::Meta>>,
     #[doc = "A reference to a set of rules that were followed when the resource was constructed, and which must be understood when processing the content. Often, this is a reference to an implementation guide that defines the special rules along with other profiles etc."]
@@ -101,6 +101,7 @@ pub struct Appointment {
     #[doc = "A set of date ranges (potentially including times) that the appointment is preferred to be scheduled within.\n\nThe duration (usually in minutes) could also be provided to indicate the length of the appointment to fill and populate the start/end times for the actual allocated time. However, in other situations the duration may be calculated by the scheduling system."]
     pub r#requested_period: Vec<super::super::types::Period>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for Appointment {
     fn default() -> Self {
         Self {
@@ -113,10 +114,9 @@ impl Default for Appointment {
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
             r#identifier: Default::default(),
-            r#status: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#status: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#cancelation_reason: Default::default(),
             r#service_category: Default::default(),

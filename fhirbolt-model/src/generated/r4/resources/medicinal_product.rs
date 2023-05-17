@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-15 by fhirbolt-codegen v0.8.0
 #[doc = "Condition for which the medicinal use applies."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum MedicinalProductSpecialDesignationIndication {
@@ -21,22 +21,21 @@ pub struct MedicinalProductNameNamePart {
     #[doc = "Idenifying type for this part of the name (e.g. strength part)."]
     pub r#type: Box<super::super::types::Coding>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for MedicinalProductNameNamePart {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#part: {
-                let mut default: super::super::types::String = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#part: super::super::types::String {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
-            r#type: {
-                let mut default: Box<super::super::types::Coding> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#type: Box::new(super::super::types::Coding {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
         }
     }
 }
@@ -56,23 +55,22 @@ pub struct MedicinalProductNameCountryLanguage {
     #[doc = "Language code for this name."]
     pub r#language: Box<super::super::types::CodeableConcept>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for MedicinalProductNameCountryLanguage {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#country: {
-                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#country: Box::new(super::super::types::CodeableConcept {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
             r#jurisdiction: Default::default(),
-            r#language: {
-                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#language: Box::new(super::super::types::CodeableConcept {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
         }
     }
 }
@@ -92,16 +90,16 @@ pub struct MedicinalProductName {
     #[doc = "Country where the name applies."]
     pub r#country_language: Vec<MedicinalProductNameCountryLanguage>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for MedicinalProductName {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#product_name: {
-                let mut default: super::super::types::String = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#product_name: super::super::types::String {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#name_part: Default::default(),
             r#country_language: Default::default(),
@@ -130,6 +128,7 @@ pub struct MedicinalProductManufacturingBusinessOperation {
     #[doc = "A regulator which oversees the operation."]
     pub r#regulator: Option<Box<super::super::types::Reference>>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for MedicinalProductManufacturingBusinessOperation {
     fn default() -> Self {
         Self {
@@ -169,6 +168,7 @@ pub struct MedicinalProductSpecialDesignation {
     #[doc = "Animal species for which this applies."]
     pub r#species: Option<Box<super::super::types::CodeableConcept>>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for MedicinalProductSpecialDesignation {
     fn default() -> Self {
         Self {
@@ -189,7 +189,7 @@ impl Default for MedicinalProductSpecialDesignation {
 #[derive(Debug, Clone, PartialEq)]
 pub struct MedicinalProduct {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
-    pub r#id: Option<std::string::String>,
+    pub r#id: Option<Box<super::super::types::Id>>,
     #[doc = "The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content might not always be associated with version changes to the resource."]
     pub r#meta: Option<Box<super::super::types::Meta>>,
     #[doc = "A reference to a set of rules that were followed when the resource was constructed, and which must be understood when processing the content. Often, this is a reference to an implementation guide that defines the special rules along with other profiles etc."]
@@ -245,6 +245,7 @@ pub struct MedicinalProduct {
     #[doc = "Indicates if the medicinal product has an orphan designation for the treatment of a rare disease."]
     pub r#special_designation: Vec<MedicinalProductSpecialDesignation>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for MedicinalProduct {
     fn default() -> Self {
         Self {

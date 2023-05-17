@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-15 by fhirbolt-codegen v0.8.0
 #[doc = "Selector of the instances – human or machine."]
 #[derive(Debug, Clone, PartialEq)]
 pub struct ImagingSelectionPerformer {
@@ -13,6 +13,7 @@ pub struct ImagingSelectionPerformer {
     #[doc = "Author – human or machine."]
     pub r#actor: Option<Box<super::super::types::Reference>>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for ImagingSelectionPerformer {
     fn default() -> Self {
         Self {
@@ -38,16 +39,16 @@ pub struct ImagingSelectionInstanceImageRegion2D {
     #[doc = "The coordinates describing the image region. Encoded as a set of (column, row) pairs that denote positions in the selected image / frames specified with sub-pixel resolution.\n       The origin at the TLHC of the TLHC pixel is 0.0\\0.0, the BRHC of the TLHC pixel is 1.0\\1.0, and the BRHC of the BRHC pixel is the number of columns\\rows in the image / frames. The values must be within the range 0\\0 to the number of columns\\rows in the image / frames."]
     pub r#coordinate: Vec<super::super::types::Decimal>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for ImagingSelectionInstanceImageRegion2D {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#region_type: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#region_type: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#coordinate: Default::default(),
         }
@@ -67,16 +68,16 @@ pub struct ImagingSelectionInstanceImageRegion3D {
     #[doc = "The coordinates describing the image region. Encoded as an ordered set of (x,y,z) triplets (in mm and may be negative) that define a region of interest in the patient-relative Reference Coordinate System defined by ImagingSelection.frameOfReferenceUid element."]
     pub r#coordinate: Vec<super::super::types::Decimal>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for ImagingSelectionInstanceImageRegion3D {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#region_type: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#region_type: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#coordinate: Default::default(),
         }
@@ -104,16 +105,16 @@ pub struct ImagingSelectionInstance {
     #[doc = "Each imaging selection might includes a 3D image region, specified by a region type and a set of 3D coordinates."]
     pub r#image_region_3_d: Vec<ImagingSelectionInstanceImageRegion3D>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for ImagingSelectionInstance {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#uid: {
-                let mut default: super::super::types::Id = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#uid: super::super::types::Id {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#number: Default::default(),
             r#sop_class: Default::default(),
@@ -127,7 +128,7 @@ impl Default for ImagingSelectionInstance {
 #[derive(Debug, Clone, PartialEq)]
 pub struct ImagingSelection {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
-    pub r#id: Option<std::string::String>,
+    pub r#id: Option<Box<super::super::types::Id>>,
     #[doc = "The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content might not always be associated with version changes to the resource."]
     pub r#meta: Option<Box<super::super::types::Meta>>,
     #[doc = "A reference to a set of rules that were followed when the resource was constructed, and which must be understood when processing the content. Often, this is a reference to an implementation guide that defines the special rules along with other profiles etc."]
@@ -177,6 +178,7 @@ pub struct ImagingSelection {
     #[doc = "Each imaging selection includes one or more selected DICOM SOP instances."]
     pub r#instance: Vec<ImagingSelectionInstance>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for ImagingSelection {
     fn default() -> Self {
         Self {
@@ -189,21 +191,19 @@ impl Default for ImagingSelection {
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
             r#identifier: Default::default(),
-            r#status: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#status: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#subject: Default::default(),
             r#issued: Default::default(),
             r#performer: Default::default(),
             r#based_on: Default::default(),
             r#category: Default::default(),
-            r#code: {
-                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#code: Box::new(super::super::types::CodeableConcept {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
             r#study_uid: Default::default(),
             r#derived_from: Default::default(),
             r#endpoint: Default::default(),

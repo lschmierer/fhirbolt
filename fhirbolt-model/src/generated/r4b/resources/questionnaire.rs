@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-15 by fhirbolt-codegen v0.8.0
 #[doc = "A value that the referenced question is tested using the specified operator in order for the item to be enabled."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum QuestionnaireItemEnableWhenAnswer {
@@ -61,21 +61,20 @@ pub struct QuestionnaireItemEnableWhen {
     #[doc = "A value that the referenced question is tested using the specified operator in order for the item to be enabled."]
     pub r#answer: QuestionnaireItemEnableWhenAnswer,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for QuestionnaireItemEnableWhen {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#question: {
-                let mut default: super::super::types::String = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#question: super::super::types::String {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
-            r#operator: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#operator: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#answer: Default::default(),
         }
@@ -95,6 +94,7 @@ pub struct QuestionnaireItemAnswerOption {
     #[doc = "Indicates whether the answer value is selected when the list of possible answers is initially shown."]
     pub r#initial_selected: Option<super::super::types::Boolean>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for QuestionnaireItemAnswerOption {
     fn default() -> Self {
         Self {
@@ -118,6 +118,7 @@ pub struct QuestionnaireItemInitial {
     #[doc = "The actual value to for an initial answer."]
     pub r#value: QuestionnaireItemInitialValue,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for QuestionnaireItemInitial {
     fn default() -> Self {
         Self {
@@ -170,25 +171,24 @@ pub struct QuestionnaireItem {
     #[doc = "Text, questions and other groups to be nested beneath a question or group."]
     pub r#item: Vec<QuestionnaireItem>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for QuestionnaireItem {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#link_id: {
-                let mut default: super::super::types::String = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#link_id: super::super::types::String {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#definition: Default::default(),
             r#code: Default::default(),
             r#prefix: Default::default(),
             r#text: Default::default(),
-            r#type: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#type: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#enable_when: Default::default(),
             r#enable_behavior: Default::default(),
@@ -207,7 +207,7 @@ impl Default for QuestionnaireItem {
 #[derive(Debug, Clone, PartialEq)]
 pub struct Questionnaire {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
-    pub r#id: Option<std::string::String>,
+    pub r#id: Option<Box<super::super::types::Id>>,
     #[doc = "The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content might not always be associated with version changes to the resource."]
     pub r#meta: Option<Box<super::super::types::Meta>>,
     #[doc = "A reference to a set of rules that were followed when the resource was constructed, and which must be understood when processing the content. Often, this is a reference to an implementation guide that defines the special rules along with other profiles etc."]
@@ -267,6 +267,7 @@ pub struct Questionnaire {
     #[doc = "A particular question, question grouping or display text that is part of the questionnaire."]
     pub r#item: Vec<QuestionnaireItem>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for Questionnaire {
     fn default() -> Self {
         Self {
@@ -284,10 +285,9 @@ impl Default for Questionnaire {
             r#name: Default::default(),
             r#title: Default::default(),
             r#derived_from: Default::default(),
-            r#status: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#status: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#experimental: Default::default(),
             r#subject_type: Default::default(),

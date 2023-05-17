@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-15 by fhirbolt-codegen v0.8.0
 #[doc = "The quantity of substance in the unit of presentation, or in the volume (or mass) of the single pharmaceutical product or manufactured item. Unit of presentation refers to the quantity that the item occurs in e.g. a strength per tablet size, perhaps 'per 20mg' (the size of the tablet). It is not generally normalized as a unitary unit, which would be 'per mg')."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum IngredientSubstanceStrengthPresentation {
@@ -37,6 +37,7 @@ pub struct IngredientManufacturer {
     #[doc = "An organization that manufactures this ingredient."]
     pub r#manufacturer: Box<super::super::types::Reference>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for IngredientManufacturer {
     fn default() -> Self {
         Self {
@@ -44,11 +45,10 @@ impl Default for IngredientManufacturer {
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
             r#role: Default::default(),
-            r#manufacturer: {
-                let mut default: Box<super::super::types::Reference> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#manufacturer: Box::new(super::super::types::Reference {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
         }
     }
 }
@@ -70,6 +70,7 @@ pub struct IngredientSubstanceStrengthReferenceStrength {
     #[doc = "The country or countries for which the strength range applies."]
     pub r#country: Vec<super::super::types::CodeableConcept>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for IngredientSubstanceStrengthReferenceStrength {
     fn default() -> Self {
         Self {
@@ -107,6 +108,7 @@ pub struct IngredientSubstanceStrength {
     #[doc = "Strength expressed in terms of a reference substance. For when the ingredient strength is additionally expressed as equivalent to the strength of some other closely related substance (e.g. salt vs. base). Reference strength represents the strength (quantitative composition) of the active moiety of the active substance. There are situations when the active substance and active moiety are different, therefore both a strength and a reference strength are needed."]
     pub r#reference_strength: Vec<IngredientSubstanceStrengthReferenceStrength>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for IngredientSubstanceStrength {
     fn default() -> Self {
         Self {
@@ -137,17 +139,17 @@ pub struct IngredientSubstance {
     #[doc = "The quantity of substance in the unit of presentation, or in the volume (or mass) of the single pharmaceutical product or manufactured item. The allowed repetitions do not represent different strengths, but are different representations - mathematically equivalent - of a single strength."]
     pub r#strength: Vec<IngredientSubstanceStrength>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for IngredientSubstance {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#code: {
-                let mut default: Box<super::super::types::CodeableReference> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#code: Box::new(super::super::types::CodeableReference {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
             r#strength: Default::default(),
         }
     }
@@ -156,7 +158,7 @@ impl Default for IngredientSubstance {
 #[derive(Debug, Clone, PartialEq)]
 pub struct Ingredient {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
-    pub r#id: Option<std::string::String>,
+    pub r#id: Option<Box<super::super::types::Id>>,
     #[doc = "The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content might not always be associated with version changes to the resource."]
     pub r#meta: Option<Box<super::super::types::Meta>>,
     #[doc = "A reference to a set of rules that were followed when the resource was constructed, and which must be understood when processing the content. Often, this is a reference to an implementation guide that defines the special rules along with other profiles etc."]
@@ -188,6 +190,7 @@ pub struct Ingredient {
     #[doc = "The substance that comprises this ingredient."]
     pub r#substance: IngredientSubstance,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for Ingredient {
     fn default() -> Self {
         Self {
@@ -200,24 +203,21 @@ impl Default for Ingredient {
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
             r#identifier: Default::default(),
-            r#status: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#status: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#for: Default::default(),
-            r#role: {
-                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#role: Box::new(super::super::types::CodeableConcept {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
             r#function: Default::default(),
             r#allergenic_indicator: Default::default(),
             r#manufacturer: Default::default(),
-            r#substance: {
-                let mut default: IngredientSubstance = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#substance: IngredientSubstance {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
         }
     }

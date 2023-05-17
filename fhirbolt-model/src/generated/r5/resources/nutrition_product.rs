@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-15 by fhirbolt-codegen v0.8.0
 #[doc = "The actual characteristic value corresponding to the type."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum NutritionProductCharacteristicValue {
@@ -25,6 +25,7 @@ pub struct NutritionProductNutrient {
     #[doc = "The amount of nutrient expressed in one or more units: X per pack / per serving / per dose."]
     pub r#amount: Vec<super::super::types::Ratio>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for NutritionProductNutrient {
     fn default() -> Self {
         Self {
@@ -50,17 +51,17 @@ pub struct NutritionProductIngredient {
     #[doc = "The amount of ingredient that is in the product."]
     pub r#amount: Vec<super::super::types::Ratio>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for NutritionProductIngredient {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#item: {
-                let mut default: Box<super::super::types::CodeableReference> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#item: Box::new(super::super::types::CodeableReference {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
             r#amount: Default::default(),
         }
     }
@@ -79,17 +80,17 @@ pub struct NutritionProductCharacteristic {
     #[doc = "The actual characteristic value corresponding to the type."]
     pub r#value: NutritionProductCharacteristicValue,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for NutritionProductCharacteristic {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#type: {
-                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#type: Box::new(super::super::types::CodeableConcept {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
             r#value: Default::default(),
         }
     }
@@ -118,6 +119,7 @@ pub struct NutritionProductInstance {
     #[doc = "An identifier that supports traceability to the event during which material in this product from one or more biological entities was obtained or pooled."]
     pub r#biological_source_event: Option<Box<super::super::types::Identifier>>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for NutritionProductInstance {
     fn default() -> Self {
         Self {
@@ -138,7 +140,7 @@ impl Default for NutritionProductInstance {
 #[derive(Debug, Clone, PartialEq)]
 pub struct NutritionProduct {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
-    pub r#id: Option<std::string::String>,
+    pub r#id: Option<Box<super::super::types::Id>>,
     #[doc = "The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content might not always be associated with version changes to the resource."]
     pub r#meta: Option<Box<super::super::types::Meta>>,
     #[doc = "A reference to a set of rules that were followed when the resource was constructed, and which must be understood when processing the content. Often, this is a reference to an implementation guide that defines the special rules along with other profiles etc."]
@@ -174,6 +176,7 @@ pub struct NutritionProduct {
     #[doc = "Comments made about the product."]
     pub r#note: Vec<super::super::types::Annotation>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for NutritionProduct {
     fn default() -> Self {
         Self {
@@ -186,10 +189,9 @@ impl Default for NutritionProduct {
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
             r#code: Default::default(),
-            r#status: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#status: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#category: Default::default(),
             r#manufacturer: Default::default(),

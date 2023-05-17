@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-15 by fhirbolt-codegen v0.8.0
 #[doc = "The time or time-period the observed value is asserted as being true. For biological subjects - e.g. human patients - this is usually called the \"physiologically relevant time\". This is usually either the time of the procedure or of specimen collection, but very often the source of the date/time is not known, only the date/time itself."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum ObservationEffective {
@@ -65,6 +65,7 @@ pub struct ObservationReferenceRange {
     #[doc = "Text based reference range in an observation which may be used when a quantitative range is not appropriate for an observation.  An example would be a reference value of \"Negative\" or a list or table of \"normals\"."]
     pub r#text: Option<super::super::types::String>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for ObservationReferenceRange {
     fn default() -> Self {
         Self {
@@ -100,17 +101,17 @@ pub struct ObservationComponent {
     #[doc = "Guidance on how to interpret the value by comparison to a normal or recommended range."]
     pub r#reference_range: Vec<ObservationReferenceRange>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for ObservationComponent {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#code: {
-                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#code: Box::new(super::super::types::CodeableConcept {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
             r#value: Default::default(),
             r#data_absent_reason: Default::default(),
             r#interpretation: Default::default(),
@@ -122,7 +123,7 @@ impl Default for ObservationComponent {
 #[derive(Debug, Clone, PartialEq)]
 pub struct Observation {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
-    pub r#id: Option<std::string::String>,
+    pub r#id: Option<Box<super::super::types::Id>>,
     #[doc = "The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content might not always be associated with version changes to the resource."]
     pub r#meta: Option<Box<super::super::types::Meta>>,
     #[doc = "A reference to a set of rules that were followed when the resource was constructed, and which must be understood when processing the content. Often, this is a reference to an implementation guide that defines the special rules along with other profiles etc."]
@@ -186,6 +187,7 @@ pub struct Observation {
     #[doc = "Some observations have multiple component observations.  These component observations are expressed as separate code value pairs that share the same attributes.  Examples include systolic and diastolic component observations for blood pressure measurement and multiple component observations for genetics observations."]
     pub r#component: Vec<ObservationComponent>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for Observation {
     fn default() -> Self {
         Self {
@@ -200,17 +202,15 @@ impl Default for Observation {
             r#identifier: Default::default(),
             r#based_on: Default::default(),
             r#part_of: Default::default(),
-            r#status: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#status: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#category: Default::default(),
-            r#code: {
-                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#code: Box::new(super::super::types::CodeableConcept {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
             r#subject: Default::default(),
             r#focus: Default::default(),
             r#encounter: Default::default(),

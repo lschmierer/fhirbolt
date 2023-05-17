@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-15 by fhirbolt-codegen v0.8.0
 #[doc = "The official certifications, accreditations, training, designations and licenses that authorize and/or otherwise endorse the provision of care by the organization.\r\rFor example, an approval to provide a type of services issued by a certifying body (such as the US Joint Commission) to an organization."]
 #[derive(Debug, Clone, PartialEq)]
 pub struct OrganizationQualification {
@@ -17,6 +17,7 @@ pub struct OrganizationQualification {
     #[doc = "Organization that regulates and issues the qualification."]
     pub r#issuer: Option<Box<super::super::types::Reference>>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for OrganizationQualification {
     fn default() -> Self {
         Self {
@@ -24,11 +25,10 @@ impl Default for OrganizationQualification {
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
             r#identifier: Default::default(),
-            r#code: {
-                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#code: Box::new(super::super::types::CodeableConcept {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
             r#period: Default::default(),
             r#issuer: Default::default(),
         }
@@ -38,7 +38,7 @@ impl Default for OrganizationQualification {
 #[derive(Debug, Clone, PartialEq)]
 pub struct Organization {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
-    pub r#id: Option<std::string::String>,
+    pub r#id: Option<Box<super::super::types::Id>>,
     #[doc = "The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content might not always be associated with version changes to the resource."]
     pub r#meta: Option<Box<super::super::types::Meta>>,
     #[doc = "A reference to a set of rules that were followed when the resource was constructed, and which must be understood when processing the content. Often, this is a reference to an implementation guide that defines the special rules along with other profiles etc."]
@@ -74,6 +74,7 @@ pub struct Organization {
     #[doc = "The official certifications, accreditations, training, designations and licenses that authorize and/or otherwise endorse the provision of care by the organization.\r\rFor example, an approval to provide a type of services issued by a certifying body (such as the US Joint Commission) to an organization."]
     pub r#qualification: Vec<OrganizationQualification>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for Organization {
     fn default() -> Self {
         Self {

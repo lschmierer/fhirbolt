@@ -14,12 +14,12 @@ use fhirbolt::{
 use test_utils::examples::{examples, JsonOrXml};
 
 const MISSING_STATUS_FILES: &[&str] = &[
-    &"examples-json/codesystem-catalogType.json",
-    &"examples-json/valueset-catalogType.json",
-    &"examples-json/valuesets.json",
+    "examples-json/codesystem-catalogType.json",
+    "examples-json/valueset-catalogType.json",
+    "examples-json/valuesets.json",
 ];
 
-fn test_serde_json<'a, T, const R: FhirRelease>(mode: DeserializationMode)
+fn test_serde_json<T, const R: FhirRelease>(mode: DeserializationMode)
 where
     T: DeserializeResourceOwned + SerializeResource,
 {
@@ -27,7 +27,7 @@ where
 
     let mut buffer = Vec::new();
 
-    while let Some(mut file) = examples_iter.next() {
+    while let Some(mut file) = examples_iter.next_example() {
         // not a FHIR resource
         if file.name().ends_with("package-min-ver.json") {
             continue;

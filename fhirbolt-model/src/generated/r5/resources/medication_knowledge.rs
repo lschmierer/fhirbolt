@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-15 by fhirbolt-codegen v0.8.0
 #[doc = "The price or representation of the cost (for example, Band A, Band B or $, $$) of the medication."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum MedicationKnowledgeCostCost {
@@ -67,17 +67,17 @@ pub struct MedicationKnowledgeRelatedMedicationKnowledge {
     #[doc = "Associated documentation about the associated medication knowledge."]
     pub r#reference: Vec<super::super::types::Reference>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for MedicationKnowledgeRelatedMedicationKnowledge {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#type: {
-                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#type: Box::new(super::super::types::CodeableConcept {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
             r#reference: Default::default(),
         }
     }
@@ -96,6 +96,7 @@ pub struct MedicationKnowledgeMonograph {
     #[doc = "Associated documentation about the medication."]
     pub r#source: Option<Box<super::super::types::Reference>>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for MedicationKnowledgeMonograph {
     fn default() -> Self {
         Self {
@@ -125,6 +126,7 @@ pub struct MedicationKnowledgeCost {
     #[doc = "The price or representation of the cost (for example, Band A, Band B or $, $$) of the medication."]
     pub r#cost: MedicationKnowledgeCostCost,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for MedicationKnowledgeCost {
     fn default() -> Self {
         Self {
@@ -132,11 +134,10 @@ impl Default for MedicationKnowledgeCost {
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
             r#effective_date: Default::default(),
-            r#type: {
-                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#type: Box::new(super::super::types::CodeableConcept {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
             r#source: Default::default(),
             r#cost: Default::default(),
         }
@@ -156,6 +157,7 @@ pub struct MedicationKnowledgeMonitoringProgram {
     #[doc = "Name of the reviewing program."]
     pub r#name: Option<super::super::types::String>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for MedicationKnowledgeMonitoringProgram {
     fn default() -> Self {
         Self {
@@ -181,17 +183,17 @@ pub struct MedicationKnowledgeIndicationGuidelineDosingGuidelineDosage {
     #[doc = "Dosage for the medication for the specific guidelines."]
     pub r#dosage: Vec<super::super::types::Dosage>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for MedicationKnowledgeIndicationGuidelineDosingGuidelineDosage {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#type: {
-                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#type: Box::new(super::super::types::CodeableConcept {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
             r#dosage: Default::default(),
         }
     }
@@ -211,17 +213,17 @@ pub struct MedicationKnowledgeIndicationGuidelineDosingGuidelinePatientCharacter
     pub r#value:
         Option<MedicationKnowledgeIndicationGuidelineDosingGuidelinePatientCharacteristicValue>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for MedicationKnowledgeIndicationGuidelineDosingGuidelinePatientCharacteristic {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#type: {
-                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#type: Box::new(super::super::types::CodeableConcept {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
             r#value: Default::default(),
         }
     }
@@ -245,6 +247,7 @@ pub struct MedicationKnowledgeIndicationGuidelineDosingGuideline {
     pub r#patient_characteristic:
         Vec<MedicationKnowledgeIndicationGuidelineDosingGuidelinePatientCharacteristic>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for MedicationKnowledgeIndicationGuidelineDosingGuideline {
     fn default() -> Self {
         Self {
@@ -272,6 +275,7 @@ pub struct MedicationKnowledgeIndicationGuideline {
     #[doc = "The guidelines for the dosage of the medication for the indication."]
     pub r#dosing_guideline: Vec<MedicationKnowledgeIndicationGuidelineDosingGuideline>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for MedicationKnowledgeIndicationGuideline {
     fn default() -> Self {
         Self {
@@ -299,17 +303,17 @@ pub struct MedicationKnowledgeMedicineClassification {
     #[doc = "Specific category assigned to the medication (e.g. anti-infective, anti-hypertensive, antibiotic, etc.)."]
     pub r#classification: Vec<super::super::types::CodeableConcept>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for MedicationKnowledgeMedicineClassification {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#type: {
-                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#type: Box::new(super::super::types::CodeableConcept {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
             r#source: Default::default(),
             r#classification: Default::default(),
         }
@@ -329,6 +333,7 @@ pub struct MedicationKnowledgePackaging {
     #[doc = "A reference to a PackagedProductDefinition that provides the details of the product that is in the packaging and is being priced."]
     pub r#packaged_product: Option<Box<super::super::types::Reference>>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for MedicationKnowledgePackaging {
     fn default() -> Self {
         Self {
@@ -354,17 +359,17 @@ pub struct MedicationKnowledgeStorageGuidelineEnvironmentalSetting {
     #[doc = "Value associated to the setting. E.g., 40° – 50°F for temperature."]
     pub r#value: MedicationKnowledgeStorageGuidelineEnvironmentalSettingValue,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for MedicationKnowledgeStorageGuidelineEnvironmentalSetting {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#type: {
-                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#type: Box::new(super::super::types::CodeableConcept {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
             r#value: Default::default(),
         }
     }
@@ -387,6 +392,7 @@ pub struct MedicationKnowledgeStorageGuideline {
     #[doc = "Describes a setting/value on the environment for the adequate storage of the medication and other substances.  Environment settings may involve temperature, humidity, or exposure to light."]
     pub r#environmental_setting: Vec<MedicationKnowledgeStorageGuidelineEnvironmentalSetting>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for MedicationKnowledgeStorageGuideline {
     fn default() -> Self {
         Self {
@@ -414,21 +420,20 @@ pub struct MedicationKnowledgeRegulatorySubstitution {
     #[doc = "Specifies if regulation allows for changes in the medication when dispensing."]
     pub r#allowed: super::super::types::Boolean,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for MedicationKnowledgeRegulatorySubstitution {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#type: {
-                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
-            r#allowed: {
-                let mut default: super::super::types::Boolean = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#type: Box::new(super::super::types::CodeableConcept {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
+            r#allowed: super::super::types::Boolean {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
         }
     }
@@ -447,17 +452,17 @@ pub struct MedicationKnowledgeRegulatoryMaxDispense {
     #[doc = "The period that applies to the maximum number of units."]
     pub r#period: Option<Box<super::super::types::Duration>>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for MedicationKnowledgeRegulatoryMaxDispense {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#quantity: {
-                let mut default: Box<super::super::types::Quantity> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#quantity: Box::new(super::super::types::Quantity {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
             r#period: Default::default(),
         }
     }
@@ -480,17 +485,17 @@ pub struct MedicationKnowledgeRegulatory {
     #[doc = "The maximum number of units of the medication that can be dispensed in a period."]
     pub r#max_dispense: Option<MedicationKnowledgeRegulatoryMaxDispense>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for MedicationKnowledgeRegulatory {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#regulatory_authority: {
-                let mut default: Box<super::super::types::Reference> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#regulatory_authority: Box::new(super::super::types::Reference {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
             r#substitution: Default::default(),
             r#schedule: Default::default(),
             r#max_dispense: Default::default(),
@@ -513,17 +518,17 @@ pub struct MedicationKnowledgeDefinitionalIngredient {
     #[doc = "Specifies how many (or how much) of the items there are in this Medication.  For example, 250 mg per tablet.  This is expressed as a ratio where the numerator is 250mg and the denominator is 1 tablet but can also be expressed a quantity when the denominator is assumed to be 1 tablet."]
     pub r#strength: Option<MedicationKnowledgeDefinitionalIngredientStrength>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for MedicationKnowledgeDefinitionalIngredient {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#item: {
-                let mut default: Box<super::super::types::CodeableReference> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#item: Box::new(super::super::types::CodeableReference {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
             r#type: Default::default(),
             r#strength: Default::default(),
         }
@@ -543,6 +548,7 @@ pub struct MedicationKnowledgeDefinitionalDrugCharacteristic {
     #[doc = "Description of the characteristic."]
     pub r#value: Option<MedicationKnowledgeDefinitionalDrugCharacteristicValue>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for MedicationKnowledgeDefinitionalDrugCharacteristic {
     fn default() -> Self {
         Self {
@@ -574,6 +580,7 @@ pub struct MedicationKnowledgeDefinitional {
     #[doc = "Specifies descriptive properties of the medicine, such as color, shape, imprints, etc."]
     pub r#drug_characteristic: Vec<MedicationKnowledgeDefinitionalDrugCharacteristic>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for MedicationKnowledgeDefinitional {
     fn default() -> Self {
         Self {
@@ -592,7 +599,7 @@ impl Default for MedicationKnowledgeDefinitional {
 #[derive(Debug, Clone, PartialEq)]
 pub struct MedicationKnowledge {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
-    pub r#id: Option<std::string::String>,
+    pub r#id: Option<Box<super::super::types::Id>>,
     #[doc = "The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content might not always be associated with version changes to the resource."]
     pub r#meta: Option<Box<super::super::types::Meta>>,
     #[doc = "A reference to a set of rules that were followed when the resource was constructed, and which must be understood when processing the content. Often, this is a reference to an implementation guide that defines the special rules along with other profiles etc."]
@@ -648,6 +655,7 @@ pub struct MedicationKnowledge {
     #[doc = "Along with the link to a Medicinal Product Definition resource, this information provides common definitional elements that are needed to understand the specific medication that is being described."]
     pub r#definitional: Option<MedicationKnowledgeDefinitional>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for MedicationKnowledge {
     fn default() -> Self {
         Self {

@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-15 by fhirbolt-codegen v0.8.0
 #[doc = "Used for example, to point to a substance, or to a device used to administer a medication."]
 #[derive(Debug, Clone, PartialEq)]
 pub struct CatalogEntryRelatedEntry {
@@ -13,22 +13,21 @@ pub struct CatalogEntryRelatedEntry {
     #[doc = "The reference to the related item."]
     pub r#item: Box<super::super::types::Reference>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for CatalogEntryRelatedEntry {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#relationtype: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#relationtype: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
-            r#item: {
-                let mut default: Box<super::super::types::Reference> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#item: Box::new(super::super::types::Reference {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
         }
     }
 }
@@ -36,7 +35,7 @@ impl Default for CatalogEntryRelatedEntry {
 #[derive(Debug, Clone, PartialEq)]
 pub struct CatalogEntry {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
-    pub r#id: Option<std::string::String>,
+    pub r#id: Option<Box<super::super::types::Id>>,
     #[doc = "The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content might not always be associated with version changes to the resource."]
     pub r#meta: Option<Box<super::super::types::Meta>>,
     #[doc = "A reference to a set of rules that were followed when the resource was constructed, and which must be understood when processing the content. Often, this is a reference to an implementation guide that defines the special rules along with other profiles etc."]
@@ -78,6 +77,7 @@ pub struct CatalogEntry {
     #[doc = "Used for example, to point to a substance, or to a device used to administer a medication."]
     pub r#related_entry: Vec<CatalogEntryRelatedEntry>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for CatalogEntry {
     fn default() -> Self {
         Self {
@@ -91,16 +91,14 @@ impl Default for CatalogEntry {
             r#modifier_extension: Default::default(),
             r#identifier: Default::default(),
             r#type: Default::default(),
-            r#orderable: {
-                let mut default: super::super::types::Boolean = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#orderable: super::super::types::Boolean {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
-            r#referenced_item: {
-                let mut default: Box<super::super::types::Reference> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#referenced_item: Box::new(super::super::types::Reference {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
             r#additional_identifier: Default::default(),
             r#classification: Default::default(),
             r#status: Default::default(),

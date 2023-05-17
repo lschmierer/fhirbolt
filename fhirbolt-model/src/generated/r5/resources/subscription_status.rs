@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-15 by fhirbolt-codegen v0.8.0
 #[doc = "Detailed information about events relevant to this subscription notification."]
 #[derive(Debug, Clone, PartialEq)]
 pub struct SubscriptionStatusNotificationEvent {
@@ -17,16 +17,16 @@ pub struct SubscriptionStatusNotificationEvent {
     #[doc = "Additional context information for this event. Generally, this will contain references to additional resources included with the event (e.g., the Patient relevant to an Encounter), however it MAY refer to non-FHIR objects."]
     pub r#additional_context: Vec<super::super::types::Reference>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for SubscriptionStatusNotificationEvent {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#event_number: {
-                let mut default: super::super::types::Integer64 = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#event_number: super::super::types::Integer64 {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#timestamp: Default::default(),
             r#focus: Default::default(),
@@ -38,7 +38,7 @@ impl Default for SubscriptionStatusNotificationEvent {
 #[derive(Debug, Clone, PartialEq)]
 pub struct SubscriptionStatus {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
-    pub r#id: Option<std::string::String>,
+    pub r#id: Option<Box<super::super::types::Id>>,
     #[doc = "The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content might not always be associated with version changes to the resource."]
     pub r#meta: Option<Box<super::super::types::Meta>>,
     #[doc = "A reference to a set of rules that were followed when the resource was constructed, and which must be understood when processing the content. Often, this is a reference to an implementation guide that defines the special rules along with other profiles etc."]
@@ -68,6 +68,7 @@ pub struct SubscriptionStatus {
     #[doc = "A record of errors that occurred when the server processed a notification."]
     pub r#error: Vec<super::super::types::CodeableConcept>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for SubscriptionStatus {
     fn default() -> Self {
         Self {
@@ -80,18 +81,16 @@ impl Default for SubscriptionStatus {
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
             r#status: Default::default(),
-            r#type: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#type: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#events_since_subscription_start: Default::default(),
             r#notification_event: Default::default(),
-            r#subscription: {
-                let mut default: Box<super::super::types::Reference> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#subscription: Box::new(super::super::types::Reference {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
             r#topic: Default::default(),
             r#error: Default::default(),
         }

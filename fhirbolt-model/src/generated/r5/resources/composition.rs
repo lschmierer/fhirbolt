@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-15 by fhirbolt-codegen v0.8.0
 #[doc = "A participant who has attested to the accuracy of the composition/document."]
 #[derive(Debug, Clone, PartialEq)]
 pub struct CompositionAttester {
@@ -15,17 +15,17 @@ pub struct CompositionAttester {
     #[doc = "Who attested the composition in the specified way."]
     pub r#party: Option<Box<super::super::types::Reference>>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for CompositionAttester {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#mode: {
-                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#mode: Box::new(super::super::types::CodeableConcept {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
             r#time: Default::default(),
             r#party: Default::default(),
         }
@@ -45,6 +45,7 @@ pub struct CompositionEvent {
     #[doc = "Represents the main clinical acts, such as a colonoscopy or an appendectomy, being documented. In some cases, the event is inherent in the typeCode, such as a \"History and Physical Report\" in which case the procedure being documented is necessarily a \"History and Physical\" act. The events may be included as a code or as a reference to an other resource."]
     pub r#detail: Vec<super::super::types::CodeableReference>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for CompositionEvent {
     fn default() -> Self {
         Self {
@@ -84,6 +85,7 @@ pub struct CompositionSection {
     #[doc = "A nested sub-section within this section."]
     pub r#section: Vec<CompositionSection>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for CompositionSection {
     fn default() -> Self {
         Self {
@@ -106,7 +108,7 @@ impl Default for CompositionSection {
 #[derive(Debug, Clone, PartialEq)]
 pub struct Composition {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
-    pub r#id: Option<std::string::String>,
+    pub r#id: Option<Box<super::super::types::Id>>,
     #[doc = "The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content might not always be associated with version changes to the resource."]
     pub r#meta: Option<Box<super::super::types::Meta>>,
     #[doc = "A reference to a set of rules that were followed when the resource was constructed, and which must be understood when processing the content. Often, this is a reference to an implementation guide that defines the special rules along with other profiles etc."]
@@ -160,6 +162,7 @@ pub struct Composition {
     #[doc = "The root of the sections that make up the composition."]
     pub r#section: Vec<CompositionSection>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for Composition {
     fn default() -> Self {
         Self {
@@ -174,31 +177,27 @@ impl Default for Composition {
             r#url: Default::default(),
             r#identifier: Default::default(),
             r#version: Default::default(),
-            r#status: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#status: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
-            r#type: {
-                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#type: Box::new(super::super::types::CodeableConcept {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
             r#category: Default::default(),
             r#subject: Default::default(),
             r#encounter: Default::default(),
-            r#date: {
-                let mut default: super::super::types::DateTime = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#date: super::super::types::DateTime {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#use_context: Default::default(),
             r#author: Default::default(),
             r#name: Default::default(),
-            r#title: {
-                let mut default: super::super::types::String = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#title: super::super::types::String {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#note: Default::default(),
             r#attester: Default::default(),

@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-15 by fhirbolt-codegen v0.8.0
 #[doc = "Used to capture quantitative values for a variety of elements. If only limits are given, the arithmetic mean would be the average. If only a single definite value for a given element is given, it would be captured in this field."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum SubstanceAmountAmount {
@@ -20,6 +20,7 @@ pub struct SubstanceAmountReferenceRange {
     #[doc = "Upper limit possible or expected."]
     pub r#high_limit: Option<Box<super::super::types::Quantity>>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for SubstanceAmountReferenceRange {
     fn default() -> Self {
         Self {
@@ -48,6 +49,7 @@ pub struct SubstanceAmount {
     #[doc = "Reference range of possible or expected values."]
     pub r#reference_range: Option<SubstanceAmountReferenceRange>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for SubstanceAmount {
     fn default() -> Self {
         Self {

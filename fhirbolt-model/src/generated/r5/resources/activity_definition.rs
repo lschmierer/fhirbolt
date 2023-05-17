@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-15 by fhirbolt-codegen v0.8.0
 #[doc = "Indicates the mechanism used to compare versions to determine which is more current."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum ActivityDefinitionVersionAlgorithm {
@@ -62,6 +62,7 @@ pub struct ActivityDefinitionParticipant {
     #[doc = "Indicates how the actor will be involved in the action - author, reviewer, witness, etc."]
     pub r#function: Option<Box<super::super::types::CodeableConcept>>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for ActivityDefinitionParticipant {
     fn default() -> Self {
         Self {
@@ -90,22 +91,21 @@ pub struct ActivityDefinitionDynamicValue {
     #[doc = "An expression specifying the value of the customized element."]
     pub r#expression: Box<super::super::types::Expression>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for ActivityDefinitionDynamicValue {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#path: {
-                let mut default: super::super::types::String = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#path: super::super::types::String {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
-            r#expression: {
-                let mut default: Box<super::super::types::Expression> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#expression: Box::new(super::super::types::Expression {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
         }
     }
 }
@@ -113,7 +113,7 @@ impl Default for ActivityDefinitionDynamicValue {
 #[derive(Debug, Clone, PartialEq)]
 pub struct ActivityDefinition {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
-    pub r#id: Option<std::string::String>,
+    pub r#id: Option<Box<super::super::types::Id>>,
     #[doc = "The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content might not always be associated with version changes to the resource."]
     pub r#meta: Option<Box<super::super::types::Meta>>,
     #[doc = "A reference to a set of rules that were followed when the resource was constructed, and which must be understood when processing the content. Often, this is a reference to an implementation guide that defines the special rules along with other profiles etc."]
@@ -227,6 +227,7 @@ pub struct ActivityDefinition {
     #[doc = "Dynamic values that will be evaluated to produce values for elements of the resulting resource. For example, if the dosage of a medication must be computed based on the patient's weight, a dynamic value would be used to specify an expression that calculated the weight, and the path on the request resource that would contain the result."]
     pub r#dynamic_value: Vec<ActivityDefinitionDynamicValue>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for ActivityDefinition {
     fn default() -> Self {
         Self {
@@ -245,10 +246,9 @@ impl Default for ActivityDefinition {
             r#name: Default::default(),
             r#title: Default::default(),
             r#subtitle: Default::default(),
-            r#status: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#status: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#experimental: Default::default(),
             r#subject: Default::default(),

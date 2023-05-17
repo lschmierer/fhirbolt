@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-15 by fhirbolt-codegen v0.8.0
 #[doc = "The shelf life time period can be specified using a numerical value for the period of time and its unit of time measurement The unit of measurement shall be specified in accordance with ISO 11240 and the resulting terminology The symbol and the symbol identifier shall be used."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum PackagedProductDefinitionPackageShelfLifeStoragePeriod {
@@ -32,6 +32,7 @@ pub struct PackagedProductDefinitionLegalStatusOfSupply {
     #[doc = "The place where the legal status of supply applies. When not specified, this indicates it is unknown in this context."]
     pub r#jurisdiction: Option<Box<super::super::types::CodeableConcept>>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for PackagedProductDefinitionLegalStatusOfSupply {
     fn default() -> Self {
         Self {
@@ -59,6 +60,7 @@ pub struct PackagedProductDefinitionPackageShelfLifeStorage {
     #[doc = "Special precautions for storage, if any, can be specified using an appropriate controlled vocabulary. The controlled term and the controlled term identifier shall be specified."]
     pub r#special_precautions_for_storage: Vec<super::super::types::CodeableConcept>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for PackagedProductDefinitionPackageShelfLifeStorage {
     fn default() -> Self {
         Self {
@@ -85,17 +87,17 @@ pub struct PackagedProductDefinitionPackageProperty {
     #[doc = "A value for the characteristic."]
     pub r#value: Option<PackagedProductDefinitionPackagePropertyValue>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for PackagedProductDefinitionPackageProperty {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#type: {
-                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#type: Box::new(super::super::types::CodeableConcept {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
             r#value: Default::default(),
         }
     }
@@ -114,17 +116,17 @@ pub struct PackagedProductDefinitionPackageContainedItem {
     #[doc = "The number of this type of item within this packaging."]
     pub r#amount: Option<Box<super::super::types::Quantity>>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for PackagedProductDefinitionPackageContainedItem {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#item: {
-                let mut default: Box<super::super::types::CodeableReference> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#item: Box::new(super::super::types::CodeableReference {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
             r#amount: Default::default(),
         }
     }
@@ -159,6 +161,7 @@ pub struct PackagedProductDefinitionPackage {
     #[doc = "Allows containers (and parts of containers) parwithin containers, still a single packaged product.  See also PackagedProductDefinition.package.containedItem.item(PackagedProductDefinition)."]
     pub r#package: Vec<PackagedProductDefinitionPackage>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for PackagedProductDefinitionPackage {
     fn default() -> Self {
         Self {
@@ -182,7 +185,7 @@ impl Default for PackagedProductDefinitionPackage {
 #[derive(Debug, Clone, PartialEq)]
 pub struct PackagedProductDefinition {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
-    pub r#id: Option<std::string::String>,
+    pub r#id: Option<Box<super::super::types::Id>>,
     #[doc = "The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content might not always be associated with version changes to the resource."]
     pub r#meta: Option<Box<super::super::types::Meta>>,
     #[doc = "A reference to a set of rules that were followed when the resource was constructed, and which must be understood when processing the content. Often, this is a reference to an implementation guide that defines the special rules along with other profiles etc."]
@@ -226,6 +229,7 @@ pub struct PackagedProductDefinition {
     #[doc = "A packaging item, as a container for medically related items, possibly with other packaging items within, or a packaging component, such as bottle cap (which is not a device or a medication manufactured item)."]
     pub r#package: Option<PackagedProductDefinitionPackage>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for PackagedProductDefinition {
     fn default() -> Self {
         Self {

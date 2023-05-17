@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-15 by fhirbolt-codegen v0.8.0
 #[doc = "A description of the size of the sample involved in the synthesis."]
 #[derive(Debug, Clone, PartialEq)]
 pub struct RiskEvidenceSynthesisSampleSize {
@@ -15,6 +15,7 @@ pub struct RiskEvidenceSynthesisSampleSize {
     #[doc = "Number of participants included in this evidence synthesis."]
     pub r#number_of_participants: Option<super::super::types::Integer>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for RiskEvidenceSynthesisSampleSize {
     fn default() -> Self {
         Self {
@@ -45,6 +46,7 @@ pub struct RiskEvidenceSynthesisRiskEstimatePrecisionEstimate {
     #[doc = "Upper bound of confidence interval."]
     pub r#to: Option<super::super::types::Decimal>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for RiskEvidenceSynthesisRiskEstimatePrecisionEstimate {
     fn default() -> Self {
         Self {
@@ -82,6 +84,7 @@ pub struct RiskEvidenceSynthesisRiskEstimate {
     #[doc = "A description of the precision of the estimate for the effect."]
     pub r#precision_estimate: Vec<RiskEvidenceSynthesisRiskEstimatePrecisionEstimate>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for RiskEvidenceSynthesisRiskEstimate {
     fn default() -> Self {
         Self {
@@ -114,6 +117,7 @@ pub struct RiskEvidenceSynthesisCertaintyCertaintySubcomponent {
     #[doc = "A human-readable string to clarify or explain concepts about the resource."]
     pub r#note: Vec<super::super::types::Annotation>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for RiskEvidenceSynthesisCertaintyCertaintySubcomponent {
     fn default() -> Self {
         Self {
@@ -142,6 +146,7 @@ pub struct RiskEvidenceSynthesisCertainty {
     #[doc = "A description of a component of the overall certainty."]
     pub r#certainty_subcomponent: Vec<RiskEvidenceSynthesisCertaintyCertaintySubcomponent>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for RiskEvidenceSynthesisCertainty {
     fn default() -> Self {
         Self {
@@ -158,7 +163,7 @@ impl Default for RiskEvidenceSynthesisCertainty {
 #[derive(Debug, Clone, PartialEq)]
 pub struct RiskEvidenceSynthesis {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
-    pub r#id: Option<std::string::String>,
+    pub r#id: Option<Box<super::super::types::Id>>,
     #[doc = "The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content might not always be associated with version changes to the resource."]
     pub r#meta: Option<Box<super::super::types::Meta>>,
     #[doc = "A reference to a set of rules that were followed when the resource was constructed, and which must be understood when processing the content. Often, this is a reference to an implementation guide that defines the special rules along with other profiles etc."]
@@ -236,6 +241,7 @@ pub struct RiskEvidenceSynthesis {
     #[doc = "A description of the certainty of the risk estimate."]
     pub r#certainty: Vec<RiskEvidenceSynthesisCertainty>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for RiskEvidenceSynthesis {
     fn default() -> Self {
         Self {
@@ -252,10 +258,9 @@ impl Default for RiskEvidenceSynthesis {
             r#version: Default::default(),
             r#name: Default::default(),
             r#title: Default::default(),
-            r#status: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#status: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#date: Default::default(),
             r#publisher: Default::default(),
@@ -276,17 +281,15 @@ impl Default for RiskEvidenceSynthesis {
             r#related_artifact: Default::default(),
             r#synthesis_type: Default::default(),
             r#study_type: Default::default(),
-            r#population: {
-                let mut default: Box<super::super::types::Reference> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#population: Box::new(super::super::types::Reference {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
             r#exposure: Default::default(),
-            r#outcome: {
-                let mut default: Box<super::super::types::Reference> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#outcome: Box::new(super::super::types::Reference {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
             r#sample_size: Default::default(),
             r#risk_estimate: Default::default(),
             r#certainty: Default::default(),

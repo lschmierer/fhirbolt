@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-15 by fhirbolt-codegen v0.8.0
 #[doc = "The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false')."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum ElementDefinitionDefaultValue {
@@ -265,20 +265,19 @@ pub struct ElementDefinitionSlicingDiscriminator {
     #[doc = "A FHIRPath expression, using [the simple subset of FHIRPath](fhirpath.html#simple), that is used to identify the element on which discrimination is based."]
     pub r#path: super::super::types::String,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for ElementDefinitionSlicingDiscriminator {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
-            r#type: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#type: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
-            r#path: {
-                let mut default: super::super::types::String = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#path: super::super::types::String {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
         }
     }
@@ -299,6 +298,7 @@ pub struct ElementDefinitionSlicing {
     #[doc = "Whether additional slices are allowed or not. When the slices are ordered, profile authors can also say that additional slices are only allowed at the end."]
     pub r#rules: super::super::types::Code,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for ElementDefinitionSlicing {
     fn default() -> Self {
         Self {
@@ -307,10 +307,9 @@ impl Default for ElementDefinitionSlicing {
             r#discriminator: Default::default(),
             r#description: Default::default(),
             r#ordered: Default::default(),
-            r#rules: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#rules: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
         }
     }
@@ -329,25 +328,23 @@ pub struct ElementDefinitionBase {
     #[doc = "Maximum cardinality of the base element identified by the path."]
     pub r#max: super::super::types::String,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for ElementDefinitionBase {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
-            r#path: {
-                let mut default: super::super::types::String = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#path: super::super::types::String {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
-            r#min: {
-                let mut default: super::super::types::UnsignedInt = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#min: super::super::types::UnsignedInt {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
-            r#max: {
-                let mut default: super::super::types::String = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#max: super::super::types::String {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
         }
     }
@@ -370,15 +367,15 @@ pub struct ElementDefinitionType {
     #[doc = "Whether this reference needs to be version specific or version independent, or whether either can be used."]
     pub r#versioning: Option<super::super::types::Code>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for ElementDefinitionType {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
-            r#code: {
-                let mut default: super::super::types::Uri = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#code: super::super::types::Uri {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#profile: Default::default(),
             r#target_profile: Default::default(),
@@ -399,15 +396,15 @@ pub struct ElementDefinitionExample {
     #[doc = "The actual value for the element, which must be one of the types allowed for this element."]
     pub r#value: ElementDefinitionExampleValue,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for ElementDefinitionExample {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
-            r#label: {
-                let mut default: super::super::types::String = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#label: super::super::types::String {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#value: Default::default(),
         }
@@ -435,26 +432,24 @@ pub struct ElementDefinitionConstraint {
     #[doc = "A reference to the original source of the constraint, for traceability purposes."]
     pub r#source: Option<super::super::types::Canonical>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for ElementDefinitionConstraint {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
-            r#key: {
-                let mut default: super::super::types::Id = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#key: super::super::types::Id {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#requirements: Default::default(),
-            r#severity: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#severity: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
-            r#human: {
-                let mut default: super::super::types::String = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#human: super::super::types::String {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#expression: Default::default(),
             r#xpath: Default::default(),
@@ -476,15 +471,15 @@ pub struct ElementDefinitionBinding {
     #[doc = "Refers to the value set that identifies the set of codes the binding refers to."]
     pub r#value_set: Option<super::super::types::Canonical>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for ElementDefinitionBinding {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
-            r#strength: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#strength: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#description: Default::default(),
             r#value_set: Default::default(),
@@ -507,21 +502,20 @@ pub struct ElementDefinitionMapping {
     #[doc = "Comments that provide information about the mapping or its use."]
     pub r#comment: Option<super::super::types::String>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for ElementDefinitionMapping {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
-            r#identity: {
-                let mut default: super::super::types::Id = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#identity: super::super::types::Id {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#language: Default::default(),
-            r#map: {
-                let mut default: super::super::types::String = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#map: super::super::types::String {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#comment: Default::default(),
         }
@@ -605,16 +599,16 @@ pub struct ElementDefinition {
     #[doc = "Identifies a concept from an external specification that roughly corresponds to this element."]
     pub r#mapping: Vec<ElementDefinitionMapping>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for ElementDefinition {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#path: {
-                let mut default: super::super::types::String = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#path: super::super::types::String {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#representation: Default::default(),
             r#slice_name: Default::default(),

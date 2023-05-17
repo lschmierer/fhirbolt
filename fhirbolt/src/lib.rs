@@ -11,7 +11,7 @@
 //!   * R5
 //!
 //! The Rust crate supports two working modes:
-//! 1. a generic element model
+//! 1. a generic [element] model
 //! 2. working with fully typed model structs.
 //!
 //! ## Installation
@@ -29,18 +29,22 @@
 //! // The `Resource` type is an enum that contains all possible FHIR resources.
 //! // If the resource type is known in advance, you could also use a concrete resource type
 //! // (like e.g. `fhirbolt::model::r4b::resources::Observation`).
-//! use fhirbolt::model::r4b::Resource;
+//! use fhirbolt::model::r4b::{
+//!     Resource,
+//!     resources::{Observation, ObservationValue},
+//!     types::{Code, CodeableConcept, Coding, String as FhirString},
+//! };
 //! use fhirbolt::serde::{DeserializationConfig, DeserializationMode};
 //!
 //! // The type of `s` is `&str`
-//! let s = "{
-//!     \"resourceType\": \"Observation\",
-//!     \"status\": \"final\",
-//!     \"code\": {
-//!         \"text\": \"some code\"
+//! let s = r#"{
+//!     "resourceType": "Observation",
+//!     "status": "final",
+//!     "code": {
+//!         "text": "some code"
 //!     },
-//!     \"valueString\": \"some value\"
-//! }";
+//!     "valueString": "some value"
+//! }"#;
 //!
 //! let r: Resource = fhirbolt::json::from_str(s, None).unwrap();
 //!
@@ -48,6 +52,26 @@
 //!     Resource::Observation(ref o) => println!("deserialized observation: {:?}", r),
 //!     _ => (),
 //! }
+//!
+//! // Use Default::default() or constructing new resources by yourself
+//! let o = Observation {
+//!     status: Code {
+//!         value: Some("final".to_string()),
+//!         ..Default::default()
+//!     },
+//!     code: Box::new(CodeableConcept {
+//!         text: Some(FhirString {
+//!             value: Some("some code".to_string()),
+//!             ..Default::default()
+//!         }),
+//!         ..Default::default()
+//!     }),
+//!     value: Some(ObservationValue::String(Box::new(FhirString {
+//!         value: Some("some value".to_string()),
+//!         ..Default::default()
+//!     }))),
+//!     ..Default::default()
+//! };
 //! ```
 //!
 //! You can pass a [`DeserializationConfig`](crate::serde::DeserializationConfig) to configure the deserialization behavior.
@@ -86,7 +110,11 @@ pub mod element {
     //!         Primitive::String("Observation".to_string())
     //!     )
     //! );
-    //! // ...
+    //!
+    //! // This can be simplified by using the Element! macro provided
+    //! let element: Element::<{ FhirReleases:: R4B }> = Element! {
+    //!     "resourceType" => Value::Primitive(Primitive::String("Observation".to_string()))
+    //! };
     //! ```
 
     pub use fhirbolt_element::*;
@@ -106,14 +134,14 @@ pub mod serde {
     //! use fhirbolt::model::r4b::Resource;
     //!
     //! // The type of `s` is `&str`
-    //! let s = "{
-    //!     \"resourceType\": \"Observation\",
-    //!     \"status\": \"final\",
-    //!     \"code\": {
-    //!         \"text\": \"some code\"
+    //! let s = r#"{
+    //!     "resourceType": "Observation",
+    //!     "status": "final",
+    //!     "code": {
+    //!         "text": "some code"
     //!     },
-    //!     \"valueString\": \"some value\"
-    //! }";
+    //!     "valueString": "some value"
+    //! }"#;
     //!
     //! let r: Resource = fhirbolt::json::from_str(s, None).unwrap();
     //! println!("{:?}", r);

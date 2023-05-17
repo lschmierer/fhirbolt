@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-15 by fhirbolt-codegen v0.8.0
 #[doc = "The minimum volume to be conditioned in the container."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum SpecimenDefinitionTypeTestedContainerMinimumVolume {
@@ -27,6 +27,7 @@ pub struct SpecimenDefinitionTypeTestedContainerAdditive {
     #[doc = "Substance introduced in the kind of container to preserve, maintain or enhance the specimen. Examples: Formalin, Citrate, EDTA."]
     pub r#additive: SpecimenDefinitionTypeTestedContainerAdditiveAdditive,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for SpecimenDefinitionTypeTestedContainerAdditive {
     fn default() -> Self {
         Self {
@@ -63,6 +64,7 @@ pub struct SpecimenDefinitionTypeTestedContainer {
     #[doc = "Special processing that should be applied to the container for this kind of specimen."]
     pub r#preparation: Option<super::super::types::String>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for SpecimenDefinitionTypeTestedContainer {
     fn default() -> Self {
         Self {
@@ -98,6 +100,7 @@ pub struct SpecimenDefinitionTypeTestedHandling {
     #[doc = "Additional textual instructions for the preservation or transport of the specimen. For instance, 'Protect from light exposure'."]
     pub r#instruction: Option<super::super::types::String>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for SpecimenDefinitionTypeTestedHandling {
     fn default() -> Self {
         Self {
@@ -137,6 +140,7 @@ pub struct SpecimenDefinitionTypeTested {
     #[doc = "Set of instructions for preservation/transport of the specimen at a defined temperature interval, prior the testing process."]
     pub r#handling: Vec<SpecimenDefinitionTypeTestedHandling>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for SpecimenDefinitionTypeTested {
     fn default() -> Self {
         Self {
@@ -145,10 +149,9 @@ impl Default for SpecimenDefinitionTypeTested {
             r#modifier_extension: Default::default(),
             r#is_derived: Default::default(),
             r#type: Default::default(),
-            r#preference: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#preference: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#container: Default::default(),
             r#requirement: Default::default(),
@@ -162,7 +165,7 @@ impl Default for SpecimenDefinitionTypeTested {
 #[derive(Debug, Clone, PartialEq)]
 pub struct SpecimenDefinition {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
-    pub r#id: Option<std::string::String>,
+    pub r#id: Option<Box<super::super::types::Id>>,
     #[doc = "The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content might not always be associated with version changes to the resource."]
     pub r#meta: Option<Box<super::super::types::Meta>>,
     #[doc = "A reference to a set of rules that were followed when the resource was constructed, and which must be understood when processing the content. Often, this is a reference to an implementation guide that defines the special rules along with other profiles etc."]
@@ -190,6 +193,7 @@ pub struct SpecimenDefinition {
     #[doc = "Specimen conditioned in a container as expected by the testing laboratory."]
     pub r#type_tested: Vec<SpecimenDefinitionTypeTested>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for SpecimenDefinition {
     fn default() -> Self {
         Self {

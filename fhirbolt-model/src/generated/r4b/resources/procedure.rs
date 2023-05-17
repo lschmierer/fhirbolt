@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-15 by fhirbolt-codegen v0.8.0
 #[doc = "Estimated or actual date, date-time, period, or age when the procedure was performed.  Allows a period to support complex procedures that span more than one date, and also allows for the length of the procedure to be captured."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum ProcedurePerformed {
@@ -26,6 +26,7 @@ pub struct ProcedurePerformer {
     #[doc = "The organization the device or practitioner was acting on behalf of."]
     pub r#on_behalf_of: Option<Box<super::super::types::Reference>>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for ProcedurePerformer {
     fn default() -> Self {
         Self {
@@ -33,11 +34,10 @@ impl Default for ProcedurePerformer {
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
             r#function: Default::default(),
-            r#actor: {
-                let mut default: Box<super::super::types::Reference> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#actor: Box::new(super::super::types::Reference {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
             r#on_behalf_of: Default::default(),
         }
     }
@@ -56,6 +56,7 @@ pub struct ProcedureFocalDevice {
     #[doc = "The device that was manipulated (changed) during the procedure."]
     pub r#manipulated: Box<super::super::types::Reference>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for ProcedureFocalDevice {
     fn default() -> Self {
         Self {
@@ -63,11 +64,10 @@ impl Default for ProcedureFocalDevice {
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
             r#action: Default::default(),
-            r#manipulated: {
-                let mut default: Box<super::super::types::Reference> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#manipulated: Box::new(super::super::types::Reference {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
         }
     }
 }
@@ -75,7 +75,7 @@ impl Default for ProcedureFocalDevice {
 #[derive(Debug, Clone, PartialEq)]
 pub struct Procedure {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
-    pub r#id: Option<std::string::String>,
+    pub r#id: Option<Box<super::super::types::Id>>,
     #[doc = "The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content might not always be associated with version changes to the resource."]
     pub r#meta: Option<Box<super::super::types::Meta>>,
     #[doc = "A reference to a set of rules that were followed when the resource was constructed, and which must be understood when processing the content. Often, this is a reference to an implementation guide that defines the special rules along with other profiles etc."]
@@ -147,6 +147,7 @@ pub struct Procedure {
     #[doc = "Identifies coded items that were used as part of the procedure."]
     pub r#used_code: Vec<super::super::types::CodeableConcept>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for Procedure {
     fn default() -> Self {
         Self {
@@ -163,19 +164,17 @@ impl Default for Procedure {
             r#instantiates_uri: Default::default(),
             r#based_on: Default::default(),
             r#part_of: Default::default(),
-            r#status: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#status: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#status_reason: Default::default(),
             r#category: Default::default(),
             r#code: Default::default(),
-            r#subject: {
-                let mut default: Box<super::super::types::Reference> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#subject: Box::new(super::super::types::Reference {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
             r#encounter: Default::default(),
             r#performed: Default::default(),
             r#recorder: Default::default(),

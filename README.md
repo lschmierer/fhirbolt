@@ -40,7 +40,7 @@ You should only include the release that you really need, as this signigicantly 
 fhirbolt = { version = "0.3", features = ["r4b"] }
 ```
 
-## Example
+### Example
 
 ```rust
 // The `Resource` type is an enum that contains all possible FHIR resources.
@@ -50,14 +50,14 @@ use fhirbolt::model::r4b::Resource;
 use fhirbolt::serde::{DeserializationConfig, DeserializationMode};
 
 // The type of `s` is `&str`
-let s = "{
-    \"resourceType\": \"Observation\",
-    \"status\": \"final\",
-    \"code\": {
-        \"text\": \"some code\"
+let s = r#"{
+    "resourceType": "Observation",
+    "status": "final",
+    "code": {
+        "text": "some code"
     },
-    \"valueString\": \"some value\"
-}";
+    "valueString": "some value"
+}"#;
 
 let r: Resource = fhirbolt::json::from_str(s, None).unwrap();
 
@@ -65,3 +65,24 @@ match r {
     Resource::Observation(o) => println!("deserialized observation: {:?}", r),
     _ => (),
 }
+
+// Use Default::default() or constructing new resources by yourself
+let o = Observation {
+    status: Code {
+        value: Some("final".to_string()),
+        ..Default::default()
+    },
+    code: Box::new(CodeableConcept {
+        text: Some(FhirString {
+            value: Some("some code".to_string()),
+            ..Default::default()
+        }),
+        ..Default::default()
+    }),
+    value: Some(ObservationValue::String(Box::new(FhirString {
+        value: Some("some value".to_string()),
+        ..Default::default()
+    }))),
+    ..Default::default()
+};
+```

@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-15 by fhirbolt-codegen v0.8.0
 #[doc = "Time of product collection."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum BiologicallyDerivedProductCollectionCollected {
@@ -39,6 +39,7 @@ pub struct BiologicallyDerivedProductCollection {
     #[doc = "Time of product collection."]
     pub r#collected: Option<BiologicallyDerivedProductCollectionCollected>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for BiologicallyDerivedProductCollection {
     fn default() -> Self {
         Self {
@@ -69,6 +70,7 @@ pub struct BiologicallyDerivedProductProcessing {
     #[doc = "Time of processing."]
     pub r#time: Option<BiologicallyDerivedProductProcessingTime>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for BiologicallyDerivedProductProcessing {
     fn default() -> Self {
         Self {
@@ -96,6 +98,7 @@ pub struct BiologicallyDerivedProductManipulation {
     #[doc = "Time of manipulation."]
     pub r#time: Option<BiologicallyDerivedProductManipulationTime>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for BiologicallyDerivedProductManipulation {
     fn default() -> Self {
         Self {
@@ -125,6 +128,7 @@ pub struct BiologicallyDerivedProductStorage {
     #[doc = "Storage timeperiod."]
     pub r#duration: Option<Box<super::super::types::Period>>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for BiologicallyDerivedProductStorage {
     fn default() -> Self {
         Self {
@@ -142,7 +146,7 @@ impl Default for BiologicallyDerivedProductStorage {
 #[derive(Debug, Clone, PartialEq)]
 pub struct BiologicallyDerivedProduct {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
-    pub r#id: Option<std::string::String>,
+    pub r#id: Option<Box<super::super::types::Id>>,
     #[doc = "The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content might not always be associated with version changes to the resource."]
     pub r#meta: Option<Box<super::super::types::Meta>>,
     #[doc = "A reference to a set of rules that were followed when the resource was constructed, and which must be understood when processing the content. Often, this is a reference to an implementation guide that defines the special rules along with other profiles etc."]
@@ -180,6 +184,7 @@ pub struct BiologicallyDerivedProduct {
     #[doc = "Product storage."]
     pub r#storage: Vec<BiologicallyDerivedProductStorage>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for BiologicallyDerivedProduct {
     fn default() -> Self {
         Self {

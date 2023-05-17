@@ -61,7 +61,7 @@ pub fn bench(c: &mut Criterion) {
         b.iter(|| {
             black_box(fhirbolt::json::to_vec(
                 &account_struct,
-                Some(SerializationConfig { sort_json: false }),
+                Some(SerializationConfig { always_sort: false }),
             ))
         })
     });
@@ -69,7 +69,7 @@ pub fn bench(c: &mut Criterion) {
         b.iter(|| {
             black_box(fhirbolt::json::to_vec(
                 &account_enum,
-                Some(SerializationConfig { sort_json: false }),
+                Some(SerializationConfig { always_sort: false }),
             ))
         })
     });
@@ -78,7 +78,7 @@ pub fn bench(c: &mut Criterion) {
             black_box(
                 fhirbolt::json::to_vec::<Element<{ FhirReleases::R4 }>>(
                     &account_element,
-                    Some(SerializationConfig { sort_json: false }),
+                    Some(SerializationConfig { always_sort: false }),
                 )
                 .unwrap(),
             )
@@ -125,7 +125,7 @@ pub fn bench(c: &mut Criterion) {
         b.iter(|| {
             black_box(fhirbolt::xml::to_vec(
                 &account_struct,
-                Some(SerializationConfig { sort_json: false }),
+                Some(SerializationConfig { always_sort: false }),
             ))
         })
     });
@@ -133,7 +133,7 @@ pub fn bench(c: &mut Criterion) {
         b.iter(|| {
             black_box(fhirbolt::xml::to_vec(
                 &account_enum,
-                Some(SerializationConfig { sort_json: false }),
+                Some(SerializationConfig { always_sort: false }),
             ))
         })
     });
@@ -142,7 +142,7 @@ pub fn bench(c: &mut Criterion) {
             black_box(
                 fhirbolt::xml::to_vec::<Element<{ FhirReleases::R4 }>>(
                     &account_element,
-                    Some(SerializationConfig { sort_json: false }),
+                    Some(SerializationConfig { always_sort: false }),
                 )
                 .unwrap(),
             )

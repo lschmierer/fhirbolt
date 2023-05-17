@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-15 by fhirbolt-codegen v0.8.0
 #[doc = "A duration or range of durations to apply to the relationship. For example, 30-60 minutes before."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum RequestOrchestrationActionRelatedActionOffset {
@@ -49,16 +49,16 @@ pub struct RequestOrchestrationActionCondition {
     #[doc = "An expression that returns true or false, indicating whether or not the condition is satisfied."]
     pub r#expression: Option<Box<super::super::types::Expression>>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for RequestOrchestrationActionCondition {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#kind: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#kind: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#expression: Default::default(),
         }
@@ -80,6 +80,7 @@ pub struct RequestOrchestrationActionInput {
     #[doc = "Points to an existing input or output element that provides data to this input."]
     pub r#related_data: Option<super::super::types::Id>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for RequestOrchestrationActionInput {
     fn default() -> Self {
         Self {
@@ -108,6 +109,7 @@ pub struct RequestOrchestrationActionOutput {
     #[doc = "Points to an existing input or output element that is results as output from the action."]
     pub r#related_data: Option<super::super::types::String>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for RequestOrchestrationActionOutput {
     fn default() -> Self {
         Self {
@@ -138,21 +140,20 @@ pub struct RequestOrchestrationActionRelatedAction {
     #[doc = "A duration or range of durations to apply to the relationship. For example, 30-60 minutes before."]
     pub r#offset: Option<RequestOrchestrationActionRelatedActionOffset>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for RequestOrchestrationActionRelatedAction {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#target_id: {
-                let mut default: super::super::types::Id = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#target_id: super::super::types::Id {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
-            r#relationship: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#relationship: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#end_relationship: Default::default(),
             r#offset: Default::default(),
@@ -181,6 +182,7 @@ pub struct RequestOrchestrationActionParticipant {
     #[doc = "A reference to the actual participant."]
     pub r#actor: Option<RequestOrchestrationActionParticipantActor>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for RequestOrchestrationActionParticipant {
     fn default() -> Self {
         Self {
@@ -210,6 +212,7 @@ pub struct RequestOrchestrationActionDynamicValue {
     #[doc = "An expression specifying the value of the customized element."]
     pub r#expression: Option<Box<super::super::types::Expression>>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for RequestOrchestrationActionDynamicValue {
     fn default() -> Self {
         Self {
@@ -285,6 +288,7 @@ pub struct RequestOrchestrationAction {
     #[doc = "Sub actions."]
     pub r#action: Vec<RequestOrchestrationAction>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for RequestOrchestrationAction {
     fn default() -> Self {
         Self {
@@ -325,7 +329,7 @@ impl Default for RequestOrchestrationAction {
 #[derive(Debug, Clone, PartialEq)]
 pub struct RequestOrchestration {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
-    pub r#id: Option<std::string::String>,
+    pub r#id: Option<Box<super::super::types::Id>>,
     #[doc = "The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content might not always be associated with version changes to the resource."]
     pub r#meta: Option<Box<super::super::types::Meta>>,
     #[doc = "A reference to a set of rules that were followed when the resource was constructed, and which must be understood when processing the content. Often, this is a reference to an implementation guide that defines the special rules along with other profiles etc."]
@@ -377,6 +381,7 @@ pub struct RequestOrchestration {
     #[doc = "The actions, if any, produced by the evaluation of the artifact."]
     pub r#action: Vec<RequestOrchestrationAction>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for RequestOrchestration {
     fn default() -> Self {
         Self {
@@ -394,15 +399,13 @@ impl Default for RequestOrchestration {
             r#based_on: Default::default(),
             r#replaces: Default::default(),
             r#group_identifier: Default::default(),
-            r#status: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#status: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
-            r#intent: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#intent: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#priority: Default::default(),
             r#code: Default::default(),

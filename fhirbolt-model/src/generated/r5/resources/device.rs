@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-15 by fhirbolt-codegen v0.8.0
 #[doc = "The value of the property specified by the associated property.type code."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum DevicePropertyValue {
@@ -34,21 +34,20 @@ pub struct DeviceUdiCarrier {
     #[doc = "A coded entry to indicate how the data was entered."]
     pub r#entry_type: Option<super::super::types::Code>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for DeviceUdiCarrier {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#device_identifier: {
-                let mut default: super::super::types::String = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#device_identifier: super::super::types::String {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
-            r#issuer: {
-                let mut default: super::super::types::Uri = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#issuer: super::super::types::Uri {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#jurisdiction: Default::default(),
             r#carrier_aidc: Default::default(),
@@ -73,21 +72,20 @@ pub struct DeviceName {
     #[doc = "Indicates the default or preferred name to be displayed."]
     pub r#display: Option<super::super::types::Boolean>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for DeviceName {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#value: {
-                let mut default: super::super::types::String = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#value: super::super::types::String {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
-            r#type: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#type: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#display: Default::default(),
         }
@@ -111,6 +109,7 @@ pub struct DeviceVersion {
     #[doc = "The version text."]
     pub r#value: super::super::types::String,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for DeviceVersion {
     fn default() -> Self {
         Self {
@@ -120,10 +119,9 @@ impl Default for DeviceVersion {
             r#type: Default::default(),
             r#component: Default::default(),
             r#install_date: Default::default(),
-            r#value: {
-                let mut default: super::super::types::String = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#value: super::super::types::String {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
         }
     }
@@ -144,6 +142,7 @@ pub struct DeviceConformsTo {
     #[doc = "Identifies the specific form or variant of the standard, specification, or formal guidance. This may be a 'version number', release, document edition, publication year, or other label."]
     pub r#version: Option<super::super::types::String>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for DeviceConformsTo {
     fn default() -> Self {
         Self {
@@ -151,11 +150,10 @@ impl Default for DeviceConformsTo {
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
             r#category: Default::default(),
-            r#specification: {
-                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#specification: Box::new(super::super::types::CodeableConcept {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
             r#version: Default::default(),
         }
     }
@@ -174,17 +172,17 @@ pub struct DeviceProperty {
     #[doc = "The value of the property specified by the associated property.type code."]
     pub r#value: DevicePropertyValue,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for DeviceProperty {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#type: {
-                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#type: Box::new(super::super::types::CodeableConcept {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
             r#value: Default::default(),
         }
     }
@@ -193,7 +191,7 @@ impl Default for DeviceProperty {
 #[derive(Debug, Clone, PartialEq)]
 pub struct Device {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
-    pub r#id: Option<std::string::String>,
+    pub r#id: Option<Box<super::super::types::Id>>,
     #[doc = "The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content might not always be associated with version changes to the resource."]
     pub r#meta: Option<Box<super::super::types::Meta>>,
     #[doc = "A reference to a set of rules that were followed when the resource was constructed, and which must be understood when processing the content. Often, this is a reference to an implementation guide that defines the special rules along with other profiles etc."]
@@ -273,6 +271,7 @@ pub struct Device {
     #[doc = "The higher level or encompassing device that this device is a logical part of."]
     pub r#parent: Option<Box<super::super::types::Reference>>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for Device {
     fn default() -> Self {
         Self {

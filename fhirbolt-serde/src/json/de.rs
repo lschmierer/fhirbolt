@@ -5,7 +5,10 @@ use std::io;
 use serde::de::DeserializeSeed;
 use serde_json::Deserializer;
 
-use crate::{json::Result, DeserializationConfig, DeserializeResource, DeserializeResourceOwned};
+use crate::{
+    context::Format, json::Result, DeserializationConfig, DeserializeResource,
+    DeserializeResourceOwned,
+};
 
 fn from_deserializer<'de, R, T>(
     de: &mut Deserializer<R>,
@@ -15,7 +18,7 @@ where
     R: serde_json::de::Read<'de>,
     T: DeserializeResource<'de>,
 {
-    T::deserialization_context(config.unwrap_or(Default::default()), true).deserialize(de)
+    T::deserialization_context(config.unwrap_or(Default::default()), Format::Json).deserialize(de)
 }
 
 /// Deserialize an instance of resource type `T` directly from an IO stream of JSON (e.g. coming from network).
@@ -28,14 +31,14 @@ where
 /// use fhirbolt::model::r4b::Resource;
 ///
 /// // The type of `s` is `&str`
-/// let s = "{
-///     \"resourceType\": \"Observation\",
-///     \"status\": \"final\",
-///     \"code\": {
-///         \"text\": \"some code\"
+/// let s = r#"{
+///     "resourceType": "Observation",
+///     "status": "final",
+///     "code": {
+///         "text": "some code"
 ///     },
-///     \"valueString\": \"some value\"
-/// }";
+///     "valueString": "some value"
+/// }"#;
 ///
 /// // `s.as_bytes()` returns `&[u8]` which implements `std::io::Read`
 /// let r: Resource = fhirbolt::json::from_reader(s.as_bytes(), None).unwrap();
@@ -63,14 +66,14 @@ where
 /// use fhirbolt::model::r4b::Resource;
 ///
 /// // The type of `b` is `&[u8]`
-/// let b = b"{
-///     \"resourceType\": \"Observation\",
-///     \"status\": \"final\",
-///     \"code\": {
-///         \"text\": \"some code\"
+/// let b = br#"{
+///     "resourceType": "Observation",
+///     "status": "final",
+///     "code": {
+///         "text": "some code"
 ///     },
-///     \"valueString\": \"some value\"
-/// }";
+///     "valueString": "some value"
+/// }"#;
 ///
 /// let r: Resource = fhirbolt::json::from_slice(b, None).unwrap();
 /// println!("{:?}", r);
@@ -96,14 +99,14 @@ where
 /// use fhirbolt::model::r4b::Resource;
 ///
 /// // The type of `s` is `&str`
-/// let s = "{
-///     \"resourceType\": \"Observation\",
-///     \"status\": \"final\",
-///     \"code\": {
-///         \"text\": \"some code\"
+/// let s = r#"{
+///     "resourceType": "Observation",
+///     "status": "final",
+///     "code": {
+///         "text": "some code"
 ///     },
-///     \"valueString\": \"some value\"
-/// }";
+///     "valueString": "some value"
+/// }"#;
 ///
 /// let r: Resource = fhirbolt::json::from_str(s, None).unwrap();
 /// println!("{:?}", r);
@@ -129,14 +132,14 @@ where
 /// use fhirbolt::model::r4b::Resource;
 ///
 /// // The type of `s` is `&str`
-/// let s = "{
-///     \"resourceType\": \"Observation\",
-///     \"status\": \"final\",
-///     \"code\": {
-///         \"text\": \"some code\"
+/// let s = r#"{
+///     "resourceType": "Observation",
+///     "status": "final",
+///     "code": {
+///         "text": "some code"
 ///     },
-///     \"valueString\": \"some value\"
-/// }";
+///     "valueString": "some value"
+/// }"#;
 ///
 /// let v: serde_json::Value = serde_json::from_str(s).unwrap();
 ///
@@ -154,5 +157,6 @@ pub fn from_json_value<T>(
 where
     T: DeserializeResourceOwned,
 {
-    T::deserialization_context(config.unwrap_or(Default::default()), true).deserialize(value)
+    T::deserialization_context(config.unwrap_or(Default::default()), Format::Json)
+        .deserialize(value)
 }

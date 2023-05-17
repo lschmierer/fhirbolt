@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-15 by fhirbolt-codegen v0.8.0
 #[doc = "Allows for adjustment on two axis."]
 #[derive(Debug, Clone, PartialEq)]
 pub struct VisionPrescriptionLensSpecificationPrism {
@@ -13,21 +13,20 @@ pub struct VisionPrescriptionLensSpecificationPrism {
     #[doc = "The relative base, or reference lens edge, for the prism."]
     pub r#base: super::super::types::Code,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for VisionPrescriptionLensSpecificationPrism {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#amount: {
-                let mut default: super::super::types::Decimal = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#amount: super::super::types::Decimal {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
-            r#base: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#base: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
         }
     }
@@ -70,21 +69,20 @@ pub struct VisionPrescriptionLensSpecification {
     #[doc = "Notes for special requirements such as coatings and lens materials."]
     pub r#note: Vec<super::super::types::Annotation>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for VisionPrescriptionLensSpecification {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#product: {
-                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
-            r#eye: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#product: Box::new(super::super::types::CodeableConcept {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
+            r#eye: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#sphere: Default::default(),
             r#cylinder: Default::default(),
@@ -105,7 +103,7 @@ impl Default for VisionPrescriptionLensSpecification {
 #[derive(Debug, Clone, PartialEq)]
 pub struct VisionPrescription {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
-    pub r#id: Option<std::string::String>,
+    pub r#id: Option<Box<super::super::types::Id>>,
     #[doc = "The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content might not always be associated with version changes to the resource."]
     pub r#meta: Option<Box<super::super::types::Meta>>,
     #[doc = "A reference to a set of rules that were followed when the resource was constructed, and which must be understood when processing the content. Often, this is a reference to an implementation guide that defines the special rules along with other profiles etc."]
@@ -137,6 +135,7 @@ pub struct VisionPrescription {
     #[doc = "Contain the details of  the individual lens specifications and serves as the authorization for the fullfillment by certified professionals."]
     pub r#lens_specification: Vec<VisionPrescriptionLensSpecification>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for VisionPrescription {
     fn default() -> Self {
         Self {
@@ -149,32 +148,27 @@ impl Default for VisionPrescription {
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
             r#identifier: Default::default(),
-            r#status: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#status: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
-            r#created: {
-                let mut default: super::super::types::DateTime = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#created: super::super::types::DateTime {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
-            r#patient: {
-                let mut default: Box<super::super::types::Reference> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#patient: Box::new(super::super::types::Reference {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
             r#encounter: Default::default(),
-            r#date_written: {
-                let mut default: super::super::types::DateTime = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#date_written: super::super::types::DateTime {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
-            r#prescriber: {
-                let mut default: Box<super::super::types::Reference> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#prescriber: Box::new(super::super::types::Reference {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
             r#lens_specification: Default::default(),
         }
     }

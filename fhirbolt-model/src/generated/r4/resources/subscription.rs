@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-15 by fhirbolt-codegen v0.8.0
 #[doc = "Details where to send notifications when resources are received that meet the criteria."]
 #[derive(Debug, Clone, PartialEq)]
 pub struct SubscriptionChannel {
@@ -17,16 +17,16 @@ pub struct SubscriptionChannel {
     #[doc = "Additional headers / information to send as part of the notification."]
     pub r#header: Vec<super::super::types::String>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for SubscriptionChannel {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#type: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#type: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#endpoint: Default::default(),
             r#payload: Default::default(),
@@ -38,7 +38,7 @@ impl Default for SubscriptionChannel {
 #[derive(Debug, Clone, PartialEq)]
 pub struct Subscription {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
-    pub r#id: Option<std::string::String>,
+    pub r#id: Option<Box<super::super::types::Id>>,
     #[doc = "The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content might not always be associated with version changes to the resource."]
     pub r#meta: Option<Box<super::super::types::Meta>>,
     #[doc = "A reference to a set of rules that were followed when the resource was constructed, and which must be understood when processing the content. Often, this is a reference to an implementation guide that defines the special rules along with other profiles etc."]
@@ -68,6 +68,7 @@ pub struct Subscription {
     #[doc = "Details where to send notifications when resources are received that meet the criteria."]
     pub r#channel: SubscriptionChannel,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for Subscription {
     fn default() -> Self {
         Self {
@@ -79,28 +80,24 @@ impl Default for Subscription {
             r#contained: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#status: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#status: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#contact: Default::default(),
             r#end: Default::default(),
-            r#reason: {
-                let mut default: super::super::types::String = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#reason: super::super::types::String {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
-            r#criteria: {
-                let mut default: super::super::types::String = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#criteria: super::super::types::String {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#error: Default::default(),
-            r#channel: {
-                let mut default: SubscriptionChannel = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#channel: SubscriptionChannel {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
         }
     }

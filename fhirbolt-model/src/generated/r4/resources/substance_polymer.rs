@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-15 by fhirbolt-codegen v0.8.0
 #[doc = "Todo."]
 #[derive(Debug, Clone, PartialEq)]
 pub struct SubstancePolymerMonomerSetStartingMaterial {
@@ -17,6 +17,7 @@ pub struct SubstancePolymerMonomerSetStartingMaterial {
     #[doc = "Todo."]
     pub r#amount: Option<Box<super::super::types::SubstanceAmount>>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for SubstancePolymerMonomerSetStartingMaterial {
     fn default() -> Self {
         Self {
@@ -44,6 +45,7 @@ pub struct SubstancePolymerMonomerSet {
     #[doc = "Todo."]
     pub r#starting_material: Vec<SubstancePolymerMonomerSetStartingMaterial>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for SubstancePolymerMonomerSet {
     fn default() -> Self {
         Self {
@@ -69,6 +71,7 @@ pub struct SubstancePolymerRepeatRepeatUnitDegreeOfPolymerisation {
     #[doc = "Todo."]
     pub r#amount: Option<Box<super::super::types::SubstanceAmount>>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for SubstancePolymerRepeatRepeatUnitDegreeOfPolymerisation {
     fn default() -> Self {
         Self {
@@ -96,6 +99,7 @@ pub struct SubstancePolymerRepeatRepeatUnitStructuralRepresentation {
     #[doc = "Todo."]
     pub r#attachment: Option<Box<super::super::types::Attachment>>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for SubstancePolymerRepeatRepeatUnitStructuralRepresentation {
     fn default() -> Self {
         Self {
@@ -128,6 +132,7 @@ pub struct SubstancePolymerRepeatRepeatUnit {
     #[doc = "Todo."]
     pub r#structural_representation: Vec<SubstancePolymerRepeatRepeatUnitStructuralRepresentation>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for SubstancePolymerRepeatRepeatUnit {
     fn default() -> Self {
         Self {
@@ -160,6 +165,7 @@ pub struct SubstancePolymerRepeat {
     #[doc = "Todo."]
     pub r#repeat_unit: Vec<SubstancePolymerRepeatRepeatUnit>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for SubstancePolymerRepeat {
     fn default() -> Self {
         Self {
@@ -177,7 +183,7 @@ impl Default for SubstancePolymerRepeat {
 #[derive(Debug, Clone, PartialEq)]
 pub struct SubstancePolymer {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
-    pub r#id: Option<std::string::String>,
+    pub r#id: Option<Box<super::super::types::Id>>,
     #[doc = "The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content might not always be associated with version changes to the resource."]
     pub r#meta: Option<Box<super::super::types::Meta>>,
     #[doc = "A reference to a set of rules that were followed when the resource was constructed, and which must be understood when processing the content. Often, this is a reference to an implementation guide that defines the special rules along with other profiles etc."]
@@ -205,6 +211,7 @@ pub struct SubstancePolymer {
     #[doc = "Todo."]
     pub r#repeat: Vec<SubstancePolymerRepeat>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for SubstancePolymer {
     fn default() -> Self {
         Self {

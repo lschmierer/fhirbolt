@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-15 by fhirbolt-codegen v0.8.0
 #[doc = "List of participants involved in the appointment."]
 #[derive(Debug, Clone, PartialEq)]
 pub struct AppointmentParticipant {
@@ -19,6 +19,7 @@ pub struct AppointmentParticipant {
     #[doc = "Participation status of the actor."]
     pub r#status: super::super::types::Code,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for AppointmentParticipant {
     fn default() -> Self {
         Self {
@@ -29,10 +30,9 @@ impl Default for AppointmentParticipant {
             r#period: Default::default(),
             r#actor: Default::default(),
             r#required: Default::default(),
-            r#status: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#status: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
         }
     }
@@ -63,6 +63,7 @@ pub struct AppointmentRecurrenceTemplateWeeklyTemplate {
     #[doc = "The interval defines if the recurrence is every nth week. The default is every week, so it is expected that this value will be 2 or more.\r\re.g. For recurring every second week this interval would be 2, or every third week the interval would be 3."]
     pub r#week_interval: Option<super::super::types::PositiveInt>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for AppointmentRecurrenceTemplateWeeklyTemplate {
     fn default() -> Self {
         Self {
@@ -98,6 +99,7 @@ pub struct AppointmentRecurrenceTemplateMonthlyTemplate {
     #[doc = "Indicates that recurring appointments should occur every nth month."]
     pub r#month_interval: super::super::types::PositiveInt,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for AppointmentRecurrenceTemplateMonthlyTemplate {
     fn default() -> Self {
         Self {
@@ -107,10 +109,9 @@ impl Default for AppointmentRecurrenceTemplateMonthlyTemplate {
             r#day_of_month: Default::default(),
             r#nth_week_of_month: Default::default(),
             r#day_of_week: Default::default(),
-            r#month_interval: {
-                let mut default: super::super::types::PositiveInt = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#month_interval: super::super::types::PositiveInt {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
         }
     }
@@ -127,16 +128,16 @@ pub struct AppointmentRecurrenceTemplateYearlyTemplate {
     #[doc = "Appointment recurs every nth year."]
     pub r#year_interval: super::super::types::PositiveInt,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for AppointmentRecurrenceTemplateYearlyTemplate {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#year_interval: {
-                let mut default: super::super::types::PositiveInt = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#year_interval: super::super::types::PositiveInt {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
         }
     }
@@ -171,6 +172,7 @@ pub struct AppointmentRecurrenceTemplate {
     #[doc = "Any dates, such as holidays, that should be excluded from the recurrence."]
     pub r#excluding_recurrence_id: Vec<super::super::types::PositiveInt>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for AppointmentRecurrenceTemplate {
     fn default() -> Self {
         Self {
@@ -178,11 +180,10 @@ impl Default for AppointmentRecurrenceTemplate {
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
             r#timezone: Default::default(),
-            r#recurrence_type: {
-                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#recurrence_type: Box::new(super::super::types::CodeableConcept {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
             r#last_occurrence_date: Default::default(),
             r#occurrence_count: Default::default(),
             r#occurrence_date: Default::default(),
@@ -198,7 +199,7 @@ impl Default for AppointmentRecurrenceTemplate {
 #[derive(Debug, Clone, PartialEq)]
 pub struct Appointment {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
-    pub r#id: Option<std::string::String>,
+    pub r#id: Option<Box<super::super::types::Id>>,
     #[doc = "The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content might not always be associated with version changes to the resource."]
     pub r#meta: Option<Box<super::super::types::Meta>>,
     #[doc = "A reference to a set of rules that were followed when the resource was constructed, and which must be understood when processing the content. Often, this is a reference to an implementation guide that defines the special rules along with other profiles etc."]
@@ -278,6 +279,7 @@ pub struct Appointment {
     #[doc = "The details of the recurrence pattern or template that is used to generate recurring appointments."]
     pub r#recurrence_template: Vec<AppointmentRecurrenceTemplate>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for Appointment {
     fn default() -> Self {
         Self {
@@ -290,10 +292,9 @@ impl Default for Appointment {
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
             r#identifier: Default::default(),
-            r#status: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#status: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#cancellation_reason: Default::default(),
             r#class: Default::default(),

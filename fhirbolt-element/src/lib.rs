@@ -24,21 +24,54 @@ use std::{
 
 pub use fhirbolt_shared::{FhirRelease, FhirReleases};
 
+/// Macro for creating [`Element`].
+///
+/// # Examples
+///
+/// ```rust
+/// use fhirbolt::FhirReleases;
+/// use fhirbolt::element::{Element, Value, Primitive};
+///
+/// let element: Element<{ FhirReleases::R4 }> = Element! {
+///     "value" => Value::Primitive(Primitive::String("123".into())),
+/// };
+/// ```
+#[macro_export]
+macro_rules! Element {
+    {$($k: expr => $v: expr),* $(,)?} => {
+        fhirbolt_element::Element::from([$(($k, $v),)*])
+    };
+}
+
 /// Generic element in a FHIR resource.
 ///
 /// As deserialization differs slightly between FHIR releases,
 /// `Element` is generic over a FHIR release.
 ///
+/// It is recommended to use the `Element!` macro for creating
+/// new element.
+///
 /// # Example
+/// ## With macro
+/// ```rust
+/// use fhirbolt::FhirReleases;
+/// use fhirbolt::element::{Element, Value, Primitive};
+///
+/// let element: Element<{ FhirReleases::R4 }> = Element! {
+///     "value" => Value::Primitive(Primitive::String("123".into())),
+/// };
 /// ```
+///
+/// ## Without macro
+/// ```rust
 /// use fhirbolt::FhirReleases;
 /// use fhirbolt::element::{Element, Value, Primitive};
 ///
 /// let mut element = Element::<{ FhirReleases:: R4B }>::new();
 /// element.insert(
-///     "resourceType".to_string(),
+///     "value".to_string(),
 ///     Value::Primitive(
-///         Primitive::String("Observation".to_string())
+///         Primitive::String("123".to_string())
 ///     )
 /// );
 /// // ...
@@ -79,6 +112,20 @@ impl<const R: FhirRelease> DerefMut for Element<R> {
     #[inline]
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.map
+    }
+}
+
+impl<const R: FhirRelease, const N: usize> From<[(String, Value<R>); N]> for Element<R> {
+    fn from(arr: [(String, Value<R>); N]) -> Self {
+        Element {
+            map: indexmap::IndexMap::from(arr),
+        }
+    }
+}
+
+impl<const R: FhirRelease, const N: usize> From<[(&str, Value<R>); N]> for Element<R> {
+    fn from(arr: [(&str, Value<R>); N]) -> Self {
+        Element::from_iter(arr.map(|(k, v)| (k.into(), v)))
     }
 }
 

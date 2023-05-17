@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-15 by fhirbolt-codegen v0.8.0
 #[doc = "Times the {item} is available."]
 #[derive(Debug, Clone, PartialEq)]
 pub struct AvailabilityAvailableTime {
@@ -15,6 +15,7 @@ pub struct AvailabilityAvailableTime {
     #[doc = "Closing time of day (ignored if allDay = true)."]
     pub r#available_end_time: Option<super::super::types::Time>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for AvailabilityAvailableTime {
     fn default() -> Self {
         Self {
@@ -39,6 +40,7 @@ pub struct AvailabilityNotAvailableTime {
     #[doc = "Service not available during this period."]
     pub r#during: Option<Box<super::super::types::Period>>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for AvailabilityNotAvailableTime {
     fn default() -> Self {
         Self {
@@ -61,6 +63,7 @@ pub struct Availability {
     #[doc = "Not available during this time due to provided reason."]
     pub r#not_available_time: Vec<AvailabilityNotAvailableTime>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for Availability {
     fn default() -> Self {
         Self {

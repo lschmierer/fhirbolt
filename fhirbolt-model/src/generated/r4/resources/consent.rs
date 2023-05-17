@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-15 by fhirbolt-codegen v0.8.0
 #[doc = "The source on which this consent statement is based. The source might be a scanned original paper form, or a reference to a consent that links back to such a source, a reference to a document repository (e.g. XDS) that stores the original consent document."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum ConsentSource {
@@ -21,6 +21,7 @@ pub struct ConsentPolicy {
     #[doc = "The references to the policies that are included in this consent scope. Policies may be organizational, but are often defined jurisdictionally, or in law."]
     pub r#uri: Option<super::super::types::Uri>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for ConsentPolicy {
     fn default() -> Self {
         Self {
@@ -48,16 +49,16 @@ pub struct ConsentVerification {
     #[doc = "Date verification was collected."]
     pub r#verification_date: Option<super::super::types::DateTime>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for ConsentVerification {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#verified: {
-                let mut default: super::super::types::Boolean = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#verified: super::super::types::Boolean {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#verified_with: Default::default(),
             r#verification_date: Default::default(),
@@ -78,22 +79,21 @@ pub struct ConsentProvisionActor {
     #[doc = "The resource that identifies the actor. To identify actors by type, use group to identify a set of actors by some property they share (e.g. 'admitting officers')."]
     pub r#reference: Box<super::super::types::Reference>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for ConsentProvisionActor {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#role: {
-                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
-            r#reference: {
-                let mut default: Box<super::super::types::Reference> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#role: Box::new(super::super::types::CodeableConcept {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
+            r#reference: Box::new(super::super::types::Reference {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
         }
     }
 }
@@ -111,22 +111,21 @@ pub struct ConsentProvisionData {
     #[doc = "A reference to a specific resource that defines which resources are covered by this consent."]
     pub r#reference: Box<super::super::types::Reference>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for ConsentProvisionData {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#meaning: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#meaning: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
-            r#reference: {
-                let mut default: Box<super::super::types::Reference> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#reference: Box::new(super::super::types::Reference {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
         }
     }
 }
@@ -162,6 +161,7 @@ pub struct ConsentProvision {
     #[doc = "Rules which provide exceptions to the base rule or subrules."]
     pub r#provision: Vec<ConsentProvision>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for ConsentProvision {
     fn default() -> Self {
         Self {
@@ -186,7 +186,7 @@ impl Default for ConsentProvision {
 #[derive(Debug, Clone, PartialEq)]
 pub struct Consent {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
-    pub r#id: Option<std::string::String>,
+    pub r#id: Option<Box<super::super::types::Id>>,
     #[doc = "The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content might not always be associated with version changes to the resource."]
     pub r#meta: Option<Box<super::super::types::Meta>>,
     #[doc = "A reference to a set of rules that were followed when the resource was constructed, and which must be understood when processing the content. Often, this is a reference to an implementation guide that defines the special rules along with other profiles etc."]
@@ -228,6 +228,7 @@ pub struct Consent {
     #[doc = "An exception to the base policy of this consent. An exception can be an addition or removal of access permissions."]
     pub r#provision: Option<ConsentProvision>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for Consent {
     fn default() -> Self {
         Self {
@@ -240,16 +241,14 @@ impl Default for Consent {
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
             r#identifier: Default::default(),
-            r#status: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#status: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
-            r#scope: {
-                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#scope: Box::new(super::super::types::CodeableConcept {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
             r#category: Default::default(),
             r#patient: Default::default(),
             r#date_time: Default::default(),

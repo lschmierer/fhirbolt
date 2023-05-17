@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-15 by fhirbolt-codegen v0.8.0
 #[doc = "Indicates if the individual is deceased or not."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum PersonDeceased {
@@ -21,17 +21,17 @@ pub struct PersonCommunication {
     #[doc = "Indicates whether or not the person prefers this language (over other languages he masters up a certain level)."]
     pub r#preferred: Option<super::super::types::Boolean>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for PersonCommunication {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#language: {
-                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#language: Box::new(super::super::types::CodeableConcept {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
             r#preferred: Default::default(),
         }
     }
@@ -50,17 +50,17 @@ pub struct PersonLink {
     #[doc = "Level of assurance that this link is associated with the target resource."]
     pub r#assurance: Option<super::super::types::Code>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for PersonLink {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#target: {
-                let mut default: Box<super::super::types::Reference> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#target: Box::new(super::super::types::Reference {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
             r#assurance: Default::default(),
         }
     }
@@ -69,7 +69,7 @@ impl Default for PersonLink {
 #[derive(Debug, Clone, PartialEq)]
 pub struct Person {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
-    pub r#id: Option<std::string::String>,
+    pub r#id: Option<Box<super::super::types::Id>>,
     #[doc = "The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content might not always be associated with version changes to the resource."]
     pub r#meta: Option<Box<super::super::types::Meta>>,
     #[doc = "A reference to a set of rules that were followed when the resource was constructed, and which must be understood when processing the content. Often, this is a reference to an implementation guide that defines the special rules along with other profiles etc."]
@@ -111,6 +111,7 @@ pub struct Person {
     #[doc = "Link to a resource that concerns the same actual person."]
     pub r#link: Vec<PersonLink>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for Person {
     fn default() -> Self {
         Self {

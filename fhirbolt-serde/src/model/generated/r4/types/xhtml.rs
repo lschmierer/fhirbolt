@@ -1,7 +1,7 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
-impl serde::ser::Serialize
-    for crate::context::ser::SerializationContext<&fhirbolt_model::r4::types::Xhtml>
-{
+// Generated on 2023-05-15 by fhirbolt-codegen v0.8.0
+use crate::{DeserializationContext, SerializationContext};
+use fhirbolt_model::r4::types::Xhtml;
+impl serde::ser::Serialize for SerializationContext<&Xhtml> {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
         S: serde::ser::Serializer,
@@ -22,9 +22,7 @@ impl serde::ser::Serialize
         state.end()
     }
 }
-impl serde::ser::Serialize
-    for crate::context::ser::SerializationContext<&Box<fhirbolt_model::r4::types::Xhtml>>
-{
+impl serde::ser::Serialize for SerializationContext<&Box<Xhtml>> {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
         S: serde::ser::Serializer,
@@ -32,9 +30,7 @@ impl serde::ser::Serialize
         self.with_context(self.value.as_ref(), |ctx| ctx.serialize(serializer))
     }
 }
-impl serde::ser::Serialize
-    for crate::context::ser::SerializationContext<&Vec<fhirbolt_model::r4::types::Xhtml>>
-{
+impl serde::ser::Serialize for SerializationContext<&Vec<Xhtml>> {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
         S: serde::ser::Serializer,
@@ -47,26 +43,19 @@ impl serde::ser::Serialize
         seq_serializer.end()
     }
 }
-impl<'de> serde::de::DeserializeSeed<'de>
-    for &mut crate::context::de::DeserializationContext<fhirbolt_model::r4::types::Xhtml>
-{
-    type Value = fhirbolt_model::r4::types::Xhtml;
+impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Xhtml> {
+    type Value = Xhtml;
     fn deserialize<D>(self, deserializer: D) -> Result<Self::Value, D::Error>
     where
         D: serde::de::Deserializer<'de>,
     {
-        struct Visitor<'a>(
-            &'a mut crate::context::de::DeserializationContext<fhirbolt_model::r4::types::Xhtml>,
-        );
+        struct Visitor<'a>(&'a mut DeserializationContext<Xhtml>);
         impl<'de> serde::de::Visitor<'de> for Visitor<'_> {
-            type Value = fhirbolt_model::r4::types::Xhtml;
+            type Value = Xhtml;
             fn expecting(&self, formatter: &mut std::fmt::Formatter) -> std::fmt::Result {
                 formatter.write_str("Xhtml")
             }
-            fn visit_map<V>(
-                self,
-                mut map_access: V,
-            ) -> Result<fhirbolt_model::r4::types::Xhtml, V::Error>
+            fn visit_map<V>(self, mut map_access: V) -> Result<Xhtml, V::Error>
             where
                 V: serde::de::MapAccess<'de>,
             {
@@ -106,7 +95,7 @@ impl<'de> serde::de::DeserializeSeed<'de>
                         }
                     }
                 }
-                Ok(fhirbolt_model::r4::types::Xhtml {
+                Ok(Xhtml {
                     r#id,
                     r#value: if self.0.config.mode == crate::context::de::DeserializationMode::Lax {
                         r#value.unwrap_or(Default::default())
@@ -119,34 +108,26 @@ impl<'de> serde::de::DeserializeSeed<'de>
         deserializer.deserialize_map(Visitor(self))
     }
 }
-impl<'de> serde::de::DeserializeSeed<'de>
-    for &mut crate::context::de::DeserializationContext<Box<fhirbolt_model::r4::types::Xhtml>>
-{
-    type Value = Box<fhirbolt_model::r4::types::Xhtml>;
+impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Box<Xhtml>> {
+    type Value = Box<Xhtml>;
     fn deserialize<D>(self, deserializer: D) -> Result<Self::Value, D::Error>
     where
         D: serde::de::Deserializer<'de>,
     {
-        self.transmute::<fhirbolt_model::r4::types::Xhtml>()
+        self.transmute::<Xhtml>()
             .deserialize(deserializer)
             .map(Box::new)
     }
 }
-impl<'de> serde::de::DeserializeSeed<'de>
-    for &mut crate::context::de::DeserializationContext<Vec<fhirbolt_model::r4::types::Xhtml>>
-{
-    type Value = Vec<fhirbolt_model::r4::types::Xhtml>;
+impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Vec<Xhtml>> {
+    type Value = Vec<Xhtml>;
     fn deserialize<D>(self, deserializer: D) -> Result<Self::Value, D::Error>
     where
         D: serde::de::Deserializer<'de>,
     {
-        struct Visitor<'a>(
-            &'a mut crate::context::de::DeserializationContext<
-                Vec<fhirbolt_model::r4::types::Xhtml>,
-            >,
-        );
+        struct Visitor<'a>(&'a mut DeserializationContext<Vec<Xhtml>>);
         impl<'de> serde::de::Visitor<'de> for Visitor<'_> {
-            type Value = Vec<fhirbolt_model::r4::types::Xhtml>;
+            type Value = Vec<Xhtml>;
             fn expecting(&self, formatter: &mut std::fmt::Formatter) -> std::fmt::Result {
                 formatter.write_str("a sequence")
             }
@@ -155,9 +136,8 @@ impl<'de> serde::de::DeserializeSeed<'de>
                 A: serde::de::SeqAccess<'de>,
             {
                 let mut values = Vec::new();
-                while let Some(value) =
-                    seq.next_element_seed(self.0.transmute::<fhirbolt_model::r4::types::Xhtml>())?
-                {
+                let _context: &mut DeserializationContext<Xhtml> = self.0.transmute();
+                while let Some(value) = seq.next_element_seed(&mut *_context)? {
                     values.push(value);
                 }
                 Ok(values)

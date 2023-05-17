@@ -8,7 +8,7 @@ use quick_xml::{
     Reader,
 };
 
-pub fn assert_xml_eq<R: AsRef<[u8]>>(left: R, right: R, skip_status: bool) {
+pub fn assert_xml_eq<L: AsRef<[u8]>, R: AsRef<[u8]>>(left: L, right: R, skip_status: bool) {
     let mut left_reader = Reader::from_reader(left.as_ref());
     let mut right_reader = Reader::from_reader(right.as_ref());
 

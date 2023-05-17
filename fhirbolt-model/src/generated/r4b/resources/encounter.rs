@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-15 by fhirbolt-codegen v0.8.0
 #[doc = "The status history permits the encounter resource to contain the status history without needing to read through the historical versions of the resource, or even have the server store them."]
 #[derive(Debug, Clone, PartialEq)]
 pub struct EncounterStatusHistory {
@@ -13,22 +13,21 @@ pub struct EncounterStatusHistory {
     #[doc = "The time that the episode was in the specified status."]
     pub r#period: Box<super::super::types::Period>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for EncounterStatusHistory {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#status: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#status: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
-            r#period: {
-                let mut default: Box<super::super::types::Period> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#period: Box::new(super::super::types::Period {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
         }
     }
 }
@@ -46,22 +45,21 @@ pub struct EncounterClassHistory {
     #[doc = "The time that the episode was in the specified class."]
     pub r#period: Box<super::super::types::Period>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for EncounterClassHistory {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#class: {
-                let mut default: Box<super::super::types::Coding> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
-            r#period: {
-                let mut default: Box<super::super::types::Period> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#class: Box::new(super::super::types::Coding {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
+            r#period: Box::new(super::super::types::Period {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
         }
     }
 }
@@ -81,6 +79,7 @@ pub struct EncounterParticipant {
     #[doc = "Persons involved in the encounter other than the patient."]
     pub r#individual: Option<Box<super::super::types::Reference>>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for EncounterParticipant {
     fn default() -> Self {
         Self {
@@ -109,17 +108,17 @@ pub struct EncounterDiagnosis {
     #[doc = "Ranking of the diagnosis (for each role type)."]
     pub r#rank: Option<super::super::types::PositiveInt>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for EncounterDiagnosis {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#condition: {
-                let mut default: Box<super::super::types::Reference> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#condition: Box::new(super::super::types::Reference {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
             r#use: Default::default(),
             r#rank: Default::default(),
         }
@@ -153,6 +152,7 @@ pub struct EncounterHospitalization {
     #[doc = "Category or kind of location after discharge."]
     pub r#discharge_disposition: Option<Box<super::super::types::CodeableConcept>>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for EncounterHospitalization {
     fn default() -> Self {
         Self {
@@ -189,17 +189,17 @@ pub struct EncounterLocation {
     #[doc = "Time period during which the patient was present at the location."]
     pub r#period: Option<Box<super::super::types::Period>>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for EncounterLocation {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#location: {
-                let mut default: Box<super::super::types::Reference> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#location: Box::new(super::super::types::Reference {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
             r#status: Default::default(),
             r#physical_type: Default::default(),
             r#period: Default::default(),
@@ -210,7 +210,7 @@ impl Default for EncounterLocation {
 #[derive(Debug, Clone, PartialEq)]
 pub struct Encounter {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
-    pub r#id: Option<std::string::String>,
+    pub r#id: Option<Box<super::super::types::Id>>,
     #[doc = "The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content might not always be associated with version changes to the resource."]
     pub r#meta: Option<Box<super::super::types::Meta>>,
     #[doc = "A reference to a set of rules that were followed when the resource was constructed, and which must be understood when processing the content. Often, this is a reference to an implementation guide that defines the special rules along with other profiles etc."]
@@ -272,6 +272,7 @@ pub struct Encounter {
     #[doc = "Another Encounter of which this encounter is a part of (administratively or in time)."]
     pub r#part_of: Option<Box<super::super::types::Reference>>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for Encounter {
     fn default() -> Self {
         Self {
@@ -284,17 +285,15 @@ impl Default for Encounter {
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
             r#identifier: Default::default(),
-            r#status: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#status: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#status_history: Default::default(),
-            r#class: {
-                let mut default: Box<super::super::types::Coding> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#class: Box::new(super::super::types::Coding {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
             r#class_history: Default::default(),
             r#type: Default::default(),
             r#service_type: Default::default(),

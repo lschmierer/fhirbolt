@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-15 by fhirbolt-codegen v0.8.0
 #[doc = "Count Type: A measured amount (or an amount that can potentially be measured). Note that measured amounts include amounts that are not precisely quantified, including amounts involving arbitrary units and floating currencies.\n\nNeed to able to capture all sorts of measured values, even if the measured value are not precisely quantified. Values include exact measures such as 3.51g, customary units such as 3 tablets, and currencies such as $100.32USD."]
 #[derive(Debug, Clone, PartialEq)]
 pub struct Count {
@@ -17,6 +17,7 @@ pub struct Count {
     #[doc = "A computer processable form of the unit in some unit representation system."]
     pub r#code: Option<super::super::types::Code>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for Count {
     fn default() -> Self {
         Self {

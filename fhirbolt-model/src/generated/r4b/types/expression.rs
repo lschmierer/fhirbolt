@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-15 by fhirbolt-codegen v0.8.0
 #[doc = "Base StructureDefinition for Expression Type: A expression that is evaluated in a specified context and returns a value. The context of use of the expression must specify the context in which the expression is evaluated, and how the result of the expression is used."]
 #[derive(Debug, Clone, PartialEq)]
 pub struct Expression {
@@ -17,6 +17,7 @@ pub struct Expression {
     #[doc = "A URI that defines where the expression is found."]
     pub r#reference: Option<super::super::types::Uri>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for Expression {
     fn default() -> Self {
         Self {
@@ -24,10 +25,9 @@ impl Default for Expression {
             r#extension: Default::default(),
             r#description: Default::default(),
             r#name: Default::default(),
-            r#language: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#language: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#expression: Default::default(),
             r#reference: Default::default(),

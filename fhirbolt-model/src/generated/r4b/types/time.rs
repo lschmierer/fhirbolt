@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-15 by fhirbolt-codegen v0.8.0
 #[doc = "Base StructureDefinition for time Type: A time during the day, with no date specified"]
 #[derive(Debug, Clone, PartialEq)]
 pub struct Time {
@@ -9,6 +9,7 @@ pub struct Time {
     #[doc = "The actual value"]
     pub r#value: Option<std::string::String>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for Time {
     fn default() -> Self {
         Self {

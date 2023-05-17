@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-15 by fhirbolt-codegen v0.8.0
 #[doc = "Base StructureDefinition for ContactDetail Type: Specifies contact information for a person or organization.\n\nNeed to track contact information in the same way across multiple resources."]
 #[derive(Debug, Clone, PartialEq)]
 pub struct ContactDetail {
@@ -11,6 +11,7 @@ pub struct ContactDetail {
     #[doc = "The contact details for the individual (if a name was provided) or the organization."]
     pub r#telecom: Vec<super::super::types::ContactPoint>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for ContactDetail {
     fn default() -> Self {
         Self {

@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-15 by fhirbolt-codegen v0.8.0
 #[doc = "Estimated or actual date or date-time  the condition began, in the opinion of the clinician."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum ConditionOnset {
@@ -35,6 +35,7 @@ pub struct ConditionParticipant {
     #[doc = "Indicates who or what participated in the activities related to the condition."]
     pub r#actor: Box<super::super::types::Reference>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for ConditionParticipant {
     fn default() -> Self {
         Self {
@@ -42,11 +43,10 @@ impl Default for ConditionParticipant {
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
             r#function: Default::default(),
-            r#actor: {
-                let mut default: Box<super::super::types::Reference> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#actor: Box::new(super::super::types::Reference {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
         }
     }
 }
@@ -66,6 +66,7 @@ pub struct ConditionStage {
     #[doc = "The kind of staging, such as pathological or clinical staging."]
     pub r#type: Option<Box<super::super::types::CodeableConcept>>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for ConditionStage {
     fn default() -> Self {
         Self {
@@ -82,7 +83,7 @@ impl Default for ConditionStage {
 #[derive(Debug, Clone, PartialEq)]
 pub struct Condition {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
-    pub r#id: Option<std::string::String>,
+    pub r#id: Option<Box<super::super::types::Id>>,
     #[doc = "The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content might not always be associated with version changes to the resource."]
     pub r#meta: Option<Box<super::super::types::Meta>>,
     #[doc = "A reference to a set of rules that were followed when the resource was constructed, and which must be understood when processing the content. Often, this is a reference to an implementation guide that defines the special rules along with other profiles etc."]
@@ -130,6 +131,7 @@ pub struct Condition {
     #[doc = "Additional information about the Condition. This is a general notes/comments entry  for description of the Condition, its diagnosis and prognosis."]
     pub r#note: Vec<super::super::types::Annotation>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for Condition {
     fn default() -> Self {
         Self {
@@ -142,21 +144,19 @@ impl Default for Condition {
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
             r#identifier: Default::default(),
-            r#clinical_status: {
-                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#clinical_status: Box::new(super::super::types::CodeableConcept {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
             r#verification_status: Default::default(),
             r#category: Default::default(),
             r#severity: Default::default(),
             r#code: Default::default(),
             r#body_site: Default::default(),
-            r#subject: {
-                let mut default: Box<super::super::types::Reference> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#subject: Box::new(super::super::types::Reference {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
             r#encounter: Default::default(),
             r#onset: Default::default(),
             r#abatement: Default::default(),

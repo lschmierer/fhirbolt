@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-15 by fhirbolt-codegen v0.8.0
 #[doc = "A language which may be used to communicate with about the patient's health."]
 #[derive(Debug, Clone, PartialEq)]
 pub struct RelatedPersonCommunication {
@@ -13,17 +13,17 @@ pub struct RelatedPersonCommunication {
     #[doc = "Indicates whether or not the patient prefers this language (over other languages he masters up a certain level)."]
     pub r#preferred: Option<super::super::types::Boolean>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for RelatedPersonCommunication {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#language: {
-                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#language: Box::new(super::super::types::CodeableConcept {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
             r#preferred: Default::default(),
         }
     }
@@ -32,7 +32,7 @@ impl Default for RelatedPersonCommunication {
 #[derive(Debug, Clone, PartialEq)]
 pub struct RelatedPerson {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
-    pub r#id: Option<std::string::String>,
+    pub r#id: Option<Box<super::super::types::Id>>,
     #[doc = "The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content might not always be associated with version changes to the resource."]
     pub r#meta: Option<Box<super::super::types::Meta>>,
     #[doc = "A reference to a set of rules that were followed when the resource was constructed, and which must be understood when processing the content. Often, this is a reference to an implementation guide that defines the special rules along with other profiles etc."]
@@ -72,6 +72,7 @@ pub struct RelatedPerson {
     #[doc = "A language which may be used to communicate with about the patient's health."]
     pub r#communication: Vec<RelatedPersonCommunication>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for RelatedPerson {
     fn default() -> Self {
         Self {
@@ -85,11 +86,10 @@ impl Default for RelatedPerson {
             r#modifier_extension: Default::default(),
             r#identifier: Default::default(),
             r#active: Default::default(),
-            r#patient: {
-                let mut default: Box<super::super::types::Reference> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#patient: Box::new(super::super::types::Reference {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
             r#relationship: Default::default(),
             r#name: Default::default(),
             r#telecom: Default::default(),

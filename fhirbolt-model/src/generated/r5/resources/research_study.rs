@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-15 by fhirbolt-codegen v0.8.0
 #[doc = "Additional names for the study."]
 #[derive(Debug, Clone, PartialEq)]
 pub struct ResearchStudyLabel {
@@ -13,6 +13,7 @@ pub struct ResearchStudyLabel {
     #[doc = "The name."]
     pub r#value: Option<super::super::types::String>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for ResearchStudyLabel {
     fn default() -> Self {
         Self {
@@ -44,6 +45,7 @@ pub struct ResearchStudyAssociatedParty {
     #[doc = "Individual or organization associated with study (use practitionerRole to specify their organisation)."]
     pub r#party: Option<Box<super::super::types::Reference>>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for ResearchStudyAssociatedParty {
     fn default() -> Self {
         Self {
@@ -51,11 +53,10 @@ impl Default for ResearchStudyAssociatedParty {
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
             r#name: Default::default(),
-            r#role: {
-                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#role: Box::new(super::super::types::CodeableConcept {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
             r#period: Default::default(),
             r#classifier: Default::default(),
             r#party: Default::default(),
@@ -78,17 +79,17 @@ pub struct ResearchStudyProgressStatus {
     #[doc = "Date range."]
     pub r#period: Option<Box<super::super::types::Period>>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for ResearchStudyProgressStatus {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#state: {
-                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#state: Box::new(super::super::types::CodeableConcept {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
             r#actual: Default::default(),
             r#period: Default::default(),
         }
@@ -112,6 +113,7 @@ pub struct ResearchStudyRecruitment {
     #[doc = "Group of participants who were enrolled in study."]
     pub r#actual_group: Option<Box<super::super::types::Reference>>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for ResearchStudyRecruitment {
     fn default() -> Self {
         Self {
@@ -147,6 +149,7 @@ pub struct ResearchStudyComparisonGroup {
     #[doc = "Group of participants who were enrolled in study comparisonGroup."]
     pub r#observed_group: Option<Box<super::super::types::Reference>>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for ResearchStudyComparisonGroup {
     fn default() -> Self {
         Self {
@@ -154,10 +157,9 @@ impl Default for ResearchStudyComparisonGroup {
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
             r#link_id: Default::default(),
-            r#name: {
-                let mut default: super::super::types::String = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#name: super::super::types::String {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#type: Default::default(),
             r#description: Default::default(),
@@ -182,6 +184,7 @@ pub struct ResearchStudyObjective {
     #[doc = "Free text description of the objective of the study.  This is what the study is trying to achieve rather than how it is going to achieve it (see ResearchStudy.description)."]
     pub r#description: Option<super::super::types::Markdown>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for ResearchStudyObjective {
     fn default() -> Self {
         Self {
@@ -212,6 +215,7 @@ pub struct ResearchStudyOutcomeMeasure {
     #[doc = "Structured outcome definition."]
     pub r#reference: Option<Box<super::super::types::Reference>>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for ResearchStudyOutcomeMeasure {
     fn default() -> Self {
         Self {
@@ -229,7 +233,7 @@ impl Default for ResearchStudyOutcomeMeasure {
 #[derive(Debug, Clone, PartialEq)]
 pub struct ResearchStudy {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
-    pub r#id: Option<std::string::String>,
+    pub r#id: Option<Box<super::super::types::Id>>,
     #[doc = "The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content might not always be associated with version changes to the resource."]
     pub r#meta: Option<Box<super::super::types::Meta>>,
     #[doc = "A reference to a set of rules that were followed when the resource was constructed, and which must be understood when processing the content. Often, this is a reference to an implementation guide that defines the special rules along with other profiles etc."]
@@ -309,6 +313,7 @@ pub struct ResearchStudy {
     #[doc = "Link to one or more sets of results generated by the study.  Could also link to a research registry holding the results such as ClinicalTrials.gov."]
     pub r#result: Vec<super::super::types::Reference>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for ResearchStudy {
     fn default() -> Self {
         Self {
@@ -330,10 +335,9 @@ impl Default for ResearchStudy {
             r#part_of: Default::default(),
             r#related_artifact: Default::default(),
             r#date: Default::default(),
-            r#status: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#status: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#primary_purpose_type: Default::default(),
             r#phase: Default::default(),

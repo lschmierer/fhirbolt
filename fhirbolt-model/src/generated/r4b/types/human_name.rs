@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-15 by fhirbolt-codegen v0.8.0
 #[doc = "Base StructureDefinition for HumanName Type: A human's name with the ability to identify parts and usage.\n\nNeed to be able to record names, along with notes about their use."]
 #[derive(Debug, Clone, PartialEq)]
 pub struct HumanName {
@@ -21,6 +21,7 @@ pub struct HumanName {
     #[doc = "Indicates the period of time when this name was valid for the named person."]
     pub r#period: Option<Box<super::super::types::Period>>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for HumanName {
     fn default() -> Self {
         Self {

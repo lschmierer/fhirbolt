@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-15 by fhirbolt-codegen v0.8.0
 #[doc = "Citation Resource or display of suggested citation for this evidence."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum EvidenceCiteAs {
@@ -29,6 +29,7 @@ pub struct EvidenceVariableDefinition {
     #[doc = "Indication of quality of match between intended variable to actual variable."]
     pub r#directness_match: Option<Box<super::super::types::CodeableConcept>>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for EvidenceVariableDefinition {
     fn default() -> Self {
         Self {
@@ -37,11 +38,10 @@ impl Default for EvidenceVariableDefinition {
             r#modifier_extension: Default::default(),
             r#description: Default::default(),
             r#note: Default::default(),
-            r#variable_role: {
-                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#variable_role: Box::new(super::super::types::CodeableConcept {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
             r#observed: Default::default(),
             r#intended: Default::default(),
             r#directness_match: Default::default(),
@@ -68,6 +68,7 @@ pub struct EvidenceStatisticSampleSize {
     #[doc = "Number of participants with known results for measured variables."]
     pub r#known_data_count: Option<super::super::types::UnsignedInt>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for EvidenceStatisticSampleSize {
     fn default() -> Self {
         Self {
@@ -106,6 +107,7 @@ pub struct EvidenceStatisticAttributeEstimate {
     #[doc = "A nested attribute estimate; which is the attribute estimate of an attribute estimate."]
     pub r#attribute_estimate: Vec<EvidenceStatisticAttributeEstimate>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for EvidenceStatisticAttributeEstimate {
     fn default() -> Self {
         Self {
@@ -142,17 +144,17 @@ pub struct EvidenceStatisticModelCharacteristicVariable {
     #[doc = "Range of values for grouping of ordinal or polychotomous variables."]
     pub r#value_range: Vec<super::super::types::Range>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for EvidenceStatisticModelCharacteristicVariable {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#variable_definition: {
-                let mut default: Box<super::super::types::Reference> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#variable_definition: Box::new(super::super::types::Reference {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
             r#handling: Default::default(),
             r#value_category: Default::default(),
             r#value_quantity: Default::default(),
@@ -178,17 +180,17 @@ pub struct EvidenceStatisticModelCharacteristic {
     #[doc = "An attribute of the statistic used as a model characteristic."]
     pub r#attribute_estimate: Vec<EvidenceStatisticAttributeEstimate>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for EvidenceStatisticModelCharacteristic {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#code: {
-                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#code: Box::new(super::super::types::CodeableConcept {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
             r#value: Default::default(),
             r#variable: Default::default(),
             r#attribute_estimate: Default::default(),
@@ -225,6 +227,7 @@ pub struct EvidenceStatistic {
     #[doc = "A component of the method to generate the statistic."]
     pub r#model_characteristic: Vec<EvidenceStatisticModelCharacteristic>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for EvidenceStatistic {
     fn default() -> Self {
         Self {
@@ -266,6 +269,7 @@ pub struct EvidenceCertainty {
     #[doc = "A domain or subdomain of certainty."]
     pub r#subcomponent: Vec<EvidenceCertainty>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for EvidenceCertainty {
     fn default() -> Self {
         Self {
@@ -285,7 +289,7 @@ impl Default for EvidenceCertainty {
 #[derive(Debug, Clone, PartialEq)]
 pub struct Evidence {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
-    pub r#id: Option<std::string::String>,
+    pub r#id: Option<Box<super::super::types::Id>>,
     #[doc = "The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content might not always be associated with version changes to the resource."]
     pub r#meta: Option<Box<super::super::types::Meta>>,
     #[doc = "A reference to a set of rules that were followed when the resource was constructed, and which must be understood when processing the content. Often, this is a reference to an implementation guide that defines the special rules along with other profiles etc."]
@@ -351,6 +355,7 @@ pub struct Evidence {
     #[doc = "Assessment of certainty, confidence in the estimates, or quality of the evidence."]
     pub r#certainty: Vec<EvidenceCertainty>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for Evidence {
     fn default() -> Self {
         Self {
@@ -367,10 +372,9 @@ impl Default for Evidence {
             r#version: Default::default(),
             r#title: Default::default(),
             r#cite_as: Default::default(),
-            r#status: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#status: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#date: Default::default(),
             r#use_context: Default::default(),

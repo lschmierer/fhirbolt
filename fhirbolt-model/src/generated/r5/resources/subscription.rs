@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-15 by fhirbolt-codegen v0.8.0
 #[doc = "The filter properties to be applied to narrow the subscription topic stream.  When multiple filters are applied, evaluates to true if all the conditions applicable to that resource are met; otherwise it returns false (i.e., logical AND)."]
 #[derive(Debug, Clone, PartialEq)]
 pub struct SubscriptionFilterBy {
@@ -19,6 +19,7 @@ pub struct SubscriptionFilterBy {
     #[doc = "The literal value or resource path as is legal in search - for example, `Patient/123` or `le1950`."]
     pub r#value: super::super::types::String,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for SubscriptionFilterBy {
     fn default() -> Self {
         Self {
@@ -26,17 +27,15 @@ impl Default for SubscriptionFilterBy {
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
             r#resource_type: Default::default(),
-            r#filter_parameter: {
-                let mut default: super::super::types::String = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#filter_parameter: super::super::types::String {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#comparator: Default::default(),
             r#modifier: Default::default(),
-            r#value: {
-                let mut default: super::super::types::String = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#value: super::super::types::String {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
         }
     }
@@ -55,21 +54,20 @@ pub struct SubscriptionParameter {
     #[doc = "Parameter value for information passed to the channel for notifications, for example in the case of a REST hook wanting to pass through an authorization header, the value would be `Bearer 0193...`."]
     pub r#value: super::super::types::String,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for SubscriptionParameter {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#name: {
-                let mut default: super::super::types::String = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#name: super::super::types::String {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
-            r#value: {
-                let mut default: super::super::types::String = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#value: super::super::types::String {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
         }
     }
@@ -78,7 +76,7 @@ impl Default for SubscriptionParameter {
 #[derive(Debug, Clone, PartialEq)]
 pub struct Subscription {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
-    pub r#id: Option<std::string::String>,
+    pub r#id: Option<Box<super::super::types::Id>>,
     #[doc = "The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content might not always be associated with version changes to the resource."]
     pub r#meta: Option<Box<super::super::types::Meta>>,
     #[doc = "A reference to a set of rules that were followed when the resource was constructed, and which must be understood when processing the content. Often, this is a reference to an implementation guide that defines the special rules along with other profiles etc."]
@@ -128,6 +126,7 @@ pub struct Subscription {
     #[doc = "If present, the maximum number of events that will be included in a notification bundle. Note that this is not a strict limit on the number of entries in a bundle, as dependent resources can be included."]
     pub r#max_count: Option<super::super::types::PositiveInt>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for Subscription {
     fn default() -> Self {
         Self {
@@ -141,26 +140,23 @@ impl Default for Subscription {
             r#modifier_extension: Default::default(),
             r#identifier: Default::default(),
             r#name: Default::default(),
-            r#status: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#status: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
-            r#topic: {
-                let mut default: super::super::types::Canonical = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#topic: super::super::types::Canonical {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#contact: Default::default(),
             r#end: Default::default(),
             r#managing_entity: Default::default(),
             r#reason: Default::default(),
             r#filter_by: Default::default(),
-            r#channel_type: {
-                let mut default: Box<super::super::types::Coding> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#channel_type: Box::new(super::super::types::Coding {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
             r#endpoint: Default::default(),
             r#parameter: Default::default(),
             r#heartbeat_period: Default::default(),

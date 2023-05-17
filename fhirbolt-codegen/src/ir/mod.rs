@@ -15,7 +15,7 @@ pub struct TypeHints {
     pub unsigned_integer_paths: LinkedHashSet<String>,
     pub positive_integer_paths: LinkedHashSet<String>,
     pub decimal_integer_paths: LinkedHashSet<String>,
-    pub other_primitives_paths: LinkedHashSet<String>,
+    pub all_primitives_paths: LinkedHashSet<String>,
     pub content_reference_paths: LinkedHashMap<String, String>,
 }
 
@@ -41,7 +41,7 @@ pub struct RustFhirStruct {
     pub doc_comment: String,
 }
 
-#[derive(Debug)]
+#[derive(Debug, Clone)]
 pub struct RustFhirStructField {
     pub name: String,
     pub fhir_name: String,
@@ -65,7 +65,7 @@ pub struct RustFhirEnumVariant {
     pub r#type: RustFhirFieldType,
 }
 
-#[derive(Debug)]
+#[derive(Debug, Clone)]
 pub struct RustFhirFieldType {
     pub name: String,
     pub r#box: bool,

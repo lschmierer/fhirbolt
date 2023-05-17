@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-15 by fhirbolt-codegen v0.8.0
 #[doc = "The absolute geographic location of the Location, expressed using the WGS84 datum (This is the same co-ordinate system used in KML)."]
 #[derive(Debug, Clone, PartialEq)]
 pub struct LocationPosition {
@@ -15,21 +15,20 @@ pub struct LocationPosition {
     #[doc = "Altitude. The value domain and the interpretation are the same as for the text of the altitude element in KML (see notes on Location main page)."]
     pub r#altitude: Option<super::super::types::Decimal>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for LocationPosition {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#longitude: {
-                let mut default: super::super::types::Decimal = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#longitude: super::super::types::Decimal {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
-            r#latitude: {
-                let mut default: super::super::types::Decimal = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#latitude: super::super::types::Decimal {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#altitude: Default::default(),
         }
@@ -39,7 +38,7 @@ impl Default for LocationPosition {
 #[derive(Debug, Clone, PartialEq)]
 pub struct Location {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
-    pub r#id: Option<std::string::String>,
+    pub r#id: Option<Box<super::super::types::Id>>,
     #[doc = "The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content might not always be associated with version changes to the resource."]
     pub r#meta: Option<Box<super::super::types::Meta>>,
     #[doc = "A reference to a set of rules that were followed when the resource was constructed, and which must be understood when processing the content. Often, this is a reference to an implementation guide that defines the special rules along with other profiles etc."]
@@ -91,6 +90,7 @@ pub struct Location {
     #[doc = "Technical endpoints providing access to services operated for the location."]
     pub r#endpoint: Vec<super::super::types::Reference>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for Location {
     fn default() -> Self {
         Self {

@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-15 by fhirbolt-codegen v0.8.0
 #[doc = "An amount of money. With regard to precision, see [Decimal Precision](datatypes.html#precision)"]
 #[derive(Debug, Clone, PartialEq)]
 pub struct MoneyQuantity {
@@ -17,6 +17,7 @@ pub struct MoneyQuantity {
     #[doc = "A computer processable form of the unit in some unit representation system."]
     pub r#code: Option<super::super::types::Code>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for MoneyQuantity {
     fn default() -> Self {
         Self {

@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-15 by fhirbolt-codegen v0.8.0
 #[doc = "Indicates the mechanism used to compare versions to determine which is more current."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum ConditionDefinitionVersionAlgorithm {
@@ -29,6 +29,7 @@ pub struct ConditionDefinitionObservation {
     #[doc = "Code for relevant Observation."]
     pub r#code: Option<Box<super::super::types::CodeableConcept>>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for ConditionDefinitionObservation {
     fn default() -> Self {
         Self {
@@ -54,6 +55,7 @@ pub struct ConditionDefinitionMedication {
     #[doc = "Code for relevant Medication."]
     pub r#code: Option<Box<super::super::types::CodeableConcept>>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for ConditionDefinitionMedication {
     fn default() -> Self {
         Self {
@@ -81,22 +83,21 @@ pub struct ConditionDefinitionPrecondition {
     #[doc = "Value of Observation."]
     pub r#value: Option<ConditionDefinitionPreconditionValue>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for ConditionDefinitionPrecondition {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#type: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#type: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
-            r#code: {
-                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#code: Box::new(super::super::types::CodeableConcept {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
             r#value: Default::default(),
         }
     }
@@ -115,22 +116,21 @@ pub struct ConditionDefinitionQuestionnaire {
     #[doc = "Specific Questionnaire."]
     pub r#reference: Box<super::super::types::Reference>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for ConditionDefinitionQuestionnaire {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#purpose: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#purpose: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
-            r#reference: {
-                let mut default: Box<super::super::types::Reference> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#reference: Box::new(super::super::types::Reference {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
         }
     }
 }
@@ -148,6 +148,7 @@ pub struct ConditionDefinitionPlan {
     #[doc = "The actual plan."]
     pub r#reference: Box<super::super::types::Reference>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for ConditionDefinitionPlan {
     fn default() -> Self {
         Self {
@@ -155,11 +156,10 @@ impl Default for ConditionDefinitionPlan {
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
             r#role: Default::default(),
-            r#reference: {
-                let mut default: Box<super::super::types::Reference> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#reference: Box::new(super::super::types::Reference {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
         }
     }
 }
@@ -167,7 +167,7 @@ impl Default for ConditionDefinitionPlan {
 #[derive(Debug, Clone, PartialEq)]
 pub struct ConditionDefinition {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
-    pub r#id: Option<std::string::String>,
+    pub r#id: Option<Box<super::super::types::Id>>,
     #[doc = "The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content might not always be associated with version changes to the resource."]
     pub r#meta: Option<Box<super::super::types::Meta>>,
     #[doc = "A reference to a set of rules that were followed when the resource was constructed, and which must be understood when processing the content. Often, this is a reference to an implementation guide that defines the special rules along with other profiles etc."]
@@ -241,6 +241,7 @@ pub struct ConditionDefinition {
     #[doc = "Plan that is appropriate."]
     pub r#plan: Vec<ConditionDefinitionPlan>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for ConditionDefinition {
     fn default() -> Self {
         Self {
@@ -259,10 +260,9 @@ impl Default for ConditionDefinition {
             r#name: Default::default(),
             r#title: Default::default(),
             r#subtitle: Default::default(),
-            r#status: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#status: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#experimental: Default::default(),
             r#date: Default::default(),
@@ -271,11 +271,10 @@ impl Default for ConditionDefinition {
             r#description: Default::default(),
             r#use_context: Default::default(),
             r#jurisdiction: Default::default(),
-            r#code: {
-                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#code: Box::new(super::super::types::CodeableConcept {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
             r#severity: Default::default(),
             r#body_site: Default::default(),
             r#stage: Default::default(),

@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-15 by fhirbolt-codegen v0.8.0
 #[doc = "Does this service have specific eligibility requirements that need to be met in order to use the service?"]
 #[derive(Debug, Clone, PartialEq)]
 pub struct HealthcareServiceEligibility {
@@ -13,6 +13,7 @@ pub struct HealthcareServiceEligibility {
     #[doc = "Describes the eligibility conditions for the service."]
     pub r#comment: Option<super::super::types::Markdown>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for HealthcareServiceEligibility {
     fn default() -> Self {
         Self {
@@ -42,6 +43,7 @@ pub struct HealthcareServiceAvailableTime {
     #[doc = "The closing time of day. Note: If the AllDay flag is set, then this time is ignored."]
     pub r#available_end_time: Option<super::super::types::Time>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for HealthcareServiceAvailableTime {
     fn default() -> Self {
         Self {
@@ -69,16 +71,16 @@ pub struct HealthcareServiceNotAvailable {
     #[doc = "Service is not available (seasonally or for a public holiday) from this date."]
     pub r#during: Option<Box<super::super::types::Period>>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for HealthcareServiceNotAvailable {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#description: {
-                let mut default: super::super::types::String = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#description: super::super::types::String {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#during: Default::default(),
         }
@@ -88,7 +90,7 @@ impl Default for HealthcareServiceNotAvailable {
 #[derive(Debug, Clone, PartialEq)]
 pub struct HealthcareService {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
-    pub r#id: Option<std::string::String>,
+    pub r#id: Option<Box<super::super::types::Id>>,
     #[doc = "The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content might not always be associated with version changes to the resource."]
     pub r#meta: Option<Box<super::super::types::Meta>>,
     #[doc = "A reference to a set of rules that were followed when the resource was constructed, and which must be understood when processing the content. Often, this is a reference to an implementation guide that defines the special rules along with other profiles etc."]
@@ -152,6 +154,7 @@ pub struct HealthcareService {
     #[doc = "Technical endpoints providing access to services operated for the specific healthcare services defined at this resource."]
     pub r#endpoint: Vec<super::super::types::Reference>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for HealthcareService {
     fn default() -> Self {
         Self {

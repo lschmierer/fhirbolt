@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-15 by fhirbolt-codegen v0.8.0
 #[doc = "The item or items in this listing."]
 #[derive(Debug, Clone, PartialEq)]
 pub struct InventoryReportInventoryListingItem {
@@ -15,6 +15,7 @@ pub struct InventoryReportInventoryListingItem {
     #[doc = "The code or reference to the item type."]
     pub r#item: Box<super::super::types::CodeableReference>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for InventoryReportInventoryListingItem {
     fn default() -> Self {
         Self {
@@ -22,16 +23,14 @@ impl Default for InventoryReportInventoryListingItem {
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
             r#category: Default::default(),
-            r#quantity: {
-                let mut default: Box<super::super::types::Quantity> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
-            r#item: {
-                let mut default: Box<super::super::types::CodeableReference> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#quantity: Box::new(super::super::types::Quantity {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
+            r#item: Box::new(super::super::types::CodeableReference {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
         }
     }
 }
@@ -53,6 +52,7 @@ pub struct InventoryReportInventoryListing {
     #[doc = "The item or items in this listing."]
     pub r#item: Vec<InventoryReportInventoryListingItem>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for InventoryReportInventoryListing {
     fn default() -> Self {
         Self {
@@ -70,7 +70,7 @@ impl Default for InventoryReportInventoryListing {
 #[derive(Debug, Clone, PartialEq)]
 pub struct InventoryReport {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
-    pub r#id: Option<std::string::String>,
+    pub r#id: Option<Box<super::super::types::Id>>,
     #[doc = "The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content might not always be associated with version changes to the resource."]
     pub r#meta: Option<Box<super::super::types::Meta>>,
     #[doc = "A reference to a set of rules that were followed when the resource was constructed, and which must be understood when processing the content. Often, this is a reference to an implementation guide that defines the special rules along with other profiles etc."]
@@ -106,6 +106,7 @@ pub struct InventoryReport {
     #[doc = "A note associated with the InventoryReport."]
     pub r#note: Vec<super::super::types::Annotation>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for InventoryReport {
     fn default() -> Self {
         Self {
@@ -118,22 +119,19 @@ impl Default for InventoryReport {
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
             r#identifier: Default::default(),
-            r#status: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#status: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
-            r#count_type: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#count_type: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#operation_type: Default::default(),
             r#operation_type_reason: Default::default(),
-            r#reported_date_time: {
-                let mut default: super::super::types::DateTime = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#reported_date_time: super::super::types::DateTime {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#reporter: Default::default(),
             r#reporting_period: Default::default(),

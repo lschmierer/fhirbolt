@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-15 by fhirbolt-codegen v0.8.0
 #[doc = "A date or period in the past or future indicating when the event occurred or is expectd to occur."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum CoverageEligibilityResponseEventWhen {
@@ -47,17 +47,17 @@ pub struct CoverageEligibilityResponseEvent {
     #[doc = "A date or period in the past or future indicating when the event occurred or is expectd to occur."]
     pub r#when: CoverageEligibilityResponseEventWhen,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for CoverageEligibilityResponseEvent {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#type: {
-                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#type: Box::new(super::super::types::CodeableConcept {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
             r#when: Default::default(),
         }
     }
@@ -78,17 +78,17 @@ pub struct CoverageEligibilityResponseInsuranceItemBenefit {
     #[doc = "The quantity of the benefit which have been consumed to date."]
     pub r#used: Option<CoverageEligibilityResponseInsuranceItemBenefitUsed>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for CoverageEligibilityResponseInsuranceItemBenefit {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#type: {
-                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#type: Box::new(super::super::types::CodeableConcept {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
             r#allowed: Default::default(),
             r#used: Default::default(),
         }
@@ -132,6 +132,7 @@ pub struct CoverageEligibilityResponseInsuranceItem {
     #[doc = "A web location for obtaining requirements or descriptive information regarding the preauthorization."]
     pub r#authorization_url: Option<super::super::types::Uri>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for CoverageEligibilityResponseInsuranceItem {
     fn default() -> Self {
         Self {
@@ -173,17 +174,17 @@ pub struct CoverageEligibilityResponseInsurance {
     #[doc = "Benefits and optionally current balances, and authorization details by category or service."]
     pub r#item: Vec<CoverageEligibilityResponseInsuranceItem>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for CoverageEligibilityResponseInsurance {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#coverage: {
-                let mut default: Box<super::super::types::Reference> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#coverage: Box::new(super::super::types::Reference {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
             r#inforce: Default::default(),
             r#benefit_period: Default::default(),
             r#item: Default::default(),
@@ -204,17 +205,17 @@ pub struct CoverageEligibilityResponseError {
     #[doc = "A [simple subset of FHIRPath](fhirpath.html#simple) limited to element names, repetition indicators and the default child accessor that identifies one of the elements in the resource that caused this issue to be raised."]
     pub r#expression: Vec<super::super::types::String>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for CoverageEligibilityResponseError {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#code: {
-                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#code: Box::new(super::super::types::CodeableConcept {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
             r#expression: Default::default(),
         }
     }
@@ -223,7 +224,7 @@ impl Default for CoverageEligibilityResponseError {
 #[derive(Debug, Clone, PartialEq)]
 pub struct CoverageEligibilityResponse {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
-    pub r#id: Option<std::string::String>,
+    pub r#id: Option<Box<super::super::types::Id>>,
     #[doc = "The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content might not always be associated with version changes to the resource."]
     pub r#meta: Option<Box<super::super::types::Meta>>,
     #[doc = "A reference to a set of rules that were followed when the resource was constructed, and which must be understood when processing the content. Often, this is a reference to an implementation guide that defines the special rules along with other profiles etc."]
@@ -271,6 +272,7 @@ pub struct CoverageEligibilityResponse {
     #[doc = "Errors encountered during the processing of the request."]
     pub r#error: Vec<CoverageEligibilityResponseError>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for CoverageEligibilityResponse {
     fn default() -> Self {
         Self {
@@ -283,41 +285,35 @@ impl Default for CoverageEligibilityResponse {
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
             r#identifier: Default::default(),
-            r#status: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#status: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#purpose: Default::default(),
-            r#patient: {
-                let mut default: Box<super::super::types::Reference> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#patient: Box::new(super::super::types::Reference {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
             r#event: Default::default(),
             r#serviced: Default::default(),
-            r#created: {
-                let mut default: super::super::types::DateTime = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#created: super::super::types::DateTime {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#requestor: Default::default(),
-            r#request: {
-                let mut default: Box<super::super::types::Reference> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
-            r#outcome: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#request: Box::new(super::super::types::Reference {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
+            r#outcome: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#disposition: Default::default(),
-            r#insurer: {
-                let mut default: Box<super::super::types::Reference> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#insurer: Box::new(super::super::types::Reference {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
             r#insurance: Default::default(),
             r#pre_auth_ref: Default::default(),
             r#form: Default::default(),

@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-15 by fhirbolt-codegen v0.8.0
 #[doc = "unsignedInt type: An integer with a value that is not negative (e.g. >= 0)"]
 #[derive(Debug, Clone, PartialEq)]
 pub struct UnsignedInt {
@@ -9,6 +9,7 @@ pub struct UnsignedInt {
     #[doc = "Primitive value for unsignedInt"]
     pub r#value: Option<u32>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for UnsignedInt {
     fn default() -> Self {
         Self {

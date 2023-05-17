@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-15 by fhirbolt-codegen v0.8.0
 #[doc = "Base StructureDefinition for MarketingStatus Type: The marketing status describes the date when a medicinal product is actually put on the market or the date as of which it is no longer available."]
 #[derive(Debug, Clone, PartialEq)]
 pub struct MarketingStatus {
@@ -19,6 +19,7 @@ pub struct MarketingStatus {
     #[doc = "The date when the Medicinal Product is placed on the market by the Marketing Authorisation Holder (or where applicable, the manufacturer/distributor) in a country and/or jurisdiction shall be provided A complete date consisting of day, month and year shall be specified using the ISO 8601 date format NOTE “Placed on the market” refers to the release of the Medicinal Product into the distribution chain."]
     pub r#restore_date: Option<super::super::types::DateTime>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for MarketingStatus {
     fn default() -> Self {
         Self {
@@ -27,11 +28,10 @@ impl Default for MarketingStatus {
             r#modifier_extension: Default::default(),
             r#country: Default::default(),
             r#jurisdiction: Default::default(),
-            r#status: {
-                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#status: Box::new(super::super::types::CodeableConcept {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
             r#date_range: Default::default(),
             r#restore_date: Default::default(),
         }

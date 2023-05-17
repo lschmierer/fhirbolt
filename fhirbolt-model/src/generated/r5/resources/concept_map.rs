@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-15 by fhirbolt-codegen v0.8.0
 #[doc = "Indicates the mechanism used to compare versions to determine which ConceptMap is more current."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum ConceptMapVersionAlgorithm {
@@ -67,23 +67,22 @@ pub struct ConceptMapProperty {
     #[doc = "The CodeSystem that defines the codes from which values of type ```code``` in property values."]
     pub r#system: Option<super::super::types::Canonical>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for ConceptMapProperty {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#code: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#code: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#uri: Default::default(),
             r#description: Default::default(),
-            r#type: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#type: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#system: Default::default(),
         }
@@ -107,23 +106,22 @@ pub struct ConceptMapAdditionalAttribute {
     #[doc = "The type of the source data contained in this concept map for this data element."]
     pub r#type: super::super::types::Code,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for ConceptMapAdditionalAttribute {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#code: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#code: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#uri: Default::default(),
             r#description: Default::default(),
-            r#type: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#type: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
         }
     }
@@ -142,16 +140,16 @@ pub struct ConceptMapGroupElementTargetProperty {
     #[doc = "The value of this property. If the type chosen for this element is 'code', then the property SHALL be defined in a ConceptMap.property element."]
     pub r#value: ConceptMapGroupElementTargetPropertyValue,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for ConceptMapGroupElementTargetProperty {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#code: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#code: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#value: Default::default(),
         }
@@ -173,16 +171,16 @@ pub struct ConceptMapGroupElementTargetDependsOn {
     #[doc = "This mapping applies if the data element value is a code from this value set."]
     pub r#value_set: Option<super::super::types::Canonical>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for ConceptMapGroupElementTargetDependsOn {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#attribute: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#attribute: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#value: Default::default(),
             r#value_set: Default::default(),
@@ -215,6 +213,7 @@ pub struct ConceptMapGroupElementTarget {
     #[doc = "Product is the output of a ConceptMap that provides additional values that go in other attributes / data elemnts of the target data."]
     pub r#product: Vec<ConceptMapGroupElementTargetDependsOn>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for ConceptMapGroupElementTarget {
     fn default() -> Self {
         Self {
@@ -224,10 +223,9 @@ impl Default for ConceptMapGroupElementTarget {
             r#code: Default::default(),
             r#display: Default::default(),
             r#value_set: Default::default(),
-            r#relationship: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#relationship: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#comment: Default::default(),
             r#property: Default::default(),
@@ -256,6 +254,7 @@ pub struct ConceptMapGroupElement {
     #[doc = "A concept from the target value set that this concept maps to."]
     pub r#target: Vec<ConceptMapGroupElementTarget>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for ConceptMapGroupElement {
     fn default() -> Self {
         Self {
@@ -292,16 +291,16 @@ pub struct ConceptMapGroupUnmapped {
     #[doc = "The canonical reference to an additional ConceptMap resource instance to use for mapping if this ConceptMap resource contains no matching mapping for the source concept."]
     pub r#other_map: Option<super::super::types::Canonical>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for ConceptMapGroupUnmapped {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#mode: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#mode: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#code: Default::default(),
             r#display: Default::default(),
@@ -329,6 +328,7 @@ pub struct ConceptMapGroup {
     #[doc = "What to do when there is no mapping to a target concept from the source concept and ConceptMap.group.element.noMap is not true. This provides the \"default\" to be applied when there is no target concept mapping specified or the expansion of ConceptMap.group.element.target.valueSet is empty."]
     pub r#unmapped: Option<ConceptMapGroupUnmapped>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for ConceptMapGroup {
     fn default() -> Self {
         Self {
@@ -346,7 +346,7 @@ impl Default for ConceptMapGroup {
 #[derive(Debug, Clone, PartialEq)]
 pub struct ConceptMap {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
-    pub r#id: Option<std::string::String>,
+    pub r#id: Option<Box<super::super::types::Id>>,
     #[doc = "The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content might not always be associated with version changes to the resource."]
     pub r#meta: Option<Box<super::super::types::Meta>>,
     #[doc = "A reference to a set of rules that were followed when the resource was constructed, and which must be understood when processing the content. Often, this is a reference to an implementation guide that defines the special rules along with other profiles etc."]
@@ -424,6 +424,7 @@ pub struct ConceptMap {
     #[doc = "A group of mappings that all have the same source and target system."]
     pub r#group: Vec<ConceptMapGroup>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for ConceptMap {
     fn default() -> Self {
         Self {
@@ -441,10 +442,9 @@ impl Default for ConceptMap {
             r#version_algorithm: Default::default(),
             r#name: Default::default(),
             r#title: Default::default(),
-            r#status: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#status: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#experimental: Default::default(),
             r#date: Default::default(),

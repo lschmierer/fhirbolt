@@ -2,12 +2,12 @@ use std::{marker::PhantomData, mem};
 
 use serde::de::DeserializeSeed;
 
-use crate::Resource;
+use crate::{context::Format, Resource};
 
 pub trait DeserializeResource<'de>: Resource {
     type Context: DeserializeSeed<'de, Value = Self>;
 
-    fn deserialization_context(config: DeserializationConfig, from_json: bool) -> Self::Context;
+    fn deserialization_context(config: DeserializationConfig, from: Format) -> Self::Context;
 }
 
 impl<'de, T> DeserializeResource<'de> for T
@@ -17,8 +17,8 @@ where
 {
     type Context = DeserializationContext<Self>;
 
-    fn deserialization_context(config: DeserializationConfig, from_json: bool) -> Self::Context {
-        DeserializationContext::new(config, from_json)
+    fn deserialization_context(config: DeserializationConfig, from: Format) -> Self::Context {
+        DeserializationContext::new(config, from)
     }
 }
 
@@ -32,12 +32,12 @@ pub struct DeserializationContext<V> {
     /// Deserialization config
     pub(crate) config: DeserializationConfig,
     /// The JSON data model differs from the FHIR data model
-    pub(crate) from_json: bool,
+    pub(crate) from: Format,
     // Used by the element model to keep track of its state in the element tree
     current_element_stack: Vec<CurrentElement>,
 }
 
-#[derive(Clone, Copy, PartialEq)]
+#[derive(Clone, Copy, PartialEq, Default)]
 pub enum CurrentElement {
     Id,
     // ExampleScenario.instance has a "resourceType" field which requires special handling
@@ -50,21 +50,16 @@ pub enum CurrentElement {
     Extension,
     // Extension.url can not have extensions
     ExtensionUrl,
+    #[default]
     Other,
 }
 
-impl Default for CurrentElement {
-    fn default() -> Self {
-        CurrentElement::Other
-    }
-}
-
 impl<V> DeserializationContext<V> {
-    fn new(config: DeserializationConfig, from_json: bool) -> Self {
+    fn new(config: DeserializationConfig, from: Format) -> Self {
         DeserializationContext {
             _phantom: PhantomData,
             config,
-            from_json,
+            from,
             current_element_stack: vec![],
         }
     }
@@ -72,15 +67,6 @@ impl<V> DeserializationContext<V> {
     pub(crate) fn transmute<F>(&mut self) -> &mut DeserializationContext<F> {
         // DeserializationContext uses #[repr(C)] to make sure this is safe
         unsafe { mem::transmute(self) }
-    }
-
-    pub(crate) fn clone<F>(&self) -> DeserializationContext<F> {
-        DeserializationContext {
-            _phantom: PhantomData,
-            config: self.config.clone(),
-            from_json: self.from_json,
-            current_element_stack: self.current_element_stack.clone(),
-        }
     }
 
     pub(crate) fn current_element(&self) -> CurrentElement {

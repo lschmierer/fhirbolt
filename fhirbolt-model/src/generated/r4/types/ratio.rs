@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-15 by fhirbolt-codegen v0.8.0
 #[doc = "Base StructureDefinition for Ratio Type: A relationship of two Quantity values - expressed as a numerator and a denominator.\n\nNeed to able to capture ratios for some measurements (titers) and some rates (costs)."]
 #[derive(Debug, Clone, PartialEq)]
 pub struct Ratio {
@@ -11,6 +11,7 @@ pub struct Ratio {
     #[doc = "The value of the denominator."]
     pub r#denominator: Option<Box<super::super::types::Quantity>>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for Ratio {
     fn default() -> Self {
         Self {

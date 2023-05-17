@@ -1,6 +1,6 @@
 use fhirbolt::model::r5::{
     resources::Condition,
-    types::{Code, CodeableConcept, Coding, Uri},
+    types::{Code, CodeableConcept, Coding, Id, Uri},
 };
 
 use crate::hl7v2::{
@@ -29,7 +29,10 @@ pub fn map_conditions(message: &Message, patient_id: &str, encounter_id: &str) -
 
     for condition in &mut conditions {
         condition_id += 1;
-        condition.id = Some(format!("{}condition{}", encounter_id, condition_id));
+        condition.id = Some(Box::new(Id {
+            value: Some(format!("{}condition{}", encounter_id, condition_id)),
+            ..Default::default()
+        }));
     }
 
     conditions

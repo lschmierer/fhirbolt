@@ -1,7 +1,7 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
-impl serde::ser::Serialize
-    for crate::context::ser::SerializationContext<&fhirbolt_model::r5::types::Canonical>
-{
+// Generated on 2023-05-15 by fhirbolt-codegen v0.8.0
+use crate::{DeserializationContext, SerializationContext};
+use fhirbolt_model::r5::types::Canonical;
+impl serde::ser::Serialize for SerializationContext<&Canonical> {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
         S: serde::ser::Serializer,
@@ -18,20 +18,18 @@ impl serde::ser::Serialize
         if let Some(value) = self.value.r#id.as_ref() {
             state.serialize_entry("id", value)?;
         }
+        if let Some(value) = self.value.r#value.as_ref() {
+            state.serialize_entry("value", value)?;
+        }
         if !self.value.r#extension.is_empty() {
             self.with_context(&self.value.r#extension, |ctx| {
                 state.serialize_entry("extension", ctx)
             })?;
         }
-        if let Some(value) = self.value.r#value.as_ref() {
-            state.serialize_entry("value", value)?;
-        }
         state.end()
     }
 }
-impl serde::ser::Serialize
-    for crate::context::ser::SerializationContext<&Box<fhirbolt_model::r5::types::Canonical>>
-{
+impl serde::ser::Serialize for SerializationContext<&Box<Canonical>> {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
         S: serde::ser::Serializer,
@@ -39,9 +37,7 @@ impl serde::ser::Serialize
         self.with_context(self.value.as_ref(), |ctx| ctx.serialize(serializer))
     }
 }
-impl serde::ser::Serialize
-    for crate::context::ser::SerializationContext<&Vec<fhirbolt_model::r5::types::Canonical>>
-{
+impl serde::ser::Serialize for SerializationContext<&Vec<Canonical>> {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
         S: serde::ser::Serializer,
@@ -54,28 +50,19 @@ impl serde::ser::Serialize
         seq_serializer.end()
     }
 }
-impl<'de> serde::de::DeserializeSeed<'de>
-    for &mut crate::context::de::DeserializationContext<fhirbolt_model::r5::types::Canonical>
-{
-    type Value = fhirbolt_model::r5::types::Canonical;
+impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Canonical> {
+    type Value = Canonical;
     fn deserialize<D>(self, deserializer: D) -> Result<Self::Value, D::Error>
     where
         D: serde::de::Deserializer<'de>,
     {
-        struct Visitor<'a>(
-            &'a mut crate::context::de::DeserializationContext<
-                fhirbolt_model::r5::types::Canonical,
-            >,
-        );
+        struct Visitor<'a>(&'a mut DeserializationContext<Canonical>);
         impl<'de> serde::de::Visitor<'de> for Visitor<'_> {
-            type Value = fhirbolt_model::r5::types::Canonical;
+            type Value = Canonical;
             fn expecting(&self, formatter: &mut std::fmt::Formatter) -> std::fmt::Result {
                 formatter.write_str("Canonical")
             }
-            fn visit_map<V>(
-                self,
-                mut map_access: V,
-            ) -> Result<fhirbolt_model::r5::types::Canonical, V::Error>
+            fn visit_map<V>(self, mut map_access: V) -> Result<Canonical, V::Error>
             where
                 V: serde::de::MapAccess<'de>,
             {
@@ -105,22 +92,20 @@ impl<'de> serde::de::DeserializeSeed<'de>
                             r#id = Some(map_access.next_value()?);
                         }
                         Field::Extension => {
-                            if self.0.from_json {
+                            if self.0.from == crate::context::Format::Json {
                                 if r#extension.is_some() {
                                     return Err(serde::de::Error::duplicate_field("extension"));
                                 }
-                                r#extension = Some(
-                                    map_access.next_value_seed(
-                                        self.0
-                                            .transmute::<Vec<fhirbolt_model::r5::types::Extension>>(
-                                            ),
-                                    )?,
-                                );
+                                let _context: &mut DeserializationContext<
+                                    Vec<fhirbolt_model::r5::types::Extension>,
+                                > = self.0.transmute();
+                                r#extension = Some(map_access.next_value_seed(&mut *_context)?);
                             } else {
                                 let vec = r#extension.get_or_insert(Default::default());
-                                vec.push(map_access.next_value_seed(
-                                    self.0.transmute::<fhirbolt_model::r5::types::Extension>(),
-                                )?);
+                                let _context: &mut DeserializationContext<
+                                    fhirbolt_model::r5::types::Extension,
+                                > = self.0.transmute();
+                                vec.push(map_access.next_value_seed(&mut *_context)?);
                             }
                         }
                         Field::Value => {
@@ -137,7 +122,7 @@ impl<'de> serde::de::DeserializeSeed<'de>
                         }
                     }
                 }
-                Ok(fhirbolt_model::r5::types::Canonical {
+                Ok(Canonical {
                     r#id,
                     r#extension: r#extension.unwrap_or(vec![]),
                     r#value,
@@ -147,34 +132,26 @@ impl<'de> serde::de::DeserializeSeed<'de>
         deserializer.deserialize_map(Visitor(self))
     }
 }
-impl<'de> serde::de::DeserializeSeed<'de>
-    for &mut crate::context::de::DeserializationContext<Box<fhirbolt_model::r5::types::Canonical>>
-{
-    type Value = Box<fhirbolt_model::r5::types::Canonical>;
+impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Box<Canonical>> {
+    type Value = Box<Canonical>;
     fn deserialize<D>(self, deserializer: D) -> Result<Self::Value, D::Error>
     where
         D: serde::de::Deserializer<'de>,
     {
-        self.transmute::<fhirbolt_model::r5::types::Canonical>()
+        self.transmute::<Canonical>()
             .deserialize(deserializer)
             .map(Box::new)
     }
 }
-impl<'de> serde::de::DeserializeSeed<'de>
-    for &mut crate::context::de::DeserializationContext<Vec<fhirbolt_model::r5::types::Canonical>>
-{
-    type Value = Vec<fhirbolt_model::r5::types::Canonical>;
+impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Vec<Canonical>> {
+    type Value = Vec<Canonical>;
     fn deserialize<D>(self, deserializer: D) -> Result<Self::Value, D::Error>
     where
         D: serde::de::Deserializer<'de>,
     {
-        struct Visitor<'a>(
-            &'a mut crate::context::de::DeserializationContext<
-                Vec<fhirbolt_model::r5::types::Canonical>,
-            >,
-        );
+        struct Visitor<'a>(&'a mut DeserializationContext<Vec<Canonical>>);
         impl<'de> serde::de::Visitor<'de> for Visitor<'_> {
-            type Value = Vec<fhirbolt_model::r5::types::Canonical>;
+            type Value = Vec<Canonical>;
             fn expecting(&self, formatter: &mut std::fmt::Formatter) -> std::fmt::Result {
                 formatter.write_str("a sequence")
             }
@@ -183,9 +160,8 @@ impl<'de> serde::de::DeserializeSeed<'de>
                 A: serde::de::SeqAccess<'de>,
             {
                 let mut values = Vec::new();
-                while let Some(value) = seq
-                    .next_element_seed(self.0.transmute::<fhirbolt_model::r5::types::Canonical>())?
-                {
+                let _context: &mut DeserializationContext<Canonical> = self.0.transmute();
+                while let Some(value) = seq.next_element_seed(&mut *_context)? {
                     values.push(value);
                 }
                 Ok(values)

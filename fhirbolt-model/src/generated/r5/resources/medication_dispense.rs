@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-15 by fhirbolt-codegen v0.8.0
 #[doc = "Indicates who or what performed the event."]
 #[derive(Debug, Clone, PartialEq)]
 pub struct MedicationDispensePerformer {
@@ -13,6 +13,7 @@ pub struct MedicationDispensePerformer {
     #[doc = "The device, practitioner, etc. who performed the action.  It should be assumed that the actor is the dispenser of the medication."]
     pub r#actor: Box<super::super::types::Reference>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for MedicationDispensePerformer {
     fn default() -> Self {
         Self {
@@ -20,11 +21,10 @@ impl Default for MedicationDispensePerformer {
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
             r#function: Default::default(),
-            r#actor: {
-                let mut default: Box<super::super::types::Reference> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#actor: Box::new(super::super::types::Reference {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
         }
     }
 }
@@ -46,16 +46,16 @@ pub struct MedicationDispenseSubstitution {
     #[doc = "The person or organization that has primary responsibility for the substitution."]
     pub r#responsible_party: Option<Box<super::super::types::Reference>>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for MedicationDispenseSubstitution {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#was_substituted: {
-                let mut default: super::super::types::Boolean = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#was_substituted: super::super::types::Boolean {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#type: Default::default(),
             r#reason: Default::default(),
@@ -67,7 +67,7 @@ impl Default for MedicationDispenseSubstitution {
 #[derive(Debug, Clone, PartialEq)]
 pub struct MedicationDispense {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
-    pub r#id: Option<std::string::String>,
+    pub r#id: Option<Box<super::super::types::Id>>,
     #[doc = "The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content might not always be associated with version changes to the resource."]
     pub r#meta: Option<Box<super::super::types::Meta>>,
     #[doc = "A reference to a set of rules that were followed when the resource was constructed, and which must be understood when processing the content. Often, this is a reference to an implementation guide that defines the special rules along with other profiles etc."]
@@ -137,6 +137,7 @@ pub struct MedicationDispense {
     #[doc = "A summary of the events of interest that have occurred, such as when the dispense was verified."]
     pub r#event_history: Vec<super::super::types::Reference>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for MedicationDispense {
     fn default() -> Self {
         Self {
@@ -151,24 +152,21 @@ impl Default for MedicationDispense {
             r#identifier: Default::default(),
             r#based_on: Default::default(),
             r#part_of: Default::default(),
-            r#status: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#status: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#not_performed_reason: Default::default(),
             r#status_changed: Default::default(),
             r#category: Default::default(),
-            r#medication: {
-                let mut default: Box<super::super::types::CodeableReference> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
-            r#subject: {
-                let mut default: Box<super::super::types::Reference> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#medication: Box::new(super::super::types::CodeableReference {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
+            r#subject: Box::new(super::super::types::Reference {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
             r#encounter: Default::default(),
             r#supporting_information: Default::default(),
             r#performer: Default::default(),

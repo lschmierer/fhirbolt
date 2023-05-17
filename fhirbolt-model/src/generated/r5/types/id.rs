@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-15 by fhirbolt-codegen v0.8.0
 #[doc = "id type: Any combination of letters, numerals, \"-\" and \".\", with a length limit of 64 characters.  (This might be an integer, an unprefixed OID, UUID or any other identifier pattern that meets these constraints.)  Ids are case-insensitive."]
 #[derive(Debug, Clone, PartialEq)]
 pub struct Id {
@@ -9,6 +9,7 @@ pub struct Id {
     #[doc = "Primitive value for id"]
     pub r#value: Option<std::string::String>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for Id {
     fn default() -> Self {
         Self {

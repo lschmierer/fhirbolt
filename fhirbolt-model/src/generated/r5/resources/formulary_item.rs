@@ -1,9 +1,9 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-15 by fhirbolt-codegen v0.8.0
 #[doc = "This resource describes a product or service that is available through a program and includes the conditions and constraints of availability.  All of the information in this resource is specific to the inclusion of the item in the formulary and is not inherent to the item itself."]
 #[derive(Debug, Clone, PartialEq)]
 pub struct FormularyItem {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
-    pub r#id: Option<std::string::String>,
+    pub r#id: Option<Box<super::super::types::Id>>,
     #[doc = "The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content might not always be associated with version changes to the resource."]
     pub r#meta: Option<Box<super::super::types::Meta>>,
     #[doc = "A reference to a set of rules that were followed when the resource was constructed, and which must be understood when processing the content. Often, this is a reference to an implementation guide that defines the special rules along with other profiles etc."]
@@ -25,6 +25,7 @@ pub struct FormularyItem {
     #[doc = "The validity about the information of the formulary item and not of the underlying product or service itself."]
     pub r#status: Option<super::super::types::Code>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for FormularyItem {
     fn default() -> Self {
         Self {

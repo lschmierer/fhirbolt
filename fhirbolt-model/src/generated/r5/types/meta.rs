@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-15 by fhirbolt-codegen v0.8.0
 #[doc = "Meta Type: The metadata about a resource. This is content in the resource that is maintained by the infrastructure. Changes to the content might not always be associated with version changes to the resource."]
 #[derive(Debug, Clone, PartialEq)]
 pub struct Meta {
@@ -19,6 +19,7 @@ pub struct Meta {
     #[doc = "Tags applied to this resource. Tags are intended to be used to identify and relate resources to process and workflow, and applications are not required to consider the tags when interpreting the meaning of a resource."]
     pub r#tag: Vec<super::super::types::Coding>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for Meta {
     fn default() -> Self {
         Self {

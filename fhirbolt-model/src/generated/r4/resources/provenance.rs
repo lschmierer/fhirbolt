@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-15 by fhirbolt-codegen v0.8.0
 #[doc = "The period during which the activity occurred."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum ProvenanceOccurred {
@@ -25,6 +25,7 @@ pub struct ProvenanceAgent {
     #[doc = "The individual, device, or organization for whom the change was made."]
     pub r#on_behalf_of: Option<Box<super::super::types::Reference>>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for ProvenanceAgent {
     fn default() -> Self {
         Self {
@@ -33,11 +34,10 @@ impl Default for ProvenanceAgent {
             r#modifier_extension: Default::default(),
             r#type: Default::default(),
             r#role: Default::default(),
-            r#who: {
-                let mut default: Box<super::super::types::Reference> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#who: Box::new(super::super::types::Reference {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
             r#on_behalf_of: Default::default(),
         }
     }
@@ -58,22 +58,21 @@ pub struct ProvenanceEntity {
     #[doc = "The entity is attributed to an agent to express the agent's responsibility for that entity, possibly along with other agents. This description can be understood as shorthand for saying that the agent was responsible for the activity which generated the entity."]
     pub r#agent: Vec<ProvenanceAgent>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for ProvenanceEntity {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#role: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#role: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
-            r#what: {
-                let mut default: Box<super::super::types::Reference> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#what: Box::new(super::super::types::Reference {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
             r#agent: Default::default(),
         }
     }
@@ -82,7 +81,7 @@ impl Default for ProvenanceEntity {
 #[derive(Debug, Clone, PartialEq)]
 pub struct Provenance {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
-    pub r#id: Option<std::string::String>,
+    pub r#id: Option<Box<super::super::types::Id>>,
     #[doc = "The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content might not always be associated with version changes to the resource."]
     pub r#meta: Option<Box<super::super::types::Meta>>,
     #[doc = "A reference to a set of rules that were followed when the resource was constructed, and which must be understood when processing the content. Often, this is a reference to an implementation guide that defines the special rules along with other profiles etc."]
@@ -118,6 +117,7 @@ pub struct Provenance {
     #[doc = "A digital signature on the target Reference(s). The signer should match a Provenance.agent. The purpose of the signature is indicated."]
     pub r#signature: Vec<super::super::types::Signature>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for Provenance {
     fn default() -> Self {
         Self {
@@ -131,10 +131,9 @@ impl Default for Provenance {
             r#modifier_extension: Default::default(),
             r#target: Default::default(),
             r#occurred: Default::default(),
-            r#recorded: {
-                let mut default: super::super::types::Instant = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#recorded: super::super::types::Instant {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#policy: Default::default(),
             r#location: Default::default(),

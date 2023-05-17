@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-15 by fhirbolt-codegen v0.8.0
 #[doc = "The date or event after which the goal should begin being pursued."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum GoalStart {
@@ -44,6 +44,7 @@ pub struct GoalTarget {
     #[doc = "Indicates either the date or the duration after start by which the goal should be met."]
     pub r#due: Option<GoalTargetDue>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for GoalTarget {
     fn default() -> Self {
         Self {
@@ -60,7 +61,7 @@ impl Default for GoalTarget {
 #[derive(Debug, Clone, PartialEq)]
 pub struct Goal {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
-    pub r#id: Option<std::string::String>,
+    pub r#id: Option<Box<super::super::types::Id>>,
     #[doc = "The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content might not always be associated with version changes to the resource."]
     pub r#meta: Option<Box<super::super::types::Meta>>,
     #[doc = "A reference to a set of rules that were followed when the resource was constructed, and which must be understood when processing the content. Often, this is a reference to an implementation guide that defines the special rules along with other profiles etc."]
@@ -108,6 +109,7 @@ pub struct Goal {
     #[doc = "Details of what's changed (or not changed)."]
     pub r#outcome_reference: Vec<super::super::types::Reference>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for Goal {
     fn default() -> Self {
         Self {
@@ -120,24 +122,21 @@ impl Default for Goal {
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
             r#identifier: Default::default(),
-            r#lifecycle_status: {
-                let mut default: super::super::types::Code = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
+            r#lifecycle_status: super::super::types::Code {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
             },
             r#achievement_status: Default::default(),
             r#category: Default::default(),
             r#priority: Default::default(),
-            r#description: {
-                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
-            r#subject: {
-                let mut default: Box<super::super::types::Reference> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#description: Box::new(super::super::types::CodeableConcept {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
+            r#subject: Box::new(super::super::types::Reference {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
             r#start: Default::default(),
             r#target: Default::default(),
             r#status_date: Default::default(),

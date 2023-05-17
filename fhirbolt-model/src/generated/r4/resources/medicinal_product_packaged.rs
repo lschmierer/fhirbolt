@@ -1,4 +1,4 @@
-// Generated on 2023-04-24 by fhirbolt-codegen v0.6.0
+// Generated on 2023-05-15 by fhirbolt-codegen v0.8.0
 #[doc = "Batch numbering."]
 #[derive(Debug, Clone, PartialEq)]
 pub struct MedicinalProductPackagedBatchIdentifier {
@@ -13,17 +13,17 @@ pub struct MedicinalProductPackagedBatchIdentifier {
     #[doc = "A number appearing on the immediate packaging (and not the outer packaging)."]
     pub r#immediate_packaging: Option<Box<super::super::types::Identifier>>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for MedicinalProductPackagedBatchIdentifier {
     fn default() -> Self {
         Self {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
-            r#outer_packaging: {
-                let mut default: Box<super::super::types::Identifier> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#outer_packaging: Box::new(super::super::types::Identifier {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
             r#immediate_packaging: Default::default(),
         }
     }
@@ -62,6 +62,7 @@ pub struct MedicinalProductPackagedPackageItem {
     #[doc = "Manufacturer of this Package Item."]
     pub r#manufacturer: Vec<super::super::types::Reference>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for MedicinalProductPackagedPackageItem {
     fn default() -> Self {
         Self {
@@ -69,16 +70,14 @@ impl Default for MedicinalProductPackagedPackageItem {
             r#extension: Default::default(),
             r#modifier_extension: Default::default(),
             r#identifier: Default::default(),
-            r#type: {
-                let mut default: Box<super::super::types::CodeableConcept> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
-            r#quantity: {
-                let mut default: Box<super::super::types::Quantity> = Default::default();
-                default.id = Some("$invalid".to_string());
-                default
-            },
+            r#type: Box::new(super::super::types::CodeableConcept {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
+            r#quantity: Box::new(super::super::types::Quantity {
+                id: Some("$invalid".to_string()),
+                ..Default::default()
+            }),
             r#material: Default::default(),
             r#alternate_material: Default::default(),
             r#device: Default::default(),
@@ -95,7 +94,7 @@ impl Default for MedicinalProductPackagedPackageItem {
 #[derive(Debug, Clone, PartialEq)]
 pub struct MedicinalProductPackaged {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
-    pub r#id: Option<std::string::String>,
+    pub r#id: Option<Box<super::super::types::Id>>,
     #[doc = "The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content might not always be associated with version changes to the resource."]
     pub r#meta: Option<Box<super::super::types::Meta>>,
     #[doc = "A reference to a set of rules that were followed when the resource was constructed, and which must be understood when processing the content. Often, this is a reference to an implementation guide that defines the special rules along with other profiles etc."]
@@ -129,6 +128,7 @@ pub struct MedicinalProductPackaged {
     #[doc = "A packaging item, as a contained for medicine, possibly with other packaging items within."]
     pub r#package_item: Vec<MedicinalProductPackagedPackageItem>,
 }
+#[allow(clippy::derivable_impls)]
 impl Default for MedicinalProductPackaged {
     fn default() -> Self {
         Self {
