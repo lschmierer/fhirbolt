@@ -3,7 +3,7 @@
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum MolecularSequenceRelativeStartingSequenceSequence {
     CodeableConcept(Box<super::super::types::CodeableConcept>),
-    String(Box<super::super::types::String>),
+    String(super::super::types::String),
     Reference(Box<super::super::types::Reference>),
     #[default]
     Invalid,

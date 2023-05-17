@@ -5,14 +5,14 @@ pub enum SupplyRequestParameterValue {
     CodeableConcept(Box<super::super::types::CodeableConcept>),
     Quantity(Box<super::super::types::Quantity>),
     Range(Box<super::super::types::Range>),
-    Boolean(Box<super::super::types::Boolean>),
+    Boolean(super::super::types::Boolean),
     #[default]
     Invalid,
 }
 #[doc = "When the request should be fulfilled."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum SupplyRequestOccurrence {
-    DateTime(Box<super::super::types::DateTime>),
+    DateTime(super::super::types::DateTime),
     Period(Box<super::super::types::Period>),
     Timing(Box<super::super::types::Timing>),
     #[default]

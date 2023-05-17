@@ -3,14 +3,14 @@
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum MessageHeaderEvent {
     Coding(Box<super::super::types::Coding>),
-    Canonical(Box<super::super::types::Canonical>),
+    Canonical(super::super::types::Canonical),
     #[default]
     Invalid,
 }
 #[doc = "Indicates where the message should be routed."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum MessageHeaderDestinationEndpoint {
-    Url(Box<super::super::types::Url>),
+    Url(super::super::types::Url),
     Reference(Box<super::super::types::Reference>),
     #[default]
     Invalid,
@@ -18,7 +18,7 @@ pub enum MessageHeaderDestinationEndpoint {
 #[doc = "Identifies the routing target to send acknowledgements to."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum MessageHeaderSourceEndpoint {
-    Url(Box<super::super::types::Url>),
+    Url(super::super::types::Url),
     Reference(Box<super::super::types::Reference>),
     #[default]
     Invalid,

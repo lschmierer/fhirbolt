@@ -11,7 +11,7 @@ pub enum CommunicationRequestPayloadContent {
 #[doc = "The time when this communication is to occur."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum CommunicationRequestOccurrence {
-    DateTime(Box<super::super::types::DateTime>),
+    DateTime(super::super::types::DateTime),
     Period(Box<super::super::types::Period>),
     #[default]
     Invalid,

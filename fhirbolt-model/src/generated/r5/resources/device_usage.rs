@@ -4,7 +4,7 @@
 pub enum DeviceUsageTiming {
     Timing(Box<super::super::types::Timing>),
     Period(Box<super::super::types::Period>),
-    DateTime(Box<super::super::types::DateTime>),
+    DateTime(super::super::types::DateTime),
     #[default]
     Invalid,
 }

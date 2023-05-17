@@ -2,7 +2,7 @@
 #[doc = "Indicates the mechanism used to compare versions to determine which NamingSystem is more current."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum NamingSystemVersionAlgorithm {
-    String(Box<super::super::types::String>),
+    String(super::super::types::String),
     Coding(Box<super::super::types::Coding>),
     #[default]
     Invalid,

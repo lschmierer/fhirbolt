@@ -1316,7 +1316,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Condit
                                     return Err(serde::de::Error::duplicate_field("onsetDateTime"));
                                 }
                                 let _context: &mut DeserializationContext<
-                                    Box<fhirbolt_model::r4b::types::DateTime>,
+                                    fhirbolt_model::r4b::types::DateTime,
                                 > = self.0.transmute();
                                 r#onset = Some(_Enum::DateTime(
                                     map_access.next_value_seed(&mut *_context)?,
@@ -1401,7 +1401,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Condit
                                     return Err(serde::de::Error::duplicate_field("onsetString"));
                                 }
                                 let _context: &mut DeserializationContext<
-                                    Box<fhirbolt_model::r4b::types::String>,
+                                    fhirbolt_model::r4b::types::String,
                                 > = self.0.transmute();
                                 r#onset = Some(_Enum::String(
                                     map_access.next_value_seed(&mut *_context)?,
@@ -1456,7 +1456,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Condit
                                     ));
                                 }
                                 let _context: &mut DeserializationContext<
-                                    Box<fhirbolt_model::r4b::types::DateTime>,
+                                    fhirbolt_model::r4b::types::DateTime,
                                 > = self.0.transmute();
                                 r#abatement = Some(_Enum::DateTime(
                                     map_access.next_value_seed(&mut *_context)?,
@@ -1544,7 +1544,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Condit
                                     ));
                                 }
                                 let _context: &mut DeserializationContext<
-                                    Box<fhirbolt_model::r4b::types::String>,
+                                    fhirbolt_model::r4b::types::String,
                                 > = self.0.transmute();
                                 r#abatement = Some(_Enum::String(
                                     map_access.next_value_seed(&mut *_context)?,

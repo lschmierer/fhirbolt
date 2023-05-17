@@ -3,7 +3,7 @@
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum EvidenceReportCiteAs {
     Reference(Box<super::super::types::Reference>),
-    Markdown(Box<super::super::types::Markdown>),
+    Markdown(super::super::types::Markdown),
     #[default]
     Invalid,
 }
@@ -12,7 +12,7 @@ pub enum EvidenceReportCiteAs {
 pub enum EvidenceReportSubjectCharacteristicValue {
     Reference(Box<super::super::types::Reference>),
     CodeableConcept(Box<super::super::types::CodeableConcept>),
-    Boolean(Box<super::super::types::Boolean>),
+    Boolean(super::super::types::Boolean),
     Quantity(Box<super::super::types::Quantity>),
     Range(Box<super::super::types::Range>),
     #[default]

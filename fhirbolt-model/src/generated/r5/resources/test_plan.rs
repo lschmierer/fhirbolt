@@ -2,7 +2,7 @@
 #[doc = "Indicates the mechanism used to compare versions to determine which is more current."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum TestPlanVersionAlgorithm {
-    String(Box<super::super::types::String>),
+    String(super::super::types::String),
     Coding(Box<super::super::types::Coding>),
     #[default]
     Invalid,
@@ -10,7 +10,7 @@ pub enum TestPlanVersionAlgorithm {
 #[doc = "The actual content of the cases - references to TestScripts or externally defined content."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum TestPlanTestCaseTestRunScriptSource {
-    String(Box<super::super::types::String>),
+    String(super::super::types::String),
     Reference(Box<super::super::types::Reference>),
     #[default]
     Invalid,
@@ -18,7 +18,7 @@ pub enum TestPlanTestCaseTestRunScriptSource {
 #[doc = "Pointer to a definition of test resources - narrative or structured e.g. synthetic data generation, etc."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum TestPlanTestCaseTestDataSource {
-    String(Box<super::super::types::String>),
+    String(super::super::types::String),
     Reference(Box<super::super::types::Reference>),
     #[default]
     Invalid,

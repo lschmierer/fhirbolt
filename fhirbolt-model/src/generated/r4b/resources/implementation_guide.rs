@@ -2,15 +2,15 @@
 #[doc = "If true or a reference, indicates the resource is an example instance.  If a reference is present, indicates that the example is an example of the specified profile."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum ImplementationGuideDefinitionResourceExample {
-    Boolean(Box<super::super::types::Boolean>),
-    Canonical(Box<super::super::types::Canonical>),
+    Boolean(super::super::types::Boolean),
+    Canonical(super::super::types::Canonical),
     #[default]
     Invalid,
 }
 #[doc = "The source address for the page."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum ImplementationGuideDefinitionPageName {
-    Url(Box<super::super::types::Url>),
+    Url(super::super::types::Url),
     Reference(Box<super::super::types::Reference>),
     #[default]
     Invalid,
@@ -18,8 +18,8 @@ pub enum ImplementationGuideDefinitionPageName {
 #[doc = "If true or a reference, indicates the resource is an example instance.  If a reference is present, indicates that the example is an example of the specified profile."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum ImplementationGuideManifestResourceExample {
-    Boolean(Box<super::super::types::Boolean>),
-    Canonical(Box<super::super::types::Canonical>),
+    Boolean(super::super::types::Boolean),
+    Canonical(super::super::types::Canonical),
     #[default]
     Invalid,
 }

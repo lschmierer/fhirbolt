@@ -2,7 +2,7 @@
 #[doc = "Indicates the mechanism used to compare versions to determine which is more current."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum PlanDefinitionVersionAlgorithm {
-    String(Box<super::super::types::String>),
+    String(super::super::types::String),
     Coding(Box<super::super::types::Coding>),
     #[default]
     Invalid,
@@ -12,7 +12,7 @@ pub enum PlanDefinitionVersionAlgorithm {
 pub enum PlanDefinitionSubject {
     CodeableConcept(Box<super::super::types::CodeableConcept>),
     Reference(Box<super::super::types::Reference>),
-    Canonical(Box<super::super::types::Canonical>),
+    Canonical(super::super::types::Canonical),
     #[default]
     Invalid,
 }
@@ -22,9 +22,9 @@ pub enum PlanDefinitionGoalTargetDetail {
     Quantity(Box<super::super::types::Quantity>),
     Range(Box<super::super::types::Range>),
     CodeableConcept(Box<super::super::types::CodeableConcept>),
-    String(Box<super::super::types::String>),
-    Boolean(Box<super::super::types::Boolean>),
-    Integer(Box<super::super::types::Integer>),
+    String(super::super::types::String),
+    Boolean(super::super::types::Boolean),
+    Integer(super::super::types::Integer),
     Ratio(Box<super::super::types::Ratio>),
     #[default]
     Invalid,
@@ -34,7 +34,7 @@ pub enum PlanDefinitionGoalTargetDetail {
 pub enum PlanDefinitionActionSubject {
     CodeableConcept(Box<super::super::types::CodeableConcept>),
     Reference(Box<super::super::types::Reference>),
-    Canonical(Box<super::super::types::Canonical>),
+    Canonical(super::super::types::Canonical),
     #[default]
     Invalid,
 }
@@ -59,15 +59,15 @@ pub enum PlanDefinitionActionTiming {
 #[doc = "A reference to an ActivityDefinition that describes the action to be taken in detail, a MessageDefinition describing a message to be snet, a PlanDefinition that describes a series of actions to be taken, a Questionnaire that should be filled out, a SpecimenDefinition describing a specimen to be collected, or an ObservationDefinition that specifies what observation should be captured."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum PlanDefinitionActionDefinition {
-    Canonical(Box<super::super::types::Canonical>),
-    Uri(Box<super::super::types::Uri>),
+    Canonical(super::super::types::Canonical),
+    Uri(super::super::types::Uri),
     #[default]
     Invalid,
 }
 #[doc = "If a CodeableConcept is present, it indicates the pre-condition for performing the service.  For example \"pain\", \"on flare-up\", etc."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum PlanDefinitionAsNeeded {
-    Boolean(Box<super::super::types::Boolean>),
+    Boolean(super::super::types::Boolean),
     CodeableConcept(Box<super::super::types::CodeableConcept>),
     #[default]
     Invalid,

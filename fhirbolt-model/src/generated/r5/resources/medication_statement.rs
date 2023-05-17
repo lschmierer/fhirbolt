@@ -2,7 +2,7 @@
 #[doc = "The interval of time during which it is being asserted that the patient is/was/will be taking the medication (or was not taking, when the MedicationStatement.adherence element is Not Taking)."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum MedicationStatementEffective {
-    DateTime(Box<super::super::types::DateTime>),
+    DateTime(super::super::types::DateTime),
     Period(Box<super::super::types::Period>),
     Timing(Box<super::super::types::Timing>),
     #[default]

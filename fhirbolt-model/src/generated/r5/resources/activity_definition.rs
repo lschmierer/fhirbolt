@@ -2,7 +2,7 @@
 #[doc = "Indicates the mechanism used to compare versions to determine which is more current."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum ActivityDefinitionVersionAlgorithm {
-    String(Box<super::super::types::String>),
+    String(super::super::types::String),
     Coding(Box<super::super::types::Coding>),
     #[default]
     Invalid,
@@ -12,7 +12,7 @@ pub enum ActivityDefinitionVersionAlgorithm {
 pub enum ActivityDefinitionSubject {
     CodeableConcept(Box<super::super::types::CodeableConcept>),
     Reference(Box<super::super::types::Reference>),
-    Canonical(Box<super::super::types::Canonical>),
+    Canonical(super::super::types::Canonical),
     #[default]
     Invalid,
 }
@@ -29,7 +29,7 @@ pub enum ActivityDefinitionTiming {
 #[doc = "If a CodeableConcept is present, it indicates the pre-condition for performing the service.  For example \"pain\", \"on flare-up\", etc."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum ActivityDefinitionAsNeeded {
-    Boolean(Box<super::super::types::Boolean>),
+    Boolean(super::super::types::Boolean),
     CodeableConcept(Box<super::super::types::CodeableConcept>),
     #[default]
     Invalid,

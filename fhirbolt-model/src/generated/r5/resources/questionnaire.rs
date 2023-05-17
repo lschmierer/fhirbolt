@@ -2,7 +2,7 @@
 #[doc = "Indicates the mechanism used to compare versions to determine which is more current."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum QuestionnaireVersionAlgorithm {
-    String(Box<super::super::types::String>),
+    String(super::super::types::String),
     Coding(Box<super::super::types::Coding>),
     #[default]
     Invalid,
@@ -10,13 +10,13 @@ pub enum QuestionnaireVersionAlgorithm {
 #[doc = "A value that the referenced question is tested using the specified operator in order for the item to be enabled.  If there are multiple answers, a match on any of the answers suffices.  If different behavior is desired (all must match, at least 2 must match, etc.), consider using the enableWhenExpression extension."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum QuestionnaireItemEnableWhenAnswer {
-    Boolean(Box<super::super::types::Boolean>),
-    Decimal(Box<super::super::types::Decimal>),
-    Integer(Box<super::super::types::Integer>),
-    Date(Box<super::super::types::Date>),
-    DateTime(Box<super::super::types::DateTime>),
-    Time(Box<super::super::types::Time>),
-    String(Box<super::super::types::String>),
+    Boolean(super::super::types::Boolean),
+    Decimal(super::super::types::Decimal),
+    Integer(super::super::types::Integer),
+    Date(super::super::types::Date),
+    DateTime(super::super::types::DateTime),
+    Time(super::super::types::Time),
+    String(super::super::types::String),
     Coding(Box<super::super::types::Coding>),
     Quantity(Box<super::super::types::Quantity>),
     Reference(Box<super::super::types::Reference>),
@@ -26,10 +26,10 @@ pub enum QuestionnaireItemEnableWhenAnswer {
 #[doc = "A potential answer that's allowed as the answer to this question."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum QuestionnaireItemAnswerOptionValue {
-    Integer(Box<super::super::types::Integer>),
-    Date(Box<super::super::types::Date>),
-    Time(Box<super::super::types::Time>),
-    String(Box<super::super::types::String>),
+    Integer(super::super::types::Integer),
+    Date(super::super::types::Date),
+    Time(super::super::types::Time),
+    String(super::super::types::String),
     Coding(Box<super::super::types::Coding>),
     Reference(Box<super::super::types::Reference>),
     #[default]
@@ -38,14 +38,14 @@ pub enum QuestionnaireItemAnswerOptionValue {
 #[doc = "The actual value to for an initial answer."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum QuestionnaireItemInitialValue {
-    Boolean(Box<super::super::types::Boolean>),
-    Decimal(Box<super::super::types::Decimal>),
-    Integer(Box<super::super::types::Integer>),
-    Date(Box<super::super::types::Date>),
-    DateTime(Box<super::super::types::DateTime>),
-    Time(Box<super::super::types::Time>),
-    String(Box<super::super::types::String>),
-    Uri(Box<super::super::types::Uri>),
+    Boolean(super::super::types::Boolean),
+    Decimal(super::super::types::Decimal),
+    Integer(super::super::types::Integer),
+    Date(super::super::types::Date),
+    DateTime(super::super::types::DateTime),
+    Time(super::super::types::Time),
+    String(super::super::types::String),
+    Uri(super::super::types::Uri),
     Attachment(Box<super::super::types::Attachment>),
     Coding(Box<super::super::types::Coding>),
     Quantity(Box<super::super::types::Quantity>),

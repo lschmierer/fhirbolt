@@ -2,7 +2,7 @@
 #[doc = "The date and time(s) at which the media was collected."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum MediaCreated {
-    DateTime(Box<super::super::types::DateTime>),
+    DateTime(super::super::types::DateTime),
     Period(Box<super::super::types::Period>),
     #[default]
     Invalid,

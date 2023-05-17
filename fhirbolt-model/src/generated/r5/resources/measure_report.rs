@@ -3,7 +3,7 @@
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum MeasureReportGroupMeasureScore {
     Quantity(Box<super::super::types::Quantity>),
-    DateTime(Box<super::super::types::DateTime>),
+    DateTime(super::super::types::DateTime),
     CodeableConcept(Box<super::super::types::CodeableConcept>),
     Period(Box<super::super::types::Period>),
     Range(Box<super::super::types::Range>),
@@ -15,7 +15,7 @@ pub enum MeasureReportGroupMeasureScore {
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum MeasureReportGroupStratifierStratumValue {
     CodeableConcept(Box<super::super::types::CodeableConcept>),
-    Boolean(Box<super::super::types::Boolean>),
+    Boolean(super::super::types::Boolean),
     Quantity(Box<super::super::types::Quantity>),
     Range(Box<super::super::types::Range>),
     Reference(Box<super::super::types::Reference>),
@@ -26,7 +26,7 @@ pub enum MeasureReportGroupStratifierStratumValue {
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum MeasureReportGroupStratifierStratumComponentValue {
     CodeableConcept(Box<super::super::types::CodeableConcept>),
-    Boolean(Box<super::super::types::Boolean>),
+    Boolean(super::super::types::Boolean),
     Quantity(Box<super::super::types::Quantity>),
     Range(Box<super::super::types::Range>),
     Reference(Box<super::super::types::Reference>),
@@ -37,7 +37,7 @@ pub enum MeasureReportGroupStratifierStratumComponentValue {
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum MeasureReportGroupStratifierStratumMeasureScore {
     Quantity(Box<super::super::types::Quantity>),
-    DateTime(Box<super::super::types::DateTime>),
+    DateTime(super::super::types::DateTime),
     CodeableConcept(Box<super::super::types::CodeableConcept>),
     Period(Box<super::super::types::Period>),
     Range(Box<super::super::types::Range>),

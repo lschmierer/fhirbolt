@@ -2,7 +2,7 @@
 #[doc = "Time of product collection."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum BiologicallyDerivedProductCollectionCollected {
-    DateTime(Box<super::super::types::DateTime>),
+    DateTime(super::super::types::DateTime),
     Period(Box<super::super::types::Period>),
     #[default]
     Invalid,
@@ -10,14 +10,14 @@ pub enum BiologicallyDerivedProductCollectionCollected {
 #[doc = "Property values."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum BiologicallyDerivedProductPropertyValue {
-    Boolean(Box<super::super::types::Boolean>),
-    Integer(Box<super::super::types::Integer>),
+    Boolean(super::super::types::Boolean),
+    Integer(super::super::types::Integer),
     CodeableConcept(Box<super::super::types::CodeableConcept>),
     Period(Box<super::super::types::Period>),
     Quantity(Box<super::super::types::Quantity>),
     Range(Box<super::super::types::Range>),
     Ratio(Box<super::super::types::Ratio>),
-    String(Box<super::super::types::String>),
+    String(super::super::types::String),
     Attachment(Box<super::super::types::Attachment>),
     #[default]
     Invalid,

@@ -2,7 +2,7 @@
 #[doc = "The date or dates when the enclosed suite of services were performed or completed."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum CoverageEligibilityRequestServiced {
-    Date(Box<super::super::types::Date>),
+    Date(super::super::types::Date),
     Period(Box<super::super::types::Period>),
     #[default]
     Invalid,

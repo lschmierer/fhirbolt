@@ -2,7 +2,7 @@
 #[doc = "Date/time(s) or duration when the charged service was applied."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum ChargeItemOccurrence {
-    DateTime(Box<super::super::types::DateTime>),
+    DateTime(super::super::types::DateTime),
     Period(Box<super::super::types::Period>),
     Timing(Box<super::super::types::Timing>),
     #[default]

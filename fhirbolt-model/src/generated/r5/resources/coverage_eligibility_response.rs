@@ -2,7 +2,7 @@
 #[doc = "A date or period in the past or future indicating when the event occurred or is expectd to occur."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum CoverageEligibilityResponseEventWhen {
-    DateTime(Box<super::super::types::DateTime>),
+    DateTime(super::super::types::DateTime),
     Period(Box<super::super::types::Period>),
     #[default]
     Invalid,
@@ -10,7 +10,7 @@ pub enum CoverageEligibilityResponseEventWhen {
 #[doc = "The date or dates when the enclosed suite of services were performed or completed."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum CoverageEligibilityResponseServiced {
-    Date(Box<super::super::types::Date>),
+    Date(super::super::types::Date),
     Period(Box<super::super::types::Period>),
     #[default]
     Invalid,
@@ -18,8 +18,8 @@ pub enum CoverageEligibilityResponseServiced {
 #[doc = "The quantity of the benefit which is permitted under the coverage."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum CoverageEligibilityResponseInsuranceItemBenefitAllowed {
-    UnsignedInt(Box<super::super::types::UnsignedInt>),
-    String(Box<super::super::types::String>),
+    UnsignedInt(super::super::types::UnsignedInt),
+    String(super::super::types::String),
     Money(Box<super::super::types::Money>),
     #[default]
     Invalid,
@@ -27,8 +27,8 @@ pub enum CoverageEligibilityResponseInsuranceItemBenefitAllowed {
 #[doc = "The quantity of the benefit which have been consumed to date."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum CoverageEligibilityResponseInsuranceItemBenefitUsed {
-    UnsignedInt(Box<super::super::types::UnsignedInt>),
-    String(Box<super::super::types::String>),
+    UnsignedInt(super::super::types::UnsignedInt),
+    String(super::super::types::String),
     Money(Box<super::super::types::Money>),
     #[default]
     Invalid,

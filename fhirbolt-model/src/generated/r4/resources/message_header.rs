@@ -3,7 +3,7 @@
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum MessageHeaderEvent {
     Coding(Box<super::super::types::Coding>),
-    Uri(Box<super::super::types::Uri>),
+    Uri(super::super::types::Uri),
     #[default]
     Invalid,
 }

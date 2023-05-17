@@ -3538,7 +3538,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Concep
                                     return Err(serde::de::Error::duplicate_field("sourceUri"));
                                 }
                                 let _context: &mut DeserializationContext<
-                                    Box<fhirbolt_model::r4::types::Uri>,
+                                    fhirbolt_model::r4::types::Uri,
                                 > = self.0.transmute();
                                 r#source =
                                     Some(_Enum::Uri(map_access.next_value_seed(&mut *_context)?));
@@ -3591,7 +3591,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Concep
                                     ));
                                 }
                                 let _context: &mut DeserializationContext<
-                                    Box<fhirbolt_model::r4::types::Canonical>,
+                                    fhirbolt_model::r4::types::Canonical,
                                 > = self.0.transmute();
                                 r#source = Some(_Enum::Canonical(
                                     map_access.next_value_seed(&mut *_context)?,
@@ -3641,7 +3641,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Concep
                                     return Err(serde::de::Error::duplicate_field("targetUri"));
                                 }
                                 let _context: &mut DeserializationContext<
-                                    Box<fhirbolt_model::r4::types::Uri>,
+                                    fhirbolt_model::r4::types::Uri,
                                 > = self.0.transmute();
                                 r#target =
                                     Some(_Enum::Uri(map_access.next_value_seed(&mut *_context)?));
@@ -3694,7 +3694,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Concep
                                     ));
                                 }
                                 let _context: &mut DeserializationContext<
-                                    Box<fhirbolt_model::r4::types::Canonical>,
+                                    fhirbolt_model::r4::types::Canonical,
                                 > = self.0.transmute();
                                 r#target = Some(_Enum::Canonical(
                                     map_access.next_value_seed(&mut *_context)?,

@@ -2,9 +2,9 @@
 #[doc = "Estimated or actual date, date-time, period, or age when the procedure was performed.  Allows a period to support complex procedures that span more than one date, and also allows for the length of the procedure to be captured."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum ProcedurePerformed {
-    DateTime(Box<super::super::types::DateTime>),
+    DateTime(super::super::types::DateTime),
     Period(Box<super::super::types::Period>),
-    String(Box<super::super::types::String>),
+    String(super::super::types::String),
     Age(Box<super::super::types::Age>),
     Range(Box<super::super::types::Range>),
     #[default]

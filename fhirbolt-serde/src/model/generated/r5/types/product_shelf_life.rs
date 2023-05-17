@@ -239,7 +239,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Produc
                                     return Err(serde::de::Error::duplicate_field("periodString"));
                                 }
                                 let _context: &mut DeserializationContext<
-                                    Box<fhirbolt_model::r5::types::String>,
+                                    fhirbolt_model::r5::types::String,
                                 > = self.0.transmute();
                                 r#period = Some(_Enum::String(
                                     map_access.next_value_seed(&mut *_context)?,

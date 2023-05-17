@@ -3,7 +3,7 @@
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum ClinicalUseDefinitionIndicationDuration {
     Range(Box<super::super::types::Range>),
-    String(Box<super::super::types::String>),
+    String(super::super::types::String),
     #[default]
     Invalid,
 }

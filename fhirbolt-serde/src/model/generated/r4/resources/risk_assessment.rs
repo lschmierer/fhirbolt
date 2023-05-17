@@ -317,7 +317,7 @@ impl<'de> serde::de::DeserializeSeed<'de>
                                     ));
                                 }
                                 let _context: &mut DeserializationContext<
-                                    Box<fhirbolt_model::r4::types::Decimal>,
+                                    fhirbolt_model::r4::types::Decimal,
                                 > = self.0.transmute();
                                 r#probability = Some(_Enum::Decimal(
                                     map_access.next_value_seed(&mut *_context)?,
@@ -1259,7 +1259,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<RiskAs
                                     ));
                                 }
                                 let _context: &mut DeserializationContext<
-                                    Box<fhirbolt_model::r4::types::DateTime>,
+                                    fhirbolt_model::r4::types::DateTime,
                                 > = self.0.transmute();
                                 r#occurrence = Some(_Enum::DateTime(
                                     map_access.next_value_seed(&mut *_context)?,

@@ -2,7 +2,7 @@
 #[doc = "A date or period in the past or future indicating when the event occurred or is expectd to occur."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum ClaimEventWhen {
-    DateTime(Box<super::super::types::DateTime>),
+    DateTime(super::super::types::DateTime),
     Period(Box<super::super::types::Period>),
     #[default]
     Invalid,
@@ -10,7 +10,7 @@ pub enum ClaimEventWhen {
 #[doc = "The date when or period to which this information refers."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum ClaimSupportingInfoTiming {
-    Date(Box<super::super::types::Date>),
+    Date(super::super::types::Date),
     Period(Box<super::super::types::Period>),
     #[default]
     Invalid,
@@ -18,8 +18,8 @@ pub enum ClaimSupportingInfoTiming {
 #[doc = "Additional data or information such as resources, documents, images etc. including references to the data or the actual inclusion of the data."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum ClaimSupportingInfoValue {
-    Boolean(Box<super::super::types::Boolean>),
-    String(Box<super::super::types::String>),
+    Boolean(super::super::types::Boolean),
+    String(super::super::types::String),
     Quantity(Box<super::super::types::Quantity>),
     Attachment(Box<super::super::types::Attachment>),
     Reference(Box<super::super::types::Reference>),
@@ -54,7 +54,7 @@ pub enum ClaimAccidentLocation {
 #[doc = "The date or dates when the service or product was supplied, performed or completed."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum ClaimItemServiced {
-    Date(Box<super::super::types::Date>),
+    Date(super::super::types::Date),
     Period(Box<super::super::types::Period>),
     #[default]
     Invalid,

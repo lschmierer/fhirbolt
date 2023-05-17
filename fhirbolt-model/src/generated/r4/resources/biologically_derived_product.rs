@@ -2,7 +2,7 @@
 #[doc = "Time of product collection."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum BiologicallyDerivedProductCollectionCollected {
-    DateTime(Box<super::super::types::DateTime>),
+    DateTime(super::super::types::DateTime),
     Period(Box<super::super::types::Period>),
     #[default]
     Invalid,
@@ -10,7 +10,7 @@ pub enum BiologicallyDerivedProductCollectionCollected {
 #[doc = "Time of processing."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum BiologicallyDerivedProductProcessingTime {
-    DateTime(Box<super::super::types::DateTime>),
+    DateTime(super::super::types::DateTime),
     Period(Box<super::super::types::Period>),
     #[default]
     Invalid,
@@ -18,7 +18,7 @@ pub enum BiologicallyDerivedProductProcessingTime {
 #[doc = "Time of manipulation."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum BiologicallyDerivedProductManipulationTime {
-    DateTime(Box<super::super::types::DateTime>),
+    DateTime(super::super::types::DateTime),
     Period(Box<super::super::types::Period>),
     #[default]
     Invalid,

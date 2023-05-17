@@ -2,7 +2,7 @@
 #[doc = "Indicates the mechanism used to compare versions to determine which ValueSet is more current."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum ValueSetVersionAlgorithm {
-    String(Box<super::super::types::String>),
+    String(super::super::types::String),
     Coding(Box<super::super::types::Coding>),
     #[default]
     Invalid,
@@ -10,39 +10,39 @@ pub enum ValueSetVersionAlgorithm {
 #[doc = "The value of the parameter."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum ValueSetExpansionParameterValue {
-    String(Box<super::super::types::String>),
-    Boolean(Box<super::super::types::Boolean>),
-    Integer(Box<super::super::types::Integer>),
-    Decimal(Box<super::super::types::Decimal>),
-    Uri(Box<super::super::types::Uri>),
-    Code(Box<super::super::types::Code>),
-    DateTime(Box<super::super::types::DateTime>),
+    String(super::super::types::String),
+    Boolean(super::super::types::Boolean),
+    Integer(super::super::types::Integer),
+    Decimal(super::super::types::Decimal),
+    Uri(super::super::types::Uri),
+    Code(super::super::types::Code),
+    DateTime(super::super::types::DateTime),
     #[default]
     Invalid,
 }
 #[doc = "The value of this property."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum ValueSetExpansionContainsPropertyValue {
-    Code(Box<super::super::types::Code>),
+    Code(super::super::types::Code),
     Coding(Box<super::super::types::Coding>),
-    String(Box<super::super::types::String>),
-    Integer(Box<super::super::types::Integer>),
-    Boolean(Box<super::super::types::Boolean>),
-    DateTime(Box<super::super::types::DateTime>),
-    Decimal(Box<super::super::types::Decimal>),
+    String(super::super::types::String),
+    Integer(super::super::types::Integer),
+    Boolean(super::super::types::Boolean),
+    DateTime(super::super::types::DateTime),
+    Decimal(super::super::types::Decimal),
     #[default]
     Invalid,
 }
 #[doc = "The value of this subproperty."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum ValueSetExpansionContainsPropertySubPropertyValue {
-    Code(Box<super::super::types::Code>),
+    Code(super::super::types::Code),
     Coding(Box<super::super::types::Coding>),
-    String(Box<super::super::types::String>),
-    Integer(Box<super::super::types::Integer>),
-    Boolean(Box<super::super::types::Boolean>),
-    DateTime(Box<super::super::types::DateTime>),
-    Decimal(Box<super::super::types::Decimal>),
+    String(super::super::types::String),
+    Integer(super::super::types::Integer),
+    Boolean(super::super::types::Boolean),
+    DateTime(super::super::types::DateTime),
+    Decimal(super::super::types::Decimal),
     #[default]
     Invalid,
 }

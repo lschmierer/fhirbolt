@@ -875,7 +875,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Media>
                                     ));
                                 }
                                 let _context: &mut DeserializationContext<
-                                    Box<fhirbolt_model::r4b::types::DateTime>,
+                                    fhirbolt_model::r4b::types::DateTime,
                                 > = self.0.transmute();
                                 r#created = Some(_Enum::DateTime(
                                     map_access.next_value_seed(&mut *_context)?,

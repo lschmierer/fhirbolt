@@ -597,7 +597,7 @@ impl<'de> serde::de::DeserializeSeed<'de>
                                     return Err(serde::de::Error::duplicate_field("onsetString"));
                                 }
                                 let _context: &mut DeserializationContext<
-                                    Box<fhirbolt_model::r5::types::String>,
+                                    fhirbolt_model::r5::types::String,
                                 > = self.0.transmute();
                                 r#onset = Some(_Enum::String(
                                     map_access.next_value_seed(&mut *_context)?,
@@ -1109,7 +1109,7 @@ impl<'de> serde::de::DeserializeSeed<'de>
                                     ));
                                 }
                                 let _context: &mut DeserializationContext<
-                                    Box<fhirbolt_model::r5::types::String>,
+                                    fhirbolt_model::r5::types::String,
                                 > = self.0.transmute();
                                 r#performed = Some(_Enum::String(
                                     map_access.next_value_seed(&mut *_context)?,
@@ -1164,7 +1164,7 @@ impl<'de> serde::de::DeserializeSeed<'de>
                                     ));
                                 }
                                 let _context: &mut DeserializationContext<
-                                    Box<fhirbolt_model::r5::types::DateTime>,
+                                    fhirbolt_model::r5::types::DateTime,
                                 > = self.0.transmute();
                                 r#performed = Some(_Enum::DateTime(
                                     map_access.next_value_seed(&mut *_context)?,
@@ -2527,7 +2527,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Family
                                     return Err(serde::de::Error::duplicate_field("bornDate"));
                                 }
                                 let _context: &mut DeserializationContext<
-                                    Box<fhirbolt_model::r5::types::Date>,
+                                    fhirbolt_model::r5::types::Date,
                                 > = self.0.transmute();
                                 r#born =
                                     Some(_Enum::Date(map_access.next_value_seed(&mut *_context)?));
@@ -2576,7 +2576,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Family
                                     return Err(serde::de::Error::duplicate_field("bornString"));
                                 }
                                 let _context: &mut DeserializationContext<
-                                    Box<fhirbolt_model::r5::types::String>,
+                                    fhirbolt_model::r5::types::String,
                                 > = self.0.transmute();
                                 r#born = Some(_Enum::String(
                                     map_access.next_value_seed(&mut *_context)?,
@@ -2646,7 +2646,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Family
                                     return Err(serde::de::Error::duplicate_field("ageString"));
                                 }
                                 let _context: &mut DeserializationContext<
-                                    Box<fhirbolt_model::r5::types::String>,
+                                    fhirbolt_model::r5::types::String,
                                 > = self.0.transmute();
                                 r#age = Some(_Enum::String(
                                     map_access.next_value_seed(&mut *_context)?,
@@ -2734,7 +2734,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Family
                                     ));
                                 }
                                 let _context: &mut DeserializationContext<
-                                    Box<fhirbolt_model::r5::types::Boolean>,
+                                    fhirbolt_model::r5::types::Boolean,
                                 > = self.0.transmute();
                                 r#deceased = Some(_Enum::Boolean(
                                     map_access.next_value_seed(&mut *_context)?,
@@ -2809,7 +2809,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Family
                                     return Err(serde::de::Error::duplicate_field("deceasedDate"));
                                 }
                                 let _context: &mut DeserializationContext<
-                                    Box<fhirbolt_model::r5::types::Date>,
+                                    fhirbolt_model::r5::types::Date,
                                 > = self.0.transmute();
                                 r#deceased =
                                     Some(_Enum::Date(map_access.next_value_seed(&mut *_context)?));
@@ -2863,7 +2863,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Family
                                     ));
                                 }
                                 let _context: &mut DeserializationContext<
-                                    Box<fhirbolt_model::r5::types::String>,
+                                    fhirbolt_model::r5::types::String,
                                 > = self.0.transmute();
                                 r#deceased = Some(_Enum::String(
                                     map_access.next_value_seed(&mut *_context)?,

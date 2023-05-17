@@ -2406,7 +2406,7 @@ impl<'de> serde::de::DeserializeSeed<'de>
                                     return Err(serde::de::Error::duplicate_field("valueString"));
                                 }
                                 let _context: &mut DeserializationContext<
-                                    Box<fhirbolt_model::r4::types::String>,
+                                    fhirbolt_model::r4::types::String,
                                 > = self.0.transmute();
                                 r#value = Some(_Enum::String(
                                     map_access.next_value_seed(&mut *_context)?,
@@ -2459,7 +2459,7 @@ impl<'de> serde::de::DeserializeSeed<'de>
                                     return Err(serde::de::Error::duplicate_field("valueBoolean"));
                                 }
                                 let _context: &mut DeserializationContext<
-                                    Box<fhirbolt_model::r4::types::Boolean>,
+                                    fhirbolt_model::r4::types::Boolean,
                                 > = self.0.transmute();
                                 r#value = Some(_Enum::Boolean(
                                     map_access.next_value_seed(&mut *_context)?,
@@ -2512,7 +2512,7 @@ impl<'de> serde::de::DeserializeSeed<'de>
                                     return Err(serde::de::Error::duplicate_field("valueInteger"));
                                 }
                                 let _context: &mut DeserializationContext<
-                                    Box<fhirbolt_model::r4::types::Integer>,
+                                    fhirbolt_model::r4::types::Integer,
                                 > = self.0.transmute();
                                 r#value = Some(_Enum::Integer(
                                     map_access.next_value_seed(&mut *_context)?,
@@ -2566,7 +2566,7 @@ impl<'de> serde::de::DeserializeSeed<'de>
                                     return Err(serde::de::Error::duplicate_field("valueDecimal"));
                                 }
                                 let _context: &mut DeserializationContext<
-                                    Box<fhirbolt_model::r4::types::Decimal>,
+                                    fhirbolt_model::r4::types::Decimal,
                                 > = self.0.transmute();
                                 r#value = Some(_Enum::Decimal(
                                     map_access.next_value_seed(&mut *_context)?,
@@ -2616,7 +2616,7 @@ impl<'de> serde::de::DeserializeSeed<'de>
                                     return Err(serde::de::Error::duplicate_field("valueUri"));
                                 }
                                 let _context: &mut DeserializationContext<
-                                    Box<fhirbolt_model::r4::types::Uri>,
+                                    fhirbolt_model::r4::types::Uri,
                                 > = self.0.transmute();
                                 r#value =
                                     Some(_Enum::Uri(map_access.next_value_seed(&mut *_context)?));
@@ -2662,7 +2662,7 @@ impl<'de> serde::de::DeserializeSeed<'de>
                                     return Err(serde::de::Error::duplicate_field("valueCode"));
                                 }
                                 let _context: &mut DeserializationContext<
-                                    Box<fhirbolt_model::r4::types::Code>,
+                                    fhirbolt_model::r4::types::Code,
                                 > = self.0.transmute();
                                 r#value =
                                     Some(_Enum::Code(map_access.next_value_seed(&mut *_context)?));
@@ -2713,7 +2713,7 @@ impl<'de> serde::de::DeserializeSeed<'de>
                                     return Err(serde::de::Error::duplicate_field("valueDateTime"));
                                 }
                                 let _context: &mut DeserializationContext<
-                                    Box<fhirbolt_model::r4::types::DateTime>,
+                                    fhirbolt_model::r4::types::DateTime,
                                 > = self.0.transmute();
                                 r#value = Some(_Enum::DateTime(
                                     map_access.next_value_seed(&mut *_context)?,

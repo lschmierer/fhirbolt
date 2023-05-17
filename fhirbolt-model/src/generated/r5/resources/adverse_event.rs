@@ -2,7 +2,7 @@
 #[doc = "The date (and perhaps time) when the adverse event occurred."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum AdverseEventOccurrence {
-    DateTime(Box<super::super::types::DateTime>),
+    DateTime(super::super::types::DateTime),
     Period(Box<super::super::types::Period>),
     Timing(Box<super::super::types::Timing>),
     #[default]

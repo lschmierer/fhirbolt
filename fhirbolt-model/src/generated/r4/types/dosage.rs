@@ -2,7 +2,7 @@
 #[doc = "Indicates whether the Medication is only taken when needed within a specific dosing schedule (Boolean option), or it indicates the precondition for taking the Medication (CodeableConcept)."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum DosageAsNeeded {
-    Boolean(Box<super::super::types::Boolean>),
+    Boolean(super::super::types::Boolean),
     CodeableConcept(Box<super::super::types::CodeableConcept>),
     #[default]
     Invalid,

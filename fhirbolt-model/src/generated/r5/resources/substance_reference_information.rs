@@ -4,7 +4,7 @@
 pub enum SubstanceReferenceInformationTargetAmount {
     Quantity(Box<super::super::types::Quantity>),
     Range(Box<super::super::types::Range>),
-    String(Box<super::super::types::String>),
+    String(super::super::types::String),
     #[default]
     Invalid,
 }

@@ -2,8 +2,8 @@
 #[doc = "The  value of the extra detail."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum AuditEventEntityDetailValue {
-    String(Box<super::super::types::String>),
-    Base64Binary(Box<super::super::types::Base64Binary>),
+    String(super::super::types::String),
+    Base64Binary(super::super::types::Base64Binary),
     #[default]
     Invalid,
 }

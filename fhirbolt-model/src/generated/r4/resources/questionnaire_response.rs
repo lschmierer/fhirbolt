@@ -2,14 +2,14 @@
 #[doc = "The answer (or one of the answers) provided by the respondent to the question."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum QuestionnaireResponseItemAnswerValue {
-    Boolean(Box<super::super::types::Boolean>),
-    Decimal(Box<super::super::types::Decimal>),
-    Integer(Box<super::super::types::Integer>),
-    Date(Box<super::super::types::Date>),
-    DateTime(Box<super::super::types::DateTime>),
-    Time(Box<super::super::types::Time>),
-    String(Box<super::super::types::String>),
-    Uri(Box<super::super::types::Uri>),
+    Boolean(super::super::types::Boolean),
+    Decimal(super::super::types::Decimal),
+    Integer(super::super::types::Integer),
+    Date(super::super::types::Date),
+    DateTime(super::super::types::DateTime),
+    Time(super::super::types::Time),
+    String(super::super::types::String),
+    Uri(super::super::types::Uri),
     Attachment(Box<super::super::types::Attachment>),
     Coding(Box<super::super::types::Coding>),
     Quantity(Box<super::super::types::Quantity>),

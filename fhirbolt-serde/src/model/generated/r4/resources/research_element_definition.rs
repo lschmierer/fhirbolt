@@ -541,7 +541,7 @@ impl<'de> serde::de::DeserializeSeed<'de>
                                     ));
                                 }
                                 let _context: &mut DeserializationContext<
-                                    Box<fhirbolt_model::r4::types::Canonical>,
+                                    fhirbolt_model::r4::types::Canonical,
                                 > = self.0.transmute();
                                 r#definition = Some(_Enum::Canonical(
                                     map_access.next_value_seed(&mut *_context)?,
@@ -731,7 +731,7 @@ impl<'de> serde::de::DeserializeSeed<'de>
                                     ));
                                 }
                                 let _context: &mut DeserializationContext<
-                                    Box<fhirbolt_model::r4::types::DateTime>,
+                                    fhirbolt_model::r4::types::DateTime,
                                 > = self.0.transmute();
                                 r#study_effective = Some(_Enum::DateTime(
                                     map_access.next_value_seed(&mut *_context)?,
@@ -927,7 +927,7 @@ impl<'de> serde::de::DeserializeSeed<'de>
                                     ));
                                 }
                                 let _context: &mut DeserializationContext<
-                                    Box<fhirbolt_model::r4::types::DateTime>,
+                                    fhirbolt_model::r4::types::DateTime,
                                 > = self.0.transmute();
                                 r#participant_effective = Some(_Enum::DateTime(
                                     map_access.next_value_seed(&mut *_context)?,

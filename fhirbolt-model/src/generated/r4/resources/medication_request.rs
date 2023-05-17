@@ -2,7 +2,7 @@
 #[doc = "Indicates if this record was captured as a secondary 'reported' record rather than as an original primary source-of-truth record.  It may also indicate the source of the report."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum MedicationRequestReported {
-    Boolean(Box<super::super::types::Boolean>),
+    Boolean(super::super::types::Boolean),
     Reference(Box<super::super::types::Reference>),
     #[default]
     Invalid,
@@ -18,7 +18,7 @@ pub enum MedicationRequestMedication {
 #[doc = "True if the prescriber allows a different drug to be dispensed from what was prescribed."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum MedicationRequestSubstitutionAllowed {
-    Boolean(Box<super::super::types::Boolean>),
+    Boolean(super::super::types::Boolean),
     CodeableConcept(Box<super::super::types::CodeableConcept>),
     #[default]
     Invalid,

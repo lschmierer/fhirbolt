@@ -3,8 +3,8 @@
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum FamilyMemberHistoryBorn {
     Period(Box<super::super::types::Period>),
-    Date(Box<super::super::types::Date>),
-    String(Box<super::super::types::String>),
+    Date(super::super::types::Date),
+    String(super::super::types::String),
     #[default]
     Invalid,
 }
@@ -13,18 +13,18 @@ pub enum FamilyMemberHistoryBorn {
 pub enum FamilyMemberHistoryAge {
     Age(Box<super::super::types::Age>),
     Range(Box<super::super::types::Range>),
-    String(Box<super::super::types::String>),
+    String(super::super::types::String),
     #[default]
     Invalid,
 }
 #[doc = "Deceased flag or the actual or approximate age of the relative at the time of death for the family member history record."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum FamilyMemberHistoryDeceased {
-    Boolean(Box<super::super::types::Boolean>),
+    Boolean(super::super::types::Boolean),
     Age(Box<super::super::types::Age>),
     Range(Box<super::super::types::Range>),
-    Date(Box<super::super::types::Date>),
-    String(Box<super::super::types::String>),
+    Date(super::super::types::Date),
+    String(super::super::types::String),
     #[default]
     Invalid,
 }
@@ -34,7 +34,7 @@ pub enum FamilyMemberHistoryConditionOnset {
     Age(Box<super::super::types::Age>),
     Range(Box<super::super::types::Range>),
     Period(Box<super::super::types::Period>),
-    String(Box<super::super::types::String>),
+    String(super::super::types::String),
     #[default]
     Invalid,
 }
@@ -44,8 +44,8 @@ pub enum FamilyMemberHistoryProcedurePerformed {
     Age(Box<super::super::types::Age>),
     Range(Box<super::super::types::Range>),
     Period(Box<super::super::types::Period>),
-    String(Box<super::super::types::String>),
-    DateTime(Box<super::super::types::DateTime>),
+    String(super::super::types::String),
+    DateTime(super::super::types::DateTime),
     #[default]
     Invalid,
 }

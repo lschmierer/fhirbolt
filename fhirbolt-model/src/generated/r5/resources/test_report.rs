@@ -2,8 +2,8 @@
 #[doc = "Link or reference providing traceability to the testing requirement for this test."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum TestReportSetupActionAssertRequirementLink {
-    Uri(Box<super::super::types::Uri>),
-    Canonical(Box<super::super::types::Canonical>),
+    Uri(super::super::types::Uri),
+    Canonical(super::super::types::Canonical),
     #[default]
     Invalid,
 }

@@ -19,8 +19,8 @@ pub enum MedicationKnowledgeIndicationGuidelineDosingGuidelinePatientCharacteris
 #[doc = "Either a textual source of the classification or a reference to an online source."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum MedicationKnowledgeMedicineClassificationSource {
-    String(Box<super::super::types::String>),
-    Uri(Box<super::super::types::Uri>),
+    String(super::super::types::String),
+    Uri(super::super::types::Uri),
     #[default]
     Invalid,
 }
@@ -46,9 +46,9 @@ pub enum MedicationKnowledgeDefinitionalIngredientStrength {
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum MedicationKnowledgeDefinitionalDrugCharacteristicValue {
     CodeableConcept(Box<super::super::types::CodeableConcept>),
-    String(Box<super::super::types::String>),
+    String(super::super::types::String),
     Quantity(Box<super::super::types::Quantity>),
-    Base64Binary(Box<super::super::types::Base64Binary>),
+    Base64Binary(super::super::types::Base64Binary),
     Attachment(Box<super::super::types::Attachment>),
     #[default]
     Invalid,

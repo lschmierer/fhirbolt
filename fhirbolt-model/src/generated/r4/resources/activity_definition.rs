@@ -11,7 +11,7 @@ pub enum ActivityDefinitionSubject {
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum ActivityDefinitionTiming {
     Timing(Box<super::super::types::Timing>),
-    DateTime(Box<super::super::types::DateTime>),
+    DateTime(super::super::types::DateTime),
     Age(Box<super::super::types::Age>),
     Period(Box<super::super::types::Period>),
     Range(Box<super::super::types::Range>),

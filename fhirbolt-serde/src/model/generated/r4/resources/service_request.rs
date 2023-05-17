@@ -1429,7 +1429,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Servic
                                     ));
                                 }
                                 let _context: &mut DeserializationContext<
-                                    Box<fhirbolt_model::r4::types::DateTime>,
+                                    fhirbolt_model::r4::types::DateTime,
                                 > = self.0.transmute();
                                 r#occurrence = Some(_Enum::DateTime(
                                     map_access.next_value_seed(&mut *_context)?,
@@ -1508,7 +1508,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Servic
                                     ));
                                 }
                                 let _context: &mut DeserializationContext<
-                                    Box<fhirbolt_model::r4::types::Boolean>,
+                                    fhirbolt_model::r4::types::Boolean,
                                 > = self.0.transmute();
                                 r#as_needed = Some(_Enum::Boolean(
                                     map_access.next_value_seed(&mut *_context)?,

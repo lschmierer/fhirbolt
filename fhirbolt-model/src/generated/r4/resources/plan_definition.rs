@@ -35,7 +35,7 @@ pub enum PlanDefinitionActionRelatedActionOffset {
 #[doc = "An optional value describing when the action should be performed."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum PlanDefinitionActionTiming {
-    DateTime(Box<super::super::types::DateTime>),
+    DateTime(super::super::types::DateTime),
     Age(Box<super::super::types::Age>),
     Period(Box<super::super::types::Period>),
     Duration(Box<super::super::types::Duration>),
@@ -47,8 +47,8 @@ pub enum PlanDefinitionActionTiming {
 #[doc = "A reference to an ActivityDefinition that describes the action to be taken in detail, or a PlanDefinition that describes a series of actions to be taken."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum PlanDefinitionActionDefinition {
-    Canonical(Box<super::super::types::Canonical>),
-    Uri(Box<super::super::types::Uri>),
+    Canonical(super::super::types::Canonical),
+    Uri(super::super::types::Uri),
     #[default]
     Invalid,
 }

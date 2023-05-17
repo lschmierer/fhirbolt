@@ -2,16 +2,16 @@
 #[doc = "Indicates if the individual is deceased or not."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum PatientDeceased {
-    Boolean(Box<super::super::types::Boolean>),
-    DateTime(Box<super::super::types::DateTime>),
+    Boolean(super::super::types::Boolean),
+    DateTime(super::super::types::DateTime),
     #[default]
     Invalid,
 }
 #[doc = "Indicates whether the patient is part of a multiple (boolean) or indicates the actual birth order (integer)."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum PatientMultipleBirth {
-    Boolean(Box<super::super::types::Boolean>),
-    Integer(Box<super::super::types::Integer>),
+    Boolean(super::super::types::Boolean),
+    Integer(super::super::types::Integer),
     #[default]
     Invalid,
 }

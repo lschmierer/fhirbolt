@@ -655,7 +655,7 @@ impl<'de> serde::de::DeserializeSeed<'de>
                                     ));
                                 }
                                 let _context: &mut DeserializationContext<
-                                    Box<fhirbolt_model::r5::types::String>,
+                                    fhirbolt_model::r5::types::String,
                                 > = self.0.transmute();
                                 r#minimum_volume = Some(_Enum::String(
                                     map_access.next_value_seed(&mut *_context)?,
@@ -2852,7 +2852,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Specim
                                     ));
                                 }
                                 let _context: &mut DeserializationContext<
-                                    Box<fhirbolt_model::r5::types::String>,
+                                    fhirbolt_model::r5::types::String,
                                 > = self.0.transmute();
                                 r#version_algorithm = Some(_Enum::String(
                                     map_access.next_value_seed(&mut *_context)?,

@@ -5,9 +5,9 @@ pub enum ServiceRequestOrderDetailParameterValue {
     Quantity(Box<super::super::types::Quantity>),
     Ratio(Box<super::super::types::Ratio>),
     Range(Box<super::super::types::Range>),
-    Boolean(Box<super::super::types::Boolean>),
+    Boolean(super::super::types::Boolean),
     CodeableConcept(Box<super::super::types::CodeableConcept>),
-    String(Box<super::super::types::String>),
+    String(super::super::types::String),
     Period(Box<super::super::types::Period>),
     #[default]
     Invalid,
@@ -24,7 +24,7 @@ pub enum ServiceRequestQuantity {
 #[doc = "The date/time at which the requested service should occur."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum ServiceRequestOccurrence {
-    DateTime(Box<super::super::types::DateTime>),
+    DateTime(super::super::types::DateTime),
     Period(Box<super::super::types::Period>),
     Timing(Box<super::super::types::Timing>),
     #[default]
@@ -33,7 +33,7 @@ pub enum ServiceRequestOccurrence {
 #[doc = "If a CodeableConcept is present, it indicates the pre-condition for performing the service.  For example \"pain\", \"on flare-up\", etc."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum ServiceRequestAsNeeded {
-    Boolean(Box<super::super::types::Boolean>),
+    Boolean(super::super::types::Boolean),
     CodeableConcept(Box<super::super::types::CodeableConcept>),
     #[default]
     Invalid,
@@ -41,7 +41,7 @@ pub enum ServiceRequestAsNeeded {
 #[doc = "Instructions in terms that are understood by the patient or consumer."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum ServiceRequestPatientInstructionInstruction {
-    Markdown(Box<super::super::types::Markdown>),
+    Markdown(super::super::types::Markdown),
     Reference(Box<super::super::types::Reference>),
     #[default]
     Invalid,

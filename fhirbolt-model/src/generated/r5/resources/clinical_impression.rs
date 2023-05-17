@@ -2,7 +2,7 @@
 #[doc = "The point in time or period over which the subject was assessed."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum ClinicalImpressionEffective {
-    DateTime(Box<super::super::types::DateTime>),
+    DateTime(super::super::types::DateTime),
     Period(Box<super::super::types::Period>),
     #[default]
     Invalid,

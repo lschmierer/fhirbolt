@@ -2,7 +2,7 @@
 #[doc = "The date when or period to which this information refers."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum ExplanationOfBenefitSupportingInfoTiming {
-    Date(Box<super::super::types::Date>),
+    Date(super::super::types::Date),
     Period(Box<super::super::types::Period>),
     #[default]
     Invalid,
@@ -10,8 +10,8 @@ pub enum ExplanationOfBenefitSupportingInfoTiming {
 #[doc = "Additional data or information such as resources, documents, images etc. including references to the data or the actual inclusion of the data."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum ExplanationOfBenefitSupportingInfoValue {
-    Boolean(Box<super::super::types::Boolean>),
-    String(Box<super::super::types::String>),
+    Boolean(super::super::types::Boolean),
+    String(super::super::types::String),
     Quantity(Box<super::super::types::Quantity>),
     Attachment(Box<super::super::types::Attachment>),
     Reference(Box<super::super::types::Reference>),
@@ -45,7 +45,7 @@ pub enum ExplanationOfBenefitAccidentLocation {
 #[doc = "The date or dates when the service or product was supplied, performed or completed."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum ExplanationOfBenefitItemServiced {
-    Date(Box<super::super::types::Date>),
+    Date(super::super::types::Date),
     Period(Box<super::super::types::Period>),
     #[default]
     Invalid,
@@ -62,7 +62,7 @@ pub enum ExplanationOfBenefitItemLocation {
 #[doc = "The date or dates when the service or product was supplied, performed or completed."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum ExplanationOfBenefitAddItemServiced {
-    Date(Box<super::super::types::Date>),
+    Date(super::super::types::Date),
     Period(Box<super::super::types::Period>),
     #[default]
     Invalid,
@@ -79,8 +79,8 @@ pub enum ExplanationOfBenefitAddItemLocation {
 #[doc = "The quantity of the benefit which is permitted under the coverage."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum ExplanationOfBenefitBenefitBalanceFinancialAllowed {
-    UnsignedInt(Box<super::super::types::UnsignedInt>),
-    String(Box<super::super::types::String>),
+    UnsignedInt(super::super::types::UnsignedInt),
+    String(super::super::types::String),
     Money(Box<super::super::types::Money>),
     #[default]
     Invalid,
@@ -88,7 +88,7 @@ pub enum ExplanationOfBenefitBenefitBalanceFinancialAllowed {
 #[doc = "The quantity of the benefit which have been consumed to date."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum ExplanationOfBenefitBenefitBalanceFinancialUsed {
-    UnsignedInt(Box<super::super::types::UnsignedInt>),
+    UnsignedInt(super::super::types::UnsignedInt),
     Money(Box<super::super::types::Money>),
     #[default]
     Invalid,

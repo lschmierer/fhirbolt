@@ -1804,7 +1804,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Patien
                                     ));
                                 }
                                 let _context: &mut DeserializationContext<
-                                    Box<fhirbolt_model::r4b::types::Boolean>,
+                                    fhirbolt_model::r4b::types::Boolean,
                                 > = self.0.transmute();
                                 r#deceased = Some(_Enum::Boolean(
                                     map_access.next_value_seed(&mut *_context)?,
@@ -1859,7 +1859,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Patien
                                     ));
                                 }
                                 let _context: &mut DeserializationContext<
-                                    Box<fhirbolt_model::r4b::types::DateTime>,
+                                    fhirbolt_model::r4b::types::DateTime,
                                 > = self.0.transmute();
                                 r#deceased = Some(_Enum::DateTime(
                                     map_access.next_value_seed(&mut *_context)?,
@@ -1942,7 +1942,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Patien
                                     ));
                                 }
                                 let _context: &mut DeserializationContext<
-                                    Box<fhirbolt_model::r4b::types::Boolean>,
+                                    fhirbolt_model::r4b::types::Boolean,
                                 > = self.0.transmute();
                                 r#multiple_birth = Some(_Enum::Boolean(
                                     map_access.next_value_seed(&mut *_context)?,
@@ -2001,7 +2001,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Patien
                                     ));
                                 }
                                 let _context: &mut DeserializationContext<
-                                    Box<fhirbolt_model::r4b::types::Integer>,
+                                    fhirbolt_model::r4b::types::Integer,
                                 > = self.0.transmute();
                                 r#multiple_birth = Some(_Enum::Integer(
                                     map_access.next_value_seed(&mut *_context)?,

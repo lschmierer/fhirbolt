@@ -544,7 +544,7 @@ impl<'de> serde::de::DeserializeSeed<'de>
                                     return Err(serde::de::Error::duplicate_field("valueDate"));
                                 }
                                 let _context: &mut DeserializationContext<
-                                    Box<fhirbolt_model::r5::types::Date>,
+                                    fhirbolt_model::r5::types::Date,
                                 > = self.0.transmute();
                                 r#value =
                                     Some(_Enum::Date(map_access.next_value_seed(&mut *_context)?));
@@ -595,7 +595,7 @@ impl<'de> serde::de::DeserializeSeed<'de>
                                     return Err(serde::de::Error::duplicate_field("valueBoolean"));
                                 }
                                 let _context: &mut DeserializationContext<
-                                    Box<fhirbolt_model::r5::types::Boolean>,
+                                    fhirbolt_model::r5::types::Boolean,
                                 > = self.0.transmute();
                                 r#value = Some(_Enum::Boolean(
                                     map_access.next_value_seed(&mut *_context)?,

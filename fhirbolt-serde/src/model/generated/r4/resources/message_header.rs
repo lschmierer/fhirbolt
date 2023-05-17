@@ -1738,7 +1738,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Messag
                                     return Err(serde::de::Error::duplicate_field("eventUri"));
                                 }
                                 let _context: &mut DeserializationContext<
-                                    Box<fhirbolt_model::r4::types::Uri>,
+                                    fhirbolt_model::r4::types::Uri,
                                 > = self.0.transmute();
                                 r#event =
                                     Some(_Enum::Uri(map_access.next_value_seed(&mut *_context)?));

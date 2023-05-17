@@ -2564,7 +2564,7 @@ impl<'de> serde::de::DeserializeSeed<'de>
                                     return Err(serde::de::Error::duplicate_field("sourceString"));
                                 }
                                 let _context: &mut DeserializationContext<
-                                    Box<fhirbolt_model::r5::types::String>,
+                                    fhirbolt_model::r5::types::String,
                                 > = self.0.transmute();
                                 r#source = Some(_Enum::String(
                                     map_access.next_value_seed(&mut *_context)?,
@@ -2614,7 +2614,7 @@ impl<'de> serde::de::DeserializeSeed<'de>
                                     return Err(serde::de::Error::duplicate_field("sourceUri"));
                                 }
                                 let _context: &mut DeserializationContext<
-                                    Box<fhirbolt_model::r5::types::Uri>,
+                                    fhirbolt_model::r5::types::Uri,
                                 > = self.0.transmute();
                                 r#source =
                                     Some(_Enum::Uri(map_access.next_value_seed(&mut *_context)?));
@@ -5096,7 +5096,7 @@ impl<'de> serde::de::DeserializeSeed<'de>
                                     return Err(serde::de::Error::duplicate_field("valueString"));
                                 }
                                 let _context: &mut DeserializationContext<
-                                    Box<fhirbolt_model::r5::types::String>,
+                                    fhirbolt_model::r5::types::String,
                                 > = self.0.transmute();
                                 r#value = Some(_Enum::String(
                                     map_access.next_value_seed(&mut *_context)?,
@@ -5162,7 +5162,7 @@ impl<'de> serde::de::DeserializeSeed<'de>
                                     ));
                                 }
                                 let _context: &mut DeserializationContext<
-                                    Box<fhirbolt_model::r5::types::Base64Binary>,
+                                    fhirbolt_model::r5::types::Base64Binary,
                                 > = self.0.transmute();
                                 r#value = Some(_Enum::Base64Binary(
                                     map_access.next_value_seed(&mut *_context)?,

@@ -2,24 +2,24 @@
 #[doc = "Date vaccine administered or was to be administered."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum ImmunizationOccurrence {
-    DateTime(Box<super::super::types::DateTime>),
-    String(Box<super::super::types::String>),
+    DateTime(super::super::types::DateTime),
+    String(super::super::types::String),
     #[default]
     Invalid,
 }
 #[doc = "Nominal position in a series."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum ImmunizationProtocolAppliedDoseNumber {
-    PositiveInt(Box<super::super::types::PositiveInt>),
-    String(Box<super::super::types::String>),
+    PositiveInt(super::super::types::PositiveInt),
+    String(super::super::types::String),
     #[default]
     Invalid,
 }
 #[doc = "The recommended number of doses to achieve immunity."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum ImmunizationProtocolAppliedSeriesDoses {
-    PositiveInt(Box<super::super::types::PositiveInt>),
-    String(Box<super::super::types::String>),
+    PositiveInt(super::super::types::PositiveInt),
+    String(super::super::types::String),
     #[default]
     Invalid,
 }

@@ -1107,7 +1107,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Clinic
                                     ));
                                 }
                                 let _context: &mut DeserializationContext<
-                                    Box<fhirbolt_model::r5::types::DateTime>,
+                                    fhirbolt_model::r5::types::DateTime,
                                 > = self.0.transmute();
                                 r#effective = Some(_Enum::DateTime(
                                     map_access.next_value_seed(&mut *_context)?,

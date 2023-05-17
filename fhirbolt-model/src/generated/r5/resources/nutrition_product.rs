@@ -3,11 +3,11 @@
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum NutritionProductCharacteristicValue {
     CodeableConcept(Box<super::super::types::CodeableConcept>),
-    String(Box<super::super::types::String>),
+    String(super::super::types::String),
     Quantity(Box<super::super::types::Quantity>),
-    Base64Binary(Box<super::super::types::Base64Binary>),
+    Base64Binary(super::super::types::Base64Binary),
     Attachment(Box<super::super::types::Attachment>),
-    Boolean(Box<super::super::types::Boolean>),
+    Boolean(super::super::types::Boolean),
     #[default]
     Invalid,
 }

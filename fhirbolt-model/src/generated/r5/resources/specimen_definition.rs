@@ -2,7 +2,7 @@
 #[doc = "Indicates the mechanism used to compare versions to determine which is more current."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum SpecimenDefinitionVersionAlgorithm {
-    String(Box<super::super::types::String>),
+    String(super::super::types::String),
     Coding(Box<super::super::types::Coding>),
     #[default]
     Invalid,
@@ -19,7 +19,7 @@ pub enum SpecimenDefinitionSubject {
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum SpecimenDefinitionTypeTestedContainerMinimumVolume {
     Quantity(Box<super::super::types::Quantity>),
-    String(Box<super::super::types::String>),
+    String(super::super::types::String),
     #[default]
     Invalid,
 }

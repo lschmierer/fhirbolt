@@ -244,7 +244,7 @@ impl<'de> serde::de::DeserializeSeed<'de>
                                     return Err(serde::de::Error::duplicate_field("endpointUrl"));
                                 }
                                 let _context: &mut DeserializationContext<
-                                    Box<fhirbolt_model::r5::types::Url>,
+                                    fhirbolt_model::r5::types::Url,
                                 > = self.0.transmute();
                                 r#endpoint =
                                     Some(_Enum::Url(map_access.next_value_seed(&mut *_context)?));
@@ -690,7 +690,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Messag
                                     return Err(serde::de::Error::duplicate_field("endpointUrl"));
                                 }
                                 let _context: &mut DeserializationContext<
-                                    Box<fhirbolt_model::r5::types::Url>,
+                                    fhirbolt_model::r5::types::Url,
                                 > = self.0.transmute();
                                 r#endpoint =
                                     Some(_Enum::Url(map_access.next_value_seed(&mut *_context)?));
@@ -1771,7 +1771,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Messag
                                     ));
                                 }
                                 let _context: &mut DeserializationContext<
-                                    Box<fhirbolt_model::r5::types::Canonical>,
+                                    fhirbolt_model::r5::types::Canonical,
                                 > = self.0.transmute();
                                 r#event = Some(_Enum::Canonical(
                                     map_access.next_value_seed(&mut *_context)?,

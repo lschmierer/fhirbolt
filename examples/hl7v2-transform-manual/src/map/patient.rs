@@ -124,16 +124,16 @@ fn map_deceased(pid_segment: Option<&Segment>) -> Option<PatientDeceased> {
         .unwrap_or(false)
     {
         if let Some(date_time) = deceased_date_time {
-            Some(PatientDeceased::DateTime(Box::new(date_time)))
+            Some(PatientDeceased::DateTime(date_time))
         } else {
-            Some(PatientDeceased::Boolean(Box::new(true.into())))
+            Some(PatientDeceased::Boolean(true.into()))
         }
     } else {
         if deceased_date_time.is_some() {
             println!("\x1B[33mWarning\x1B[39m: Patient has a deceased date although still alive")
         }
 
-        Some(PatientDeceased::Boolean(Box::new(false.into())))
+        Some(PatientDeceased::Boolean(false.into()))
     }
 }
 

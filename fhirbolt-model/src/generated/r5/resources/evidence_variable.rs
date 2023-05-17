@@ -2,7 +2,7 @@
 #[doc = "Indicates the mechanism used to compare versions to determine which is more current."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum EvidenceVariableVersionAlgorithm {
-    String(Box<super::super::types::String>),
+    String(super::super::types::String),
     Coding(Box<super::super::types::Coding>),
     #[default]
     Invalid,
@@ -11,11 +11,11 @@ pub enum EvidenceVariableVersionAlgorithm {
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum EvidenceVariableCharacteristicDefinitionByTypeAndValueValue {
     CodeableConcept(Box<super::super::types::CodeableConcept>),
-    Boolean(Box<super::super::types::Boolean>),
+    Boolean(super::super::types::Boolean),
     Quantity(Box<super::super::types::Quantity>),
     Range(Box<super::super::types::Range>),
     Reference(Box<super::super::types::Reference>),
-    Id(Box<super::super::types::Id>),
+    Id(super::super::types::Id),
     #[default]
     Invalid,
 }
@@ -40,8 +40,8 @@ pub enum EvidenceVariableCharacteristicDuration {
 pub enum EvidenceVariableCharacteristicTimeFromEventEvent {
     CodeableConcept(Box<super::super::types::CodeableConcept>),
     Reference(Box<super::super::types::Reference>),
-    DateTime(Box<super::super::types::DateTime>),
-    Id(Box<super::super::types::Id>),
+    DateTime(super::super::types::DateTime),
+    Id(super::super::types::Id),
     #[default]
     Invalid,
 }

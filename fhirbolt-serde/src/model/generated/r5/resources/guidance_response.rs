@@ -642,7 +642,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Guidan
                                     return Err(serde::de::Error::duplicate_field("moduleUri"));
                                 }
                                 let _context: &mut DeserializationContext<
-                                    Box<fhirbolt_model::r5::types::Uri>,
+                                    fhirbolt_model::r5::types::Uri,
                                 > = self.0.transmute();
                                 r#module =
                                     Some(_Enum::Uri(map_access.next_value_seed(&mut *_context)?));
@@ -695,7 +695,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Guidan
                                     ));
                                 }
                                 let _context: &mut DeserializationContext<
-                                    Box<fhirbolt_model::r5::types::Canonical>,
+                                    fhirbolt_model::r5::types::Canonical,
                                 > = self.0.transmute();
                                 r#module = Some(_Enum::Canonical(
                                     map_access.next_value_seed(&mut *_context)?,

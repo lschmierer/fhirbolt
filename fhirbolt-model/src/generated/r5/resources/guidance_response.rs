@@ -2,8 +2,8 @@
 #[doc = "An identifier, CodeableConcept or canonical reference to the guidance that was requested."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum GuidanceResponseModule {
-    Uri(Box<super::super::types::Uri>),
-    Canonical(Box<super::super::types::Canonical>),
+    Uri(super::super::types::Uri),
+    Canonical(super::super::types::Canonical),
     CodeableConcept(Box<super::super::types::CodeableConcept>),
     #[default]
     Invalid,

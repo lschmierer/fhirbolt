@@ -2,7 +2,7 @@
 #[doc = "The article or artifact that the Citation Resource is related to."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum CitationRelatesToTarget {
-    Uri(Box<super::super::types::Uri>),
+    Uri(super::super::types::Uri),
     Identifier(Box<super::super::types::Identifier>),
     Reference(Box<super::super::types::Reference>),
     Attachment(Box<super::super::types::Attachment>),
@@ -12,7 +12,7 @@ pub enum CitationRelatesToTarget {
 #[doc = "The article or artifact that the cited artifact is related to."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum CitationCitedArtifactRelatesToTarget {
-    Uri(Box<super::super::types::Uri>),
+    Uri(super::super::types::Uri),
     Identifier(Box<super::super::types::Identifier>),
     Reference(Box<super::super::types::Reference>),
     Attachment(Box<super::super::types::Attachment>),

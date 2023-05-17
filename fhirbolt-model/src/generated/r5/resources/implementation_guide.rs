@@ -2,7 +2,7 @@
 #[doc = "Indicates the mechanism used to compare versions to determine which is more current."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum ImplementationGuideVersionAlgorithm {
-    String(Box<super::super::types::String>),
+    String(super::super::types::String),
     Coding(Box<super::super::types::Coding>),
     #[default]
     Invalid,
@@ -10,9 +10,9 @@ pub enum ImplementationGuideVersionAlgorithm {
 #[doc = "Indicates the URL or the actual content to provide for the page."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum ImplementationGuideDefinitionPageSource {
-    Url(Box<super::super::types::Url>),
-    String(Box<super::super::types::String>),
-    Markdown(Box<super::super::types::Markdown>),
+    Url(super::super::types::Url),
+    String(super::super::types::String),
+    Markdown(super::super::types::Markdown),
     #[default]
     Invalid,
 }

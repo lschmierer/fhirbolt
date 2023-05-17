@@ -364,7 +364,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<GoalTa
                                     return Err(serde::de::Error::duplicate_field("detailString"));
                                 }
                                 let _context: &mut DeserializationContext<
-                                    Box<fhirbolt_model::r4b::types::String>,
+                                    fhirbolt_model::r4b::types::String,
                                 > = self.0.transmute();
                                 r#detail = Some(_Enum::String(
                                     map_access.next_value_seed(&mut *_context)?,
@@ -417,7 +417,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<GoalTa
                                     return Err(serde::de::Error::duplicate_field("detailBoolean"));
                                 }
                                 let _context: &mut DeserializationContext<
-                                    Box<fhirbolt_model::r4b::types::Boolean>,
+                                    fhirbolt_model::r4b::types::Boolean,
                                 > = self.0.transmute();
                                 r#detail = Some(_Enum::Boolean(
                                     map_access.next_value_seed(&mut *_context)?,
@@ -470,7 +470,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<GoalTa
                                     return Err(serde::de::Error::duplicate_field("detailInteger"));
                                 }
                                 let _context: &mut DeserializationContext<
-                                    Box<fhirbolt_model::r4b::types::Integer>,
+                                    fhirbolt_model::r4b::types::Integer,
                                 > = self.0.transmute();
                                 r#detail = Some(_Enum::Integer(
                                     map_access.next_value_seed(&mut *_context)?,
@@ -531,7 +531,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<GoalTa
                                     return Err(serde::de::Error::duplicate_field("dueDate"));
                                 }
                                 let _context: &mut DeserializationContext<
-                                    Box<fhirbolt_model::r4b::types::Date>,
+                                    fhirbolt_model::r4b::types::Date,
                                 > = self.0.transmute();
                                 r#due =
                                     Some(_Enum::Date(map_access.next_value_seed(&mut *_context)?));
@@ -1378,7 +1378,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Goal> 
                                     return Err(serde::de::Error::duplicate_field("startDate"));
                                 }
                                 let _context: &mut DeserializationContext<
-                                    Box<fhirbolt_model::r4b::types::Date>,
+                                    fhirbolt_model::r4b::types::Date,
                                 > = self.0.transmute();
                                 r#start =
                                     Some(_Enum::Date(map_access.next_value_seed(&mut *_context)?));

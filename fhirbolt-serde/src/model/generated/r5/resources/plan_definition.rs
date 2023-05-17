@@ -336,7 +336,7 @@ impl<'de> serde::de::DeserializeSeed<'de>
                                     return Err(serde::de::Error::duplicate_field("detailString"));
                                 }
                                 let _context: &mut DeserializationContext<
-                                    Box<fhirbolt_model::r5::types::String>,
+                                    fhirbolt_model::r5::types::String,
                                 > = self.0.transmute();
                                 r#detail = Some(_Enum::String(
                                     map_access.next_value_seed(&mut *_context)?,
@@ -389,7 +389,7 @@ impl<'de> serde::de::DeserializeSeed<'de>
                                     return Err(serde::de::Error::duplicate_field("detailBoolean"));
                                 }
                                 let _context: &mut DeserializationContext<
-                                    Box<fhirbolt_model::r5::types::Boolean>,
+                                    fhirbolt_model::r5::types::Boolean,
                                 > = self.0.transmute();
                                 r#detail = Some(_Enum::Boolean(
                                     map_access.next_value_seed(&mut *_context)?,
@@ -442,7 +442,7 @@ impl<'de> serde::de::DeserializeSeed<'de>
                                     return Err(serde::de::Error::duplicate_field("detailInteger"));
                                 }
                                 let _context: &mut DeserializationContext<
-                                    Box<fhirbolt_model::r5::types::Integer>,
+                                    fhirbolt_model::r5::types::Integer,
                                 > = self.0.transmute();
                                 r#detail = Some(_Enum::Integer(
                                     map_access.next_value_seed(&mut *_context)?,
@@ -4895,7 +4895,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<PlanDe
                                     ));
                                 }
                                 let _context: &mut DeserializationContext<
-                                    Box<fhirbolt_model::r5::types::Canonical>,
+                                    fhirbolt_model::r5::types::Canonical,
                                 > = self.0.transmute();
                                 r#subject = Some(_Enum::Canonical(
                                     map_access.next_value_seed(&mut *_context)?,
@@ -5312,7 +5312,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<PlanDe
                                     ));
                                 }
                                 let _context: &mut DeserializationContext<
-                                    Box<fhirbolt_model::r5::types::Canonical>,
+                                    fhirbolt_model::r5::types::Canonical,
                                 > = self.0.transmute();
                                 r#definition = Some(_Enum::Canonical(
                                     map_access.next_value_seed(&mut *_context)?,
@@ -5367,7 +5367,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<PlanDe
                                     return Err(serde::de::Error::duplicate_field("definitionUri"));
                                 }
                                 let _context: &mut DeserializationContext<
-                                    Box<fhirbolt_model::r5::types::Uri>,
+                                    fhirbolt_model::r5::types::Uri,
                                 > = self.0.transmute();
                                 r#definition =
                                     Some(_Enum::Uri(map_access.next_value_seed(&mut *_context)?));
@@ -6786,7 +6786,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<PlanDe
                                     ));
                                 }
                                 let _context: &mut DeserializationContext<
-                                    Box<fhirbolt_model::r5::types::String>,
+                                    fhirbolt_model::r5::types::String,
                                 > = self.0.transmute();
                                 r#version_algorithm = Some(_Enum::String(
                                     map_access.next_value_seed(&mut *_context)?,
@@ -7061,7 +7061,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<PlanDe
                                     ));
                                 }
                                 let _context: &mut DeserializationContext<
-                                    Box<fhirbolt_model::r5::types::Canonical>,
+                                    fhirbolt_model::r5::types::Canonical,
                                 > = self.0.transmute();
                                 r#subject = Some(_Enum::Canonical(
                                     map_access.next_value_seed(&mut *_context)?,
@@ -7717,7 +7717,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<PlanDe
                                     ));
                                 }
                                 let _context: &mut DeserializationContext<
-                                    Box<fhirbolt_model::r5::types::Boolean>,
+                                    fhirbolt_model::r5::types::Boolean,
                                 > = self.0.transmute();
                                 r#as_needed = Some(_Enum::Boolean(
                                     map_access.next_value_seed(&mut *_context)?,

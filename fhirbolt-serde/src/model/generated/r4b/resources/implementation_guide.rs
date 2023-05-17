@@ -1560,7 +1560,7 @@ impl<'de> serde::de::DeserializeSeed<'de>
                                     ));
                                 }
                                 let _context: &mut DeserializationContext<
-                                    Box<fhirbolt_model::r4b::types::Boolean>,
+                                    fhirbolt_model::r4b::types::Boolean,
                                 > = self.0.transmute();
                                 r#example = Some(_Enum::Boolean(
                                     map_access.next_value_seed(&mut *_context)?,
@@ -1615,7 +1615,7 @@ impl<'de> serde::de::DeserializeSeed<'de>
                                     ));
                                 }
                                 let _context: &mut DeserializationContext<
-                                    Box<fhirbolt_model::r4b::types::Canonical>,
+                                    fhirbolt_model::r4b::types::Canonical,
                                 > = self.0.transmute();
                                 r#example = Some(_Enum::Canonical(
                                     map_access.next_value_seed(&mut *_context)?,
@@ -2028,7 +2028,7 @@ impl<'de> serde::de::DeserializeSeed<'de>
                                     return Err(serde::de::Error::duplicate_field("nameUrl"));
                                 }
                                 let _context: &mut DeserializationContext<
-                                    Box<fhirbolt_model::r4b::types::Url>,
+                                    fhirbolt_model::r4b::types::Url,
                                 > = self.0.transmute();
                                 r#name =
                                     Some(_Enum::Url(map_access.next_value_seed(&mut *_context)?));
@@ -3564,7 +3564,7 @@ impl<'de> serde::de::DeserializeSeed<'de>
                                     ));
                                 }
                                 let _context: &mut DeserializationContext<
-                                    Box<fhirbolt_model::r4b::types::Boolean>,
+                                    fhirbolt_model::r4b::types::Boolean,
                                 > = self.0.transmute();
                                 r#example = Some(_Enum::Boolean(
                                     map_access.next_value_seed(&mut *_context)?,
@@ -3619,7 +3619,7 @@ impl<'de> serde::de::DeserializeSeed<'de>
                                     ));
                                 }
                                 let _context: &mut DeserializationContext<
-                                    Box<fhirbolt_model::r4b::types::Canonical>,
+                                    fhirbolt_model::r4b::types::Canonical,
                                 > = self.0.transmute();
                                 r#example = Some(_Enum::Canonical(
                                     map_access.next_value_seed(&mut *_context)?,

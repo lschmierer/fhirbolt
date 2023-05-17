@@ -11,7 +11,7 @@ pub enum ServiceRequestQuantity {
 #[doc = "The date/time at which the requested service should occur."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum ServiceRequestOccurrence {
-    DateTime(Box<super::super::types::DateTime>),
+    DateTime(super::super::types::DateTime),
     Period(Box<super::super::types::Period>),
     Timing(Box<super::super::types::Timing>),
     #[default]
@@ -20,7 +20,7 @@ pub enum ServiceRequestOccurrence {
 #[doc = "If a CodeableConcept is present, it indicates the pre-condition for performing the service.  For example \"pain\", \"on flare-up\", etc."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum ServiceRequestAsNeeded {
-    Boolean(Box<super::super::types::Boolean>),
+    Boolean(super::super::types::Boolean),
     CodeableConcept(Box<super::super::types::CodeableConcept>),
     #[default]
     Invalid,

@@ -2,7 +2,7 @@
 #[doc = "Indicates the mechanism used to compare versions to determine which is more current."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum ExampleScenarioVersionAlgorithm {
-    String(Box<super::super::types::String>),
+    String(super::super::types::String),
     Coding(Box<super::super::types::Coding>),
     #[default]
     Invalid,
@@ -10,8 +10,8 @@ pub enum ExampleScenarioVersionAlgorithm {
 #[doc = "Refers to a profile, template or other ruleset the instance adheres to."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum ExampleScenarioInstanceStructureProfile {
-    Canonical(Box<super::super::types::Canonical>),
-    Uri(Box<super::super::types::Uri>),
+    Canonical(super::super::types::Canonical),
+    Uri(super::super::types::Uri),
     #[default]
     Invalid,
 }

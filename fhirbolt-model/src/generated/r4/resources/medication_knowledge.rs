@@ -27,9 +27,9 @@ pub enum MedicationKnowledgeAdministrationGuidelinesPatientCharacteristicsCharac
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum MedicationKnowledgeDrugCharacteristicValue {
     CodeableConcept(Box<super::super::types::CodeableConcept>),
-    String(Box<super::super::types::String>),
+    String(super::super::types::String),
     Quantity(Box<super::super::types::Quantity>),
-    Base64Binary(Box<super::super::types::Base64Binary>),
+    Base64Binary(super::super::types::Base64Binary),
     #[default]
     Invalid,
 }

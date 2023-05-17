@@ -2,16 +2,16 @@
 #[doc = "Identifier for the source value set that contains the concepts that are being mapped and provides context for the mappings."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum ConceptMapSource {
-    Uri(Box<super::super::types::Uri>),
-    Canonical(Box<super::super::types::Canonical>),
+    Uri(super::super::types::Uri),
+    Canonical(super::super::types::Canonical),
     #[default]
     Invalid,
 }
 #[doc = "The target value set provides context for the mappings. Note that the mapping is made between concepts, not between value sets, but the value set provides important context about how the concept mapping choices are made."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum ConceptMapTarget {
-    Uri(Box<super::super::types::Uri>),
-    Canonical(Box<super::super::types::Canonical>),
+    Uri(super::super::types::Uri),
+    Canonical(super::super::types::Canonical),
     #[default]
     Invalid,
 }

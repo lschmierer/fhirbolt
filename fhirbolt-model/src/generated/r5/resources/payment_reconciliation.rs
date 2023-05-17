@@ -2,9 +2,9 @@
 #[doc = " Identifies the claim line item, encounter or other sub-element being paid. Note payment may be partial, that is not match the then outstanding balance or amount incurred."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum PaymentReconciliationAllocationTargetItem {
-    String(Box<super::super::types::String>),
+    String(super::super::types::String),
     Identifier(Box<super::super::types::Identifier>),
-    PositiveInt(Box<super::super::types::PositiveInt>),
+    PositiveInt(super::super::types::PositiveInt),
     #[default]
     Invalid,
 }

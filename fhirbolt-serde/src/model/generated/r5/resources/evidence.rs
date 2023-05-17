@@ -4019,7 +4019,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Eviden
                                     ));
                                 }
                                 let _context: &mut DeserializationContext<
-                                    Box<fhirbolt_model::r5::types::String>,
+                                    fhirbolt_model::r5::types::String,
                                 > = self.0.transmute();
                                 r#version_algorithm = Some(_Enum::String(
                                     map_access.next_value_seed(&mut *_context)?,
@@ -4169,7 +4169,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Eviden
                                     ));
                                 }
                                 let _context: &mut DeserializationContext<
-                                    Box<fhirbolt_model::r5::types::Markdown>,
+                                    fhirbolt_model::r5::types::Markdown,
                                 > = self.0.transmute();
                                 r#cite_as = Some(_Enum::Markdown(
                                     map_access.next_value_seed(&mut *_context)?,

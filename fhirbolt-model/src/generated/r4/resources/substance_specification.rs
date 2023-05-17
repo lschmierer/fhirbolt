@@ -3,7 +3,7 @@
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum SubstanceSpecificationMoietyAmount {
     Quantity(Box<super::super::types::Quantity>),
-    String(Box<super::super::types::String>),
+    String(super::super::types::String),
     #[default]
     Invalid,
 }
@@ -19,7 +19,7 @@ pub enum SubstanceSpecificationPropertyDefiningSubstance {
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum SubstanceSpecificationPropertyAmount {
     Quantity(Box<super::super::types::Quantity>),
-    String(Box<super::super::types::String>),
+    String(super::super::types::String),
     #[default]
     Invalid,
 }
@@ -37,7 +37,7 @@ pub enum SubstanceSpecificationRelationshipAmount {
     Quantity(Box<super::super::types::Quantity>),
     Range(Box<super::super::types::Range>),
     Ratio(Box<super::super::types::Ratio>),
-    String(Box<super::super::types::String>),
+    String(super::super::types::String),
     #[default]
     Invalid,
 }

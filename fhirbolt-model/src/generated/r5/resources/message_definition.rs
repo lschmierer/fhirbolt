@@ -2,7 +2,7 @@
 #[doc = "Indicates the mechanism used to compare versions to determine which is more current."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum MessageDefinitionVersionAlgorithm {
-    String(Box<super::super::types::String>),
+    String(super::super::types::String),
     Coding(Box<super::super::types::Coding>),
     #[default]
     Invalid,
@@ -11,7 +11,7 @@ pub enum MessageDefinitionVersionAlgorithm {
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum MessageDefinitionEvent {
     Coding(Box<super::super::types::Coding>),
-    Uri(Box<super::super::types::Uri>),
+    Uri(super::super::types::Uri),
     #[default]
     Invalid,
 }

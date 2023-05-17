@@ -3,7 +3,7 @@
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum PackagedProductDefinitionPackageShelfLifeStoragePeriod {
     Duration(Box<super::super::types::Duration>),
-    String(Box<super::super::types::String>),
+    String(super::super::types::String),
     #[default]
     Invalid,
 }
@@ -12,8 +12,8 @@ pub enum PackagedProductDefinitionPackageShelfLifeStoragePeriod {
 pub enum PackagedProductDefinitionPackagePropertyValue {
     CodeableConcept(Box<super::super::types::CodeableConcept>),
     Quantity(Box<super::super::types::Quantity>),
-    Date(Box<super::super::types::Date>),
-    Boolean(Box<super::super::types::Boolean>),
+    Date(super::super::types::Date),
+    Boolean(super::super::types::Boolean),
     Attachment(Box<super::super::types::Attachment>),
     #[default]
     Invalid,

@@ -4,9 +4,9 @@
 pub enum DeviceDefinitionPropertyValue {
     Quantity(Box<super::super::types::Quantity>),
     CodeableConcept(Box<super::super::types::CodeableConcept>),
-    String(Box<super::super::types::String>),
-    Boolean(Box<super::super::types::Boolean>),
-    Integer(Box<super::super::types::Integer>),
+    String(super::super::types::String),
+    Boolean(super::super::types::Boolean),
+    Integer(super::super::types::Integer),
     Range(Box<super::super::types::Range>),
     Attachment(Box<super::super::types::Attachment>),
     #[default]

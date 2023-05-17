@@ -2,7 +2,7 @@
 #[doc = "The date or period when the detected issue was initially identified."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum DetectedIssueIdentified {
-    DateTime(Box<super::super::types::DateTime>),
+    DateTime(super::super::types::DateTime),
     Period(Box<super::super::types::Period>),
     #[default]
     Invalid,

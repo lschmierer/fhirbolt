@@ -2,7 +2,7 @@
 #[doc = "The date (and possibly time) the risk assessment was performed."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum RiskAssessmentOccurrence {
-    DateTime(Box<super::super::types::DateTime>),
+    DateTime(super::super::types::DateTime),
     Period(Box<super::super::types::Period>),
     #[default]
     Invalid,
@@ -10,7 +10,7 @@ pub enum RiskAssessmentOccurrence {
 #[doc = "Indicates how likely the outcome is (in the specified timeframe)."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum RiskAssessmentPredictionProbability {
-    Decimal(Box<super::super::types::Decimal>),
+    Decimal(super::super::types::Decimal),
     Range(Box<super::super::types::Range>),
     #[default]
     Invalid,

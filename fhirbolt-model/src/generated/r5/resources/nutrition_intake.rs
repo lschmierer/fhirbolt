@@ -2,7 +2,7 @@
 #[doc = "The interval of time during which it is being asserted that the patient is/was consuming the food or fluid."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum NutritionIntakeOccurrence {
-    DateTime(Box<super::super::types::DateTime>),
+    DateTime(super::super::types::DateTime),
     Period(Box<super::super::types::Period>),
     #[default]
     Invalid,
@@ -10,7 +10,7 @@ pub enum NutritionIntakeOccurrence {
 #[doc = "The person or organization that provided the information about the consumption of this food or fluid. Note: Use derivedFrom when a NutritionIntake is derived from other resources."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum NutritionIntakeReported {
-    Boolean(Box<super::super::types::Boolean>),
+    Boolean(super::super::types::Boolean),
     Reference(Box<super::super::types::Reference>),
     #[default]
     Invalid,

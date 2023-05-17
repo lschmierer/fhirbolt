@@ -309,7 +309,7 @@ fn create_value_enum(
     let variants = types
         .iter()
         .map(|t| {
-            let field_type = match_field_type(path, t, true);
+            let field_type = match_field_type(path, t, false);
 
             if field_type.contains_primitive {
                 may_contain_primitive = true;

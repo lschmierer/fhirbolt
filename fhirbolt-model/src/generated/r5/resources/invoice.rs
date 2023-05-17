@@ -2,7 +2,7 @@
 #[doc = "Date/time(s) range of services included in this invoice."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum InvoicePeriod {
-    Date(Box<super::super::types::Date>),
+    Date(super::super::types::Date),
     Period(Box<super::super::types::Period>),
     #[default]
     Invalid,
@@ -10,7 +10,7 @@ pub enum InvoicePeriod {
 #[doc = "Date/time(s) range when this service was delivered or completed."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum InvoiceLineItemServiced {
-    Date(Box<super::super::types::Date>),
+    Date(super::super::types::Date),
     Period(Box<super::super::types::Period>),
     #[default]
     Invalid,

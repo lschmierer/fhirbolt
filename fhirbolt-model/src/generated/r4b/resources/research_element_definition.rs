@@ -11,7 +11,7 @@ pub enum ResearchElementDefinitionSubject {
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum ResearchElementDefinitionCharacteristicDefinition {
     CodeableConcept(Box<super::super::types::CodeableConcept>),
-    Canonical(Box<super::super::types::Canonical>),
+    Canonical(super::super::types::Canonical),
     Expression(Box<super::super::types::Expression>),
     DataRequirement(Box<super::super::types::DataRequirement>),
     #[default]
@@ -20,7 +20,7 @@ pub enum ResearchElementDefinitionCharacteristicDefinition {
 #[doc = "Indicates what effective period the study covers."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum ResearchElementDefinitionCharacteristicStudyEffective {
-    DateTime(Box<super::super::types::DateTime>),
+    DateTime(super::super::types::DateTime),
     Period(Box<super::super::types::Period>),
     Duration(Box<super::super::types::Duration>),
     Timing(Box<super::super::types::Timing>),
@@ -30,7 +30,7 @@ pub enum ResearchElementDefinitionCharacteristicStudyEffective {
 #[doc = "Indicates what effective period the study covers."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum ResearchElementDefinitionCharacteristicParticipantEffective {
-    DateTime(Box<super::super::types::DateTime>),
+    DateTime(super::super::types::DateTime),
     Period(Box<super::super::types::Period>),
     Duration(Box<super::super::types::Duration>),
     Timing(Box<super::super::types::Timing>),

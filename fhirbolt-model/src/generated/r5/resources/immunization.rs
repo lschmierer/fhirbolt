@@ -2,8 +2,8 @@
 #[doc = "Date vaccine administered or was to be administered."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum ImmunizationOccurrence {
-    DateTime(Box<super::super::types::DateTime>),
-    String(Box<super::super::types::String>),
+    DateTime(super::super::types::DateTime),
+    String(super::super::types::String),
     #[default]
     Invalid,
 }

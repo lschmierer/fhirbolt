@@ -3,7 +3,7 @@
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum ArtifactAssessmentCiteAs {
     Reference(Box<super::super::types::Reference>),
-    Markdown(Box<super::super::types::Markdown>),
+    Markdown(super::super::types::Markdown),
     #[default]
     Invalid,
 }
@@ -11,8 +11,8 @@ pub enum ArtifactAssessmentCiteAs {
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum ArtifactAssessmentArtifact {
     Reference(Box<super::super::types::Reference>),
-    Canonical(Box<super::super::types::Canonical>),
-    Uri(Box<super::super::types::Uri>),
+    Canonical(super::super::types::Canonical),
+    Uri(super::super::types::Uri),
     #[default]
     Invalid,
 }

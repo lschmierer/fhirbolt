@@ -2,7 +2,7 @@
 #[doc = "Time when specimen was collected from subject - the physiologically relevant time."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum SpecimenCollectionCollected {
-    DateTime(Box<super::super::types::DateTime>),
+    DateTime(super::super::types::DateTime),
     Period(Box<super::super::types::Period>),
     #[default]
     Invalid,
@@ -18,7 +18,7 @@ pub enum SpecimenCollectionFastingStatus {
 #[doc = "A record of the time or period when the specimen processing occurred.  For example the time of sample fixation or the period of time the sample was in formalin."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum SpecimenProcessingTime {
-    DateTime(Box<super::super::types::DateTime>),
+    DateTime(super::super::types::DateTime),
     Period(Box<super::super::types::Period>),
     #[default]
     Invalid,

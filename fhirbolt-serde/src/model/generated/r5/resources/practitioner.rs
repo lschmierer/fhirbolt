@@ -1335,7 +1335,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Practi
                                     ));
                                 }
                                 let _context: &mut DeserializationContext<
-                                    Box<fhirbolt_model::r5::types::Boolean>,
+                                    fhirbolt_model::r5::types::Boolean,
                                 > = self.0.transmute();
                                 r#deceased = Some(_Enum::Boolean(
                                     map_access.next_value_seed(&mut *_context)?,
@@ -1390,7 +1390,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Practi
                                     ));
                                 }
                                 let _context: &mut DeserializationContext<
-                                    Box<fhirbolt_model::r5::types::DateTime>,
+                                    fhirbolt_model::r5::types::DateTime,
                                 > = self.0.transmute();
                                 r#deceased = Some(_Enum::DateTime(
                                     map_access.next_value_seed(&mut *_context)?,

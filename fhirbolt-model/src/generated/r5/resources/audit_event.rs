@@ -3,7 +3,7 @@
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum AuditEventOccurred {
     Period(Box<super::super::types::Period>),
-    DateTime(Box<super::super::types::DateTime>),
+    DateTime(super::super::types::DateTime),
     #[default]
     Invalid,
 }
@@ -11,8 +11,8 @@ pub enum AuditEventOccurred {
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum AuditEventAgentNetwork {
     Reference(Box<super::super::types::Reference>),
-    Uri(Box<super::super::types::Uri>),
-    String(Box<super::super::types::String>),
+    Uri(super::super::types::Uri),
+    String(super::super::types::String),
     #[default]
     Invalid,
 }
@@ -21,15 +21,15 @@ pub enum AuditEventAgentNetwork {
 pub enum AuditEventEntityDetailValue {
     Quantity(Box<super::super::types::Quantity>),
     CodeableConcept(Box<super::super::types::CodeableConcept>),
-    String(Box<super::super::types::String>),
-    Boolean(Box<super::super::types::Boolean>),
-    Integer(Box<super::super::types::Integer>),
+    String(super::super::types::String),
+    Boolean(super::super::types::Boolean),
+    Integer(super::super::types::Integer),
     Range(Box<super::super::types::Range>),
     Ratio(Box<super::super::types::Ratio>),
-    Time(Box<super::super::types::Time>),
-    DateTime(Box<super::super::types::DateTime>),
+    Time(super::super::types::Time),
+    DateTime(super::super::types::DateTime),
     Period(Box<super::super::types::Period>),
-    Base64Binary(Box<super::super::types::Base64Binary>),
+    Base64Binary(super::super::types::Base64Binary),
     #[default]
     Invalid,
 }

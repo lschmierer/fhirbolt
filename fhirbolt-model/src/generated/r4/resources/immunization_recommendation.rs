@@ -2,16 +2,16 @@
 #[doc = "Nominal position of the recommended dose in a series (e.g. dose 2 is the next recommended dose)."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum ImmunizationRecommendationRecommendationDoseNumber {
-    PositiveInt(Box<super::super::types::PositiveInt>),
-    String(Box<super::super::types::String>),
+    PositiveInt(super::super::types::PositiveInt),
+    String(super::super::types::String),
     #[default]
     Invalid,
 }
 #[doc = "The recommended number of doses to achieve immunity."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum ImmunizationRecommendationRecommendationSeriesDoses {
-    PositiveInt(Box<super::super::types::PositiveInt>),
-    String(Box<super::super::types::String>),
+    PositiveInt(super::super::types::PositiveInt),
+    String(super::super::types::String),
     #[default]
     Invalid,
 }

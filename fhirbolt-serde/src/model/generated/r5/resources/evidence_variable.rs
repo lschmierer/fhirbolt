@@ -335,7 +335,7 @@ impl<'de> serde::de::DeserializeSeed<'de>
                                     return Err(serde::de::Error::duplicate_field("valueBoolean"));
                                 }
                                 let _context: &mut DeserializationContext<
-                                    Box<fhirbolt_model::r5::types::Boolean>,
+                                    fhirbolt_model::r5::types::Boolean,
                                 > = self.0.transmute();
                                 r#value = Some(_Enum::Boolean(
                                     map_access.next_value_seed(&mut *_context)?,
@@ -419,7 +419,7 @@ impl<'de> serde::de::DeserializeSeed<'de>
                                     return Err(serde::de::Error::duplicate_field("valueId"));
                                 }
                                 let _context: &mut DeserializationContext<
-                                    Box<fhirbolt_model::r5::types::Id>,
+                                    fhirbolt_model::r5::types::Id,
                                 > = self.0.transmute();
                                 r#value =
                                     Some(_Enum::Id(map_access.next_value_seed(&mut *_context)?));
@@ -1279,7 +1279,7 @@ impl<'de> serde::de::DeserializeSeed<'de>
                                     return Err(serde::de::Error::duplicate_field("eventDateTime"));
                                 }
                                 let _context: &mut DeserializationContext<
-                                    Box<fhirbolt_model::r5::types::DateTime>,
+                                    fhirbolt_model::r5::types::DateTime,
                                 > = self.0.transmute();
                                 r#event = Some(_Enum::DateTime(
                                     map_access.next_value_seed(&mut *_context)?,
@@ -1329,7 +1329,7 @@ impl<'de> serde::de::DeserializeSeed<'de>
                                     return Err(serde::de::Error::duplicate_field("eventId"));
                                 }
                                 let _context: &mut DeserializationContext<
-                                    Box<fhirbolt_model::r5::types::Id>,
+                                    fhirbolt_model::r5::types::Id,
                                 > = self.0.transmute();
                                 r#event =
                                     Some(_Enum::Id(map_access.next_value_seed(&mut *_context)?));
@@ -3634,7 +3634,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Eviden
                                     ));
                                 }
                                 let _context: &mut DeserializationContext<
-                                    Box<fhirbolt_model::r5::types::String>,
+                                    fhirbolt_model::r5::types::String,
                                 > = self.0.transmute();
                                 r#version_algorithm = Some(_Enum::String(
                                     map_access.next_value_seed(&mut *_context)?,

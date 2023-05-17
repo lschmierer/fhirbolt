@@ -2,11 +2,11 @@
 #[doc = "Estimated or actual date,  date-time, or age when allergy or intolerance was identified."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum AllergyIntoleranceOnset {
-    DateTime(Box<super::super::types::DateTime>),
+    DateTime(super::super::types::DateTime),
     Age(Box<super::super::types::Age>),
     Period(Box<super::super::types::Period>),
     Range(Box<super::super::types::Range>),
-    String(Box<super::super::types::String>),
+    String(super::super::types::String),
     #[default]
     Invalid,
 }

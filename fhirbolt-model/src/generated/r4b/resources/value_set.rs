@@ -2,13 +2,13 @@
 #[doc = "The value of the parameter."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum ValueSetExpansionParameterValue {
-    String(Box<super::super::types::String>),
-    Boolean(Box<super::super::types::Boolean>),
-    Integer(Box<super::super::types::Integer>),
-    Decimal(Box<super::super::types::Decimal>),
-    Uri(Box<super::super::types::Uri>),
-    Code(Box<super::super::types::Code>),
-    DateTime(Box<super::super::types::DateTime>),
+    String(super::super::types::String),
+    Boolean(super::super::types::Boolean),
+    Integer(super::super::types::Integer),
+    Decimal(super::super::types::Decimal),
+    Uri(super::super::types::Uri),
+    Code(super::super::types::Code),
+    DateTime(super::super::types::DateTime),
     #[default]
     Invalid,
 }

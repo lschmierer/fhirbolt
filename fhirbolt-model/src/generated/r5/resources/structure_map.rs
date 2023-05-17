@@ -2,7 +2,7 @@
 #[doc = "Indicates the mechanism used to compare versions to determine which is more current."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum StructureMapVersionAlgorithm {
-    String(Box<super::super::types::String>),
+    String(super::super::types::String),
     Coding(Box<super::super::types::Coding>),
     #[default]
     Invalid,
@@ -10,14 +10,14 @@ pub enum StructureMapVersionAlgorithm {
 #[doc = "Parameter value - variable or literal."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum StructureMapGroupRuleTargetParameterValue {
-    Id(Box<super::super::types::Id>),
-    String(Box<super::super::types::String>),
-    Boolean(Box<super::super::types::Boolean>),
-    Integer(Box<super::super::types::Integer>),
-    Decimal(Box<super::super::types::Decimal>),
-    Date(Box<super::super::types::Date>),
-    Time(Box<super::super::types::Time>),
-    DateTime(Box<super::super::types::DateTime>),
+    Id(super::super::types::Id),
+    String(super::super::types::String),
+    Boolean(super::super::types::Boolean),
+    Integer(super::super::types::Integer),
+    Decimal(super::super::types::Decimal),
+    Date(super::super::types::Date),
+    Time(super::super::types::Time),
+    DateTime(super::super::types::DateTime),
     #[default]
     Invalid,
 }

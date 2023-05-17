@@ -10,7 +10,7 @@ pub enum DataRequirementSubject {
 #[doc = "The value of the filter. If period is specified, the filter will return only those data items that fall within the bounds determined by the Period, inclusive of the period boundaries. If dateTime is specified, the filter will return only those data items that are equal to the specified dateTime. If a Duration is specified, the filter will return only those data items that fall within Duration before now."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum DataRequirementDateFilterValue {
-    DateTime(Box<super::super::types::DateTime>),
+    DateTime(super::super::types::DateTime),
     Period(Box<super::super::types::Period>),
     Duration(Box<super::super::types::Duration>),
     #[default]
@@ -19,7 +19,7 @@ pub enum DataRequirementDateFilterValue {
 #[doc = "The value of the filter."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum DataRequirementValueFilterValue {
-    DateTime(Box<super::super::types::DateTime>),
+    DateTime(super::super::types::DateTime),
     Period(Box<super::super::types::Period>),
     Duration(Box<super::super::types::Duration>),
     #[default]

@@ -10,7 +10,7 @@ pub enum MedicationAdministrationMedication {
 #[doc = "A specific date/time or interval of time during which the administration took place (or did not take place, when the 'notGiven' attribute is true). For many administrations, such as swallowing a tablet the use of dateTime is more appropriate."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum MedicationAdministrationEffective {
-    DateTime(Box<super::super::types::DateTime>),
+    DateTime(super::super::types::DateTime),
     Period(Box<super::super::types::Period>),
     #[default]
     Invalid,

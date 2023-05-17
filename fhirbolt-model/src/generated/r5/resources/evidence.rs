@@ -2,7 +2,7 @@
 #[doc = "Indicates the mechanism used to compare versions to determine which is more current."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum EvidenceVersionAlgorithm {
-    String(Box<super::super::types::String>),
+    String(super::super::types::String),
     Coding(Box<super::super::types::Coding>),
     #[default]
     Invalid,
@@ -11,7 +11,7 @@ pub enum EvidenceVersionAlgorithm {
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum EvidenceCiteAs {
     Reference(Box<super::super::types::Reference>),
-    Markdown(Box<super::super::types::Markdown>),
+    Markdown(super::super::types::Markdown),
     #[default]
     Invalid,
 }

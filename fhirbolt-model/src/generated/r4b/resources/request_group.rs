@@ -10,7 +10,7 @@ pub enum RequestGroupActionRelatedActionOffset {
 #[doc = "An optional value describing when the action should be performed."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum RequestGroupActionTiming {
-    DateTime(Box<super::super::types::DateTime>),
+    DateTime(super::super::types::DateTime),
     Age(Box<super::super::types::Age>),
     Period(Box<super::super::types::Period>),
     Duration(Box<super::super::types::Duration>),

@@ -1693,7 +1693,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Exampl
                                     ));
                                 }
                                 let _context: &mut DeserializationContext<
-                                    Box<fhirbolt_model::r5::types::Canonical>,
+                                    fhirbolt_model::r5::types::Canonical,
                                 > = self.0.transmute();
                                 r#structure_profile = Some(_Enum::Canonical(
                                     map_access.next_value_seed(&mut *_context)?,
@@ -1752,7 +1752,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Exampl
                                     ));
                                 }
                                 let _context: &mut DeserializationContext<
-                                    Box<fhirbolt_model::r5::types::Uri>,
+                                    fhirbolt_model::r5::types::Uri,
                                 > = self.0.transmute();
                                 r#structure_profile =
                                     Some(_Enum::Uri(map_access.next_value_seed(&mut *_context)?));
@@ -4823,7 +4823,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Exampl
                                     ));
                                 }
                                 let _context: &mut DeserializationContext<
-                                    Box<fhirbolt_model::r5::types::String>,
+                                    fhirbolt_model::r5::types::String,
                                 > = self.0.transmute();
                                 r#version_algorithm = Some(_Enum::String(
                                     map_access.next_value_seed(&mut *_context)?,

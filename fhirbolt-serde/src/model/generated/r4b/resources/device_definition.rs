@@ -2760,7 +2760,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Device
                                     ));
                                 }
                                 let _context: &mut DeserializationContext<
-                                    Box<fhirbolt_model::r4b::types::String>,
+                                    fhirbolt_model::r4b::types::String,
                                 > = self.0.transmute();
                                 r#manufacturer = Some(_Enum::String(
                                     map_access.next_value_seed(&mut *_context)?,

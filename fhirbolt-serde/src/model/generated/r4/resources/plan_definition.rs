@@ -3058,7 +3058,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<PlanDe
                                     ));
                                 }
                                 let _context: &mut DeserializationContext<
-                                    Box<fhirbolt_model::r4::types::DateTime>,
+                                    fhirbolt_model::r4::types::DateTime,
                                 > = self.0.transmute();
                                 r#timing = Some(_Enum::DateTime(
                                     map_access.next_value_seed(&mut *_context)?,
@@ -3397,7 +3397,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<PlanDe
                                     ));
                                 }
                                 let _context: &mut DeserializationContext<
-                                    Box<fhirbolt_model::r4::types::Canonical>,
+                                    fhirbolt_model::r4::types::Canonical,
                                 > = self.0.transmute();
                                 r#definition = Some(_Enum::Canonical(
                                     map_access.next_value_seed(&mut *_context)?,
@@ -3452,7 +3452,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<PlanDe
                                     return Err(serde::de::Error::duplicate_field("definitionUri"));
                                 }
                                 let _context: &mut DeserializationContext<
-                                    Box<fhirbolt_model::r4::types::Uri>,
+                                    fhirbolt_model::r4::types::Uri,
                                 > = self.0.transmute();
                                 r#definition =
                                     Some(_Enum::Uri(map_access.next_value_seed(&mut *_context)?));

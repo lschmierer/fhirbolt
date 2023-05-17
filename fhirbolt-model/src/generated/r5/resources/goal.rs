@@ -2,7 +2,7 @@
 #[doc = "The date or event after which the goal should begin being pursued."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum GoalStart {
-    Date(Box<super::super::types::Date>),
+    Date(super::super::types::Date),
     CodeableConcept(Box<super::super::types::CodeableConcept>),
     #[default]
     Invalid,
@@ -13,9 +13,9 @@ pub enum GoalTargetDetail {
     Quantity(Box<super::super::types::Quantity>),
     Range(Box<super::super::types::Range>),
     CodeableConcept(Box<super::super::types::CodeableConcept>),
-    String(Box<super::super::types::String>),
-    Boolean(Box<super::super::types::Boolean>),
-    Integer(Box<super::super::types::Integer>),
+    String(super::super::types::String),
+    Boolean(super::super::types::Boolean),
+    Integer(super::super::types::Integer),
     Ratio(Box<super::super::types::Ratio>),
     #[default]
     Invalid,
@@ -23,7 +23,7 @@ pub enum GoalTargetDetail {
 #[doc = "Indicates either the date or the duration after start by which the goal should be met."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum GoalTargetDue {
-    Date(Box<super::super::types::Date>),
+    Date(super::super::types::Date),
     Duration(Box<super::super::types::Duration>),
     #[default]
     Invalid,

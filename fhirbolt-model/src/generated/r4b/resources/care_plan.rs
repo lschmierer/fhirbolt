@@ -4,7 +4,7 @@
 pub enum CarePlanActivityDetailScheduled {
     Timing(Box<super::super::types::Timing>),
     Period(Box<super::super::types::Period>),
-    String(Box<super::super::types::String>),
+    String(super::super::types::String),
     #[default]
     Invalid,
 }

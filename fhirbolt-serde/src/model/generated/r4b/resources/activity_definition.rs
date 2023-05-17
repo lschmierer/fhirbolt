@@ -2184,7 +2184,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Activi
                                     ));
                                 }
                                 let _context: &mut DeserializationContext<
-                                    Box<fhirbolt_model::r4b::types::Canonical>,
+                                    fhirbolt_model::r4b::types::Canonical,
                                 > = self.0.transmute();
                                 r#subject = Some(_Enum::Canonical(
                                     map_access.next_value_seed(&mut *_context)?,
@@ -2939,7 +2939,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Activi
                                     ));
                                 }
                                 let _context: &mut DeserializationContext<
-                                    Box<fhirbolt_model::r4b::types::DateTime>,
+                                    fhirbolt_model::r4b::types::DateTime,
                                 > = self.0.transmute();
                                 r#timing = Some(_Enum::DateTime(
                                     map_access.next_value_seed(&mut *_context)?,

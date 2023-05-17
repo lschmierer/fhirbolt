@@ -2,7 +2,7 @@
 #[doc = "True if the prescriber allows a different drug to be dispensed from what was prescribed."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum MedicationRequestSubstitutionAllowed {
-    Boolean(Box<super::super::types::Boolean>),
+    Boolean(super::super::types::Boolean),
     CodeableConcept(Box<super::super::types::CodeableConcept>),
     #[default]
     Invalid,

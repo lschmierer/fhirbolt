@@ -2,7 +2,7 @@
 #[doc = "A date or period in the past or future indicating when the event occurred or is expectd to occur."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum CoverageEligibilityRequestEventWhen {
-    DateTime(Box<super::super::types::DateTime>),
+    DateTime(super::super::types::DateTime),
     Period(Box<super::super::types::Period>),
     #[default]
     Invalid,
@@ -10,7 +10,7 @@ pub enum CoverageEligibilityRequestEventWhen {
 #[doc = "The date or dates when the enclosed suite of services were performed or completed."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum CoverageEligibilityRequestServiced {
-    Date(Box<super::super::types::Date>),
+    Date(super::super::types::Date),
     Period(Box<super::super::types::Period>),
     #[default]
     Invalid,

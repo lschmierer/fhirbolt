@@ -3,11 +3,11 @@
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum MedicinalProductDefinitionCharacteristicValue {
     CodeableConcept(Box<super::super::types::CodeableConcept>),
-    Markdown(Box<super::super::types::Markdown>),
+    Markdown(super::super::types::Markdown),
     Quantity(Box<super::super::types::Quantity>),
-    Integer(Box<super::super::types::Integer>),
-    Date(Box<super::super::types::Date>),
-    Boolean(Box<super::super::types::Boolean>),
+    Integer(super::super::types::Integer),
+    Date(super::super::types::Date),
+    Boolean(super::super::types::Boolean),
     Attachment(Box<super::super::types::Attachment>),
     #[default]
     Invalid,

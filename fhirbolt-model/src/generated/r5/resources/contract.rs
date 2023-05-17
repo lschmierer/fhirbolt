@@ -18,14 +18,14 @@ pub enum ContractTermTopic {
 #[doc = "Response to an offer clause or question text,  which enables selection of values to be agreed to, e.g., the period of participation, the date of occupancy of a rental, warranty duration, or whether biospecimen may be used for further research."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum ContractTermOfferAnswerValue {
-    Boolean(Box<super::super::types::Boolean>),
-    Decimal(Box<super::super::types::Decimal>),
-    Integer(Box<super::super::types::Integer>),
-    Date(Box<super::super::types::Date>),
-    DateTime(Box<super::super::types::DateTime>),
-    Time(Box<super::super::types::Time>),
-    String(Box<super::super::types::String>),
-    Uri(Box<super::super::types::Uri>),
+    Boolean(super::super::types::Boolean),
+    Decimal(super::super::types::Decimal),
+    Integer(super::super::types::Integer),
+    Date(super::super::types::Date),
+    DateTime(super::super::types::DateTime),
+    Time(super::super::types::Time),
+    String(super::super::types::String),
+    Uri(super::super::types::Uri),
     Attachment(Box<super::super::types::Attachment>),
     Coding(Box<super::super::types::Coding>),
     Quantity(Box<super::super::types::Quantity>),
@@ -44,7 +44,7 @@ pub enum ContractTermAssetValuedItemEntity {
 #[doc = "When action happens."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum ContractTermActionOccurrence {
-    DateTime(Box<super::super::types::DateTime>),
+    DateTime(super::super::types::DateTime),
     Period(Box<super::super::types::Period>),
     Timing(Box<super::super::types::Timing>),
     #[default]

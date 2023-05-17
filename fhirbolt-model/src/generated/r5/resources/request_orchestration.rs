@@ -10,7 +10,7 @@ pub enum RequestOrchestrationActionRelatedActionOffset {
 #[doc = "An optional value describing when the action should be performed."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum RequestOrchestrationActionTiming {
-    DateTime(Box<super::super::types::DateTime>),
+    DateTime(super::super::types::DateTime),
     Age(Box<super::super::types::Age>),
     Period(Box<super::super::types::Period>),
     Duration(Box<super::super::types::Duration>),
@@ -22,7 +22,7 @@ pub enum RequestOrchestrationActionTiming {
 #[doc = "A reference to the actual participant."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum RequestOrchestrationActionParticipantActor {
-    Canonical(Box<super::super::types::Canonical>),
+    Canonical(super::super::types::Canonical),
     Reference(Box<super::super::types::Reference>),
     #[default]
     Invalid,
@@ -30,8 +30,8 @@ pub enum RequestOrchestrationActionParticipantActor {
 #[doc = "A reference to an ActivityDefinition that describes the action to be taken in detail, a PlanDefinition that describes a series of actions to be taken, a Questionnaire that should be filled out, a SpecimenDefinition describing a specimen to be collected, or an ObservationDefinition that specifies what observation should be captured."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum RequestOrchestrationActionDefinition {
-    Canonical(Box<super::super::types::Canonical>),
-    Uri(Box<super::super::types::Uri>),
+    Canonical(super::super::types::Canonical),
+    Uri(super::super::types::Uri),
     #[default]
     Invalid,
 }

@@ -3887,7 +3887,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Eviden
                                     ));
                                 }
                                 let _context: &mut DeserializationContext<
-                                    Box<fhirbolt_model::r4b::types::Markdown>,
+                                    fhirbolt_model::r4b::types::Markdown,
                                 > = self.0.transmute();
                                 r#cite_as = Some(_Enum::Markdown(
                                     map_access.next_value_seed(&mut *_context)?,

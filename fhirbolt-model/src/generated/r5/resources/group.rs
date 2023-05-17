@@ -3,7 +3,7 @@
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum GroupCharacteristicValue {
     CodeableConcept(Box<super::super::types::CodeableConcept>),
-    Boolean(Box<super::super::types::Boolean>),
+    Boolean(super::super::types::Boolean),
     Quantity(Box<super::super::types::Quantity>),
     Range(Box<super::super::types::Range>),
     Reference(Box<super::super::types::Reference>),

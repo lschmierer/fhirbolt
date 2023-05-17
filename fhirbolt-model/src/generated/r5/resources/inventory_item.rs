@@ -2,12 +2,12 @@
 #[doc = "The value of the attribute."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum InventoryItemCharacteristicValue {
-    String(Box<super::super::types::String>),
-    Integer(Box<super::super::types::Integer>),
-    Decimal(Box<super::super::types::Decimal>),
-    Boolean(Box<super::super::types::Boolean>),
-    Url(Box<super::super::types::Url>),
-    DateTime(Box<super::super::types::DateTime>),
+    String(super::super::types::String),
+    Integer(super::super::types::Integer),
+    Decimal(super::super::types::Decimal),
+    Boolean(super::super::types::Boolean),
+    Url(super::super::types::Url),
+    DateTime(super::super::types::DateTime),
     Quantity(Box<super::super::types::Quantity>),
     Range(Box<super::super::types::Range>),
     Ratio(Box<super::super::types::Ratio>),

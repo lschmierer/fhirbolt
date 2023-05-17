@@ -10,7 +10,7 @@ pub enum SupplyDeliverySuppliedItemItem {
 #[doc = "The date or time(s) the activity occurred."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum SupplyDeliveryOccurrence {
-    DateTime(Box<super::super::types::DateTime>),
+    DateTime(super::super::types::DateTime),
     Period(Box<super::super::types::Period>),
     Timing(Box<super::super::types::Timing>),
     #[default]

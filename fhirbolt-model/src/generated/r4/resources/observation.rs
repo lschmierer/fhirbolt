@@ -2,10 +2,10 @@
 #[doc = "The time or time-period the observed value is asserted as being true. For biological subjects - e.g. human patients - this is usually called the \"physiologically relevant time\". This is usually either the time of the procedure or of specimen collection, but very often the source of the date/time is not known, only the date/time itself."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum ObservationEffective {
-    DateTime(Box<super::super::types::DateTime>),
+    DateTime(super::super::types::DateTime),
     Period(Box<super::super::types::Period>),
     Timing(Box<super::super::types::Timing>),
-    Instant(Box<super::super::types::Instant>),
+    Instant(super::super::types::Instant),
     #[default]
     Invalid,
 }
@@ -14,14 +14,14 @@ pub enum ObservationEffective {
 pub enum ObservationValue {
     Quantity(Box<super::super::types::Quantity>),
     CodeableConcept(Box<super::super::types::CodeableConcept>),
-    String(Box<super::super::types::String>),
-    Boolean(Box<super::super::types::Boolean>),
-    Integer(Box<super::super::types::Integer>),
+    String(super::super::types::String),
+    Boolean(super::super::types::Boolean),
+    Integer(super::super::types::Integer),
     Range(Box<super::super::types::Range>),
     Ratio(Box<super::super::types::Ratio>),
     SampledData(Box<super::super::types::SampledData>),
-    Time(Box<super::super::types::Time>),
-    DateTime(Box<super::super::types::DateTime>),
+    Time(super::super::types::Time),
+    DateTime(super::super::types::DateTime),
     Period(Box<super::super::types::Period>),
     #[default]
     Invalid,
@@ -31,14 +31,14 @@ pub enum ObservationValue {
 pub enum ObservationComponentValue {
     Quantity(Box<super::super::types::Quantity>),
     CodeableConcept(Box<super::super::types::CodeableConcept>),
-    String(Box<super::super::types::String>),
-    Boolean(Box<super::super::types::Boolean>),
-    Integer(Box<super::super::types::Integer>),
+    String(super::super::types::String),
+    Boolean(super::super::types::Boolean),
+    Integer(super::super::types::Integer),
     Range(Box<super::super::types::Range>),
     Ratio(Box<super::super::types::Ratio>),
     SampledData(Box<super::super::types::SampledData>),
-    Time(Box<super::super::types::Time>),
-    DateTime(Box<super::super::types::DateTime>),
+    Time(super::super::types::Time),
+    DateTime(super::super::types::DateTime),
     Period(Box<super::super::types::Period>),
     #[default]
     Invalid,

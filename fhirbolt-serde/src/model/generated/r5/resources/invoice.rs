@@ -529,7 +529,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Invoic
                                     return Err(serde::de::Error::duplicate_field("servicedDate"));
                                 }
                                 let _context: &mut DeserializationContext<
-                                    Box<fhirbolt_model::r5::types::Date>,
+                                    fhirbolt_model::r5::types::Date,
                                 > = self.0.transmute();
                                 r#serviced =
                                     Some(_Enum::Date(map_access.next_value_seed(&mut *_context)?));
@@ -1546,7 +1546,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Invoic
                                     return Err(serde::de::Error::duplicate_field("periodDate"));
                                 }
                                 let _context: &mut DeserializationContext<
-                                    Box<fhirbolt_model::r5::types::Date>,
+                                    fhirbolt_model::r5::types::Date,
                                 > = self.0.transmute();
                                 r#period =
                                     Some(_Enum::Date(map_access.next_value_seed(&mut *_context)?));

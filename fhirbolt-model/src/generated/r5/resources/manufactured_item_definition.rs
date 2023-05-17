@@ -4,9 +4,9 @@
 pub enum ManufacturedItemDefinitionPropertyValue {
     CodeableConcept(Box<super::super::types::CodeableConcept>),
     Quantity(Box<super::super::types::Quantity>),
-    Date(Box<super::super::types::Date>),
-    Boolean(Box<super::super::types::Boolean>),
-    Markdown(Box<super::super::types::Markdown>),
+    Date(super::super::types::Date),
+    Boolean(super::super::types::Boolean),
+    Markdown(super::super::types::Markdown),
     Attachment(Box<super::super::types::Attachment>),
     Reference(Box<super::super::types::Reference>),
     #[default]

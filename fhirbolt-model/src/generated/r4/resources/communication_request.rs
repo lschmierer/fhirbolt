@@ -2,7 +2,7 @@
 #[doc = "The communicated content (or for multi-part communications, one portion of the communication)."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum CommunicationRequestPayloadContent {
-    String(Box<super::super::types::String>),
+    String(super::super::types::String),
     Attachment(Box<super::super::types::Attachment>),
     Reference(Box<super::super::types::Reference>),
     #[default]
@@ -11,7 +11,7 @@ pub enum CommunicationRequestPayloadContent {
 #[doc = "The time when this communication is to occur."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum CommunicationRequestOccurrence {
-    DateTime(Box<super::super::types::DateTime>),
+    DateTime(super::super::types::DateTime),
     Period(Box<super::super::types::Period>),
     #[default]
     Invalid,

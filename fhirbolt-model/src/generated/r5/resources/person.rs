@@ -2,8 +2,8 @@
 #[doc = "Indicates if the individual is deceased or not."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum PersonDeceased {
-    Boolean(Box<super::super::types::Boolean>),
-    DateTime(Box<super::super::types::DateTime>),
+    Boolean(super::super::types::Boolean),
+    DateTime(super::super::types::DateTime),
     #[default]
     Invalid,
 }

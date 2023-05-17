@@ -3,7 +3,7 @@
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum EvidenceCiteAs {
     Reference(Box<super::super::types::Reference>),
-    Markdown(Box<super::super::types::Markdown>),
+    Markdown(super::super::types::Markdown),
     #[default]
     Invalid,
 }

@@ -2,9 +2,9 @@
 #[doc = "Estimated or actual date, date-time, period, or age when the procedure did occur or is occurring.  Allows a period to support complex procedures that span more than one date, and also allows for the length of the procedure to be captured."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum ProcedureOccurrence {
-    DateTime(Box<super::super::types::DateTime>),
+    DateTime(super::super::types::DateTime),
     Period(Box<super::super::types::Period>),
-    String(Box<super::super::types::String>),
+    String(super::super::types::String),
     Age(Box<super::super::types::Age>),
     Range(Box<super::super::types::Range>),
     Timing(Box<super::super::types::Timing>),
@@ -14,7 +14,7 @@ pub enum ProcedureOccurrence {
 #[doc = "Indicates if this record was captured as a secondary 'reported' record rather than as an original primary source-of-truth record.  It may also indicate the source of the report."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum ProcedureReported {
-    Boolean(Box<super::super::types::Boolean>),
+    Boolean(super::super::types::Boolean),
     Reference(Box<super::super::types::Reference>),
     #[default]
     Invalid,

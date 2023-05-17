@@ -1541,7 +1541,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<AuditE
                                     return Err(serde::de::Error::duplicate_field("valueString"));
                                 }
                                 let _context: &mut DeserializationContext<
-                                    Box<fhirbolt_model::r4::types::String>,
+                                    fhirbolt_model::r4::types::String,
                                 > = self.0.transmute();
                                 r#value = Some(_Enum::String(
                                     map_access.next_value_seed(&mut *_context)?,
@@ -1596,7 +1596,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<AuditE
                                     ));
                                 }
                                 let _context: &mut DeserializationContext<
-                                    Box<fhirbolt_model::r4::types::Base64Binary>,
+                                    fhirbolt_model::r4::types::Base64Binary,
                                 > = self.0.transmute();
                                 r#value = Some(_Enum::Base64Binary(
                                     map_access.next_value_seed(&mut *_context)?,

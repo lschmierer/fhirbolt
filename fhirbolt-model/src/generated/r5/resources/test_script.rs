@@ -2,7 +2,7 @@
 #[doc = "Indicates the mechanism used to compare versions to determine which is more current."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum TestScriptVersionAlgorithm {
-    String(Box<super::super::types::String>),
+    String(super::super::types::String),
     Coding(Box<super::super::types::Coding>),
     #[default]
     Invalid,
@@ -10,8 +10,8 @@ pub enum TestScriptVersionAlgorithm {
 #[doc = "Link or reference providing traceability to the testing requirement for this test."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum TestScriptSetupActionAssertRequirementLink {
-    Uri(Box<super::super::types::Uri>),
-    Canonical(Box<super::super::types::Canonical>),
+    Uri(super::super::types::Uri),
+    Canonical(super::super::types::Canonical),
     #[default]
     Invalid,
 }

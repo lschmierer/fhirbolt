@@ -2,7 +2,7 @@
 #[doc = "A communicated content (or for multi-part communications, one portion of the communication)."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum CommunicationPayloadContent {
-    String(Box<super::super::types::String>),
+    String(super::super::types::String),
     Attachment(Box<super::super::types::Attachment>),
     Reference(Box<super::super::types::Reference>),
     #[default]

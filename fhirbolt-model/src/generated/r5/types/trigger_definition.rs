@@ -4,8 +4,8 @@
 pub enum TriggerDefinitionTiming {
     Timing(Box<super::super::types::Timing>),
     Reference(Box<super::super::types::Reference>),
-    Date(Box<super::super::types::Date>),
-    DateTime(Box<super::super::types::DateTime>),
+    Date(super::super::types::Date),
+    DateTime(super::super::types::DateTime),
     #[default]
     Invalid,
 }

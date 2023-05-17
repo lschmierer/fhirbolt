@@ -2,7 +2,7 @@
 #[doc = "Indicates the mechanism used to compare versions to determine which CodeSystem is more current."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum CodeSystemVersionAlgorithm {
-    String(Box<super::super::types::String>),
+    String(super::super::types::String),
     Coding(Box<super::super::types::Coding>),
     #[default]
     Invalid,
@@ -10,13 +10,13 @@ pub enum CodeSystemVersionAlgorithm {
 #[doc = "The value of this property."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum CodeSystemConceptPropertyValue {
-    Code(Box<super::super::types::Code>),
+    Code(super::super::types::Code),
     Coding(Box<super::super::types::Coding>),
-    String(Box<super::super::types::String>),
-    Integer(Box<super::super::types::Integer>),
-    Boolean(Box<super::super::types::Boolean>),
-    DateTime(Box<super::super::types::DateTime>),
-    Decimal(Box<super::super::types::Decimal>),
+    String(super::super::types::String),
+    Integer(super::super::types::Integer),
+    Boolean(super::super::types::Boolean),
+    DateTime(super::super::types::DateTime),
+    Decimal(super::super::types::Decimal),
     #[default]
     Invalid,
 }

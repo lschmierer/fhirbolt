@@ -3,7 +3,7 @@
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum EvidenceVariableCharacteristicDefinition {
     Reference(Box<super::super::types::Reference>),
-    Canonical(Box<super::super::types::Canonical>),
+    Canonical(super::super::types::Canonical),
     CodeableConcept(Box<super::super::types::CodeableConcept>),
     Expression(Box<super::super::types::Expression>),
     DataRequirement(Box<super::super::types::DataRequirement>),
@@ -14,7 +14,7 @@ pub enum EvidenceVariableCharacteristicDefinition {
 #[doc = "Indicates what effective period the study covers."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum EvidenceVariableCharacteristicParticipantEffective {
-    DateTime(Box<super::super::types::DateTime>),
+    DateTime(super::super::types::DateTime),
     Period(Box<super::super::types::Period>),
     Duration(Box<super::super::types::Duration>),
     Timing(Box<super::super::types::Timing>),

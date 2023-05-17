@@ -3,7 +3,7 @@
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum EvidenceVariableCharacteristicDefinition {
     Reference(Box<super::super::types::Reference>),
-    Canonical(Box<super::super::types::Canonical>),
+    Canonical(super::super::types::Canonical),
     CodeableConcept(Box<super::super::types::CodeableConcept>),
     Expression(Box<super::super::types::Expression>),
     #[default]

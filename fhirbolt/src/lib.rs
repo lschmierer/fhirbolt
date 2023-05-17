@@ -60,7 +60,7 @@
 //!         text: Some("some code".into()),
 //!         ..Default::default()
 //!     }),
-//!     value: Some(ObservationValue::String(Box::new("some value".into()))),
+//!     value: Some(ObservationValue::String("some value".into())),
 //!     ..Default::default()
 //! };
 //! ```

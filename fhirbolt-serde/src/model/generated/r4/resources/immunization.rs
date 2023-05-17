@@ -1420,7 +1420,7 @@ impl<'de> serde::de::DeserializeSeed<'de>
                                     ));
                                 }
                                 let _context: &mut DeserializationContext<
-                                    Box<fhirbolt_model::r4::types::PositiveInt>,
+                                    fhirbolt_model::r4::types::PositiveInt,
                                 > = self.0.transmute();
                                 r#dose_number = Some(_Enum::PositiveInt(
                                     map_access.next_value_seed(&mut *_context)?,
@@ -1477,7 +1477,7 @@ impl<'de> serde::de::DeserializeSeed<'de>
                                     ));
                                 }
                                 let _context: &mut DeserializationContext<
-                                    Box<fhirbolt_model::r4::types::String>,
+                                    fhirbolt_model::r4::types::String,
                                 > = self.0.transmute();
                                 r#dose_number = Some(_Enum::String(
                                     map_access.next_value_seed(&mut *_context)?,
@@ -1536,7 +1536,7 @@ impl<'de> serde::de::DeserializeSeed<'de>
                                     ));
                                 }
                                 let _context: &mut DeserializationContext<
-                                    Box<fhirbolt_model::r4::types::PositiveInt>,
+                                    fhirbolt_model::r4::types::PositiveInt,
                                 > = self.0.transmute();
                                 r#series_doses = Some(_Enum::PositiveInt(
                                     map_access.next_value_seed(&mut *_context)?,
@@ -1595,7 +1595,7 @@ impl<'de> serde::de::DeserializeSeed<'de>
                                     ));
                                 }
                                 let _context: &mut DeserializationContext<
-                                    Box<fhirbolt_model::r4::types::String>,
+                                    fhirbolt_model::r4::types::String,
                                 > = self.0.transmute();
                                 r#series_doses = Some(_Enum::String(
                                     map_access.next_value_seed(&mut *_context)?,
@@ -2605,7 +2605,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Immuni
                                     ));
                                 }
                                 let _context: &mut DeserializationContext<
-                                    Box<fhirbolt_model::r4::types::DateTime>,
+                                    fhirbolt_model::r4::types::DateTime,
                                 > = self.0.transmute();
                                 r#occurrence = Some(_Enum::DateTime(
                                     map_access.next_value_seed(&mut *_context)?,
@@ -2662,7 +2662,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Immuni
                                     ));
                                 }
                                 let _context: &mut DeserializationContext<
-                                    Box<fhirbolt_model::r4::types::String>,
+                                    fhirbolt_model::r4::types::String,
                                 > = self.0.transmute();
                                 r#occurrence = Some(_Enum::String(
                                     map_access.next_value_seed(&mut *_context)?,
