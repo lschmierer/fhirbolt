@@ -21,6 +21,17 @@ jobs:
       - name: Build
         run: cargo build -p fhirbolt-codegen --release --verbose
 
+  build_examples:
+    runs-on: macos-latest
+    
+    steps:
+      - uses: actions/checkout@v3
+      - uses: Swatinem/rust-cache@v2
+        with:
+          shared-key: "rust-cache"
+      - name: Build
+        run: cargo build -p example-hl7v2-transform-manual --release --verbose
+
   build_r4:
     runs-on: macos-latest
     
