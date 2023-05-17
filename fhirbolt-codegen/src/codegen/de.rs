@@ -30,7 +30,7 @@ pub fn implement_deserialze(
                 },
                 quote! {
                 Field::ResourceType => {
-                    let value: std::borrow::Cow<str>  = map_access.next_value()?;
+                    let value: std::borrow::Cow<str>  = tri!(map_access.next_value());
                     if value != #resource_name {
                         return Err(serde::de::Error::invalid_value(serde::de::Unexpected::Str(&value), &#resource_name))
                     }
@@ -135,7 +135,7 @@ pub fn implement_deserialze(
                             #field_mut_vars_tokens
                         )*
 
-                        while let Some(map_access_key) = map_access.next_key()? {
+                        while let Some(map_access_key) = tri!(map_access.next_key()) {
                             match map_access_key {
                                 #deserialize_resource_type_field_tokens
                                 #(
@@ -193,7 +193,7 @@ pub fn implement_deserialze(
                         let mut values = Vec::new();
 
                         let _context: &mut DeserializationContext<#struct_name_ident> = self.0.transmute();
-                        while let Some(value) = seq.next_element_seed(&mut *_context)? {
+                        while let Some(value) = tri!(seq.next_element_seed(&mut *_context)) {
                             values.push(value);
                         }
 
@@ -250,7 +250,7 @@ pub fn implement_deserialze_resource_enum(
                 D: serde::de::Deserializer<'de>,
             {
                 let _context = self.transmute::<crate::element::internal::de::InternalElement<{ fhirbolt_shared::FhirReleases::#release_ident }>>();
-                let element = _context.deserialize(deserializer)?;
+                let element = tri!(_context.deserialize(deserializer));
 
                 self.from = crate::context::Format::InternalElement;
 
@@ -293,7 +293,7 @@ pub fn implement_deserialze_resource_enum(
                     {
                         let mut values = Vec::new();
 
-                        while let Some(value) = seq.next_element_seed(self.0.transmute::<Resource>())? {
+                        while let Some(value) = tri!(seq.next_element_seed(self.0.transmute::<Resource>())) {
                             values.push(value);
                         }
 
@@ -439,7 +439,7 @@ fn field_struct_assign_var(field: &RustFhirStructField) -> TokenStream {
             #field_name_ident: if self.0.config.mode == crate::context::de::DeserializationMode::Lax {
                 #field_name_ident.unwrap_or(Default::default())
             } else {
-                #field_name_ident.ok_or(serde::de::Error::missing_field(#fhir_name_poly))?
+                tri!(#field_name_ident.ok_or(serde::de::Error::missing_field(#fhir_name_poly)))
             },
         }
     } else {
@@ -447,7 +447,7 @@ fn field_struct_assign_var(field: &RustFhirStructField) -> TokenStream {
             #field_name_ident: if self.0.config.mode == crate::context::de::DeserializationMode::Lax {
                 #field_name_ident.unwrap_or(Default::default())
             } else {
-                #field_name_ident.ok_or(serde::de::Error::missing_field(#fhir_name))?
+                tri!(#field_name_ident.ok_or(serde::de::Error::missing_field(#fhir_name)))
             },
         }
     }
@@ -525,13 +525,13 @@ fn deserialize_enum_variant(
     if variant.r#type.contains_primitive {
         let deserialize_interemdiate_type_tokens = if variant.r#type.name == DECIMAL_TYPE {
             quote! {
-                let value: serde_json::Number = map_access.next_value()?;
+                let value: serde_json::Number = tri!(map_access.next_value());
 
                 variant.value = Some(format!("{}", value));
             }
         } else {
             quote! {
-                variant.value = Some(map_access.next_value()?)
+                variant.value = Some(tri!(map_access.next_value()))
             }
         };
         quote! {
@@ -555,7 +555,7 @@ fn deserialize_enum_variant(
                         return Err(serde::de::Error::duplicate_field(#fhir_name));
                     }
                     let _context: &mut DeserializationContext<#type_tokens> = self.0.transmute();
-                    #field_name_ident = Some(_Enum::#variant_ident(map_access.next_value_seed(&mut *_context)?));
+                    #field_name_ident = Some(_Enum::#variant_ident(tri!(map_access.next_value_seed(&mut *_context))));
                 }
             },
             Field::#field_enum_type_primitive_element_name => {
@@ -573,7 +573,7 @@ fn deserialize_enum_variant(
 
                         let _context: &mut DeserializationContext<PrimitiveElementOwned> = self.0.transmute();
                         let PrimitiveElementOwned { id, extension } =
-                            map_access.next_value_seed(&mut *_context)?;
+                            tri!(map_access.next_value_seed(&mut *_context));
                         variant.id = id;
                         variant.extension = extension;
                     } else {
@@ -593,7 +593,7 @@ fn deserialize_enum_variant(
                     return Err(serde::de::Error::duplicate_field(#fhir_name));
                 }
                 let _context: &mut DeserializationContext<#type_tokens> = self.0.transmute();
-                #field_name_ident = Some(_Enum::#variant_ident(map_access.next_value_seed(&mut *_context)?));
+                #field_name_ident = Some(_Enum::#variant_ident(tri!(map_access.next_value_seed(&mut *_context))));
             },
         }
     }
@@ -622,7 +622,7 @@ fn deserialize_primitive_value(field: &RustFhirStructField, is_decimal: bool) ->
                     F64(f64),
                 }
 
-                let _value: Decimal = map_access.next_value()?;
+                let _value: Decimal = tri!(map_access.next_value());
                 #field_name_ident = match _value {
                     Decimal::String(s) => Some(s),
                     Decimal::U64(u) => Some(u.to_string()),
@@ -637,7 +637,7 @@ fn deserialize_primitive_value(field: &RustFhirStructField, is_decimal: bool) ->
                 if #field_name_ident.is_some() {
                     return Err(serde::de::Error::duplicate_field(#fhir_name));
                 }
-                #field_name_ident = Some(map_access.next_value()?);
+                #field_name_ident = Some(tri!(map_access.next_value()));
             },
         }
     } else {
@@ -654,9 +654,9 @@ fn deserialize_primitive_value(field: &RustFhirStructField, is_decimal: bool) ->
                     Value(#field_type_ident)
                 }
 
-                match map_access.next_value()? {
+                match tri!(map_access.next_value()) {
                     StringOrValue::String(s) => {
-                        #field_name_ident = Some(s.parse().map_err(|err| serde::de::Error::custom(format!("{:?}", err)))?);
+                        #field_name_ident = Some(tri!(s.parse().map_err(|err| serde::de::Error::custom(format!("{:?}", err)))));
                     },
                     StringOrValue::Value(v) => {
                         #field_name_ident = Some(v);
@@ -708,7 +708,7 @@ fn deserialize_primitive(
         quote! {
             Field::#field_enum_type_name => {
                 if self.0.from == crate::context::Format::Json {
-                    let values: Vec<Option<#intermediate_type_tokens>> = map_access.next_value()?;
+                    let values: Vec<Option<#intermediate_type_tokens>> = tri!(map_access.next_value());
 
                     let vec = #field_name_ident.get_or_insert(std::iter::repeat(Default::default()).take(values.len()).collect::<Vec<_>>());
                     if vec.len() != values.len() {
@@ -726,7 +726,7 @@ fn deserialize_primitive(
                 } else {
                     let vec = #field_name_ident.get_or_insert(Default::default());
                     let _context: &mut DeserializationContext<#type_tokens> = self.0.transmute();
-                    vec.push(map_access.next_value_seed(&mut *_context)?);
+                    vec.push(tri!(map_access.next_value_seed(&mut *_context)));
                 }
             },
             Field::#field_enum_type_primitive_element_name => {
@@ -735,7 +735,7 @@ fn deserialize_primitive(
 
                     let _context: &mut DeserializationContext<Vec<Option<PrimitiveElementOwned>>> = self.0.transmute();
                     let elements: Vec<Option<PrimitiveElementOwned>> =
-                        map_access.next_value_seed(&mut *_context)?;
+                        tri!(map_access.next_value_seed(&mut *_context));
 
                     let vec = #field_name_ident.get_or_insert(std::iter::repeat(Default::default()).take(elements.len()).collect::<Vec<_>>());
                     if vec.len() != elements.len() {
@@ -763,13 +763,13 @@ fn deserialize_primitive(
                 if !some.value.is_empty() {
                     return Err(serde::de::Error::duplicate_field(#fhir_name));
                 }
-                some.value = map_access.next_value()?;
+                some.value = tri!(map_access.next_value());
             },
             _ => quote! {
                 if some.value.is_some() {
                     return Err(serde::de::Error::duplicate_field(#fhir_name));
                 }
-                some.value = Some(map_access.next_value()?);
+                some.value = Some(tri!(map_access.next_value()));
             },
         };
 
@@ -785,7 +785,7 @@ fn deserialize_primitive(
                     }
 
                     let _context: &mut DeserializationContext<#type_tokens> = self.0.transmute();
-                    #field_name_ident = Some(map_access.next_value_seed(&mut *_context)?);
+                    #field_name_ident = Some(tri!(map_access.next_value_seed(&mut *_context)));
                 }
             },
             Field::#field_enum_type_primitive_element_name => {
@@ -800,7 +800,7 @@ fn deserialize_primitive(
 
                     let _context: &mut DeserializationContext<PrimitiveElementOwned> = self.0.transmute();
                     let PrimitiveElementOwned { id, #extension_tokens } =
-                        map_access.next_value_seed(&mut *_context)?;
+                        tri!(map_access.next_value_seed(&mut *_context));
                     some.id = id;
                     #assign_extension_tokens
                 } else {
@@ -832,12 +832,12 @@ fn deserialize_element(
                     }
 
                     let _context: &mut DeserializationContext<Vec<#type_tokens>> = self.0.transmute();
-                    #field_name_ident = Some(map_access.next_value_seed(&mut *_context)?);
+                    #field_name_ident = Some(tri!(map_access.next_value_seed(&mut *_context)));
                 } else {
                     let vec = #field_name_ident.get_or_insert(Default::default());
 
                     let _context: &mut DeserializationContext<#type_tokens> = self.0.transmute();
-                    vec.push(map_access.next_value_seed(&mut *_context)?);
+                    vec.push(tri!(map_access.next_value_seed(&mut *_context)));
                 }
             },
         }
@@ -849,7 +849,7 @@ fn deserialize_element(
                 }
 
                 let _context: &mut DeserializationContext<#type_tokens> = self.0.transmute();
-                #field_name_ident = Some(map_access.next_value_seed(&mut *_context)?);
+                #field_name_ident = Some(tri!(map_access.next_value_seed(&mut *_context)));
             },
         }
     }

@@ -34,7 +34,11 @@ impl<const R: FhirRelease> InternalElement<R> {
     {
         let mut element = self.0;
 
-        resolve_element_types::<D, R>(&mut element, deserialization_mode, current_path)?;
+        tri!(resolve_element_types::<D, R>(
+            &mut element,
+            deserialization_mode,
+            current_path
+        ));
 
         Ok(element)
     }
@@ -62,12 +66,16 @@ where
         } else {
             // check if field is valid at current path
             if deserialization_mode == DeserializationMode::Strict {
-                validate_field_is_valid::<D>(current_path, key)?;
+                tri!(validate_field_is_valid::<D>(current_path, key));
             }
 
             current_path.push(key);
 
-            resolve_value_types::<D, R>(value, deserialization_mode, current_path)?;
+            tri!(resolve_value_types::<D, R>(
+                value,
+                deserialization_mode,
+                current_path
+            ));
 
             if current_path.current_element_is_sequence() {
                 if let Value::Element(e) = value {
@@ -129,27 +137,35 @@ where
 {
     match value {
         Value::Element(e) => {
-            resolve_element_types::<D, R>(e, deserialization_mode, current_path)?;
+            tri!(resolve_element_types::<D, R>(
+                e,
+                deserialization_mode,
+                current_path
+            ));
         }
         Value::Sequence(s) => {
             for element in s {
-                resolve_element_types::<D, R>(element, deserialization_mode, current_path)?;
+                tri!(resolve_element_types::<D, R>(
+                    element,
+                    deserialization_mode,
+                    current_path
+                ));
             }
         }
         Value::Primitive(p) => {
             if current_path.parent_element_is_boolean() {
-                *p = map_bool::<D>(p)?
+                *p = tri!(map_bool::<D>(p))
             } else if current_path.parent_element_is_integer()
                 || current_path.parent_element_is_positive_integer()
                 || current_path.parent_element_is_unsigned_integer()
             {
-                *p = map_integer::<D>(p)?
+                *p = tri!(map_integer::<D>(p))
             } else if current_path.parent_element_is_integer64() {
-                *p = map_integer64::<D>(p)?
+                *p = tri!(map_integer64::<D>(p))
             } else if current_path.parent_element_is_decimal() {
-                *p = map_decimal::<D>(p)?
+                *p = tri!(map_decimal::<D>(p))
             } else {
-                *p = map_string::<D>(p)?
+                *p = tri!(map_string::<D>(p))
             }
         }
     }
@@ -178,11 +194,9 @@ where
                 &expected,
             ))
         }
-        Primitive::String(s) => {
-            Ok(Primitive::Bool(s.parse().map_err(|_| {
-                Error::invalid_value(Unexpected::Other(s), &expected)
-            })?))
-        }
+        Primitive::String(s) => Ok(Primitive::Bool(tri!(s
+            .parse()
+            .map_err(|_| { Error::invalid_value(Unexpected::Other(s), &expected) })))),
     }
 }
 
@@ -201,11 +215,9 @@ where
                 &expected,
             ))
         }
-        Primitive::String(s) => {
-            Ok(Primitive::Integer(s.parse().map_err(|_| {
-                Error::invalid_value(Unexpected::Other(s), &expected)
-            })?))
-        }
+        Primitive::String(s) => Ok(Primitive::Integer(tri!(s
+            .parse()
+            .map_err(|_| { Error::invalid_value(Unexpected::Other(s), &expected) })))),
     }
 }
 
@@ -224,11 +236,9 @@ where
                 &expected,
             ))
         }
-        Primitive::String(s) => {
-            Ok(Primitive::Integer64(s.parse().map_err(|_| {
-                Error::invalid_value(Unexpected::Other(s), &expected)
-            })?))
-        }
+        Primitive::String(s) => Ok(Primitive::Integer64(tri!(s
+            .parse()
+            .map_err(|_| { Error::invalid_value(Unexpected::Other(s), &expected) })))),
     }
 }
 
@@ -280,7 +290,7 @@ impl<'de, const R: FhirRelease> DeserializeSeed<'de>
     where
         D: de::Deserializer<'de>,
     {
-        match deserializer.deserialize_any(ValueVisitor(self.transmute()))? {
+        match tri!(deserializer.deserialize_any(ValueVisitor(self.transmute()))) {
             Value::Element(e) => Ok(InternalElement(e)),
             Value::Sequence(_) => Err(Error::invalid_type(Unexpected::Seq, &"an element")),
             Value::Primitive(_) => Err(Error::invalid_type(
@@ -382,8 +392,9 @@ impl<'a, 'de, const R: FhirRelease> Visitor<'de> for ValueVisitor<'a, R> {
         E: Error,
     {
         if self.0.from == Format::Json {
-            let number = serde_json::Number::from_f64(v)
-                .ok_or_else(|| Error::custom("not a JSON number"))?;
+            let number =
+                tri!(serde_json::Number::from_f64(v)
+                    .ok_or_else(|| Error::custom("not a JSON number")));
 
             Ok(Value::Element(Element! {
                 "value" =>  Value::Primitive(Primitive::Decimal(number.to_string())),
@@ -427,10 +438,10 @@ impl<'a, 'de, const R: FhirRelease> Visitor<'de> for ValueVisitor<'a, R> {
     {
         let mut element = Element::default();
 
-        while let Some(key) = map_access.next_key::<String>()? {
+        while let Some(key) = tri!(map_access.next_key::<String>()) {
             if key == SERDE_JSON_NUMBER_TOKEN {
                 return Ok(Value::Element(Element! {
-                    "value" =>  Value::Primitive(Primitive::Decimal(map_access.next_value()?)),
+                    "value" =>  Value::Primitive(Primitive::Decimal(tri!(map_access.next_value()))),
                 }));
             }
 
@@ -445,7 +456,7 @@ impl<'a, 'de, const R: FhirRelease> Visitor<'de> for ValueVisitor<'a, R> {
                 && self.0.current_element() != CurrentElement::ConsentProvision
                 && self.0.current_element() != CurrentElement::SubscriptionFilterBy
             {
-                let value: String = map_access.next_value()?;
+                let value: String = tri!(map_access.next_value());
 
                 element.insert(key, Value::Primitive(Primitive::String(value)));
             } else {
@@ -465,7 +476,7 @@ impl<'a, 'de, const R: FhirRelease> Visitor<'de> for ValueVisitor<'a, R> {
                     _ => CurrentElement::Other,
                 });
 
-                let value = map_access.next_value_seed(self.0.transmute::<Value<R>>())?;
+                let value = tri!(map_access.next_value_seed(self.0.transmute::<Value<R>>()));
                 let existing = element.remove(&key);
 
                 let matched_value = match (existing, value) {
@@ -517,7 +528,7 @@ impl<'a, 'de, const R: FhirRelease> Visitor<'de> for ValueVisitor<'a, R> {
         let mut elements = Vec::new();
 
         while let Some(value) =
-            seq_access.next_element_seed(self.0.transmute::<Option<Value<R>>>())?
+            tri!(seq_access.next_element_seed(self.0.transmute::<Option<Value<R>>>()))
         {
             match value {
                 Some(Value::Element(e)) => elements.push(e),

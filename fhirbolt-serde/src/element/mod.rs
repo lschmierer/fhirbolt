@@ -104,9 +104,9 @@ pub fn to_element<const R: FhirRelease, T>(resource: T) -> Result<Element<R>>
 where
     T: SerializeResource,
 {
-    match resource
+    match tri!(resource
         .serialization_context(Default::default(), Format::InternalElement)
-        .serialize(Serializer)?
+        .serialize(Serializer))
     {
         Value::Element(e) => Ok(e),
         Value::Sequence(_) => Err(serde::ser::Error::custom(

@@ -1,4 +1,4 @@
-// Generated on 2023-05-15 by fhirbolt-codegen v0.8.0
+// Generated on 2023-05-17 by fhirbolt-codegen v0.9.0
 use crate::{DeserializationContext, SerializationContext};
 use fhirbolt_model::r5::resources::IngredientManufacturer;
 impl serde::ser::Serialize for SerializationContext<&IngredientManufacturer> {
@@ -14,24 +14,24 @@ impl serde::ser::Serialize for SerializationContext<&IngredientManufacturer> {
                 "Ingredient.manufacturer", field
             )))
         }
-        let mut state = serializer.serialize_map(None)?;
+        let mut state = tri!(serializer.serialize_map(None));
         if let Some(value) = self.value.r#id.as_ref() {
-            state.serialize_entry("id", value)?;
+            tri!(state.serialize_entry("id", value));
         }
         if !self.value.r#extension.is_empty() {
-            self.with_context(&self.value.r#extension, |ctx| {
-                state.serialize_entry("extension", ctx)
-            })?;
+            tri!(self.with_context(&self.value.r#extension, |ctx| state
+                .serialize_entry("extension", ctx)));
         }
         if !self.value.r#modifier_extension.is_empty() {
-            self.with_context(&self.value.r#modifier_extension, |ctx| {
-                state.serialize_entry("modifierExtension", ctx)
-            })?;
+            tri!(
+                self.with_context(&self.value.r#modifier_extension, |ctx| state
+                    .serialize_entry("modifierExtension", ctx))
+            );
         }
         if self.output == crate::context::Format::Json {
             if let Some(some) = self.value.r#role.as_ref() {
                 if let Some(some) = some.value.as_ref().map(Ok) {
-                    state.serialize_entry("role", &some?)?;
+                    tri!(state.serialize_entry("role", &some?));
                 }
                 if some.id.is_some() || !some.extension.is_empty() {
                     use super::super::serde_helpers::PrimitiveElement;
@@ -39,20 +39,18 @@ impl serde::ser::Serialize for SerializationContext<&IngredientManufacturer> {
                         id: some.id.as_ref(),
                         extension: &some.extension,
                     };
-                    self.with_context(&primitive_element, |ctx| {
-                        state.serialize_entry("_role", ctx)
-                    })?;
+                    tri!(self.with_context(&primitive_element, |ctx| state
+                        .serialize_entry("_role", ctx)));
                 }
             }
         } else if let Some(some) = self.value.r#role.as_ref() {
-            self.with_context(some, |ctx| state.serialize_entry("role", ctx))?;
+            tri!(self.with_context(some, |ctx| state.serialize_entry("role", ctx)));
         }
         if self.value.r#manufacturer.id.as_deref() == Some("$invalid") {
             return missing_field_error("manufacturer");
         } else {
-            self.with_context(&self.value.r#manufacturer, |ctx| {
-                state.serialize_entry("manufacturer", ctx)
-            })?;
+            tri!(self.with_context(&self.value.r#manufacturer, |ctx| state
+                .serialize_entry("manufacturer", ctx)));
         }
         state.end()
     }
@@ -71,9 +69,9 @@ impl serde::ser::Serialize for SerializationContext<&Vec<IngredientManufacturer>
         S: serde::ser::Serializer,
     {
         use serde::ser::SerializeSeq;
-        let mut seq_serializer = serializer.serialize_seq(Some(self.value.len()))?;
+        let mut seq_serializer = tri!(serializer.serialize_seq(Some(self.value.len())));
         for value in self.value {
-            self.with_context(value, |ctx| seq_serializer.serialize_element(ctx))?
+            tri!(self.with_context(value, |ctx| { seq_serializer.serialize_element(ctx) }))
         }
         seq_serializer.end()
     }
@@ -129,13 +127,13 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Ingred
                     None;
                 let mut r#role: Option<fhirbolt_model::r5::types::Code> = None;
                 let mut r#manufacturer: Option<Box<fhirbolt_model::r5::types::Reference>> = None;
-                while let Some(map_access_key) = map_access.next_key()? {
+                while let Some(map_access_key) = tri!(map_access.next_key()) {
                     match map_access_key {
                         Field::Id => {
                             if r#id.is_some() {
                                 return Err(serde::de::Error::duplicate_field("id"));
                             }
-                            r#id = Some(map_access.next_value()?);
+                            r#id = Some(tri!(map_access.next_value()));
                         }
                         Field::Extension => {
                             if self.0.from == crate::context::Format::Json {
@@ -145,13 +143,14 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Ingred
                                 let _context: &mut DeserializationContext<
                                     Vec<fhirbolt_model::r5::types::Extension>,
                                 > = self.0.transmute();
-                                r#extension = Some(map_access.next_value_seed(&mut *_context)?);
+                                r#extension =
+                                    Some(tri!(map_access.next_value_seed(&mut *_context)));
                             } else {
                                 let vec = r#extension.get_or_insert(Default::default());
                                 let _context: &mut DeserializationContext<
                                     fhirbolt_model::r5::types::Extension,
                                 > = self.0.transmute();
-                                vec.push(map_access.next_value_seed(&mut *_context)?);
+                                vec.push(tri!(map_access.next_value_seed(&mut *_context)));
                             }
                         }
                         Field::ModifierExtension => {
@@ -165,13 +164,13 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Ingred
                                     Vec<fhirbolt_model::r5::types::Extension>,
                                 > = self.0.transmute();
                                 r#modifier_extension =
-                                    Some(map_access.next_value_seed(&mut *_context)?);
+                                    Some(tri!(map_access.next_value_seed(&mut *_context)));
                             } else {
                                 let vec = r#modifier_extension.get_or_insert(Default::default());
                                 let _context: &mut DeserializationContext<
                                     fhirbolt_model::r5::types::Extension,
                                 > = self.0.transmute();
-                                vec.push(map_access.next_value_seed(&mut *_context)?);
+                                vec.push(tri!(map_access.next_value_seed(&mut *_context)));
                             }
                         }
                         Field::Role => {
@@ -180,7 +179,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Ingred
                                 if some.value.is_some() {
                                     return Err(serde::de::Error::duplicate_field("role"));
                                 }
-                                some.value = Some(map_access.next_value()?);
+                                some.value = Some(tri!(map_access.next_value()));
                             } else {
                                 if r#role.is_some() {
                                     return Err(serde::de::Error::duplicate_field("role"));
@@ -188,7 +187,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Ingred
                                 let _context: &mut DeserializationContext<
                                     fhirbolt_model::r5::types::Code,
                                 > = self.0.transmute();
-                                r#role = Some(map_access.next_value_seed(&mut *_context)?);
+                                r#role = Some(tri!(map_access.next_value_seed(&mut *_context)));
                             }
                         }
                         Field::RolePrimitiveElement => {
@@ -201,7 +200,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Ingred
                                 let _context: &mut DeserializationContext<PrimitiveElementOwned> =
                                     self.0.transmute();
                                 let PrimitiveElementOwned { id, extension } =
-                                    map_access.next_value_seed(&mut *_context)?;
+                                    tri!(map_access.next_value_seed(&mut *_context));
                                 some.id = id;
                                 some.extension = extension;
                             } else {
@@ -215,7 +214,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Ingred
                             let _context: &mut DeserializationContext<
                                 Box<fhirbolt_model::r5::types::Reference>,
                             > = self.0.transmute();
-                            r#manufacturer = Some(map_access.next_value_seed(&mut *_context)?);
+                            r#manufacturer = Some(tri!(map_access.next_value_seed(&mut *_context)));
                         }
                         Field::Unknown(key) => {
                             if self.0.config.mode == crate::context::de::DeserializationMode::Strict
@@ -235,7 +234,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Ingred
                     {
                         r#manufacturer.unwrap_or(Default::default())
                     } else {
-                        r#manufacturer.ok_or(serde::de::Error::missing_field("manufacturer"))?
+                        tri!(r#manufacturer.ok_or(serde::de::Error::missing_field("manufacturer")))
                     },
                 })
             }
@@ -277,7 +276,7 @@ impl<'de> serde::de::DeserializeSeed<'de>
                 let mut values = Vec::new();
                 let _context: &mut DeserializationContext<IngredientManufacturer> =
                     self.0.transmute();
-                while let Some(value) = seq.next_element_seed(&mut *_context)? {
+                while let Some(value) = tri!(seq.next_element_seed(&mut *_context)) {
                     values.push(value);
                 }
                 Ok(values)
@@ -300,40 +299,41 @@ impl serde::ser::Serialize for SerializationContext<&IngredientSubstanceStrength
                 "Ingredient.substance.strength.referenceStrength", field
             )))
         }
-        let mut state = serializer.serialize_map(None)?;
+        let mut state = tri!(serializer.serialize_map(None));
         if let Some(value) = self.value.r#id.as_ref() {
-            state.serialize_entry("id", value)?;
+            tri!(state.serialize_entry("id", value));
         }
         if !self.value.r#extension.is_empty() {
-            self.with_context(&self.value.r#extension, |ctx| {
-                state.serialize_entry("extension", ctx)
-            })?;
+            tri!(self.with_context(&self.value.r#extension, |ctx| state
+                .serialize_entry("extension", ctx)));
         }
         if !self.value.r#modifier_extension.is_empty() {
-            self.with_context(&self.value.r#modifier_extension, |ctx| {
-                state.serialize_entry("modifierExtension", ctx)
-            })?;
+            tri!(
+                self.with_context(&self.value.r#modifier_extension, |ctx| state
+                    .serialize_entry("modifierExtension", ctx))
+            );
         }
         if self.value.r#substance.id.as_deref() == Some("$invalid") {
             return missing_field_error("substance");
         } else {
-            self.with_context(&self.value.r#substance, |ctx| {
-                state.serialize_entry("substance", ctx)
-            })?;
+            tri!(self.with_context(&self.value.r#substance, |ctx| state
+                .serialize_entry("substance", ctx)));
         }
         {
             use fhirbolt_model::r5::resources::IngredientSubstanceStrengthReferenceStrengthStrength as _Enum;
             match self.value.r#strength {
                 _Enum::Ratio(ref value) => {
-                    self.with_context(value, |ctx| state.serialize_entry("strengthRatio", ctx))?;
+                    tri!(
+                        self.with_context(value, |ctx| state.serialize_entry("strengthRatio", ctx))
+                    );
                 }
                 _Enum::RatioRange(ref value) => {
-                    self.with_context(value, |ctx| {
-                        state.serialize_entry("strengthRatioRange", ctx)
-                    })?;
+                    tri!(self.with_context(value, |ctx| state
+                        .serialize_entry("strengthRatioRange", ctx)));
                 }
                 _Enum::Quantity(ref value) => {
-                    self.with_context(value, |ctx| state.serialize_entry("strengthQuantity", ctx))?;
+                    tri!(self
+                        .with_context(value, |ctx| state.serialize_entry("strengthQuantity", ctx)));
                 }
                 _Enum::Invalid => {
                     return Err(serde::ser::Error::custom("strength is a required field"))
@@ -343,7 +343,7 @@ impl serde::ser::Serialize for SerializationContext<&IngredientSubstanceStrength
         if self.output == crate::context::Format::Json {
             if let Some(some) = self.value.r#measurement_point.as_ref() {
                 if let Some(some) = some.value.as_ref().map(Ok) {
-                    state.serialize_entry("measurementPoint", &some?)?;
+                    tri!(state.serialize_entry("measurementPoint", &some?));
                 }
                 if some.id.is_some() || !some.extension.is_empty() {
                     use super::super::serde_helpers::PrimitiveElement;
@@ -351,18 +351,16 @@ impl serde::ser::Serialize for SerializationContext<&IngredientSubstanceStrength
                         id: some.id.as_ref(),
                         extension: &some.extension,
                     };
-                    self.with_context(&primitive_element, |ctx| {
-                        state.serialize_entry("_measurementPoint", ctx)
-                    })?;
+                    tri!(self.with_context(&primitive_element, |ctx| state
+                        .serialize_entry("_measurementPoint", ctx)));
                 }
             }
         } else if let Some(some) = self.value.r#measurement_point.as_ref() {
-            self.with_context(some, |ctx| state.serialize_entry("measurementPoint", ctx))?;
+            tri!(self.with_context(some, |ctx| state.serialize_entry("measurementPoint", ctx)));
         }
         if !self.value.r#country.is_empty() {
-            self.with_context(&self.value.r#country, |ctx| {
-                state.serialize_entry("country", ctx)
-            })?;
+            tri!(self.with_context(&self.value.r#country, |ctx| state
+                .serialize_entry("country", ctx)));
         }
         state.end()
     }
@@ -385,9 +383,9 @@ impl serde::ser::Serialize
         S: serde::ser::Serializer,
     {
         use serde::ser::SerializeSeq;
-        let mut seq_serializer = serializer.serialize_seq(Some(self.value.len()))?;
+        let mut seq_serializer = tri!(serializer.serialize_seq(Some(self.value.len())));
         for value in self.value {
-            self.with_context(value, |ctx| seq_serializer.serialize_element(ctx))?
+            tri!(self.with_context(value, |ctx| { seq_serializer.serialize_element(ctx) }))
         }
         seq_serializer.end()
     }
@@ -465,13 +463,13 @@ impl<'de> serde::de::DeserializeSeed<'de>
                 let mut r#strength : Option < fhirbolt_model :: r5 :: resources :: IngredientSubstanceStrengthReferenceStrengthStrength > = None ;
                 let mut r#measurement_point: Option<fhirbolt_model::r5::types::String> = None;
                 let mut r#country: Option<Vec<fhirbolt_model::r5::types::CodeableConcept>> = None;
-                while let Some(map_access_key) = map_access.next_key()? {
+                while let Some(map_access_key) = tri!(map_access.next_key()) {
                     match map_access_key {
                         Field::Id => {
                             if r#id.is_some() {
                                 return Err(serde::de::Error::duplicate_field("id"));
                             }
-                            r#id = Some(map_access.next_value()?);
+                            r#id = Some(tri!(map_access.next_value()));
                         }
                         Field::Extension => {
                             if self.0.from == crate::context::Format::Json {
@@ -481,13 +479,14 @@ impl<'de> serde::de::DeserializeSeed<'de>
                                 let _context: &mut DeserializationContext<
                                     Vec<fhirbolt_model::r5::types::Extension>,
                                 > = self.0.transmute();
-                                r#extension = Some(map_access.next_value_seed(&mut *_context)?);
+                                r#extension =
+                                    Some(tri!(map_access.next_value_seed(&mut *_context)));
                             } else {
                                 let vec = r#extension.get_or_insert(Default::default());
                                 let _context: &mut DeserializationContext<
                                     fhirbolt_model::r5::types::Extension,
                                 > = self.0.transmute();
-                                vec.push(map_access.next_value_seed(&mut *_context)?);
+                                vec.push(tri!(map_access.next_value_seed(&mut *_context)));
                             }
                         }
                         Field::ModifierExtension => {
@@ -501,13 +500,13 @@ impl<'de> serde::de::DeserializeSeed<'de>
                                     Vec<fhirbolt_model::r5::types::Extension>,
                                 > = self.0.transmute();
                                 r#modifier_extension =
-                                    Some(map_access.next_value_seed(&mut *_context)?);
+                                    Some(tri!(map_access.next_value_seed(&mut *_context)));
                             } else {
                                 let vec = r#modifier_extension.get_or_insert(Default::default());
                                 let _context: &mut DeserializationContext<
                                     fhirbolt_model::r5::types::Extension,
                                 > = self.0.transmute();
-                                vec.push(map_access.next_value_seed(&mut *_context)?);
+                                vec.push(tri!(map_access.next_value_seed(&mut *_context)));
                             }
                         }
                         Field::Substance => {
@@ -517,7 +516,7 @@ impl<'de> serde::de::DeserializeSeed<'de>
                             let _context: &mut DeserializationContext<
                                 Box<fhirbolt_model::r5::types::CodeableReference>,
                             > = self.0.transmute();
-                            r#substance = Some(map_access.next_value_seed(&mut *_context)?);
+                            r#substance = Some(tri!(map_access.next_value_seed(&mut *_context)));
                         }
                         Field::StrengthRatio => {
                             use fhirbolt_model::r5::resources::IngredientSubstanceStrengthReferenceStrengthStrength as _Enum;
@@ -527,8 +526,9 @@ impl<'de> serde::de::DeserializeSeed<'de>
                             let _context: &mut DeserializationContext<
                                 Box<fhirbolt_model::r5::types::Ratio>,
                             > = self.0.transmute();
-                            r#strength =
-                                Some(_Enum::Ratio(map_access.next_value_seed(&mut *_context)?));
+                            r#strength = Some(_Enum::Ratio(tri!(
+                                map_access.next_value_seed(&mut *_context)
+                            )));
                         }
                         Field::StrengthRatioRange => {
                             use fhirbolt_model::r5::resources::IngredientSubstanceStrengthReferenceStrengthStrength as _Enum;
@@ -540,9 +540,9 @@ impl<'de> serde::de::DeserializeSeed<'de>
                             let _context: &mut DeserializationContext<
                                 Box<fhirbolt_model::r5::types::RatioRange>,
                             > = self.0.transmute();
-                            r#strength = Some(_Enum::RatioRange(
-                                map_access.next_value_seed(&mut *_context)?,
-                            ));
+                            r#strength = Some(_Enum::RatioRange(tri!(
+                                map_access.next_value_seed(&mut *_context)
+                            )));
                         }
                         Field::StrengthQuantity => {
                             use fhirbolt_model::r5::resources::IngredientSubstanceStrengthReferenceStrengthStrength as _Enum;
@@ -552,8 +552,9 @@ impl<'de> serde::de::DeserializeSeed<'de>
                             let _context: &mut DeserializationContext<
                                 Box<fhirbolt_model::r5::types::Quantity>,
                             > = self.0.transmute();
-                            r#strength =
-                                Some(_Enum::Quantity(map_access.next_value_seed(&mut *_context)?));
+                            r#strength = Some(_Enum::Quantity(tri!(
+                                map_access.next_value_seed(&mut *_context)
+                            )));
                         }
                         Field::MeasurementPoint => {
                             if self.0.from == crate::context::Format::Json {
@@ -563,7 +564,7 @@ impl<'de> serde::de::DeserializeSeed<'de>
                                         "measurementPoint",
                                     ));
                                 }
-                                some.value = Some(map_access.next_value()?);
+                                some.value = Some(tri!(map_access.next_value()));
                             } else {
                                 if r#measurement_point.is_some() {
                                     return Err(serde::de::Error::duplicate_field(
@@ -574,7 +575,7 @@ impl<'de> serde::de::DeserializeSeed<'de>
                                     fhirbolt_model::r5::types::String,
                                 > = self.0.transmute();
                                 r#measurement_point =
-                                    Some(map_access.next_value_seed(&mut *_context)?);
+                                    Some(tri!(map_access.next_value_seed(&mut *_context)));
                             }
                         }
                         Field::MeasurementPointPrimitiveElement => {
@@ -589,7 +590,7 @@ impl<'de> serde::de::DeserializeSeed<'de>
                                 let _context: &mut DeserializationContext<PrimitiveElementOwned> =
                                     self.0.transmute();
                                 let PrimitiveElementOwned { id, extension } =
-                                    map_access.next_value_seed(&mut *_context)?;
+                                    tri!(map_access.next_value_seed(&mut *_context));
                                 some.id = id;
                                 some.extension = extension;
                             } else {
@@ -604,13 +605,13 @@ impl<'de> serde::de::DeserializeSeed<'de>
                                 let _context: &mut DeserializationContext<
                                     Vec<fhirbolt_model::r5::types::CodeableConcept>,
                                 > = self.0.transmute();
-                                r#country = Some(map_access.next_value_seed(&mut *_context)?);
+                                r#country = Some(tri!(map_access.next_value_seed(&mut *_context)));
                             } else {
                                 let vec = r#country.get_or_insert(Default::default());
                                 let _context: &mut DeserializationContext<
                                     fhirbolt_model::r5::types::CodeableConcept,
                                 > = self.0.transmute();
-                                vec.push(map_access.next_value_seed(&mut *_context)?);
+                                vec.push(tri!(map_access.next_value_seed(&mut *_context)));
                             }
                         }
                         Field::Unknown(key) => {
@@ -630,14 +631,14 @@ impl<'de> serde::de::DeserializeSeed<'de>
                     {
                         r#substance.unwrap_or(Default::default())
                     } else {
-                        r#substance.ok_or(serde::de::Error::missing_field("substance"))?
+                        tri!(r#substance.ok_or(serde::de::Error::missing_field("substance")))
                     },
                     r#strength: if self.0.config.mode
                         == crate::context::de::DeserializationMode::Lax
                     {
                         r#strength.unwrap_or(Default::default())
                     } else {
-                        r#strength.ok_or(serde::de::Error::missing_field("strength[x]"))?
+                        tri!(r#strength.ok_or(serde::de::Error::missing_field("strength[x]")))
                     },
                     r#measurement_point,
                     r#country: r#country.unwrap_or(vec![]),
@@ -684,7 +685,7 @@ impl<'de> serde::de::DeserializeSeed<'de>
                 let _context: &mut DeserializationContext<
                     IngredientSubstanceStrengthReferenceStrength,
                 > = self.0.transmute();
-                while let Some(value) = seq.next_element_seed(&mut *_context)? {
+                while let Some(value) = tri!(seq.next_element_seed(&mut *_context)) {
                     values.push(value);
                 }
                 Ok(values)
@@ -707,43 +708,39 @@ impl serde::ser::Serialize for SerializationContext<&IngredientSubstanceStrength
                 "Ingredient.substance.strength", field
             )))
         }
-        let mut state = serializer.serialize_map(None)?;
+        let mut state = tri!(serializer.serialize_map(None));
         if let Some(value) = self.value.r#id.as_ref() {
-            state.serialize_entry("id", value)?;
+            tri!(state.serialize_entry("id", value));
         }
         if !self.value.r#extension.is_empty() {
-            self.with_context(&self.value.r#extension, |ctx| {
-                state.serialize_entry("extension", ctx)
-            })?;
+            tri!(self.with_context(&self.value.r#extension, |ctx| state
+                .serialize_entry("extension", ctx)));
         }
         if !self.value.r#modifier_extension.is_empty() {
-            self.with_context(&self.value.r#modifier_extension, |ctx| {
-                state.serialize_entry("modifierExtension", ctx)
-            })?;
+            tri!(
+                self.with_context(&self.value.r#modifier_extension, |ctx| state
+                    .serialize_entry("modifierExtension", ctx))
+            );
         }
         {
             use fhirbolt_model::r5::resources::IngredientSubstanceStrengthPresentation as _Enum;
             if let Some(some) = self.value.r#presentation.as_ref() {
                 match some {
                     _Enum::Ratio(ref value) => {
-                        self.with_context(value, |ctx| {
-                            state.serialize_entry("presentationRatio", ctx)
-                        })?;
+                        tri!(self.with_context(value, |ctx| state
+                            .serialize_entry("presentationRatio", ctx)));
                     }
                     _Enum::RatioRange(ref value) => {
-                        self.with_context(value, |ctx| {
-                            state.serialize_entry("presentationRatioRange", ctx)
-                        })?;
+                        tri!(self.with_context(value, |ctx| state
+                            .serialize_entry("presentationRatioRange", ctx)));
                     }
                     _Enum::CodeableConcept(ref value) => {
-                        self.with_context(value, |ctx| {
-                            state.serialize_entry("presentationCodeableConcept", ctx)
-                        })?;
+                        tri!(self.with_context(value, |ctx| state
+                            .serialize_entry("presentationCodeableConcept", ctx)));
                     }
                     _Enum::Quantity(ref value) => {
-                        self.with_context(value, |ctx| {
-                            state.serialize_entry("presentationQuantity", ctx)
-                        })?;
+                        tri!(self.with_context(value, |ctx| state
+                            .serialize_entry("presentationQuantity", ctx)));
                     }
                     _Enum::Invalid => {
                         return Err(serde::ser::Error::custom("presentation is invalid"))
@@ -754,7 +751,7 @@ impl serde::ser::Serialize for SerializationContext<&IngredientSubstanceStrength
         if self.output == crate::context::Format::Json {
             if let Some(some) = self.value.r#text_presentation.as_ref() {
                 if let Some(some) = some.value.as_ref().map(Ok) {
-                    state.serialize_entry("textPresentation", &some?)?;
+                    tri!(state.serialize_entry("textPresentation", &some?));
                 }
                 if some.id.is_some() || !some.extension.is_empty() {
                     use super::super::serde_helpers::PrimitiveElement;
@@ -762,37 +759,32 @@ impl serde::ser::Serialize for SerializationContext<&IngredientSubstanceStrength
                         id: some.id.as_ref(),
                         extension: &some.extension,
                     };
-                    self.with_context(&primitive_element, |ctx| {
-                        state.serialize_entry("_textPresentation", ctx)
-                    })?;
+                    tri!(self.with_context(&primitive_element, |ctx| state
+                        .serialize_entry("_textPresentation", ctx)));
                 }
             }
         } else if let Some(some) = self.value.r#text_presentation.as_ref() {
-            self.with_context(some, |ctx| state.serialize_entry("textPresentation", ctx))?;
+            tri!(self.with_context(some, |ctx| state.serialize_entry("textPresentation", ctx)));
         }
         {
             use fhirbolt_model::r5::resources::IngredientSubstanceStrengthConcentration as _Enum;
             if let Some(some) = self.value.r#concentration.as_ref() {
                 match some {
                     _Enum::Ratio(ref value) => {
-                        self.with_context(value, |ctx| {
-                            state.serialize_entry("concentrationRatio", ctx)
-                        })?;
+                        tri!(self.with_context(value, |ctx| state
+                            .serialize_entry("concentrationRatio", ctx)));
                     }
                     _Enum::RatioRange(ref value) => {
-                        self.with_context(value, |ctx| {
-                            state.serialize_entry("concentrationRatioRange", ctx)
-                        })?;
+                        tri!(self.with_context(value, |ctx| state
+                            .serialize_entry("concentrationRatioRange", ctx)));
                     }
                     _Enum::CodeableConcept(ref value) => {
-                        self.with_context(value, |ctx| {
-                            state.serialize_entry("concentrationCodeableConcept", ctx)
-                        })?;
+                        tri!(self.with_context(value, |ctx| state
+                            .serialize_entry("concentrationCodeableConcept", ctx)));
                     }
                     _Enum::Quantity(ref value) => {
-                        self.with_context(value, |ctx| {
-                            state.serialize_entry("concentrationQuantity", ctx)
-                        })?;
+                        tri!(self.with_context(value, |ctx| state
+                            .serialize_entry("concentrationQuantity", ctx)));
                     }
                     _Enum::Invalid => {
                         return Err(serde::ser::Error::custom("concentration is invalid"))
@@ -803,7 +795,7 @@ impl serde::ser::Serialize for SerializationContext<&IngredientSubstanceStrength
         if self.output == crate::context::Format::Json {
             if let Some(some) = self.value.r#text_concentration.as_ref() {
                 if let Some(some) = some.value.as_ref().map(Ok) {
-                    state.serialize_entry("textConcentration", &some?)?;
+                    tri!(state.serialize_entry("textConcentration", &some?));
                 }
                 if some.id.is_some() || !some.extension.is_empty() {
                     use super::super::serde_helpers::PrimitiveElement;
@@ -811,21 +803,20 @@ impl serde::ser::Serialize for SerializationContext<&IngredientSubstanceStrength
                         id: some.id.as_ref(),
                         extension: &some.extension,
                     };
-                    self.with_context(&primitive_element, |ctx| {
-                        state.serialize_entry("_textConcentration", ctx)
-                    })?;
+                    tri!(self.with_context(&primitive_element, |ctx| state
+                        .serialize_entry("_textConcentration", ctx)));
                 }
             }
         } else if let Some(some) = self.value.r#text_concentration.as_ref() {
-            self.with_context(some, |ctx| state.serialize_entry("textConcentration", ctx))?;
+            tri!(self.with_context(some, |ctx| state.serialize_entry("textConcentration", ctx)));
         }
         if let Some(some) = self.value.r#basis.as_ref() {
-            self.with_context(some, |ctx| state.serialize_entry("basis", ctx))?;
+            tri!(self.with_context(some, |ctx| state.serialize_entry("basis", ctx)));
         }
         if self.output == crate::context::Format::Json {
             if let Some(some) = self.value.r#measurement_point.as_ref() {
                 if let Some(some) = some.value.as_ref().map(Ok) {
-                    state.serialize_entry("measurementPoint", &some?)?;
+                    tri!(state.serialize_entry("measurementPoint", &some?));
                 }
                 if some.id.is_some() || !some.extension.is_empty() {
                     use super::super::serde_helpers::PrimitiveElement;
@@ -833,23 +824,22 @@ impl serde::ser::Serialize for SerializationContext<&IngredientSubstanceStrength
                         id: some.id.as_ref(),
                         extension: &some.extension,
                     };
-                    self.with_context(&primitive_element, |ctx| {
-                        state.serialize_entry("_measurementPoint", ctx)
-                    })?;
+                    tri!(self.with_context(&primitive_element, |ctx| state
+                        .serialize_entry("_measurementPoint", ctx)));
                 }
             }
         } else if let Some(some) = self.value.r#measurement_point.as_ref() {
-            self.with_context(some, |ctx| state.serialize_entry("measurementPoint", ctx))?;
+            tri!(self.with_context(some, |ctx| state.serialize_entry("measurementPoint", ctx)));
         }
         if !self.value.r#country.is_empty() {
-            self.with_context(&self.value.r#country, |ctx| {
-                state.serialize_entry("country", ctx)
-            })?;
+            tri!(self.with_context(&self.value.r#country, |ctx| state
+                .serialize_entry("country", ctx)));
         }
         if !self.value.r#reference_strength.is_empty() {
-            self.with_context(&self.value.r#reference_strength, |ctx| {
-                state.serialize_entry("referenceStrength", ctx)
-            })?;
+            tri!(
+                self.with_context(&self.value.r#reference_strength, |ctx| state
+                    .serialize_entry("referenceStrength", ctx))
+            );
         }
         state.end()
     }
@@ -868,9 +858,9 @@ impl serde::ser::Serialize for SerializationContext<&Vec<IngredientSubstanceStre
         S: serde::ser::Serializer,
     {
         use serde::ser::SerializeSeq;
-        let mut seq_serializer = serializer.serialize_seq(Some(self.value.len()))?;
+        let mut seq_serializer = tri!(serializer.serialize_seq(Some(self.value.len())));
         for value in self.value {
-            self.with_context(value, |ctx| seq_serializer.serialize_element(ctx))?
+            tri!(self.with_context(value, |ctx| { seq_serializer.serialize_element(ctx) }))
         }
         seq_serializer.end()
     }
@@ -985,13 +975,13 @@ impl<'de> serde::de::DeserializeSeed<'de>
                         fhirbolt_model::r5::resources::IngredientSubstanceStrengthReferenceStrength,
                     >,
                 > = None;
-                while let Some(map_access_key) = map_access.next_key()? {
+                while let Some(map_access_key) = tri!(map_access.next_key()) {
                     match map_access_key {
                         Field::Id => {
                             if r#id.is_some() {
                                 return Err(serde::de::Error::duplicate_field("id"));
                             }
-                            r#id = Some(map_access.next_value()?);
+                            r#id = Some(tri!(map_access.next_value()));
                         }
                         Field::Extension => {
                             if self.0.from == crate::context::Format::Json {
@@ -1001,13 +991,14 @@ impl<'de> serde::de::DeserializeSeed<'de>
                                 let _context: &mut DeserializationContext<
                                     Vec<fhirbolt_model::r5::types::Extension>,
                                 > = self.0.transmute();
-                                r#extension = Some(map_access.next_value_seed(&mut *_context)?);
+                                r#extension =
+                                    Some(tri!(map_access.next_value_seed(&mut *_context)));
                             } else {
                                 let vec = r#extension.get_or_insert(Default::default());
                                 let _context: &mut DeserializationContext<
                                     fhirbolt_model::r5::types::Extension,
                                 > = self.0.transmute();
-                                vec.push(map_access.next_value_seed(&mut *_context)?);
+                                vec.push(tri!(map_access.next_value_seed(&mut *_context)));
                             }
                         }
                         Field::ModifierExtension => {
@@ -1021,13 +1012,13 @@ impl<'de> serde::de::DeserializeSeed<'de>
                                     Vec<fhirbolt_model::r5::types::Extension>,
                                 > = self.0.transmute();
                                 r#modifier_extension =
-                                    Some(map_access.next_value_seed(&mut *_context)?);
+                                    Some(tri!(map_access.next_value_seed(&mut *_context)));
                             } else {
                                 let vec = r#modifier_extension.get_or_insert(Default::default());
                                 let _context: &mut DeserializationContext<
                                     fhirbolt_model::r5::types::Extension,
                                 > = self.0.transmute();
-                                vec.push(map_access.next_value_seed(&mut *_context)?);
+                                vec.push(tri!(map_access.next_value_seed(&mut *_context)));
                             }
                         }
                         Field::PresentationRatio => {
@@ -1038,8 +1029,9 @@ impl<'de> serde::de::DeserializeSeed<'de>
                             let _context: &mut DeserializationContext<
                                 Box<fhirbolt_model::r5::types::Ratio>,
                             > = self.0.transmute();
-                            r#presentation =
-                                Some(_Enum::Ratio(map_access.next_value_seed(&mut *_context)?));
+                            r#presentation = Some(_Enum::Ratio(tri!(
+                                map_access.next_value_seed(&mut *_context)
+                            )));
                         }
                         Field::PresentationRatioRange => {
                             use fhirbolt_model::r5::resources::IngredientSubstanceStrengthPresentation as _Enum;
@@ -1051,9 +1043,9 @@ impl<'de> serde::de::DeserializeSeed<'de>
                             let _context: &mut DeserializationContext<
                                 Box<fhirbolt_model::r5::types::RatioRange>,
                             > = self.0.transmute();
-                            r#presentation = Some(_Enum::RatioRange(
-                                map_access.next_value_seed(&mut *_context)?,
-                            ));
+                            r#presentation = Some(_Enum::RatioRange(tri!(
+                                map_access.next_value_seed(&mut *_context)
+                            )));
                         }
                         Field::PresentationCodeableConcept => {
                             use fhirbolt_model::r5::resources::IngredientSubstanceStrengthPresentation as _Enum;
@@ -1065,9 +1057,9 @@ impl<'de> serde::de::DeserializeSeed<'de>
                             let _context: &mut DeserializationContext<
                                 Box<fhirbolt_model::r5::types::CodeableConcept>,
                             > = self.0.transmute();
-                            r#presentation = Some(_Enum::CodeableConcept(
-                                map_access.next_value_seed(&mut *_context)?,
-                            ));
+                            r#presentation = Some(_Enum::CodeableConcept(tri!(
+                                map_access.next_value_seed(&mut *_context)
+                            )));
                         }
                         Field::PresentationQuantity => {
                             use fhirbolt_model::r5::resources::IngredientSubstanceStrengthPresentation as _Enum;
@@ -1079,8 +1071,9 @@ impl<'de> serde::de::DeserializeSeed<'de>
                             let _context: &mut DeserializationContext<
                                 Box<fhirbolt_model::r5::types::Quantity>,
                             > = self.0.transmute();
-                            r#presentation =
-                                Some(_Enum::Quantity(map_access.next_value_seed(&mut *_context)?));
+                            r#presentation = Some(_Enum::Quantity(tri!(
+                                map_access.next_value_seed(&mut *_context)
+                            )));
                         }
                         Field::TextPresentation => {
                             if self.0.from == crate::context::Format::Json {
@@ -1090,7 +1083,7 @@ impl<'de> serde::de::DeserializeSeed<'de>
                                         "textPresentation",
                                     ));
                                 }
-                                some.value = Some(map_access.next_value()?);
+                                some.value = Some(tri!(map_access.next_value()));
                             } else {
                                 if r#text_presentation.is_some() {
                                     return Err(serde::de::Error::duplicate_field(
@@ -1101,7 +1094,7 @@ impl<'de> serde::de::DeserializeSeed<'de>
                                     fhirbolt_model::r5::types::String,
                                 > = self.0.transmute();
                                 r#text_presentation =
-                                    Some(map_access.next_value_seed(&mut *_context)?);
+                                    Some(tri!(map_access.next_value_seed(&mut *_context)));
                             }
                         }
                         Field::TextPresentationPrimitiveElement => {
@@ -1116,7 +1109,7 @@ impl<'de> serde::de::DeserializeSeed<'de>
                                 let _context: &mut DeserializationContext<PrimitiveElementOwned> =
                                     self.0.transmute();
                                 let PrimitiveElementOwned { id, extension } =
-                                    map_access.next_value_seed(&mut *_context)?;
+                                    tri!(map_access.next_value_seed(&mut *_context));
                                 some.id = id;
                                 some.extension = extension;
                             } else {
@@ -1133,8 +1126,9 @@ impl<'de> serde::de::DeserializeSeed<'de>
                             let _context: &mut DeserializationContext<
                                 Box<fhirbolt_model::r5::types::Ratio>,
                             > = self.0.transmute();
-                            r#concentration =
-                                Some(_Enum::Ratio(map_access.next_value_seed(&mut *_context)?));
+                            r#concentration = Some(_Enum::Ratio(tri!(
+                                map_access.next_value_seed(&mut *_context)
+                            )));
                         }
                         Field::ConcentrationRatioRange => {
                             use fhirbolt_model::r5::resources::IngredientSubstanceStrengthConcentration as _Enum;
@@ -1146,9 +1140,9 @@ impl<'de> serde::de::DeserializeSeed<'de>
                             let _context: &mut DeserializationContext<
                                 Box<fhirbolt_model::r5::types::RatioRange>,
                             > = self.0.transmute();
-                            r#concentration = Some(_Enum::RatioRange(
-                                map_access.next_value_seed(&mut *_context)?,
-                            ));
+                            r#concentration = Some(_Enum::RatioRange(tri!(
+                                map_access.next_value_seed(&mut *_context)
+                            )));
                         }
                         Field::ConcentrationCodeableConcept => {
                             use fhirbolt_model::r5::resources::IngredientSubstanceStrengthConcentration as _Enum;
@@ -1160,9 +1154,9 @@ impl<'de> serde::de::DeserializeSeed<'de>
                             let _context: &mut DeserializationContext<
                                 Box<fhirbolt_model::r5::types::CodeableConcept>,
                             > = self.0.transmute();
-                            r#concentration = Some(_Enum::CodeableConcept(
-                                map_access.next_value_seed(&mut *_context)?,
-                            ));
+                            r#concentration = Some(_Enum::CodeableConcept(tri!(
+                                map_access.next_value_seed(&mut *_context)
+                            )));
                         }
                         Field::ConcentrationQuantity => {
                             use fhirbolt_model::r5::resources::IngredientSubstanceStrengthConcentration as _Enum;
@@ -1174,8 +1168,9 @@ impl<'de> serde::de::DeserializeSeed<'de>
                             let _context: &mut DeserializationContext<
                                 Box<fhirbolt_model::r5::types::Quantity>,
                             > = self.0.transmute();
-                            r#concentration =
-                                Some(_Enum::Quantity(map_access.next_value_seed(&mut *_context)?));
+                            r#concentration = Some(_Enum::Quantity(tri!(
+                                map_access.next_value_seed(&mut *_context)
+                            )));
                         }
                         Field::TextConcentration => {
                             if self.0.from == crate::context::Format::Json {
@@ -1185,7 +1180,7 @@ impl<'de> serde::de::DeserializeSeed<'de>
                                         "textConcentration",
                                     ));
                                 }
-                                some.value = Some(map_access.next_value()?);
+                                some.value = Some(tri!(map_access.next_value()));
                             } else {
                                 if r#text_concentration.is_some() {
                                     return Err(serde::de::Error::duplicate_field(
@@ -1196,7 +1191,7 @@ impl<'de> serde::de::DeserializeSeed<'de>
                                     fhirbolt_model::r5::types::String,
                                 > = self.0.transmute();
                                 r#text_concentration =
-                                    Some(map_access.next_value_seed(&mut *_context)?);
+                                    Some(tri!(map_access.next_value_seed(&mut *_context)));
                             }
                         }
                         Field::TextConcentrationPrimitiveElement => {
@@ -1211,7 +1206,7 @@ impl<'de> serde::de::DeserializeSeed<'de>
                                 let _context: &mut DeserializationContext<PrimitiveElementOwned> =
                                     self.0.transmute();
                                 let PrimitiveElementOwned { id, extension } =
-                                    map_access.next_value_seed(&mut *_context)?;
+                                    tri!(map_access.next_value_seed(&mut *_context));
                                 some.id = id;
                                 some.extension = extension;
                             } else {
@@ -1225,7 +1220,7 @@ impl<'de> serde::de::DeserializeSeed<'de>
                             let _context: &mut DeserializationContext<
                                 Box<fhirbolt_model::r5::types::CodeableConcept>,
                             > = self.0.transmute();
-                            r#basis = Some(map_access.next_value_seed(&mut *_context)?);
+                            r#basis = Some(tri!(map_access.next_value_seed(&mut *_context)));
                         }
                         Field::MeasurementPoint => {
                             if self.0.from == crate::context::Format::Json {
@@ -1235,7 +1230,7 @@ impl<'de> serde::de::DeserializeSeed<'de>
                                         "measurementPoint",
                                     ));
                                 }
-                                some.value = Some(map_access.next_value()?);
+                                some.value = Some(tri!(map_access.next_value()));
                             } else {
                                 if r#measurement_point.is_some() {
                                     return Err(serde::de::Error::duplicate_field(
@@ -1246,7 +1241,7 @@ impl<'de> serde::de::DeserializeSeed<'de>
                                     fhirbolt_model::r5::types::String,
                                 > = self.0.transmute();
                                 r#measurement_point =
-                                    Some(map_access.next_value_seed(&mut *_context)?);
+                                    Some(tri!(map_access.next_value_seed(&mut *_context)));
                             }
                         }
                         Field::MeasurementPointPrimitiveElement => {
@@ -1261,7 +1256,7 @@ impl<'de> serde::de::DeserializeSeed<'de>
                                 let _context: &mut DeserializationContext<PrimitiveElementOwned> =
                                     self.0.transmute();
                                 let PrimitiveElementOwned { id, extension } =
-                                    map_access.next_value_seed(&mut *_context)?;
+                                    tri!(map_access.next_value_seed(&mut *_context));
                                 some.id = id;
                                 some.extension = extension;
                             } else {
@@ -1276,13 +1271,13 @@ impl<'de> serde::de::DeserializeSeed<'de>
                                 let _context: &mut DeserializationContext<
                                     Vec<fhirbolt_model::r5::types::CodeableConcept>,
                                 > = self.0.transmute();
-                                r#country = Some(map_access.next_value_seed(&mut *_context)?);
+                                r#country = Some(tri!(map_access.next_value_seed(&mut *_context)));
                             } else {
                                 let vec = r#country.get_or_insert(Default::default());
                                 let _context: &mut DeserializationContext<
                                     fhirbolt_model::r5::types::CodeableConcept,
                                 > = self.0.transmute();
-                                vec.push(map_access.next_value_seed(&mut *_context)?);
+                                vec.push(tri!(map_access.next_value_seed(&mut *_context)));
                             }
                         }
                         Field::ReferenceStrength => {
@@ -1294,11 +1289,11 @@ impl<'de> serde::de::DeserializeSeed<'de>
                                 }
                                 let _context : & mut DeserializationContext < Vec < fhirbolt_model :: r5 :: resources :: IngredientSubstanceStrengthReferenceStrength >> = self . 0 . transmute () ;
                                 r#reference_strength =
-                                    Some(map_access.next_value_seed(&mut *_context)?);
+                                    Some(tri!(map_access.next_value_seed(&mut *_context)));
                             } else {
                                 let vec = r#reference_strength.get_or_insert(Default::default());
                                 let _context : & mut DeserializationContext < fhirbolt_model :: r5 :: resources :: IngredientSubstanceStrengthReferenceStrength > = self . 0 . transmute () ;
-                                vec.push(map_access.next_value_seed(&mut *_context)?);
+                                vec.push(tri!(map_access.next_value_seed(&mut *_context)));
                             }
                         }
                         Field::Unknown(key) => {
@@ -1361,7 +1356,7 @@ impl<'de> serde::de::DeserializeSeed<'de>
                 let mut values = Vec::new();
                 let _context: &mut DeserializationContext<IngredientSubstanceStrength> =
                     self.0.transmute();
-                while let Some(value) = seq.next_element_seed(&mut *_context)? {
+                while let Some(value) = tri!(seq.next_element_seed(&mut *_context)) {
                     values.push(value);
                 }
                 Ok(values)
@@ -1384,29 +1379,28 @@ impl serde::ser::Serialize for SerializationContext<&IngredientSubstance> {
                 "Ingredient.substance", field
             )))
         }
-        let mut state = serializer.serialize_map(None)?;
+        let mut state = tri!(serializer.serialize_map(None));
         if let Some(value) = self.value.r#id.as_ref() {
-            state.serialize_entry("id", value)?;
+            tri!(state.serialize_entry("id", value));
         }
         if !self.value.r#extension.is_empty() {
-            self.with_context(&self.value.r#extension, |ctx| {
-                state.serialize_entry("extension", ctx)
-            })?;
+            tri!(self.with_context(&self.value.r#extension, |ctx| state
+                .serialize_entry("extension", ctx)));
         }
         if !self.value.r#modifier_extension.is_empty() {
-            self.with_context(&self.value.r#modifier_extension, |ctx| {
-                state.serialize_entry("modifierExtension", ctx)
-            })?;
+            tri!(
+                self.with_context(&self.value.r#modifier_extension, |ctx| state
+                    .serialize_entry("modifierExtension", ctx))
+            );
         }
         if self.value.r#code.id.as_deref() == Some("$invalid") {
             return missing_field_error("code");
         } else {
-            self.with_context(&self.value.r#code, |ctx| state.serialize_entry("code", ctx))?;
+            tri!(self.with_context(&self.value.r#code, |ctx| state.serialize_entry("code", ctx)));
         }
         if !self.value.r#strength.is_empty() {
-            self.with_context(&self.value.r#strength, |ctx| {
-                state.serialize_entry("strength", ctx)
-            })?;
+            tri!(self.with_context(&self.value.r#strength, |ctx| state
+                .serialize_entry("strength", ctx)));
         }
         state.end()
     }
@@ -1425,9 +1419,9 @@ impl serde::ser::Serialize for SerializationContext<&Vec<IngredientSubstance>> {
         S: serde::ser::Serializer,
     {
         use serde::ser::SerializeSeq;
-        let mut seq_serializer = serializer.serialize_seq(Some(self.value.len()))?;
+        let mut seq_serializer = tri!(serializer.serialize_seq(Some(self.value.len())));
         for value in self.value {
-            self.with_context(value, |ctx| seq_serializer.serialize_element(ctx))?
+            tri!(self.with_context(value, |ctx| { seq_serializer.serialize_element(ctx) }))
         }
         seq_serializer.end()
     }
@@ -1477,13 +1471,13 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Ingred
                 let mut r#strength: Option<
                     Vec<fhirbolt_model::r5::resources::IngredientSubstanceStrength>,
                 > = None;
-                while let Some(map_access_key) = map_access.next_key()? {
+                while let Some(map_access_key) = tri!(map_access.next_key()) {
                     match map_access_key {
                         Field::Id => {
                             if r#id.is_some() {
                                 return Err(serde::de::Error::duplicate_field("id"));
                             }
-                            r#id = Some(map_access.next_value()?);
+                            r#id = Some(tri!(map_access.next_value()));
                         }
                         Field::Extension => {
                             if self.0.from == crate::context::Format::Json {
@@ -1493,13 +1487,14 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Ingred
                                 let _context: &mut DeserializationContext<
                                     Vec<fhirbolt_model::r5::types::Extension>,
                                 > = self.0.transmute();
-                                r#extension = Some(map_access.next_value_seed(&mut *_context)?);
+                                r#extension =
+                                    Some(tri!(map_access.next_value_seed(&mut *_context)));
                             } else {
                                 let vec = r#extension.get_or_insert(Default::default());
                                 let _context: &mut DeserializationContext<
                                     fhirbolt_model::r5::types::Extension,
                                 > = self.0.transmute();
-                                vec.push(map_access.next_value_seed(&mut *_context)?);
+                                vec.push(tri!(map_access.next_value_seed(&mut *_context)));
                             }
                         }
                         Field::ModifierExtension => {
@@ -1513,13 +1508,13 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Ingred
                                     Vec<fhirbolt_model::r5::types::Extension>,
                                 > = self.0.transmute();
                                 r#modifier_extension =
-                                    Some(map_access.next_value_seed(&mut *_context)?);
+                                    Some(tri!(map_access.next_value_seed(&mut *_context)));
                             } else {
                                 let vec = r#modifier_extension.get_or_insert(Default::default());
                                 let _context: &mut DeserializationContext<
                                     fhirbolt_model::r5::types::Extension,
                                 > = self.0.transmute();
-                                vec.push(map_access.next_value_seed(&mut *_context)?);
+                                vec.push(tri!(map_access.next_value_seed(&mut *_context)));
                             }
                         }
                         Field::Code => {
@@ -1529,7 +1524,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Ingred
                             let _context: &mut DeserializationContext<
                                 Box<fhirbolt_model::r5::types::CodeableReference>,
                             > = self.0.transmute();
-                            r#code = Some(map_access.next_value_seed(&mut *_context)?);
+                            r#code = Some(tri!(map_access.next_value_seed(&mut *_context)));
                         }
                         Field::Strength => {
                             if self.0.from == crate::context::Format::Json {
@@ -1539,13 +1534,13 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Ingred
                                 let _context: &mut DeserializationContext<
                                     Vec<fhirbolt_model::r5::resources::IngredientSubstanceStrength>,
                                 > = self.0.transmute();
-                                r#strength = Some(map_access.next_value_seed(&mut *_context)?);
+                                r#strength = Some(tri!(map_access.next_value_seed(&mut *_context)));
                             } else {
                                 let vec = r#strength.get_or_insert(Default::default());
                                 let _context: &mut DeserializationContext<
                                     fhirbolt_model::r5::resources::IngredientSubstanceStrength,
                                 > = self.0.transmute();
-                                vec.push(map_access.next_value_seed(&mut *_context)?);
+                                vec.push(tri!(map_access.next_value_seed(&mut *_context)));
                             }
                         }
                         Field::Unknown(key) => {
@@ -1563,7 +1558,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Ingred
                     r#code: if self.0.config.mode == crate::context::de::DeserializationMode::Lax {
                         r#code.unwrap_or(Default::default())
                     } else {
-                        r#code.ok_or(serde::de::Error::missing_field("code"))?
+                        tri!(r#code.ok_or(serde::de::Error::missing_field("code")))
                     },
                     r#strength: r#strength.unwrap_or(vec![]),
                 })
@@ -1605,7 +1600,7 @@ impl<'de> serde::de::DeserializeSeed<'de>
             {
                 let mut values = Vec::new();
                 let _context: &mut DeserializationContext<IngredientSubstance> = self.0.transmute();
-                while let Some(value) = seq.next_element_seed(&mut *_context)? {
+                while let Some(value) = tri!(seq.next_element_seed(&mut *_context)) {
                     values.push(value);
                 }
                 Ok(values)
@@ -1631,12 +1626,12 @@ impl serde::ser::Serialize for SerializationContext<&Ingredient> {
                 "Ingredient", field
             )))
         }
-        let mut state = serializer.serialize_map(None)?;
-        state.serialize_entry("resourceType", "Ingredient")?;
+        let mut state = tri!(serializer.serialize_map(None));
+        tri!(state.serialize_entry("resourceType", "Ingredient"));
         if self.output == crate::context::Format::Json {
             if let Some(some) = self.value.r#id.as_ref() {
                 if let Some(some) = some.value.as_ref().map(Ok) {
-                    state.serialize_entry("id", &some?)?;
+                    tri!(state.serialize_entry("id", &some?));
                 }
                 if some.id.is_some() || !some.extension.is_empty() {
                     use super::super::serde_helpers::PrimitiveElement;
@@ -1644,19 +1639,20 @@ impl serde::ser::Serialize for SerializationContext<&Ingredient> {
                         id: some.id.as_ref(),
                         extension: &some.extension,
                     };
-                    self.with_context(&primitive_element, |ctx| state.serialize_entry("_id", ctx))?;
+                    tri!(self
+                        .with_context(&primitive_element, |ctx| state.serialize_entry("_id", ctx)));
                 }
             }
         } else if let Some(some) = self.value.r#id.as_ref() {
-            self.with_context(some, |ctx| state.serialize_entry("id", ctx))?;
+            tri!(self.with_context(some, |ctx| state.serialize_entry("id", ctx)));
         }
         if let Some(some) = self.value.r#meta.as_ref() {
-            self.with_context(some, |ctx| state.serialize_entry("meta", ctx))?;
+            tri!(self.with_context(some, |ctx| state.serialize_entry("meta", ctx)));
         }
         if self.output == crate::context::Format::Json {
             if let Some(some) = self.value.r#implicit_rules.as_ref() {
                 if let Some(some) = some.value.as_ref().map(Ok) {
-                    state.serialize_entry("implicitRules", &some?)?;
+                    tri!(state.serialize_entry("implicitRules", &some?));
                 }
                 if some.id.is_some() || !some.extension.is_empty() {
                     use super::super::serde_helpers::PrimitiveElement;
@@ -1664,18 +1660,17 @@ impl serde::ser::Serialize for SerializationContext<&Ingredient> {
                         id: some.id.as_ref(),
                         extension: &some.extension,
                     };
-                    self.with_context(&primitive_element, |ctx| {
-                        state.serialize_entry("_implicitRules", ctx)
-                    })?;
+                    tri!(self.with_context(&primitive_element, |ctx| state
+                        .serialize_entry("_implicitRules", ctx)));
                 }
             }
         } else if let Some(some) = self.value.r#implicit_rules.as_ref() {
-            self.with_context(some, |ctx| state.serialize_entry("implicitRules", ctx))?;
+            tri!(self.with_context(some, |ctx| state.serialize_entry("implicitRules", ctx)));
         }
         if self.output == crate::context::Format::Json {
             if let Some(some) = self.value.r#language.as_ref() {
                 if let Some(some) = some.value.as_ref().map(Ok) {
-                    state.serialize_entry("language", &some?)?;
+                    tri!(state.serialize_entry("language", &some?));
                 }
                 if some.id.is_some() || !some.extension.is_empty() {
                     use super::super::serde_helpers::PrimitiveElement;
@@ -1683,41 +1678,39 @@ impl serde::ser::Serialize for SerializationContext<&Ingredient> {
                         id: some.id.as_ref(),
                         extension: &some.extension,
                     };
-                    self.with_context(&primitive_element, |ctx| {
-                        state.serialize_entry("_language", ctx)
-                    })?;
+                    tri!(self.with_context(&primitive_element, |ctx| state
+                        .serialize_entry("_language", ctx)));
                 }
             }
         } else if let Some(some) = self.value.r#language.as_ref() {
-            self.with_context(some, |ctx| state.serialize_entry("language", ctx))?;
+            tri!(self.with_context(some, |ctx| state.serialize_entry("language", ctx)));
         }
         if let Some(some) = self.value.r#text.as_ref() {
-            self.with_context(some, |ctx| state.serialize_entry("text", ctx))?;
+            tri!(self.with_context(some, |ctx| state.serialize_entry("text", ctx)));
         }
         if !self.value.r#contained.is_empty() {
-            self.with_context(&self.value.r#contained, |ctx| {
-                state.serialize_entry("contained", ctx)
-            })?;
+            tri!(self.with_context(&self.value.r#contained, |ctx| state
+                .serialize_entry("contained", ctx)));
         }
         if !self.value.r#extension.is_empty() {
-            self.with_context(&self.value.r#extension, |ctx| {
-                state.serialize_entry("extension", ctx)
-            })?;
+            tri!(self.with_context(&self.value.r#extension, |ctx| state
+                .serialize_entry("extension", ctx)));
         }
         if !self.value.r#modifier_extension.is_empty() {
-            self.with_context(&self.value.r#modifier_extension, |ctx| {
-                state.serialize_entry("modifierExtension", ctx)
-            })?;
+            tri!(
+                self.with_context(&self.value.r#modifier_extension, |ctx| state
+                    .serialize_entry("modifierExtension", ctx))
+            );
         }
         if let Some(some) = self.value.r#identifier.as_ref() {
-            self.with_context(some, |ctx| state.serialize_entry("identifier", ctx))?;
+            tri!(self.with_context(some, |ctx| state.serialize_entry("identifier", ctx)));
         }
         if self.output == crate::context::Format::Json {
             if self.value.r#status.id.as_deref() == Some("$invalid") {
                 return missing_field_error("status");
             }
             if let Some(some) = self.value.r#status.value.as_ref().map(Ok) {
-                state.serialize_entry("status", &some?)?;
+                tri!(state.serialize_entry("status", &some?));
             }
             if self.value.r#status.id.is_some() || !self.value.r#status.extension.is_empty() {
                 use super::super::serde_helpers::PrimitiveElement;
@@ -1725,37 +1718,34 @@ impl serde::ser::Serialize for SerializationContext<&Ingredient> {
                     id: self.value.r#status.id.as_ref(),
                     extension: &self.value.r#status.extension,
                 };
-                self.with_context(&primitive_element, |ctx| {
-                    state.serialize_entry("_status", ctx)
-                })?;
+                tri!(self.with_context(&primitive_element, |ctx| state
+                    .serialize_entry("_status", ctx)));
             }
         } else if self.value.r#status.id.as_deref() == Some("$invalid") {
             return missing_field_error("status");
         } else {
-            self.with_context(&self.value.r#status, |ctx| {
-                state.serialize_entry("status", ctx)
-            })?;
+            tri!(self.with_context(&self.value.r#status, |ctx| state
+                .serialize_entry("status", ctx)));
         }
         if !self.value.r#for.is_empty() {
-            self.with_context(&self.value.r#for, |ctx| state.serialize_entry("for", ctx))?;
+            tri!(self.with_context(&self.value.r#for, |ctx| state.serialize_entry("for", ctx)));
         }
         if self.value.r#role.id.as_deref() == Some("$invalid") {
             return missing_field_error("role");
         } else {
-            self.with_context(&self.value.r#role, |ctx| state.serialize_entry("role", ctx))?;
+            tri!(self.with_context(&self.value.r#role, |ctx| state.serialize_entry("role", ctx)));
         }
         if !self.value.r#function.is_empty() {
-            self.with_context(&self.value.r#function, |ctx| {
-                state.serialize_entry("function", ctx)
-            })?;
+            tri!(self.with_context(&self.value.r#function, |ctx| state
+                .serialize_entry("function", ctx)));
         }
         if let Some(some) = self.value.r#group.as_ref() {
-            self.with_context(some, |ctx| state.serialize_entry("group", ctx))?;
+            tri!(self.with_context(some, |ctx| state.serialize_entry("group", ctx)));
         }
         if self.output == crate::context::Format::Json {
             if let Some(some) = self.value.r#allergenic_indicator.as_ref() {
                 if let Some(some) = some.value.as_ref().map(Ok) {
-                    state.serialize_entry("allergenicIndicator", &some?)?;
+                    tri!(state.serialize_entry("allergenicIndicator", &some?));
                 }
                 if some.id.is_some() || !some.extension.is_empty() {
                     use super::super::serde_helpers::PrimitiveElement;
@@ -1763,20 +1753,18 @@ impl serde::ser::Serialize for SerializationContext<&Ingredient> {
                         id: some.id.as_ref(),
                         extension: &some.extension,
                     };
-                    self.with_context(&primitive_element, |ctx| {
-                        state.serialize_entry("_allergenicIndicator", ctx)
-                    })?;
+                    tri!(self.with_context(&primitive_element, |ctx| state
+                        .serialize_entry("_allergenicIndicator", ctx)));
                 }
             }
         } else if let Some(some) = self.value.r#allergenic_indicator.as_ref() {
-            self.with_context(some, |ctx| {
-                state.serialize_entry("allergenicIndicator", ctx)
-            })?;
+            tri!(self.with_context(some, |ctx| state
+                .serialize_entry("allergenicIndicator", ctx)));
         }
         if self.output == crate::context::Format::Json {
             if let Some(some) = self.value.r#comment.as_ref() {
                 if let Some(some) = some.value.as_ref().map(Ok) {
-                    state.serialize_entry("comment", &some?)?;
+                    tri!(state.serialize_entry("comment", &some?));
                 }
                 if some.id.is_some() || !some.extension.is_empty() {
                     use super::super::serde_helpers::PrimitiveElement;
@@ -1784,25 +1772,22 @@ impl serde::ser::Serialize for SerializationContext<&Ingredient> {
                         id: some.id.as_ref(),
                         extension: &some.extension,
                     };
-                    self.with_context(&primitive_element, |ctx| {
-                        state.serialize_entry("_comment", ctx)
-                    })?;
+                    tri!(self.with_context(&primitive_element, |ctx| state
+                        .serialize_entry("_comment", ctx)));
                 }
             }
         } else if let Some(some) = self.value.r#comment.as_ref() {
-            self.with_context(some, |ctx| state.serialize_entry("comment", ctx))?;
+            tri!(self.with_context(some, |ctx| state.serialize_entry("comment", ctx)));
         }
         if !self.value.r#manufacturer.is_empty() {
-            self.with_context(&self.value.r#manufacturer, |ctx| {
-                state.serialize_entry("manufacturer", ctx)
-            })?;
+            tri!(self.with_context(&self.value.r#manufacturer, |ctx| state
+                .serialize_entry("manufacturer", ctx)));
         }
         if self.value.r#substance.id.as_deref() == Some("$invalid") {
             return missing_field_error("substance");
         } else {
-            self.with_context(&self.value.r#substance, |ctx| {
-                state.serialize_entry("substance", ctx)
-            })?;
+            tri!(self.with_context(&self.value.r#substance, |ctx| state
+                .serialize_entry("substance", ctx)));
         }
         state.end()
     }
@@ -1821,9 +1806,9 @@ impl serde::ser::Serialize for SerializationContext<&Vec<Ingredient>> {
         S: serde::ser::Serializer,
     {
         use serde::ser::SerializeSeq;
-        let mut seq_serializer = serializer.serialize_seq(Some(self.value.len()))?;
+        let mut seq_serializer = tri!(serializer.serialize_seq(Some(self.value.len())));
         for value in self.value {
-            self.with_context(value, |ctx| seq_serializer.serialize_element(ctx))?
+            tri!(self.with_context(value, |ctx| { seq_serializer.serialize_element(ctx) }))
         }
         seq_serializer.end()
     }
@@ -1955,10 +1940,10 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Ingred
                 > = None;
                 let mut r#substance: Option<fhirbolt_model::r5::resources::IngredientSubstance> =
                     None;
-                while let Some(map_access_key) = map_access.next_key()? {
+                while let Some(map_access_key) = tri!(map_access.next_key()) {
                     match map_access_key {
                         Field::ResourceType => {
-                            let value: std::borrow::Cow<str> = map_access.next_value()?;
+                            let value: std::borrow::Cow<str> = tri!(map_access.next_value());
                             if value != "Ingredient" {
                                 return Err(serde::de::Error::invalid_value(
                                     serde::de::Unexpected::Str(&value),
@@ -1972,7 +1957,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Ingred
                                 if some.value.is_some() {
                                     return Err(serde::de::Error::duplicate_field("id"));
                                 }
-                                some.value = Some(map_access.next_value()?);
+                                some.value = Some(tri!(map_access.next_value()));
                             } else {
                                 if r#id.is_some() {
                                     return Err(serde::de::Error::duplicate_field("id"));
@@ -1980,7 +1965,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Ingred
                                 let _context: &mut DeserializationContext<
                                     Box<fhirbolt_model::r5::types::Id>,
                                 > = self.0.transmute();
-                                r#id = Some(map_access.next_value_seed(&mut *_context)?);
+                                r#id = Some(tri!(map_access.next_value_seed(&mut *_context)));
                             }
                         }
                         Field::IdPrimitiveElement => {
@@ -1993,7 +1978,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Ingred
                                 let _context: &mut DeserializationContext<PrimitiveElementOwned> =
                                     self.0.transmute();
                                 let PrimitiveElementOwned { id, extension } =
-                                    map_access.next_value_seed(&mut *_context)?;
+                                    tri!(map_access.next_value_seed(&mut *_context));
                                 some.id = id;
                                 some.extension = extension;
                             } else {
@@ -2007,7 +1992,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Ingred
                             let _context: &mut DeserializationContext<
                                 Box<fhirbolt_model::r5::types::Meta>,
                             > = self.0.transmute();
-                            r#meta = Some(map_access.next_value_seed(&mut *_context)?);
+                            r#meta = Some(tri!(map_access.next_value_seed(&mut *_context)));
                         }
                         Field::ImplicitRules => {
                             if self.0.from == crate::context::Format::Json {
@@ -2015,7 +2000,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Ingred
                                 if some.value.is_some() {
                                     return Err(serde::de::Error::duplicate_field("implicitRules"));
                                 }
-                                some.value = Some(map_access.next_value()?);
+                                some.value = Some(tri!(map_access.next_value()));
                             } else {
                                 if r#implicit_rules.is_some() {
                                     return Err(serde::de::Error::duplicate_field("implicitRules"));
@@ -2024,7 +2009,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Ingred
                                     fhirbolt_model::r5::types::Uri,
                                 > = self.0.transmute();
                                 r#implicit_rules =
-                                    Some(map_access.next_value_seed(&mut *_context)?);
+                                    Some(tri!(map_access.next_value_seed(&mut *_context)));
                             }
                         }
                         Field::ImplicitRulesPrimitiveElement => {
@@ -2039,7 +2024,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Ingred
                                 let _context: &mut DeserializationContext<PrimitiveElementOwned> =
                                     self.0.transmute();
                                 let PrimitiveElementOwned { id, extension } =
-                                    map_access.next_value_seed(&mut *_context)?;
+                                    tri!(map_access.next_value_seed(&mut *_context));
                                 some.id = id;
                                 some.extension = extension;
                             } else {
@@ -2052,7 +2037,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Ingred
                                 if some.value.is_some() {
                                     return Err(serde::de::Error::duplicate_field("language"));
                                 }
-                                some.value = Some(map_access.next_value()?);
+                                some.value = Some(tri!(map_access.next_value()));
                             } else {
                                 if r#language.is_some() {
                                     return Err(serde::de::Error::duplicate_field("language"));
@@ -2060,7 +2045,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Ingred
                                 let _context: &mut DeserializationContext<
                                     fhirbolt_model::r5::types::Code,
                                 > = self.0.transmute();
-                                r#language = Some(map_access.next_value_seed(&mut *_context)?);
+                                r#language = Some(tri!(map_access.next_value_seed(&mut *_context)));
                             }
                         }
                         Field::LanguagePrimitiveElement => {
@@ -2073,7 +2058,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Ingred
                                 let _context: &mut DeserializationContext<PrimitiveElementOwned> =
                                     self.0.transmute();
                                 let PrimitiveElementOwned { id, extension } =
-                                    map_access.next_value_seed(&mut *_context)?;
+                                    tri!(map_access.next_value_seed(&mut *_context));
                                 some.id = id;
                                 some.extension = extension;
                             } else {
@@ -2087,7 +2072,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Ingred
                             let _context: &mut DeserializationContext<
                                 Box<fhirbolt_model::r5::types::Narrative>,
                             > = self.0.transmute();
-                            r#text = Some(map_access.next_value_seed(&mut *_context)?);
+                            r#text = Some(tri!(map_access.next_value_seed(&mut *_context)));
                         }
                         Field::Contained => {
                             if self.0.from == crate::context::Format::Json {
@@ -2097,13 +2082,14 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Ingred
                                 let _context: &mut DeserializationContext<
                                     Vec<fhirbolt_model::r5::Resource>,
                                 > = self.0.transmute();
-                                r#contained = Some(map_access.next_value_seed(&mut *_context)?);
+                                r#contained =
+                                    Some(tri!(map_access.next_value_seed(&mut *_context)));
                             } else {
                                 let vec = r#contained.get_or_insert(Default::default());
                                 let _context: &mut DeserializationContext<
                                     fhirbolt_model::r5::Resource,
                                 > = self.0.transmute();
-                                vec.push(map_access.next_value_seed(&mut *_context)?);
+                                vec.push(tri!(map_access.next_value_seed(&mut *_context)));
                             }
                         }
                         Field::Extension => {
@@ -2114,13 +2100,14 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Ingred
                                 let _context: &mut DeserializationContext<
                                     Vec<fhirbolt_model::r5::types::Extension>,
                                 > = self.0.transmute();
-                                r#extension = Some(map_access.next_value_seed(&mut *_context)?);
+                                r#extension =
+                                    Some(tri!(map_access.next_value_seed(&mut *_context)));
                             } else {
                                 let vec = r#extension.get_or_insert(Default::default());
                                 let _context: &mut DeserializationContext<
                                     fhirbolt_model::r5::types::Extension,
                                 > = self.0.transmute();
-                                vec.push(map_access.next_value_seed(&mut *_context)?);
+                                vec.push(tri!(map_access.next_value_seed(&mut *_context)));
                             }
                         }
                         Field::ModifierExtension => {
@@ -2134,13 +2121,13 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Ingred
                                     Vec<fhirbolt_model::r5::types::Extension>,
                                 > = self.0.transmute();
                                 r#modifier_extension =
-                                    Some(map_access.next_value_seed(&mut *_context)?);
+                                    Some(tri!(map_access.next_value_seed(&mut *_context)));
                             } else {
                                 let vec = r#modifier_extension.get_or_insert(Default::default());
                                 let _context: &mut DeserializationContext<
                                     fhirbolt_model::r5::types::Extension,
                                 > = self.0.transmute();
-                                vec.push(map_access.next_value_seed(&mut *_context)?);
+                                vec.push(tri!(map_access.next_value_seed(&mut *_context)));
                             }
                         }
                         Field::Identifier => {
@@ -2150,7 +2137,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Ingred
                             let _context: &mut DeserializationContext<
                                 Box<fhirbolt_model::r5::types::Identifier>,
                             > = self.0.transmute();
-                            r#identifier = Some(map_access.next_value_seed(&mut *_context)?);
+                            r#identifier = Some(tri!(map_access.next_value_seed(&mut *_context)));
                         }
                         Field::Status => {
                             if self.0.from == crate::context::Format::Json {
@@ -2158,7 +2145,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Ingred
                                 if some.value.is_some() {
                                     return Err(serde::de::Error::duplicate_field("status"));
                                 }
-                                some.value = Some(map_access.next_value()?);
+                                some.value = Some(tri!(map_access.next_value()));
                             } else {
                                 if r#status.is_some() {
                                     return Err(serde::de::Error::duplicate_field("status"));
@@ -2166,7 +2153,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Ingred
                                 let _context: &mut DeserializationContext<
                                     fhirbolt_model::r5::types::Code,
                                 > = self.0.transmute();
-                                r#status = Some(map_access.next_value_seed(&mut *_context)?);
+                                r#status = Some(tri!(map_access.next_value_seed(&mut *_context)));
                             }
                         }
                         Field::StatusPrimitiveElement => {
@@ -2179,7 +2166,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Ingred
                                 let _context: &mut DeserializationContext<PrimitiveElementOwned> =
                                     self.0.transmute();
                                 let PrimitiveElementOwned { id, extension } =
-                                    map_access.next_value_seed(&mut *_context)?;
+                                    tri!(map_access.next_value_seed(&mut *_context));
                                 some.id = id;
                                 some.extension = extension;
                             } else {
@@ -2194,13 +2181,13 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Ingred
                                 let _context: &mut DeserializationContext<
                                     Vec<fhirbolt_model::r5::types::Reference>,
                                 > = self.0.transmute();
-                                r#for = Some(map_access.next_value_seed(&mut *_context)?);
+                                r#for = Some(tri!(map_access.next_value_seed(&mut *_context)));
                             } else {
                                 let vec = r#for.get_or_insert(Default::default());
                                 let _context: &mut DeserializationContext<
                                     fhirbolt_model::r5::types::Reference,
                                 > = self.0.transmute();
-                                vec.push(map_access.next_value_seed(&mut *_context)?);
+                                vec.push(tri!(map_access.next_value_seed(&mut *_context)));
                             }
                         }
                         Field::Role => {
@@ -2210,7 +2197,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Ingred
                             let _context: &mut DeserializationContext<
                                 Box<fhirbolt_model::r5::types::CodeableConcept>,
                             > = self.0.transmute();
-                            r#role = Some(map_access.next_value_seed(&mut *_context)?);
+                            r#role = Some(tri!(map_access.next_value_seed(&mut *_context)));
                         }
                         Field::Function => {
                             if self.0.from == crate::context::Format::Json {
@@ -2220,13 +2207,13 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Ingred
                                 let _context: &mut DeserializationContext<
                                     Vec<fhirbolt_model::r5::types::CodeableConcept>,
                                 > = self.0.transmute();
-                                r#function = Some(map_access.next_value_seed(&mut *_context)?);
+                                r#function = Some(tri!(map_access.next_value_seed(&mut *_context)));
                             } else {
                                 let vec = r#function.get_or_insert(Default::default());
                                 let _context: &mut DeserializationContext<
                                     fhirbolt_model::r5::types::CodeableConcept,
                                 > = self.0.transmute();
-                                vec.push(map_access.next_value_seed(&mut *_context)?);
+                                vec.push(tri!(map_access.next_value_seed(&mut *_context)));
                             }
                         }
                         Field::Group => {
@@ -2236,7 +2223,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Ingred
                             let _context: &mut DeserializationContext<
                                 Box<fhirbolt_model::r5::types::CodeableConcept>,
                             > = self.0.transmute();
-                            r#group = Some(map_access.next_value_seed(&mut *_context)?);
+                            r#group = Some(tri!(map_access.next_value_seed(&mut *_context)));
                         }
                         Field::AllergenicIndicator => {
                             if self.0.from == crate::context::Format::Json {
@@ -2246,7 +2233,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Ingred
                                         "allergenicIndicator",
                                     ));
                                 }
-                                some.value = Some(map_access.next_value()?);
+                                some.value = Some(tri!(map_access.next_value()));
                             } else {
                                 if r#allergenic_indicator.is_some() {
                                     return Err(serde::de::Error::duplicate_field(
@@ -2257,7 +2244,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Ingred
                                     fhirbolt_model::r5::types::Boolean,
                                 > = self.0.transmute();
                                 r#allergenic_indicator =
-                                    Some(map_access.next_value_seed(&mut *_context)?);
+                                    Some(tri!(map_access.next_value_seed(&mut *_context)));
                             }
                         }
                         Field::AllergenicIndicatorPrimitiveElement => {
@@ -2272,7 +2259,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Ingred
                                 let _context: &mut DeserializationContext<PrimitiveElementOwned> =
                                     self.0.transmute();
                                 let PrimitiveElementOwned { id, extension } =
-                                    map_access.next_value_seed(&mut *_context)?;
+                                    tri!(map_access.next_value_seed(&mut *_context));
                                 some.id = id;
                                 some.extension = extension;
                             } else {
@@ -2285,7 +2272,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Ingred
                                 if some.value.is_some() {
                                     return Err(serde::de::Error::duplicate_field("comment"));
                                 }
-                                some.value = Some(map_access.next_value()?);
+                                some.value = Some(tri!(map_access.next_value()));
                             } else {
                                 if r#comment.is_some() {
                                     return Err(serde::de::Error::duplicate_field("comment"));
@@ -2293,7 +2280,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Ingred
                                 let _context: &mut DeserializationContext<
                                     fhirbolt_model::r5::types::Markdown,
                                 > = self.0.transmute();
-                                r#comment = Some(map_access.next_value_seed(&mut *_context)?);
+                                r#comment = Some(tri!(map_access.next_value_seed(&mut *_context)));
                             }
                         }
                         Field::CommentPrimitiveElement => {
@@ -2306,7 +2293,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Ingred
                                 let _context: &mut DeserializationContext<PrimitiveElementOwned> =
                                     self.0.transmute();
                                 let PrimitiveElementOwned { id, extension } =
-                                    map_access.next_value_seed(&mut *_context)?;
+                                    tri!(map_access.next_value_seed(&mut *_context));
                                 some.id = id;
                                 some.extension = extension;
                             } else {
@@ -2321,13 +2308,14 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Ingred
                                 let _context: &mut DeserializationContext<
                                     Vec<fhirbolt_model::r5::resources::IngredientManufacturer>,
                                 > = self.0.transmute();
-                                r#manufacturer = Some(map_access.next_value_seed(&mut *_context)?);
+                                r#manufacturer =
+                                    Some(tri!(map_access.next_value_seed(&mut *_context)));
                             } else {
                                 let vec = r#manufacturer.get_or_insert(Default::default());
                                 let _context: &mut DeserializationContext<
                                     fhirbolt_model::r5::resources::IngredientManufacturer,
                                 > = self.0.transmute();
-                                vec.push(map_access.next_value_seed(&mut *_context)?);
+                                vec.push(tri!(map_access.next_value_seed(&mut *_context)));
                             }
                         }
                         Field::Substance => {
@@ -2337,7 +2325,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Ingred
                             let _context: &mut DeserializationContext<
                                 fhirbolt_model::r5::resources::IngredientSubstance,
                             > = self.0.transmute();
-                            r#substance = Some(map_access.next_value_seed(&mut *_context)?);
+                            r#substance = Some(tri!(map_access.next_value_seed(&mut *_context)));
                         }
                         Field::Unknown(key) => {
                             if self.0.config.mode == crate::context::de::DeserializationMode::Strict
@@ -2361,13 +2349,13 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Ingred
                     {
                         r#status.unwrap_or(Default::default())
                     } else {
-                        r#status.ok_or(serde::de::Error::missing_field("status"))?
+                        tri!(r#status.ok_or(serde::de::Error::missing_field("status")))
                     },
                     r#for: r#for.unwrap_or(vec![]),
                     r#role: if self.0.config.mode == crate::context::de::DeserializationMode::Lax {
                         r#role.unwrap_or(Default::default())
                     } else {
-                        r#role.ok_or(serde::de::Error::missing_field("role"))?
+                        tri!(r#role.ok_or(serde::de::Error::missing_field("role")))
                     },
                     r#function: r#function.unwrap_or(vec![]),
                     r#group,
@@ -2379,7 +2367,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Ingred
                     {
                         r#substance.unwrap_or(Default::default())
                     } else {
-                        r#substance.ok_or(serde::de::Error::missing_field("substance"))?
+                        tri!(r#substance.ok_or(serde::de::Error::missing_field("substance")))
                     },
                 })
             }
@@ -2416,7 +2404,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Vec<In
             {
                 let mut values = Vec::new();
                 let _context: &mut DeserializationContext<Ingredient> = self.0.transmute();
-                while let Some(value) = seq.next_element_seed(&mut *_context)? {
+                while let Some(value) = tri!(seq.next_element_seed(&mut *_context)) {
                     values.push(value);
                 }
                 Ok(values)

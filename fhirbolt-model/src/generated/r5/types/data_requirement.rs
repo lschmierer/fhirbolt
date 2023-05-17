@@ -1,4 +1,4 @@
-// Generated on 2023-05-15 by fhirbolt-codegen v0.8.0
+// Generated on 2023-05-17 by fhirbolt-codegen v0.9.0
 #[doc = "The intended subjects of the data requirement. If this element is not provided, a Patient subject is assumed."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum DataRequirementSubject {

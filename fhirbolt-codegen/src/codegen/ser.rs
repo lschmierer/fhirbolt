@@ -18,7 +18,7 @@ pub fn implement_serialize(
 
     let serialize_resource_type_tokens =
         if let Some(resource_name) = r#struct.resource_name.as_ref() {
-            quote! { state.serialize_entry("resourceType", #resource_name)?; }
+            quote! { tri!(state.serialize_entry("resourceType", #resource_name)); }
         } else {
             quote!()
         };
@@ -72,7 +72,7 @@ pub fn implement_serialize(
                     Err(E::custom(format!("missing required field `{}.{}`", #path, field)))
                 }
 
-                let mut state = serializer.serialize_map(None)?;
+                let mut state = tri!(serializer.serialize_map(None));
                 #serialize_resource_type_tokens
 
                 #(
@@ -99,12 +99,12 @@ pub fn implement_serialize(
             {
                 use serde::ser::SerializeSeq;
 
-                let mut seq_serializer = serializer.serialize_seq(Some(self.value.len()))?;
+                let mut seq_serializer = tri!(serializer.serialize_seq(Some(self.value.len())));
 
                 for value in self.value {
-                    self.with_context(value, |ctx| {
+                    tri!(self.with_context(value, |ctx| {
                         seq_serializer.serialize_element(ctx)
-                    })?
+                    }))
                 }
 
                 seq_serializer.end()
@@ -146,12 +146,12 @@ pub fn implement_serialize_resource_enum(resource_modules: &[RustFhirModule]) ->
             {
                 use serde::ser::SerializeSeq;
 
-                let mut seq_serializer = serializer.serialize_seq(Some(self.value.len()))?;
+                let mut seq_serializer = tri!(serializer.serialize_seq(Some(self.value.len())));
 
                 for value in self.value {
-                    self.with_context(value, |ctx| {
+                    tri!(self.with_context(value, |ctx| {
                         seq_serializer.serialize_element(ctx)
-                    })?
+                    }))
                 }
 
                 seq_serializer.end()
@@ -258,7 +258,7 @@ fn serialize_enum_variant(
         quote! {
             if self.output == crate::context::Format::Json {
                 if let Some(some) = value.value.as_ref().map(#map_intermediate_type_tokens) {
-                    state.serialize_entry(#fhir_name, &some?)?;
+                    tri!(state.serialize_entry(#fhir_name, &some?));
                 }
 
                 if value.id.is_some() || !value.extension.is_empty() {
@@ -269,15 +269,15 @@ fn serialize_enum_variant(
                         extension: &value.extension,
                     };
 
-                    self.with_context(&primitive_element, |ctx| state.serialize_entry(#fhir_primitive_element_name, ctx))?;
+                    tri!(self.with_context(&primitive_element, |ctx| state.serialize_entry(#fhir_primitive_element_name, ctx)));
                 }
             } else {
-                self.with_context(value, |ctx| state.serialize_entry(#fhir_name, ctx))?;
+                tri!(self.with_context(value, |ctx| state.serialize_entry(#fhir_name, ctx)));
             }
         }
     } else {
         quote! {
-            self.with_context(value, |ctx| state.serialize_entry(#fhir_name, ctx))?;
+            tri!(self.with_context(value, |ctx| state.serialize_entry(#fhir_name, ctx)));
         }
     };
 
@@ -296,29 +296,29 @@ fn serialize_primitive_value(field: &RustFhirStructField, is_decimal: bool) -> T
         quote! {
             if let Some(value) = self.value.value.as_ref() {
                 if self.output == crate::context::Format::Json {
-                    let _value = value
+                    let _value = tri!(value
                         .parse::<serde_json::Number>()
-                        .map_err(|_| serde::ser::Error::custom("error serializing decimal"))?;
-                    state.serialize_entry("value", &_value)?;
+                        .map_err(|_| serde::ser::Error::custom("error serializing decimal")));
+                    tri!(state.serialize_entry("value", &_value));
                 } else if self.output == crate::context::Format::InternalElement {
                     let _value = crate::decimal::Decimal {
                         d: value,
                     };
-                    state.serialize_entry("value", &_value)?;
+                    tri!(state.serialize_entry("value", &_value));
                 } else {
-                    state.serialize_entry("value", value)?;
+                    tri!(state.serialize_entry("value", value));
                 }
             }
         }
     } else if field.optional {
         quote! {
             if let Some(value) = self.value.#field_name_ident.as_ref() {
-                state.serialize_entry(#fhir_name, value)?;
+                tri!(state.serialize_entry(#fhir_name, value));
             }
         }
     } else {
         quote! {
-            state.serialize_entry(#fhir_name, &self.value.#field_name_ident)?;
+            tri!(state.serialize_entry(#fhir_name, &self.value.#field_name_ident));
         }
     }
 }
@@ -361,14 +361,14 @@ fn serialize_primitive_json(field: &RustFhirStructField) -> TokenStream {
     if field.multiple {
         quote! {
             if !self.value.#field_name_ident.is_empty() {
-                let values = self.value.#field_name_ident
+                let values = tri!(self.value.#field_name_ident
                     .iter()
                     .map(|v| &v.value)
                     .map(|v| v.as_ref().map(#map_intermediate_type_tokens).transpose())
-                    .collect::<Result<Vec<_>, _>>()?;
+                    .collect::<Result<Vec<_>, _>>());
 
                 if values.iter().any(|v| v.is_some()) {
-                    state.serialize_entry(#fhir_name, &values)?;
+                    tri!(state.serialize_entry(#fhir_name, &values));
                 }
 
                 let requires_elements = self.value.#field_name_ident
@@ -390,7 +390,7 @@ fn serialize_primitive_json(field: &RustFhirStructField) -> TokenStream {
                             })
                         .collect();
 
-                    self.with_context(&primitive_elements, |ctx| state.serialize_entry(#primitive_element_name, ctx))?;
+                    tri!(self.with_context(&primitive_elements, |ctx| state.serialize_entry(#primitive_element_name, ctx)));
                 }
             }
         }
@@ -398,7 +398,7 @@ fn serialize_primitive_json(field: &RustFhirStructField) -> TokenStream {
         quote! {
             if let Some(some) = self.value.#field_name_ident.as_ref() {
                 if let Some(some) = some.value.as_ref().map(#map_intermediate_type_tokens) {
-                    state.serialize_entry(#fhir_name, &some?)?;
+                    tri!(state.serialize_entry(#fhir_name, &some?));
                 }
 
                 if some.id.is_some() || !some.extension.is_empty() {
@@ -409,7 +409,7 @@ fn serialize_primitive_json(field: &RustFhirStructField) -> TokenStream {
                         extension: &some.extension,
                     };
 
-                    self.with_context(&primitive_element, |ctx| state.serialize_entry(#primitive_element_name, ctx))?;
+                    tri!(self.with_context(&primitive_element, |ctx| state.serialize_entry(#primitive_element_name, ctx)));
                 }
 
             }
@@ -418,11 +418,11 @@ fn serialize_primitive_json(field: &RustFhirStructField) -> TokenStream {
         let serialize_value_tokens = match field.r#type.name.as_str() {
             // xhtml is the only FHIR primtive where value is not optional
             XHTML_TYPE => quote! {
-                state.serialize_entry(#fhir_name, &self.value.#field_name_ident.value)?;
+                tri!(state.serialize_entry(#fhir_name, &self.value.#field_name_ident.value));
             },
             _ => quote! {
                 if let Some(some) = self.value.#field_name_ident.value.as_ref().map(#map_intermediate_type_tokens) {
-                    state.serialize_entry(#fhir_name, &some?)?;
+                    tri!(state.serialize_entry(#fhir_name, &some?));
                 }
             },
         };
@@ -441,7 +441,7 @@ fn serialize_primitive_json(field: &RustFhirStructField) -> TokenStream {
                     extension: #extension_reference_tokens,
                 };
 
-                self.with_context(&primitive_element, |ctx| state.serialize_entry(#primitive_element_name, ctx))?;
+                tri!(self.with_context(&primitive_element, |ctx| state.serialize_entry(#primitive_element_name, ctx)));
             }
         }
     }
@@ -454,13 +454,13 @@ fn serialize_element(field: &RustFhirStructField) -> TokenStream {
     if field.multiple {
         quote! {
             if !self.value.#field_name_ident.is_empty() {
-                self.with_context(&self.value.#field_name_ident, |ctx| state.serialize_entry(#fhir_name, ctx))?;
+                tri!(self.with_context(&self.value.#field_name_ident, |ctx| state.serialize_entry(#fhir_name, ctx)));
             }
         }
     } else if field.optional {
         quote! {
             if let Some(some) = self.value.#field_name_ident.as_ref() {
-                self.with_context(some, |ctx| state.serialize_entry(#fhir_name, ctx))?;
+                tri!(self.with_context(some, |ctx| state.serialize_entry(#fhir_name, ctx)));
             }
         }
     } else {
@@ -468,7 +468,7 @@ fn serialize_element(field: &RustFhirStructField) -> TokenStream {
             if self.value.#field_name_ident.id.as_deref() == Some("$invalid") {
                 return missing_field_error(#fhir_name)
             } else {
-                self.with_context(&self.value.#field_name_ident, |ctx| state.serialize_entry(#fhir_name, ctx))?;
+                tri!(self.with_context(&self.value.#field_name_ident, |ctx| state.serialize_entry(#fhir_name, ctx)));
             }
         }
     }

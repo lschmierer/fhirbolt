@@ -24,14 +24,14 @@ pub fn generate_serde_helpers(release: &str) -> SourceFile {
                 {
                     use serde::ser::SerializeMap;
 
-                    let mut state = serializer.serialize_map(None)?;
+                    let mut state = tri!(serializer.serialize_map(None));
 
                     if let Some(id) = self.value.id {
-                        state.serialize_entry("id", id)?;
+                        tri!(state.serialize_entry("id", id));
                     }
 
                     if !self.value.extension.is_empty() {
-                        self.with_context(self.value.extension, |ctx| state.serialize_entry("extension", ctx))?;
+                        tri!(self.with_context(self.value.extension, |ctx| state.serialize_entry("extension", ctx)));
                     }
 
                     state.end()
@@ -58,12 +58,12 @@ pub fn generate_serde_helpers(release: &str) -> SourceFile {
                 {
                     use serde::ser::SerializeSeq;
 
-                    let mut seq_serializer = serializer.serialize_seq(Some(self.value.len()))?;
+                    let mut seq_serializer = tri!(serializer.serialize_seq(Some(self.value.len())));
 
                     for value in self.value {
-                        self.with_context(value.as_ref(), |ctx| {
+                        tri!(self.with_context(value.as_ref(), |ctx| {
                             seq_serializer.serialize_element(ctx)
-                        })?
+                        }))
                     }
 
                     seq_serializer.end()
@@ -108,24 +108,24 @@ pub fn generate_serde_helpers(release: &str) -> SourceFile {
                             let mut r#id: Option<std::string::String> = None;
                             let mut r#extension: Option<Vec<#namespace::types::Extension>> = None;
 
-                            while let Some(map_access_key) = map_access.next_key()? {
+                            while let Some(map_access_key) = tri!(map_access.next_key()) {
                                 match map_access_key {
                                     Field::Id => {
                                         if r#id.is_some() {
                                             return Err(serde::de::Error::duplicate_field("id"));
                                         }
-                                        r#id = Some(map_access.next_value()?);
+                                        r#id = Some(tri!(map_access.next_value()));
                                     }
                                     Field::Extension => {
                                         if r#extension.is_some() {
                                             return Err(serde::de::Error::duplicate_field("extension"));
                                         }
                                         r#extension = Some(
-                                            map_access.next_value_seed(
+                                            tri!(map_access.next_value_seed(
                                                 self.0
                                                     .transmute::<Vec<#namespace::types::Extension>>(
                                                     ),
-                                            )?,
+                                            )),
                                         );
                                     }
                                     Field::Unknown(key) => {
@@ -209,7 +209,7 @@ pub fn generate_serde_helpers(release: &str) -> SourceFile {
                         {
                             let mut values = Vec::new();
 
-                            while let Some(value) = seq.next_element_seed(self.0.transmute::<Option<PrimitiveElementOwned>>())? {
+                            while let Some(value) = tri!(seq.next_element_seed(self.0.transmute::<Option<PrimitiveElementOwned>>())) {
                                 values.push(value);
                             }
 

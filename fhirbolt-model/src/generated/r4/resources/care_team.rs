@@ -1,4 +1,4 @@
-// Generated on 2023-05-15 by fhirbolt-codegen v0.8.0
+// Generated on 2023-05-17 by fhirbolt-codegen v0.9.0
 #[doc = "Identifies all people and organizations who are expected to be involved in the care team."]
 #[derive(Debug, Clone, PartialEq)]
 pub struct CareTeamParticipant {

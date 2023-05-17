@@ -1,4 +1,4 @@
-// Generated on 2023-05-15 by fhirbolt-codegen v0.8.0
+// Generated on 2023-05-17 by fhirbolt-codegen v0.9.0
 #[doc = "The FHIR query based rules that the server should use to determine when to trigger a notification for this subscription topic."]
 #[derive(Debug, Clone, PartialEq)]
 pub struct SubscriptionTopicResourceTriggerQueryCriteria {

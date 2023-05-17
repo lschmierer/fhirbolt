@@ -74,10 +74,10 @@ impl QuickXmlEventMapper {
             QuickXmlEvent::Start(start) => {
                 if self.in_div() {
                     self.map_start_in_div(reader, start)
-                } else if self.should_enter_div(reader, &start)? {
+                } else if tri!(self.should_enter_div(reader, &start)) {
                     self.map_start_enter_div(reader, start)
                 } else {
-                    let element = self.map_start_element(reader, start, FHIR_NAMESPACE)?;
+                    let element = tri!(self.map_start_element(reader, start, FHIR_NAMESPACE));
                     Ok(Some(Event::ElementStart(element)))
                 }
             }
@@ -92,7 +92,7 @@ impl QuickXmlEventMapper {
                 if self.in_div() {
                     self.map_empty_in_div(reader, start)
                 } else {
-                    let element = self.map_start_element(reader, start, FHIR_NAMESPACE)?;
+                    let element = tri!(self.map_start_element(reader, start, FHIR_NAMESPACE));
                     Ok(Some(Event::EmptyElement(element)))
                 }
             }
@@ -149,13 +149,13 @@ impl QuickXmlEventMapper {
         start: BytesStart,
         expected_namespace: &str,
     ) -> Result<Element> {
-        let local_name = resolve_element(reader, start.name(), expected_namespace)?;
+        let local_name = tri!(resolve_element(reader, start.name(), expected_namespace));
 
         let mut element = Element::new(str::from_utf8(local_name.as_ref())?.to_owned());
 
         for attr in start.attributes() {
             let attr = attr?;
-            let attr_local_name = resolve_attribute(reader, attr.key, expected_namespace)?;
+            let attr_local_name = tri!(resolve_attribute(reader, attr.key, expected_namespace));
 
             match attr_local_name.as_ref() {
                 b"id" => element.id = Some(attr.unescape_value()?.to_string()),
@@ -173,7 +173,7 @@ impl QuickXmlEventMapper {
         reader: &NsReader<R>,
         start: BytesStart,
     ) -> Result<Option<Event>> {
-        let local_name = resolve_element(reader, start.name(), XHTML_NAMESPACE)?;
+        let local_name = tri!(resolve_element(reader, start.name(), XHTML_NAMESPACE));
 
         if local_name.as_ref() == b"div" {
             self.nested_div_count += 1;
@@ -189,7 +189,7 @@ impl QuickXmlEventMapper {
         reader: &NsReader<R>,
         start: BytesStart,
     ) -> Result<Option<Event>> {
-        let mut div_element = self.map_start_element(reader, start, XHTML_NAMESPACE)?;
+        let mut div_element = tri!(self.map_start_element(reader, start, XHTML_NAMESPACE));
         div_element.value = Some("<div xmlns=\"http://www.w3.org/1999/xhtml\">".into());
 
         self.in_div_element = Some(div_element);
@@ -204,9 +204,9 @@ impl QuickXmlEventMapper {
         start: BytesStart,
     ) -> Result<Option<Event>> {
         // this checks if namespace is correct
-        let _ = resolve_element(reader, start.name(), XHTML_NAMESPACE)?;
+        let _ = tri!(resolve_element(reader, start.name(), XHTML_NAMESPACE));
         for attr in start.attributes() {
-            let _ = resolve_attribute(reader, attr?.key, XHTML_NAMESPACE)?;
+            let _ = tri!(resolve_attribute(reader, attr?.key, XHTML_NAMESPACE));
         }
 
         self.push_to_div(&format!("<{}/>", str::from_utf8(&start)?));
@@ -215,7 +215,7 @@ impl QuickXmlEventMapper {
     }
 
     fn map_end_in_div<R>(&mut self, reader: &NsReader<R>, end: BytesEnd) -> Result<Option<Event>> {
-        let local_name = resolve_element(reader, end.name(), XHTML_NAMESPACE)?;
+        let local_name = tri!(resolve_element(reader, end.name(), XHTML_NAMESPACE));
 
         if local_name.as_ref() == b"div" {
             self.nested_div_count -= 1;
@@ -292,7 +292,7 @@ impl<R: io::Read> Read for IoRead<R> {
 
             self.buf.clear();
 
-            if let Some(event) = event? {
+            if let Some(event) = tri!(event) {
                 return Ok(event);
             }
         }
@@ -322,7 +322,7 @@ impl<'a> Read for SliceRead<'a> {
             let quick_event = self.reader.read_event()?;
             let event = self.mapper.map_event(&mut self.reader, quick_event);
 
-            if let Some(event) = event? {
+            if let Some(event) = tri!(event) {
                 return Ok(event);
             }
         }

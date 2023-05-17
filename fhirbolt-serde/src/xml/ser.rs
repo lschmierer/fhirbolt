@@ -33,7 +33,7 @@ where
     T: SerializeResource,
 {
     let mut writer = Vec::with_capacity(128);
-    to_writer(&mut writer, value, config)?;
+    tri!(to_writer(&mut writer, value, config));
     Ok(writer)
 }
 
@@ -42,7 +42,7 @@ pub fn to_string<T>(value: &T, config: Option<SerializationConfig>) -> Result<St
 where
     T: SerializeResource,
 {
-    let vec = to_vec(value, config)?;
+    let vec = tri!(to_vec(value, config));
     let string = unsafe {
         // We do not emit invalid UTF-8.
         String::from_utf8_unchecked(vec)
@@ -300,7 +300,7 @@ impl<'a, W: Write> SerializeMap for SerializeTopLevelResource<'a, W> {
     where
         T: ?Sized + Serialize,
     {
-        self.key = Some(key.serialize(StrSerializer::<Error>::new())?);
+        self.key = Some(tri!(key.serialize(StrSerializer::<Error>::new())));
 
         Ok(())
     }
@@ -316,15 +316,15 @@ impl<'a, W: Write> SerializeMap for SerializeTopLevelResource<'a, W> {
         };
 
         if key == "resourceType" {
-            self.ser.write_start(Element {
-                name: value.serialize(StrSerializer::<Error>::new())?,
+            tri!(self.ser.write_start(Element {
+                name: tri!(value.serialize(StrSerializer::<Error>::new())),
                 id: None,
                 url: None,
                 value: None,
-            })?;
+            }));
         } else {
             let _ =
-                value.serialize(&mut ElementOrAttributeSerializer::new(self.ser, key.into()))?;
+                tri!(value.serialize(&mut ElementOrAttributeSerializer::new(self.ser, key.into())));
         }
 
         Ok(())
@@ -541,10 +541,10 @@ impl<'a, W: Write> ser::SerializeSeq for &'a mut ElementOrAttributeSerializer<'_
     where
         T: ?Sized + Serialize,
     {
-        let _ = value.serialize(&mut ElementOrAttributeSerializer::new(
+        let _ = tri!(value.serialize(&mut ElementOrAttributeSerializer::new(
             self.ser,
             self.name.as_ref().into(),
-        ))?;
+        )));
 
         Ok(())
     }
@@ -564,7 +564,7 @@ struct SerializeElement<'a, W: Write> {
 impl<'a, W: Write> SerializeElement<'a, W> {
     fn new(ser: &'a mut Serializer<W>, name: String) -> Result<Self> {
         if let Some(element) = ser.element.take() {
-            ser.write_start(element)?;
+            tri!(ser.write_start(element));
         }
 
         ser.element = Some(Element::new(name));
@@ -586,7 +586,7 @@ impl<'a, W: Write> SerializeMap for SerializeElement<'a, W> {
     where
         T: ?Sized + Serialize,
     {
-        self.key = Some(key.serialize(StrSerializer::<Error>::new())?);
+        self.key = Some(tri!(key.serialize(StrSerializer::<Error>::new())));
 
         Ok(())
     }
@@ -602,7 +602,7 @@ impl<'a, W: Write> SerializeMap for SerializeElement<'a, W> {
         };
 
         if let Some(resource_type) =
-            value.serialize(&mut ElementOrAttributeSerializer::new(self.ser, key.into()))?
+            tri!(value.serialize(&mut ElementOrAttributeSerializer::new(self.ser, key.into())))
         {
             // check self.in_resource in case resourceType is written twice
             if self.in_resource {
@@ -611,7 +611,7 @@ impl<'a, W: Write> SerializeMap for SerializeElement<'a, W> {
 
             // write containing element start
             if let Some(element) = self.ser.element.take() {
-                self.ser.write_start(element)?;
+                tri!(self.ser.write_start(element));
             }
 
             self.ser.element = Some(Element::new(resource_type));
@@ -624,14 +624,14 @@ impl<'a, W: Write> SerializeMap for SerializeElement<'a, W> {
     #[inline]
     fn end(self) -> Result<Self::Ok> {
         if let Some(element) = self.ser.element.take() {
-            self.ser.write_empty(element)?;
+            tri!(self.ser.write_empty(element));
         } else {
-            self.ser.write_end()?;
+            tri!(self.ser.write_end());
         }
 
         // close nested resource
         if self.in_resource {
-            self.ser.write_end()?;
+            tri!(self.ser.write_end());
         }
 
         Ok(None)
@@ -665,7 +665,9 @@ impl<'a, W: Write> SerializeStruct for SerializeDecimal<'a, W> {
     }
 
     fn end(self) -> Result<Self::Ok> {
-        self.ser.serialize_attribute("value", self.inner.end()?)?;
+        tri!(self
+            .ser
+            .serialize_attribute("value", tri!(self.inner.end())));
 
         Ok(None)
     }

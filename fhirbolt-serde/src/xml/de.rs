@@ -69,7 +69,7 @@ where
     T: DeserializeResourceOwned,
 {
     from_deserializer(
-        &mut Deserializer::from_reader(rdr, T::FHIR_RELEASE)?,
+        &mut tri!(Deserializer::from_reader(rdr, T::FHIR_RELEASE)),
         config,
     )
 }
@@ -104,7 +104,10 @@ pub fn from_slice<'a, T>(v: &'a [u8], config: Option<DeserializationConfig>) -> 
 where
     T: DeserializeResource<'a>,
 {
-    from_deserializer(&mut Deserializer::from_slice(v, T::FHIR_RELEASE)?, config)
+    from_deserializer(
+        &mut tri!(Deserializer::from_slice(v, T::FHIR_RELEASE)),
+        config,
+    )
 }
 
 /// Deserialize an instance of resource type `T` from a string of XML.
@@ -137,7 +140,10 @@ pub fn from_str<'a, T>(s: &'a str, config: Option<DeserializationConfig>) -> Res
 where
     T: DeserializeResource<'a>,
 {
-    from_deserializer(&mut Deserializer::from_str(s, T::FHIR_RELEASE)?, config)
+    from_deserializer(
+        &mut tri!(Deserializer::from_str(s, T::FHIR_RELEASE)),
+        config,
+    )
 }
 
 pub struct Deserializer<R: Read> {
@@ -165,7 +171,7 @@ impl<'a> Deserializer<StrRead<'a>> {
 
 impl<R: Read> Deserializer<R> {
     fn new(mut reader: R, fhir_release: FhirRelease) -> Result<Self> {
-        let first_event = reader.next_event()?;
+        let first_event = tri!(reader.next_event());
 
         let mut path = ElementPath::new(fhir_release);
         match &first_event {
@@ -186,7 +192,7 @@ impl<R: Read> Deserializer<R> {
     fn next_event(&mut self) -> Result<Event> {
         Ok(mem::replace(
             &mut self.next_event,
-            self.reader.next_event()?,
+            tri!(self.reader.next_event()),
         ))
     }
 }
@@ -235,7 +241,7 @@ impl<'de, 'a, R: Read> de::Deserializer<'de> for &'a mut ElementDeserializer<'a,
     where
         V: Visitor<'de>,
     {
-        visitor.visit_map(ElementAccess::new(self.de)?)
+        visitor.visit_map(tri!(ElementAccess::new(self.de)))
     }
 
     #[inline]
@@ -268,7 +274,7 @@ struct ElementAccess<'a, R: Read> {
 
 impl<'a, R: Read> ElementAccess<'a, R> {
     fn new(de: &'a mut Deserializer<R>) -> Result<Self> {
-        let (mut element, is_empty) = match de.next_event()? {
+        let (mut element, is_empty) = match tri!(de.next_event()) {
             Event::EmptyElement(e) | Event::Div(e) => (e, true),
             Event::ElementStart(e) => (e, false),
             Event::ElementEnd => {
@@ -327,7 +333,7 @@ impl<'de, 'a, R: Read> de::MapAccess<'de> for ElementAccess<'a, R> {
                         self.is_resource = true;
                         self.write_resource_type = Some(mem::take(&mut self.element.name));
 
-                        _ = self.de.next_event()?;
+                        _ = tri!(self.de.next_event());
 
                         self.next_key_seed(seed)
                     } else {
@@ -336,10 +342,10 @@ impl<'de, 'a, R: Read> de::MapAccess<'de> for ElementAccess<'a, R> {
                     }
                 }
                 _ => {
-                    _ = self.de.next_event()?;
+                    _ = tri!(self.de.next_event());
 
                     if self.is_resource {
-                        _ = self.de.next_event()?;
+                        _ = tri!(self.de.next_event());
                     }
 
                     Ok(None)
