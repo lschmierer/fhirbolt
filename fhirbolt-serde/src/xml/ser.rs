@@ -98,6 +98,15 @@ impl<W: Write> Serializer<W> {
         }
         Ok(None)
     }
+
+    fn serialize_attribute_integer<I: itoa::Integer>(
+        &mut self,
+        name: &str,
+        i: I,
+    ) -> Result<Option<String>> {
+        let mut buffer = itoa::Buffer::new();
+        self.serialize_attribute(name, buffer.format(i))
+    }
 }
 
 impl<'a, W: Write> ser::Serializer for &'a mut Serializer<W> {
@@ -366,42 +375,42 @@ impl<'a, W: Write> ser::Serializer for &'a mut ElementOrAttributeSerializer<'a, 
 
     #[inline]
     fn serialize_i8(self, v: i8) -> Result<Self::Ok> {
-        self.ser.serialize_attribute(&self.name, v)
+        self.ser.serialize_attribute_integer(&self.name, v)
     }
 
     #[inline]
     fn serialize_i16(self, v: i16) -> Result<Self::Ok> {
-        self.ser.serialize_attribute(&self.name, v)
+        self.ser.serialize_attribute_integer(&self.name, v)
     }
 
     #[inline]
     fn serialize_i32(self, v: i32) -> Result<Self::Ok> {
-        self.ser.serialize_attribute(&self.name, v)
+        self.ser.serialize_attribute_integer(&self.name, v)
     }
 
     #[inline]
     fn serialize_i64(self, v: i64) -> Result<Self::Ok> {
-        self.ser.serialize_attribute(&self.name, v)
+        self.ser.serialize_attribute_integer(&self.name, v)
     }
 
     #[inline]
     fn serialize_u8(self, v: u8) -> Result<Self::Ok> {
-        self.ser.serialize_attribute(&self.name, v)
+        self.ser.serialize_attribute_integer(&self.name, v)
     }
 
     #[inline]
     fn serialize_u16(self, v: u16) -> Result<Self::Ok> {
-        self.ser.serialize_attribute(&self.name, v)
+        self.ser.serialize_attribute_integer(&self.name, v)
     }
 
     #[inline]
     fn serialize_u32(self, v: u32) -> Result<Self::Ok> {
-        self.ser.serialize_attribute(&self.name, v)
+        self.ser.serialize_attribute_integer(&self.name, v)
     }
 
     #[inline]
     fn serialize_u64(self, v: u64) -> Result<Self::Ok> {
-        self.ser.serialize_attribute(&self.name, v)
+        self.ser.serialize_attribute_integer(&self.name, v)
     }
 
     #[inline]
