@@ -1,4 +1,4 @@
-// Generated on 2023-05-15 by fhirbolt-codegen v0.8.0
+// Generated on 2023-05-17 by fhirbolt-codegen v0.10.0
 #[doc = "Base StructureDefinition for canonical type: A URI that is a reference to a canonical URL on a FHIR resource"]
 #[derive(Debug, Clone, PartialEq)]
 pub struct Canonical {
@@ -16,6 +16,14 @@ impl Default for Canonical {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#value: Default::default(),
+        }
+    }
+}
+impl<I: Into<std::string::String>> From<I> for Canonical {
+    fn from(v: I) -> Self {
+        Canonical {
+            value: Some(v.into()),
+            ..Default::default()
         }
     }
 }

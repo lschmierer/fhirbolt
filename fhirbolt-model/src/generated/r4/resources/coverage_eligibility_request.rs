@@ -1,4 +1,4 @@
-// Generated on 2023-05-15 by fhirbolt-codegen v0.8.0
+// Generated on 2023-05-17 by fhirbolt-codegen v0.10.0
 #[doc = "The date or dates when the enclosed suite of services were performed or completed."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum CoverageEligibilityRequestServiced {

@@ -1,4 +1,4 @@
-// Generated on 2023-05-15 by fhirbolt-codegen v0.8.0
+// Generated on 2023-05-17 by fhirbolt-codegen v0.10.0
 #[doc = "Period Type: A time period defined by a start and end date and optionally time."]
 #[derive(Debug, Clone, PartialEq)]
 pub struct Period {

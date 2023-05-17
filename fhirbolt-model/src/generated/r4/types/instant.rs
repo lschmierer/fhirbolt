@@ -1,4 +1,4 @@
-// Generated on 2023-05-15 by fhirbolt-codegen v0.8.0
+// Generated on 2023-05-17 by fhirbolt-codegen v0.10.0
 #[doc = "Base StructureDefinition for instant Type: An instant in time - known at least to the second"]
 #[derive(Debug, Clone, PartialEq)]
 pub struct Instant {
@@ -16,6 +16,14 @@ impl Default for Instant {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#value: Default::default(),
+        }
+    }
+}
+impl<I: Into<std::string::String>> From<I> for Instant {
+    fn from(v: I) -> Self {
+        Instant {
+            value: Some(v.into()),
+            ..Default::default()
         }
     }
 }

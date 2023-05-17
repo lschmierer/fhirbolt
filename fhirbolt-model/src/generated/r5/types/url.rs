@@ -1,4 +1,4 @@
-// Generated on 2023-05-15 by fhirbolt-codegen v0.8.0
+// Generated on 2023-05-17 by fhirbolt-codegen v0.10.0
 #[doc = "url type: A URI that is a literal reference"]
 #[derive(Debug, Clone, PartialEq)]
 pub struct Url {
@@ -16,6 +16,14 @@ impl Default for Url {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#value: Default::default(),
+        }
+    }
+}
+impl<I: Into<std::string::String>> From<I> for Url {
+    fn from(v: I) -> Self {
+        Url {
+            value: Some(v.into()),
+            ..Default::default()
         }
     }
 }

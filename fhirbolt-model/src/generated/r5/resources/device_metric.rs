@@ -1,4 +1,4 @@
-// Generated on 2023-05-15 by fhirbolt-codegen v0.8.0
+// Generated on 2023-05-17 by fhirbolt-codegen v0.10.0
 #[doc = "Describes the calibrations that have been performed or that are required to be performed."]
 #[derive(Debug, Clone, PartialEq)]
 pub struct DeviceMetricCalibration {

@@ -68,21 +68,12 @@ match r {
 
 // Use Default::default() or constructing new resources by yourself
 let o = Observation {
-    status: Code {
-        value: Some("final".to_string()),
-        ..Default::default()
-    },
+    status: "final".into(),
     code: Box::new(CodeableConcept {
-        text: Some(FhirString {
-            value: Some("some code".to_string()),
-            ..Default::default()
-        }),
+        text: Some("some code".into()),
         ..Default::default()
     }),
-    value: Some(ObservationValue::String(Box::new(FhirString {
-        value: Some("some value".to_string()),
-        ..Default::default()
-    }))),
+    value: Some(ObservationValue::String(Box::new("some value".into()))),
     ..Default::default()
 };
 ```

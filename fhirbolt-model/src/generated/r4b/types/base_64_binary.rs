@@ -1,4 +1,4 @@
-// Generated on 2023-05-15 by fhirbolt-codegen v0.8.0
+// Generated on 2023-05-17 by fhirbolt-codegen v0.10.0
 #[doc = "Base StructureDefinition for base64Binary Type: A stream of bytes"]
 #[derive(Debug, Clone, PartialEq)]
 pub struct Base64Binary {
@@ -16,6 +16,14 @@ impl Default for Base64Binary {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#value: Default::default(),
+        }
+    }
+}
+impl<I: Into<std::string::String>> From<I> for Base64Binary {
+    fn from(v: I) -> Self {
+        Base64Binary {
+            value: Some(v.into()),
+            ..Default::default()
         }
     }
 }

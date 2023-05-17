@@ -173,19 +173,13 @@ impl SubComponentAccess for SubComponent {
     }
     fn to_fhir_string(&self) -> Option<FhirString> {
         match self {
-            SubComponent::Value(v) => Some(FhirString {
-                value: Some(v.clone()),
-                ..Default::default()
-            }),
+            SubComponent::Value(v) => Some(v.into()),
             _ => None,
         }
     }
     fn to_fhir_code(&self) -> Option<Code> {
         match self {
-            SubComponent::Value(v) => Some(Code {
-                value: Some(v.clone()),
-                ..Default::default()
-            }),
+            SubComponent::Value(v) => Some(v.into()),
             _ => None,
         }
     }
@@ -205,10 +199,7 @@ impl SubComponentAccess for SubComponent {
                     date += &format!("-{}", day);
                 }
 
-                Some(Date {
-                    value: Some(date),
-                    ..Default::default()
-                })
+                Some(date.into())
             }
             _ => None,
         }
@@ -234,10 +225,7 @@ impl SubComponentAccess for SubComponent {
                         );
                     }
 
-                    Some(DateTime {
-                        value: Some(date_time),
-                        ..Default::default()
-                    })
+                    Some(date_time.into())
                 } else {
                     None
                 }

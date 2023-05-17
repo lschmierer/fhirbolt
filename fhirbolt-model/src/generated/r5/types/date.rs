@@ -1,4 +1,4 @@
-// Generated on 2023-05-15 by fhirbolt-codegen v0.8.0
+// Generated on 2023-05-17 by fhirbolt-codegen v0.10.0
 #[doc = "date Type: A date or partial date (e.g. just year or year + month). There is no UTC offset. The format is a union of the schema types gYear, gYearMonth and date.  Dates SHALL be valid dates."]
 #[derive(Debug, Clone, PartialEq)]
 pub struct Date {
@@ -16,6 +16,14 @@ impl Default for Date {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#value: Default::default(),
+        }
+    }
+}
+impl<I: Into<std::string::String>> From<I> for Date {
+    fn from(v: I) -> Self {
+        Date {
+            value: Some(v.into()),
+            ..Default::default()
         }
     }
 }

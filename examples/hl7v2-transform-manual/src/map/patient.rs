@@ -1,6 +1,6 @@
 use fhirbolt::model::r5::{
     resources::{Patient, PatientCommunication, PatientContact, PatientDeceased},
-    types::{Address, Boolean, Code, CodeableConcept, ContactPoint, HumanName, Id},
+    types::{Address, Code, CodeableConcept, ContactPoint, HumanName},
 };
 
 use crate::hl7v2::{
@@ -32,10 +32,7 @@ pub fn map_patient(message: &Message, id: &str) -> Patient {
     let pid_segment = message.segments_by_id("PID").next();
 
     Patient {
-        id: Some(Box::new(Id {
-            value: Some(id.into()),
-            ..Default::default()
-        })),
+        id: Some(Box::new(id.into())),
         identifier: map_identifier(pid_segment.repeated(3)),
         name: map_name(pid_segment.repeated(5)),
         telecom: map_telecoms(pid_segment.repeated(13), pid_segment.repeated(14)),
@@ -97,15 +94,9 @@ fn map_telecom(telecom_field: &Field, r#use: &str) -> Option<ContactPoint> {
         .first_sub()
         .to_fhir_string()
         .map(|number_string| ContactPoint {
-            system: Some(Code {
-                value: Some("phone".into()),
-                ..Default::default()
-            }),
+            system: Some("phone".into()),
             value: Some(number_string),
-            r#use: Some(Code {
-                value: Some(r#use.into()),
-                ..Default::default()
-            }),
+            r#use: Some(r#use.into()),
             ..Default::default()
         })
 }
@@ -135,20 +126,14 @@ fn map_deceased(pid_segment: Option<&Segment>) -> Option<PatientDeceased> {
         if let Some(date_time) = deceased_date_time {
             Some(PatientDeceased::DateTime(Box::new(date_time)))
         } else {
-            Some(PatientDeceased::Boolean(Box::new(Boolean {
-                value: Some(true),
-                ..Default::default()
-            })))
+            Some(PatientDeceased::Boolean(Box::new(true.into())))
         }
     } else {
         if deceased_date_time.is_some() {
             println!("\x1B[33mWarning\x1B[39m: Patient has a deceased date although still alive")
         }
 
-        Some(PatientDeceased::Boolean(Box::new(Boolean {
-            value: Some(false),
-            ..Default::default()
-        })))
+        Some(PatientDeceased::Boolean(Box::new(false.into())))
     }
 }
 
@@ -222,24 +207,14 @@ fn map_communicatiion(pid_segment: Option<&Segment>) -> Vec<PatientCommunication
             }
         })
         .and_then(|c| {
-            build_codeable_concept(
-                "urn:ietf:bcp:47",
-                Code {
-                    value: Some(c.into()),
-                    ..Default::default()
-                },
-                None,
-            )
-            .into_iter()
-            .next()
+            build_codeable_concept("urn:ietf:bcp:47", c.into(), None)
+                .into_iter()
+                .next()
         })
         .map(|c| {
             vec![PatientCommunication {
                 language: Box::new(c),
-                preferred: Some(Boolean {
-                    value: Some(true),
-                    ..Default::default()
-                }),
+                preferred: Some(true.into()),
                 ..Default::default()
             }]
         })

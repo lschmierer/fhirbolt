@@ -1,4 +1,4 @@
-// Generated on 2023-05-15 by fhirbolt-codegen v0.8.0
+// Generated on 2023-05-17 by fhirbolt-codegen v0.10.0
 #[doc = "The period, timing or frequency upon which the described activity is to occur."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum CarePlanActivityDetailScheduled {

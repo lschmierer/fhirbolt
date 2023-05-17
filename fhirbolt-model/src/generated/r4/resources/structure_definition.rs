@@ -1,4 +1,4 @@
-// Generated on 2023-05-15 by fhirbolt-codegen v0.8.0
+// Generated on 2023-05-17 by fhirbolt-codegen v0.10.0
 #[doc = "An external specification that the content is mapped to."]
 #[derive(Debug, Clone, PartialEq)]
 pub struct StructureDefinitionMapping {

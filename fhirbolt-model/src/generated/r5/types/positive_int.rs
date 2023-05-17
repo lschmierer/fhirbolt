@@ -1,4 +1,4 @@
-// Generated on 2023-05-15 by fhirbolt-codegen v0.8.0
+// Generated on 2023-05-17 by fhirbolt-codegen v0.10.0
 #[doc = "positiveInt type: An integer with a value that is positive (e.g. >0)"]
 #[derive(Debug, Clone, PartialEq)]
 pub struct PositiveInt {
@@ -16,6 +16,14 @@ impl Default for PositiveInt {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#value: Default::default(),
+        }
+    }
+}
+impl<I: Into<u32>> From<I> for PositiveInt {
+    fn from(v: I) -> Self {
+        PositiveInt {
+            value: Some(v.into()),
+            ..Default::default()
         }
     }
 }

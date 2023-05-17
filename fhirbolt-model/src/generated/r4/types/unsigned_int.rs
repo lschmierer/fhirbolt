@@ -1,4 +1,4 @@
-// Generated on 2023-05-15 by fhirbolt-codegen v0.8.0
+// Generated on 2023-05-17 by fhirbolt-codegen v0.10.0
 #[doc = "Base StructureDefinition for unsignedInt type: An integer with a value that is not negative (e.g. >= 0)"]
 #[derive(Debug, Clone, PartialEq)]
 pub struct UnsignedInt {
@@ -16,6 +16,14 @@ impl Default for UnsignedInt {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#value: Default::default(),
+        }
+    }
+}
+impl<I: Into<u32>> From<I> for UnsignedInt {
+    fn from(v: I) -> Self {
+        UnsignedInt {
+            value: Some(v.into()),
+            ..Default::default()
         }
     }
 }

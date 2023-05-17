@@ -1,4 +1,4 @@
-// Generated on 2023-05-15 by fhirbolt-codegen v0.8.0
+// Generated on 2023-05-17 by fhirbolt-codegen v0.10.0
 #[doc = "markdown type: A string that may contain Github Flavored Markdown syntax for optional processing by a mark down presentation engine"]
 #[derive(Debug, Clone, PartialEq)]
 pub struct Markdown {
@@ -16,6 +16,14 @@ impl Default for Markdown {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#value: Default::default(),
+        }
+    }
+}
+impl<I: Into<std::string::String>> From<I> for Markdown {
+    fn from(v: I) -> Self {
+        Markdown {
+            value: Some(v.into()),
+            ..Default::default()
         }
     }
 }
