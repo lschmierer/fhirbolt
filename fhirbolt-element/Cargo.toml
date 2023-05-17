@@ -1,6 +1,6 @@
 [package]
 name = "fhirbolt-element"
-version = "0.3.0"
+version = "0.4.0"
 edition = "2021"
 authors = ["Lukas Schmierer <lukas.schmierer@lschmierer.de>"]
 description = "Internal element model library of the fhirbolt project"
@@ -11,7 +11,7 @@ license = "MIT OR Apache-2.0"
 [dependencies]
 indexmap = "1.9.2"
 
-fhirbolt-shared = { version = "0.3.0", path = "../fhirbolt-shared" }
+fhirbolt-shared = { version = "0.4.0", path = "../fhirbolt-shared" }
 
 [dev-dependencies]
 # used by doc-tests

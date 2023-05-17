@@ -1,6 +1,6 @@
 [package]
 name = "fhirbolt-model"
-version = "0.3.0"
+version = "0.4.0"
 edition = "2021"
 authors = ["Lukas Schmierer <lukas.schmierer@lschmierer.de>"]
 description = "Internal model library of the fhirbolt project"
@@ -17,4 +17,4 @@ r4b = []
 r5 = []
 
 [dependencies]
-fhirbolt-shared = { version = "0.3.0", path = "../fhirbolt-shared" }
+fhirbolt-shared = { version = "0.4.0", path = "../fhirbolt-shared" }
