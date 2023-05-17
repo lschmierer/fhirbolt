@@ -5,10 +5,7 @@
 //! More elaborate features like validation (including cardinality and slicing) or full FHIRPath evaluation
 //! might be added eventually.
 //!
-//! Currenlty supported FHIR releases:
-//!   * R4
-//!   * R4B
-//!   * R5
+//! Currenlty supported FHIR releases: R4, R4B and R5
 //!
 //! The Rust crate supports two working modes:
 //! 1. a generic [element] model

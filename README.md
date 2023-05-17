@@ -8,10 +8,13 @@ Primary goal is adding JS bindings by compiling the core Rust crate to WASM.
 
 More elaborate features like validation (including cardinality and slicing) or full FHIRPath evaluation might be added eventually.
 
-Currenlty supported FHIR releases:
-  * R4
-  * R4B
-  * R5
+Currenlty supported FHIR releases: R4, R4B and R5
+
+## Roadmap
+- [x] JSON (de)serialization
+- [x] XML (de)serialization
+- [ ] FHIRPath
+- [ ] JS/TS package (by compiling to WASM)
 
 ## Language Support
 
@@ -37,7 +40,7 @@ You should only include the release that you really need, as this signigicantly 
 
 ```toml
 [dependencies]
-fhirbolt = { version = "0.3", features = ["r4b"] }
+fhirbolt = { version = "0.4", features = ["r4b"] }
 ```
 
 ### Example
