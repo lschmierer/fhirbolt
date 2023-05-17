@@ -14,27 +14,26 @@ impl serde::ser::Serialize for SerializationContext<&Decimal> {
                 "decimal", field
             )))
         }
-        let mut state = serializer.serialize_map(None)?;
+        let mut state = tri!(serializer.serialize_map(None));
         if let Some(value) = self.value.r#id.as_ref() {
-            state.serialize_entry("id", value)?;
+            tri!(state.serialize_entry("id", value));
         }
         if let Some(value) = self.value.value.as_ref() {
             if self.output == crate::context::Format::Json {
-                let _value = value
+                let _value = tri!(value
                     .parse::<serde_json::Number>()
-                    .map_err(|_| serde::ser::Error::custom("error serializing decimal"))?;
-                state.serialize_entry("value", &_value)?;
+                    .map_err(|_| serde::ser::Error::custom("error serializing decimal")));
+                tri!(state.serialize_entry("value", &_value));
             } else if self.output == crate::context::Format::InternalElement {
                 let _value = crate::decimal::Decimal { d: value };
-                state.serialize_entry("value", &_value)?;
+                tri!(state.serialize_entry("value", &_value));
             } else {
-                state.serialize_entry("value", value)?;
+                tri!(state.serialize_entry("value", value));
             }
         }
         if !self.value.r#extension.is_empty() {
-            self.with_context(&self.value.r#extension, |ctx| {
-                state.serialize_entry("extension", ctx)
-            })?;
+            tri!(self.with_context(&self.value.r#extension, |ctx| state
+                .serialize_entry("extension", ctx)));
         }
         state.end()
     }
@@ -53,9 +52,9 @@ impl serde::ser::Serialize for SerializationContext<&Vec<Decimal>> {
         S: serde::ser::Serializer,
     {
         use serde::ser::SerializeSeq;
-        let mut seq_serializer = serializer.serialize_seq(Some(self.value.len()))?;
+        let mut seq_serializer = tri!(serializer.serialize_seq(Some(self.value.len())));
         for value in self.value {
-            self.with_context(value, |ctx| seq_serializer.serialize_element(ctx))?
+            tri!(self.with_context(value, |ctx| { seq_serializer.serialize_element(ctx) }))
         }
         seq_serializer.end()
     }
@@ -93,13 +92,13 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Decima
                 let mut r#id: Option<std::string::String> = None;
                 let mut r#extension: Option<Vec<fhirbolt_model::r4b::types::Extension>> = None;
                 let mut r#value: Option<std::string::String> = None;
-                while let Some(map_access_key) = map_access.next_key()? {
+                while let Some(map_access_key) = tri!(map_access.next_key()) {
                     match map_access_key {
                         Field::Id => {
                             if r#id.is_some() {
                                 return Err(serde::de::Error::duplicate_field("id"));
                             }
-                            r#id = Some(map_access.next_value()?);
+                            r#id = Some(tri!(map_access.next_value()));
                         }
                         Field::Extension => {
                             if self.0.from == crate::context::Format::Json {
@@ -109,13 +108,14 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Decima
                                 let _context: &mut DeserializationContext<
                                     Vec<fhirbolt_model::r4b::types::Extension>,
                                 > = self.0.transmute();
-                                r#extension = Some(map_access.next_value_seed(&mut *_context)?);
+                                r#extension =
+                                    Some(tri!(map_access.next_value_seed(&mut *_context)));
                             } else {
                                 let vec = r#extension.get_or_insert(Default::default());
                                 let _context: &mut DeserializationContext<
                                     fhirbolt_model::r4b::types::Extension,
                                 > = self.0.transmute();
-                                vec.push(map_access.next_value_seed(&mut *_context)?);
+                                vec.push(tri!(map_access.next_value_seed(&mut *_context)));
                             }
                         }
                         Field::Value => {
@@ -130,7 +130,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Decima
                                 I64(i64),
                                 F64(f64),
                             }
-                            let _value: Decimal = map_access.next_value()?;
+                            let _value: Decimal = tri!(map_access.next_value());
                             r#value = match _value {
                                 Decimal::String(s) => Some(s),
                                 Decimal::U64(u) => Some(u.to_string()),
@@ -185,7 +185,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Vec<De
             {
                 let mut values = Vec::new();
                 let _context: &mut DeserializationContext<Decimal> = self.0.transmute();
-                while let Some(value) = seq.next_element_seed(&mut *_context)? {
+                while let Some(value) = tri!(seq.next_element_seed(&mut *_context)) {
                     values.push(value);
                 }
                 Ok(values)

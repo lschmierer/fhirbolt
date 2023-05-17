@@ -27,9 +27,9 @@ impl<const R: FhirRelease> Serialize for SerializationContext<&Value<R>> {
         match self.value {
             Value::Element(element) => self.with_context(element, |ctx| ctx.serialize(serializer)),
             Value::Sequence(sequence) => {
-                let mut seq = serializer.serialize_seq(Some(sequence.len()))?;
+                let mut seq = tri!(serializer.serialize_seq(Some(sequence.len())));
                 for e in sequence {
-                    self.with_context(e, |ctx| seq.serialize_element(&ctx))?;
+                    tri!(self.with_context(e, |ctx| seq.serialize_element(&ctx)));
                 }
                 seq.end()
             }
@@ -39,9 +39,9 @@ impl<const R: FhirRelease> Serialize for SerializationContext<&Value<R>> {
                 Primitive::Integer64(i) => serializer.serialize_str(&i.to_string()),
                 Primitive::Decimal(s) => {
                     if self.output == Format::Json {
-                        serde_json::Number::from_str(s)
-                            .map_err(|_| Error::custom(format!("invalid decimal: \"{}\"", s)))?
-                            .serialize(serializer)
+                        tri!(serde_json::Number::from_str(s)
+                            .map_err(|_| Error::custom(format!("invalid decimal: \"{}\"", s))))
+                        .serialize(serializer)
                     } else {
                         serializer.serialize_str(s)
                     }
@@ -58,12 +58,12 @@ impl<const R: FhirRelease> Serialize for SerializationContext<Vec<Option<&Value<
     where
         S: ser::Serializer,
     {
-        let mut seq_serialzier = serializer.serialize_seq(Some(self.value.len()))?;
+        let mut seq_serialzier = tri!(serializer.serialize_seq(Some(self.value.len())));
 
         for value in &self.value {
-            self.with_context(value.as_deref(), |ctx| {
+            tri!(self.with_context(value.as_deref(), |ctx| {
                 seq_serialzier.serialize_element(&ctx)
-            })?
+            }))
         }
 
         seq_serialzier.end()
@@ -105,25 +105,25 @@ impl<const R: FhirRelease> SerializationContext<&Element<R>> {
         match value {
             Value::Element(element) => {
                 if let Some(v) = element.get("value") {
-                    self.with_context(v, |ctx| serialize_map.serialize_entry(key, &ctx))?;
+                    tri!(self.with_context(v, |ctx| serialize_map.serialize_entry(key, &ctx)));
                 }
 
-                let primitive_element = PrimitiveElement::from_element(element)?;
+                let primitive_element = tri!(PrimitiveElement::from_element(element));
 
                 if primitive_element.id.is_some() || !primitive_element.extension.is_empty() {
-                    self.with_context(&primitive_element, |ctx| {
+                    tri!(self.with_context(&primitive_element, |ctx| {
                         serialize_map.serialize_entry(&format!("_{}", key), &ctx)
-                    })?;
+                    }));
                 }
             }
             Value::Sequence(sequence) => {
                 let values = sequence.iter().map(|e| e.get("value")).collect::<Vec<_>>();
 
                 if values.iter().any(|e| e.is_some()) {
-                    self.with_context(values, |ctx| serialize_map.serialize_entry(key, &ctx))?
+                    tri!(self.with_context(values, |ctx| serialize_map.serialize_entry(key, &ctx)))
                 }
 
-                let elements = sequence
+                let elements = tri!(sequence
                     .iter()
                     .map(|e| {
                         PrimitiveElement::from_element(e).map(|v| {
@@ -134,16 +134,16 @@ impl<const R: FhirRelease> SerializationContext<&Element<R>> {
                             }
                         })
                     })
-                    .collect::<Result<Vec<_>, _>>()?;
+                    .collect::<Result<Vec<_>, _>>());
 
                 if elements.iter().any(|e| e.is_some()) {
-                    self.with_context(
+                    tri!(self.with_context(
                         elements.iter().map(|e| e.as_ref()).collect::<Vec<_>>(),
                         |ctx| serialize_map.serialize_entry(&format!("_{}", key), &ctx),
-                    )?
+                    ))
                 }
             }
-            _ => self.with_context(value, |ctx| serialize_map.serialize_entry(key, &ctx))?,
+            _ => tri!(self.with_context(value, |ctx| serialize_map.serialize_entry(key, &ctx))),
         }
 
         Ok(())
@@ -156,7 +156,7 @@ impl<const R: FhirRelease> Serialize for SerializationContext<&Element<R>> {
     where
         S: ser::Serializer,
     {
-        let mut map = serializer.serialize_map(Some(self.value.len()))?;
+        let mut map = tri!(serializer.serialize_map(Some(self.value.len())));
 
         let mut is_resource = false;
         if let Some(Value::Primitive(Primitive::String(r))) = self.value.get("resourceType") {
@@ -168,9 +168,9 @@ impl<const R: FhirRelease> Serialize for SerializationContext<&Element<R>> {
             self.current_path_mut().push(key);
 
             if self.output == Format::Json && self.current_path().current_element_is_primitive() {
-                self.serialize_primitive_value_json(&mut map, key, value)?;
+                tri!(self.serialize_primitive_value_json(&mut map, key, value));
             } else {
-                self.with_context(value, |ctx| map.serialize_entry(key, &ctx))?;
+                tri!(self.with_context(value, |ctx| map.serialize_entry(key, &ctx)));
             }
 
             self.current_path_mut().pop();
@@ -190,10 +190,10 @@ impl<const R: FhirRelease> Serialize for SerializationContext<Vec<&Element<R>>> 
     where
         S: ser::Serializer,
     {
-        let mut seq_serialzier = serializer.serialize_seq(Some(self.value.len()))?;
+        let mut seq_serialzier = tri!(serializer.serialize_seq(Some(self.value.len())));
 
         for value in &self.value {
-            self.with_context(*value, |ctx| seq_serialzier.serialize_element(&ctx))?
+            tri!(self.with_context(*value, |ctx| seq_serialzier.serialize_element(&ctx)))
         }
 
         seq_serialzier.end()
@@ -211,7 +211,7 @@ impl<'a, const R: FhirRelease> PrimitiveElement<'a, R> {
     where
         E: Error,
     {
-        let id = value
+        let id = tri!(value
             .get("id")
             .map(|v| {
                 if let Value::Primitive(Primitive::String(s)) = v {
@@ -220,9 +220,9 @@ impl<'a, const R: FhirRelease> PrimitiveElement<'a, R> {
                     Err(E::custom(format!("invalid primitive value: {:?}", v)))
                 }
             })
-            .transpose()?;
+            .transpose());
 
-        let extension = value
+        let extension = tri!(value
             .get("extension")
             .map(|v| {
                 if let Value::Sequence(s) = v {
@@ -231,8 +231,8 @@ impl<'a, const R: FhirRelease> PrimitiveElement<'a, R> {
                     Err(E::custom(format!("invalid extension: {:?}", v)))
                 }
             })
-            .transpose()?
-            .unwrap_or(&[]);
+            .transpose())
+        .unwrap_or(&[]);
 
         Ok(PrimitiveElement { id, extension })
     }
@@ -244,14 +244,14 @@ impl<const R: FhirRelease> Serialize for SerializationContext<&PrimitiveElement<
     where
         S: ser::Serializer,
     {
-        let mut map = serializer.serialize_map(Some(if self.value.id.is_some() {
+        let mut map = tri!(serializer.serialize_map(Some(if self.value.id.is_some() {
             self.value.extension.len() + 1
         } else {
             self.value.extension.len()
-        }))?;
+        })));
 
         if let Some(id) = self.value.id {
-            map.serialize_entry("id", id)?
+            tri!(map.serialize_entry("id", id))
         }
 
         if !self.value.extension.is_empty() {
@@ -259,7 +259,7 @@ impl<const R: FhirRelease> Serialize for SerializationContext<&PrimitiveElement<
 
             let elements = self.value.extension.iter().collect::<Vec<_>>();
 
-            self.with_context(elements, |ctx| map.serialize_entry("extension", &ctx))?;
+            tri!(self.with_context(elements, |ctx| map.serialize_entry("extension", &ctx)));
 
             self.current_path_mut().pop();
         }
@@ -276,12 +276,12 @@ impl<const R: FhirRelease> Serialize
     where
         S: ser::Serializer,
     {
-        let mut seq_serialzier = serializer.serialize_seq(Some(self.value.len()))?;
+        let mut seq_serialzier = tri!(serializer.serialize_seq(Some(self.value.len())));
 
         for value in &self.value {
-            self.with_context(value.as_deref(), |ctx| {
+            tri!(self.with_context(value.as_deref(), |ctx| {
                 seq_serialzier.serialize_element(&ctx)
-            })?
+            }))
         }
 
         seq_serialzier.end()
@@ -520,7 +520,7 @@ impl<const R: FhirRelease> ser::SerializeSeq for SerializeSequence<R> {
     where
         T: ?Sized + Serialize,
     {
-        match value.serialize(Serializer)? {
+        match tri!(value.serialize(Serializer)) {
             Value::Element(e) => self.vec.push(e),
             _ => return Err(Error::custom("sequence can only contain elements")),
         }
@@ -547,7 +547,7 @@ impl<const R: FhirRelease> ser::SerializeMap for SerializeElement<R> {
     where
         T: ?Sized + Serialize,
     {
-        self.next_key = Some(key.serialize(StrSerializer::new())?);
+        self.next_key = Some(tri!(key.serialize(StrSerializer::new())));
         Ok(())
     }
 
@@ -556,8 +556,10 @@ impl<const R: FhirRelease> ser::SerializeMap for SerializeElement<R> {
     where
         T: ?Sized + Serialize,
     {
-        self.map
-            .insert(self.next_key.take().unwrap(), value.serialize(Serializer)?);
+        self.map.insert(
+            self.next_key.take().unwrap(),
+            tri!(value.serialize(Serializer)),
+        );
         Ok(())
     }
 
@@ -591,6 +593,6 @@ impl<const R: FhirRelease> SerializeStruct for SerializeDecimal<R> {
     }
 
     fn end(self) -> Result<Value<R>, Self::Error> {
-        Ok(Value::Primitive(Primitive::Decimal(self.inner.end()?)))
+        Ok(Value::Primitive(Primitive::Decimal(tri!(self.inner.end()))))
     }
 }

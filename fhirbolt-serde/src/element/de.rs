@@ -26,9 +26,10 @@ impl<'de, const R: FhirRelease> DeserializeSeed<'de> for DeserializationContext<
     where
         D: de::Deserializer<'de>,
     {
-        self.transmute::<InternalElement<R>>()
-            .deserialize(deserializer)?
-            .into_element::<D>(self.config.mode, &mut ElementPath::new(R))
+        tri!(self
+            .transmute::<InternalElement<R>>()
+            .deserialize(deserializer))
+        .into_element::<D>(self.config.mode, &mut ElementPath::new(R))
     }
 }
 

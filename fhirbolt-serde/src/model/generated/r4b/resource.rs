@@ -245,9 +245,9 @@ impl serde::ser::Serialize for SerializationContext<&Vec<Resource>> {
         S: serde::ser::Serializer,
     {
         use serde::ser::SerializeSeq;
-        let mut seq_serializer = serializer.serialize_seq(Some(self.value.len()))?;
+        let mut seq_serializer = tri!(serializer.serialize_seq(Some(self.value.len())));
         for value in self.value {
-            self.with_context(value, |ctx| seq_serializer.serialize_element(ctx))?
+            tri!(self.with_context(value, |ctx| { seq_serializer.serialize_element(ctx) }))
         }
         seq_serializer.end()
     }
@@ -271,7 +271,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Resour
             self.transmute::<crate::element::internal::de::InternalElement<
                 { fhirbolt_shared::FhirReleases::R4B },
             >>();
-        let element = _context.deserialize(deserializer)?;
+        let element = tri!(_context.deserialize(deserializer));
         self.from = crate::context::Format::InternalElement;
         if let Some(fhirbolt_element::Value::Primitive(fhirbolt_element::Primitive::String(
             resource_type,
@@ -1718,7 +1718,8 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Vec<Re
                 A: serde::de::SeqAccess<'de>,
             {
                 let mut values = Vec::new();
-                while let Some(value) = seq.next_element_seed(self.0.transmute::<Resource>())? {
+                while let Some(value) = tri!(seq.next_element_seed(self.0.transmute::<Resource>()))
+                {
                     values.push(value);
                 }
                 Ok(values)

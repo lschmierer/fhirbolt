@@ -43,7 +43,7 @@ where
     T: SerializeResource,
 {
     let mut writer = Vec::with_capacity(128);
-    to_writer(&mut writer, value, config)?;
+    tri!(to_writer(&mut writer, value, config));
     Ok(writer)
 }
 
@@ -53,7 +53,7 @@ where
     T: SerializeResource,
 {
     let mut writer = Vec::with_capacity(128);
-    to_writer_pretty(&mut writer, value, config)?;
+    tri!(to_writer_pretty(&mut writer, value, config));
     Ok(writer)
 }
 
@@ -62,7 +62,7 @@ pub fn to_string<T>(value: &T, config: Option<SerializationConfig>) -> Result<St
 where
     T: SerializeResource,
 {
-    let vec = to_vec(value, config)?;
+    let vec = tri!(to_vec(value, config));
     let string = unsafe {
         // We do not emit invalid UTF-8.
         String::from_utf8_unchecked(vec)
@@ -75,7 +75,7 @@ pub fn to_string_pretty<T>(value: &T, config: Option<SerializationConfig>) -> Re
 where
     T: SerializeResource,
 {
-    let vec = to_vec_pretty(value, config)?;
+    let vec = tri!(to_vec_pretty(value, config));
     let string = unsafe {
         // We do not emit invalid UTF-8.
         String::from_utf8_unchecked(vec)
