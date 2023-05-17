@@ -91,7 +91,7 @@ pub fn generate_resource_enum(resource_modules: &[RustFhirModule], release: &str
             (
                 quote! {
                     Resource::#ident(r) => {
-                        r.id.as_deref()
+                        r.id.as_ref()
                     },
                 },
                 quote! {

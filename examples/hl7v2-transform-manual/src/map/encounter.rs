@@ -17,7 +17,7 @@ pub fn map_encounter(message: &Message, id: &str, patient_id: &str) -> Encounter
     let pv1_segment = message.segments_by_id("PV1").next();
 
     Encounter {
-        id: Some(Box::new(id.into())),
+        id: Some(id.into()),
         identifier: map_identifier(pv1_segment.repeated(19)),
         status: "finished".into(),
         class: map_class(pv1_segment),

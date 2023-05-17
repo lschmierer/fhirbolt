@@ -241,7 +241,7 @@ fn parse_field(
         if is_resource && field_name == "id" {
             RustFhirFieldType {
                 name: "types::Id".to_string(),
-                r#box: true,
+                r#box: false,
                 contains_primitive: true,
             }
         } else if let Some(types) = element_definition.r#type.as_ref() {

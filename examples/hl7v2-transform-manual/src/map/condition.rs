@@ -29,9 +29,7 @@ pub fn map_conditions(message: &Message, patient_id: &str, encounter_id: &str) -
 
     for condition in &mut conditions {
         condition_id += 1;
-        condition.id = Some(Box::new(
-            format!("{}condition{}", encounter_id, condition_id).into(),
-        ));
+        condition.id = Some(format!("{}condition{}", encounter_id, condition_id).into());
     }
 
     conditions

@@ -2251,7 +2251,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Immuni
                         ],
                     ))
                 }
-                let mut r#id: Option<Box<fhirbolt_model::r4b::types::Id>> = None;
+                let mut r#id: Option<fhirbolt_model::r4b::types::Id> = None;
                 let mut r#meta: Option<Box<fhirbolt_model::r4b::types::Meta>> = None;
                 let mut r#implicit_rules: Option<fhirbolt_model::r4b::types::Uri> = None;
                 let mut r#language: Option<fhirbolt_model::r4b::types::Code> = None;
@@ -2331,7 +2331,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Immuni
                                     return Err(serde::de::Error::duplicate_field("id"));
                                 }
                                 let _context: &mut DeserializationContext<
-                                    Box<fhirbolt_model::r4b::types::Id>,
+                                    fhirbolt_model::r4b::types::Id,
                                 > = self.0.transmute();
                                 r#id = Some(map_access.next_value_seed(&mut *_context)?);
                             }

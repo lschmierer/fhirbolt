@@ -32,7 +32,7 @@ pub fn map_patient(message: &Message, id: &str) -> Patient {
     let pid_segment = message.segments_by_id("PID").next();
 
     Patient {
-        id: Some(Box::new(id.into())),
+        id: Some(id.into()),
         identifier: map_identifier(pid_segment.repeated(3)),
         name: map_name(pid_segment.repeated(5)),
         telecom: map_telecoms(pid_segment.repeated(13), pid_segment.repeated(14)),
