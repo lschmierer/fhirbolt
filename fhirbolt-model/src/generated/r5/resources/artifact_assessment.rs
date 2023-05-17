@@ -1,9 +1,9 @@
-// Generated on 2023-05-17 by fhirbolt-codegen v0.9.0
+// Generated on 2023-05-17 by fhirbolt-codegen v0.10.0
 #[doc = "Display of or reference to the bibliographic citation of the comment, classifier, or rating."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum ArtifactAssessmentCiteAs {
     Reference(Box<super::super::types::Reference>),
-    Markdown(Box<super::super::types::Markdown>),
+    Markdown(super::super::types::Markdown),
     #[default]
     Invalid,
 }
@@ -11,8 +11,8 @@ pub enum ArtifactAssessmentCiteAs {
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum ArtifactAssessmentArtifact {
     Reference(Box<super::super::types::Reference>),
-    Canonical(Box<super::super::types::Canonical>),
-    Uri(Box<super::super::types::Uri>),
+    Canonical(super::super::types::Canonical),
+    Uri(super::super::types::Uri),
     #[default]
     Invalid,
 }
@@ -70,7 +70,7 @@ impl Default for ArtifactAssessmentContent {
 #[derive(Debug, Clone, PartialEq)]
 pub struct ArtifactAssessment {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
-    pub r#id: Option<Box<super::super::types::Id>>,
+    pub r#id: Option<super::super::types::Id>,
     #[doc = "The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content might not always be associated with version changes to the resource."]
     pub r#meta: Option<Box<super::super::types::Meta>>,
     #[doc = "A reference to a set of rules that were followed when the resource was constructed, and which must be understood when processing the content. Often, this is a reference to an implementation guide that defines the special rules along with other profiles etc."]

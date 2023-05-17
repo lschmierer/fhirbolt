@@ -1,4 +1,4 @@
-// Generated on 2023-05-17 by fhirbolt-codegen v0.9.0
+// Generated on 2023-05-17 by fhirbolt-codegen v0.10.0
 #[doc = "Identifier Type: An identifier - identifies some entity uniquely and unambiguously. Typically this is used for business identifiers.\n\nNeed to be able to identify things with confidence and be sure that the identification is not subject to misinterpretation."]
 #[derive(Debug, Clone, PartialEq)]
 pub struct Identifier {

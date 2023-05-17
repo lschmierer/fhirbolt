@@ -1,4 +1,4 @@
-// Generated on 2023-05-17 by fhirbolt-codegen v0.9.0
+// Generated on 2023-05-17 by fhirbolt-codegen v0.10.0
 use crate::{DeserializationContext, SerializationContext};
 use fhirbolt_model::r4::resources::ClaimRelated;
 impl serde::ser::Serialize for SerializationContext<&ClaimRelated> {
@@ -1245,7 +1245,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<ClaimS
                                     return Err(serde::de::Error::duplicate_field("timingDate"));
                                 }
                                 let _context: &mut DeserializationContext<
-                                    Box<fhirbolt_model::r4::types::Date>,
+                                    fhirbolt_model::r4::types::Date,
                                 > = self.0.transmute();
                                 r#timing = Some(_Enum::Date(tri!(
                                     map_access.next_value_seed(&mut *_context)
@@ -1310,7 +1310,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<ClaimS
                                     return Err(serde::de::Error::duplicate_field("valueBoolean"));
                                 }
                                 let _context: &mut DeserializationContext<
-                                    Box<fhirbolt_model::r4::types::Boolean>,
+                                    fhirbolt_model::r4::types::Boolean,
                                 > = self.0.transmute();
                                 r#value = Some(_Enum::Boolean(tri!(
                                     map_access.next_value_seed(&mut *_context)
@@ -1363,7 +1363,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<ClaimS
                                     return Err(serde::de::Error::duplicate_field("valueString"));
                                 }
                                 let _context: &mut DeserializationContext<
-                                    Box<fhirbolt_model::r4::types::String>,
+                                    fhirbolt_model::r4::types::String,
                                 > = self.0.transmute();
                                 r#value = Some(_Enum::String(tri!(
                                     map_access.next_value_seed(&mut *_context)
@@ -5284,7 +5284,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<ClaimI
                                     return Err(serde::de::Error::duplicate_field("servicedDate"));
                                 }
                                 let _context: &mut DeserializationContext<
-                                    Box<fhirbolt_model::r4::types::Date>,
+                                    fhirbolt_model::r4::types::Date,
                                 > = self.0.transmute();
                                 r#serviced = Some(_Enum::Date(tri!(
                                     map_access.next_value_seed(&mut *_context)
@@ -6026,7 +6026,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Claim>
                         ],
                     ))
                 }
-                let mut r#id: Option<Box<fhirbolt_model::r4::types::Id>> = None;
+                let mut r#id: Option<fhirbolt_model::r4::types::Id> = None;
                 let mut r#meta: Option<Box<fhirbolt_model::r4::types::Meta>> = None;
                 let mut r#implicit_rules: Option<fhirbolt_model::r4::types::Uri> = None;
                 let mut r#language: Option<fhirbolt_model::r4::types::Code> = None;
@@ -6093,7 +6093,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Claim>
                                     return Err(serde::de::Error::duplicate_field("id"));
                                 }
                                 let _context: &mut DeserializationContext<
-                                    Box<fhirbolt_model::r4::types::Id>,
+                                    fhirbolt_model::r4::types::Id,
                                 > = self.0.transmute();
                                 r#id = Some(tri!(map_access.next_value_seed(&mut *_context)));
                             }

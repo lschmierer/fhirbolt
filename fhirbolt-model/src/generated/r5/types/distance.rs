@@ -1,4 +1,4 @@
-// Generated on 2023-05-17 by fhirbolt-codegen v0.9.0
+// Generated on 2023-05-17 by fhirbolt-codegen v0.10.0
 #[doc = "Distance Type: A length - a value with a unit that is a physical distance."]
 #[derive(Debug, Clone, PartialEq)]
 pub struct Distance {

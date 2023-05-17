@@ -1,4 +1,4 @@
-// Generated on 2023-05-17 by fhirbolt-codegen v0.9.0
+// Generated on 2023-05-17 by fhirbolt-codegen v0.10.0
 use crate::{DeserializationContext, SerializationContext};
 use fhirbolt_model::r4::types::SubstanceAmountReferenceRange;
 impl serde::ser::Serialize for SerializationContext<&SubstanceAmountReferenceRange> {
@@ -473,7 +473,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Substa
                                     return Err(serde::de::Error::duplicate_field("amountString"));
                                 }
                                 let _context: &mut DeserializationContext<
-                                    Box<fhirbolt_model::r4::types::String>,
+                                    fhirbolt_model::r4::types::String,
                                 > = self.0.transmute();
                                 r#amount = Some(_Enum::String(tri!(
                                     map_access.next_value_seed(&mut *_context)

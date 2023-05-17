@@ -1,4 +1,4 @@
-// Generated on 2023-05-17 by fhirbolt-codegen v0.9.0
+// Generated on 2023-05-17 by fhirbolt-codegen v0.10.0
 use crate::{DeserializationContext, SerializationContext};
 use fhirbolt_model::r4b::types::Boolean;
 impl serde::ser::Serialize for SerializationContext<&Boolean> {

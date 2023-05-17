@@ -1,4 +1,4 @@
-// Generated on 2023-05-17 by fhirbolt-codegen v0.9.0
+// Generated on 2023-05-17 by fhirbolt-codegen v0.10.0
 use crate::{DeserializationContext, SerializationContext};
 use fhirbolt_model::r5::types::ProductShelfLife;
 impl serde::ser::Serialize for SerializationContext<&ProductShelfLife> {
@@ -239,7 +239,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Produc
                                     return Err(serde::de::Error::duplicate_field("periodString"));
                                 }
                                 let _context: &mut DeserializationContext<
-                                    Box<fhirbolt_model::r5::types::String>,
+                                    fhirbolt_model::r5::types::String,
                                 > = self.0.transmute();
                                 r#period = Some(_Enum::String(tri!(
                                     map_access.next_value_seed(&mut *_context)

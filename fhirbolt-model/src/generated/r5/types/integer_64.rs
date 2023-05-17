@@ -1,4 +1,4 @@
-// Generated on 2023-05-17 by fhirbolt-codegen v0.9.0
+// Generated on 2023-05-17 by fhirbolt-codegen v0.10.0
 #[doc = "integer64 Type: A very large whole number"]
 #[derive(Debug, Clone, PartialEq)]
 pub struct Integer64 {
@@ -16,6 +16,14 @@ impl Default for Integer64 {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#value: Default::default(),
+        }
+    }
+}
+impl<I: Into<i64>> From<I> for Integer64 {
+    fn from(v: I) -> Self {
+        Integer64 {
+            value: Some(v.into()),
+            ..Default::default()
         }
     }
 }

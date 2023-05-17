@@ -1,4 +1,4 @@
-// Generated on 2023-05-17 by fhirbolt-codegen v0.9.0
+// Generated on 2023-05-17 by fhirbolt-codegen v0.10.0
 #[doc = "Base StructureDefinition for uri Type: String of characters used to identify a name or a resource"]
 #[derive(Debug, Clone, PartialEq)]
 pub struct Uri {
@@ -16,6 +16,14 @@ impl Default for Uri {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#value: Default::default(),
+        }
+    }
+}
+impl<I: Into<std::string::String>> From<I> for Uri {
+    fn from(v: I) -> Self {
+        Uri {
+            value: Some(v.into()),
+            ..Default::default()
         }
     }
 }

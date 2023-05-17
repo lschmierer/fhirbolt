@@ -1,9 +1,7 @@
 //! This module provides conversion functions (data mappers)
 //! to translate a HL7 v2 message to FHIR resources.
 
-use fhirbolt::model::r5::types::{
-    Code, CodeableConcept, Coding, Identifier, Reference, String as FhirString, Uri,
-};
+use fhirbolt::model::r5::types::{Code, CodeableConcept, Coding, Identifier, Reference};
 
 pub use condition::map_conditions;
 pub use encounter::map_encounter;
@@ -15,18 +13,11 @@ mod condition;
 mod encounter;
 mod patient;
 
-/// Utility function to map an owned `String` or a string reference `&str` to a FHIR String.
-fn build_fhir_string<S: Into<String>>(str: S) -> FhirString {
-    FhirString {
-        value: Some(str.into()),
-        ..Default::default()
-    }
-}
-
 /// Utility function to build a FHIR reference.
 fn build_reference<S: Into<String>>(reference: S) -> Box<Reference> {
+    let reference_str = reference.into();
     Box::new(Reference {
-        reference: Some(build_fhir_string(reference)),
+        reference: Some(reference_str.into()),
         ..Default::default()
     })
 }
@@ -38,12 +29,9 @@ fn build_reference<S: Into<String>>(reference: S) -> Box<Reference> {
 fn build_codeable_concept(system: &str, code: Code, display: Option<&str>) -> Vec<CodeableConcept> {
     vec![CodeableConcept {
         coding: vec![Coding {
-            system: Some(Uri {
-                value: Some(system.to_string()),
-                ..Default::default()
-            }),
+            system: Some(system.into()),
             code: Some(code),
-            display: display.map(build_fhir_string),
+            display: display.map(|d| d.into()),
             ..Default::default()
         }],
         ..Default::default()

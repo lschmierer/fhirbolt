@@ -1,6 +1,6 @@
 use fhirbolt::model::r5::{
     resources::{Encounter, EncounterLocation},
-    types::{Code, CodeableConcept, Id, Identifier, Period, Reference},
+    types::{CodeableConcept, Identifier, Period, Reference},
 };
 
 use crate::hl7v2::{
@@ -17,15 +17,9 @@ pub fn map_encounter(message: &Message, id: &str, patient_id: &str) -> Encounter
     let pv1_segment = message.segments_by_id("PV1").next();
 
     Encounter {
-        id: Some(Box::new(Id {
-            value: Some(id.into()),
-            ..Default::default()
-        })),
+        id: Some(id.into()),
         identifier: map_identifier(pv1_segment.repeated(19)),
-        status: Code {
-            value: Some("finished".into()),
-            ..Default::default()
-        },
+        status: "finished".into(),
         class: map_class(pv1_segment),
         subject: Some(build_reference(format!("Patient/{}", patient_id))),
         actual_period: map_actual_period(pv1_segment),

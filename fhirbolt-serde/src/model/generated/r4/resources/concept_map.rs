@@ -1,4 +1,4 @@
-// Generated on 2023-05-17 by fhirbolt-codegen v0.9.0
+// Generated on 2023-05-17 by fhirbolt-codegen v0.10.0
 use crate::{DeserializationContext, SerializationContext};
 use fhirbolt_model::r4::resources::ConceptMapGroupElementTargetDependsOn;
 impl serde::ser::Serialize for SerializationContext<&ConceptMapGroupElementTargetDependsOn> {
@@ -2827,7 +2827,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Concep
                         ],
                     ))
                 }
-                let mut r#id: Option<Box<fhirbolt_model::r4::types::Id>> = None;
+                let mut r#id: Option<fhirbolt_model::r4::types::Id> = None;
                 let mut r#meta: Option<Box<fhirbolt_model::r4::types::Meta>> = None;
                 let mut r#implicit_rules: Option<fhirbolt_model::r4::types::Uri> = None;
                 let mut r#language: Option<fhirbolt_model::r4::types::Code> = None;
@@ -2878,7 +2878,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Concep
                                     return Err(serde::de::Error::duplicate_field("id"));
                                 }
                                 let _context: &mut DeserializationContext<
-                                    Box<fhirbolt_model::r4::types::Id>,
+                                    fhirbolt_model::r4::types::Id,
                                 > = self.0.transmute();
                                 r#id = Some(tri!(map_access.next_value_seed(&mut *_context)));
                             }
@@ -3502,7 +3502,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Concep
                                     return Err(serde::de::Error::duplicate_field("sourceUri"));
                                 }
                                 let _context: &mut DeserializationContext<
-                                    Box<fhirbolt_model::r4::types::Uri>,
+                                    fhirbolt_model::r4::types::Uri,
                                 > = self.0.transmute();
                                 r#source = Some(_Enum::Uri(tri!(
                                     map_access.next_value_seed(&mut *_context)
@@ -3556,7 +3556,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Concep
                                     ));
                                 }
                                 let _context: &mut DeserializationContext<
-                                    Box<fhirbolt_model::r4::types::Canonical>,
+                                    fhirbolt_model::r4::types::Canonical,
                                 > = self.0.transmute();
                                 r#source = Some(_Enum::Canonical(tri!(
                                     map_access.next_value_seed(&mut *_context)
@@ -3606,7 +3606,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Concep
                                     return Err(serde::de::Error::duplicate_field("targetUri"));
                                 }
                                 let _context: &mut DeserializationContext<
-                                    Box<fhirbolt_model::r4::types::Uri>,
+                                    fhirbolt_model::r4::types::Uri,
                                 > = self.0.transmute();
                                 r#target = Some(_Enum::Uri(tri!(
                                     map_access.next_value_seed(&mut *_context)
@@ -3660,7 +3660,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Concep
                                     ));
                                 }
                                 let _context: &mut DeserializationContext<
-                                    Box<fhirbolt_model::r4::types::Canonical>,
+                                    fhirbolt_model::r4::types::Canonical,
                                 > = self.0.transmute();
                                 r#target = Some(_Enum::Canonical(tri!(
                                     map_access.next_value_seed(&mut *_context)

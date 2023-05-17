@@ -1,4 +1,4 @@
-// Generated on 2023-05-17 by fhirbolt-codegen v0.9.0
+// Generated on 2023-05-17 by fhirbolt-codegen v0.10.0
 use crate::{DeserializationContext, SerializationContext};
 use fhirbolt_model::r5::resources::StructureDefinitionMapping;
 impl serde::ser::Serialize for SerializationContext<&StructureDefinitionMapping> {
@@ -2005,7 +2005,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Struct
                         ],
                     ))
                 }
-                let mut r#id: Option<Box<fhirbolt_model::r5::types::Id>> = None;
+                let mut r#id: Option<fhirbolt_model::r5::types::Id> = None;
                 let mut r#meta: Option<Box<fhirbolt_model::r5::types::Meta>> = None;
                 let mut r#implicit_rules: Option<fhirbolt_model::r5::types::Uri> = None;
                 let mut r#language: Option<fhirbolt_model::r5::types::Code> = None;
@@ -2077,7 +2077,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Struct
                                     return Err(serde::de::Error::duplicate_field("id"));
                                 }
                                 let _context: &mut DeserializationContext<
-                                    Box<fhirbolt_model::r5::types::Id>,
+                                    fhirbolt_model::r5::types::Id,
                                 > = self.0.transmute();
                                 r#id = Some(tri!(map_access.next_value_seed(&mut *_context)));
                             }
@@ -2354,7 +2354,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Struct
                                     ));
                                 }
                                 let _context: &mut DeserializationContext<
-                                    Box<fhirbolt_model::r5::types::String>,
+                                    fhirbolt_model::r5::types::String,
                                 > = self.0.transmute();
                                 r#version_algorithm = Some(_Enum::String(tri!(
                                     map_access.next_value_seed(&mut *_context)

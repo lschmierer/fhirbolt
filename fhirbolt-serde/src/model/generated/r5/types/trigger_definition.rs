@@ -1,4 +1,4 @@
-// Generated on 2023-05-17 by fhirbolt-codegen v0.9.0
+// Generated on 2023-05-17 by fhirbolt-codegen v0.10.0
 use crate::{DeserializationContext, SerializationContext};
 use fhirbolt_model::r5::types::TriggerDefinition;
 impl serde::ser::Serialize for SerializationContext<&TriggerDefinition> {
@@ -437,7 +437,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Trigge
                                     return Err(serde::de::Error::duplicate_field("timingDate"));
                                 }
                                 let _context: &mut DeserializationContext<
-                                    Box<fhirbolt_model::r5::types::Date>,
+                                    fhirbolt_model::r5::types::Date,
                                 > = self.0.transmute();
                                 r#timing = Some(_Enum::Date(tri!(
                                     map_access.next_value_seed(&mut *_context)
@@ -492,7 +492,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Trigge
                                     ));
                                 }
                                 let _context: &mut DeserializationContext<
-                                    Box<fhirbolt_model::r5::types::DateTime>,
+                                    fhirbolt_model::r5::types::DateTime,
                                 > = self.0.transmute();
                                 r#timing = Some(_Enum::DateTime(tri!(
                                     map_access.next_value_seed(&mut *_context)

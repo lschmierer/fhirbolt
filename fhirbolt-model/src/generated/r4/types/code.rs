@@ -1,4 +1,4 @@
-// Generated on 2023-05-17 by fhirbolt-codegen v0.9.0
+// Generated on 2023-05-17 by fhirbolt-codegen v0.10.0
 #[doc = "Base StructureDefinition for code type: A string which has at least one character and no leading or trailing whitespace and where there is no whitespace other than single spaces in the contents"]
 #[derive(Debug, Clone, PartialEq)]
 pub struct Code {
@@ -16,6 +16,14 @@ impl Default for Code {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#value: Default::default(),
+        }
+    }
+}
+impl<I: Into<std::string::String>> From<I> for Code {
+    fn from(v: I) -> Self {
+        Code {
+            value: Some(v.into()),
+            ..Default::default()
         }
     }
 }

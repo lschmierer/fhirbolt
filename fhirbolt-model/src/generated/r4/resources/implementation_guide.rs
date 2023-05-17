@@ -1,16 +1,16 @@
-// Generated on 2023-05-17 by fhirbolt-codegen v0.9.0
+// Generated on 2023-05-17 by fhirbolt-codegen v0.10.0
 #[doc = "If true or a reference, indicates the resource is an example instance.  If a reference is present, indicates that the example is an example of the specified profile."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum ImplementationGuideDefinitionResourceExample {
-    Boolean(Box<super::super::types::Boolean>),
-    Canonical(Box<super::super::types::Canonical>),
+    Boolean(super::super::types::Boolean),
+    Canonical(super::super::types::Canonical),
     #[default]
     Invalid,
 }
 #[doc = "The source address for the page."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum ImplementationGuideDefinitionPageName {
-    Url(Box<super::super::types::Url>),
+    Url(super::super::types::Url),
     Reference(Box<super::super::types::Reference>),
     #[default]
     Invalid,
@@ -18,8 +18,8 @@ pub enum ImplementationGuideDefinitionPageName {
 #[doc = "If true or a reference, indicates the resource is an example instance.  If a reference is present, indicates that the example is an example of the specified profile."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum ImplementationGuideManifestResourceExample {
-    Boolean(Box<super::super::types::Boolean>),
-    Canonical(Box<super::super::types::Canonical>),
+    Boolean(super::super::types::Boolean),
+    Canonical(super::super::types::Canonical),
     #[default]
     Invalid,
 }
@@ -400,7 +400,7 @@ impl Default for ImplementationGuideManifest {
 #[derive(Debug, Clone, PartialEq)]
 pub struct ImplementationGuide {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
-    pub r#id: Option<Box<super::super::types::Id>>,
+    pub r#id: Option<super::super::types::Id>,
     #[doc = "The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content might not always be associated with version changes to the resource."]
     pub r#meta: Option<Box<super::super::types::Meta>>,
     #[doc = "A reference to a set of rules that were followed when the resource was constructed, and which must be understood when processing the content. Often, this is a reference to an implementation guide that defines the special rules along with other profiles etc."]

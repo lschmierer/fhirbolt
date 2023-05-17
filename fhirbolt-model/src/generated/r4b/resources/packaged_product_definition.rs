@@ -1,9 +1,9 @@
-// Generated on 2023-05-17 by fhirbolt-codegen v0.9.0
+// Generated on 2023-05-17 by fhirbolt-codegen v0.10.0
 #[doc = "The shelf life time period can be specified using a numerical value for the period of time and its unit of time measurement The unit of measurement shall be specified in accordance with ISO 11240 and the resulting terminology The symbol and the symbol identifier shall be used."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum PackagedProductDefinitionPackageShelfLifeStoragePeriod {
     Duration(Box<super::super::types::Duration>),
-    String(Box<super::super::types::String>),
+    String(super::super::types::String),
     #[default]
     Invalid,
 }
@@ -12,8 +12,8 @@ pub enum PackagedProductDefinitionPackageShelfLifeStoragePeriod {
 pub enum PackagedProductDefinitionPackagePropertyValue {
     CodeableConcept(Box<super::super::types::CodeableConcept>),
     Quantity(Box<super::super::types::Quantity>),
-    Date(Box<super::super::types::Date>),
-    Boolean(Box<super::super::types::Boolean>),
+    Date(super::super::types::Date),
+    Boolean(super::super::types::Boolean),
     Attachment(Box<super::super::types::Attachment>),
     #[default]
     Invalid,
@@ -185,7 +185,7 @@ impl Default for PackagedProductDefinitionPackage {
 #[derive(Debug, Clone, PartialEq)]
 pub struct PackagedProductDefinition {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
-    pub r#id: Option<Box<super::super::types::Id>>,
+    pub r#id: Option<super::super::types::Id>,
     #[doc = "The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content might not always be associated with version changes to the resource."]
     pub r#meta: Option<Box<super::super::types::Meta>>,
     #[doc = "A reference to a set of rules that were followed when the resource was constructed, and which must be understood when processing the content. Often, this is a reference to an implementation guide that defines the special rules along with other profiles etc."]

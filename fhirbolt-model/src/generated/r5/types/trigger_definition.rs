@@ -1,11 +1,11 @@
-// Generated on 2023-05-17 by fhirbolt-codegen v0.9.0
+// Generated on 2023-05-17 by fhirbolt-codegen v0.10.0
 #[doc = "The timing of the event (if this is a periodic trigger)."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum TriggerDefinitionTiming {
     Timing(Box<super::super::types::Timing>),
     Reference(Box<super::super::types::Reference>),
-    Date(Box<super::super::types::Date>),
-    DateTime(Box<super::super::types::DateTime>),
+    Date(super::super::types::Date),
+    DateTime(super::super::types::DateTime),
     #[default]
     Invalid,
 }

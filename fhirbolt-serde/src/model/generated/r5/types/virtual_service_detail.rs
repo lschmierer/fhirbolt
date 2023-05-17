@@ -1,4 +1,4 @@
-// Generated on 2023-05-17 by fhirbolt-codegen v0.9.0
+// Generated on 2023-05-17 by fhirbolt-codegen v0.10.0
 use crate::{DeserializationContext, SerializationContext};
 use fhirbolt_model::r5::types::VirtualServiceDetail;
 impl serde::ser::Serialize for SerializationContext<&VirtualServiceDetail> {
@@ -312,7 +312,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Virtua
                                     return Err(serde::de::Error::duplicate_field("addressUrl"));
                                 }
                                 let _context: &mut DeserializationContext<
-                                    Box<fhirbolt_model::r5::types::Url>,
+                                    fhirbolt_model::r5::types::Url,
                                 > = self.0.transmute();
                                 r#address = Some(_Enum::Url(tri!(
                                     map_access.next_value_seed(&mut *_context)
@@ -365,7 +365,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Virtua
                                     return Err(serde::de::Error::duplicate_field("addressString"));
                                 }
                                 let _context: &mut DeserializationContext<
-                                    Box<fhirbolt_model::r5::types::String>,
+                                    fhirbolt_model::r5::types::String,
                                 > = self.0.transmute();
                                 r#address = Some(_Enum::String(tri!(
                                     map_access.next_value_seed(&mut *_context)

@@ -1,4 +1,4 @@
-// Generated on 2023-05-17 by fhirbolt-codegen v0.9.0
+// Generated on 2023-05-17 by fhirbolt-codegen v0.10.0
 #[doc = "dateTime Type: A date, date-time or partial date (e.g. just year or year + month).  If hours and minutes are specified, a UTC offset SHALL be populated. The format is a union of the schema types gYear, gYearMonth, date and dateTime. Seconds must be provided due to schema type constraints but may be zero-filled and may be ignored.                 Dates SHALL be valid dates."]
 #[derive(Debug, Clone, PartialEq)]
 pub struct DateTime {
@@ -16,6 +16,14 @@ impl Default for DateTime {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#value: Default::default(),
+        }
+    }
+}
+impl<I: Into<std::string::String>> From<I> for DateTime {
+    fn from(v: I) -> Self {
+        DateTime {
+            value: Some(v.into()),
+            ..Default::default()
         }
     }
 }

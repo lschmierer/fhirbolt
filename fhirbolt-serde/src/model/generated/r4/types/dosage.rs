@@ -1,4 +1,4 @@
-// Generated on 2023-05-17 by fhirbolt-codegen v0.9.0
+// Generated on 2023-05-17 by fhirbolt-codegen v0.10.0
 use crate::{DeserializationContext, SerializationContext};
 use fhirbolt_model::r4::types::DosageDoseAndRate;
 impl serde::ser::Serialize for SerializationContext<&DosageDoseAndRate> {
@@ -786,7 +786,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Dosage
                                     ));
                                 }
                                 let _context: &mut DeserializationContext<
-                                    Box<fhirbolt_model::r4::types::Boolean>,
+                                    fhirbolt_model::r4::types::Boolean,
                                 > = self.0.transmute();
                                 r#as_needed = Some(_Enum::Boolean(tri!(
                                     map_access.next_value_seed(&mut *_context)

@@ -1,4 +1,4 @@
-// Generated on 2023-05-17 by fhirbolt-codegen v0.9.0
+// Generated on 2023-05-17 by fhirbolt-codegen v0.10.0
 #[doc = "An amount of service being requested which can be a quantity ( for example $1,500 home modification), a ratio ( for example, 20 half day visits per month), or a range (2.0 to 1.8 Gy per fraction)."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum ServiceRequestQuantity {
@@ -11,7 +11,7 @@ pub enum ServiceRequestQuantity {
 #[doc = "The date/time at which the requested service should occur."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum ServiceRequestOccurrence {
-    DateTime(Box<super::super::types::DateTime>),
+    DateTime(super::super::types::DateTime),
     Period(Box<super::super::types::Period>),
     Timing(Box<super::super::types::Timing>),
     #[default]
@@ -20,7 +20,7 @@ pub enum ServiceRequestOccurrence {
 #[doc = "If a CodeableConcept is present, it indicates the pre-condition for performing the service.  For example \"pain\", \"on flare-up\", etc."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum ServiceRequestAsNeeded {
-    Boolean(Box<super::super::types::Boolean>),
+    Boolean(super::super::types::Boolean),
     CodeableConcept(Box<super::super::types::CodeableConcept>),
     #[default]
     Invalid,
@@ -29,7 +29,7 @@ pub enum ServiceRequestAsNeeded {
 #[derive(Debug, Clone, PartialEq)]
 pub struct ServiceRequest {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
-    pub r#id: Option<Box<super::super::types::Id>>,
+    pub r#id: Option<super::super::types::Id>,
     #[doc = "The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content might not always be associated with version changes to the resource."]
     pub r#meta: Option<Box<super::super::types::Meta>>,
     #[doc = "A reference to a set of rules that were followed when the resource was constructed, and which must be understood when processing the content. Often, this is a reference to an implementation guide that defines the special rules along with other profiles etc."]

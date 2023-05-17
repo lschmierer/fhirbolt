@@ -241,7 +241,7 @@ fn parse_field(
         if is_resource && field_name == "id" {
             RustFhirFieldType {
                 name: "types::Id".to_string(),
-                r#box: true,
+                r#box: false,
                 contains_primitive: true,
             }
         } else if let Some(types) = element_definition.r#type.as_ref() {
@@ -309,7 +309,7 @@ fn create_value_enum(
     let variants = types
         .iter()
         .map(|t| {
-            let field_type = match_field_type(path, t, true);
+            let field_type = match_field_type(path, t, false);
 
             if field_type.contains_primitive {
                 may_contain_primitive = true;

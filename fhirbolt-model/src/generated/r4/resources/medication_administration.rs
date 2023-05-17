@@ -1,4 +1,4 @@
-// Generated on 2023-05-17 by fhirbolt-codegen v0.9.0
+// Generated on 2023-05-17 by fhirbolt-codegen v0.10.0
 #[doc = "Identifies the medication that was administered. This is either a link to a resource representing the details of the medication or a simple attribute carrying a code that identifies the medication from a known list of medications."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum MedicationAdministrationMedication {
@@ -10,7 +10,7 @@ pub enum MedicationAdministrationMedication {
 #[doc = "A specific date/time or interval of time during which the administration took place (or did not take place, when the 'notGiven' attribute is true). For many administrations, such as swallowing a tablet the use of dateTime is more appropriate."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum MedicationAdministrationEffective {
-    DateTime(Box<super::super::types::DateTime>),
+    DateTime(super::super::types::DateTime),
     Period(Box<super::super::types::Period>),
     #[default]
     Invalid,
@@ -94,7 +94,7 @@ impl Default for MedicationAdministrationDosage {
 #[derive(Debug, Clone, PartialEq)]
 pub struct MedicationAdministration {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
-    pub r#id: Option<Box<super::super::types::Id>>,
+    pub r#id: Option<super::super::types::Id>,
     #[doc = "The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content might not always be associated with version changes to the resource."]
     pub r#meta: Option<Box<super::super::types::Meta>>,
     #[doc = "A reference to a set of rules that were followed when the resource was constructed, and which must be understood when processing the content. Often, this is a reference to an implementation guide that defines the special rules along with other profiles etc."]

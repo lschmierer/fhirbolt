@@ -1,6 +1,6 @@
 use fhirbolt::model::r5::{
     resources::Condition,
-    types::{Code, CodeableConcept, Coding, Id, Uri},
+    types::{CodeableConcept, Coding, Uri},
 };
 
 use crate::hl7v2::{
@@ -29,10 +29,7 @@ pub fn map_conditions(message: &Message, patient_id: &str, encounter_id: &str) -
 
     for condition in &mut conditions {
         condition_id += 1;
-        condition.id = Some(Box::new(Id {
-            value: Some(format!("{}condition{}", encounter_id, condition_id)),
-            ..Default::default()
-        }));
+        condition.id = Some(format!("{}condition{}", encounter_id, condition_id).into());
     }
 
     conditions
@@ -55,10 +52,7 @@ fn build_clinical_status_active() -> Box<CodeableConcept> {
                 value: Some("http://terminology.hl7.org/CodeSystem/condition-clinical".to_string()),
                 ..Default::default()
             }),
-            code: Some(Code {
-                value: Some("active".to_string()),
-                ..Default::default()
-            }),
+            code: Some("active".into()),
             ..Default::default()
         }],
         ..Default::default()

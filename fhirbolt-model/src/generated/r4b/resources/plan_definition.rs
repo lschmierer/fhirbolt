@@ -1,10 +1,10 @@
-// Generated on 2023-05-17 by fhirbolt-codegen v0.9.0
+// Generated on 2023-05-17 by fhirbolt-codegen v0.10.0
 #[doc = "A code, group definition, or canonical reference that describes  or identifies the intended subject of the plan definition. Canonical references are allowed to support the definition of protocols for drug and substance quality specifications, and is allowed to reference a MedicinalProductDefinition, SubstanceDefinition, AdministrableProductDefinition, ManufacturedItemDefinition, or PackagedProductDefinition resource."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum PlanDefinitionSubject {
     CodeableConcept(Box<super::super::types::CodeableConcept>),
     Reference(Box<super::super::types::Reference>),
-    Canonical(Box<super::super::types::Canonical>),
+    Canonical(super::super::types::Canonical),
     #[default]
     Invalid,
 }
@@ -22,7 +22,7 @@ pub enum PlanDefinitionGoalTargetDetail {
 pub enum PlanDefinitionActionSubject {
     CodeableConcept(Box<super::super::types::CodeableConcept>),
     Reference(Box<super::super::types::Reference>),
-    Canonical(Box<super::super::types::Canonical>),
+    Canonical(super::super::types::Canonical),
     #[default]
     Invalid,
 }
@@ -37,7 +37,7 @@ pub enum PlanDefinitionActionRelatedActionOffset {
 #[doc = "An optional value describing when the action should be performed."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum PlanDefinitionActionTiming {
-    DateTime(Box<super::super::types::DateTime>),
+    DateTime(super::super::types::DateTime),
     Age(Box<super::super::types::Age>),
     Period(Box<super::super::types::Period>),
     Duration(Box<super::super::types::Duration>),
@@ -49,8 +49,8 @@ pub enum PlanDefinitionActionTiming {
 #[doc = "A reference to an ActivityDefinition that describes the action to be taken in detail, or a PlanDefinition that describes a series of actions to be taken."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum PlanDefinitionActionDefinition {
-    Canonical(Box<super::super::types::Canonical>),
-    Uri(Box<super::super::types::Uri>),
+    Canonical(super::super::types::Canonical),
+    Uri(super::super::types::Uri),
     #[default]
     Invalid,
 }
@@ -351,7 +351,7 @@ impl Default for PlanDefinitionAction {
 #[derive(Debug, Clone, PartialEq)]
 pub struct PlanDefinition {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
-    pub r#id: Option<Box<super::super::types::Id>>,
+    pub r#id: Option<super::super::types::Id>,
     #[doc = "The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content might not always be associated with version changes to the resource."]
     pub r#meta: Option<Box<super::super::types::Meta>>,
     #[doc = "A reference to a set of rules that were followed when the resource was constructed, and which must be understood when processing the content. Often, this is a reference to an implementation guide that defines the special rules along with other profiles etc."]

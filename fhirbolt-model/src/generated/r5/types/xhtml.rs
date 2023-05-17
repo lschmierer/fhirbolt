@@ -1,4 +1,4 @@
-// Generated on 2023-05-17 by fhirbolt-codegen v0.9.0
+// Generated on 2023-05-17 by fhirbolt-codegen v0.10.0
 #[doc = "xhtml Type definition"]
 #[derive(Debug, Clone, PartialEq)]
 pub struct Xhtml {
@@ -13,6 +13,14 @@ impl Default for Xhtml {
         Self {
             r#id: Default::default(),
             r#value: Default::default(),
+        }
+    }
+}
+impl<I: Into<std::string::String>> From<I> for Xhtml {
+    fn from(v: I) -> Self {
+        Xhtml {
+            value: v.into(),
+            ..Default::default()
         }
     }
 }

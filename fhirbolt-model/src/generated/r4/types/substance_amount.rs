@@ -1,10 +1,10 @@
-// Generated on 2023-05-17 by fhirbolt-codegen v0.9.0
+// Generated on 2023-05-17 by fhirbolt-codegen v0.10.0
 #[doc = "Used to capture quantitative values for a variety of elements. If only limits are given, the arithmetic mean would be the average. If only a single definite value for a given element is given, it would be captured in this field."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum SubstanceAmountAmount {
     Quantity(Box<super::super::types::Quantity>),
     Range(Box<super::super::types::Range>),
-    String(Box<super::super::types::String>),
+    String(super::super::types::String),
     #[default]
     Invalid,
 }

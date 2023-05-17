@@ -1,4 +1,4 @@
-// Generated on 2023-05-17 by fhirbolt-codegen v0.9.0
+// Generated on 2023-05-17 by fhirbolt-codegen v0.10.0
 use crate::{DeserializationContext, SerializationContext};
 use fhirbolt_model::r5::resources::ArtifactAssessmentContent;
 impl serde::ser::Serialize for SerializationContext<&ArtifactAssessmentContent> {
@@ -1104,7 +1104,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Artifa
                         ],
                     ))
                 }
-                let mut r#id: Option<Box<fhirbolt_model::r5::types::Id>> = None;
+                let mut r#id: Option<fhirbolt_model::r5::types::Id> = None;
                 let mut r#meta: Option<Box<fhirbolt_model::r5::types::Meta>> = None;
                 let mut r#implicit_rules: Option<fhirbolt_model::r5::types::Uri> = None;
                 let mut r#language: Option<fhirbolt_model::r5::types::Code> = None;
@@ -1152,7 +1152,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Artifa
                                     return Err(serde::de::Error::duplicate_field("id"));
                                 }
                                 let _context: &mut DeserializationContext<
-                                    Box<fhirbolt_model::r5::types::Id>,
+                                    fhirbolt_model::r5::types::Id,
                                 > = self.0.transmute();
                                 r#id = Some(tri!(map_access.next_value_seed(&mut *_context)));
                             }
@@ -1405,7 +1405,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Artifa
                                     ));
                                 }
                                 let _context: &mut DeserializationContext<
-                                    Box<fhirbolt_model::r5::types::Markdown>,
+                                    fhirbolt_model::r5::types::Markdown,
                                 > = self.0.transmute();
                                 r#cite_as = Some(_Enum::Markdown(tri!(
                                     map_access.next_value_seed(&mut *_context)
@@ -1617,7 +1617,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Artifa
                                     ));
                                 }
                                 let _context: &mut DeserializationContext<
-                                    Box<fhirbolt_model::r5::types::Canonical>,
+                                    fhirbolt_model::r5::types::Canonical,
                                 > = self.0.transmute();
                                 r#artifact = Some(_Enum::Canonical(tri!(
                                     map_access.next_value_seed(&mut *_context)
@@ -1670,7 +1670,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Artifa
                                     return Err(serde::de::Error::duplicate_field("artifactUri"));
                                 }
                                 let _context: &mut DeserializationContext<
-                                    Box<fhirbolt_model::r5::types::Uri>,
+                                    fhirbolt_model::r5::types::Uri,
                                 > = self.0.transmute();
                                 r#artifact = Some(_Enum::Uri(tri!(
                                     map_access.next_value_seed(&mut *_context)

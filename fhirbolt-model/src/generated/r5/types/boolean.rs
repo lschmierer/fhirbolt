@@ -1,4 +1,4 @@
-// Generated on 2023-05-17 by fhirbolt-codegen v0.9.0
+// Generated on 2023-05-17 by fhirbolt-codegen v0.10.0
 #[doc = "boolean Type: Value of \"true\" or \"false\""]
 #[derive(Debug, Clone, PartialEq)]
 pub struct Boolean {
@@ -16,6 +16,14 @@ impl Default for Boolean {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#value: Default::default(),
+        }
+    }
+}
+impl<I: Into<bool>> From<I> for Boolean {
+    fn from(v: I) -> Self {
+        Boolean {
+            value: Some(v.into()),
+            ..Default::default()
         }
     }
 }

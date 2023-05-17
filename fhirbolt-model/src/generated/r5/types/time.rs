@@ -1,4 +1,4 @@
-// Generated on 2023-05-17 by fhirbolt-codegen v0.9.0
+// Generated on 2023-05-17 by fhirbolt-codegen v0.10.0
 #[doc = "time Type: A time during the day, with no date specified"]
 #[derive(Debug, Clone, PartialEq)]
 pub struct Time {
@@ -16,6 +16,14 @@ impl Default for Time {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#value: Default::default(),
+        }
+    }
+}
+impl<I: Into<std::string::String>> From<I> for Time {
+    fn from(v: I) -> Self {
+        Time {
+            value: Some(v.into()),
+            ..Default::default()
         }
     }
 }

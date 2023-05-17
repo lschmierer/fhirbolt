@@ -1,8 +1,8 @@
-// Generated on 2023-05-17 by fhirbolt-codegen v0.9.0
+// Generated on 2023-05-17 by fhirbolt-codegen v0.10.0
 #[doc = "The reference to a FHIR ObservationDefinition resource that provides the definition that is adhered to in whole or in part by this Observation instance."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum ObservationInstantiates {
-    Canonical(Box<super::super::types::Canonical>),
+    Canonical(super::super::types::Canonical),
     Reference(Box<super::super::types::Reference>),
     #[default]
     Invalid,
@@ -10,10 +10,10 @@ pub enum ObservationInstantiates {
 #[doc = "The time or time-period the observed value is asserted as being true. For biological subjects - e.g. human patients - this is usually called the \"physiologically relevant time\". This is usually either the time of the procedure or of specimen collection, but very often the source of the date/time is not known, only the date/time itself."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum ObservationEffective {
-    DateTime(Box<super::super::types::DateTime>),
+    DateTime(super::super::types::DateTime),
     Period(Box<super::super::types::Period>),
     Timing(Box<super::super::types::Timing>),
-    Instant(Box<super::super::types::Instant>),
+    Instant(super::super::types::Instant),
     #[default]
     Invalid,
 }
@@ -22,14 +22,14 @@ pub enum ObservationEffective {
 pub enum ObservationValue {
     Quantity(Box<super::super::types::Quantity>),
     CodeableConcept(Box<super::super::types::CodeableConcept>),
-    String(Box<super::super::types::String>),
-    Boolean(Box<super::super::types::Boolean>),
-    Integer(Box<super::super::types::Integer>),
+    String(super::super::types::String),
+    Boolean(super::super::types::Boolean),
+    Integer(super::super::types::Integer),
     Range(Box<super::super::types::Range>),
     Ratio(Box<super::super::types::Ratio>),
     SampledData(Box<super::super::types::SampledData>),
-    Time(Box<super::super::types::Time>),
-    DateTime(Box<super::super::types::DateTime>),
+    Time(super::super::types::Time),
+    DateTime(super::super::types::DateTime),
     Period(Box<super::super::types::Period>),
     Attachment(Box<super::super::types::Attachment>),
     Reference(Box<super::super::types::Reference>),
@@ -41,14 +41,14 @@ pub enum ObservationValue {
 pub enum ObservationComponentValue {
     Quantity(Box<super::super::types::Quantity>),
     CodeableConcept(Box<super::super::types::CodeableConcept>),
-    String(Box<super::super::types::String>),
-    Boolean(Box<super::super::types::Boolean>),
-    Integer(Box<super::super::types::Integer>),
+    String(super::super::types::String),
+    Boolean(super::super::types::Boolean),
+    Integer(super::super::types::Integer),
     Range(Box<super::super::types::Range>),
     Ratio(Box<super::super::types::Ratio>),
     SampledData(Box<super::super::types::SampledData>),
-    Time(Box<super::super::types::Time>),
-    DateTime(Box<super::super::types::DateTime>),
+    Time(super::super::types::Time),
+    DateTime(super::super::types::DateTime),
     Period(Box<super::super::types::Period>),
     Attachment(Box<super::super::types::Attachment>),
     Reference(Box<super::super::types::Reference>),
@@ -173,7 +173,7 @@ impl Default for ObservationComponent {
 #[derive(Debug, Clone, PartialEq)]
 pub struct Observation {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
-    pub r#id: Option<Box<super::super::types::Id>>,
+    pub r#id: Option<super::super::types::Id>,
     #[doc = "The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content might not always be associated with version changes to the resource."]
     pub r#meta: Option<Box<super::super::types::Meta>>,
     #[doc = "A reference to a set of rules that were followed when the resource was constructed, and which must be understood when processing the content. Often, this is a reference to an implementation guide that defines the special rules along with other profiles etc."]

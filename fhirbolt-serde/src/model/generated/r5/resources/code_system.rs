@@ -1,4 +1,4 @@
-// Generated on 2023-05-17 by fhirbolt-codegen v0.9.0
+// Generated on 2023-05-17 by fhirbolt-codegen v0.10.0
 use crate::{DeserializationContext, SerializationContext};
 use fhirbolt_model::r5::resources::CodeSystemFilter;
 impl serde::ser::Serialize for SerializationContext<&CodeSystemFilter> {
@@ -1707,7 +1707,7 @@ impl<'de> serde::de::DeserializeSeed<'de>
                                     return Err(serde::de::Error::duplicate_field("valueCode"));
                                 }
                                 let _context: &mut DeserializationContext<
-                                    Box<fhirbolt_model::r5::types::Code>,
+                                    fhirbolt_model::r5::types::Code,
                                 > = self.0.transmute();
                                 r#value = Some(_Enum::Code(tri!(
                                     map_access.next_value_seed(&mut *_context)
@@ -1771,7 +1771,7 @@ impl<'de> serde::de::DeserializeSeed<'de>
                                     return Err(serde::de::Error::duplicate_field("valueString"));
                                 }
                                 let _context: &mut DeserializationContext<
-                                    Box<fhirbolt_model::r5::types::String>,
+                                    fhirbolt_model::r5::types::String,
                                 > = self.0.transmute();
                                 r#value = Some(_Enum::String(tri!(
                                     map_access.next_value_seed(&mut *_context)
@@ -1824,7 +1824,7 @@ impl<'de> serde::de::DeserializeSeed<'de>
                                     return Err(serde::de::Error::duplicate_field("valueInteger"));
                                 }
                                 let _context: &mut DeserializationContext<
-                                    Box<fhirbolt_model::r5::types::Integer>,
+                                    fhirbolt_model::r5::types::Integer,
                                 > = self.0.transmute();
                                 r#value = Some(_Enum::Integer(tri!(
                                     map_access.next_value_seed(&mut *_context)
@@ -1877,7 +1877,7 @@ impl<'de> serde::de::DeserializeSeed<'de>
                                     return Err(serde::de::Error::duplicate_field("valueBoolean"));
                                 }
                                 let _context: &mut DeserializationContext<
-                                    Box<fhirbolt_model::r5::types::Boolean>,
+                                    fhirbolt_model::r5::types::Boolean,
                                 > = self.0.transmute();
                                 r#value = Some(_Enum::Boolean(tri!(
                                     map_access.next_value_seed(&mut *_context)
@@ -1930,7 +1930,7 @@ impl<'de> serde::de::DeserializeSeed<'de>
                                     return Err(serde::de::Error::duplicate_field("valueDateTime"));
                                 }
                                 let _context: &mut DeserializationContext<
-                                    Box<fhirbolt_model::r5::types::DateTime>,
+                                    fhirbolt_model::r5::types::DateTime,
                                 > = self.0.transmute();
                                 r#value = Some(_Enum::DateTime(tri!(
                                     map_access.next_value_seed(&mut *_context)
@@ -1984,7 +1984,7 @@ impl<'de> serde::de::DeserializeSeed<'de>
                                     return Err(serde::de::Error::duplicate_field("valueDecimal"));
                                 }
                                 let _context: &mut DeserializationContext<
-                                    Box<fhirbolt_model::r5::types::Decimal>,
+                                    fhirbolt_model::r5::types::Decimal,
                                 > = self.0.transmute();
                                 r#value = Some(_Enum::Decimal(tri!(
                                     map_access.next_value_seed(&mut *_context)
@@ -3394,7 +3394,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<CodeSy
                         ],
                     ))
                 }
-                let mut r#id: Option<Box<fhirbolt_model::r5::types::Id>> = None;
+                let mut r#id: Option<fhirbolt_model::r5::types::Id> = None;
                 let mut r#meta: Option<Box<fhirbolt_model::r5::types::Meta>> = None;
                 let mut r#implicit_rules: Option<fhirbolt_model::r5::types::Uri> = None;
                 let mut r#language: Option<fhirbolt_model::r5::types::Code> = None;
@@ -3471,7 +3471,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<CodeSy
                                     return Err(serde::de::Error::duplicate_field("id"));
                                 }
                                 let _context: &mut DeserializationContext<
-                                    Box<fhirbolt_model::r5::types::Id>,
+                                    fhirbolt_model::r5::types::Id,
                                 > = self.0.transmute();
                                 r#id = Some(tri!(map_access.next_value_seed(&mut *_context)));
                             }
@@ -3748,7 +3748,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<CodeSy
                                     ));
                                 }
                                 let _context: &mut DeserializationContext<
-                                    Box<fhirbolt_model::r5::types::String>,
+                                    fhirbolt_model::r5::types::String,
                                 > = self.0.transmute();
                                 r#version_algorithm = Some(_Enum::String(tri!(
                                     map_access.next_value_seed(&mut *_context)

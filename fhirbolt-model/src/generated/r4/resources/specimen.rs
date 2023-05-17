@@ -1,8 +1,8 @@
-// Generated on 2023-05-17 by fhirbolt-codegen v0.9.0
+// Generated on 2023-05-17 by fhirbolt-codegen v0.10.0
 #[doc = "Time when specimen was collected from subject - the physiologically relevant time."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum SpecimenCollectionCollected {
-    DateTime(Box<super::super::types::DateTime>),
+    DateTime(super::super::types::DateTime),
     Period(Box<super::super::types::Period>),
     #[default]
     Invalid,
@@ -18,7 +18,7 @@ pub enum SpecimenCollectionFastingStatus {
 #[doc = "A record of the time or period when the specimen processing occurred.  For example the time of sample fixation or the period of time the sample was in formalin."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum SpecimenProcessingTime {
-    DateTime(Box<super::super::types::DateTime>),
+    DateTime(super::super::types::DateTime),
     Period(Box<super::super::types::Period>),
     #[default]
     Invalid,
@@ -146,7 +146,7 @@ impl Default for SpecimenContainer {
 #[derive(Debug, Clone, PartialEq)]
 pub struct Specimen {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
-    pub r#id: Option<Box<super::super::types::Id>>,
+    pub r#id: Option<super::super::types::Id>,
     #[doc = "The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content might not always be associated with version changes to the resource."]
     pub r#meta: Option<Box<super::super::types::Meta>>,
     #[doc = "A reference to a set of rules that were followed when the resource was constructed, and which must be understood when processing the content. Often, this is a reference to an implementation guide that defines the special rules along with other profiles etc."]

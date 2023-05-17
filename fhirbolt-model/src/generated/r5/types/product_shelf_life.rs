@@ -1,9 +1,9 @@
-// Generated on 2023-05-17 by fhirbolt-codegen v0.9.0
+// Generated on 2023-05-17 by fhirbolt-codegen v0.10.0
 #[doc = "The shelf life time period can be specified using a numerical value for the period of time and its unit of time measurement The unit of measurement shall be specified in accordance with ISO 11240 and the resulting terminology The symbol and the symbol identifier shall be used."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum ProductShelfLifePeriod {
     Duration(Box<super::super::types::Duration>),
-    String(Box<super::super::types::String>),
+    String(super::super::types::String),
     #[default]
     Invalid,
 }

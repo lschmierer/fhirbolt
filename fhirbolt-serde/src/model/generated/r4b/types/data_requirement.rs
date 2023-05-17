@@ -1,4 +1,4 @@
-// Generated on 2023-05-17 by fhirbolt-codegen v0.9.0
+// Generated on 2023-05-17 by fhirbolt-codegen v0.10.0
 use crate::{DeserializationContext, SerializationContext};
 use fhirbolt_model::r4b::types::DataRequirementCodeFilter;
 impl serde::ser::Serialize for SerializationContext<&DataRequirementCodeFilter> {
@@ -663,7 +663,7 @@ impl<'de> serde::de::DeserializeSeed<'de>
                                     return Err(serde::de::Error::duplicate_field("valueDateTime"));
                                 }
                                 let _context: &mut DeserializationContext<
-                                    Box<fhirbolt_model::r4b::types::DateTime>,
+                                    fhirbolt_model::r4b::types::DateTime,
                                 > = self.0.transmute();
                                 r#value = Some(_Enum::DateTime(tri!(
                                     map_access.next_value_seed(&mut *_context)

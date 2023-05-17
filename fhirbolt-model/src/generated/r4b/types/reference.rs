@@ -1,4 +1,4 @@
-// Generated on 2023-05-17 by fhirbolt-codegen v0.9.0
+// Generated on 2023-05-17 by fhirbolt-codegen v0.10.0
 #[doc = "Base StructureDefinition for Reference Type: A reference from one resource to another."]
 #[derive(Debug, Clone, PartialEq)]
 pub struct Reference {

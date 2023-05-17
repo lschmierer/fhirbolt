@@ -1,6 +1,7 @@
 mod de;
 mod default;
 mod element_map;
+mod from;
 mod ser;
 mod serde_helpers;
 mod type_hints;
@@ -12,7 +13,10 @@ use regex::{Captures, Regex};
 
 use crate::{
     casing::RustCasing,
-    codegen::{de::implement_deserialze_resource_enum, default::implement_default},
+    codegen::{
+        de::implement_deserialze_resource_enum, default::implement_default,
+        from::implement_primitive_from,
+    },
     ir::{RustFhirEnum, RustFhirModule, RustFhirStruct, RustFhirStructField},
     SourceFile,
 };
@@ -87,7 +91,7 @@ pub fn generate_resource_enum(resource_modules: &[RustFhirModule], release: &str
             (
                 quote! {
                     Resource::#ident(r) => {
-                        r.id.as_deref()
+                        r.id.as_ref()
                     },
                 },
                 quote! {
@@ -192,6 +196,12 @@ fn generate_struct(r#struct: &RustFhirStruct) -> TokenStream {
 
     let default_impl = implement_default(r#struct);
 
+    let from_impl = if r#struct.is_primitive {
+        implement_primitive_from(r#struct)
+    } else {
+        quote! {}
+    };
+
     quote! {
         #[doc=#doc_comment]
         #[derive(Debug, Clone, PartialEq)]
@@ -202,6 +212,8 @@ fn generate_struct(r#struct: &RustFhirStruct) -> TokenStream {
         }
 
         #default_impl
+
+        #from_impl
     }
 }
 

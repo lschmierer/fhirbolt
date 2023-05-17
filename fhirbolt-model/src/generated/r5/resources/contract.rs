@@ -1,4 +1,4 @@
-// Generated on 2023-05-17 by fhirbolt-codegen v0.9.0
+// Generated on 2023-05-17 by fhirbolt-codegen v0.10.0
 #[doc = "Narrows the range of legal concerns to focus on the achievement of specific contractual objectives."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum ContractTopic {
@@ -18,14 +18,14 @@ pub enum ContractTermTopic {
 #[doc = "Response to an offer clause or question text,  which enables selection of values to be agreed to, e.g., the period of participation, the date of occupancy of a rental, warranty duration, or whether biospecimen may be used for further research."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum ContractTermOfferAnswerValue {
-    Boolean(Box<super::super::types::Boolean>),
-    Decimal(Box<super::super::types::Decimal>),
-    Integer(Box<super::super::types::Integer>),
-    Date(Box<super::super::types::Date>),
-    DateTime(Box<super::super::types::DateTime>),
-    Time(Box<super::super::types::Time>),
-    String(Box<super::super::types::String>),
-    Uri(Box<super::super::types::Uri>),
+    Boolean(super::super::types::Boolean),
+    Decimal(super::super::types::Decimal),
+    Integer(super::super::types::Integer),
+    Date(super::super::types::Date),
+    DateTime(super::super::types::DateTime),
+    Time(super::super::types::Time),
+    String(super::super::types::String),
+    Uri(super::super::types::Uri),
     Attachment(Box<super::super::types::Attachment>),
     Coding(Box<super::super::types::Coding>),
     Quantity(Box<super::super::types::Quantity>),
@@ -44,7 +44,7 @@ pub enum ContractTermAssetValuedItemEntity {
 #[doc = "When action happens."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum ContractTermActionOccurrence {
-    DateTime(Box<super::super::types::DateTime>),
+    DateTime(super::super::types::DateTime),
     Period(Box<super::super::types::Period>),
     Timing(Box<super::super::types::Timing>),
     #[default]
@@ -698,7 +698,7 @@ impl Default for ContractRule {
 #[derive(Debug, Clone, PartialEq)]
 pub struct Contract {
     #[doc = "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes."]
-    pub r#id: Option<Box<super::super::types::Id>>,
+    pub r#id: Option<super::super::types::Id>,
     #[doc = "The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content might not always be associated with version changes to the resource."]
     pub r#meta: Option<Box<super::super::types::Meta>>,
     #[doc = "A reference to a set of rules that were followed when the resource was constructed, and which must be understood when processing the content. Often, this is a reference to an implementation guide that defines the special rules along with other profiles etc."]

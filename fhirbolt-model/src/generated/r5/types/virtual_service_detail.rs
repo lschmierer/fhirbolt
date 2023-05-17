@@ -1,9 +1,9 @@
-// Generated on 2023-05-17 by fhirbolt-codegen v0.9.0
+// Generated on 2023-05-17 by fhirbolt-codegen v0.10.0
 #[doc = "What address or number needs to be used for a user to connect to the virtual service to join. The channelType informs as to which datatype is appropriate to use (requires knowledge of the specific type)."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum VirtualServiceDetailAddress {
-    Url(Box<super::super::types::Url>),
-    String(Box<super::super::types::String>),
+    Url(super::super::types::Url),
+    String(super::super::types::String),
     ContactPoint(Box<super::super::types::ContactPoint>),
     ExtendedContactDetail(Box<super::super::types::ExtendedContactDetail>),
     #[default]

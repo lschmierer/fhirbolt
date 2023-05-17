@@ -1,4 +1,4 @@
-// Generated on 2023-05-17 by fhirbolt-codegen v0.9.0
+// Generated on 2023-05-17 by fhirbolt-codegen v0.10.0
 #[doc = "integer Type: A whole number"]
 #[derive(Debug, Clone, PartialEq)]
 pub struct Integer {
@@ -16,6 +16,14 @@ impl Default for Integer {
             r#id: Default::default(),
             r#extension: Default::default(),
             r#value: Default::default(),
+        }
+    }
+}
+impl<I: Into<i32>> From<I> for Integer {
+    fn from(v: I) -> Self {
+        Integer {
+            value: Some(v.into()),
+            ..Default::default()
         }
     }
 }
