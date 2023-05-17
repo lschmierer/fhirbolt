@@ -1,5 +1,17 @@
 //! (De)serialize FHIR resources from and to JSON and XML.
 
+// This was taken from serde_json to reduce code size by avoiding going
+// through From (as stdlib try! or ? does).
+// This reduces the size of the rlib by a few percent
+macro_rules! tri {
+    ($e:expr $(,)?) => {
+        match $e {
+            core::result::Result::Ok(val) => val,
+            core::result::Result::Err(err) => return core::result::Result::Err(err),
+        }
+    };
+}
+
 pub mod element;
 
 pub mod json;

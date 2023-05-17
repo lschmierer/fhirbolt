@@ -147,15 +147,15 @@ impl<W: io::Write> IoWrite<W> {
 impl<W: io::Write> Write for IoWrite<W> {
     fn write_event(&mut self, event: Event) -> Result<()> {
         if !self.decl_written {
-            self.write_decl()?;
+            tri!(self.write_decl());
             self.decl_written = true;
         }
 
         match event {
-            Event::ElementStart(e) => self.write_start(e, false)?,
-            Event::ElementEnd => self.write_end()?,
-            Event::EmptyElement(e) => self.write_start(e, true)?,
-            Event::Div(e) => self.write_div(e)?,
+            Event::ElementStart(e) => tri!(self.write_start(e, false)),
+            Event::ElementEnd => tri!(self.write_end()),
+            Event::EmptyElement(e) => tri!(self.write_start(e, true)),
+            Event::Div(e) => tri!(self.write_div(e)),
             Event::Eof => self.writer.write_event(QuickXmlEvent::Eof)?,
         }
 

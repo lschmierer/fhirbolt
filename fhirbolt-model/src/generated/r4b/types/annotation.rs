@@ -1,4 +1,4 @@
-// Generated on 2023-05-15 by fhirbolt-codegen v0.8.0
+// Generated on 2023-05-17 by fhirbolt-codegen v0.9.0
 #[doc = "The individual responsible for making the annotation."]
 #[derive(Default, Debug, Clone, PartialEq)]
 pub enum AnnotationAuthor {

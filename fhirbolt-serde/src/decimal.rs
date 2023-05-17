@@ -14,8 +14,8 @@ impl Serialize for Decimal<'_> {
     where
         S: Serializer,
     {
-        let mut s = serializer.serialize_struct(TOKEN, 1)?;
-        s.serialize_field(TOKEN, &self.d)?;
+        let mut s = tri!(serializer.serialize_struct(TOKEN, 1));
+        tri!(s.serialize_field(TOKEN, &self.d));
         s.end()
     }
 }
@@ -48,11 +48,9 @@ impl<E: Error> SerializeStruct for SerializeDecimal<E> {
         T: ?Sized + Serialize,
     {
         if key == TOKEN {
-            self.decimal = Some(
-                value
-                    .serialize(DecimalStrEmitter::<Self::Error>::new())
-                    .map_err(Error::custom)?,
-            );
+            self.decimal = Some(tri!(value
+                .serialize(DecimalStrEmitter::<Self::Error>::new())
+                .map_err(Error::custom)));
             Ok(())
         } else {
             Err(Error::custom("expected decimal"))

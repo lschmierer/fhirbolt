@@ -1,4 +1,4 @@
-// Generated on 2023-05-15 by fhirbolt-codegen v0.8.0
+// Generated on 2023-05-17 by fhirbolt-codegen v0.9.0
 use crate::{DeserializationContext, SerializationContext};
 use fhirbolt_model::r4b::types::Xhtml;
 impl serde::ser::Serialize for SerializationContext<&Xhtml> {
@@ -14,11 +14,11 @@ impl serde::ser::Serialize for SerializationContext<&Xhtml> {
                 "xhtml", field
             )))
         }
-        let mut state = serializer.serialize_map(None)?;
+        let mut state = tri!(serializer.serialize_map(None));
         if let Some(value) = self.value.r#id.as_ref() {
-            state.serialize_entry("id", value)?;
+            tri!(state.serialize_entry("id", value));
         }
-        state.serialize_entry("value", &self.value.r#value)?;
+        tri!(state.serialize_entry("value", &self.value.r#value));
         state.end()
     }
 }
@@ -36,9 +36,9 @@ impl serde::ser::Serialize for SerializationContext<&Vec<Xhtml>> {
         S: serde::ser::Serializer,
     {
         use serde::ser::SerializeSeq;
-        let mut seq_serializer = serializer.serialize_seq(Some(self.value.len()))?;
+        let mut seq_serializer = tri!(serializer.serialize_seq(Some(self.value.len())));
         for value in self.value {
-            self.with_context(value, |ctx| seq_serializer.serialize_element(ctx))?
+            tri!(self.with_context(value, |ctx| { seq_serializer.serialize_element(ctx) }))
         }
         seq_serializer.end()
     }
@@ -73,19 +73,19 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Xhtml>
                 }
                 let mut r#id: Option<std::string::String> = None;
                 let mut r#value: Option<std::string::String> = None;
-                while let Some(map_access_key) = map_access.next_key()? {
+                while let Some(map_access_key) = tri!(map_access.next_key()) {
                     match map_access_key {
                         Field::Id => {
                             if r#id.is_some() {
                                 return Err(serde::de::Error::duplicate_field("id"));
                             }
-                            r#id = Some(map_access.next_value()?);
+                            r#id = Some(tri!(map_access.next_value()));
                         }
                         Field::Value => {
                             if r#value.is_some() {
                                 return Err(serde::de::Error::duplicate_field("value"));
                             }
-                            r#value = Some(map_access.next_value()?);
+                            r#value = Some(tri!(map_access.next_value()));
                         }
                         Field::Unknown(key) => {
                             if self.0.config.mode == crate::context::de::DeserializationMode::Strict
@@ -100,7 +100,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Xhtml>
                     r#value: if self.0.config.mode == crate::context::de::DeserializationMode::Lax {
                         r#value.unwrap_or(Default::default())
                     } else {
-                        r#value.ok_or(serde::de::Error::missing_field("value"))?
+                        tri!(r#value.ok_or(serde::de::Error::missing_field("value")))
                     },
                 })
             }
@@ -137,7 +137,7 @@ impl<'de> serde::de::DeserializeSeed<'de> for &mut DeserializationContext<Vec<Xh
             {
                 let mut values = Vec::new();
                 let _context: &mut DeserializationContext<Xhtml> = self.0.transmute();
-                while let Some(value) = seq.next_element_seed(&mut *_context)? {
+                while let Some(value) = tri!(seq.next_element_seed(&mut *_context)) {
                     values.push(value);
                 }
                 Ok(values)
