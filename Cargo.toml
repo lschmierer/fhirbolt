@@ -5,6 +5,7 @@ members = [
     "fhirbolt-model",
     "fhirbolt-element",
     "fhirbolt-serde",
+    "fhirbolt-path",
     "fhirbolt-shared",
     "tests",
     "benches",
