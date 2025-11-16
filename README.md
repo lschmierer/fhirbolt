@@ -80,3 +80,27 @@ let o = Observation {
     ..Default::default()
 };
 ```
+
+## Benchmarks
+
+The JSON and XML benchmarks live in `benches/bench_serde.rs`. To run them with
+the recommended stack size, execute:
+
+```bash
+RUST_MIN_STACK=33554432 cargo bench -p benches bench_serde
+```
+
+The output includes Criterion measurements for the fhirbolt, helios main, and
+helios serde-context implementations. You can pipe that output into
+`scripts/compare_json_benches.py` to quickly compare the JSON-only benchmarks
+(element-based measurements are automatically ignored):
+
+```bash
+RUST_MIN_STACK=33554432 cargo bench -p benches bench_serde \
+    | ./scripts/compare_json_benches.py
+```
+
+The script reports the median estimate for each implementation and the relative
+speed-up or slowdown versus your chosen baseline (default: fhirbolt). Pass
+`--baseline helios-main` (or `helios-serde-context`) to compare against a
+different implementation.
