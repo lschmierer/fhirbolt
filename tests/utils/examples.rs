@@ -1,14 +1,17 @@
 use std::{
     fs::{self, File},
     io::Read,
-    path::PathBuf,
+    path::{Path, PathBuf},
 };
 
+use reqwest::blocking::Client;
 use zip::read::{ZipArchive, ZipFile};
 
 use fhirbolt::{FhirRelease, FhirReleases};
 
 const BASE_URL: &str = "http://hl7.org/fhir/{release}/{file}";
+const DOWNLOAD_USER_AGENT: &str =
+    "Mozilla/5.0 (compatible; fhirbolt-tests/0.1; +https://github.com/FHIR/fhirbolt)";
 
 fn fhir_release_name(fhir_release: FhirRelease) -> &'static str {
     match fhir_release {
@@ -52,7 +55,7 @@ pub struct ExamplesIterator {
 }
 
 impl ExamplesIterator {
-    pub fn next_example(&mut self) -> Option<ZipFile> {
+    pub fn next_example(&mut self) -> Option<ZipFile<'_>> {
         if self.index < self.archive.len() {
             let index = self.index;
 
@@ -64,7 +67,7 @@ impl ExamplesIterator {
         }
     }
 
-    pub fn get(&mut self, name: &str) -> ZipFile {
+    pub fn get(&mut self, name: &str) -> ZipFile<'_> {
         self.archive.by_name(name).unwrap()
     }
 }
@@ -96,13 +99,15 @@ fn download_fhir_examples(fhir_release: FhirRelease, json_or_xml: JsonOrXml) -> 
         .join(fhir_release_name(fhir_release));
     let zip_path = folder_path.join(json_or_xml.as_str());
 
+    if zip_path.exists() && !is_valid_zip(&zip_path) {
+        fs::remove_file(&zip_path)
+            .unwrap_or_else(|err| panic!("Error removing \"{:?}\": {}", zip_path, err));
+    }
+
     if !zip_path.exists() {
         fs::create_dir_all(folder_path).unwrap();
 
-        let bytes = reqwest::blocking::get(download_url)
-            .and_then(|r| r.bytes())
-            .unwrap_or_else(|_| panic!("Error downloading {} examples", fhir_release));
-        fs::write(&zip_path, bytes).unwrap_or_else(|_| panic!("Error writing \"{:?}\"", zip_path));
+        download_examples_zip(&download_url, &zip_path, fhir_release, json_or_xml.as_str());
 
         println!(" Download complete!");
     }
@@ -113,4 +118,80 @@ fn download_fhir_examples(fhir_release: FhirRelease, json_or_xml: JsonOrXml) -> 
 fn fhir_examples_url(fhir_release: FhirRelease, json_or_xml: JsonOrXml) -> String {
     let url = str::replace(BASE_URL, "{release}", fhir_release_name(fhir_release));
     str::replace(&url, "{file}", json_or_xml.as_str())
+}
+
+fn download_examples_zip(
+    download_url: &str,
+    zip_path: &Path,
+    fhir_release: FhirRelease,
+    file_name: &str,
+) {
+    let client = Client::builder()
+        .user_agent(DOWNLOAD_USER_AGENT)
+        .build()
+        .unwrap();
+
+    let response = client
+        .get(download_url)
+        .send()
+        .unwrap_or_else(|err| {
+            panic!(
+                "Error downloading {} {}: {}",
+                fhir_release_name(fhir_release),
+                file_name,
+                err
+            )
+        })
+        .error_for_status()
+        .unwrap_or_else(|err| {
+            let status = err
+                .status()
+                .map(|s| s.to_string())
+                .unwrap_or_else(|| "unknown".to_string());
+            panic!(
+                "Error downloading {} {}: HTTP {}",
+                fhir_release_name(fhir_release),
+                file_name,
+                status
+            );
+        });
+
+    let bytes = response.bytes().unwrap_or_else(|err| {
+        panic!(
+            "Error downloading {} {}: {}",
+            fhir_release_name(fhir_release),
+            file_name,
+            err
+        )
+    });
+    fs::write(zip_path, bytes)
+        .unwrap_or_else(|err| panic!("Error writing \"{:?}\": {}", zip_path, err));
+
+    if !is_valid_zip(zip_path) {
+        panic!(
+            "Downloaded {} {} but {:?} is not a valid ZIP archive",
+            fhir_release_name(fhir_release),
+            file_name,
+            zip_path
+        );
+    }
+}
+
+fn is_valid_zip(path: &Path) -> bool {
+    File::open(path)
+        .ok()
+        .and_then(|file| ZipArchive::new(file).ok())
+        .is_some()
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    #[ignore = "Hits the public HL7 download endpoints"]
+    fn downloads_r4_json_examples() {
+        let mut iterator = examples(FhirReleases::R4, JsonOrXml::Json);
+        assert!(iterator.next_example().is_some());
+    }
 }

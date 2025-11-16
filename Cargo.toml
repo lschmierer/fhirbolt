@@ -10,3 +10,4 @@ members = [
     "benches",
     "examples/*"
 ]
+resolver = "2"

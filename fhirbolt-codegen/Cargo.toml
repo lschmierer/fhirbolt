@@ -9,8 +9,8 @@ linked-hash-map = "0.5"
 linked_hash_set = "0.1"
 reqwest = { version = "0.11", features = ["blocking"] }
 zip = { version = "0.6", features = ["deflate"] }
-serde = { version = "1.0", features = ["derive"] }
-serde_json = { version = "1.0", features = ["raw_value"]}
+serde = { version = "=1.0.219", features = ["derive"] }
+serde_json = { version = "=1.0.143", features = ["raw_value"]}
 regex = "1.6"
 lazy_static = "1.4"
 quote = "1.0"

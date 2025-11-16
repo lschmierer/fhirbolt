@@ -23,7 +23,8 @@ where
     T: Resource,
     for<'a> SerializationContext<&'a Self>: Serialize,
 {
-    type Context<'a> = SerializationContext<&'a Self>
+    type Context<'a>
+        = SerializationContext<&'a Self>
     where
         Self: 'a;
 

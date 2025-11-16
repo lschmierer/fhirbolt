@@ -6,10 +6,13 @@ publish = false
 
 [dependencies]
 criterion = "0.4"
-serde = "1.0"
-serde_json = "1.0"
+serde = "=1.0.219"
+serde_json = "=1.0.143"
 
 fhirbolt = { path = "../fhirbolt", features = ["r4"] }
+helios_fhir = { package = "helios-fhir", git = "https://github.com/HeliosSoftware/hfs.git", rev = "25ead82af2e092575d5fdd813d50fbe4ae381b31", default-features = false, features = ["R4"] }
+helios_context_fhir= { package = "helios-fhir", git = "https://github.com/lschmierer/hfs.git", rev = "357e0ac8c0117cf0ac5bb282805ab66e5263c43d", default-features = false, features = ["R4"] }
+helios_context_serde = { package = "helios-serde", git = "https://github.com/lschmierer/hfs.git", rev = "357e0ac8c0117cf0ac5bb282805ab66e5263c43d" }
 tests = { path = "../tests" }
 
 [[bench]]
